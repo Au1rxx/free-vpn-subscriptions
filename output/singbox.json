@@ -1,0 +1,155 @@
+{
+  "dns": {
+    "final": "google",
+    "rules": [
+      {
+        "outbound": [
+          "any"
+        ],
+        "server": "local"
+      }
+    ],
+    "servers": [
+      {
+        "address": "https://dns.google/dns-query",
+        "detour": "auto",
+        "strategy": "ipv4_only",
+        "tag": "google"
+      },
+      {
+        "address": "223.5.5.5",
+        "detour": "direct",
+        "strategy": "ipv4_only",
+        "tag": "local"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "interval": "3m",
+      "outbounds": [
+        "hk-app-01",
+        "jp-app-01",
+        "sg-app-01",
+        "kr-app-01",
+        "us-app-01"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "http://www.gstatic.com/generate_204"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "104.208.117.202",
+      "server_port": 443,
+      "tag": "hk-app-01",
+      "tls": {
+        "enabled": true,
+        "reality": {
+          "enabled": true,
+          "public_key": "Ci7Z5gmWs8dS-B0C3AvO8OjfNMD9eW0bqwKl0znExCI",
+          "short_id": "4724e2fae42042f7"
+        },
+        "server_name": "www.microsoft.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "46c88319-519b-4a27-8a5e-4f64bb4e2a71"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "20.89.16.102",
+      "server_port": 443,
+      "tag": "jp-app-01",
+      "tls": {
+        "enabled": true,
+        "reality": {
+          "enabled": true,
+          "public_key": "l5QLpCitYkmC4J9wjznaA1O19QZEOSNnj0hqErXgTHc",
+          "short_id": "6b827cc13dfc0c87"
+        },
+        "server_name": "www.apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "97094a7e-a4a0-412c-9114-c232dd0099bc"
+    },
+    {
+      "password": "12b610624b0eec238b9b1ddea1d97041",
+      "server": "20.212.119.34",
+      "server_port": 8443,
+      "tag": "sg-app-01",
+      "tls": {
+        "enabled": true,
+        "insecure": true
+      },
+      "type": "hysteria2"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "20.200.216.31",
+      "server_port": 443,
+      "tag": "kr-app-01",
+      "tls": {
+        "enabled": true,
+        "reality": {
+          "enabled": true,
+          "public_key": "2CS23F0MoOVT99Dh_BtCmqnxAxfxmLS3rL15M_1wp18",
+          "short_id": "306c8571dfff8ff9"
+        },
+        "server_name": "www.google.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "432fc2db-10dd-4e00-b942-cfa4a4f315cb"
+    },
+    {
+      "password": "3780fcbcddd107f7d7c727eb18e28f4c",
+      "server": "20.230.191.53",
+      "server_port": 8443,
+      "tag": "us-app-01",
+      "tls": {
+        "enabled": true,
+        "insecure": true
+      },
+      "type": "hysteria2"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    },
+    {
+      "tag": "block",
+      "type": "block"
+    },
+    {
+      "tag": "dns-out",
+      "type": "dns"
+    }
+  ],
+  "route": {
+    "auto_detect_interface": true,
+    "final": "auto",
+    "rules": [
+      {
+        "outbound": "dns-out",
+        "protocol": "dns"
+      },
+      {
+        "geoip": [
+          "cn"
+        ],
+        "outbound": "direct"
+      }
+    ]
+  }
+}

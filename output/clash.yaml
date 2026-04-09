@@ -1,0 +1,90 @@
+allow-lan: false
+dns:
+    enable: true
+    enhanced-mode: fake-ip
+    fake-ip-range: 198.18.0.1/16
+    nameserver:
+        - https://dns.google/dns-query
+        - https://cloudflare-dns.com/dns-query
+external-controller: :9090
+log-level: info
+mixed-port: 7890
+mode: rule
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: hk-app-01
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Ci7Z5gmWs8dS-B0C3AvO8OjfNMD9eW0bqwKl0znExCI
+        short-id: 4724e2fae42042f7
+      server: 104.208.117.202
+      servername: www.microsoft.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 46c88319-519b-4a27-8a5e-4f64bb4e2a71
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: jp-app-01
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: l5QLpCitYkmC4J9wjznaA1O19QZEOSNnj0hqErXgTHc
+        short-id: 6b827cc13dfc0c87
+      server: 20.89.16.102
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 97094a7e-a4a0-412c-9114-c232dd0099bc
+    - name: sg-app-01
+      password: 12b610624b0eec238b9b1ddea1d97041
+      port: 8443
+      server: 20.212.119.34
+      skip-cert-verify: true
+      type: hysteria2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: kr-app-01
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 2CS23F0MoOVT99Dh_BtCmqnxAxfxmLS3rL15M_1wp18
+        short-id: 306c8571dfff8ff9
+      server: 20.200.216.31
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 432fc2db-10dd-4e00-b942-cfa4a4f315cb
+    - name: us-app-01
+      password: 3780fcbcddd107f7d7c727eb18e28f4c
+      port: 8443
+      server: 20.230.191.53
+      skip-cert-verify: true
+      type: hysteria2
+proxy-groups:
+    - name: Proxy
+      proxies:
+        - Auto
+        - hk-app-01
+        - jp-app-01
+        - sg-app-01
+        - kr-app-01
+        - us-app-01
+      type: select
+    - interval: 300
+      name: Auto
+      proxies:
+        - hk-app-01
+        - jp-app-01
+        - sg-app-01
+        - kr-app-01
+        - us-app-01
+      type: url-test
+      url: http://www.gstatic.com/generate_204
+rules:
+    - GEOIP,CN,DIRECT
+    - MATCH,Proxy
