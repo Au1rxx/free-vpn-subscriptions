@@ -84,6 +84,11 @@ The private control plane, infrastructure state, deployment credentials, and clo
 - [Shadowrocket subscription URL](https://au1rxx.github.io/free-vpn-subscriptions/shadowrocket-subscription-url.html)
 - [Free VPN for Android](https://au1rxx.github.io/free-vpn-subscriptions/free-vpn-for-android.html)
 - [How to refresh a Clash profile](https://au1rxx.github.io/free-vpn-subscriptions/how-to-refresh-clash-profile.html)
+- [V2Ray subscription not working](https://au1rxx.github.io/free-vpn-subscriptions/v2ray-subscription-not-working.html)
+- [Shadowrocket not connecting](https://au1rxx.github.io/free-vpn-subscriptions/shadowrocket-not-connecting.html)
+- [Clash profile update failed](https://au1rxx.github.io/free-vpn-subscriptions/clash-profile-update-failed.html)
+- [Free VPN for iPhone](https://au1rxx.github.io/free-vpn-subscriptions/free-vpn-for-iphone.html)
+- [Best Clash client for Android](https://au1rxx.github.io/free-vpn-subscriptions/best-clash-client-for-android.html)
 
 ## Community
 
