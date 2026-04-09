@@ -1,8 +1,12 @@
 # Free VPN Subscriptions
 
+[![Public Repo](https://img.shields.io/badge/repo-public-0f766e)](https://github.com/Au1rxx/free-vpn-subscriptions)
+[![Formats](https://img.shields.io/badge/formats-clash%20%7C%20sing--box%20%7C%20v2ray-cf6a32)](https://github.com/Au1rxx/free-vpn-subscriptions/tree/main/output)
+[![Status Feed](https://img.shields.io/badge/status-live-1d221c)](https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/status.json)
+
 Free Clash, sing-box, and V2Ray subscription links with live node status, multi-region coverage, and setup guides for common clients.
 
-[Open Live Status Site](https://au1rxx.github.io/free-vpn-subscriptions/) • [Clash Guide](./docs/clash-subscription.md) • [sing-box Guide](./docs/sing-box-subscription.md) • [V2Ray Guide](./docs/v2ray-subscription.md) • [FAQ](./docs/faq.md)
+[Open Live Status Site](https://au1rxx.github.io/free-vpn-subscriptions/) • [Status Dashboard](https://au1rxx.github.io/free-vpn-subscriptions/status.html) • [Clash Guide](./docs/clash-subscription.md) • [sing-box Guide](./docs/sing-box-subscription.md) • [V2Ray Guide](./docs/v2ray-subscription.md) • [FAQ](./docs/faq.md)
 
 ## Why This Repo
 
@@ -52,7 +56,18 @@ The private control plane, infrastructure state, deployment credentials, and clo
 - [How to import Clash subscriptions](./docs/clash-subscription.md)
 - [How to import sing-box subscriptions](./docs/sing-box-subscription.md)
 - [How to import V2Ray subscriptions](./docs/v2ray-subscription.md)
+- [How to use Clash Verge Rev](./docs/clash-verge-rev.md)
+- [How to use v2rayNG](./docs/v2rayng.md)
+- [How to use Shadowrocket](./docs/shadowrocket.md)
 - [FAQ and troubleshooting](./docs/faq.md)
+
+## Popular Client Paths
+
+- Desktop: Clash Verge Rev, FlClash, sing-box desktop
+- Android: v2rayNG, NekoBox, sing-box mobile
+- iPhone and iPad: Shadowrocket-compatible subscription import flows
+
+These client-specific guides exist to improve search visibility for real user queries and reduce setup friction after discovery.
 
 ## Star And Follow
 
