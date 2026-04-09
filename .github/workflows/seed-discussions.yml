@@ -1,0 +1,191 @@
+name: Seed Discussions
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  discussions: write
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Seed and pin starter discussions
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            const query = `
+              query($owner: String!, $repo: String!) {
+                repository(owner: $owner, name: $repo) {
+                  id
+                  discussionCategories(first: 20) {
+                    nodes {
+                      id
+                      slug
+                    }
+                  }
+                  discussions(first: 100) {
+                    nodes {
+                      id
+                      title
+                      category {
+                        slug
+                      }
+                    }
+                  }
+                  pinnedDiscussions(first: 10) {
+                    nodes {
+                      discussion {
+                        id
+                        title
+                      }
+                    }
+                  }
+                }
+              }
+            `;
+
+            const data = await github.graphql(query, { owner, repo });
+            const repository = data.repository;
+            const categoryBySlug = Object.fromEntries(
+              repository.discussionCategories.nodes.map((node) => [node.slug, node.id])
+            );
+            const existing = new Map(
+              repository.discussions.nodes.map((node) => [`${node.category.slug}::${node.title}`, node])
+            );
+            const pinned = new Set(
+              repository.pinnedDiscussions.nodes.map((node) => node.discussion.id)
+            );
+
+            const seeds = [
+              {
+                category: "announcements",
+                title: "Start Here: Subscription Links, Status, and Update Channels",
+                pin: true,
+                body: [
+                  "Use this thread as the main entry point for the public feed.",
+                  "",
+                  "Primary links:",
+                  "- Live site: https://au1rxx.github.io/free-vpn-subscriptions/",
+                  "- Clash: https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/clash.yaml",
+                  "- sing-box: https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/singbox.json",
+                  "- V2Ray: https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/v2ray-base64.txt",
+                  "- Status: https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/status.json",
+                  "",
+                  "How to use this repo:",
+                  "- Watch Releases if you want visible snapshot updates.",
+                  "- Use Discussions > Q&A for client setup help.",
+                  "- Use Discussions > Ideas for new client guide requests and landing-page suggestions.",
+                  "- Use Issues only when a public link, release asset, or Pages route is actually broken."
+                ].join("\n")
+              },
+              {
+                category: "q-a",
+                title: "Setup Help Thread: Ask Your Client Import Questions Here",
+                pin: true,
+                body: [
+                  "If you are blocked on import, post here with these details:",
+                  "",
+                  "- client name and version",
+                  "- platform",
+                  "- which subscription format you used",
+                  "- the exact step or error message",
+                  "",
+                  "Good examples:",
+                  "- Clash Verge Rev imported but shows zero nodes",
+                  "- v2rayNG rejects the subscription link",
+                  "- Shadowrocket imports but cannot connect",
+                  "",
+                  "Before posting, check the live status page and the matching setup guide in the repository."
+                ].join("\n")
+              },
+              {
+                category: "ideas",
+                title: "Client Guide Requests and SEO Landing Page Ideas",
+                pin: true,
+                body: [
+                  "Use this thread to request:",
+                  "",
+                  "- new client setup guides",
+                  "- device-specific import instructions",
+                  "- FAQ additions",
+                  "- search-driven landing pages for clients or common errors",
+                  "",
+                  "When suggesting an idea, include the actual search terms users would type. That helps prioritize pages that can bring in new traffic and reduce repetitive support work."
+                ].join("\n")
+              }
+            ];
+
+            for (const seed of seeds) {
+              const categoryId = categoryBySlug[seed.category];
+              if (!categoryId) {
+                core.warning(`Missing discussion category: ${seed.category}`);
+                continue;
+              }
+
+              const key = `${seed.category}::${seed.title}`;
+              let discussion = existing.get(key);
+
+              if (!discussion) {
+                const created = await github.graphql(
+                  `
+                    mutation($repositoryId: ID!, $categoryId: ID!, $title: String!, $body: String!) {
+                      createDiscussion(
+                        input: {
+                          repositoryId: $repositoryId
+                          categoryId: $categoryId
+                          title: $title
+                          body: $body
+                        }
+                      ) {
+                        discussion {
+                          id
+                          title
+                          url
+                          category {
+                            slug
+                          }
+                        }
+                      }
+                    }
+                  `,
+                  {
+                    repositoryId: repository.id,
+                    categoryId,
+                    title: seed.title,
+                    body: seed.body
+                  }
+                );
+                discussion = created.createDiscussion.discussion;
+                existing.set(key, discussion);
+                core.info(`Created discussion: ${discussion.url}`);
+              } else {
+                core.info(`Discussion already exists: ${discussion.title}`);
+              }
+
+              if (seed.pin && !pinned.has(discussion.id)) {
+                try {
+                  await github.graphql(
+                    `
+                      mutation($discussionId: ID!) {
+                        pinDiscussion(input: { discussionId: $discussionId }) {
+                          discussion {
+                            id
+                          }
+                        }
+                      }
+                    `,
+                    { discussionId: discussion.id }
+                  );
+                  pinned.add(discussion.id);
+                  core.info(`Pinned discussion: ${discussion.title}`);
+                } catch (error) {
+                  core.warning(`Failed to pin discussion "${discussion.title}": ${error.message}`);
+                }
+              }
+            }
