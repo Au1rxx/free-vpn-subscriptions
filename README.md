@@ -3,6 +3,7 @@
 [![Public Repo](https://img.shields.io/badge/repo-public-0f766e)](https://github.com/Au1rxx/free-vpn-subscriptions)
 [![Formats](https://img.shields.io/badge/formats-clash%20%7C%20sing--box%20%7C%20v2ray-cf6a32)](https://github.com/Au1rxx/free-vpn-subscriptions/tree/main/output)
 [![Status Feed](https://img.shields.io/badge/status-live-1d221c)](https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/status.json)
+[![Latest Release](https://img.shields.io/github/v/release/Au1rxx/free-vpn-subscriptions)](https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest)
 
 Free Clash, sing-box, and V2Ray subscription links with live node status, multi-region coverage, and setup guides for common clients.
 
@@ -25,6 +26,17 @@ Use the raw links below in your client:
 | sing-box | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/singbox.json` | Every 6 hours |
 | V2Ray | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/v2ray-base64.txt` | Every 6 hours |
 | Status | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/status.json` | Every hour |
+
+## Release Downloads
+
+Use Releases as a backup distribution channel, a snapshot archive, or a clean download entry for users who do not want to browse raw files.
+
+| Format | Latest Release Asset |
+|--------|----------------------|
+| Clash | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/clash.yaml` |
+| sing-box | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/singbox.json` |
+| V2Ray | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/v2ray-base64.txt` |
+| Status | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/status.json` |
 
 ## Supported Clients
 

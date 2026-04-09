@@ -1,0 +1,60 @@
+name: Release Feed Snapshot
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "output/clash.yaml"
+      - "output/singbox.json"
+      - "output/v2ray-base64.txt"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: public-feed-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build release metadata
+        id: meta
+        run: |
+          stamp="$(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          tag="feed-$(date -u +'%Y%m%d-%H%M%S')"
+          echo "stamp=$stamp" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Create snapshot release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ steps.meta.outputs.tag }}" \
+            output/clash.yaml \
+            output/singbox.json \
+            output/v2ray-base64.txt \
+            output/status.json \
+            --title "Feed Snapshot ${{ steps.meta.outputs.stamp }}" \
+            --notes "$(cat <<'EOF'
+          Public snapshot of the current subscription feed.
+
+          Primary auto-update endpoints remain the raw files in `output/`.
+          This release exists for:
+          - stable downloadable artifacts
+          - historical rollback points
+          - release-watch notifications
+
+          Download shortcuts:
+          - Clash: `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/clash.yaml`
+          - sing-box: `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/singbox.json`
+          - V2Ray: `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/v2ray-base64.txt`
+          - Status: `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/status.json`
+          EOF
+          )"
