@@ -77,6 +77,14 @@ The private control plane, infrastructure state, deployment credentials, and clo
 - [How to use Shadowrocket](./docs/shadowrocket.md)
 - [FAQ and troubleshooting](./docs/faq.md)
 
+## Search Intent Pages
+
+- [Clash subscription not working](https://au1rxx.github.io/free-vpn-subscriptions/clash-subscription-not-working.html)
+- [V2Ray subscription URL](https://au1rxx.github.io/free-vpn-subscriptions/v2ray-subscription-url.html)
+- [Shadowrocket subscription URL](https://au1rxx.github.io/free-vpn-subscriptions/shadowrocket-subscription-url.html)
+- [Free VPN for Android](https://au1rxx.github.io/free-vpn-subscriptions/free-vpn-for-android.html)
+- [How to refresh a Clash profile](https://au1rxx.github.io/free-vpn-subscriptions/how-to-refresh-clash-profile.html)
+
 ## Community
 
 - [Open a setup question](https://github.com/Au1rxx/free-vpn-subscriptions/discussions/new?category=q-a)
