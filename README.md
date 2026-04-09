@@ -89,6 +89,12 @@ The private control plane, infrastructure state, deployment credentials, and clo
 - [Clash profile update failed](https://au1rxx.github.io/free-vpn-subscriptions/clash-profile-update-failed.html)
 - [Free VPN for iPhone](https://au1rxx.github.io/free-vpn-subscriptions/free-vpn-for-iphone.html)
 - [Best Clash client for Android](https://au1rxx.github.io/free-vpn-subscriptions/best-clash-client-for-android.html)
+- [Troubleshooting hub](https://au1rxx.github.io/free-vpn-subscriptions/troubleshooting-hub.html)
+- [Free VPN subscription links](https://au1rxx.github.io/free-vpn-subscriptions/free-vpn-subscription-links.html)
+- [Which subscription format should I use?](https://au1rxx.github.io/free-vpn-subscriptions/which-subscription-format-should-i-use.html)
+- [Clash vs V2Ray subscription](https://au1rxx.github.io/free-vpn-subscriptions/clash-vs-v2ray-subscription.html)
+- [Best VPN client for Windows](https://au1rxx.github.io/free-vpn-subscriptions/best-vpn-client-for-windows.html)
+- [Best VPN client for Mac](https://au1rxx.github.io/free-vpn-subscriptions/best-vpn-client-for-mac.html)
 
 ## Community
 
