@@ -6,6 +6,10 @@ Use the Clash subscription feed:
 
 `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml`
 
+Backup release download:
+
+`https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/clash.yaml`
+
 ## Clash Verge Rev Setup
 
 1. Open Clash Verge Rev.
@@ -24,3 +28,9 @@ Use Clash Verge Rev if you want a desktop client with a visual UI and broad Clas
 - If a profile imports but traffic does not route, verify your local Clash mode and DNS settings.
 - If a node becomes slow, refresh and switch regions.
 - If all nodes fail, compare with the public status feed first.
+
+## Related Guides
+
+- [Clash subscription guide](./clash-subscription.md)
+- [FlClash guide](./flclash.md)
+- [FAQ](./faq.md)

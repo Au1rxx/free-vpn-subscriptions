@@ -6,6 +6,10 @@ Use the V2Ray Base64 subscription feed:
 
 `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/v2ray-base64.txt`
 
+Backup release download:
+
+`https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/v2ray-base64.txt`
+
 ## v2rayNG Setup
 
 1. Open v2rayNG on Android.
@@ -23,3 +27,9 @@ Use v2rayNG if you want a common Android client with strong support for V2Ray-co
 - If import fails, verify that you used the Base64 subscription link and not the Clash or sing-box feed.
 - If a node times out, switch to another region.
 - If every node times out, check the public status page first.
+
+## Related Guides
+
+- [V2Ray subscription guide](./v2ray-subscription.md)
+- [NekoBox guide](./nekobox.md)
+- [Hiddify Next guide](./hiddify-next.md)
