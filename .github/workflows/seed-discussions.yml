@@ -38,14 +38,6 @@ jobs:
                       }
                     }
                   }
-                  pinnedDiscussions(first: 10) {
-                    nodes {
-                      discussion {
-                        id
-                        title
-                      }
-                    }
-                  }
                 }
               }
             `;
@@ -58,15 +50,11 @@ jobs:
             const existing = new Map(
               repository.discussions.nodes.map((node) => [`${node.category.slug}::${node.title}`, node])
             );
-            const pinned = new Set(
-              repository.pinnedDiscussions.nodes.map((node) => node.discussion.id)
-            );
 
             const seeds = [
               {
                 category: "announcements",
                 title: "Start Here: Subscription Links, Status, and Update Channels",
-                pin: true,
                 body: [
                   "Use this thread as the main entry point for the public feed.",
                   "",
@@ -87,7 +75,6 @@ jobs:
               {
                 category: "q-a",
                 title: "Setup Help Thread: Ask Your Client Import Questions Here",
-                pin: true,
                 body: [
                   "If you are blocked on import, post here with these details:",
                   "",
@@ -107,7 +94,6 @@ jobs:
               {
                 category: "ideas",
                 title: "Client Guide Requests and SEO Landing Page Ideas",
-                pin: true,
                 body: [
                   "Use this thread to request:",
                   "",
@@ -166,26 +152,5 @@ jobs:
                 core.info(`Created discussion: ${discussion.url}`);
               } else {
                 core.info(`Discussion already exists: ${discussion.title}`);
-              }
-
-              if (seed.pin && !pinned.has(discussion.id)) {
-                try {
-                  await github.graphql(
-                    `
-                      mutation($discussionId: ID!) {
-                        pinDiscussion(input: { discussionId: $discussionId }) {
-                          discussion {
-                            id
-                          }
-                        }
-                      }
-                    `,
-                    { discussionId: discussion.id }
-                  );
-                  pinned.add(discussion.id);
-                  core.info(`Pinned discussion: ${discussion.title}`);
-                } catch (error) {
-                  core.warning(`Failed to pin discussion "${discussion.title}": ${error.message}`);
-                }
               }
             }
