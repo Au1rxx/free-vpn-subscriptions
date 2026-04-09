@@ -1,0 +1,58 @@
+name: Broken feed or stale status
+description: Report a subscription link, release asset, or status page problem.
+title: "[Broken Feed]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form only for problems with the public feed itself.
+
+        Before submitting:
+        - Check the live status dashboard and latest release first.
+        - For client setup help, use Discussions > Q&A instead.
+  - type: dropdown
+    id: affected_artifact
+    attributes:
+      label: Affected artifact
+      description: Which public entry is broken?
+      options:
+        - Clash subscription
+        - sing-box subscription
+        - V2Ray subscription
+        - Status JSON
+        - GitHub Pages site
+        - Latest release asset
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Exact URL
+      description: Paste the failing raw link, Pages URL, or release download URL.
+      placeholder: https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/clash.yaml
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include the client message, HTTP error, or mismatch you saw.
+      placeholder: The latest release download returns 404, or the subscription imports but contains no nodes.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Client and environment
+      description: Include app name, version, platform, and network context if relevant.
+      placeholder: Clash Verge Rev 2.x on Windows 11, imported from the latest release link.
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Extra notes
+      description: Optional screenshots, timestamps, or reproduction details.
+

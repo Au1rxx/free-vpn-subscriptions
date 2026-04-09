@@ -73,6 +73,13 @@ The private control plane, infrastructure state, deployment credentials, and clo
 - [How to use Shadowrocket](./docs/shadowrocket.md)
 - [FAQ and troubleshooting](./docs/faq.md)
 
+## Community
+
+- [Open a setup question](https://github.com/Au1rxx/free-vpn-subscriptions/discussions/new?category=q-a)
+- [Suggest a new client guide or landing page](https://github.com/Au1rxx/free-vpn-subscriptions/discussions/new?category=ideas)
+- [Share a working client setup](https://github.com/Au1rxx/free-vpn-subscriptions/discussions/new?category=show-and-tell)
+- [Report a broken public feed or stale status](https://github.com/Au1rxx/free-vpn-subscriptions/issues/new/choose)
+
 ## Popular Client Paths
 
 - Desktop: Clash Verge Rev, FlClash, sing-box desktop
@@ -88,6 +95,7 @@ If this feed is useful:
 - Star the repository to help discovery.
 - Watch releases if you want visible update checkpoints.
 - Use Discussions for client requests, setup questions, and broken-link reports.
+- Use Issues only when a public feed artifact, release asset, or Pages route is actually broken.
 
 ## Notes
 

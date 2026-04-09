@@ -25,3 +25,9 @@ The public repo is for distribution only. Infrastructure state, cloud credential
 ## Can I mirror or fork this repository?
 
 Yes, but treat it as a public feed and not as a source of private or persistent credentials.
+
+## Where should I ask for help or report a problem?
+
+- Use GitHub Discussions for client setup help, app compatibility questions, and guide requests.
+- Use GitHub Issues only for broken public links, stale release artifacts, or incorrect status output.
+- Check the live status dashboard before reporting node availability problems.
