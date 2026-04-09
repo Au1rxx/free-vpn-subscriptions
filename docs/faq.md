@@ -18,6 +18,8 @@ Public shared nodes can degrade, rotate, or go offline. Always check `output/sta
 - Use `sing-box` if your client supports remote JSON imports.
 - Use `V2Ray` if your client accepts Base64 subscription links.
 
+If you are unsure, start from the client-specific guide that matches your app.
+
 ## Why keep the control plane private?
 
 The public repo is for distribution only. Infrastructure state, cloud credentials, SSH access, and secret material stay in the private operations repository.
@@ -31,3 +33,15 @@ Yes, but treat it as a public feed and not as a source of private or persistent 
 - Use GitHub Discussions for client setup help, app compatibility questions, and guide requests.
 - Use GitHub Issues only for broken public links, stale release artifacts, or incorrect status output.
 - Check the live status dashboard before reporting node availability problems.
+
+## Which client guides are available?
+
+- Clash Verge Rev
+- FlClash
+- Clash Meta for Android
+- Hiddify Next
+- NekoBox
+- v2rayNG
+- Shadowrocket
+
+Use the corresponding setup page in `site/` or the matching markdown guide in `docs/`.

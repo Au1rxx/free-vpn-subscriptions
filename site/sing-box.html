@@ -3,42 +3,115 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>sing-box Subscription Guide | Free VPN Subscriptions</title>
-    <meta name="description" content="How to import a free sing-box subscription link and use the latest public nodes.">
+    <title>Free sing-box Subscription Link | Remote JSON Guide for sing-box Clients</title>
+    <meta name="description" content="Detailed sing-box subscription guide for users who need a remote JSON profile URL, update workflow, and troubleshooting path.">
     <link rel="canonical" href="https://au1rxx.github.io/free-vpn-subscriptions/sing-box.html">
+    <meta property="og:title" content="Free sing-box Subscription Link | Remote JSON Guide">
+    <meta property="og:description" content="Import the public sing-box JSON feed, understand update cadence, and troubleshoot remote profile issues.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://au1rxx.github.io/free-vpn-subscriptions/sing-box.html">
+    <meta property="og:image" content="https://au1rxx.github.io/free-vpn-subscriptions/social-preview.svg">
     <link rel="stylesheet" href="./styles.css">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the sing-box subscription URL for this repository?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/singbox.json as the primary sing-box subscription URL."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who should use the sing-box JSON feed?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use the sing-box feed if your client accepts remote JSON-based profiles or remote configuration imports."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if my sing-box client only accepts a local file?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Download the latest release snapshot of singbox.json and import it manually if remote URL import is not available."
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <main class="content-page">
       <a class="back-link" href="./">Back to home</a>
       <p class="eyebrow">sing-box Guide</p>
-      <h1>How to import the sing-box subscription</h1>
+      <h1>Free sing-box subscription link for remote JSON imports</h1>
       <p class="lede">
-        Use this guide if your sing-box client accepts a remote JSON configuration or subscription import flow.
+        Use this page when your sing-box client expects a remote JSON configuration or profile URL instead of a Clash YAML or V2Ray Base64 subscription.
       </p>
+      <div class="content-actions">
+        <a class="button button-primary" href="./output/singbox.json">Open sing-box JSON</a>
+        <a class="button button-secondary" href="https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/singbox.json">Download Latest Release</a>
+        <a class="button button-secondary" href="./status.html">Check Live Status</a>
+      </div>
 
       <section class="content-block">
-        <h2>Direct URL</h2>
+        <h2>Direct sing-box subscription URL</h2>
         <pre><code>https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/singbox.json</code></pre>
+        <p class="inline-note">This is the primary remote JSON endpoint. If your client does not support remote URLs, use the latest release asset as a downloadable fallback.</p>
+      </section>
+
+      <section class="content-grid">
+        <section class="content-block">
+          <h2>When the sing-box feed is the right choice</h2>
+          <ul class="tag-list">
+            <li>Your client accepts remote JSON configuration imports.</li>
+            <li>You want a sing-box-native profile path instead of a Clash YAML.</li>
+            <li>You are testing clients that parse structured JSON profiles more cleanly than Base64 links.</li>
+          </ul>
+        </section>
+        <section class="content-block">
+          <h2>Update and verification path</h2>
+          <ul class="tag-list">
+            <li>Refresh cadence for the public JSON feed is every 6 hours.</li>
+            <li>The status page is refreshed hourly and should be checked before deep troubleshooting.</li>
+            <li>Release snapshots act as stable downloadable checkpoints.</li>
+          </ul>
+        </section>
       </section>
 
       <section class="content-block">
-        <h2>Steps</h2>
+        <h2>How to import a sing-box remote profile</h2>
         <ol>
-          <li>Open your sing-box client.</li>
-          <li>Create a new remote configuration.</li>
-          <li>Paste the direct URL above.</li>
-          <li>Sync the profile.</li>
-          <li>Select an outbound and test connectivity.</li>
+          <li>Open your sing-box client and look for remote profile, import from URL, or remote configuration options.</li>
+          <li>Create a new profile entry and paste the JSON URL shown above.</li>
+          <li>Sync the profile once to load the current public node set.</li>
+          <li>Refresh the profile manually so you can verify the client keeps the remote source.</li>
+          <li>Select an outbound and test connectivity against the live status view.</li>
         </ol>
       </section>
 
       <section class="content-block">
-        <h2>Troubleshooting</h2>
-        <ul>
-          <li>If your client only accepts local files, download the JSON and import it manually.</li>
-          <li>If routes look stale, refresh the remote configuration.</li>
-          <li>If imports work but traffic does not pass, compare with the live status feed.</li>
+        <h2>Common sing-box import problems</h2>
+        <ul class="faq-list">
+          <li>If your client only accepts local files, download the release snapshot instead of forcing a URL flow that the app does not support.</li>
+          <li>If the profile imports but looks stale, trigger a manual sync and verify the source URL was saved correctly.</li>
+          <li>If outbounds load but traffic does not pass, compare with the published status page first.</li>
+          <li>If you are not sure whether to use sing-box or V2Ray, choose the format your client documents as the native remote profile path.</li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <h2>Related guides</h2>
+        <ul class="related-links">
+          <li><a href="./hiddify-next.html">Hiddify Next guide</a></li>
+          <li><a href="./nekobox.html">NekoBox guide</a></li>
+          <li><a href="./v2ray.html">V2Ray subscription guide</a></li>
+          <li><a href="./faq.html">VPN subscription FAQ</a></li>
         </ul>
       </section>
     </main>

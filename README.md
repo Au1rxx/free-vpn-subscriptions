@@ -69,6 +69,8 @@ The private control plane, infrastructure state, deployment credentials, and clo
 - [How to import sing-box subscriptions](./docs/sing-box-subscription.md)
 - [How to import V2Ray subscriptions](./docs/v2ray-subscription.md)
 - [How to use Clash Verge Rev](./docs/clash-verge-rev.md)
+- [How to use FlClash](./docs/flclash.md)
+- [How to use Clash Meta for Android](./docs/clash-meta-android.md)
 - [How to use Hiddify Next](./docs/hiddify-next.md)
 - [How to use NekoBox](./docs/nekobox.md)
 - [How to use v2rayNG](./docs/v2rayng.md)
@@ -85,7 +87,7 @@ The private control plane, infrastructure state, deployment credentials, and clo
 ## Popular Client Paths
 
 - Desktop: Clash Verge Rev, FlClash, sing-box desktop
-- Android: v2rayNG, NekoBox, Hiddify Next, sing-box mobile
+- Android: Clash Meta for Android, v2rayNG, NekoBox, Hiddify Next, sing-box mobile
 - iPhone and iPad: Shadowrocket-compatible subscription import flows
 - Multi-platform: Hiddify Next on Android, iPhone, Windows, macOS, and Linux
 
