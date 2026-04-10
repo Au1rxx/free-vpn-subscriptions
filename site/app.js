@@ -14,6 +14,19 @@ function escapeHtml(value) {
     .replaceAll("'", "&#39;");
 }
 
+function extractReleaseSummary(body) {
+  if (!body) {
+    return "";
+  }
+
+  const blocks = body
+    .split(/\n\s*\n/)
+    .map((block) => block.replace(/\s+/g, " ").trim())
+    .filter(Boolean);
+
+  return blocks[0] || "";
+}
+
 async function loadStatus() {
   const activeCount = document.getElementById("active-count");
   const statusStamp = document.getElementById("status-stamp");
@@ -78,9 +91,10 @@ async function loadStatus() {
 
 async function loadReleases() {
   const latestRelease = document.getElementById("latest-release");
+  const latestReleaseSummary = document.getElementById("latest-release-summary");
   const releaseList = document.getElementById("release-list");
 
-  if (!latestRelease && !releaseList) {
+  if (!latestRelease && !latestReleaseSummary && !releaseList) {
     return;
   }
 
@@ -107,11 +121,16 @@ async function loadReleases() {
     const [latest] = releases;
     const latestTitle = latest.name || latest.tag_name;
     const latestStamp = formatUtcStamp(latest.published_at);
+    const latestSummary = extractReleaseSummary(latest.body);
 
     if (latestRelease) {
       latestRelease.textContent = latestStamp
         ? `${latestTitle} · ${latestStamp}`
         : latestTitle;
+    }
+
+    if (latestReleaseSummary) {
+      latestReleaseSummary.textContent = latestSummary || "最近一次快照的变化摘要暂不可用。";
     }
 
     if (releaseList) {
@@ -120,6 +139,7 @@ async function loadReleases() {
           const title = escapeHtml(release.name || release.tag_name);
           const stamp = formatUtcStamp(release.published_at);
           const assetCount = Array.isArray(release.assets) ? release.assets.length : 0;
+          const summary = extractReleaseSummary(release.body);
           const assetsText = assetCount
             ? `包含 ${assetCount} 个下载文件`
             : "发布页内含当前快照下载入口";
@@ -129,6 +149,7 @@ async function loadReleases() {
               <div class="release-item-copy">
                 <p class="release-meta">${escapeHtml(release.tag_name)}</p>
                 <h3>${title}</h3>
+                ${summary ? `<p class="release-summary">${escapeHtml(summary)}</p>` : ""}
                 <p>${stamp ? `发布时间 ${stamp}，` : ""}${assetsText}。适合手动下载、回看历史版本，或通过 Watch releases 跟踪更新。</p>
               </div>
               <div class="stack-actions">
@@ -142,6 +163,10 @@ async function loadReleases() {
   } catch (error) {
     if (latestRelease) {
       latestRelease.textContent = "暂时无法读取最近发布记录";
+    }
+
+    if (latestReleaseSummary) {
+      latestReleaseSummary.textContent = "稍后可直接打开 GitHub Releases 查看本次变化摘要。";
     }
 
     if (releaseList) {

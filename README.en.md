@@ -29,7 +29,7 @@ Use the raw links below in your client:
 
 ## Release Downloads
 
-Use Releases as a backup distribution channel, a snapshot archive, or a clean download entry for users who do not want to browse raw files.
+Use Releases as a backup distribution channel, a snapshot archive, or a clean download entry for users who do not want to browse raw files. Each new release also includes a human-readable summary of node health, region and protocol mix, plus a comparison against the previous snapshot when available.
 
 | Format | Latest Release Asset |
 |--------|----------------------|

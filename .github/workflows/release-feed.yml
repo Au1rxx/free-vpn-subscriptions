@@ -32,6 +32,23 @@ jobs:
           echo "stamp=$stamp" >> "$GITHUB_OUTPUT"
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
 
+      - name: Fetch previous snapshot status
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p .tmp
+          latest_status_url="$(gh api repos/${{ github.repository }}/releases/latest --jq '.assets[] | select(.name=="status.json") | .browser_download_url' 2>/dev/null || true)"
+          if [ -n "$latest_status_url" ]; then
+            curl -fsSL "$latest_status_url" -o .tmp/previous-status.json
+          fi
+
+      - name: Build release notes
+        run: |
+          python3 scripts/build_release_notes.py \
+            --current output/status.json \
+            --previous .tmp/previous-status.json \
+            > .tmp/release-notes.md
+
       - name: Create snapshot release
         env:
           GH_TOKEN: ${{ github.token }}
@@ -42,19 +59,4 @@ jobs:
             output/v2ray-base64.txt \
             output/status.json \
             --title "Feed Snapshot ${{ steps.meta.outputs.stamp }}" \
-            --notes "$(cat <<'EOF'
-          Public snapshot of the current subscription feed.
-
-          Primary auto-update endpoints remain the raw files in `output/`.
-          This release exists for:
-          - stable downloadable artifacts
-          - historical rollback points
-          - release-watch notifications
-
-          Download shortcuts:
-          - Clash: `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/clash.yaml`
-          - sing-box: `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/singbox.json`
-          - V2Ray: `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/v2ray-base64.txt`
-          - Status: `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/status.json`
-          EOF
-          )"
+            --notes-file .tmp/release-notes.md
