@@ -11,6 +11,8 @@
 
 [打开站点首页](https://au1rxx.github.io/free-vpn-subscriptions/) • [更新记录与快照历史](https://au1rxx.github.io/free-vpn-subscriptions/updates.html) • [状态面板](https://au1rxx.github.io/free-vpn-subscriptions/status.html) • [Clash 指南](./docs/clash-subscription.md) • [sing-box 指南](./docs/sing-box-subscription.md) • [V2Ray 指南](./docs/v2ray-subscription.md) • [FAQ](./docs/faq.md)
 
+[Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) • [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json) • [Discussions](https://github.com/Au1rxx/free-vpn-subscriptions/discussions)
+
 ## 项目定位
 
 - 面向 `Clash`、`sing-box`、`V2Ray` 用户的公开订阅分发仓库。
@@ -45,6 +47,7 @@
 - 固定订阅 URL 更适合客户端长期自动刷新，不会因为链接轮换导致旧教程、旧收藏和客户端配置失效。
 - 用户回访不应依赖“换链接”，而应依赖“看更新”。这个项目把回访入口放在状态页、更新记录页和 Releases 快照历史中。
 - 想确认最近有没有刷新、是否有历史快照、要不要手动下载，请直接看 [更新记录与快照历史](https://au1rxx.github.io/free-vpn-subscriptions/updates.html)。
+- 想把更新接入 RSS 阅读器、自动化脚本或第三方页面，可以直接订阅 [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) 或 [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json)。
 
 ## 支持的客户端
 

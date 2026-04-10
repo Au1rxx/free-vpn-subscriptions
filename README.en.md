@@ -9,6 +9,8 @@ Free Clash, sing-box, and V2Ray subscription links with live node status, multi-
 
 [Open Live Status Site](https://au1rxx.github.io/free-vpn-subscriptions/) • [Updates And Snapshot History](https://au1rxx.github.io/free-vpn-subscriptions/updates.html) • [Status Dashboard](https://au1rxx.github.io/free-vpn-subscriptions/status.html) • [Clash Guide](./docs/clash-subscription.md) • [sing-box Guide](./docs/sing-box-subscription.md) • [V2Ray Guide](./docs/v2ray-subscription.md) • [FAQ](./docs/faq.md)
 
+[Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) • [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json) • [Discussions](https://github.com/Au1rxx/free-vpn-subscriptions/discussions)
+
 ## Why This Repo
 
 - Public subscription feed for `Clash`, `sing-box`, and `V2Ray` users.
@@ -43,6 +45,7 @@ Use Releases as a backup distribution channel, a snapshot archive, or a clean do
 - Stable URLs are better for client auto-refresh and prevent old guides, bookmarks, and shared posts from breaking.
 - Returning traffic should come from updates, release snapshots, live status, and new documentation, not from rotating the core feed URLs.
 - Use the [Updates And Snapshot History](https://au1rxx.github.io/free-vpn-subscriptions/updates.html) page when you want to check recent release activity or download checkpoints manually.
+- Use the [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) or [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json) if you want to pipe release updates into RSS readers, automation, or external dashboards.
 
 ## Supported Clients
 

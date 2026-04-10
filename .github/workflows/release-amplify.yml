@@ -1,0 +1,140 @@
+name: Amplify Release Updates
+
+on:
+  release:
+    types:
+      - published
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+permissions:
+  contents: write
+  discussions: write
+
+jobs:
+  amplify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Fetch latest releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p .tmp
+          gh api repos/${{ github.repository }}/releases?per_page=20 > .tmp/releases.json
+
+      - name: Render update feeds
+        run: |
+          python3 scripts/render_update_feeds.py \
+            --input .tmp/releases.json \
+            --output-dir site
+
+      - name: Commit update feeds
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/updates.json site/updates.xml
+          if git diff --cached --quiet; then
+            echo "No feed changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: refresh public update feeds"
+          git push
+
+      - name: Publish announcement discussion
+        uses: actions/github-script@v9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            let release = context.payload.release;
+            if (!release) {
+              release = await github.rest.repos.getLatestRelease({ owner, repo }).then((result) => result.data);
+            }
+
+            const summary = String(release.body || "").split(/\n\s*\n/).map((block) => block.trim()).filter(Boolean)[0] || "最新快照已发布。";
+            const title = `${release.name || release.tag_name} | 节点快照更新`;
+
+            const query = `
+              query($owner: String!, $repo: String!) {
+                repository(owner: $owner, name: $repo) {
+                  id
+                  discussionCategories(first: 20) {
+                    nodes {
+                      id
+                      slug
+                    }
+                  }
+                  discussions(first: 100, orderBy: {field: CREATED_AT, direction: DESC}) {
+                    nodes {
+                      title
+                    }
+                  }
+                }
+              }
+            `;
+
+            const data = await github.graphql(query, { owner, repo });
+            const repository = data.repository;
+            const category = repository.discussionCategories.nodes.find((node) => node.slug === "announcements");
+            if (!category) {
+              core.setFailed("Missing announcements discussion category.");
+              return;
+            }
+
+            const exists = repository.discussions.nodes.some((discussion) => discussion.title === title);
+            if (exists) {
+              core.info(`Discussion already exists: ${title}`);
+              return;
+            }
+
+            const body = [
+              `最新快照已发布：${release.name || release.tag_name}`,
+              "",
+              summary,
+              "",
+              "快速入口：",
+              "- 首页: https://au1rxx.github.io/free-vpn-subscriptions/",
+              "- 更新记录: https://au1rxx.github.io/free-vpn-subscriptions/updates.html",
+              `- Release: ${release.html_url}`,
+              "- Clash 下载: https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/clash.yaml",
+              "- sing-box 下载: https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/singbox.json",
+              "- V2Ray 下载: https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/v2ray-base64.txt",
+              "- 状态文件: https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/status.json",
+              "",
+              "如果你想持续跟踪更新：",
+              "- Watch Releases",
+              "- 订阅更新页里的 Atom / JSON Feed",
+              "- 在 Discussions 里反馈客户端兼容问题和新教程需求",
+            ].join("\n");
+
+            await github.graphql(
+              `
+                mutation($repositoryId: ID!, $categoryId: ID!, $title: String!, $body: String!) {
+                  createDiscussion(
+                    input: {
+                      repositoryId: $repositoryId
+                      categoryId: $categoryId
+                      title: $title
+                      body: $body
+                    }
+                  ) {
+                    discussion {
+                      url
+                    }
+                  }
+                }
+              `,
+              {
+                repositoryId: repository.id,
+                categoryId: category.id,
+                title,
+                body,
+              }
+            );
