@@ -1,128 +1,137 @@
-# Free VPN Subscriptions
+# 免费 VPN 订阅
+
+[中文](./README.md) | [English](./README.en.md)
 
 [![Public Repo](https://img.shields.io/badge/repo-public-0f766e)](https://github.com/Au1rxx/free-vpn-subscriptions)
 [![Formats](https://img.shields.io/badge/formats-clash%20%7C%20sing--box%20%7C%20v2ray-cf6a32)](https://github.com/Au1rxx/free-vpn-subscriptions/tree/main/output)
 [![Status Feed](https://img.shields.io/badge/status-live-1d221c)](https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/status.json)
 [![Latest Release](https://img.shields.io/github/v/release/Au1rxx/free-vpn-subscriptions)](https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest)
 
-Free Clash, sing-box, and V2Ray subscription links with live node status, multi-region coverage, and setup guides for common clients.
+公开提供 Clash、sing-box、V2Ray 订阅链接，附带实时节点状态、多地区覆盖、客户端导入教程与故障排查页面。
 
-[Open Live Status Site](https://au1rxx.github.io/free-vpn-subscriptions/) • [Status Dashboard](https://au1rxx.github.io/free-vpn-subscriptions/status.html) • [Clash Guide](./docs/clash-subscription.md) • [sing-box Guide](./docs/sing-box-subscription.md) • [V2Ray Guide](./docs/v2ray-subscription.md) • [FAQ](./docs/faq.md)
+[打开站点首页](https://au1rxx.github.io/free-vpn-subscriptions/) • [状态面板](https://au1rxx.github.io/free-vpn-subscriptions/status.html) • [Clash 指南](./docs/clash-subscription.md) • [sing-box 指南](./docs/sing-box-subscription.md) • [V2Ray 指南](./docs/v2ray-subscription.md) • [FAQ](./docs/faq.md)
 
-## Why This Repo
+## 项目定位
 
-- Public subscription feed for `Clash`, `sing-box`, and `V2Ray` users.
-- Live health status published from the private control plane.
-- Multi-region endpoints with hourly health checks and scheduled subscription refreshes.
-- Public documentation designed for fast onboarding and high GitHub discoverability.
+- 面向 `Clash`、`sing-box`、`V2Ray` 用户的公开订阅分发仓库。
+- 节点健康状态由私有控制面定时发布。
+- 多地区节点，按小时检查健康，按计划刷新订阅文件。
+- 文档和页面按 GitHub / Google 可发现性设计，兼顾搜索流量与导入转化。
 
-## Subscription Links
+## 订阅链接
 
-Use the raw links below in your client:
+在客户端中直接使用以下原始链接：
 
-| Format | Direct Link | Update Cadence |
-|--------|-------------|----------------|
-| Clash | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml` | Every 6 hours |
-| sing-box | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/singbox.json` | Every 6 hours |
-| V2Ray | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/v2ray-base64.txt` | Every 6 hours |
-| Status | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/status.json` | Every hour |
+| 格式 | 直链 | 更新频率 |
+|------|------|----------|
+| Clash | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml` | 每 6 小时 |
+| sing-box | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/singbox.json` | 每 6 小时 |
+| V2Ray | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/v2ray-base64.txt` | 每 6 小时 |
+| 状态 | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/status.json` | 每 1 小时 |
 
-## Release Downloads
+## Release 下载入口
 
-Use Releases as a backup distribution channel, a snapshot archive, or a clean download entry for users who do not want to browse raw files.
+`Releases` 既是备用分发通道，也是历史快照存档，还适合不想直接使用 raw 链接的用户。
 
-| Format | Latest Release Asset |
-|--------|----------------------|
+| 格式 | 最新 Release 资产 |
+|------|-------------------|
 | Clash | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/clash.yaml` |
 | sing-box | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/singbox.json` |
 | V2Ray | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/v2ray-base64.txt` |
-| Status | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/status.json` |
+| 状态 | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/status.json` |
 
-## Supported Clients
+## 支持的客户端
 
-- Clash Verge / Clash Meta / Mihomo-compatible clients
+- Clash Verge / Clash Meta / Mihomo 兼容客户端
 - sing-box
-- V2Ray-compatible clients including v2rayNG and NekoBox
-- iOS clients that can import standard subscription URLs
+- V2Ray 兼容客户端，包括 v2rayNG、NekoBox
+- 可导入标准订阅链接的 iOS 客户端
 
-## Quick Start
+## 快速开始
 
-1. Pick the subscription format that matches your client.
-2. Import the direct link above into your VPN client.
-3. Refresh the profile when the node set changes.
-4. Check the live status site before troubleshooting client-side issues.
+1. 先确认你的客户端需要哪种订阅格式。
+2. 把对应链接导入到客户端。
+3. 节点有变更时刷新订阅。
+4. 排查问题前先看状态页。
 
-## What Gets Published
+## 公开仓库里会发布什么
 
-This public repository only contains public subscription artifacts and sanitized status output:
+这个公共仓库只会发布公开订阅文件和脱敏后的状态数据：
 
 - `output/clash.yaml`
 - `output/singbox.json`
 - `output/v2ray-base64.txt`
 - `output/status.json`
 
-The private control plane, infrastructure state, deployment credentials, and cloud access remain in a separate private repository.
+私有控制面、基础设施状态、部署凭据和云访问仍保留在独立的私有仓库中。
 
-## Guides
+## 客户端与教程
 
-- [How to import Clash subscriptions](./docs/clash-subscription.md)
-- [How to import sing-box subscriptions](./docs/sing-box-subscription.md)
-- [How to import V2Ray subscriptions](./docs/v2ray-subscription.md)
-- [How to use Clash Verge Rev](./docs/clash-verge-rev.md)
-- [How to use FlClash](./docs/flclash.md)
-- [How to use Clash Meta for Android](./docs/clash-meta-android.md)
-- [How to use Hiddify Next](./docs/hiddify-next.md)
-- [How to use NekoBox](./docs/nekobox.md)
-- [How to use v2rayNG](./docs/v2rayng.md)
-- [How to use Shadowrocket](./docs/shadowrocket.md)
-- [FAQ and troubleshooting](./docs/faq.md)
+- [如何导入 Clash 订阅](./docs/clash-subscription.md)
+- [如何导入 sing-box 订阅](./docs/sing-box-subscription.md)
+- [如何导入 V2Ray 订阅](./docs/v2ray-subscription.md)
+- [如何使用 Clash Verge Rev](./docs/clash-verge-rev.md)
+- [如何使用 FlClash](./docs/flclash.md)
+- [如何使用 Clash Meta for Android](./docs/clash-meta-android.md)
+- [如何使用 Hiddify Next](./docs/hiddify-next.md)
+- [如何使用 NekoBox](./docs/nekobox.md)
+- [如何使用 v2rayNG](./docs/v2rayng.md)
+- [如何使用 Shadowrocket](./docs/shadowrocket.md)
+- [FAQ 与故障排查](./docs/faq.md)
 
-## Search Intent Pages
+## 搜索入口页
 
-- [Clash subscription not working](https://au1rxx.github.io/free-vpn-subscriptions/clash-subscription-not-working.html)
-- [V2Ray subscription URL](https://au1rxx.github.io/free-vpn-subscriptions/v2ray-subscription-url.html)
-- [Shadowrocket subscription URL](https://au1rxx.github.io/free-vpn-subscriptions/shadowrocket-subscription-url.html)
-- [Free VPN for Android](https://au1rxx.github.io/free-vpn-subscriptions/free-vpn-for-android.html)
-- [How to refresh a Clash profile](https://au1rxx.github.io/free-vpn-subscriptions/how-to-refresh-clash-profile.html)
-- [V2Ray subscription not working](https://au1rxx.github.io/free-vpn-subscriptions/v2ray-subscription-not-working.html)
-- [Shadowrocket not connecting](https://au1rxx.github.io/free-vpn-subscriptions/shadowrocket-not-connecting.html)
-- [Clash profile update failed](https://au1rxx.github.io/free-vpn-subscriptions/clash-profile-update-failed.html)
-- [Free VPN for iPhone](https://au1rxx.github.io/free-vpn-subscriptions/free-vpn-for-iphone.html)
-- [Best Clash client for Android](https://au1rxx.github.io/free-vpn-subscriptions/best-clash-client-for-android.html)
-- [Troubleshooting hub](https://au1rxx.github.io/free-vpn-subscriptions/troubleshooting-hub.html)
-- [Free VPN subscription links](https://au1rxx.github.io/free-vpn-subscriptions/free-vpn-subscription-links.html)
-- [Which subscription format should I use?](https://au1rxx.github.io/free-vpn-subscriptions/which-subscription-format-should-i-use.html)
-- [Clash vs V2Ray subscription](https://au1rxx.github.io/free-vpn-subscriptions/clash-vs-v2ray-subscription.html)
-- [Best VPN client for Windows](https://au1rxx.github.io/free-vpn-subscriptions/best-vpn-client-for-windows.html)
-- [Best VPN client for Mac](https://au1rxx.github.io/free-vpn-subscriptions/best-vpn-client-for-mac.html)
+- [Clash 订阅不可用](https://au1rxx.github.io/free-vpn-subscriptions/clash-subscription-not-working.html)
+- [V2Ray 订阅链接](https://au1rxx.github.io/free-vpn-subscriptions/v2ray-subscription-url.html)
+- [Shadowrocket 订阅链接](https://au1rxx.github.io/free-vpn-subscriptions/shadowrocket-subscription-url.html)
+- [Android 免费 VPN](https://au1rxx.github.io/free-vpn-subscriptions/free-vpn-for-android.html)
+- [如何刷新 Clash 配置](https://au1rxx.github.io/free-vpn-subscriptions/how-to-refresh-clash-profile.html)
+- [V2Ray 订阅不可用](https://au1rxx.github.io/free-vpn-subscriptions/v2ray-subscription-not-working.html)
+- [Shadowrocket 无法连接](https://au1rxx.github.io/free-vpn-subscriptions/shadowrocket-not-connecting.html)
+- [Clash 配置更新失败](https://au1rxx.github.io/free-vpn-subscriptions/clash-profile-update-failed.html)
+- [iPhone 免费 VPN](https://au1rxx.github.io/free-vpn-subscriptions/free-vpn-for-iphone.html)
+- [Android 最佳 Clash 客户端路径](https://au1rxx.github.io/free-vpn-subscriptions/best-clash-client-for-android.html)
+- [故障排查总入口](https://au1rxx.github.io/free-vpn-subscriptions/troubleshooting-hub.html)
+- [免费 VPN 订阅链接入口](https://au1rxx.github.io/free-vpn-subscriptions/free-vpn-subscription-links.html)
+- [我该使用哪种订阅格式](https://au1rxx.github.io/free-vpn-subscriptions/which-subscription-format-should-i-use.html)
+- [Clash 和 V2Ray 订阅对比](https://au1rxx.github.io/free-vpn-subscriptions/clash-vs-v2ray-subscription.html)
+- [Windows 最佳客户端路径](https://au1rxx.github.io/free-vpn-subscriptions/best-vpn-client-for-windows.html)
+- [Mac 最佳客户端路径](https://au1rxx.github.io/free-vpn-subscriptions/best-vpn-client-for-mac.html)
 
-## Community
+## 社区入口
 
-- [Open a setup question](https://github.com/Au1rxx/free-vpn-subscriptions/discussions/new?category=q-a)
-- [Suggest a new client guide or landing page](https://github.com/Au1rxx/free-vpn-subscriptions/discussions/new?category=ideas)
-- [Share a working client setup](https://github.com/Au1rxx/free-vpn-subscriptions/discussions/new?category=show-and-tell)
-- [Report a broken public feed or stale status](https://github.com/Au1rxx/free-vpn-subscriptions/issues/new/choose)
+- [提交安装或导入问题](https://github.com/Au1rxx/free-vpn-subscriptions/discussions/new?category=q-a)
+- [建议新的客户端教程或落地页](https://github.com/Au1rxx/free-vpn-subscriptions/discussions/new?category=ideas)
+- [分享可用的客户端配置](https://github.com/Au1rxx/free-vpn-subscriptions/discussions/new?category=show-and-tell)
+- [报告公开链接或状态异常](https://github.com/Au1rxx/free-vpn-subscriptions/issues/new/choose)
 
-## Popular Client Paths
+## 常用客户端路径
 
-- Desktop: Clash Verge Rev, FlClash, sing-box desktop
-- Android: Clash Meta for Android, v2rayNG, NekoBox, Hiddify Next, sing-box mobile
-- iPhone and iPad: Shadowrocket-compatible subscription import flows
-- Multi-platform: Hiddify Next on Android, iPhone, Windows, macOS, and Linux
+- 桌面端：Clash Verge Rev、FlClash、sing-box desktop
+- Android：Clash Meta for Android、v2rayNG、NekoBox、Hiddify Next、sing-box mobile
+- iPhone / iPad：Shadowrocket 兼容订阅导入路径
+- 多平台：Hiddify Next，覆盖 Android、iPhone、Windows、macOS、Linux
 
-These client-specific guides exist to improve search visibility for real user queries and reduce setup friction after discovery.
+这些客户端页和问题页的目标，是同时提升搜索可见性、导入成功率和后续回访率。
 
-## Star And Follow
+## Star / Watch / 回流
 
-If this feed is useful:
+如果这个仓库对你有帮助：
 
-- Star the repository to help discovery.
-- Watch releases if you want visible update checkpoints.
-- Use Discussions for client requests, setup questions, and broken-link reports.
-- Use Issues only when a public feed artifact, release asset, or Pages route is actually broken.
+- 请点 `Star`，帮助仓库获得更高曝光。
+- 如果你想跟踪快照更新，可以 `Watch releases`。
+- 安装问题、客户端请求、兼容性反馈请优先走 `Discussions`。
+- 只有在公开链接、Release 资产或 Pages 页面真实异常时，再提交 `Issues`。
 
-## Notes
+## 说明
 
-- This repository distributes public subscription material. Treat these nodes as shared public resources.
-- Node availability and performance can change over time.
-- The live status view is the best source of truth for current reachability.
+- 本仓库分发的是公开订阅资源，请把这些节点视为共享公共资源。
+- 节点可用性和性能会随时间变化。
+- 当前可用性的最准入口是状态页，而不是客户端本地缓存。
+
+## 分享文案
+
+- GitHub / 论坛短文案：免费提供 Clash、sing-box、V2Ray 订阅链接，附带实时节点状态、客户端教程和故障排查页面。
+- 社群短文案：公开订阅 + 实时状态 + 多客户端教程，支持 Clash、v2rayNG、NekoBox、Shadowrocket 等常见导入路径。
+- 站点入口：`https://au1rxx.github.io/free-vpn-subscriptions/`
+- 详细文案文件：[社交分享文案](./docs/social-share-copy.zh-CN.md)
