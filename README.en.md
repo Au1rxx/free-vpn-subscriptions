@@ -5,9 +5,9 @@
 [![Status Feed](https://img.shields.io/badge/status-live-1d221c)](https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/status.json)
 [![Latest Release](https://img.shields.io/github/v/release/Au1rxx/free-vpn-subscriptions)](https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest)
 
-Free Clash, sing-box, and V2Ray subscription links with live node status, multi-region coverage, and setup guides for common clients.
+Free Clash, sing-box, and V2Ray subscription links with live node status, multi-region coverage, setup guides for common clients, and a dedicated updates page for release snapshots.
 
-[Open Live Status Site](https://au1rxx.github.io/free-vpn-subscriptions/) • [Status Dashboard](https://au1rxx.github.io/free-vpn-subscriptions/status.html) • [Clash Guide](./docs/clash-subscription.md) • [sing-box Guide](./docs/sing-box-subscription.md) • [V2Ray Guide](./docs/v2ray-subscription.md) • [FAQ](./docs/faq.md)
+[Open Live Status Site](https://au1rxx.github.io/free-vpn-subscriptions/) • [Updates And Snapshot History](https://au1rxx.github.io/free-vpn-subscriptions/updates.html) • [Status Dashboard](https://au1rxx.github.io/free-vpn-subscriptions/status.html) • [Clash Guide](./docs/clash-subscription.md) • [sing-box Guide](./docs/sing-box-subscription.md) • [V2Ray Guide](./docs/v2ray-subscription.md) • [FAQ](./docs/faq.md)
 
 ## Why This Repo
 
@@ -37,6 +37,12 @@ Use Releases as a backup distribution channel, a snapshot archive, or a clean do
 | sing-box | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/singbox.json` |
 | V2Ray | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/v2ray-base64.txt` |
 | Status | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/status.json` |
+
+## Why The Main Subscription URLs Stay Stable
+
+- Stable URLs are better for client auto-refresh and prevent old guides, bookmarks, and shared posts from breaking.
+- Returning traffic should come from updates, release snapshots, live status, and new documentation, not from rotating the core feed URLs.
+- Use the [Updates And Snapshot History](https://au1rxx.github.io/free-vpn-subscriptions/updates.html) page when you want to check recent release activity or download checkpoints manually.
 
 ## Supported Clients
 

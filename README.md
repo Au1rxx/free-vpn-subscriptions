@@ -9,7 +9,7 @@
 
 公开提供 Clash、sing-box、V2Ray 订阅链接，附带实时节点状态、多地区覆盖、客户端导入教程与故障排查页面。
 
-[打开站点首页](https://au1rxx.github.io/free-vpn-subscriptions/) • [状态面板](https://au1rxx.github.io/free-vpn-subscriptions/status.html) • [Clash 指南](./docs/clash-subscription.md) • [sing-box 指南](./docs/sing-box-subscription.md) • [V2Ray 指南](./docs/v2ray-subscription.md) • [FAQ](./docs/faq.md)
+[打开站点首页](https://au1rxx.github.io/free-vpn-subscriptions/) • [更新记录与快照历史](https://au1rxx.github.io/free-vpn-subscriptions/updates.html) • [状态面板](https://au1rxx.github.io/free-vpn-subscriptions/status.html) • [Clash 指南](./docs/clash-subscription.md) • [sing-box 指南](./docs/sing-box-subscription.md) • [V2Ray 指南](./docs/v2ray-subscription.md) • [FAQ](./docs/faq.md)
 
 ## 项目定位
 
@@ -39,6 +39,12 @@
 | sing-box | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/singbox.json` |
 | V2Ray | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/v2ray-base64.txt` |
 | 状态 | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/status.json` |
+
+## 为什么主订阅链接保持不变
+
+- 固定订阅 URL 更适合客户端长期自动刷新，不会因为链接轮换导致旧教程、旧收藏和客户端配置失效。
+- 用户回访不应依赖“换链接”，而应依赖“看更新”。这个项目把回访入口放在状态页、更新记录页和 Releases 快照历史中。
+- 想确认最近有没有刷新、是否有历史快照、要不要手动下载，请直接看 [更新记录与快照历史](https://au1rxx.github.io/free-vpn-subscriptions/updates.html)。
 
 ## 支持的客户端
 
