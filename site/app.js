@@ -53,8 +53,17 @@ function renderFreshnessBanner() {
   const releaseStamp = dashboardState.latestReleaseStamp
     ? formatUtcStamp(dashboardState.latestReleaseStamp)
     : "";
+  const today = new Date().toISOString().slice(0, 10);
+  const statusDay = dashboardState.latestCheck ? dashboardState.latestCheck.slice(0, 10) : "";
+  const releaseDay = dashboardState.latestReleaseStamp
+    ? dashboardState.latestReleaseStamp.slice(0, 10)
+    : "";
 
-  if (Number.isNaN(diffHours)) {
+  if (releaseDay === today) {
+    freshnessTitle.textContent = "今天已更新";
+  } else if (statusDay === today && diffHours <= 3) {
+    freshnessTitle.textContent = "今天状态已刷新";
+  } else if (Number.isNaN(diffHours)) {
     freshnessTitle.textContent = "公开状态已发布";
   } else if (diffHours <= 3) {
     freshnessTitle.textContent = "公开状态在线";

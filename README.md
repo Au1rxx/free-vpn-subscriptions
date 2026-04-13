@@ -1,11 +1,12 @@
-# 免费 VPN 订阅
+# 持续更新的免费 VPN 订阅
 
 [中文](./README.md) | [English](./README.en.md)
 
 [![Public Repo](https://img.shields.io/badge/repo-public-0f766e)](https://github.com/Au1rxx/free-vpn-subscriptions)
 [![Updated](https://img.shields.io/badge/updates-every%206%20hours-0f766e)](https://au1rxx.github.io/free-vpn-subscriptions/updates.html)
+[![Verified](https://img.shields.io/badge/validation-auto%20checked-1d221c)](https://au1rxx.github.io/free-vpn-subscriptions/verification.html)
 [![Formats](https://img.shields.io/badge/formats-clash%20%7C%20sing--box%20%7C%20v2ray-cf6a32)](https://au1rxx.github.io/free-vpn-subscriptions/)
-[![Status Feed](https://img.shields.io/badge/status-live-1d221c)](https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/status.json)
+[![Status Feed](https://img.shields.io/badge/status-live-1d221c)](https://au1rxx.github.io/free-vpn-subscriptions/status.html)
 [![Latest Release](https://img.shields.io/github/v/release/Au1rxx/free-vpn-subscriptions)](https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest)
 
 公开提供 Clash、sing-box、V2Ray 三种格式的订阅分发入口。状态每小时检查，公开快照按计划刷新，附带客户端教程、验证说明和故障排查页面。
