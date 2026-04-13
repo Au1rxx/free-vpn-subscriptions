@@ -13,6 +13,12 @@
 
 [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) • [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json) • [Discussions](https://github.com/Au1rxx/free-vpn-subscriptions/discussions)
 
+## 先看这三个信号
+
+- 想确认公开侧是不是还在更新，先看 [状态面板](https://au1rxx.github.io/free-vpn-subscriptions/status.html) 和 `output/status.json` 的最近检查时间。
+- 想看最近一次快照、手动下载入口和历史版本，直接看 [GitHub Releases](https://github.com/Au1rxx/free-vpn-subscriptions/releases)。
+- 想持续跟踪更新，不要只收藏仓库首页；请优先 `Star`、到仓库 Watch 菜单里关注 `Releases`，或直接订阅 [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) / [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json)。
+
 ## 项目定位
 
 - 面向 `Clash`、`sing-box`、`V2Ray` 用户的公开订阅分发仓库。
@@ -128,7 +134,7 @@
 如果这个仓库对你有帮助：
 
 - 请点 `Star`，帮助仓库获得更高曝光。
-- 如果你想跟踪快照更新，可以 `Watch releases`。
+- 如果你想跟踪快照更新，请到仓库的 Watch 菜单里关注 `Releases`，或者直接订阅上面的 Atom / JSON Feed。
 - 安装问题、客户端请求、兼容性反馈请优先走 `Discussions`。
 - 只有在公开链接、Release 资产或 Pages 页面真实异常时，再提交 `Issues`。
 

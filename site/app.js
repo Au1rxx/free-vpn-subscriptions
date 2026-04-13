@@ -1,6 +1,12 @@
 const RELEASES_ENDPOINT =
   "https://api.github.com/repos/Au1rxx/free-vpn-subscriptions/releases?per_page=6";
 
+const dashboardState = {
+  activeCountText: "",
+  latestCheck: "",
+  latestReleaseStamp: "",
+};
+
 function formatUtcStamp(value) {
   return value ? value.replace("T", " ").replace("Z", " UTC") : "";
 }
@@ -27,6 +33,49 @@ function extractReleaseSummary(body) {
   return blocks[0] || "";
 }
 
+function renderFreshnessBanner() {
+  const freshnessTitle = document.getElementById("freshness-title");
+  const freshnessDetail = document.getElementById("freshness-detail");
+
+  if (!freshnessTitle || !freshnessDetail) {
+    return;
+  }
+
+  if (!dashboardState.latestCheck) {
+    freshnessTitle.textContent = "公开状态时间未知";
+    freshnessDetail.textContent =
+      "先打开状态页确认最近检查时间，再决定是否导入、刷新，或去 Releases 看最近快照。";
+    return;
+  }
+
+  const diffHours = (Date.now() - Date.parse(dashboardState.latestCheck)) / (1000 * 60 * 60);
+  const statusStamp = formatUtcStamp(dashboardState.latestCheck);
+  const releaseStamp = dashboardState.latestReleaseStamp
+    ? formatUtcStamp(dashboardState.latestReleaseStamp)
+    : "";
+
+  if (Number.isNaN(diffHours)) {
+    freshnessTitle.textContent = "公开状态已发布";
+  } else if (diffHours <= 3) {
+    freshnessTitle.textContent = "公开状态在线";
+  } else if (diffHours <= 12) {
+    freshnessTitle.textContent = "公开状态略有延迟";
+  } else {
+    freshnessTitle.textContent = "公开状态可能滞后";
+  }
+
+  const parts = [];
+  if (dashboardState.activeCountText) {
+    parts.push(dashboardState.activeCountText);
+  }
+  parts.push(`最近状态检查 ${statusStamp}`);
+  if (releaseStamp) {
+    parts.push(`最近快照发布 ${releaseStamp}`);
+  }
+  parts.push("想持续跟踪更新就去看 Releases / Watch，或订阅 Feed");
+  freshnessDetail.textContent = `${parts.join("。")}。`;
+}
+
 async function loadStatus() {
   const activeCount = document.getElementById("active-count");
   const statusStamp = document.getElementById("status-stamp");
@@ -50,7 +99,11 @@ async function loadStatus() {
       .sort()
       .pop();
 
-    activeCount.textContent = `${active.length} / ${nodes.length} active`;
+    const activeText = `${active.length} / ${nodes.length} active`;
+    dashboardState.activeCountText = activeText;
+    dashboardState.latestCheck = latestCheck || "";
+
+    activeCount.textContent = activeText;
     statusStamp.textContent = latestCheck
       ? `Last check ${formatUtcStamp(latestCheck)}`
       : "No recent status timestamp";
@@ -82,10 +135,14 @@ async function loadStatus() {
         `;
       })
       .join("");
+    renderFreshnessBanner();
   } catch (error) {
+    dashboardState.activeCountText = "";
+    dashboardState.latestCheck = "";
     activeCount.textContent = "Unavailable";
     statusStamp.textContent = "Could not load current status";
     nodeList.innerHTML = `<p class="muted">The public status feed is not available yet: ${error.message}</p>`;
+    renderFreshnessBanner();
   }
 }
 
@@ -122,6 +179,7 @@ async function loadReleases() {
     const latestTitle = latest.name || latest.tag_name;
     const latestStamp = formatUtcStamp(latest.published_at);
     const latestSummary = extractReleaseSummary(latest.body);
+    dashboardState.latestReleaseStamp = latest.published_at || "";
 
     if (latestRelease) {
       latestRelease.textContent = latestStamp
@@ -160,7 +218,9 @@ async function loadReleases() {
         })
         .join("");
     }
+    renderFreshnessBanner();
   } catch (error) {
+    dashboardState.latestReleaseStamp = "";
     if (latestRelease) {
       latestRelease.textContent = "暂时无法读取最近发布记录";
     }
@@ -173,6 +233,7 @@ async function loadReleases() {
       releaseList.innerHTML =
         `<p class="muted">暂时无法加载更新列表：${escapeHtml(error.message)}。你可以直接打开 GitHub Releases 查看历史快照。</p>`;
     }
+    renderFreshnessBanner();
   }
 }
 

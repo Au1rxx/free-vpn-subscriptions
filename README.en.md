@@ -11,6 +11,12 @@ Free Clash, sing-box, and V2Ray subscription links with live node status, multi-
 
 [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) • [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json) • [Discussions](https://github.com/Au1rxx/free-vpn-subscriptions/discussions)
 
+## Check These Signals First
+
+- If you want to confirm that the public side is still fresh, check the [Status Dashboard](https://au1rxx.github.io/free-vpn-subscriptions/status.html) and the latest timestamp in `output/status.json`.
+- If you want the newest snapshot, clean download links, and release history, go straight to [GitHub Releases](https://github.com/Au1rxx/free-vpn-subscriptions/releases).
+- If you want ongoing updates, do not rely on bookmarking the repo homepage alone. Star the repo, use the repository Watch menu for `Releases`, or subscribe to the [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) / [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json).
+
 ## Why This Repo
 
 - Public subscription feed for `Clash`, `sing-box`, and `V2Ray` users.
@@ -126,7 +132,7 @@ These client-specific guides exist to improve search visibility for real user qu
 If this feed is useful:
 
 - Star the repository to help discovery.
-- Watch releases if you want visible update checkpoints.
+- Use the repository Watch menu for `Releases` if you want visible update checkpoints, or subscribe to the Atom / JSON feed above.
 - Use Discussions for client requests, setup questions, and broken-link reports.
 - Use Issues only when a public feed artifact, release asset, or Pages route is actually broken.
 
