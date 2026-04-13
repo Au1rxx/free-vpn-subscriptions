@@ -3,15 +3,23 @@
 [中文](./README.md) | [English](./README.en.md)
 
 [![Public Repo](https://img.shields.io/badge/repo-public-0f766e)](https://github.com/Au1rxx/free-vpn-subscriptions)
-[![Formats](https://img.shields.io/badge/formats-clash%20%7C%20sing--box%20%7C%20v2ray-cf6a32)](https://github.com/Au1rxx/free-vpn-subscriptions/tree/main/output)
+[![Updated](https://img.shields.io/badge/updates-every%206%20hours-0f766e)](https://au1rxx.github.io/free-vpn-subscriptions/updates.html)
+[![Formats](https://img.shields.io/badge/formats-clash%20%7C%20sing--box%20%7C%20v2ray-cf6a32)](https://au1rxx.github.io/free-vpn-subscriptions/)
 [![Status Feed](https://img.shields.io/badge/status-live-1d221c)](https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/status.json)
 [![Latest Release](https://img.shields.io/github/v/release/Au1rxx/free-vpn-subscriptions)](https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest)
 
-公开提供 Clash、sing-box、V2Ray 订阅链接，附带实时节点状态、多地区覆盖、客户端导入教程与故障排查页面。
+公开提供 Clash、sing-box、V2Ray 三种格式的订阅分发入口。状态每小时检查，公开快照按计划刷新，附带客户端教程、验证说明和故障排查页面。
 
-[打开站点首页](https://au1rxx.github.io/free-vpn-subscriptions/) • [更新记录与快照历史](https://au1rxx.github.io/free-vpn-subscriptions/updates.html) • [状态面板](https://au1rxx.github.io/free-vpn-subscriptions/status.html) • [验证与兼容性](https://au1rxx.github.io/free-vpn-subscriptions/verification.html) • [Clash 指南](./docs/clash-subscription.md) • [sing-box 指南](./docs/sing-box-subscription.md) • [V2Ray 指南](./docs/v2ray-subscription.md) • [FAQ](./docs/faq.md)
+[打开站点首页](https://au1rxx.github.io/free-vpn-subscriptions/) • [更新记录与快照历史](https://au1rxx.github.io/free-vpn-subscriptions/updates.html) • [状态面板](https://au1rxx.github.io/free-vpn-subscriptions/status.html) • [验证与兼容性](https://au1rxx.github.io/free-vpn-subscriptions/verification.html) • [FAQ](./docs/faq.md)
 
 [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) • [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json) • [Discussions](https://github.com/Au1rxx/free-vpn-subscriptions/discussions)
+
+## 每次回来看什么
+
+- `状态是否新鲜`：先看 [状态面板](https://au1rxx.github.io/free-vpn-subscriptions/status.html)。
+- `今天有没有新快照`：看 [更新记录与快照历史](https://au1rxx.github.io/free-vpn-subscriptions/updates.html)。
+- `分享出去的入口靠不靠谱`：看 [验证与兼容性页面](https://au1rxx.github.io/free-vpn-subscriptions/verification.html)。
+- `想持续跟踪更新`：`Star` 仓库，或订阅 Atom / JSON Feed。
 
 ## 先看这三个信号
 
@@ -27,27 +35,19 @@
 - 多地区节点，按小时检查健康，按计划刷新订阅文件。
 - 文档和页面按 GitHub / Google 可发现性设计，兼顾搜索流量与导入转化。
 
-## 订阅链接
+## 获取方式
 
-在客户端中直接使用以下原始链接：
+- 如果你只想快速上手：从 [站点首页](https://au1rxx.github.io/free-vpn-subscriptions/) 进入。
+- 如果你要判断该选哪种格式：看 [我该使用哪种订阅格式](https://au1rxx.github.io/free-vpn-subscriptions/which-subscription-format-should-i-use.html)。
+- 如果你要手动下载快照：看 [GitHub Releases](https://github.com/Au1rxx/free-vpn-subscriptions/releases)。
+- 如果你要确认 `raw` 和 `release` 的区别：看 [验证与兼容性页面](https://au1rxx.github.io/free-vpn-subscriptions/verification.html)。
 
-| 格式 | 直链 | 更新频率 |
-|------|------|----------|
-| Clash | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml` | 每 6 小时 |
-| sing-box | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/singbox.json` | 每 6 小时 |
-| V2Ray | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/v2ray-base64.txt` | 每 6 小时 |
-| 状态 | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/status.json` | 每 1 小时 |
+## 更新节奏
 
-## Release 下载入口
-
-`Releases` 既是备用分发通道，也是历史快照存档，还适合不想直接使用 raw 链接的用户。现在每次 Release 还会附带本次节点概况、地区/协议分布，以及与上一快照相比的变化摘要。
-
-| 格式 | 最新 Release 资产 |
-|------|-------------------|
-| Clash | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/clash.yaml` |
-| sing-box | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/singbox.json` |
-| V2Ray | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/v2ray-base64.txt` |
-| 状态 | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/status.json` |
+- 节点健康状态：每小时检查一次
+- 公开订阅快照：按计划刷新
+- Release 快照：跟随公开产物更新，适合历史回看和手动下载
+- 更新 Feed：跟随最新 Release 自动刷新
 
 ## 为什么主订阅链接保持不变
 
@@ -66,7 +66,7 @@
 ## 快速开始
 
 1. 先确认你的客户端需要哪种订阅格式。
-2. 把对应链接导入到客户端。
+2. 从首页或对应客户端教程进入，不要先盲贴原始链接。
 3. 节点有变更时刷新订阅。
 4. 排查问题前先看状态页。
 

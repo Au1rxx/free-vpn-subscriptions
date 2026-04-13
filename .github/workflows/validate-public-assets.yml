@@ -1,0 +1,87 @@
+name: Validate Public Assets
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "output/**"
+      - "site/**"
+      - "README.md"
+      - "README.en.md"
+      - "scripts/validate_public_assets.py"
+      - ".github/workflows/validate-public-assets.yml"
+  workflow_run:
+    workflows:
+      - Deploy Pages
+      - Release Feed Snapshot
+      - Amplify Release Updates
+    types:
+      - completed
+    branches:
+      - main
+  workflow_dispatch:
+  schedule:
+    - cron: "20 */6 * * *"
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: public-asset-validation
+  cancel-in-progress: false
+
+jobs:
+  local:
+    if: >-
+      ${{
+        github.event_name != 'workflow_run' ||
+        github.event.workflow_run.conclusion == 'success'
+      }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install validation dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml
+
+      - name: Validate repository artifacts
+        run: python3 scripts/validate_public_assets.py --mode local --repo-root .
+
+  live:
+    needs:
+      - local
+    if: >-
+      ${{
+        github.event_name == 'workflow_dispatch' ||
+        github.event_name == 'schedule' ||
+        github.event_name == 'workflow_run'
+      }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install validation dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml
+
+      - name: Validate live public endpoints
+        run: python3 scripts/validate_public_assets.py --mode live

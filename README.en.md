@@ -1,15 +1,25 @@
 # Free VPN Subscriptions
 
+[中文](./README.md) | [English](./README.en.md)
+
 [![Public Repo](https://img.shields.io/badge/repo-public-0f766e)](https://github.com/Au1rxx/free-vpn-subscriptions)
-[![Formats](https://img.shields.io/badge/formats-clash%20%7C%20sing--box%20%7C%20v2ray-cf6a32)](https://github.com/Au1rxx/free-vpn-subscriptions/tree/main/output)
+[![Updated](https://img.shields.io/badge/updates-every%206%20hours-0f766e)](https://au1rxx.github.io/free-vpn-subscriptions/updates.html)
+[![Formats](https://img.shields.io/badge/formats-clash%20%7C%20sing--box%20%7C%20v2ray-cf6a32)](https://au1rxx.github.io/free-vpn-subscriptions/)
 [![Status Feed](https://img.shields.io/badge/status-live-1d221c)](https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/status.json)
 [![Latest Release](https://img.shields.io/github/v/release/Au1rxx/free-vpn-subscriptions)](https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest)
 
-Free Clash, sing-box, and V2Ray subscription links with live node status, multi-region coverage, setup guides for common clients, and a dedicated updates page for release snapshots.
+Public distribution entry for Clash, sing-box, and V2Ray formats. Health is checked hourly, public snapshots are refreshed on schedule, and the repo includes setup guides, verification notes, and troubleshooting pages.
 
-[Open Live Status Site](https://au1rxx.github.io/free-vpn-subscriptions/) • [Updates And Snapshot History](https://au1rxx.github.io/free-vpn-subscriptions/updates.html) • [Status Dashboard](https://au1rxx.github.io/free-vpn-subscriptions/status.html) • [Verification And Compatibility](https://au1rxx.github.io/free-vpn-subscriptions/verification.html) • [Clash Guide](./docs/clash-subscription.md) • [sing-box Guide](./docs/sing-box-subscription.md) • [V2Ray Guide](./docs/v2ray-subscription.md) • [FAQ](./docs/faq.md)
+[Open Live Status Site](https://au1rxx.github.io/free-vpn-subscriptions/) • [Updates And Snapshot History](https://au1rxx.github.io/free-vpn-subscriptions/updates.html) • [Status Dashboard](https://au1rxx.github.io/free-vpn-subscriptions/status.html) • [Verification And Compatibility](https://au1rxx.github.io/free-vpn-subscriptions/verification.html) • [FAQ](./docs/faq.md)
 
 [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) • [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json) • [Discussions](https://github.com/Au1rxx/free-vpn-subscriptions/discussions)
+
+## What returning visitors should check
+
+- `Is the public status fresh?` Open the [Status Dashboard](https://au1rxx.github.io/free-vpn-subscriptions/status.html).
+- `Was there a new snapshot today?` Open [Updates And Snapshot History](https://au1rxx.github.io/free-vpn-subscriptions/updates.html).
+- `Are the shared paths still valid?` Open the [Verification And Compatibility](https://au1rxx.github.io/free-vpn-subscriptions/verification.html) page.
+- `Want ongoing updates?` Star the repo or subscribe to Atom / JSON feed.
 
 ## Check These Signals First
 
@@ -25,27 +35,19 @@ Free Clash, sing-box, and V2Ray subscription links with live node status, multi-
 - Multi-region endpoints with hourly health checks and scheduled subscription refreshes.
 - Public documentation designed for fast onboarding and high GitHub discoverability.
 
-## Subscription Links
+## How to get started
 
-Use the raw links below in your client:
+- If you want the fastest entry, start from the [homepage](https://au1rxx.github.io/free-vpn-subscriptions/).
+- If you need help choosing a format, open [Which subscription format should I use?](https://au1rxx.github.io/free-vpn-subscriptions/which-subscription-format-should-i-use.html).
+- If you want a downloadable snapshot, open [GitHub Releases](https://github.com/Au1rxx/free-vpn-subscriptions/releases).
+- If you want the difference between raw auto-refresh paths and release snapshots, open the [Verification And Compatibility](https://au1rxx.github.io/free-vpn-subscriptions/verification.html) page.
 
-| Format | Direct Link | Update Cadence |
-|--------|-------------|----------------|
-| Clash | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml` | Every 6 hours |
-| sing-box | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/singbox.json` | Every 6 hours |
-| V2Ray | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/v2ray-base64.txt` | Every 6 hours |
-| Status | `https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/status.json` | Every hour |
+## Update cadence
 
-## Release Downloads
-
-Use Releases as a backup distribution channel, a snapshot archive, or a clean download entry for users who do not want to browse raw files. Each new release also includes a human-readable summary of node health, region and protocol mix, plus a comparison against the previous snapshot when available.
-
-| Format | Latest Release Asset |
-|--------|----------------------|
-| Clash | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/clash.yaml` |
-| sing-box | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/singbox.json` |
-| V2Ray | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/v2ray-base64.txt` |
-| Status | `https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/status.json` |
+- Fleet health checks: every hour
+- Public subscription snapshots: refreshed on schedule
+- Release snapshots: follow public artifact updates for manual download and history
+- Update feeds: automatically refreshed after new releases
 
 ## Why The Main Subscription URLs Stay Stable
 
@@ -64,7 +66,7 @@ Use Releases as a backup distribution channel, a snapshot archive, or a clean do
 ## Quick Start
 
 1. Pick the subscription format that matches your client.
-2. Import the direct link above into your VPN client.
+2. Start from the homepage or the client-specific guide instead of pasting a raw link blindly.
 3. Refresh the profile when the node set changes.
 4. Check the live status site before troubleshooting client-side issues.
 
