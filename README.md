@@ -15,11 +15,26 @@
 
 [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) • [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json) • [Discussions](https://github.com/Au1rxx/free-vpn-subscriptions/discussions)
 
-## 为什么值得 Star
+## 直接可用入口
 
-- 这里不是只放一条订阅链接，而是把 `实时状态`、`更新记录`、`验证说明`、`客户端教程` 和 `故障排查` 做成持续更新的公开入口。
-- 用户回来看的是“今天有没有更新、状态有没有波动、有没有新教程”，而不是等仓库频繁换链接。
-- GitHub Releases、更新 Feed、Discussions 和 Pages 页面会持续累积公开信号，这比单独收藏一个下载地址更容易形成长期回流。
+- [Clash 远程订阅](https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml)
+- [sing-box 远程订阅](https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/singbox.json)
+- [V2Ray 远程订阅](https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/v2ray-base64.txt)
+- [实时状态 JSON](https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/status.json)
+- [最新快照下载页](https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest)
+
+## 为什么用户会 Star
+
+- `不用重新找入口`：Star 之后，仓库首页就是长期入口。哪天链接、客户端、状态有变化，回来就能看到。
+- `不是一条死链接`：这里不只给订阅，还持续给出实时状态、最近更新、客户端教程和故障排查。
+- `越用越完整`：常见客户端页、FAQ、问题讨论会持续增加，老用户回访和新用户搜索都能吃到。
+
+## 这个项目对用户到底有什么用
+
+- 不知道该选 `Clash`、`sing-box` 还是 `V2Ray` 时，有格式判断页。
+- 想先确认今天还能不能用时，有实时状态页。
+- 想直接导入时，上面就有三个可直接使用的远程订阅入口。
+- 导入失败时，有客户端教程、FAQ 和故障排查页，不用再去外面重新搜一圈。
 
 ## 每次回来看什么
 
@@ -38,7 +53,6 @@
 ## 项目定位
 
 - 面向 `Clash`、`sing-box`、`V2Ray` 用户的公开订阅分发仓库。
-- 节点健康状态由私有控制面定时发布。
 - 多地区节点，按小时检查健康，按计划刷新订阅文件。
 - 文档和页面按 GitHub / Google 可发现性设计，兼顾搜索流量与导入转化。
 
@@ -77,16 +91,13 @@
 3. 节点有变更时刷新订阅。
 4. 排查问题前先看状态页。
 
-## 公开仓库里会发布什么
+## 你在这里能直接得到什么
 
-这个公共仓库只会发布公开订阅文件和脱敏后的状态数据：
-
-- `output/clash.yaml`
-- `output/singbox.json`
-- `output/v2ray-base64.txt`
-- `output/status.json`
-
-私有控制面、基础设施状态、部署凭据和云访问仍保留在独立的私有仓库中。
+- 可直接导入的 Clash、sing-box、V2Ray 三种远程订阅
+- 当前节点状态与最近检查时间
+- 最新快照、历史版本和手动下载入口
+- 常见客户端教程
+- 常见导入失败和连接失败的排障页面
 
 ## 客户端与教程
 

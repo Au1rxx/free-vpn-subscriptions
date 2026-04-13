@@ -15,11 +15,26 @@ Public distribution entry for Clash, sing-box, and V2Ray formats. Health is chec
 
 [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) • [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json) • [Discussions](https://github.com/Au1rxx/free-vpn-subscriptions/discussions)
 
-## Why this repo is worth a star
+## Direct entry points
 
-- This is not just a single subscription URL. It combines `live status`, `update history`, `verification notes`, `client guides`, and `troubleshooting` into one public entry point.
-- Returning traffic should come from “did it update today?”, “is the public status healthy?”, and “is there a new guide?”, not from rotating feed URLs.
-- Releases, update feeds, Discussions, and public Pages accumulate visible update signals over time, which is more durable than bookmarking a single download path.
+- [Clash remote subscription](https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml)
+- [sing-box remote subscription](https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/singbox.json)
+- [V2Ray remote subscription](https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/v2ray-base64.txt)
+- [Live status JSON](https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/status.json)
+- [Latest snapshot downloads](https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest)
+
+## Why users star this repo
+
+- `No need to rediscover the entry point`: after starring it, the repo home stays the long-lived place to return when links, clients, or status change.
+- `Not just one dead URL`: this project keeps shipping live status, update history, client guides, and troubleshooting pages alongside the feeds.
+- `It gets more useful over time`: guides, FAQs, and Discussions keep expanding, so both returning users and search traffic get more value.
+
+## What this project is useful for
+
+- Choosing between `Clash`, `sing-box`, and `V2Ray`
+- Checking whether the public output looks healthy today
+- Getting directly usable remote subscriptions
+- Troubleshooting import failures without leaving the project
 
 ## What returning visitors should check
 
@@ -38,7 +53,6 @@ Public distribution entry for Clash, sing-box, and V2Ray formats. Health is chec
 ## Why This Repo
 
 - Public subscription feed for `Clash`, `sing-box`, and `V2Ray` users.
-- Live health status published from the private control plane.
 - Multi-region endpoints with hourly health checks and scheduled subscription refreshes.
 - Public documentation designed for fast onboarding and high GitHub discoverability.
 
@@ -77,16 +91,13 @@ Public distribution entry for Clash, sing-box, and V2Ray formats. Health is chec
 3. Refresh the profile when the node set changes.
 4. Check the live status site before troubleshooting client-side issues.
 
-## What Gets Published
+## What you can get here directly
 
-This public repository only contains public subscription artifacts and sanitized status output:
-
-- `output/clash.yaml`
-- `output/singbox.json`
-- `output/v2ray-base64.txt`
-- `output/status.json`
-
-The private control plane, infrastructure state, deployment credentials, and cloud access remain in a separate private repository.
+- Directly usable Clash, sing-box, and V2Ray remote subscriptions
+- Current public status and last-check timestamps
+- Latest snapshots, release history, and manual downloads
+- Client setup guides
+- Troubleshooting pages for the most common failures
 
 ## Guides
 
