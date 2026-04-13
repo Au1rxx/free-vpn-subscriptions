@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Verification and Compatibility | Free VPN Subscriptions</title>
+    <meta name="description" content="Documented link validation, feed parsing checks, and compatibility notes for the public Clash, sing-box, V2Ray, and status endpoints.">
+    <link rel="canonical" href="https://au1rxx.github.io/free-vpn-subscriptions/verification.html">
+    <meta property="og:title" content="Verification and Compatibility | Free VPN Subscriptions">
+    <meta property="og:description" content="See which public links are machine-validated, which paths are snapshots, and how to choose raw versus release downloads.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://au1rxx.github.io/free-vpn-subscriptions/verification.html">
+    <meta property="og:image" content="https://au1rxx.github.io/free-vpn-subscriptions/social-preview.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Verification and Compatibility | Free VPN Subscriptions">
+    <meta name="twitter:description" content="Machine-level validation notes for public subscription links and status endpoints.">
+    <meta name="twitter:image" content="https://au1rxx.github.io/free-vpn-subscriptions/social-preview.png">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="content-page">
+      <a class="back-link" href="./">Back to home</a>
+      <p class="eyebrow">Verification</p>
+      <h1>Verification and compatibility notes for public links</h1>
+      <p class="lede">
+        This page explains what is verified from the control VM, which links are designed for auto-refresh, which links are snapshot downloads, and what still requires client-side import testing on real devices.
+      </p>
+      <div class="content-actions">
+        <a class="button button-primary" href="./status.html">Open live status</a>
+        <a class="button button-secondary" href="https://github.com/Au1rxx/free-vpn-subscriptions/releases">Open releases</a>
+        <a class="button button-secondary" href="./free-vpn-subscription-links.html">Open link entry page</a>
+      </div>
+
+      <section class="content-block">
+        <h2>What is currently machine-validated</h2>
+        <ul class="tag-list">
+          <li>Homepage, updates page, and status page return HTTP 200.</li>
+          <li>Raw Clash, sing-box, V2Ray, and status endpoints return HTTP 200.</li>
+          <li>Latest release download endpoints return HTTP 200.</li>
+          <li>Clash YAML parses as a valid document with proxy entries.</li>
+          <li>sing-box JSON parses as a valid document with outbound entries.</li>
+          <li>V2Ray Base64 decodes into subscription lines.</li>
+          <li>Status JSON parses into node records with protocol, region, port, and last-check metadata.</li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <h2>What this page does not claim</h2>
+        <ul class="tag-list">
+          <li>It does not claim every GUI client on every operating system has been manually imported and clicked through from this VM.</li>
+          <li>It does not claim every public node is always reachable. Use the live status page for the current signal.</li>
+          <li>It does not treat release snapshot assets as the same thing as real-time status. Snapshot files are historical checkpoints.</li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <h2>Share the right path</h2>
+        <ul class="tag-list">
+          <li>Share raw `output/*` links when the client supports long-lived remote subscriptions and auto-refresh.</li>
+          <li>Share `releases/latest/download/*` links when the user wants a downloadable snapshot file or a historical checkpoint.</li>
+          <li>Share the live status page or raw `status.json` when the question is “is it fresh right now?”</li>
+          <li>Share client guides when the problem is import format, not link availability.</li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <h2>Compatibility guidance</h2>
+        <ul class="tag-list">
+          <li>Use Clash YAML for Clash Verge Rev, FlClash, and Mihomo-style clients.</li>
+          <li>Use sing-box JSON for clients that support remote JSON profile flows.</li>
+          <li>Use V2Ray Base64 for mobile-first import paths such as v2rayNG, NekoBox, Hiddify Next, and many Shadowrocket-style subscription flows.</li>
+          <li>If you are unsure, start with the V2Ray path for broad mobile compatibility or open the format decision page.</li>
+        </ul>
+      </section>
+
+      <section class="content-block">
+        <h2>Recommended validation flow before sharing</h2>
+        <ol class="tag-list">
+          <li>Open the status page and confirm there is a recent check timestamp.</li>
+          <li>Open the raw subscription link that matches the client format.</li>
+          <li>If the user wants a file download instead of a refreshable URL, switch to the latest release asset.</li>
+          <li>If the user still cannot import, send the client-specific guide instead of only repeating the same link.</li>
+        </ol>
+      </section>
+    </main>
+  </body>
+</html>

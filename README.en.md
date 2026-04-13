@@ -7,7 +7,7 @@
 
 Free Clash, sing-box, and V2Ray subscription links with live node status, multi-region coverage, setup guides for common clients, and a dedicated updates page for release snapshots.
 
-[Open Live Status Site](https://au1rxx.github.io/free-vpn-subscriptions/) • [Updates And Snapshot History](https://au1rxx.github.io/free-vpn-subscriptions/updates.html) • [Status Dashboard](https://au1rxx.github.io/free-vpn-subscriptions/status.html) • [Clash Guide](./docs/clash-subscription.md) • [sing-box Guide](./docs/sing-box-subscription.md) • [V2Ray Guide](./docs/v2ray-subscription.md) • [FAQ](./docs/faq.md)
+[Open Live Status Site](https://au1rxx.github.io/free-vpn-subscriptions/) • [Updates And Snapshot History](https://au1rxx.github.io/free-vpn-subscriptions/updates.html) • [Status Dashboard](https://au1rxx.github.io/free-vpn-subscriptions/status.html) • [Verification And Compatibility](https://au1rxx.github.io/free-vpn-subscriptions/verification.html) • [Clash Guide](./docs/clash-subscription.md) • [sing-box Guide](./docs/sing-box-subscription.md) • [V2Ray Guide](./docs/v2ray-subscription.md) • [FAQ](./docs/faq.md)
 
 [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) • [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json) • [Discussions](https://github.com/Au1rxx/free-vpn-subscriptions/discussions)
 
@@ -15,6 +15,7 @@ Free Clash, sing-box, and V2Ray subscription links with live node status, multi-
 
 - If you want to confirm that the public side is still fresh, check the [Status Dashboard](https://au1rxx.github.io/free-vpn-subscriptions/status.html) and the latest timestamp in `output/status.json`.
 - If you want the newest snapshot, clean download links, and release history, go straight to [GitHub Releases](https://github.com/Au1rxx/free-vpn-subscriptions/releases).
+- If you want to know which public links are currently machine-validated, which paths are snapshot downloads, and which links are meant for long-lived auto-refresh, open the [Verification And Compatibility](https://au1rxx.github.io/free-vpn-subscriptions/verification.html) page.
 - If you want ongoing updates, do not rely on bookmarking the repo homepage alone. Star the repo, use the repository Watch menu for `Releases`, or subscribe to the [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) / [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json).
 
 ## Why This Repo

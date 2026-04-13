@@ -8,6 +8,7 @@ on:
       - "output/clash.yaml"
       - "output/singbox.json"
       - "output/v2ray-base64.txt"
+      - "output/status.json"
   workflow_dispatch:
 
 env:
@@ -63,3 +64,12 @@ jobs:
             output/status.json \
             --title "Feed Snapshot ${{ steps.meta.outputs.stamp }}" \
             --notes-file .tmp/release-notes.md
+
+      - name: Dispatch amplify workflow
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api \
+            -X POST \
+            repos/${{ github.repository }}/actions/workflows/release-amplify.yml/dispatches \
+            -f ref=${{ github.ref_name }}

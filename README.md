@@ -9,7 +9,7 @@
 
 公开提供 Clash、sing-box、V2Ray 订阅链接，附带实时节点状态、多地区覆盖、客户端导入教程与故障排查页面。
 
-[打开站点首页](https://au1rxx.github.io/free-vpn-subscriptions/) • [更新记录与快照历史](https://au1rxx.github.io/free-vpn-subscriptions/updates.html) • [状态面板](https://au1rxx.github.io/free-vpn-subscriptions/status.html) • [Clash 指南](./docs/clash-subscription.md) • [sing-box 指南](./docs/sing-box-subscription.md) • [V2Ray 指南](./docs/v2ray-subscription.md) • [FAQ](./docs/faq.md)
+[打开站点首页](https://au1rxx.github.io/free-vpn-subscriptions/) • [更新记录与快照历史](https://au1rxx.github.io/free-vpn-subscriptions/updates.html) • [状态面板](https://au1rxx.github.io/free-vpn-subscriptions/status.html) • [验证与兼容性](https://au1rxx.github.io/free-vpn-subscriptions/verification.html) • [Clash 指南](./docs/clash-subscription.md) • [sing-box 指南](./docs/sing-box-subscription.md) • [V2Ray 指南](./docs/v2ray-subscription.md) • [FAQ](./docs/faq.md)
 
 [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) • [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json) • [Discussions](https://github.com/Au1rxx/free-vpn-subscriptions/discussions)
 
@@ -17,6 +17,7 @@
 
 - 想确认公开侧是不是还在更新，先看 [状态面板](https://au1rxx.github.io/free-vpn-subscriptions/status.html) 和 `output/status.json` 的最近检查时间。
 - 想看最近一次快照、手动下载入口和历史版本，直接看 [GitHub Releases](https://github.com/Au1rxx/free-vpn-subscriptions/releases)。
+- 想确认分享出去的链接当前是否可达、哪些只是快照、哪些适合长期自动刷新，直接看 [验证与兼容性页面](https://au1rxx.github.io/free-vpn-subscriptions/verification.html)。
 - 想持续跟踪更新，不要只收藏仓库首页；请优先 `Star`、到仓库 Watch 菜单里关注 `Releases`，或直接订阅 [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) / [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json)。
 
 ## 项目定位
