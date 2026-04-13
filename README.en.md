@@ -15,6 +15,12 @@ Public distribution entry for Clash, sing-box, and V2Ray formats. Health is chec
 
 [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) • [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json) • [Discussions](https://github.com/Au1rxx/free-vpn-subscriptions/discussions)
 
+## Why this repo is worth a star
+
+- This is not just a single subscription URL. It combines `live status`, `update history`, `verification notes`, `client guides`, and `troubleshooting` into one public entry point.
+- Returning traffic should come from “did it update today?”, “is the public status healthy?”, and “is there a new guide?”, not from rotating feed URLs.
+- Releases, update feeds, Discussions, and public Pages accumulate visible update signals over time, which is more durable than bookmarking a single download path.
+
 ## What returning visitors should check
 
 - `Is the public status fresh?` Open the [Status Dashboard](https://au1rxx.github.io/free-vpn-subscriptions/status.html).
@@ -135,7 +141,7 @@ These client-specific guides exist to improve search visibility for real user qu
 
 If this feed is useful:
 
-- Star the repository to help discovery.
+- Star the repository so you keep the full public entry point, not only a single file path.
 - Use the repository Watch menu for `Releases` if you want visible update checkpoints, or subscribe to the Atom / JSON feed above.
 - Use Discussions for client requests, setup questions, and broken-link reports.
 - Use Issues only when a public feed artifact, release asset, or Pages route is actually broken.

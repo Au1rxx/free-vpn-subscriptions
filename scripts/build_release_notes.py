@@ -7,17 +7,10 @@ import json
 from collections import Counter
 from pathlib import Path
 
-
-DOWNLOADS = {
-    "Clash": "https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/clash.yaml",
-    "sing-box": "https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/singbox.json",
-    "V2Ray": "https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/v2ray-base64.txt",
-    "Status": "https://github.com/Au1rxx/free-vpn-subscriptions/releases/latest/download/status.json",
-}
-
 SITE_URL = "https://au1rxx.github.io/free-vpn-subscriptions/"
 UPDATES_URL = "https://au1rxx.github.io/free-vpn-subscriptions/updates.html"
 STATUS_URL = "https://au1rxx.github.io/free-vpn-subscriptions/status.html"
+VERIFICATION_URL = "https://au1rxx.github.io/free-vpn-subscriptions/verification.html"
 DISCUSSIONS_URL = "https://github.com/Au1rxx/free-vpn-subscriptions/discussions"
 
 
@@ -175,19 +168,19 @@ def build_markdown(current: list[dict], previous: list[dict]) -> str:
             "",
             "## 为什么主订阅链接保持稳定",
             "- 主订阅直链继续服务客户端自动刷新，不会因为历史快照发布而变更。",
-            "- Release 负责手动下载、历史回看、发布提醒和增长回访。",
+            "- Release 负责历史回看、手动下载、发布提醒和增长回访。",
             f"- 更新记录页：`{UPDATES_URL}`",
             f"- 状态页：`{STATUS_URL}`",
             "",
-            "## 下载入口",
-            f"- Clash: `{DOWNLOADS['Clash']}`",
-            f"- sing-box: `{DOWNLOADS['sing-box']}`",
-            f"- V2Ray: `{DOWNLOADS['V2Ray']}`",
-            f"- Status: `{DOWNLOADS['Status']}`",
+            "## 为什么值得回来看",
+            "- 看今天有没有新快照，而不是等主链接变化。",
+            "- 看当前状态是否波动，再决定要不要排障或手动回滚。",
+            "- 看有没有新的客户端教程、兼容性说明和 Discussions 讨论。",
             "",
             "## 继续跟踪",
             f"- 站点首页：`{SITE_URL}`",
             f"- 更新记录：`{UPDATES_URL}`",
+            f"- 验证说明：`{VERIFICATION_URL}`",
             f"- Discussions：`{DISCUSSIONS_URL}`",
         ]
     )

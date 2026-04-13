@@ -15,6 +15,12 @@
 
 [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) • [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json) • [Discussions](https://github.com/Au1rxx/free-vpn-subscriptions/discussions)
 
+## 为什么值得 Star
+
+- 这里不是只放一条订阅链接，而是把 `实时状态`、`更新记录`、`验证说明`、`客户端教程` 和 `故障排查` 做成持续更新的公开入口。
+- 用户回来看的是“今天有没有更新、状态有没有波动、有没有新教程”，而不是等仓库频繁换链接。
+- GitHub Releases、更新 Feed、Discussions 和 Pages 页面会持续累积公开信号，这比单独收藏一个下载地址更容易形成长期回流。
+
 ## 每次回来看什么
 
 - `状态是否新鲜`：先看 [状态面板](https://au1rxx.github.io/free-vpn-subscriptions/status.html)。
@@ -135,7 +141,7 @@
 
 如果这个仓库对你有帮助：
 
-- 请点 `Star`，帮助仓库获得更高曝光。
+- 请点 `Star`，把它保存成持续更新入口，而不是只记住某个文件地址。
 - 如果你想跟踪快照更新，请到仓库的 Watch 菜单里关注 `Releases`，或者直接订阅上面的 Atom / JSON Feed。
 - 安装问题、客户端请求、兼容性反馈请优先走 `Discussions`。
 - 只有在公开链接、Release 资产或 Pages 页面真实异常时，再提交 `Issues`。
@@ -148,7 +154,7 @@
 
 ## 分享文案
 
-- GitHub / 论坛短文案：免费提供 Clash、sing-box、V2Ray 订阅链接，附带实时节点状态、客户端教程和故障排查页面。
-- 社群短文案：公开订阅 + 实时状态 + 多客户端教程，支持 Clash、v2rayNG、NekoBox、Shadowrocket 等常见导入路径。
+- GitHub / 论坛短文案：持续更新的免费 VPN 公开入口，附带实时节点状态、更新记录、客户端教程和故障排查页面。
+- 社群短文案：公开入口 + 实时状态 + 更新记录 + 多客户端教程，支持 Clash、v2rayNG、NekoBox、Shadowrocket 等常见导入路径。
 - 站点入口：`https://au1rxx.github.io/free-vpn-subscriptions/`
 - 详细文案文件：[社交分享文案](./docs/social-share-copy.zh-CN.md)
