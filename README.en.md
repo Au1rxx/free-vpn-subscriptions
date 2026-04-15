@@ -15,6 +15,8 @@ Public distribution entry for Clash, sing-box, and V2Ray formats. Health is chec
 
 [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) • [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json) • [Discussions](https://github.com/Au1rxx/free-vpn-subscriptions/discussions)
 
+[Docs index](./docs/README.md) • [Project details](./docs/project-details.md) • [Deployment and operations](./docs/deployment.md) • [Contributing](./CONTRIBUTING.md) • [Security](./SECURITY.md)
+
 ## Direct entry points
 
 - [Clash remote subscription](https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml)
@@ -36,6 +38,12 @@ Public distribution entry for Clash, sing-box, and V2Ray formats. Health is chec
 - Getting directly usable remote subscriptions
 - Troubleshooting import failures without leaving the project
 
+## Project documentation
+
+- For the repository structure, public assets, Pages routes, and generated files, read [project-details.md](./docs/project-details.md).
+- For the upstream sync path and the full GitHub Pages / Releases / feed / validation chain, read [deployment.md](./docs/deployment.md).
+- For the full list of technical docs and client guides, read [docs/README.md](./docs/README.md).
+
 ## What returning visitors should check
 
 - `Is the public status fresh?` Open the [Status Dashboard](https://au1rxx.github.io/free-vpn-subscriptions/status.html).
@@ -55,6 +63,7 @@ Public distribution entry for Clash, sing-box, and V2Ray formats. Health is chec
 - Public subscription feed for `Clash`, `sing-box`, and `V2Ray` users.
 - Multi-region endpoints with hourly health checks and scheduled subscription refreshes.
 - Public documentation designed for fast onboarding and high GitHub discoverability.
+- Full repository responsibilities are documented in [project-details.md](./docs/project-details.md).
 
 ## How to get started
 
@@ -69,6 +78,7 @@ Public distribution entry for Clash, sing-box, and V2Ray formats. Health is chec
 - Public subscription snapshots: refreshed on schedule
 - Release snapshots: follow public artifact updates for manual download and history
 - Update feeds: automatically refreshed after new releases
+- The full deployment chain is documented in [deployment.md](./docs/deployment.md).
 
 ## Why The Main Subscription URLs Stay Stable
 

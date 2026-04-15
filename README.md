@@ -15,6 +15,8 @@
 
 [Atom Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.xml) • [JSON Feed](https://au1rxx.github.io/free-vpn-subscriptions/updates.json) • [Discussions](https://github.com/Au1rxx/free-vpn-subscriptions/discussions)
 
+[文档索引](./docs/README.md) • [项目细节](./docs/project-details.md) • [部署与运维](./docs/deployment.md) • [贡献指南](./CONTRIBUTING.md) • [安全策略](./SECURITY.md)
+
 ## 直接可用入口
 
 - [Clash 远程订阅](https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml)
@@ -36,6 +38,12 @@
 - 想直接导入时，上面就有三个可直接使用的远程订阅入口。
 - 导入失败时，有客户端教程、FAQ 和故障排查页，不用再去外面重新搜一圈。
 
+## 项目文档
+
+- 如果你想看仓库结构、公开产物、Pages 页面和生成文件的关系：看 [项目细节](./docs/project-details.md)。
+- 如果你想看私有控制面如何同步到公共仓库、GitHub Pages / Releases / Feed / 验证链路怎么串起来：看 [部署与运维](./docs/deployment.md)。
+- 如果你要总览现有技术文档和客户端指南：看 [文档索引](./docs/README.md)。
+
 ## 每次回来看什么
 
 - `状态是否新鲜`：先看 [状态面板](https://au1rxx.github.io/free-vpn-subscriptions/status.html)。
@@ -55,6 +63,7 @@
 - 面向 `Clash`、`sing-box`、`V2Ray` 用户的公开订阅分发仓库。
 - 多地区节点，按小时检查健康，按计划刷新订阅文件。
 - 文档和页面按 GitHub / Google 可发现性设计，兼顾搜索流量与导入转化。
+- 公开仓库的完整结构和职责拆分见 [项目细节](./docs/project-details.md)。
 
 ## 获取方式
 
@@ -69,6 +78,7 @@
 - 公开订阅快照：按计划刷新
 - Release 快照：跟随公开产物更新，适合历史回看和手动下载
 - 更新 Feed：跟随最新 Release 自动刷新
+- 端到端部署链路见 [部署与运维](./docs/deployment.md)。
 
 ## 为什么主订阅链接保持不变
 

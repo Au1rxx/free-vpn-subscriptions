@@ -8,6 +8,15 @@ Yes. This repository is designed to publish public subscription artifacts and pu
 
 Health status is refreshed hourly. Subscription files are refreshed every 6 hours.
 
+## How is the public repo deployed?
+
+The public repo is fed by an upstream private control repository that syncs only the public `output/` directory into this repo. A push here then triggers GitHub Pages, release snapshots, update-feed rendering, and public validation.
+
+See also:
+
+- [Project details](./project-details.md)
+- [Deployment and operations](./deployment.md)
+
 ## Why does a node disappear or stop working?
 
 Public shared nodes can degrade, rotate, or go offline. Always check `output/status.json` or the live status page for the latest reachability signal.
@@ -23,6 +32,14 @@ If you are unsure, start from the client-specific guide that matches your app.
 ## Why keep the control plane private?
 
 The public repo is for distribution only. Infrastructure state, cloud credentials, SSH access, and secret material stay in the private operations repository.
+
+## Where can I read the workflow and deployment details?
+
+Use these docs:
+
+- [Project details](./project-details.md)
+- [Deployment and operations](./deployment.md)
+- [Documentation map](./README.md)
 
 ## Can I mirror or fork this repository?
 

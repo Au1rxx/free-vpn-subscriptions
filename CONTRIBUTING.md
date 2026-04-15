@@ -6,6 +6,11 @@ This repository is the public distribution layer for the VPN feed. It is optimiz
 - clear client onboarding
 - searchable public documentation
 
+Read these first if your change touches architecture, deployment, or workflow behavior:
+
+- `docs/project-details.md`
+- `docs/deployment.md`
+
 ## Where to contribute
 
 - Use `Discussions > Q&A` for setup help and troubleshooting.
@@ -44,4 +49,4 @@ Do not add:
 - Explain the user-facing reason for the change.
 - Verify that all new links resolve correctly.
 - Prefer plain, direct language over marketing fluff.
-
+- If you touch `.github/workflows/`, `output/`, `site/updates.*`, or `scripts/`, explain which publishing step or validation step is affected.

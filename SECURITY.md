@@ -4,6 +4,11 @@
 
 This repository is public and should contain only public distribution artifacts, public docs, and sanitized status data.
 
+For the current public deployment boundary, see:
+
+- `docs/project-details.md`
+- `docs/deployment.md`
+
 ## Do not disclose
 
 Do not post:
@@ -12,6 +17,7 @@ Do not post:
 - SSH keys
 - Terraform state
 - private infrastructure details
+- unsanitized control-plane state
 - anything copied from the private control repository that is not intended for public release
 
 ## Reporting
