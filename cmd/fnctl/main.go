@@ -22,6 +22,7 @@ import (
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/config"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/geoip"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/node"
+	"github.com/Au1rxx/free-vpn-subscriptions/internal/pages"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/probe"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/readme"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/sources"
@@ -211,6 +212,20 @@ func writeOutputs(cfg *config.Config, selected []*node.Node, summary aggregate.S
 			return fmt.Errorf("readme %s: %w", loc.FileName, err)
 		}
 	}
+
+	if cfg.Output.Pages.Enabled {
+		if err := pages.Generate(pages.Input{
+			Title:         cfg.Readme.Title,
+			RepoURL:       cfg.Readme.RepoURL,
+			SiteURL:       cfg.Output.Pages.SiteURL,
+			Summary:       summary,
+			Selected:      selected,
+			MinPerCountry: cfg.GeoIP.MinPerCountry,
+		}, cfg.Output.Pages.Dir); err != nil {
+			return fmt.Errorf("pages: %w", err)
+		}
+	}
+
 	return nil
 }
 

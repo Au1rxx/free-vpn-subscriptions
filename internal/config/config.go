@@ -47,8 +47,15 @@ type AggregateConfig struct {
 }
 
 type OutputConfig struct {
-	Dir     string   `yaml:"dir"`
-	Formats []string `yaml:"formats"`
+	Dir     string     `yaml:"dir"`
+	Formats []string   `yaml:"formats"`
+	Pages   PagesConfig `yaml:"pages"`
+}
+
+type PagesConfig struct {
+	Enabled bool   `yaml:"enabled"`
+	Dir     string `yaml:"dir"`
+	SiteURL string `yaml:"site_url"`
 }
 
 type ReadmeConfig struct {
@@ -103,6 +110,9 @@ func applyDefaults(c *Config) {
 	}
 	if c.GeoIP.MinPerCountry == 0 {
 		c.GeoIP.MinPerCountry = 3
+	}
+	if c.Output.Pages.Dir == "" {
+		c.Output.Pages.Dir = "docs"
 	}
 }
 
