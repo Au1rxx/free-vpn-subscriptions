@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to use a free VPN with Clash Verge (Windows / macOS / Linux)</title>
+<meta name="description" content="Step-by-step guide to import a free VPN subscription into Clash Verge on Windows, macOS, or Linux. TCP&#43;TLS verified nodes, updated hourly.">
+<meta name="keywords" content="clash verge, free vpn clash, clash subscription url, clash windows, clash macos, mihomo">
+<link rel="canonical" href="https://au1rxx.github.io/free-vpn-subscriptions/guides/clash-verge.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to use a free VPN with Clash Verge (Windows / macOS / Linux)">
+<meta property="og:description" content="Step-by-step guide to import a free VPN subscription into Clash Verge on Windows, macOS, or Linux. TCP&#43;TLS verified nodes, updated hourly.">
+<meta property="og:url" content="https://au1rxx.github.io/free-vpn-subscriptions/guides/clash-verge.html">
+<meta property="og:image" content="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/workflow.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to use a free VPN with Clash Verge (Windows / macOS / Linux)">
+<meta name="twitter:description" content="Step-by-step guide to import a free VPN subscription into Clash Verge on Windows, macOS, or Linux. TCP&#43;TLS verified nodes, updated hourly.">
+<meta name="twitter:image" content="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/workflow.svg">
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"HowTo","description":"Step-by-step guide to import a free VPN subscription into Clash Verge on Windows, macOS, or Linux. TCP+TLS verified nodes, updated hourly.","name":"How to use a free VPN with Clash Verge (Windows / macOS / Linux)","step":[{"@type":"HowToStep","name":"Install Clash Verge","position":1,"text":"Download the latest release from Clash Verge Rev. Pick the installer matching your OS (.msi for Windows, .dmg for macOS, .deb/.rpm/.AppImage for Linux). Run it and launch the app."},{"@type":"HowToStep","name":"Open the Subscriptions panel","position":2,"text":"In the left sidebar, click Profiles (订阅). You'll see an empty list the first time. Click the + or Import button at the top."},{"@type":"HowToStep","name":"Paste the subscription URL","position":3,"text":"Copy the Clash URL from the homepage and paste it into the URL field. Give it any name you like. Click Save. Clash Verge will download the profile in a few seconds."},{"@type":"HowToStep","name":"Enable the profile","position":4,"text":"Click the profile card so it shows as active (a blue border or check mark). In the Proxies tab you should now see a selector group with all the free nodes."},{"@type":"HowToStep","name":"Turn on system proxy","position":5,"text":"Go back to the dashboard (首页). Toggle System Proxy or TUN Mode ON. System proxy works for browsers; TUN mode routes all traffic including CLI tools and games — TUN mode requires admin/sudo the first time."},{"@type":"HowToStep","name":"Test it","position":6,"text":"Open a browser and go to ipinfo.io. The country should match the node you picked. If it still shows your home country, double-check the proxy toggle and that your browser isn't bypassing system proxy (Firefox has its own proxy settings)."}],"totalTime":"PT5M","url":"https://au1rxx.github.io/free-vpn-subscriptions/guides/clash-verge.html"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://au1rxx.github.io/free-vpn-subscriptions/","name":"Home","position":1},{"@type":"ListItem","item":"https://au1rxx.github.io/free-vpn-subscriptions/#guides","name":"Guides","position":2},{"@type":"ListItem","item":"https://au1rxx.github.io/free-vpn-subscriptions/guides/clash-verge.html","name":"Clash Verge","position":3}]}]</script>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system,Segoe UI,Roboto,sans-serif;
+    background: linear-gradient(180deg,#0f172a,#1e293b 400px);
+    color: #e2e8f0; line-height: 1.55;
+  }
+  .hero {
+    text-align: center; padding: 64px 20px 32px;
+    max-width: 900px; margin: 0 auto;
+  }
+  h1 { font-size: clamp(28px, 5vw, 44px); margin: 0 0 12px; }
+  .sub { font-size: 18px; color: #cbd5e1; max-width: 680px; margin: 0 auto 16px; }
+  .meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+  .badge {
+    display: inline-block; padding: 4px 12px; border-radius: 999px;
+    font-size: 13px; font-weight: 600;
+  }
+  .badge-green { background: #065f46; color: #d1fae5; }
+  .badge-blue { background: #1e40af; color: #dbeafe; }
+  .badge-orange { background: #92400e; color: #fed7aa; }
+  .badge-gray { background: #374151; color: #d1d5db; }
+  .repo { margin-top: 24px; }
+  .btn-outline {
+    border: 1px solid #3b82f6; color: #93c5fd; padding: 10px 20px;
+    border-radius: 8px; text-decoration: none; font-weight: 600;
+  }
+  .btn-outline:hover { background: #1e3a8a; }
+  .breadcrumb { padding: 16px 32px; max-width: 900px; margin: 0 auto; }
+  .breadcrumb a { color: #93c5fd; text-decoration: none; font-size: 14px; }
+  .card {
+    background: #1e293b; border: 1px solid #334155; border-radius: 12px;
+    padding: 28px 32px; margin: 20px auto; max-width: 900px;
+  }
+  .card h2 { margin-top: 0; font-size: 22px; color: #f1f5f9; }
+  .urls { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+  .url-row { display: flex; flex-direction: column; gap: 4px; }
+  .url-row strong { color: #f1f5f9; font-size: 14px; }
+  .url-row code {
+    background: #0f172a; padding: 10px 14px; border-radius: 6px;
+    font-size: 13px; overflow-x: auto; border: 1px solid #334155;
+  }
+  .url-row code a { color: #60a5fa; text-decoration: none; word-break: break-all; }
+  .country-grid {
+    display: grid; gap: 12px; margin-top: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  .country-card {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    padding: 20px 12px; background: #0f172a; border: 1px solid #334155;
+    border-radius: 10px; text-decoration: none; color: inherit;
+    transition: border-color .2s, transform .1s;
+  }
+  .country-card:hover { border-color: #3b82f6; transform: translateY(-2px); }
+  .country-flag { font-size: 32px; }
+  .country-name { font-weight: 600; color: #f1f5f9; font-size: 14px; }
+  .country-count { color: #94a3b8; font-size: 13px; }
+  .client-list { padding-left: 20px; }
+  .client-list li { margin-bottom: 6px; color: #cbd5e1; }
+  details { margin: 10px 0; padding: 12px 16px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; }
+  details summary { cursor: pointer; font-weight: 600; color: #f1f5f9; }
+  details p { margin: 12px 0 0; color: #cbd5e1; }
+  footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
+  footer a { color: #93c5fd; }
+  footer .small { font-size: 12px; margin-top: 8px; max-width: 680px; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+<nav class="breadcrumb">
+  <a href="https://au1rxx.github.io/free-vpn-subscriptions/">← Home</a>
+</nav>
+
+<header class="hero">
+  <h1>How to use a free VPN with Clash Verge (Windows / macOS / Linux)</h1>
+  <p class="sub">Step-by-step guide to import a free VPN subscription into Clash Verge on Windows, macOS, or Linux. TCP&#43;TLS verified nodes, updated hourly.</p>
+  <p class="meta">
+    <span class="badge badge-blue">Clash Verge</span>
+    <span class="badge badge-gray">Windows, macOS, Linux</span>
+    <span class="badge badge-green">updated · 2026-04-19 06:41 UTC</span>
+  </p>
+  <p class="repo">
+    <a href="https://github.com/clash-verge-rev/clash-verge-rev/releases/latest" class="btn-outline" target="_blank" rel="noopener">⬇ Download Clash Verge</a>
+  </p>
+</header>
+
+<section class="card">
+  <h2>📋 Subscription URL</h2>
+  <p>Copy this URL and paste it into Clash Verge's subscription import field:</p>
+  <div class="urls">
+    <div class="url-row">
+      <strong>Clash Verge URL</strong>
+      <code><a href="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/clash.yaml" target="_blank" rel="noopener">https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/clash.yaml</a></code>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>🪜 Steps</h2>
+  <ol class="steps">
+    
+    <li>
+      <h3>Install Clash Verge</h3>
+      <p>Download the latest release from <a href="https://github.com/clash-verge-rev/clash-verge-rev/releases/latest" target="_blank" rel="noopener">Clash Verge Rev</a>. Pick the installer matching your OS (<code>.msi</code> for Windows, <code>.dmg</code> for macOS, <code>.deb</code>/<code>.rpm</code>/<code>.AppImage</code> for Linux). Run it and launch the app.</p>
+    </li>
+    
+    <li>
+      <h3>Open the Subscriptions panel</h3>
+      <p>In the left sidebar, click <strong>Profiles</strong> (订阅). You'll see an empty list the first time. Click the <strong>+</strong> or <strong>Import</strong> button at the top.</p>
+    </li>
+    
+    <li>
+      <h3>Paste the subscription URL</h3>
+      <p>Copy the Clash URL from the <a href="../index.html">homepage</a> and paste it into the URL field. Give it any name you like. Click <strong>Save</strong>. Clash Verge will download the profile in a few seconds.</p>
+    </li>
+    
+    <li>
+      <h3>Enable the profile</h3>
+      <p>Click the profile card so it shows as active (a blue border or check mark). In the <strong>Proxies</strong> tab you should now see a selector group with all the free nodes.</p>
+    </li>
+    
+    <li>
+      <h3>Turn on system proxy</h3>
+      <p>Go back to the dashboard (首页). Toggle <strong>System Proxy</strong> or <strong>TUN Mode</strong> ON. System proxy works for browsers; TUN mode routes all traffic including CLI tools and games — TUN mode requires admin/sudo the first time.</p>
+    </li>
+    
+    <li>
+      <h3>Test it</h3>
+      <p>Open a browser and go to <code>ipinfo.io</code>. The country should match the node you picked. If it still shows your home country, double-check the proxy toggle and that your browser isn't bypassing system proxy (Firefox has its own proxy settings).</p>
+    </li>
+    
+  </ol>
+</section>
+
+<section class="card">
+  <h2>💡 Tips &amp; Troubleshooting</h2>
+  
+  <details><summary>Which node should I pick?</summary><p>Start with the selector group's auto-select (URL-Test) — it picks the fastest one by latency. If a node feels slow, switch to a different country manually.</p></details>
+  
+  <details><summary>How do I update the subscription?</summary><p>Right-click the profile card → <strong>Update</strong>. Or enable auto-update in the profile settings (we recommend every 1 hour since the upstream is refreshed hourly).</p></details>
+  
+  <details><summary>Can I use this with browsers only (no TUN)?</summary><p>Yes. Turn on <strong>System Proxy</strong> only. Most browsers respect it. Chrome/Edge use system proxy by default; Firefox needs "Use system proxy settings" in its Network settings.</p></details>
+  
+  <details><summary>Clash Verge says &#34;profile update failed&#34;</summary><p>Usually a transient GitHub raw content outage. Retry in a few minutes. If it persists, check that you can open the subscription URL directly in a browser.</p></details>
+  
+</section>
+
+<section class="card">
+  <h2>📚 Other guides</h2>
+  <ul class="client-list">
+    
+    <li><a href="v2rayng.html">v2rayNG</a> · Android 5.0&#43;</li>
+    
+    <li><a href="shadowrocket.html">Shadowrocket</a> · iOS 15&#43;, iPadOS 15&#43;</li>
+    
+    <li><a href="sing-box.html">sing-box</a> · Windows, macOS, Linux, iOS, Android</li>
+    
+  </ul>
+</section>
+
+<footer>
+  <p>Open source on <a href="https://github.com/Au1rxx/free-vpn-subscriptions" target="_blank" rel="noopener">GitHub</a>. MIT licensed.</p>
+</footer>
+</body>
+</html>

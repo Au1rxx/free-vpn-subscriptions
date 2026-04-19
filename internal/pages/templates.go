@@ -72,6 +72,18 @@ const tplIndex = `<!DOCTYPE html>
 </section>
 {{end}}
 
+{{if .Guides}}
+<section class="card" id="guides">
+  <h2>📖 Step-by-step Guides</h2>
+  <p>New to VPN clients? Pick your platform:</p>
+  <ul class="client-list">
+    {{range .Guides}}
+    <li><a href="{{.URL}}"><strong>{{.Name}}</strong></a> · {{.OS}}</li>
+    {{end}}
+  </ul>
+</section>
+{{end}}
+
 <section class="card">
   <h2>🧩 Supported Clients</h2>
   <ul class="client-list">
@@ -167,6 +179,92 @@ const tplCountry = `<!DOCTYPE html>
     {{end}}
     {{end}}
   </div>
+</section>
+
+<footer>
+  <p>Open source on <a href="{{.RepoURL}}" target="_blank" rel="noopener">GitHub</a>. MIT licensed.</p>
+</footer>
+</body>
+</html>
+`
+
+// tplGuide renders a single client tutorial page.
+const tplGuide = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{.Title}}</title>
+<meta name="description" content="{{.Description}}">
+<meta name="keywords" content="{{.Keywords}}">
+<link rel="canonical" href="{{.Canonical}}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{.Title}}">
+<meta property="og:description" content="{{.Description}}">
+<meta property="og:url" content="{{.Canonical}}">
+<meta property="og:image" content="{{.OGImage}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{.Title}}">
+<meta name="twitter:description" content="{{.Description}}">
+<meta name="twitter:image" content="{{.OGImage}}">
+<script type="application/ld+json">{{.JSONLD}}</script>
+<style>` + css + `</style>
+</head>
+<body>
+<nav class="breadcrumb">
+  <a href="{{.HomeURL}}">← Home</a>
+</nav>
+
+<header class="hero">
+  <h1>{{.Heading}}</h1>
+  <p class="sub">{{.Description}}</p>
+  <p class="meta">
+    <span class="badge badge-blue">{{.ClientName}}</span>
+    <span class="badge badge-gray">{{.OSList}}</span>
+    <span class="badge badge-green">updated · {{.UpdatedHuman}}</span>
+  </p>
+  <p class="repo">
+    <a href="{{.DownloadURL}}" class="btn-outline" target="_blank" rel="noopener">⬇ Download {{.ClientName}}</a>
+  </p>
+</header>
+
+<section class="card">
+  <h2>📋 Subscription URL</h2>
+  <p>Copy this URL and paste it into {{.ClientName}}'s subscription import field:</p>
+  <div class="urls">
+    <div class="url-row">
+      <strong>{{.ClientName}} URL</strong>
+      <code><a href="{{.SubscribeURL}}" target="_blank" rel="noopener">{{.SubscribeURL}}</a></code>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>🪜 Steps</h2>
+  <ol class="steps">
+    {{range .Steps}}
+    <li>
+      <h3>{{.Title}}</h3>
+      <p>{{.Body}}</p>
+    </li>
+    {{end}}
+  </ol>
+</section>
+
+<section class="card">
+  <h2>💡 Tips &amp; Troubleshooting</h2>
+  {{range .Tips}}
+  <details><summary>{{.Q}}</summary><p>{{.A}}</p></details>
+  {{end}}
+</section>
+
+<section class="card">
+  <h2>📚 Other guides</h2>
+  <ul class="client-list">
+    {{range .OtherGuides}}
+    <li><a href="{{.URL}}">{{.Name}}</a> · {{.OS}}</li>
+    {{end}}
+  </ul>
 </section>
 
 <footer>

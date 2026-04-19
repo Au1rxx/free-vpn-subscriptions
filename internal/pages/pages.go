@@ -40,6 +40,45 @@ type countryRow struct {
 	URLPage  string
 }
 
+// guideCtx is the render context for a single guide page. Body fields are
+// template.HTML so author-controlled HTML (links, <strong>, <code>) survives
+// html/template's auto-escaping.
+type guideCtx struct {
+	Title        string
+	Description  string
+	Keywords     string
+	Canonical    string
+	OGImage      string
+	UpdatedHuman string
+	HomeURL      string
+	RepoURL      string
+	Heading      string
+	ClientName   string
+	OSList       string
+	DownloadURL  string
+	SubscribeURL string
+	Steps        []renderedStep
+	Tips         []renderedTip
+	OtherGuides  []guideLink
+	JSONLD       template.JS
+}
+
+type renderedStep struct {
+	Title string
+	Body  template.HTML
+}
+
+type renderedTip struct {
+	Q string
+	A template.HTML
+}
+
+type guideLink struct {
+	URL  string
+	Name string
+	OS   string
+}
+
 type pageCtx struct {
 	// Meta
 	Title        string
@@ -65,6 +104,9 @@ type pageCtx struct {
 	URLSing     string
 	URLV2ray    string
 
+	// Guides (shown only on index page)
+	Guides []guideLink
+
 	// Schema.org JSON-LD (pre-marshalled)
 	JSONLD template.JS
 }
@@ -79,6 +121,15 @@ func Generate(in Input, outDir string) error {
 	countries := buildCountryRows(in)
 	updatedHuman := time.Unix(in.Summary.GeneratedAtUnix, 0).UTC().Format("2006-01-02 15:04 UTC")
 	homeURL := in.SiteURL + "/"
+
+	guideLinks := make([]guideLink, 0, len(guides))
+	for _, g := range guides {
+		guideLinks = append(guideLinks, guideLink{
+			URL:  "guides/" + g.Slug + ".html",
+			Name: g.ClientName,
+			OS:   g.OSList,
+		})
+	}
 
 	// Index page
 	idx := pageCtx{
@@ -98,6 +149,7 @@ func Generate(in Input, outDir string) error {
 		URLClash:     in.RepoURL + "/raw/main/output/clash.yaml",
 		URLSing:      in.RepoURL + "/raw/main/output/singbox.json",
 		URLV2ray:     in.RepoURL + "/raw/main/output/v2ray-base64.txt",
+		Guides:       guideLinks,
 		JSONLD:       indexJSONLD(in, countries, updatedHuman),
 	}
 	if err := writeTemplate(filepath.Join(outDir, "index.html"), tplIndex, idx); err != nil {
@@ -135,8 +187,20 @@ func Generate(in Input, outDir string) error {
 		}
 	}
 
+	// Guide pages under docs/guides/
+	guidesDir := filepath.Join(outDir, "guides")
+	if err := os.MkdirAll(guidesDir, 0o755); err != nil {
+		return err
+	}
+	for _, g := range guides {
+		ctx := buildGuideCtx(in, g, updatedHuman, homeURL)
+		if err := writeTemplate(filepath.Join(guidesDir, g.Slug+".html"), tplGuide, ctx); err != nil {
+			return fmt.Errorf("guide %s: %w", g.Slug, err)
+		}
+	}
+
 	// sitemap.xml
-	if err := writeSitemap(filepath.Join(outDir, "sitemap.xml"), in.SiteURL, countries, updatedHuman); err != nil {
+	if err := writeSitemap(filepath.Join(outDir, "sitemap.xml"), in.SiteURL, countries, guides); err != nil {
 		return err
 	}
 
@@ -186,7 +250,7 @@ func buildCountryRows(in Input) []countryRow {
 	return out
 }
 
-func writeTemplate(path string, body string, ctx pageCtx) error {
+func writeTemplate(path string, body string, ctx any) error {
 	t, err := template.New(path).Parse(body)
 	if err != nil {
 		return err
@@ -199,7 +263,7 @@ func writeTemplate(path string, body string, ctx pageCtx) error {
 	return t.Execute(f, ctx)
 }
 
-func writeSitemap(path, siteURL string, countries []countryRow, updatedHuman string) error {
+func writeSitemap(path, siteURL string, countries []countryRow, guideList []guideSpec) error {
 	var b strings.Builder
 	b.WriteString(`<?xml version="1.0" encoding="UTF-8"?>` + "\n")
 	b.WriteString(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">` + "\n")
@@ -209,8 +273,117 @@ func writeSitemap(path, siteURL string, countries []countryRow, updatedHuman str
 		fmt.Fprintf(&b, "  <url><loc>%s/%s.html</loc><lastmod>%s</lastmod><changefreq>hourly</changefreq><priority>0.8</priority></url>\n",
 			siteURL, strings.ToLower(c.CC), lastmod)
 	}
+	for _, g := range guideList {
+		fmt.Fprintf(&b, "  <url><loc>%s/guides/%s.html</loc><lastmod>%s</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>\n",
+			siteURL, g.Slug, lastmod)
+	}
 	b.WriteString("</urlset>\n")
 	return os.WriteFile(path, []byte(b.String()), 0o644)
+}
+
+func buildGuideCtx(in Input, g guideSpec, updated, homeURL string) guideCtx {
+	steps := make([]renderedStep, 0, len(g.Steps))
+	for _, s := range g.Steps {
+		steps = append(steps, renderedStep{Title: s.Title, Body: template.HTML(s.Body)})
+	}
+	tips := make([]renderedTip, 0, len(g.Tips))
+	for _, t := range g.Tips {
+		tips = append(tips, renderedTip{Q: t.Q, A: template.HTML(t.A)})
+	}
+	others := make([]guideLink, 0, len(guides)-1)
+	for _, other := range guides {
+		if other.Slug == g.Slug {
+			continue
+		}
+		others = append(others, guideLink{
+			URL:  other.Slug + ".html",
+			Name: other.ClientName,
+			OS:   other.OSList,
+		})
+	}
+
+	var subURL string
+	switch g.URLField {
+	case "clash":
+		subURL = in.RepoURL + "/raw/main/output/clash.yaml"
+	case "singbox":
+		subURL = in.RepoURL + "/raw/main/output/singbox.json"
+	default:
+		subURL = in.RepoURL + "/raw/main/output/v2ray-base64.txt"
+	}
+
+	canonical := in.SiteURL + "/guides/" + g.Slug + ".html"
+	return guideCtx{
+		Title:        g.Title,
+		Description:  g.Description,
+		Keywords:     g.Keywords,
+		Canonical:    canonical,
+		OGImage:      in.RepoURL + "/raw/main/assets/workflow.svg",
+		UpdatedHuman: updated,
+		HomeURL:      homeURL,
+		RepoURL:      in.RepoURL,
+		Heading:      g.Title,
+		ClientName:   g.ClientName,
+		OSList:       g.OSList,
+		DownloadURL:  g.DownloadURL,
+		SubscribeURL: subURL,
+		Steps:        steps,
+		Tips:         tips,
+		OtherGuides:  others,
+		JSONLD:       guideJSONLD(g, canonical, in.SiteURL),
+	}
+}
+
+func guideJSONLD(g guideSpec, canonical, siteURL string) template.JS {
+	stepNodes := make([]any, 0, len(g.Steps))
+	for i, s := range g.Steps {
+		stepNodes = append(stepNodes, map[string]any{
+			"@type":    "HowToStep",
+			"position": i + 1,
+			"name":     s.Title,
+			"text":     stripHTML(s.Body),
+		})
+	}
+	graph := []any{
+		map[string]any{
+			"@context":    "https://schema.org",
+			"@type":       "HowTo",
+			"name":        g.Title,
+			"description": g.Description,
+			"url":         canonical,
+			"totalTime":   "PT5M",
+			"step":        stepNodes,
+		},
+		map[string]any{
+			"@context": "https://schema.org",
+			"@type":    "BreadcrumbList",
+			"itemListElement": []any{
+				map[string]any{"@type": "ListItem", "position": 1, "name": "Home", "item": siteURL + "/"},
+				map[string]any{"@type": "ListItem", "position": 2, "name": "Guides", "item": siteURL + "/#guides"},
+				map[string]any{"@type": "ListItem", "position": 3, "name": g.ClientName, "item": canonical},
+			},
+		},
+	}
+	b, _ := json.Marshal(graph)
+	return template.JS(b)
+}
+
+// stripHTML returns s with all tags removed — used so HowToStep.text in JSON-LD
+// contains plain text even though the HTML body has links and formatting.
+func stripHTML(s string) string {
+	var b strings.Builder
+	inTag := false
+	for _, r := range s {
+		switch {
+		case r == '<':
+			inTag = true
+		case r == '>':
+			inTag = false
+		case !inTag:
+			b.WriteRune(r)
+		}
+	}
+	return b.String()
 }
 
 // indexJSONLD returns the structured data graph for the landing page.

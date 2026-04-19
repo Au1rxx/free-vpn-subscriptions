@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to use a free VPN with v2rayNG (Android)</title>
+<meta name="description" content="Import a free VPN subscription into v2rayNG on Android. Works on any Android 5.0&#43; phone, no root required.">
+<meta name="keywords" content="v2rayng, android free vpn, v2ray android, vmess android, vless android, free vpn apk">
+<link rel="canonical" href="https://au1rxx.github.io/free-vpn-subscriptions/guides/v2rayng.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to use a free VPN with v2rayNG (Android)">
+<meta property="og:description" content="Import a free VPN subscription into v2rayNG on Android. Works on any Android 5.0&#43; phone, no root required.">
+<meta property="og:url" content="https://au1rxx.github.io/free-vpn-subscriptions/guides/v2rayng.html">
+<meta property="og:image" content="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/workflow.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to use a free VPN with v2rayNG (Android)">
+<meta name="twitter:description" content="Import a free VPN subscription into v2rayNG on Android. Works on any Android 5.0&#43; phone, no root required.">
+<meta name="twitter:image" content="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/workflow.svg">
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"HowTo","description":"Import a free VPN subscription into v2rayNG on Android. Works on any Android 5.0+ phone, no root required.","name":"How to use a free VPN with v2rayNG (Android)","step":[{"@type":"HowToStep","name":"Install v2rayNG","position":1,"text":"Download the latest .apk from v2rayNG releases. Install it (Android may ask you to allow \"Install unknown apps\" for your browser). v2rayNG is also on Google Play in some regions."},{"@type":"HowToStep","name":"Copy the subscription URL","position":2,"text":"On the homepage, long-press the v2rayN / v2rayNG URL and select Copy link. This is the v2ray-base64 URL."},{"@type":"HowToStep","name":"Add it as a subscription group","position":3,"text":"Open v2rayNG. Tap the ≡ menu → Subscription group setting → +. Give it a name (e.g. \"free nodes\"), paste the URL into URL, leave other fields default, tap ✓."},{"@type":"HowToStep","name":"Update subscriptions","position":4,"text":"Back on the main screen, tap the ≡ menu → Update subscriptions (no proxy). After a few seconds you'll see all the free nodes listed."},{"@type":"HowToStep","name":"Test one and connect","position":5,"text":"Tap any server row, then tap the big V button at the bottom right to start the VPN. Android will ask for a VPN permission prompt once — tap OK. The V turns green when connected."},{"@type":"HowToStep","name":"Verify the country","position":6,"text":"Open a browser and visit ipinfo.io. The shown country should match the node. If it still shows your home IP, tap V again to disconnect then reconnect — the VPN sometimes takes a moment on first use."}],"totalTime":"PT5M","url":"https://au1rxx.github.io/free-vpn-subscriptions/guides/v2rayng.html"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://au1rxx.github.io/free-vpn-subscriptions/","name":"Home","position":1},{"@type":"ListItem","item":"https://au1rxx.github.io/free-vpn-subscriptions/#guides","name":"Guides","position":2},{"@type":"ListItem","item":"https://au1rxx.github.io/free-vpn-subscriptions/guides/v2rayng.html","name":"v2rayNG","position":3}]}]</script>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system,Segoe UI,Roboto,sans-serif;
+    background: linear-gradient(180deg,#0f172a,#1e293b 400px);
+    color: #e2e8f0; line-height: 1.55;
+  }
+  .hero {
+    text-align: center; padding: 64px 20px 32px;
+    max-width: 900px; margin: 0 auto;
+  }
+  h1 { font-size: clamp(28px, 5vw, 44px); margin: 0 0 12px; }
+  .sub { font-size: 18px; color: #cbd5e1; max-width: 680px; margin: 0 auto 16px; }
+  .meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+  .badge {
+    display: inline-block; padding: 4px 12px; border-radius: 999px;
+    font-size: 13px; font-weight: 600;
+  }
+  .badge-green { background: #065f46; color: #d1fae5; }
+  .badge-blue { background: #1e40af; color: #dbeafe; }
+  .badge-orange { background: #92400e; color: #fed7aa; }
+  .badge-gray { background: #374151; color: #d1d5db; }
+  .repo { margin-top: 24px; }
+  .btn-outline {
+    border: 1px solid #3b82f6; color: #93c5fd; padding: 10px 20px;
+    border-radius: 8px; text-decoration: none; font-weight: 600;
+  }
+  .btn-outline:hover { background: #1e3a8a; }
+  .breadcrumb { padding: 16px 32px; max-width: 900px; margin: 0 auto; }
+  .breadcrumb a { color: #93c5fd; text-decoration: none; font-size: 14px; }
+  .card {
+    background: #1e293b; border: 1px solid #334155; border-radius: 12px;
+    padding: 28px 32px; margin: 20px auto; max-width: 900px;
+  }
+  .card h2 { margin-top: 0; font-size: 22px; color: #f1f5f9; }
+  .urls { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+  .url-row { display: flex; flex-direction: column; gap: 4px; }
+  .url-row strong { color: #f1f5f9; font-size: 14px; }
+  .url-row code {
+    background: #0f172a; padding: 10px 14px; border-radius: 6px;
+    font-size: 13px; overflow-x: auto; border: 1px solid #334155;
+  }
+  .url-row code a { color: #60a5fa; text-decoration: none; word-break: break-all; }
+  .country-grid {
+    display: grid; gap: 12px; margin-top: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  .country-card {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    padding: 20px 12px; background: #0f172a; border: 1px solid #334155;
+    border-radius: 10px; text-decoration: none; color: inherit;
+    transition: border-color .2s, transform .1s;
+  }
+  .country-card:hover { border-color: #3b82f6; transform: translateY(-2px); }
+  .country-flag { font-size: 32px; }
+  .country-name { font-weight: 600; color: #f1f5f9; font-size: 14px; }
+  .country-count { color: #94a3b8; font-size: 13px; }
+  .client-list { padding-left: 20px; }
+  .client-list li { margin-bottom: 6px; color: #cbd5e1; }
+  details { margin: 10px 0; padding: 12px 16px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; }
+  details summary { cursor: pointer; font-weight: 600; color: #f1f5f9; }
+  details p { margin: 12px 0 0; color: #cbd5e1; }
+  footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
+  footer a { color: #93c5fd; }
+  footer .small { font-size: 12px; margin-top: 8px; max-width: 680px; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+<nav class="breadcrumb">
+  <a href="https://au1rxx.github.io/free-vpn-subscriptions/">← Home</a>
+</nav>
+
+<header class="hero">
+  <h1>How to use a free VPN with v2rayNG (Android)</h1>
+  <p class="sub">Import a free VPN subscription into v2rayNG on Android. Works on any Android 5.0&#43; phone, no root required.</p>
+  <p class="meta">
+    <span class="badge badge-blue">v2rayNG</span>
+    <span class="badge badge-gray">Android 5.0&#43;</span>
+    <span class="badge badge-green">updated · 2026-04-19 06:41 UTC</span>
+  </p>
+  <p class="repo">
+    <a href="https://github.com/2dust/v2rayNG/releases/latest" class="btn-outline" target="_blank" rel="noopener">⬇ Download v2rayNG</a>
+  </p>
+</header>
+
+<section class="card">
+  <h2>📋 Subscription URL</h2>
+  <p>Copy this URL and paste it into v2rayNG's subscription import field:</p>
+  <div class="urls">
+    <div class="url-row">
+      <strong>v2rayNG URL</strong>
+      <code><a href="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/v2ray-base64.txt" target="_blank" rel="noopener">https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/v2ray-base64.txt</a></code>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>🪜 Steps</h2>
+  <ol class="steps">
+    
+    <li>
+      <h3>Install v2rayNG</h3>
+      <p>Download the latest <code>.apk</code> from <a href="https://github.com/2dust/v2rayNG/releases/latest" target="_blank" rel="noopener">v2rayNG releases</a>. Install it (Android may ask you to allow "Install unknown apps" for your browser). v2rayNG is also on Google Play in some regions.</p>
+    </li>
+    
+    <li>
+      <h3>Copy the subscription URL</h3>
+      <p>On the <a href="../index.html">homepage</a>, long-press the <strong>v2rayN / v2rayNG</strong> URL and select <strong>Copy link</strong>. This is the v2ray-base64 URL.</p>
+    </li>
+    
+    <li>
+      <h3>Add it as a subscription group</h3>
+      <p>Open v2rayNG. Tap the <strong>≡</strong> menu → <strong>Subscription group setting</strong> → <strong>+</strong>. Give it a name (e.g. "free nodes"), paste the URL into <strong>URL</strong>, leave other fields default, tap <strong>✓</strong>.</p>
+    </li>
+    
+    <li>
+      <h3>Update subscriptions</h3>
+      <p>Back on the main screen, tap the <strong>≡</strong> menu → <strong>Update subscriptions (no proxy)</strong>. After a few seconds you'll see all the free nodes listed.</p>
+    </li>
+    
+    <li>
+      <h3>Test one and connect</h3>
+      <p>Tap any server row, then tap the big <strong>V</strong> button at the bottom right to start the VPN. Android will ask for a VPN permission prompt once — tap OK. The V turns green when connected.</p>
+    </li>
+    
+    <li>
+      <h3>Verify the country</h3>
+      <p>Open a browser and visit <code>ipinfo.io</code>. The shown country should match the node. If it still shows your home IP, tap V again to disconnect then reconnect — the VPN sometimes takes a moment on first use.</p>
+    </li>
+    
+  </ol>
+</section>
+
+<section class="card">
+  <h2>💡 Tips &amp; Troubleshooting</h2>
+  
+  <details><summary>Should I use per-app VPN?</summary><p>For casual browsing, no — default (global) works fine. If you want to keep banking or local apps off the VPN, enable <strong>Settings → Per-app proxy</strong> and exclude them.</p></details>
+  
+  <details><summary>How do I find the fastest server?</summary><p>Tap <strong>≡</strong> → <strong>Real ping test</strong>. v2rayNG will measure each server. Sort by ping, pick the lowest.</p></details>
+  
+  <details><summary>One server stopped working</summary><p>Tap it and pick a different one from the same country. Free nodes rotate — we refresh the list every hour.</p></details>
+  
+  <details><summary>Can I use v2rayNG on Android TV?</summary><p>Yes — install via a sideloader or adb. Navigation is a bit awkward with a remote; consider Clash Meta for Android TV instead if you have issues.</p></details>
+  
+</section>
+
+<section class="card">
+  <h2>📚 Other guides</h2>
+  <ul class="client-list">
+    
+    <li><a href="clash-verge.html">Clash Verge</a> · Windows, macOS, Linux</li>
+    
+    <li><a href="shadowrocket.html">Shadowrocket</a> · iOS 15&#43;, iPadOS 15&#43;</li>
+    
+    <li><a href="sing-box.html">sing-box</a> · Windows, macOS, Linux, iOS, Android</li>
+    
+  </ul>
+</section>
+
+<footer>
+  <p>Open source on <a href="https://github.com/Au1rxx/free-vpn-subscriptions" target="_blank" rel="noopener">GitHub</a>. MIT licensed.</p>
+</footer>
+</body>
+</html>
