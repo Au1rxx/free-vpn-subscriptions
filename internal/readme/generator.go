@@ -36,9 +36,9 @@ func Generate(in Input, loc Locale) string {
 	b.WriteString(renderLangSwitcher(loc))
 	b.WriteString("\n\n")
 
-	// Hero image — SVG workflow diagram is the fallback when no real
-	// screenshot exists yet; the alt text carries SEO weight.
-	fmt.Fprintf(&b, "<p align=\"center\"><img src=\"%s/raw/main/assets/workflow.svg\" alt=\"%s — aggregation workflow\" width=\"780\"></p>\n\n",
+	// Hero image — a pipeline diagram doubling as the OG social card.
+	// Alt text carries SEO weight, so it names the primary keywords.
+	fmt.Fprintf(&b, "<p align=\"center\"><img src=\"%s/raw/main/assets/hero.png\" alt=\"%s — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray\" width=\"780\"></p>\n\n",
 		in.RepoURL, in.Title)
 
 	// Badges
