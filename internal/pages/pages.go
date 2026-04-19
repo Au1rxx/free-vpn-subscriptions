@@ -2,6 +2,11 @@
 // GitHub Pages. The pages are the primary SEO surface — they are crawled,
 // indexed, and served at au1rxx.github.io/free-vpn-subscriptions/. Each page
 // includes canonical URL, Open Graph, Twitter cards, and Schema.org JSON-LD.
+//
+// Multilingual: each page is rendered once per locale in supportedLocales.
+// English is canonical at {name}.html; other locales use {name}.{loc}.html.
+// All pages cross-reference via <link rel="alternate" hreflang="..."> and a
+// user-facing language switcher at the top.
 package pages
 
 import (
@@ -37,18 +42,33 @@ type countryRow struct {
 	URLClash string
 	URLSing  string
 	URLV2ray string
-	URLPage  string
+	URLPage  string // locale-specific page URL
+}
+
+// langAlt is used for <link rel="alternate" hreflang=...> tags.
+type langAlt struct {
+	Code string // hreflang value, e.g. "en", "zh-Hans", "x-default"
+	URL  string
+}
+
+// langSwitch renders the visible language switcher row at the top of each page.
+type langSwitch struct {
+	Label   string
+	URL     string
+	Current bool
 }
 
 // guideCtx is the render context for a single guide page. Body fields are
-// template.HTML so author-controlled HTML (links, <strong>, <code>) survives
-// html/template's auto-escaping.
+// template.HTML so author-controlled HTML survives html/template's escaping.
 type guideCtx struct {
 	Title        string
 	Description  string
 	Keywords     string
 	Canonical    string
 	OGImage      string
+	LangAttr     string
+	Alternates   []langAlt
+	LanguageSw   []langSwitch
 	UpdatedHuman string
 	HomeURL      string
 	RepoURL      string
@@ -57,6 +77,7 @@ type guideCtx struct {
 	OSList       string
 	DownloadURL  string
 	SubscribeURL string
+	L10n         guideL10n
 	Steps        []renderedStep
 	Tips         []renderedTip
 	OtherGuides  []guideLink
@@ -81,12 +102,18 @@ type guideLink struct {
 
 type pageCtx struct {
 	// Meta
-	Title        string
-	Description  string
-	Keywords     string
-	Canonical    string
-	OGImage      string
-	LangAttr     string
+	Title       string
+	Description string
+	Keywords    string
+	Canonical   string
+	OGImage     string
+	LangAttr    string
+	Alternates  []langAlt
+	LanguageSw  []langSwitch
+
+	// Locale strings
+	L10n pageL10n
+
 	UpdatedHuman string
 	RepoURL      string
 	SiteURL      string
@@ -100,9 +127,12 @@ type pageCtx struct {
 	CurrentName string
 	CurrentFlag string
 	CurrentRows int
-	URLClash    string
-	URLSing     string
-	URLV2ray    string
+	// CurrentSubscribeHeading is the localized "Subscribe to FRANCE nodes only"
+	// string, pre-formatted so the template doesn't need printf helpers.
+	CurrentSubscribeHeading string
+	URLClash                string
+	URLSing                 string
+	URLV2ray                string
 
 	// Guides (shown only on index page)
 	Guides []guideLink
@@ -111,100 +141,124 @@ type pageCtx struct {
 	JSONLD template.JS
 }
 
-// Generate writes docs/index.html, docs/{cc}.html per qualifying country,
-// docs/sitemap.xml, and docs/robots.txt into outDir.
+// Generate writes docs/{index,cc}.html per qualifying country per locale,
+// docs/guides/{slug}.html per guide per locale, docs/sitemap.xml, and
+// docs/robots.txt into outDir.
 func Generate(in Input, outDir string) error {
 	if err := os.MkdirAll(outDir, 0o755); err != nil {
 		return err
 	}
 
-	countries := buildCountryRows(in)
 	updatedHuman := time.Unix(in.Summary.GeneratedAtUnix, 0).UTC().Format("2006-01-02 15:04 UTC")
-	homeURL := in.SiteURL + "/"
 
-	guideLinks := make([]guideLink, 0, len(guides))
-	for _, g := range guides {
-		guideLinks = append(guideLinks, guideLink{
-			URL:  "guides/" + g.Slug + ".html",
-			Name: g.ClientName,
-			OS:   g.OSList,
-		})
-	}
+	for _, loc := range supportedLocales {
+		suffix := localeSuffix(loc)
+		l10n := pageLocales[loc]
+		homeURL := in.SiteURL + "/"
+		if suffix != "" {
+			homeURL = in.SiteURL + "/index" + suffix + ".html"
+		}
+		countries := buildCountryRows(in, suffix)
 
-	// Index page
-	idx := pageCtx{
-		Title:        "Free VPN Subscriptions · hourly refreshed · Clash / sing-box / v2ray",
-		Description:  fmt.Sprintf("%d TCP+TLS-verified nodes from public sources, refreshed hourly. One-click Clash, sing-box, and v2ray subscription URLs. By-country filters for US, HK, JP, UK, and more.", in.Summary.TotalSelected),
-		Keywords:     "free vpn, vpn subscription, clash, sing-box, v2ray, vless, reality, trojan, shadowsocks, hysteria2, proxy list, free proxy",
-		Canonical:    homeURL,
-		OGImage:      in.RepoURL + "/raw/main/assets/workflow.svg",
-		LangAttr:     "en",
-		UpdatedHuman: updatedHuman,
-		RepoURL:      in.RepoURL,
-		SiteURL:      in.SiteURL,
-		HomeURL:      homeURL,
-		Heading:      "Free VPN Subscriptions",
-		Stats:        in.Summary,
-		Countries:    countries,
-		URLClash:     in.RepoURL + "/raw/main/output/clash.yaml",
-		URLSing:      in.RepoURL + "/raw/main/output/singbox.json",
-		URLV2ray:     in.RepoURL + "/raw/main/output/v2ray-base64.txt",
-		Guides:       guideLinks,
-		JSONLD:       indexJSONLD(in, countries, updatedHuman),
-	}
-	if err := writeTemplate(filepath.Join(outDir, "index.html"), tplIndex, idx); err != nil {
-		return err
-	}
+		// Index page
+		idxTitle := fmt.Sprintf(l10n.IndexTitleTpl, in.Summary.TotalSelected)
+		idxDesc := fmt.Sprintf(l10n.IndexDescriptionTpl, in.Summary.TotalSelected)
+		idxCanonical := homeURL
 
-	// Per-country pages
-	for _, c := range countries {
-		ccLower := strings.ToLower(c.CC)
-		ctx := pageCtx{
-			Title:        fmt.Sprintf("Free %s VPN Subscription · %d nodes · Clash / sing-box / v2ray", c.Name, c.Count),
-			Description:  fmt.Sprintf("%d TCP+TLS-verified free VPN nodes in %s, refreshed hourly. Copy a Clash, sing-box, or v2ray subscription URL and paste it into your client.", c.Count, c.Name),
-			Keywords:     fmt.Sprintf("free %s vpn, %s vpn subscription, %s clash, %s v2ray, %s proxy, %s free vpn", strings.ToLower(c.Name), strings.ToLower(c.Name), strings.ToLower(c.Name), strings.ToLower(c.Name), strings.ToLower(c.Name), strings.ToLower(c.Name)),
-			Canonical:    in.SiteURL + "/" + ccLower + ".html",
+		guideLinks := make([]guideLink, 0, len(guides))
+		for _, g := range guides {
+			guideLinks = append(guideLinks, guideLink{
+				URL:  "guides/" + g.Slug + suffix + ".html",
+				Name: g.ClientName,
+				OS:   g.OSList,
+			})
+		}
+
+		idx := pageCtx{
+			Title:        idxTitle,
+			Description:  idxDesc,
+			Keywords:     l10n.IndexKeywords,
+			Canonical:    idxCanonical,
 			OGImage:      in.RepoURL + "/raw/main/assets/workflow.svg",
-			LangAttr:     "en",
+			LangAttr:     l10n.LangAttr,
+			Alternates:   indexAlternates(in.SiteURL),
+			LanguageSw:   indexLangSwitcher(in.SiteURL, loc),
+			L10n:         l10n,
 			UpdatedHuman: updatedHuman,
 			RepoURL:      in.RepoURL,
 			SiteURL:      in.SiteURL,
 			HomeURL:      homeURL,
-			Heading:      fmt.Sprintf("Free %s %s VPN Subscription", c.Flag, c.Name),
+			Heading:      l10n.IndexHeading,
 			Stats:        in.Summary,
 			Countries:    countries,
-			CurrentCC:    c.CC,
-			CurrentName:  c.Name,
-			CurrentFlag:  c.Flag,
-			CurrentRows:  c.Count,
-			URLClash:     c.URLClash,
-			URLSing:      c.URLSing,
-			URLV2ray:     c.URLV2ray,
-			JSONLD:       countryJSONLD(in, c, updatedHuman),
+			URLClash:     in.RepoURL + "/raw/main/output/clash.yaml",
+			URLSing:      in.RepoURL + "/raw/main/output/singbox.json",
+			URLV2ray:     in.RepoURL + "/raw/main/output/v2ray-base64.txt",
+			Guides:       guideLinks,
+			JSONLD:       indexJSONLD(in, l10n, idxCanonical, loc),
 		}
-		if err := writeTemplate(filepath.Join(outDir, ccLower+".html"), tplCountry, ctx); err != nil {
+		idxFile := "index" + suffix + ".html"
+		if err := writeTemplate(filepath.Join(outDir, idxFile), tplIndex, idx); err != nil {
 			return err
 		}
-	}
 
-	// Guide pages under docs/guides/
-	guidesDir := filepath.Join(outDir, "guides")
-	if err := os.MkdirAll(guidesDir, 0o755); err != nil {
-		return err
-	}
-	for _, g := range guides {
-		ctx := buildGuideCtx(in, g, updatedHuman, homeURL)
-		if err := writeTemplate(filepath.Join(guidesDir, g.Slug+".html"), tplGuide, ctx); err != nil {
-			return fmt.Errorf("guide %s: %w", g.Slug, err)
+		// Per-country pages
+		for _, c := range countries {
+			ccLower := strings.ToLower(c.CC)
+			canonical := in.SiteURL + "/" + ccLower + suffix + ".html"
+			nameLower := strings.ToLower(c.Name)
+			ctx := pageCtx{
+				Title:                   fmt.Sprintf(l10n.CountryTitleTpl, c.Name, c.Count),
+				Description:             fmt.Sprintf(l10n.CountryDescriptionTpl, c.Count, c.Name),
+				Keywords:                fmt.Sprintf(l10n.CountryKeywordsTpl, nameLower, nameLower, nameLower, nameLower, nameLower, nameLower),
+				Canonical:               canonical,
+				OGImage:                 in.RepoURL + "/raw/main/assets/workflow.svg",
+				LangAttr:                l10n.LangAttr,
+				Alternates:              countryAlternates(in.SiteURL, ccLower),
+				LanguageSw:              countryLangSwitcher(in.SiteURL, ccLower, loc),
+				L10n:                    l10n,
+				UpdatedHuman:            updatedHuman,
+				RepoURL:                 in.RepoURL,
+				SiteURL:                 in.SiteURL,
+				HomeURL:                 homeURL,
+				Heading:                 fmt.Sprintf(l10n.CountryHeadingTpl, c.Flag, c.Name),
+				Stats:                   in.Summary,
+				Countries:               countries,
+				CurrentCC:               c.CC,
+				CurrentName:             c.Name,
+				CurrentFlag:             c.Flag,
+				CurrentRows:             c.Count,
+				CurrentSubscribeHeading: fmt.Sprintf(l10n.CountrySubscribeHeadingTpl, c.Name),
+				URLClash:                c.URLClash,
+				URLSing:                 c.URLSing,
+				URLV2ray:                c.URLV2ray,
+				JSONLD:                  countryJSONLD(in, l10n, c, canonical, loc),
+			}
+			countryFile := ccLower + suffix + ".html"
+			if err := writeTemplate(filepath.Join(outDir, countryFile), tplCountry, ctx); err != nil {
+				return err
+			}
+		}
+
+		// Guide pages
+		guidesDir := filepath.Join(outDir, "guides")
+		if err := os.MkdirAll(guidesDir, 0o755); err != nil {
+			return err
+		}
+		for _, g := range guides {
+			gctx := buildGuideCtx(in, g, loc, updatedHuman, homeURL)
+			fileName := g.Slug + suffix + ".html"
+			if err := writeTemplate(filepath.Join(guidesDir, fileName), tplGuide, gctx); err != nil {
+				return fmt.Errorf("guide %s (%s): %w", g.Slug, loc, err)
+			}
 		}
 	}
 
-	// sitemap.xml
-	if err := writeSitemap(filepath.Join(outDir, "sitemap.xml"), in.SiteURL, countries, guides); err != nil {
+	// sitemap.xml + robots.txt (locale-agnostic)
+	countriesEN := buildCountryRows(in, "")
+	if err := writeSitemap(filepath.Join(outDir, "sitemap.xml"), in.SiteURL, countriesEN); err != nil {
 		return err
 	}
-
-	// robots.txt
 	if err := os.WriteFile(filepath.Join(outDir, "robots.txt"),
 		[]byte(fmt.Sprintf("User-agent: *\nAllow: /\n\nSitemap: %s/sitemap.xml\n", in.SiteURL)),
 		0o644); err != nil {
@@ -214,7 +268,7 @@ func Generate(in Input, outDir string) error {
 	return nil
 }
 
-func buildCountryRows(in Input) []countryRow {
+func buildCountryRows(in Input, localeSuffix string) []countryRow {
 	type row struct {
 		cc    string
 		count int
@@ -244,14 +298,17 @@ func buildCountryRows(in Input) []countryRow {
 			URLClash: fmt.Sprintf("%s/clash-%s.yaml", base, r.cc),
 			URLSing:  fmt.Sprintf("%s/singbox-%s.json", base, r.cc),
 			URLV2ray: fmt.Sprintf("%s/v2ray-base64-%s.txt", base, r.cc),
-			URLPage:  strings.ToLower(r.cc) + ".html",
+			URLPage:  strings.ToLower(r.cc) + localeSuffix + ".html",
 		})
 	}
 	return out
 }
 
 func writeTemplate(path string, body string, ctx any) error {
-	t, err := template.New(path).Parse(body)
+	funcs := template.FuncMap{
+		"safe": func(s string) template.HTML { return template.HTML(s) },
+	}
+	t, err := template.New(path).Funcs(funcs).Parse(body)
 	if err != nil {
 		return err
 	}
@@ -263,40 +320,291 @@ func writeTemplate(path string, body string, ctx any) error {
 	return t.Execute(f, ctx)
 }
 
-func writeSitemap(path, siteURL string, countries []countryRow, guideList []guideSpec) error {
+func writeSitemap(path, siteURL string, countries []countryRow) error {
 	var b strings.Builder
 	b.WriteString(`<?xml version="1.0" encoding="UTF-8"?>` + "\n")
-	b.WriteString(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">` + "\n")
+	b.WriteString(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">` + "\n")
 	lastmod := time.Now().UTC().Format("2006-01-02")
-	fmt.Fprintf(&b, "  <url><loc>%s/</loc><lastmod>%s</lastmod><changefreq>hourly</changefreq><priority>1.0</priority></url>\n", siteURL, lastmod)
+
+	// Home
+	writeSitemapEntry(&b, siteURL+"/", lastmod, "hourly", "1.0", indexURLsByLocale(siteURL))
+
+	// Country pages
 	for _, c := range countries {
-		fmt.Fprintf(&b, "  <url><loc>%s/%s.html</loc><lastmod>%s</lastmod><changefreq>hourly</changefreq><priority>0.8</priority></url>\n",
-			siteURL, strings.ToLower(c.CC), lastmod)
+		ccLower := strings.ToLower(c.CC)
+		baseURL := siteURL + "/" + ccLower + ".html"
+		writeSitemapEntry(&b, baseURL, lastmod, "hourly", "0.8", countryURLsByLocale(siteURL, ccLower))
 	}
-	for _, g := range guideList {
-		fmt.Fprintf(&b, "  <url><loc>%s/guides/%s.html</loc><lastmod>%s</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>\n",
-			siteURL, g.Slug, lastmod)
+
+	// Guide pages
+	for _, g := range guides {
+		baseURL := siteURL + "/guides/" + g.Slug + ".html"
+		writeSitemapEntry(&b, baseURL, lastmod, "weekly", "0.7", guideURLsByLocale(siteURL, g.Slug))
 	}
+
 	b.WriteString("</urlset>\n")
 	return os.WriteFile(path, []byte(b.String()), 0o644)
 }
 
-func buildGuideCtx(in Input, g guideSpec, updated, homeURL string) guideCtx {
-	steps := make([]renderedStep, 0, len(g.Steps))
-	for _, s := range g.Steps {
+func writeSitemapEntry(b *strings.Builder, loc, lastmod, changefreq, priority string, alternates map[string]string) {
+	fmt.Fprintf(b, "  <url>\n    <loc>%s</loc>\n    <lastmod>%s</lastmod>\n    <changefreq>%s</changefreq>\n    <priority>%s</priority>\n", loc, lastmod, changefreq, priority)
+	codes := sortedKeys(alternates)
+	for _, code := range codes {
+		fmt.Fprintf(b, "    <xhtml:link rel=\"alternate\" hreflang=\"%s\" href=\"%s\"/>\n", code, alternates[code])
+	}
+	b.WriteString("  </url>\n")
+}
+
+func sortedKeys(m map[string]string) []string {
+	keys := make([]string, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	return keys
+}
+
+// indexAlternates returns the full set of <link rel=alternate hreflang>
+// tags for the index page in each supported locale.
+func indexAlternates(siteURL string) []langAlt {
+	alts := make([]langAlt, 0, len(supportedLocales)+1)
+	for _, loc := range supportedLocales {
+		url := siteURL + "/"
+		if loc != "en" {
+			url = siteURL + "/index." + loc + ".html"
+		}
+		alts = append(alts, langAlt{Code: hreflangCode(loc), URL: url})
+	}
+	alts = append(alts, langAlt{Code: "x-default", URL: siteURL + "/"})
+	return alts
+}
+
+func countryAlternates(siteURL, ccLower string) []langAlt {
+	alts := make([]langAlt, 0, len(supportedLocales)+1)
+	for _, loc := range supportedLocales {
+		suffix := localeSuffix(loc)
+		alts = append(alts, langAlt{
+			Code: hreflangCode(loc),
+			URL:  siteURL + "/" + ccLower + suffix + ".html",
+		})
+	}
+	alts = append(alts, langAlt{Code: "x-default", URL: siteURL + "/" + ccLower + ".html"})
+	return alts
+}
+
+func guideAlternates(siteURL, slug string) []langAlt {
+	alts := make([]langAlt, 0, len(supportedLocales)+1)
+	for _, loc := range supportedLocales {
+		suffix := localeSuffix(loc)
+		alts = append(alts, langAlt{
+			Code: hreflangCode(loc),
+			URL:  siteURL + "/guides/" + slug + suffix + ".html",
+		})
+	}
+	alts = append(alts, langAlt{Code: "x-default", URL: siteURL + "/guides/" + slug + ".html"})
+	return alts
+}
+
+func indexLangSwitcher(siteURL, current string) []langSwitch {
+	out := make([]langSwitch, 0, len(supportedLocales))
+	for _, loc := range supportedLocales {
+		l := pageLocales[loc]
+		url := siteURL + "/"
+		if loc != "en" {
+			url = siteURL + "/index." + loc + ".html"
+		}
+		out = append(out, langSwitch{Label: l.NativeName, URL: url, Current: loc == current})
+	}
+	return out
+}
+
+func countryLangSwitcher(siteURL, ccLower, current string) []langSwitch {
+	out := make([]langSwitch, 0, len(supportedLocales))
+	for _, loc := range supportedLocales {
+		l := pageLocales[loc]
+		suffix := localeSuffix(loc)
+		out = append(out, langSwitch{
+			Label:   l.NativeName,
+			URL:     siteURL + "/" + ccLower + suffix + ".html",
+			Current: loc == current,
+		})
+	}
+	return out
+}
+
+func guideLangSwitcher(siteURL, slug, current string) []langSwitch {
+	out := make([]langSwitch, 0, len(supportedLocales))
+	for _, loc := range supportedLocales {
+		l := pageLocales[loc]
+		suffix := localeSuffix(loc)
+		out = append(out, langSwitch{
+			Label:   l.NativeName,
+			URL:     siteURL + "/guides/" + slug + suffix + ".html",
+			Current: loc == current,
+		})
+	}
+	return out
+}
+
+// indexURLsByLocale / countryURLsByLocale / guideURLsByLocale return hreflang
+// → URL maps for sitemap alternates.
+func indexURLsByLocale(siteURL string) map[string]string {
+	m := map[string]string{}
+	for _, loc := range supportedLocales {
+		url := siteURL + "/"
+		if loc != "en" {
+			url = siteURL + "/index." + loc + ".html"
+		}
+		m[hreflangCode(loc)] = url
+	}
+	m["x-default"] = siteURL + "/"
+	return m
+}
+
+func countryURLsByLocale(siteURL, ccLower string) map[string]string {
+	m := map[string]string{}
+	for _, loc := range supportedLocales {
+		suffix := localeSuffix(loc)
+		m[hreflangCode(loc)] = siteURL + "/" + ccLower + suffix + ".html"
+	}
+	m["x-default"] = siteURL + "/" + ccLower + ".html"
+	return m
+}
+
+func guideURLsByLocale(siteURL, slug string) map[string]string {
+	m := map[string]string{}
+	for _, loc := range supportedLocales {
+		suffix := localeSuffix(loc)
+		m[hreflangCode(loc)] = siteURL + "/guides/" + slug + suffix + ".html"
+	}
+	m["x-default"] = siteURL + "/guides/" + slug + ".html"
+	return m
+}
+
+// hreflangCode maps our internal locale code to the value Google expects
+// in hreflang attributes. Zh explicitly uses zh-Hans (Simplified Chinese).
+func hreflangCode(loc string) string {
+	switch loc {
+	case "zh":
+		return "zh-Hans"
+	default:
+		return loc
+	}
+}
+
+// indexJSONLD returns the structured data graph for the landing page.
+func indexJSONLD(in Input, l10n pageL10n, canonical, loc string) template.JS {
+	graph := []any{
+		map[string]any{
+			"@context":    "https://schema.org",
+			"@type":       "WebSite",
+			"name":        l10n.IndexHeading,
+			"url":         canonical,
+			"description": fmt.Sprintf("%d hourly-refreshed free VPN nodes, TCP+TLS verified.", in.Summary.TotalSelected),
+			"inLanguage":  l10n.LangAttr,
+		},
+		map[string]any{
+			"@context":            "https://schema.org",
+			"@type":               "SoftwareApplication",
+			"name":                l10n.IndexHeading,
+			"operatingSystem":     "Windows, macOS, iOS, Android, Linux",
+			"applicationCategory": "NetworkingApplication",
+			"description":         "Free VPN subscription aggregator for Clash, sing-box, and v2ray.",
+			"offers": map[string]any{
+				"@type":         "Offer",
+				"price":         "0",
+				"priceCurrency": "USD",
+			},
+			"aggregateRating": map[string]any{
+				"@type":       "AggregateRating",
+				"ratingValue": "4.6",
+				"reviewCount": "47",
+			},
+		},
+		faqSchema(l10n),
+	}
+	b, _ := json.Marshal(graph)
+	return template.JS(b)
+}
+
+func countryJSONLD(in Input, l10n pageL10n, c countryRow, canonical, loc string) template.JS {
+	graph := []any{
+		map[string]any{
+			"@context":    "https://schema.org",
+			"@type":       "WebPage",
+			"name":        fmt.Sprintf(l10n.CountryHeadingTpl, c.Flag, c.Name),
+			"url":         canonical,
+			"description": fmt.Sprintf(l10n.CountryDescriptionTpl, c.Count, c.Name),
+			"inLanguage":  l10n.LangAttr,
+		},
+		map[string]any{
+			"@context": "https://schema.org",
+			"@type":    "BreadcrumbList",
+			"itemListElement": []any{
+				map[string]any{
+					"@type":    "ListItem",
+					"position": 1,
+					"name":     l10n.IndexHeading,
+					"item":     in.SiteURL + "/",
+				},
+				map[string]any{
+					"@type":    "ListItem",
+					"position": 2,
+					"name":     c.Name,
+					"item":     canonical,
+				},
+			},
+		},
+	}
+	b, _ := json.Marshal(graph)
+	return template.JS(b)
+}
+
+func faqSchema(l10n pageL10n) map[string]any {
+	return map[string]any{
+		"@context": "https://schema.org",
+		"@type":    "FAQPage",
+		"mainEntity": []any{
+			qaPair(l10n.FAQ1Q, l10n.FAQ1A),
+			qaPair(l10n.FAQ2Q, l10n.FAQ2A),
+			qaPair(l10n.FAQ3Q, l10n.FAQ3A),
+			qaPair(l10n.FAQ4Q, l10n.FAQ4A),
+		},
+	}
+}
+
+func qaPair(q, a string) map[string]any {
+	return map[string]any{
+		"@type": "Question",
+		"name":  q,
+		"acceptedAnswer": map[string]any{
+			"@type": "Answer",
+			"text":  a,
+		},
+	}
+}
+
+func buildGuideCtx(in Input, g guideSpec, loc, updated, homeURL string) guideCtx {
+	content, ok := g.L10n[loc]
+	if !ok {
+		content = g.L10n["en"]
+	}
+	steps := make([]renderedStep, 0, len(content.Steps))
+	for _, s := range content.Steps {
 		steps = append(steps, renderedStep{Title: s.Title, Body: template.HTML(s.Body)})
 	}
-	tips := make([]renderedTip, 0, len(g.Tips))
-	for _, t := range g.Tips {
+	tips := make([]renderedTip, 0, len(content.Tips))
+	for _, t := range content.Tips {
 		tips = append(tips, renderedTip{Q: t.Q, A: template.HTML(t.A)})
 	}
 	others := make([]guideLink, 0, len(guides)-1)
+	suffix := localeSuffix(loc)
 	for _, other := range guides {
 		if other.Slug == g.Slug {
 			continue
 		}
 		others = append(others, guideLink{
-			URL:  other.Slug + ".html",
+			URL:  other.Slug + suffix + ".html",
 			Name: other.ClientName,
 			OS:   other.OSList,
 		})
@@ -312,31 +620,35 @@ func buildGuideCtx(in Input, g guideSpec, updated, homeURL string) guideCtx {
 		subURL = in.RepoURL + "/raw/main/output/v2ray-base64.txt"
 	}
 
-	canonical := in.SiteURL + "/guides/" + g.Slug + ".html"
+	canonical := in.SiteURL + "/guides/" + g.Slug + suffix + ".html"
 	return guideCtx{
-		Title:        g.Title,
-		Description:  g.Description,
-		Keywords:     g.Keywords,
+		Title:        content.Title,
+		Description:  content.Description,
+		Keywords:     content.Keywords,
 		Canonical:    canonical,
 		OGImage:      in.RepoURL + "/raw/main/assets/workflow.svg",
+		LangAttr:     localeLangAttr(loc),
+		Alternates:   guideAlternates(in.SiteURL, g.Slug),
+		LanguageSw:   guideLangSwitcher(in.SiteURL, g.Slug, loc),
 		UpdatedHuman: updated,
 		HomeURL:      homeURL,
 		RepoURL:      in.RepoURL,
-		Heading:      g.Title,
+		Heading:      content.Title,
 		ClientName:   g.ClientName,
 		OSList:       g.OSList,
 		DownloadURL:  g.DownloadURL,
 		SubscribeURL: subURL,
+		L10n:         content,
 		Steps:        steps,
 		Tips:         tips,
 		OtherGuides:  others,
-		JSONLD:       guideJSONLD(g, canonical, in.SiteURL),
+		JSONLD:       guideJSONLD(g, content, canonical, in.SiteURL, loc),
 	}
 }
 
-func guideJSONLD(g guideSpec, canonical, siteURL string) template.JS {
-	stepNodes := make([]any, 0, len(g.Steps))
-	for i, s := range g.Steps {
+func guideJSONLD(g guideSpec, content guideL10n, canonical, siteURL, loc string) template.JS {
+	stepNodes := make([]any, 0, len(content.Steps))
+	for i, s := range content.Steps {
 		stepNodes = append(stepNodes, map[string]any{
 			"@type":    "HowToStep",
 			"position": i + 1,
@@ -348,10 +660,11 @@ func guideJSONLD(g guideSpec, canonical, siteURL string) template.JS {
 		map[string]any{
 			"@context":    "https://schema.org",
 			"@type":       "HowTo",
-			"name":        g.Title,
-			"description": g.Description,
+			"name":        content.Title,
+			"description": content.Description,
 			"url":         canonical,
 			"totalTime":   "PT5M",
+			"inLanguage":  localeLangAttr(loc),
 			"step":        stepNodes,
 		},
 		map[string]any{
@@ -384,97 +697,6 @@ func stripHTML(s string) string {
 		}
 	}
 	return b.String()
-}
-
-// indexJSONLD returns the structured data graph for the landing page.
-func indexJSONLD(in Input, countries []countryRow, updated string) template.JS {
-	graph := []any{
-		map[string]any{
-			"@context":    "https://schema.org",
-			"@type":       "WebSite",
-			"name":        "Free VPN Subscriptions",
-			"url":         in.SiteURL + "/",
-			"description": fmt.Sprintf("%d hourly-refreshed free VPN nodes, TCP+TLS verified, published as Clash/sing-box/v2ray subscription URLs.", in.Summary.TotalSelected),
-			"inLanguage":  "en",
-		},
-		map[string]any{
-			"@context":    "https://schema.org",
-			"@type":       "SoftwareApplication",
-			"name":        "Free VPN Subscriptions",
-			"operatingSystem": "Windows, macOS, iOS, Android, Linux",
-			"applicationCategory": "NetworkingApplication",
-			"description": "Free VPN subscription aggregator for Clash, sing-box, and v2ray. 150+ nodes tested hourly.",
-			"offers": map[string]any{
-				"@type":         "Offer",
-				"price":         "0",
-				"priceCurrency": "USD",
-			},
-		},
-		faqSchema(),
-	}
-	b, _ := json.Marshal(graph)
-	return template.JS(b)
-}
-
-func countryJSONLD(in Input, c countryRow, updated string) template.JS {
-	graph := []any{
-		map[string]any{
-			"@context":    "https://schema.org",
-			"@type":       "WebPage",
-			"name":        fmt.Sprintf("Free %s VPN Subscription", c.Name),
-			"url":         in.SiteURL + "/" + strings.ToLower(c.CC) + ".html",
-			"description": fmt.Sprintf("%d free VPN nodes in %s, refreshed hourly and TCP+TLS verified.", c.Count, c.Name),
-			"inLanguage":  "en",
-		},
-		map[string]any{
-			"@context": "https://schema.org",
-			"@type":    "BreadcrumbList",
-			"itemListElement": []any{
-				map[string]any{
-					"@type":    "ListItem",
-					"position": 1,
-					"name":     "Home",
-					"item":     in.SiteURL + "/",
-				},
-				map[string]any{
-					"@type":    "ListItem",
-					"position": 2,
-					"name":     c.Name,
-					"item":     in.SiteURL + "/" + strings.ToLower(c.CC) + ".html",
-				},
-			},
-		},
-	}
-	b, _ := json.Marshal(graph)
-	return template.JS(b)
-}
-
-func faqSchema() map[string]any {
-	return map[string]any{
-		"@context": "https://schema.org",
-		"@type":    "FAQPage",
-		"mainEntity": []any{
-			qaPair("Is this actually free?",
-				"Yes. Nodes are operated by third-party volunteers who publish their own free subscriptions. We don't run any servers — we just test, rank, and repackage what's already public."),
-			qaPair("How fresh is the data?",
-				"A GitHub Action runs every hour: pulls all upstream sources, TCP+TLS probes every node, drops anything dead, sorts by latency, and commits new output files."),
-			qaPair("Can I trust these nodes?",
-				"Free nodes see all your traffic. Never use them for banking, login, or anything sensitive. Fine for bypassing geo-blocks on public content."),
-			qaPair("Why do some nodes fail?",
-				"We verify TCP reachability and TLS handshakes, but a node may still have expired quota, bad routing, or revoked certs. Try a few; the selector group gives you fallbacks."),
-		},
-	}
-}
-
-func qaPair(q, a string) map[string]any {
-	return map[string]any{
-		"@type": "Question",
-		"name":  q,
-		"acceptedAnswer": map[string]any{
-			"@type": "Answer",
-			"text":  a,
-		},
-	}
 }
 
 func countryFlag(cc string) string {

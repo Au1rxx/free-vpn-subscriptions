@@ -45,6 +45,10 @@ var KO = Locale{
 	ByCountryColCC:   "국가",
 	ByCountryColN:    "노드 수",
 
+	GuidesHeading:     "## 📖 클라이언트 설정 가이드",
+	GuidesIntro:       "처음이신가요? 플랫폼에 맞는 튜토리얼을 따라 해보세요:",
+	GuideLocaleSuffix: "",
+
 	FAQHeading: "## ❓ 자주 묻는 질문",
 	FAQ1Q:      "정말 무료인가요?",
 	FAQ1A:      "네. 모든 노드는 제3자 자원봉사자가 운영하며 공개 구독을 스스로 게시합니다. 저희는 어떤 서버도 운영하지 않으며, 이미 공개된 것을 테스트하고 순위를 매기고 재포장할 뿐입니다.",

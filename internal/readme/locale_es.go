@@ -45,6 +45,10 @@ var ES = Locale{
 	ByCountryColCC:   "País",
 	ByCountryColN:    "Nodos",
 
+	GuidesHeading:     "## 📖 Guías paso a paso",
+	GuidesIntro:       "¿Nuevo con los clientes VPN? Elige tu plataforma y sigue el tutorial:",
+	GuideLocaleSuffix: "",
+
 	FAQHeading: "## ❓ Preguntas frecuentes",
 	FAQ1Q:      "¿Es realmente gratis?",
 	FAQ1A:      "Sí. Los nodos son operados por voluntarios externos que publican sus propias suscripciones gratuitas. Nosotros no operamos ningún servidor — solo probamos, clasificamos y reempaquetamos lo que ya es público.",

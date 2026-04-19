@@ -45,6 +45,10 @@ var PT = Locale{
 	ByCountryColCC:   "País",
 	ByCountryColN:    "Nós",
 
+	GuidesHeading:     "## 📖 Tutoriais passo a passo",
+	GuidesIntro:       "Novo nos clientes VPN? Escolha sua plataforma e siga o tutorial:",
+	GuideLocaleSuffix: "",
+
 	FAQHeading: "## ❓ Perguntas frequentes",
 	FAQ1Q:      "Isso é realmente grátis?",
 	FAQ1A:      "Sim. Os nós são operados por voluntários de terceiros que publicam suas próprias assinaturas gratuitas. Nós não operamos nenhum servidor — apenas testamos, classificamos e reempacotamos o que já é público.",

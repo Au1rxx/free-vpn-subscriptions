@@ -73,6 +73,10 @@ func Generate(in Input, loc Locale) string {
 		renderByCountry(&b, in, loc)
 	}
 
+	// Guides (client tutorials) — one entry per supported client, pointing at
+	// the locale's HTML guide page (or English fallback).
+	renderGuides(&b, in, loc)
+
 	// Clients
 	fmt.Fprintf(&b, "%s\n\n- %s\n- %s\n- %s\n- %s\n- %s\n\n",
 		loc.ClientsHeading,
@@ -189,6 +193,34 @@ func renderByCountry(b *strings.Builder, in Input, loc Locale) {
 			r.cc, base, r.cc,
 			r.cc, base, r.cc,
 			r.cc, base, r.cc)
+	}
+	b.WriteString("\n")
+}
+
+// guideEntry is the small subset of pages.guideSpec that readme rendering
+// needs. Kept local so the readme package doesn't depend on pages.
+type guideEntry struct {
+	Slug       string
+	ClientName string
+	OSList     string
+}
+
+// guideEntries mirrors the list in internal/pages/guides.go — if that list
+// changes, add matching entries here. Kept hand-synced rather than importing
+// pages (which would create a cycle).
+var guideEntries = []guideEntry{
+	{Slug: "clash-verge", ClientName: "Clash Verge", OSList: "Windows / macOS / Linux"},
+	{Slug: "v2rayng", ClientName: "v2rayNG", OSList: "Android"},
+	{Slug: "shadowrocket", ClientName: "Shadowrocket", OSList: "iOS / iPadOS"},
+	{Slug: "sing-box", ClientName: "sing-box", OSList: "Windows / macOS / Linux / iOS / Android"},
+}
+
+func renderGuides(b *strings.Builder, in Input, loc Locale) {
+	fmt.Fprintf(b, "%s\n\n%s\n\n", loc.GuidesHeading, loc.GuidesIntro)
+	base := "https://au1rxx.github.io/free-vpn-subscriptions/guides"
+	for _, g := range guideEntries {
+		url := fmt.Sprintf("%s/%s%s.html", base, g.Slug, loc.GuideLocaleSuffix)
+		fmt.Fprintf(b, "- [**%s**](%s) · %s\n", g.ClientName, url, g.OSList)
 	}
 	b.WriteString("\n")
 }

@@ -10,11 +10,13 @@ const tplIndex = `<!DOCTYPE html>
 <meta name="description" content="{{.Description}}">
 <meta name="keywords" content="{{.Keywords}}">
 <link rel="canonical" href="{{.Canonical}}">
-<meta property="og:type" content="website">
+{{range .Alternates}}<link rel="alternate" hreflang="{{.Code}}" href="{{.URL}}">
+{{end}}<meta property="og:type" content="website">
 <meta property="og:title" content="{{.Title}}">
 <meta property="og:description" content="{{.Description}}">
 <meta property="og:url" content="{{.Canonical}}">
 <meta property="og:image" content="{{.OGImage}}">
+<meta property="og:locale" content="{{.LangAttr}}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{.Title}}">
 <meta name="twitter:description" content="{{.Description}}">
@@ -23,34 +25,40 @@ const tplIndex = `<!DOCTYPE html>
 <style>` + css + `</style>
 </head>
 <body>
+<div class="lang-switch">
+  <span>{{.L10n.LanguageLabel}}</span>
+  {{range .LanguageSw}}{{if .Current}}<strong>{{.Label}}</strong>{{else}}<a href="{{.URL}}">{{.Label}}</a>{{end}}
+  {{end}}
+</div>
+
 <header class="hero">
   <h1>{{.Heading}}</h1>
-  <p class="sub">The easiest way to get a working free VPN — copy a subscription link, paste it into your client, connect.</p>
+  <p class="sub">{{.L10n.IndexSubTagline}}</p>
   <p class="meta">
-    <span class="badge badge-green">nodes · {{.Stats.TotalSelected}}</span>
-    <span class="badge badge-blue">alive · {{.Stats.TotalAlive}}</span>
-    <span class="badge badge-orange">median RTT · {{.Stats.MedianLatencyMS}} ms</span>
-    <span class="badge badge-gray">updated · {{.UpdatedHuman}}</span>
+    <span class="badge badge-green">{{.L10n.BadgeNodes}} · {{.Stats.TotalSelected}}</span>
+    <span class="badge badge-blue">{{.L10n.BadgeAlive}} · {{.Stats.TotalAlive}}</span>
+    <span class="badge badge-orange">{{.L10n.BadgeMedianRTT}} · {{.Stats.MedianLatencyMS}} ms</span>
+    <span class="badge badge-gray">{{.L10n.BadgeUpdated}} · {{.UpdatedHuman}}</span>
   </p>
   <p class="repo">
-    <a href="{{.RepoURL}}" class="btn-outline" target="_blank" rel="noopener">⭐ Star on GitHub</a>
+    <a href="{{.RepoURL}}" class="btn-outline" target="_blank" rel="noopener">{{.L10n.StarButton}}</a>
   </p>
 </header>
 
 <section class="card">
-  <h2>🚀 One-Click Subscribe</h2>
-  <p>Copy the URL that matches your client and paste it into the subscription import field:</p>
+  <h2>{{.L10n.OneClickHeading}}</h2>
+  <p>{{.L10n.OneClickIntro}}</p>
   <div class="urls">
     <div class="url-row">
-      <strong>Clash / Clash Verge / ClashX</strong>
+      <strong>{{.L10n.ColClash}}</strong>
       <code><a href="{{.URLClash}}" target="_blank" rel="noopener">{{.URLClash}}</a></code>
     </div>
     <div class="url-row">
-      <strong>sing-box</strong>
+      <strong>{{.L10n.ColSing}}</strong>
       <code><a href="{{.URLSing}}" target="_blank" rel="noopener">{{.URLSing}}</a></code>
     </div>
     <div class="url-row">
-      <strong>v2rayN / v2rayNG / Shadowrocket / NekoBox</strong>
+      <strong>{{.L10n.ColV2ray}}</strong>
       <code><a href="{{.URLV2ray}}" target="_blank" rel="noopener">{{.URLV2ray}}</a></code>
     </div>
   </div>
@@ -58,14 +66,14 @@ const tplIndex = `<!DOCTYPE html>
 
 {{if .Countries}}
 <section class="card">
-  <h2>🌍 By Country</h2>
-  <p>Want nodes in a specific region only? Choose a targeted subscription:</p>
+  <h2>{{.L10n.ByCountryHeading}}</h2>
+  <p>{{.L10n.ByCountryIntro}}</p>
   <div class="country-grid">
     {{range .Countries}}
     <a class="country-card" href="{{.URLPage}}">
       <div class="country-flag">{{.Flag}}</div>
       <div class="country-name">{{.Name}}</div>
-      <div class="country-count">{{.Count}} nodes</div>
+      <div class="country-count">{{.Count}} {{$.L10n.NodesSuffix}}</div>
     </a>
     {{end}}
   </div>
@@ -74,8 +82,8 @@ const tplIndex = `<!DOCTYPE html>
 
 {{if .Guides}}
 <section class="card" id="guides">
-  <h2>📖 Step-by-step Guides</h2>
-  <p>New to VPN clients? Pick your platform:</p>
+  <h2>{{.L10n.GuidesHeading}}</h2>
+  <p>{{.L10n.GuidesIntro}}</p>
   <ul class="client-list">
     {{range .Guides}}
     <li><a href="{{.URL}}"><strong>{{.Name}}</strong></a> · {{.OS}}</li>
@@ -85,27 +93,27 @@ const tplIndex = `<!DOCTYPE html>
 {{end}}
 
 <section class="card">
-  <h2>🧩 Supported Clients</h2>
+  <h2>{{.L10n.ClientsHeading}}</h2>
   <ul class="client-list">
-    <li><strong>Windows</strong>: v2rayN, Clash Verge, Hiddify, NekoRay</li>
-    <li><strong>macOS</strong>: ClashX Pro, Clash Verge, sing-box, Hiddify</li>
-    <li><strong>iOS</strong>: Shadowrocket, Stash, Loon, sing-box, Hiddify</li>
-    <li><strong>Android</strong>: v2rayNG, NekoBox, Clash Meta for Android, Hiddify, sing-box</li>
-    <li><strong>Linux</strong>: mihomo (Clash.Meta), sing-box, v2ray-core</li>
+    <li>{{safe .L10n.ClientsWindows}}</li>
+    <li>{{safe .L10n.ClientsMacOS}}</li>
+    <li>{{safe .L10n.ClientsIOS}}</li>
+    <li>{{safe .L10n.ClientsAndroid}}</li>
+    <li>{{safe .L10n.ClientsLinux}}</li>
   </ul>
 </section>
 
 <section class="card">
-  <h2>❓ FAQ</h2>
-  <details><summary>Is this actually free?</summary><p>Yes. Nodes are operated by third-party volunteers. We don't run any servers — we just test, rank, and repackage what's already public.</p></details>
-  <details><summary>How fresh is the data?</summary><p>A GitHub Action runs every hour: pulls all upstream sources, TCP+TLS probes every node, drops anything dead, sorts by latency, commits new output files.</p></details>
-  <details><summary>Can I trust these nodes?</summary><p>Free nodes see all your traffic. Never use them for banking, login, or anything sensitive. Fine for bypassing geo-blocks on public content. Use your own VPS or a paid provider for real privacy.</p></details>
-  <details><summary>Why do some nodes fail?</summary><p>We verify TCP reachability and TLS handshakes, but a node may still have an expired quota, bad routing, or revoked certs. Try a few; the selector group gives you fallbacks.</p></details>
+  <h2>{{.L10n.FAQHeading}}</h2>
+  <details><summary>{{.L10n.FAQ1Q}}</summary><p>{{.L10n.FAQ1A}}</p></details>
+  <details><summary>{{.L10n.FAQ2Q}}</summary><p>{{.L10n.FAQ2A}}</p></details>
+  <details><summary>{{.L10n.FAQ3Q}}</summary><p>{{.L10n.FAQ3A}}</p></details>
+  <details><summary>{{.L10n.FAQ4Q}}</summary><p>{{.L10n.FAQ4A}}</p></details>
 </section>
 
 <footer>
-  <p>Open source on <a href="{{.RepoURL}}" target="_blank" rel="noopener">GitHub</a>. MIT licensed.</p>
-  <p class="small">This project aggregates publicly-shared proxy configurations. We do not operate any servers and make no guarantees. Comply with the laws of your jurisdiction.</p>
+  <p>{{.L10n.FooterLicense}}</p>
+  <p class="small">{{.L10n.FooterDisclaimer}}</p>
 </footer>
 </body>
 </html>
@@ -122,11 +130,13 @@ const tplCountry = `<!DOCTYPE html>
 <meta name="description" content="{{.Description}}">
 <meta name="keywords" content="{{.Keywords}}">
 <link rel="canonical" href="{{.Canonical}}">
-<meta property="og:type" content="website">
+{{range .Alternates}}<link rel="alternate" hreflang="{{.Code}}" href="{{.URL}}">
+{{end}}<meta property="og:type" content="website">
 <meta property="og:title" content="{{.Title}}">
 <meta property="og:description" content="{{.Description}}">
 <meta property="og:url" content="{{.Canonical}}">
 <meta property="og:image" content="{{.OGImage}}">
+<meta property="og:locale" content="{{.LangAttr}}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{.Title}}">
 <meta name="twitter:description" content="{{.Description}}">
@@ -135,46 +145,52 @@ const tplCountry = `<!DOCTYPE html>
 <style>` + css + `</style>
 </head>
 <body>
+<div class="lang-switch">
+  <span>{{.L10n.LanguageLabel}}</span>
+  {{range .LanguageSw}}{{if .Current}}<strong>{{.Label}}</strong>{{else}}<a href="{{.URL}}">{{.Label}}</a>{{end}}
+  {{end}}
+</div>
+
 <nav class="breadcrumb">
-  <a href="{{.HomeURL}}">← All countries</a>
+  <a href="{{.HomeURL}}">{{.L10n.CountryBreadcrumb}}</a>
 </nav>
 
 <header class="hero">
   <h1>{{.Heading}}</h1>
-  <p class="sub">{{.CurrentRows}} free VPN nodes in {{.CurrentName}}, TCP+TLS verified, refreshed hourly.</p>
+  <p class="sub">{{.Description}}</p>
   <p class="meta">
-    <span class="badge badge-green">{{.CurrentRows}} nodes</span>
-    <span class="badge badge-gray">updated · {{.UpdatedHuman}}</span>
+    <span class="badge badge-green">{{.CurrentRows}} {{.L10n.NodesSuffix}}</span>
+    <span class="badge badge-gray">{{.L10n.BadgeUpdated}} · {{.UpdatedHuman}}</span>
   </p>
 </header>
 
 <section class="card">
-  <h2>🚀 Subscribe to {{.CurrentName}} nodes only</h2>
+  <h2>{{.CurrentSubscribeHeading}}</h2>
   <div class="urls">
     <div class="url-row">
-      <strong>Clash</strong>
+      <strong>{{.L10n.ColClash}}</strong>
       <code><a href="{{.URLClash}}" target="_blank" rel="noopener">{{.URLClash}}</a></code>
     </div>
     <div class="url-row">
-      <strong>sing-box</strong>
+      <strong>{{.L10n.ColSing}}</strong>
       <code><a href="{{.URLSing}}" target="_blank" rel="noopener">{{.URLSing}}</a></code>
     </div>
     <div class="url-row">
-      <strong>v2ray base64</strong>
+      <strong>{{.L10n.ColV2ray}}</strong>
       <code><a href="{{.URLV2ray}}" target="_blank" rel="noopener">{{.URLV2ray}}</a></code>
     </div>
   </div>
 </section>
 
 <section class="card">
-  <h2>🌍 Other countries</h2>
+  <h2>{{.L10n.CountryOtherHeading}}</h2>
   <div class="country-grid">
     {{range .Countries}}
     {{if ne .CC $.CurrentCC}}
     <a class="country-card" href="{{.URLPage}}">
       <div class="country-flag">{{.Flag}}</div>
       <div class="country-name">{{.Name}}</div>
-      <div class="country-count">{{.Count}} nodes</div>
+      <div class="country-count">{{.Count}} {{$.L10n.NodesSuffix}}</div>
     </a>
     {{end}}
     {{end}}
@@ -182,7 +198,7 @@ const tplCountry = `<!DOCTYPE html>
 </section>
 
 <footer>
-  <p>Open source on <a href="{{.RepoURL}}" target="_blank" rel="noopener">GitHub</a>. MIT licensed.</p>
+  <p>{{.L10n.FooterLicense}}</p>
 </footer>
 </body>
 </html>
@@ -190,7 +206,7 @@ const tplCountry = `<!DOCTYPE html>
 
 // tplGuide renders a single client tutorial page.
 const tplGuide = `<!DOCTYPE html>
-<html lang="en">
+<html lang="{{.LangAttr}}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -198,11 +214,13 @@ const tplGuide = `<!DOCTYPE html>
 <meta name="description" content="{{.Description}}">
 <meta name="keywords" content="{{.Keywords}}">
 <link rel="canonical" href="{{.Canonical}}">
-<meta property="og:type" content="article">
+{{range .Alternates}}<link rel="alternate" hreflang="{{.Code}}" href="{{.URL}}">
+{{end}}<meta property="og:type" content="article">
 <meta property="og:title" content="{{.Title}}">
 <meta property="og:description" content="{{.Description}}">
 <meta property="og:url" content="{{.Canonical}}">
 <meta property="og:image" content="{{.OGImage}}">
+<meta property="og:locale" content="{{.LangAttr}}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{.Title}}">
 <meta name="twitter:description" content="{{.Description}}">
@@ -211,8 +229,13 @@ const tplGuide = `<!DOCTYPE html>
 <style>` + css + `</style>
 </head>
 <body>
+<div class="lang-switch">
+  {{range .LanguageSw}}{{if .Current}}<strong>{{.Label}}</strong>{{else}}<a href="{{.URL}}">{{.Label}}</a>{{end}}
+  {{end}}
+</div>
+
 <nav class="breadcrumb">
-  <a href="{{.HomeURL}}">← Home</a>
+  <a href="{{.HomeURL}}">{{.L10n.HomeLinkText}}</a>
 </nav>
 
 <header class="hero">
@@ -221,26 +244,26 @@ const tplGuide = `<!DOCTYPE html>
   <p class="meta">
     <span class="badge badge-blue">{{.ClientName}}</span>
     <span class="badge badge-gray">{{.OSList}}</span>
-    <span class="badge badge-green">updated · {{.UpdatedHuman}}</span>
+    <span class="badge badge-green">{{.L10n.UpdatedLabel}} · {{.UpdatedHuman}}</span>
   </p>
   <p class="repo">
-    <a href="{{.DownloadURL}}" class="btn-outline" target="_blank" rel="noopener">⬇ Download {{.ClientName}}</a>
+    <a href="{{.DownloadURL}}" class="btn-outline" target="_blank" rel="noopener">{{printf .L10n.DownloadLabelTpl .ClientName}}</a>
   </p>
 </header>
 
 <section class="card">
-  <h2>📋 Subscription URL</h2>
-  <p>Copy this URL and paste it into {{.ClientName}}'s subscription import field:</p>
+  <h2>{{.L10n.SubscribeHeading}}</h2>
+  <p>{{.L10n.SubscribeIntro}}</p>
   <div class="urls">
     <div class="url-row">
-      <strong>{{.ClientName}} URL</strong>
+      <strong>{{.L10n.SubscribeLabel}}</strong>
       <code><a href="{{.SubscribeURL}}" target="_blank" rel="noopener">{{.SubscribeURL}}</a></code>
     </div>
   </div>
 </section>
 
 <section class="card">
-  <h2>🪜 Steps</h2>
+  <h2>{{.L10n.StepsHeading}}</h2>
   <ol class="steps">
     {{range .Steps}}
     <li>
@@ -252,14 +275,14 @@ const tplGuide = `<!DOCTYPE html>
 </section>
 
 <section class="card">
-  <h2>💡 Tips &amp; Troubleshooting</h2>
+  <h2>{{.L10n.TipsHeading}}</h2>
   {{range .Tips}}
   <details><summary>{{.Q}}</summary><p>{{.A}}</p></details>
   {{end}}
 </section>
 
 <section class="card">
-  <h2>📚 Other guides</h2>
+  <h2>{{.L10n.OtherGuidesHeading}}</h2>
   <ul class="client-list">
     {{range .OtherGuides}}
     <li><a href="{{.URL}}">{{.Name}}</a> · {{.OS}}</li>
@@ -268,7 +291,7 @@ const tplGuide = `<!DOCTYPE html>
 </section>
 
 <footer>
-  <p>Open source on <a href="{{.RepoURL}}" target="_blank" rel="noopener">GitHub</a>. MIT licensed.</p>
+  <p><a href="{{.RepoURL}}" target="_blank" rel="noopener">GitHub</a> · MIT</p>
 </footer>
 </body>
 </html>
@@ -284,8 +307,16 @@ const css = `
     background: linear-gradient(180deg,#0f172a,#1e293b 400px);
     color: #e2e8f0; line-height: 1.55;
   }
+  .lang-switch {
+    max-width: 900px; margin: 0 auto; padding: 12px 32px 0;
+    text-align: right; font-size: 13px; color: #94a3b8;
+  }
+  .lang-switch a { color: #93c5fd; text-decoration: none; margin: 0 4px; }
+  .lang-switch a:hover { text-decoration: underline; }
+  .lang-switch strong { color: #f1f5f9; margin: 0 4px; }
+  .lang-switch span { margin-right: 4px; }
   .hero {
-    text-align: center; padding: 64px 20px 32px;
+    text-align: center; padding: 32px 20px 32px;
     max-width: 900px; margin: 0 auto;
   }
   h1 { font-size: clamp(28px, 5vw, 44px); margin: 0 0 12px; }
@@ -339,6 +370,10 @@ const css = `
   details { margin: 10px 0; padding: 12px 16px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; }
   details summary { cursor: pointer; font-weight: 600; color: #f1f5f9; }
   details p { margin: 12px 0 0; color: #cbd5e1; }
+  .steps { padding-left: 24px; }
+  .steps li { margin-bottom: 18px; }
+  .steps h3 { margin: 0 0 6px; color: #f1f5f9; font-size: 16px; }
+  .steps p { margin: 0; color: #cbd5e1; }
   footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
   footer a { color: #93c5fd; }
   footer .small { font-size: 12px; margin-top: 8px; max-width: 680px; margin-left: auto; margin-right: auto; }

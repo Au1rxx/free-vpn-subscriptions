@@ -45,6 +45,10 @@ var EN = Locale{
 	ByCountryColCC:   "Country",
 	ByCountryColN:    "Nodes",
 
+	GuidesHeading:     "## 📖 Step-by-step Guides",
+	GuidesIntro:       "New to VPN clients? Pick your platform and follow the tutorial:",
+	GuideLocaleSuffix: "",
+
 	FAQHeading: "## ❓ FAQ",
 	FAQ1Q:      "Is this actually free?",
 	FAQ1A:      "Yes. Nodes are operated by third-party volunteers who publish their own free subscriptions. We don't run any servers ourselves — we just test, rank, and repackage what's already public.",

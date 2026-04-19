@@ -45,6 +45,10 @@ var ZH = Locale{
 	ByCountryColCC:   "国家/地区",
 	ByCountryColN:    "节点数",
 
+	GuidesHeading:     "## 📖 客户端图文教程",
+	GuidesIntro:       "新手不知道怎么配?按平台选一篇跟着做:",
+	GuideLocaleSuffix: ".zh",
+
 	FAQHeading: "## ❓ 常见问题",
 	FAQ1Q:      "真的完全免费吗?",
 	FAQ1A:      "是的。所有节点由第三方志愿者自己运营并公开免费订阅。本仓库不运营任何服务器,只是做测试、排名、重新打包公开内容。",

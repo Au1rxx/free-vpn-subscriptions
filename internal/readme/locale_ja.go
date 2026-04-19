@@ -45,6 +45,10 @@ var JA = Locale{
 	ByCountryColCC:   "国",
 	ByCountryColN:    "ノード数",
 
+	GuidesHeading:     "## 📖 クライアント設定ガイド",
+	GuidesIntro:       "初めての方はプラットフォームに合わせてチュートリアルをどうぞ:",
+	GuideLocaleSuffix: "",
+
 	FAQHeading: "## ❓ よくある質問",
 	FAQ1Q:      "本当に無料?",
 	FAQ1A:      "はい。全ノードはサードパーティのボランティアが運営し、自分で公開購読を出しています。当リポジトリはサーバーを持たず、既に公開されているものをテスト・順位付け・再パッケージしているだけです。",

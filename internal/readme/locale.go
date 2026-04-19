@@ -56,6 +56,14 @@ type Locale struct {
 	ByCountryColCC   string
 	ByCountryColN    string
 
+	// Guides (client tutorials)
+	GuidesHeading string
+	GuidesIntro   string
+	// GuideLocaleSuffix is appended to guide filenames for non-English
+	// locales: "" for English, ".zh" for Chinese. Keeps English at the
+	// canonical URL while Chinese lives at clash-verge.zh.html.
+	GuideLocaleSuffix string
+
 	// FAQ
 	FAQHeading string
 	FAQ1Q      string
