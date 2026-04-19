@@ -1,0 +1,62 @@
+{
+  "outbounds": [
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "Q7cjiVD0oKNE2o9sUnZKQg",
+      "server": "46.101.196.138",
+      "server_port": 23243,
+      "tag": "01-shadowsocks-🇩🇪DE-46.101.196.138-4547",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=",
+      "server": "38.60.250.107",
+      "server_port": 990,
+      "tag": "02-shadowsocks-🇩🇪DE-38.60.250.107-0276",
+      "type": "shadowsocks"
+    },
+    {
+      "alter_id": 0,
+      "security": "auto",
+      "server": "sgp.kapok.buzz",
+      "server_port": 443,
+      "tag": "03-vmess-🇩🇪DE-91.195.240.12-0516",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "sgp.kapok.buzz"
+      },
+      "type": "vmess",
+      "uuid": "c1bac6b8-934a-44e2-9cf2-ee0db1fc1c85"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-shadowsocks-🇩🇪DE-46.101.196.138-4547",
+        "02-shadowsocks-🇩🇪DE-38.60.250.107-0276",
+        "03-vmess-🇩🇪DE-91.195.240.12-0516"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-shadowsocks-🇩🇪DE-46.101.196.138-4547",
+        "02-shadowsocks-🇩🇪DE-38.60.250.107-0276",
+        "03-vmess-🇩🇪DE-91.195.240.12-0516"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

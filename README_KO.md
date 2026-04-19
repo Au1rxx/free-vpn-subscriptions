@@ -15,6 +15,8 @@
 
 GitHub의 거의 모든 "무료 VPN" 목록은 데이터가 오래되었거나, 죽은 노드로 가득 차 있거나, 출처가 불분명한 바이너리 설치를 요구합니다. 이 저장소는 **몇 분 전에 TCP 핸드셰이크와 TLS 핸드셰이크를 모두 통과한 노드만** 선별된 공개 소스에서 레이턴시 순으로 게시합니다. Clash / sing-box / v2rayN에 바로 붙여 넣을 수 있는 3가지 범용 구독 파일을 제공합니다.
 
+> 📖 How the fetch → probe → rank pipeline works: [ARCHITECTURE.md](./ARCHITECTURE.md)
+
 ## 🚀 원클릭 구독
 
 클라이언트에 맞는 URL을 복사하여 구독 가져오기 필드에 붙여 넣으세요:

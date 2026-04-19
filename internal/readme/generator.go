@@ -58,6 +58,7 @@ func Generate(in Input, loc Locale) string {
 
 	// Why
 	fmt.Fprintf(&b, "%s\n\n%s\n\n", loc.WhyHeading, loc.WhyBody)
+	fmt.Fprintf(&b, "> 📖 How the fetch → probe → rank pipeline works: [ARCHITECTURE.md](./ARCHITECTURE.md)\n\n")
 
 	// Subscribe
 	fmt.Fprintf(&b, "%s\n\n%s\n\n", loc.SubscribeHeading, loc.SubscribeIntro)

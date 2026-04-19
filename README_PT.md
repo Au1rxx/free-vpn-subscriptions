@@ -15,6 +15,8 @@
 
 Cada lista de "VPN gratuita" no GitHub está desatualizada, cheia de nós mortos, ou pede para instalar um binário suspeito. Este repositório **publica apenas nós que passaram um handshake TCP E um handshake TLS minutos atrás**, a partir de fontes públicas selecionadas, ordenados por latência. Você recebe 3 arquivos de assinatura portáteis — use-os em Clash, sing-box ou v2rayN e pronto.
 
+> 📖 How the fetch → probe → rank pipeline works: [ARCHITECTURE.md](./ARCHITECTURE.md)
+
 ## 🚀 Assinatura com um clique
 
 Copie a URL que corresponde ao seu cliente e cole no campo de importação de assinatura:
