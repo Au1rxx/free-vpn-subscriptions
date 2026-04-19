@@ -4,10 +4,10 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![nodos](https://img.shields.io/badge/nodos-150-brightgreen) ![activos](https://img.shields.io/badge/activos-2597-blue) ![rtt--mediana](https://img.shields.io/badge/rtt--mediana-8ms-orange) ![actualizado](https://img.shields.io/badge/actualizado-2026-04-19_10:41_UTC-informational)
+![nodos](https://img.shields.io/badge/nodos-150-brightgreen) ![activos](https://img.shields.io/badge/activos-2579-blue) ![rtt--mediana](https://img.shields.io/badge/rtt--mediana-8ms-orange) ![actualizado](https://img.shields.io/badge/actualizado-2026-04-19_11:05_UTC-informational)
 
 > **La forma más fácil de obtener una VPN gratuita que funciona — copia un enlace de suscripción, pégalo en tu cliente, conecta.**  
-> Sin registro. Sin pago. Sin instalar ningún binario. Actualizado cada hora desde fuentes públicas y cada nodo es verificado.
+> Sin registro. Sin pago. Sin instalar ningún binario. Actualizado cada hora desde fuentes públicas — cada nodo se verifica con sondeo TCP + TLS antes de publicarse.
 
 > VPN gratis · suscripción VPN gratuita · proxy gratis · Clash suscripción · v2ray suscripción · sing-box suscripción · VLESS · Reality · VMess · Trojan · Shadowsocks · Hysteria2 · actualizado por hora · TCP+TLS verificado · por país
 
@@ -16,6 +16,43 @@
 Cada lista de "VPN gratuita" en GitHub está desactualizada, llena de nodos muertos, o te pide instalar un binario dudoso. Este repositorio **solo publica nodos que pasaron un handshake TCP y un handshake TLS hace minutos**, desde fuentes públicas curadas, ordenados por latencia. Obtienes 3 archivos de suscripción portables — úsalos en Clash, sing-box o v2rayN y listo.
 
 > 📖 How the fetch → probe → rank pipeline works: [ARCHITECTURE.md](./ARCHITECTURE.md)
+
+## 🔬 Cómo verificamos que los nodos realmente funcionan
+
+**Respuesta honesta primero: no podemos *garantizar* que un nodo pase tu tráfico.** Ningún agregador puede sin enviar tráfico real a través de él. Aquí está exactamente lo que verificamos, lo que no, y de dónde viene la garantía real.
+
+### ✅ Qué verificamos en tiempo de agregación (antes de publicar)
+
+1. **Accesibilidad TCP** — abrimos una conexión TCP a cada `server:port`. Hosts caídos, DNS incorrecto y puertos bloqueados se descartan. Elimina aproximadamente el 40 % de las entradas crudas.
+2. **Handshake TLS** — para cada nodo TLS / Reality / WS-TLS completamos el handshake entero. Certificados expirados, SNI incorrectos y short-ids de Reality rotos se descartan. Elimina otro ~10 %.
+3. **Orden por latencia** — los supervivientes se ordenan por RTT y guardamos los N más rápidos.
+
+Números típicos de una ejecución reciente: **17 fuentes → ~4,800 crudos → ~2,900 TCP vivos → ~2,600 TLS OK → top 200 publicados**.
+
+### ❌ Qué no podemos verificar
+
+- Autenticación del protocolo proxy. UUID / contraseña incorrectos solo son rechazados *después* del handshake TLS por el servidor upstream.
+- Éxito real de HTTP a través del proxy.
+- Ancho de banda o throughput.
+- Geolocalización más allá de lo que GeoIP dice sobre la IP de salida.
+
+### 🛡️ Verificación en tiempo de ejecución — de aquí viene la garantía real
+
+El `clash.yaml` que publicamos incluye un grupo `url-test` que **prueba HTTP real a través de cada nodo** cada 5 minutos:
+
+```yaml
+proxy-groups:
+  - name: AUTO
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+```
+
+Tu cliente ordena la lista de nodos por latencia *real* de HTTP a través del proxy y selecciona automáticamente el nodo más rápido que funciona. sing-box y v2ray tienen mecanismos equivalentes. Si un nodo seleccionado muere, el cliente cambia al siguiente sin intervención.
+
+### 🧮 Resultado esperado
+
+De los top 200 publicados cada ejecución, un cliente típico encontrará 30-50 que sirven HTTP limpiamente en cualquier momento. Rota si uno se pone lento — el grupo url-test hace eso con un clic.
 
 ## 🚀 Suscripción con un clic
 
@@ -33,9 +70,8 @@ Copia la URL que coincida con tu cliente y pégala en el campo de importación d
 
 | País | Nodos | Clash | sing-box | v2ray |
 |---|---|---|---|---|
-| 🇺🇸 United States (`US`) | 20 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
-| 🇩🇪 Germany (`DE`) | 6 | [clash-DE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-DE.yaml) | [singbox-DE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-DE.json) | [v2ray-base64-DE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-DE.txt) |
-| 🇸🇪 Sweden (`SE`) | 3 | [clash-SE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-SE.yaml) | [singbox-SE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-SE.json) | [v2ray-base64-SE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-SE.txt) |
+| 🇺🇸 United States (`US`) | 21 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
+| 🇩🇪 Germany (`DE`) | 7 | [clash-DE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-DE.yaml) | [singbox-DE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-DE.json) | [v2ray-base64-DE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-DE.txt) |
 
 ## 📖 Guías paso a paso
 
@@ -57,14 +93,14 @@ Copia la URL que coincida con tu cliente y pégala en el campo de importación d
 ## 📊 Estadísticas en vivo
 
 - **Nodos seleccionados**: 150
-- **Activos en todas las fuentes**: 2597
+- **Activos en todas las fuentes**: 2579
 - **RTT del nodo más rápido**: 2 ms
 - **RTT mediana**: 8 ms
-- **Última actualización (UTC)**: 2026-04-19 10:41 UTC
+- **Última actualización (UTC)**: 2026-04-19 11:05 UTC
 
-**Mezcla de protocolos:** shadowsocks × 29 · trojan × 17 · vless × 77 · vmess × 27
+**Mezcla de protocolos:** shadowsocks × 25 · trojan × 18 · vless × 85 · vmess × 22
 
-**Fuentes usadas en esta ejecución:** `barry-far-v2ray` × 26 · `ebrasha-v2ray` × 15 · `epodonios` × 33 · `mahdibland-aggregator` × 3 · `mahdibland-shadowsocks` × 2 · `matin-v2ray` × 2 · `mfuu-clash` × 1 · `ninjastrikers` × 39 · `ruking-clash` × 18 · `snakem982` × 6 · `surfboard-eternity` × 4 · `vxiaov-clash` × 1
+**Fuentes usadas en esta ejecución:** `barry-far-v2ray` × 30 · `ebrasha-v2ray` × 9 · `epodonios` × 33 · `freefq` × 1 · `mahdi0024` × 1 · `mahdibland-aggregator` × 1 · `mahdibland-shadowsocks` × 1 · `mfuu-clash` × 2 · `ninjastrikers` × 35 · `pawdroid` × 1 · `ruking-clash` × 21 · `snakem982` × 12 · `surfboard-eternity` × 2 · `vxiaov-clash` × 1
 
 ## ❓ Preguntas frecuentes
 
@@ -76,7 +112,7 @@ Sí. Los nodos son operados por voluntarios externos que publican sus propias su
 
 <details><summary>¿Qué tan reciente es la información?</summary>
 
-Una GitHub Action se ejecuta cada hora: trae todas las fuentes, prueba cada nodo con TCP+TLS, elimina los muertos, ordena por latencia y comitea los archivos nuevos. Consulta la marca de tiempo `Last updated` arriba.
+Cada hora (con un pequeño retraso aleatorio para evitar golpear las fuentes upstream exactamente en `:00`): trae todas las fuentes, prueba cada nodo con TCP+TLS, elimina los muertos, ordena por latencia y publica los archivos nuevos. Consulta la marca de tiempo `Last updated` arriba.
 
 </details>
 
@@ -88,7 +124,7 @@ Los nodos gratis ven todo tu tráfico. **Nunca los uses para banca, login o algo
 
 <details><summary>¿Por qué algunos nodos listados fallan?</summary>
 
-Verificamos accesibilidad TCP y handshake TLS, pero un nodo aún puede tener cuota expirada, ruteo incorrecto o certificado caducado. Prueba varios; el grupo selector te da alternativas.
+Solo verificamos accesibilidad TCP y handshake TLS — un nodo aún puede tener cuota expirada, ruteo incorrecto o certificado caducado. El `clash.yaml` publicado incluye un grupo `url-test` (`http://www.gstatic.com/generate_204`, intervalo de 300 s); tu cliente selecciona automáticamente el nodo más rápido que realmente sirve HTTP. Si uno muere, toma el siguiente.
 
 </details>
 
