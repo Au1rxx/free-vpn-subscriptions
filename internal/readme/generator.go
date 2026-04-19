@@ -60,6 +60,11 @@ func Generate(in Input, loc Locale) string {
 	fmt.Fprintf(&b, "%s\n\n%s\n\n", loc.WhyHeading, loc.WhyBody)
 	fmt.Fprintf(&b, "> 📖 How the fetch → probe → rank pipeline works: [ARCHITECTURE.md](./ARCHITECTURE.md)\n\n")
 
+	// Verification — the single most-asked question on any free-VPN list.
+	// Placed directly after Why so the credibility story is up-front rather
+	// than buried in the FAQ.
+	fmt.Fprintf(&b, "%s\n\n%s\n\n", loc.VerificationHeading, loc.VerificationBody)
+
 	// Subscribe
 	fmt.Fprintf(&b, "%s\n\n%s\n\n", loc.SubscribeHeading, loc.SubscribeIntro)
 	fmt.Fprintf(&b, "| %s | %s | %s |\n|---|---|---|\n",

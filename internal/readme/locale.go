@@ -25,6 +25,11 @@ type Locale struct {
 	WhyHeading string
 	WhyBody    string
 
+	// Verification — explains what we actually probe and what we can't.
+	// VerificationBody may contain Markdown (headings, fenced blocks, lists).
+	VerificationHeading string
+	VerificationBody    string
+
 	// One-click subscribe
 	SubscribeHeading     string
 	SubscribeIntro       string
