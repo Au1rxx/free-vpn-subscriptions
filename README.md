@@ -1,6 +1,6 @@
 # Free VPN Subscriptions
 
-![Nodes](https://img.shields.io/badge/nodes-150-brightgreen) ![Alive](https://img.shields.io/badge/alive-622-blue) ![Median RTT](https://img.shields.io/badge/median--rtt-10ms-orange) ![Updated](https://img.shields.io/badge/updated-2026-04-19_04:49_UTC-informational)
+![Nodes](https://img.shields.io/badge/nodes-150-brightgreen) ![Alive](https://img.shields.io/badge/alive-627-blue) ![Median RTT](https://img.shields.io/badge/median--rtt-14ms-orange) ![Updated](https://img.shields.io/badge/updated-2026-04-19_05:11_UTC-informational)
 
 > **The easiest way to get a working free VPN — copy a subscription link, paste it into your client, connect.**  
 > No signup. No payment. No installation of binaries. Refreshed hourly from public sources with every node tested.
@@ -32,14 +32,14 @@ Copy the URL that matches your client and paste it into the subscription import 
 ## 📊 Live Stats
 
 - **Nodes selected**: 150
-- **Alive across all sources**: 622
-- **Fastest node RTT**: 3 ms
-- **Median RTT**: 10 ms
-- **Last updated (UTC)**: 2026-04-19 04:49 UTC
+- **Alive across all sources**: 627
+- **Fastest node RTT**: 8 ms
+- **Median RTT**: 14 ms
+- **Last updated (UTC)**: 2026-04-19 05:11 UTC
 
-**Protocol mix:** shadowsocks × 18 · trojan × 1 · vmess × 131
+**Protocol mix:** shadowsocks × 21 · trojan × 2 · vmess × 127
 
-**Sources used this run:** `freefq` × 2 · `mahdibland-aggregator` × 77 · `mahdibland-shadowsocks` × 55 · `pawdroid` × 2 · `vxiaov-clash` × 14
+**Sources used this run:** `freefq` × 1 · `mahdibland-aggregator` × 53 · `mahdibland-shadowsocks` × 83 · `pawdroid` × 4 · `vxiaov-clash` × 9
 
 ## ❓ FAQ
 
