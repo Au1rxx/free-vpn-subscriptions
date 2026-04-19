@@ -8,12 +8,15 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"os"
+	"os/signal"
 	"path/filepath"
 	"sort"
 	"sync"
+	"syscall"
 	"time"
 
 	"github.com/spf13/cobra"
@@ -28,6 +31,12 @@ import (
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/sources"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/subscribe"
 )
+
+// runDeadline caps a single aggregate run. The hourly cron has a hard 6h
+// GitHub Actions ceiling; we aim to finish well inside that so SIGINT from
+// the runner cleanly aborts in-flight probes instead of leaving goroutines
+// to be killed.
+const runDeadline = 30 * time.Minute
 
 var cfgPath string
 
@@ -53,17 +62,23 @@ func newAggregateCmd() *cobra.Command {
 				die(err)
 			}
 
-			fetched := fetchAll(cfg)
+			ctx, cancel := signal.NotifyContext(
+				context.Background(), syscall.SIGINT, syscall.SIGTERM)
+			defer cancel()
+			ctx, cancelDeadline := context.WithTimeout(ctx, runDeadline)
+			defer cancelDeadline()
+
+			fetched := fetchAll(ctx, cfg)
 			fmt.Printf("fetched %d nodes from %d sources\n", len(fetched), countEnabled(cfg.Sources))
 
-			alive := probe.TCP(fetched,
+			alive := probe.TCP(ctx, fetched,
 				time.Duration(cfg.Probe.TimeoutMS)*time.Millisecond,
 				cfg.Probe.Concurrency)
 			fmt.Printf("alive %d / %d after TCP probe\n", len(alive), len(fetched))
 
 			if cfg.Probe.TLSVerify {
 				before := len(alive)
-				alive = probe.TLS(alive,
+				alive = probe.TLS(ctx, alive,
 					time.Duration(cfg.Probe.TimeoutMS)*time.Millisecond,
 					cfg.Probe.Concurrency)
 				fmt.Printf("alive %d / %d after TLS handshake\n", len(alive), before)
@@ -85,8 +100,9 @@ func newAggregateCmd() *cobra.Command {
 	}
 }
 
-// fetchAll fans out one goroutine per enabled source.
-func fetchAll(cfg *config.Config) []*node.Node {
+// fetchAll fans out one goroutine per enabled source. Each fetch honors the
+// passed context so an upstream deadline (or SIGINT) aborts in-flight HTTP.
+func fetchAll(ctx context.Context, cfg *config.Config) []*node.Node {
 	timeout := time.Duration(cfg.Probe.TimeoutMS*4) * time.Millisecond
 	if timeout < 10*time.Second {
 		timeout = 10 * time.Second
@@ -104,7 +120,7 @@ func fetchAll(cfg *config.Config) []*node.Node {
 		wg.Add(1)
 		go func(src config.Source) {
 			defer wg.Done()
-			nodes, err := sources.Fetch(src, timeout)
+			nodes, err := sources.Fetch(ctx, src, timeout)
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "  [skip] %s: %v\n", src.Name, err)
 				return
@@ -194,7 +210,10 @@ func writeOutputs(cfg *config.Config, selected []*node.Node, summary aggregate.S
 		}
 	}
 
-	statusJSON, _ := json.MarshalIndent(summary, "", "  ")
+	statusJSON, err := json.MarshalIndent(summary, "", "  ")
+	if err != nil {
+		return fmt.Errorf("status marshal: %w", err)
+	}
 	if err := write(filepath.Join(outDir, "status.json"), string(statusJSON)); err != nil {
 		return err
 	}

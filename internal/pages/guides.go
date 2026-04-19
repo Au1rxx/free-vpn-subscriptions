@@ -42,13 +42,20 @@ type qaItem struct {
 	A string // HTML allowed
 }
 
-// supportedLocales lists the codes we render guide pages for. Order matters
-// for hreflang alternates.
-var supportedLocales = []string{"en", "zh"}
+// supportedLocales lists the locales for the index and per-country pages.
+// These have full pageL10n entries and get cross-linked via hreflang.
+// Order matters for hreflang alternates and the language switcher row.
+var supportedLocales = []string{"en", "zh", "ja", "ko", "es", "pt", "ru"}
+
+// supportedGuideLocales is the subset of locales that have hand-written
+// step-by-step guide content. Guides for other locales would be empty, so
+// we only render / cross-link them in en + zh. The index page in other
+// locales links to the English guide as a fallback.
+var supportedGuideLocales = []string{"en", "zh"}
 
 // localeSuffix returns the filename suffix for a locale: "" for English,
-// ".zh" for Chinese. This keeps /guides/clash-verge.html as canonical English
-// while /guides/clash-verge.zh.html serves Chinese.
+// ".zh" / ".ja" / ".ko" / ".es" / ".pt" / ".ru" for others. This keeps
+// /index.html as canonical English while /index.{loc}.html serves others.
 func localeSuffix(loc string) string {
 	if loc == "en" {
 		return ""
@@ -57,10 +64,13 @@ func localeSuffix(loc string) string {
 }
 
 // localeLangAttr maps a locale code to an HTML lang attribute value.
+// zh is normalized to zh-Hans (Simplified Chinese); other codes pass through.
 func localeLangAttr(loc string) string {
 	switch loc {
 	case "zh":
 		return "zh-Hans"
+	case "ja", "ko", "es", "pt", "ru":
+		return loc
 	default:
 		return "en"
 	}

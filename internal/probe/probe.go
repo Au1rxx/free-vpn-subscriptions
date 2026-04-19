@@ -4,6 +4,7 @@
 package probe
 
 import (
+	"context"
 	"net"
 	"strconv"
 	"sync"
@@ -14,8 +15,9 @@ import (
 
 // TCP probes every node in parallel (bounded by concurrency) and returns only
 // those that completed a TCP handshake within the timeout. Nodes' LatencyMS
-// field is populated.
-func TCP(nodes []*node.Node, timeout time.Duration, concurrency int) []*node.Node {
+// field is populated. Cancelling ctx aborts pending dials; in-flight dials
+// still respect their own per-node timeout.
+func TCP(ctx context.Context, nodes []*node.Node, timeout time.Duration, concurrency int) []*node.Node {
 	if concurrency <= 0 {
 		concurrency = 50
 	}
@@ -24,12 +26,15 @@ func TCP(nodes []*node.Node, timeout time.Duration, concurrency int) []*node.Nod
 
 	results := make([]*node.Node, len(nodes))
 	for i, n := range nodes {
+		if ctx.Err() != nil {
+			break
+		}
 		wg.Add(1)
 		sem <- struct{}{}
 		go func(i int, n *node.Node) {
 			defer wg.Done()
 			defer func() { <-sem }()
-			latency, ok := dial(n.Server, n.Port, timeout)
+			latency, ok := dial(ctx, n.Server, n.Port, timeout)
 			if !ok {
 				return
 			}
@@ -48,10 +53,11 @@ func TCP(nodes []*node.Node, timeout time.Duration, concurrency int) []*node.Nod
 	return alive
 }
 
-func dial(host string, port int, timeout time.Duration) (time.Duration, bool) {
+func dial(ctx context.Context, host string, port int, timeout time.Duration) (time.Duration, bool) {
 	addr := net.JoinHostPort(host, strconv.Itoa(port))
+	dialer := &net.Dialer{Timeout: timeout}
 	start := time.Now()
-	conn, err := net.DialTimeout("tcp", addr, timeout)
+	conn, err := dialer.DialContext(ctx, "tcp", addr)
 	if err != nil {
 		return 0, false
 	}

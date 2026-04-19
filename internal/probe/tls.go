@@ -1,6 +1,7 @@
 package probe
 
 import (
+	"context"
 	"crypto/tls"
 	"net"
 	"strconv"
@@ -16,7 +17,8 @@ import (
 //
 // Free proxies often present self-signed certs so InsecureSkipVerify is true —
 // we only care that the peer speaks TLS at all, not about trust anchors.
-func TLS(nodes []*node.Node, timeout time.Duration, concurrency int) []*node.Node {
+// Cancelling ctx aborts queued handshakes.
+func TLS(ctx context.Context, nodes []*node.Node, timeout time.Duration, concurrency int) []*node.Node {
 	if concurrency <= 0 {
 		concurrency = 50
 	}
@@ -29,12 +31,15 @@ func TLS(nodes []*node.Node, timeout time.Duration, concurrency int) []*node.Nod
 			keep[i] = n
 			continue
 		}
+		if ctx.Err() != nil {
+			break
+		}
 		wg.Add(1)
 		sem <- struct{}{}
 		go func(i int, n *node.Node) {
 			defer wg.Done()
 			defer func() { <-sem }()
-			if tlsHandshake(n, timeout) {
+			if tlsHandshake(ctx, n, timeout) {
 				keep[i] = n
 			}
 		}(i, n)
@@ -64,17 +69,23 @@ func needsTLSProbe(n *node.Node) bool {
 	return false
 }
 
-func tlsHandshake(n *node.Node, timeout time.Duration) bool {
+func tlsHandshake(ctx context.Context, n *node.Node, timeout time.Duration) bool {
 	addr := net.JoinHostPort(n.Server, strconv.Itoa(n.Port))
 	dialer := &net.Dialer{Timeout: timeout}
 	sni := n.SNI
 	if sni == "" {
 		sni = n.Server
 	}
-	conn, err := tls.DialWithDialer(dialer, "tcp", addr, &tls.Config{
-		ServerName:         sni,
-		InsecureSkipVerify: true,
-	})
+	// tls.Dialer honors ctx cancellation during the underlying TCP dial;
+	// the handshake itself is bounded by the dialer timeout above.
+	tlsDialer := &tls.Dialer{
+		NetDialer: dialer,
+		Config: &tls.Config{
+			ServerName:         sni,
+			InsecureSkipVerify: true,
+		},
+	}
+	conn, err := tlsDialer.DialContext(ctx, "tcp", addr)
 	if err != nil {
 		return false
 	}

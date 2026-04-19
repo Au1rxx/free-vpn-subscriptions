@@ -165,10 +165,17 @@ func Generate(in Input, outDir string) error {
 		idxDesc := fmt.Sprintf(l10n.IndexDescriptionTpl, in.Summary.TotalSelected)
 		idxCanonical := homeURL
 
+		// Guide links fall back to English if the current locale doesn't
+		// have translated guide content — better than a 404, and Google
+		// follows <link rel=alternate hreflang="en"> anyway.
+		guideSuffix := suffix
+		if !hasGuideLocale(loc) {
+			guideSuffix = ""
+		}
 		guideLinks := make([]guideLink, 0, len(guides))
 		for _, g := range guides {
 			guideLinks = append(guideLinks, guideLink{
-				URL:  "guides/" + g.Slug + suffix + ".html",
+				URL:  "guides/" + g.Slug + guideSuffix + ".html",
 				Name: g.ClientName,
 				OS:   g.OSList,
 			})
@@ -240,10 +247,19 @@ func Generate(in Input, outDir string) error {
 			}
 		}
 
-		// Guide pages
-		guidesDir := filepath.Join(outDir, "guides")
-		if err := os.MkdirAll(guidesDir, 0o755); err != nil {
-			return err
+	}
+
+	// Guide pages: render only in locales with translated step content.
+	// Other locales' index pages link to the English fallback above.
+	guidesDir := filepath.Join(outDir, "guides")
+	if err := os.MkdirAll(guidesDir, 0o755); err != nil {
+		return err
+	}
+	for _, loc := range supportedGuideLocales {
+		suffix := localeSuffix(loc)
+		homeURL := in.SiteURL + "/"
+		if suffix != "" {
+			homeURL = in.SiteURL + "/index" + suffix + ".html"
 		}
 		for _, g := range guides {
 			gctx := buildGuideCtx(in, g, loc, updatedHuman, homeURL)
@@ -393,8 +409,8 @@ func countryAlternates(siteURL, ccLower string) []langAlt {
 }
 
 func guideAlternates(siteURL, slug string) []langAlt {
-	alts := make([]langAlt, 0, len(supportedLocales)+1)
-	for _, loc := range supportedLocales {
+	alts := make([]langAlt, 0, len(supportedGuideLocales)+1)
+	for _, loc := range supportedGuideLocales {
 		suffix := localeSuffix(loc)
 		alts = append(alts, langAlt{
 			Code: hreflangCode(loc),
@@ -403,6 +419,17 @@ func guideAlternates(siteURL, slug string) []langAlt {
 	}
 	alts = append(alts, langAlt{Code: "x-default", URL: siteURL + "/guides/" + slug + ".html"})
 	return alts
+}
+
+// hasGuideLocale reports whether guide pages are rendered in loc. When false,
+// index/country pages in that locale should link to the English guide.
+func hasGuideLocale(loc string) bool {
+	for _, l := range supportedGuideLocales {
+		if l == loc {
+			return true
+		}
+	}
+	return false
 }
 
 func indexLangSwitcher(siteURL, current string) []langSwitch {
@@ -433,8 +460,8 @@ func countryLangSwitcher(siteURL, ccLower, current string) []langSwitch {
 }
 
 func guideLangSwitcher(siteURL, slug, current string) []langSwitch {
-	out := make([]langSwitch, 0, len(supportedLocales))
-	for _, loc := range supportedLocales {
+	out := make([]langSwitch, 0, len(supportedGuideLocales))
+	for _, loc := range supportedGuideLocales {
 		l := pageLocales[loc]
 		suffix := localeSuffix(loc)
 		out = append(out, langSwitch{
@@ -473,7 +500,7 @@ func countryURLsByLocale(siteURL, ccLower string) map[string]string {
 
 func guideURLsByLocale(siteURL, slug string) map[string]string {
 	m := map[string]string{}
-	for _, loc := range supportedLocales {
+	for _, loc := range supportedGuideLocales {
 		suffix := localeSuffix(loc)
 		m[hreflangCode(loc)] = siteURL + "/guides/" + slug + suffix + ".html"
 	}
@@ -482,14 +509,13 @@ func guideURLsByLocale(siteURL, slug string) map[string]string {
 }
 
 // hreflangCode maps our internal locale code to the value Google expects
-// in hreflang attributes. Zh explicitly uses zh-Hans (Simplified Chinese).
+// in hreflang attributes. zh explicitly uses zh-Hans (Simplified Chinese);
+// other codes pass through unchanged.
 func hreflangCode(loc string) string {
-	switch loc {
-	case "zh":
+	if loc == "zh" {
 		return "zh-Hans"
-	default:
-		return loc
 	}
+	return loc
 }
 
 // indexJSONLD returns the structured data graph for the landing page.

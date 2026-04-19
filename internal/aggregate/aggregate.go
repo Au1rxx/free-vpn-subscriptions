@@ -103,7 +103,18 @@ func buildSummary(alive, selected []*node.Node) Summary {
 	}
 	if len(selected) > 0 {
 		s.MinLatencyMS = selected[0].LatencyMS
-		s.MedianLatencyMS = selected[len(selected)/2].LatencyMS
+		s.MedianLatencyMS = medianLatency(selected)
 	}
 	return s
+}
+
+// medianLatency returns the true median of a latency-ascending slice:
+// middle element for odd length, mean of the two middle elements for even.
+func medianLatency(sorted []*node.Node) int {
+	n := len(sorted)
+	mid := n / 2
+	if n%2 == 1 {
+		return sorted[mid].LatencyMS
+	}
+	return (sorted[mid-1].LatencyMS + sorted[mid].LatencyMS) / 2
 }

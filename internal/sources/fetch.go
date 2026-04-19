@@ -2,6 +2,7 @@
 package sources
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"net/http"
@@ -16,14 +17,15 @@ import (
 
 // Fetch returns nodes collected from a single source. Parse errors on
 // individual entries are swallowed; only hard failures (HTTP error, decode
-// error on the whole blob) propagate.
-func Fetch(src config.Source, timeout time.Duration) ([]*node.Node, error) {
+// error on the whole blob) propagate. The passed context is honored for
+// dial + read, so a workflow-wide deadline cancels in-flight requests.
+func Fetch(ctx context.Context, src config.Source, timeout time.Duration) ([]*node.Node, error) {
 	if !src.Enabled {
 		return nil, nil
 	}
 
 	client := &http.Client{Timeout: timeout}
-	req, err := http.NewRequest("GET", src.URL, nil)
+	req, err := http.NewRequestWithContext(ctx, "GET", src.URL, nil)
 	if err != nil {
 		return nil, fmt.Errorf("source %q: build request: %w", src.Name, err)
 	}
