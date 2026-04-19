@@ -1,0 +1,114 @@
+// Package config loads and validates the aggregator's YAML configuration.
+package config
+
+import (
+	"fmt"
+	"os"
+
+	"gopkg.in/yaml.v3"
+)
+
+type Config struct {
+	Sources   []Source        `yaml:"sources"`
+	Probe     ProbeConfig     `yaml:"probe"`
+	Aggregate AggregateConfig `yaml:"aggregate"`
+	Output    OutputConfig    `yaml:"output"`
+	Readme    ReadmeConfig    `yaml:"readme"`
+}
+
+// Source describes a single upstream subscription feed.
+type Source struct {
+	Name    string `yaml:"name"`
+	URL     string `yaml:"url"`
+	Format  string `yaml:"format"`  // uri-list | base64 | clash
+	Enabled bool   `yaml:"enabled"`
+}
+
+type ProbeConfig struct {
+	TimeoutMS         int `yaml:"timeout_ms"`
+	Concurrency       int `yaml:"concurrency"`
+	MaxNodesPerSource int `yaml:"max_nodes_per_source"`
+}
+
+type AggregateConfig struct {
+	TopN           int      `yaml:"top_n"`
+	MaxRTTMS       int      `yaml:"max_rtt_ms"`
+	MinPerProtocol int      `yaml:"min_per_protocol"`
+	Protocols      []string `yaml:"protocols"`
+}
+
+type OutputConfig struct {
+	Dir     string   `yaml:"dir"`
+	Formats []string `yaml:"formats"`
+}
+
+type ReadmeConfig struct {
+	Title   string `yaml:"title"`
+	RepoURL string `yaml:"repo_url"`
+}
+
+// Load reads and validates a YAML config file.
+func Load(path string) (*Config, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return nil, fmt.Errorf("config read %q: %w", path, err)
+	}
+	var cfg Config
+	if err := yaml.Unmarshal(data, &cfg); err != nil {
+		return nil, fmt.Errorf("config parse: %w", err)
+	}
+	applyDefaults(&cfg)
+	if err := validate(&cfg); err != nil {
+		return nil, err
+	}
+	return &cfg, nil
+}
+
+func applyDefaults(c *Config) {
+	if c.Probe.TimeoutMS == 0 {
+		c.Probe.TimeoutMS = 3000
+	}
+	if c.Probe.Concurrency == 0 {
+		c.Probe.Concurrency = 50
+	}
+	if c.Probe.MaxNodesPerSource == 0 {
+		c.Probe.MaxNodesPerSource = 1000
+	}
+	if c.Aggregate.TopN == 0 {
+		c.Aggregate.TopN = 100
+	}
+	if c.Aggregate.MaxRTTMS == 0 {
+		c.Aggregate.MaxRTTMS = 2000
+	}
+	if c.Output.Dir == "" {
+		c.Output.Dir = "output"
+	}
+	if len(c.Output.Formats) == 0 {
+		c.Output.Formats = []string{"clash", "v2ray-base64"}
+	}
+}
+
+func validate(c *Config) error {
+	if len(c.Sources) == 0 {
+		return fmt.Errorf("config: no sources defined")
+	}
+	seen := make(map[string]bool)
+	for i, s := range c.Sources {
+		if s.Name == "" {
+			return fmt.Errorf("config: sources[%d] missing name", i)
+		}
+		if seen[s.Name] {
+			return fmt.Errorf("config: duplicate source name %q", s.Name)
+		}
+		seen[s.Name] = true
+		if s.URL == "" {
+			return fmt.Errorf("config: sources[%d] %q missing url", i, s.Name)
+		}
+		switch s.Format {
+		case "uri-list", "base64", "clash":
+		default:
+			return fmt.Errorf("config: sources[%d] %q invalid format %q (want uri-list|base64|clash)", i, s.Name, s.Format)
+		}
+	}
+	return nil
+}

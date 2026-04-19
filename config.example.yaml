@@ -1,0 +1,41 @@
+# config.yaml — aggregator configuration
+
+sources:
+  - name: nodefree
+    url: https://nodefree.org/dy/2026/04/20260419.yaml
+    format: clash
+    enabled: true
+
+  - name: anaer
+    url: https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml
+    format: clash
+    enabled: true
+
+  - name: mahdi-proxycollector-vless
+    url: https://raw.githubusercontent.com/Mahdi0024/ProxyCollector/main/sub/proxies.txt
+    format: uri-list
+    enabled: true
+
+  - name: mermeroo-base64
+    url: https://raw.githubusercontent.com/mermeroo/V2RAY-CLASH-BASE64-Subscription.Links/main/SUB%20LINKS
+    format: uri-list
+    enabled: false
+
+probe:
+  timeout_ms: 3000
+  concurrency: 80
+  max_nodes_per_source: 500
+
+aggregate:
+  top_n: 150
+  max_rtt_ms: 1500
+  min_per_protocol: 0
+  protocols: [vless, vmess, trojan, shadowsocks, hysteria2]
+
+output:
+  dir: output
+  formats: [clash, singbox, v2ray-base64]
+
+readme:
+  title: "Free VPN Subscriptions"
+  repo_url: "https://github.com/Au1rxx/free-vpn-subscriptions"

@@ -1,0 +1,60 @@
+// Package probe measures the reachability and latency of proxy endpoints.
+// It performs concurrent TCP handshakes to server:port; successful nodes have
+// their LatencyMS populated.
+package probe
+
+import (
+	"net"
+	"strconv"
+	"sync"
+	"time"
+
+	"github.com/Au1rxx/free-vpn-subscriptions/internal/node"
+)
+
+// TCP probes every node in parallel (bounded by concurrency) and returns only
+// those that completed a TCP handshake within the timeout. Nodes' LatencyMS
+// field is populated.
+func TCP(nodes []*node.Node, timeout time.Duration, concurrency int) []*node.Node {
+	if concurrency <= 0 {
+		concurrency = 50
+	}
+	sem := make(chan struct{}, concurrency)
+	var wg sync.WaitGroup
+
+	results := make([]*node.Node, len(nodes))
+	for i, n := range nodes {
+		wg.Add(1)
+		sem <- struct{}{}
+		go func(i int, n *node.Node) {
+			defer wg.Done()
+			defer func() { <-sem }()
+			latency, ok := dial(n.Server, n.Port, timeout)
+			if !ok {
+				return
+			}
+			n.LatencyMS = int(latency / time.Millisecond)
+			results[i] = n
+		}(i, n)
+	}
+	wg.Wait()
+
+	alive := make([]*node.Node, 0, len(nodes))
+	for _, n := range results {
+		if n != nil {
+			alive = append(alive, n)
+		}
+	}
+	return alive
+}
+
+func dial(host string, port int, timeout time.Duration) (time.Duration, bool) {
+	addr := net.JoinHostPort(host, strconv.Itoa(port))
+	start := time.Now()
+	conn, err := net.DialTimeout("tcp", addr, timeout)
+	if err != nil {
+		return 0, false
+	}
+	_ = conn.Close()
+	return time.Since(start), true
+}

@@ -1,0 +1,43 @@
+sources:
+  - name: freefq
+    url: https://raw.githubusercontent.com/freefq/free/master/v2
+    format: base64
+    enabled: true
+
+  - name: pawdroid
+    url: https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub
+    format: base64
+    enabled: true
+
+  - name: vxiaov-clash
+    url: https://raw.githubusercontent.com/vxiaov/free_proxies/main/clash/clash.provider.yaml
+    format: clash
+    enabled: true
+
+  - name: mahdibland-aggregator
+    url: https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/sub/sub_merge.txt
+    format: uri-list
+    enabled: true
+
+  - name: mahdibland-shadowsocks
+    url: https://raw.githubusercontent.com/mahdibland/ShadowsocksAggregator/master/sub/sub_merge.txt
+    format: uri-list
+    enabled: true
+
+probe:
+  timeout_ms: 3000
+  concurrency: 100
+  max_nodes_per_source: 500
+
+aggregate:
+  top_n: 150
+  max_rtt_ms: 1500
+  protocols: [vless, vmess, trojan, shadowsocks, hysteria2]
+
+output:
+  dir: output
+  formats: [clash, singbox, v2ray-base64]
+
+readme:
+  title: "Free VPN Subscriptions"
+  repo_url: "https://github.com/Au1rxx/free-vpn-subscriptions"
