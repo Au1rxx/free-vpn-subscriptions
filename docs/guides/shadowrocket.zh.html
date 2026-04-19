@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shadowrocket iPhone 免费 VPN 订阅配置教程</title>
+<meta name="description" content="一步步教你把免费 VPN 订阅导入 iOS Shadowrocket (小火箭)。需要非中国区 Apple ID。">
+<meta name="keywords" content="shadowrocket 教程, 小火箭, iphone 免费 vpn, ios 免费机场, shadowrocket 订阅, ipad 翻墙, 小火箭 订阅">
+<link rel="canonical" href="https://au1rxx.github.io/free-vpn-subscriptions/guides/shadowrocket.zh.html">
+<link rel="alternate" hreflang="en" href="https://au1rxx.github.io/free-vpn-subscriptions/guides/shadowrocket.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://au1rxx.github.io/free-vpn-subscriptions/guides/shadowrocket.zh.html">
+<link rel="alternate" hreflang="x-default" href="https://au1rxx.github.io/free-vpn-subscriptions/guides/shadowrocket.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shadowrocket iPhone 免费 VPN 订阅配置教程">
+<meta property="og:description" content="一步步教你把免费 VPN 订阅导入 iOS Shadowrocket (小火箭)。需要非中国区 Apple ID。">
+<meta property="og:url" content="https://au1rxx.github.io/free-vpn-subscriptions/guides/shadowrocket.zh.html">
+<meta property="og:image" content="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/workflow.svg">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shadowrocket iPhone 免费 VPN 订阅配置教程">
+<meta name="twitter:description" content="一步步教你把免费 VPN 订阅导入 iOS Shadowrocket (小火箭)。需要非中国区 Apple ID。">
+<meta name="twitter:image" content="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/workflow.svg">
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"HowTo","description":"一步步教你把免费 VPN 订阅导入 iOS Shadowrocket (小火箭)。需要非中国区 Apple ID。","inLanguage":"zh-Hans","name":"Shadowrocket iPhone 免费 VPN 订阅配置教程","step":[{"@type":"HowToStep","name":"安装 Shadowrocket","position":1,"text":"Shadowrocket (小火箭) 是 App Store 付费应用,约 $2.99。中国区 App Store 没有,得用非中国区 Apple ID 登录(美区、日区、港区都行)。没非中国区账号的,改用免费 Loon 或 sing-box (免费)。"},{"@type":"HowToStep","name":"复制 v2ray 订阅链接","position":2,"text":"在首页,长按 v2rayN / v2rayNG / Shadowrocket 那行 URL,选 复制。这是 v2ray base64 格式,Shadowrocket 认得。"},{"@type":"HowToStep","name":"通过 Subscribe 导入","position":3,"text":"打开 Shadowrocket → 点右上 + → Type → Subscribe。把 URL 粘进 URL,名字随便,点 Save。"},{"@type":"HowToStep","name":"更新订阅","position":4,"text":"回主界面,下拉刷新,或点订阅那一行 → Update。能看到几十个节点。"},{"@type":"HowToStep","name":"选连接模式","position":5,"text":"底部点 Config。Global Proxy 是全局;Proxy (Rule-based) 是按规则走(推荐)。回主屏幕拨开关连接。第一次 iOS 会弹 VPN 权限,点允许。"},{"@type":"HowToStep","name":"验证","position":6,"text":"Safari 打开 ipinfo.io,国家应该和所选节点一致。如果没变,换一个节点——iOS 的 TLS 栈比较严,部分免费节点在 iOS 上会抽风。"}],"totalTime":"PT5M","url":"https://au1rxx.github.io/free-vpn-subscriptions/guides/shadowrocket.zh.html"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://au1rxx.github.io/free-vpn-subscriptions/","name":"Home","position":1},{"@type":"ListItem","item":"https://au1rxx.github.io/free-vpn-subscriptions/#guides","name":"Guides","position":2},{"@type":"ListItem","item":"https://au1rxx.github.io/free-vpn-subscriptions/guides/shadowrocket.zh.html","name":"Shadowrocket","position":3}]}]</script>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system,Segoe UI,Roboto,sans-serif;
+    background: linear-gradient(180deg,#0f172a,#1e293b 400px);
+    color: #e2e8f0; line-height: 1.55;
+  }
+  .lang-switch {
+    max-width: 900px; margin: 0 auto; padding: 12px 32px 0;
+    text-align: right; font-size: 13px; color: #94a3b8;
+  }
+  .lang-switch a { color: #93c5fd; text-decoration: none; margin: 0 4px; }
+  .lang-switch a:hover { text-decoration: underline; }
+  .lang-switch strong { color: #f1f5f9; margin: 0 4px; }
+  .lang-switch span { margin-right: 4px; }
+  .hero {
+    text-align: center; padding: 32px 20px 32px;
+    max-width: 900px; margin: 0 auto;
+  }
+  h1 { font-size: clamp(28px, 5vw, 44px); margin: 0 0 12px; }
+  .sub { font-size: 18px; color: #cbd5e1; max-width: 680px; margin: 0 auto 16px; }
+  .meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+  .badge {
+    display: inline-block; padding: 4px 12px; border-radius: 999px;
+    font-size: 13px; font-weight: 600;
+  }
+  .badge-green { background: #065f46; color: #d1fae5; }
+  .badge-blue { background: #1e40af; color: #dbeafe; }
+  .badge-orange { background: #92400e; color: #fed7aa; }
+  .badge-gray { background: #374151; color: #d1d5db; }
+  .repo { margin-top: 24px; }
+  .btn-outline {
+    border: 1px solid #3b82f6; color: #93c5fd; padding: 10px 20px;
+    border-radius: 8px; text-decoration: none; font-weight: 600;
+  }
+  .btn-outline:hover { background: #1e3a8a; }
+  .breadcrumb { padding: 16px 32px; max-width: 900px; margin: 0 auto; }
+  .breadcrumb a { color: #93c5fd; text-decoration: none; font-size: 14px; }
+  .card {
+    background: #1e293b; border: 1px solid #334155; border-radius: 12px;
+    padding: 28px 32px; margin: 20px auto; max-width: 900px;
+  }
+  .card h2 { margin-top: 0; font-size: 22px; color: #f1f5f9; }
+  .urls { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+  .url-row { display: flex; flex-direction: column; gap: 4px; }
+  .url-row strong { color: #f1f5f9; font-size: 14px; }
+  .url-row code {
+    background: #0f172a; padding: 10px 14px; border-radius: 6px;
+    font-size: 13px; overflow-x: auto; border: 1px solid #334155;
+  }
+  .url-row code a { color: #60a5fa; text-decoration: none; word-break: break-all; }
+  .country-grid {
+    display: grid; gap: 12px; margin-top: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  .country-card {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    padding: 20px 12px; background: #0f172a; border: 1px solid #334155;
+    border-radius: 10px; text-decoration: none; color: inherit;
+    transition: border-color .2s, transform .1s;
+  }
+  .country-card:hover { border-color: #3b82f6; transform: translateY(-2px); }
+  .country-flag { font-size: 32px; }
+  .country-name { font-weight: 600; color: #f1f5f9; font-size: 14px; }
+  .country-count { color: #94a3b8; font-size: 13px; }
+  .client-list { padding-left: 20px; }
+  .client-list li { margin-bottom: 6px; color: #cbd5e1; }
+  details { margin: 10px 0; padding: 12px 16px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; }
+  details summary { cursor: pointer; font-weight: 600; color: #f1f5f9; }
+  details p { margin: 12px 0 0; color: #cbd5e1; }
+  .steps { padding-left: 24px; }
+  .steps li { margin-bottom: 18px; }
+  .steps h3 { margin: 0 0 6px; color: #f1f5f9; font-size: 16px; }
+  .steps p { margin: 0; color: #cbd5e1; }
+  footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
+  footer a { color: #93c5fd; }
+  footer .small { font-size: 12px; margin-top: 8px; max-width: 680px; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+<div class="lang-switch">
+  <a href="https://au1rxx.github.io/free-vpn-subscriptions/guides/shadowrocket.html">English</a>
+  <strong>简体中文</strong>
+  
+</div>
+
+<nav class="breadcrumb">
+  <a href="https://au1rxx.github.io/free-vpn-subscriptions/index.zh.html">← 返回首页</a>
+</nav>
+
+<header class="hero">
+  <h1>Shadowrocket iPhone 免费 VPN 订阅配置教程</h1>
+  <p class="sub">一步步教你把免费 VPN 订阅导入 iOS Shadowrocket (小火箭)。需要非中国区 Apple ID。</p>
+  <p class="meta">
+    <span class="badge badge-blue">Shadowrocket</span>
+    <span class="badge badge-gray">iOS 15&#43;, iPadOS 15&#43;</span>
+    <span class="badge badge-green">更新 · 2026-04-19 07:12 UTC</span>
+  </p>
+  <p class="repo">
+    <a href="https://apps.apple.com/app/shadowrocket/id932747118" class="btn-outline" target="_blank" rel="noopener">⬇ 下载 Shadowrocket</a>
+  </p>
+</header>
+
+<section class="card">
+  <h2>📋 订阅链接</h2>
+  <p>复制下面这条 URL,粘贴到 Shadowrocket 的订阅导入框:</p>
+  <div class="urls">
+    <div class="url-row">
+      <strong>Shadowrocket 订阅链接</strong>
+      <code><a href="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/v2ray-base64.txt" target="_blank" rel="noopener">https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/v2ray-base64.txt</a></code>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>🪜 操作步骤</h2>
+  <ol class="steps">
+    
+    <li>
+      <h3>安装 Shadowrocket</h3>
+      <p>Shadowrocket (小火箭) 是 App Store 付费应用,约 $2.99。<strong>中国区 App Store 没有</strong>,得用非中国区 Apple ID 登录(美区、日区、港区都行)。没非中国区账号的,改用免费 <a href="https://apps.apple.com/app/loon/id1373567447" target="_blank" rel="noopener">Loon</a> 或 <a href="https://apps.apple.com/app/sing-box/id6451272673" target="_blank" rel="noopener">sing-box</a> (免费)。</p>
+    </li>
+    
+    <li>
+      <h3>复制 v2ray 订阅链接</h3>
+      <p>在<a href="../index.html">首页</a>,长按 <strong>v2rayN / v2rayNG / Shadowrocket</strong> 那行 URL,选 <strong>复制</strong>。这是 v2ray base64 格式,Shadowrocket 认得。</p>
+    </li>
+    
+    <li>
+      <h3>通过 Subscribe 导入</h3>
+      <p>打开 Shadowrocket → 点右上 <strong>+</strong> → <strong>Type</strong> → <strong>Subscribe</strong>。把 URL 粘进 <strong>URL</strong>,名字随便,点 <strong>Save</strong>。</p>
+    </li>
+    
+    <li>
+      <h3>更新订阅</h3>
+      <p>回主界面,下拉刷新,或点订阅那一行 → <strong>Update</strong>。能看到几十个节点。</p>
+    </li>
+    
+    <li>
+      <h3>选连接模式</h3>
+      <p>底部点 <strong>Config</strong>。<strong>Global Proxy</strong> 是全局;<strong>Proxy (Rule-based)</strong> 是按规则走(推荐)。回主屏幕拨开关连接。第一次 iOS 会弹 VPN 权限,点允许。</p>
+    </li>
+    
+    <li>
+      <h3>验证</h3>
+      <p>Safari 打开 <code>ipinfo.io</code>,国家应该和所选节点一致。如果没变,换一个节点——iOS 的 TLS 栈比较严,部分免费节点在 iOS 上会抽风。</p>
+    </li>
+    
+  </ol>
+</section>
+
+<section class="card">
+  <h2>💡 常见问题排错</h2>
+  
+  <details><summary>App Store 显示 Shadowrocket 在该地区不可用</summary><p>需要美区/日区/港区 Apple ID。自己注册一个非中国区账号,不用绑定付款方式。实在搞不定就用免费的 sing-box 或 Loon。</p></details>
+  
+  <details><summary>订阅怎么自动更新?</summary><p>点订阅那一行 → 打开 <strong>Auto Update</strong>,间隔设 <strong>1 小时</strong> (和我们上游刷新频率一致)。</p></details>
+  
+  <details><summary>怎么挑最快的节点?</summary><p>点任意服务器 → <strong>Latency Test</strong> (闪电图标)。或长按订阅 → <strong>Latency Test All</strong> 批量测。</p></details>
+  
+  <details><summary>连上了但打不开网页</summary><p>VPN 开关关了再开一次。还是不行就换节点。VLESS+Reality 和 Hysteria2 在 iOS 上偶尔需要调分流规则。</p></details>
+  
+</section>
+
+<section class="card">
+  <h2>📚 其他客户端教程</h2>
+  <ul class="client-list">
+    
+    <li><a href="clash-verge.zh.html">Clash Verge</a> · Windows, macOS, Linux</li>
+    
+    <li><a href="v2rayng.zh.html">v2rayNG</a> · Android 5.0&#43;</li>
+    
+    <li><a href="sing-box.zh.html">sing-box</a> · Windows, macOS, Linux, iOS, Android</li>
+    
+  </ul>
+</section>
+
+<footer>
+  <p><a href="https://github.com/Au1rxx/free-vpn-subscriptions" target="_blank" rel="noopener">GitHub</a> · MIT</p>
+</footer>
+</body>
+</html>

@@ -6,15 +6,7 @@ proxies:
       server: 149.22.87.204
       type: ss
       udp: true
-    - name: "02-trojan-\U0001F1EF\U0001F1F5JP-160.16.85.33-0219"
-      password: 868ecdaf6aed618ec98cf78585672b2b
-      port: 4380
-      server: 160.16.85.33
-      skip-cert-verify: false
-      sni: www.nintendogames.net
-      type: trojan
-      udp: true
-    - name: "03-trojan-\U0001F1EF\U0001F1F5JP-160.16.132.38-0227"
+    - name: "02-trojan-\U0001F1EF\U0001F1F5JP-160.16.132.38-0227"
       password: 868ecdaf6aed618ec98cf78585672b2b
       port: 4019
       server: 160.16.132.38
@@ -22,7 +14,7 @@ proxies:
       sni: www.nintendogames.net
       type: trojan
       udp: true
-    - name: "04-trojan-\U0001F1EF\U0001F1F5JP-160.16.85.33-0798"
+    - name: "03-trojan-\U0001F1EF\U0001F1F5JP-160.16.85.33-0798"
       password: 868ecdaf6aed618ec98cf78585672b2b
       port: 4937
       server: 160.16.85.33
@@ -30,12 +22,20 @@ proxies:
       sni: www.nintendogames.net
       type: trojan
       udp: true
-    - name: "05-trojan-\U0001F1EF\U0001F1F5JP-160.16.132.38-0224"
+    - name: "04-trojan-\U0001F1EF\U0001F1F5JP-160.16.85.33-0219"
       password: 868ecdaf6aed618ec98cf78585672b2b
-      port: 3057
-      server: 160.16.132.38
+      port: 4380
+      server: 160.16.85.33
       skip-cert-verify: false
       sni: www.nintendogames.net
+      type: trojan
+      udp: true
+    - name: "05-trojan-\U0001F1EF\U0001F1F5JP-140.238.43.40-0834"
+      password: e136d465-0558-43b9-b50c-b1f45d4cb2c2
+      port: 24534
+      server: jp2-8sb.6121999.dpdns.org
+      skip-cert-verify: false
+      sni: jp2-8sb.6121999.dpdns.org
       type: trojan
       udp: true
     - cipher: aes-256-gcm
@@ -45,9 +45,17 @@ proxies:
       server: 185.141.219.158
       type: ss
       udp: true
+    - name: "07-trojan-\U0001F1EF\U0001F1F5JP-160.16.132.38-0224"
+      password: 868ecdaf6aed618ec98cf78585672b2b
+      port: 3057
+      server: 160.16.132.38
+      skip-cert-verify: false
+      sni: www.nintendogames.net
+      type: trojan
+      udp: true
     - alterId: 0
       cipher: auto
-      name: "07-vmess-\U0001F1EF\U0001F1F5JP-40.74.100.129-0442"
+      name: "08-vmess-\U0001F1EF\U0001F1F5JP-40.74.100.129-0442"
       network: ws
       port: 443
       server: fullaccesstojapannetsubnode1.azurewebsites.net
@@ -62,24 +70,26 @@ proxy-groups:
       name: auto
       proxies:
         - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0207"
-        - "02-trojan-\U0001F1EF\U0001F1F5JP-160.16.85.33-0219"
-        - "03-trojan-\U0001F1EF\U0001F1F5JP-160.16.132.38-0227"
-        - "04-trojan-\U0001F1EF\U0001F1F5JP-160.16.85.33-0798"
-        - "05-trojan-\U0001F1EF\U0001F1F5JP-160.16.132.38-0224"
+        - "02-trojan-\U0001F1EF\U0001F1F5JP-160.16.132.38-0227"
+        - "03-trojan-\U0001F1EF\U0001F1F5JP-160.16.85.33-0798"
+        - "04-trojan-\U0001F1EF\U0001F1F5JP-160.16.85.33-0219"
+        - "05-trojan-\U0001F1EF\U0001F1F5JP-140.238.43.40-0834"
         - "06-shadowsocks-\U0001F1EF\U0001F1F5JP-185.141.219.158-0850"
-        - "07-vmess-\U0001F1EF\U0001F1F5JP-40.74.100.129-0442"
+        - "07-trojan-\U0001F1EF\U0001F1F5JP-160.16.132.38-0224"
+        - "08-vmess-\U0001F1EF\U0001F1F5JP-40.74.100.129-0442"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0207"
-        - "02-trojan-\U0001F1EF\U0001F1F5JP-160.16.85.33-0219"
-        - "03-trojan-\U0001F1EF\U0001F1F5JP-160.16.132.38-0227"
-        - "04-trojan-\U0001F1EF\U0001F1F5JP-160.16.85.33-0798"
-        - "05-trojan-\U0001F1EF\U0001F1F5JP-160.16.132.38-0224"
+        - "02-trojan-\U0001F1EF\U0001F1F5JP-160.16.132.38-0227"
+        - "03-trojan-\U0001F1EF\U0001F1F5JP-160.16.85.33-0798"
+        - "04-trojan-\U0001F1EF\U0001F1F5JP-160.16.85.33-0219"
+        - "05-trojan-\U0001F1EF\U0001F1F5JP-140.238.43.40-0834"
         - "06-shadowsocks-\U0001F1EF\U0001F1F5JP-185.141.219.158-0850"
-        - "07-vmess-\U0001F1EF\U0001F1F5JP-40.74.100.129-0442"
+        - "07-trojan-\U0001F1EF\U0001F1F5JP-160.16.132.38-0224"
+        - "08-vmess-\U0001F1EF\U0001F1F5JP-40.74.100.129-0442"
       type: select
 rules:
     - MATCH,select

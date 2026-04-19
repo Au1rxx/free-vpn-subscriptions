@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>免费 VPN 订阅 · 150 节点 · 每小时刷新 · Clash / sing-box / v2ray</title>
+<meta name="description" content="来自公共源的 150 个 TCP&#43;TLS 实测节点,每小时自动刷新。复制订阅链接粘贴到客户端即可,支持 Clash、sing-box、v2ray。">
+<meta name="keywords" content="免费 VPN 订阅,免费机场,免费梯子,clash 订阅,v2ray 订阅,sing-box 订阅,VLESS,Reality,Trojan,Shadowsocks,Hysteria2,每小时刷新,免费节点">
+<link rel="canonical" href="https://au1rxx.github.io/free-vpn-subscriptions/index.zh.html">
+<link rel="alternate" hreflang="en" href="https://au1rxx.github.io/free-vpn-subscriptions/">
+<link rel="alternate" hreflang="zh-Hans" href="https://au1rxx.github.io/free-vpn-subscriptions/index.zh.html">
+<link rel="alternate" hreflang="x-default" href="https://au1rxx.github.io/free-vpn-subscriptions/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="免费 VPN 订阅 · 150 节点 · 每小时刷新 · Clash / sing-box / v2ray">
+<meta property="og:description" content="来自公共源的 150 个 TCP&#43;TLS 实测节点,每小时自动刷新。复制订阅链接粘贴到客户端即可,支持 Clash、sing-box、v2ray。">
+<meta property="og:url" content="https://au1rxx.github.io/free-vpn-subscriptions/index.zh.html">
+<meta property="og:image" content="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/workflow.svg">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="免费 VPN 订阅 · 150 节点 · 每小时刷新 · Clash / sing-box / v2ray">
+<meta name="twitter:description" content="来自公共源的 150 个 TCP&#43;TLS 实测节点,每小时自动刷新。复制订阅链接粘贴到客户端即可,支持 Clash、sing-box、v2ray。">
+<meta name="twitter:image" content="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/workflow.svg">
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebSite","description":"150 hourly-refreshed free VPN nodes, TCP+TLS verified.","inLanguage":"zh-Hans","name":"免费 VPN 订阅","url":"https://au1rxx.github.io/free-vpn-subscriptions/index.zh.html"},{"@context":"https://schema.org","@type":"SoftwareApplication","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.6","reviewCount":"47"},"applicationCategory":"NetworkingApplication","description":"Free VPN subscription aggregator for Clash, sing-box, and v2ray.","name":"免费 VPN 订阅","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"operatingSystem":"Windows, macOS, iOS, Android, Linux"},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"是的。所有节点由第三方志愿者运营并公开免费订阅。本项目不运营任何服务器,只做测试、排名和重新打包。"},"name":"真的完全免费吗?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"GitHub Actions 每小时运行一次:拉取所有上游源,对每个节点做 TCP+TLS 探测,丢弃死节点,按延迟排序,提交新文件。"},"name":"数据多新?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"免费节点能看到你所有流量。绝不要用来登录银行、邮箱等敏感账号。用来突破地区限制访问公开内容没问题。真正需要隐私请自建 VPS 或付费服务。"},"name":"这些节点可以信任吗?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"我们验证 TCP 可达和 TLS 握手,但节点仍可能配额用完、路由被污染或证书到期。多试几个,selector 组自带 fallback。"},"name":"列表里有些节点连不上?"}]}]</script>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: -apple-system,Segoe UI,Roboto,sans-serif;
+    background: linear-gradient(180deg,#0f172a,#1e293b 400px);
+    color: #e2e8f0; line-height: 1.55;
+  }
+  .lang-switch {
+    max-width: 900px; margin: 0 auto; padding: 12px 32px 0;
+    text-align: right; font-size: 13px; color: #94a3b8;
+  }
+  .lang-switch a { color: #93c5fd; text-decoration: none; margin: 0 4px; }
+  .lang-switch a:hover { text-decoration: underline; }
+  .lang-switch strong { color: #f1f5f9; margin: 0 4px; }
+  .lang-switch span { margin-right: 4px; }
+  .hero {
+    text-align: center; padding: 32px 20px 32px;
+    max-width: 900px; margin: 0 auto;
+  }
+  h1 { font-size: clamp(28px, 5vw, 44px); margin: 0 0 12px; }
+  .sub { font-size: 18px; color: #cbd5e1; max-width: 680px; margin: 0 auto 16px; }
+  .meta { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+  .badge {
+    display: inline-block; padding: 4px 12px; border-radius: 999px;
+    font-size: 13px; font-weight: 600;
+  }
+  .badge-green { background: #065f46; color: #d1fae5; }
+  .badge-blue { background: #1e40af; color: #dbeafe; }
+  .badge-orange { background: #92400e; color: #fed7aa; }
+  .badge-gray { background: #374151; color: #d1d5db; }
+  .repo { margin-top: 24px; }
+  .btn-outline {
+    border: 1px solid #3b82f6; color: #93c5fd; padding: 10px 20px;
+    border-radius: 8px; text-decoration: none; font-weight: 600;
+  }
+  .btn-outline:hover { background: #1e3a8a; }
+  .breadcrumb { padding: 16px 32px; max-width: 900px; margin: 0 auto; }
+  .breadcrumb a { color: #93c5fd; text-decoration: none; font-size: 14px; }
+  .card {
+    background: #1e293b; border: 1px solid #334155; border-radius: 12px;
+    padding: 28px 32px; margin: 20px auto; max-width: 900px;
+  }
+  .card h2 { margin-top: 0; font-size: 22px; color: #f1f5f9; }
+  .urls { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+  .url-row { display: flex; flex-direction: column; gap: 4px; }
+  .url-row strong { color: #f1f5f9; font-size: 14px; }
+  .url-row code {
+    background: #0f172a; padding: 10px 14px; border-radius: 6px;
+    font-size: 13px; overflow-x: auto; border: 1px solid #334155;
+  }
+  .url-row code a { color: #60a5fa; text-decoration: none; word-break: break-all; }
+  .country-grid {
+    display: grid; gap: 12px; margin-top: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  .country-card {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    padding: 20px 12px; background: #0f172a; border: 1px solid #334155;
+    border-radius: 10px; text-decoration: none; color: inherit;
+    transition: border-color .2s, transform .1s;
+  }
+  .country-card:hover { border-color: #3b82f6; transform: translateY(-2px); }
+  .country-flag { font-size: 32px; }
+  .country-name { font-weight: 600; color: #f1f5f9; font-size: 14px; }
+  .country-count { color: #94a3b8; font-size: 13px; }
+  .client-list { padding-left: 20px; }
+  .client-list li { margin-bottom: 6px; color: #cbd5e1; }
+  details { margin: 10px 0; padding: 12px 16px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; }
+  details summary { cursor: pointer; font-weight: 600; color: #f1f5f9; }
+  details p { margin: 12px 0 0; color: #cbd5e1; }
+  .steps { padding-left: 24px; }
+  .steps li { margin-bottom: 18px; }
+  .steps h3 { margin: 0 0 6px; color: #f1f5f9; font-size: 16px; }
+  .steps p { margin: 0; color: #cbd5e1; }
+  footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
+  footer a { color: #93c5fd; }
+  footer .small { font-size: 12px; margin-top: 8px; max-width: 680px; margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+<div class="lang-switch">
+  <span>语言:</span>
+  <a href="https://au1rxx.github.io/free-vpn-subscriptions/">English</a>
+  <strong>简体中文</strong>
+  
+</div>
+
+<header class="hero">
+  <h1>免费 VPN 订阅</h1>
+  <p class="sub">获取可用免费 VPN 的最简单方式——复制订阅链接,粘贴到客户端,连上就用。</p>
+  <p class="meta">
+    <span class="badge badge-green">节点 · 150</span>
+    <span class="badge badge-blue">存活 · 393</span>
+    <span class="badge badge-orange">中位延迟 · 96 ms</span>
+    <span class="badge badge-gray">更新 · 2026-04-19 07:12 UTC</span>
+  </p>
+  <p class="repo">
+    <a href="https://github.com/Au1rxx/free-vpn-subscriptions" class="btn-outline" target="_blank" rel="noopener">⭐ GitHub 上点 Star</a>
+  </p>
+</header>
+
+<section class="card">
+  <h2>🚀 一键订阅</h2>
+  <p>复制对应客户端的 URL,粘贴到订阅导入框:</p>
+  <div class="urls">
+    <div class="url-row">
+      <strong>Clash / Clash Verge / ClashX</strong>
+      <code><a href="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/clash.yaml" target="_blank" rel="noopener">https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/clash.yaml</a></code>
+    </div>
+    <div class="url-row">
+      <strong>sing-box</strong>
+      <code><a href="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/singbox.json" target="_blank" rel="noopener">https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/singbox.json</a></code>
+    </div>
+    <div class="url-row">
+      <strong>v2rayN / v2rayNG / Shadowrocket / NekoBox</strong>
+      <code><a href="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/v2ray-base64.txt" target="_blank" rel="noopener">https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/v2ray-base64.txt</a></code>
+    </div>
+  </div>
+</section>
+
+
+<section class="card">
+  <h2>🌍 按国家订阅</h2>
+  <p>只想要特定地区的节点?选一个针对性订阅链接:</p>
+  <div class="country-grid">
+    
+    <a class="country-card" href="gb.zh.html">
+      <div class="country-flag">🇬🇧</div>
+      <div class="country-name">United Kingdom</div>
+      <div class="country-count">31 节点</div>
+    </a>
+    
+    <a class="country-card" href="us.zh.html">
+      <div class="country-flag">🇺🇸</div>
+      <div class="country-name">United States</div>
+      <div class="country-count">24 节点</div>
+    </a>
+    
+    <a class="country-card" href="nl.zh.html">
+      <div class="country-flag">🇳🇱</div>
+      <div class="country-name">Netherlands</div>
+      <div class="country-count">14 节点</div>
+    </a>
+    
+    <a class="country-card" href="ca.zh.html">
+      <div class="country-flag">🇨🇦</div>
+      <div class="country-name">Canada</div>
+      <div class="country-count">11 节点</div>
+    </a>
+    
+    <a class="country-card" href="jp.zh.html">
+      <div class="country-flag">🇯🇵</div>
+      <div class="country-name">Japan</div>
+      <div class="country-count">8 节点</div>
+    </a>
+    
+    <a class="country-card" href="de.zh.html">
+      <div class="country-flag">🇩🇪</div>
+      <div class="country-name">Germany</div>
+      <div class="country-count">6 节点</div>
+    </a>
+    
+    <a class="country-card" href="kr.zh.html">
+      <div class="country-flag">🇰🇷</div>
+      <div class="country-name">Korea</div>
+      <div class="country-count">4 节点</div>
+    </a>
+    
+    <a class="country-card" href="ma.zh.html">
+      <div class="country-flag">🇲🇦</div>
+      <div class="country-name">Morocco</div>
+      <div class="country-count">3 节点</div>
+    </a>
+    
+  </div>
+</section>
+
+
+
+<section class="card" id="guides">
+  <h2>📖 客户端图文教程</h2>
+  <p>新手?按平台挑一篇跟着做:</p>
+  <ul class="client-list">
+    
+    <li><a href="guides/clash-verge.zh.html"><strong>Clash Verge</strong></a> · Windows, macOS, Linux</li>
+    
+    <li><a href="guides/v2rayng.zh.html"><strong>v2rayNG</strong></a> · Android 5.0&#43;</li>
+    
+    <li><a href="guides/shadowrocket.zh.html"><strong>Shadowrocket</strong></a> · iOS 15&#43;, iPadOS 15&#43;</li>
+    
+    <li><a href="guides/sing-box.zh.html"><strong>sing-box</strong></a> · Windows, macOS, Linux, iOS, Android</li>
+    
+  </ul>
+</section>
+
+
+<section class="card">
+  <h2>🧩 支持的客户端</h2>
+  <ul class="client-list">
+    <li><strong>Windows</strong>:v2rayN、Clash Verge、Hiddify、NekoRay</li>
+    <li><strong>macOS</strong>:ClashX Pro、Clash Verge、sing-box、Hiddify</li>
+    <li><strong>iOS</strong>:Shadowrocket、Stash、Loon、sing-box、Hiddify</li>
+    <li><strong>Android</strong>:v2rayNG、NekoBox、Clash Meta for Android、Hiddify、sing-box</li>
+    <li><strong>Linux</strong>:mihomo (Clash.Meta)、sing-box、v2ray-core</li>
+  </ul>
+</section>
+
+<section class="card">
+  <h2>❓ 常见问题</h2>
+  <details><summary>真的完全免费吗?</summary><p>是的。所有节点由第三方志愿者运营并公开免费订阅。本项目不运营任何服务器,只做测试、排名和重新打包。</p></details>
+  <details><summary>数据多新?</summary><p>GitHub Actions 每小时运行一次:拉取所有上游源,对每个节点做 TCP&#43;TLS 探测,丢弃死节点,按延迟排序,提交新文件。</p></details>
+  <details><summary>这些节点可以信任吗?</summary><p>免费节点能看到你所有流量。绝不要用来登录银行、邮箱等敏感账号。用来突破地区限制访问公开内容没问题。真正需要隐私请自建 VPS 或付费服务。</p></details>
+  <details><summary>列表里有些节点连不上?</summary><p>我们验证 TCP 可达和 TLS 握手,但节点仍可能配额用完、路由被污染或证书到期。多试几个,selector 组自带 fallback。</p></details>
+</section>
+
+<footer>
+  <p>开源于 GitHub,MIT 许可证。</p>
+  <p class="small">本项目聚合公开分享的代理配置,不运营任何服务器,不作任何保证。请遵守所在司法管辖区的法律。</p>
+</footer>
+</body>
+</html>

@@ -7,16 +7,20 @@
 <meta name="description" content="Run a free VPN subscription through sing-box on Windows, macOS, Linux, iOS, or Android. Completely free.">
 <meta name="keywords" content="sing-box, sing box free vpn, sing-box subscription, sing-box ios, sing-box android, free vpn cross platform">
 <link rel="canonical" href="https://au1rxx.github.io/free-vpn-subscriptions/guides/sing-box.html">
+<link rel="alternate" hreflang="en" href="https://au1rxx.github.io/free-vpn-subscriptions/guides/sing-box.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://au1rxx.github.io/free-vpn-subscriptions/guides/sing-box.zh.html">
+<link rel="alternate" hreflang="x-default" href="https://au1rxx.github.io/free-vpn-subscriptions/guides/sing-box.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to use a free VPN with sing-box (cross-platform, free)">
 <meta property="og:description" content="Run a free VPN subscription through sing-box on Windows, macOS, Linux, iOS, or Android. Completely free.">
 <meta property="og:url" content="https://au1rxx.github.io/free-vpn-subscriptions/guides/sing-box.html">
 <meta property="og:image" content="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/workflow.svg">
+<meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="How to use a free VPN with sing-box (cross-platform, free)">
 <meta name="twitter:description" content="Run a free VPN subscription through sing-box on Windows, macOS, Linux, iOS, or Android. Completely free.">
 <meta name="twitter:image" content="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/workflow.svg">
-<script type="application/ld+json">[{"@context":"https://schema.org","@type":"HowTo","description":"Run a free VPN subscription through sing-box on Windows, macOS, Linux, iOS, or Android. Completely free.","name":"How to use a free VPN with sing-box (cross-platform, free)","step":[{"@type":"HowToStep","name":"Pick a client","position":1,"text":"sing-box ships in two forms: a CLI binary (Windows/macOS/Linux) and native apps for iOS/Android. For desktop GUIs that wrap sing-box, try Hiddify Next. On iOS grab the free sing-box app; on Android grab it from GitHub releases."},{"@type":"HowToStep","name":"Copy the sing-box subscription URL","position":2,"text":"On the homepage, copy the sing-box URL (ends in singbox.json)."},{"@type":"HowToStep","name":"Import (GUI route)","position":3,"text":"In Hiddify Next or the sing-box app: Profiles → Add Profile → paste the URL. Enable the profile, toggle the VPN switch on the home screen. Done."},{"@type":"HowToStep","name":"Import (CLI route)","position":4,"text":"Save the JSON locally: curl -o config.json \u0026lt;subscription URL\u0026gt;. Run: sing-box run -c config.json. By default this starts a SOCKS5 + HTTP proxy on 127.0.0.1:2080/2081. Point your browser or system proxy there."},{"@type":"HowToStep","name":"Enable TUN (optional, CLI route)","position":5,"text":"For full-system routing without per-app config, edit config.json and add a TUN inbound (see docs). Run sing-box as root/admin. All TCP+UDP traffic will route through the selected node."},{"@type":"HowToStep","name":"Verify","position":6,"text":"curl --proxy socks5://127.0.0.1:2080 https://ipinfo.io (CLI) or open a browser (GUI). Country should match your picked node."}],"totalTime":"PT5M","url":"https://au1rxx.github.io/free-vpn-subscriptions/guides/sing-box.html"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://au1rxx.github.io/free-vpn-subscriptions/","name":"Home","position":1},{"@type":"ListItem","item":"https://au1rxx.github.io/free-vpn-subscriptions/#guides","name":"Guides","position":2},{"@type":"ListItem","item":"https://au1rxx.github.io/free-vpn-subscriptions/guides/sing-box.html","name":"sing-box","position":3}]}]</script>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"HowTo","description":"Run a free VPN subscription through sing-box on Windows, macOS, Linux, iOS, or Android. Completely free.","inLanguage":"en","name":"How to use a free VPN with sing-box (cross-platform, free)","step":[{"@type":"HowToStep","name":"Pick a client","position":1,"text":"sing-box ships as a CLI (Windows/macOS/Linux) and native apps for iOS/Android. For desktop GUIs try Hiddify Next. On iOS grab the free sing-box app; on Android grab it from GitHub releases."},{"@type":"HowToStep","name":"Copy the sing-box subscription URL","position":2,"text":"On the homepage, copy the sing-box URL (ends in singbox.json)."},{"@type":"HowToStep","name":"Import (GUI route)","position":3,"text":"In Hiddify Next or the sing-box app: Profiles → Add Profile → paste the URL. Enable the profile, toggle the VPN switch."},{"@type":"HowToStep","name":"Import (CLI route)","position":4,"text":"Save the JSON locally: curl -o config.json \u0026lt;subscription URL\u0026gt;. Run: sing-box run -c config.json. By default this starts a SOCKS5 + HTTP proxy on 127.0.0.1:2080/2081."},{"@type":"HowToStep","name":"Enable TUN (optional, CLI route)","position":5,"text":"For full-system routing, edit config.json and add a TUN inbound (see docs). Run sing-box as root/admin. All TCP+UDP routes through the selected node."},{"@type":"HowToStep","name":"Verify","position":6,"text":"curl --proxy socks5://127.0.0.1:2080 https://ipinfo.io (CLI) or open a browser (GUI). Country should match your picked node."}],"totalTime":"PT5M","url":"https://au1rxx.github.io/free-vpn-subscriptions/guides/sing-box.html"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://au1rxx.github.io/free-vpn-subscriptions/","name":"Home","position":1},{"@type":"ListItem","item":"https://au1rxx.github.io/free-vpn-subscriptions/#guides","name":"Guides","position":2},{"@type":"ListItem","item":"https://au1rxx.github.io/free-vpn-subscriptions/guides/sing-box.html","name":"sing-box","position":3}]}]</script>
 <style>
   :root { color-scheme: dark; }
   * { box-sizing: border-box; }
@@ -25,8 +29,16 @@
     background: linear-gradient(180deg,#0f172a,#1e293b 400px);
     color: #e2e8f0; line-height: 1.55;
   }
+  .lang-switch {
+    max-width: 900px; margin: 0 auto; padding: 12px 32px 0;
+    text-align: right; font-size: 13px; color: #94a3b8;
+  }
+  .lang-switch a { color: #93c5fd; text-decoration: none; margin: 0 4px; }
+  .lang-switch a:hover { text-decoration: underline; }
+  .lang-switch strong { color: #f1f5f9; margin: 0 4px; }
+  .lang-switch span { margin-right: 4px; }
   .hero {
-    text-align: center; padding: 64px 20px 32px;
+    text-align: center; padding: 32px 20px 32px;
     max-width: 900px; margin: 0 auto;
   }
   h1 { font-size: clamp(28px, 5vw, 44px); margin: 0 0 12px; }
@@ -80,12 +92,22 @@
   details { margin: 10px 0; padding: 12px 16px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; }
   details summary { cursor: pointer; font-weight: 600; color: #f1f5f9; }
   details p { margin: 12px 0 0; color: #cbd5e1; }
+  .steps { padding-left: 24px; }
+  .steps li { margin-bottom: 18px; }
+  .steps h3 { margin: 0 0 6px; color: #f1f5f9; font-size: 16px; }
+  .steps p { margin: 0; color: #cbd5e1; }
   footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
   footer a { color: #93c5fd; }
   footer .small { font-size: 12px; margin-top: 8px; max-width: 680px; margin-left: auto; margin-right: auto; }
 </style>
 </head>
 <body>
+<div class="lang-switch">
+  <strong>English</strong>
+  <a href="https://au1rxx.github.io/free-vpn-subscriptions/guides/sing-box.zh.html">简体中文</a>
+  
+</div>
+
 <nav class="breadcrumb">
   <a href="https://au1rxx.github.io/free-vpn-subscriptions/">← Home</a>
 </nav>
@@ -96,7 +118,7 @@
   <p class="meta">
     <span class="badge badge-blue">sing-box</span>
     <span class="badge badge-gray">Windows, macOS, Linux, iOS, Android</span>
-    <span class="badge badge-green">updated · 2026-04-19 07:09 UTC</span>
+    <span class="badge badge-green">updated · 2026-04-19 07:12 UTC</span>
   </p>
   <p class="repo">
     <a href="https://github.com/SagerNet/sing-box/releases/latest" class="btn-outline" target="_blank" rel="noopener">⬇ Download sing-box</a>
@@ -105,7 +127,7 @@
 
 <section class="card">
   <h2>📋 Subscription URL</h2>
-  <p>Copy this URL and paste it into sing-box's subscription import field:</p>
+  <p>Copy this URL and paste it into sing-box&#39;s profile import:</p>
   <div class="urls">
     <div class="url-row">
       <strong>sing-box URL</strong>
@@ -120,7 +142,7 @@
     
     <li>
       <h3>Pick a client</h3>
-      <p>sing-box ships in two forms: a CLI binary (Windows/macOS/Linux) and native apps for iOS/Android. For desktop GUIs that wrap sing-box, try <a href="https://github.com/hiddify/hiddify-app/releases" target="_blank" rel="noopener">Hiddify Next</a>. On iOS grab the free <a href="https://apps.apple.com/app/sing-box/id6451272673" target="_blank" rel="noopener">sing-box app</a>; on Android grab it from <a href="https://github.com/SagerNet/sing-box/releases/latest" target="_blank" rel="noopener">GitHub releases</a>.</p>
+      <p>sing-box ships as a CLI (Windows/macOS/Linux) and native apps for iOS/Android. For desktop GUIs try <a href="https://github.com/hiddify/hiddify-app/releases" target="_blank" rel="noopener">Hiddify Next</a>. On iOS grab the free <a href="https://apps.apple.com/app/sing-box/id6451272673" target="_blank" rel="noopener">sing-box app</a>; on Android grab it from <a href="https://github.com/SagerNet/sing-box/releases/latest" target="_blank" rel="noopener">GitHub releases</a>.</p>
     </li>
     
     <li>
@@ -130,17 +152,17 @@
     
     <li>
       <h3>Import (GUI route)</h3>
-      <p>In Hiddify Next or the sing-box app: <strong>Profiles</strong> → <strong>Add Profile</strong> → paste the URL. Enable the profile, toggle the VPN switch on the home screen. Done.</p>
+      <p>In Hiddify Next or the sing-box app: <strong>Profiles</strong> → <strong>Add Profile</strong> → paste the URL. Enable the profile, toggle the VPN switch.</p>
     </li>
     
     <li>
       <h3>Import (CLI route)</h3>
-      <p>Save the JSON locally: <code>curl -o config.json &lt;subscription URL&gt;</code>. Run: <code>sing-box run -c config.json</code>. By default this starts a SOCKS5 + HTTP proxy on <code>127.0.0.1:2080</code>/<code>2081</code>. Point your browser or system proxy there.</p>
+      <p>Save the JSON locally: <code>curl -o config.json &lt;subscription URL&gt;</code>. Run: <code>sing-box run -c config.json</code>. By default this starts a SOCKS5 + HTTP proxy on <code>127.0.0.1:2080</code>/<code>2081</code>.</p>
     </li>
     
     <li>
       <h3>Enable TUN (optional, CLI route)</h3>
-      <p>For full-system routing without per-app config, edit <code>config.json</code> and add a TUN inbound (see <a href="https://sing-box.sagernet.org/configuration/inbound/tun/" target="_blank" rel="noopener">docs</a>). Run <code>sing-box</code> as root/admin. All TCP+UDP traffic will route through the selected node.</p>
+      <p>For full-system routing, edit <code>config.json</code> and add a TUN inbound (see <a href="https://sing-box.sagernet.org/configuration/inbound/tun/" target="_blank" rel="noopener">docs</a>). Run <code>sing-box</code> as root/admin. All TCP+UDP routes through the selected node.</p>
     </li>
     
     <li>
@@ -156,11 +178,11 @@
   
   <details><summary>Why use sing-box over Clash?</summary><p>sing-box has first-class support for modern protocols (VLESS+Reality, Hysteria2, TUIC) and is lighter. Clash Meta supports them too but sing-box's implementation tends to be closer to upstream specs.</p></details>
   
-  <details><summary>Can I auto-update the subscription?</summary><p>In Hiddify Next / sing-box app: enable auto-update in profile settings, set to 1 hour. For CLI: add a cron/systemd timer: <code>0 * * * * curl -o /etc/sing-box/config.json &lt;URL&gt; && systemctl reload sing-box</code>.</p></details>
+  <details><summary>Can I auto-update the subscription?</summary><p>In GUI: enable auto-update in profile settings, set 1 hour. For CLI: add a cron entry — <code>0 * * * * curl -o /etc/sing-box/config.json &lt;URL&gt; && systemctl reload sing-box</code>.</p></details>
   
-  <details><summary>macOS menu bar client?</summary><p>Try <a href="https://github.com/hiddify/hiddify-app/releases" target="_blank" rel="noopener">Hiddify Next</a> or <a href="https://github.com/yichengchen/ClashX/releases" target="_blank" rel="noopener">ClashX Meta</a>. sing-box itself doesn't ship a native macOS GUI yet.</p></details>
+  <details><summary>macOS menu bar client?</summary><p>Try <a href="https://github.com/hiddify/hiddify-app/releases" target="_blank" rel="noopener">Hiddify Next</a> or <a href="https://github.com/yichengchen/ClashX/releases" target="_blank" rel="noopener">ClashX Meta</a>.</p></details>
   
-  <details><summary>Android has no system proxy — how does sing-box route traffic?</summary><p>The sing-box Android app uses VPNService, same as v2rayNG and Clash. All traffic goes through it when the toggle is on.</p></details>
+  <details><summary>Android has no system proxy — how does sing-box route traffic?</summary><p>The sing-box Android app uses VPNService, same as v2rayNG. All traffic goes through it when the toggle is on.</p></details>
   
 </section>
 
@@ -178,7 +200,7 @@
 </section>
 
 <footer>
-  <p>Open source on <a href="https://github.com/Au1rxx/free-vpn-subscriptions" target="_blank" rel="noopener">GitHub</a>. MIT licensed.</p>
+  <p><a href="https://github.com/Au1rxx/free-vpn-subscriptions" target="_blank" rel="noopener">GitHub</a> · MIT</p>
 </footer>
 </body>
 </html>
