@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![节点](https://img.shields.io/badge/节点-150-brightgreen) ![存活](https://img.shields.io/badge/存活-2599-blue) ![中位延迟](https://img.shields.io/badge/中位延迟-1ms-orange) ![更新](https://img.shields.io/badge/更新-2026-04-19_10:33_UTC-informational)
+![节点](https://img.shields.io/badge/节点-150-brightgreen) ![存活](https://img.shields.io/badge/存活-2597-blue) ![中位延迟](https://img.shields.io/badge/中位延迟-8ms-orange) ![更新](https://img.shields.io/badge/更新-2026-04-19_10:41_UTC-informational)
 
 > **获取可用免费 VPN 的最简单方式 —— 复制订阅链接,粘贴到客户端,连上。**  
 > 无需注册。无需付费。无需安装任何二进制。每小时从公共源自动抓取,逐个节点测试。
@@ -34,6 +34,8 @@ GitHub 上几乎所有的"免费 VPN"列表都有三个问题:数据过期、全
 | 国家/地区 | 节点数 | Clash | sing-box | v2ray |
 |---|---|---|---|---|
 | 🇺🇸 United States (`US`) | 20 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
+| 🇩🇪 Germany (`DE`) | 6 | [clash-DE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-DE.yaml) | [singbox-DE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-DE.json) | [v2ray-base64-DE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-DE.txt) |
+| 🇸🇪 Sweden (`SE`) | 3 | [clash-SE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-SE.yaml) | [singbox-SE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-SE.json) | [v2ray-base64-SE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-SE.txt) |
 
 ## 📖 客户端图文教程
 
@@ -55,14 +57,14 @@ GitHub 上几乎所有的"免费 VPN"列表都有三个问题:数据过期、全
 ## 📊 实时统计
 
 - **精选节点数**: 150
-- **全源存活总数**: 2599
-- **最快延迟**: 1 ms
-- **中位延迟**: 1 ms
-- **最后更新 (UTC)**: 2026-04-19 10:33 UTC
+- **全源存活总数**: 2597
+- **最快延迟**: 2 ms
+- **中位延迟**: 8 ms
+- **最后更新 (UTC)**: 2026-04-19 10:41 UTC
 
-**协议分布:** shadowsocks × 22 · trojan × 19 · vless × 93 · vmess × 16
+**协议分布:** shadowsocks × 29 · trojan × 17 · vless × 77 · vmess × 27
 
-**本次使用的源:** `barry-far-v2ray` × 40 · `ebrasha-v2ray` × 15 · `epodonios` × 29 · `mfuu-clash` × 3 · `ninjastrikers` × 44 · `ruking-clash` × 13 · `snakem982` × 4 · `surfboard-eternity` × 2
+**本次使用的源:** `barry-far-v2ray` × 26 · `ebrasha-v2ray` × 15 · `epodonios` × 33 · `mahdibland-aggregator` × 3 · `mahdibland-shadowsocks` × 2 · `matin-v2ray` × 2 · `mfuu-clash` × 1 · `ninjastrikers` × 39 · `ruking-clash` × 18 · `snakem982` × 6 · `surfboard-eternity` × 4 · `vxiaov-clash` × 1
 
 ## ❓ 常见问题
 
