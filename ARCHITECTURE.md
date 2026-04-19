@@ -5,27 +5,28 @@ How `free-vpn-subscriptions` fetches, verifies, and publishes working VPN nodes 
 ## Pipeline at a glance
 
 ```
-                               ┌────────────────────────────┐
-GitHub Actions cron (0 * * * *) │ every hour, workflow runs  │
-                               └────────────┬───────────────┘
+                               ┌─────────────────────────────────────┐
+GitHub Actions cron (0 * * * *) │ every hour, workflow runs            │
+                               │ ctx bounded by 30 min + SIGINT       │
+                               └────────────┬────────────────────────┘
                                             │
                          ┌──────────────────┴────────────────────┐
                          │ 1. Fetch — internal/sources/fetch.go   │
                          │    5 upstream subscription feeds       │
                          │    formats: uri-list, base64, clash    │
-                         │    ~1,000 raw nodes                    │
+                         │    ~1,000 raw nodes (ctx-aware HTTP)   │
                          └──────────────────┬────────────────────┘
                                             │
                          ┌──────────────────┴────────────────────┐
                          │ 2. TCP probe — internal/probe/probe.go │
-                         │    concurrent net.DialTimeout to       │
-                         │    server:port, 3s timeout, 100-way    │
+                         │    concurrent net.Dialer.DialContext   │
+                         │    to server:port, 3s timeout, 100-way │
                          │    parallel. Drops ~40% dead nodes.    │
                          └──────────────────┬────────────────────┘
                                             │
                          ┌──────────────────┴────────────────────┐
                          │ 3. TLS handshake — internal/probe/tls  │
-                         │    tls.DialWithDialer for Trojan /     │
+                         │    tls.Dialer.DialContext for Trojan / │
                          │    Hysteria2 / VLESS+tls / VMess+tls.  │
                          │    Drops fake proxies (routers         │
                          │    accepting TCP but not TLS).         │
@@ -85,12 +86,14 @@ Fetch errors on a single source are swallowed — they log `[skip]` and the pipe
 Defined in [`internal/probe/probe.go`](./internal/probe/probe.go).
 
 ```go
-net.DialTimeout("tcp", host:port, 3 * time.Second)
+dialer := &net.Dialer{Timeout: 3 * time.Second}
+conn, err := dialer.DialContext(ctx, "tcp", host:port)
 ```
 
 - 100-way concurrent (configurable via `probe.concurrency`).
 - Latency (time to TCP handshake) is recorded on the `Node.LatencyMS` field.
 - Nodes that fail to connect are dropped entirely.
+- **Context-aware**: the top-level `fnctl aggregate` wraps `context.Background()` with both `signal.NotifyContext` (SIGINT/SIGTERM) and a 30-minute deadline (`runDeadline`). Cancelling `ctx` propagates here so pending dials abort immediately instead of leaking goroutines when the Actions runner sends SIGINT or when a run approaches the 6-hour workflow ceiling.
 
 Typical result: ~60% of fetched nodes pass this stage. The rest are dead hosts, port-blocked by our runner's network, or have revoked IPs.
 
@@ -101,16 +104,21 @@ Defined in [`internal/probe/tls.go`](./internal/probe/tls.go).
 This is the crucial stage that separates us from most "free VPN list" repos: we verify the node actually speaks TLS, not just "something listens on port 443."
 
 ```go
-tls.DialWithDialer(dialer, "tcp", addr, &tls.Config{
-    ServerName:         sni,
-    InsecureSkipVerify: true,  // free nodes often use self-signed
-})
+tlsDialer := &tls.Dialer{
+    NetDialer: &net.Dialer{Timeout: 3 * time.Second},
+    Config: &tls.Config{
+        ServerName:         sni,
+        InsecureSkipVerify: true,  // free nodes often use self-signed
+    },
+}
+conn, err := tlsDialer.DialContext(ctx, "tcp", addr)
 ```
 
 - `InsecureSkipVerify: true` because free nodes commonly present self-signed or expired certs. We care only that a real TLS handshake completes.
 - `ServerName` uses the node's declared SNI; falls back to the bare server hostname.
 - Applied to: Trojan, Hysteria2, VLESS+tls, VMess+tls.
 - **Reality is intentionally skipped** — Reality nodes spoof their ClientHello to look like legitimate targets (e.g. microsoft.com), so a real handshake against the proxy tells us nothing useful.
+- **Context-aware**: `tls.Dialer.DialContext` respects the same run-level ctx as the TCP probe, so SIGINT / deadline propagate through handshakes already in flight.
 
 Typical result: ~60% of TCP-alive TLS nodes pass this stage. The rest are fake — cheap VPS routers that accept any TCP connection and silently drop anything that isn't HTTP/1.1.
 
@@ -137,6 +145,8 @@ Applied in strict order:
 4. **Sort** ascending by latency.
 5. **Top-N** — slice to `aggregate.top_n` (default 150). Shorter lists are easier for clients to process and keep the selector group responsive.
 
+The median-latency statistic reported in `status.json` and READMEs uses the true median: the middle element for odd-length lists, and the mean of the two middle elements for even-length lists. Implemented as `medianLatency` in `aggregate.go` — previously we returned the upper-middle value, biasing the number up by ~5–10 ms on typical runs.
+
 A country variant is emitted per ISO-2 country when that country has at least `geoip.min_per_country` nodes (default 3) — avoids publishing a `clash-BZ.yaml` with only 1 node.
 
 ## Step 6 — Emit
@@ -151,7 +161,7 @@ The binary writes:
 | Per-country variants | `output/by-country/{clash,singbox,v2ray-base64}-XX.{yaml,json,txt}` | targeted subscriptions |
 | Status | `output/status.json` | summary for dashboards |
 | READMEs | `README.md`, `README_CN.md`, …, `README_RU.md` | GitHub repo front page |
-| Pages site | `docs/index.html`, `docs/index.zh.html`, `docs/XX.html`, `docs/XX.zh.html`, `docs/guides/*.html`, `docs/sitemap.xml`, `docs/robots.txt` | SEO landing for au1rxx.github.io |
+| Pages site | `docs/index.{en,zh,ja,ko,es,pt,ru}.html`, `docs/XX.{en,zh,ja,ko,es,pt,ru}.html` per qualifying country, `docs/guides/{slug}.{en,zh}.html`, `docs/sitemap.xml`, `docs/robots.txt` | SEO landing for au1rxx.github.io |
 
 The Clash emitter builds a `proxy-groups` selector with a URL-test probe (`http://www.gstatic.com/generate_204`, 300s interval) — clients auto-pick the fastest node in real use.
 
@@ -184,20 +194,31 @@ Practical consequences:
 
 ## Multilingual rendering
 
-Each page is rendered **once per locale** in `supportedLocales` (`en`, `zh`). Source of truth: [`internal/pages/l10n.go`](./internal/pages/l10n.go) (chrome strings) and [`internal/pages/guides.go`](./internal/pages/guides.go) (guide content).
+The site supports **two tiers of localization** so we can reach non-English searchers without being on the hook for translating 6 × 4 = 24 hand-written guide tutorials.
 
-| Page type | English (canonical) | 简体中文 |
+| Tier | Locales | What gets rendered |
 |---|---|---|
-| Index | `/index.html` served as `/` | `/index.zh.html` |
-| Country | `/us.html`, `/hk.html`, … | `/us.zh.html`, `/hk.zh.html`, … |
-| Guide | `/guides/clash-verge.html`, … | `/guides/clash-verge.zh.html`, … |
+| **Full** (`supportedLocales`) | `en`, `zh`, `ja`, `ko`, `es`, `pt`, `ru` — 7 total | Index + per-country pages |
+| **Guides** (`supportedGuideLocales`) | `en`, `zh` — 2 total | Step-by-step client setup pages under `/guides/` |
+
+Source of truth: [`internal/pages/l10n.go`](./internal/pages/l10n.go) (index/country strings, all 7 locales) and [`internal/pages/guides.go`](./internal/pages/guides.go) (guide content, en+zh only).
+
+| Page type | English (canonical) | Non-English locales |
+|---|---|---|
+| Index | `/index.html` served as `/` | `/index.{loc}.html` for each of `zh`, `ja`, `ko`, `es`, `pt`, `ru` |
+| Country | `/us.html`, `/hk.html`, … | `/us.{loc}.html`, `/hk.{loc}.html`, … — one per full locale |
+| Guide | `/guides/clash-verge.html`, … | `/guides/clash-verge.zh.html` only (no `.ja/.ko/.es/.pt/.ru`) |
+
+**Guide fallback**: an index page rendered in e.g. Japanese links to the **English** guide URL (`guides/clash-verge.html`, not `.ja.html`) because the Japanese file does not exist. This keeps the click working — better UX than a 404 — and aligns with Google's hreflang fallback expectations (a locale with no translated resource legitimately points at the default one). The guide's own `<link rel="alternate" hreflang>` tags advertise only `en` + `zh` + `x-default`, so search engines won't synthesize a Japanese guide URL.
 
 Every page advertises its alternates to search engines in two places:
 
-1. **`<link rel="alternate" hreflang="…">` in `<head>`** — one tag per locale plus `x-default` → English.
+1. **`<link rel="alternate" hreflang="…">` in `<head>`** — one tag per locale the page itself exists in, plus `x-default` → English.
 2. **`<xhtml:link rel="alternate" hreflang="…">` in `sitemap.xml`** — same alternates declared at the sitemap level so Google discovers them even if it hits the sitemap before any page.
 
-A visible language switcher at the top of every page lets users toggle manually without relying on crawler-only hreflang.
+Index + country sitemap entries carry all 7 `hreflang` alternates; guide entries carry only `en` + `zh-Hans` + `x-default`.
+
+A visible language switcher at the top of every page lets users toggle manually without relying on crawler-only hreflang. Switchers on index/country pages offer all 7 locales; switchers on guide pages show only en + zh.
 
 ## SEO surface
 
@@ -218,16 +239,34 @@ Every HTML page carries a consistent set of metadata. Implementation: [`internal
 
 `inLanguage` is set on every JSON-LD entity so Google can serve the right version per query locale. All page weight stays under 20 KB (inline CSS, no JS, no external fetches) — Core Web Vitals green by construction.
 
+### Hero image
+
+`assets/hero.png` (525 KB, 1536×1024, 70% smaller than the original 1.77 MB GPT-generated output, compressed with `pngquant --quality=75-92 --strip` to drop metadata while keeping the visible fidelity identical) is the `og:image` referenced on every page. It's also the README hero. Smaller weight = faster link-preview fetches on Reddit/Twitter/Slack and lighter crawls by ImageBot.
+
 ## Adding a new locale
 
-To add e.g. Japanese to the Pages site:
+Two paths depending on how much translation effort you're committing.
 
-1. Add a `"ja": {…}` entry to `pageLocales` in [`internal/pages/l10n.go`](./internal/pages/l10n.go).
-2. Add `"ja": {…}` to each `L10n` map in [`internal/pages/guides.go`](./internal/pages/guides.go).
-3. Append `"ja"` to `supportedLocales` (same file).
-4. Map `ja` → the right hreflang in `hreflangCode` if it differs from the locale code.
+### Path A — index + country pages only (cheap, ~45 strings)
 
-The locale loop in `Generate()`, `indexAlternates()`, and the sitemap writer all iterate `supportedLocales` — no other code changes needed.
+This is how `ja`, `ko`, `es`, `pt`, `ru` were added. Use this when you don't want to hand-translate the multi-paragraph client setup tutorials.
+
+1. Add an entry to `pageLocales` in [`internal/pages/l10n.go`](./internal/pages/l10n.go) — one full `pageL10n{…}` struct (~45 fields). Reuse translations from the corresponding `internal/readme/locale_*.go` where possible.
+2. Append the new code to `supportedLocales` in [`internal/pages/guides.go`](./internal/pages/guides.go).
+3. Add a case for the code in `localeLangAttr` if the HTML `lang` attribute differs from the locale code (e.g. `zh` → `zh-Hans`).
+4. Add a case in `hreflangCode` if the Google-expected hreflang differs from the locale code.
+
+The new locale automatically: gets its own index + country pages, shows up in every language switcher and every hreflang list, and appears in the sitemap with all 7 alternates. The index page's **Guides** section in the new locale falls back to the English guide pages (no 404).
+
+### Path B — also render full guide translations (expensive, ~50 HTML-bearing strings per guide × 4 guides)
+
+Do this when you have a native speaker willing to write each step-by-step tutorial body.
+
+1. Do everything in Path A.
+2. For each `guideSpec` in [`internal/pages/guides.go`](./internal/pages/guides.go), add the new code to its `L10n` map — a full `guideL10n{…}` with `Steps[]` and `Tips[]` bodies (HTML allowed).
+3. Append the new code to `supportedGuideLocales` (same file). This is what switches the guide loop in `Generate()` from "English only" to "also render this locale".
+
+Once the code is in `supportedGuideLocales`, the guide sitemap entries automatically gain its `hreflang`, the guide language switcher adds it, and index pages in that locale link to the translated guide URL instead of the English fallback.
 
 ## Reliability mechanisms summary
 
@@ -240,6 +279,8 @@ The locale loop in `Generate()`, `indexAlternates()`, and the sitemap writer all
 | Single country dominates | Top-N cap ensures geographic spread; per-country files for targeted subs |
 | GeoIP DB outage | Soft-fail — global outputs still produced |
 | GitHub Actions runner throttled | Concurrency bounded to 100; timeout_ms keeps one stuck probe from blocking |
+| Run exceeds workflow budget | `runDeadline = 30m` in `cmd/fnctl/main.go` caps the whole aggregate via `context.WithTimeout`; ensures a clean shutdown far below the 6 h Actions ceiling |
+| Runner sends SIGINT mid-run | `signal.NotifyContext` catches SIGINT/SIGTERM; ctx propagates into fetch + probe + TLS, aborting pending work instead of leaking goroutines |
 | Race between hourly bot and human commits | `concurrency: aggregate` in workflow prevents overlapping runs |
 
 ## What we deliberately do *not* do
