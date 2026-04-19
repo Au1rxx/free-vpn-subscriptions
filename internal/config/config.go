@@ -13,7 +13,15 @@ type Config struct {
 	Probe     ProbeConfig     `yaml:"probe"`
 	Aggregate AggregateConfig `yaml:"aggregate"`
 	Output    OutputConfig    `yaml:"output"`
+	GeoIP     GeoIPConfig     `yaml:"geoip"`
 	Readme    ReadmeConfig    `yaml:"readme"`
+}
+
+type GeoIPConfig struct {
+	Enabled       bool   `yaml:"enabled"`
+	DBURL         string `yaml:"db_url"`
+	DBPath        string `yaml:"db_path"`
+	MinPerCountry int    `yaml:"min_per_country"`
 }
 
 // Source describes a single upstream subscription feed.
@@ -25,9 +33,10 @@ type Source struct {
 }
 
 type ProbeConfig struct {
-	TimeoutMS         int `yaml:"timeout_ms"`
-	Concurrency       int `yaml:"concurrency"`
-	MaxNodesPerSource int `yaml:"max_nodes_per_source"`
+	TimeoutMS         int  `yaml:"timeout_ms"`
+	Concurrency       int  `yaml:"concurrency"`
+	MaxNodesPerSource int  `yaml:"max_nodes_per_source"`
+	TLSVerify         bool `yaml:"tls_verify"`
 }
 
 type AggregateConfig struct {
@@ -85,6 +94,15 @@ func applyDefaults(c *Config) {
 	}
 	if len(c.Output.Formats) == 0 {
 		c.Output.Formats = []string{"clash", "v2ray-base64"}
+	}
+	if c.GeoIP.DBURL == "" {
+		c.GeoIP.DBURL = "https://github.com/P3TERX/GeoLite.mmdb/releases/latest/download/GeoLite2-Country.mmdb"
+	}
+	if c.GeoIP.DBPath == "" {
+		c.GeoIP.DBPath = "output/.cache/GeoLite2-Country.mmdb"
+	}
+	if c.GeoIP.MinPerCountry == 0 {
+		c.GeoIP.MinPerCountry = 3
 	}
 }
 

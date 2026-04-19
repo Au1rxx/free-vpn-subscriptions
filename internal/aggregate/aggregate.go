@@ -12,14 +12,15 @@ import (
 // Summary captures aggregated statistics for downstream consumers
 // (status.json, README).
 type Summary struct {
-	TotalFetched     int            `json:"total_fetched"`
-	TotalAlive       int            `json:"total_alive"`
-	TotalSelected    int            `json:"total_selected"`
-	BySource         map[string]int `json:"by_source"`
-	ByProtocol       map[string]int `json:"by_protocol"`
-	MedianLatencyMS  int            `json:"median_latency_ms"`
-	MinLatencyMS     int            `json:"min_latency_ms"`
-	GeneratedAtUnix  int64          `json:"generated_at_unix"`
+	TotalFetched    int            `json:"total_fetched"`
+	TotalAlive      int            `json:"total_alive"`
+	TotalSelected   int            `json:"total_selected"`
+	BySource        map[string]int `json:"by_source"`
+	ByProtocol      map[string]int `json:"by_protocol"`
+	ByCountry       map[string]int `json:"by_country,omitempty"`
+	MedianLatencyMS int            `json:"median_latency_ms"`
+	MinLatencyMS    int            `json:"min_latency_ms"`
+	GeneratedAtUnix int64          `json:"generated_at_unix"`
 }
 
 // Run applies the aggregation pipeline: protocol filter → dedup → RTT filter

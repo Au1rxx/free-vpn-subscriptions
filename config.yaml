@@ -28,6 +28,7 @@ probe:
   timeout_ms: 3000
   concurrency: 100
   max_nodes_per_source: 500
+  tls_verify: true
 
 aggregate:
   top_n: 150
@@ -37,6 +38,12 @@ aggregate:
 output:
   dir: output
   formats: [clash, singbox, v2ray-base64]
+
+geoip:
+  enabled: true
+  db_url: https://github.com/P3TERX/GeoLite.mmdb/releases/latest/download/GeoLite2-Country.mmdb
+  db_path: output/.cache/GeoLite2-Country.mmdb
+  min_per_country: 3
 
 readme:
   title: "Free VPN Subscriptions"

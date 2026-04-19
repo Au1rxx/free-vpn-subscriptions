@@ -14,10 +14,12 @@ import (
 )
 
 type Input struct {
-	Title   string
-	RepoURL string
-	Nodes   []*node.Node
-	Summary aggregate.Summary
+	Title          string
+	RepoURL        string
+	Nodes          []*node.Node
+	Summary        aggregate.Summary
+	CountryEnabled bool
+	MinPerCountry  int
 }
 
 // Generate returns the complete README markdown.
@@ -50,6 +52,11 @@ func Generate(in Input) string {
 	fmt.Fprintf(&b, "| Clash / Clash Verge / ClashX | `clash.yaml` | `%s/raw/main/output/clash.yaml` |\n", in.RepoURL)
 	fmt.Fprintf(&b, "| sing-box | `singbox.json` | `%s/raw/main/output/singbox.json` |\n", in.RepoURL)
 	fmt.Fprintf(&b, "| v2rayN / v2rayNG / Shadowrocket / NekoBox | `v2ray-base64` | `%s/raw/main/output/v2ray-base64.txt` |\n\n", in.RepoURL)
+
+	// Per-country subscriptions
+	if in.CountryEnabled && in.MinPerCountry > 0 && len(in.Summary.ByCountry) > 0 {
+		renderByCountry(&b, in)
+	}
 
 	// Client compatibility
 	b.WriteString("## 🧩 Supported Clients\n\n")
@@ -127,6 +134,92 @@ func sortedKeys(m map[string]int) []string {
 	}
 	sort.Strings(keys)
 	return keys
+}
+
+// renderByCountry appends a "By Country" section listing available
+// per-country subscription files, sorted by node count desc.
+func renderByCountry(b *strings.Builder, in Input) {
+	type row struct {
+		cc    string
+		count int
+	}
+	var rows []row
+	for cc, n := range in.Summary.ByCountry {
+		if cc == "" || cc == "XX" {
+			continue
+		}
+		if n < in.MinPerCountry {
+			continue
+		}
+		rows = append(rows, row{cc, n})
+	}
+	if len(rows) == 0 {
+		return
+	}
+	sort.Slice(rows, func(i, j int) bool {
+		if rows[i].count != rows[j].count {
+			return rows[i].count > rows[j].count
+		}
+		return rows[i].cc < rows[j].cc
+	})
+
+	b.WriteString("## 🌍 By Country\n\n")
+	b.WriteString("Want nodes in a specific region only? Use one of these targeted subscription URLs:\n\n")
+	b.WriteString("| Country | Nodes | Clash | sing-box | v2ray |\n")
+	b.WriteString("|---|---|---|---|---|\n")
+	for _, r := range rows {
+		flag := countryFlag(r.cc)
+		label := countryLabel(r.cc)
+		base := in.RepoURL + "/raw/main/output/by-country"
+		fmt.Fprintf(b, "| %s %s (`%s`) | %d | [clash-%s.yaml](%s/clash-%s.yaml) | [singbox-%s.json](%s/singbox-%s.json) | [v2ray-base64-%s.txt](%s/v2ray-base64-%s.txt) |\n",
+			flag, label, r.cc, r.count,
+			r.cc, base, r.cc,
+			r.cc, base, r.cc,
+			r.cc, base, r.cc)
+	}
+	b.WriteString("\n")
+}
+
+// countryFlag returns a regional-indicator emoji for a 2-letter country code.
+func countryFlag(cc string) string {
+	if len(cc) != 2 {
+		return ""
+	}
+	c := strings.ToUpper(cc)
+	r1 := rune(c[0]) - 'A' + 0x1F1E6
+	r2 := rune(c[1]) - 'A' + 0x1F1E6
+	return string([]rune{r1, r2})
+}
+
+func countryLabel(cc string) string {
+	if name, ok := countryNames[strings.ToUpper(cc)]; ok {
+		return name
+	}
+	return cc
+}
+
+var countryNames = map[string]string{
+	"US": "United States", "HK": "Hong Kong", "JP": "Japan", "KR": "Korea",
+	"SG": "Singapore", "TW": "Taiwan", "GB": "United Kingdom", "DE": "Germany",
+	"FR": "France", "NL": "Netherlands", "CA": "Canada", "AU": "Australia",
+	"RU": "Russia", "IN": "India", "TR": "Turkey", "BR": "Brazil",
+	"IT": "Italy", "ES": "Spain", "SE": "Sweden", "CH": "Switzerland",
+	"PL": "Poland", "AT": "Austria", "BE": "Belgium", "DK": "Denmark",
+	"FI": "Finland", "NO": "Norway", "IE": "Ireland", "IL": "Israel",
+	"AE": "UAE", "SA": "Saudi Arabia", "VN": "Vietnam", "TH": "Thailand",
+	"MY": "Malaysia", "ID": "Indonesia", "PH": "Philippines", "MX": "Mexico",
+	"AR": "Argentina", "CL": "Chile", "ZA": "South Africa", "UA": "Ukraine",
+	"CZ": "Czechia", "HU": "Hungary", "RO": "Romania", "LU": "Luxembourg",
+	"IS": "Iceland", "NZ": "New Zealand", "PT": "Portugal", "GR": "Greece",
+	"EE": "Estonia", "LT": "Lithuania", "LV": "Latvia", "BG": "Bulgaria",
+	"SK": "Slovakia", "SI": "Slovenia", "HR": "Croatia", "RS": "Serbia",
+	"MD": "Moldova", "BY": "Belarus", "KZ": "Kazakhstan", "CN": "China",
+	"BZ": "Belize", "IM": "Isle of Man", "CY": "Cyprus", "MT": "Malta",
+	"CR": "Costa Rica", "PA": "Panama", "VG": "British Virgin Islands",
+	"KY": "Cayman Islands", "PR": "Puerto Rico", "CO": "Colombia",
+	"PE": "Peru", "EG": "Egypt", "NG": "Nigeria", "KE": "Kenya",
+	"PK": "Pakistan", "BD": "Bangladesh", "LK": "Sri Lanka", "NP": "Nepal",
+	"MM": "Myanmar", "KH": "Cambodia", "LA": "Laos", "MO": "Macau",
 }
 
 func repoSlug(repoURL string) string {
