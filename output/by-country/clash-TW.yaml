@@ -1,0 +1,87 @@
+proxies:
+    - cipher: aes-256-cfb
+      name: "01-shadowsocks-\U0001F1F9\U0001F1FCTW-185.189.160.105-0222"
+      password: qwerREWQ@@
+      port: 41632
+      server: 185.189.160.105
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "02-shadowsocks-\U0001F1F9\U0001F1FCTW-111.248.93.97-0223"
+      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+      port: 50099
+      server: r3mrcg007134n4g.cybervena.com
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "03-shadowsocks-\U0001F1F9\U0001F1FCTW-61.231.153.242-0220"
+      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+      port: 50099
+      server: n8mrcg004676x9e.cybervena.com
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "04-shadowsocks-\U0001F1F9\U0001F1FCTW-1.161.245.168-0228"
+      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+      port: 50099
+      server: nbmrcg0034686rw.cybervena.com
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "05-shadowsocks-\U0001F1F9\U0001F1FCTW-111.248.66.243-0235"
+      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+      port: 50099
+      server: r3mrcg007147vhp.cybervena.com
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "06-shadowsocks-\U0001F1F9\U0001F1FCTW-36.224.150.145-0225"
+      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+      port: 50099
+      server: r3mrcg001286ek2.cybervena.com
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "07-shadowsocks-\U0001F1F9\U0001F1FCTW-111.248.106.149-0230"
+      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+      port: 50099
+      server: r3mrcg007117fb8.cybervena.com
+      type: ss
+      udp: true
+    - alterId: 0
+      cipher: auto
+      name: "08-vmess-\U0001F1F9\U0001F1FCTW-103.229.124.3-0278"
+      network: ws
+      port: 20521
+      server: 103.229.124.3
+      type: vmess
+      udp: true
+      uuid: 292e9c90-25b3-4ff5-b98a-9ef5877714ab
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-shadowsocks-\U0001F1F9\U0001F1FCTW-185.189.160.105-0222"
+        - "02-shadowsocks-\U0001F1F9\U0001F1FCTW-111.248.93.97-0223"
+        - "03-shadowsocks-\U0001F1F9\U0001F1FCTW-61.231.153.242-0220"
+        - "04-shadowsocks-\U0001F1F9\U0001F1FCTW-1.161.245.168-0228"
+        - "05-shadowsocks-\U0001F1F9\U0001F1FCTW-111.248.66.243-0235"
+        - "06-shadowsocks-\U0001F1F9\U0001F1FCTW-36.224.150.145-0225"
+        - "07-shadowsocks-\U0001F1F9\U0001F1FCTW-111.248.106.149-0230"
+        - "08-vmess-\U0001F1F9\U0001F1FCTW-103.229.124.3-0278"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-shadowsocks-\U0001F1F9\U0001F1FCTW-185.189.160.105-0222"
+        - "02-shadowsocks-\U0001F1F9\U0001F1FCTW-111.248.93.97-0223"
+        - "03-shadowsocks-\U0001F1F9\U0001F1FCTW-61.231.153.242-0220"
+        - "04-shadowsocks-\U0001F1F9\U0001F1FCTW-1.161.245.168-0228"
+        - "05-shadowsocks-\U0001F1F9\U0001F1FCTW-111.248.66.243-0235"
+        - "06-shadowsocks-\U0001F1F9\U0001F1FCTW-36.224.150.145-0225"
+        - "07-shadowsocks-\U0001F1F9\U0001F1FCTW-111.248.106.149-0230"
+        - "08-vmess-\U0001F1F9\U0001F1FCTW-103.229.124.3-0278"
+      type: select
+rules:
+    - MATCH,select
