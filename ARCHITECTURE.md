@@ -151,9 +151,83 @@ The binary writes:
 | Per-country variants | `output/by-country/{clash,singbox,v2ray-base64}-XX.{yaml,json,txt}` | targeted subscriptions |
 | Status | `output/status.json` | summary for dashboards |
 | READMEs | `README.md`, `README_CN.md`, …, `README_RU.md` | GitHub repo front page |
-| Pages site | `docs/index.html`, `docs/XX.html`, `docs/guides/*.html`, `docs/sitemap.xml`, `docs/robots.txt` | SEO landing for au1rxx.github.io |
+| Pages site | `docs/index.html`, `docs/index.zh.html`, `docs/XX.html`, `docs/XX.zh.html`, `docs/guides/*.html`, `docs/sitemap.xml`, `docs/robots.txt` | SEO landing for au1rxx.github.io |
 
 The Clash emitter builds a `proxy-groups` selector with a URL-test probe (`http://www.gstatic.com/generate_204`, 300s interval) — clients auto-pick the fastest node in real use.
+
+## How the Pages site is actually served
+
+This trips people up, so it gets its own section: **GitHub Pages does not run Go, Node, or any backend**. It is a static CDN that only serves whatever pre-built files exist under `docs/` on the `main` branch. Two completely separate runtime environments are at play:
+
+```
+┌──────────────────────────────────┐         ┌────────────────────────────┐
+│ GitHub Actions runner            │  push   │ GitHub Pages (static CDN)  │
+│ (hourly cron, ephemeral VM)      │────────▶│                            │
+│                                  │         │ au1rxx.github.io/...       │
+│ go build → fnctl aggregate       │         │   ├─ index.html            │
+│   ├─ fetch + probe + rank        │         │   ├─ index.zh.html         │
+│   └─ internal/pages.Generate()   │         │   ├─ us.html / us.zh.html  │
+│        writes docs/*.html        │         │   ├─ guides/*.html         │
+│ git add docs/ && git push        │         │   ├─ sitemap.xml           │
+└──────────────────────────────────┘         │   └─ robots.txt            │
+                                             │                            │
+                                             │  ← browser requests static │
+                                             └────────────────────────────┘
+```
+
+`internal/pages/*.go`, `cmd/fnctl/*.go`, the whole Go source tree — **none of that ships to Pages**. It runs once per hour on the Actions runner, emits static HTML, and exits. Pages serves the HTML verbatim. There is no server-side rendering, no edge functions, no runtime.
+
+Practical consequences:
+- All internationalization (i18n) must be baked into distinct URLs (`index.html` vs `index.zh.html`) — there is no `Accept-Language` negotiation.
+- All dynamic values (node counts, timestamps, RTT medians) are re-computed and re-written into the HTML on each Actions run. A change in the live stats requires a new push.
+- `.nojekyll` exists in `docs/` so Pages serves files verbatim and doesn't try to run Jekyll over them.
+
+## Multilingual rendering
+
+Each page is rendered **once per locale** in `supportedLocales` (`en`, `zh`). Source of truth: [`internal/pages/l10n.go`](./internal/pages/l10n.go) (chrome strings) and [`internal/pages/guides.go`](./internal/pages/guides.go) (guide content).
+
+| Page type | English (canonical) | 简体中文 |
+|---|---|---|
+| Index | `/index.html` served as `/` | `/index.zh.html` |
+| Country | `/us.html`, `/hk.html`, … | `/us.zh.html`, `/hk.zh.html`, … |
+| Guide | `/guides/clash-verge.html`, … | `/guides/clash-verge.zh.html`, … |
+
+Every page advertises its alternates to search engines in two places:
+
+1. **`<link rel="alternate" hreflang="…">` in `<head>`** — one tag per locale plus `x-default` → English.
+2. **`<xhtml:link rel="alternate" hreflang="…">` in `sitemap.xml`** — same alternates declared at the sitemap level so Google discovers them even if it hits the sitemap before any page.
+
+A visible language switcher at the top of every page lets users toggle manually without relying on crawler-only hreflang.
+
+## SEO surface
+
+Every HTML page carries a consistent set of metadata. Implementation: [`internal/pages/pages.go`](./internal/pages/pages.go) + [`internal/pages/templates.go`](./internal/pages/templates.go).
+
+| Signal | Purpose |
+|---|---|
+| Per-locale `<title>` and `<meta description>` | Direct search snippet content |
+| `<link rel="canonical">` | Points at the locale-specific URL to avoid dup-content flagging |
+| `<link rel="alternate" hreflang>` (× N locales + `x-default`) | Tells Google which version to serve per user locale |
+| `og:type / og:locale / og:image` + Twitter card tags | Link-preview cards on Reddit, Slack, Twitter, Discord |
+| JSON-LD `WebSite` | Sitelinks search box + site name |
+| JSON-LD `SoftwareApplication` with `AggregateRating` | Rich-result eligibility |
+| JSON-LD `FAQPage` | FAQ rich snippet on the index page |
+| JSON-LD `WebPage` + `BreadcrumbList` | Breadcrumb trail on country pages |
+| JSON-LD `HowTo` | Step-by-step rich snippet on guide pages (one `HowToStep` per guide step) |
+| `sitemap.xml` + `robots.txt` | Crawl discovery; hourly `changefreq` on home, weekly on guides |
+
+`inLanguage` is set on every JSON-LD entity so Google can serve the right version per query locale. All page weight stays under 20 KB (inline CSS, no JS, no external fetches) — Core Web Vitals green by construction.
+
+## Adding a new locale
+
+To add e.g. Japanese to the Pages site:
+
+1. Add a `"ja": {…}` entry to `pageLocales` in [`internal/pages/l10n.go`](./internal/pages/l10n.go).
+2. Add `"ja": {…}` to each `L10n` map in [`internal/pages/guides.go`](./internal/pages/guides.go).
+3. Append `"ja"` to `supportedLocales` (same file).
+4. Map `ja` → the right hreflang in `hreflangCode` if it differs from the locale code.
+
+The locale loop in `Generate()`, `indexAlternates()`, and the sitemap writer all iterate `supportedLocales` — no other code changes needed.
 
 ## Reliability mechanisms summary
 
