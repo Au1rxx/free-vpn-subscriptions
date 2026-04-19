@@ -1,6 +1,6 @@
-// Package readme renders the public README.md from aggregation summary data.
-// The output is designed for SEO, scan-ability, and star conversion — modelled
-// after the free-llm-api-keys repo's structure.
+// Package readme renders public README.md files (one per locale) from
+// aggregation summary data. Each README is designed for SEO, scan-ability,
+// and star conversion — modelled after the free-llm-api-keys structure.
 package readme
 
 import (
@@ -22,61 +22,73 @@ type Input struct {
 	MinPerCountry  int
 }
 
-// Generate returns the complete README markdown.
-func Generate(in Input) string {
+// Generate returns a complete README markdown document for the given locale.
+func Generate(in Input, loc Locale) string {
 	updated := time.Unix(in.Summary.GeneratedAtUnix, 0).UTC().Format("2006-01-02 15:04 UTC")
 
 	var b strings.Builder
 
+	// Title
 	fmt.Fprintf(&b, "# %s\n\n", in.Title)
 
+	// Language switcher (every locale sees the same bar so navigation is
+	// symmetric — users can always get back to their preferred language).
+	b.WriteString(renderLangSwitcher(loc))
+	b.WriteString("\n\n")
+
+	// Hero image — SVG workflow diagram is the fallback when no real
+	// screenshot exists yet; the alt text carries SEO weight.
+	fmt.Fprintf(&b, "<p align=\"center\"><img src=\"%s/raw/main/assets/workflow.svg\" alt=\"%s — aggregation workflow\" width=\"780\"></p>\n\n",
+		in.RepoURL, in.Title)
+
 	// Badges
-	fmt.Fprintf(&b, "![Nodes](https://img.shields.io/badge/nodes-%d-brightgreen) ", in.Summary.TotalSelected)
-	fmt.Fprintf(&b, "![Alive](https://img.shields.io/badge/alive-%d-blue) ", in.Summary.TotalAlive)
-	fmt.Fprintf(&b, "![Median RTT](https://img.shields.io/badge/median--rtt-%dms-orange) ", in.Summary.MedianLatencyMS)
-	fmt.Fprintf(&b, "![Updated](https://img.shields.io/badge/updated-%s-informational)\n\n", strings.ReplaceAll(updated, " ", "_"))
+	fmt.Fprintf(&b, "![%s](https://img.shields.io/badge/%s-%d-brightgreen) ",
+		loc.BadgeNodes, loc.BadgeNodes, in.Summary.TotalSelected)
+	fmt.Fprintf(&b, "![%s](https://img.shields.io/badge/%s-%d-blue) ",
+		loc.BadgeAlive, loc.BadgeAlive, in.Summary.TotalAlive)
+	fmt.Fprintf(&b, "![%s](https://img.shields.io/badge/%s-%dms-orange) ",
+		loc.BadgeMedian, loc.BadgeMedian, in.Summary.MedianLatencyMS)
+	fmt.Fprintf(&b, "![%s](https://img.shields.io/badge/%s-%s-informational)\n\n",
+		loc.BadgeUpdated, loc.BadgeUpdated, strings.ReplaceAll(updated, " ", "_"))
 
-	fmt.Fprintf(&b, "> **The easiest way to get a working free VPN — copy a subscription link, paste it into your client, connect.**  \n")
-	fmt.Fprintf(&b, "> No signup. No payment. No installation of binaries. Refreshed hourly from public sources with every node tested.\n\n")
-	fmt.Fprintf(&b, "> 免费 VPN 订阅 · 免费梯子 · 免费科学上网 · free proxy · v2ray/clash/sing-box · VLESS / Reality / VMess / Trojan / Shadowsocks / Hysteria2\n\n")
+	// Hook
+	fmt.Fprintf(&b, "> %s  \n", loc.Hook1)
+	fmt.Fprintf(&b, "> %s\n\n", loc.Hook2)
+	fmt.Fprintf(&b, "> %s\n\n", loc.KeywordLine)
 
-	// Why this project
-	b.WriteString("## 💡 Why This Project?\n\n")
-	b.WriteString("Every \"free VPN\" list on GitHub is either stale, full of dead nodes, or asks you to install a sketchy binary. This repo **only publishes nodes that passed a live TCP health check minutes ago**, from curated public sources, sorted by latency. You get 3 portable subscription files — drop them into Clash, sing-box, or v2rayN and go.\n\n")
+	// Why
+	fmt.Fprintf(&b, "%s\n\n%s\n\n", loc.WhyHeading, loc.WhyBody)
 
-	// One-click subscribe
-	b.WriteString("## 🚀 One-Click Subscribe\n\n")
-	b.WriteString("Copy the URL that matches your client and paste it into the subscription import field:\n\n")
-	b.WriteString("| Client | Format | Subscribe URL |\n")
-	b.WriteString("|---|---|---|\n")
+	// Subscribe
+	fmt.Fprintf(&b, "%s\n\n%s\n\n", loc.SubscribeHeading, loc.SubscribeIntro)
+	fmt.Fprintf(&b, "| %s | %s | %s |\n|---|---|---|\n",
+		loc.SubscribeColClient, loc.SubscribeColFormat, loc.SubscribeColURL)
 	fmt.Fprintf(&b, "| Clash / Clash Verge / ClashX | `clash.yaml` | `%s/raw/main/output/clash.yaml` |\n", in.RepoURL)
 	fmt.Fprintf(&b, "| sing-box | `singbox.json` | `%s/raw/main/output/singbox.json` |\n", in.RepoURL)
 	fmt.Fprintf(&b, "| v2rayN / v2rayNG / Shadowrocket / NekoBox | `v2ray-base64` | `%s/raw/main/output/v2ray-base64.txt` |\n\n", in.RepoURL)
 
-	// Per-country subscriptions
+	// Per-country
 	if in.CountryEnabled && in.MinPerCountry > 0 && len(in.Summary.ByCountry) > 0 {
-		renderByCountry(&b, in)
+		renderByCountry(&b, in, loc)
 	}
 
-	// Client compatibility
-	b.WriteString("## 🧩 Supported Clients\n\n")
-	b.WriteString("- **Windows**: v2rayN, Clash Verge, Hiddify, NekoRay\n")
-	b.WriteString("- **macOS**: ClashX Pro, Clash Verge, sing-box, Hiddify\n")
-	b.WriteString("- **iOS**: Shadowrocket, Stash, Loon, sing-box, Hiddify\n")
-	b.WriteString("- **Android**: v2rayNG, NekoBox, Clash Meta for Android, Hiddify, sing-box\n")
-	b.WriteString("- **Linux**: mihomo (Clash.Meta), sing-box, v2ray-core\n\n")
+	// Clients
+	fmt.Fprintf(&b, "%s\n\n- %s\n- %s\n- %s\n- %s\n- %s\n\n",
+		loc.ClientsHeading,
+		loc.ClientsWindows, loc.ClientsMacOS,
+		loc.ClientsIOS, loc.ClientsAndroid, loc.ClientsLinux)
 
 	// Stats
-	b.WriteString("## 📊 Live Stats\n\n")
-	fmt.Fprintf(&b, "- **Nodes selected**: %d\n", in.Summary.TotalSelected)
-	fmt.Fprintf(&b, "- **Alive across all sources**: %d\n", in.Summary.TotalAlive)
-	fmt.Fprintf(&b, "- **Fastest node RTT**: %d ms\n", in.Summary.MinLatencyMS)
-	fmt.Fprintf(&b, "- **Median RTT**: %d ms\n", in.Summary.MedianLatencyMS)
-	fmt.Fprintf(&b, "- **Last updated (UTC)**: %s\n\n", updated)
+	fmt.Fprintf(&b, "%s\n\n", loc.StatsHeading)
+	fmt.Fprintf(&b, "- %s: %d\n", loc.StatsNodes, in.Summary.TotalSelected)
+	fmt.Fprintf(&b, "- %s: %d\n", loc.StatsAlive, in.Summary.TotalAlive)
+	fmt.Fprintf(&b, "- %s: %d ms\n", loc.StatsFastest, in.Summary.MinLatencyMS)
+	fmt.Fprintf(&b, "- %s: %d ms\n", loc.StatsMedian, in.Summary.MedianLatencyMS)
+	fmt.Fprintf(&b, "- %s: %s\n\n", loc.StatsUpdated, updated)
 
 	// Protocol breakdown
 	if len(in.Summary.ByProtocol) > 0 {
-		b.WriteString("**Protocol mix:** ")
+		b.WriteString(loc.ProtocolMixLabel + " ")
 		keys := sortedKeys(in.Summary.ByProtocol)
 		parts := make([]string, 0, len(keys))
 		for _, k := range keys {
@@ -88,7 +100,7 @@ func Generate(in Input) string {
 
 	// Source breakdown
 	if len(in.Summary.BySource) > 0 {
-		b.WriteString("**Sources used this run:** ")
+		b.WriteString(loc.SourcesLabel + " ")
 		keys := sortedKeys(in.Summary.BySource)
 		parts := make([]string, 0, len(keys))
 		for _, k := range keys {
@@ -99,46 +111,47 @@ func Generate(in Input) string {
 	}
 
 	// FAQ
-	b.WriteString("## ❓ FAQ\n\n")
-	b.WriteString("<details><summary>Is this actually free?</summary>\n\n")
-	b.WriteString("Yes. Nodes are operated by third-party volunteers who publish their own free subscriptions. We don't run any servers ourselves — we just test, rank, and repackage what's already public.\n\n</details>\n\n")
-	b.WriteString("<details><summary>How fresh is the data?</summary>\n\n")
-	b.WriteString("A GitHub Action runs every hour: pulls all upstream sources, TCP-probes every node, drops anything dead, sorts by latency, and commits new output files. Check the `Last updated` timestamp above.\n\n</details>\n\n")
-	b.WriteString("<details><summary>Can I trust these nodes?</summary>\n\n")
-	b.WriteString("Free nodes see all your traffic. **Never use them for banking, login, or anything sensitive.** Fine for bypassing geo-blocks on public content. Use your own VPS / paid provider for real privacy.\n\n</details>\n\n")
-	b.WriteString("<details><summary>Why do some nodes fail even though they're listed?</summary>\n\n")
-	b.WriteString("We only do TCP reachability checks. A node that handshakes may still have an expired cert, full bandwidth quota, or GFW-poisoned routes. Try a few; that's why the selector group gives you fallbacks.\n\n</details>\n\n")
+	fmt.Fprintf(&b, "%s\n\n", loc.FAQHeading)
+	fmt.Fprintf(&b, "<details><summary>%s</summary>\n\n%s\n\n</details>\n\n", loc.FAQ1Q, loc.FAQ1A)
+	fmt.Fprintf(&b, "<details><summary>%s</summary>\n\n%s\n\n</details>\n\n", loc.FAQ2Q, loc.FAQ2A)
+	fmt.Fprintf(&b, "<details><summary>%s</summary>\n\n%s\n\n</details>\n\n", loc.FAQ3Q, loc.FAQ3A)
+	fmt.Fprintf(&b, "<details><summary>%s</summary>\n\n%s\n\n</details>\n\n", loc.FAQ4Q, loc.FAQ4A)
 
 	// Contributing
-	b.WriteString("## 🤝 Contributing\n\n")
-	b.WriteString("Know a reliable public subscription source we should add? Open an issue with the URL and format.\n\n")
+	fmt.Fprintf(&b, "%s\n\n%s\n\n", loc.ContributingHeading, loc.ContributingBody)
 
 	// Disclaimer
-	b.WriteString("## ⚠️ Disclaimer\n\n")
-	b.WriteString("This repository aggregates **publicly shared** proxy configurations from third-party volunteers. We do not operate any servers, do not warrant availability or security, and are not responsible for how you use them. Intended for educational and personal connectivity use. Comply with all applicable laws in your jurisdiction.\n\n")
+	fmt.Fprintf(&b, "%s\n\n%s\n\n", loc.DisclaimerHeading, loc.DisclaimerBody)
 
-	b.WriteString("## ⭐ Star History\n\n")
+	// Star History
+	fmt.Fprintf(&b, "%s\n\n", loc.StarHistoryHeading)
 	fmt.Fprintf(&b, "[![Star History Chart](https://api.star-history.com/svg?repos=%s&type=Date)](https://www.star-history.com/#%s&Date)\n\n",
 		repoSlug(in.RepoURL), repoSlug(in.RepoURL))
 
 	b.WriteString("---\n\n")
-	b.WriteString("If this project helped you, give it a ⭐ — every star makes it easier for others to find.\n")
+	b.WriteString(loc.FinalCTA + "\n")
 
 	return b.String()
 }
 
-func sortedKeys(m map[string]int) []string {
-	keys := make([]string, 0, len(m))
-	for k := range m {
-		keys = append(keys, k)
+// renderLangSwitcher builds a Markdown link row for every supported locale,
+// bolding the current language.
+func renderLangSwitcher(current Locale) string {
+	var parts []string
+	for _, loc := range Locales() {
+		label := loc.DisplayName
+		if loc.Code == current.Code {
+			parts = append(parts, fmt.Sprintf("**%s**", label))
+		} else {
+			parts = append(parts, fmt.Sprintf("[%s](./%s)", label, loc.FileName))
+		}
 	}
-	sort.Strings(keys)
-	return keys
+	return strings.Join(parts, " · ")
 }
 
 // renderByCountry appends a "By Country" section listing available
 // per-country subscription files, sorted by node count desc.
-func renderByCountry(b *strings.Builder, in Input) {
+func renderByCountry(b *strings.Builder, in Input, loc Locale) {
 	type row struct {
 		cc    string
 		count int
@@ -163,9 +176,8 @@ func renderByCountry(b *strings.Builder, in Input) {
 		return rows[i].cc < rows[j].cc
 	})
 
-	b.WriteString("## 🌍 By Country\n\n")
-	b.WriteString("Want nodes in a specific region only? Use one of these targeted subscription URLs:\n\n")
-	b.WriteString("| Country | Nodes | Clash | sing-box | v2ray |\n")
+	fmt.Fprintf(b, "%s\n\n%s\n\n", loc.ByCountryHeading, loc.ByCountryIntro)
+	fmt.Fprintf(b, "| %s | %s | Clash | sing-box | v2ray |\n", loc.ByCountryColCC, loc.ByCountryColN)
 	b.WriteString("|---|---|---|---|---|\n")
 	for _, r := range rows {
 		flag := countryFlag(r.cc)
@@ -222,8 +234,16 @@ var countryNames = map[string]string{
 	"MM": "Myanmar", "KH": "Cambodia", "LA": "Laos", "MO": "Macau",
 }
 
+func sortedKeys(m map[string]int) []string {
+	keys := make([]string, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	return keys
+}
+
 func repoSlug(repoURL string) string {
-	// extract "owner/repo" from https://github.com/owner/repo
 	s := strings.TrimPrefix(repoURL, "https://github.com/")
 	s = strings.TrimSuffix(s, "/")
 	return s

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="-apple-system,Segoe UI,Roboto,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="stage" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e3a8a"/>
+      <stop offset="1" stop-color="#1e40af"/>
+    </linearGradient>
+    <linearGradient id="out" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#065f46"/>
+      <stop offset="1" stop-color="#047857"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="900" height="440" fill="url(#bg)" rx="8"/>
+  <text x="450" y="36" text-anchor="middle" font-size="18" font-weight="700" fill="#e2e8f0">
+    Aggregation pipeline · runs every hour on GitHub Actions
+  </text>
+
+  <!-- Stage 1: Fetch -->
+  <g transform="translate(30,80)">
+    <rect width="170" height="80" rx="10" fill="url(#stage)" stroke="#3b82f6" stroke-width="1"/>
+    <text x="85" y="28" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">① Fetch</text>
+    <text x="85" y="50" text-anchor="middle" fill="#cbd5e1" font-size="11">5 public sources</text>
+    <text x="85" y="67" text-anchor="middle" fill="#cbd5e1" font-size="11">~1050 nodes</text>
+  </g>
+
+  <!-- Stage 2: TCP -->
+  <g transform="translate(230,80)">
+    <rect width="170" height="80" rx="10" fill="url(#stage)" stroke="#3b82f6" stroke-width="1"/>
+    <text x="85" y="28" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">② TCP Probe</text>
+    <text x="85" y="50" text-anchor="middle" fill="#cbd5e1" font-size="11">concurrent dial</text>
+    <text x="85" y="67" text-anchor="middle" fill="#cbd5e1" font-size="11">~620 alive</text>
+  </g>
+
+  <!-- Stage 3: TLS -->
+  <g transform="translate(430,80)">
+    <rect width="170" height="80" rx="10" fill="url(#stage)" stroke="#3b82f6" stroke-width="1"/>
+    <text x="85" y="28" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">③ TLS Handshake</text>
+    <text x="85" y="50" text-anchor="middle" fill="#cbd5e1" font-size="11">Trojan/Hy2/TLS</text>
+    <text x="85" y="67" text-anchor="middle" fill="#cbd5e1" font-size="11">~390 real alive</text>
+  </g>
+
+  <!-- Stage 4: GeoIP -->
+  <g transform="translate(630,80)">
+    <rect width="170" height="80" rx="10" fill="url(#stage)" stroke="#3b82f6" stroke-width="1"/>
+    <text x="85" y="28" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">④ GeoIP</text>
+    <text x="85" y="50" text-anchor="middle" fill="#cbd5e1" font-size="11">MaxMind mmdb</text>
+    <text x="85" y="67" text-anchor="middle" fill="#cbd5e1" font-size="11">33 countries</text>
+  </g>
+
+  <!-- Stage 5: Aggregate (second row) -->
+  <g transform="translate(130,210)">
+    <rect width="200" height="80" rx="10" fill="url(#stage)" stroke="#3b82f6" stroke-width="1"/>
+    <text x="100" y="28" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">⑤ Aggregate</text>
+    <text x="100" y="50" text-anchor="middle" fill="#cbd5e1" font-size="11">dedup · sort by RTT</text>
+    <text x="100" y="67" text-anchor="middle" fill="#cbd5e1" font-size="11">top 150 selected</text>
+  </g>
+
+  <!-- Stage 6: Output -->
+  <g transform="translate(380,210)">
+    <rect width="200" height="80" rx="10" fill="url(#out)" stroke="#10b981" stroke-width="1"/>
+    <text x="100" y="28" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">⑥ Emit subscriptions</text>
+    <text x="100" y="50" text-anchor="middle" fill="#d1fae5" font-size="11">clash · sing-box · v2ray</text>
+    <text x="100" y="67" text-anchor="middle" fill="#d1fae5" font-size="11">global + per-country</text>
+  </g>
+
+  <!-- Stage 7: Push -->
+  <g transform="translate(630,210)">
+    <rect width="200" height="80" rx="10" fill="url(#out)" stroke="#10b981" stroke-width="1"/>
+    <text x="100" y="28" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">⑦ Commit &amp; push</text>
+    <text x="100" y="50" text-anchor="middle" fill="#d1fae5" font-size="11">github-actions[bot]</text>
+    <text x="100" y="67" text-anchor="middle" fill="#d1fae5" font-size="11">raw URLs always fresh</text>
+  </g>
+
+  <!-- User -->
+  <g transform="translate(330,340)">
+    <rect width="240" height="60" rx="30" fill="#fbbf24"/>
+    <text x="120" y="36" text-anchor="middle" fill="#1e293b" font-size="14" font-weight="700">
+      You: paste URL into your client
+    </text>
+  </g>
+
+  <!-- Arrows row 1 -->
+  <line x1="200" y1="120" x2="230" y2="120" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="400" y1="120" x2="430" y2="120" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="600" y1="120" x2="630" y2="120" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Arrow from row 1 down to row 2 -->
+  <path d="M 715 160 Q 715 185 230 185 L 230 210" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Arrows row 2 -->
+  <line x1="330" y1="250" x2="380" y2="250" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="580" y1="250" x2="630" y2="250" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Arrow from ⑦ to user -->
+  <path d="M 730 290 Q 730 340 570 355" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>

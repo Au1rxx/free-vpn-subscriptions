@@ -1,35 +1,35 @@
 # Free VPN Subscriptions
 
-**English** · [简体中文](./README_CN.md) · [日本語](./README_JA.md) · [한국어](./README_KO.md) · [Español](./README_ES.md) · [Português](./README_PT.md) · [Русский](./README_RU.md)
+[English](./README.md) · [简体中文](./README_CN.md) · [日本語](./README_JA.md) · [한국어](./README_KO.md) · [Español](./README_ES.md) · **Português** · [Русский](./README_RU.md)
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/workflow.svg" alt="Free VPN Subscriptions — aggregation workflow" width="780"></p>
 
-![nodes](https://img.shields.io/badge/nodes-150-brightgreen) ![alive](https://img.shields.io/badge/alive-394-blue) ![median--rtt](https://img.shields.io/badge/median--rtt-134ms-orange) ![updated](https://img.shields.io/badge/updated-2026-04-19_06:03_UTC-informational)
+![nós](https://img.shields.io/badge/nós-150-brightgreen) ![ativos](https://img.shields.io/badge/ativos-394-blue) ![rtt--mediano](https://img.shields.io/badge/rtt--mediano-134ms-orange) ![atualizado](https://img.shields.io/badge/atualizado-2026-04-19_06:03_UTC-informational)
 
-> **The easiest way to get a working free VPN — copy a subscription link, paste it into your client, connect.**  
-> No signup. No payment. No installation of binaries. Refreshed hourly from public sources with every node tested.
+> **A forma mais fácil de obter uma VPN gratuita funcional — copie um link de assinatura, cole no seu cliente, conecte.**  
+> Sem cadastro. Sem pagamento. Sem instalar nenhum binário. Atualizado a cada hora a partir de fontes públicas e cada nó é testado.
 
-> Free VPN subscriptions · free proxy list · free v2ray / clash / sing-box · VLESS / Reality / VMess / Trojan / Shadowsocks / Hysteria2 · hourly refreshed · TCP + TLS probed · by country
+> VPN grátis · assinatura VPN gratuita · proxy grátis · Clash assinatura · v2ray assinatura · sing-box assinatura · VLESS · Reality · VMess · Trojan · Shadowsocks · Hysteria2 · atualizado por hora · TCP+TLS testado · por país
 
-## 💡 Why This Project?
+## 💡 Por que este projeto?
 
-Every "free VPN" list on GitHub is either stale, full of dead nodes, or asks you to install a sketchy binary. This repo **only publishes nodes that passed a live TCP handshake AND a TLS handshake minutes ago**, from curated public sources, sorted by latency. You get 3 portable subscription files — drop them into Clash, sing-box, or v2rayN and go.
+Cada lista de "VPN gratuita" no GitHub está desatualizada, cheia de nós mortos, ou pede para instalar um binário suspeito. Este repositório **publica apenas nós que passaram um handshake TCP E um handshake TLS minutos atrás**, a partir de fontes públicas selecionadas, ordenados por latência. Você recebe 3 arquivos de assinatura portáteis — use-os em Clash, sing-box ou v2rayN e pronto.
 
-## 🚀 One-Click Subscribe
+## 🚀 Assinatura com um clique
 
-Copy the URL that matches your client and paste it into the subscription import field:
+Copie a URL que corresponde ao seu cliente e cole no campo de importação de assinatura:
 
-| Client | Format | Subscribe URL |
+| Cliente | Formato | URL de assinatura |
 |---|---|---|
 | Clash / Clash Verge / ClashX | `clash.yaml` | `https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/clash.yaml` |
 | sing-box | `singbox.json` | `https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/singbox.json` |
 | v2rayN / v2rayNG / Shadowrocket / NekoBox | `v2ray-base64` | `https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/v2ray-base64.txt` |
 
-## 🌍 By Country
+## 🌍 Por país
 
-Want nodes in a specific region only? Use one of these targeted subscription URLs:
+Quer nós apenas em uma região específica? Use uma dessas URLs de assinatura direcionadas:
 
-| Country | Nodes | Clash | sing-box | v2ray |
+| País | Nós | Clash | sing-box | v2ray |
 |---|---|---|---|---|
 | 🇺🇸 United States (`US`) | 27 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
 | 🇬🇧 United Kingdom (`GB`) | 26 | [clash-GB.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-GB.yaml) | [singbox-GB.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-GB.json) | [v2ray-base64-GB.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-GB.txt) |
@@ -42,7 +42,7 @@ Want nodes in a specific region only? Use one of these targeted subscription URL
 | 🇰🇷 Korea (`KR`) | 4 | [clash-KR.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-KR.yaml) | [singbox-KR.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-KR.json) | [v2ray-base64-KR.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-KR.txt) |
 | 🇲🇦 MA (`MA`) | 3 | [clash-MA.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-MA.yaml) | [singbox-MA.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-MA.json) | [v2ray-base64-MA.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-MA.txt) |
 
-## 🧩 Supported Clients
+## 🧩 Clientes suportados
 
 - **Windows**: v2rayN, Clash Verge, Hiddify, NekoRay
 - **macOS**: ClashX Pro, Clash Verge, sing-box, Hiddify
@@ -50,56 +50,56 @@ Want nodes in a specific region only? Use one of these targeted subscription URL
 - **Android**: v2rayNG, NekoBox, Clash Meta for Android, Hiddify, sing-box
 - **Linux**: mihomo (Clash.Meta), sing-box, v2ray-core
 
-## 📊 Live Stats
+## 📊 Estatísticas ao vivo
 
-- **Nodes selected**: 150
-- **Alive across all sources**: 394
-- **Fastest node RTT**: 8 ms
-- **Median RTT**: 134 ms
-- **Last updated (UTC)**: 2026-04-19 06:03 UTC
+- **Nós selecionados**: 150
+- **Ativos em todas as fontes**: 394
+- **RTT do nó mais rápido**: 8 ms
+- **RTT mediano**: 134 ms
+- **Última atualização (UTC)**: 2026-04-19 06:03 UTC
 
-**Protocol mix:** shadowsocks × 102 · trojan × 7 · vmess × 41
+**Mix de protocolos:** shadowsocks × 102 · trojan × 7 · vmess × 41
 
-**Sources used this run:** `freefq` × 2 · `mahdibland-aggregator` × 72 · `mahdibland-shadowsocks` × 58 · `pawdroid` × 3 · `vxiaov-clash` × 15
+**Fontes usadas nesta execução:** `freefq` × 2 · `mahdibland-aggregator` × 72 · `mahdibland-shadowsocks` × 58 · `pawdroid` × 3 · `vxiaov-clash` × 15
 
-## ❓ FAQ
+## ❓ Perguntas frequentes
 
-<details><summary>Is this actually free?</summary>
+<details><summary>Isso é realmente grátis?</summary>
 
-Yes. Nodes are operated by third-party volunteers who publish their own free subscriptions. We don't run any servers ourselves — we just test, rank, and repackage what's already public.
-
-</details>
-
-<details><summary>How fresh is the data?</summary>
-
-A GitHub Action runs every hour: pulls all upstream sources, TCP + TLS probes every node, drops anything dead, sorts by latency, and commits new output files. Check the `Last updated` timestamp above.
+Sim. Os nós são operados por voluntários de terceiros que publicam suas próprias assinaturas gratuitas. Nós não operamos nenhum servidor — apenas testamos, classificamos e reempacotamos o que já é público.
 
 </details>
 
-<details><summary>Can I trust these nodes?</summary>
+<details><summary>Quão atualizados são os dados?</summary>
 
-Free nodes see all your traffic. **Never use them for banking, login, or anything sensitive.** Fine for bypassing geo-blocks on public content. Use your own VPS / paid provider for real privacy.
-
-</details>
-
-<details><summary>Why do some nodes fail even though they're listed?</summary>
-
-We verify TCP reachability and TLS handshakes, but a node can still have an expired quota, wrong routing, or GFW poisoning. Try a few; the selector group gives you fallbacks.
+Uma GitHub Action roda a cada hora: puxa todas as fontes, faz sondagem TCP+TLS em cada nó, descarta os mortos, ordena por latência e comita os novos arquivos. Veja o carimbo `Last updated` acima.
 
 </details>
 
-## 🤝 Contributing
+<details><summary>Posso confiar nesses nós?</summary>
 
-Know a reliable public subscription source we should add? Open an issue with the URL and format.
+Nós gratuitos veem todo o seu tráfego. **Nunca os use para banco, login ou algo sensível.** Bom para driblar bloqueios geográficos em conteúdo público. Use seu próprio VPS / serviço pago para privacidade real.
 
-## ⚠️ Disclaimer
+</details>
 
-This repository aggregates **publicly shared** proxy configurations from third-party volunteers. We do not operate any servers, do not warrant availability or security, and are not responsible for how you use them. Intended for educational and personal connectivity use. Comply with all applicable laws in your jurisdiction.
+<details><summary>Por que alguns nós listados falham?</summary>
 
-## ⭐ Star History
+Verificamos acessibilidade TCP e handshake TLS, mas um nó ainda pode ter cota esgotada, roteamento errado ou certificado expirado. Tente alguns; o grupo selector oferece alternativas.
+
+</details>
+
+## 🤝 Contribuir
+
+Conhece uma fonte de assinatura pública confiável que deveríamos adicionar? Abra uma issue com a URL e o formato.
+
+## ⚠️ Aviso legal
+
+Este repositório agrega configurações de proxy **compartilhadas publicamente** por voluntários de terceiros. Não operamos nenhum servidor, não garantimos disponibilidade ou segurança, e não somos responsáveis pelo uso. Destinado a uso educacional e conectividade pessoal. Cumpra todas as leis aplicáveis em sua jurisdição.
+
+## ⭐ Histórico de estrelas
 
 [![Star History Chart](https://api.star-history.com/svg?repos=Au1rxx/free-vpn-subscriptions&type=Date)](https://www.star-history.com/#Au1rxx/free-vpn-subscriptions&Date)
 
 ---
 
-If this project helped you, give it a ⭐ — every star makes it easier for others to find.
+Se este projeto te ajudou, deixe uma ⭐ — cada estrela facilita para outros o encontrarem.

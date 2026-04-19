@@ -198,15 +198,20 @@ func writeOutputs(cfg *config.Config, selected []*node.Node, summary aggregate.S
 		return err
 	}
 
-	md := readme.Generate(readme.Input{
-		Title:           cfg.Readme.Title,
-		RepoURL:         cfg.Readme.RepoURL,
-		Nodes:           selected,
-		Summary:         summary,
-		MinPerCountry:   cfg.GeoIP.MinPerCountry,
-		CountryEnabled:  cfg.GeoIP.Enabled,
-	})
-	return write("README.md", md)
+	input := readme.Input{
+		Title:          cfg.Readme.Title,
+		RepoURL:        cfg.Readme.RepoURL,
+		Nodes:          selected,
+		Summary:        summary,
+		MinPerCountry:  cfg.GeoIP.MinPerCountry,
+		CountryEnabled: cfg.GeoIP.Enabled,
+	}
+	for _, loc := range readme.Locales() {
+		if err := write(loc.FileName, readme.Generate(input, loc)); err != nil {
+			return fmt.Errorf("readme %s: %w", loc.FileName, err)
+		}
+	}
+	return nil
 }
 
 // emitSet writes clash / singbox / v2ray-base64 files for the given node list.
