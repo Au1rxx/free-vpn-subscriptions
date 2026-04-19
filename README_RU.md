@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![узлы](https://img.shields.io/badge/узлы-150-brightgreen) ![живые](https://img.shields.io/badge/живые-2590-blue) ![медиана--rtt](https://img.shields.io/badge/медиана--rtt-17ms-orange) ![обновлено](https://img.shields.io/badge/обновлено-2026-04-19_10:23_UTC-informational)
+![узлы](https://img.shields.io/badge/узлы-150-brightgreen) ![живые](https://img.shields.io/badge/живые-2599-blue) ![медиана--rtt](https://img.shields.io/badge/медиана--rtt-1ms-orange) ![обновлено](https://img.shields.io/badge/обновлено-2026-04-19_10:33_UTC-informational)
 
 > **Самый простой способ получить рабочий бесплатный VPN — скопируйте ссылку подписки, вставьте в клиент, подключитесь.**  
 > Без регистрации. Без оплаты. Без установки каких-либо бинарников. Обновляется каждый час из публичных источников, каждый узел протестирован.
@@ -33,7 +33,7 @@
 
 | Страна | Узлов | Clash | sing-box | v2ray |
 |---|---|---|---|---|
-| 🇺🇸 United States (`US`) | 21 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
+| 🇺🇸 United States (`US`) | 20 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
 
 ## 📖 Пошаговые инструкции
 
@@ -55,14 +55,14 @@
 ## 📊 Статистика в реальном времени
 
 - **Выбрано узлов**: 150
-- **Живых во всех источниках**: 2590
-- **RTT самого быстрого узла**: 17 ms
-- **Медиана RTT**: 17 ms
-- **Последнее обновление (UTC)**: 2026-04-19 10:23 UTC
+- **Живых во всех источниках**: 2599
+- **RTT самого быстрого узла**: 1 ms
+- **Медиана RTT**: 1 ms
+- **Последнее обновление (UTC)**: 2026-04-19 10:33 UTC
 
-**Распределение протоколов:** shadowsocks × 26 · trojan × 22 · vless × 86 · vmess × 16
+**Распределение протоколов:** shadowsocks × 22 · trojan × 19 · vless × 93 · vmess × 16
 
-**Источники в этом запуске:** `barry-far-v2ray` × 36 · `ebrasha-v2ray` × 15 · `epodonios` × 28 · `freefq` × 1 · `lagzian-mix` × 2 · `mahdi0024` × 2 · `mahdibland-shadowsocks` × 2 · `matin-v2ray` × 1 · `mfuu-clash` × 2 · `ninjastrikers` × 45 · `ruking-clash` × 11 · `snakem982` × 3 · `surfboard-eternity` × 2
+**Источники в этом запуске:** `barry-far-v2ray` × 40 · `ebrasha-v2ray` × 15 · `epodonios` × 29 · `mfuu-clash` × 3 · `ninjastrikers` × 44 · `ruking-clash` × 13 · `snakem982` × 4 · `surfboard-eternity` × 2
 
 ## ❓ Часто задаваемые вопросы
 
