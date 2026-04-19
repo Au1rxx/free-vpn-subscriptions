@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![ノード](https://img.shields.io/badge/ノード-150-brightgreen) ![生存](https://img.shields.io/badge/生存-1433-blue) ![中央値--rtt](https://img.shields.io/badge/中央値--rtt-5ms-orange) ![更新](https://img.shields.io/badge/更新-2026-04-19_10:15_UTC-informational)
+![ノード](https://img.shields.io/badge/ノード-150-brightgreen) ![生存](https://img.shields.io/badge/生存-2590-blue) ![中央値--rtt](https://img.shields.io/badge/中央値--rtt-17ms-orange) ![更新](https://img.shields.io/badge/更新-2026-04-19_10:23_UTC-informational)
 
 > **動作する無料 VPN を手に入れる一番かんたんな方法 —— 購読リンクをコピーしてクライアントに貼るだけ。**  
 > 登録不要。支払い不要。バイナリのインストール不要。公開ソースから毎時自動更新、各ノード疎通テスト済み。
@@ -33,7 +33,7 @@ GitHub 上の「無料 VPN」リストの多くは古いデータ、死んだノ
 
 | 国 | ノード数 | Clash | sing-box | v2ray |
 |---|---|---|---|---|
-| 🇺🇸 United States (`US`) | 13 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
+| 🇺🇸 United States (`US`) | 21 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
 
 ## 📖 クライアント設定ガイド
 
@@ -55,14 +55,14 @@ GitHub 上の「無料 VPN」リストの多くは古いデータ、死んだノ
 ## 📊 リアルタイム統計
 
 - **選定ノード**: 150
-- **全ソース生存数**: 1433
-- **最速 RTT**: 5 ms
-- **中央値 RTT**: 5 ms
-- **最終更新 (UTC)**: 2026-04-19 10:15 UTC
+- **全ソース生存数**: 2590
+- **最速 RTT**: 17 ms
+- **中央値 RTT**: 17 ms
+- **最終更新 (UTC)**: 2026-04-19 10:23 UTC
 
-**プロトコル構成:** shadowsocks × 49 · trojan × 27 · vless × 56 · vmess × 18
+**プロトコル構成:** shadowsocks × 26 · trojan × 22 · vless × 86 · vmess × 16
 
-**今回使用したソース:** `barry-far-v2ray` × 63 · `ebrasha-v2ray` × 39 · `freefq` × 1 · `lagzian-mix` × 1 · `mahdibland-aggregator` × 2 · `mahdibland-shadowsocks` × 5 · `matin-v2ray` × 8 · `mfuu-clash` × 4 · `ruking-clash` × 25 · `vxiaov-clash` × 2
+**今回使用したソース:** `barry-far-v2ray` × 36 · `ebrasha-v2ray` × 15 · `epodonios` × 28 · `freefq` × 1 · `lagzian-mix` × 2 · `mahdi0024` × 2 · `mahdibland-shadowsocks` × 2 · `matin-v2ray` × 1 · `mfuu-clash` × 2 · `ninjastrikers` × 45 · `ruking-clash` × 11 · `snakem982` × 3 · `surfboard-eternity` × 2
 
 ## ❓ よくある質問
 
