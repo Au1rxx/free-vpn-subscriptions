@@ -6,7 +6,8 @@ How `free-vpn-subscriptions` fetches, verifies, and publishes working VPN nodes 
 
 ```
                                ┌─────────────────────────────────────┐
-GitHub Actions cron (0 * * * *) │ every hour, workflow runs            │
+External scheduler (hourly +    │ runs the binary off-Actions to keep │
+jitter, off-Actions)            │ source URLs and timing private;     │
                                │ ctx bounded by 30 min + SIGINT       │
                                └────────────┬────────────────────────┘
                                             │
@@ -93,7 +94,7 @@ conn, err := dialer.DialContext(ctx, "tcp", host:port)
 - 100-way concurrent (configurable via `probe.concurrency`).
 - Latency (time to TCP handshake) is recorded on the `Node.LatencyMS` field.
 - Nodes that fail to connect are dropped entirely.
-- **Context-aware**: the top-level `fnctl aggregate` wraps `context.Background()` with both `signal.NotifyContext` (SIGINT/SIGTERM) and a 30-minute deadline (`runDeadline`). Cancelling `ctx` propagates here so pending dials abort immediately instead of leaking goroutines when the Actions runner sends SIGINT or when a run approaches the 6-hour workflow ceiling.
+- **Context-aware**: the top-level `fnctl aggregate` wraps `context.Background()` with both `signal.NotifyContext` (SIGINT/SIGTERM) and a 30-minute deadline (`runDeadline`). Cancelling `ctx` propagates here so pending dials abort immediately instead of leaking goroutines when the host scheduler sends SIGTERM or when a run approaches the timer's `TimeoutStartSec` ceiling.
 
 Typical result: ~60% of fetched nodes pass this stage. The rest are dead hosts, port-blocked by our runner's network, or have revoked IPs.
 
@@ -171,8 +172,8 @@ This trips people up, so it gets its own section: **GitHub Pages does not run Go
 
 ```
 ┌──────────────────────────────────┐         ┌────────────────────────────┐
-│ GitHub Actions runner            │  push   │ GitHub Pages (static CDN)  │
-│ (hourly cron, ephemeral VM)      │────────▶│                            │
+│ External scheduler (off-Actions) │  push   │ GitHub Pages (static CDN)  │
+│ hourly + ±30 min jitter          │────────▶│                            │
 │                                  │         │ au1rxx.github.io/...       │
 │ go build → fnctl aggregate       │         │   ├─ index.html            │
 │   ├─ fetch + probe + rank        │         │   ├─ index.zh.html         │
@@ -185,7 +186,7 @@ This trips people up, so it gets its own section: **GitHub Pages does not run Go
                                              └────────────────────────────┘
 ```
 
-`internal/pages/*.go`, `cmd/fnctl/*.go`, the whole Go source tree — **none of that ships to Pages**. It runs once per hour on the Actions runner, emits static HTML, and exits. Pages serves the HTML verbatim. There is no server-side rendering, no edge functions, no runtime.
+`internal/pages/*.go`, `cmd/fnctl/*.go`, the whole Go source tree — **none of that ships to Pages**. The scheduler runs the binary, emits static HTML, pushes, exits. Pages serves the HTML verbatim. There is no server-side rendering, no edge functions, no runtime. Aggregation runs **off** GitHub Actions on purpose: the public Actions log would otherwise expose every upstream source URL, error message, and the exact cron timing — operational metadata that upstream maintainers can use to rate-limit or block us.
 
 Practical consequences:
 - All internationalization (i18n) must be baked into distinct URLs (`index.html` vs `index.zh.html`) — there is no `Accept-Language` negotiation.
@@ -278,10 +279,10 @@ Once the code is in `supportedGuideLocales`, the guide sitemap entries automatic
 | Node goes offline between probe and user | Clash selector group + URL-test fallback; per-country has multiple nodes |
 | Single country dominates | Top-N cap ensures geographic spread; per-country files for targeted subs |
 | GeoIP DB outage | Soft-fail — global outputs still produced |
-| GitHub Actions runner throttled | Concurrency bounded to 100; timeout_ms keeps one stuck probe from blocking |
-| Run exceeds workflow budget | `runDeadline = 30m` in `cmd/fnctl/main.go` caps the whole aggregate via `context.WithTimeout`; ensures a clean shutdown far below the 6 h Actions ceiling |
+| Host runner throttled | Concurrency bounded to 100; timeout_ms keeps one stuck probe from blocking |
+| Run exceeds scheduler budget | `runDeadline = 30m` in `cmd/fnctl/main.go` caps the whole aggregate via `context.WithTimeout`; the host timer's `TimeoutStartSec=45m` is defense-in-depth |
 | Runner sends SIGINT mid-run | `signal.NotifyContext` catches SIGINT/SIGTERM; ctx propagates into fetch + probe + TLS, aborting pending work instead of leaking goroutines |
-| Race between hourly bot and human commits | `concurrency: aggregate` in workflow prevents overlapping runs |
+| Race between scheduled bot and human commits | systemd `Type=oneshot` + a single timer ensures only one publish run at a time; the script also refuses to run on a dirty tree |
 
 ## What we deliberately do *not* do
 
