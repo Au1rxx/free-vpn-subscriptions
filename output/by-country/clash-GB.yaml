@@ -29,6 +29,16 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: "04-vless-\U0001F34F35@oneclickvpnkeys"
+      network: ws
+      port: 2096
+      server: 194.36.55.138
+      servername: sni.111000.indevs.in
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
 proxy-groups:
     - interval: 300
       name: auto
@@ -36,6 +46,7 @@ proxy-groups:
         - 01-vless->>@oneclickvpnkeys::US
         - 02-vless->>@oneclickvpnkeys::US
         - 03-vless->>@oneclickvpnkeys::US
+        - "04-vless-\U0001F34F35@oneclickvpnkeys"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -44,6 +55,7 @@ proxy-groups:
         - 01-vless->>@oneclickvpnkeys::US
         - 02-vless->>@oneclickvpnkeys::US
         - 03-vless->>@oneclickvpnkeys::US
+        - "04-vless-\U0001F34F35@oneclickvpnkeys"
       type: select
 rules:
     - MATCH,select
