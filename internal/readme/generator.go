@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/aggregate"
-	"github.com/Au1rxx/free-vpn-subscriptions/internal/node"
+	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 )
 
 type Input struct {

@@ -21,7 +21,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Au1rxx/free-vpn-subscriptions/internal/node"
+	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 )
 
 // Config controls the verification stage. Populated from YAML.

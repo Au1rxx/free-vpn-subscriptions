@@ -3,7 +3,7 @@ package sources
 import (
 	"fmt"
 
-	"github.com/Au1rxx/free-vpn-subscriptions/internal/node"
+	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 )
 
 // clashProxyToNode maps a single Clash proxy map into a normalized Node.

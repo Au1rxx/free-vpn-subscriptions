@@ -1,7 +1,7 @@
 package verify
 
 import (
-	"github.com/Au1rxx/free-vpn-subscriptions/internal/node"
+	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 )
 
 // Outbound renders a node into a sing-box outbound JSON object.

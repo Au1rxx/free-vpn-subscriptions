@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Au1rxx/free-vpn-subscriptions/internal/node"
+	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 )
 
 // TCP probes every node in parallel (bounded by concurrency) and returns only

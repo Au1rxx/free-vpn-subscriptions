@@ -12,7 +12,7 @@ import (
 	"gopkg.in/yaml.v3"
 
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/config"
-	"github.com/Au1rxx/free-vpn-subscriptions/internal/node"
+	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 )
 
 // Fetch returns nodes collected from a single source. Parse errors on

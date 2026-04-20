@@ -11,7 +11,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/Au1rxx/free-vpn-subscriptions/internal/node"
+	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 )
 
 type batchConfig struct {

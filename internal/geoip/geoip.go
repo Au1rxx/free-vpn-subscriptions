@@ -16,7 +16,7 @@ import (
 
 	"github.com/oschwald/geoip2-golang"
 
-	"github.com/Au1rxx/free-vpn-subscriptions/internal/node"
+	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 )
 
 // Resolver wraps an mmdb reader plus a DNS cache.

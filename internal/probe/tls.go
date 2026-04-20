@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Au1rxx/free-vpn-subscriptions/internal/node"
+	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 )
 
 // TLS filters TCP-alive nodes further by attempting a TLS ClientHello against

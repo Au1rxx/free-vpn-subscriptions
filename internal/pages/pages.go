@@ -20,7 +20,7 @@ import (
 	"time"
 
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/aggregate"
-	"github.com/Au1rxx/free-vpn-subscriptions/internal/node"
+	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 )
 
 // Input matches readme.Input in shape — intentionally duplicated so packages

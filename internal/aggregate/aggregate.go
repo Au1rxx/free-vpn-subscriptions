@@ -6,7 +6,7 @@ import (
 	"sort"
 
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/config"
-	"github.com/Au1rxx/free-vpn-subscriptions/internal/node"
+	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 )
 
 // Summary captures aggregated statistics for downstream consumers
