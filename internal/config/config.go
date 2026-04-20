@@ -11,10 +11,25 @@ import (
 type Config struct {
 	Sources   []Source        `yaml:"sources"`
 	Probe     ProbeConfig     `yaml:"probe"`
+	Verify    VerifyConfig    `yaml:"verify"`
 	Aggregate AggregateConfig `yaml:"aggregate"`
 	Output    OutputConfig    `yaml:"output"`
 	GeoIP     GeoIPConfig     `yaml:"geoip"`
 	Readme    ReadmeConfig    `yaml:"readme"`
+}
+
+type VerifyConfig struct {
+	Enabled        bool     `yaml:"enabled"`
+	CandidatePool  int      `yaml:"candidate_pool"`
+	BatchSize      int      `yaml:"batch_size"`
+	BasePort       int      `yaml:"base_port"`
+	Concurrency    int      `yaml:"concurrency"`
+	TimeoutMS      int      `yaml:"timeout_ms"`
+	Rounds         int      `yaml:"rounds"`
+	RoundGapMS     int      `yaml:"round_gap_ms"`
+	Targets        []string `yaml:"targets"`
+	SingBoxBin     string   `yaml:"sing_box_bin"`
+	StartupTimeoutMS int    `yaml:"startup_timeout_ms"`
 }
 
 type GeoIPConfig struct {
@@ -113,6 +128,39 @@ func applyDefaults(c *Config) {
 	}
 	if c.Output.Pages.Dir == "" {
 		c.Output.Pages.Dir = "docs"
+	}
+	if c.Verify.CandidatePool == 0 {
+		c.Verify.CandidatePool = 600
+	}
+	if c.Verify.BatchSize == 0 {
+		c.Verify.BatchSize = 40
+	}
+	if c.Verify.BasePort == 0 {
+		c.Verify.BasePort = 20000
+	}
+	if c.Verify.Concurrency == 0 {
+		c.Verify.Concurrency = 20
+	}
+	if c.Verify.TimeoutMS == 0 {
+		c.Verify.TimeoutMS = 6000
+	}
+	if c.Verify.Rounds == 0 {
+		c.Verify.Rounds = 2
+	}
+	if c.Verify.RoundGapMS == 0 {
+		c.Verify.RoundGapMS = 45000
+	}
+	if len(c.Verify.Targets) == 0 {
+		c.Verify.Targets = []string{
+			"http://www.gstatic.com/generate_204",
+			"https://www.cloudflare.com/cdn-cgi/trace",
+		}
+	}
+	if c.Verify.SingBoxBin == "" {
+		c.Verify.SingBoxBin = "sing-box"
+	}
+	if c.Verify.StartupTimeoutMS == 0 {
+		c.Verify.StartupTimeoutMS = 10000
 	}
 }
 

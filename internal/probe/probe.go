@@ -38,7 +38,9 @@ func TCP(ctx context.Context, nodes []*node.Node, timeout time.Duration, concurr
 			if !ok {
 				return
 			}
-			n.LatencyMS = int(latency / time.Millisecond)
+			ms := int(latency / time.Millisecond)
+			n.LatencyMS = ms
+			n.TCPLatencyMS = ms
 			results[i] = n
 		}(i, n)
 	}

@@ -46,9 +46,13 @@ type Node struct {
 	Insecure    bool   `json:"insecure,omitempty"`
 
 	// Runtime fields populated by probe/aggregate.
-	LatencyMS  int    `json:"latency_ms,omitempty"`
-	Country    string `json:"country,omitempty"`
-	SourceName string `json:"source_name,omitempty"`
+	// LatencyMS holds the primary ranking latency: TCP RTT after probe.TCP,
+	// then overwritten by HTTP-over-proxy median after verify.Run.
+	// TCPLatencyMS preserves the raw TCP RTT for display purposes.
+	LatencyMS    int    `json:"latency_ms,omitempty"`
+	TCPLatencyMS int    `json:"tcp_latency_ms,omitempty"`
+	Country      string `json:"country,omitempty"`
+	SourceName   string `json:"source_name,omitempty"`
 }
 
 // Key returns a stable deduplication key: protocol + server + port.

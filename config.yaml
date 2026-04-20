@@ -95,9 +95,30 @@ probe:
   max_nodes_per_source: 500
   tls_verify: true
 
+# HTTP-over-proxy verification: spin up sing-box subprocesses, route a real
+# HTTP GET through each candidate, and require 2 rounds spaced 45s apart so
+# flaky one-shot nodes don't make the cut. Only verified nodes are published.
+verify:
+  enabled: true
+  candidate_pool: 900       # fastest TLS-alive nodes to actually HTTP-probe
+  batch_size: 40            # outbounds per sing-box subprocess
+  base_port: 20000
+  concurrency: 20           # parallel HTTP probes within a batch
+  timeout_ms: 6000
+  rounds: 2
+  round_gap_ms: 45000
+  targets:
+    - http://www.gstatic.com/generate_204
+    - https://www.cloudflare.com/cdn-cgi/trace
+  sing_box_bin: /usr/local/bin/sing-box
+  startup_timeout_ms: 10000
+
 aggregate:
   top_n: 150
-  max_rtt_ms: 1500
+  # max_rtt_ms applies to verify's HTTP-over-proxy median (not raw TCP RTT).
+  # HTTP round-trips naturally run 2-3x TCP RTT — 4000ms keeps the bar to
+  # "actually usable" while leaving verified slower nodes on the list.
+  max_rtt_ms: 4000
   protocols: [vless, vmess, trojan, shadowsocks, hysteria2]
 
 output:

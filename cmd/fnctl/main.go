@@ -30,6 +30,7 @@ import (
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/readme"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/sources"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/subscribe"
+	"github.com/Au1rxx/free-vpn-subscriptions/internal/verify"
 )
 
 // runDeadline caps a single aggregate run. The hourly cron has a hard 6h
@@ -84,9 +85,35 @@ func newAggregateCmd() *cobra.Command {
 				fmt.Printf("alive %d / %d after TLS handshake\n", len(alive), before)
 			}
 
-			enrichGeoIP(cfg, alive)
+			// HTTP-over-proxy verification — this is where we move from
+			// "TCP/TLS handshake succeeded" to "traffic actually flows
+			// through the proxy". Sort by RTT first so the pool picks
+			// the fastest TLS-alive nodes.
+			verified := alive
+			if cfg.Verify.Enabled {
+				sortByLatency(alive)
+				before := len(alive)
+				verified = verify.Run(ctx, alive, verify.Config{
+					Enabled:        cfg.Verify.Enabled,
+					CandidatePool:  cfg.Verify.CandidatePool,
+					BatchSize:      cfg.Verify.BatchSize,
+					BasePort:       cfg.Verify.BasePort,
+					Concurrency:    cfg.Verify.Concurrency,
+					TimeoutMS:      cfg.Verify.TimeoutMS,
+					Rounds:         cfg.Verify.Rounds,
+					RoundGapMS:     cfg.Verify.RoundGapMS,
+					Targets:        cfg.Verify.Targets,
+					SingBoxBin:     cfg.Verify.SingBoxBin,
+					StartupTimeout: time.Duration(cfg.Verify.StartupTimeoutMS) * time.Millisecond,
+				})
+				fmt.Printf("verified %d / %d after HTTP-over-proxy probe\n", len(verified), before)
+			}
 
-			selected, summary := aggregate.Run(alive, cfg.Aggregate)
+			enrichGeoIP(cfg, verified)
+
+			selected, summary := aggregate.Run(verified, cfg.Aggregate)
+			summary.TotalAlive = len(alive)
+			summary.TotalVerified = len(verified)
 			summary.TotalFetched = len(fetched)
 			summary.GeneratedAtUnix = time.Now().Unix()
 			summary.ByCountry = countByCountry(selected)
@@ -156,6 +183,16 @@ func enrichGeoIP(cfg *config.Config, nodes []*node.Node) {
 	defer r.Close()
 	r.Enrich(nodes, 50)
 	fmt.Fprintf(os.Stderr, "  [ok]   geoip enriched %d nodes\n", len(nodes))
+}
+
+// sortByLatency orders nodes ascending by LatencyMS in-place. Used before
+// verify so the candidate pool is the fastest TLS-alive subset — faster
+// nodes are both more likely to pass HTTP verification and more valuable
+// to publish.
+func sortByLatency(nodes []*node.Node) {
+	sort.Slice(nodes, func(i, j int) bool {
+		return nodes[i].LatencyMS < nodes[j].LatencyMS
+	})
 }
 
 func countEnabled(srcs []config.Source) int {

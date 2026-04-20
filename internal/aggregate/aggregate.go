@@ -14,6 +14,7 @@ import (
 type Summary struct {
 	TotalFetched    int            `json:"total_fetched"`
 	TotalAlive      int            `json:"total_alive"`
+	TotalVerified   int            `json:"total_verified,omitempty"`
 	TotalSelected   int            `json:"total_selected"`
 	BySource        map[string]int `json:"by_source"`
 	ByProtocol      map[string]int `json:"by_protocol"`
