@@ -4,41 +4,48 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![nós](https://img.shields.io/badge/nós-150-brightgreen) ![ativos](https://img.shields.io/badge/ativos-2599-blue) ![rtt--mediano](https://img.shields.io/badge/rtt--mediano-9ms-orange) ![atualizado](https://img.shields.io/badge/atualizado-2026-04-19_11:06_UTC-informational)
+![nós](https://img.shields.io/badge/nós-150-brightgreen) ![ativos](https://img.shields.io/badge/ativos-2521-blue) ![rtt--mediano](https://img.shields.io/badge/rtt--mediano-90ms-orange) ![atualizado](https://img.shields.io/badge/atualizado-2026-04-20_10:41_UTC-informational)
 
 > **A forma mais fácil de obter uma VPN gratuita funcional — copie um link de assinatura, cole no seu cliente, conecte.**  
-> Sem cadastro. Sem pagamento. Sem instalar nenhum binário. Atualizado a cada hora a partir de fontes públicas — cada nó é sondado via TCP + TLS antes da publicação.
+> Sem cadastro. Sem pagamento. Sem instalar nenhum binário. Atualizado a cada hora a partir de fontes públicas — cada nó publicado encaminhou tráfego HTTP real através do sing-box minutos atrás.
 
-> VPN grátis · assinatura VPN gratuita · proxy grátis · Clash assinatura · v2ray assinatura · sing-box assinatura · VLESS · Reality · VMess · Trojan · Shadowsocks · Hysteria2 · atualizado por hora · TCP+TLS testado · por país
+> VPN grátis · assinatura VPN gratuita · proxy grátis · Clash assinatura · v2ray assinatura · sing-box assinatura · VLESS · Reality · VMess · Trojan · Shadowsocks · Hysteria2 · atualizado por hora · HTTP verificado sobre proxy · por país
 
 ## 💡 Por que este projeto?
 
-Cada lista de "VPN gratuita" no GitHub está desatualizada, cheia de nós mortos, ou pede para instalar um binário suspeito. Este repositório **publica apenas nós que passaram um handshake TCP E um handshake TLS minutos atrás**, a partir de fontes públicas selecionadas, ordenados por latência. Você recebe 3 arquivos de assinatura portáteis — use-os em Clash, sing-box ou v2rayN e pronto.
+Cada lista de "VPN gratuita" no GitHub está desatualizada, cheia de nós mortos, ou pede para instalar um binário suspeito. Este repositório vai um passo além de qualquer outro — **não apenas verificamos que o nó responde, mas empurramos tráfego HTTP real através dele com sing-box e confirmamos que um 204 retorna**, tudo em minutos antes de publicar. Você recebe 3 arquivos de assinatura portáteis — use-os em Clash, sing-box ou v2rayN e pronto.
 
 > 📖 How the fetch → probe → rank pipeline works: [ARCHITECTURE.md](./ARCHITECTURE.md)
 
 ## 🔬 Como verificamos que os nós realmente funcionam
 
-**Resposta honesta primeiro: não podemos *garantir* que um nó passe o seu tráfego.** Nenhum agregador pode, sem realmente enviar tráfego através dele. Aqui está exatamente o que verificamos, o que não podemos, e de onde vem a garantia real.
+A maioria das listas de VPN gratuita para em \"a porta TCP está aberta\" e publica. Nós não. Aqui está a pipeline completa que um nó precisa passar antes de entrar na assinatura.
 
 ### ✅ O que verificamos na agregação (antes de publicar)
 
-1. **Acessibilidade TCP** — abrimos uma conexão TCP para cada `server:port`. Hosts mortos, DNS errado, portas bloqueadas são descartados. Elimina cerca de 40 % das entradas cruas.
-2. **Handshake TLS** — para cada nó TLS / Reality / WS-TLS completamos o handshake inteiro. Certificados expirados, SNI incompatíveis e short-ids Reality quebrados são descartados. Elimina mais ~10 %.
-3. **Ordenação por latência** — os sobreviventes são ordenados por RTT e mantemos os N mais rápidos.
+1. **Acessibilidade TCP** — abrimos uma conexão TCP para cada `server:port`. Hosts mortos, DNS errado, portas bloqueadas são descartados. ~40 % das entradas cruas caem aqui.
+2. **Handshake TLS** — para cada nó TLS / Reality / WS-TLS completamos o handshake inteiro. Certificados expirados, SNI incompatíveis e short-ids Reality quebrados são descartados. Mais ~10 % caem aqui.
+3. **Validação de configuração sing-box** — cada nó sobrevivente é traduzido em um outbound real de sing-box e passa pelo `sing-box check`. Cifras corrompidas, UUIDs errados e opções flow não suportadas são descartados antes de desperdiçar um slot de sondagem.
+4. **Sondagem HTTP-over-proxy (esta é a chave)** — agrupamos os ~900 candidatos mais rápidos em subprocessos sing-box, cada nó recebendo seu próprio inbound SOCKS5 local, e então enviamos GETs HTTP e HTTPS reais através dele:
+   - `http://www.gstatic.com/generate_204` (espera 204)
+   - `https://www.cloudflare.com/cdn-cgi/trace` (espera 200)
 
-Números típicos de uma execução recente: **17 fontes → ~4,800 brutos → ~2,900 vivos via TCP → ~2,600 TLS OK → top 200 publicados**.
+   A requisição atravessa o protocolo proxy real (VLESS / VMess / Trojan / Shadowsocks / Hysteria2), então um nó que passa tem demonstravelmente autenticação, roteamento, handshake TLS interno e rede de saída funcionando.
+5. **Duas rodadas, 45 segundos de intervalo** — nós que passam uma vez mas morrem 45 segundos depois são filtrados. Apenas nós com ≥ 50 % de taxa de sucesso em (rodadas × alvos) ficam.
+6. **Ordenar por mediana de latência real** — os sobreviventes são ordenados pela mediana do ida-e-volta HTTP-over-proxy (não RTT TCP bruto) e os top N são publicados.
 
-### ❌ O que não podemos verificar
+Números típicos de uma execução recente: **17 fontes → ~4,800 brutos → ~2,900 vivos via TCP → ~2,600 TLS OK → ~840 configuração válida → ~280 verificados por HTTP → top 150 publicados**. Cada um dos 150 de fato encaminhou tráfego nos últimos dez minutos.
 
-- Autenticação do protocolo proxy. UUID / senha errados só são rejeitados *depois* do handshake TLS pelo servidor upstream.
-- Sucesso real de HTTP via proxy.
-- Largura de banda ou throughput.
-- Geolocalização além do que o GeoIP diz sobre o IP de saída.
+### ❌ O que ainda não podemos verificar
 
-### 🛡️ Verificação em tempo de execução — é daqui que vem a garantia real
+- **Largura de banda / throughput** — medimos latência, não megabits. Um nó de 50 ms ainda pode ser lento para vídeo.
+- **Precisão de geolocalização** — GeoIP diz o país do IP de saída mas não a cidade ou ISP de forma confiável.
+- **Bloqueios específicos por região** — um nó que funciona da nossa infraestrutura de sondagem pode estar bloqueado da sua (filtragem no nível do ISP, captive portals, etc.).
+- **Continuar vivo depois da execução** — o nó passou dez minutos atrás; pode ter morrido desde então.
 
-O `clash.yaml` que publicamos inclui um grupo `url-test` que **testa HTTP real através de cada nó** a cada 5 minutos:
+### 🛡️ Rede de segurança em tempo de execução — para o último item acima
+
+O `clash.yaml` que publicamos inclui um grupo `url-test` que retesta HTTP real através de cada nó a cada 5 minutos no *seu* dispositivo:
 
 ```yaml
 proxy-groups:
@@ -48,11 +55,11 @@ proxy-groups:
     interval: 300
 ```
 
-Seu cliente ordena a lista de nós pela latência *real* de HTTP via proxy e auto-seleciona o nó mais rápido que funciona. sing-box e v2ray têm mecanismos equivalentes. Se um nó selecionado morrer, o cliente muda para o próximo sem intervenção.
+Seu cliente mantém a lista de nós ordenada por latência *ao vivo* de HTTP-over-proxy da sua rede e auto-seleciona o nó mais rápido que funciona. sing-box e v2ray têm mecanismos equivalentes. Se um nó selecionado morrer entre agregações horárias, o cliente muda para o próximo sem intervenção.
 
-### 🧮 Resultado esperado
+### 🧮 O que isso significa na prática
 
-Dos top 200 publicados por execução, um cliente típico encontra 30-50 que servem HTTP limpo em qualquer momento. Rotacione se um ficar lento — o grupo url-test faz isso com um clique.
+Dos ~150 publicados por execução, um cliente típico encontra **80-120 nós que servem HTTP limpo da sua rede** em qualquer momento — aproximadamente 2-3× a taxa de acerto de listas que só fazem sondagem TCP. O grupo url-test rotaciona de forma transparente se um cair.
 
 ## 🚀 Assinatura com um clique
 
@@ -70,8 +77,10 @@ Quer nós apenas em uma região específica? Use uma dessas URLs de assinatura d
 
 | País | Nós | Clash | sing-box | v2ray |
 |---|---|---|---|---|
-| 🇺🇸 United States (`US`) | 19 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
-| 🇩🇪 Germany (`DE`) | 4 | [clash-DE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-DE.yaml) | [singbox-DE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-DE.json) | [v2ray-base64-DE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-DE.txt) |
+| 🇺🇸 United States (`US`) | 43 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
+| 🇨🇦 Canada (`CA`) | 8 | [clash-CA.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-CA.yaml) | [singbox-CA.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-CA.json) | [v2ray-base64-CA.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-CA.txt) |
+| 🇩🇪 Germany (`DE`) | 7 | [clash-DE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-DE.yaml) | [singbox-DE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-DE.json) | [v2ray-base64-DE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-DE.txt) |
+| 🇬🇧 United Kingdom (`GB`) | 3 | [clash-GB.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-GB.yaml) | [singbox-GB.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-GB.json) | [v2ray-base64-GB.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-GB.txt) |
 
 ## 📖 Tutoriais passo a passo
 
@@ -93,14 +102,14 @@ Novo nos clientes VPN? Escolha sua plataforma e siga o tutorial:
 ## 📊 Estatísticas ao vivo
 
 - **Nós selecionados**: 150
-- **Ativos em todas as fontes**: 2599
-- **RTT do nó mais rápido**: 5 ms
-- **RTT mediano**: 9 ms
-- **Última atualização (UTC)**: 2026-04-19 11:06 UTC
+- **Ativos em todas as fontes**: 2521
+- **RTT do nó mais rápido**: 28 ms
+- **RTT mediano**: 90 ms
+- **Última atualização (UTC)**: 2026-04-20 10:41 UTC
 
-**Mix de protocolos:** shadowsocks × 22 · trojan × 24 · vless × 75 · vmess × 29
+**Mix de protocolos:** shadowsocks × 21 · trojan × 9 · vless × 107 · vmess × 13
 
-**Fontes usadas nesta execução:** `barry-far-v2ray` × 38 · `ebrasha-v2ray` × 11 · `epodonios` × 36 · `lagzian-mix` × 2 · `mahdibland-aggregator` × 2 · `mahdibland-shadowsocks` × 1 · `matin-v2ray` × 3 · `mfuu-clash` × 5 · `ninjastrikers` × 26 · `pawdroid` × 1 · `ruking-clash` × 19 · `snakem982` × 1 · `surfboard-eternity` × 3 · `vxiaov-clash` × 2
+**Fontes usadas nesta execução:** `barry-far-v2ray` × 35 · `epodonios` × 7 · `lagzian-mix` × 2 · `mahdi0024` × 26 · `mahdibland-aggregator` × 9 · `mahdibland-shadowsocks` × 3 · `matin-v2ray` × 1 · `ninjastrikers` × 55 · `pawdroid` × 1 · `ruking-clash` × 6 · `snakem982` × 1 · `surfboard-eternity` × 4
 
 ## ❓ Perguntas frequentes
 
@@ -112,7 +121,7 @@ Sim. Os nós são operados por voluntários de terceiros que publicam suas próp
 
 <details><summary>Quão atualizados são os dados?</summary>
 
-A cada hora (com um pequeno atraso aleatório para evitar bater nas fontes upstream exatamente em `:00`): puxa todas as fontes, faz sondagem TCP+TLS em cada nó, descarta os mortos, ordena por latência e publica os novos arquivos. Veja o carimbo `Last updated` acima.
+A cada hora (com um pequeno atraso aleatório para evitar bater nas fontes upstream exatamente em `:00`): puxa todas as fontes → TCP → TLS → validação de configuração sing-box → sondagem HTTP-over-proxy (duas rodadas, 45 s de intervalo) → ordena por latência HTTP real → publica os novos arquivos. Pipeline completo leva ~10 minutos. Veja o carimbo `Last updated` acima.
 
 </details>
 
@@ -124,7 +133,7 @@ Nós gratuitos veem todo o seu tráfego. **Nunca os use para banco, login ou alg
 
 <details><summary>Por que alguns nós listados falham?</summary>
 
-Verificamos apenas acessibilidade TCP e handshake TLS — um nó ainda pode ter cota esgotada, roteamento errado ou certificado expirado. O `clash.yaml` publicado inclui um grupo `url-test` (`http://www.gstatic.com/generate_204`, intervalo de 300 s); seu cliente auto-seleciona o nó mais rápido que realmente serve HTTP. Se um morrer, pegue o próximo.
+Mesmo após nossa sondagem HTTP-over-proxy, os nós podem morrer entre agregações: cota esgotada, upstream revogou a chave, seu ISP bloqueia o IP de saída, ou o operador desligou. O `clash.yaml` publicado inclui um grupo `url-test` (`http://www.gstatic.com/generate_204`, intervalo de 300 s); seu cliente auto-seleciona o nó mais rápido que realmente serve HTTP *da sua rede*. Se um morrer, pegue o próximo. Espere que 80-120 dos 150 funcionem em qualquer momento.
 
 </details>
 

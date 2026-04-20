@@ -4,41 +4,48 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![ノード](https://img.shields.io/badge/ノード-150-brightgreen) ![生存](https://img.shields.io/badge/生存-2599-blue) ![中央値--rtt](https://img.shields.io/badge/中央値--rtt-9ms-orange) ![更新](https://img.shields.io/badge/更新-2026-04-19_11:06_UTC-informational)
+![ノード](https://img.shields.io/badge/ノード-150-brightgreen) ![生存](https://img.shields.io/badge/生存-2521-blue) ![中央値--rtt](https://img.shields.io/badge/中央値--rtt-90ms-orange) ![更新](https://img.shields.io/badge/更新-2026-04-20_10:41_UTC-informational)
 
 > **動作する無料 VPN を手に入れる一番かんたんな方法 —— 購読リンクをコピーしてクライアントに貼るだけ。**  
-> 登録不要。支払い不要。バイナリのインストール不要。公開ソースから毎時自動更新、公開前に全ノードを TCP + TLS で検証。
+> 登録不要。支払い不要。バイナリのインストール不要。公開ソースから毎時自動更新 —— 公開される全ノードは、数分前に sing-box 経由で実 HTTP トラフィックを転送した実績があります。
 
-> 無料VPN 無制限 · 無料 v2ray 購読 · 無料 Clash 購読 · 無料 sing-box 購読 · VLESS · Reality · VMess · Trojan · Shadowsocks · Hysteria2 · 毎時更新 · TCP+TLS プローブ済み · 国別
+> 無料VPN 無制限 · 無料 v2ray 購読 · 無料 Clash 購読 · 無料 sing-box 購読 · VLESS · Reality · VMess · Trojan · Shadowsocks · Hysteria2 · 毎時更新 · HTTP 実測検証 · 国別
 
 ## 💡 なぜこのプロジェクト?
 
-GitHub 上の「無料 VPN」リストの多くは古いデータ、死んだノードだらけ、あるいは怪しいバイナリのインストールを要求します。このリポジトリは**数分前に TCP ハンドシェイクと TLS ハンドシェイクの両方を通過したノードのみ**を、厳選された公開ソースから、レイテンシ順に発行します。Clash / sing-box / v2rayN にそのまま貼れる 3 種類の購読ファイルが手に入ります。
+GitHub 上の「無料 VPN」リストの多くは古いデータ、死んだノードだらけ、あるいは怪しいバイナリのインストールを要求します。このリポジトリはどこよりも一歩進んでいます —— **ポートが開いているかをチェックするだけでなく、sing-box を使って実際に HTTP トラフィックをノード経由で流し、204 が返ってくることを確認してから公開します**、全て数分以内に。Clash / sing-box / v2rayN にそのまま貼れる 3 種類の購読ファイルが手に入ります。
 
 > 📖 How the fetch → probe → rank pipeline works: [ARCHITECTURE.md](./ARCHITECTURE.md)
 
 ## 🔬 ノードが本当に使えるかどうか、どう検証しているか
 
-**正直に言うと: ノードが確実にトラフィックを通すことを *保証* することはできません。** 実際にトラフィックを流してみないかぎり、どんな集約プロジェクトにも不可能です。以下に、集約時に何を検証しているか、何を検証できないか、そして「本当の保証」がどこから来るかを明示します。
+多くの無料 VPN リストは「TCP ポートが開いている」だけで公開します。私たちは違います。以下が、公開前にノードが通過しなければならない完全な検証パイプラインです。
 
 ### ✅ 集約時 (公開前) に検証すること
 
-1. **TCP 到達性** —— 各 `server:port` に TCP 接続を張ります。サーバーダウン、DNS エラー、ポート遮断はすべてドロップ。原始エントリの約 40 % を除外。
-2. **TLS ハンドシェイク** —— TLS / Reality / WS-TLS ノードについて、完全なハンドシェイクを実行。証明書期限切れ、SNI 不一致、Reality short-id 失効はドロップ。さらに約 10 % を除外。
-3. **レイテンシ順ソート** —— 生存ノードを RTT 順にソートし、上位 N を公開。
+1. **TCP 到達性** —— 各 `server:port` に TCP 接続を張る。サーバーダウン、DNS エラー、ポート遮断はすべてドロップ。原始エントリの約 40 % を除外。
+2. **TLS ハンドシェイク** —— TLS / Reality / WS-TLS ノードについて完全なハンドシェイクを実行。証明書期限切れ、SNI 不一致、Reality short-id 失効はドロップ。さらに約 10 % を除外。
+3. **sing-box 設定検証** —— 生存した各ノードを実際の sing-box outbound に変換し、`sing-box check` で検証。破損した暗号化方式、不正な UUID、未対応の flow オプションは、プローブスロットを浪費する前にドロップ。
+4. **HTTP-over-proxy 実測 (これが肝)** —— 最速の約 900 候補を sing-box サブプロセスにバッチで投入し、各ノードに専用のローカル SOCKS5 inbound を割り当てて、実際の HTTP と HTTPS リクエストを流します:
+   - `http://www.gstatic.com/generate_204` (204 を期待)
+   - `https://www.cloudflare.com/cdn-cgi/trace` (200 を期待)
 
-直近の典型値: **17 ソース → ~4,800 生データ → ~2,900 TCP 生存 → ~2,600 TLS OK → 上位 200 を公開**。
+   リクエストは実際のプロキシプロトコル (VLESS / VMess / Trojan / Shadowsocks / Hysteria2) を完全に通過するため、ここを通過するノードは認証・ルーティング・内側 TLS ハンドシェイク・出口ネットワークすべてが機能していると実証されています。
+5. **2 ラウンド、45 秒間隔** —— 一度通っても 45 秒後に死ぬノードは除外。(ラウンド数 × ターゲット数) のうち成功率 50 % 以上のノードのみ残ります。
+6. **実レイテンシ中央値でソート** —— 生存ノードは HTTP-over-proxy 実測往復時間の中央値 (生の TCP RTT ではなく) でソートされ、上位 N を公開。
 
-### ❌ 検証できないこと
+直近の典型値: **17 ソース → ~4,800 生データ → ~2,900 TCP 生存 → ~2,600 TLS OK → ~840 設定有効 → ~280 HTTP 実測通過 → 上位 150 を公開**。公開される 150 ノードは、すべてこの 10 分以内に実際にトラフィックを転送した実績があります。
 
-- プロキシプロトコル認証。UUID / パスワード不一致は、TLS ハンドシェイク *後* に上流サーバーで拒否されるため、私たちには見えません。
-- 実際の HTTP-over-proxy 成功。
-- 帯域 / スループット。
-- 出口 IP の GeoIP を超えた地理情報。
+### ❌ それでも検証できないこと
 
-### 🛡️ 実行時の検証 —— 本当の保証はここから
+- **帯域 / スループット** —— 測っているのはレイテンシで Mbps ではありません。50ms でも動画は遅いかもしれません。
+- **精密な地理位置** —— GeoIP は出口 IP の国を教えてくれますが、都市や ISP レベルでは信頼できません。
+- **地域特有のブロック** —— 私たちのプローブから通るノードが、あなたの環境から通るとは限りません (ISP 層のフィルタ、captive portal など)。
+- **公開後の生存** —— 10 分前には生きていた、でもその後死んだかもしれません。
 
-公開している `clash.yaml` には `url-test` プロキシグループが組み込まれており、**クライアント側で 5 分ごとに各ノードへ実 HTTP** を投げます:
+### 🛡️ 実行時のセーフティネット —— 上記最後の項目対策
+
+公開している `clash.yaml` には `url-test` プロキシグループが組み込まれており、**あなたの端末上で** 5 分ごとに各ノードへ実 HTTP を再投入します:
 
 ```yaml
 proxy-groups:
@@ -48,11 +55,11 @@ proxy-groups:
     interval: 300
 ```
 
-クライアントは *実際の* HTTP-over-proxy レイテンシでソートし、最速の使えるノードを自動選択します。sing-box / v2ray にも同等の機能があります。選ばれたノードが落ちても、クライアントが自動で次のノードに切り替えます。
+クライアントは *あなたのネットワーク上での* リアルタイム HTTP-over-proxy レイテンシでソートし、最速の使えるノードを自動選択します。sing-box / v2ray にも同等の機能があります。毎時集約の合間にノードが落ちても、クライアントが自動で次に切り替えます。
 
 ### 🧮 実際の期待値
 
-公開される上位 200 ノードのうち、クライアント側で HTTP を通す実測済みノードは通常 30-50 個見つかります。遅くなったら url-test グループが次の候補に切り替え、ワンクリックで済みます。
+毎回公開する ~150 ノードのうち、クライアント側で **80-120 ノードが HTTP を通す実測済み** で、TCP プローブだけのリストと比べて 2-3 倍の命中率です。一つ落ちても url-test グループが透過的にローテーションします。
 
 ## 🚀 ワンクリック購読
 
@@ -70,8 +77,10 @@ proxy-groups:
 
 | 国 | ノード数 | Clash | sing-box | v2ray |
 |---|---|---|---|---|
-| 🇺🇸 United States (`US`) | 19 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
-| 🇩🇪 Germany (`DE`) | 4 | [clash-DE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-DE.yaml) | [singbox-DE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-DE.json) | [v2ray-base64-DE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-DE.txt) |
+| 🇺🇸 United States (`US`) | 43 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
+| 🇨🇦 Canada (`CA`) | 8 | [clash-CA.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-CA.yaml) | [singbox-CA.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-CA.json) | [v2ray-base64-CA.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-CA.txt) |
+| 🇩🇪 Germany (`DE`) | 7 | [clash-DE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-DE.yaml) | [singbox-DE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-DE.json) | [v2ray-base64-DE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-DE.txt) |
+| 🇬🇧 United Kingdom (`GB`) | 3 | [clash-GB.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-GB.yaml) | [singbox-GB.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-GB.json) | [v2ray-base64-GB.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-GB.txt) |
 
 ## 📖 クライアント設定ガイド
 
@@ -93,14 +102,14 @@ proxy-groups:
 ## 📊 リアルタイム統計
 
 - **選定ノード**: 150
-- **全ソース生存数**: 2599
-- **最速 RTT**: 5 ms
-- **中央値 RTT**: 9 ms
-- **最終更新 (UTC)**: 2026-04-19 11:06 UTC
+- **全ソース生存数**: 2521
+- **最速 RTT**: 28 ms
+- **中央値 RTT**: 90 ms
+- **最終更新 (UTC)**: 2026-04-20 10:41 UTC
 
-**プロトコル構成:** shadowsocks × 22 · trojan × 24 · vless × 75 · vmess × 29
+**プロトコル構成:** shadowsocks × 21 · trojan × 9 · vless × 107 · vmess × 13
 
-**今回使用したソース:** `barry-far-v2ray` × 38 · `ebrasha-v2ray` × 11 · `epodonios` × 36 · `lagzian-mix` × 2 · `mahdibland-aggregator` × 2 · `mahdibland-shadowsocks` × 1 · `matin-v2ray` × 3 · `mfuu-clash` × 5 · `ninjastrikers` × 26 · `pawdroid` × 1 · `ruking-clash` × 19 · `snakem982` × 1 · `surfboard-eternity` × 3 · `vxiaov-clash` × 2
+**今回使用したソース:** `barry-far-v2ray` × 35 · `epodonios` × 7 · `lagzian-mix` × 2 · `mahdi0024` × 26 · `mahdibland-aggregator` × 9 · `mahdibland-shadowsocks` × 3 · `matin-v2ray` × 1 · `ninjastrikers` × 55 · `pawdroid` × 1 · `ruking-clash` × 6 · `snakem982` × 1 · `surfboard-eternity` × 4
 
 ## ❓ よくある質問
 
@@ -112,7 +121,7 @@ proxy-groups:
 
 <details><summary>データはどれくらい新しい?</summary>
 
-毎時更新 (上流を `:00` ちょうどに集中して叩かないよう小さなランダム遅延あり): すべての上流ソースを取得 → TCP+TLS プローブ → 死ノード除去 → レイテンシ順ソート → 新しい出力ファイルを公開。上のバッジの更新時刻を参照してください。
+毎時更新 (上流を `:00` ちょうどに集中して叩かないよう小さなランダム遅延あり): すべてのソースを取得 → TCP → TLS → sing-box 設定検証 → HTTP-over-proxy 実測 (2 ラウンド、45 秒間隔) → 実 HTTP レイテンシ順ソート → 新しい出力ファイルを公開。完全パイプラインで約 10 分。上のバッジの更新時刻を参照してください。
 
 </details>
 
@@ -124,7 +133,7 @@ proxy-groups:
 
 <details><summary>リストにあるのに繋がらないノードがあるのはなぜ?</summary>
 
-私たちが検証するのは TCP 到達性と TLS ハンドシェイクのみ —— 帯域上限、ルーティング異常、証明書期限切れは残ります。公開する `clash.yaml` には `url-test` グループ (`http://www.gstatic.com/generate_204` に 300 秒間隔) が組み込まれており、クライアントが実際に HTTP を通せる最速ノードを自動選択します。落ちたら次へ。
+HTTP-over-proxy 実測を通過した後でも、ノードは集約間に死ぬことがあります: 帯域制限、上流キーの失効、ISP が出口 IP を遮断、運営者の廃止など。公開する `clash.yaml` には `url-test` グループ (`http://www.gstatic.com/generate_204` に 300 秒間隔) が組み込まれており、クライアントが *あなたのネットワークから* 実際に HTTP を通せる最速ノードを自動選択します。落ちたら次へ。150 のうち 80-120 が随時使えるはずです。
 
 </details>
 
