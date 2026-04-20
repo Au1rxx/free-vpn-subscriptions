@@ -13,9 +13,9 @@ jitter, off-Actions)            │ source URLs and timing private;     │
                                             │
                          ┌──────────────────┴────────────────────┐
                          │ 1. Fetch — internal/sources/fetch.go   │
-                         │    5 upstream subscription feeds       │
+                         │    17 upstream subscription feeds      │
                          │    formats: uri-list, base64, clash    │
-                         │    ~1,000 raw nodes (ctx-aware HTTP)   │
+                         │    ~4,800 raw nodes (ctx-aware HTTP)   │
                          └──────────────────┬────────────────────┘
                                             │
                          ┌──────────────────┴────────────────────┐
@@ -34,23 +34,32 @@ jitter, off-Actions)            │ source URLs and timing private;     │
                          └──────────────────┬────────────────────┘
                                             │
                          ┌──────────────────┴────────────────────┐
-                         │ 4. GeoIP enrich — internal/geoip       │
+                         │ 4. HTTP-over-proxy verify — verify/*   │
+                         │    Batch sing-box subprocesses, each   │
+                         │    node gets a local SOCKS5 inbound.   │
+                         │    Real HTTP+HTTPS GET through the     │
+                         │    proxy protocol, 2 rounds 45s apart. │
+                         │    Keeps ≥50% success; sort by median. │
+                         └──────────────────┬────────────────────┘
+                                            │
+                         ┌──────────────────┴────────────────────┐
+                         │ 5. GeoIP enrich — internal/geoip       │
                          │    MaxMind GeoLite2-Country.mmdb       │
                          │    resolves each node's server IP      │
                          │    into a 2-letter country code.       │
                          └──────────────────┬────────────────────┘
                                             │
                          ┌──────────────────┴────────────────────┐
-                         │ 5. Aggregate — internal/aggregate      │
+                         │ 6. Aggregate — internal/aggregate      │
                          │    - protocol whitelist                │
-                         │    - RTT cap (max_rtt_ms = 1500)       │
+                         │    - RTT cap (max_rtt_ms = 4000)       │
                          │    - dedup by (proto,server,port,uuid) │
-                         │    - sort by latency asc               │
+                         │    - sort by HTTP-median asc           │
                          │    - top-N (150)                       │
                          └──────────────────┬────────────────────┘
                                             │
                          ┌──────────────────┴────────────────────┐
-                         │ 6. Emit — subscribe + pages + readme   │
+                         │ 7. Emit — subscribe + pages + readme   │
                          │    clash.yaml / singbox.json /         │
                          │    v2ray-base64.txt + per-country      │
                          │    variants + docs/*.html + 7 READMEs  │
@@ -71,12 +80,7 @@ Each source in [`config.yaml`](./config.yaml) has a `format`:
 | `base64` | base64 of a uri-list | decode then parse |
 | `clash` | YAML with `proxies:` list | `yaml.Unmarshal` → map each proxy |
 
-**Current sources** (all public, volunteer-maintained):
-- `mahdibland/V2RayAggregator` — 500 uri-list (cap)
-- `mahdibland/ShadowsocksAggregator` — 500 uri-list (cap)
-- `freefq/free` — base64
-- `Pawdroid/Free-servers` — base64
-- `vxiaov/free_proxies` — clash YAML
+**Current sources**: 17 public, volunteer-maintained upstream feeds covering uri-list, base64 and clash-YAML formats. Exact URLs live in `config.yaml`; we don't reproduce them here because enumerating them in public docs makes them easier for upstreams to rate-limit.
 
 Fetch errors on a single source are swallowed — they log `[skip]` and the pipeline proceeds with the remaining sources. This makes one flaky upstream not break the run.
 
@@ -123,7 +127,42 @@ conn, err := tlsDialer.DialContext(ctx, "tcp", addr)
 
 Typical result: ~60% of TCP-alive TLS nodes pass this stage. The rest are fake — cheap VPS routers that accept any TCP connection and silently drop anything that isn't HTTP/1.1.
 
-## Step 4 — GeoIP
+## Step 4 — HTTP-over-proxy verify
+
+Defined in [`internal/verify/`](./internal/verify/) — `verify.go` orchestrates, `singbox.go` builds config + spawns subprocess, `outbound.go` translates each `Node` into a sing-box outbound spec, `probe.go` sends the real HTTP request through a SOCKS5 dialer.
+
+TCP + TLS tells us the transport is alive, but nothing about whether **the proxy protocol itself works**. A Trojan server can complete TLS yet reject our password. A VLESS+Reality server can handshake yet drop traffic because the short-id is stale. To close this gap, before publishing we actually run HTTP traffic through each candidate.
+
+Pipeline per run:
+
+1. **Candidate selection** — take the TLS-alive pool, sort by measured TCP RTT ascending, cap to `verify.candidate_pool` (default 900). Verifying ~900 nodes is the sweet spot: large enough that we still publish 150 after the funnel, small enough to finish in ~10 minutes.
+
+2. **Config pre-filter** — run `sing-box check -c <single-node.json>` on each candidate in parallel. Corrupt SS ciphers, garbage UUIDs, unsupported flow options are dropped here. Without this, a single bad node's config error would make `sing-box check` abort the whole batch. Typical pass rate at this stage: ~90% (drops ~60–70 malformed entries).
+
+3. **Batch start** — group the survivors into batches of `verify.batch_size` (default 40) and spawn one sing-box subprocess per batch:
+   - 40 outbounds (one per node, tagged `out-0`…`out-39`)
+   - 40 mixed inbounds on `127.0.0.1:base_port+i` (default base `20000`)
+   - `route.rules` one-to-one mapping `in-i` → `out-i`, default outbound `direct`
+   - `Setpgid: true` so we can kill the whole process group on cleanup
+   - We poll `tryDial(base_port)` until sing-box binds or `startup_timeout_ms` (default 10 s) elapses.
+
+4. **HTTP probe** — for each outbound, dial its local SOCKS5 inbound via `golang.org/x/net/proxy` and send real requests:
+   - `http://www.gstatic.com/generate_204` — expects 204
+   - `https://www.cloudflare.com/cdn-cgi/trace` — expects 200
+
+   Both requests traverse the full proxy stack: auth, transport (TLS/WS/gRPC/Reality), and the egress network. A status in `[200, 400)` counts as success. Latency is the HTTP round-trip, not TCP RTT.
+
+5. **Stability rounds** — repeat the probe `verify.rounds` (default 2) times with `verify.round_gap_ms` (default 45 s) between rounds. Nodes that pass once but die 45 seconds later are filtered out by the round gap. Nodes whose `successes ≥ (rounds × targets) / 2` (so ≥2 out of 4 for defaults) survive.
+
+6. **Rank** — on survivors, `Node.LatencyMS` is overwritten with the **median HTTP-through-proxy latency** across all successful attempts. The original TCP RTT is preserved on `Node.TCPLatencyMS` for display. Aggregation then sorts by the HTTP median.
+
+Typical funnel on a recent run: **17 sources → ~4,800 raw → ~2,900 TCP-alive → ~2,600 TLS-OK → ~840 config-valid → ~280 HTTP-verified → top 150 published**. Total runtime ~10 min, of which step 4 takes ~7 min (15 batches × 12 s × 2 rounds + 45 s gap + cleanup).
+
+**Why sing-box subprocess, not Go library?** sing-box's internal Go API is unstable and its dependency tree is large. Embedding it would couple our release cadence to theirs. The subprocess approach lets us pin sing-box independently (`/usr/local/bin/sing-box`, currently v1.13.8) and replace it without rebuilding the binary.
+
+**Why not wireshark-level diagnostics?** We want evidence that the proxy works end-to-end, not protocol-level debugging. A successful HTTP GET through the full stack is that evidence.
+
+## Step 5 — GeoIP
 
 Defined in [`internal/geoip/geoip.go`](./internal/geoip/geoip.go).
 
@@ -134,23 +173,23 @@ Uses MaxMind's free **GeoLite2-Country** database mirrored at `P3TERX/GeoLite.mm
 
 Soft-failure design: if the GeoIP database can't be downloaded, the pipeline still produces global outputs — only the per-country filter is skipped that run.
 
-## Step 5 — Aggregate
+## Step 6 — Aggregate
 
 Defined in [`internal/aggregate/aggregate.go`](./internal/aggregate/aggregate.go).
 
 Applied in strict order:
 
 1. **Protocol filter** — keep only `vless | vmess | trojan | shadowsocks | hysteria2` (configurable).
-2. **RTT cap** — drop anything above `aggregate.max_rtt_ms` (default 1500 ms) — anything slower than that is unusable for browsing.
+2. **RTT cap** — drop anything above `aggregate.max_rtt_ms` (default 4000 ms). Note: `Node.LatencyMS` is now the HTTP-over-proxy median from step 4, typically 2–3× higher than raw TCP RTT, which is why the cap is set higher than the older TCP-only 1500 ms.
 3. **Dedup** — key is `(protocol, server, port, uuid_or_password)`. When the same endpoint appears from multiple sources, we keep the one with lowest measured latency.
-4. **Sort** ascending by latency.
+4. **Sort** ascending by HTTP-median latency.
 5. **Top-N** — slice to `aggregate.top_n` (default 150). Shorter lists are easier for clients to process and keep the selector group responsive.
 
 The median-latency statistic reported in `status.json` and READMEs uses the true median: the middle element for odd-length lists, and the mean of the two middle elements for even-length lists. Implemented as `medianLatency` in `aggregate.go` — previously we returned the upper-middle value, biasing the number up by ~5–10 ms on typical runs.
 
 A country variant is emitted per ISO-2 country when that country has at least `geoip.min_per_country` nodes (default 3) — avoids publishing a `clash-BZ.yaml` with only 1 node.
 
-## Step 6 — Emit
+## Step 7 — Emit
 
 The binary writes:
 
@@ -274,8 +313,11 @@ Once the code is in `supportedGuideLocales`, the guide sitemap entries automatic
 | Risk | Mitigation |
 |---|---|
 | Upstream source goes offline | Per-source try/catch; other sources still contribute |
-| Stale nodes in upstream feeds | Hourly cron + TCP probe + TLS probe drop dead/fake ones |
+| Stale nodes in upstream feeds | Hourly cron + TCP probe + TLS probe + HTTP-over-proxy verify drop dead/fake ones |
 | "Open port but dead proxy" trap | TLS handshake filter catches routers that accept TCP but can't speak TLS |
+| "Handshake succeeds but proxy rejects traffic" trap | HTTP-over-proxy verify actually forwards a GET through each proxy protocol before publishing |
+| Flaky nodes (pass once, die seconds later) | Verify runs 2 rounds 45 s apart; only nodes with ≥50 % success rate across rounds×targets are kept |
+| Broken config (bad cipher, wrong UUID, unsupported flow) | `sing-box check` pre-filter at the verify stage drops them before a probe slot is wasted |
 | Node goes offline between probe and user | Clash selector group + URL-test fallback; per-country has multiple nodes |
 | Single country dominates | Top-N cap ensures geographic spread; per-country files for targeted subs |
 | GeoIP DB outage | Soft-fail — global outputs still produced |
@@ -286,7 +328,7 @@ Once the code is in `supportedGuideLocales`, the guide sitemap entries automatic
 
 ## What we deliberately do *not* do
 
-- **No active traffic test** — we don't POST through the proxy because (a) that takes far longer than TCP+TLS and (b) would make us look like a scraper to the proxy operators. TCP+TLS handshake is a good proxy for usability.
+- **No bandwidth / throughput measurement** — we verify that a small HTTP GET completes (204 / 200), which proves the proxy forwards traffic, but we don't measure Mbps. A 50 ms node might still be slow for video streaming.
 - **No manual curation** — every node comes from a public upstream; we don't edit the list.
 - **No analytics / telemetry** — the static site has zero JS and zero third-party resources.
 - **No link to non-free providers** — affiliate links would compromise our neutrality.
@@ -302,15 +344,32 @@ probe:
   max_nodes_per_source: 500
   tls_verify: true       # toggle step 3
 
+verify:                  # step 4 — HTTP-over-proxy
+  enabled: true
+  candidate_pool: 900    # top-N by TCP RTT fed into verify
+  batch_size: 40         # outbounds per sing-box subprocess
+  base_port: 20000       # first SOCKS5 inbound port
+  concurrency: 20        # parallel probes within a batch
+  timeout_ms: 6000       # per-target HTTP timeout
+  rounds: 2              # repeat probe this many times
+  round_gap_ms: 45000    # sleep between rounds
+  targets:
+    - http://www.gstatic.com/generate_204
+    - https://www.cloudflare.com/cdn-cgi/trace
+  sing_box_bin: /usr/local/bin/sing-box
+  startup_timeout_ms: 10000  # wait for sing-box to bind inbounds
+
 aggregate:
   top_n: 150             # final list size
-  max_rtt_ms: 1500       # RTT cap
+  max_rtt_ms: 4000       # HTTP-median latency cap (was 1500 for raw TCP)
   protocols: [vless, vmess, trojan, shadowsocks, hysteria2]
 
 geoip:
   enabled: true
   min_per_country: 3     # threshold for per-country output
 ```
+
+**Prerequisite**: `sing-box` must be available at `verify.sing_box_bin` (default looks up `sing-box` in `PATH`). The production runner uses `/usr/local/bin/sing-box` v1.13.8. If the binary is missing, set `verify.enabled: false` to skip step 4 entirely (the pipeline falls back to TCP+TLS-only, same quality bar as before this stage was added).
 
 ## Monitoring
 
