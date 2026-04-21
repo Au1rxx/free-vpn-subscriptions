@@ -51,6 +51,17 @@ func Singbox(nodes []*node.Node) (string, error) {
 
 func singboxOutbound(n *node.Node, idx int) map[string]any {
 	tag := fmt.Sprintf("%02d-%s-%s", idx+1, n.Protocol, safe(n.Name))
+	return SingboxOutbound(n, tag)
+}
+
+// SingboxOutbound converts a single node into a sing-box outbound map
+// with the caller-supplied tag, mirroring the per-node logic behind
+// Singbox() but without wrapping it in a full config. Sibling tools
+// that want to build their own inbound/route (e.g. a single-proxy
+// launcher for ad-hoc probes) should use this and compose the rest.
+//
+// Returns nil for protocols without a sing-box mapping.
+func SingboxOutbound(n *node.Node, tag string) map[string]any {
 	ob := map[string]any{
 		"tag":         tag,
 		"server":      n.Server,

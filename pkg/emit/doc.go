@@ -20,4 +20,12 @@
 // Partial-coverage emitters (Surge/QuanX/Loon) silently drop nodes whose
 // protocol has no mapping — inspect the returned string or count proxies in
 // the output if you need to detect loss.
+//
+// Low-level helpers
+//
+//   - SingboxOutbound(n, tag) — returns a single node's sing-box outbound
+//     map with a caller-supplied tag, without wrapping it in Singbox()'s
+//     selector/urltest scaffolding. Useful for sibling tools that want to
+//     build custom inbound + route combinations (e.g. a single-proxy
+//     launcher for streaming-unlock probes).
 package emit
