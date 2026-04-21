@@ -185,7 +185,8 @@ func TestCheckChatGPT(t *testing.T) {
 		wantStatus   Status
 		wantRegion   string
 	}{
-		{"unlocked-us", true, `{"cookie_requirements":{"ok":true}}`, "US", Unlocked, "US"},
+		{"unlocked-us-old-shape", true, `{"cookie_requirements":{"ok":true}}`, "US", Unlocked, "US"},
+		{"unlocked-us-new-shape", true, `{"cookie_consent_required": false}`, "US", Unlocked, "US"},
 		{"blocked-hk", false, `{"error":"unsupported_country"}`, "HK", Blocked, "HK"},
 	}
 	for _, c := range cases {

@@ -52,7 +52,11 @@ func CheckChatGPT(ctx context.Context, client *http.Client) Result {
 	case strings.Contains(bodyStr, "unsupported_country"):
 		r.Status = Blocked
 		r.Detail = "api compliance: unsupported_country"
-	case resp.StatusCode == http.StatusOK && strings.Contains(bodyStr, "cookie_requirements"):
+	case resp.StatusCode == http.StatusOK:
+		// The endpoint returns a JSON body in supported regions; the
+		// exact shape has shifted over time ("cookie_requirements" vs
+		// "cookie_consent_required"). A 200 without the
+		// unsupported_country marker is the reliable "unlocked" signal.
 		r.Status = Unlocked
 		r.Detail = "api compliance ok"
 	default:
