@@ -26,7 +26,7 @@ import (
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/geoip"
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/pages"
-	"github.com/Au1rxx/free-vpn-subscriptions/internal/probe"
+	"github.com/Au1rxx/free-vpn-subscriptions/pkg/probe"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/readme"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/sources"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/verify"

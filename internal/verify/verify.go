@@ -1,7 +1,7 @@
 // Package verify runs real HTTP-over-proxy probes through candidate nodes
 // using sing-box as a batched subprocess.
 //
-// Unlike internal/probe (TCP + TLS handshake, cannot see proxy auth or real
+// Unlike pkg/probe (TCP + TLS handshake, cannot see proxy auth or real
 // HTTP success) this package forwards a small request through each proxy
 // and checks that an end-to-end HTTP 204 actually comes back. Nodes that
 // reach here with http_ok==true have demonstrably functioning credentials,
