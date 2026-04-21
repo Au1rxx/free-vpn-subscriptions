@@ -29,8 +29,8 @@ import (
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/probe"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/readme"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/sources"
-	"github.com/Au1rxx/free-vpn-subscriptions/internal/subscribe"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/verify"
+	"github.com/Au1rxx/free-vpn-subscriptions/pkg/emit"
 )
 
 // runDeadline caps a single aggregate run. The hourly cron has a hard 6h
@@ -299,7 +299,7 @@ func emitSet(cfg *config.Config, dir, suffix string, nodes []*node.Node) error {
 	}
 
 	if formats["clash"] {
-		content, err := subscribe.Clash(nodes)
+		content, err := emit.Clash(nodes)
 		if err != nil {
 			return fmt.Errorf("clash: %w", err)
 		}
@@ -308,7 +308,7 @@ func emitSet(cfg *config.Config, dir, suffix string, nodes []*node.Node) error {
 		}
 	}
 	if formats["singbox"] {
-		content, err := subscribe.Singbox(nodes)
+		content, err := emit.Singbox(nodes)
 		if err != nil {
 			return fmt.Errorf("singbox: %w", err)
 		}
@@ -318,7 +318,7 @@ func emitSet(cfg *config.Config, dir, suffix string, nodes []*node.Node) error {
 	}
 	if formats["v2ray-base64"] {
 		if err := write(filepath.Join(dir, "v2ray-base64"+tag+".txt"),
-			subscribe.V2RayBase64(nodes)); err != nil {
+			emit.V2RayBase64(nodes)); err != nil {
 			return err
 		}
 	}

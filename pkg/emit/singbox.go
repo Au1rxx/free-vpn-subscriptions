@@ -1,4 +1,4 @@
-package subscribe
+package emit
 
 import (
 	"encoding/json"

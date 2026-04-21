@@ -1,4 +1,5 @@
-// Package sources fetches and parses upstream subscription feeds into []Node.
+// Package sources fetches upstream subscription feeds over HTTP and hands
+// the raw bodies off to pkg/parse for format decoding.
 package sources
 
 import (
@@ -6,13 +7,11 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"strings"
 	"time"
-
-	"gopkg.in/yaml.v3"
 
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/config"
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
+	"github.com/Au1rxx/free-vpn-subscriptions/pkg/parse"
 )
 
 // Fetch returns nodes collected from a single source. Parse errors on
@@ -48,15 +47,14 @@ func Fetch(ctx context.Context, src config.Source, timeout time.Duration) ([]*no
 	var nodes []*node.Node
 	switch src.Format {
 	case "uri-list":
-		nodes = parseURIList(string(body))
+		nodes = parse.URIList(string(body))
 	case "base64":
-		decoded, err := node.B64Decode(strings.TrimSpace(string(body)))
+		nodes, err = parse.Base64List(body)
 		if err != nil {
 			return nil, fmt.Errorf("source %q: base64: %w", src.Name, err)
 		}
-		nodes = parseURIList(string(decoded))
 	case "clash":
-		nodes, err = parseClash(body)
+		nodes, err = parse.Clash(body)
 		if err != nil {
 			return nil, fmt.Errorf("source %q: clash: %w", src.Name, err)
 		}
@@ -68,44 +66,4 @@ func Fetch(ctx context.Context, src config.Source, timeout time.Duration) ([]*no
 		n.SourceName = src.Name
 	}
 	return nodes, nil
-}
-
-// parseURIList walks a newline-separated list of proxy URIs.
-func parseURIList(s string) []*node.Node {
-	var out []*node.Node
-	for _, line := range strings.Split(s, "\n") {
-		line = strings.TrimSpace(line)
-		if line == "" || strings.HasPrefix(line, "#") {
-			continue
-		}
-		n, err := node.ParseURI(line)
-		if err != nil {
-			continue
-		}
-		if n.Valid() {
-			out = append(out, n)
-		}
-	}
-	return out
-}
-
-// clashConfig is the subset of a Clash YAML we need.
-type clashConfig struct {
-	Proxies []map[string]any `yaml:"proxies"`
-}
-
-// parseClash extracts proxies from a Clash-style YAML into normalized Nodes.
-func parseClash(body []byte) ([]*node.Node, error) {
-	var cc clashConfig
-	if err := yaml.Unmarshal(body, &cc); err != nil {
-		return nil, err
-	}
-	var out []*node.Node
-	for _, p := range cc.Proxies {
-		n := clashProxyToNode(p)
-		if n != nil && n.Valid() {
-			out = append(out, n)
-		}
-	}
-	return out, nil
 }

@@ -1,10 +1,34 @@
-package sources
+package parse
 
 import (
 	"fmt"
 
+	"gopkg.in/yaml.v3"
+
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 )
+
+type clashConfig struct {
+	Proxies []map[string]any `yaml:"proxies"`
+}
+
+// Clash parses a Clash-style YAML body (only the `proxies:` array is looked
+// at) into normalized Nodes. Returns an error for YAML decode failures; a
+// valid YAML without `proxies` simply returns nil.
+func Clash(body []byte) ([]*node.Node, error) {
+	var cc clashConfig
+	if err := yaml.Unmarshal(body, &cc); err != nil {
+		return nil, err
+	}
+	var out []*node.Node
+	for _, p := range cc.Proxies {
+		n := clashProxyToNode(p)
+		if n != nil && n.Valid() {
+			out = append(out, n)
+		}
+	}
+	return out, nil
+}
 
 // clashProxyToNode maps a single Clash proxy map into a normalized Node.
 // Returns nil if the proxy type is unsupported.
