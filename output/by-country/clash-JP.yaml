@@ -1,0 +1,48 @@
+proxies:
+    - cipher: aes-128-gcm
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.204
+      type: ss
+      udp: true
+    - alterId: 0
+      cipher: auto
+      name: "02-vmess-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_7f43f8b8"
+      network: tcp
+      port: 49803
+      server: 153.121.73.175
+      type: vmess
+      udp: true
+      uuid: cd3dacbc-2b7b-4718-83ad-ab870f87e12e
+    - client-fingerprint: chrome
+      name: "03-vless-\U0001F1EF\U0001F1F5 日本 | JPN 4"
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: UT9tFQOdy54SeW_tg-XQN3QkGYoWUpO_88XFXijkrXc
+        short-id: 2da72ce6
+      server: 176.97.73.155
+      servername: navi.bankrate.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 74c3667c-04de-4317-84ea-d42f2ed240e3
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "02-vmess-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_7f43f8b8"
+        - "03-vless-\U0001F1EF\U0001F1F5 日本 | JPN 4"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "02-vmess-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_7f43f8b8"
+        - "03-vless-\U0001F1EF\U0001F1F5 日本 | JPN 4"
+      type: select
+rules:
+    - MATCH,select

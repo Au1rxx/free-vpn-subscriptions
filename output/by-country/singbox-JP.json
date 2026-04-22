@@ -1,0 +1,70 @@
+{
+  "outbounds": [
+    {
+      "method": "aes-128-gcm",
+      "password": "shadowsocks",
+      "server": "149.22.87.204",
+      "server_port": 443,
+      "tag": "01-shadowsocks-🇯🇵JP-149.22.87.204-0216",
+      "type": "shadowsocks"
+    },
+    {
+      "alter_id": 0,
+      "security": "auto",
+      "server": "153.121.73.175",
+      "server_port": 49803,
+      "tag": "02-vmess-🔴🇯🇵[🎬🤖📺🔍]_github.com/Ruk1ng001_7f43f8b8",
+      "type": "vmess",
+      "uuid": "cd3dacbc-2b7b-4718-83ad-ab870f87e12e"
+    },
+    {
+      "server": "176.97.73.155",
+      "server_port": 443,
+      "tag": "03-vless-🇯🇵 日本 | JPN 4",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "UT9tFQOdy54SeW_tg-XQN3QkGYoWUpO_88XFXijkrXc",
+          "short_id": "2da72ce6"
+        },
+        "server_name": "navi.bankrate.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "74c3667c-04de-4317-84ea-d42f2ed240e3"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-shadowsocks-🇯🇵JP-149.22.87.204-0216",
+        "02-vmess-🔴🇯🇵[🎬🤖📺🔍]_github.com/Ruk1ng001_7f43f8b8",
+        "03-vless-🇯🇵 日本 | JPN 4"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-shadowsocks-🇯🇵JP-149.22.87.204-0216",
+        "02-vmess-🔴🇯🇵[🎬🤖📺🔍]_github.com/Ruk1ng001_7f43f8b8",
+        "03-vless-🇯🇵 日本 | JPN 4"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
