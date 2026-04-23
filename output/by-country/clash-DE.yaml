@@ -1,7 +1,16 @@
 proxies:
     - alterId: 0
       cipher: auto
-      name: "01-vmess-\U0001F1EC\U0001F1E7 英国 V2CROSS.COM"
+      name: 01-vmess-英国 V2CROSS.COM
+      network: tcp
+      port: 180
+      server: 82.198.246.214
+      type: vmess
+      udp: true
+      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+    - alterId: 0
+      cipher: auto
+      name: "02-vmess-\U0001F1E8\U0001F1FF CZ 2"
       network: tcp
       port: 180
       server: 82.198.246.233
@@ -10,7 +19,16 @@ proxies:
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: "02-vmess-\U0001F1FA\U0001F1F8 美国 | USA 2"
+      name: 03-vmess-英国 V2CROSS.COM
+      network: tcp
+      port: 180
+      server: 82.198.246.97
+      type: vmess
+      udp: true
+      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+    - alterId: 0
+      cipher: auto
+      name: "04-vmess-\U0001F1FA\U0001F1F8 美国 | USA 2"
       network: tcp
       port: 180
       server: 82.198.246.9
@@ -19,23 +37,14 @@ proxies:
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: "03-vmess-\U0001F1FA\U0001F1F8 美国 | USA"
+      name: "05-vmess-\U0001F1E8\U0001F1FF CZ 1"
       network: tcp
       port: 180
-      server: 82.198.246.250
+      server: 82.198.246.37
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-    - alterId: 0
-      cipher: auto
-      name: 04-vmess-英国 V2CROSS.COM
-      network: tcp
-      port: 180
-      server: 82.198.246.214
-      type: vmess
-      udp: true
-      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-    - name: 05-vless->>@oneclickvpnkeys::US
+    - name: 06-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
       server: 188.244.122.138
@@ -45,25 +54,38 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - alterId: 0
+      cipher: auto
+      name: "07-vmess-\U0001F1FA\U0001F1F8 Join+Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
+      network: tcp
+      port: 180
+      server: 82.198.246.250
+      type: vmess
+      udp: true
+      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-vmess-\U0001F1EC\U0001F1E7 英国 V2CROSS.COM"
-        - "02-vmess-\U0001F1FA\U0001F1F8 美国 | USA 2"
-        - "03-vmess-\U0001F1FA\U0001F1F8 美国 | USA"
-        - 04-vmess-英国 V2CROSS.COM
-        - 05-vless->>@oneclickvpnkeys::US
+        - 01-vmess-英国 V2CROSS.COM
+        - "02-vmess-\U0001F1E8\U0001F1FF CZ 2"
+        - 03-vmess-英国 V2CROSS.COM
+        - "04-vmess-\U0001F1FA\U0001F1F8 美国 | USA 2"
+        - "05-vmess-\U0001F1E8\U0001F1FF CZ 1"
+        - 06-vless->>@oneclickvpnkeys::US
+        - "07-vmess-\U0001F1FA\U0001F1F8 Join+Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-vmess-\U0001F1EC\U0001F1E7 英国 V2CROSS.COM"
-        - "02-vmess-\U0001F1FA\U0001F1F8 美国 | USA 2"
-        - "03-vmess-\U0001F1FA\U0001F1F8 美国 | USA"
-        - 04-vmess-英国 V2CROSS.COM
-        - 05-vless->>@oneclickvpnkeys::US
+        - 01-vmess-英国 V2CROSS.COM
+        - "02-vmess-\U0001F1E8\U0001F1FF CZ 2"
+        - 03-vmess-英国 V2CROSS.COM
+        - "04-vmess-\U0001F1FA\U0001F1F8 美国 | USA 2"
+        - "05-vmess-\U0001F1E8\U0001F1FF CZ 1"
+        - 06-vless->>@oneclickvpnkeys::US
+        - "07-vmess-\U0001F1FA\U0001F1F8 Join+Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
       type: select
 rules:
     - MATCH,select
