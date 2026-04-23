@@ -9,17 +9,7 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: 02-vless-v2ray_dalghak
-      network: ws
-      port: 2096
-      server: 77.75.199.138
-      servername: sni.111000.indevs.in
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: 03-vless->>@oneclickvpnkeys::US
+    - name: 02-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
       server: 185.238.228.238
@@ -29,11 +19,21 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: 04-vless->>@oneclickvpnkeys::US
+    - name: 03-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
       server: 185.156.19.238
       servername: sni.jpmj.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: 04-vless-v2ray_dalghak
+      network: ws
+      port: 2096
+      server: 77.75.199.138
+      servername: sni.111000.indevs.in
       skip-cert-verify: false
       tls: true
       type: vless
@@ -44,18 +44,18 @@ proxy-groups:
       name: auto
       proxies:
         - 01-vless->>@oneclickvpnkeys::US
-        - 02-vless-v2ray_dalghak
+        - 02-vless->>@oneclickvpnkeys::US
         - 03-vless->>@oneclickvpnkeys::US
-        - 04-vless->>@oneclickvpnkeys::US
+        - 04-vless-v2ray_dalghak
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - 01-vless->>@oneclickvpnkeys::US
-        - 02-vless-v2ray_dalghak
+        - 02-vless->>@oneclickvpnkeys::US
         - 03-vless->>@oneclickvpnkeys::US
-        - 04-vless->>@oneclickvpnkeys::US
+        - 04-vless-v2ray_dalghak
       type: select
 rules:
     - MATCH,select
