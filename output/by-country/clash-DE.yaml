@@ -1,7 +1,16 @@
 proxies:
     - alterId: 0
       cipher: auto
-      name: "01-vmess-\U0001F1E9\U0001F1EADE-82.198.246.9-70"
+      name: 01-vmess-英国 V2CROSS.COM
+      network: tcp
+      port: 180
+      server: 82.198.246.214
+      type: vmess
+      udp: true
+      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+    - alterId: 0
+      cipher: auto
+      name: "02-vmess-\U0001F1E9\U0001F1EADE-82.198.246.9-34"
       network: tcp
       port: 180
       server: 82.198.246.9
@@ -10,25 +19,7 @@ proxies:
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: "02-vmess-\U0001F1FA\U0001F1F8 美国 | USA 5"
-      network: tcp
-      port: 180
-      server: 82.198.246.233
-      type: vmess
-      udp: true
-      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-    - alterId: 0
-      cipher: auto
-      name: "03-vmess-\U0001F1E9\U0001F1EADE-82.198.246.250-80"
-      network: tcp
-      port: 180
-      server: 82.198.246.250
-      type: vmess
-      udp: true
-      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-    - alterId: 0
-      cipher: auto
-      name: "04-vmess-\U0001F1E9\U0001F1EADE-82.198.246.37-41"
+      name: "03-vmess-\U0001F1E9\U0001F1EADE-82.198.246.37-41"
       network: tcp
       port: 180
       server: 82.198.246.37
@@ -37,10 +28,19 @@ proxies:
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: 05-vmess-英国 V2CROSS.COM
+      name: 04-vmess-英国 V2CROSS.COM
       network: tcp
       port: 180
-      server: 82.198.246.214
+      server: 82.198.246.250
+      type: vmess
+      udp: true
+      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+    - alterId: 0
+      cipher: auto
+      name: "05-vmess-\U0001F1FA\U0001F1F8 美国 | USA 5"
+      network: tcp
+      port: 180
+      server: 82.198.246.233
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
@@ -58,22 +58,22 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-vmess-\U0001F1E9\U0001F1EADE-82.198.246.9-70"
-        - "02-vmess-\U0001F1FA\U0001F1F8 美国 | USA 5"
-        - "03-vmess-\U0001F1E9\U0001F1EADE-82.198.246.250-80"
-        - "04-vmess-\U0001F1E9\U0001F1EADE-82.198.246.37-41"
-        - 05-vmess-英国 V2CROSS.COM
+        - 01-vmess-英国 V2CROSS.COM
+        - "02-vmess-\U0001F1E9\U0001F1EADE-82.198.246.9-34"
+        - "03-vmess-\U0001F1E9\U0001F1EADE-82.198.246.37-41"
+        - 04-vmess-英国 V2CROSS.COM
+        - "05-vmess-\U0001F1FA\U0001F1F8 美国 | USA 5"
         - 06-vless->>@oneclickvpnkeys::US
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-vmess-\U0001F1E9\U0001F1EADE-82.198.246.9-70"
-        - "02-vmess-\U0001F1FA\U0001F1F8 美国 | USA 5"
-        - "03-vmess-\U0001F1E9\U0001F1EADE-82.198.246.250-80"
-        - "04-vmess-\U0001F1E9\U0001F1EADE-82.198.246.37-41"
-        - 05-vmess-英国 V2CROSS.COM
+        - 01-vmess-英国 V2CROSS.COM
+        - "02-vmess-\U0001F1E9\U0001F1EADE-82.198.246.9-34"
+        - "03-vmess-\U0001F1E9\U0001F1EADE-82.198.246.37-41"
+        - 04-vmess-英国 V2CROSS.COM
+        - "05-vmess-\U0001F1FA\U0001F1F8 美国 | USA 5"
         - 06-vless->>@oneclickvpnkeys::US
       type: select
 rules:
