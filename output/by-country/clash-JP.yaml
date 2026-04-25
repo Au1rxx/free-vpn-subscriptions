@@ -1,0 +1,79 @@
+proxies:
+    - cipher: aes-128-gcm
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.240
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.204
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.241
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      name: "04-vless-\U0001F1EF\U0001F1F5 日本 | JPN"
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: UT9tFQOdy54SeW_tg-XQN3QkGYoWUpO_88XFXijkrXc
+        short-id: 2da72ce6
+      server: 176.97.73.155
+      servername: navi.bankrate.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c0e7aebb-20ec-4080-ab9d-e9000b6a5a14
+    - name: "05-vless-\U0001F1FA\U0001F1F8 Join Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
+      network: ws
+      port: 12345
+      server: 43.167.157.65
+      servername: snippet.fgfw.loc.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 26524cce-d514-4014-a426-365fb266a14d
+    - name: 06-vless-@v2rayconfigamir 7328
+      network: ws
+      port: 443
+      server: 47.74.14.140
+      servername: yvl5fy.data-cache.chinam.indevs.in
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 26524cce-d514-4014-a426-365fb266a14d
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "04-vless-\U0001F1EF\U0001F1F5 日本 | JPN"
+        - "05-vless-\U0001F1FA\U0001F1F8 Join Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
+        - 06-vless-@v2rayconfigamir 7328
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "04-vless-\U0001F1EF\U0001F1F5 日本 | JPN"
+        - "05-vless-\U0001F1FA\U0001F1F8 Join Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
+        - 06-vless-@v2rayconfigamir 7328
+      type: select
+rules:
+    - MATCH,select
