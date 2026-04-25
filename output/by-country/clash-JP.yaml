@@ -1,27 +1,45 @@
 proxies:
     - cipher: aes-128-gcm
-      name: "01-shadowsocks- \U0001F512 [By EbraSha]"
-      password: shadowsocks
-      port: 443
-      server: 149.22.87.241
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
       password: shadowsocks
       port: 443
       server: 149.22.87.204
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
       password: shadowsocks
       port: 443
       server: 149.22.87.240
       type: ss
       udp: true
+    - cipher: aes-128-gcm
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.241
+      type: ss
+      udp: true
+    - name: "04-trojan-\U0001F1EF\U0001F1F5 JP 1"
+      password: e136d465-0558-43b9-b50c-b1f45d4cb2c2
+      port: 24534
+      server: jp2-8sb.6121999.dpdns.org
+      skip-cert-verify: false
+      sni: jp2-8sb.6121999.dpdns.org
+      type: trojan
+      udp: true
+    - name: "05-vless-\U0001F1FA\U0001F1F8 Join Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
+      network: ws
+      port: 12345
+      server: 43.167.157.65
+      servername: snippet.fgfw.loc.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 26524cce-d514-4014-a426-365fb266a14d
     - client-fingerprint: chrome
-      name: "04-vless-\U0001F1EF\U0001F1F5 日本 | JPN 12"
+      name: "06-vless-\U0001F1EF\U0001F1F5 日本 | JPN 10"
       network: tcp
       port: 443
       reality-opts:
@@ -32,24 +50,28 @@ proxies:
       tls: true
       type: vless
       udp: true
-      uuid: 4329fd60-6e69-4f20-8ea6-aae2eee50a95
+      uuid: 7ca6f532-8dea-4399-8074-bab7e465aef8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks- \U0001F512 [By EbraSha]"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
-        - "04-vless-\U0001F1EF\U0001F1F5 日本 | JPN 12"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "04-trojan-\U0001F1EF\U0001F1F5 JP 1"
+        - "05-vless-\U0001F1FA\U0001F1F8 Join Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
+        - "06-vless-\U0001F1EF\U0001F1F5 日本 | JPN 10"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks- \U0001F512 [By EbraSha]"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
-        - "04-vless-\U0001F1EF\U0001F1F5 日本 | JPN 12"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "04-trojan-\U0001F1EF\U0001F1F5 JP 1"
+        - "05-vless-\U0001F1FA\U0001F1F8 Join Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
+        - "06-vless-\U0001F1EF\U0001F1F5 日本 | JPN 10"
       type: select
 rules:
     - MATCH,select
