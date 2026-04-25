@@ -1,6 +1,6 @@
 proxies:
     - cipher: aes-128-gcm
-      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0198"
       password: shadowsocks
       port: 443
       server: 149.22.87.204
@@ -20,7 +20,20 @@ proxies:
       server: 149.22.87.240
       type: ss
       udp: true
-    - name: "04-trojan-\U0001F1EF\U0001F1F5JP-140.238.43.40-0211"
+    - client-fingerprint: chrome
+      name: "04-vless-\U0001F1EF\U0001F1F5 日本 | JPN 9"
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: UT9tFQOdy54SeW_tg-XQN3QkGYoWUpO_88XFXijkrXc
+        short-id: 2da72ce6
+      server: 176.97.73.155
+      servername: navi.bankrate.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ad39598b-a2a7-429d-828f-0078e1facd2e
+    - name: "05-trojan-\U0001F1EF\U0001F1F5JP-140.238.43.40-0211"
       password: e136d465-0558-43b9-b50c-b1f45d4cb2c2
       port: 24534
       server: jp2-8sb.6121999.dpdns.org
@@ -32,19 +45,21 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0198"
         - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
         - "03-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
-        - "04-trojan-\U0001F1EF\U0001F1F5JP-140.238.43.40-0211"
+        - "04-vless-\U0001F1EF\U0001F1F5 日本 | JPN 9"
+        - "05-trojan-\U0001F1EF\U0001F1F5JP-140.238.43.40-0211"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0198"
         - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
         - "03-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
-        - "04-trojan-\U0001F1EF\U0001F1F5JP-140.238.43.40-0211"
+        - "04-vless-\U0001F1EF\U0001F1F5 日本 | JPN 9"
+        - "05-trojan-\U0001F1EF\U0001F1F5JP-140.238.43.40-0211"
       type: select
 rules:
     - MATCH,select
