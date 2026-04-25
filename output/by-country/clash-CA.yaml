@@ -1,6 +1,6 @@
 proxies:
     - cipher: aes-128-gcm
-      name: "01-shadowsocks-\U0001F1E8\U0001F1E6 CA 1"
+      name: "01-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-4005"
       password: shadowsocks
       port: 443
       server: 149.22.95.183
@@ -13,46 +13,62 @@ proxies:
       server: 79.127.233.170
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: "03-shadowsocks-\U0001F1E8\U0001F1E6 CA 3"
-      password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
-      port: 990
-      server: 79.127.200.169
-      type: ss
-      udp: true
     - cipher: aes-256-cfb
-      name: "04-shadowsocks-\U0001F1E8\U0001F1E6CA-79.127.200.162-4252"
+      name: "03-shadowsocks-\U0001F1E8\U0001F1E6CA-79.127.200.162-4252"
       password: f8f7aCzcPKbsF8p3
       port: 989
       server: 79.127.200.162
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
-      name: "05-shadowsocks-\U0001F1E8\U0001F1E6 CA 6"
+      name: "04-shadowsocks-\U0001F1E8\U0001F1E6CA-79.127.200.169-0195"
       password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
       port: 990
-      server: 45.154.204.7
+      server: 79.127.200.169
       type: ss
       udp: true
+    - cipher: rc4-md5
+      name: "05-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0246"
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 137.184.174.93
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: 06-vless-v2ray_dalghak
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: TH8C9sgNuMRVR3o5QehXPgYw8PWjoHrH2rVQF4JWwGI
+        short-id: ""
+      server: 85.208.108.63
+      servername: tradingview.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e033ef6e-ab4b-47d4-a523-ff568d2c8dbb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1E8\U0001F1E6 CA 1"
+        - "01-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-4005"
         - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-79.127.233.170-0196"
-        - "03-shadowsocks-\U0001F1E8\U0001F1E6 CA 3"
-        - "04-shadowsocks-\U0001F1E8\U0001F1E6CA-79.127.200.162-4252"
-        - "05-shadowsocks-\U0001F1E8\U0001F1E6 CA 6"
+        - "03-shadowsocks-\U0001F1E8\U0001F1E6CA-79.127.200.162-4252"
+        - "04-shadowsocks-\U0001F1E8\U0001F1E6CA-79.127.200.169-0195"
+        - "05-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0246"
+        - 06-vless-v2ray_dalghak
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1E8\U0001F1E6 CA 1"
+        - "01-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-4005"
         - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-79.127.233.170-0196"
-        - "03-shadowsocks-\U0001F1E8\U0001F1E6 CA 3"
-        - "04-shadowsocks-\U0001F1E8\U0001F1E6CA-79.127.200.162-4252"
-        - "05-shadowsocks-\U0001F1E8\U0001F1E6 CA 6"
+        - "03-shadowsocks-\U0001F1E8\U0001F1E6CA-79.127.200.162-4252"
+        - "04-shadowsocks-\U0001F1E8\U0001F1E6CA-79.127.200.169-0195"
+        - "05-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0246"
+        - 06-vless-v2ray_dalghak
       type: select
 rules:
     - MATCH,select
