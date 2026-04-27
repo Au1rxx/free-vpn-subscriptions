@@ -1,0 +1,68 @@
+{
+  "outbounds": [
+    {
+      "server": "217.163.76.254",
+      "server_port": 443,
+      "tag": "01-vless-\u003e\u003e@oneclickvpnkeys::US",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "sni.111000.v6.navy"
+      },
+      "type": "vless",
+      "uuid": "6202b230-417c-4d8e-b624-0f71afa9c75d"
+    },
+    {
+      "server": "185.156.19.238",
+      "server_port": 2096,
+      "tag": "02-vless-\u003e\u003e@oneclickvpnkeys::US",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "sni.jpmj.dev"
+      },
+      "type": "vless",
+      "uuid": "6202b230-417c-4d8e-b624-0f71afa9c75d"
+    },
+    {
+      "server": "185.238.228.238",
+      "server_port": 2096,
+      "tag": "03-vless-\u003e\u003e@oneclickvpnkeys::US",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "sni.jpmj.dev"
+      },
+      "type": "vless",
+      "uuid": "6202b230-417c-4d8e-b624-0f71afa9c75d"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-vless-\u003e\u003e@oneclickvpnkeys::US",
+        "02-vless-\u003e\u003e@oneclickvpnkeys::US",
+        "03-vless-\u003e\u003e@oneclickvpnkeys::US"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-vless-\u003e\u003e@oneclickvpnkeys::US",
+        "02-vless-\u003e\u003e@oneclickvpnkeys::US",
+        "03-vless-\u003e\u003e@oneclickvpnkeys::US"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
