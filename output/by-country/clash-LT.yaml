@@ -1,15 +1,5 @@
 proxies:
-    - name: "01-vless-\U0001F33F23@oneclickvpnkeys"
-      network: ws
-      port: 2096
-      server: 86.38.214.238
-      servername: sni.jpmj.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: 02-vless-♒32@oneclickvpnkeys
+    - name: 01-vless-♒32@oneclickvpnkeys
       network: ws
       port: 2096
       server: 45.146.201.238
@@ -19,7 +9,7 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: 03-vless->>@oneclickvpnkeys::US
+    - name: 02-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
       server: 89.116.250.138
@@ -29,21 +19,31 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: "03-vless-\U0001F33F23@oneclickvpnkeys"
+      network: ws
+      port: 2096
+      server: 86.38.214.238
+      servername: sni.jpmj.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-vless-\U0001F33F23@oneclickvpnkeys"
-        - 02-vless-♒32@oneclickvpnkeys
-        - 03-vless->>@oneclickvpnkeys::US
+        - 01-vless-♒32@oneclickvpnkeys
+        - 02-vless->>@oneclickvpnkeys::US
+        - "03-vless-\U0001F33F23@oneclickvpnkeys"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-vless-\U0001F33F23@oneclickvpnkeys"
-        - 02-vless-♒32@oneclickvpnkeys
-        - 03-vless->>@oneclickvpnkeys::US
+        - 01-vless-♒32@oneclickvpnkeys
+        - 02-vless->>@oneclickvpnkeys::US
+        - "03-vless-\U0001F33F23@oneclickvpnkeys"
       type: select
 rules:
     - MATCH,select
