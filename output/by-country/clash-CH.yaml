@@ -1,0 +1,45 @@
+proxies:
+    - name: "01-vless-\U0001F41E96@oneclickvpnkeys"
+      network: ws
+      port: 2096
+      server: 185.18.250.238
+      servername: sni.jpmj.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: "02-trojan-@V2raysCollector \U0001F925=\U0001F473"
+      password: humanity
+      port: 443
+      server: 185.18.250.245
+      skip-cert-verify: true
+      sni: www.calmlunch.com
+      type: trojan
+      udp: true
+    - name: "03-trojan-@v2rayngzendegimamad\U0001F54A️"
+      password: humanity
+      port: 443
+      server: 185.18.250.252
+      skip-cert-verify: true
+      sni: www.gossipglove.com
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-vless-\U0001F41E96@oneclickvpnkeys"
+        - "02-trojan-@V2raysCollector \U0001F925=\U0001F473"
+        - "03-trojan-@v2rayngzendegimamad\U0001F54A️"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-vless-\U0001F41E96@oneclickvpnkeys"
+        - "02-trojan-@V2raysCollector \U0001F925=\U0001F473"
+        - "03-trojan-@v2rayngzendegimamad\U0001F54A️"
+      type: select
+rules:
+    - MATCH,select
