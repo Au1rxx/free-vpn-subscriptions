@@ -1,0 +1,50 @@
+proxies:
+    - cipher: aes-128-gcm
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0254"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.204
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.240
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.241
+      type: ss
+      udp: true
+    - name: "04-trojan-\U0001F1EF\U0001F1F5JP-140.238.43.40-0265"
+      password: e136d465-0558-43b9-b50c-b1f45d4cb2c2
+      port: 24534
+      server: jp2-8sb.6121999.dpdns.org
+      skip-cert-verify: false
+      sni: jp2-8sb.6121999.dpdns.org
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0254"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "04-trojan-\U0001F1EF\U0001F1F5JP-140.238.43.40-0265"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0254"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "04-trojan-\U0001F1EF\U0001F1F5JP-140.238.43.40-0265"
+      type: select
+rules:
+    - MATCH,select
