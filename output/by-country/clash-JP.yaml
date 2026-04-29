@@ -1,0 +1,43 @@
+proxies:
+    - cipher: aes-128-gcm
+      name: "01-shadowsocks- \U0001F512 [By EbraSha]"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.241
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0254"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.204
+      type: ss
+      udp: true
+    - name: 03-vless-@v2rayconfigamir 7738
+      network: ws
+      port: 443
+      server: 54.150.83.221
+      servername: ynwta9.api-edge.fgfw.qzz.io
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 26524cce-d514-4014-a426-365fb266a14d
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-shadowsocks- \U0001F512 [By EbraSha]"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0254"
+        - 03-vless-@v2rayconfigamir 7738
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-shadowsocks- \U0001F512 [By EbraSha]"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0254"
+        - 03-vless-@v2rayconfigamir 7738
+      type: select
+rules:
+    - MATCH,select
