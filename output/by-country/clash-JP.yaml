@@ -1,9 +1,9 @@
 proxies:
     - cipher: aes-128-gcm
-      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
       password: shadowsocks
       port: 443
-      server: 149.22.87.241
+      server: 149.22.87.204
       type: ss
       udp: true
     - cipher: aes-128-gcm
@@ -14,36 +14,49 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
       password: shadowsocks
       port: 443
-      server: 149.22.87.204
+      server: 149.22.87.241
       type: ss
       udp: true
-    - name: "04-vless-\U0001F1EF\U0001F1F5 JP 2"
+    - name: "04-vless-\U0001F1FA\U0001F1F8 Join Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
       network: ws
-      port: 25242
-      server: 47.79.144.103
+      port: 12345
+      server: 43.167.157.65
+      servername: snippet.fgfw.loc.cc
+      skip-cert-verify: false
+      tls: true
       type: vless
       udp: true
-      uuid: a12b0d31-f599-498e-b76e-8558a14b766b
+      uuid: 26524cce-d514-4014-a426-365fb266a14d
+    - name: 05-trojan-⚡ b2n.ir/v2ray-configs | 698
+      password: e136d465-0558-43b9-b50c-b1f45d4cb2c2
+      port: 24534
+      server: jp2-8sb.6121999.dpdns.org
+      skip-cert-verify: false
+      sni: jp2-8sb.6121999.dpdns.org
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
         - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
-        - "04-vless-\U0001F1EF\U0001F1F5 JP 2"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "04-vless-\U0001F1FA\U0001F1F8 Join Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
+        - 05-trojan-⚡ b2n.ir/v2ray-configs | 698
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
         - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
-        - "04-vless-\U0001F1EF\U0001F1F5 JP 2"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "04-vless-\U0001F1FA\U0001F1F8 Join Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
+        - 05-trojan-⚡ b2n.ir/v2ray-configs | 698
       type: select
 rules:
     - MATCH,select
