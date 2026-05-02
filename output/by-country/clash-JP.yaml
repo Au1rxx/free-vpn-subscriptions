@@ -1,20 +1,20 @@
 proxies:
     - cipher: aes-128-gcm
-      name: "01-shadowsocks- \U0001F512 [By EbraSha]"
-      password: shadowsocks
-      port: 443
-      server: 149.22.87.241
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
       password: shadowsocks
       port: 443
       server: 149.22.87.240
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.241
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0248"
       password: shadowsocks
       port: 443
       server: 149.22.87.204
@@ -28,32 +28,34 @@ proxies:
       sni: jp2-8sb.6121999.dpdns.org
       type: trojan
       udp: true
-    - name: "05-vless-\U0001F1EF\U0001F1F5 JP 2"
+    - alterId: 0
+      cipher: auto
+      name: "05-vmess-\U0001F1EF\U0001F1F5JP-168.138.43.75-5089"
       network: ws
-      port: 25242
-      server: 47.79.144.103
-      type: vless
+      port: 80
+      server: jp01.a0a.xyz
+      type: vmess
       udp: true
-      uuid: a12b0d31-f599-498e-b76e-8558a14b766b
+      uuid: 11c3627f-31e8-4695-dfbd-34076e2f1f5d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks- \U0001F512 [By EbraSha]"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0248"
         - "04-trojan-\U0001F1EF\U0001F1F5JP-140.238.43.40-0834"
-        - "05-vless-\U0001F1EF\U0001F1F5 JP 2"
+        - "05-vmess-\U0001F1EF\U0001F1F5JP-168.138.43.75-5089"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks- \U0001F512 [By EbraSha]"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0248"
         - "04-trojan-\U0001F1EF\U0001F1F5JP-140.238.43.40-0834"
-        - "05-vless-\U0001F1EF\U0001F1F5 JP 2"
+        - "05-vmess-\U0001F1EF\U0001F1F5JP-168.138.43.75-5089"
       type: select
 rules:
     - MATCH,select
