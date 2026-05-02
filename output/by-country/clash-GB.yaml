@@ -9,38 +9,44 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - cipher: chacha20-ietf-poly1305
+      name: "02-shadowsocks-\U0001F1EC\U0001F1E7GB-138.68.153.223-0252"
+      password: idMvoewrSyLLvEvP03k9zR
+      port: 46576
+      server: 138.68.153.223
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "03-shadowsocks-\U0001F1EC\U0001F1E7GB-40.120.60.243-0251"
+      password: 1kVr0KATIJI7mwOF
+      port: 443
+      server: admin.c1.havij.co
+      type: ss
+      udp: true
     - cipher: aes-256-gcm
-      name: "02-shadowsocks-\U0001F1EF\U0001F1F5 JP 3"
+      name: "04-shadowsocks-\U0001F1EF\U0001F1F5 JP 3"
       password: Tqd9GppXpXB8rpc8
       port: 443
       server: 46.250.254.174
       type: ss
       udp: true
-    - name: 03-vless->>@oneclickvpnkeys::US
-      network: ws
-      port: 443
-      server: 217.163.76.254
-      servername: sni.111000.v6.navy
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - 01-vless->>@oneclickvpnkeys::US
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP 3"
-        - 03-vless->>@oneclickvpnkeys::US
+        - "02-shadowsocks-\U0001F1EC\U0001F1E7GB-138.68.153.223-0252"
+        - "03-shadowsocks-\U0001F1EC\U0001F1E7GB-40.120.60.243-0251"
+        - "04-shadowsocks-\U0001F1EF\U0001F1F5 JP 3"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - 01-vless->>@oneclickvpnkeys::US
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP 3"
-        - 03-vless->>@oneclickvpnkeys::US
+        - "02-shadowsocks-\U0001F1EC\U0001F1E7GB-138.68.153.223-0252"
+        - "03-shadowsocks-\U0001F1EC\U0001F1E7GB-40.120.60.243-0251"
+        - "04-shadowsocks-\U0001F1EF\U0001F1F5 JP 3"
       type: select
 rules:
     - MATCH,select
