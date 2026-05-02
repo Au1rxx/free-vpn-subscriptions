@@ -1,49 +1,49 @@
 proxies:
     - cipher: aes-128-gcm
-      name: "01-shadowsocks- \U0001F512 [By EbraSha]"
-      password: shadowsocks
-      port: 443
-      server: 149.22.87.241
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
       password: shadowsocks
       port: 443
       server: 149.22.87.204
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "03-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
       password: shadowsocks
       port: 443
       server: 149.22.87.240
       type: ss
       udp: true
-    - name: "04-vless-\U0001F1EF\U0001F1F5 JP 2"
-      network: ws
-      port: 25242
-      server: 47.79.144.103
-      type: vless
+    - cipher: aes-128-gcm
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.241
+      type: ss
       udp: true
-      uuid: a12b0d31-f599-498e-b76e-8558a14b766b
+    - cipher: aes-256-gcm
+      name: "04-shadowsocks-\U0001F1EF\U0001F1F5 JP 1"
+      password: 99394cfebe6c0906
+      port: 30312
+      server: 185.141.219.110
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks- \U0001F512 [By EbraSha]"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
-        - "04-vless-\U0001F1EF\U0001F1F5 JP 2"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "04-shadowsocks-\U0001F1EF\U0001F1F5 JP 1"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks- \U0001F512 [By EbraSha]"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
-        - "04-vless-\U0001F1EF\U0001F1F5 JP 2"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "04-shadowsocks-\U0001F1EF\U0001F1F5 JP 1"
       type: select
 rules:
     - MATCH,select
