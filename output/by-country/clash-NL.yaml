@@ -1,0 +1,53 @@
+proxies:
+    - name: 01-vless->>@oneclickvpnkeys::US
+      network: ws
+      port: 2096
+      server: 45.131.209.191
+      servername: sni.my111000.tech
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: 02-vless->>@oneclickvpnkeys::US
+      network: ws
+      port: 2096
+      server: 5.10.247.138
+      servername: sni.111000.indevs.in
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: 03-vless-Telegram:@config_proxy
+      network: raw
+      port: 8443
+      reality-opts:
+        public-key: wNcFqVd4_PkgJbfgJJeouSU6Pn_Swuce4q4Chw5T0hY
+        short-id: f7aa9e61197d3ac6
+      server: 212.34.142.191
+      servername: tradingview.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a5e746f7-328f-4b65-a65f-e2e2a4a5b1a9
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-vless->>@oneclickvpnkeys::US
+        - 02-vless->>@oneclickvpnkeys::US
+        - 03-vless-Telegram:@config_proxy
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-vless->>@oneclickvpnkeys::US
+        - 02-vless->>@oneclickvpnkeys::US
+        - 03-vless-Telegram:@config_proxy
+      type: select
+rules:
+    - MATCH,select
