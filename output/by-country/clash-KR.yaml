@@ -6,43 +6,46 @@ proxies:
       server: 221.139.79.57
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: "02-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0303"
+      password: qwerREWQ@@
+      port: 4652
+      server: 218.237.185.230
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: "03-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0350"
+      password: qwerREWQ@@
+      port: 6123
+      server: 211.178.105.134
+      type: ss
+      udp: true
     - alterId: 0
       cipher: auto
-      name: "02-vmess-\U0001F1F0\U0001F1F7 KR 2"
+      name: "04-vmess-\U0001F1F0\U0001F1F7 KR 5"
       network: ws
       port: 443
       server: 152.67.218.38
       type: vmess
       udp: true
       uuid: b5e9480a-b7aa-40a4-f9a7-5299b5e363b4
-    - client-fingerprint: chrome
-      name: '03-vless-[46932] - Telegram : @V2All'
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: TRP10HqKUXEQ3O-cfsq93DycfBmbJe9KM36yvSa8Mmw
-        short-id: ""
-      server: 47.80.11.87
-      servername: api.company-target.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3e7f67de-648e-4871-b51a-a225214d41ee
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - "01-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0325"
-        - "02-vmess-\U0001F1F0\U0001F1F7 KR 2"
-        - '03-vless-[46932] - Telegram : @V2All'
+        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0303"
+        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0350"
+        - "04-vmess-\U0001F1F0\U0001F1F7 KR 5"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - "01-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0325"
-        - "02-vmess-\U0001F1F0\U0001F1F7 KR 2"
-        - '03-vless-[46932] - Telegram : @V2All'
+        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0303"
+        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0350"
+        - "04-vmess-\U0001F1F0\U0001F1F7 KR 5"
       type: select
 rules:
     - MATCH,select
