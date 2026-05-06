@@ -1,0 +1,53 @@
+proxies:
+    - name: 01-vless->>@oneclickvpnkeys::US
+      network: ws
+      port: 2096
+      server: 185.16.110.238
+      servername: sni.jpmj.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "02-vless-\U0001F449\U0001F194@v2ray_configs_pool\U0001F4E1\U0001F1EB\U0001F1F7®️France©️Paris\U0001F17F"
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: nUl4-UbSlrf8sCY4QNCKF3dMmgWLWJbgeziVqwfklhU
+        short-id: ad3c6641d540b4e1
+      server: 51.158.62.94
+      servername: www.laposte.fr
+      tls: true
+      type: vless
+      udp: true
+      uuid: 43488128-319e-f480-64ea-0acdc712e2a8
+    - name: 03-vless->>@oneclickvpnkeys::GB
+      network: ws
+      port: 8443
+      server: 57.128.181.219
+      servername: sni.111000.v6.navy
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-vless->>@oneclickvpnkeys::US
+        - "02-vless-\U0001F449\U0001F194@v2ray_configs_pool\U0001F4E1\U0001F1EB\U0001F1F7®️France©️Paris\U0001F17F"
+        - 03-vless->>@oneclickvpnkeys::GB
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-vless->>@oneclickvpnkeys::US
+        - "02-vless-\U0001F449\U0001F194@v2ray_configs_pool\U0001F4E1\U0001F1EB\U0001F1F7®️France©️Paris\U0001F17F"
+        - 03-vless->>@oneclickvpnkeys::GB
+      type: select
+rules:
+    - MATCH,select
