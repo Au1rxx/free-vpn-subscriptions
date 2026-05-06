@@ -1,25 +1,25 @@
 proxies:
     - alterId: 0
       cipher: auto
-      name: "01-vmess-\U0001F1FA\U0001F1F8 美国 | USA 17"
+      name: 01-vmess-英国 V2CROSS.COM
       network: tcp
       port: 180
-      server: 82.198.246.250
+      server: 82.198.246.37
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: "02-vmess-\U0001F1E8\U0001F1FF CZ 1"
+      name: "02-vmess-\U0001F1EC\U0001F1E7 GB英国(mibei77.com 米贝节点分享)"
       network: tcp
       port: 180
-      server: 82.198.246.9
+      server: 82.198.246.97
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: 03-vmess-英国 V2CROSS.COM
+      name: "03-vmess-\U0001F1EC\U0001F1E7 英国 V2CROSS.COM"
       network: tcp
       port: 180
       server: 82.198.246.233
@@ -28,14 +28,21 @@ proxies:
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: 04-vmess-英国 V2CROSS.COM
+      name: "04-vmess-\U0001F1FA\U0001F1F8 Join+Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
       network: tcp
       port: 180
-      server: 82.198.246.37
+      server: 82.198.246.250
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-    - name: 05-vless->>@oneclickvpnkeys::US
+    - cipher: aes-256-gcm
+      name: 05-shadowsocks-FastNetTools
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 213.202.208.199
+      type: ss
+      udp: true
+    - name: 06-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
       server: 188.244.122.138
@@ -45,13 +52,6 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - cipher: aes-256-gcm
-      name: "06-shadowsocks-\U0001F1E9\U0001F1EA DE 4"
-      password: RexnBgU7EV5ADxG
-      port: 7001
-      server: 213.202.208.199
-      type: ss
-      udp: true
     - name: "07-vless-\U0001F9FF15@oneclickvpnkeys"
       network: ws
       port: 2096
@@ -62,29 +62,61 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: 08-vless-FastNetTools
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Ic2uiGhkBgJUsY0CZUBqa1y22V_BO7F4S93Zgk_ir2c
+        short-id: 889dad4baac2436f
+      server: 104.238.167.226
+      servername: www.zalando.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: 43488128-319e-f480-64ea-0acdc712e2a8
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "09-vless-\U0001F1E9\U0001F1EA DE 9"
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 4v_4RSmE8ztHfQ4EV8Ym6J-6C8ACtYiznTHcdWJw6WA
+        short-id: aabbccdd
+      server: 66.151.40.22
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7fbeb76f-2fa1-4a5a-9f99-4dbfaafb4da2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-vmess-\U0001F1FA\U0001F1F8 美国 | USA 17"
-        - "02-vmess-\U0001F1E8\U0001F1FF CZ 1"
-        - 03-vmess-英国 V2CROSS.COM
-        - 04-vmess-英国 V2CROSS.COM
-        - 05-vless->>@oneclickvpnkeys::US
-        - "06-shadowsocks-\U0001F1E9\U0001F1EA DE 4"
+        - 01-vmess-英国 V2CROSS.COM
+        - "02-vmess-\U0001F1EC\U0001F1E7 GB英国(mibei77.com 米贝节点分享)"
+        - "03-vmess-\U0001F1EC\U0001F1E7 英国 V2CROSS.COM"
+        - "04-vmess-\U0001F1FA\U0001F1F8 Join+Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
+        - 05-shadowsocks-FastNetTools
+        - 06-vless->>@oneclickvpnkeys::US
         - "07-vless-\U0001F9FF15@oneclickvpnkeys"
+        - 08-vless-FastNetTools
+        - "09-vless-\U0001F1E9\U0001F1EA DE 9"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-vmess-\U0001F1FA\U0001F1F8 美国 | USA 17"
-        - "02-vmess-\U0001F1E8\U0001F1FF CZ 1"
-        - 03-vmess-英国 V2CROSS.COM
-        - 04-vmess-英国 V2CROSS.COM
-        - 05-vless->>@oneclickvpnkeys::US
-        - "06-shadowsocks-\U0001F1E9\U0001F1EA DE 4"
+        - 01-vmess-英国 V2CROSS.COM
+        - "02-vmess-\U0001F1EC\U0001F1E7 GB英国(mibei77.com 米贝节点分享)"
+        - "03-vmess-\U0001F1EC\U0001F1E7 英国 V2CROSS.COM"
+        - "04-vmess-\U0001F1FA\U0001F1F8 Join+Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
+        - 05-shadowsocks-FastNetTools
+        - 06-vless->>@oneclickvpnkeys::US
         - "07-vless-\U0001F9FF15@oneclickvpnkeys"
+        - 08-vless-FastNetTools
+        - "09-vless-\U0001F1E9\U0001F1EA DE 9"
       type: select
 rules:
     - MATCH,select
