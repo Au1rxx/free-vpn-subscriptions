@@ -1,16 +1,7 @@
 proxies:
     - alterId: 0
       cipher: auto
-      name: "01-vmess-\U0001F1FA\U0001F1F8 Join+Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
-      network: tcp
-      port: 180
-      server: 82.198.246.250
-      type: vmess
-      udp: true
-      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-    - alterId: 0
-      cipher: auto
-      name: "02-vmess-\U0001F1E8\U0001F1FF CZ 2"
+      name: "01-vmess-\U0001F1E9\U0001F1EA 德国 | DEU"
       network: tcp
       port: 180
       server: 82.198.246.97
@@ -19,31 +10,32 @@ proxies:
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: 03-vmess-英国 V2CROSS.COM
+      name: "02-vmess-\U0001F1EC\U0001F1E7 英国 V2CROSS.COM"
+      network: tcp
+      port: 180
+      server: 82.198.246.250
+      type: vmess
+      udp: true
+      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+    - alterId: 0
+      cipher: auto
+      name: "03-vmess-\U0001F1EC\U0001F1E7 英国 V2CROSS.COM"
+      network: tcp
+      port: 180
+      server: 82.198.246.233
+      type: vmess
+      udp: true
+      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+    - alterId: 0
+      cipher: auto
+      name: "04-vmess-\U0001F1E8\U0001F1FF CZ 1"
       network: tcp
       port: 180
       server: 82.198.246.9
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-    - name: "04-vless-\U0001F9FF15@oneclickvpnkeys"
-      network: ws
-      port: 2096
-      server: 185.135.9.238
-      servername: sni.jpmj.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - cipher: aes-256-gcm
-      name: 05-shadowsocks-FastNetTools
-      password: RexnBgU7EV5ADxG
-      port: 7001
-      server: 213.202.208.199
-      type: ss
-      udp: true
-    - name: 06-vless->>@oneclickvpnkeys::US
+    - name: 05-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
       server: 188.244.122.138
@@ -53,27 +45,75 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - cipher: aes-256-gcm
+      name: 06-shadowsocks-FastNetTools
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 213.202.208.199
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "07-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0266"
+      password: PWpjPo3tqhPN4yRZ
+      port: 20001
+      server: 8.209.74.72
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "08-vless-\U0001F1E9\U0001F1EA DE 5"
+      network: tcp
+      port: 7443
+      reality-opts:
+        public-key: 5QAO98ot2U7TcGs_f6EEaQjCzNOJLNHqPf6smYsdFVI
+        short-id: be0ce047
+      server: 153.76.112.172
+      servername: chat.deepseek.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b375b840-8ac0-4d37-98c0-44ab85fd7127
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: 09-vless-FastNetTools
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Ic2uiGhkBgJUsY0CZUBqa1y22V_BO7F4S93Zgk_ir2c
+        short-id: 889dad4baac2436f
+      server: 104.238.167.226
+      servername: www.zalando.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: 43488128-319e-f480-64ea-0acdc712e2a8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-vmess-\U0001F1FA\U0001F1F8 Join+Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
-        - "02-vmess-\U0001F1E8\U0001F1FF CZ 2"
-        - 03-vmess-英国 V2CROSS.COM
-        - "04-vless-\U0001F9FF15@oneclickvpnkeys"
-        - 05-shadowsocks-FastNetTools
-        - 06-vless->>@oneclickvpnkeys::US
+        - "01-vmess-\U0001F1E9\U0001F1EA 德国 | DEU"
+        - "02-vmess-\U0001F1EC\U0001F1E7 英国 V2CROSS.COM"
+        - "03-vmess-\U0001F1EC\U0001F1E7 英国 V2CROSS.COM"
+        - "04-vmess-\U0001F1E8\U0001F1FF CZ 1"
+        - 05-vless->>@oneclickvpnkeys::US
+        - 06-shadowsocks-FastNetTools
+        - "07-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0266"
+        - "08-vless-\U0001F1E9\U0001F1EA DE 5"
+        - 09-vless-FastNetTools
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-vmess-\U0001F1FA\U0001F1F8 Join+Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
-        - "02-vmess-\U0001F1E8\U0001F1FF CZ 2"
-        - 03-vmess-英国 V2CROSS.COM
-        - "04-vless-\U0001F9FF15@oneclickvpnkeys"
-        - 05-shadowsocks-FastNetTools
-        - 06-vless->>@oneclickvpnkeys::US
+        - "01-vmess-\U0001F1E9\U0001F1EA 德国 | DEU"
+        - "02-vmess-\U0001F1EC\U0001F1E7 英国 V2CROSS.COM"
+        - "03-vmess-\U0001F1EC\U0001F1E7 英国 V2CROSS.COM"
+        - "04-vmess-\U0001F1E8\U0001F1FF CZ 1"
+        - 05-vless->>@oneclickvpnkeys::US
+        - 06-shadowsocks-FastNetTools
+        - "07-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0266"
+        - "08-vless-\U0001F1E9\U0001F1EA DE 5"
+        - 09-vless-FastNetTools
       type: select
 rules:
     - MATCH,select

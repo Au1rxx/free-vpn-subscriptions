@@ -9,42 +9,14 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - cipher: aes-256-cfb
-      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0270"
-      password: f8f7aCzcPKbsF8p3
-      port: 989
-      server: 79.127.227.53
+    - cipher: aes-128-cfb
+      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
+      password: shadowsocks
+      port: 443
+      server: 109.201.152.181
       type: ss
       udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: 03-vless-Telegram:@config_proxy
-      network: tcp
-      port: 23576
-      reality-opts:
-        public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
-        short-id: "01"
-      server: 51.158.206.34
-      servername: fuck.rkn
-      tls: true
-      type: vless
-      udp: true
-      uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: "04-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
-      network: tcp
-      port: 23576
-      reality-opts:
-        public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
-        short-id: "01"
-      server: 51.158.206.26
-      servername: fuck.rkn
-      tls: true
-      type: vless
-      udp: true
-      uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-    - name: 05-vless->>@oneclickvpnkeys::US
+    - name: 03-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
       server: 5.10.247.138
@@ -55,10 +27,10 @@ proxies:
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: aes-256-cfb
-      name: "06-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.166-0245"
+      name: "04-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.63-0297"
       password: f8f7aCzcPKbsF8p3
       port: 989
-      server: 51.15.23.166
+      server: 51.15.23.63
       type: ss
       udp: true
 proxy-groups:
@@ -66,22 +38,18 @@ proxy-groups:
       name: auto
       proxies:
         - 01-vless->>@oneclickvpnkeys::US
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0270"
-        - 03-vless-Telegram:@config_proxy
-        - "04-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
-        - 05-vless->>@oneclickvpnkeys::US
-        - "06-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.166-0245"
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
+        - 03-vless->>@oneclickvpnkeys::US
+        - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.63-0297"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - 01-vless->>@oneclickvpnkeys::US
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0270"
-        - 03-vless-Telegram:@config_proxy
-        - "04-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
-        - 05-vless->>@oneclickvpnkeys::US
-        - "06-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.166-0245"
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
+        - 03-vless->>@oneclickvpnkeys::US
+        - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.63-0297"
       type: select
 rules:
     - MATCH,select
