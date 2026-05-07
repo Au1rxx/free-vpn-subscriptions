@@ -1,5 +1,26 @@
 proxies:
-    - name: 01-vless->>@oneclickvpnkeys::US
+    - cipher: chacha20-ietf-poly1305
+      name: "01-shadowsocks-\U0001F449\U0001F194@v2ray_configs_pool\U0001F4E1\U0001F1F3\U0001F1F1®️The Netherland"
+      password: PDNcrHbGmb5u76Og8NatjZ
+      port: 21836
+      server: 185.117.91.27
+      type: ss
+      udp: true
+    - cipher: aes-128-cfb
+      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
+      password: shadowsocks
+      port: 443
+      server: 109.201.152.181
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: "03-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.166-0242"
+      password: f8f7aCzcPKbsF8p3
+      port: 989
+      server: 51.15.23.166
+      type: ss
+      udp: true
+    - name: 04-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
       server: 5.10.247.138
@@ -11,7 +32,7 @@ proxies:
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: "02-vless-\U0001F1F3\U0001F1F1 423 - NL - VLESS/REALITY/PBK/SID/VISI"
+      name: "05-vless-\U0001F1F3\U0001F1F1 423 - NL - VLESS/REALITY/PBK/SID/VISI"
       network: tcp
       port: 23576
       reality-opts:
@@ -23,7 +44,7 @@ proxies:
       type: vless
       udp: true
       uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-    - name: 03-vless->>@oneclickvpnkeys::US
+    - name: 06-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
       server: 45.131.209.191
@@ -33,21 +54,43 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: 07-vless-v2raygulf
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: wNcFqVd4_PkgJbfgJJeouSU6Pn_Swuce4q4Chw5T0hY
+        short-id: f7aa9e61197d3ac6
+      server: 212.34.142.191
+      servername: tradingview.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a5e746f7-328f-4b65-a65f-e2e2a4a5b1a9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-vless->>@oneclickvpnkeys::US
-        - "02-vless-\U0001F1F3\U0001F1F1 423 - NL - VLESS/REALITY/PBK/SID/VISI"
-        - 03-vless->>@oneclickvpnkeys::US
+        - "01-shadowsocks-\U0001F449\U0001F194@v2ray_configs_pool\U0001F4E1\U0001F1F3\U0001F1F1®️The Netherland"
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
+        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.166-0242"
+        - 04-vless->>@oneclickvpnkeys::US
+        - "05-vless-\U0001F1F3\U0001F1F1 423 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - 06-vless->>@oneclickvpnkeys::US
+        - 07-vless-v2raygulf
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-vless->>@oneclickvpnkeys::US
-        - "02-vless-\U0001F1F3\U0001F1F1 423 - NL - VLESS/REALITY/PBK/SID/VISI"
-        - 03-vless->>@oneclickvpnkeys::US
+        - "01-shadowsocks-\U0001F449\U0001F194@v2ray_configs_pool\U0001F4E1\U0001F1F3\U0001F1F1®️The Netherland"
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
+        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.166-0242"
+        - 04-vless->>@oneclickvpnkeys::US
+        - "05-vless-\U0001F1F3\U0001F1F1 423 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - 06-vless->>@oneclickvpnkeys::US
+        - 07-vless-v2raygulf
       type: select
 rules:
     - MATCH,select
