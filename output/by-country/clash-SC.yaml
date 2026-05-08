@@ -1,0 +1,43 @@
+proxies:
+    - cipher: aes-256-cfb
+      name: "01-shadowsocks-\U0001F1F8\U0001F1E8SC-154.90.63.177-0272"
+      password: f8f7aCzcPKbsF8p3
+      port: 989
+      server: 154.90.63.177
+      type: ss
+      udp: true
+    - name: "02-vless-\U0001F43523@oneclickvpnkeys"
+      network: ws
+      port: 2096
+      server: 156.243.83.138
+      servername: sni.111000.indevs.in
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - cipher: aes-256-cfb
+      name: "03-shadowsocks-\U0001F1F8\U0001F1E8SC-154.90.62.168-0270"
+      password: f8f7aCzcPKbsF8p3
+      port: 989
+      server: 154.90.62.168
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-shadowsocks-\U0001F1F8\U0001F1E8SC-154.90.63.177-0272"
+        - "02-vless-\U0001F43523@oneclickvpnkeys"
+        - "03-shadowsocks-\U0001F1F8\U0001F1E8SC-154.90.62.168-0270"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-shadowsocks-\U0001F1F8\U0001F1E8SC-154.90.63.177-0272"
+        - "02-vless-\U0001F43523@oneclickvpnkeys"
+        - "03-shadowsocks-\U0001F1F8\U0001F1E8SC-154.90.62.168-0270"
+      type: select
+rules:
+    - MATCH,select
