@@ -1,19 +1,12 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: "01-shadowsocks-\U0001F1F3\U0001F1F1NL-159.223.236.36-0243"
-      password: WC0GbiCk67K8nHDaDHmYIX
-      port: 19582
-      server: 159.223.236.36
-      type: ss
-      udp: true
     - cipher: aes-256-cfb
-      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0291"
+      name: "01-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0291"
       password: f8f7aCzcPKbsF8p3
       port: 989
       server: 79.127.227.53
       type: ss
       udp: true
-    - name: 03-vless->>@oneclickvpnkeys::US
+    - name: 02-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
       server: 45.131.209.191
@@ -23,9 +16,60 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: 03-vless->>@oneclickvpnkeys::US
+      network: ws
+      port: 2096
+      server: 5.10.247.138
+      servername: sni.111000.indevs.in
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - client-fingerprint: chrome
+      name: "04-vless-\U0001F1F3\U0001F1F1 NL 1"
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: h6xEGPQUA8iubWgDi-kcVAp-fkc_9-fx0WISxfxqzRI
+        short-id: "74"
+      server: 141.98.24.54
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6b491b78-c9d6-48d3-beee-dd3ae7f1f311
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: "04-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
+      name: 05-vless-v2ray_dalghak
+      network: tcp
+      port: 23576
+      reality-opts:
+        public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+        short-id: "01"
+      server: 51.158.206.103
+      servername: fuck.rkn
+      tls: true
+      type: vless
+      udp: true
+      uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: 06-vless-Telegram:@config_proxy
+      network: tcp
+      port: 23576
+      reality-opts:
+        public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+        short-id: "01"
+      server: 51.158.206.8
+      servername: fuck.rkn
+      tls: true
+      type: vless
+      udp: true
+      uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "07-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
       network: tcp
       port: 23576
       reality-opts:
@@ -39,7 +83,7 @@ proxies:
       uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: "05-vless-\U0001F30F23@oneclickvpnkeys"
+      name: 08-vless-Telegram id:Ho3ein_ezd
       network: tcp
       port: 8443
       reality-opts:
@@ -51,27 +95,21 @@ proxies:
       type: vless
       udp: true
       uuid: a5e746f7-328f-4b65-a65f-e2e2a4a5b1a9
-    - name: 06-vless->>@oneclickvpnkeys::US
-      network: ws
-      port: 2096
-      server: 5.10.247.138
-      servername: sni.111000.indevs.in
-      skip-cert-verify: false
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "09-vless-\U0001F1F8\U0001F1E8 SC 1"
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: BhTJ3phnq-Z-10aFKSsj1lzhA8mULR4L6leE4-0WTAs
+        short-id: ""
+      server: 185.214.74.210
+      servername: www.cybo.com
       tls: true
       type: vless
       udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: "07-vless-\U0001F1F3\U0001F1F1 591 - NL - VLESS/WS/TLS - 2053"
-      network: ws
-      port: 2053
-      server: 103.90.75.41
-      servername: sni.111000.indevs.in
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: 08-vless-v2ray_dalghak
+      uuid: 6fd9f786-d974-49d0-b5c4-397678de69a2
+    - name: 10-vless-v2ray_dalghak
       network: ws
       port: 443
       server: 212.34.130.52
@@ -85,27 +123,31 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1F3\U0001F1F1NL-159.223.236.36-0243"
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0291"
+        - "01-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0291"
+        - 02-vless->>@oneclickvpnkeys::US
         - 03-vless->>@oneclickvpnkeys::US
-        - "04-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
-        - "05-vless-\U0001F30F23@oneclickvpnkeys"
-        - 06-vless->>@oneclickvpnkeys::US
-        - "07-vless-\U0001F1F3\U0001F1F1 591 - NL - VLESS/WS/TLS - 2053"
-        - 08-vless-v2ray_dalghak
+        - "04-vless-\U0001F1F3\U0001F1F1 NL 1"
+        - 05-vless-v2ray_dalghak
+        - 06-vless-Telegram:@config_proxy
+        - "07-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - 08-vless-Telegram id:Ho3ein_ezd
+        - "09-vless-\U0001F1F8\U0001F1E8 SC 1"
+        - 10-vless-v2ray_dalghak
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1F3\U0001F1F1NL-159.223.236.36-0243"
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0291"
+        - "01-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0291"
+        - 02-vless->>@oneclickvpnkeys::US
         - 03-vless->>@oneclickvpnkeys::US
-        - "04-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
-        - "05-vless-\U0001F30F23@oneclickvpnkeys"
-        - 06-vless->>@oneclickvpnkeys::US
-        - "07-vless-\U0001F1F3\U0001F1F1 591 - NL - VLESS/WS/TLS - 2053"
-        - 08-vless-v2ray_dalghak
+        - "04-vless-\U0001F1F3\U0001F1F1 NL 1"
+        - 05-vless-v2ray_dalghak
+        - 06-vless-Telegram:@config_proxy
+        - "07-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - 08-vless-Telegram id:Ho3ein_ezd
+        - "09-vless-\U0001F1F8\U0001F1E8 SC 1"
+        - 10-vless-v2ray_dalghak
       type: select
 rules:
     - MATCH,select

@@ -1,9 +1,9 @@
 proxies:
-    - name: "01-vless-\U0001F34E77@oneclickvpnkeys"
+    - name: "01-vless-\U0001F33364@oneclickvpnkeys"
       network: ws
       port: 2096
-      server: 89.116.180.138
-      servername: sni.111000.indevs.in
+      server: 86.38.214.238
+      servername: sni.jpmj.dev
       skip-cert-verify: false
       tls: true
       type: vless
@@ -19,11 +19,11 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: "03-vless-\U0001F33364@oneclickvpnkeys"
+    - name: "03-vless-\U0001F34E77@oneclickvpnkeys"
       network: ws
       port: 2096
-      server: 86.38.214.238
-      servername: sni.jpmj.dev
+      server: 89.116.180.138
+      servername: sni.111000.indevs.in
       skip-cert-verify: false
       tls: true
       type: vless
@@ -33,17 +33,17 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-vless-\U0001F34E77@oneclickvpnkeys"
+        - "01-vless-\U0001F33364@oneclickvpnkeys"
         - 02-vless->>@oneclickvpnkeys::US
-        - "03-vless-\U0001F33364@oneclickvpnkeys"
+        - "03-vless-\U0001F34E77@oneclickvpnkeys"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-vless-\U0001F34E77@oneclickvpnkeys"
+        - "01-vless-\U0001F33364@oneclickvpnkeys"
         - 02-vless->>@oneclickvpnkeys::US
-        - "03-vless-\U0001F33364@oneclickvpnkeys"
+        - "03-vless-\U0001F34E77@oneclickvpnkeys"
       type: select
 rules:
     - MATCH,select

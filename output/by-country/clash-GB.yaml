@@ -1,50 +1,50 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: "01-shadowsocks-\U0001F1EC\U0001F1E7GB-138.68.153.223-0234"
-      password: idMvoewrSyLLvEvP03k9zR
-      port: 46576
-      server: 138.68.153.223
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
-      name: "02-shadowsocks- \U0001F512 [By EbraSha]"
-      password: YhzqOeJsfuZ9rkkc
-      port: 80
-      server: 149.102.132.186
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
-      name: "03-shadowsocks-\U0001F1EC\U0001F1E7 GB 1"
-      password: umWwoQJEJGf74SLe
-      port: 443
-      server: 149.102.149.207
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: "04-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.178-0281"
-      password: shadowsocks
-      port: 443
-      server: 141.98.101.178
-      type: ss
-      udp: true
-    - cipher: rc4-md5
-      name: "05-shadowsocks-\U0001F1EC\U0001F1E7GB-146.70.61.37-0218"
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 146.70.61.37
-      type: ss
-      udp: true
-    - name: 06-vless->>@oneclickvpnkeys::US
+    - name: 01-vless->>@oneclickvpnkeys::US
       network: ws
-      port: 2096
-      server: 185.238.228.238
-      servername: sni.jpmj.dev
+      port: 443
+      server: 217.163.76.254
+      servername: sni.111000.v6.navy
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: "07-vless-\U0001F99432@oneclickvpnkeys"
+    - cipher: aes-256-gcm
+      name: 02-shadowsocks-node
+      password: YhzqOeJsfuZ9rkkc
+      port: 80
+      server: 149.102.132.186
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "03-shadowsocks-\U0001F1EC\U0001F1E7GB-138.68.153.223-0234"
+      password: idMvoewrSyLLvEvP03k9zR
+      port: 46576
+      server: 138.68.153.223
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "04-shadowsocks-\U0001F1EC\U0001F1E7 GB | SS | @netfreedom0 1"
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.182
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: 05-shadowsocks-United Kingdom
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.178
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: "06-shadowsocks-\U0001F1EC\U0001F1E7 GB 1"
+      password: umWwoQJEJGf74SLe
+      port: 443
+      server: 149.102.149.207
+      type: ss
+      udp: true
+    - name: 07-vless-v2ray_dalghak
       network: tcp
       port: 8443
       server: 152.233.28.198
@@ -57,7 +57,7 @@ proxies:
     - name: 08-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
-      server: 185.156.19.238
+      server: 185.238.228.238
       servername: sni.jpmj.dev
       skip-cert-verify: false
       tls: true
@@ -66,9 +66,9 @@ proxies:
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: 09-vless->>@oneclickvpnkeys::US
       network: ws
-      port: 443
-      server: 217.163.76.254
-      servername: sni.111000.v6.navy
+      port: 2096
+      server: 185.156.19.238
+      servername: sni.jpmj.dev
       skip-cert-verify: false
       tls: true
       type: vless
@@ -78,13 +78,13 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1EC\U0001F1E7GB-138.68.153.223-0234"
-        - "02-shadowsocks- \U0001F512 [By EbraSha]"
-        - "03-shadowsocks-\U0001F1EC\U0001F1E7 GB 1"
-        - "04-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.178-0281"
-        - "05-shadowsocks-\U0001F1EC\U0001F1E7GB-146.70.61.37-0218"
-        - 06-vless->>@oneclickvpnkeys::US
-        - "07-vless-\U0001F99432@oneclickvpnkeys"
+        - 01-vless->>@oneclickvpnkeys::US
+        - 02-shadowsocks-node
+        - "03-shadowsocks-\U0001F1EC\U0001F1E7GB-138.68.153.223-0234"
+        - "04-shadowsocks-\U0001F1EC\U0001F1E7 GB | SS | @netfreedom0 1"
+        - 05-shadowsocks-United Kingdom
+        - "06-shadowsocks-\U0001F1EC\U0001F1E7 GB 1"
+        - 07-vless-v2ray_dalghak
         - 08-vless->>@oneclickvpnkeys::US
         - 09-vless->>@oneclickvpnkeys::US
       type: url-test
@@ -92,13 +92,13 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1EC\U0001F1E7GB-138.68.153.223-0234"
-        - "02-shadowsocks- \U0001F512 [By EbraSha]"
-        - "03-shadowsocks-\U0001F1EC\U0001F1E7 GB 1"
-        - "04-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.178-0281"
-        - "05-shadowsocks-\U0001F1EC\U0001F1E7GB-146.70.61.37-0218"
-        - 06-vless->>@oneclickvpnkeys::US
-        - "07-vless-\U0001F99432@oneclickvpnkeys"
+        - 01-vless->>@oneclickvpnkeys::US
+        - 02-shadowsocks-node
+        - "03-shadowsocks-\U0001F1EC\U0001F1E7GB-138.68.153.223-0234"
+        - "04-shadowsocks-\U0001F1EC\U0001F1E7 GB | SS | @netfreedom0 1"
+        - 05-shadowsocks-United Kingdom
+        - "06-shadowsocks-\U0001F1EC\U0001F1E7 GB 1"
+        - 07-vless-v2ray_dalghak
         - 08-vless->>@oneclickvpnkeys::US
         - 09-vless->>@oneclickvpnkeys::US
       type: select
