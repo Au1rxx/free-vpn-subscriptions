@@ -1,0 +1,60 @@
+{
+  "outbounds": [
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "154.90.63.177",
+      "server_port": 989,
+      "tag": "01-shadowsocks-🇸🇨SC-154.90.63.177-0274",
+      "type": "shadowsocks"
+    },
+    {
+      "server": "154.194.0.238",
+      "server_port": 2096,
+      "tag": "02-vless-v2ray_dalghak",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "sni.jpmj.dev"
+      },
+      "type": "vless",
+      "uuid": "6202b230-417c-4d8e-b624-0f71afa9c75d"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "f8f7aCzcPKbsF8p3",
+      "server": "154.90.62.168",
+      "server_port": 989,
+      "tag": "03-shadowsocks-🇸🇨SC-154.90.62.168-0282",
+      "type": "shadowsocks"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-shadowsocks-🇸🇨SC-154.90.63.177-0274",
+        "02-vless-v2ray_dalghak",
+        "03-shadowsocks-🇸🇨SC-154.90.62.168-0282"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-shadowsocks-🇸🇨SC-154.90.63.177-0274",
+        "02-vless-v2ray_dalghak",
+        "03-shadowsocks-🇸🇨SC-154.90.62.168-0282"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

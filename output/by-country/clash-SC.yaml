@@ -1,0 +1,43 @@
+proxies:
+    - cipher: aes-256-cfb
+      name: "01-shadowsocks-\U0001F1F8\U0001F1E8SC-154.90.63.177-0274"
+      password: f8f7aCzcPKbsF8p3
+      port: 989
+      server: 154.90.63.177
+      type: ss
+      udp: true
+    - name: 02-vless-v2ray_dalghak
+      network: ws
+      port: 2096
+      server: 154.194.0.238
+      servername: sni.jpmj.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - cipher: aes-256-cfb
+      name: "03-shadowsocks-\U0001F1F8\U0001F1E8SC-154.90.62.168-0282"
+      password: f8f7aCzcPKbsF8p3
+      port: 989
+      server: 154.90.62.168
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-shadowsocks-\U0001F1F8\U0001F1E8SC-154.90.63.177-0274"
+        - 02-vless-v2ray_dalghak
+        - "03-shadowsocks-\U0001F1F8\U0001F1E8SC-154.90.62.168-0282"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-shadowsocks-\U0001F1F8\U0001F1E8SC-154.90.63.177-0274"
+        - 02-vless-v2ray_dalghak
+        - "03-shadowsocks-\U0001F1F8\U0001F1E8SC-154.90.62.168-0282"
+      type: select
+rules:
+    - MATCH,select
