@@ -1,0 +1,40 @@
+proxies:
+    - cipher: aes-256-cfb
+      name: "01-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0282"
+      password: qwerREWQ@@
+      port: 13979
+      server: 221.139.79.57
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-5171"
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 141.164.45.187
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: "03-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0246"
+      password: qwerREWQ@@
+      port: 4652
+      server: 218.237.185.230
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0282"
+        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-5171"
+        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0246"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0282"
+        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-5171"
+        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0246"
+      type: select
+rules:
+    - MATCH,select
