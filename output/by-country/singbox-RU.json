@@ -1,0 +1,74 @@
+{
+  "outbounds": [
+    {
+      "method": "aes-256-cfb",
+      "password": "gYCYXfkUQEs2TaJQ",
+      "server": "194.116.173.21",
+      "server_port": 9038,
+      "tag": "01-shadowsocks-🇺🇸 US 24",
+      "type": "shadowsocks"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "80.92.205.57",
+      "server_port": 443,
+      "tag": "02-vless-@V2raysCollector 💝",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "MA_hDjnzRmn4qL60EqyybXYzuE_2Ap8FhJQ82szMDww",
+          "short_id": "1434b433"
+        },
+        "server_name": "store.steampowered.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "e80c5348-5a5c-41f0-a78d-7a781f47afce"
+    },
+    {
+      "server": "176.124.223.138",
+      "server_port": 2096,
+      "tag": "03-vless-🇨🇳 650 - CN - VLESS/WS/TLS - 2096",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "sni.111000.indevs.in"
+      },
+      "type": "vless",
+      "uuid": "6202b230-417c-4d8e-b624-0f71afa9c75d"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-shadowsocks-🇺🇸 US 24",
+        "02-vless-@V2raysCollector 💝",
+        "03-vless-🇨🇳 650 - CN - VLESS/WS/TLS - 2096"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-shadowsocks-🇺🇸 US 24",
+        "02-vless-@V2raysCollector 💝",
+        "03-vless-🇨🇳 650 - CN - VLESS/WS/TLS - 2096"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
