@@ -2,8 +2,8 @@ proxies:
     - name: 01-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
-      server: 45.131.209.191
-      servername: sni.my111000.tech
+      server: 5.10.247.138
+      servername: sni.111000.indevs.in
       skip-cert-verify: false
       tls: true
       type: vless
@@ -12,42 +12,34 @@ proxies:
     - name: 02-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
-      server: 5.10.247.138
-      servername: sni.111000.indevs.in
+      server: 45.131.209.191
+      servername: sni.my111000.tech
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - cipher: chacha20-ietf-poly1305
-      name: "03-shadowsocks-⭐️ \U0001F1F3\U0001F1F1 t.me/Natrixo AA"
-      password: PDNcrHbGmb5u76Og8NatjZ
-      port: 21836
-      server: 185.117.91.27
-      type: ss
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: "04-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
+      name: "03-vless-\U0001F30F23@oneclickvpnkeys"
       network: tcp
-      port: 23576
+      port: 8443
       reality-opts:
-        public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
-        short-id: "01"
-      server: 51.158.206.26
-      servername: fuck.rkn
+        public-key: wNcFqVd4_PkgJbfgJJeouSU6Pn_Swuce4q4Chw5T0hY
+        short-id: f7aa9e61197d3ac6
+      server: 212.34.142.191
+      servername: tradingview.com
       tls: true
       type: vless
       udp: true
-      uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+      uuid: a5e746f7-328f-4b65-a65f-e2e2a4a5b1a9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - 01-vless->>@oneclickvpnkeys::US
         - 02-vless->>@oneclickvpnkeys::US
-        - "03-shadowsocks-⭐️ \U0001F1F3\U0001F1F1 t.me/Natrixo AA"
-        - "04-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - "03-vless-\U0001F30F23@oneclickvpnkeys"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -55,8 +47,7 @@ proxy-groups:
         - auto
         - 01-vless->>@oneclickvpnkeys::US
         - 02-vless->>@oneclickvpnkeys::US
-        - "03-shadowsocks-⭐️ \U0001F1F3\U0001F1F1 t.me/Natrixo AA"
-        - "04-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - "03-vless-\U0001F30F23@oneclickvpnkeys"
       type: select
 rules:
     - MATCH,select
