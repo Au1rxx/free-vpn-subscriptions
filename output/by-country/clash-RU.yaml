@@ -1,0 +1,53 @@
+proxies:
+    - name: 01-vless->>@oneclickvpnkeys::US
+      network: ws
+      port: 2096
+      server: 176.124.223.138
+      servername: sni.111000.indevs.in
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "02-vless-@V2raysCollector \U0001F49D"
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: MA_hDjnzRmn4qL60EqyybXYzuE_2Ap8FhJQ82szMDww
+        short-id: 1434b433
+      server: 80.92.205.57
+      servername: store.steampowered.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e80c5348-5a5c-41f0-a78d-7a781f47afce
+    - name: "03-vless-\U0001F42658@oneclickvpnkeys"
+      network: ws
+      port: 443
+      server: 77.232.140.43
+      servername: sni.111000.cc.cd
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-vless->>@oneclickvpnkeys::US
+        - "02-vless-@V2raysCollector \U0001F49D"
+        - "03-vless-\U0001F42658@oneclickvpnkeys"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-vless->>@oneclickvpnkeys::US
+        - "02-vless-@V2raysCollector \U0001F49D"
+        - "03-vless-\U0001F42658@oneclickvpnkeys"
+      type: select
+rules:
+    - MATCH,select
