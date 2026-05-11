@@ -1,5 +1,12 @@
 proxies:
-    - name: 01-vless->>@oneclickvpnkeys::US
+    - cipher: aes-256-cfb
+      name: "01-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0283"
+      password: f8f7aCzcPKbsF8p3
+      port: 989
+      server: 79.127.227.53
+      type: ss
+      udp: true
+    - name: 02-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
       server: 45.131.209.191
@@ -9,7 +16,7 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: 02-vless->>@oneclickvpnkeys::US
+    - name: 03-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
       server: 5.10.247.138
@@ -21,7 +28,7 @@ proxies:
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: "03-vless-\U0001F310 TCP-Reality | @Express_alaki | src @V2"
+      name: "04-vless-❣️\U0001F5A41"
       network: tcp
       port: 23576
       reality-opts:
@@ -33,33 +40,23 @@ proxies:
       type: vless
       udp: true
       uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-    - name: "04-vless-\U0001F1F3\U0001F1F1 591 - NL - VLESS/WS/TLS - 2053"
-      network: ws
-      port: 2053
-      server: 103.90.75.41
-      servername: sni.111000.indevs.in
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-vless->>@oneclickvpnkeys::US
+        - "01-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0283"
         - 02-vless->>@oneclickvpnkeys::US
-        - "03-vless-\U0001F310 TCP-Reality | @Express_alaki | src @V2"
-        - "04-vless-\U0001F1F3\U0001F1F1 591 - NL - VLESS/WS/TLS - 2053"
+        - 03-vless->>@oneclickvpnkeys::US
+        - "04-vless-❣️\U0001F5A41"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-vless->>@oneclickvpnkeys::US
+        - "01-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0283"
         - 02-vless->>@oneclickvpnkeys::US
-        - "03-vless-\U0001F310 TCP-Reality | @Express_alaki | src @V2"
-        - "04-vless-\U0001F1F3\U0001F1F1 591 - NL - VLESS/WS/TLS - 2053"
+        - 03-vless->>@oneclickvpnkeys::US
+        - "04-vless-❣️\U0001F5A41"
       type: select
 rules:
     - MATCH,select
