@@ -1,23 +1,26 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: "01-shadowsocks-\U0001F1F3\U0001F1F1NL-159.223.236.36-4706"
-      password: WC0GbiCk67K8nHDaDHmYIX
-      port: 19582
-      server: 159.223.236.36
+    - name: 01-vless->>@oneclickvpnkeys::US
+      network: ws
+      port: 2096
+      server: 45.131.209.191
+      servername: sni.my111000.tech
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - cipher: aes-128-cfb
+      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
+      password: shadowsocks
+      port: 443
+      server: 109.201.152.181
       type: ss
       udp: true
     - cipher: aes-256-cfb
-      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0234"
+      name: "03-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0234"
       password: f8f7aCzcPKbsF8p3
       port: 989
       server: 79.127.227.53
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: "03-shadowsocks-\U0001F1F3\U0001F1F1NL-193.29.139.202-0233"
-      password: oZIoA69Q8yhcQV8ka3Pa3A
-      port: 8080
-      server: 193.29.139.202
       type: ss
       udp: true
     - cipher: aes-256-cfb
@@ -27,21 +30,45 @@ proxies:
       server: 51.15.23.166
       type: ss
       udp: true
-    - name: 05-vless-node
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "05-vless-\U0001F53624@oneclickvpnkeys"
       network: tcp
-      port: 8443
-      server: 195.181.173.199
-      servername: ams1.fromblancwithlove.com
+      port: 23576
+      reality-opts:
+        public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+        short-id: "01"
+      server: 51.158.206.26
+      servername: fuck.rkn
+      tls: true
+      type: vless
+      udp: true
+      uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+    - name: 06-vless->>@oneclickvpnkeys::US
+      network: ws
+      port: 2096
+      server: 5.10.247.138
+      servername: sni.111000.indevs.in
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: 394f6981-a782-4779-9a85-e6cf22935d93
-    - name: 06-vless-v2ray_dalghak
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: "07-vless-\U0001F1F3\U0001F1F1 591 - NL - VLESS/WS/TLS - 2053"
       network: ws
-      port: 443
-      server: 212.34.130.52
-      servername: sni.111000.dns.army
+      port: 2053
+      server: 103.90.75.41
+      servername: sni.111000.indevs.in
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: 08-vless->>@oneclickvpnkeys::DE
+      network: ws
+      port: 8443
+      server: 91.84.99.166
+      servername: sni.111000.indevs.in
       skip-cert-verify: false
       tls: true
       type: vless
@@ -51,23 +78,27 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1F3\U0001F1F1NL-159.223.236.36-4706"
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0234"
-        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-193.29.139.202-0233"
+        - 01-vless->>@oneclickvpnkeys::US
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
+        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0234"
         - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.166-0217"
-        - 05-vless-node
-        - 06-vless-v2ray_dalghak
+        - "05-vless-\U0001F53624@oneclickvpnkeys"
+        - 06-vless->>@oneclickvpnkeys::US
+        - "07-vless-\U0001F1F3\U0001F1F1 591 - NL - VLESS/WS/TLS - 2053"
+        - 08-vless->>@oneclickvpnkeys::DE
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1F3\U0001F1F1NL-159.223.236.36-4706"
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0234"
-        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-193.29.139.202-0233"
+        - 01-vless->>@oneclickvpnkeys::US
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
+        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0234"
         - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.166-0217"
-        - 05-vless-node
-        - 06-vless-v2ray_dalghak
+        - "05-vless-\U0001F53624@oneclickvpnkeys"
+        - 06-vless->>@oneclickvpnkeys::US
+        - "07-vless-\U0001F1F3\U0001F1F1 591 - NL - VLESS/WS/TLS - 2053"
+        - 08-vless->>@oneclickvpnkeys::DE
       type: select
 rules:
     - MATCH,select

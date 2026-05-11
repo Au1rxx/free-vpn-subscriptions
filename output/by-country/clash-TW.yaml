@@ -1,0 +1,40 @@
+proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: "01-shadowsocks-\U0001F449\U0001F194@v2ray_configs_pool\U0001F4E1\U0001F1F9\U0001F1FC®️Taiwan©️Taipei"
+      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+      port: 50099
+      server: 36.224.143.36
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "02-shadowsocks-\U0001F1F9\U0001F1FC Join Telegram:@Farah_VPN \U0001F1F9\U0001F1FC"
+      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+      port: 50099
+      server: 111.248.111.83
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "03-shadowsocks-\U0001F1F9\U0001F1FCTW-114.45.167.178-4683"
+      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+      port: 50099
+      server: r3mrcg0011499tl.cybervena.com
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-shadowsocks-\U0001F449\U0001F194@v2ray_configs_pool\U0001F4E1\U0001F1F9\U0001F1FC®️Taiwan©️Taipei"
+        - "02-shadowsocks-\U0001F1F9\U0001F1FC Join Telegram:@Farah_VPN \U0001F1F9\U0001F1FC"
+        - "03-shadowsocks-\U0001F1F9\U0001F1FCTW-114.45.167.178-4683"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-shadowsocks-\U0001F449\U0001F194@v2ray_configs_pool\U0001F4E1\U0001F1F9\U0001F1FC®️Taiwan©️Taipei"
+        - "02-shadowsocks-\U0001F1F9\U0001F1FC Join Telegram:@Farah_VPN \U0001F1F9\U0001F1FC"
+        - "03-shadowsocks-\U0001F1F9\U0001F1FCTW-114.45.167.178-4683"
+      type: select
+rules:
+    - MATCH,select
