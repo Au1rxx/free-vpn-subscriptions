@@ -7,7 +7,7 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0236"
       password: shadowsocks
       port: 443
       server: 149.22.87.204
@@ -20,31 +20,32 @@ proxies:
       server: 149.22.87.240
       type: ss
       udp: true
-    - name: "04-trojan-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_641c0ad2"
-      password: BxceQaOe
-      port: 443
-      server: 116.80.80.121
-      skip-cert-verify: true
-      sni: t.me%2Fripaojiedian
-      type: trojan
+    - alterId: 0
+      cipher: auto
+      name: "04-vmess-\U0001F1EF\U0001F1F5JP-168.138.43.75-5130"
+      network: ws
+      port: 80
+      server: jp01.a0a.xyz
+      type: vmess
       udp: true
+      uuid: 11c3627f-31e8-4695-dfbd-34076e2f1f5d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0236"
         - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
-        - "04-trojan-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_641c0ad2"
+        - "04-vmess-\U0001F1EF\U0001F1F5JP-168.138.43.75-5130"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0236"
         - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
-        - "04-trojan-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_641c0ad2"
+        - "04-vmess-\U0001F1EF\U0001F1F5JP-168.138.43.75-5130"
       type: select
 rules:
     - MATCH,select
