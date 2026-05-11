@@ -19,16 +19,7 @@ proxies:
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: "03-vmess-\U0001F1E9\U0001F1EADE-82.198.246.233-34"
-      network: tcp
-      port: 180
-      server: 82.198.246.233
-      type: vmess
-      udp: true
-      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-    - alterId: 0
-      cipher: auto
-      name: 04-vmess-英国 V2CROSS.COM
+      name: "03-vmess-\U0001F1E9\U0001F1EADE-82.198.246.37-33"
       network: tcp
       port: 180
       server: 82.198.246.37
@@ -37,14 +28,30 @@ proxies:
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: "05-vmess-\U0001F1E9\U0001F1EADE-82.198.246.214-57"
+      name: "04-vmess-\U0001F1E9\U0001F1EADE-82.198.246.214-32"
       network: tcp
       port: 180
       server: 82.198.246.214
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-    - name: 06-vless->>@oneclickvpnkeys::US
+    - alterId: 0
+      cipher: auto
+      name: "05-vmess-\U0001F1E8\U0001F1FF CZ 1"
+      network: tcp
+      port: 180
+      server: 82.198.246.46
+      type: vmess
+      udp: true
+      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+    - cipher: chacha20-ietf-poly1305
+      name: "06-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0231"
+      password: PWpjPo3tqhPN4yRZ
+      port: 20001
+      server: 8.209.74.72
+      type: ss
+      udp: true
+    - name: 07-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
       server: 188.244.122.138
@@ -54,16 +61,32 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "08-vless-\U0001F41D32@oneclickvpnkeys"
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
+        short-id: "23"
+      server: 89.106.95.203
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 629d2ccc-3a2a-4dd3-83d2-86b25fc8783e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - "01-vmess-\U0001F1E9\U0001F1EADE-82.198.246.9-60"
         - "02-vmess-\U0001F1FA\U0001F1F8 美国 | USA 5"
-        - "03-vmess-\U0001F1E9\U0001F1EADE-82.198.246.233-34"
-        - 04-vmess-英国 V2CROSS.COM
-        - "05-vmess-\U0001F1E9\U0001F1EADE-82.198.246.214-57"
-        - 06-vless->>@oneclickvpnkeys::US
+        - "03-vmess-\U0001F1E9\U0001F1EADE-82.198.246.37-33"
+        - "04-vmess-\U0001F1E9\U0001F1EADE-82.198.246.214-32"
+        - "05-vmess-\U0001F1E8\U0001F1FF CZ 1"
+        - "06-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0231"
+        - 07-vless->>@oneclickvpnkeys::US
+        - "08-vless-\U0001F41D32@oneclickvpnkeys"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -71,10 +94,12 @@ proxy-groups:
         - auto
         - "01-vmess-\U0001F1E9\U0001F1EADE-82.198.246.9-60"
         - "02-vmess-\U0001F1FA\U0001F1F8 美国 | USA 5"
-        - "03-vmess-\U0001F1E9\U0001F1EADE-82.198.246.233-34"
-        - 04-vmess-英国 V2CROSS.COM
-        - "05-vmess-\U0001F1E9\U0001F1EADE-82.198.246.214-57"
-        - 06-vless->>@oneclickvpnkeys::US
+        - "03-vmess-\U0001F1E9\U0001F1EADE-82.198.246.37-33"
+        - "04-vmess-\U0001F1E9\U0001F1EADE-82.198.246.214-32"
+        - "05-vmess-\U0001F1E8\U0001F1FF CZ 1"
+        - "06-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0231"
+        - 07-vless->>@oneclickvpnkeys::US
+        - "08-vless-\U0001F41D32@oneclickvpnkeys"
       type: select
 rules:
     - MATCH,select
