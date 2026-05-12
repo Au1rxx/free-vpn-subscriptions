@@ -1,20 +1,47 @@
 proxies:
+    - name: 01-vless-⛲66@oneclickvpnkeys
+      network: ws
+      port: 443
+      server: 45.131.209.191
+      servername: sni.my111000.tech
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: 02-vless->>@oneclickvpnkeys::US
+      network: ws
+      port: 2096
+      server: 5.10.247.138
+      servername: sni.111000.indevs.in
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: aes-256-cfb
-      name: "01-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.166-0229"
+      name: "03-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.166-0229"
       password: f8f7aCzcPKbsF8p3
       port: 989
       server: 51.15.23.166
       type: ss
       udp: true
     - cipher: aes-128-cfb
-      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0217"
+      name: "04-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
       password: shadowsocks
       port: 443
       server: 109.201.152.181
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "05-shadowsocks-\U0001F1F3\U0001F1F1NL-193.29.139.251-0180"
+      password: oZIoA69Q8yhcQV8ka3Pa3A
+      port: 8080
+      server: 193.29.139.251
+      type: ss
+      udp: true
     - cipher: aes-256-cfb
-      name: "03-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0293"
+      name: "06-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0293"
       password: f8f7aCzcPKbsF8p3
       port: 989
       server: 79.127.227.53
@@ -24,17 +51,23 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.166-0229"
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0217"
-        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0293"
+        - 01-vless-⛲66@oneclickvpnkeys
+        - 02-vless->>@oneclickvpnkeys::US
+        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.166-0229"
+        - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
+        - "05-shadowsocks-\U0001F1F3\U0001F1F1NL-193.29.139.251-0180"
+        - "06-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0293"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.166-0229"
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0217"
-        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0293"
+        - 01-vless-⛲66@oneclickvpnkeys
+        - 02-vless->>@oneclickvpnkeys::US
+        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.166-0229"
+        - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
+        - "05-shadowsocks-\U0001F1F3\U0001F1F1NL-193.29.139.251-0180"
+        - "06-shadowsocks-\U0001F1F3\U0001F1F1NL-79.127.227.53-0293"
       type: select
 rules:
     - MATCH,select
