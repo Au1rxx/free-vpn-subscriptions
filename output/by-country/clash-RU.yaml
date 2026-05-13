@@ -1,0 +1,50 @@
+proxies:
+    - name: "01-vless-\U0001F1E8\U0001F1F3 650 - CN - VLESS/WS/TLS - 2096"
+      network: ws
+      port: 2096
+      server: 176.124.223.138
+      servername: sni.111000.indevs.in
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - cipher: aes-256-cfb
+      name: "02-shadowsocks-\U0001F1FA\U0001F1F8 US 30"
+      password: gYCYXfkUQEs2TaJQ
+      port: 9038
+      server: 194.116.173.21
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "03-vless-@V2raysCollector \U0001F49D"
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: MA_hDjnzRmn4qL60EqyybXYzuE_2Ap8FhJQ82szMDww
+        short-id: 1434b433
+      server: 80.92.205.57
+      servername: store.steampowered.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e80c5348-5a5c-41f0-a78d-7a781f47afce
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-vless-\U0001F1E8\U0001F1F3 650 - CN - VLESS/WS/TLS - 2096"
+        - "02-shadowsocks-\U0001F1FA\U0001F1F8 US 30"
+        - "03-vless-@V2raysCollector \U0001F49D"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-vless-\U0001F1E8\U0001F1F3 650 - CN - VLESS/WS/TLS - 2096"
+        - "02-shadowsocks-\U0001F1FA\U0001F1F8 US 30"
+        - "03-vless-@V2raysCollector \U0001F49D"
+      type: select
+rules:
+    - MATCH,select
