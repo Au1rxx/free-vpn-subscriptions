@@ -1,40 +1,50 @@
 proxies:
     - cipher: aes-128-gcm
-      name: "01-shadowsocks-\U0001F1EF\U0001F1F5 JP 1"
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
       password: shadowsocks
       port: 443
       server: 149.22.87.204
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: 02-shadowsocks- ⚡ [By EbraSha]
-      password: shadowsocks
-      port: 443
-      server: 149.22.87.241
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
       password: shadowsocks
       port: 443
       server: 149.22.87.240
       type: ss
       udp: true
+    - cipher: aes-128-gcm
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.241
+      type: ss
+      udp: true
+    - name: "04-trojan-\U0001F1EF\U0001F1F5 Join Telegram:@Farah_VPN \U0001F1EF\U0001F1F5"
+      password: "162534"
+      port: 42841
+      server: 43.165.190.11
+      skip-cert-verify: false
+      sni: cchh2.pages.dev
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5 JP 1"
-        - 02-shadowsocks- ⚡ [By EbraSha]
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5"
+        - "04-trojan-\U0001F1EF\U0001F1F5 Join Telegram:@Farah_VPN \U0001F1EF\U0001F1F5"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5 JP 1"
-        - 02-shadowsocks- ⚡ [By EbraSha]
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5"
+        - "04-trojan-\U0001F1EF\U0001F1F5 Join Telegram:@Farah_VPN \U0001F1EF\U0001F1F5"
       type: select
 rules:
     - MATCH,select
