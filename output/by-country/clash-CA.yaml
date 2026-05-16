@@ -1,6 +1,6 @@
 proxies:
     - cipher: aes-128-gcm
-      name: "01-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-4005"
+      name: "01-shadowsocks-\U0001F1E8\U0001F1E6 CA 4"
       password: shadowsocks
       port: 443
       server: 149.22.95.183
@@ -44,7 +44,7 @@ proxies:
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
-      name: "07-shadowsocks-\U0001F1E8\U0001F1E6CA-23.95.76.59-08"
+      name: "07-shadowsocks-\U0001F1E8\U0001F1E6CA-23.95.76.59-0117"
       password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
       port: 990
       server: 23.95.76.59
@@ -57,31 +57,63 @@ proxies:
       server: 79.127.200.162
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: "09-vless-\U0001F1E8\U0001F1E6 CA 2"
+      network: tcp
+      port: 41087
+      reality-opts:
+        public-key: aoGL5vNnsEuKoBXQFXyHTxjvcdAn3SxT4qUgV6aJxnw
+        short-id: 190d259bbd40d4c3
+      server: 15.223.121.250
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57d94cf7-ca36-4c2a-bec5-90cf38588cda
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: "10-vless-\U0001F1E8\U0001F1E6 CA 3"
+      network: tcp
+      port: 51072
+      reality-opts:
+        public-key: 5KJ1tLErCUEfqxc3IsnY_49p_gWe0mPB8eXJ3MLucgU
+        short-id: 0675732ab101
+      server: 35.182.252.92
+      servername: www.sony.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b6b2c827-4ac1-4e2c-af28-dfa7edbfeb81
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-4005"
+        - "01-shadowsocks-\U0001F1E8\U0001F1E6 CA 4"
         - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-79.127.233.170-0051"
         - "03-vmess-\U0001F1E8\U0001F1E6 CA 6"
         - "04-shadowsocks-\U0001F1E8\U0001F1E6CA-79.127.200.169-0054"
         - "05-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0058"
         - "06-shadowsocks-\U0001F1E8\U0001F1E6 CA 8"
-        - "07-shadowsocks-\U0001F1E8\U0001F1E6CA-23.95.76.59-08"
+        - "07-shadowsocks-\U0001F1E8\U0001F1E6CA-23.95.76.59-0117"
         - "08-shadowsocks-\U0001F1E8\U0001F1E6CA-79.127.200.162-4252"
+        - "09-vless-\U0001F1E8\U0001F1E6 CA 2"
+        - "10-vless-\U0001F1E8\U0001F1E6 CA 3"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-4005"
+        - "01-shadowsocks-\U0001F1E8\U0001F1E6 CA 4"
         - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-79.127.233.170-0051"
         - "03-vmess-\U0001F1E8\U0001F1E6 CA 6"
         - "04-shadowsocks-\U0001F1E8\U0001F1E6CA-79.127.200.169-0054"
         - "05-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0058"
         - "06-shadowsocks-\U0001F1E8\U0001F1E6 CA 8"
-        - "07-shadowsocks-\U0001F1E8\U0001F1E6CA-23.95.76.59-08"
+        - "07-shadowsocks-\U0001F1E8\U0001F1E6CA-23.95.76.59-0117"
         - "08-shadowsocks-\U0001F1E8\U0001F1E6CA-79.127.200.162-4252"
+        - "09-vless-\U0001F1E8\U0001F1E6 CA 2"
+        - "10-vless-\U0001F1E8\U0001F1E6 CA 3"
       type: select
 rules:
     - MATCH,select
