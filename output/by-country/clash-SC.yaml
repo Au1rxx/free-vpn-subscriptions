@@ -1,0 +1,52 @@
+proxies:
+    - client-fingerprint: chrome
+      name: "01-vless-\U0001F7E2\U0001F1ED\U0001F1F0[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_f1c46f0a"
+      network: tcp
+      port: 23100
+      reality-opts:
+        public-key: H0HQU-snRgdfuIYOe9VkVHVn3mFqrHUD8lle55dilxU
+        short-id: 303a58f57b0d
+      server: 156.238.254.5
+      servername: aws.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d5a17f2f-aa94-4b61-8574-ce0b301f9062
+    - name: "02-vless-\U0001F33115@oneclickvpnkeys"
+      network: ws
+      port: 2096
+      server: 45.130.125.138
+      servername: sni.111000.indevs.in
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: 03-vless-v2ray_dalghak
+      network: ws
+      port: 2096
+      server: 154.206.12.138
+      servername: sni.111000.indevs.in
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-vless-\U0001F7E2\U0001F1ED\U0001F1F0[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_f1c46f0a"
+        - "02-vless-\U0001F33115@oneclickvpnkeys"
+        - 03-vless-v2ray_dalghak
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-vless-\U0001F7E2\U0001F1ED\U0001F1F0[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_f1c46f0a"
+        - "02-vless-\U0001F33115@oneclickvpnkeys"
+        - 03-vless-v2ray_dalghak
+      type: select
+rules:
+    - MATCH,select
