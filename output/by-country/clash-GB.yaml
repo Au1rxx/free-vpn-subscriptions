@@ -39,14 +39,37 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - cipher: chacha20-ietf-poly1305
-      name: "05-shadowsocks-\U0001F1EC\U0001F1E7GB-138.68.153.223-0124"
-      password: idMvoewrSyLLvEvP03k9zR
-      port: 46576
-      server: 138.68.153.223
+    - alterId: 0
+      cipher: auto
+      name: "05-vmess-\U0001F1EC\U0001F1E7 GB 2"
+      network: tcp
+      port: 22324
+      server: 66.163.117.58
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
+    - cipher: aes-256-gcm
+      name: "06-shadowsocks-\U0001F1EC\U0001F1E7 626 - GB - SS/AEAD - 443"
+      password: umWwoQJEJGf74SLe
+      port: 443
+      server: 149.102.149.207
       type: ss
       udp: true
-    - name: "06-vless-\U0001F99432@oneclickvpnkeys"
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "07-vless-\U0001F9C323@oneclickvpnkeys"
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: g3m27BDO4X4sUsRkm5PcrqNxEH1stxgrrCAuUdFKHHo
+        short-id: e0251211bd
+      server: 151.247.219.166
+      servername: www.microsoft.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 02ca6335-4c91-412c-956f-f7f9e5630b6c
+    - name: 08-vless-♦14@oneclickvpnkeys
       network: tcp
       port: 8443
       server: 152.233.28.198
@@ -64,8 +87,10 @@ proxy-groups:
         - 02-vless->>@oneclickvpnkeys::US
         - "03-vless-\U0001F573️33@oneclickvpnkeys"
         - 04-vless->>@oneclickvpnkeys::US
-        - "05-shadowsocks-\U0001F1EC\U0001F1E7GB-138.68.153.223-0124"
-        - "06-vless-\U0001F99432@oneclickvpnkeys"
+        - "05-vmess-\U0001F1EC\U0001F1E7 GB 2"
+        - "06-shadowsocks-\U0001F1EC\U0001F1E7 626 - GB - SS/AEAD - 443"
+        - "07-vless-\U0001F9C323@oneclickvpnkeys"
+        - 08-vless-♦14@oneclickvpnkeys
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -75,8 +100,10 @@ proxy-groups:
         - 02-vless->>@oneclickvpnkeys::US
         - "03-vless-\U0001F573️33@oneclickvpnkeys"
         - 04-vless->>@oneclickvpnkeys::US
-        - "05-shadowsocks-\U0001F1EC\U0001F1E7GB-138.68.153.223-0124"
-        - "06-vless-\U0001F99432@oneclickvpnkeys"
+        - "05-vmess-\U0001F1EC\U0001F1E7 GB 2"
+        - "06-shadowsocks-\U0001F1EC\U0001F1E7 626 - GB - SS/AEAD - 443"
+        - "07-vless-\U0001F9C323@oneclickvpnkeys"
+        - 08-vless-♦14@oneclickvpnkeys
       type: select
 rules:
     - MATCH,select
