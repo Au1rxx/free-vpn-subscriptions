@@ -1,0 +1,80 @@
+{
+  "outbounds": [
+    {
+      "method": "aes-128-gcm",
+      "password": "shadowsocks",
+      "server": "149.22.87.204",
+      "server_port": 443,
+      "tag": "01-shadowsocks-🇯🇵JP-149.22.87.204-0216",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-128-gcm",
+      "password": "shadowsocks",
+      "server": "149.22.87.240",
+      "server_port": 443,
+      "tag": "02-shadowsocks-🇯🇵 JP | SS | @outlinereleasedkey 1",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-128-gcm",
+      "password": "shadowsocks",
+      "server": "149.22.87.241",
+      "server_port": 443,
+      "tag": "03-shadowsocks-🇯🇵JP-149.22.87.241-4048",
+      "type": "shadowsocks"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "57.180.23.89",
+      "server_port": 53863,
+      "tag": "04-vless-🔴🇯🇵[🎬🤖📺🔍]_github.com/Ruk1ng001_8a978669",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "QCSdJdwySeyGF6QYIIQfmdN9ErY79rJWuuWhSh6LWn8",
+          "short_id": "d31522d103e50a28"
+        },
+        "server_name": "www.icloud.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "0663e78c-d73b-48bf-a99b-fb318486f601"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-shadowsocks-🇯🇵JP-149.22.87.204-0216",
+        "02-shadowsocks-🇯🇵 JP | SS | @outlinereleasedkey 1",
+        "03-shadowsocks-🇯🇵JP-149.22.87.241-4048",
+        "04-vless-🔴🇯🇵[🎬🤖📺🔍]_github.com/Ruk1ng001_8a978669"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-shadowsocks-🇯🇵JP-149.22.87.204-0216",
+        "02-shadowsocks-🇯🇵 JP | SS | @outlinereleasedkey 1",
+        "03-shadowsocks-🇯🇵JP-149.22.87.241-4048",
+        "04-vless-🔴🇯🇵[🎬🤖📺🔍]_github.com/Ruk1ng001_8a978669"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
