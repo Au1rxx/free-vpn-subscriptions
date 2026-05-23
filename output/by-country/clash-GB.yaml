@@ -1,19 +1,19 @@
 proxies:
-    - name: 01-vless->>@oneclickvpnkeys::US
+    - name: 01-vless-英国 V2CROSS.COM
       network: ws
       port: 443
-      server: 217.163.76.254
-      servername: sni.111000.v6.navy
+      server: 77.75.199.43
+      servername: sni.111000.cc.cd
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: 02-vless-英国 V2CROSS.COM
+    - name: 02-vless->>@oneclickvpnkeys::US
       network: ws
       port: 443
-      server: 77.75.199.43
-      servername: sni.111000.cc.cd
+      server: 217.163.76.254
+      servername: sni.111000.v6.navy
       skip-cert-verify: false
       tls: true
       type: vless
@@ -32,7 +32,7 @@ proxies:
     - name: 04-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
-      server: 185.156.19.238
+      server: 185.238.228.238
       servername: sni.jpmj.dev
       skip-cert-verify: false
       tls: true
@@ -42,32 +42,41 @@ proxies:
     - name: 05-vless->>@oneclickvpnkeys::US
       network: ws
       port: 2096
-      server: 185.238.228.238
+      server: 185.156.19.238
       servername: sni.jpmj.dev
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - cipher: aes-256-gcm
+      name: "06-shadowsocks-\U0001F1FA\U0001F1F8 US 10"
+      password: tUjC8m8b0/YBw8aMW3ZIdSF2wRVusJh9XId8v9nXSYY=
+      port: 27715
+      server: 2.24.74.180
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-vless->>@oneclickvpnkeys::US
-        - 02-vless-英国 V2CROSS.COM
+        - 01-vless-英国 V2CROSS.COM
+        - 02-vless->>@oneclickvpnkeys::US
         - "03-vless-\U0001FACE83@oneclickvpnkeys"
         - 04-vless->>@oneclickvpnkeys::US
         - 05-vless->>@oneclickvpnkeys::US
+        - "06-shadowsocks-\U0001F1FA\U0001F1F8 US 10"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-vless->>@oneclickvpnkeys::US
-        - 02-vless-英国 V2CROSS.COM
+        - 01-vless-英国 V2CROSS.COM
+        - 02-vless->>@oneclickvpnkeys::US
         - "03-vless-\U0001FACE83@oneclickvpnkeys"
         - 04-vless->>@oneclickvpnkeys::US
         - 05-vless->>@oneclickvpnkeys::US
+        - "06-shadowsocks-\U0001F1FA\U0001F1F8 US 10"
       type: select
 rules:
     - MATCH,select
