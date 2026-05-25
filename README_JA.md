@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![ノード](https://img.shields.io/badge/ノード-150-brightgreen) ![生存](https://img.shields.io/badge/生存-2429-blue) ![中央値--rtt](https://img.shields.io/badge/中央値--rtt-92ms-orange) ![更新](https://img.shields.io/badge/更新-2026-05-25_14:10_UTC-informational)
+![ノード](https://img.shields.io/badge/ノード-133-brightgreen) ![生存](https://img.shields.io/badge/生存-2112-blue) ![中央値--rtt](https://img.shields.io/badge/中央値--rtt-83ms-orange) ![更新](https://img.shields.io/badge/更新-2026-05-25_15:16_UTC-informational)
 
 > **動作する無料 VPN を手に入れる一番かんたんな方法 —— 購読リンクをコピーしてクライアントに貼るだけ。**  
 > 登録不要。支払い不要。バイナリのインストール不要。公開ソースから毎時自動更新 —— 公開される全ノードは、数分前に sing-box 経由で実 HTTP トラフィックを転送した実績があります。
@@ -77,9 +77,9 @@ proxy-groups:
 
 | 国 | ノード数 | Clash | sing-box | v2ray |
 |---|---|---|---|---|
-| 🇺🇸 United States (`US`) | 75 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
+| 🇺🇸 United States (`US`) | 54 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
+| 🇨🇦 Canada (`CA`) | 7 | [clash-CA.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-CA.yaml) | [singbox-CA.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-CA.json) | [v2ray-base64-CA.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-CA.txt) |
 | 🇩🇪 Germany (`DE`) | 7 | [clash-DE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-DE.yaml) | [singbox-DE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-DE.json) | [v2ray-base64-DE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-DE.txt) |
-| 🇨🇦 Canada (`CA`) | 5 | [clash-CA.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-CA.yaml) | [singbox-CA.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-CA.json) | [v2ray-base64-CA.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-CA.txt) |
 | 🇬🇧 United Kingdom (`GB`) | 5 | [clash-GB.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-GB.yaml) | [singbox-GB.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-GB.json) | [v2ray-base64-GB.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-GB.txt) |
 
 ## 📖 クライアント設定ガイド
@@ -101,15 +101,15 @@ proxy-groups:
 
 ## 📊 リアルタイム統計
 
-- **選定ノード**: 150
-- **全ソース生存数**: 2429
-- **最速 RTT**: 33 ms
-- **中央値 RTT**: 92 ms
-- **最終更新 (UTC)**: 2026-05-25 14:10 UTC
+- **選定ノード**: 133
+- **全ソース生存数**: 2112
+- **最速 RTT**: 24 ms
+- **中央値 RTT**: 83 ms
+- **最終更新 (UTC)**: 2026-05-25 15:16 UTC
 
-**プロトコル構成:** shadowsocks × 41 · trojan × 16 · vless × 67 · vmess × 26
+**プロトコル構成:** shadowsocks × 31 · trojan × 22 · vless × 64 · vmess × 16
 
-**今回使用したソース:** `barry-far-v2ray` × 19 · `ebrasha-v2ray` × 1 · `epodonios` × 5 · `lagzian-mix` × 4 · `mahdi0024` × 40 · `mahdibland-aggregator` × 8 · `mahdibland-shadowsocks` × 4 · `matin-v2ray` × 1 · `ninjastrikers` × 52 · `pawdroid` × 7 · `ruking-clash` × 7 · `surfboard-eternity` × 2
+**今回使用したソース:** `barry-far-v2ray` × 20 · `ebrasha-v2ray` × 2 · `epodonios` × 8 · `lagzian-mix` × 4 · `mahdi0024` × 14 · `mahdibland-aggregator` × 6 · `mahdibland-shadowsocks` × 8 · `mfuu-clash` × 2 · `ninjastrikers` × 49 · `pawdroid` × 4 · `ruking-clash` × 9 · `snakem982` × 1 · `surfboard-eternity` × 6
 
 ## ❓ よくある質問
 
