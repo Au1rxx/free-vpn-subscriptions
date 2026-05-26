@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![узлы](https://img.shields.io/badge/узлы-139-brightgreen) ![живые](https://img.shields.io/badge/живые-2050-blue) ![медиана--rtt](https://img.shields.io/badge/медиана--rtt-98ms-orange) ![обновлено](https://img.shields.io/badge/обновлено-2026-05-26_22:34_UTC-informational)
+![узлы](https://img.shields.io/badge/узлы-138-brightgreen) ![живые](https://img.shields.io/badge/живые-2067-blue) ![медиана--rtt](https://img.shields.io/badge/медиана--rtt-90ms-orange) ![обновлено](https://img.shields.io/badge/обновлено-2026-05-26_23:36_UTC-informational)
 
 > **Самый простой способ получить рабочий бесплатный VPN — скопируйте ссылку подписки, вставьте в клиент, подключитесь.**  
 > Без регистрации. Без оплаты. Без установки каких-либо бинарников. Обновляется каждый час из публичных источников — каждый публикуемый узел несколько минут назад реально пропустил HTTP-трафик через sing-box.
@@ -101,15 +101,15 @@ proxy-groups:
 
 ## 📊 Статистика в реальном времени
 
-- **Выбрано узлов**: 139
-- **Живых во всех источниках**: 2050
+- **Выбрано узлов**: 138
+- **Живых во всех источниках**: 2067
 - **RTT самого быстрого узла**: 37 ms
-- **Медиана RTT**: 98 ms
-- **Последнее обновление (UTC)**: 2026-05-26 22:34 UTC
+- **Медиана RTT**: 90 ms
+- **Последнее обновление (UTC)**: 2026-05-26 23:36 UTC
 
-**Распределение протоколов:** shadowsocks × 26 · trojan × 28 · vless × 73 · vmess × 12
+**Распределение протоколов:** shadowsocks × 25 · trojan × 28 · vless × 73 · vmess × 12
 
-**Источники в этом запуске:** `barry-far-v2ray` × 42 · `epodonios` × 6 · `lagzian-mix` × 1 · `mahdi0024` × 9 · `mahdibland-aggregator` × 7 · `mahdibland-shadowsocks` × 6 · `ninjastrikers` × 48 · `pawdroid` × 7 · `ruking-clash` × 5 · `snakem982` × 1 · `surfboard-eternity` × 6 · `vxiaov-clash` × 1
+**Источники в этом запуске:** `barry-far-v2ray` × 39 · `ebrasha-v2ray` × 2 · `epodonios` × 3 · `lagzian-mix` × 2 · `mahdi0024` × 10 · `mahdibland-aggregator` × 3 · `mahdibland-shadowsocks` × 6 · `ninjastrikers` × 53 · `pawdroid` × 6 · `ruking-clash` × 10 · `surfboard-eternity` × 3 · `vxiaov-clash` × 1
 
 ## ❓ Часто задаваемые вопросы
 

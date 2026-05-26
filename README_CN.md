@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![节点](https://img.shields.io/badge/节点-139-brightgreen) ![存活](https://img.shields.io/badge/存活-2050-blue) ![中位延迟](https://img.shields.io/badge/中位延迟-98ms-orange) ![更新](https://img.shields.io/badge/更新-2026-05-26_22:34_UTC-informational)
+![节点](https://img.shields.io/badge/节点-138-brightgreen) ![存活](https://img.shields.io/badge/存活-2067-blue) ![中位延迟](https://img.shields.io/badge/中位延迟-90ms-orange) ![更新](https://img.shields.io/badge/更新-2026-05-26_23:36_UTC-informational)
 
 > **获取可用免费 VPN 的最简单方式 —— 复制订阅链接,粘贴到客户端,连上。**  
 > 无需注册。无需付费。无需安装任何二进制。每小时从公共源自动抓取 —— 每个发布的节点都在几分钟前通过 sing-box 真实转发过 HTTP 流量。
@@ -101,15 +101,15 @@ proxy-groups:
 
 ## 📊 实时统计
 
-- **精选节点数**: 139
-- **全源存活总数**: 2050
+- **精选节点数**: 138
+- **全源存活总数**: 2067
 - **最快延迟**: 37 ms
-- **中位延迟**: 98 ms
-- **最后更新 (UTC)**: 2026-05-26 22:34 UTC
+- **中位延迟**: 90 ms
+- **最后更新 (UTC)**: 2026-05-26 23:36 UTC
 
-**协议分布:** shadowsocks × 26 · trojan × 28 · vless × 73 · vmess × 12
+**协议分布:** shadowsocks × 25 · trojan × 28 · vless × 73 · vmess × 12
 
-**本次使用的源:** `barry-far-v2ray` × 42 · `epodonios` × 6 · `lagzian-mix` × 1 · `mahdi0024` × 9 · `mahdibland-aggregator` × 7 · `mahdibland-shadowsocks` × 6 · `ninjastrikers` × 48 · `pawdroid` × 7 · `ruking-clash` × 5 · `snakem982` × 1 · `surfboard-eternity` × 6 · `vxiaov-clash` × 1
+**本次使用的源:** `barry-far-v2ray` × 39 · `ebrasha-v2ray` × 2 · `epodonios` × 3 · `lagzian-mix` × 2 · `mahdi0024` × 10 · `mahdibland-aggregator` × 3 · `mahdibland-shadowsocks` × 6 · `ninjastrikers` × 53 · `pawdroid` × 6 · `ruking-clash` × 10 · `surfboard-eternity` × 3 · `vxiaov-clash` × 1
 
 ## ❓ 常见问题
 
