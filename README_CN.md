@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![节点](https://img.shields.io/badge/节点-78-brightgreen) ![存活](https://img.shields.io/badge/存活-1958-blue) ![中位延迟](https://img.shields.io/badge/中位延迟-106ms-orange) ![更新](https://img.shields.io/badge/更新-2026-05-27_13:34_UTC-informational)
+![节点](https://img.shields.io/badge/节点-71-brightgreen) ![存活](https://img.shields.io/badge/存活-2011-blue) ![中位延迟](https://img.shields.io/badge/中位延迟-152ms-orange) ![更新](https://img.shields.io/badge/更新-2026-05-27_14:26_UTC-informational)
 
 > **获取可用免费 VPN 的最简单方式 —— 复制订阅链接,粘贴到客户端,连上。**  
 > 无需注册。无需付费。无需安装任何二进制。每小时从公共源自动抓取 —— 每个发布的节点都在几分钟前通过 sing-box 真实转发过 HTTP 流量。
@@ -77,7 +77,7 @@ proxy-groups:
 
 | 国家/地区 | 节点数 | Clash | sing-box | v2ray |
 |---|---|---|---|---|
-| 🇺🇸 United States (`US`) | 32 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
+| 🇺🇸 United States (`US`) | 37 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
 | 🇩🇪 Germany (`DE`) | 6 | [clash-DE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-DE.yaml) | [singbox-DE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-DE.json) | [v2ray-base64-DE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-DE.txt) |
 
 ## 📖 客户端图文教程
@@ -99,15 +99,15 @@ proxy-groups:
 
 ## 📊 实时统计
 
-- **精选节点数**: 78
-- **全源存活总数**: 1958
-- **最快延迟**: 36 ms
-- **中位延迟**: 106 ms
-- **最后更新 (UTC)**: 2026-05-27 13:34 UTC
+- **精选节点数**: 71
+- **全源存活总数**: 2011
+- **最快延迟**: 38 ms
+- **中位延迟**: 152 ms
+- **最后更新 (UTC)**: 2026-05-27 14:26 UTC
 
-**协议分布:** shadowsocks × 25 · trojan × 18 · vless × 25 · vmess × 10
+**协议分布:** shadowsocks × 28 · trojan × 17 · vless × 16 · vmess × 10
 
-**本次使用的源:** `barry-far-v2ray` × 36 · `ebrasha-v2ray` × 2 · `epodonios` × 1 · `lagzian-mix` × 3 · `mahdi0024` × 7 · `mahdibland-aggregator` × 8 · `mahdibland-shadowsocks` × 3 · `ninjastrikers` × 11 · `ruking-clash` × 4 · `snakem982` × 1 · `surfboard-eternity` × 2
+**本次使用的源:** `barry-far-v2ray` × 28 · `ebrasha-v2ray` × 1 · `epodonios` × 1 · `lagzian-mix` × 5 · `mahdi0024` × 7 · `mahdibland-aggregator` × 8 · `mahdibland-shadowsocks` × 4 · `matin-v2ray` × 2 · `mfuu-clash` × 1 · `ninjastrikers` × 8 · `ruking-clash` × 4 · `snakem982` × 1 · `surfboard-eternity` × 1
 
 ## ❓ 常见问题
 
