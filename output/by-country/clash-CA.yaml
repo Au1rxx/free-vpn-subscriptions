@@ -1,0 +1,40 @@
+proxies:
+    - cipher: aes-128-gcm
+      name: "01-shadowsocks-\U0001F1E8\U0001F1E632032 | ⚡️Telegram = t.me/SOSkeyNET"
+      password: shadowsocks
+      port: 443
+      server: 149.22.95.183
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: "02-shadowsocks-\U0001F534\U0001F1E8\U0001F1E6[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_b96c1729"
+      password: amazonskr05
+      port: 443
+      server: 15.222.60.36
+      type: ss
+      udp: true
+    - cipher: rc4-md5
+      name: "03-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0111"
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 137.184.174.93
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-shadowsocks-\U0001F1E8\U0001F1E632032 | ⚡️Telegram = t.me/SOSkeyNET"
+        - "02-shadowsocks-\U0001F534\U0001F1E8\U0001F1E6[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_b96c1729"
+        - "03-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0111"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-shadowsocks-\U0001F1E8\U0001F1E632032 | ⚡️Telegram = t.me/SOSkeyNET"
+        - "02-shadowsocks-\U0001F534\U0001F1E8\U0001F1E6[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_b96c1729"
+        - "03-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0111"
+      type: select
+rules:
+    - MATCH,select
