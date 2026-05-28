@@ -7,10 +7,10 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-cfb
-      name: "02-shadowsocks-\U0001F1E8\U0001F1E6CA-15.222.60.36-0412"
+      name: "02-shadowsocks-\U0001F1E8\U0001F1E6CA-35.183.129.131-0416"
       password: amazonskr05
       port: 443
-      server: 15.222.60.36
+      server: 35.183.129.131
       type: ss
       udp: true
     - cipher: aes-256-cfb
@@ -28,17 +28,17 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-cfb
-      name: "05-shadowsocks-\U0001F1E8\U0001F1E6CA-16.52.154.170-0414"
+      name: "05-shadowsocks-\U0001F1E8\U0001F1E6CA-15.222.60.36-0412"
       password: amazonskr05
       port: 443
-      server: 16.52.154.170
+      server: 15.222.60.36
       type: ss
       udp: true
     - cipher: aes-256-cfb
-      name: "06-shadowsocks-\U0001F1E8\U0001F1E6CA-35.183.129.131-0416"
+      name: "06-shadowsocks-\U0001F1E8\U0001F1E6CA-16.52.154.170-0414"
       password: amazonskr05
       port: 443
-      server: 35.183.129.131
+      server: 16.52.154.170
       type: ss
       udp: true
     - cipher: rc4-md5
@@ -48,29 +48,41 @@ proxies:
       server: 137.184.174.93
       type: ss
       udp: true
+    - name: "08-vless-\U0001F40F88@oneclickvpnkeys"
+      network: ws
+      port: 8443
+      server: ov-canada1.09vpn.com
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 08f96221-9b7b-4e6f-8ffe-aee8b9c9b504
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - "01-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-4005"
-        - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-15.222.60.36-0412"
+        - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-35.183.129.131-0416"
         - "03-shadowsocks-\U0001F1E8\U0001F1E6CA-35.183.96.211-0413"
         - "04-shadowsocks-\U0001F1E8\U0001F1E6CA-15.157.68.13-0415"
-        - "05-shadowsocks-\U0001F1E8\U0001F1E6CA-16.52.154.170-0414"
-        - "06-shadowsocks-\U0001F1E8\U0001F1E6CA-35.183.129.131-0416"
+        - "05-shadowsocks-\U0001F1E8\U0001F1E6CA-15.222.60.36-0412"
+        - "06-shadowsocks-\U0001F1E8\U0001F1E6CA-16.52.154.170-0414"
         - "07-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0084"
+        - "08-vless-\U0001F40F88@oneclickvpnkeys"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - "01-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-4005"
-        - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-15.222.60.36-0412"
+        - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-35.183.129.131-0416"
         - "03-shadowsocks-\U0001F1E8\U0001F1E6CA-35.183.96.211-0413"
         - "04-shadowsocks-\U0001F1E8\U0001F1E6CA-15.157.68.13-0415"
-        - "05-shadowsocks-\U0001F1E8\U0001F1E6CA-16.52.154.170-0414"
-        - "06-shadowsocks-\U0001F1E8\U0001F1E6CA-35.183.129.131-0416"
+        - "05-shadowsocks-\U0001F1E8\U0001F1E6CA-15.222.60.36-0412"
+        - "06-shadowsocks-\U0001F1E8\U0001F1E6CA-16.52.154.170-0414"
         - "07-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0084"
+        - "08-vless-\U0001F40F88@oneclickvpnkeys"
       type: select
 rules:
     - MATCH,select
