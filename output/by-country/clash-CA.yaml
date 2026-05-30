@@ -7,7 +7,7 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1E8\U0001F1E6 CA 1"
+      name: "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0079"
       password: shadowsocks
       port: 443
       server: 149.22.95.183
@@ -20,21 +20,30 @@ proxies:
       server: 137.184.174.93
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: "04-shadowsocks-\U0001F1E8\U0001F1E637901 | ⚡️Telegram = t.me/SOSkeyNET"
+      password: amazonskr05
+      port: 443
+      server: 15.157.68.13
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - "01-shadowsocks-\U0001F1FA\U0001F1F8 US 27"
-        - "02-shadowsocks-\U0001F1E8\U0001F1E6 CA 1"
+        - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0079"
         - "03-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0171"
+        - "04-shadowsocks-\U0001F1E8\U0001F1E637901 | ⚡️Telegram = t.me/SOSkeyNET"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - "01-shadowsocks-\U0001F1FA\U0001F1F8 US 27"
-        - "02-shadowsocks-\U0001F1E8\U0001F1E6 CA 1"
+        - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0079"
         - "03-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0171"
+        - "04-shadowsocks-\U0001F1E8\U0001F1E637901 | ⚡️Telegram = t.me/SOSkeyNET"
       type: select
 rules:
     - MATCH,select
