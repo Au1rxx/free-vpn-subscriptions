@@ -1,0 +1,68 @@
+{
+  "outbounds": [
+    {
+      "password": "humanity",
+      "server": "45.130.125.76",
+      "server_port": 443,
+      "tag": "01-trojan-[67601] - Telegram : @V2All",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.calmlunch.com"
+      },
+      "type": "trojan"
+    },
+    {
+      "server": "45.130.125.69",
+      "server_port": 443,
+      "tag": "02-vless-@V2raysCollector",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "mEn.cCnnX.IR"
+      },
+      "type": "vless",
+      "uuid": "v2raydia-channel"
+    },
+    {
+      "password": "humanity",
+      "server": "45.130.125.69",
+      "server_port": 443,
+      "tag": "03-trojan-pythash-cloudflar",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.calmloud.com"
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-trojan-[67601] - Telegram : @V2All",
+        "02-vless-@V2raysCollector",
+        "03-trojan-pythash-cloudflar"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-trojan-[67601] - Telegram : @V2All",
+        "02-vless-@V2raysCollector",
+        "03-trojan-pythash-cloudflar"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
