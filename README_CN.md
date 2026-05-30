@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![节点](https://img.shields.io/badge/节点-118-brightgreen) ![存活](https://img.shields.io/badge/存活-2215-blue) ![中位延迟](https://img.shields.io/badge/中位延迟-118ms-orange) ![更新](https://img.shields.io/badge/更新-2026-05-30_00:30_UTC-informational)
+![节点](https://img.shields.io/badge/节点-109-brightgreen) ![存活](https://img.shields.io/badge/存活-2194-blue) ![中位延迟](https://img.shields.io/badge/中位延迟-109ms-orange) ![更新](https://img.shields.io/badge/更新-2026-05-30_01:36_UTC-informational)
 
 > **获取可用免费 VPN 的最简单方式 —— 复制订阅链接,粘贴到客户端,连上。**  
 > 无需注册。无需付费。无需安装任何二进制。每小时从公共源自动抓取 —— 每个发布的节点都在几分钟前通过 sing-box 真实转发过 HTTP 流量。
@@ -77,9 +77,8 @@ proxy-groups:
 
 | 国家/地区 | 节点数 | Clash | sing-box | v2ray |
 |---|---|---|---|---|
-| 🇺🇸 United States (`US`) | 53 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
-| 🇩🇪 Germany (`DE`) | 7 | [clash-DE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-DE.yaml) | [singbox-DE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-DE.json) | [v2ray-base64-DE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-DE.txt) |
-| 🇸🇨 SC (`SC`) | 4 | [clash-SC.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-SC.yaml) | [singbox-SC.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-SC.json) | [v2ray-base64-SC.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-SC.txt) |
+| 🇺🇸 United States (`US`) | 48 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
+| 🇩🇪 Germany (`DE`) | 8 | [clash-DE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-DE.yaml) | [singbox-DE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-DE.json) | [v2ray-base64-DE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-DE.txt) |
 | 🇨🇭 Switzerland (`CH`) | 3 | [clash-CH.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-CH.yaml) | [singbox-CH.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-CH.json) | [v2ray-base64-CH.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-CH.txt) |
 
 ## 📖 客户端图文教程
@@ -101,15 +100,15 @@ proxy-groups:
 
 ## 📊 实时统计
 
-- **精选节点数**: 118
-- **全源存活总数**: 2215
-- **最快延迟**: 34 ms
-- **中位延迟**: 118 ms
-- **最后更新 (UTC)**: 2026-05-30 00:30 UTC
+- **精选节点数**: 109
+- **全源存活总数**: 2194
+- **最快延迟**: 30 ms
+- **中位延迟**: 109 ms
+- **最后更新 (UTC)**: 2026-05-30 01:36 UTC
 
-**协议分布:** hysteria2 × 1 · shadowsocks × 19 · trojan × 38 · vless × 32 · vmess × 28
+**协议分布:** shadowsocks × 23 · trojan × 24 · vless × 34 · vmess × 28
 
-**本次使用的源:** `barry-far-v2ray` × 23 · `ebrasha-v2ray` × 2 · `epodonios` × 16 · `lagzian-mix` × 1 · `mahdi0024` × 27 · `mahdibland-aggregator` × 6 · `mahdibland-shadowsocks` × 4 · `ninjastrikers` × 33 · `pawdroid` × 1 · `ruking-clash` × 2 · `snakem982` × 1 · `surfboard-eternity` × 2
+**本次使用的源:** `barry-far-v2ray` × 17 · `ebrasha-v2ray` × 1 · `epodonios` × 14 · `mahdi0024` × 26 · `mahdibland-aggregator` × 4 · `mahdibland-shadowsocks` × 6 · `ninjastrikers` × 34 · `pawdroid` × 2 · `ruking-clash` × 3 · `surfboard-eternity` × 2
 
 ## ❓ 常见问题
 
