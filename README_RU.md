@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![узлы](https://img.shields.io/badge/узлы-97-brightgreen) ![живые](https://img.shields.io/badge/живые-2274-blue) ![медиана--rtt](https://img.shields.io/badge/медиана--rtt-153ms-orange) ![обновлено](https://img.shields.io/badge/обновлено-2026-05-31_06:16_UTC-informational)
+![узлы](https://img.shields.io/badge/узлы-93-brightgreen) ![живые](https://img.shields.io/badge/живые-2250-blue) ![медиана--rtt](https://img.shields.io/badge/медиана--rtt-159ms-orange) ![обновлено](https://img.shields.io/badge/обновлено-2026-05-31_07:28_UTC-informational)
 
 > **Самый простой способ получить рабочий бесплатный VPN — скопируйте ссылку подписки, вставьте в клиент, подключитесь.**  
 > Без регистрации. Без оплаты. Без установки каких-либо бинарников. Обновляется каждый час из публичных источников — каждый публикуемый узел несколько минут назад реально пропустил HTTP-трафик через sing-box.
@@ -101,15 +101,15 @@ proxy-groups:
 
 ## 📊 Статистика в реальном времени
 
-- **Выбрано узлов**: 97
-- **Живых во всех источниках**: 2274
-- **RTT самого быстрого узла**: 29 ms
-- **Медиана RTT**: 153 ms
-- **Последнее обновление (UTC)**: 2026-05-31 06:16 UTC
+- **Выбрано узлов**: 93
+- **Живых во всех источниках**: 2250
+- **RTT самого быстрого узла**: 28 ms
+- **Медиана RTT**: 159 ms
+- **Последнее обновление (UTC)**: 2026-05-31 07:28 UTC
 
-**Распределение протоколов:** shadowsocks × 21 · trojan × 28 · vless × 19 · vmess × 29
+**Распределение протоколов:** hysteria2 × 1 · shadowsocks × 23 · trojan × 29 · vless × 12 · vmess × 28
 
-**Источники в этом запуске:** `barry-far-v2ray` × 13 · `ebrasha-v2ray` × 1 · `epodonios` × 12 · `lagzian-mix` × 2 · `mahdi0024` × 27 · `mahdibland-aggregator` × 10 · `mahdibland-shadowsocks` × 7 · `ninjastrikers` × 22 · `pawdroid` × 1 · `surfboard-eternity` × 2
+**Источники в этом запуске:** `barry-far-v2ray` × 18 · `ebrasha-v2ray` × 1 · `epodonios` × 11 · `lagzian-mix` × 3 · `mahdi0024` × 26 · `mahdibland-aggregator` × 9 · `mahdibland-shadowsocks` × 8 · `ninjastrikers` × 15 · `surfboard-eternity` × 2
 
 ## ❓ Часто задаваемые вопросы
 
