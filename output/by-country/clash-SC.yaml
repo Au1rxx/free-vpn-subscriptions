@@ -1,18 +1,17 @@
 proxies:
-    - name: 01-trojan-@FarazV2ray
+    - name: 01-vless-南非 V2CROSS.COM
+      network: ws
+      port: 8880
+      server: 45.192.224.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: 02-trojan-@outline_ir
       password: humanity
       port: 443
       server: 45.130.125.69
-      skip-cert-verify: false
-      sni: www.calmloud.com
-      type: trojan
-      udp: true
-    - name: "02-trojan-\U0001F50A52@oneclickvpnkeys"
-      password: humanity
-      port: 443
-      server: 45.130.125.76
       skip-cert-verify: true
-      sni: www.calmlunch.com
+      sni: www.calmloud.com
       type: trojan
       udp: true
     - name: 03-trojan-t.me/the_phoenixvpn
@@ -23,21 +22,31 @@ proxies:
       sni: www.calmloud.com
       type: trojan
       udp: true
+    - name: 04-trojan-t.me/the_phoenixvpn
+      password: humanity
+      port: 443
+      server: 45.130.125.76
+      skip-cert-verify: true
+      sni: www.calmloud.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-trojan-@FarazV2ray
-        - "02-trojan-\U0001F50A52@oneclickvpnkeys"
+        - 01-vless-南非 V2CROSS.COM
+        - 02-trojan-@outline_ir
         - 03-trojan-t.me/the_phoenixvpn
+        - 04-trojan-t.me/the_phoenixvpn
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-trojan-@FarazV2ray
-        - "02-trojan-\U0001F50A52@oneclickvpnkeys"
+        - 01-vless-南非 V2CROSS.COM
+        - 02-trojan-@outline_ir
         - 03-trojan-t.me/the_phoenixvpn
+        - 04-trojan-t.me/the_phoenixvpn
       type: select
 rules:
     - MATCH,select
