@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![노드](https://img.shields.io/badge/노드-57-brightgreen) ![생존](https://img.shields.io/badge/생존-2512-blue) ![중앙값--rtt](https://img.shields.io/badge/중앙값--rtt-100ms-orange) ![업데이트](https://img.shields.io/badge/업데이트-2026-06-01_18:35_UTC-informational)
+![노드](https://img.shields.io/badge/노드-44-brightgreen) ![생존](https://img.shields.io/badge/생존-2496-blue) ![중앙값--rtt](https://img.shields.io/badge/중앙값--rtt-78ms-orange) ![업데이트](https://img.shields.io/badge/업데이트-2026-06-01_19:21_UTC-informational)
 
 > **작동하는 무료 VPN을 얻는 가장 쉬운 방법 —— 구독 링크를 복사하고 클라이언트에 붙여 넣고 연결하세요.**  
 > 가입 불필요. 결제 불필요. 바이너리 설치 불필요. 공개 소스에서 매시간 자동 갱신 —— 발행되는 모든 노드는 몇 분 전에 sing-box 를 통해 실제 HTTP 트래픽을 전달한 이력이 있습니다.
@@ -77,7 +77,7 @@ proxy-groups:
 
 | 국가 | 노드 수 | Clash | sing-box | v2ray |
 |---|---|---|---|---|
-| 🇺🇸 United States (`US`) | 30 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
+| 🇺🇸 United States (`US`) | 27 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
 | 🇩🇪 Germany (`DE`) | 7 | [clash-DE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-DE.yaml) | [singbox-DE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-DE.json) | [v2ray-base64-DE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-DE.txt) |
 
 ## 📖 클라이언트 설정 가이드
@@ -99,15 +99,15 @@ proxy-groups:
 
 ## 📊 실시간 통계
 
-- **선정된 노드**: 57
-- **전체 소스 생존 수**: 2512
-- **최고 속도 RTT**: 33 ms
-- **중앙값 RTT**: 100 ms
-- **최종 업데이트 (UTC)**: 2026-06-01 18:35 UTC
+- **선정된 노드**: 44
+- **전체 소스 생존 수**: 2496
+- **최고 속도 RTT**: 32 ms
+- **중앙값 RTT**: 78 ms
+- **최종 업데이트 (UTC)**: 2026-06-01 19:21 UTC
 
-**프로토콜 분포:** shadowsocks × 16 · trojan × 16 · vless × 7 · vmess × 18
+**프로토콜 분포:** shadowsocks × 15 · trojan × 10 · vless × 3 · vmess × 16
 
-**이번 실행에 사용된 소스:** `barry-far-v2ray` × 7 · `ebrasha-v2ray` × 1 · `epodonios` × 11 · `mahdi0024` × 18 · `mahdibland-aggregator` × 3 · `mahdibland-shadowsocks` × 6 · `ninjastrikers` × 5 · `pawdroid` × 4 · `surfboard-eternity` × 2
+**이번 실행에 사용된 소스:** `barry-far-v2ray` × 5 · `ebrasha-v2ray` × 1 · `epodonios` × 7 · `lagzian-mix` × 1 · `mahdi0024` × 16 · `mahdibland-aggregator` × 3 · `mahdibland-shadowsocks` × 6 · `ninjastrikers` × 4 · `surfboard-eternity` × 1
 
 ## ❓ 자주 묻는 질문
 
