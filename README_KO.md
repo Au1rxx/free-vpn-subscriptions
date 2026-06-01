@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![노드](https://img.shields.io/badge/노드-101-brightgreen) ![생존](https://img.shields.io/badge/생존-2410-blue) ![중앙값--rtt](https://img.shields.io/badge/중앙값--rtt-115ms-orange) ![업데이트](https://img.shields.io/badge/업데이트-2026-06-01_05:13_UTC-informational)
+![노드](https://img.shields.io/badge/노드-92-brightgreen) ![생존](https://img.shields.io/badge/생존-2406-blue) ![중앙값--rtt](https://img.shields.io/badge/중앙값--rtt-118ms-orange) ![업데이트](https://img.shields.io/badge/업데이트-2026-06-01_06:09_UTC-informational)
 
 > **작동하는 무료 VPN을 얻는 가장 쉬운 방법 —— 구독 링크를 복사하고 클라이언트에 붙여 넣고 연결하세요.**  
 > 가입 불필요. 결제 불필요. 바이너리 설치 불필요. 공개 소스에서 매시간 자동 갱신 —— 발행되는 모든 노드는 몇 분 전에 sing-box 를 통해 실제 HTTP 트래픽을 전달한 이력이 있습니다.
@@ -101,15 +101,15 @@ proxy-groups:
 
 ## 📊 실시간 통계
 
-- **선정된 노드**: 101
-- **전체 소스 생존 수**: 2410
-- **최고 속도 RTT**: 35 ms
-- **중앙값 RTT**: 115 ms
-- **최종 업데이트 (UTC)**: 2026-06-01 05:13 UTC
+- **선정된 노드**: 92
+- **전체 소스 생존 수**: 2406
+- **최고 속도 RTT**: 28 ms
+- **중앙값 RTT**: 118 ms
+- **최종 업데이트 (UTC)**: 2026-06-01 06:09 UTC
 
-**프로토콜 분포:** shadowsocks × 21 · trojan × 21 · vless × 23 · vmess × 36
+**프로토콜 분포:** shadowsocks × 21 · trojan × 20 · vless × 15 · vmess × 36
 
-**이번 실행에 사용된 소스:** `barry-far-v2ray` × 11 · `epodonios` × 9 · `lagzian-mix` × 2 · `mahdi0024` × 30 · `mahdibland-aggregator` × 6 · `mahdibland-shadowsocks` × 11 · `matin-v2ray` × 1 · `ninjastrikers` × 29 · `surfboard-eternity` × 2
+**이번 실행에 사용된 소스:** `barry-far-v2ray` × 11 · `ebrasha-v2ray` × 1 · `epodonios` × 13 · `lagzian-mix` × 4 · `mahdi0024` × 29 · `mahdibland-aggregator` × 4 · `mahdibland-shadowsocks` × 6 · `ninjastrikers` × 18 · `pawdroid` × 2 · `snakem982` × 1 · `surfboard-eternity` × 3
 
 ## ❓ 자주 묻는 질문
 

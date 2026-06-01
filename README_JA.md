@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![ノード](https://img.shields.io/badge/ノード-101-brightgreen) ![生存](https://img.shields.io/badge/生存-2410-blue) ![中央値--rtt](https://img.shields.io/badge/中央値--rtt-115ms-orange) ![更新](https://img.shields.io/badge/更新-2026-06-01_05:13_UTC-informational)
+![ノード](https://img.shields.io/badge/ノード-92-brightgreen) ![生存](https://img.shields.io/badge/生存-2406-blue) ![中央値--rtt](https://img.shields.io/badge/中央値--rtt-118ms-orange) ![更新](https://img.shields.io/badge/更新-2026-06-01_06:09_UTC-informational)
 
 > **動作する無料 VPN を手に入れる一番かんたんな方法 —— 購読リンクをコピーしてクライアントに貼るだけ。**  
 > 登録不要。支払い不要。バイナリのインストール不要。公開ソースから毎時自動更新 —— 公開される全ノードは、数分前に sing-box 経由で実 HTTP トラフィックを転送した実績があります。
@@ -101,15 +101,15 @@ proxy-groups:
 
 ## 📊 リアルタイム統計
 
-- **選定ノード**: 101
-- **全ソース生存数**: 2410
-- **最速 RTT**: 35 ms
-- **中央値 RTT**: 115 ms
-- **最終更新 (UTC)**: 2026-06-01 05:13 UTC
+- **選定ノード**: 92
+- **全ソース生存数**: 2406
+- **最速 RTT**: 28 ms
+- **中央値 RTT**: 118 ms
+- **最終更新 (UTC)**: 2026-06-01 06:09 UTC
 
-**プロトコル構成:** shadowsocks × 21 · trojan × 21 · vless × 23 · vmess × 36
+**プロトコル構成:** shadowsocks × 21 · trojan × 20 · vless × 15 · vmess × 36
 
-**今回使用したソース:** `barry-far-v2ray` × 11 · `epodonios` × 9 · `lagzian-mix` × 2 · `mahdi0024` × 30 · `mahdibland-aggregator` × 6 · `mahdibland-shadowsocks` × 11 · `matin-v2ray` × 1 · `ninjastrikers` × 29 · `surfboard-eternity` × 2
+**今回使用したソース:** `barry-far-v2ray` × 11 · `ebrasha-v2ray` × 1 · `epodonios` × 13 · `lagzian-mix` × 4 · `mahdi0024` × 29 · `mahdibland-aggregator` × 4 · `mahdibland-shadowsocks` × 6 · `ninjastrikers` × 18 · `pawdroid` × 2 · `snakem982` × 1 · `surfboard-eternity` × 3
 
 ## ❓ よくある質問
 
