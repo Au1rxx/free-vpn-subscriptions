@@ -1,0 +1,68 @@
+{
+  "outbounds": [
+    {
+      "server": "45.130.125.160",
+      "server_port": 443,
+      "tag": "01-vless-美国 V2CROSS.COM",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "partner.catchplay.com.cyylr.eu.cc"
+      },
+      "type": "vless",
+      "uuid": "8ad2869d-1571-45cc-8d02-10aea6d600ac"
+    },
+    {
+      "password": "humanity",
+      "server": "45.130.125.69",
+      "server_port": 443,
+      "tag": "02-trojan-@v2reya88 | @confinghub2",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.calmloud.com"
+      },
+      "type": "trojan"
+    },
+    {
+      "password": "humanity",
+      "server": "45.130.125.76",
+      "server_port": 443,
+      "tag": "03-trojan-@Filtershekan_channel |2",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.calmloud.com"
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-vless-美国 V2CROSS.COM",
+        "02-trojan-@v2reya88 | @confinghub2",
+        "03-trojan-@Filtershekan_channel |2"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-vless-美国 V2CROSS.COM",
+        "02-trojan-@v2reya88 | @confinghub2",
+        "03-trojan-@Filtershekan_channel |2"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

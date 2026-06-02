@@ -1,0 +1,61 @@
+{
+  "outbounds": [
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "hbGrpfvNrJsUmKmPbR3iY2",
+      "server": "tinkered-pennies-puppies.freesocks.work",
+      "server_port": 443,
+      "tag": "01-shadowsocks-🇺🇸 US美国(mibei77.com 米贝节点分享)",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "hbGrpfvNrJsUmKmPbR3iY2",
+      "server": "147.90.234.133",
+      "server_port": 443,
+      "tag": "02-shadowsocks-🇺🇸 US 15",
+      "type": "shadowsocks"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "150.251.158.76",
+      "server_port": 443,
+      "tag": "03-vless-🇧🇪 比利时 | BEL",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "s646.okgg.top"
+      },
+      "type": "vless",
+      "uuid": "10550754-cf62-3d3b-ba6a-50be27a275d7"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-shadowsocks-🇺🇸 US美国(mibei77.com 米贝节点分享)",
+        "02-shadowsocks-🇺🇸 US 15",
+        "03-vless-🇧🇪 比利时 | BEL"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-shadowsocks-🇺🇸 US美国(mibei77.com 米贝节点分享)",
+        "02-shadowsocks-🇺🇸 US 15",
+        "03-vless-🇧🇪 比利时 | BEL"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
