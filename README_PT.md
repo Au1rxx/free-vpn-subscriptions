@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![nós](https://img.shields.io/badge/nós-100-brightgreen) ![ativos](https://img.shields.io/badge/ativos-1951-blue) ![rtt--mediano](https://img.shields.io/badge/rtt--mediano-156ms-orange) ![atualizado](https://img.shields.io/badge/atualizado-2026-06-04_06:14_UTC-informational)
+![nós](https://img.shields.io/badge/nós-98-brightgreen) ![ativos](https://img.shields.io/badge/ativos-1922-blue) ![rtt--mediano](https://img.shields.io/badge/rtt--mediano-166ms-orange) ![atualizado](https://img.shields.io/badge/atualizado-2026-06-04_07:38_UTC-informational)
 
 > **A forma mais fácil de obter uma VPN gratuita funcional — copie um link de assinatura, cole no seu cliente, conecte.**  
 > Sem cadastro. Sem pagamento. Sem instalar nenhum binário. Atualizado a cada hora a partir de fontes públicas — cada nó publicado encaminhou tráfego HTTP real através do sing-box minutos atrás.
@@ -101,15 +101,15 @@ Novo nos clientes VPN? Escolha sua plataforma e siga o tutorial:
 
 ## 📊 Estatísticas ao vivo
 
-- **Nós selecionados**: 100
-- **Ativos em todas as fontes**: 1951
-- **RTT do nó mais rápido**: 30 ms
-- **RTT mediano**: 156 ms
-- **Última atualização (UTC)**: 2026-06-04 06:14 UTC
+- **Nós selecionados**: 98
+- **Ativos em todas as fontes**: 1922
+- **RTT do nó mais rápido**: 28 ms
+- **RTT mediano**: 166 ms
+- **Última atualização (UTC)**: 2026-06-04 07:38 UTC
 
-**Mix de protocolos:** shadowsocks × 23 · trojan × 46 · vless × 24 · vmess × 7
+**Mix de protocolos:** shadowsocks × 24 · trojan × 46 · vless × 21 · vmess × 7
 
-**Fontes usadas nesta execução:** `barry-far-v2ray` × 28 · `epodonios` × 26 · `lagzian-mix` × 2 · `mahdi0024` × 9 · `mahdibland-aggregator` × 3 · `mahdibland-shadowsocks` × 8 · `matin-v2ray` × 2 · `ninjastrikers` × 18 · `pawdroid` × 2 · `surfboard-eternity` × 2
+**Fontes usadas nesta execução:** `barry-far-v2ray` × 28 · `epodonios` × 29 · `lagzian-mix` × 1 · `mahdi0024` × 9 · `mahdibland-aggregator` × 7 · `mahdibland-shadowsocks` × 5 · `matin-v2ray` × 1 · `ninjastrikers` × 14 · `pawdroid` × 1 · `snakem982` × 1 · `surfboard-eternity` × 2
 
 ## ❓ Perguntas frequentes
 
