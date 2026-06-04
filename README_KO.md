@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![노드](https://img.shields.io/badge/노드-105-brightgreen) ![생존](https://img.shields.io/badge/생존-1936-blue) ![중앙값--rtt](https://img.shields.io/badge/중앙값--rtt-231ms-orange) ![업데이트](https://img.shields.io/badge/업데이트-2026-06-04_13:25_UTC-informational)
+![노드](https://img.shields.io/badge/노드-104-brightgreen) ![생존](https://img.shields.io/badge/생존-2003-blue) ![중앙값--rtt](https://img.shields.io/badge/중앙값--rtt-177ms-orange) ![업데이트](https://img.shields.io/badge/업데이트-2026-06-04_14:20_UTC-informational)
 
 > **작동하는 무료 VPN을 얻는 가장 쉬운 방법 —— 구독 링크를 복사하고 클라이언트에 붙여 넣고 연결하세요.**  
 > 가입 불필요. 결제 불필요. 바이너리 설치 불필요. 공개 소스에서 매시간 자동 갱신 —— 발행되는 모든 노드는 몇 분 전에 sing-box 를 통해 실제 HTTP 트래픽을 전달한 이력이 있습니다.
@@ -79,8 +79,8 @@ proxy-groups:
 |---|---|---|---|---|
 | 🇺🇸 United States (`US`) | 37 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
 | 🇸🇨 SC (`SC`) | 9 | [clash-SC.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-SC.yaml) | [singbox-SC.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-SC.json) | [v2ray-base64-SC.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-SC.txt) |
-| 🇩🇪 Germany (`DE`) | 7 | [clash-DE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-DE.yaml) | [singbox-DE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-DE.json) | [v2ray-base64-DE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-DE.txt) |
-| 🇨🇦 Canada (`CA`) | 4 | [clash-CA.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-CA.yaml) | [singbox-CA.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-CA.json) | [v2ray-base64-CA.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-CA.txt) |
+| 🇩🇪 Germany (`DE`) | 8 | [clash-DE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-DE.yaml) | [singbox-DE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-DE.json) | [v2ray-base64-DE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-DE.txt) |
+| 🇨🇦 Canada (`CA`) | 3 | [clash-CA.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-CA.yaml) | [singbox-CA.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-CA.json) | [v2ray-base64-CA.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-CA.txt) |
 
 ## 📖 클라이언트 설정 가이드
 
@@ -101,15 +101,15 @@ proxy-groups:
 
 ## 📊 실시간 통계
 
-- **선정된 노드**: 105
-- **전체 소스 생존 수**: 1936
-- **최고 속도 RTT**: 27 ms
-- **중앙값 RTT**: 231 ms
-- **최종 업데이트 (UTC)**: 2026-06-04 13:25 UTC
+- **선정된 노드**: 104
+- **전체 소스 생존 수**: 2003
+- **최고 속도 RTT**: 29 ms
+- **중앙값 RTT**: 177 ms
+- **최종 업데이트 (UTC)**: 2026-06-04 14:20 UTC
 
-**프로토콜 분포:** shadowsocks × 25 · trojan × 55 · vless × 18 · vmess × 7
+**프로토콜 분포:** shadowsocks × 23 · trojan × 54 · vless × 19 · vmess × 8
 
-**이번 실행에 사용된 소스:** `barry-far-v2ray` × 39 · `epodonios` × 25 · `lagzian-mix` × 3 · `mahdi0024` × 12 · `mahdibland-aggregator` × 5 · `mahdibland-shadowsocks` × 2 · `matin-v2ray` × 2 · `ninjastrikers` × 11 · `pawdroid` × 3 · `ruking-clash` × 1 · `surfboard-eternity` × 2
+**이번 실행에 사용된 소스:** `barry-far-v2ray` × 39 · `epodonios` × 29 · `lagzian-mix` × 2 · `mahdi0024` × 10 · `mahdibland-aggregator` × 1 · `mahdibland-shadowsocks` × 5 · `ninjastrikers` × 9 · `pawdroid` × 2 · `ruking-clash` × 2 · `surfboard-eternity` × 5
 
 ## ❓ 자주 묻는 질문
 
