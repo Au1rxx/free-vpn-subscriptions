@@ -1,0 +1,53 @@
+proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-055"
+      password: hbGrpfvNrJsUmKmPbR3iY2
+      port: 443
+      server: tinkered-pennies-puppies.freesocks.work
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "02-shadowsocks-\U0001F1FA\U0001F1F8 US 66"
+      password: hbGrpfvNrJsUmKmPbR3iY2
+      port: 443
+      server: 147.90.234.133
+      type: ss
+      udp: true
+    - name: "03-hysteria2-\U0001F7E2\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_4fcb3845"
+      password: 10550754-cf62-3d3b-ba6a-50be27a275d7
+      port: 443
+      server: 150.251.158.76
+      skip-cert-verify: false
+      sni: s647.okgg.top
+      type: hysteria2
+    - flow: xtls-rprx-vision
+      name: "04-vless-\U0001F1E7\U0001F1EA 比利时 | BEL"
+      network: tcp
+      port: 443
+      server: 150.251.158.76
+      servername: s646.okgg.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 10550754-cf62-3d3b-ba6a-50be27a275d7
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-055"
+        - "02-shadowsocks-\U0001F1FA\U0001F1F8 US 66"
+        - "03-hysteria2-\U0001F7E2\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_4fcb3845"
+        - "04-vless-\U0001F1E7\U0001F1EA 比利时 | BEL"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-055"
+        - "02-shadowsocks-\U0001F1FA\U0001F1F8 US 66"
+        - "03-hysteria2-\U0001F7E2\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_4fcb3845"
+        - "04-vless-\U0001F1E7\U0001F1EA 比利时 | BEL"
+      type: select
+rules:
+    - MATCH,select
