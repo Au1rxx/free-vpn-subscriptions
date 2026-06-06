@@ -1,13 +1,5 @@
 proxies:
-    - name: 01-trojan-node
-      password: humanity
-      port: 443
-      server: 45.130.125.160
-      skip-cert-verify: false
-      sni: www.calmlunch.com
-      type: trojan
-      udp: true
-    - name: 02-trojan-未知20
+    - name: 01-trojan-未知20
       password: humanity
       port: 443
       server: 45.130.125.0
@@ -15,7 +7,7 @@ proxies:
       sni: www.calmloud.com
       type: trojan
       udp: true
-    - name: 03-trojan-未知17
+    - name: 02-trojan-未知17
       password: humanity
       port: 443
       server: 45.130.125.96
@@ -23,21 +15,29 @@ proxies:
       sni: www.calmloud.com
       type: trojan
       udp: true
+    - name: 03-trojan-node
+      password: humanity
+      port: 443
+      server: 45.130.125.160
+      skip-cert-verify: false
+      sni: www.ignitelimit.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-trojan-node
-        - 02-trojan-未知20
-        - 03-trojan-未知17
+        - 01-trojan-未知20
+        - 02-trojan-未知17
+        - 03-trojan-node
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-trojan-node
-        - 02-trojan-未知20
-        - 03-trojan-未知17
+        - 01-trojan-未知20
+        - 02-trojan-未知17
+        - 03-trojan-node
       type: select
 rules:
     - MATCH,select
