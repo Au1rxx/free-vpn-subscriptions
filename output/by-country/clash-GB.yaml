@@ -1,0 +1,61 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "01-vless-\U0001F1EF\U0001F1F5 JP 5"
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: QVkd5uoSbUA7rHVLtIoJB4iRp4l0zuw0H9qzQBh3lHs
+        short-id: 7a3f9e2b1c8d4f6a
+      server: 31.76.91.24
+      servername: jp.s3-cloud.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: dfc0cb9d-f005-41b0-848c-7703bd39d0de
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "02-vless-\U0001F1EF\U0001F1F5 JP 3"
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: QVkd5uoSbUA7rHVLtIoJB4iRp4l0zuw0H9qzQBh3lHs
+        short-id: 7a3f9e2b1c8d4f6a
+      server: 31.76.91.34
+      servername: jp.s3-cloud.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: dfc0cb9d-f005-41b0-848c-7703bd39d0de
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "03-vless-\U0001F1EF\U0001F1F5 JP 14"
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: QVkd5uoSbUA7rHVLtIoJB4iRp4l0zuw0H9qzQBh3lHs
+        short-id: 7a3f9e2b1c8d4f6a
+      server: 31.76.91.12
+      servername: jp.s3-cloud.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: dfc0cb9d-f005-41b0-848c-7703bd39d0de
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-vless-\U0001F1EF\U0001F1F5 JP 5"
+        - "02-vless-\U0001F1EF\U0001F1F5 JP 3"
+        - "03-vless-\U0001F1EF\U0001F1F5 JP 14"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-vless-\U0001F1EF\U0001F1F5 JP 5"
+        - "02-vless-\U0001F1EF\U0001F1F5 JP 3"
+        - "03-vless-\U0001F1EF\U0001F1F5 JP 14"
+      type: select
+rules:
+    - MATCH,select
