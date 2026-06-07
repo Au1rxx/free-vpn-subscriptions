@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![节点](https://img.shields.io/badge/节点-92-brightgreen) ![存活](https://img.shields.io/badge/存活-2147-blue) ![中位延迟](https://img.shields.io/badge/中位延迟-173ms-orange) ![更新](https://img.shields.io/badge/更新-2026-06-07_12:11_UTC-informational)
+![节点](https://img.shields.io/badge/节点-93-brightgreen) ![存活](https://img.shields.io/badge/存活-2141-blue) ![中位延迟](https://img.shields.io/badge/中位延迟-177ms-orange) ![更新](https://img.shields.io/badge/更新-2026-06-07_13:21_UTC-informational)
 
 > **获取可用免费 VPN 的最简单方式 —— 复制订阅链接,粘贴到客户端,连上。**  
 > 无需注册。无需付费。无需安装任何二进制。每小时从公共源自动抓取 —— 每个发布的节点都在几分钟前通过 sing-box 真实转发过 HTTP 流量。
@@ -77,7 +77,7 @@ proxy-groups:
 
 | 国家/地区 | 节点数 | Clash | sing-box | v2ray |
 |---|---|---|---|---|
-| 🇺🇸 United States (`US`) | 40 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
+| 🇺🇸 United States (`US`) | 39 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
 | 🇨🇦 Canada (`CA`) | 7 | [clash-CA.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-CA.yaml) | [singbox-CA.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-CA.json) | [v2ray-base64-CA.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-CA.txt) |
 | 🇬🇧 United Kingdom (`GB`) | 7 | [clash-GB.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-GB.yaml) | [singbox-GB.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-GB.json) | [v2ray-base64-GB.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-GB.txt) |
 | 🇯🇵 Japan (`JP`) | 7 | [clash-JP.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-JP.yaml) | [singbox-JP.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-JP.json) | [v2ray-base64-JP.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-JP.txt) |
@@ -102,15 +102,15 @@ proxy-groups:
 
 ## 📊 实时统计
 
-- **精选节点数**: 92
-- **全源存活总数**: 2147
-- **最快延迟**: 28 ms
-- **中位延迟**: 173 ms
-- **最后更新 (UTC)**: 2026-06-07 12:11 UTC
+- **精选节点数**: 93
+- **全源存活总数**: 2141
+- **最快延迟**: 29 ms
+- **中位延迟**: 177 ms
+- **最后更新 (UTC)**: 2026-06-07 13:21 UTC
 
-**协议分布:** shadowsocks × 37 · trojan × 23 · vless × 9 · vmess × 23
+**协议分布:** hysteria2 × 1 · shadowsocks × 36 · trojan × 23 · vless × 9 · vmess × 24
 
-**本次使用的源:** `barry-far-v2ray` × 8 · `epodonios` × 6 · `lagzian-mix` × 2 · `mahdi0024` × 32 · `mahdibland-aggregator` × 14 · `mahdibland-shadowsocks` × 8 · `mfuu-clash` × 1 · `ninjastrikers` × 12 · `pawdroid` × 1 · `ruking-clash` × 3 · `surfboard-eternity` × 5
+**本次使用的源:** `barry-far-v2ray` × 5 · `ebrasha-v2ray` × 1 · `epodonios` × 9 · `lagzian-mix` × 3 · `mahdi0024` × 35 · `mahdibland-aggregator` × 10 · `mahdibland-shadowsocks` × 9 · `matin-v2ray` × 2 · `ninjastrikers` × 13 · `pawdroid` × 1 · `ruking-clash` × 1 · `surfboard-eternity` × 4
 
 ## ❓ 常见问题
 

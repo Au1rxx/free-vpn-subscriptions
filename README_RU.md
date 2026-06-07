@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![узлы](https://img.shields.io/badge/узлы-92-brightgreen) ![живые](https://img.shields.io/badge/живые-2147-blue) ![медиана--rtt](https://img.shields.io/badge/медиана--rtt-173ms-orange) ![обновлено](https://img.shields.io/badge/обновлено-2026-06-07_12:11_UTC-informational)
+![узлы](https://img.shields.io/badge/узлы-93-brightgreen) ![живые](https://img.shields.io/badge/живые-2141-blue) ![медиана--rtt](https://img.shields.io/badge/медиана--rtt-177ms-orange) ![обновлено](https://img.shields.io/badge/обновлено-2026-06-07_13:21_UTC-informational)
 
 > **Самый простой способ получить рабочий бесплатный VPN — скопируйте ссылку подписки, вставьте в клиент, подключитесь.**  
 > Без регистрации. Без оплаты. Без установки каких-либо бинарников. Обновляется каждый час из публичных источников — каждый публикуемый узел несколько минут назад реально пропустил HTTP-трафик через sing-box.
@@ -77,7 +77,7 @@ proxy-groups:
 
 | Страна | Узлов | Clash | sing-box | v2ray |
 |---|---|---|---|---|
-| 🇺🇸 United States (`US`) | 40 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
+| 🇺🇸 United States (`US`) | 39 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
 | 🇨🇦 Canada (`CA`) | 7 | [clash-CA.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-CA.yaml) | [singbox-CA.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-CA.json) | [v2ray-base64-CA.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-CA.txt) |
 | 🇬🇧 United Kingdom (`GB`) | 7 | [clash-GB.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-GB.yaml) | [singbox-GB.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-GB.json) | [v2ray-base64-GB.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-GB.txt) |
 | 🇯🇵 Japan (`JP`) | 7 | [clash-JP.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-JP.yaml) | [singbox-JP.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-JP.json) | [v2ray-base64-JP.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-JP.txt) |
@@ -102,15 +102,15 @@ proxy-groups:
 
 ## 📊 Статистика в реальном времени
 
-- **Выбрано узлов**: 92
-- **Живых во всех источниках**: 2147
-- **RTT самого быстрого узла**: 28 ms
-- **Медиана RTT**: 173 ms
-- **Последнее обновление (UTC)**: 2026-06-07 12:11 UTC
+- **Выбрано узлов**: 93
+- **Живых во всех источниках**: 2141
+- **RTT самого быстрого узла**: 29 ms
+- **Медиана RTT**: 177 ms
+- **Последнее обновление (UTC)**: 2026-06-07 13:21 UTC
 
-**Распределение протоколов:** shadowsocks × 37 · trojan × 23 · vless × 9 · vmess × 23
+**Распределение протоколов:** hysteria2 × 1 · shadowsocks × 36 · trojan × 23 · vless × 9 · vmess × 24
 
-**Источники в этом запуске:** `barry-far-v2ray` × 8 · `epodonios` × 6 · `lagzian-mix` × 2 · `mahdi0024` × 32 · `mahdibland-aggregator` × 14 · `mahdibland-shadowsocks` × 8 · `mfuu-clash` × 1 · `ninjastrikers` × 12 · `pawdroid` × 1 · `ruking-clash` × 3 · `surfboard-eternity` × 5
+**Источники в этом запуске:** `barry-far-v2ray` × 5 · `ebrasha-v2ray` × 1 · `epodonios` × 9 · `lagzian-mix` × 3 · `mahdi0024` × 35 · `mahdibland-aggregator` × 10 · `mahdibland-shadowsocks` × 9 · `matin-v2ray` × 2 · `ninjastrikers` × 13 · `pawdroid` × 1 · `ruking-clash` × 1 · `surfboard-eternity` × 4
 
 ## ❓ Часто задаваемые вопросы
 
