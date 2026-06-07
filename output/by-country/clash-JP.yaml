@@ -1,20 +1,20 @@
 proxies:
     - cipher: aes-256-gcm
-      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-47.79.144.115-0161"
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5 JP 11"
       password: GTZI5AbjNAeWQG0oVNptvWJogHNKiiKA
       port: 40003
       server: 47.79.144.115
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0101"
       password: shadowsocks
       port: 443
       server: 149.22.87.204
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0099"
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
       password: shadowsocks
       port: 443
       server: 149.22.87.240
@@ -43,7 +43,15 @@ proxies:
       server: 103.106.228.175
       type: ss
       udp: true
-    - name: 07-vless-日本 东京Fastly节点
+    - name: "07-trojan-\U0001F1EF\U0001F1F5 JP 8"
+      password: tsuchiya
+      port: 443
+      server: 161.34.39.108
+      skip-cert-verify: false
+      sni: aa.ccmusic.jp
+      type: trojan
+      udp: true
+    - name: "08-vless-\U0001D5DD\U0001D5FC\U0001D5F6\U0001D5FB ➠ @MoOon_proxy 2"
       network: ws
       port: 443
       server: 151.101.108.223
@@ -52,30 +60,32 @@ proxies:
       tls: true
       type: vless
       udp: true
-      uuid: 98c9f668-1f2f-4a6d-bd7a-606fab0ac035
+      uuid: fdab366a-367e-4996-ae05-aebd594f92dc
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-47.79.144.115-0161"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0099"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5 JP 11"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0101"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
         - "04-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0100"
         - "05-vmess-\U0001F1EF\U0001F1F5 JP 6"
         - "06-shadowsocks-\U0001F1EF\U0001F1F5JP-103.106.228.175-0104"
-        - 07-vless-日本 东京Fastly节点
+        - "07-trojan-\U0001F1EF\U0001F1F5 JP 8"
+        - "08-vless-\U0001D5DD\U0001D5FC\U0001D5F6\U0001D5FB ➠ @MoOon_proxy 2"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-47.79.144.115-0161"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0099"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5 JP 11"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0101"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
         - "04-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0100"
         - "05-vmess-\U0001F1EF\U0001F1F5 JP 6"
         - "06-shadowsocks-\U0001F1EF\U0001F1F5JP-103.106.228.175-0104"
-        - 07-vless-日本 东京Fastly节点
+        - "07-trojan-\U0001F1EF\U0001F1F5 JP 8"
+        - "08-vless-\U0001D5DD\U0001D5FC\U0001D5F6\U0001D5FB ➠ @MoOon_proxy 2"
       type: select
 rules:
     - MATCH,select
