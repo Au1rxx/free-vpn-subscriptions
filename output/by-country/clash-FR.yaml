@@ -1,12 +1,19 @@
 proxies:
     - cipher: aes-256-gcm
-      name: "01-shadowsocks-\U0001F1EB\U0001F1F7FR-51.254.128.106-0072"
+      name: 01-shadowsocks-@iguanaVPN [1]
       password: FjG3IPbny+0ZYU4/p1vULP84GcKpGoZpWKAay16VhIw=
       port: 2083
       server: 51.254.128.106
       type: ss
       udp: true
-    - name: "02-trojan-\U0001F1EB\U0001F1F7FR-217.69.2.107-0076"
+    - name: "02-hysteria2- By EbraSha \U0001FA90"
+      password: dongtaiwang.com
+      port: 22000
+      server: 62.210.124.146
+      skip-cert-verify: true
+      sni: www.microsoft.com
+      type: hysteria2
+    - name: "03-trojan-\U0001F1EB\U0001F1F7FR-217.69.2.107-0076"
       password: YGWIMlg.W1wRWQkRDcKfjZY7sng09aC=Yh
       port: 443
       server: 217.69.2.107
@@ -14,9 +21,19 @@ proxies:
       sni: www.weavenet.click
       type: trojan
       udp: true
+    - name: 04-vless-@v2raybaaz (3)
+      network: tcp
+      port: 8443
+      server: 79.127.196.11
+      servername: cdg-1.fromblancwithlove.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 55f7d143-a594-4a91-b030-f227039f85ef
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: "03-vless-\U0001F534\U0001F1EB\U0001F1F7[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_397f6327"
+      name: "05-vless-\U0001F534\U0001F1EB\U0001F1F7[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_397f6327"
       network: raw
       port: 15469
       reality-opts:
@@ -32,17 +49,21 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1EB\U0001F1F7FR-51.254.128.106-0072"
-        - "02-trojan-\U0001F1EB\U0001F1F7FR-217.69.2.107-0076"
-        - "03-vless-\U0001F534\U0001F1EB\U0001F1F7[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_397f6327"
+        - 01-shadowsocks-@iguanaVPN [1]
+        - "02-hysteria2- By EbraSha \U0001FA90"
+        - "03-trojan-\U0001F1EB\U0001F1F7FR-217.69.2.107-0076"
+        - 04-vless-@v2raybaaz (3)
+        - "05-vless-\U0001F534\U0001F1EB\U0001F1F7[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_397f6327"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1EB\U0001F1F7FR-51.254.128.106-0072"
-        - "02-trojan-\U0001F1EB\U0001F1F7FR-217.69.2.107-0076"
-        - "03-vless-\U0001F534\U0001F1EB\U0001F1F7[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_397f6327"
+        - 01-shadowsocks-@iguanaVPN [1]
+        - "02-hysteria2- By EbraSha \U0001FA90"
+        - "03-trojan-\U0001F1EB\U0001F1F7FR-217.69.2.107-0076"
+        - 04-vless-@v2raybaaz (3)
+        - "05-vless-\U0001F534\U0001F1EB\U0001F1F7[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_397f6327"
       type: select
 rules:
     - MATCH,select
