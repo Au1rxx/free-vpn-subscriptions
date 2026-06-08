@@ -1,21 +1,45 @@
 proxies:
     - alterId: 0
       cipher: auto
-      name: "01-vmess-\U0001F534\U0001F1FA\U0001F1F8[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_8f3cfa4f"
+      name: "01-vmess-\U0001F1EC\U0001F1E7 英国 V2CROSS.COM"
       network: tcp
       port: 180
       server: 82.198.246.214
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+    - alterId: 0
+      cipher: auto
+      name: "02-vmess-\U0001F1EC\U0001F1E7GB英国"
+      network: tcp
+      port: 180
+      server: 82.198.246.250
+      type: vmess
+      udp: true
+      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+    - cipher: aes-256-gcm
+      name: "03-shadowsocks-\U0001F4C01@oneclickvpnkeys"
+      password: a742bd85-0f97-42bd-891f-aa00dbd1a461
+      port: 443
+      server: 84.200.91.158
+      type: ss
+      udp: true
     - cipher: 2022-blake3-aes-256-gcm
-      name: 02-shadowsocks-@VPsave
+      name: 04-shadowsocks-@AarazV2ray
       password: dyL+KqX8hIMn+UyADwSJOPm72A0A83TsDOFXBn6I2mA=
       port: 23997
       server: 49.13.3.249
       type: ss
       udp: true
-    - name: 03-vless-v2ray_dalghak
+    - name: "05-trojan-\U0001F1F7\U0001F1F4RO罗马尼亚 1.2MB/s"
+      password: hxn2jK9Uzezogua0oHuq9Y8viN=UCe.2Jd
+      port: 443
+      server: 185.137.157.254
+      skip-cert-verify: false
+      sni: www.directorypipeline.click
+      type: trojan
+      udp: true
+    - name: 06-vless-v2ray_dalghak
       network: tcp
       port: 8443
       server: 152.233.35.228
@@ -26,7 +50,7 @@ proxies:
       udp: true
       uuid: 394f6981-a782-4779-9a85-e6cf22935d93
     - cipher: aes-256-gcm
-      name: "04-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0154"
+      name: "07-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0154"
       password: RexnBgU7EV5ADxG
       port: 7001
       server: 213.202.208.199
@@ -36,19 +60,25 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-vmess-\U0001F534\U0001F1FA\U0001F1F8[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_8f3cfa4f"
-        - 02-shadowsocks-@VPsave
-        - 03-vless-v2ray_dalghak
-        - "04-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0154"
+        - "01-vmess-\U0001F1EC\U0001F1E7 英国 V2CROSS.COM"
+        - "02-vmess-\U0001F1EC\U0001F1E7GB英国"
+        - "03-shadowsocks-\U0001F4C01@oneclickvpnkeys"
+        - 04-shadowsocks-@AarazV2ray
+        - "05-trojan-\U0001F1F7\U0001F1F4RO罗马尼亚 1.2MB/s"
+        - 06-vless-v2ray_dalghak
+        - "07-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0154"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-vmess-\U0001F534\U0001F1FA\U0001F1F8[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_8f3cfa4f"
-        - 02-shadowsocks-@VPsave
-        - 03-vless-v2ray_dalghak
-        - "04-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0154"
+        - "01-vmess-\U0001F1EC\U0001F1E7 英国 V2CROSS.COM"
+        - "02-vmess-\U0001F1EC\U0001F1E7GB英国"
+        - "03-shadowsocks-\U0001F4C01@oneclickvpnkeys"
+        - 04-shadowsocks-@AarazV2ray
+        - "05-trojan-\U0001F1F7\U0001F1F4RO罗马尼亚 1.2MB/s"
+        - 06-vless-v2ray_dalghak
+        - "07-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0154"
       type: select
 rules:
     - MATCH,select
