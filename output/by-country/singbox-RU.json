@@ -1,0 +1,84 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "85.234.114.53",
+      "server_port": 22231,
+      "tag": "01-vless-Russia",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "r1.mizulina.top"
+      },
+      "type": "vless",
+      "uuid": "afcac633-0e1a-46c3-bef2-cc01cc0097c8"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "85.234.114.53",
+      "server_port": 443,
+      "tag": "02-vless-🇷🇺 俄罗斯 | RUS 2",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "r1.mizulina.top"
+      },
+      "type": "vless",
+      "uuid": "afcac633-0e1a-46c3-bef2-cc01cc0097c8"
+    },
+    {
+      "password": "78defd88-d333-67a5-9c34-d3bcef5816eb",
+      "server": "45.67.215.249",
+      "server_port": 443,
+      "tag": "03-trojan-T-Core-[45.67.215.249]-TIREXNET",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "tirex.sugarbreaker1.workers.dev"
+      },
+      "type": "trojan"
+    },
+    {
+      "password": "78defd88-d333-67a5-9c34-d3bcef5816eb",
+      "server": "45.67.215.214",
+      "server_port": 443,
+      "tag": "04-trojan-T-Core-[45.67.215.214]-TIREXNET",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "tirex.sugarbreaker1.workers.dev"
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-vless-Russia",
+        "02-vless-🇷🇺 俄罗斯 | RUS 2",
+        "03-trojan-T-Core-[45.67.215.249]-TIREXNET",
+        "04-trojan-T-Core-[45.67.215.214]-TIREXNET"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-vless-Russia",
+        "02-vless-🇷🇺 俄罗斯 | RUS 2",
+        "03-trojan-T-Core-[45.67.215.249]-TIREXNET",
+        "04-trojan-T-Core-[45.67.215.214]-TIREXNET"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

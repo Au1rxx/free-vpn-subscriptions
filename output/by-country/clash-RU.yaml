@@ -1,0 +1,59 @@
+proxies:
+    - flow: xtls-rprx-vision
+      name: 01-vless-Russia
+      network: tcp
+      port: 22231
+      server: 85.234.114.53
+      servername: r1.mizulina.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: afcac633-0e1a-46c3-bef2-cc01cc0097c8
+    - flow: xtls-rprx-vision
+      name: "02-vless-\U0001F1F7\U0001F1FA 俄罗斯 | RUS 2"
+      network: tcp
+      port: 443
+      server: 85.234.114.53
+      servername: r1.mizulina.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: afcac633-0e1a-46c3-bef2-cc01cc0097c8
+    - name: 03-trojan-T-Core-[45.67.215.249]-TIREXNET
+      password: 78defd88-d333-67a5-9c34-d3bcef5816eb
+      port: 443
+      server: 45.67.215.249
+      skip-cert-verify: false
+      sni: tirex.sugarbreaker1.workers.dev
+      type: trojan
+      udp: true
+    - name: 04-trojan-T-Core-[45.67.215.214]-TIREXNET
+      password: 78defd88-d333-67a5-9c34-d3bcef5816eb
+      port: 443
+      server: 45.67.215.214
+      skip-cert-verify: false
+      sni: tirex.sugarbreaker1.workers.dev
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-vless-Russia
+        - "02-vless-\U0001F1F7\U0001F1FA 俄罗斯 | RUS 2"
+        - 03-trojan-T-Core-[45.67.215.249]-TIREXNET
+        - 04-trojan-T-Core-[45.67.215.214]-TIREXNET
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-vless-Russia
+        - "02-vless-\U0001F1F7\U0001F1FA 俄罗斯 | RUS 2"
+        - 03-trojan-T-Core-[45.67.215.249]-TIREXNET
+        - 04-trojan-T-Core-[45.67.215.214]-TIREXNET
+      type: select
+rules:
+    - MATCH,select
