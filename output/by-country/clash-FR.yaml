@@ -1,0 +1,90 @@
+proxies:
+    - name: "01-hysteria2- By EbraSha \U0001F6AC"
+      password: dongtaiwang.com
+      port: 22000
+      server: 62.210.124.146
+      skip-cert-verify: true
+      sni: www.microsoft.com
+      type: hysteria2
+    - name: "02-trojan-\U0001F1EB\U0001F1F7FR-217.69.2.107-0105"
+      password: YGWIMlg.W1wRWQkRDcKfjZY7sng09aC=Yh
+      port: 443
+      server: 217.69.2.107
+      skip-cert-verify: false
+      sni: www.weavenet.click
+      type: trojan
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "03-vless-\U0001F534\U0001F1EB\U0001F1F7[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_b31db3ef"
+      network: tcp
+      port: 31413
+      reality-opts:
+        public-key: nMlxwhP34_5wFPscbso_hOfRDmsj9DonMpDSXUrnJR8
+        short-id: ead3d6f82a9d
+      server: 51.44.16.107
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5454343b-541b-4c96-8c2a-52e81079d124
+    - alterId: 0
+      cipher: auto
+      name: "04-vmess-\U0001F1EB\U0001F1F7 FR 84"
+      network: ws
+      port: 55516
+      server: 185.248.33.173
+      servername: imafake.locker
+      skip-cert-verify: false
+      tls: true
+      type: vmess
+      udp: true
+      uuid: d0e97ee2-c6de-48f8-bd4a-8e63a9cd9e89
+    - alterId: 0
+      cipher: auto
+      name: "05-vmess-\U0001F1EB\U0001F1F7 FR 60"
+      network: ws
+      port: 63362
+      server: 185.248.33.173
+      servername: imafake.locker
+      skip-cert-verify: false
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 35f332d0-0b05-4cc6-91cb-ec0d4465055f
+    - alterId: 0
+      cipher: auto
+      name: "06-vmess-\U0001F1EB\U0001F1F7 FR 106"
+      network: ws
+      port: 15207
+      server: 185.248.33.173
+      servername: imafake.locker
+      skip-cert-verify: false
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 4f3cfda3-a255-40eb-8801-71f9fffb19d6
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-hysteria2- By EbraSha \U0001F6AC"
+        - "02-trojan-\U0001F1EB\U0001F1F7FR-217.69.2.107-0105"
+        - "03-vless-\U0001F534\U0001F1EB\U0001F1F7[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_b31db3ef"
+        - "04-vmess-\U0001F1EB\U0001F1F7 FR 84"
+        - "05-vmess-\U0001F1EB\U0001F1F7 FR 60"
+        - "06-vmess-\U0001F1EB\U0001F1F7 FR 106"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-hysteria2- By EbraSha \U0001F6AC"
+        - "02-trojan-\U0001F1EB\U0001F1F7FR-217.69.2.107-0105"
+        - "03-vless-\U0001F534\U0001F1EB\U0001F1F7[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_b31db3ef"
+        - "04-vmess-\U0001F1EB\U0001F1F7 FR 84"
+        - "05-vmess-\U0001F1EB\U0001F1F7 FR 60"
+        - "06-vmess-\U0001F1EB\U0001F1F7 FR 106"
+      type: select
+rules:
+    - MATCH,select
