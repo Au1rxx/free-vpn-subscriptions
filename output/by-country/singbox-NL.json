@@ -1,0 +1,61 @@
+{
+  "outbounds": [
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "hbGrpfvNrJsUmKmPbR3iY2",
+      "server": "tinkered-pennies-puppies.freesocks.work",
+      "server_port": 443,
+      "tag": "01-shadowsocks-🇺🇸US-147.90.234.133-0721",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-128-cfb",
+      "password": "shadowsocks",
+      "server": "109.201.152.181",
+      "server_port": 443,
+      "tag": "02-shadowsocks-🇳🇱NL-109.201.152.181-0078",
+      "type": "shadowsocks"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "150.251.158.76",
+      "server_port": 443,
+      "tag": "03-vless-🟢🇯🇵[🎬🤖📺🔍]_github.com/Ruk1ng001_a7be7b9c",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "s646.okgg.top"
+      },
+      "type": "vless",
+      "uuid": "10550754-cf62-3d3b-ba6a-50be27a275d7"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-shadowsocks-🇺🇸US-147.90.234.133-0721",
+        "02-shadowsocks-🇳🇱NL-109.201.152.181-0078",
+        "03-vless-🟢🇯🇵[🎬🤖📺🔍]_github.com/Ruk1ng001_a7be7b9c"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-shadowsocks-🇺🇸US-147.90.234.133-0721",
+        "02-shadowsocks-🇳🇱NL-109.201.152.181-0078",
+        "03-vless-🟢🇯🇵[🎬🤖📺🔍]_github.com/Ruk1ng001_a7be7b9c"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

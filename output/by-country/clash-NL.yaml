@@ -1,0 +1,44 @@
+proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-0721"
+      password: hbGrpfvNrJsUmKmPbR3iY2
+      port: 443
+      server: tinkered-pennies-puppies.freesocks.work
+      type: ss
+      udp: true
+    - cipher: aes-128-cfb
+      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0078"
+      password: shadowsocks
+      port: 443
+      server: 109.201.152.181
+      type: ss
+      udp: true
+    - flow: xtls-rprx-vision
+      name: "03-vless-\U0001F7E2\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_a7be7b9c"
+      network: tcp
+      port: 443
+      server: 150.251.158.76
+      servername: s646.okgg.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 10550754-cf62-3d3b-ba6a-50be27a275d7
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-0721"
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0078"
+        - "03-vless-\U0001F7E2\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_a7be7b9c"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-0721"
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0078"
+        - "03-vless-\U0001F7E2\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_a7be7b9c"
+      type: select
+rules:
+    - MATCH,select
