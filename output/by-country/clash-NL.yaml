@@ -1,27 +1,48 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-0716"
+      name: "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-0138"
       password: hbGrpfvNrJsUmKmPbR3iY2
       port: 443
       server: tinkered-pennies-puppies.freesocks.work
       type: ss
       udp: true
     - cipher: aes-128-cfb
-      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-4178"
+      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0072"
       password: shadowsocks
       port: 443
       server: 109.201.152.181
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: "03-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0168"
-      password: CJmTCCx7Ltud
-      port: 8388
-      server: 108.181.58.239
-      type: ss
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "03-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
+      network: tcp
+      port: 23576
+      reality-opts:
+        public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+        short-id: "01"
+      server: 51.158.206.26
+      servername: fuck.rkn
+      tls: true
+      type: vless
       udp: true
+      uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "04-vless-\U0001F1F3\U0001F1F1 434 - NL - VLESS/REALITY/PBK/SID/VISI"
+      network: tcp
+      port: 23576
+      reality-opts:
+        public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+        short-id: "01"
+      server: 51.158.206.96
+      servername: fuck.rkn
+      tls: true
+      type: vless
+      udp: true
+      uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
     - cipher: aes-256-cfb
-      name: "04-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.63-0120"
+      name: "05-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.63-0120"
       password: f8f7aCzcPKbsF8p3
       port: 989
       server: 51.15.23.63
@@ -31,19 +52,21 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-0716"
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-4178"
-        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0168"
-        - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.63-0120"
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-0138"
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0072"
+        - "03-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - "04-vless-\U0001F1F3\U0001F1F1 434 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - "05-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.63-0120"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-0716"
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-4178"
-        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0168"
-        - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.63-0120"
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-0138"
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0072"
+        - "03-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - "04-vless-\U0001F1F3\U0001F1F1 434 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - "05-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.63-0120"
       type: select
 rules:
     - MATCH,select
