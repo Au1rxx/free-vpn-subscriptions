@@ -1,23 +1,23 @@
 proxies:
     - cipher: aes-128-gcm
-      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0106"
-      password: shadowsocks
-      port: 443
-      server: 149.22.87.241
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0108"
       password: shadowsocks
       port: 443
       server: 149.22.87.240
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0107"
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
       password: shadowsocks
       port: 443
       server: 149.22.87.204
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0106"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.241
       type: ss
       udp: true
     - alterId: 1
@@ -43,15 +43,20 @@ proxies:
       server: 103.106.228.175
       type: ss
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: "07-vmess-\U0001F1EF\U0001F1F5 JP 6"
-      network: ws
-      port: 25686
-      server: 140.83.51.161
-      type: vmess
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "07-vless-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_8b19c097"
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 6bKr3dHLP8VjrlVFBNTAM3Bj0j0iGubvzTDPTmK08FI
+        short-id: ecf07d87f0521a0e
+      server: 212.135.211.105
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
       udp: true
-      uuid: 6733c357-ba11-4e9f-f00f-7d87f2776ff9
+      uuid: 99e50b7b-e551-46b3-b74f-d39806835b10
     - alterId: 0
       cipher: auto
       name: "08-vmess-\U0001F1EF\U0001F1F5 JP 5"
@@ -61,31 +66,42 @@ proxies:
       type: vmess
       udp: true
       uuid: 11c3627f-31e8-4695-dfbd-34076e2f1f5d
+    - alterId: 0
+      cipher: auto
+      name: "09-vmess-\U0001F1EF\U0001F1F5 JP 6"
+      network: ws
+      port: 25686
+      server: 140.83.51.161
+      type: vmess
+      udp: true
+      uuid: 6733c357-ba11-4e9f-f00f-7d87f2776ff9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0106"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0107"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0108"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0106"
         - "04-vmess-\U0001F1EF\U0001F1F5 JP 1"
         - "05-shadowsocks-\U0001F1EF\U0001F1F5JP-47.79.144.115-0154"
         - "06-shadowsocks-\U0001F1EF\U0001F1F5JP-103.106.228.175-0109"
-        - "07-vmess-\U0001F1EF\U0001F1F5 JP 6"
+        - "07-vless-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_8b19c097"
         - "08-vmess-\U0001F1EF\U0001F1F5 JP 5"
+        - "09-vmess-\U0001F1EF\U0001F1F5 JP 6"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0106"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0107"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0108"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0106"
         - "04-vmess-\U0001F1EF\U0001F1F5 JP 1"
         - "05-shadowsocks-\U0001F1EF\U0001F1F5JP-47.79.144.115-0154"
         - "06-shadowsocks-\U0001F1EF\U0001F1F5JP-103.106.228.175-0109"
-        - "07-vmess-\U0001F1EF\U0001F1F5 JP 6"
+        - "07-vless-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_8b19c097"
         - "08-vmess-\U0001F1EF\U0001F1F5 JP 5"
+        - "09-vmess-\U0001F1EF\U0001F1F5 JP 6"
       type: select
 rules:
     - MATCH,select
