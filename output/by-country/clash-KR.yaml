@@ -1,0 +1,42 @@
+proxies:
+    - cipher: aes-256-gcm
+      name: "01-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0172"
+      password: TEzjfAYq2IjtuoS
+      port: 6679
+      server: 141.164.45.187
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0171"
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 141.164.45.187
+      type: ss
+      udp: true
+    - alterId: 0
+      cipher: auto
+      name: "03-vmess-\U0001F1F0\U0001F1F7 KR 1"
+      network: ws
+      port: 443
+      server: 152.67.218.38
+      type: vmess
+      udp: true
+      uuid: b5e9480a-b7aa-40a4-f9a7-5299b5e363b4
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0172"
+        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0171"
+        - "03-vmess-\U0001F1F0\U0001F1F7 KR 1"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0172"
+        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0171"
+        - "03-vmess-\U0001F1F0\U0001F1F7 KR 1"
+      type: select
+rules:
+    - MATCH,select
