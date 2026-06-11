@@ -1,0 +1,53 @@
+proxies:
+    - name: "01-trojan-\U0001F1FA\U0001F1F8_US_美国->\U0001F1E8\U0001F1ED_CH_瑞士"
+      password: 4f4d1167-ef14-4304-9bce-0740472503ef
+      port: 45553
+      server: 90081bb25c.node.tro.cac.cab
+      skip-cert-verify: true
+      sni: ch.01.naiun.bilibili.com
+      type: trojan
+      udp: true
+    - name: "02-trojan-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
+      password: 4f4d1167-ef14-4304-9bce-0740472503ef
+      port: 46424
+      server: 90081bb25c.node.tro.cac.cab
+      skip-cert-verify: true
+      sni: de.01.naiun.bilibili.com
+      type: trojan
+      udp: true
+    - name: "03-trojan-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
+      password: 4f4d1167-ef14-4304-9bce-0740472503ef
+      port: 47909
+      server: 90081bb25c.node.tro.cac.cab
+      skip-cert-verify: true
+      sni: is.01.naiun.bilibili.com
+      type: trojan
+      udp: true
+    - name: "04-trojan-\U0001F1E8\U0001F1E6_CA_加拿大->\U0001F1E6\U0001F1FF_AZ_阿塞拜疆"
+      password: 4f4d1167-ef14-4304-9bce-0740472503ef
+      port: 41943
+      server: 90081bb25c.node.tro.cac.cab
+      skip-cert-verify: true
+      sni: az.01.naiun.bilibili.com
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-trojan-\U0001F1FA\U0001F1F8_US_美国->\U0001F1E8\U0001F1ED_CH_瑞士"
+        - "02-trojan-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
+        - "03-trojan-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
+        - "04-trojan-\U0001F1E8\U0001F1E6_CA_加拿大->\U0001F1E6\U0001F1FF_AZ_阿塞拜疆"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-trojan-\U0001F1FA\U0001F1F8_US_美国->\U0001F1E8\U0001F1ED_CH_瑞士"
+        - "02-trojan-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
+        - "03-trojan-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
+        - "04-trojan-\U0001F1E8\U0001F1E6_CA_加拿大->\U0001F1E6\U0001F1FF_AZ_阿塞拜疆"
+      type: select
+rules:
+    - MATCH,select
