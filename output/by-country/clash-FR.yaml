@@ -1,0 +1,48 @@
+proxies:
+    - name: "01-hysteria2- By EbraSha \U0001F9E9"
+      password: dongtaiwang.com
+      port: 22000
+      server: 62.210.124.146
+      skip-cert-verify: true
+      sni: www.microsoft.com
+      type: hysteria2
+    - name: "02-trojan-\U0001F1EB\U0001F1F7FR-217.69.2.107-0109"
+      password: YGWIMlg.W1wRWQkRDcKfjZY7sng09aC=Yh
+      port: 443
+      server: 217.69.2.107
+      skip-cert-verify: false
+      sni: www.weavenet.click
+      type: trojan
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "03-vless-\U0001F534\U0001F1EB\U0001F1F7[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_B2HVZbYL"
+      network: tcp
+      port: 23576
+      reality-opts:
+        public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+        short-id: "01"
+      server: 62.210.91.2
+      servername: fuck.rkn
+      tls: true
+      type: vless
+      udp: true
+      uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-hysteria2- By EbraSha \U0001F9E9"
+        - "02-trojan-\U0001F1EB\U0001F1F7FR-217.69.2.107-0109"
+        - "03-vless-\U0001F534\U0001F1EB\U0001F1F7[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_B2HVZbYL"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-hysteria2- By EbraSha \U0001F9E9"
+        - "02-trojan-\U0001F1EB\U0001F1F7FR-217.69.2.107-0109"
+        - "03-vless-\U0001F534\U0001F1EB\U0001F1F7[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_B2HVZbYL"
+      type: select
+rules:
+    - MATCH,select
