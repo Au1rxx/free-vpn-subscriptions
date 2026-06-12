@@ -1,7 +1,7 @@
 proxies:
     - alterId: 0
       cipher: auto
-      name: "01-vmess-\U0001F1E9\U0001F1EA DE德国(mibei77.com 米贝节点分享)"
+      name: "01-vmess-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
       network: tcp
       port: 180
       server: 82.198.246.250
@@ -10,36 +10,35 @@ proxies:
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: "02-vmess-\U0001F1EC\U0001F1E7 GB英国(mibei77.com 米贝节点分享)"
+      name: "02-vmess-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
       network: tcp
       port: 180
       server: 82.198.246.214
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-    - name: "03-trojan-\U0001F1E9\U0001F1EADE-185.137.157.254-0169"
-      password: hxn2jK9Uzezogua0oHuq9Y8viN=UCe.2Jd
-      port: 443
-      server: 185.137.157.254
-      skip-cert-verify: false
-      sni: www.directorypipeline.click
-      type: trojan
+    - cipher: aes-256-gcm
+      name: "03-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0134"
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 213.202.208.199
+      type: ss
       udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-vmess-\U0001F1E9\U0001F1EA DE德国(mibei77.com 米贝节点分享)"
-        - "02-vmess-\U0001F1EC\U0001F1E7 GB英国(mibei77.com 米贝节点分享)"
-        - "03-trojan-\U0001F1E9\U0001F1EADE-185.137.157.254-0169"
+        - "01-vmess-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
+        - "02-vmess-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
+        - "03-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0134"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-vmess-\U0001F1E9\U0001F1EA DE德国(mibei77.com 米贝节点分享)"
-        - "02-vmess-\U0001F1EC\U0001F1E7 GB英国(mibei77.com 米贝节点分享)"
-        - "03-trojan-\U0001F1E9\U0001F1EADE-185.137.157.254-0169"
+        - "01-vmess-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
+        - "02-vmess-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
+        - "03-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0134"
       type: select
 rules:
     - MATCH,select
