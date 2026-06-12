@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![ノード](https://img.shields.io/badge/ノード-105-brightgreen) ![生存](https://img.shields.io/badge/生存-1915-blue) ![中央値--rtt](https://img.shields.io/badge/中央値--rtt-439ms-orange) ![更新](https://img.shields.io/badge/更新-2026-06-12_15:26_UTC-informational)
+![ノード](https://img.shields.io/badge/ノード-104-brightgreen) ![生存](https://img.shields.io/badge/生存-1932-blue) ![中央値--rtt](https://img.shields.io/badge/中央値--rtt-420ms-orange) ![更新](https://img.shields.io/badge/更新-2026-06-12_16:29_UTC-informational)
 
 > **動作する無料 VPN を手に入れる一番かんたんな方法 —— 購読リンクをコピーしてクライアントに貼るだけ。**  
 > 登録不要。支払い不要。バイナリのインストール不要。公開ソースから毎時自動更新 —— 公開される全ノードは、数分前に sing-box 経由で実 HTTP トラフィックを転送した実績があります。
@@ -78,15 +78,14 @@ proxy-groups:
 | 国 | ノード数 | Clash | sing-box | v2ray |
 |---|---|---|---|---|
 | 🇺🇸 United States (`US`) | 43 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
-| 🇬🇧 United Kingdom (`GB`) | 10 | [clash-GB.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-GB.yaml) | [singbox-GB.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-GB.json) | [v2ray-base64-GB.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-GB.txt) |
 | 🇭🇰 Hong Kong (`HK`) | 10 | [clash-HK.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-HK.yaml) | [singbox-HK.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-HK.json) | [v2ray-base64-HK.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-HK.txt) |
+| 🇬🇧 United Kingdom (`GB`) | 9 | [clash-GB.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-GB.yaml) | [singbox-GB.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-GB.json) | [v2ray-base64-GB.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-GB.txt) |
+| 🇯🇵 Japan (`JP`) | 8 | [clash-JP.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-JP.yaml) | [singbox-JP.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-JP.json) | [v2ray-base64-JP.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-JP.txt) |
 | 🇩🇪 Germany (`DE`) | 7 | [clash-DE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-DE.yaml) | [singbox-DE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-DE.json) | [v2ray-base64-DE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-DE.txt) |
-| 🇯🇵 Japan (`JP`) | 7 | [clash-JP.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-JP.yaml) | [singbox-JP.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-JP.json) | [v2ray-base64-JP.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-JP.txt) |
 | 🇳🇱 Netherlands (`NL`) | 5 | [clash-NL.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-NL.yaml) | [singbox-NL.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-NL.json) | [v2ray-base64-NL.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-NL.txt) |
+| 🇰🇷 Korea (`KR`) | 4 | [clash-KR.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-KR.yaml) | [singbox-KR.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-KR.json) | [v2ray-base64-KR.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-KR.txt) |
 | 🇨🇦 Canada (`CA`) | 3 | [clash-CA.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-CA.yaml) | [singbox-CA.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-CA.json) | [v2ray-base64-CA.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-CA.txt) |
 | 🇫🇷 France (`FR`) | 3 | [clash-FR.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-FR.yaml) | [singbox-FR.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-FR.json) | [v2ray-base64-FR.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-FR.txt) |
-| 🇰🇷 Korea (`KR`) | 3 | [clash-KR.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-KR.yaml) | [singbox-KR.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-KR.json) | [v2ray-base64-KR.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-KR.txt) |
-| 🇷🇺 Russia (`RU`) | 3 | [clash-RU.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-RU.yaml) | [singbox-RU.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-RU.json) | [v2ray-base64-RU.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-RU.txt) |
 
 ## 📖 クライアント設定ガイド
 
@@ -107,15 +106,15 @@ proxy-groups:
 
 ## 📊 リアルタイム統計
 
-- **選定ノード**: 105
-- **全ソース生存数**: 1915
-- **最速 RTT**: 30 ms
-- **中央値 RTT**: 439 ms
-- **最終更新 (UTC)**: 2026-06-12 15:26 UTC
+- **選定ノード**: 104
+- **全ソース生存数**: 1932
+- **最速 RTT**: 32 ms
+- **中央値 RTT**: 420 ms
+- **最終更新 (UTC)**: 2026-06-12 16:29 UTC
 
-**プロトコル構成:** hysteria2 × 2 · shadowsocks × 45 · trojan × 39 · vless × 12 · vmess × 7
+**プロトコル構成:** hysteria2 × 2 · shadowsocks × 45 · trojan × 37 · vless × 12 · vmess × 8
 
-**今回使用したソース:** `barry-far-v2ray` × 17 · `epodonios` × 23 · `lagzian-mix` × 5 · `mahdi0024` × 3 · `mahdibland-aggregator` × 11 · `mahdibland-shadowsocks` × 11 · `matin-v2ray` × 4 · `ninjastrikers` × 14 · `pawdroid` × 4 · `ruking-clash` × 10 · `surfboard-eternity` × 3
+**今回使用したソース:** `barry-far-v2ray` × 15 · `ebrasha-v2ray` × 2 · `epodonios` × 26 · `lagzian-mix` × 1 · `mahdi0024` × 3 · `mahdibland-aggregator` × 15 · `mahdibland-shadowsocks` × 9 · `matin-v2ray` × 1 · `ninjastrikers` × 12 · `pawdroid` × 3 · `ruking-clash` × 11 · `surfboard-eternity` × 6
 
 ## ❓ よくある質問
 
