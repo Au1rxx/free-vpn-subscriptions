@@ -7,33 +7,26 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-128-cfb
-      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0083"
+      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
       password: shadowsocks
       port: 443
       server: 109.201.152.181
       type: ss
       udp: true
+    - name: "03-vless-\U0001F1F3\U0001F1F1 NL 1"
+      network: tcp
+      port: 49712
+      server: 185.200.179.85
+      type: vless
+      udp: true
+      uuid: b56c38ec-ab57-4d1b-ac72-9491be4845bf
     - cipher: chacha20-ietf-poly1305
-      name: "03-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0191"
+      name: "04-shadowsocks-\U0001D402\U0001D421\U0001D41A\U0001D427\U0001D427\U0001D41E\U0001D425: @ISVvpn"
       password: CJmTCCx7Ltud
       port: 8388
       server: 108.181.58.239
       type: ss
       udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: 04-vless->>@oneclickvpnkeys::NL
-      network: tcp
-      port: 23576
-      reality-opts:
-        public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
-        short-id: "01"
-      server: 51.158.206.19
-      servername: fuck.rkn
-      tls: true
-      type: vless
-      udp: true
-      uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
     - cipher: aes-256-cfb
       name: "05-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.63-0134"
       password: f8f7aCzcPKbsF8p3
@@ -41,49 +34,25 @@ proxies:
       server: 51.15.23.63
       type: ss
       udp: true
-    - name: "06-vless-\U0001F1F3\U0001F1F1 NL 235"
-      network: tcp
-      port: 8443
-      server: 46.229.243.69
-      servername: cdn7-39.vk-cdnvideo.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 931729a8-3c20-4841-89a1-f18dc9ce0a6f
-    - name: "07-vless-\U0001F1F3\U0001F1F1 NL 148"
-      network: tcp
-      port: 8443
-      server: 46.229.243.134
-      servername: cdn7-09.vk-cdnvideo.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 931729a8-3c20-4841-89a1-f18dc9ce0a6f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - "01-shadowsocks-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0083"
-        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0191"
-        - 04-vless->>@oneclickvpnkeys::NL
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
+        - "03-vless-\U0001F1F3\U0001F1F1 NL 1"
+        - "04-shadowsocks-\U0001D402\U0001D421\U0001D41A\U0001D427\U0001D427\U0001D41E\U0001D425: @ISVvpn"
         - "05-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.63-0134"
-        - "06-vless-\U0001F1F3\U0001F1F1 NL 235"
-        - "07-vless-\U0001F1F3\U0001F1F1 NL 148"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - "01-shadowsocks-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0083"
-        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0191"
-        - 04-vless->>@oneclickvpnkeys::NL
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
+        - "03-vless-\U0001F1F3\U0001F1F1 NL 1"
+        - "04-shadowsocks-\U0001D402\U0001D421\U0001D41A\U0001D427\U0001D427\U0001D41E\U0001D425: @ISVvpn"
         - "05-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.63-0134"
-        - "06-vless-\U0001F1F3\U0001F1F1 NL 235"
-        - "07-vless-\U0001F1F3\U0001F1F1 NL 148"
       type: select
 rules:
     - MATCH,select
