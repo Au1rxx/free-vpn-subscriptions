@@ -1,0 +1,80 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "213.108.2.130",
+      "server_port": 443,
+      "tag": "01-vless-🔴🇷🇺[📺]_github.com/Ruk1ng001_0dad2241",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "c9eCHF41FReFLIdarpg8M5edw4_E133EJBzrvYS02Ck",
+          "short_id": "cd9a5f0edff48da4"
+        },
+        "server_name": "cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "5e8ee155-0962-4307-98f2-b65f6bbbd5bb"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "85.234.114.53",
+      "server_port": 22231,
+      "tag": "02-vless-Russia",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "r1.mizulina.top"
+      },
+      "type": "vless",
+      "uuid": "afcac633-0e1a-46c3-bef2-cc01cc0097c8"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "85.234.114.53",
+      "server_port": 443,
+      "tag": "03-vless-🟡🇬🇪[🎬🤖📺🔍]_github.com/Ruk1ng001_e333f36f",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "r1.mizulina.top"
+      },
+      "type": "vless",
+      "uuid": "afcac633-0e1a-46c3-bef2-cc01cc0097c8"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-vless-🔴🇷🇺[📺]_github.com/Ruk1ng001_0dad2241",
+        "02-vless-Russia",
+        "03-vless-🟡🇬🇪[🎬🤖📺🔍]_github.com/Ruk1ng001_e333f36f"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-vless-🔴🇷🇺[📺]_github.com/Ruk1ng001_0dad2241",
+        "02-vless-Russia",
+        "03-vless-🟡🇬🇪[🎬🤖📺🔍]_github.com/Ruk1ng001_e333f36f"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

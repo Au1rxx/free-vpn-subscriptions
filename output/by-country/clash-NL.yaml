@@ -1,28 +1,42 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: 01-shadowsocks-@VPsave
+      name: "01-shadowsocks-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
       password: hbGrpfvNrJsUmKmPbR3iY2
       port: 443
       server: tinkered-pennies-puppies.freesocks.work
       type: ss
       udp: true
     - cipher: aes-128-cfb
-      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0083"
+      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-4178"
       password: shadowsocks
       port: 443
       server: 109.201.152.181
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
-      name: 03-shadowsocks-@meliproxyy
+      name: 03-shadowsocks-TEL:Father_vpn
       password: CJmTCCx7Ltud
       port: 8388
       server: 108.181.58.239
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "04-shadowsocks-https://t.me/v2rayNplus |\U0001F1F3\U0001F1F1"
+      password: 5DJXRpmi3iyqxQ79PfKv3B
+      port: 14130
+      server: 195.93.253.240
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "05-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0190"
+      password: CJmTCCx7Ltud
+      port: 8388
+      server: 108.181.126.122
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: 04-vless->>@oneclickvpnkeys::NL
+      name: 06-vless->>@oneclickvpnkeys::NL
       network: tcp
       port: 23576
       reality-opts:
@@ -34,32 +48,57 @@ proxies:
       type: vless
       udp: true
       uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-    - name: 05-vless-美国 V2CROSS.COM
+    - cipher: aes-256-cfb
+      name: "07-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.63-0134"
+      password: f8f7aCzcPKbsF8p3
+      port: 989
+      server: 51.15.23.63
+      type: ss
+      udp: true
+    - name: 08-vless-美国 V2CROSS.COM
       network: ws
       port: 8880
       server: 45.131.5.144
       type: vless
       udp: true
       uuid: Shh-proxy
+    - name: "09-vless-\U0001F1F3\U0001F1F1 NL 296"
+      network: tcp
+      port: 8443
+      server: 46.229.243.132
+      servername: cdn3-25.vk-cdnvideo.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 931729a8-3c20-4841-89a1-f18dc9ce0a6f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-shadowsocks-@VPsave
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0083"
-        - 03-shadowsocks-@meliproxyy
-        - 04-vless->>@oneclickvpnkeys::NL
-        - 05-vless-美国 V2CROSS.COM
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-4178"
+        - 03-shadowsocks-TEL:Father_vpn
+        - "04-shadowsocks-https://t.me/v2rayNplus |\U0001F1F3\U0001F1F1"
+        - "05-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0190"
+        - 06-vless->>@oneclickvpnkeys::NL
+        - "07-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.63-0134"
+        - 08-vless-美国 V2CROSS.COM
+        - "09-vless-\U0001F1F3\U0001F1F1 NL 296"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-shadowsocks-@VPsave
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0083"
-        - 03-shadowsocks-@meliproxyy
-        - 04-vless->>@oneclickvpnkeys::NL
-        - 05-vless-美国 V2CROSS.COM
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-4178"
+        - 03-shadowsocks-TEL:Father_vpn
+        - "04-shadowsocks-https://t.me/v2rayNplus |\U0001F1F3\U0001F1F1"
+        - "05-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0190"
+        - 06-vless->>@oneclickvpnkeys::NL
+        - "07-shadowsocks-\U0001F1F3\U0001F1F1NL-51.15.23.63-0134"
+        - 08-vless-美国 V2CROSS.COM
+        - "09-vless-\U0001F1F3\U0001F1F1 NL 296"
       type: select
 rules:
     - MATCH,select
