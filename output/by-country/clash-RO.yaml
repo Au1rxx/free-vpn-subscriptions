@@ -1,0 +1,61 @@
+proxies:
+    - name: "01-vless-\U0001F5B2️12@oneclickvpnkeys"
+      network: tcp
+      port: 8443
+      server: 77.74.123.163
+      servername: cdn3-87.vk-cdnvideo.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 931729a8-3c20-4841-89a1-f18dc9ce0a6f
+    - name: 02-vless-乌克兰 V2CROSS.COM
+      network: tcp
+      port: 8443
+      server: 95.133.245.165
+      servername: cdn3-87.vk-cdnvideo.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 931729a8-3c20-4841-89a1-f18dc9ce0a6f
+    - name: 03-vless-Romania
+      network: tcp
+      port: 8443
+      server: cdn7-09.vk-cdnvideo.com
+      servername: cdn7-09.vk-cdnvideo.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 931729a8-3c20-4841-89a1-f18dc9ce0a6f
+    - name: 04-vless-♾️59@oneclickvpnkeys
+      network: tcp
+      port: 8443
+      server: 162.249.126.75
+      servername: cdn7-39.vk-cdnvideo.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 931729a8-3c20-4841-89a1-f18dc9ce0a6f
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-vless-\U0001F5B2️12@oneclickvpnkeys"
+        - 02-vless-乌克兰 V2CROSS.COM
+        - 03-vless-Romania
+        - 04-vless-♾️59@oneclickvpnkeys
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-vless-\U0001F5B2️12@oneclickvpnkeys"
+        - 02-vless-乌克兰 V2CROSS.COM
+        - 03-vless-Romania
+        - 04-vless-♾️59@oneclickvpnkeys
+      type: select
+rules:
+    - MATCH,select
