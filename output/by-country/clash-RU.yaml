@@ -10,20 +10,9 @@ proxies:
       type: vless
       udp: true
       uuid: afcac633-0e1a-46c3-bef2-cc01cc0097c8
-    - flow: xtls-rprx-vision
-      name: 02-vless-Russia
-      network: tcp
-      port: 443
-      server: 85.234.114.53
-      servername: r1.mizulina.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: afcac633-0e1a-46c3-bef2-cc01cc0097c8
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: "03-vless-\U0001F1F3\U0001F1F1 NL 2"
+      name: "02-vless-\U0001F1F3\U0001F1F1 NL 2"
       network: tcp
       port: 443
       reality-opts:
@@ -35,21 +24,32 @@ proxies:
       type: vless
       udp: true
       uuid: e8ca8d63-75f9-4714-9376-a09550168850
+    - flow: xtls-rprx-vision
+      name: 03-vless-Russia
+      network: tcp
+      port: 443
+      server: 85.234.114.53
+      servername: r1.mizulina.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: afcac633-0e1a-46c3-bef2-cc01cc0097c8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - 01-vless-Russia
-        - 02-vless-Russia
-        - "03-vless-\U0001F1F3\U0001F1F1 NL 2"
+        - "02-vless-\U0001F1F3\U0001F1F1 NL 2"
+        - 03-vless-Russia
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - 01-vless-Russia
-        - 02-vless-Russia
-        - "03-vless-\U0001F1F3\U0001F1F1 NL 2"
+        - "02-vless-\U0001F1F3\U0001F1F1 NL 2"
+        - 03-vless-Russia
       type: select
 rules:
     - MATCH,select
