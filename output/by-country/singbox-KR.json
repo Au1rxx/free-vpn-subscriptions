@@ -1,0 +1,78 @@
+{
+  "outbounds": [
+    {
+      "alter_id": 0,
+      "security": "auto",
+      "server": "140.238.2.250",
+      "server_port": 443,
+      "tag": "01-vmess-🇰🇷 KR 1",
+      "type": "vmess",
+      "uuid": "41a7089a-040b-4538-8b8d-010902405bde"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "qwerREWQ@@",
+      "server": "218.237.185.230",
+      "server_port": 4652,
+      "tag": "02-shadowsocks-🇰🇷KR-218.237.185.230-0165",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "qwerREWQ@@",
+      "server": "211.178.105.134",
+      "server_port": 6123,
+      "tag": "03-shadowsocks-🇰🇷KR-211.178.105.134-0185",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "qwerREWQ@@",
+      "server": "221.139.79.57",
+      "server_port": 13979,
+      "tag": "04-shadowsocks-🇰🇷KR-221.139.79.57-4532",
+      "type": "shadowsocks"
+    },
+    {
+      "alter_id": 0,
+      "security": "auto",
+      "server": "152.67.218.38",
+      "server_port": 443,
+      "tag": "05-vmess-🇰🇷KR-152.67.218.38-0155",
+      "type": "vmess",
+      "uuid": "b5e9480a-b7aa-40a4-f9a7-5299b5e363b4"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-vmess-🇰🇷 KR 1",
+        "02-shadowsocks-🇰🇷KR-218.237.185.230-0165",
+        "03-shadowsocks-🇰🇷KR-211.178.105.134-0185",
+        "04-shadowsocks-🇰🇷KR-221.139.79.57-4532",
+        "05-vmess-🇰🇷KR-152.67.218.38-0155"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-vmess-🇰🇷 KR 1",
+        "02-shadowsocks-🇰🇷KR-218.237.185.230-0165",
+        "03-shadowsocks-🇰🇷KR-211.178.105.134-0185",
+        "04-shadowsocks-🇰🇷KR-221.139.79.57-4532",
+        "05-vmess-🇰🇷KR-152.67.218.38-0155"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
