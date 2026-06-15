@@ -1,20 +1,20 @@
 proxies:
     - cipher: aes-128-gcm
-      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
-      password: shadowsocks
-      port: 443
-      server: 149.22.87.241
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0116"
       password: shadowsocks
       port: 443
       server: 149.22.87.240
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0117"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.241
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0118"
       password: shadowsocks
       port: 443
       server: 149.22.87.204
@@ -34,25 +34,34 @@ proxies:
       server: 47.79.144.115
       type: ss
       udp: true
+    - name: 06-vless-日本 东京Fastly节点
+      network: ws
+      port: 80
+      server: 151.101.109.223
+      type: vless
+      udp: true
+      uuid: 0058c215-ab1e-400c-a403-b5b2fda7e846
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0116"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0117"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0118"
         - "04-shadowsocks-\U0001F1EF\U0001F1F5JP-103.106.228.175-0120"
         - "05-shadowsocks-\U0001F1EF\U0001F1F5JP-47.79.144.115-0181"
+        - 06-vless-日本 东京Fastly节点
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0116"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0117"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0118"
         - "04-shadowsocks-\U0001F1EF\U0001F1F5JP-103.106.228.175-0120"
         - "05-shadowsocks-\U0001F1EF\U0001F1F5JP-47.79.144.115-0181"
+        - 06-vless-日本 东京Fastly节点
       type: select
 rules:
     - MATCH,select
