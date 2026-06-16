@@ -7,24 +7,24 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0142"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.241
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
       password: shadowsocks
       port: 443
       server: 149.22.87.204
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0145"
+      name: "04-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0145"
       password: shadowsocks
       port: 443
       server: 149.22.87.240
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: "04-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0142"
-      password: shadowsocks
-      port: 443
-      server: 149.22.87.241
       type: ss
       udp: true
     - cipher: aes-256-gcm
@@ -34,15 +34,14 @@ proxies:
       server: 103.106.228.175
       type: ss
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: "06-vmess-\U0001F1EF\U0001F1F5 JP 1"
-      network: ws
-      port: 80
-      server: 172.111.146.64
-      type: vmess
+    - name: 06-trojan-未知 354.1KB/s
+      password: s75Gtmy56sptTA39hmBH965YYx4ZgfQR_I
+      port: 443
+      server: 103.125.219.70
+      skip-cert-verify: false
+      sni: 103.125.219.70
+      type: trojan
       udp: true
-      uuid: 05b8c783-7f59-47f9-9923-06a465679f6a
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: "07-vless-\U0001F1EF\U0001F1F5 JP 2"
@@ -57,39 +56,29 @@ proxies:
       type: vless
       udp: true
       uuid: 45c8d20e-0222-4b16-8d21-37318456b980
-    - name: 08-trojan-未知 354.1KB/s
-      password: s75Gtmy56sptTA39hmBH965YYx4ZgfQR_I
-      port: 443
-      server: 103.125.219.70
-      skip-cert-verify: false
-      sni: 103.125.219.70
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-47.79.144.115-0203"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0145"
-        - "04-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0142"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0142"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "04-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0145"
         - "05-shadowsocks-\U0001F1EF\U0001F1F5JP-103.106.228.175-0146"
-        - "06-vmess-\U0001F1EF\U0001F1F5 JP 1"
+        - 06-trojan-未知 354.1KB/s
         - "07-vless-\U0001F1EF\U0001F1F5 JP 2"
-        - 08-trojan-未知 354.1KB/s
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-47.79.144.115-0203"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-3716"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0145"
-        - "04-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0142"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0142"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "04-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0145"
         - "05-shadowsocks-\U0001F1EF\U0001F1F5JP-103.106.228.175-0146"
-        - "06-vmess-\U0001F1EF\U0001F1F5 JP 1"
+        - 06-trojan-未知 354.1KB/s
         - "07-vless-\U0001F1EF\U0001F1F5 JP 2"
-        - 08-trojan-未知 354.1KB/s
       type: select
 rules:
     - MATCH,select
