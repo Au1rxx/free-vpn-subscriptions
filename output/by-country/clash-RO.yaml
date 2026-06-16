@@ -1,0 +1,49 @@
+proxies:
+    - name: "01-vless-\U0001F534\U0001F1F3\U0001F1F1[\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_c97e250b"
+      network: tcp
+      port: 8443
+      server: 95.133.245.165
+      servername: cdn3-87.vk-cdnvideo.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 931729a8-3c20-4841-89a1-f18dc9ce0a6f
+    - name: "02-vless-\U0001F5B2️12@oneclickvpnkeys"
+      network: tcp
+      port: 8443
+      server: 77.74.123.163
+      servername: cdn3-87.vk-cdnvideo.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 931729a8-3c20-4841-89a1-f18dc9ce0a6f
+    - name: 03-vless-♾️59@oneclickvpnkeys
+      network: tcp
+      port: 8443
+      server: 162.249.126.75
+      servername: cdn7-39.vk-cdnvideo.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 931729a8-3c20-4841-89a1-f18dc9ce0a6f
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-vless-\U0001F534\U0001F1F3\U0001F1F1[\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_c97e250b"
+        - "02-vless-\U0001F5B2️12@oneclickvpnkeys"
+        - 03-vless-♾️59@oneclickvpnkeys
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-vless-\U0001F534\U0001F1F3\U0001F1F1[\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_c97e250b"
+        - "02-vless-\U0001F5B2️12@oneclickvpnkeys"
+        - 03-vless-♾️59@oneclickvpnkeys
+      type: select
+rules:
+    - MATCH,select
