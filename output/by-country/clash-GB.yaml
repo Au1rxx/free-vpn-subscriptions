@@ -6,14 +6,28 @@ proxies:
       server: 146.70.61.37
       type: ss
       udp: true
+    - cipher: aes-128-gcm
+      name: "02-shadowsocks-https://t.me/v2rayNplus |\U0001F1EC\U0001F1E7"
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.182
+      type: ss
+      udp: true
     - cipher: aes-256-gcm
-      name: "02-shadowsocks-\U0001F1EC\U0001F1E7 Join Telegram:@Farah_VPN \U0001F1EC\U0001F1E7"
+      name: "03-shadowsocks-\U0001F1EC\U0001F1E7 Join Telegram:@Farah_VPN \U0001F1EC\U0001F1E7"
       password: RexnBgU7EV5ADxG
       port: 7001
       server: 94.156.250.148
       type: ss
       udp: true
-    - name: 03-vless->>@oneclickvpnkeys::GB
+    - cipher: aes-128-gcm
+      name: "04-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.179-0111"
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.179
+      type: ss
+      udp: true
+    - name: 05-vless->>@oneclickvpnkeys::GB
       network: tcp
       port: 8443
       server: 152.233.28.198
@@ -28,16 +42,20 @@ proxy-groups:
       name: auto
       proxies:
         - "01-shadowsocks-\U0001F1EC\U0001F1E7GB-146.70.61.37-0090"
-        - "02-shadowsocks-\U0001F1EC\U0001F1E7 Join Telegram:@Farah_VPN \U0001F1EC\U0001F1E7"
-        - 03-vless->>@oneclickvpnkeys::GB
+        - "02-shadowsocks-https://t.me/v2rayNplus |\U0001F1EC\U0001F1E7"
+        - "03-shadowsocks-\U0001F1EC\U0001F1E7 Join Telegram:@Farah_VPN \U0001F1EC\U0001F1E7"
+        - "04-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.179-0111"
+        - 05-vless->>@oneclickvpnkeys::GB
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - "01-shadowsocks-\U0001F1EC\U0001F1E7GB-146.70.61.37-0090"
-        - "02-shadowsocks-\U0001F1EC\U0001F1E7 Join Telegram:@Farah_VPN \U0001F1EC\U0001F1E7"
-        - 03-vless->>@oneclickvpnkeys::GB
+        - "02-shadowsocks-https://t.me/v2rayNplus |\U0001F1EC\U0001F1E7"
+        - "03-shadowsocks-\U0001F1EC\U0001F1E7 Join Telegram:@Farah_VPN \U0001F1EC\U0001F1E7"
+        - "04-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.179-0111"
+        - 05-vless->>@oneclickvpnkeys::GB
       type: select
 rules:
     - MATCH,select
