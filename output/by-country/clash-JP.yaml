@@ -1,23 +1,23 @@
 proxies:
     - cipher: aes-128-gcm
-      name: "01-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
-      password: shadowsocks
-      port: 443
-      server: 149.22.87.240
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0106"
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0106"
       password: shadowsocks
       port: 443
       server: 149.22.87.204
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+      name: 02-shadowsocks-Mix--@V2rayAlpha--45
       password: shadowsocks
       port: 443
       server: 149.22.87.241
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.240
       type: ss
       udp: true
     - cipher: aes-256-gcm
@@ -27,9 +27,24 @@ proxies:
       server: 47.79.144.115
       type: ss
       udp: true
+    - cipher: aes-256-gcm
+      name: "05-shadowsocks-\U0001F1EF\U0001F1F5JP-103.106.228.175-0109"
+      password: XKFKl2rULjIp74
+      port: 8009
+      server: 103.106.228.175
+      type: ss
+      udp: true
+    - name: "06-trojan-\U0001F1EF\U0001F1F5JP-103.125.219.70-0155"
+      password: s75Gtmy56sptTA39hmBH965YYx4ZgfQR_I
+      port: 443
+      server: 103.125.219.70
+      skip-cert-verify: false
+      sni: 103.125.219.70
+      type: trojan
+      udp: true
     - alterId: 0
       cipher: auto
-      name: "05-vmess-⚪\U0001F3F3️[\U0001F916]_github.com/Ruk1ng001_c210f2fa"
+      name: "07-vmess-⚪\U0001F3F3️[\U0001F916]_github.com/Ruk1ng001_c210f2fa"
       network: tcp
       port: 34017
       server: 43.167.162.191
@@ -38,69 +53,38 @@ proxies:
       uuid: dbe306b3-f28c-4176-83d7-b75506c38488
     - alterId: 0
       cipher: auto
-      name: "06-vmess-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_477e248d"
+      name: "08-vmess-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_477e248d"
       network: tcp
       port: 25944
       server: 43.167.162.191
       type: vmess
       udp: true
       uuid: a8eec18d-8aab-491f-9743-b588c1cd5e8b
-    - cipher: aes-256-gcm
-      name: "07-shadowsocks-\U0001F1EF\U0001F1F5JP-103.106.228.175-0109"
-      password: XKFKl2rULjIp74
-      port: 8009
-      server: 103.106.228.175
-      type: ss
-      udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: "08-vless-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_08980dad"
-      network: tcp
-      port: 1443
-      reality-opts:
-        public-key: 0i_xAxYgSNx5NMpK2lOaWGS-CvAiD_LneYPO0MF0owo
-        short-id: 1a
-      server: 160.16.220.197
-      servername: www.amazon.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: b98d4c6e-6770-4a31-8256-a4750cdea0e7
-    - name: "09-trojan-\U0001F1EF\U0001F1F5JP-103.125.219.70-0155"
-      password: s75Gtmy56sptTA39hmBH965YYx4ZgfQR_I
-      port: 443
-      server: 103.125.219.70
-      skip-cert-verify: false
-      sni: 103.125.219.70
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0106"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0106"
+        - 02-shadowsocks-Mix--@V2rayAlpha--45
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
         - "04-shadowsocks-\U0001F1EF\U0001F1F5JP-47.79.144.115-0153"
-        - "05-vmess-⚪\U0001F3F3️[\U0001F916]_github.com/Ruk1ng001_c210f2fa"
-        - "06-vmess-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_477e248d"
-        - "07-shadowsocks-\U0001F1EF\U0001F1F5JP-103.106.228.175-0109"
-        - "08-vless-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_08980dad"
-        - "09-trojan-\U0001F1EF\U0001F1F5JP-103.125.219.70-0155"
+        - "05-shadowsocks-\U0001F1EF\U0001F1F5JP-103.106.228.175-0109"
+        - "06-trojan-\U0001F1EF\U0001F1F5JP-103.125.219.70-0155"
+        - "07-vmess-⚪\U0001F3F3️[\U0001F916]_github.com/Ruk1ng001_c210f2fa"
+        - "08-vmess-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_477e248d"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0106"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0106"
+        - 02-shadowsocks-Mix--@V2rayAlpha--45
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
         - "04-shadowsocks-\U0001F1EF\U0001F1F5JP-47.79.144.115-0153"
-        - "05-vmess-⚪\U0001F3F3️[\U0001F916]_github.com/Ruk1ng001_c210f2fa"
-        - "06-vmess-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_477e248d"
-        - "07-shadowsocks-\U0001F1EF\U0001F1F5JP-103.106.228.175-0109"
-        - "08-vless-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_08980dad"
-        - "09-trojan-\U0001F1EF\U0001F1F5JP-103.125.219.70-0155"
+        - "05-shadowsocks-\U0001F1EF\U0001F1F5JP-103.106.228.175-0109"
+        - "06-trojan-\U0001F1EF\U0001F1F5JP-103.125.219.70-0155"
+        - "07-vmess-⚪\U0001F3F3️[\U0001F916]_github.com/Ruk1ng001_c210f2fa"
+        - "08-vmess-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_477e248d"
       type: select
 rules:
     - MATCH,select
