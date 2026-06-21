@@ -1,0 +1,46 @@
+proxies:
+    - name: "01-vless-\U0001F1FA\U0001F1F8 WS"
+      network: ws
+      port: 37368
+      server: 185.173.144.209
+      type: vless
+      udp: true
+      uuid: 0f06e572-eb9a-4831-be66-0646a03b849b
+    - name: "02-vless-\U0001F1FA\U0001F1F8 WS 2"
+      network: ws
+      port: 19430
+      server: 185.173.144.212
+      type: vless
+      udp: true
+      uuid: 0f06e572-eb9a-4831-be66-0646a03b849b
+    - client-fingerprint: chrome
+      name: "03-vless-\U0001F1FA\U0001F1F8 Reality"
+      network: tcp
+      port: 57820
+      reality-opts:
+        public-key: YgVq_pYLd-NOCGUo0nftxYMwip15wAg8Z_23MrbVNiI
+        short-id: ecc903f84bce67fc
+      server: 185.173.144.209
+      servername: www.yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0f06e572-eb9a-4831-be66-0646a03b849b
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-vless-\U0001F1FA\U0001F1F8 WS"
+        - "02-vless-\U0001F1FA\U0001F1F8 WS 2"
+        - "03-vless-\U0001F1FA\U0001F1F8 Reality"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-vless-\U0001F1FA\U0001F1F8 WS"
+        - "02-vless-\U0001F1FA\U0001F1F8 WS 2"
+        - "03-vless-\U0001F1FA\U0001F1F8 Reality"
+      type: select
+rules:
+    - MATCH,select

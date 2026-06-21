@@ -1,0 +1,67 @@
+{
+  "outbounds": [
+    {
+      "server": "185.173.144.209",
+      "server_port": 37368,
+      "tag": "01-vless-🇺🇸 WS",
+      "type": "vless",
+      "uuid": "0f06e572-eb9a-4831-be66-0646a03b849b"
+    },
+    {
+      "server": "185.173.144.212",
+      "server_port": 19430,
+      "tag": "02-vless-🇺🇸 WS 2",
+      "type": "vless",
+      "uuid": "0f06e572-eb9a-4831-be66-0646a03b849b"
+    },
+    {
+      "server": "185.173.144.209",
+      "server_port": 57820,
+      "tag": "03-vless-🇺🇸 Reality",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "YgVq_pYLd-NOCGUo0nftxYMwip15wAg8Z_23MrbVNiI",
+          "short_id": "ecc903f84bce67fc"
+        },
+        "server_name": "www.yahoo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "0f06e572-eb9a-4831-be66-0646a03b849b"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-vless-🇺🇸 WS",
+        "02-vless-🇺🇸 WS 2",
+        "03-vless-🇺🇸 Reality"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-vless-🇺🇸 WS",
+        "02-vless-🇺🇸 WS 2",
+        "03-vless-🇺🇸 Reality"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
