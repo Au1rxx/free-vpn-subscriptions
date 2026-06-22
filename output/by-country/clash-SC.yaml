@@ -1,0 +1,47 @@
+proxies:
+    - name: "01-trojan-\U0001F1E6\U0001F1FA"
+      password: 86957ec0-b213-433b-a43b-51f2175e0ec3
+      port: 443
+      server: 45.130.125.126
+      skip-cert-verify: false
+      sni: space.byu.id.yxls.eu.cc
+      type: trojan
+      udp: true
+    - name: "02-vless-\U0001F194configfa \U0001F512 VL-WS-N/A ❔ XX 2ms"
+      network: ws
+      port: 443
+      server: 45.130.125.158
+      servername: t1s1.rittbo.kdns.fr
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: eeb6823c-b926-4ea2-866a-5542edd26e59
+    - name: "03-vless-『\U0001F680』\U00016910"
+      network: ws
+      port: 8443
+      server: 45.130.125.158
+      servername: srv03.perfectbulk.info
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: f3b8c2a1-9d4e-4b7f-a6c5-2e8d1f0b4a93
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-trojan-\U0001F1E6\U0001F1FA"
+        - "02-vless-\U0001F194configfa \U0001F512 VL-WS-N/A ❔ XX 2ms"
+        - "03-vless-『\U0001F680』\U00016910"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-trojan-\U0001F1E6\U0001F1FA"
+        - "02-vless-\U0001F194configfa \U0001F512 VL-WS-N/A ❔ XX 2ms"
+        - "03-vless-『\U0001F680』\U00016910"
+      type: select
+rules:
+    - MATCH,select
