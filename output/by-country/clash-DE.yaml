@@ -35,19 +35,20 @@ proxies:
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-    - name: "05-vless-Tel-@irconfiig\U0001F981 1"
+    - name: '05-vless-Channel : @Daily_Configs'
       network: tcp
       port: 443
       server: 18.153.81.34
       type: vless
       udp: true
       uuid: ad73ff14-a0e3-46d1-adc0-02ca29a32485
-    - cipher: chacha20-ietf-poly1305
-      name: "06-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0145"
-      password: PWpjPo3tqhPN4yRZ
-      port: 20001
-      server: 8.209.74.72
-      type: ss
+    - name: "06-trojan-\U0001F1E9\U0001F1EADE-185.137.157.250-31"
+      password: n-S5Kuz58YgwljisuLEJltip2OWf1ourWz
+      port: 443
+      server: 185.137.157.250
+      skip-cert-verify: true
+      sni: fra250.clientfirewall.click
+      type: trojan
       udp: true
     - name: '07-trojan-More : @Qara_atayi || sni-spoof'
       password: n-S5Kuz58YgwljisuLEJltip2OWf1ourWz
@@ -57,8 +58,16 @@ proxies:
       sni: fra154.clientfirewall.click
       type: trojan
       udp: true
+    - name: "08-trojan-\U0001F1E9\U0001F1EADE-185.137.157.59-0160"
+      password: fFj7MAGy1VlAWmB_gMBG_27oPYTSHvV6MX
+      port: 443
+      server: 185.137.157.59
+      skip-cert-verify: false
+      sni: www.lateralio.click
+      type: trojan
+      udp: true
     - cipher: aes-256-gcm
-      name: "08-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0169"
+      name: "09-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0169"
       password: RexnBgU7EV5ADxG
       port: 7001
       server: 213.202.208.199
@@ -72,10 +81,11 @@ proxy-groups:
         - "02-vmess-\U0001F1E9\U0001F1EADE-82.198.246.250-67"
         - "03-vmess-\U0001F1E8\U0001F1FF CZ 1"
         - "04-vmess-\U0001F1E8\U0001F1FF CZ 3"
-        - "05-vless-Tel-@irconfiig\U0001F981 1"
-        - "06-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0145"
+        - '05-vless-Channel : @Daily_Configs'
+        - "06-trojan-\U0001F1E9\U0001F1EADE-185.137.157.250-31"
         - '07-trojan-More : @Qara_atayi || sni-spoof'
-        - "08-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0169"
+        - "08-trojan-\U0001F1E9\U0001F1EADE-185.137.157.59-0160"
+        - "09-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0169"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -85,10 +95,11 @@ proxy-groups:
         - "02-vmess-\U0001F1E9\U0001F1EADE-82.198.246.250-67"
         - "03-vmess-\U0001F1E8\U0001F1FF CZ 1"
         - "04-vmess-\U0001F1E8\U0001F1FF CZ 3"
-        - "05-vless-Tel-@irconfiig\U0001F981 1"
-        - "06-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0145"
+        - '05-vless-Channel : @Daily_Configs'
+        - "06-trojan-\U0001F1E9\U0001F1EADE-185.137.157.250-31"
         - '07-trojan-More : @Qara_atayi || sni-spoof'
-        - "08-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0169"
+        - "08-trojan-\U0001F1E9\U0001F1EADE-185.137.157.59-0160"
+        - "09-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0169"
       type: select
 rules:
     - MATCH,select
