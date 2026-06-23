@@ -1,0 +1,65 @@
+{
+  "outbounds": [
+    {
+      "server": "193.233.21.140",
+      "server_port": 80,
+      "tag": "01-vless-俄罗斯 V2CROSS.COM",
+      "type": "vless",
+      "uuid": "f9255507-1b65-433f-bfd8-193b35e068e2"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "85.234.114.53",
+      "server_port": 22231,
+      "tag": "02-vless-Russia",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "r1.mizulina.top"
+      },
+      "type": "vless",
+      "uuid": "afcac633-0e1a-46c3-bef2-cc01cc0097c8"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "85.234.114.53",
+      "server_port": 443,
+      "tag": "03-vless-Russia",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "r1.mizulina.top"
+      },
+      "type": "vless",
+      "uuid": "afcac633-0e1a-46c3-bef2-cc01cc0097c8"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-vless-俄罗斯 V2CROSS.COM",
+        "02-vless-Russia",
+        "03-vless-Russia"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-vless-俄罗斯 V2CROSS.COM",
+        "02-vless-Russia",
+        "03-vless-Russia"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
