@@ -1,64 +1,56 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: "01-shadowsocks-[\U0001F1FA\U0001F1F8]t.me/Raiv2mmr"
-      password: hbGrpfvNrJsUmKmPbR3iY2
+      name: 01-shadowsocks-node
+      password: ebEfGowZtV1BEFXZOtgAXi
       port: 443
       server: tinkered-pennies-puppies.freesocks.work
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: 02-shadowsocks-node
+      password: 01iK5R1qq8MGGUyN9P20au
+      port: 443
+      server: 147.90.234.133
+      type: ss
+      udp: true
     - cipher: aes-128-cfb
-      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
+      name: "03-shadowsocks-\U0001F30A76@oneclickvpnkeys"
       password: shadowsocks
       port: 443
       server: 109.201.152.181
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: "03-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0176"
-      password: CJmTCCx7Ltud
-      port: 8388
-      server: 108.181.126.122
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: "04-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0207"
-      password: CJmTCCx7Ltud
-      port: 8388
-      server: 108.181.58.239
-      type: ss
-      udp: true
     - client-fingerprint: chrome
-      name: "05-vless-83.\U0001F1F3\U0001F1F1Нидерланды | @LimeVPNFREE"
+      flow: xtls-rprx-vision
+      name: "04-vless-10.\U0001F1F3\U0001F1F1Нидерланды | @LimeVPNFREE"
       network: tcp
-      port: 443
+      port: 23576
       reality-opts:
-        public-key: GzOdZG9TCQSrZV7ivcmOq9tKWUf37QnoTxSHf32OfAs
-        short-id: "1680"
-      server: 89.23.107.137
-      servername: www.samsung.com
+        public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+        short-id: "01"
+      server: 51.158.206.96
+      servername: fuck.rkn
       tls: true
       type: vless
       udp: true
-      uuid: 612c872d-1370-4109-8644-f0755f97e33f
+      uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-[\U0001F1FA\U0001F1F8]t.me/Raiv2mmr"
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
-        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0176"
-        - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0207"
-        - "05-vless-83.\U0001F1F3\U0001F1F1Нидерланды | @LimeVPNFREE"
+        - 01-shadowsocks-node
+        - 02-shadowsocks-node
+        - "03-shadowsocks-\U0001F30A76@oneclickvpnkeys"
+        - "04-vless-10.\U0001F1F3\U0001F1F1Нидерланды | @LimeVPNFREE"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-[\U0001F1FA\U0001F1F8]t.me/Raiv2mmr"
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
-        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0176"
-        - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0207"
-        - "05-vless-83.\U0001F1F3\U0001F1F1Нидерланды | @LimeVPNFREE"
+        - 01-shadowsocks-node
+        - 02-shadowsocks-node
+        - "03-shadowsocks-\U0001F30A76@oneclickvpnkeys"
+        - "04-vless-10.\U0001F1F3\U0001F1F1Нидерланды | @LimeVPNFREE"
       type: select
 rules:
     - MATCH,select
