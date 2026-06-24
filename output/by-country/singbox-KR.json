@@ -1,0 +1,60 @@
+{
+  "outbounds": [
+    {
+      "method": "aes-256-cfb",
+      "password": "qwerREWQ@@",
+      "server": "211.178.105.134",
+      "server_port": 6123,
+      "tag": "01-shadowsocks-🇰🇷KR-211.178.105.134-0173",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "qwerREWQ@@",
+      "server": "218.237.185.230",
+      "server_port": 4652,
+      "tag": "02-shadowsocks-⚡ b2n.ir/v2ray-configs | 823",
+      "type": "shadowsocks"
+    },
+    {
+      "server": "211.49.57.178",
+      "server_port": 443,
+      "tag": "03-vless-🆔configfa 🔒 VL-WS-N/A ❔ XX 140ms",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "s5.868001.xyz"
+      },
+      "type": "vless",
+      "uuid": "23cb9aa7-9756-459f-aa84-3a27bdf6ad64"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-shadowsocks-🇰🇷KR-211.178.105.134-0173",
+        "02-shadowsocks-⚡ b2n.ir/v2ray-configs | 823",
+        "03-vless-🆔configfa 🔒 VL-WS-N/A ❔ XX 140ms"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-shadowsocks-🇰🇷KR-211.178.105.134-0173",
+        "02-shadowsocks-⚡ b2n.ir/v2ray-configs | 823",
+        "03-vless-🆔configfa 🔒 VL-WS-N/A ❔ XX 140ms"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
