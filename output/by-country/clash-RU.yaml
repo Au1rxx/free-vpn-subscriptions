@@ -1,0 +1,48 @@
+proxies:
+    - name: 01-vless-⚡ b2n.ir/v2ray-configs | 318
+      network: ws
+      port: 8880
+      server: 45.142.120.40
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - flow: xtls-rprx-vision
+      name: 02-vless-Russia
+      network: tcp
+      port: 22231
+      server: 85.234.114.53
+      servername: r1.mizulina.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: afcac633-0e1a-46c3-bef2-cc01cc0097c8
+    - flow: xtls-rprx-vision
+      name: 03-vless-Russia
+      network: tcp
+      port: 443
+      server: 85.234.114.53
+      servername: r1.mizulina.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: afcac633-0e1a-46c3-bef2-cc01cc0097c8
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-vless-⚡ b2n.ir/v2ray-configs | 318
+        - 02-vless-Russia
+        - 03-vless-Russia
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-vless-⚡ b2n.ir/v2ray-configs | 318
+        - 02-vless-Russia
+        - 03-vless-Russia
+      type: select
+rules:
+    - MATCH,select

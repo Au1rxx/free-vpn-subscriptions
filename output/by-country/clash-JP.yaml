@@ -7,17 +7,17 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0133"
-      password: shadowsocks
-      port: 443
-      server: 149.22.87.240
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0132"
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
       password: shadowsocks
       port: 443
       server: 149.22.87.204
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.240
       type: ss
       udp: true
     - cipher: aes-256-gcm
@@ -50,8 +50,15 @@ proxies:
       type: vless
       udp: true
       uuid: c6508e59-dd68-4dc0-b14f-3192e84ef843
+    - name: 07-vless-日本 东京Fastly节点
+      network: ws
+      port: 80
+      server: 151.101.109.223
+      type: vless
+      udp: true
+      uuid: 0058c215-ab1e-400c-a403-b5b2fda7e846
     - cipher: aes-256-gcm
-      name: "07-shadowsocks-\U0001F1EF\U0001F1F5JP-47.79.144.115-0188"
+      name: "08-shadowsocks-\U0001F1EF\U0001F1F5JP-47.79.144.115-0188"
       password: GTZI5AbjNAeWQG0oVNptvWJogHNKiiKA
       port: 40003
       server: 47.79.144.115
@@ -62,24 +69,26 @@ proxy-groups:
       name: auto
       proxies:
         - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0130"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0133"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0132"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
         - "04-shadowsocks-\U0001F1EF\U0001F1F5JP-103.106.228.175-0134"
         - "05-vmess-\U0001F1EF\U0001F1F5JP-172.111.146.64-4740"
         - "06-vless-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_67a49755"
-        - "07-shadowsocks-\U0001F1EF\U0001F1F5JP-47.79.144.115-0188"
+        - 07-vless-日本 东京Fastly节点
+        - "08-shadowsocks-\U0001F1EF\U0001F1F5JP-47.79.144.115-0188"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0130"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0133"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0132"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
         - "04-shadowsocks-\U0001F1EF\U0001F1F5JP-103.106.228.175-0134"
         - "05-vmess-\U0001F1EF\U0001F1F5JP-172.111.146.64-4740"
         - "06-vless-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F50D]_github.com/Ruk1ng001_67a49755"
-        - "07-shadowsocks-\U0001F1EF\U0001F1F5JP-47.79.144.115-0188"
+        - 07-vless-日本 东京Fastly节点
+        - "08-shadowsocks-\U0001F1EF\U0001F1F5JP-47.79.144.115-0188"
       type: select
 rules:
     - MATCH,select
