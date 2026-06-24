@@ -1,19 +1,19 @@
 proxies:
     - alterId: 0
       cipher: auto
-      name: "01-vmess-\U0001F1E8\U0001F1FF CZ 1"
+      name: "01-vmess-Global \U0001F310 | @Raydikalx | 2709"
       network: tcp
       port: 180
-      server: 82.198.246.214
+      server: 82.198.246.97
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: "02-vmess-Global \U0001F310 | @Raydikalx | 2664"
+      name: "02-vmess-\U0001F1E8\U0001F1FF CZ 1"
       network: tcp
       port: 180
-      server: 82.198.246.250
+      server: 82.198.246.214
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
@@ -28,15 +28,23 @@ proxies:
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: "04-vmess-Global \U0001F310 | @Raydikalx | 2709"
+      name: "04-vmess-Global \U0001F310 | @Raydikalx | 2664"
       network: tcp
       port: 180
-      server: 82.198.246.97
+      server: 82.198.246.250
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+    - name: "05-trojan-\U0001F1E9\U0001F1EADE-185.137.157.59-0118"
+      password: fFj7MAGy1VlAWmB_gMBG_27oPYTSHvV6MX
+      port: 443
+      server: 185.137.157.59
+      skip-cert-verify: false
+      sni: www.lateralio.click
+      type: trojan
+      udp: true
     - cipher: aes-256-gcm
-      name: "05-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0122"
+      name: "06-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0122"
       password: RexnBgU7EV5ADxG
       port: 7001
       server: 213.202.208.199
@@ -46,21 +54,23 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-vmess-\U0001F1E8\U0001F1FF CZ 1"
-        - "02-vmess-Global \U0001F310 | @Raydikalx | 2664"
+        - "01-vmess-Global \U0001F310 | @Raydikalx | 2709"
+        - "02-vmess-\U0001F1E8\U0001F1FF CZ 1"
         - "03-vmess-\U0001F1E8\U0001F1FF CZ 2"
-        - "04-vmess-Global \U0001F310 | @Raydikalx | 2709"
-        - "05-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0122"
+        - "04-vmess-Global \U0001F310 | @Raydikalx | 2664"
+        - "05-trojan-\U0001F1E9\U0001F1EADE-185.137.157.59-0118"
+        - "06-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0122"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-vmess-\U0001F1E8\U0001F1FF CZ 1"
-        - "02-vmess-Global \U0001F310 | @Raydikalx | 2664"
+        - "01-vmess-Global \U0001F310 | @Raydikalx | 2709"
+        - "02-vmess-\U0001F1E8\U0001F1FF CZ 1"
         - "03-vmess-\U0001F1E8\U0001F1FF CZ 2"
-        - "04-vmess-Global \U0001F310 | @Raydikalx | 2709"
-        - "05-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0122"
+        - "04-vmess-Global \U0001F310 | @Raydikalx | 2664"
+        - "05-trojan-\U0001F1E9\U0001F1EADE-185.137.157.59-0118"
+        - "06-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0122"
       type: select
 rules:
     - MATCH,select
