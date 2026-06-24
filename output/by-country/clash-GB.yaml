@@ -1,0 +1,68 @@
+proxies:
+    - cipher: aes-128-gcm
+      name: "01-shadowsocks-\U0001F49F3@oneclickvpnkeys"
+      password: shadowsocks
+      port: 443
+      server: 158.173.24.73
+      type: ss
+      udp: true
+    - cipher: rc4-md5
+      name: "02-shadowsocks-\U0001F1EC\U0001F1E7GB-146.70.61.37-0164"
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.61.37
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "03-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.181-0099"
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.181
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: "04-shadowsocks-\U0001F1EC\U0001F1E7GB-94.156.250.148-0097"
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 94.156.250.148
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "05-shadowsocks-[\U0001F1EC\U0001F1E7]t.me/Raiv2mmr"
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.178
+      type: ss
+      udp: true
+    - name: 06-trojan-英国 伦敦Choopa数据中心
+      password: kflYwtj8VD7Pd4V9ixedIxEDsac4QQXvbP
+      port: 443
+      server: 45.77.227.183
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-shadowsocks-\U0001F49F3@oneclickvpnkeys"
+        - "02-shadowsocks-\U0001F1EC\U0001F1E7GB-146.70.61.37-0164"
+        - "03-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.181-0099"
+        - "04-shadowsocks-\U0001F1EC\U0001F1E7GB-94.156.250.148-0097"
+        - "05-shadowsocks-[\U0001F1EC\U0001F1E7]t.me/Raiv2mmr"
+        - 06-trojan-英国 伦敦Choopa数据中心
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-shadowsocks-\U0001F49F3@oneclickvpnkeys"
+        - "02-shadowsocks-\U0001F1EC\U0001F1E7GB-146.70.61.37-0164"
+        - "03-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.181-0099"
+        - "04-shadowsocks-\U0001F1EC\U0001F1E7GB-94.156.250.148-0097"
+        - "05-shadowsocks-[\U0001F1EC\U0001F1E7]t.me/Raiv2mmr"
+        - 06-trojan-英国 伦敦Choopa数据中心
+      type: select
+rules:
+    - MATCH,select
