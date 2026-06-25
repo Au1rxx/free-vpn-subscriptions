@@ -1,34 +1,34 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: "01-shadowsocks-\U0001F1E8\U0001F1E6CA-108.181.118.10-0095"
+      name: "01-shadowsocks-\U0001F1E8\U0001F1E6CA-108.181.118.10-0086"
       password: G5p6ww4o67HB
       port: 8388
       server: 108.181.118.10
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0091"
+      name: "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0082"
       password: shadowsocks
       port: 443
       server: 149.22.95.183
       type: ss
       udp: true
+    - cipher: rc4-md5
+      name: "03-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0064"
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 137.184.174.93
+      type: ss
+      udp: true
     - alterId: 0
       cipher: auto
-      name: "03-vmess-\U0001F1E8\U0001F1E6 CA 1"
+      name: "04-vmess-\U0001F1E8\U0001F1E6 CA 1"
       network: tcp
       port: 18000
       server: 134.195.196.211
       type: vmess
       udp: true
       uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-    - cipher: rc4-md5
-      name: "04-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0061"
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 137.184.174.93
-      type: ss
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: 05-vless-@FarazV2ray
@@ -47,20 +47,20 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1E8\U0001F1E6CA-108.181.118.10-0095"
-        - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0091"
-        - "03-vmess-\U0001F1E8\U0001F1E6 CA 1"
-        - "04-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0061"
+        - "01-shadowsocks-\U0001F1E8\U0001F1E6CA-108.181.118.10-0086"
+        - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0082"
+        - "03-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0064"
+        - "04-vmess-\U0001F1E8\U0001F1E6 CA 1"
         - 05-vless-@FarazV2ray
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1E8\U0001F1E6CA-108.181.118.10-0095"
-        - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0091"
-        - "03-vmess-\U0001F1E8\U0001F1E6 CA 1"
-        - "04-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0061"
+        - "01-shadowsocks-\U0001F1E8\U0001F1E6CA-108.181.118.10-0086"
+        - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0082"
+        - "03-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0064"
+        - "04-vmess-\U0001F1E8\U0001F1E6 CA 1"
         - 05-vless-@FarazV2ray
       type: select
 rules:
