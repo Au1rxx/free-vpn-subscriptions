@@ -1,0 +1,53 @@
+proxies:
+    - name: "01-trojan-\U0001F1EB\U0001F1F7FR-\U0001F680@VPNine1"
+      password: 45d2fe56-2da3-409a-bdc7-5b95f30817bd
+      port: 443
+      server: 141.11.202.244
+      skip-cert-verify: false
+      sni: sahand-m.sahand5.workers.dev
+      type: trojan
+      udp: true
+    - name: "02-trojan-\U0001F1EB\U0001F1F7FR-\U0001F680@VPNine1"
+      password: 45d2fe56-2da3-409a-bdc7-5b95f30817bd
+      port: 443
+      server: 141.11.202.245
+      skip-cert-verify: false
+      sni: sahand-m.sahand5.workers.dev
+      type: trojan
+      udp: true
+    - name: "03-trojan-\U0001F1EB\U0001F1F7FR-\U0001F680@VPNine1"
+      password: 45d2fe56-2da3-409a-bdc7-5b95f30817bd
+      port: 443
+      server: 141.11.202.37
+      skip-cert-verify: false
+      sni: sahand-m.sahand5.workers.dev
+      type: trojan
+      udp: true
+    - name: "04-trojan-\U0001F1EB\U0001F1F7FR-\U0001F680@VPNine1"
+      password: 45d2fe56-2da3-409a-bdc7-5b95f30817bd
+      port: 443
+      server: 141.11.202.241
+      skip-cert-verify: false
+      sni: sahand-m.sahand5.workers.dev
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-trojan-\U0001F1EB\U0001F1F7FR-\U0001F680@VPNine1"
+        - "02-trojan-\U0001F1EB\U0001F1F7FR-\U0001F680@VPNine1"
+        - "03-trojan-\U0001F1EB\U0001F1F7FR-\U0001F680@VPNine1"
+        - "04-trojan-\U0001F1EB\U0001F1F7FR-\U0001F680@VPNine1"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-trojan-\U0001F1EB\U0001F1F7FR-\U0001F680@VPNine1"
+        - "02-trojan-\U0001F1EB\U0001F1F7FR-\U0001F680@VPNine1"
+        - "03-trojan-\U0001F1EB\U0001F1F7FR-\U0001F680@VPNine1"
+        - "04-trojan-\U0001F1EB\U0001F1F7FR-\U0001F680@VPNine1"
+      type: select
+rules:
+    - MATCH,select
