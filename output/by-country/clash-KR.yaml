@@ -1,42 +1,41 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: "01-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0118"
-      password: qwerREWQ@@
-      port: 6123
-      server: 211.178.105.134
+    - name: "01-trojan-\U0001F1F0\U0001F1F7KR-38.60.220.65-0236"
+      password: t5FsyeQXkNCY6eVGiqBXmPu4..jBEpNbak
+      port: 443
+      server: 38.60.220.65
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+    - cipher: aes-256-gcm
+      name: "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0148"
+      password: TEzjfAYq2IjtuoS
+      port: 6679
+      server: 141.164.45.187
       type: ss
       udp: true
     - cipher: aes-256-cfb
-      name: "02-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0114"
+      name: "03-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0144"
       password: qwerREWQ@@
       port: 4652
       server: 218.237.185.230
       type: ss
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: "03-vmess-\U0001F1F0\U0001F1F7KR-152.67.218.38-0092"
-      network: ws
-      port: 443
-      server: 152.67.218.38
-      type: vmess
-      udp: true
-      uuid: b5e9480a-b7aa-40a4-f9a7-5299b5e363b4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0118"
-        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0114"
-        - "03-vmess-\U0001F1F0\U0001F1F7KR-152.67.218.38-0092"
+        - "01-trojan-\U0001F1F0\U0001F1F7KR-38.60.220.65-0236"
+        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0148"
+        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0144"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0118"
-        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0114"
-        - "03-vmess-\U0001F1F0\U0001F1F7KR-152.67.218.38-0092"
+        - "01-trojan-\U0001F1F0\U0001F1F7KR-38.60.220.65-0236"
+        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0148"
+        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0144"
       type: select
 rules:
     - MATCH,select
