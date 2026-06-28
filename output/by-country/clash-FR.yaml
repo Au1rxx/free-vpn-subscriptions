@@ -1,0 +1,42 @@
+proxies:
+    - name: "01-vless-@BESTIIVPNBOT خرید سرور اختصاصی \U0001F4B2"
+      network: tcp
+      port: 8888
+      server: 45.13.119.219
+      type: vless
+      udp: true
+      uuid: eb77be10-9d9e-527b-a78d-8caaf58992d6
+    - name: "02-hysteria2- By EbraSha \U0001F9FF"
+      password: dongtaiwang.com
+      port: 22000
+      server: 62.210.124.146
+      skip-cert-verify: true
+      sni: www.microsoft.com
+      type: hysteria2
+    - alterId: 0
+      cipher: auto
+      name: "03-vmess-FR \U0001F1EB\U0001F1F7 | @Raydikalx | 2607"
+      network: tcp
+      port: 31303
+      server: 104.252.111.21
+      type: vmess
+      udp: true
+      uuid: 60bbf4d3-915f-40ef-9b97-0696c7a6743a
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-vless-@BESTIIVPNBOT خرید سرور اختصاصی \U0001F4B2"
+        - "02-hysteria2- By EbraSha \U0001F9FF"
+        - "03-vmess-FR \U0001F1EB\U0001F1F7 | @Raydikalx | 2607"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-vless-@BESTIIVPNBOT خرید سرور اختصاصی \U0001F4B2"
+        - "02-hysteria2- By EbraSha \U0001F9FF"
+        - "03-vmess-FR \U0001F1EB\U0001F1F7 | @Raydikalx | 2607"
+      type: select
+rules:
+    - MATCH,select
