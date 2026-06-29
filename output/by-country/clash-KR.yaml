@@ -7,13 +7,20 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-cfb
-      name: "02-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0177"
+      name: "02-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0174"
+      password: qwerREWQ@@
+      port: 4652
+      server: 218.237.185.230
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: "03-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0177"
       password: qwerREWQ@@
       port: 13979
       server: 221.139.79.57
       type: ss
       udp: true
-    - name: "03-trojan-\U0001F1F0\U0001F1F7 KR 10"
+    - name: "04-trojan-\U0001F1F0\U0001F1F7KR-38.60.220.65-0154"
       password: t5FsyeQXkNCY6eVGiqBXmPu4..jBEpNbak
       port: 443
       server: 38.60.220.65
@@ -21,7 +28,16 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: 04-vless-⚡ b2n.ir/v2ray-configs | 907
+    - alterId: 0
+      cipher: auto
+      name: "05-vmess-\U0001F1F0\U0001F1F7KR-152.67.218.38-0153"
+      network: ws
+      port: 443
+      server: 152.67.218.38
+      type: vmess
+      udp: true
+      uuid: b5e9480a-b7aa-40a4-f9a7-5299b5e363b4
+    - name: 06-vless-⚡ b2n.ir/v2ray-configs | 907
       network: ws
       port: 443
       server: 47.80.60.254
@@ -36,18 +52,22 @@ proxy-groups:
       name: auto
       proxies:
         - "01-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0171"
-        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0177"
-        - "03-trojan-\U0001F1F0\U0001F1F7 KR 10"
-        - 04-vless-⚡ b2n.ir/v2ray-configs | 907
+        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0174"
+        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0177"
+        - "04-trojan-\U0001F1F0\U0001F1F7KR-38.60.220.65-0154"
+        - "05-vmess-\U0001F1F0\U0001F1F7KR-152.67.218.38-0153"
+        - 06-vless-⚡ b2n.ir/v2ray-configs | 907
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - "01-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0171"
-        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0177"
-        - "03-trojan-\U0001F1F0\U0001F1F7 KR 10"
-        - 04-vless-⚡ b2n.ir/v2ray-configs | 907
+        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0174"
+        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0177"
+        - "04-trojan-\U0001F1F0\U0001F1F7KR-38.60.220.65-0154"
+        - "05-vmess-\U0001F1F0\U0001F1F7KR-152.67.218.38-0153"
+        - 06-vless-⚡ b2n.ir/v2ray-configs | 907
       type: select
 rules:
     - MATCH,select
