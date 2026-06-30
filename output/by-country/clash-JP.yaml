@@ -1,61 +1,71 @@
 proxies:
-    - name: 01-trojan-EPODONIOS
-      password: MITIVPN
-      port: 443
-      server: 151.101.110.219
-      skip-cert-verify: false
-      sni: global.fastly.com
-      type: trojan
-      udp: true
     - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0144"
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0147"
       password: shadowsocks
       port: 443
-      server: 149.22.87.204
+      server: 149.22.87.240
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0146"
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0146"
       password: shadowsocks
       port: 443
       server: 149.22.87.241
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "04-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
       password: shadowsocks
       port: 443
-      server: 149.22.87.240
+      server: 149.22.87.204
       type: ss
       udp: true
     - alterId: 0
       cipher: auto
-      name: "05-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1387"
+      name: "04-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1387"
       network: ws
       port: 25686
       server: 140.83.51.161
       type: vmess
       udp: true
       uuid: 6733c357-ba11-4e9f-f00f-7d87f2776ff9
+    - name: "05-trojan-\U0001F1EF\U0001F1F5 JP 4"
+      password: T9qoEuuxUEa9Dk3KxnTWrs6J8ilng9sCIf
+      port: 443
+      server: 103.125.216.68
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+    - name: "06-trojan-\U0001F1EF\U0001F1F5 JP 2"
+      password: T9qoEuuxUEa9Dk3KxnTWrs6J8ilng9sCIf
+      port: 443
+      server: 103.125.216.18
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-trojan-EPODONIOS
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0144"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0146"
-        - "04-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
-        - "05-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1387"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0147"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0146"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "04-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1387"
+        - "05-trojan-\U0001F1EF\U0001F1F5 JP 4"
+        - "06-trojan-\U0001F1EF\U0001F1F5 JP 2"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-trojan-EPODONIOS
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0144"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0146"
-        - "04-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
-        - "05-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1387"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0147"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0146"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "04-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1387"
+        - "05-trojan-\U0001F1EF\U0001F1F5 JP 4"
+        - "06-trojan-\U0001F1EF\U0001F1F5 JP 2"
       type: select
 rules:
     - MATCH,select
