@@ -1,0 +1,88 @@
+{
+  "outbounds": [
+    {
+      "password": "86957ec0-b213-433b-a43b-51f2175e0ec3",
+      "server": "45.130.125.126",
+      "server_port": 443,
+      "tag": "01-trojan-@V2dogs_n",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "space.byu.id.yxls.eu.cc"
+      },
+      "type": "trojan"
+    },
+    {
+      "method": "aes-256-gcm",
+      "password": "RexnBgU7EV5ADxG",
+      "server": "156.244.32.9",
+      "server_port": 7002,
+      "tag": "02-shadowsocks-🇨🇴 CO 1",
+      "type": "shadowsocks"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "45.196.224.103",
+      "server_port": 8443,
+      "tag": "03-vless-⚡ b2n.ir/v2ray-configs | 327",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "1oUeBtHH4DskTM_jCh-6enWRkFMDX9l1OU5kWYl4kxA",
+          "short_id": "f34818a561dfd1fe"
+        },
+        "server_name": "storage.yandex.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "356ccb34-22cc-4446-a137-072bc60d65ca"
+    },
+    {
+      "password": "humanity",
+      "server": "45.130.125.75",
+      "server_port": 443,
+      "tag": "04-trojan-⚡ b2n.ir/v2ray-configs | 169",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "www.calmlunch.com"
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-trojan-@V2dogs_n",
+        "02-shadowsocks-🇨🇴 CO 1",
+        "03-vless-⚡ b2n.ir/v2ray-configs | 327",
+        "04-trojan-⚡ b2n.ir/v2ray-configs | 169"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-trojan-@V2dogs_n",
+        "02-shadowsocks-🇨🇴 CO 1",
+        "03-vless-⚡ b2n.ir/v2ray-configs | 327",
+        "04-trojan-⚡ b2n.ir/v2ray-configs | 169"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

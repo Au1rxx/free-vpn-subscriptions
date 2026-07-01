@@ -1,16 +1,16 @@
 proxies:
     - cipher: aes-128-gcm
-      name: "01-shadowsocks-\U0001F1EF\U0001F1F5 Join Telegram:@Farah_VPN \U0001F1EF\U0001F1F5"
-      password: shadowsocks
-      port: 443
-      server: 149.22.87.204
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
       password: shadowsocks
       port: 443
       server: 149.22.87.240
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0193"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.204
       type: ss
       udp: true
     - cipher: aes-128-gcm
@@ -37,25 +37,35 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - name: "06-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.18-0147"
+      password: T9qoEuuxUEa9Dk3KxnTWrs6J8ilng9sCIf
+      port: 443
+      server: 103.125.216.18
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5 Join Telegram:@Farah_VPN \U0001F1EF\U0001F1F5"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0193"
         - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0091"
         - "04-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1338"
         - "05-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.68-0149"
+        - "06-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.18-0147"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5 Join Telegram:@Farah_VPN \U0001F1EF\U0001F1F5"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0193"
         - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0091"
         - "04-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1338"
         - "05-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.68-0149"
+        - "06-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.18-0147"
       type: select
 rules:
     - MATCH,select
