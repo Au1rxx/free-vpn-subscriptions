@@ -1,0 +1,42 @@
+proxies:
+    - name: "01-trojan-@prrofile_purple  ♥️\U0001F448 تلگرام"
+      password: 86957ec0-b213-433b-a43b-51f2175e0ec3
+      port: 443
+      server: 45.130.125.126
+      skip-cert-verify: false
+      sni: space.byu.id.yxls.eu.cc
+      type: trojan
+      udp: true
+    - cipher: aes-256-gcm
+      name: "02-shadowsocks-\U0001F1E8\U0001F1F4 CO 1"
+      password: RexnBgU7EV5ADxG
+      port: 7002
+      server: 156.244.32.9
+      type: ss
+      udp: true
+    - name: 03-trojan-⚡ b2n.ir/v2ray-configs | 169
+      password: humanity
+      port: 443
+      server: 45.130.125.75
+      skip-cert-verify: false
+      sni: www.calmlunch.com
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-trojan-@prrofile_purple  ♥️\U0001F448 تلگرام"
+        - "02-shadowsocks-\U0001F1E8\U0001F1F4 CO 1"
+        - 03-trojan-⚡ b2n.ir/v2ray-configs | 169
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-trojan-@prrofile_purple  ♥️\U0001F448 تلگرام"
+        - "02-shadowsocks-\U0001F1E8\U0001F1F4 CO 1"
+        - 03-trojan-⚡ b2n.ir/v2ray-configs | 169
+      type: select
+rules:
+    - MATCH,select
