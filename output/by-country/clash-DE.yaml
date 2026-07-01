@@ -8,72 +8,45 @@ proxies:
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+    - cipher: chacha20-ietf-poly1305
+      name: "02-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0086"
+      password: PWpjPo3tqhPN4yRZ
+      port: 20001
+      server: 8.209.74.72
+      type: ss
+      udp: true
+    - name: "03-trojan-\U0001F1E9\U0001F1EADE-92.119.35.87-0182"
+      password: urhj8z8R8nBovrNsYzXhL35jLGC5ruguRh
+      port: 443
+      server: 92.119.35.87
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - cipher: aes-256-gcm
-      name: "02-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0163"
+      name: "04-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0163"
       password: RexnBgU7EV5ADxG
       port: 7001
       server: 213.202.208.199
       type: ss
-      udp: true
-    - name: "03-trojan-\U0001F1E9\U0001F1EA DE 15"
-      password: dh-Ws-YoJIgTYLZ-A5VljeduVse-vhDl7Q
-      port: 443
-      server: 185.137.157.151
-      skip-cert-verify: false
-      sni: 185.137.157.151
-      type: trojan
-      udp: true
-    - name: "04-trojan-\U0001F1E9\U0001F1EADE-92.119.35.119-0165"
-      password: urhj8z8R8nBovrNsYzXhL35jLGC5ruguRh
-      port: 443
-      server: 92.119.35.119
-      skip-cert-verify: false
-      sni: 92.119.35.119
-      type: trojan
-      udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: 05-vless-⚡ b2n.ir/v2ray-configs | 537
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: RurLbpOTStqCjS3lhwB0d3MEZ3629j3atv_r1dT5zjM
-        short-id: 273940fba6ad8250
-      server: 159.195.44.159
-      servername: 5.oncloudnineservicestreang.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 859a537b-09cf-4bce-8da4-ecbb72950e3a
-    - name: "06-trojan-\U0001F1E9\U0001F1EADE-92.119.35.117-0201"
-      password: aR9EJWEB2Jp3m6xKJK=Ct7kLyqFSU-iDBR
-      port: 443
-      server: 92.119.35.117
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
       udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - "01-vmess-\U0001F1FA\U0001F1F8 Join+Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
-        - "02-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0163"
-        - "03-trojan-\U0001F1E9\U0001F1EA DE 15"
-        - "04-trojan-\U0001F1E9\U0001F1EADE-92.119.35.119-0165"
-        - 05-vless-⚡ b2n.ir/v2ray-configs | 537
-        - "06-trojan-\U0001F1E9\U0001F1EADE-92.119.35.117-0201"
+        - "02-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0086"
+        - "03-trojan-\U0001F1E9\U0001F1EADE-92.119.35.87-0182"
+        - "04-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0163"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - "01-vmess-\U0001F1FA\U0001F1F8 Join+Telegram:@Farah_VPN \U0001F1FA\U0001F1F8"
-        - "02-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0163"
-        - "03-trojan-\U0001F1E9\U0001F1EA DE 15"
-        - "04-trojan-\U0001F1E9\U0001F1EADE-92.119.35.119-0165"
-        - 05-vless-⚡ b2n.ir/v2ray-configs | 537
-        - "06-trojan-\U0001F1E9\U0001F1EADE-92.119.35.117-0201"
+        - "02-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0086"
+        - "03-trojan-\U0001F1E9\U0001F1EADE-92.119.35.87-0182"
+        - "04-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0163"
       type: select
 rules:
     - MATCH,select
