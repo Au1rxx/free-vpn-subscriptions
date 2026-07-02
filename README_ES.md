@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![nodos](https://img.shields.io/badge/nodos-58-brightgreen) ![activos](https://img.shields.io/badge/activos-2382-blue) ![rtt--mediana](https://img.shields.io/badge/rtt--mediana-132ms-orange) ![actualizado](https://img.shields.io/badge/actualizado-2026-07-02_18:13_UTC-informational)
+![nodos](https://img.shields.io/badge/nodos-64-brightgreen) ![activos](https://img.shields.io/badge/activos-2402-blue) ![rtt--mediana](https://img.shields.io/badge/rtt--mediana-135ms-orange) ![actualizado](https://img.shields.io/badge/actualizado-2026-07-02_19:24_UTC-informational)
 
 > **La forma más fácil de obtener una VPN gratuita que funciona — copia un enlace de suscripción, pégalo en tu cliente, conecta.**  
 > Sin registro. Sin pago. Sin instalar ningún binario. Actualizado cada hora desde fuentes públicas — cada nodo publicado ha reenviado tráfico HTTP real a través de sing-box hace minutos.
@@ -77,7 +77,7 @@ Copia la URL que coincida con tu cliente y pégala en el campo de importación d
 
 | País | Nodos | Clash | sing-box | v2ray |
 |---|---|---|---|---|
-| 🇺🇸 United States (`US`) | 27 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
+| 🇺🇸 United States (`US`) | 28 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
 | 🇩🇪 Germany (`DE`) | 5 | [clash-DE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-DE.yaml) | [singbox-DE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-DE.json) | [v2ray-base64-DE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-DE.txt) |
 | 🇨🇦 Canada (`CA`) | 3 | [clash-CA.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-CA.yaml) | [singbox-CA.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-CA.json) | [v2ray-base64-CA.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-CA.txt) |
 
@@ -100,15 +100,15 @@ Copia la URL que coincida con tu cliente y pégala en el campo de importación d
 
 ## 📊 Estadísticas en vivo
 
-- **Nodos seleccionados**: 58
-- **Activos en todas las fuentes**: 2382
-- **RTT del nodo más rápido**: 32 ms
-- **RTT mediana**: 132 ms
-- **Última actualización (UTC)**: 2026-07-02 18:13 UTC
+- **Nodos seleccionados**: 64
+- **Activos en todas las fuentes**: 2402
+- **RTT del nodo más rápido**: 30 ms
+- **RTT mediana**: 135 ms
+- **Última actualización (UTC)**: 2026-07-02 19:24 UTC
 
-**Mezcla de protocolos:** hysteria2 × 1 · shadowsocks × 22 · trojan × 12 · vless × 10 · vmess × 13
+**Mezcla de protocolos:** hysteria2 × 2 · shadowsocks × 23 · trojan × 15 · vless × 8 · vmess × 16
 
-**Fuentes usadas en esta ejecución:** `barry-far-v2ray` × 3 · `ebrasha-v2ray` × 1 · `epodonios` × 5 · `lagzian-mix` × 2 · `mahdi0024` × 15 · `mahdibland-aggregator` × 5 · `mahdibland-shadowsocks` × 8 · `matin-v2ray` × 2 · `ninjastrikers` × 7 · `pawdroid` × 8 · `surfboard-eternity` × 2
+**Fuentes usadas en esta ejecución:** `barry-far-v2ray` × 4 · `ebrasha-v2ray` × 1 · `epodonios` × 9 · `lagzian-mix` × 1 · `mahdi0024` × 15 · `mahdibland-aggregator` × 6 · `mahdibland-shadowsocks` × 7 · `matin-v2ray` × 3 · `ninjastrikers` × 8 · `pawdroid` × 4 · `surfboard-eternity` × 6
 
 ## ❓ Preguntas frecuentes
 
