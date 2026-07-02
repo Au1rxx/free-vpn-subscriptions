@@ -1,5 +1,5 @@
 proxies:
-    - name: 01-trojan-@V2dogs_n
+    - name: 01-trojan-EPODONIOS
       password: 86957ec0-b213-433b-a43b-51f2175e0ec3
       port: 443
       server: 45.130.125.126
@@ -8,35 +8,37 @@ proxies:
       type: trojan
       udp: true
     - cipher: aes-256-gcm
-      name: "02-shadowsocks-\U0001F1E8\U0001F1F4 CO 1"
+      name: 02-shadowsocks-EPODONIOS
       password: RexnBgU7EV5ADxG
       port: 7002
       server: 156.244.32.9
       type: ss
       udp: true
-    - name: 03-trojan-⚡ b2n.ir/v2ray-configs | 743
-      password: kZSruDyvxP
-      port: 443
-      server: 45.130.125.2
+    - name: 03-vless-⚡ b2n.ir/v2ray-configs | 974
+      network: ws
+      port: 8443
+      server: 45.130.125.114
+      servername: srv75.perfectbulk.info
       skip-cert-verify: false
-      sni: sk.farxmode.ir
-      type: trojan
+      tls: true
+      type: vless
       udp: true
+      uuid: f3b8c2a1-9d4e-4b7f-a6c5-2e8d1f0b4a93
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-trojan-@V2dogs_n
-        - "02-shadowsocks-\U0001F1E8\U0001F1F4 CO 1"
-        - 03-trojan-⚡ b2n.ir/v2ray-configs | 743
+        - 01-trojan-EPODONIOS
+        - 02-shadowsocks-EPODONIOS
+        - 03-vless-⚡ b2n.ir/v2ray-configs | 974
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-trojan-@V2dogs_n
-        - "02-shadowsocks-\U0001F1E8\U0001F1F4 CO 1"
-        - 03-trojan-⚡ b2n.ir/v2ray-configs | 743
+        - 01-trojan-EPODONIOS
+        - 02-shadowsocks-EPODONIOS
+        - 03-vless-⚡ b2n.ir/v2ray-configs | 974
       type: select
 rules:
     - MATCH,select
