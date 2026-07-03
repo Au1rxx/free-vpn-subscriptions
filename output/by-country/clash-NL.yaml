@@ -1,0 +1,58 @@
+proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-2496"
+      password: hbGrpfvNrJsUmKmPbR3iY2
+      port: 443
+      server: tinkered-pennies-puppies.freesocks.work
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "02-shadowsocks-\U0001F1FA\U0001F1F8 US 2"
+      password: ebEfGowZtV1BEFXZOtgAXi
+      port: 443
+      server: 147.90.234.133
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "03-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0080"
+      password: CJmTCCx7Ltud
+      port: 8388
+      server: 108.181.58.239
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "04-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0081"
+      password: CJmTCCx7Ltud
+      port: 8388
+      server: 108.181.126.122
+      type: ss
+      udp: true
+    - name: "05-vless-\U0001F1F3\U0001F1F1 NL 1"
+      network: tcp
+      port: 33554
+      server: 72.56.89.74
+      type: vless
+      udp: true
+      uuid: a855ec8d-d966-47f9-8e6c-61e84a5103fb
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-2496"
+        - "02-shadowsocks-\U0001F1FA\U0001F1F8 US 2"
+        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0080"
+        - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0081"
+        - "05-vless-\U0001F1F3\U0001F1F1 NL 1"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-2496"
+        - "02-shadowsocks-\U0001F1FA\U0001F1F8 US 2"
+        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0080"
+        - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0081"
+        - "05-vless-\U0001F1F3\U0001F1F1 NL 1"
+      type: select
+rules:
+    - MATCH,select
