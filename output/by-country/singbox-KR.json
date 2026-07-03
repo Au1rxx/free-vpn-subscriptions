@@ -1,0 +1,60 @@
+{
+  "outbounds": [
+    {
+      "method": "aes-256-gcm",
+      "password": "RexnBgU7EV5ADxG",
+      "server": "141.164.45.187",
+      "server_port": 7001,
+      "tag": "01-shadowsocks-🇰🇷KR-141.164.45.187-0085",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "qwerREWQ@@",
+      "server": "211.178.105.134",
+      "server_port": 6123,
+      "tag": "02-shadowsocks-🇰🇷KR-211.178.105.134-0175",
+      "type": "shadowsocks"
+    },
+    {
+      "password": "t5FsyeQXkNCY6eVGiqBXmPu4..jBEpNbak",
+      "server": "38.60.220.65",
+      "server_port": 443,
+      "tag": "03-trojan-美国 华盛顿Cogent通信公司",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": ""
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-shadowsocks-🇰🇷KR-141.164.45.187-0085",
+        "02-shadowsocks-🇰🇷KR-211.178.105.134-0175",
+        "03-trojan-美国 华盛顿Cogent通信公司"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-shadowsocks-🇰🇷KR-141.164.45.187-0085",
+        "02-shadowsocks-🇰🇷KR-211.178.105.134-0175",
+        "03-trojan-美国 华盛顿Cogent通信公司"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
