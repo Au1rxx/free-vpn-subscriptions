@@ -1,16 +1,16 @@
 proxies:
     - cipher: aes-128-gcm
-      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0083"
-      password: shadowsocks
-      port: 443
-      server: 149.22.87.240
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0087"
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
       password: shadowsocks
       port: 443
       server: 149.22.87.241
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0083"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.240
       type: ss
       udp: true
     - cipher: aes-128-gcm
@@ -52,39 +52,29 @@ proxies:
       sni: 103.106.228.187
       type: trojan
       udp: true
-    - name: "08-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.18-0111"
-      password: T9qoEuuxUEa9Dk3KxnTWrs6J8ilng9sCIf
-      port: 443
-      server: 103.125.216.18
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0083"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0087"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0083"
         - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0086"
         - 04-vless-⚡ b2n.ir/v2ray-configs | 658
         - "05-vmess-\U0001F1EF\U0001F1F5 JP 1"
         - "06-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.68-0144"
         - "07-trojan-\U0001F1EF\U0001F1F5 日本 | JPN"
-        - "08-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.18-0111"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0083"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0087"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0083"
         - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0086"
         - 04-vless-⚡ b2n.ir/v2ray-configs | 658
         - "05-vmess-\U0001F1EF\U0001F1F5 JP 1"
         - "06-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.68-0144"
         - "07-trojan-\U0001F1EF\U0001F1F5 日本 | JPN"
-        - "08-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.18-0111"
       type: select
 rules:
     - MATCH,select
