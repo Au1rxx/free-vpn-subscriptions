@@ -1,43 +1,58 @@
 proxies:
     - cipher: aes-128-gcm
-      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0086"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.204
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0083"
       password: shadowsocks
       port: 443
       server: 149.22.87.240
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0087"
       password: shadowsocks
       port: 443
       server: 149.22.87.241
       type: ss
       udp: true
-    - cipher: aes-128-gcm
-      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0086"
-      password: shadowsocks
-      port: 443
-      server: 149.22.87.204
-      type: ss
-      udp: true
     - alterId: 0
       cipher: auto
-      name: "04-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1344"
+      name: "04-vmess-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F3AD]_github.com/Ruk1ng001_8e4d207f"
+      network: tcp
+      port: 32221
+      server: 153.121.73.175
+      type: vmess
+      udp: true
+      uuid: b06054ae-f249-438e-998a-8e67bd8df653
+    - alterId: 0
+      cipher: auto
+      name: "05-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1344"
       network: ws
       port: 25686
       server: 140.83.51.161
       type: vmess
       udp: true
       uuid: 6733c357-ba11-4e9f-f00f-7d87f2776ff9
-    - name: "05-trojan-\U0001F1EF\U0001F1F5 日本 | JPN"
-      password: u2sVknrSIFjDojeqAUjgYkCnh9szHcMQ
-      port: 54603
-      server: 103.106.228.187
-      skip-cert-verify: true
-      sni: 103.106.228.187
-      type: trojan
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "06-vless-\U0001F7E2\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F3AD]_github.com/Ruk1ng001_52eec3d1"
+      network: tcp
+      port: 64371
+      reality-opts:
+        public-key: lvNgDfAnK72MtJYd3VcZWgmpKUABdH8jfUghJIScdSM
+        short-id: 38c7778a
+      server: 157.85.230.247
+      servername: apple.com
+      tls: true
+      type: vless
       udp: true
-    - name: 06-trojan-亚太地区 V2CROSS.COM
+      uuid: 85357d35-492e-4814-835a-aba4cb7f00ad
+    - name: 07-trojan-亚太地区 V2CROSS.COM
       password: T9qoEuuxUEa9Dk3KxnTWrs6J8ilng9sCIf
       port: 443
       server: 103.125.216.18
@@ -45,7 +60,7 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: "07-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.68-0144"
+    - name: "08-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.68-0144"
       password: T9qoEuuxUEa9Dk3KxnTWrs6J8ilng9sCIf
       port: 443
       server: 103.125.216.68
@@ -53,29 +68,41 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - name: "09-trojan-\U0001F1EF\U0001F1F5 日本 | JPN"
+      password: u2sVknrSIFjDojeqAUjgYkCnh9szHcMQ
+      port: 54603
+      server: 103.106.228.187
+      skip-cert-verify: true
+      sni: 103.106.228.187
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0086"
-        - "04-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1344"
-        - "05-trojan-\U0001F1EF\U0001F1F5 日本 | JPN"
-        - 06-trojan-亚太地区 V2CROSS.COM
-        - "07-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.68-0144"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0086"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0083"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0087"
+        - "04-vmess-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F3AD]_github.com/Ruk1ng001_8e4d207f"
+        - "05-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1344"
+        - "06-vless-\U0001F7E2\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F3AD]_github.com/Ruk1ng001_52eec3d1"
+        - 07-trojan-亚太地区 V2CROSS.COM
+        - "08-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.68-0144"
+        - "09-trojan-\U0001F1EF\U0001F1F5 日本 | JPN"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-4052"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0086"
-        - "04-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1344"
-        - "05-trojan-\U0001F1EF\U0001F1F5 日本 | JPN"
-        - 06-trojan-亚太地区 V2CROSS.COM
-        - "07-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.68-0144"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0086"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0083"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0087"
+        - "04-vmess-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F3AD]_github.com/Ruk1ng001_8e4d207f"
+        - "05-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1344"
+        - "06-vless-\U0001F7E2\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F3AD]_github.com/Ruk1ng001_52eec3d1"
+        - 07-trojan-亚太地区 V2CROSS.COM
+        - "08-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.68-0144"
+        - "09-trojan-\U0001F1EF\U0001F1F5 日本 | JPN"
       type: select
 rules:
     - MATCH,select
