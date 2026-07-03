@@ -1,23 +1,23 @@
 proxies:
     - cipher: aes-128-gcm
-      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
-      password: shadowsocks
-      port: 443
-      server: 149.22.87.204
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0083"
       password: shadowsocks
       port: 443
       server: 149.22.87.240
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0087"
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0087"
       password: shadowsocks
       port: 443
       server: 149.22.87.241
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.204
       type: ss
       udp: true
     - name: 04-vless-⚡ b2n.ir/v2ray-configs | 658
@@ -27,64 +27,23 @@ proxies:
       type: vless
       udp: true
       uuid: 2bc72bec-0c2a-4c6b-aa9f-138bfce7ba0d
-    - alterId: 0
-      cipher: auto
-      name: "05-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1344"
-      network: ws
-      port: 25686
-      server: 140.83.51.161
-      type: vmess
-      udp: true
-      uuid: 6733c357-ba11-4e9f-f00f-7d87f2776ff9
-    - name: "06-trojan-\U0001F1EF\U0001F1F5 日本 | JPN"
-      password: u2sVknrSIFjDojeqAUjgYkCnh9szHcMQ
-      port: 54603
-      server: 103.106.228.187
-      skip-cert-verify: true
-      sni: 103.106.228.187
-      type: trojan
-      udp: true
-    - name: "07-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.18-0111"
-      password: T9qoEuuxUEa9Dk3KxnTWrs6J8ilng9sCIf
-      port: 443
-      server: 103.125.216.18
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
-    - name: 08-trojan-亚太地区 V2CROSS.COM
-      password: T9qoEuuxUEa9Dk3KxnTWrs6J8ilng9sCIf
-      port: 443
-      server: 103.125.216.68
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0087"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0083"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0087"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
         - 04-vless-⚡ b2n.ir/v2ray-configs | 658
-        - "05-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1344"
-        - "06-trojan-\U0001F1EF\U0001F1F5 日本 | JPN"
-        - "07-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.18-0111"
-        - 08-trojan-亚太地区 V2CROSS.COM
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP | SS | @outlinereleasedkey 1"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0087"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0083"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0087"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
         - 04-vless-⚡ b2n.ir/v2ray-configs | 658
-        - "05-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1344"
-        - "06-trojan-\U0001F1EF\U0001F1F5 日本 | JPN"
-        - "07-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.18-0111"
-        - 08-trojan-亚太地区 V2CROSS.COM
       type: select
 rules:
     - MATCH,select
