@@ -1,0 +1,49 @@
+proxies:
+    - cipher: rc4-md5
+      name: 01-shadowsocks-⚡ b2n.ir/v2ray-configs | 54
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.61.37
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "02-shadowsocks-\U0001F1EC\U0001F1E7 Join Telegram:@Farah_VPN \U0001F1EC\U0001F1E7"
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.178
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "03-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.182-0107"
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.182
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: "04-shadowsocks-\U0001F1EC\U0001F1E7GB-94.156.250.148-0101"
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 94.156.250.148
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-shadowsocks-⚡ b2n.ir/v2ray-configs | 54
+        - "02-shadowsocks-\U0001F1EC\U0001F1E7 Join Telegram:@Farah_VPN \U0001F1EC\U0001F1E7"
+        - "03-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.182-0107"
+        - "04-shadowsocks-\U0001F1EC\U0001F1E7GB-94.156.250.148-0101"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-shadowsocks-⚡ b2n.ir/v2ray-configs | 54
+        - "02-shadowsocks-\U0001F1EC\U0001F1E7 Join Telegram:@Farah_VPN \U0001F1EC\U0001F1E7"
+        - "03-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.182-0107"
+        - "04-shadowsocks-\U0001F1EC\U0001F1E7GB-94.156.250.148-0101"
+      type: select
+rules:
+    - MATCH,select
