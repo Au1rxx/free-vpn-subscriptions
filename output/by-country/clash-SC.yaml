@@ -1,0 +1,49 @@
+proxies:
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: "01-vless-\U0001F7E2\U0001F1F8\U0001F1E8[\U0001F3AC\U0001F916\U0001F4FA\U0001F3AD]_github.com/Ruk1ng001_22840234"
+      network: tcp
+      port: 36699
+      reality-opts:
+        public-key: rBLgYxDPw9nmzppUc_8Hr-puEW7lkpN1zoRDRcA-Ywo
+        short-id: 5f7b
+      server: direct-us-08.inetsnode.de
+      servername: swdist.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 852e7dda-15f5-4e76-b01b-ba5267c64cad
+    - name: 02-trojan-EPODONIOS
+      password: 86957ec0-b213-433b-a43b-51f2175e0ec3
+      port: 443
+      server: 45.130.125.126
+      skip-cert-verify: false
+      sni: space.byu.id.yxls.eu.cc
+      type: trojan
+      udp: true
+    - name: 03-trojan-美国 V2CROSS.COM
+      password: humanity
+      port: 443
+      server: 45.130.125.32
+      skip-cert-verify: false
+      sni: www.calmloud.com
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-vless-\U0001F7E2\U0001F1F8\U0001F1E8[\U0001F3AC\U0001F916\U0001F4FA\U0001F3AD]_github.com/Ruk1ng001_22840234"
+        - 02-trojan-EPODONIOS
+        - 03-trojan-美国 V2CROSS.COM
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-vless-\U0001F7E2\U0001F1F8\U0001F1E8[\U0001F3AC\U0001F916\U0001F4FA\U0001F3AD]_github.com/Ruk1ng001_22840234"
+        - 02-trojan-EPODONIOS
+        - 03-trojan-美国 V2CROSS.COM
+      type: select
+rules:
+    - MATCH,select
