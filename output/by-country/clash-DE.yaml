@@ -1,25 +1,16 @@
 proxies:
     - alterId: 0
       cipher: auto
-      name: "01-vmess-\U0001F1E8\U0001F1FF CZ 37"
+      name: "01-vmess-\U0001F1E8\U0001F1FF CZ 45"
       network: tcp
       port: 180
-      server: 82.198.246.9
+      server: 82.198.246.97
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: "02-vmess-\U0001F1E8\U0001F1FF CZ 118"
-      network: tcp
-      port: 180
-      server: 82.198.246.250
-      type: vmess
-      udp: true
-      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-    - alterId: 0
-      cipher: auto
-      name: "03-vmess-\U0001F1E8\U0001F1FF CZ 42"
+      name: "02-vmess-\U0001F1E8\U0001F1FF CZ 44"
       network: tcp
       port: 180
       server: 82.198.246.37
@@ -28,10 +19,19 @@ proxies:
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: "04-vmess-\U0001F1E8\U0001F1FF CZ 125"
+      name: "03-vmess-\U0001F1E8\U0001F1FF CZ 132"
       network: tcp
       port: 180
-      server: 82.198.246.97
+      server: 82.198.246.9
+      type: vmess
+      udp: true
+      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+    - alterId: 0
+      cipher: auto
+      name: "04-vmess-\U0001F1E8\U0001F1FF CZ 61"
+      network: tcp
+      port: 180
+      server: 82.198.246.250
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
@@ -44,34 +44,35 @@ proxies:
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-    - cipher: aes-256-gcm
-      name: "06-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0143"
-      password: RexnBgU7EV5ADxG
-      port: 7001
-      server: 213.202.208.199
-      type: ss
+    - name: "06-trojan-\U0001F1E9\U0001F1EADE-185.137.157.138-0171"
+      password: dh-Ws-YoJIgTYLZ-A5VljeduVse-vhDl7Q
+      port: 443
+      server: 185.137.157.138
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
       udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-vmess-\U0001F1E8\U0001F1FF CZ 37"
-        - "02-vmess-\U0001F1E8\U0001F1FF CZ 118"
-        - "03-vmess-\U0001F1E8\U0001F1FF CZ 42"
-        - "04-vmess-\U0001F1E8\U0001F1FF CZ 125"
+        - "01-vmess-\U0001F1E8\U0001F1FF CZ 45"
+        - "02-vmess-\U0001F1E8\U0001F1FF CZ 44"
+        - "03-vmess-\U0001F1E8\U0001F1FF CZ 132"
+        - "04-vmess-\U0001F1E8\U0001F1FF CZ 61"
         - "05-vmess-\U0001F1E8\U0001F1FF CZ 87"
-        - "06-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0143"
+        - "06-trojan-\U0001F1E9\U0001F1EADE-185.137.157.138-0171"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-vmess-\U0001F1E8\U0001F1FF CZ 37"
-        - "02-vmess-\U0001F1E8\U0001F1FF CZ 118"
-        - "03-vmess-\U0001F1E8\U0001F1FF CZ 42"
-        - "04-vmess-\U0001F1E8\U0001F1FF CZ 125"
+        - "01-vmess-\U0001F1E8\U0001F1FF CZ 45"
+        - "02-vmess-\U0001F1E8\U0001F1FF CZ 44"
+        - "03-vmess-\U0001F1E8\U0001F1FF CZ 132"
+        - "04-vmess-\U0001F1E8\U0001F1FF CZ 61"
         - "05-vmess-\U0001F1E8\U0001F1FF CZ 87"
-        - "06-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0143"
+        - "06-trojan-\U0001F1E9\U0001F1EADE-185.137.157.138-0171"
       type: select
 rules:
     - MATCH,select
