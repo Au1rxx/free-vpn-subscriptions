@@ -1,9 +1,9 @@
 proxies:
     - cipher: aes-128-gcm
-      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0104"
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0103"
       password: shadowsocks
       port: 443
-      server: 149.22.87.204
+      server: 149.22.87.240
       type: ss
       udp: true
     - alterId: 1
@@ -16,17 +16,17 @@ proxies:
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - cipher: aes-128-gcm
-      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0103"
-      password: shadowsocks
-      port: 443
-      server: 149.22.87.240
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: "04-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0105"
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0105"
       password: shadowsocks
       port: 443
       server: 149.22.87.241
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "04-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.204
       type: ss
       udp: true
     - alterId: 0
@@ -47,9 +47,17 @@ proxies:
       type: vmess
       udp: true
       uuid: 85357d35-492e-4814-835a-aba4cb7f00ad
+    - name: "07-trojan-\U0001F1EF\U0001F1F5JP-13.230.134.89-0094"
+      password: PI36027154
+      port: 443
+      server: large-baboon.rooster465.autos
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - alterId: 0
       cipher: auto
-      name: "07-vmess-\U0001F1EF\U0001F1F5 JP 6"
+      name: "08-vmess-\U0001F1EF\U0001F1F5 JP 7"
       network: ws
       port: 80
       server: 168.138.43.75
@@ -58,17 +66,25 @@ proxies:
       uuid: 11c3627f-31e8-4695-dfbd-34076e2f1f5d
     - alterId: 0
       cipher: auto
-      name: "08-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1374"
+      name: "09-vmess-\U0001F1EF\U0001F1F5 JP 1"
       network: ws
       port: 25686
       server: 140.83.51.161
       type: vmess
       udp: true
       uuid: 6733c357-ba11-4e9f-f00f-7d87f2776ff9
-    - name: "09-trojan-\U0001F1EF\U0001F1F5JP-13.230.134.89-0094"
-      password: PI36027154
+    - name: "10-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.18-0140"
+      password: T9qoEuuxUEa9Dk3KxnTWrs6J8ilng9sCIf
       port: 443
-      server: large-baboon.rooster465.autos
+      server: 103.125.216.18
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+    - name: "11-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.68-0150"
+      password: T9qoEuuxUEa9Dk3KxnTWrs6J8ilng9sCIf
+      port: 443
+      server: 103.125.216.68
       skip-cert-verify: false
       sni: ""
       type: trojan
@@ -77,29 +93,33 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0104"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0103"
         - "02-vmess-\U0001F1EF\U0001F1F5 JP 3"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0103"
-        - "04-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0105"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0105"
+        - "04-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
         - "05-vmess-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F3AD]_github.com/Ruk1ng001_7f43f8b8"
         - "06-vmess-\U0001F1EF\U0001F1F5JP-157.85.230.247-2269"
-        - "07-vmess-\U0001F1EF\U0001F1F5 JP 6"
-        - "08-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1374"
-        - "09-trojan-\U0001F1EF\U0001F1F5JP-13.230.134.89-0094"
+        - "07-trojan-\U0001F1EF\U0001F1F5JP-13.230.134.89-0094"
+        - "08-vmess-\U0001F1EF\U0001F1F5 JP 7"
+        - "09-vmess-\U0001F1EF\U0001F1F5 JP 1"
+        - "10-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.18-0140"
+        - "11-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.68-0150"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0104"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0103"
         - "02-vmess-\U0001F1EF\U0001F1F5 JP 3"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.240-0103"
-        - "04-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0105"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0105"
+        - "04-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
         - "05-vmess-\U0001F534\U0001F1EF\U0001F1F5[\U0001F3AC\U0001F916\U0001F4FA\U0001F3AD]_github.com/Ruk1ng001_7f43f8b8"
         - "06-vmess-\U0001F1EF\U0001F1F5JP-157.85.230.247-2269"
-        - "07-vmess-\U0001F1EF\U0001F1F5 JP 6"
-        - "08-vmess-\U0001F1EF\U0001F1F5JP-140.83.51.161-1374"
-        - "09-trojan-\U0001F1EF\U0001F1F5JP-13.230.134.89-0094"
+        - "07-trojan-\U0001F1EF\U0001F1F5JP-13.230.134.89-0094"
+        - "08-vmess-\U0001F1EF\U0001F1F5 JP 7"
+        - "09-vmess-\U0001F1EF\U0001F1F5 JP 1"
+        - "10-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.18-0140"
+        - "11-trojan-\U0001F1EF\U0001F1F5JP-103.125.216.68-0150"
       type: select
 rules:
     - MATCH,select
