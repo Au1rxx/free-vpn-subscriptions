@@ -1,21 +1,49 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: "01-shadowsocks-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
+      name: 01-shadowsocks-美国
       password: hbGrpfvNrJsUmKmPbR3iY2
       port: 443
       server: tinkered-pennies-puppies.freesocks.work
       type: ss
       udp: true
     - cipher: aes-128-cfb
-      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0143"
+      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
       password: shadowsocks
       port: 443
       server: 109.201.152.181
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "03-shadowsocks-\U0001F1F3\U0001F1F1 Telegram:@ghostvpn141 \U0001F1F3\U0001F1F1"
+      password: CJmTCCx7Ltud
+      port: 8388
+      server: 108.181.58.239
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "04-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0105"
+      password: CJmTCCx7Ltud
+      port: 8388
+      server: 108.181.126.122
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "05-shadowsocks-\U0001F1F3\U0001F1F1NL-158.173.20.171-0223"
+      password: shadowsocks
+      port: 443
+      server: 158.173.20.171
+      type: ss
+      udp: true
+    - name: 06-hysteria2-荷兰 V2CROSS.COM
+      password: LzMWgm6LaNWCm11bFTbynDPq2TqQj03t
+      port: 443
+      server: 5.255.102.165
+      skip-cert-verify: true
+      sni: www.microsoft.com
+      type: hysteria2
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: 03-vless->>@oneclickvpnkeys::NL
+      name: "07-vless-\U0001F1F3\U0001F1F1 423 - NL - VLESS/REALITY/PBK/SID/VISI"
       network: tcp
       port: 23576
       reality-opts:
@@ -31,17 +59,25 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0143"
-        - 03-vless->>@oneclickvpnkeys::NL
+        - 01-shadowsocks-美国
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
+        - "03-shadowsocks-\U0001F1F3\U0001F1F1 Telegram:@ghostvpn141 \U0001F1F3\U0001F1F1"
+        - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0105"
+        - "05-shadowsocks-\U0001F1F3\U0001F1F1NL-158.173.20.171-0223"
+        - 06-hysteria2-荷兰 V2CROSS.COM
+        - "07-vless-\U0001F1F3\U0001F1F1 423 - NL - VLESS/REALITY/PBK/SID/VISI"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0143"
-        - 03-vless->>@oneclickvpnkeys::NL
+        - 01-shadowsocks-美国
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0265"
+        - "03-shadowsocks-\U0001F1F3\U0001F1F1 Telegram:@ghostvpn141 \U0001F1F3\U0001F1F1"
+        - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0105"
+        - "05-shadowsocks-\U0001F1F3\U0001F1F1NL-158.173.20.171-0223"
+        - 06-hysteria2-荷兰 V2CROSS.COM
+        - "07-vless-\U0001F1F3\U0001F1F1 423 - NL - VLESS/REALITY/PBK/SID/VISI"
       type: select
 rules:
     - MATCH,select
