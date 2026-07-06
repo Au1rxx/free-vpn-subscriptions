@@ -10,19 +10,19 @@ proxies:
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: "02-vmess-\U0001F1E8\U0001F1FF CZ 5"
+      name: "02-vmess-\U0001F1E8\U0001F1FF CZ 6"
       network: tcp
       port: 180
-      server: 82.198.246.233
+      server: 82.198.246.97
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: "03-vmess-\U0001F1E8\U0001F1FF CZ 1"
+      name: "03-vmess-\U0001F1E8\U0001F1FF CZ 5"
       network: tcp
       port: 180
-      server: 82.198.246.97
+      server: 82.198.246.233
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
@@ -33,7 +33,14 @@ proxies:
       server: 185.226.172.8
       type: ss
       udp: true
-    - name: "05-trojan-\U0001F1E9\U0001F1EADE-185.137.157.138-0181"
+    - cipher: aes-256-gcm
+      name: "05-shadowsocks-\U0001F1E9\U0001F1EA DE 15"
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 213.202.208.199
+      type: ss
+      udp: true
+    - name: "06-trojan-\U0001F1E9\U0001F1EA DE 6"
       password: dh-Ws-YoJIgTYLZ-A5VljeduVse-vhDl7Q
       port: 443
       server: 185.137.157.138
@@ -41,18 +48,10 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: "06-trojan-\U0001F1E9\U0001F1EADE-185.137.157.135-0256"
+    - name: "07-trojan-\U0001F1E9\U0001F1EADE-185.137.157.140-0278"
       password: dh-Ws-YoJIgTYLZ-A5VljeduVse-vhDl7Q
       port: 443
-      server: 185.137.157.135
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
-    - name: "07-trojan-\U0001F1E9\U0001F1EADE-185.137.157.142-0180"
-      password: dh-Ws-YoJIgTYLZ-A5VljeduVse-vhDl7Q
-      port: 443
-      server: 185.137.157.142
+      server: 185.137.157.140
       skip-cert-verify: false
       sni: ""
       type: trojan
@@ -64,7 +63,15 @@ proxies:
       server: 8.209.74.72
       type: ss
       udp: true
-    - name: "09-trojan-\U0001F1E9\U0001F1EA DE 17"
+    - name: "09-trojan-\U0001F1E9\U0001F1EADE-185.137.157.135-0256"
+      password: dh-Ws-YoJIgTYLZ-A5VljeduVse-vhDl7Q
+      port: 443
+      server: 185.137.157.135
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+    - name: "10-trojan-\U0001F1E9\U0001F1EA DE 17"
       password: dh-Ws-YoJIgTYLZ-A5VljeduVse-vhDl7Q
       port: 443
       server: 185.137.157.151
@@ -72,52 +79,51 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - cipher: aes-256-gcm
-      name: "10-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0191"
-      password: RexnBgU7EV5ADxG
-      port: 7001
-      server: 213.202.208.199
-      type: ss
-      udp: true
-    - name: "11-trojan-\U0001F1E9\U0001F1EADE-185.137.157.145-0276"
-      password: dh-Ws-YoJIgTYLZ-A5VljeduVse-vhDl7Q
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: 11-vless-EPODONIOS
+      network: tcp
       port: 443
-      server: 185.137.157.145
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
+      reality-opts:
+        public-key: dp-ncBuRHgZl5O80eHBYhSKo1i9qbt-J7MJ1alyWXmM
+        short-id: 1991780b928b292d
+      server: 159.195.45.129
+      servername: 3.oncloudnineservicestreang.com
+      tls: true
+      type: vless
       udp: true
+      uuid: 859a537b-09cf-4bce-8da4-ecbb72950e3a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - "01-vmess-\U0001F1E8\U0001F1FF CZ 2"
-        - "02-vmess-\U0001F1E8\U0001F1FF CZ 5"
-        - "03-vmess-\U0001F1E8\U0001F1FF CZ 1"
+        - "02-vmess-\U0001F1E8\U0001F1FF CZ 6"
+        - "03-vmess-\U0001F1E8\U0001F1FF CZ 5"
         - "04-shadowsocks-\U0001F1E9\U0001F1EA DE 14"
-        - "05-trojan-\U0001F1E9\U0001F1EADE-185.137.157.138-0181"
-        - "06-trojan-\U0001F1E9\U0001F1EADE-185.137.157.135-0256"
-        - "07-trojan-\U0001F1E9\U0001F1EADE-185.137.157.142-0180"
+        - "05-shadowsocks-\U0001F1E9\U0001F1EA DE 15"
+        - "06-trojan-\U0001F1E9\U0001F1EA DE 6"
+        - "07-trojan-\U0001F1E9\U0001F1EADE-185.137.157.140-0278"
         - "08-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0159"
-        - "09-trojan-\U0001F1E9\U0001F1EA DE 17"
-        - "10-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0191"
-        - "11-trojan-\U0001F1E9\U0001F1EADE-185.137.157.145-0276"
+        - "09-trojan-\U0001F1E9\U0001F1EADE-185.137.157.135-0256"
+        - "10-trojan-\U0001F1E9\U0001F1EA DE 17"
+        - 11-vless-EPODONIOS
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - "01-vmess-\U0001F1E8\U0001F1FF CZ 2"
-        - "02-vmess-\U0001F1E8\U0001F1FF CZ 5"
-        - "03-vmess-\U0001F1E8\U0001F1FF CZ 1"
+        - "02-vmess-\U0001F1E8\U0001F1FF CZ 6"
+        - "03-vmess-\U0001F1E8\U0001F1FF CZ 5"
         - "04-shadowsocks-\U0001F1E9\U0001F1EA DE 14"
-        - "05-trojan-\U0001F1E9\U0001F1EADE-185.137.157.138-0181"
-        - "06-trojan-\U0001F1E9\U0001F1EADE-185.137.157.135-0256"
-        - "07-trojan-\U0001F1E9\U0001F1EADE-185.137.157.142-0180"
+        - "05-shadowsocks-\U0001F1E9\U0001F1EA DE 15"
+        - "06-trojan-\U0001F1E9\U0001F1EA DE 6"
+        - "07-trojan-\U0001F1E9\U0001F1EADE-185.137.157.140-0278"
         - "08-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0159"
-        - "09-trojan-\U0001F1E9\U0001F1EA DE 17"
-        - "10-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0191"
-        - "11-trojan-\U0001F1E9\U0001F1EADE-185.137.157.145-0276"
+        - "09-trojan-\U0001F1E9\U0001F1EADE-185.137.157.135-0256"
+        - "10-trojan-\U0001F1E9\U0001F1EA DE 17"
+        - 11-vless-EPODONIOS
       type: select
 rules:
     - MATCH,select
