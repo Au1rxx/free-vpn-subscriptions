@@ -1,7 +1,7 @@
 proxies:
     - alterId: 0
       cipher: auto
-      name: "01-vmess-\U0001F1E8\U0001F1FF CZ 45"
+      name: "01-vmess-\U0001F1E8\U0001F1FF CZ 101"
       network: tcp
       port: 180
       server: 82.198.246.97
@@ -10,7 +10,16 @@ proxies:
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: "02-vmess-\U0001F1E8\U0001F1FF CZ 44"
+      name: "02-vmess-\U0001F1E8\U0001F1FF CZ 75"
+      network: tcp
+      port: 180
+      server: 82.198.246.233
+      type: vmess
+      udp: true
+      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+    - alterId: 0
+      cipher: auto
+      name: "03-vmess-\U0001F1E8\U0001F1FF CZ 4"
       network: tcp
       port: 180
       server: 82.198.246.37
@@ -19,16 +28,7 @@ proxies:
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: "03-vmess-\U0001F1E8\U0001F1FF CZ 132"
-      network: tcp
-      port: 180
-      server: 82.198.246.9
-      type: vmess
-      udp: true
-      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-    - alterId: 0
-      cipher: auto
-      name: "04-vmess-\U0001F1E8\U0001F1FF CZ 61"
+      name: "04-vmess-\U0001F1E8\U0001F1FF CZ 121"
       network: tcp
       port: 180
       server: 82.198.246.250
@@ -37,17 +37,31 @@ proxies:
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: "05-vmess-\U0001F1E8\U0001F1FF CZ 87"
+      name: "05-vmess-\U0001F1E8\U0001F1FF CZ 77"
       network: tcp
       port: 180
-      server: 82.198.246.233
+      server: 82.198.246.9
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-    - name: "06-trojan-\U0001F1E9\U0001F1EADE-185.137.157.138-0171"
+    - cipher: aes-256-gcm
+      name: "06-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0143"
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 213.202.208.199
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "07-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0102"
+      password: PWpjPo3tqhPN4yRZ
+      port: 20001
+      server: 8.209.74.72
+      type: ss
+      udp: true
+    - name: "08-trojan-\U0001F1E9\U0001F1EADE-185.137.157.128-0194"
       password: dh-Ws-YoJIgTYLZ-A5VljeduVse-vhDl7Q
       port: 443
-      server: 185.137.157.138
+      server: 185.137.157.128
       skip-cert-verify: false
       sni: ""
       type: trojan
@@ -56,23 +70,27 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-vmess-\U0001F1E8\U0001F1FF CZ 45"
-        - "02-vmess-\U0001F1E8\U0001F1FF CZ 44"
-        - "03-vmess-\U0001F1E8\U0001F1FF CZ 132"
-        - "04-vmess-\U0001F1E8\U0001F1FF CZ 61"
-        - "05-vmess-\U0001F1E8\U0001F1FF CZ 87"
-        - "06-trojan-\U0001F1E9\U0001F1EADE-185.137.157.138-0171"
+        - "01-vmess-\U0001F1E8\U0001F1FF CZ 101"
+        - "02-vmess-\U0001F1E8\U0001F1FF CZ 75"
+        - "03-vmess-\U0001F1E8\U0001F1FF CZ 4"
+        - "04-vmess-\U0001F1E8\U0001F1FF CZ 121"
+        - "05-vmess-\U0001F1E8\U0001F1FF CZ 77"
+        - "06-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0143"
+        - "07-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0102"
+        - "08-trojan-\U0001F1E9\U0001F1EADE-185.137.157.128-0194"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-vmess-\U0001F1E8\U0001F1FF CZ 45"
-        - "02-vmess-\U0001F1E8\U0001F1FF CZ 44"
-        - "03-vmess-\U0001F1E8\U0001F1FF CZ 132"
-        - "04-vmess-\U0001F1E8\U0001F1FF CZ 61"
-        - "05-vmess-\U0001F1E8\U0001F1FF CZ 87"
-        - "06-trojan-\U0001F1E9\U0001F1EADE-185.137.157.138-0171"
+        - "01-vmess-\U0001F1E8\U0001F1FF CZ 101"
+        - "02-vmess-\U0001F1E8\U0001F1FF CZ 75"
+        - "03-vmess-\U0001F1E8\U0001F1FF CZ 4"
+        - "04-vmess-\U0001F1E8\U0001F1FF CZ 121"
+        - "05-vmess-\U0001F1E8\U0001F1FF CZ 77"
+        - "06-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0143"
+        - "07-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0102"
+        - "08-trojan-\U0001F1E9\U0001F1EADE-185.137.157.128-0194"
       type: select
 rules:
     - MATCH,select
