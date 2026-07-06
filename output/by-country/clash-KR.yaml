@@ -1,6 +1,6 @@
 proxies:
     - cipher: aes-256-gcm
-      name: "01-shadowsocks-\U0001F1F0\U0001F1F7 KR 1"
+      name: "01-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0178"
       password: RexnBgU7EV5ADxG
       port: 7001
       server: 141.164.45.187
@@ -14,10 +14,10 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-cfb
-      name: "03-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0220"
+      name: "03-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0218"
       password: qwerREWQ@@
-      port: 13979
-      server: 221.139.79.57
+      port: 6123
+      server: 211.178.105.134
       type: ss
       udp: true
     - cipher: aes-256-cfb
@@ -28,31 +28,42 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-cfb
-      name: "05-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0218"
+      name: "05-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0220"
       password: qwerREWQ@@
-      port: 6123
-      server: 211.178.105.134
+      port: 13979
+      server: 221.139.79.57
       type: ss
       udp: true
+    - alterId: 0
+      cipher: auto
+      name: "06-vmess-\U0001F1F0\U0001F1F7 KR 2"
+      network: ws
+      port: 443
+      server: 152.67.218.38
+      type: vmess
+      udp: true
+      uuid: b5e9480a-b7aa-40a4-f9a7-5299b5e363b4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1F0\U0001F1F7 KR 1"
+        - "01-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0178"
         - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0166"
-        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0220"
+        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0218"
         - "04-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0212"
-        - "05-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0218"
+        - "05-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0220"
+        - "06-vmess-\U0001F1F0\U0001F1F7 KR 2"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1F0\U0001F1F7 KR 1"
+        - "01-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0178"
         - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0166"
-        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0220"
+        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0218"
         - "04-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0212"
-        - "05-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0218"
+        - "05-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0220"
+        - "06-vmess-\U0001F1F0\U0001F1F7 KR 2"
       type: select
 rules:
     - MATCH,select
