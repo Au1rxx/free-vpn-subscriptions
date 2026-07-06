@@ -1,28 +1,21 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: "01-shadowsocks-\U0001F1FA\U0001F1F8US-38.135.24.131-0211"
+      name: "01-shadowsocks-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
       password: hbGrpfvNrJsUmKmPbR3iY2
       port: 443
       server: tinkered-pennies-puppies.freesocks.work
       type: ss
       udp: true
     - cipher: aes-128-cfb
-      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-4178"
+      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0143"
       password: shadowsocks
       port: 443
       server: 109.201.152.181
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: "03-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0101"
-      password: CJmTCCx7Ltud
-      port: 8388
-      server: 108.181.58.239
-      type: ss
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: "04-vless-\U0001F1F3\U0001F1F1 423 - NL - VLESS/REALITY/PBK/SID/VISI"
+      name: 03-vless->>@oneclickvpnkeys::NL
       network: tcp
       port: 23576
       reality-opts:
@@ -38,19 +31,17 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-38.135.24.131-0211"
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-4178"
-        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0101"
-        - "04-vless-\U0001F1F3\U0001F1F1 423 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0143"
+        - 03-vless->>@oneclickvpnkeys::NL
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-38.135.24.131-0211"
-        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-4178"
-        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0101"
-        - "04-vless-\U0001F1F3\U0001F1F1 423 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0143"
+        - 03-vless->>@oneclickvpnkeys::NL
       type: select
 rules:
     - MATCH,select
