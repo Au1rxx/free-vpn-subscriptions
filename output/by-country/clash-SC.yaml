@@ -15,21 +15,27 @@ proxies:
       sni: space.byu.id.yxls.eu.cc
       type: trojan
       udp: true
-    - name: 03-trojan-⚡ b2n.ir/v2ray-configs | 644
-      password: zBfIAxaXtz
-      port: 443
-      server: 45.130.125.2
-      skip-cert-verify: false
-      sni: sn.farxmode.ir
-      type: trojan
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: 03-vless-⚡ b2n.ir/v2ray-configs | 602
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: ISa-DZOI4LRRb9DHMFYm5oFqBXDjYzz0hVWUfWvzLmo
+        short-id: 8d3293f0066e129a
+      server: 154.222.9.176
+      servername: storage.yandex.net
+      tls: true
+      type: vless
       udp: true
+      uuid: aa5b231c-4e18-4ae6-b83c-a293f51c0dfa
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - 01-trojan-EPODONIOS
         - 02-trojan-@meliproxyy
-        - 03-trojan-⚡ b2n.ir/v2ray-configs | 644
+        - 03-vless-⚡ b2n.ir/v2ray-configs | 602
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -37,7 +43,7 @@ proxy-groups:
         - auto
         - 01-trojan-EPODONIOS
         - 02-trojan-@meliproxyy
-        - 03-trojan-⚡ b2n.ir/v2ray-configs | 644
+        - 03-vless-⚡ b2n.ir/v2ray-configs | 602
       type: select
 rules:
     - MATCH,select
