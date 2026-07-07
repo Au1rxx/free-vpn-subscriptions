@@ -1,7 +1,16 @@
 proxies:
     - alterId: 0
       cipher: auto
-      name: "01-vmess-\U0001F1E8\U0001F1FF CZ 2"
+      name: "01-vmess-\U0001F1E8\U0001F1FF CZ 1"
+      network: tcp
+      port: 180
+      server: 82.198.246.97
+      type: vmess
+      udp: true
+      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+    - alterId: 0
+      cipher: auto
+      name: "02-vmess-\U0001F1E8\U0001F1FF CZ 3"
       network: tcp
       port: 180
       server: 82.198.246.250
@@ -10,19 +19,10 @@ proxies:
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - alterId: 0
       cipher: auto
-      name: "02-vmess-\U0001F1E8\U0001F1FF CZ 5"
+      name: "03-vmess-\U0001F1E8\U0001F1FF CZ 5"
       network: tcp
       port: 180
       server: 82.198.246.233
-      type: vmess
-      udp: true
-      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
-    - alterId: 0
-      cipher: auto
-      name: "03-vmess-\U0001F1E8\U0001F1FF CZ 1"
-      network: tcp
-      port: 180
-      server: 82.198.246.97
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
@@ -33,7 +33,29 @@ proxies:
       type: vless
       udp: true
       uuid: 1ea1b30b-4114-4a5c-bd3a-9637bdae1948
-    - name: "05-trojan-\U0001F1E9\U0001F1EA DE 3"
+    - name: "05-vless-\U0001F1E9\U0001F1EA DE 16"
+      network: tcp
+      port: 110
+      server: 89.39.121.54
+      type: vless
+      udp: true
+      uuid: 9e1671d2-4092-4ae4-93b3-1d2db0f1a071
+    - cipher: chacha20-ietf-poly1305
+      name: "06-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0161"
+      password: PWpjPo3tqhPN4yRZ
+      port: 20001
+      server: 8.209.74.72
+      type: ss
+      udp: true
+    - name: "07-trojan-\U0001F1E9\U0001F1EA DE 10"
+      password: dh-Ws-YoJIgTYLZ-A5VljeduVse-vhDl7Q
+      port: 443
+      server: 185.137.157.128
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+    - name: "08-trojan-\U0001F1E9\U0001F1EA DE 3"
       password: dh-Ws-YoJIgTYLZ-A5VljeduVse-vhDl7Q
       port: 443
       server: 185.137.157.135
@@ -41,7 +63,7 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: "06-trojan-\U0001F1E9\U0001F1EADE-185.137.157.149-0229"
+    - name: "09-trojan-\U0001F1E9\U0001F1EADE-185.137.157.149-0192"
       password: dh-Ws-YoJIgTYLZ-A5VljeduVse-vhDl7Q
       port: 443
       server: 185.137.157.149
@@ -49,8 +71,22 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: 10-vless-⚡ b2n.ir/v2ray-configs | 876
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: P5ceHLOW8Gmz45z-ozbm9T6xsdSsIGLB71-jMfSjCBQ
+        short-id: 04bc695105689674
+      server: 159.195.46.178
+      servername: 4.oncloudnineservicestreang.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 859a537b-09cf-4bce-8da4-ecbb72950e3a
     - cipher: aes-256-gcm
-      name: "07-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0191"
+      name: "11-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0206"
       password: RexnBgU7EV5ADxG
       port: 7001
       server: 213.202.208.199
@@ -60,25 +96,33 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-vmess-\U0001F1E8\U0001F1FF CZ 2"
-        - "02-vmess-\U0001F1E8\U0001F1FF CZ 5"
-        - "03-vmess-\U0001F1E8\U0001F1FF CZ 1"
+        - "01-vmess-\U0001F1E8\U0001F1FF CZ 1"
+        - "02-vmess-\U0001F1E8\U0001F1FF CZ 3"
+        - "03-vmess-\U0001F1E8\U0001F1FF CZ 5"
         - 04-vless-⚡ b2n.ir/v2ray-configs | 723
-        - "05-trojan-\U0001F1E9\U0001F1EA DE 3"
-        - "06-trojan-\U0001F1E9\U0001F1EADE-185.137.157.149-0229"
-        - "07-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0191"
+        - "05-vless-\U0001F1E9\U0001F1EA DE 16"
+        - "06-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0161"
+        - "07-trojan-\U0001F1E9\U0001F1EA DE 10"
+        - "08-trojan-\U0001F1E9\U0001F1EA DE 3"
+        - "09-trojan-\U0001F1E9\U0001F1EADE-185.137.157.149-0192"
+        - 10-vless-⚡ b2n.ir/v2ray-configs | 876
+        - "11-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0206"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-vmess-\U0001F1E8\U0001F1FF CZ 2"
-        - "02-vmess-\U0001F1E8\U0001F1FF CZ 5"
-        - "03-vmess-\U0001F1E8\U0001F1FF CZ 1"
+        - "01-vmess-\U0001F1E8\U0001F1FF CZ 1"
+        - "02-vmess-\U0001F1E8\U0001F1FF CZ 3"
+        - "03-vmess-\U0001F1E8\U0001F1FF CZ 5"
         - 04-vless-⚡ b2n.ir/v2ray-configs | 723
-        - "05-trojan-\U0001F1E9\U0001F1EA DE 3"
-        - "06-trojan-\U0001F1E9\U0001F1EADE-185.137.157.149-0229"
-        - "07-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0191"
+        - "05-vless-\U0001F1E9\U0001F1EA DE 16"
+        - "06-shadowsocks-\U0001F1E9\U0001F1EADE-8.209.74.72-0161"
+        - "07-trojan-\U0001F1E9\U0001F1EA DE 10"
+        - "08-trojan-\U0001F1E9\U0001F1EA DE 3"
+        - "09-trojan-\U0001F1E9\U0001F1EADE-185.137.157.149-0192"
+        - 10-vless-⚡ b2n.ir/v2ray-configs | 876
+        - "11-shadowsocks-\U0001F1E9\U0001F1EADE-213.202.208.199-0206"
       type: select
 rules:
     - MATCH,select
