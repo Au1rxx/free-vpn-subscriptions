@@ -1,12 +1,5 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: "01-shadowsocks-\U0001F1EB\U0001F1F7FR-35.180.255.4-0442"
-      password: amazonskr05
-      port: 443
-      server: 35.180.255.4
-      type: ss
-      udp: true
-    - name: "02-hysteria2- By EbraSha \U0001F303"
+    - name: 01-hysteria2->>@oneclickvpnkeys::FR
       password: dongtaiwang.com
       port: 22000
       server: 62.210.124.146
@@ -14,10 +7,17 @@ proxies:
       sni: www.microsoft.com
       type: hysteria2
     - cipher: chacha20-ietf-poly1305
-      name: "03-shadowsocks-Tel-@Alpha_V2rayip\U0001F619 1"
+      name: 02-shadowsocks-EPODONIOS
       password: k8688isj6jsuuc2x
       port: 8080
       server: 135.125.113.81
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: 03-shadowsocks-EPODONIOS
+      password: amazonskr05
+      port: 443
+      server: 35.180.255.4
       type: ss
       udp: true
     - name: "04-trojan-\U0001F1EB\U0001F1F7FR-38.60.136.156-0128"
@@ -28,32 +28,23 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: 05-shadowsocks-EPODONIOS
-      password: diOMBU5IDvJcFqyNPbRjYR
-      port: 10443
-      server: 137.74.119.18
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1EB\U0001F1F7FR-35.180.255.4-0442"
-        - "02-hysteria2- By EbraSha \U0001F303"
-        - "03-shadowsocks-Tel-@Alpha_V2rayip\U0001F619 1"
+        - 01-hysteria2->>@oneclickvpnkeys::FR
+        - 02-shadowsocks-EPODONIOS
+        - 03-shadowsocks-EPODONIOS
         - "04-trojan-\U0001F1EB\U0001F1F7FR-38.60.136.156-0128"
-        - 05-shadowsocks-EPODONIOS
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1EB\U0001F1F7FR-35.180.255.4-0442"
-        - "02-hysteria2- By EbraSha \U0001F303"
-        - "03-shadowsocks-Tel-@Alpha_V2rayip\U0001F619 1"
+        - 01-hysteria2->>@oneclickvpnkeys::FR
+        - 02-shadowsocks-EPODONIOS
+        - 03-shadowsocks-EPODONIOS
         - "04-trojan-\U0001F1EB\U0001F1F7FR-38.60.136.156-0128"
-        - 05-shadowsocks-EPODONIOS
       type: select
 rules:
     - MATCH,select
