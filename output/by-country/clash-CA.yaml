@@ -7,7 +7,7 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0101"
+      name: "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-4005"
       password: shadowsocks
       port: 443
       server: 149.22.95.183
@@ -29,23 +29,35 @@ proxies:
       server: 137.184.174.93
       type: ss
       udp: true
+    - name: 05-vless-⚡ b2n.ir/v2ray-configs | 739
+      network: ws
+      port: 8443
+      server: ov-canada1.09vpn.com
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 08f96221-9b7b-4e6f-8ffe-aee8b9c9b504
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - "01-shadowsocks-\U0001F1E8\U0001F1E6CA-108.181.118.10-0085"
-        - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0101"
+        - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-4005"
         - "03-vmess-\U0001F1E8\U0001F1E6 CA 1"
         - "04-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0231"
+        - 05-vless-⚡ b2n.ir/v2ray-configs | 739
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - "01-shadowsocks-\U0001F1E8\U0001F1E6CA-108.181.118.10-0085"
-        - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0101"
+        - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-4005"
         - "03-vmess-\U0001F1E8\U0001F1E6 CA 1"
         - "04-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0231"
+        - 05-vless-⚡ b2n.ir/v2ray-configs | 739
       type: select
 rules:
     - MATCH,select
