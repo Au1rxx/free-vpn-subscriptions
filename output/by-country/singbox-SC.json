@@ -1,0 +1,78 @@
+{
+  "outbounds": [
+    {
+      "password": "86957ec0-b213-433b-a43b-51f2175e0ec3",
+      "server": "45.130.125.126",
+      "server_port": 443,
+      "tag": "01-trojan-🎲57@v2ray_configs_pools",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "space.byu.id.yxls.eu.cc"
+      },
+      "type": "trojan"
+    },
+    {
+      "password": "86957ec0-b213-433b-a43b-51f2175e0ec3",
+      "server": "45.130.125.210",
+      "server_port": 443,
+      "tag": "02-trojan-EPODONIOS",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "space.byu.id.yxls.eu.cc"
+      },
+      "type": "trojan"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "154.83.159.219",
+      "server_port": 8443,
+      "tag": "03-vless-⚡ b2n.ir/v2ray-configs | 316",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "LT_0j3zQkaqgtJHvyaG24xz0IfmXUswVCTeC75Qsgjo",
+          "short_id": "6f15101ff2cc4887"
+        },
+        "server_name": "storage.yandex.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "0047a8bc-0025-4d45-899b-c75c669f3ede"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-trojan-🎲57@v2ray_configs_pools",
+        "02-trojan-EPODONIOS",
+        "03-vless-⚡ b2n.ir/v2ray-configs | 316"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-trojan-🎲57@v2ray_configs_pools",
+        "02-trojan-EPODONIOS",
+        "03-vless-⚡ b2n.ir/v2ray-configs | 316"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

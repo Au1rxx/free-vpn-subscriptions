@@ -1,0 +1,49 @@
+proxies:
+    - name: "01-trojan-\U0001F3B257@v2ray_configs_pools"
+      password: 86957ec0-b213-433b-a43b-51f2175e0ec3
+      port: 443
+      server: 45.130.125.126
+      skip-cert-verify: false
+      sni: space.byu.id.yxls.eu.cc
+      type: trojan
+      udp: true
+    - name: 02-trojan-EPODONIOS
+      password: 86957ec0-b213-433b-a43b-51f2175e0ec3
+      port: 443
+      server: 45.130.125.210
+      skip-cert-verify: false
+      sni: space.byu.id.yxls.eu.cc
+      type: trojan
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: 03-vless-⚡ b2n.ir/v2ray-configs | 316
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: LT_0j3zQkaqgtJHvyaG24xz0IfmXUswVCTeC75Qsgjo
+        short-id: 6f15101ff2cc4887
+      server: 154.83.159.219
+      servername: storage.yandex.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0047a8bc-0025-4d45-899b-c75c669f3ede
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-trojan-\U0001F3B257@v2ray_configs_pools"
+        - 02-trojan-EPODONIOS
+        - 03-vless-⚡ b2n.ir/v2ray-configs | 316
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-trojan-\U0001F3B257@v2ray_configs_pools"
+        - 02-trojan-EPODONIOS
+        - 03-vless-⚡ b2n.ir/v2ray-configs | 316
+      type: select
+rules:
+    - MATCH,select
