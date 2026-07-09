@@ -1,24 +1,25 @@
 proxies:
     - cipher: aes-256-gcm
-      name: "01-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0092"
-      password: RexnBgU7EV5ADxG
-      port: 7001
-      server: 141.164.45.187
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
-      name: "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0091"
+      name: "01-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0091"
       password: TEzjfAYq2IjtuoS
       port: 6679
       server: 141.164.45.187
       type: ss
       udp: true
-    - cipher: aes-256-cfb
-      name: "03-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0178"
-      password: qwerREWQ@@
-      port: 4652
-      server: 218.237.185.230
+    - cipher: aes-256-gcm
+      name: "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0226"
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 141.164.45.187
       type: ss
+      udp: true
+    - name: "03-trojan-\U0001F1F0\U0001F1F7KR-38.60.220.65-0191"
+      password: t5FsyeQXkNCY6eVGiqBXmPu4..jBEpNbak
+      port: 443
+      server: 38.60.220.65
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
       udp: true
     - cipher: aes-256-cfb
       name: "04-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0168"
@@ -29,51 +30,32 @@ proxies:
       udp: true
     - alterId: 0
       cipher: auto
-      name: "05-vmess-\U0001F1F0\U0001F1F7KR-152.67.218.38-0149"
+      name: "05-vmess-\U0001F1F0\U0001F1F7 KR 2"
       network: ws
       port: 443
       server: 152.67.218.38
       type: vmess
       udp: true
       uuid: b5e9480a-b7aa-40a4-f9a7-5299b5e363b4
-    - name: "06-trojan-\U0001F1F0\U0001F1F7KR-38.60.220.65-0191"
-      password: t5FsyeQXkNCY6eVGiqBXmPu4..jBEpNbak
-      port: 443
-      server: 38.60.220.65
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
-    - cipher: aes-256-cfb
-      name: "07-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0176"
-      password: qwerREWQ@@
-      port: 13979
-      server: 221.139.79.57
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0092"
-        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0091"
-        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0178"
+        - "01-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0091"
+        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0226"
+        - "03-trojan-\U0001F1F0\U0001F1F7KR-38.60.220.65-0191"
         - "04-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0168"
-        - "05-vmess-\U0001F1F0\U0001F1F7KR-152.67.218.38-0149"
-        - "06-trojan-\U0001F1F0\U0001F1F7KR-38.60.220.65-0191"
-        - "07-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0176"
+        - "05-vmess-\U0001F1F0\U0001F1F7 KR 2"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0092"
-        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0091"
-        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0178"
+        - "01-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0091"
+        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0226"
+        - "03-trojan-\U0001F1F0\U0001F1F7KR-38.60.220.65-0191"
         - "04-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0168"
-        - "05-vmess-\U0001F1F0\U0001F1F7KR-152.67.218.38-0149"
-        - "06-trojan-\U0001F1F0\U0001F1F7KR-38.60.220.65-0191"
-        - "07-shadowsocks-\U0001F1F0\U0001F1F7KR-221.139.79.57-0176"
+        - "05-vmess-\U0001F1F0\U0001F1F7 KR 2"
       type: select
 rules:
     - MATCH,select
