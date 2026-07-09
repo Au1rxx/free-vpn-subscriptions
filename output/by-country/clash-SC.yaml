@@ -1,13 +1,5 @@
 proxies:
-    - name: "01-trojan-\U0001F3B291@oneclickvpnkeys"
-      password: 86957ec0-b213-433b-a43b-51f2175e0ec3
-      port: 443
-      server: 45.130.125.210
-      skip-cert-verify: false
-      sni: space.byu.id.yxls.eu.cc
-      type: trojan
-      udp: true
-    - name: "02-trojan-\U0001F3B257@v2ray_configs_pools"
+    - name: 01-trojan-EPODONIOS
       password: 86957ec0-b213-433b-a43b-51f2175e0ec3
       port: 443
       server: 45.130.125.126
@@ -15,8 +7,16 @@ proxies:
       sni: space.byu.id.yxls.eu.cc
       type: trojan
       udp: true
+    - name: "02-trojan-\U0001F3B291@oneclickvpnkeys"
+      password: 86957ec0-b213-433b-a43b-51f2175e0ec3
+      port: 443
+      server: 45.130.125.210
+      skip-cert-verify: false
+      sni: space.byu.id.yxls.eu.cc
+      type: trojan
+      udp: true
     - cipher: aes-256-gcm
-      name: 03-shadowsocks-EPODONIOS
+      name: 03-shadowsocks-23
       password: RexnBgU7EV5ADxG
       port: 7002
       server: 156.244.32.9
@@ -26,17 +26,17 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-trojan-\U0001F3B291@oneclickvpnkeys"
-        - "02-trojan-\U0001F3B257@v2ray_configs_pools"
-        - 03-shadowsocks-EPODONIOS
+        - 01-trojan-EPODONIOS
+        - "02-trojan-\U0001F3B291@oneclickvpnkeys"
+        - 03-shadowsocks-23
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-trojan-\U0001F3B291@oneclickvpnkeys"
-        - "02-trojan-\U0001F3B257@v2ray_configs_pools"
-        - 03-shadowsocks-EPODONIOS
+        - 01-trojan-EPODONIOS
+        - "02-trojan-\U0001F3B291@oneclickvpnkeys"
+        - 03-shadowsocks-23
       type: select
 rules:
     - MATCH,select
