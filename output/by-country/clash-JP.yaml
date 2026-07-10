@@ -1,28 +1,35 @@
 proxies:
     - cipher: aes-128-gcm
-      name: "01-shadowsocks-\U0001F1EF\U0001F1F5 Join Telegram:@Farah_VPN \U0001F1EF\U0001F1F5"
-      password: shadowsocks
-      port: 443
-      server: 149.22.87.204
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: "02-shadowsocks-\U0001F1EF\U0001F1F5 JP 2"
+      name: "01-shadowsocks-\U0001F1EF\U0001F1F5 JP 2"
       password: shadowsocks
       port: 443
       server: 149.22.87.240
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0152"
+      name: "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+      password: shadowsocks
+      port: 443
+      server: 149.22.87.204
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
       password: shadowsocks
       port: 443
       server: 149.22.87.241
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: "04-shadowsocks-\U0001F1EF\U0001F1F5 JP 3"
+      password: amazonskr05
+      port: 443
+      server: 18.183.135.29
+      type: ss
+      udp: true
     - alterId: 0
       cipher: auto
-      name: "04-vmess-\U0001F1EF\U0001F1F5JP-157.85.230.247-2320"
+      name: "05-vmess-\U0001F1EF\U0001F1F5JP-157.85.230.247-2320"
       network: ws
       port: 2052
       server: 157.85.230.247
@@ -33,19 +40,21 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5 Join Telegram:@Farah_VPN \U0001F1EF\U0001F1F5"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP 2"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0152"
-        - "04-vmess-\U0001F1EF\U0001F1F5JP-157.85.230.247-2320"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5 JP 2"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "04-shadowsocks-\U0001F1EF\U0001F1F5 JP 3"
+        - "05-vmess-\U0001F1EF\U0001F1F5JP-157.85.230.247-2320"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1EF\U0001F1F5 Join Telegram:@Farah_VPN \U0001F1EF\U0001F1F5"
-        - "02-shadowsocks-\U0001F1EF\U0001F1F5 JP 2"
-        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-0152"
-        - "04-vmess-\U0001F1EF\U0001F1F5JP-157.85.230.247-2320"
+        - "01-shadowsocks-\U0001F1EF\U0001F1F5 JP 2"
+        - "02-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.204-0216"
+        - "03-shadowsocks-\U0001F1EF\U0001F1F5JP-149.22.87.241-4048"
+        - "04-shadowsocks-\U0001F1EF\U0001F1F5 JP 3"
+        - "05-vmess-\U0001F1EF\U0001F1F5JP-157.85.230.247-2320"
       type: select
 rules:
     - MATCH,select
