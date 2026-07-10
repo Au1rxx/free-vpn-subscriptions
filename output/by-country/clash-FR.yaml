@@ -1,5 +1,19 @@
 proxies:
-    - name: "01-vless-\U0001F1EB\U0001F1F7 FR 2"
+    - name: "01-vless-\U0001F1EB\U0001F1F7 FR 1"
+      network: tcp
+      port: 22223
+      server: 51.45.34.17
+      type: vless
+      udp: true
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+    - name: "02-vless-\U0001F1EB\U0001F1F7 FR 3"
+      network: tcp
+      port: 8888
+      server: 45.13.119.219
+      type: vless
+      udp: true
+      uuid: eb77be10-9d9e-527b-a78d-8caaf58992d6
+    - name: "03-vless-\U0001F1EB\U0001F1F7 FR 2"
       network: tcp
       port: 22224
       server: 51.45.34.17
@@ -7,61 +21,47 @@ proxies:
       udp: true
       uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
     - cipher: aes-256-cfb
-      name: "02-shadowsocks-\U0001F1EB\U0001F1F7FR-35.180.255.4-6240"
+      name: "04-shadowsocks-\U0001F1EB\U0001F1F7FR-35.180.255.4-0171"
       password: amazonskr05
       port: 443
       server: 35.180.255.4
       type: ss
       udp: true
-    - name: "03-vless-\U0001F1EB\U0001F1F7 FR 3"
-      network: tcp
-      port: 8888
-      server: 45.13.119.219
-      type: vless
-      udp: true
-      uuid: eb77be10-9d9e-527b-a78d-8caaf58992d6
-    - name: "04-vless-\U0001F1EB\U0001F1F7 FR 1"
-      network: tcp
-      port: 22223
-      server: 51.45.34.17
-      type: vless
-      udp: true
-      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-    - name: "05-hysteria2- By EbraSha \U0001F32A️"
+    - name: "05-hysteria2- By EbraSha \U0001FA96"
       password: dongtaiwang.com
       port: 22000
       server: 62.210.124.146
       skip-cert-verify: true
       sni: www.microsoft.com
       type: hysteria2
-    - name: "06-vless-\U0001F1EB\U0001F1F7 FR 7"
-      network: tcp
-      port: 22224
-      server: 13.39.88.158
-      type: vless
+    - cipher: aes-256-cfb
+      name: "06-shadowsocks-\U0001F1EB\U0001F1F7FR-51.44.170.232-3507"
+      password: amazonskr05
+      port: 443
+      server: 51.44.170.232
+      type: ss
       udp: true
-      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-vless-\U0001F1EB\U0001F1F7 FR 2"
-        - "02-shadowsocks-\U0001F1EB\U0001F1F7FR-35.180.255.4-6240"
-        - "03-vless-\U0001F1EB\U0001F1F7 FR 3"
-        - "04-vless-\U0001F1EB\U0001F1F7 FR 1"
-        - "05-hysteria2- By EbraSha \U0001F32A️"
-        - "06-vless-\U0001F1EB\U0001F1F7 FR 7"
+        - "01-vless-\U0001F1EB\U0001F1F7 FR 1"
+        - "02-vless-\U0001F1EB\U0001F1F7 FR 3"
+        - "03-vless-\U0001F1EB\U0001F1F7 FR 2"
+        - "04-shadowsocks-\U0001F1EB\U0001F1F7FR-35.180.255.4-0171"
+        - "05-hysteria2- By EbraSha \U0001FA96"
+        - "06-shadowsocks-\U0001F1EB\U0001F1F7FR-51.44.170.232-3507"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-vless-\U0001F1EB\U0001F1F7 FR 2"
-        - "02-shadowsocks-\U0001F1EB\U0001F1F7FR-35.180.255.4-6240"
-        - "03-vless-\U0001F1EB\U0001F1F7 FR 3"
-        - "04-vless-\U0001F1EB\U0001F1F7 FR 1"
-        - "05-hysteria2- By EbraSha \U0001F32A️"
-        - "06-vless-\U0001F1EB\U0001F1F7 FR 7"
+        - "01-vless-\U0001F1EB\U0001F1F7 FR 1"
+        - "02-vless-\U0001F1EB\U0001F1F7 FR 3"
+        - "03-vless-\U0001F1EB\U0001F1F7 FR 2"
+        - "04-shadowsocks-\U0001F1EB\U0001F1F7FR-35.180.255.4-0171"
+        - "05-hysteria2- By EbraSha \U0001FA96"
+        - "06-shadowsocks-\U0001F1EB\U0001F1F7FR-51.44.170.232-3507"
       type: select
 rules:
     - MATCH,select
