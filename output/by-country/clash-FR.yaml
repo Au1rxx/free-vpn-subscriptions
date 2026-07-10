@@ -6,20 +6,20 @@ proxies:
       server: 35.180.255.4
       type: ss
       udp: true
-    - cipher: aes-256-cfb
-      name: "02-shadowsocks-\U0001F1EB\U0001F1F7FR-51.44.170.232-3507"
-      password: amazonskr05
-      port: 443
-      server: 51.44.170.232
-      type: ss
-      udp: true
-    - name: 03-hysteria2->>@oneclickvpnkeys::FR
+    - name: "02-hysteria2- By EbraSha \U0001F9E8"
       password: dongtaiwang.com
       port: 22000
       server: 62.210.124.146
       skip-cert-verify: true
       sni: www.microsoft.com
       type: hysteria2
+    - cipher: aes-256-cfb
+      name: "03-shadowsocks-\U0001F1EB\U0001F1F7FR-51.44.170.232-3507"
+      password: amazonskr05
+      port: 443
+      server: 51.44.170.232
+      type: ss
+      udp: true
     - name: "04-vless-\U0001F1EB\U0001F1F7 FR 3"
       network: tcp
       port: 8888
@@ -27,23 +27,32 @@ proxies:
       type: vless
       udp: true
       uuid: eb77be10-9d9e-527b-a78d-8caaf58992d6
+    - cipher: chacha20-ietf-poly1305
+      name: "05-shadowsocks-\U0001F1EB\U0001F1F7 Join Telegram:@Farah_VPN \U0001F1EB\U0001F1F7"
+      password: diOMBU5IDvJcFqyNPbRjYR
+      port: 10443
+      server: 137.74.119.18
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - "01-shadowsocks-\U0001F1EB\U0001F1F7FR-35.180.255.4-0171"
-        - "02-shadowsocks-\U0001F1EB\U0001F1F7FR-51.44.170.232-3507"
-        - 03-hysteria2->>@oneclickvpnkeys::FR
+        - "02-hysteria2- By EbraSha \U0001F9E8"
+        - "03-shadowsocks-\U0001F1EB\U0001F1F7FR-51.44.170.232-3507"
         - "04-vless-\U0001F1EB\U0001F1F7 FR 3"
+        - "05-shadowsocks-\U0001F1EB\U0001F1F7 Join Telegram:@Farah_VPN \U0001F1EB\U0001F1F7"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - "01-shadowsocks-\U0001F1EB\U0001F1F7FR-35.180.255.4-0171"
-        - "02-shadowsocks-\U0001F1EB\U0001F1F7FR-51.44.170.232-3507"
-        - 03-hysteria2->>@oneclickvpnkeys::FR
+        - "02-hysteria2- By EbraSha \U0001F9E8"
+        - "03-shadowsocks-\U0001F1EB\U0001F1F7FR-51.44.170.232-3507"
         - "04-vless-\U0001F1EB\U0001F1F7 FR 3"
+        - "05-shadowsocks-\U0001F1EB\U0001F1F7 Join Telegram:@Farah_VPN \U0001F1EB\U0001F1F7"
       type: select
 rules:
     - MATCH,select
