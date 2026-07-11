@@ -9,17 +9,24 @@ proxies:
       udp: true
       uuid: 41a7089a-040b-4538-8b8d-010902405bde
     - cipher: aes-256-gcm
-      name: "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0149"
+      name: "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0123"
       password: RexnBgU7EV5ADxG
       port: 7001
       server: 141.164.45.187
       type: ss
       udp: true
     - cipher: aes-256-gcm
-      name: 03-shadowsocks-EPODONIOS
+      name: "03-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0118"
       password: TEzjfAYq2IjtuoS
       port: 6679
       server: 141.164.45.187
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: "04-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0195"
+      password: qwerREWQ@@
+      port: 4652
+      server: 218.237.185.230
       type: ss
       udp: true
 proxy-groups:
@@ -27,16 +34,18 @@ proxy-groups:
       name: auto
       proxies:
         - "01-vmess-\U0001F1F0\U0001F1F7 KR 1"
-        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0149"
-        - 03-shadowsocks-EPODONIOS
+        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0123"
+        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0118"
+        - "04-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0195"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - "01-vmess-\U0001F1F0\U0001F1F7 KR 1"
-        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0149"
-        - 03-shadowsocks-EPODONIOS
+        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0123"
+        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0118"
+        - "04-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0195"
       type: select
 rules:
     - MATCH,select
