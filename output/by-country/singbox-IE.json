@@ -1,0 +1,60 @@
+{
+  "outbounds": [
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "I6RsSUIYrKHpI26J",
+      "server": "20.223.152.73",
+      "server_port": 443,
+      "tag": "01-shadowsocks-@Generalconfiig ¹",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "mmIHYxIAjffo71O7",
+      "server": "20.123.26.186",
+      "server_port": 443,
+      "tag": "02-shadowsocks-🇮🇪IE-🚀@VPNine1",
+      "type": "shadowsocks"
+    },
+    {
+      "password": "XG59623478",
+      "server": "singular-lark.rooster465.autos",
+      "server_port": 443,
+      "tag": "03-trojan-🇮🇪IE-3.249.67.252-0065",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "singular-lark.rooster465.autos"
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-shadowsocks-@Generalconfiig ¹",
+        "02-shadowsocks-🇮🇪IE-🚀@VPNine1",
+        "03-trojan-🇮🇪IE-3.249.67.252-0065"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-shadowsocks-@Generalconfiig ¹",
+        "02-shadowsocks-🇮🇪IE-🚀@VPNine1",
+        "03-trojan-🇮🇪IE-3.249.67.252-0065"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

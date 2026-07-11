@@ -1,0 +1,41 @@
+proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: 01-shadowsocks-@Generalconfiig ¹
+      password: I6RsSUIYrKHpI26J
+      port: 443
+      server: 20.223.152.73
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "02-shadowsocks-\U0001F1EE\U0001F1EAIE-\U0001F680@VPNine1"
+      password: mmIHYxIAjffo71O7
+      port: 443
+      server: 20.123.26.186
+      type: ss
+      udp: true
+    - name: "03-trojan-\U0001F1EE\U0001F1EAIE-3.249.67.252-0065"
+      password: XG59623478
+      port: 443
+      server: singular-lark.rooster465.autos
+      skip-cert-verify: false
+      sni: singular-lark.rooster465.autos
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-shadowsocks-@Generalconfiig ¹
+        - "02-shadowsocks-\U0001F1EE\U0001F1EAIE-\U0001F680@VPNine1"
+        - "03-trojan-\U0001F1EE\U0001F1EAIE-3.249.67.252-0065"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-shadowsocks-@Generalconfiig ¹
+        - "02-shadowsocks-\U0001F1EE\U0001F1EAIE-\U0001F680@VPNine1"
+        - "03-trojan-\U0001F1EE\U0001F1EAIE-3.249.67.252-0065"
+      type: select
+rules:
+    - MATCH,select
