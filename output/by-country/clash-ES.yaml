@@ -1,0 +1,67 @@
+proxies:
+    - cipher: aes-256-cfb
+      name: "01-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6211"
+      password: KnJGad3FqTvjqbaX
+      port: 9014
+      server: 5.188.181.201
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: "02-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6209"
+      password: JdmRK9gMEqFgs8nP
+      port: 9003
+      server: 5.188.181.201
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: "03-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6218"
+      password: XPtzA9sCug3SPR4c
+      port: 9025
+      server: 5.188.181.201
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: "04-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6210"
+      password: GA9KzeEgvfxNrgmM
+      port: 9019
+      server: 5.188.181.201
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: "05-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6216"
+      password: dU3DSNS8wYPXzEKw
+      port: 9029
+      server: 5.188.181.201
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: "06-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6214"
+      password: TN2YqghxeFDKZfLU
+      port: 9037
+      server: 5.188.181.201
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6211"
+        - "02-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6209"
+        - "03-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6218"
+        - "04-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6210"
+        - "05-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6216"
+        - "06-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6214"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6211"
+        - "02-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6209"
+        - "03-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6218"
+        - "04-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6210"
+        - "05-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6216"
+        - "06-shadowsocks-\U0001F1EA\U0001F1F8ES-5.188.181.201-6214"
+      type: select
+rules:
+    - MATCH,select
