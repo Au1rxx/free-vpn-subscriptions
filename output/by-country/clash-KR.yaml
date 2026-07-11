@@ -7,24 +7,24 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-gcm
-      name: "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0101"
-      password: TEzjfAYq2IjtuoS
-      port: 6679
-      server: 141.164.45.187
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
-      name: "03-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0149"
+      name: "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0149"
       password: RexnBgU7EV5ADxG
       port: 7001
       server: 141.164.45.187
       type: ss
       udp: true
+    - cipher: aes-256-gcm
+      name: "03-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0101"
+      password: TEzjfAYq2IjtuoS
+      port: 6679
+      server: 141.164.45.187
+      type: ss
+      udp: true
     - cipher: aes-256-cfb
-      name: "04-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0171"
+      name: "04-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-6265"
       password: qwerREWQ@@
-      port: 6123
-      server: 211.178.105.134
+      port: 4652
+      server: p141.panda001.net
       type: ss
       udp: true
     - cipher: aes-256-cfb
@@ -34,25 +34,34 @@ proxies:
       server: 218.237.185.230
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: "06-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0171"
+      password: qwerREWQ@@
+      port: 6123
+      server: 211.178.105.134
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - 01-shadowsocks-EPODONIOS
-        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0101"
-        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0149"
-        - "04-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0171"
+        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0149"
+        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0101"
+        - "04-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-6265"
         - "05-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0154"
+        - "06-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0171"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - 01-shadowsocks-EPODONIOS
-        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0101"
-        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0149"
-        - "04-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0171"
+        - "02-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0149"
+        - "03-shadowsocks-\U0001F1F0\U0001F1F7KR-141.164.45.187-0101"
+        - "04-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-6265"
         - "05-shadowsocks-\U0001F1F0\U0001F1F7KR-218.237.185.230-0154"
+        - "06-shadowsocks-\U0001F1F0\U0001F1F7KR-211.178.105.134-0171"
       type: select
 rules:
     - MATCH,select
