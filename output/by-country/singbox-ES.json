@@ -1,0 +1,56 @@
+{
+  "outbounds": [
+    {
+      "method": "aes-256-cfb",
+      "password": "S7KwUu7yBy58S3Ga",
+      "server": "5.188.181.201",
+      "server_port": 9042,
+      "tag": "01-shadowsocks-🇪🇸ES-5.188.181.201-3880",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "U6qnYRhfyDmn8sgn",
+      "server": "5.188.181.201",
+      "server_port": 9041,
+      "tag": "02-shadowsocks-🇪🇸ES-5.188.181.201-3830",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "VcFuyXvND2yQWSFY",
+      "server": "5.188.181.201",
+      "server_port": 9054,
+      "tag": "03-shadowsocks-🇪🇸ES-5.188.181.201-3941",
+      "type": "shadowsocks"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-shadowsocks-🇪🇸ES-5.188.181.201-3880",
+        "02-shadowsocks-🇪🇸ES-5.188.181.201-3830",
+        "03-shadowsocks-🇪🇸ES-5.188.181.201-3941"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-shadowsocks-🇪🇸ES-5.188.181.201-3880",
+        "02-shadowsocks-🇪🇸ES-5.188.181.201-3830",
+        "03-shadowsocks-🇪🇸ES-5.188.181.201-3941"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
