@@ -1,6 +1,6 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-0206"
+      name: "01-shadowsocks-\U0001F1FA\U0001F1F8 美国 | USA 18"
       password: hbGrpfvNrJsUmKmPbR3iY2
       port: 443
       server: tinkered-pennies-puppies.freesocks.work
@@ -21,29 +21,50 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: "04-shadowsocks-\U0001F1F3\U0001F1F1NL-158.173.20.171-0162"
+      name: 04-shadowsocks-⚡ b2n.ir/v2ray-configs | 591
       password: shadowsocks
       port: 443
       server: 158.173.20.171
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
-      name: "05-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0153"
+      name: "05-shadowsocks-\U0001F1F3\U0001F1F1 NL 4"
       password: CJmTCCx7Ltud
       port: 8388
       server: 108.181.126.122
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
-      name: "06-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0152"
+      name: 06-shadowsocks-EPODONIOS
       password: CJmTCCx7Ltud
       port: 8388
       server: 108.181.58.239
       type: ss
       udp: true
+    - cipher: aes-256-gcm
+      name: 07-shadowsocks-EPODONIOS
+      password: faBAoD54k87UJG7
+      port: 2375
+      server: 109.104.154.163
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: "07-vless-\U0001F1F3\U0001F1F1 423 - NL - VLESS/REALITY/PBK/SID/VISI"
+      name: "08-vless-\U0001F1F3\U0001F1F1 434 - NL - VLESS/REALITY/PBK/SID/VISI"
+      network: tcp
+      port: 23576
+      reality-opts:
+        public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+        short-id: "01"
+      server: 51.158.206.96
+      servername: fuck.rkn
+      tls: true
+      type: vless
+      udp: true
+      uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: 09-vless->>@oneclickvpnkeys::NL
       network: tcp
       port: 23576
       reality-opts:
@@ -59,25 +80,29 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-0206"
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8 美国 | USA 18"
         - "02-shadowsocks-\U0001F1FA\U0001F1F8 US 38"
         - "03-shadowsocks-\U0001F1F3\U0001F1F1 NL 1"
-        - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-158.173.20.171-0162"
-        - "05-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0153"
-        - "06-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0152"
-        - "07-vless-\U0001F1F3\U0001F1F1 423 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - 04-shadowsocks-⚡ b2n.ir/v2ray-configs | 591
+        - "05-shadowsocks-\U0001F1F3\U0001F1F1 NL 4"
+        - 06-shadowsocks-EPODONIOS
+        - 07-shadowsocks-EPODONIOS
+        - "08-vless-\U0001F1F3\U0001F1F1 434 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - 09-vless->>@oneclickvpnkeys::NL
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-0206"
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8 美国 | USA 18"
         - "02-shadowsocks-\U0001F1FA\U0001F1F8 US 38"
         - "03-shadowsocks-\U0001F1F3\U0001F1F1 NL 1"
-        - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-158.173.20.171-0162"
-        - "05-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0153"
-        - "06-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0152"
-        - "07-vless-\U0001F1F3\U0001F1F1 423 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - 04-shadowsocks-⚡ b2n.ir/v2ray-configs | 591
+        - "05-shadowsocks-\U0001F1F3\U0001F1F1 NL 4"
+        - 06-shadowsocks-EPODONIOS
+        - 07-shadowsocks-EPODONIOS
+        - "08-vless-\U0001F1F3\U0001F1F1 434 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - 09-vless->>@oneclickvpnkeys::NL
       type: select
 rules:
     - MATCH,select
