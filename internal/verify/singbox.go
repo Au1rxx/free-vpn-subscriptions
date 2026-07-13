@@ -26,21 +26,21 @@ type batchConfig struct {
 func buildBatchConfig(batch []*node.Node, basePort int) (*batchConfig, error) {
 	inbounds := make([]map[string]any, 0, len(batch))
 	outbounds := make([]map[string]any, 0, len(batch)+1)
+	endpoints := make([]map[string]any, 0, 1)
 	rules := make([]map[string]any, 0, len(batch))
 
 	for i, n := range batch {
 		outTag := fmt.Sprintf("out-%d", i)
 		inTag := fmt.Sprintf("in-%d", i)
-		ob := buildOutbound(n, outTag)
-		if ob == nil {
-			// Can't forward this protocol — still reserve the inbound/rule
-			// so port offsets line up with the batch index. Route it to
-			// direct; the probe will fail against gstatic from our own IP
-			// only if we have no egress, which we do, so mark these as
-			// effectively undetected: we'll log and skip.
-			ob = map[string]any{"type": "direct", "tag": outTag}
+		ob, err := BuildOutbound(n, outTag)
+		if err != nil {
+			return nil, err
 		}
-		outbounds = append(outbounds, ob)
+		if IsEndpoint(n) {
+			endpoints = append(endpoints, ob)
+		} else {
+			outbounds = append(outbounds, ob)
+		}
 		inbounds = append(inbounds, map[string]any{
 			"type":        "mixed",
 			"tag":         inTag,
@@ -59,6 +59,9 @@ func buildBatchConfig(batch []*node.Node, basePort int) (*batchConfig, error) {
 		"inbounds":  inbounds,
 		"outbounds": outbounds,
 		"route":     map[string]any{"rules": rules, "final": "direct"},
+	}
+	if len(endpoints) > 0 {
+		cfg["endpoints"] = endpoints
 	}
 	raw, err := json.Marshal(cfg)
 	if err != nil {
@@ -83,8 +86,8 @@ func buildBatchConfig(batch []*node.Node, basePort int) (*batchConfig, error) {
 // JSON for n. Used to pre-filter the candidate pool so one malformed node
 // (e.g. corrupt SS cipher) doesn't abort an entire batch.
 func validOutbound(bin string, n *node.Node) bool {
-	ob := buildOutbound(n, "out-0")
-	if ob == nil {
+	ob, err := BuildOutbound(n, "out-0")
+	if err != nil {
 		return false
 	}
 	cfg := map[string]any{
@@ -100,6 +103,10 @@ func validOutbound(bin string, n *node.Node) bool {
 			"rules": []map[string]any{{"inbound": "in-0", "outbound": "out-0"}},
 			"final": "direct",
 		},
+	}
+	if IsEndpoint(n) {
+		cfg["endpoints"] = []map[string]any{ob}
+		cfg["outbounds"] = []map[string]any{{"type": "direct", "tag": "direct"}}
 	}
 	raw, err := json.Marshal(cfg)
 	if err != nil {
@@ -206,4 +213,3 @@ func truncate(s string, n int) string {
 	}
 	return s[:n] + "…"
 }
-
