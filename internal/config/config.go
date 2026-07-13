@@ -191,6 +191,18 @@ func applyDefaults(c *Config) {
 	if c.GeoIP.DBPath == "" {
 		c.GeoIP.DBPath = "output/.cache/GeoLite2-Country.mmdb"
 	}
+	if c.GeoIP.CityDBURL == "" {
+		c.GeoIP.CityDBURL = "https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-City.mmdb"
+	}
+	if c.GeoIP.CityDBPath == "" {
+		c.GeoIP.CityDBPath = "output/.cache/GeoLite2-City.mmdb"
+	}
+	if c.GeoIP.ASNDBURL == "" {
+		c.GeoIP.ASNDBURL = "https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-ASN.mmdb"
+	}
+	if c.GeoIP.ASNDBPath == "" {
+		c.GeoIP.ASNDBPath = "output/.cache/GeoLite2-ASN.mmdb"
+	}
 	if c.GeoIP.MinPerCountry == 0 {
 		c.GeoIP.MinPerCountry = 3
 	}

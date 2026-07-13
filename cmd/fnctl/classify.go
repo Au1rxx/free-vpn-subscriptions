@@ -7,13 +7,14 @@ import (
 	"github.com/spf13/cobra"
 
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/classify"
+	"github.com/Au1rxx/free-vpn-subscriptions/internal/geoip"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/store"
 )
 
 func newClassifyCmd() *cobra.Command {
 	limit, daily, all := 1000, "", false
 	command := &cobra.Command{Use: "classify", Short: "Score nodes and roll up daily validation metrics", RunE: func(cmd *cobra.Command, _ []string) error {
-		_, db, _, err := openIngestService(cmd.Context())
+		cfg, db, _, err := openIngestService(cmd.Context())
 		if err != nil {
 			return err
 		}
@@ -30,6 +31,20 @@ func newClassifyCmd() *cobra.Command {
 			fmt.Fprintf(cmd.OutOrStdout(), "daily=%s affected=%d\n", daily, rows)
 			return nil
 		}
+		var network *geoip.NetworkClassifier
+		if cfg.GeoIP.Enabled {
+			if err := geoip.EnsureDB(cfg.GeoIP.CityDBURL, cfg.GeoIP.CityDBPath); err != nil {
+				return err
+			}
+			if err := geoip.EnsureDB(cfg.GeoIP.ASNDBURL, cfg.GeoIP.ASNDBPath); err != nil {
+				return err
+			}
+			network, err = geoip.OpenNetwork(cfg.GeoIP.CityDBPath, cfg.GeoIP.ASNDBPath)
+			if err != nil {
+				return err
+			}
+			defer network.Close()
+		}
 		remaining, err := store.CountUnclassified(cmd.Context(), db)
 		if err != nil {
 			return err
@@ -43,7 +58,7 @@ func newClassifyCmd() *cobra.Command {
 			if batch == 0 {
 				break
 			}
-			report, err := (classify.Service{DB: db}).Run(cmd.Context(), batch, time.Now().UTC())
+			report, err := (classify.Service{DB: db, Network: network}).Run(cmd.Context(), batch, time.Now().UTC())
 			if err != nil {
 				return err
 			}
