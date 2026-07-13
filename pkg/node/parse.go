@@ -22,8 +22,24 @@ func ParseURI(uri string) (*Node, error) {
 		return parseTrojan(uri)
 	case strings.HasPrefix(uri, "ss://"):
 		return parseShadowsocks(uri)
+	case strings.HasPrefix(uri, "ssr://"):
+		return parseShadowsocksR(uri)
+	case strings.HasPrefix(uri, "hysteria://"):
+		return parseHysteria(uri)
 	case strings.HasPrefix(uri, "hysteria2://"), strings.HasPrefix(uri, "hy2://"):
 		return parseHysteria2(uri)
+	case strings.HasPrefix(uri, "tuic://"):
+		return parseTUIC(uri)
+	case strings.HasPrefix(uri, "wireguard://"), strings.HasPrefix(uri, "wg://"):
+		return parseWireGuard(uri)
+	case strings.HasPrefix(uri, "socks4://"):
+		return parseUserProxy(uri, ProtoSOCKS4)
+	case strings.HasPrefix(uri, "socks5://"), strings.HasPrefix(uri, "socks://"):
+		return parseUserProxy(uri, ProtoSOCKS5)
+	case strings.HasPrefix(uri, "http://"):
+		return parseUserProxy(uri, ProtoHTTP)
+	case strings.HasPrefix(uri, "https://"):
+		return parseUserProxy(uri, ProtoHTTPS)
 	}
 	return nil, fmt.Errorf("unsupported scheme: %.40q", uri)
 }
@@ -44,7 +60,7 @@ func parseVLESS(raw string) (*Node, error) {
 		Name:        decodeFragment(u.Fragment),
 		Server:      u.Hostname(),
 		Port:        port,
-		UUID:        u.User.Username(),
+		UUID:        userName(u),
 		Network:     q.Get("type"),
 		Security:    q.Get("security"),
 		SNI:         q.Get("sni"),
@@ -141,7 +157,7 @@ func parseTrojan(raw string) (*Node, error) {
 		Name:        decodeFragment(u.Fragment),
 		Server:      u.Hostname(),
 		Port:        port,
-		Password:    u.User.Username(),
+		Password:    userName(u),
 		Network:     firstNonEmpty(q.Get("type"), "tcp"),
 		Security:    "tls",
 		SNI:         q.Get("sni"),
@@ -235,11 +251,91 @@ func parseHysteria2(raw string) (*Node, error) {
 		Name:     decodeFragment(u.Fragment),
 		Server:   u.Hostname(),
 		Port:     port,
-		Password: u.User.Username(),
+		Password: userName(u),
 		Security: "tls",
 		SNI:      q.Get("sni"),
 		Insecure: q.Get("insecure") == "1",
 	}, nil
+}
+
+func parseShadowsocksR(raw string) (*Node, error) {
+	decoded, err := B64Decode(strings.TrimPrefix(raw, "ssr://"))
+	if err != nil {
+		return nil, fmt.Errorf("ssr base64: %w", err)
+	}
+	main := strings.SplitN(string(decoded), "/?", 2)[0]
+	parts := strings.Split(main, ":")
+	if len(parts) < 6 {
+		return nil, errors.New("ssr fields missing")
+	}
+	port, err := strconv.Atoi(parts[1])
+	if err != nil {
+		return nil, fmt.Errorf("ssr port: %w", err)
+	}
+	password, err := B64Decode(parts[5])
+	if err != nil {
+		return nil, fmt.Errorf("ssr password: %w", err)
+	}
+	return &Node{Protocol: ProtoSSR, Server: parts[0], Port: port, Cipher: parts[3], Password: string(password), Extra: map[string]string{"protocol": parts[2], "obfs": parts[4]}}, nil
+}
+
+func parseHysteria(raw string) (*Node, error) {
+	u, err := url.Parse(raw)
+	if err != nil {
+		return nil, err
+	}
+	port, err := strconv.Atoi(u.Port())
+	if err != nil {
+		return nil, fmt.Errorf("hysteria port: %w", err)
+	}
+	password := userName(u)
+	if password == "" {
+		password = u.Query().Get("auth")
+	}
+	return &Node{Protocol: ProtoHysteria, Name: decodeFragment(u.Fragment), Server: u.Hostname(), Port: port, Password: password, Security: "tls", SNI: firstNonEmpty(u.Query().Get("sni"), u.Query().Get("peer")), Insecure: u.Query().Get("insecure") == "1"}, nil
+}
+
+func parseTUIC(raw string) (*Node, error) {
+	u, err := url.Parse(raw)
+	if err != nil {
+		return nil, err
+	}
+	port, err := strconv.Atoi(u.Port())
+	if err != nil {
+		return nil, fmt.Errorf("tuic port: %w", err)
+	}
+	username, password := userCredentials(u)
+	return &Node{Protocol: ProtoTUIC, Name: decodeFragment(u.Fragment), Server: u.Hostname(), Port: port, UUID: username, Password: password, Security: "tls", SNI: u.Query().Get("sni"), ALPN: u.Query().Get("alpn"), Insecure: u.Query().Get("allow_insecure") == "1"}, nil
+}
+
+func parseWireGuard(raw string) (*Node, error) {
+	u, err := url.Parse(raw)
+	if err != nil {
+		return nil, err
+	}
+	port, err := strconv.Atoi(u.Port())
+	if err != nil {
+		return nil, fmt.Errorf("wireguard port: %w", err)
+	}
+	q := u.Query()
+	return &Node{Protocol: ProtoWireGuard, Name: decodeFragment(u.Fragment), Server: u.Hostname(), Port: port, Password: userName(u), PublicKey: firstNonEmpty(q.Get("publickey"), q.Get("public_key")), Extra: map[string]string{"address": q.Get("address"), "reserved": q.Get("reserved"), "pre_shared_key": q.Get("presharedkey")}}, nil
+}
+
+func parseUserProxy(raw, protocol string) (*Node, error) {
+	u, err := url.Parse(raw)
+	if err != nil {
+		return nil, err
+	}
+	port, err := strconv.Atoi(u.Port())
+	if err != nil {
+		return nil, fmt.Errorf("%s port: %w", protocol, err)
+	}
+	username, password := userCredentials(u)
+	security := "none"
+	if protocol == ProtoHTTPS {
+		security = "tls"
+	}
+	return &Node{Protocol: protocol, Name: decodeFragment(u.Fragment), Server: u.Hostname(), Port: port, Username: username, Password: password, Security: security}, nil
 }
 
 // ---- helpers ----
@@ -286,6 +382,21 @@ func firstNonEmpty(vals ...string) string {
 		}
 	}
 	return ""
+}
+
+func userName(u *url.URL) string {
+	if u.User == nil {
+		return ""
+	}
+	return u.User.Username()
+}
+
+func userCredentials(u *url.URL) (string, string) {
+	if u.User == nil {
+		return "", ""
+	}
+	password, _ := u.User.Password()
+	return u.User.Username(), password
 }
 
 func splitHostPort(s string) (string, string, error) {

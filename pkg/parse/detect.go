@@ -39,8 +39,10 @@ func Parse(body []byte, hint Format) Result {
 		result.Nodes = nodes
 		return result
 	case FormatSingBox, FormatXray:
-		result.Errors = append(result.Errors, newEntryError(0, "parser_unavailable", "", body, fmt.Errorf("%s parser is unavailable", format)))
-		return result
+		if format == FormatSingBox {
+			return SingBox(body)
+		}
+		return Xray(body)
 	default:
 		result.Errors = append(result.Errors, newEntryError(0, "unsupported_format", "", body, fmt.Errorf("unsupported format %q", format)))
 		return result

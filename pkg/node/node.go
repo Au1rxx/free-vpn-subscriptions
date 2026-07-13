@@ -12,7 +12,15 @@ const (
 	ProtoVMess     = "vmess"
 	ProtoTrojan    = "trojan"
 	ProtoSS        = "shadowsocks"
+	ProtoSSR       = "shadowsocksr"
+	ProtoHysteria  = "hysteria"
 	ProtoHysteria2 = "hysteria2"
+	ProtoTUIC      = "tuic"
+	ProtoWireGuard = "wireguard"
+	ProtoSOCKS4    = "socks4"
+	ProtoSOCKS5    = "socks5"
+	ProtoHTTP      = "http"
+	ProtoHTTPS     = "https"
 )
 
 // Node is the normalized representation of a proxy endpoint. Fields are a
@@ -76,10 +84,18 @@ func (n *Node) Valid() bool {
 	switch n.Protocol {
 	case ProtoVLESS, ProtoVMess:
 		return n.UUID != ""
-	case ProtoTrojan, ProtoHysteria2:
+	case ProtoTrojan, ProtoHysteria, ProtoHysteria2:
 		return n.Password != ""
 	case ProtoSS:
 		return n.Password != "" && n.Cipher != ""
+	case ProtoSSR:
+		return n.Password != "" && n.Cipher != "" && n.Extra["protocol"] != "" && n.Extra["obfs"] != ""
+	case ProtoTUIC:
+		return n.UUID != "" && n.Password != ""
+	case ProtoWireGuard:
+		return n.Password != "" && n.PublicKey != ""
+	case ProtoSOCKS4, ProtoSOCKS5, ProtoHTTP, ProtoHTTPS:
+		return n.Username != "" && n.Password != ""
 	}
 	return false
 }
