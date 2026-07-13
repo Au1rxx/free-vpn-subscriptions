@@ -15,6 +15,7 @@ func TestRootContainsDatabaseCommands(t *testing.T) {
 		"validate-worker":   false,
 		"validation-status": false,
 		"classify":          false,
+		"maintain":          false,
 	}
 	for _, command := range root.Commands() {
 		if _, ok := want[command.Name()]; ok {
