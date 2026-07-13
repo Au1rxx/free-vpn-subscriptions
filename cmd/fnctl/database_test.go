@@ -44,11 +44,13 @@ func TestFormatDatabaseStatusIsBoundedAndContainsNoDSN(t *testing.T) {
 		EnabledPolicies:     6,
 		DataBytes:           1024,
 		IndexBytes:          2048,
+		AllocatedBytes:      4096,
 	}
 	out := formatDatabaseStatus(status)
 	for _, want := range []string{
 		"version=9.7.1-cloud", "tls=TLS_AES_128_GCM_SHA256", "migrations=6", "tables=22",
 		"empty_table_comments=0", "empty_column_comments=0", "enabled_policies=6",
+		"allocated_bytes=4096", "total_bytes=4096",
 	} {
 		if !strings.Contains(out, want) {
 			t.Errorf("status missing %q: %s", want, out)

@@ -16,6 +16,7 @@ type DatabaseStatus struct {
 	EnabledPolicies     int
 	DataBytes           uint64
 	IndexBytes          uint64
+	AllocatedBytes      uint64
 }
 
 // ReadDatabaseStatus returns migration and capacity counters for one schema.
@@ -30,6 +31,8 @@ func ReadDatabaseStatus(ctx context.Context, db *sql.DB, database string, server
 		&status.BusinessTables, &status.DataBytes, &status.IndexBytes); err != nil {
 		return DatabaseStatus{}, fmt.Errorf("read database capacity: %w", err)
 	}
+	_ = db.QueryRowContext(ctx, `SELECT COALESCE(SUM(allocated_size),0)
+		FROM information_schema.innodb_tablespaces WHERE name LIKE CONCAT(?, '/%')`, database).Scan(&status.AllocatedBytes)
 	if err := db.QueryRowContext(ctx, `
 		SELECT
 		  (SELECT COUNT(*) FROM information_schema.tables

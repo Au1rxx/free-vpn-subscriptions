@@ -10,9 +10,18 @@ import (
 const DatabaseCapacityBytes = uint64(50 << 30)
 
 func ReadStorageBytes(ctx context.Context, db *sql.DB) (uint64, error) {
-	var bytes uint64
-	err := db.QueryRowContext(ctx, `SELECT COALESCE(SUM(data_length+index_length),0) FROM information_schema.tables WHERE table_schema=DATABASE()`).Scan(&bytes)
-	return bytes, err
+	var logical, allocated uint64
+	if err := db.QueryRowContext(ctx, `SELECT COALESCE(SUM(data_length+index_length),0) FROM information_schema.tables WHERE table_schema=DATABASE()`).Scan(&logical); err != nil {
+		return 0, err
+	}
+	if err := db.QueryRowContext(ctx, `SELECT COALESCE(SUM(allocated_size),0)
+		FROM information_schema.innodb_tablespaces WHERE name LIKE CONCAT(DATABASE(), '/%')`).Scan(&allocated); err != nil {
+		return logical, nil
+	}
+	if allocated > logical {
+		return allocated, nil
+	}
+	return logical, nil
 }
 
 type MaintenancePolicy struct {
