@@ -50,6 +50,10 @@ type GeoIPConfig struct {
 	Enabled       bool   `yaml:"enabled"`
 	DBURL         string `yaml:"db_url"`
 	DBPath        string `yaml:"db_path"`
+	CityDBURL     string `yaml:"city_db_url"`
+	CityDBPath    string `yaml:"city_db_path"`
+	ASNDBURL      string `yaml:"asn_db_url"`
+	ASNDBPath     string `yaml:"asn_db_path"`
 	MinPerCountry int    `yaml:"min_per_country"`
 }
 
