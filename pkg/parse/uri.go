@@ -1,7 +1,7 @@
 package parse
 
 import (
-	"strings"
+	"fmt"
 
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 )
@@ -10,29 +10,15 @@ import (
 // lines starting with '#' are treated as comments. Per-line parse failures
 // are swallowed silently; only Valid() nodes are returned.
 func URIList(body string) []*node.Node {
-	var out []*node.Node
-	for _, line := range strings.Split(body, "\n") {
-		line = strings.TrimSpace(line)
-		if line == "" || strings.HasPrefix(line, "#") {
-			continue
-		}
-		n, err := node.ParseURI(line)
-		if err != nil {
-			continue
-		}
-		if n.Valid() {
-			out = append(out, n)
-		}
-	}
-	return out
+	return Parse([]byte(body), FormatURIList).Nodes
 }
 
 // Base64List decodes a whole-blob base64 body and then treats it as a URI
 // list. Returns an error only if the base64 decode fails.
 func Base64List(body []byte) ([]*node.Node, error) {
-	decoded, err := node.B64Decode(strings.TrimSpace(string(body)))
-	if err != nil {
-		return nil, err
+	result := Parse(body, FormatBase64)
+	if len(result.Errors) > 0 && len(result.Nodes) == 0 {
+		return nil, fmt.Errorf("%s", result.Errors[0].Message)
 	}
-	return URIList(string(decoded)), nil
+	return result.Nodes, nil
 }

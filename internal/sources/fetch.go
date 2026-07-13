@@ -44,23 +44,17 @@ func Fetch(ctx context.Context, src config.Source, timeout time.Duration) ([]*no
 		return nil, fmt.Errorf("source %q: read: %w", src.Name, err)
 	}
 
-	var nodes []*node.Node
-	switch src.Format {
-	case "uri-list":
-		nodes = parse.URIList(string(body))
-	case "base64":
-		nodes, err = parse.Base64List(body)
-		if err != nil {
-			return nil, fmt.Errorf("source %q: base64: %w", src.Name, err)
-		}
-	case "clash":
-		nodes, err = parse.Clash(body)
-		if err != nil {
-			return nil, fmt.Errorf("source %q: clash: %w", src.Name, err)
-		}
+	format := parse.Format(src.Format)
+	switch format {
+	case parse.FormatAuto, parse.FormatURIList, parse.FormatBase64, parse.FormatClash, parse.FormatSingBox, parse.FormatXray:
 	default:
 		return nil, fmt.Errorf("source %q: unknown format %q", src.Name, src.Format)
 	}
+	result := parse.Parse(body, format)
+	if len(result.Nodes) == 0 && len(result.Errors) > 0 {
+		return nil, fmt.Errorf("source %q: parse %s: %s", src.Name, result.Format, result.Errors[0].Code)
+	}
+	nodes := result.Nodes
 
 	for _, n := range nodes {
 		n.SourceName = src.Name
