@@ -26,25 +26,31 @@ import (
 
 // Config controls the verification stage. Populated from YAML.
 type Config struct {
-	Enabled         bool     // run the stage at all
-	CandidatePool   int      // how many top-RTT nodes to send through HTTP probing
-	BatchSize       int      // number of outbounds per sing-box subprocess
-	BasePort        int      // listen port for node i in a batch: base + i
-	Concurrency     int      // parallel HTTP probes within a batch
-	TimeoutMS       int      // per-request deadline
-	Rounds          int      // number of probe rounds (typically 2)
-	RoundGapMS      int      // sleep between rounds
-	Targets         []string // URLs to GET; all must 2xx/204 for a round to pass
-	SingBoxBin      string   // path to sing-box executable
-	StartupTimeout  time.Duration
+	Enabled        bool     // run the stage at all
+	CandidatePool  int      // how many top-RTT nodes to send through HTTP probing
+	BatchSize      int      // number of outbounds per sing-box subprocess
+	BasePort       int      // listen port for node i in a batch: base + i
+	Concurrency    int      // parallel HTTP probes within a batch
+	TimeoutMS      int      // per-request deadline
+	Rounds         int      // number of probe rounds (typically 2)
+	RoundGapMS     int      // sleep between rounds
+	Targets        []string // URLs to GET; all must 2xx/204 for a round to pass
+	SingBoxBin     string   // path to sing-box executable
+	StartupTimeout time.Duration
 }
 
 // Result is verification output for one node.
 type Result struct {
-	Node        *node.Node
-	Passed      bool
-	HTTPMedian  int // milliseconds, median across passing requests
-	SuccessRate int // percent of (rounds × targets) requests that succeeded
+	Node           *node.Node
+	Passed         bool
+	PartialSuccess bool
+	HTTPMedian     int // compatibility field used by the aggregate pipeline
+	SuccessRate    int // compatibility count used by the aggregate pipeline
+
+	ConfigAccepted, ProxyStarted                                    bool
+	Protocol, ErrorCode, ErrorSummary, ExitIP, ExitCountry, ExitASN string
+	StartMS, HTTPMedianMS, Successes, Attempts                      int
+	Targets                                                         []TargetResult
 }
 
 // Run verifies nodes and returns the subset confirmed to forward HTTP traffic.
