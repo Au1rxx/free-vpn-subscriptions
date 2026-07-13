@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	"strings"
 	"time"
 )
 
@@ -74,35 +75,55 @@ func WriteClassifications(ctx context.Context, db *sql.DB, updates []Classificat
 		return err
 	}
 	defer tx.Rollback()
+	for start := 0; start < len(updates); start += 500 {
+		end := start + 500
+		if end > len(updates) {
+			end = len(updates)
+		}
+		if err := writeClassificationBatch(ctx, tx, updates[start:end], classifiedAt); err != nil {
+			return err
+		}
+	}
+	return tx.Commit()
+}
+
+func writeClassificationBatch(ctx context.Context, tx *sql.Tx, updates []ClassificationUpdate, classifiedAt time.Time) error {
+	classificationValues := make([]string, 0, len(updates))
+	classificationArgs := make([]any, 0, len(updates)*9)
+	statusValues := make([]string, 0, len(updates))
+	statusArgs := make([]any, 0, len(updates)*4)
+	ids := make([]any, 0, len(updates))
 	for _, update := range updates {
 		breakdown, err := json.Marshal(update.Breakdown)
 		if err != nil {
 			return err
 		}
-		_, err = tx.ExecContext(ctx, `INSERT INTO node_classifications
-			(node_config_id, protocol, transport, security, exit_country, exit_asn, freshness_class,
-			 stability_class, classifier_version, classified_at)
-			VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'fnctl-2', ?)
-			ON DUPLICATE KEY UPDATE protocol=VALUES(protocol), transport=VALUES(transport), security=VALUES(security),
-			 exit_country=VALUES(exit_country), exit_asn=VALUES(exit_asn), freshness_class=VALUES(freshness_class),
-			 stability_class=VALUES(stability_class), classifier_version=VALUES(classifier_version), classified_at=VALUES(classified_at)`,
-			update.NodeConfigID, update.Protocol, update.Transport, update.Security, nullString(update.ExitCountry),
-			nullString(update.ExitASN), update.FreshnessClass, update.StabilityClass, classifiedAt)
-		if err != nil {
-			return err
-		}
-		_, err = tx.ExecContext(ctx, `UPDATE node_current_status SET quality_score=?, quality_grade=?, score_breakdown=? WHERE node_config_id=?`,
-			update.Score, update.Grade, breakdown, update.NodeConfigID)
-		if err != nil {
-			return err
-		}
-		_, err = tx.ExecContext(ctx, `UPDATE node_configs SET is_exportable=? WHERE node_config_id=?`,
-			update.Grade != "U", update.NodeConfigID)
-		if err != nil {
-			return err
-		}
+		classificationValues = append(classificationValues, "(?,?,?,?,?,?,?,?, 'fnctl-2', ?)")
+		classificationArgs = append(classificationArgs, update.NodeConfigID, update.Protocol, update.Transport, update.Security,
+			nullString(update.ExitCountry), nullString(update.ExitASN), update.FreshnessClass, update.StabilityClass, classifiedAt)
+		statusValues = append(statusValues, "(?,?,?,?)")
+		statusArgs = append(statusArgs, update.NodeConfigID, update.Score, update.Grade, breakdown)
+		ids = append(ids, update.NodeConfigID)
 	}
-	return tx.Commit()
+	_, err := tx.ExecContext(ctx, `INSERT INTO node_classifications
+		(node_config_id, protocol, transport, security, exit_country, exit_asn, freshness_class,
+		 stability_class, classifier_version, classified_at) VALUES `+strings.Join(classificationValues, ",")+`
+		ON DUPLICATE KEY UPDATE protocol=VALUES(protocol), transport=VALUES(transport), security=VALUES(security),
+		 exit_country=VALUES(exit_country), exit_asn=VALUES(exit_asn), freshness_class=VALUES(freshness_class),
+		 stability_class=VALUES(stability_class), classifier_version=VALUES(classifier_version), classified_at=VALUES(classified_at)`, classificationArgs...)
+	if err != nil {
+		return err
+	}
+	_, err = tx.ExecContext(ctx, `INSERT INTO node_current_status
+		(node_config_id, quality_score, quality_grade, score_breakdown) VALUES `+strings.Join(statusValues, ",")+`
+		ON DUPLICATE KEY UPDATE quality_score=VALUES(quality_score), quality_grade=VALUES(quality_grade),
+		 score_breakdown=VALUES(score_breakdown)`, statusArgs...)
+	if err != nil {
+		return err
+	}
+	_, err = tx.ExecContext(ctx, `UPDATE node_configs n JOIN node_current_status s ON s.node_config_id=n.node_config_id
+		SET n.is_exportable=(s.quality_grade <> 'U') WHERE n.node_config_id IN (`+scalarPlaceholders(len(ids))+`)`, ids...)
+	return err
 }
 
 func RollupDailyStats(ctx context.Context, db *sql.DB, date time.Time) (int64, error) {
