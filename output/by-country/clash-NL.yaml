@@ -1,20 +1,20 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-0243"
-      password: hbGrpfvNrJsUmKmPbR3iY2
-      port: 443
-      server: tinkered-pennies-puppies.freesocks.work
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: "02-shadowsocks-\U0001F1FA\U0001F1F8 US 38"
+      name: "01-shadowsocks-\U0001F1FA\U0001F1F8 US 38"
       password: hbGrpfvNrJsUmKmPbR3iY2
       port: 443
       server: 147.90.234.133
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "02-shadowsocks-\U0001F1FA\U0001F1F8 美国 | USA"
+      password: ebEfGowZtV1BEFXZOtgAXi
+      port: 443
+      server: tinkered-pennies-puppies.freesocks.work
+      type: ss
+      udp: true
     - cipher: aes-128-cfb
-      name: "03-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0154"
+      name: "03-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-4178"
       password: shadowsocks
       port: 443
       server: 109.201.152.181
@@ -34,41 +34,76 @@ proxies:
       server: 108.181.126.122
       type: ss
       udp: true
+    - cipher: aes-256-gcm
+      name: "06-shadowsocks-\U0001F1F3\U0001F1F1 Join Telegram:@Farah_VPN \U0001F1F3\U0001F1F1"
+      password: faBAoD54k87UJG7
+      port: 2375
+      server: 109.104.154.163
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: "06-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
+      name: 07-vless->>@oneclickvpnkeys::NL
       network: tcp
       port: 23576
       reality-opts:
         public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
         short-id: "01"
-      server: 51.158.206.26
+      server: 51.158.206.19
       servername: fuck.rkn
       tls: true
       type: vless
       udp: true
       uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: "08-vless-\U0001F1F3\U0001F1F1 434 - NL - VLESS/REALITY/PBK/SID/VISI"
+      network: tcp
+      port: 23576
+      reality-opts:
+        public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+        short-id: "01"
+      server: 51.158.206.96
+      servername: fuck.rkn
+      tls: true
+      type: vless
+      udp: true
+      uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+    - name: "09-trojan-\U0001F1F3\U0001F1F1NL-193.169.239.76-0157"
+      password: XG59623478
+      port: 443
+      server: renewed-chigger.rooster465.autos
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-0243"
-        - "02-shadowsocks-\U0001F1FA\U0001F1F8 US 38"
-        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0154"
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8 US 38"
+        - "02-shadowsocks-\U0001F1FA\U0001F1F8 美国 | USA"
+        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-4178"
         - 04-shadowsocks-EPODONIOS
         - "05-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0164"
-        - "06-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - "06-shadowsocks-\U0001F1F3\U0001F1F1 Join Telegram:@Farah_VPN \U0001F1F3\U0001F1F1"
+        - 07-vless->>@oneclickvpnkeys::NL
+        - "08-vless-\U0001F1F3\U0001F1F1 434 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - "09-trojan-\U0001F1F3\U0001F1F1NL-193.169.239.76-0157"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-0243"
-        - "02-shadowsocks-\U0001F1FA\U0001F1F8 US 38"
-        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0154"
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8 US 38"
+        - "02-shadowsocks-\U0001F1FA\U0001F1F8 美国 | USA"
+        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-4178"
         - 04-shadowsocks-EPODONIOS
         - "05-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0164"
-        - "06-vless-\U0001F1F3\U0001F1F1 426 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - "06-shadowsocks-\U0001F1F3\U0001F1F1 Join Telegram:@Farah_VPN \U0001F1F3\U0001F1F1"
+        - 07-vless->>@oneclickvpnkeys::NL
+        - "08-vless-\U0001F1F3\U0001F1F1 434 - NL - VLESS/REALITY/PBK/SID/VISI"
+        - "09-trojan-\U0001F1F3\U0001F1F1NL-193.169.239.76-0157"
       type: select
 rules:
     - MATCH,select
