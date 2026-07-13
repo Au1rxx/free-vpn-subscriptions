@@ -24,13 +24,13 @@ import (
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/aggregate"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/config"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/geoip"
-	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/pages"
-	"github.com/Au1rxx/free-vpn-subscriptions/pkg/probe"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/readme"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/sources"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/verify"
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/emit"
+	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
+	"github.com/Au1rxx/free-vpn-subscriptions/pkg/probe"
 )
 
 // runDeadline caps a single aggregate run. The hourly cron has a hard 6h
@@ -42,15 +42,20 @@ const runDeadline = 30 * time.Minute
 var cfgPath string
 
 func main() {
+	root := newRootCmd()
+	if err := root.Execute(); err != nil {
+		os.Exit(1)
+	}
+}
+
+func newRootCmd() *cobra.Command {
 	root := &cobra.Command{
 		Use:   "fnctl",
 		Short: "free-vpn-subscriptions aggregator CLI",
 	}
 	root.PersistentFlags().StringVarP(&cfgPath, "config", "c", "config.yaml", "path to configuration file")
-	root.AddCommand(newAggregateCmd())
-	if err := root.Execute(); err != nil {
-		os.Exit(1)
-	}
+	root.AddCommand(newAggregateCmd(), newMigrateCmd(), newDBStatusCmd())
+	return root
 }
 
 func newAggregateCmd() *cobra.Command {
