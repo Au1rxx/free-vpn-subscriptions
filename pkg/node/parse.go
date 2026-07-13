@@ -335,7 +335,25 @@ func parseUserProxy(raw, protocol string) (*Node, error) {
 	if protocol == ProtoHTTPS {
 		security = "tls"
 	}
-	return &Node{Protocol: protocol, Name: decodeFragment(u.Fragment), Server: u.Hostname(), Port: port, Username: username, Password: password, Security: security}, nil
+	return &Node{Protocol: protocol, Name: decodeFragment(u.Fragment), Server: normalizeIPv4(u.Hostname()), Port: port, Username: username, Password: password, Security: security}, nil
+}
+
+func normalizeIPv4(host string) string {
+	parts := strings.Split(host, ".")
+	if len(parts) != 4 {
+		return host
+	}
+	for index, part := range parts {
+		if part == "" || strings.Trim(part, "0123456789") != "" {
+			return host
+		}
+		value, err := strconv.Atoi(part)
+		if err != nil || value > 255 {
+			return host
+		}
+		parts[index] = strconv.Itoa(value)
+	}
+	return strings.Join(parts, ".")
 }
 
 // ---- helpers ----

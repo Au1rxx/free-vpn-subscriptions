@@ -56,3 +56,13 @@ func TestParseURIExtendedAcceptsAnonymousUserProxies(t *testing.T) {
 		}
 	}
 }
+
+func TestParseUserProxyNormalizesZeroPaddedIPv4(t *testing.T) {
+	n, err := ParseURI("http://001.224.003.122:3888")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if n.Server != "1.224.3.122" {
+		t.Fatalf("server=%q, want canonical IPv4", n.Server)
+	}
+}
