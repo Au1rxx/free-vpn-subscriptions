@@ -14,6 +14,7 @@ func TestRootContainsDatabaseCommands(t *testing.T) {
 		"import-seeds": false, "fetch": false, "parse": false, "discover": false, "ingest-status": false,
 		"validate-worker":   false,
 		"validation-status": false,
+		"classify":          false,
 	}
 	for _, command := range root.Commands() {
 		if _, ok := want[command.Name()]; ok {
