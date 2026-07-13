@@ -17,6 +17,8 @@ import (
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/parse"
 )
 
+const nodePersistBatchSize = 1000
+
 // FetchRecord is a persisted terminal source fetch.
 type FetchRecord struct {
 	ID, SourceID uint64
@@ -190,8 +192,8 @@ func PersistParseResult(ctx context.Context, db *sql.DB, sourceID, fetchID uint6
 		return PersistedParse{}, err
 	}
 	report := PersistedParse{ParseRunID: uint64(parseRunID)}
-	for start := 0; start < len(result.Nodes); start += 500 {
-		end := start + 500
+	for start := 0; start < len(result.Nodes); start += nodePersistBatchSize {
+		end := start + nodePersistBatchSize
 		if end > len(result.Nodes) {
 			end = len(result.Nodes)
 		}
