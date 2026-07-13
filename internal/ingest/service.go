@@ -26,9 +26,11 @@ type ParseSummary struct{ Fetches, Nodes, Errors, NewEndpoints, NewConfigs, Queu
 func (s *Service) ImportSeeds(ctx context.Context, configured []config.Source) (ImportSummary, error) {
 	summary := ImportSummary{Sources: len(configured)}
 	for _, seed := range configured {
+		interval := time.Duration(seed.FetchIntervalSeconds) * time.Second
 		if _, err := store.UpsertSource(ctx, s.DB, store.SourceRecord{
 			Name: seed.Name, URL: seed.URL, FormatHint: seed.Format, Enabled: seed.Enabled,
-			Kind: "subscription", DiscoveryMethod: "config-seed", State: "active",
+			Kind: seed.Kind, DiscoveryMethod: seed.DiscoveryMethod, State: "active", Depth: seed.Depth,
+			Priority: seed.Priority, FetchInterval: interval,
 		}); err != nil {
 			return summary, err
 		}

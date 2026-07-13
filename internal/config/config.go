@@ -61,10 +61,15 @@ type GeoIPConfig struct {
 
 // Source describes a single upstream subscription feed.
 type Source struct {
-	Name    string `yaml:"name"`
-	URL     string `yaml:"url"`
-	Format  string `yaml:"format"` // uri-list | base64 | clash
-	Enabled bool   `yaml:"enabled"`
+	Name                 string `yaml:"name"`
+	URL                  string `yaml:"url"`
+	Format               string `yaml:"format"` // auto | uri-list | base64 | clash | singbox | xray
+	Kind                 string `yaml:"kind"`
+	DiscoveryMethod      string `yaml:"discovery_method"`
+	Depth                int    `yaml:"depth"`
+	Priority             int    `yaml:"priority"`
+	FetchIntervalSeconds int    `yaml:"fetch_interval_seconds"`
+	Enabled              bool   `yaml:"enabled"`
 }
 
 type ProbeConfig struct {

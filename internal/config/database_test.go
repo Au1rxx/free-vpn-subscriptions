@@ -80,3 +80,30 @@ database:
 		t.Fatalf("password_file=%q want %q", cfg.Database.PasswordFile, want)
 	}
 }
+
+func TestLoadDetailedSourceMetadata(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "config.yaml")
+	data := []byte(`sources:
+  - name: catalog
+    url: https://example.test/sub
+    format: auto
+    kind: github-wiki
+    discovery_method: researched-seed
+    depth: 1
+    priority: 90
+    fetch_interval_seconds: 1800
+    enabled: true
+`)
+	if err := os.WriteFile(path, data, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	cfg, err := Load(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	source := cfg.Sources[0]
+	if source.Kind != "github-wiki" || source.DiscoveryMethod != "researched-seed" || source.Depth != 1 || source.Priority != 90 || source.FetchIntervalSeconds != 1800 {
+		t.Fatalf("source metadata=%+v", source)
+	}
+}
