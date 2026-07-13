@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/config"
+	"github.com/Au1rxx/free-vpn-subscriptions/internal/discovery"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/sources"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/store"
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/parse"
@@ -97,6 +98,9 @@ func (s *Service) Parse(ctx context.Context, limit int) (ParseSummary, error) {
 		summary.NewConfigs += persisted.NewConfigs
 		summary.QueueJobs += persisted.QueueJobs
 		for _, discoveredURL := range result.DiscoveredURLs {
+			if !discovery.LikelySubscriptionURL(discoveredURL) {
+				continue
+			}
 			if _, err := store.UpsertSource(ctx, s.DB, store.SourceRecord{
 				Name: "nested-source", URL: discoveredURL, FormatHint: "auto", Enabled: true,
 				Kind: "nested-subscription", DiscoveryMethod: "content-link", State: "active", Depth: 1,

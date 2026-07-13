@@ -134,3 +134,15 @@ func ClaimDueSources(ctx context.Context, db *sql.DB, limit int) ([]SourceRecord
 	}
 	return sources, nil
 }
+
+func DisableDiscoveredSources(ctx context.Context, db *sql.DB, kind, method string) (int64, error) {
+	if strings.TrimSpace(kind) == "" || strings.TrimSpace(method) == "" {
+		return 0, fmt.Errorf("source kind and discovery method are required")
+	}
+	result, err := db.ExecContext(ctx, `UPDATE sources SET enabled=FALSE, state='paused',
+		updated_at=UTC_TIMESTAMP(6) WHERE kind=? AND discovery_method=?`, kind, method)
+	if err != nil {
+		return 0, err
+	}
+	return result.RowsAffected()
+}

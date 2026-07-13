@@ -125,6 +125,9 @@ func newDiscoverCmd() *cobra.Command {
 		defer db.Close()
 		upserted := 0
 		for _, candidate := range candidates {
+			if !discovery.LikelySubscriptionURL(candidate.URL) {
+				continue
+			}
 			if _, err := store.UpsertSource(cmd.Context(), db, store.SourceRecord{
 				Name: candidate.Name, URL: candidate.URL, Kind: candidate.Kind, FormatHint: "auto",
 				DiscoveryMethod: kind, State: "active", Enabled: true, Depth: candidate.Depth,
@@ -140,6 +143,29 @@ func newDiscoverCmd() *cobra.Command {
 	command.Flags().StringVar(&query, "query", "", "code search query")
 	command.Flags().StringVar(&tokenFile, "token-file", "", "optional credential file")
 	command.Flags().IntVar(&limit, "limit", 500, "maximum candidates to register")
+	return command
+}
+
+func newPruneDiscoveryCmd() *cobra.Command {
+	var kind, method string
+	command := &cobra.Command{Use: "prune-discovery", Short: "Disable one exact class of automatically discovered sources", RunE: func(cmd *cobra.Command, _ []string) error {
+		if kind == "" || method == "" {
+			return fmt.Errorf("kind and method are required")
+		}
+		_, db, _, err := openIngestService(cmd.Context())
+		if err != nil {
+			return err
+		}
+		defer db.Close()
+		affected, err := store.DisableDiscoveredSources(cmd.Context(), db, kind, method)
+		if err != nil {
+			return err
+		}
+		fmt.Fprintf(cmd.OutOrStdout(), "kind=%s method=%s disabled=%d\n", kind, method, affected)
+		return nil
+	}}
+	command.Flags().StringVar(&kind, "kind", "", "exact source kind")
+	command.Flags().StringVar(&method, "method", "", "exact discovery method")
 	return command
 }
 
