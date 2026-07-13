@@ -1,0 +1,43 @@
+proxies:
+    - name: "01-hysteria2- By EbraSha \U0001F9E0"
+      password: dongtaiwang.com
+      port: 22000
+      server: 62.210.124.146
+      skip-cert-verify: true
+      sni: www.microsoft.com
+      type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: 02-shadowsocks-EPODONIOS
+      password: q6bhpyjk0o352x7i
+      port: 8080
+      server: 135.125.113.81
+      type: ss
+      udp: true
+    - name: 03-vless-⚡ b2n.ir/v2ray-configs | 456
+      network: ws
+      port: 443
+      server: 149.202.58.99
+      servername: bab-6.site
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: b585dc5e-55bf-4a8b-913a-27c9ccac05c3
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-hysteria2- By EbraSha \U0001F9E0"
+        - 02-shadowsocks-EPODONIOS
+        - 03-vless-⚡ b2n.ir/v2ray-configs | 456
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-hysteria2- By EbraSha \U0001F9E0"
+        - 02-shadowsocks-EPODONIOS
+        - 03-vless-⚡ b2n.ir/v2ray-configs | 456
+      type: select
+rules:
+    - MATCH,select
