@@ -54,7 +54,7 @@ func newRootCmd() *cobra.Command {
 		Short: "free-vpn-subscriptions aggregator CLI",
 	}
 	root.PersistentFlags().StringVarP(&cfgPath, "config", "c", "config.yaml", "path to configuration file")
-	root.AddCommand(newAggregateCmd(), newMigrateCmd(), newDBStatusCmd())
+	root.AddCommand(newAggregateCmd(), newMigrateCmd(), newDBStatusCmd(), newImportSeedsCmd(), newFetchCmd(), newParseCmd(), newDiscoverCmd(), newIngestStatusCmd())
 	return root
 }
 
@@ -156,9 +156,6 @@ func fetchAll(ctx context.Context, cfg *config.Config) []*node.Node {
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "  [skip] %s: %v\n", src.Name, err)
 				return
-			}
-			if cfg.Probe.MaxNodesPerSource > 0 && len(nodes) > cfg.Probe.MaxNodesPerSource {
-				nodes = nodes[:cfg.Probe.MaxNodesPerSource]
 			}
 			fmt.Fprintf(os.Stderr, "  [ok]   %s: %d nodes\n", src.Name, len(nodes))
 			mu.Lock()

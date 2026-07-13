@@ -68,6 +68,9 @@ func FinishFetch(ctx context.Context, db *sql.DB, write FetchWrite) (FetchRecord
 	var payloadID any
 	digest := sha256.Sum256(write.Body)
 	state, parseState := "failed", "skipped"
+	if write.StatusCode == 304 && write.ErrorCode == "" {
+		state = "not_modified"
+	}
 	if len(write.Body) > 0 && write.ErrorCode == "" && write.StatusCode >= 200 && write.StatusCode < 300 {
 		compressed, err := compressPayload(write.Body)
 		if err != nil {
@@ -108,7 +111,7 @@ func FinishFetch(ctx context.Context, db *sql.DB, write FetchWrite) (FetchRecord
 	if err != nil {
 		return FetchRecord{}, err
 	}
-	if state == "success" {
+	if state != "failed" {
 		_, err = tx.ExecContext(ctx, `UPDATE sources SET etag=?, last_modified=?, consecutive_failures=0,
 			last_http_status=?, last_success_at=?, updated_at=UTC_TIMESTAMP(6) WHERE source_id=?`,
 			nullString(write.ETag), nullString(write.LastModified), write.StatusCode, write.FinishedAt, write.SourceID)
@@ -186,37 +189,18 @@ func PersistParseResult(ctx context.Context, db *sql.DB, sourceID, fetchID uint6
 		return PersistedParse{}, err
 	}
 	report := PersistedParse{ParseRunID: uint64(parseRunID)}
-	for _, n := range result.Nodes {
-		endpointID, isNew, err := upsertEndpoint(ctx, tx, n, started)
+	for start := 0; start < len(result.Nodes); start += 500 {
+		end := start + 500
+		if end > len(result.Nodes) {
+			end = len(result.Nodes)
+		}
+		batchReport, err := persistNodeBatch(ctx, tx, sourceID, fetchID, result.Nodes[start:end], parserVersion, started)
 		if err != nil {
 			return PersistedParse{}, err
 		}
-		if isNew {
-			report.NewEndpoints++
-		}
-		nodeID, isNew, err := upsertNodeConfig(ctx, tx, endpointID, n, parserVersion, started)
-		if err != nil {
-			return PersistedParse{}, err
-		}
-		if isNew {
-			report.NewConfigs++
-		}
-		if _, err := tx.ExecContext(ctx, `INSERT INTO node_source_stats
-			(node_config_id, source_id, last_fetch_id, first_seen_at, last_seen_at)
-			VALUES (?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE last_fetch_id=VALUES(last_fetch_id),
-			last_seen_at=VALUES(last_seen_at), seen_count=seen_count+1, is_active=TRUE`, nodeID, sourceID, fetchID, started, started); err != nil {
-			return PersistedParse{}, fmt.Errorf("upsert node source relation: %w", err)
-		}
-		queueResult, err := tx.ExecContext(ctx, `INSERT INTO validation_queue
-			(node_config_id, stage, priority, job_state, next_attempt_at)
-			VALUES (?, 'connectivity', 0, 'pending', UTC_TIMESTAMP(6))
-			ON DUPLICATE KEY UPDATE node_config_id=VALUES(node_config_id)`, nodeID)
-		if err != nil {
-			return PersistedParse{}, fmt.Errorf("queue validation: %w", err)
-		}
-		if affected, _ := queueResult.RowsAffected(); affected == 1 {
-			report.QueueJobs++
-		}
+		report.NewEndpoints += batchReport.NewEndpoints
+		report.NewConfigs += batchReport.NewConfigs
+		report.QueueJobs += batchReport.QueueJobs
 	}
 	for _, entry := range result.Errors {
 		sample := sha256.Sum256([]byte(entry.SampleHash))
@@ -238,6 +222,239 @@ func PersistParseResult(ctx context.Context, db *sql.DB, sourceID, fetchID uint6
 		return PersistedParse{}, err
 	}
 	return report, nil
+}
+
+type preparedNode struct {
+	n                 *node.Node
+	host              string
+	hostHash          [32]byte
+	configFingerprint [32]byte
+	canonical         []byte
+}
+
+func persistNodeBatch(ctx context.Context, tx *sql.Tx, sourceID, fetchID uint64, nodes []*node.Node, parserVersion string, seen time.Time) (PersistedParse, error) {
+	prepared := make([]preparedNode, 0, len(nodes))
+	for _, n := range nodes {
+		canonical, err := n.CanonicalJSON()
+		if err != nil {
+			return PersistedParse{}, err
+		}
+		host, hostHash := endpointIdentity(n)
+		prepared = append(prepared, preparedNode{n: n, host: host, hostHash: hostHash, configFingerprint: n.ConfigFingerprint(), canonical: canonical})
+	}
+	existingEndpoints, err := selectEndpointIDs(ctx, tx, prepared)
+	if err != nil {
+		return PersistedParse{}, err
+	}
+	report := PersistedParse{}
+	uniqueEndpoints := make(map[string]bool)
+	var endpointSQL strings.Builder
+	endpointSQL.WriteString(`INSERT INTO endpoints (host, host_hash, port, address_type, first_seen_at, last_seen_at) VALUES `)
+	endpointArgs := make([]any, 0, len(prepared)*6)
+	for index, item := range prepared {
+		if index > 0 {
+			endpointSQL.WriteByte(',')
+		}
+		endpointSQL.WriteString("(?,?,?,?,?,?)")
+		addressType := "domain"
+		if ip := net.ParseIP(item.host); ip != nil {
+			addressType = "ipv6"
+			if ip.To4() != nil {
+				addressType = "ipv4"
+			}
+		}
+		endpointArgs = append(endpointArgs, item.host, item.hostHash[:], item.n.Port, addressType, seen, seen)
+		key := endpointMapKey(item.hostHash[:], item.n.Port)
+		if !uniqueEndpoints[key] {
+			uniqueEndpoints[key] = true
+			if existingEndpoints[key] == 0 {
+				report.NewEndpoints++
+			}
+		}
+	}
+	endpointSQL.WriteString(` ON DUPLICATE KEY UPDATE last_seen_at=VALUES(last_seen_at)`)
+	if _, err := tx.ExecContext(ctx, endpointSQL.String(), endpointArgs...); err != nil {
+		return PersistedParse{}, fmt.Errorf("batch upsert endpoints: %w", err)
+	}
+	endpointIDs, err := selectEndpointIDs(ctx, tx, prepared)
+	if err != nil {
+		return PersistedParse{}, err
+	}
+	existingConfigs, err := selectConfigIDs(ctx, tx, prepared)
+	if err != nil {
+		return PersistedParse{}, err
+	}
+	var configSQL strings.Builder
+	configSQL.WriteString(`INSERT INTO node_configs (endpoint_id, config_fingerprint, protocol, transport, security, normalized_config, config_bytes, parser_version, first_seen_at, last_seen_at) VALUES `)
+	configArgs := make([]any, 0, len(prepared)*10)
+	uniqueConfigs := make(map[string]bool)
+	for index, item := range prepared {
+		if index > 0 {
+			configSQL.WriteByte(',')
+		}
+		configSQL.WriteString("(?,?,?,?,?,?,?,?,?,?)")
+		endpointID := endpointIDs[endpointMapKey(item.hostHash[:], item.n.Port)]
+		configArgs = append(configArgs, endpointID, item.configFingerprint[:], item.n.Protocol,
+			defaultString(item.n.Network, "tcp"), defaultString(item.n.Security, "none"), item.canonical,
+			len(item.canonical), parserVersion, seen, seen)
+		key := string(item.configFingerprint[:])
+		if !uniqueConfigs[key] {
+			uniqueConfigs[key] = true
+			if existingConfigs[key] == 0 {
+				report.NewConfigs++
+			}
+		}
+	}
+	configSQL.WriteString(` ON DUPLICATE KEY UPDATE last_seen_at=VALUES(last_seen_at), endpoint_id=VALUES(endpoint_id)`)
+	if _, err := tx.ExecContext(ctx, configSQL.String(), configArgs...); err != nil {
+		return PersistedParse{}, fmt.Errorf("batch upsert node configs: %w", err)
+	}
+	configIDs, err := selectConfigIDs(ctx, tx, prepared)
+	if err != nil {
+		return PersistedParse{}, err
+	}
+	nodeIDs := make([]uint64, 0, len(uniqueConfigs))
+	seenNodeIDs := make(map[uint64]bool)
+	for fingerprint := range uniqueConfigs {
+		id := configIDs[fingerprint]
+		if id == 0 {
+			return PersistedParse{}, fmt.Errorf("node config identity was not returned")
+		}
+		if !seenNodeIDs[id] {
+			seenNodeIDs[id] = true
+			nodeIDs = append(nodeIDs, id)
+		}
+	}
+	if err := upsertNodeRelations(ctx, tx, nodeIDs, sourceID, fetchID, seen); err != nil {
+		return PersistedParse{}, err
+	}
+	existingQueue, err := selectQueuedNodeIDs(ctx, tx, nodeIDs)
+	if err != nil {
+		return PersistedParse{}, err
+	}
+	if err := upsertValidationQueue(ctx, tx, nodeIDs); err != nil {
+		return PersistedParse{}, err
+	}
+	for _, id := range nodeIDs {
+		if !existingQueue[id] {
+			report.QueueJobs++
+		}
+	}
+	return report, nil
+}
+
+func selectEndpointIDs(ctx context.Context, tx *sql.Tx, prepared []preparedNode) (map[string]uint64, error) {
+	query := `SELECT endpoint_id, host_hash, port FROM endpoints WHERE (host_hash, port) IN (` + rowPlaceholders(len(prepared), 2) + `)`
+	args := make([]any, 0, len(prepared)*2)
+	for _, item := range prepared {
+		args = append(args, item.hostHash[:], item.n.Port)
+	}
+	rows, err := tx.QueryContext(ctx, query, args...)
+	if err != nil {
+		return nil, fmt.Errorf("select endpoint identities: %w", err)
+	}
+	defer rows.Close()
+	ids := make(map[string]uint64)
+	for rows.Next() {
+		var id uint64
+		var hash []byte
+		var port int
+		if err := rows.Scan(&id, &hash, &port); err != nil {
+			return nil, err
+		}
+		ids[endpointMapKey(hash, port)] = id
+	}
+	return ids, rows.Err()
+}
+
+func selectConfigIDs(ctx context.Context, tx *sql.Tx, prepared []preparedNode) (map[string]uint64, error) {
+	query := `SELECT node_config_id, config_fingerprint FROM node_configs WHERE config_fingerprint IN (` + scalarPlaceholders(len(prepared)) + `)`
+	args := make([]any, 0, len(prepared))
+	for _, item := range prepared {
+		args = append(args, item.configFingerprint[:])
+	}
+	rows, err := tx.QueryContext(ctx, query, args...)
+	if err != nil {
+		return nil, fmt.Errorf("select config identities: %w", err)
+	}
+	defer rows.Close()
+	ids := make(map[string]uint64)
+	for rows.Next() {
+		var id uint64
+		var fingerprint []byte
+		if err := rows.Scan(&id, &fingerprint); err != nil {
+			return nil, err
+		}
+		ids[string(fingerprint)] = id
+	}
+	return ids, rows.Err()
+}
+
+func upsertNodeRelations(ctx context.Context, tx *sql.Tx, nodeIDs []uint64, sourceID, fetchID uint64, seen time.Time) error {
+	var query strings.Builder
+	query.WriteString(`INSERT INTO node_source_stats (node_config_id, source_id, last_fetch_id, first_seen_at, last_seen_at) VALUES `)
+	args := make([]any, 0, len(nodeIDs)*5)
+	for index, id := range nodeIDs {
+		if index > 0 {
+			query.WriteByte(',')
+		}
+		query.WriteString("(?,?,?,?,?)")
+		args = append(args, id, sourceID, fetchID, seen, seen)
+	}
+	query.WriteString(` ON DUPLICATE KEY UPDATE last_fetch_id=VALUES(last_fetch_id), last_seen_at=VALUES(last_seen_at), seen_count=seen_count+1, is_active=TRUE`)
+	_, err := tx.ExecContext(ctx, query.String(), args...)
+	return err
+}
+
+func selectQueuedNodeIDs(ctx context.Context, tx *sql.Tx, nodeIDs []uint64) (map[uint64]bool, error) {
+	query := `SELECT node_config_id FROM validation_queue WHERE stage='connectivity' AND node_config_id IN (` + scalarPlaceholders(len(nodeIDs)) + `)`
+	args := make([]any, len(nodeIDs))
+	for index, id := range nodeIDs {
+		args[index] = id
+	}
+	rows, err := tx.QueryContext(ctx, query, args...)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	ids := make(map[uint64]bool)
+	for rows.Next() {
+		var id uint64
+		if err := rows.Scan(&id); err != nil {
+			return nil, err
+		}
+		ids[id] = true
+	}
+	return ids, rows.Err()
+}
+
+func upsertValidationQueue(ctx context.Context, tx *sql.Tx, nodeIDs []uint64) error {
+	var query strings.Builder
+	query.WriteString(`INSERT INTO validation_queue (node_config_id, stage, priority, job_state, next_attempt_at) VALUES `)
+	args := make([]any, 0, len(nodeIDs))
+	for index, id := range nodeIDs {
+		if index > 0 {
+			query.WriteByte(',')
+		}
+		query.WriteString("(?,'connectivity',0,'pending',UTC_TIMESTAMP(6))")
+		args = append(args, id)
+	}
+	query.WriteString(` ON DUPLICATE KEY UPDATE node_config_id=VALUES(node_config_id)`)
+	_, err := tx.ExecContext(ctx, query.String(), args...)
+	return err
+}
+
+func rowPlaceholders(rows, columns int) string {
+	row := "(" + strings.TrimSuffix(strings.Repeat("?,", columns), ",") + ")"
+	return strings.TrimSuffix(strings.Repeat(row+",", rows), ",")
+}
+
+func scalarPlaceholders(count int) string {
+	return strings.TrimSuffix(strings.Repeat("?,", count), ",")
+}
+
+func endpointMapKey(hash []byte, port int) string {
+	return string(hash) + fmt.Sprintf("/%d", port)
 }
 
 func upsertEndpoint(ctx context.Context, tx *sql.Tx, n *node.Node, seen time.Time) (uint64, bool, error) {

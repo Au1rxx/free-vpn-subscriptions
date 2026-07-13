@@ -57,6 +57,9 @@ func fetchErrorCode(err error) string {
 	return ""
 }
 
+// ErrorCode returns a stable scheduler-safe code for a fetch failure.
+func ErrorCode(err error) string { return fetchErrorCode(err) }
+
 // FetchRaw retrieves one response with redirect, compressed and decoded size
 // limits. HTTP 304 is a successful metadata-only response.
 func FetchRaw(ctx context.Context, request Request) (Response, error) {

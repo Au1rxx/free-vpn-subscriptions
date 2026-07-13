@@ -224,9 +224,9 @@ func validate(c *Config) error {
 			return fmt.Errorf("config: sources[%d] %q missing url", i, s.Name)
 		}
 		switch s.Format {
-		case "uri-list", "base64", "clash":
+		case "auto", "uri-list", "base64", "clash", "singbox", "xray":
 		default:
-			return fmt.Errorf("config: sources[%d] %q invalid format %q (want uri-list|base64|clash)", i, s.Name, s.Format)
+			return fmt.Errorf("config: sources[%d] %q invalid format %q", i, s.Name, s.Format)
 		}
 	}
 	return nil

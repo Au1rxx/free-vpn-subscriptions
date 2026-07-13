@@ -9,7 +9,10 @@ import (
 
 func TestRootContainsDatabaseCommands(t *testing.T) {
 	root := newRootCmd()
-	want := map[string]bool{"aggregate": false, "migrate": false, "db-status": false}
+	want := map[string]bool{
+		"aggregate": false, "migrate": false, "db-status": false,
+		"import-seeds": false, "fetch": false, "parse": false, "discover": false, "ingest-status": false,
+	}
 	for _, command := range root.Commands() {
 		if _, ok := want[command.Name()]; ok {
 			want[command.Name()] = true
