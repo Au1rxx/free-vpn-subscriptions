@@ -100,12 +100,18 @@ func BuildOutbound(n *node.Node, tag string) (map[string]any, error) {
 		}
 		ob = map[string]any{"type": "wireguard", "tag": tag, "address": addresses, "private_key": n.Password, "peers": []map[string]any{peer}}
 	case node.ProtoSOCKS4, node.ProtoSOCKS5:
-		ob["type"], ob["version"], ob["username"], ob["password"] = "socks", "5", n.Username, n.Password
+		ob["type"], ob["version"] = "socks", "5"
+		if n.Username != "" {
+			ob["username"], ob["password"] = n.Username, n.Password
+		}
 		if n.Protocol == node.ProtoSOCKS4 {
 			ob["version"] = "4"
 		}
 	case node.ProtoHTTP, node.ProtoHTTPS:
-		ob["type"], ob["username"], ob["password"] = "http", n.Username, n.Password
+		ob["type"] = "http"
+		if n.Username != "" {
+			ob["username"], ob["password"] = n.Username, n.Password
+		}
 		if n.Protocol == node.ProtoHTTPS || n.Security == "tls" {
 			ob["tls"] = orTLS(n)
 		}

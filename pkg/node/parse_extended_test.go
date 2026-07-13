@@ -35,12 +35,24 @@ func TestParseURIExtendedProtocols(t *testing.T) {
 func TestParseURIExtendedRejectsMissingCredentials(t *testing.T) {
 	for _, uri := range []string{
 		"hysteria://example.com:443", "tuic://example.com:443",
-		"wireguard://example.com:51820?publickey=peer", "socks5://example.com:1080",
-		"http://example.com:8080",
+		"wireguard://example.com:51820?publickey=peer",
+		"socks5://user@example.com:1080", "http://user@example.com:8080",
 	} {
 		n, err := ParseURI(uri)
 		if err == nil && n.Valid() {
 			t.Fatalf("expected missing credential rejection for %s: %+v", uri, n)
+		}
+	}
+}
+
+func TestParseURIExtendedAcceptsAnonymousUserProxies(t *testing.T) {
+	for _, uri := range []string{
+		"socks4://192.0.2.1:1080", "socks5://192.0.2.2:1080",
+		"http://192.0.2.3:8080", "https://192.0.2.4:8443",
+	} {
+		n, err := ParseURI(uri)
+		if err != nil || !n.Valid() {
+			t.Fatalf("expected anonymous proxy to be valid for %s: node=%+v err=%v", uri, n, err)
 		}
 	}
 }

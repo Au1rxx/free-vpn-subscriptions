@@ -74,3 +74,21 @@ func TestBuildOutboundRejectsUnsupported(t *testing.T) {
 		t.Fatal("unsupported protocol was accepted")
 	}
 }
+
+func TestBuildOutboundOmitsEmptyProxyCredentials(t *testing.T) {
+	for _, n := range []*node.Node{
+		{Protocol: node.ProtoSOCKS5, Server: "192.0.2.1", Port: 1080},
+		{Protocol: node.ProtoHTTP, Server: "192.0.2.2", Port: 8080},
+	} {
+		outbound, err := BuildOutbound(n, "proxy")
+		if err != nil {
+			t.Fatal(err)
+		}
+		if _, present := outbound["username"]; present {
+			t.Fatalf("anonymous %s outbound contains username: %+v", n.Protocol, outbound)
+		}
+		if _, present := outbound["password"]; present {
+			t.Fatalf("anonymous %s outbound contains password: %+v", n.Protocol, outbound)
+		}
+	}
+}

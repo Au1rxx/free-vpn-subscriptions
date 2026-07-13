@@ -95,7 +95,7 @@ func (n *Node) Valid() bool {
 	case ProtoWireGuard:
 		return n.Password != "" && n.PublicKey != ""
 	case ProtoSOCKS4, ProtoSOCKS5, ProtoHTTP, ProtoHTTPS:
-		return n.Username != "" && n.Password != ""
+		return (n.Username == "" && n.Password == "") || (n.Username != "" && n.Password != "")
 	}
 	return false
 }
