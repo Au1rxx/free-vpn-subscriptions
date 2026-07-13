@@ -11,6 +11,7 @@ import (
 	"net"
 	"strings"
 	"time"
+	"unicode"
 
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/parse"
@@ -295,7 +296,7 @@ func persistNodeBatch(ctx context.Context, tx *sql.Tx, sourceID, fetchID uint64,
 		configSQL.WriteString("(?,?,?,?,?,?,?,?,?,?)")
 		endpointID := endpointIDs[endpointMapKey(item.hostHash[:], item.n.Port)]
 		configArgs = append(configArgs, endpointID, item.configFingerprint[:], item.n.Protocol,
-			defaultString(item.n.Network, "tcp"), defaultString(item.n.Security, "none"), item.canonical,
+			classificationValue(item.n.Network, "tcp"), classificationValue(item.n.Security, "none"), item.canonical,
 			len(item.canonical), parserVersion, seen, seen)
 		key := string(item.configFingerprint[:])
 		if !uniqueConfigs[key] {
@@ -341,6 +342,22 @@ func persistNodeBatch(ctx context.Context, tx *sql.Tx, sourceID, fetchID uint64,
 		}
 	}
 	return report, nil
+}
+
+func classificationValue(value, fallback string) string {
+	value = strings.ToLower(strings.TrimSpace(value))
+	if value == "" {
+		return fallback
+	}
+	if len(value) > 32 {
+		return "other"
+	}
+	for _, char := range value {
+		if !unicode.IsLetter(char) && !unicode.IsDigit(char) && char != '-' && char != '_' && char != '.' {
+			return "other"
+		}
+	}
+	return value
 }
 
 func selectEndpointIDs(ctx context.Context, tx *sql.Tx, prepared []preparedNode) (map[string]uint64, error) {

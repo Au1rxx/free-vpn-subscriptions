@@ -78,7 +78,7 @@ func (n *Node) Key() string {
 
 // Valid checks the minimum required fields are present.
 func (n *Node) Valid() bool {
-	if n.Server == "" || n.Port <= 0 || n.Port > 65535 {
+	if n.Server == "" || len(n.Server) > 253 || n.Port <= 0 || n.Port > 65535 {
 		return false
 	}
 	switch n.Protocol {
