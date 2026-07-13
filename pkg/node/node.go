@@ -8,11 +8,11 @@ import "fmt"
 
 // Protocol identifiers.
 const (
-	ProtoVLESS      = "vless"
-	ProtoVMess      = "vmess"
-	ProtoTrojan     = "trojan"
-	ProtoSS         = "shadowsocks"
-	ProtoHysteria2  = "hysteria2"
+	ProtoVLESS     = "vless"
+	ProtoVMess     = "vmess"
+	ProtoTrojan    = "trojan"
+	ProtoSS        = "shadowsocks"
+	ProtoHysteria2 = "hysteria2"
 )
 
 // Node is the normalized representation of a proxy endpoint. Fields are a
@@ -26,13 +26,14 @@ type Node struct {
 	// Credentials — only one of UUID / Password / (Cipher+Password) is set
 	// depending on protocol.
 	UUID     string `json:"uuid,omitempty"`
+	Username string `json:"username,omitempty"`
 	Password string `json:"password,omitempty"`
 	Cipher   string `json:"cipher,omitempty"`
 	AlterID  int    `json:"alter_id,omitempty"`
 
 	// Transport.
-	Network     string `json:"network,omitempty"`      // tcp|ws|grpc|quic
-	Security    string `json:"security,omitempty"`     // none|tls|reality
+	Network     string `json:"network,omitempty"`  // tcp|ws|grpc|quic
+	Security    string `json:"security,omitempty"` // none|tls|reality
 	SNI         string `json:"sni,omitempty"`
 	ALPN        string `json:"alpn,omitempty"`
 	Fingerprint string `json:"fingerprint,omitempty"`
@@ -53,6 +54,10 @@ type Node struct {
 	TCPLatencyMS int    `json:"tcp_latency_ms,omitempty"`
 	Country      string `json:"country,omitempty"`
 	SourceName   string `json:"source_name,omitempty"`
+
+	// Extra keeps protocol-specific settings that affect whether a complete
+	// configuration is interchangeable with another one.
+	Extra map[string]string `json:"extra,omitempty"`
 }
 
 // Key returns a stable deduplication key: protocol + server + port.
