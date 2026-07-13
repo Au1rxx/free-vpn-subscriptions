@@ -11,7 +11,7 @@ import (
 )
 
 func newClassifyCmd() *cobra.Command {
-	limit, daily := 1000, ""
+	limit, daily, all := 1000, "", false
 	command := &cobra.Command{Use: "classify", Short: "Score nodes and roll up daily validation metrics", RunE: func(cmd *cobra.Command, _ []string) error {
 		_, db, _, err := openIngestService(cmd.Context())
 		if err != nil {
@@ -30,14 +30,38 @@ func newClassifyCmd() *cobra.Command {
 			fmt.Fprintf(cmd.OutOrStdout(), "daily=%s affected=%d\n", daily, rows)
 			return nil
 		}
-		report, err := (classify.Service{DB: db}).Run(cmd.Context(), limit, time.Now().UTC())
+		remaining, err := store.CountUnclassified(cmd.Context(), db)
 		if err != nil {
 			return err
 		}
-		fmt.Fprintf(cmd.OutOrStdout(), "candidates=%d classified=%d\n", report.Candidates, report.Classified)
+		totalCandidates, totalClassified := 0, 0
+		for {
+			batch := limit
+			if all && remaining < batch {
+				batch = remaining
+			}
+			if batch == 0 {
+				break
+			}
+			report, err := (classify.Service{DB: db}).Run(cmd.Context(), batch, time.Now().UTC())
+			if err != nil {
+				return err
+			}
+			totalCandidates += report.Candidates
+			totalClassified += report.Classified
+			remaining, err = store.CountUnclassified(cmd.Context(), db)
+			if err != nil {
+				return err
+			}
+			if !all || remaining == 0 || report.Classified == 0 {
+				break
+			}
+		}
+		fmt.Fprintf(cmd.OutOrStdout(), "candidates=%d classified=%d unclassified_remaining=%d\n", totalCandidates, totalClassified, remaining)
 		return nil
 	}}
 	command.Flags().IntVar(&limit, "limit", 1000, "maximum nodes to classify")
 	command.Flags().StringVar(&daily, "daily", "", "roll up one UTC date (YYYY-MM-DD)")
+	command.Flags().BoolVar(&all, "all", false, "classify every currently unclassified node in bounded batches")
 	return command
 }

@@ -25,6 +25,13 @@ type ClassificationUpdate struct {
 	Breakdown                                                     any
 }
 
+func CountUnclassified(ctx context.Context, db *sql.DB) (int, error) {
+	var count int
+	err := db.QueryRowContext(ctx, `SELECT COUNT(*) FROM node_configs n
+		LEFT JOIN node_classifications c ON c.node_config_id=n.node_config_id WHERE c.node_config_id IS NULL`).Scan(&count)
+	return count, err
+}
+
 func ListClassificationCandidates(ctx context.Context, db *sql.DB, limit int) ([]ClassificationCandidate, error) {
 	if limit < 1 || limit > 10000 {
 		return nil, fmt.Errorf("classification limit must be between 1 and 10000")
@@ -38,10 +45,12 @@ func ListClassificationCandidates(ctx context.Context, db *sql.DB, limit int) ([
 		CASE WHEN COUNT(DISTINCT CASE WHEN a.passed THEN a.exit_ip END) <= 1 THEN 1 ELSE 1.0/COUNT(DISTINCT CASE WHEN a.passed THEN a.exit_ip END) END,
 		COALESCE(AVG(a.config_accepted),0)
 		FROM node_configs n LEFT JOIN node_current_status s ON s.node_config_id=n.node_config_id
+		LEFT JOIN node_classifications c ON c.node_config_id=n.node_config_id
 		LEFT JOIN validation_attempts a ON a.node_config_id=n.node_config_id
 		GROUP BY n.node_config_id, n.protocol, n.transport, n.security, s.availability_state,
-		 n.last_seen_at, s.last_validation_at, s.latency_p50_ms, s.source_count, s.exit_country, s.exit_asn
-		ORDER BY COALESCE(s.last_validation_at, '1970-01-01') DESC, n.node_config_id LIMIT ?`, limit)
+		 n.last_seen_at, s.last_validation_at, s.latency_p50_ms, s.source_count, s.exit_country, s.exit_asn, c.classified_at
+		ORDER BY (c.classified_at IS NULL) DESC, COALESCE(s.last_validation_at, '1970-01-01') DESC,
+			COALESCE(c.classified_at, '1970-01-01'), n.node_config_id LIMIT ?`, limit)
 	if err != nil {
 		return nil, err
 	}
