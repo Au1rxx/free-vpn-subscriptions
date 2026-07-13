@@ -73,6 +73,7 @@ func UpsertSource(ctx context.Context, db *sql.DB, source SourceRecord) (SourceR
 		  source_id=LAST_INSERT_ID(source_id), name=VALUES(name), kind=VALUES(kind),
 		  url=VALUES(url), format_hint=VALUES(format_hint), state=VALUES(state),
 		  enabled=VALUES(enabled), priority=VALUES(priority), depth=LEAST(depth, VALUES(depth)),
+		  next_fetch_at=IF(last_success_at IS NULL, UTC_TIMESTAMP(6), next_fetch_at),
 		  updated_at=UTC_TIMESTAMP(6)`, source.Name, source.Kind, source.URL, canonical, digest[:],
 		source.FormatHint, source.DiscoveryMethod, source.State, source.Enabled, source.Priority,
 		source.Depth, uint64(source.FetchInterval/time.Second))
