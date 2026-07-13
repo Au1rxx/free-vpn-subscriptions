@@ -96,10 +96,12 @@ func loadDatabaseConfig() (*config.Config, error) {
 func formatDatabaseStatus(status store.DatabaseStatus) string {
 	return fmt.Sprintf(
 		"version=%s tls=%s read_only=%t timezone=%s charset=%s collation=%s\n"+
-			"migrations=%d tables=%d data_bytes=%d index_bytes=%d total_bytes=%d\n",
+			"migrations=%d tables=%d empty_table_comments=%d empty_column_comments=%d enabled_policies=%d\n"+
+			"data_bytes=%d index_bytes=%d total_bytes=%d\n",
 		status.Server.Version, status.Server.Cipher, status.Server.ReadOnly,
 		status.Server.TimeZone, status.Server.Charset, status.Server.Collation,
-		status.AppliedMigrations, status.BusinessTables, status.DataBytes,
+		status.AppliedMigrations, status.BusinessTables, status.EmptyTableComments,
+		status.EmptyColumnComments, status.EnabledPolicies, status.DataBytes,
 		status.IndexBytes, status.DataBytes+status.IndexBytes,
 	)
 }
