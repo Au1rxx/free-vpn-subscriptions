@@ -5,5 +5,5 @@ import "embed"
 
 // Files contains this directory. The migration loader selects only *.sql.
 //
-//go:embed .
+//go:embed *.sql
 var Files embed.FS

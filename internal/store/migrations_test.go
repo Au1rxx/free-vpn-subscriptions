@@ -61,3 +61,20 @@ func TestVerifyMigrationChecksumMismatchStops(t *testing.T) {
 		t.Fatal("fixture checksums unexpectedly equal")
 	}
 }
+
+func TestBootstrapMigrationSeparatesAdminAndDatabaseStatements(t *testing.T) {
+	migration := Migration{Version: "0001", Statements: []string{
+		"CREATE DATABASE vpn_nodes;",
+		"CREATE TABLE schema_migrations(version VARCHAR(32));",
+	}}
+	admin, database, err := bootstrapStatements(migration)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(admin) != 1 || !strings.HasPrefix(admin[0], "CREATE DATABASE") {
+		t.Fatalf("admin statements=%#v", admin)
+	}
+	if len(database) != 1 || !strings.HasPrefix(database[0], "CREATE TABLE") {
+		t.Fatalf("database statements=%#v", database)
+	}
+}

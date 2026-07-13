@@ -115,7 +115,11 @@ func Migrate(
 	if len(migrations) == 0 || migrations[0].Version != "0001" {
 		return nil, fmt.Errorf("migration 0001 is required")
 	}
-	for _, statement := range migrations[0].Statements {
+	adminStatements, databaseStatements, err := bootstrapStatements(migrations[0])
+	if err != nil {
+		return nil, err
+	}
+	for _, statement := range adminStatements {
 		if _, err := admin.ExecContext(ctx, statement); err != nil {
 			return nil, fmt.Errorf("apply %s: %w", migrations[0].Name, err)
 		}
@@ -126,6 +130,11 @@ func Migrate(
 		return nil, fmt.Errorf("open migrated database: %w", err)
 	}
 	defer db.Close()
+	for _, statement := range databaseStatements {
+		if _, err := db.ExecContext(ctx, statement); err != nil {
+			return nil, fmt.Errorf("apply %s: %w", migrations[0].Name, err)
+		}
+	}
 	applied, err := readAppliedMigrations(ctx, db)
 	if err != nil {
 		return nil, err
@@ -153,6 +162,16 @@ func Migrate(
 		results = append(results, MigrationResult{Version: migration.Version, Name: migration.Name, Applied: true})
 	}
 	return results, nil
+}
+
+func bootstrapStatements(migration Migration) ([]string, []string, error) {
+	if migration.Version != "0001" || len(migration.Statements) < 2 {
+		return nil, nil, fmt.Errorf("migration 0001 must create the database and migration table")
+	}
+	if !strings.HasPrefix(strings.ToUpper(strings.TrimSpace(migration.Statements[0])), "CREATE DATABASE") {
+		return nil, nil, fmt.Errorf("migration 0001 first statement must create the database")
+	}
+	return migration.Statements[:1], migration.Statements[1:], nil
 }
 
 func readAppliedMigrations(ctx context.Context, db *sql.DB) (map[string]AppliedMigration, error) {
