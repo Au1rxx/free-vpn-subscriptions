@@ -88,7 +88,7 @@ func WriteClassifications(ctx context.Context, db *sql.DB, updates []Classificat
 			return err
 		}
 		_, err = tx.ExecContext(ctx, `UPDATE node_configs SET is_exportable=? WHERE node_config_id=?`,
-			(update.Grade == "S" || update.Grade == "A" || update.Grade == "B"), update.NodeConfigID)
+			update.Grade != "U", update.NodeConfigID)
 		if err != nil {
 			return err
 		}
