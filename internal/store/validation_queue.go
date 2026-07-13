@@ -39,7 +39,7 @@ func ClaimValidationJobs(ctx context.Context, db *sql.DB, owner string, limit in
 	defer tx.Rollback()
 	rows, err := tx.QueryContext(ctx, `SELECT q.validation_job_id, q.node_config_id, q.stage,
 		q.priority, q.job_state, q.attempts, COALESCE(q.lease_owner,''),
-		q.next_attempt_at, COALESCE(q.leased_until, '1970-01-01'), n.protocol, n.normalized_config
+		q.next_attempt_at, q.leased_until, n.protocol, n.normalized_config
 		FROM validation_queue q JOIN node_configs n ON n.node_config_id=q.node_config_id
 		WHERE (q.job_state='pending' AND q.next_attempt_at <= UTC_TIMESTAMP(6))
 		   OR (q.job_state='leased' AND q.leased_until <= UTC_TIMESTAMP(6))
@@ -51,11 +51,15 @@ func ClaimValidationJobs(ctx context.Context, db *sql.DB, owner string, limit in
 	var jobs []ValidationJob
 	for rows.Next() {
 		var job ValidationJob
+		var leasedUntil sql.NullTime
 		if err := rows.Scan(&job.ID, &job.NodeConfigID, &job.Stage, &job.Priority, &job.State,
-			&job.Attempts, &job.LeaseOwner, &job.NextAttemptAt, &job.LeasedUntil,
+			&job.Attempts, &job.LeaseOwner, &job.NextAttemptAt, &leasedUntil,
 			&job.Protocol, &job.NormalizedConfig); err != nil {
 			rows.Close()
 			return nil, err
+		}
+		if leasedUntil.Valid {
+			job.LeasedUntil = leasedUntil.Time
 		}
 		jobs = append(jobs, job)
 	}

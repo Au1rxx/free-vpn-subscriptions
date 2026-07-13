@@ -54,7 +54,7 @@ func newRootCmd() *cobra.Command {
 		Short: "free-vpn-subscriptions aggregator CLI",
 	}
 	root.PersistentFlags().StringVarP(&cfgPath, "config", "c", "config.yaml", "path to configuration file")
-	root.AddCommand(newAggregateCmd(), newMigrateCmd(), newDBStatusCmd(), newImportSeedsCmd(), newFetchCmd(), newParseCmd(), newDiscoverCmd(), newIngestStatusCmd())
+	root.AddCommand(newAggregateCmd(), newMigrateCmd(), newDBStatusCmd(), newImportSeedsCmd(), newFetchCmd(), newParseCmd(), newDiscoverCmd(), newIngestStatusCmd(), newValidateWorkerCmd(), newValidationStatusCmd())
 	return root
 }
 
