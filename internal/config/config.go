@@ -4,6 +4,8 @@ package config
 import (
 	"fmt"
 	"os"
+	"path/filepath"
+	"strings"
 
 	"gopkg.in/yaml.v3"
 )
@@ -106,11 +108,36 @@ func Load(path string) (*Config, error) {
 	if err := yaml.Unmarshal(data, &cfg); err != nil {
 		return nil, fmt.Errorf("config parse: %w", err)
 	}
+	if err := expandCredentialDirectory(&cfg); err != nil {
+		return nil, err
+	}
 	applyDefaults(&cfg)
 	if err := validate(&cfg); err != nil {
 		return nil, err
 	}
 	return &cfg, nil
+}
+
+func expandCredentialDirectory(c *Config) error {
+	path := c.Database.PasswordFile
+	if path != "%d" && !strings.HasPrefix(path, "%d/") {
+		return nil
+	}
+	directory := os.Getenv("CREDENTIALS_DIRECTORY")
+	if directory == "" {
+		return fmt.Errorf("config: password_file uses %%d but CREDENTIALS_DIRECTORY is empty")
+	}
+	relative := strings.TrimPrefix(path, "%d")
+	relative = strings.TrimPrefix(relative, "/")
+	if relative == "" {
+		c.Database.PasswordFile = filepath.Clean(directory)
+		return nil
+	}
+	if filepath.Clean(relative) != relative || strings.HasPrefix(relative, "..") {
+		return fmt.Errorf("config: password_file credential path is invalid")
+	}
+	c.Database.PasswordFile = filepath.Join(directory, relative)
+	return nil
 }
 
 func applyDefaults(c *Config) {

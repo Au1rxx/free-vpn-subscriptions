@@ -55,3 +55,28 @@ database:
 		t.Fatal("expected invalid tls_mode error")
 	}
 }
+
+func TestLoadExpandsSystemdCredentialDirectory(t *testing.T) {
+	dir := t.TempDir()
+	t.Setenv("CREDENTIALS_DIRECTORY", filepath.Join(dir, "credentials"))
+	path := filepath.Join(dir, "config.yaml")
+	data := []byte(`sources:
+  - name: fixture
+    url: https://example.test/sub
+    format: auto
+database:
+  enabled: true
+  password_file: "%d/mysql-password"
+`)
+	if err := os.WriteFile(path, data, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	cfg, err := Load(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := filepath.Join(dir, "credentials", "mysql-password")
+	if cfg.Database.PasswordFile != want {
+		t.Fatalf("password_file=%q want %q", cfg.Database.PasswordFile, want)
+	}
+}
