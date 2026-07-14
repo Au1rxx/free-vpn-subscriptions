@@ -20,8 +20,8 @@ import (
 )
 
 const (
-	defaultMaxBodyBytes    = int64(20 << 20)
-	defaultMaxDecodedBytes = int64(64 << 20)
+	defaultMaxBodyBytes    = int64(64 << 20)
+	defaultMaxDecodedBytes = int64(128 << 20)
 )
 
 // Request contains conditional request metadata and hard resource limits.

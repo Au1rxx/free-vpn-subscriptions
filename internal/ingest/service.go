@@ -58,7 +58,7 @@ func (s *Service) Fetch(ctx context.Context, limit int) (FetchSummary, error) {
 		started := time.Now().UTC()
 		response, fetchErr := sources.FetchRaw(ctx, sources.Request{
 			URL: source.URL, ETag: source.ETag, LastModified: source.LastModified,
-			Timeout: 30 * time.Second, MaxBodyBytes: 20 << 20, MaxDecodedBytes: 64 << 20, MaxRedirects: 5,
+			Timeout: 30 * time.Second, MaxRedirects: 5,
 		})
 		write := store.FetchWrite{SourceID: source.ID, StartedAt: started, FinishedAt: time.Now().UTC()}
 		if fetchErr != nil {

@@ -64,3 +64,19 @@ func TestFetchRawBodyLimitAndRedirectLoop(t *testing.T) {
 		t.Fatalf("unexpected redirect error: %v", err)
 	}
 }
+
+func TestFetchRawDefaultLimitAcceptsLargeSubscription(t *testing.T) {
+	const bodyBytes = (20 << 20) + 1
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
+		_, _ = fmt.Fprint(w, strings.Repeat("x", bodyBytes))
+	}))
+	defer server.Close()
+
+	response, err := FetchRaw(context.Background(), Request{URL: server.URL})
+	if err != nil {
+		t.Fatalf("large subscription fetch failed: %v", err)
+	}
+	if len(response.Body) != bodyBytes {
+		t.Fatalf("response bytes=%d, want %d", len(response.Body), bodyBytes)
+	}
+}
