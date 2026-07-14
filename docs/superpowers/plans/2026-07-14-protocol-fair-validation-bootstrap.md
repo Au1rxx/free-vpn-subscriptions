@@ -265,6 +265,31 @@
 
     将 UTC、前后计数、哈希、PID、不变式和 shadow 结果写入私有验收文档及本计划 Evidence，提交文档。Task 5 完成只表示协议补位完成，不表示总目标完成；72 小时硬指标仍由主生产计划持续跟踪。
 
+## 扩大量验收证据
+
+- 首轮 100 条/协议通过后，生产以同一受限 oneshot 串行执行 48 轮扩量；
+  `free-vpn-validation-bootstrap-accelerator-v2.service` 从
+  `2026-07-14T12:09:23Z` 运行至 `13:36:48Z`，最终 `Result=success`、
+  `ExecMainStatus=0`、`NRestarts=0`。三个协议各累计首验 4,900 条，没有并发改写
+  主 Worker，也没有扩大单实例资源上限。
+- 条件式收尾审计 `free-vpn-validation-bootstrap-post-audit-v2.service` 不依赖脆弱的
+  unit 启动顺序，而是等待加速器实际离开 active 状态；它于 `13:38:14Z` 成功结束。
+  最终日志确认 `expired_leases=0`、8 个 migration、数据库可写、未分类 19、待解析
+  fetch 236、spool 0、TTL dry-run 全零、sing-box 失败 0，结论为 `acceptance=PASS`。
+- 14,700 个扩量样本全部写入 `score_breakdown` 和最近验证时间。HTTP 4,900 条中
+  available 3、degraded 23、保存延迟及吞吐 26；HTTPS 4,900 条全部失败并明确分类为
+  `proxy_handshake_failed` 3,973 和 `tls_failed` 927；SOCKS5 4,900 条中 available 1、
+  degraded 4、保存延迟及吞吐 5。失败样本保留空延迟，不用 0 毫秒伪造质量。
+- 同一快照中 VLESS 已验证 61,924/92,255（67.123%），available 1,262、degraded
+  714、保存延迟 1,976、保存吞吐 1,971；全库已验证 520,734/2,142,496（24.305%）。数据库为
+  MySQL 9.7.1 Cloud、TLS、可写、8/22，分配约 5.19GB/50GB。
+- 生产配置和数据库 `depth=0` 注册表均有 65 个版本化入口，其中 63 个启用、2 个明确
+  禁用；健康口径必须把最近成功正文和 HTTP `not_modified` 都视为健康。按代码
+  `internal/store/ingest_status.go` 的权威定义，63/63 个已启用版本化入口在最近 24 小时
+  健康。只统计 `fetch_state='success'` 会把 4 个正常返回 `not_modified` 的入口误报为失败。
+- 影子输出当时有 2,066 个候选、2,039 个稳定节点、71 个 collection、223 个文件；
+  唯一未满足项仍为 `shadow_window_lt_72h`，因此本次扩量通过不构成数据库发布切换授权。
+
 ## Risks And Blockers
 
 - 过滤查询若未使用目标索引会扩大数据库负载；部署前用生产 `EXPLAIN` 复核 key、rows 和 filesort，异常时停止，不运行 sampler。
@@ -278,6 +303,7 @@
 - 2026-07-14: 完成公共仓库 TDD、MySQL 并发验证、全仓回归和生产 EXPLAIN；无 schema 变化。
 - 2026-07-14: `systemd-analyze verify` 证明 `RuntimeMaxSec` 对 oneshot 无效；计划改为由 `TimeoutStartSec=30min` 提供可执行硬上限，并强化否定契约断言。
 - 2026-07-14: 完成无重启生产部署和三个饥饿协议的真实首验；质量字段、租约、数据库、采集和影子审计均通过。
+- 2026-07-14: 完成 48 轮受限扩量和条件式自动收尾；三个协议各 4,900 条、14,700/14,700 质量明细完整，最终审计通过且影子仍仅等待 72 小时时间门槛。
 
 ## Rollback
 
