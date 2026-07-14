@@ -85,7 +85,7 @@ git commit -m "fix: backpressure sources awaiting parse"
 - Consumes: Task 1 已验证的 `fnctl` 二进制。
 - Produces: 不重启长驻 Worker 的原子部署，以及至少两个自动采集轮次的积压证据。
 
-- [ ] **Step 1: 构建并原子安装二进制**
+- [x] **Step 1: 构建并原子安装二进制**
 
 Run:
 
@@ -98,7 +98,7 @@ sudo mv -f /opt/free-vpn-harvester/.fnctl.new /opt/free-vpn-harvester/fnctl
 
 Expected: 新旧哈希已记录，原子 rename 成功；已运行的验证 Worker 仍持有旧 inode，不执行重启。
 
-- [ ] **Step 2: 手工触发一轮并验证背压**
+- [x] **Step 2: 手工触发一轮并验证背压**
 
 等当前轮次自然结束，再手工启动 `free-vpn-harvest-fetch.service`。轮次结束后运行
 `ingest-status`，并查询每个来源的 pending 计数。
@@ -106,12 +106,12 @@ Expected: 新旧哈希已记录，原子 rename 成功；已运行的验证 Work
 Expected: 轮次失败 0；已有 pending 正文的来源不再新增抓取；单来源
 pending 最大值不再增长。
 
-- [ ] **Step 3: 等待第二个自动轮次并确认趋势**
+- [x] **Step 3: 等待第二个自动轮次并确认趋势**
 
 Expected: 总 `pending_fetches` 低于部署基线，`body_too_large` 和抓取失败无新增，
 数据库隧道与验证 Worker 仍 active/running、`NRestarts=0`。
 
-- [ ] **Step 4: 记录验收并提交**
+- [x] **Step 4: 记录验收并提交**
 
 ```bash
 git -C /home/ubuntu/worktrees/vpn-lab-node-platform add docs/vpn-node-data-platform-acceptance.md
