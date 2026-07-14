@@ -12,6 +12,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/Au1rxx/free-vpn-subscriptions/internal/httpfallback"
 )
 
 const maxDiscoveryBody = int64(8 << 20)
@@ -56,7 +58,7 @@ func fetch(ctx context.Context, client *http.Client, rawURL, token string) ([]by
 	if token != "" {
 		req.Header.Set("Authorization", "Bearer "+token)
 	}
-	response, err := client.Do(req)
+	response, err := httpfallback.Do(client, req)
 	if err != nil {
 		return nil, nil, &Error{Code: "http_failed", Err: err}
 	}

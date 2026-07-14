@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/config"
+	"github.com/Au1rxx/free-vpn-subscriptions/internal/httpfallback"
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/parse"
 )
@@ -94,7 +95,7 @@ func FetchRaw(ctx context.Context, request Request) (Response, error) {
 	if request.LastModified != "" {
 		req.Header.Set("If-Modified-Since", request.LastModified)
 	}
-	resp, err := client.Do(req)
+	resp, err := httpfallback.Do(client, req)
 	if err != nil {
 		if typed := findFetchError(err); typed != nil {
 			return Response{}, typed
