@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"io"
 	"net"
+	"strconv"
 	"strings"
 	"time"
 	"unicode"
@@ -190,16 +191,19 @@ func RequeueSourceParses(ctx context.Context, db *sql.DB, sourceNames []string) 
 // PersistParseResult durably stores identities and validation jobs in bounded
 // transactions, then atomically finalizes source relations and parse metadata.
 func PersistParseResult(ctx context.Context, db *sql.DB, sourceID, fetchID uint64, result parse.Result, parserVersion string) (PersistedParse, error) {
-	parseRunID, completed, err := ensureParseRun(ctx, db, fetchID, result, parserVersion)
+	parseRunID, completed, processedNodes, err := ensureParseRun(ctx, db, fetchID, result, parserVersion)
 	if err != nil {
 		return PersistedParse{}, err
 	}
 	if completed {
 		return PersistedParse{ParseRunID: parseRunID}, nil
 	}
+	if processedNodes > len(result.Nodes) {
+		return PersistedParse{ParseRunID: parseRunID}, fmt.Errorf("parse progress %d exceeds node count %d", processedNodes, len(result.Nodes))
+	}
 	started := time.Now().UTC()
 	report := PersistedParse{ParseRunID: parseRunID}
-	for start := 0; start < len(result.Nodes); start += nodePersistBatchSize {
+	for start := processedNodes; start < len(result.Nodes); start += nodePersistBatchSize {
 		end := start + nodePersistBatchSize
 		if end > len(result.Nodes) {
 			end = len(result.Nodes)
@@ -212,6 +216,11 @@ func PersistParseResult(ctx context.Context, db *sql.DB, sourceID, fetchID uint6
 		if err != nil {
 			_ = tx.Rollback()
 			return report, err
+		}
+		if _, err := tx.ExecContext(ctx, `UPDATE parse_runs SET error_summary=?
+			WHERE parse_run_id=? AND parse_state='running'`, formatParseProgress(end), parseRunID); err != nil {
+			_ = tx.Rollback()
+			return report, fmt.Errorf("checkpoint parse progress: %w", err)
 		}
 		if err := tx.Commit(); err != nil {
 			return report, err
@@ -227,23 +236,25 @@ func PersistParseResult(ctx context.Context, db *sql.DB, sourceID, fetchID uint6
 	return report, nil
 }
 
-func ensureParseRun(ctx context.Context, db *sql.DB, fetchID uint64, result parse.Result, parserVersion string) (uint64, bool, error) {
+func ensureParseRun(ctx context.Context, db *sql.DB, fetchID uint64, result parse.Result, parserVersion string) (uint64, bool, int, error) {
 	tx, err := db.BeginTx(ctx, nil)
 	if err != nil {
-		return 0, false, err
+		return 0, false, 0, err
 	}
 	defer tx.Rollback()
 	var existing uint64
 	var state string
-	err = tx.QueryRowContext(ctx, `SELECT parse_run_id, parse_state FROM parse_runs WHERE fetch_id=? AND parser_version=?`, fetchID, parserVersion).Scan(&existing, &state)
+	var summary sql.NullString
+	err = tx.QueryRowContext(ctx, `SELECT parse_run_id, parse_state, error_summary
+		FROM parse_runs WHERE fetch_id=? AND parser_version=?`, fetchID, parserVersion).Scan(&existing, &state, &summary)
 	if err == nil {
 		if err := tx.Commit(); err != nil {
-			return 0, false, err
+			return 0, false, 0, err
 		}
-		return existing, state == "success", nil
+		return existing, state == "success", parseProgress(summary), nil
 	}
 	if err != sql.ErrNoRows {
-		return 0, false, err
+		return 0, false, 0, err
 	}
 	started := time.Now().UTC()
 	insert, err := tx.ExecContext(ctx, `INSERT INTO parse_runs
@@ -252,16 +263,31 @@ func ensureParseRun(ctx context.Context, db *sql.DB, fetchID uint64, result pars
 		VALUES (?, ?, ?, ?, NULL, ?, ?, ?, ?, 'running')`, fetchID, parserVersion, string(result.Format), started,
 		len(result.Nodes)+len(result.Errors)+len(result.DiscoveredURLs), len(result.Nodes), len(result.Errors), len(result.DiscoveredURLs))
 	if err != nil {
-		return 0, false, fmt.Errorf("insert parse run: %w", err)
+		return 0, false, 0, fmt.Errorf("insert parse run: %w", err)
 	}
 	parseRunID, err := insert.LastInsertId()
 	if err != nil {
-		return 0, false, err
+		return 0, false, 0, err
 	}
 	if err := tx.Commit(); err != nil {
-		return 0, false, err
+		return 0, false, 0, err
 	}
-	return uint64(parseRunID), false, nil
+	return uint64(parseRunID), false, 0, nil
+}
+
+func formatParseProgress(processedNodes int) string {
+	return fmt.Sprintf("processed_nodes=%d", processedNodes)
+}
+
+func parseProgress(summary sql.NullString) int {
+	if !summary.Valid || !strings.HasPrefix(summary.String, "processed_nodes=") {
+		return 0
+	}
+	processed, err := strconv.Atoi(strings.TrimPrefix(summary.String, "processed_nodes="))
+	if err != nil || processed < 0 {
+		return 0
+	}
+	return processed
 }
 
 func finishParseRun(ctx context.Context, db *sql.DB, sourceID, fetchID, parseRunID uint64, result parse.Result, started time.Time) error {

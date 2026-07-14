@@ -3,6 +3,7 @@ package store
 import (
 	"bytes"
 	"context"
+	"database/sql"
 	"os"
 	"strconv"
 	"testing"
@@ -125,6 +126,9 @@ func TestPersistParseResultCommitsNodeBatchesIndependentlyIntegration(t *testing
 		t.Fatal(err)
 	}
 	defer db.Close()
+	_, _ = db.ExecContext(ctx, `DELETE FROM sources WHERE name LIKE 'batch-seed-%' OR name LIKE 'batch-target-%'`)
+	_, _ = db.ExecContext(ctx, `DELETE FROM node_configs WHERE parser_version LIKE 'batch-seed-%' OR parser_version LIKE 'batch-target-%'`)
+	_, _ = db.ExecContext(ctx, `DELETE FROM endpoints WHERE host LIKE 'batch-commit-%'`)
 
 	suffix := strconv.FormatInt(time.Now().UnixNano(), 10)
 	hostPrefix := "batch-commit-" + suffix
@@ -168,6 +172,7 @@ func TestPersistParseResultCommitsNodeBatchesIndependentlyIntegration(t *testing
 	if err != nil {
 		t.Fatal(err)
 	}
+	defer lockTx.Rollback()
 	var lockedEndpointID uint64
 	if err := lockTx.QueryRowContext(ctx, `SELECT endpoint_id FROM endpoints WHERE host_hash=? AND port=? FOR UPDATE`, lockedHash[:], lockedNode.Port).Scan(&lockedEndpointID); err != nil {
 		_ = lockTx.Rollback()
@@ -199,6 +204,14 @@ func TestPersistParseResultCommitsNodeBatchesIndependentlyIntegration(t *testing
 			t.Fatalf("parse finished before the locked second batch: %v", err)
 		case <-time.After(100 * time.Millisecond):
 		}
+	}
+	var progress sql.NullString
+	if err := db.QueryRowContext(ctx, `SELECT error_summary FROM parse_runs WHERE fetch_id=? AND parser_version=?`,
+		targetFetch.ID, targetVersion).Scan(&progress); err != nil {
+		t.Fatal(err)
+	}
+	if !progress.Valid || progress.String != "processed_nodes=1000" {
+		t.Fatalf("parse progress=%q, want processed_nodes=1000", progress.String)
 	}
 	if err := lockTx.Rollback(); err != nil {
 		t.Fatal(err)
@@ -243,5 +256,16 @@ func TestNodeExpiryIsThirtyDaysAfterLastObservation(t *testing.T) {
 	seen := time.Date(2026, 7, 14, 0, 0, 0, 0, time.UTC)
 	if got, want := nodeExpiresAt(seen), seen.Add(30*24*time.Hour); !got.Equal(want) {
 		t.Fatalf("node expiry=%s, want %s", got, want)
+	}
+}
+
+func TestParseProgressRejectsMalformedCheckpoint(t *testing.T) {
+	for _, summary := range []sql.NullString{{}, {String: "other=1000", Valid: true}, {String: "processed_nodes=-1", Valid: true}, {String: "processed_nodes=bad", Valid: true}} {
+		if got := parseProgress(summary); got != 0 {
+			t.Fatalf("summary=%+v progress=%d", summary, got)
+		}
+	}
+	if got := parseProgress(sql.NullString{String: "processed_nodes=2000", Valid: true}); got != 2000 {
+		t.Fatalf("valid progress=%d", got)
 	}
 }
