@@ -10,6 +10,16 @@ import (
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/config"
 )
 
+func TestSourceQualityUpdatesAllowMoreThanTenThousandSources(t *testing.T) {
+	updates := make([]SourceQualityUpdate, 10001)
+	for index := range updates {
+		updates[index] = SourceQualityUpdate{SourceID: uint64(index + 1), Score: 50}
+	}
+	if err := validateSourceQualityUpdates(updates); err != nil {
+		t.Fatalf("large bounded update set rejected: %v", err)
+	}
+}
+
 func TestSourceQualityRoundTripIntegration(t *testing.T) {
 	configPath := os.Getenv("VPN_NODE_TEST_CONFIG")
 	if configPath == "" {

@@ -69,13 +69,8 @@ func WriteSourceQualities(ctx context.Context, db *sql.DB, updates []SourceQuali
 	if len(updates) == 0 {
 		return 0, nil
 	}
-	if len(updates) > 10000 {
-		return 0, fmt.Errorf("source quality updates must not exceed 10000")
-	}
-	for _, update := range updates {
-		if update.SourceID == 0 || update.Score < 0 || update.Score > 100 {
-			return 0, fmt.Errorf("invalid source quality update: source=%d score=%d", update.SourceID, update.Score)
-		}
+	if err := validateSourceQualityUpdates(updates); err != nil {
+		return 0, err
 	}
 	tx, err := db.BeginTx(ctx, nil)
 	if err != nil {
@@ -116,4 +111,13 @@ func WriteSourceQualities(ctx context.Context, db *sql.DB, updates []SourceQuali
 		return 0, err
 	}
 	return written, nil
+}
+
+func validateSourceQualityUpdates(updates []SourceQualityUpdate) error {
+	for _, update := range updates {
+		if update.SourceID == 0 || update.Score < 0 || update.Score > 100 {
+			return fmt.Errorf("invalid source quality update: source=%d score=%d", update.SourceID, update.Score)
+		}
+	}
+	return nil
 }
