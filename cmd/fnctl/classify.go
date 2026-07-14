@@ -51,10 +51,7 @@ func newClassifyCmd() *cobra.Command {
 		}
 		totalCandidates, totalClassified := 0, 0
 		for {
-			batch := limit
-			if all && remaining < batch {
-				batch = remaining
-			}
+			batch := classificationBatchSize(limit, remaining, all)
 			if batch == 0 {
 				break
 			}
@@ -79,4 +76,11 @@ func newClassifyCmd() *cobra.Command {
 	command.Flags().StringVar(&daily, "daily", "", "roll up one UTC date (YYYY-MM-DD)")
 	command.Flags().BoolVar(&all, "all", false, "classify every currently unclassified node in bounded batches")
 	return command
+}
+
+func classificationBatchSize(limit, remaining int, all bool) int {
+	if all && remaining > 0 && remaining < limit {
+		return remaining
+	}
+	return limit
 }
