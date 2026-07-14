@@ -11,10 +11,12 @@ type ValidationStatus struct {
 	LeasedJobs, ExpiredLeases, OldestPendingAgeSeconds                      uint64
 	Passed, Partial, Failed, Available, Available24H, Degraded, Unavailable uint64
 	PerformanceAttempts, PerformanceSuccesses, AverageBytesPerSecond        uint64
+	ScoredNodes, AverageQualityScore                                        uint64
+	ByGrade                                                                 map[string]uint64
 }
 
 func ReadValidationStatus(ctx context.Context, db *sql.DB) (ValidationStatus, error) {
-	var status ValidationStatus
+	status := ValidationStatus{ByGrade: make(map[string]uint64)}
 	err := db.QueryRowContext(ctx, `SELECT
 		(SELECT COUNT(*) FROM validation_batches),
 		(SELECT COUNT(*) FROM validation_attempts),
@@ -33,6 +35,9 @@ func ReadValidationStatus(ctx context.Context, db *sql.DB) (ValidationStatus, er
 			AND last_validation_at >= UTC_TIMESTAMP(6) - INTERVAL 24 HOUR),
 		(SELECT COUNT(*) FROM node_current_status WHERE availability_state='degraded'),
 		(SELECT COUNT(*) FROM node_current_status WHERE availability_state='unavailable'),
+		(SELECT COUNT(*) FROM node_current_status WHERE last_validation_at IS NOT NULL),
+		(SELECT CAST(COALESCE(AVG(quality_score),0) AS UNSIGNED) FROM node_current_status
+			WHERE last_validation_at IS NOT NULL),
 		(SELECT COUNT(*) FROM validation_attempts WHERE performance_bytes IS NOT NULL),
 		(SELECT COUNT(*) FROM validation_attempts WHERE performance_bytes > 0 AND performance_error_code IS NULL),
 		(SELECT CAST(COALESCE(AVG(NULLIF(bytes_per_second,0)),0) AS UNSIGNED) FROM validation_attempts
@@ -41,9 +46,23 @@ func ReadValidationStatus(ctx context.Context, db *sql.DB) (ValidationStatus, er
 		&status.LeasedJobs, &status.ExpiredLeases, &status.OldestPendingAgeSeconds,
 		&status.Passed, &status.Partial, &status.Failed,
 		&status.Available, &status.Available24H, &status.Degraded, &status.Unavailable,
+		&status.ScoredNodes, &status.AverageQualityScore,
 		&status.PerformanceAttempts, &status.PerformanceSuccesses, &status.AverageBytesPerSecond)
 	if err != nil {
 		return ValidationStatus{}, fmt.Errorf("read validation status: %w", err)
 	}
-	return status, nil
+	rows, err := db.QueryContext(ctx, `SELECT quality_grade, COUNT(*) FROM node_current_status GROUP BY quality_grade`)
+	if err != nil {
+		return ValidationStatus{}, fmt.Errorf("read validation grade distribution: %w", err)
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var grade string
+		var count uint64
+		if err := rows.Scan(&grade, &count); err != nil {
+			return ValidationStatus{}, err
+		}
+		status.ByGrade[grade] = count
+	}
+	return status, rows.Err()
 }

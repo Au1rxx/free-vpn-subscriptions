@@ -70,9 +70,10 @@ func TestFormatValidationStatusIncludesPerformanceCoverage(t *testing.T) {
 		PendingJobs: 5, LeasedJobs: 2, ExpiredLeases: 1, Passed: 8, Partial: 2, Failed: 10,
 		Available: 8, Available24H: 6, Degraded: 2, Unavailable: 10,
 		EligiblePendingJobs: 4, OldestPendingAgeSeconds: 3600, PerformanceAttempts: 7,
-		PerformanceSuccesses: 6, AverageBytesPerSecond: 1048576}
+		PerformanceSuccesses: 6, AverageBytesPerSecond: 1048576,
+		ScoredNodes: 10, AverageQualityScore: 82, ByGrade: map[string]uint64{"A": 6, "B": 4}}
 	out := formatValidationStatus(status)
-	for _, want := range []string{"attempts=20", "available_24h=6", "eligible_pending_jobs=4", "oldest_pending_age_seconds=3600", "performance_attempts=7", "performance_successes=6", "average_bytes_per_second=1048576"} {
+	for _, want := range []string{"attempts=20", "available_24h=6", "eligible_pending_jobs=4", "oldest_pending_age_seconds=3600", "performance_attempts=7", "performance_successes=6", "average_bytes_per_second=1048576", "scored_nodes=10", "average_quality_score=82", "grade_A=6", "grade_B=4", "grade_U=0"} {
 		if !strings.Contains(out, want) {
 			t.Errorf("validation status missing %q: %s", want, out)
 		}
