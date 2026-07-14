@@ -14,3 +14,9 @@ func TestIngestEnvelopeRoundTrip(t *testing.T) {
 		t.Fatalf("round trip mismatch: %+v", decoded)
 	}
 }
+
+func TestParserVersionIncludesHTTPProxySemantics(t *testing.T) {
+	if parserVersion != "fnctl-3" {
+		t.Fatalf("parserVersion=%q, want fnctl-3", parserVersion)
+	}
+}

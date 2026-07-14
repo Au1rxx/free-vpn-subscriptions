@@ -13,7 +13,7 @@ import (
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/parse"
 )
 
-const parserVersion = "fnctl-2"
+const parserVersion = "fnctl-3"
 
 type Service struct {
 	DB    *sql.DB

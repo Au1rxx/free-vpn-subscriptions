@@ -72,6 +72,26 @@ func newParseCmd() *cobra.Command {
 	return command
 }
 
+func newRequeueParsesCmd() *cobra.Command {
+	var sources []string
+	command := &cobra.Command{Use: "requeue-parses", Short: "Requeue successful payloads from named sources for parsing", RunE: func(cmd *cobra.Command, _ []string) error {
+		_, db, _, err := openIngestService(cmd.Context())
+		if err != nil {
+			return err
+		}
+		defer db.Close()
+		rows, err := store.RequeueSourceParses(cmd.Context(), db, sources)
+		if err != nil {
+			return err
+		}
+		fmt.Fprintf(cmd.OutOrStdout(), "sources=%d fetches_requeued=%d\n", len(sources), rows)
+		return nil
+	}}
+	command.Flags().StringSliceVar(&sources, "source", nil, "exact source name to requeue (repeatable)")
+	_ = command.MarkFlagRequired("source")
+	return command
+}
+
 func newIngestStatusCmd() *cobra.Command {
 	return &cobra.Command{Use: "ingest-status", Short: "Show bounded ingestion counters", RunE: func(cmd *cobra.Command, _ []string) error {
 		_, db, _, err := openIngestService(cmd.Context())

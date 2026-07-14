@@ -16,6 +16,17 @@ func TestParseAutoMixedKeepsGoodEntriesErrorsAndURLs(t *testing.T) {
 	}
 }
 
+func TestParseURIListKeepsHTTPProxiesAsNodes(t *testing.T) {
+	body := []byte("http://001.224.003.122:3888\nhttps://user:pw@192.0.2.2:8443\nhttps://example.test:8443/subscription\n")
+	result := Parse(body, FormatURIList)
+	if len(result.Nodes) != 2 || len(result.DiscoveredURLs) != 1 || len(result.Errors) != 0 {
+		t.Fatalf("unexpected result: nodes=%d urls=%d errors=%d", len(result.Nodes), len(result.DiscoveredURLs), len(result.Errors))
+	}
+	if result.Nodes[0].Protocol != "http" || result.Nodes[0].Server != "1.224.3.122" {
+		t.Fatalf("unexpected HTTP proxy: %+v", result.Nodes[0])
+	}
+}
+
 func TestParseAutoDetectsBase64AndClash(t *testing.T) {
 	uri := "trojan://pw@example.com:443?sni=example.com"
 	encoded := base64.StdEncoding.EncodeToString([]byte(uri))

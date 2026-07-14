@@ -162,6 +162,29 @@ func ClaimUnparsedFetches(ctx context.Context, db *sql.DB, limit int) ([]ParseIn
 	return inputs, rows.Err()
 }
 
+// RequeueSourceParses schedules successful payloads from explicitly named
+// sources for a newer parser version without fetching or duplicating bodies.
+func RequeueSourceParses(ctx context.Context, db *sql.DB, sourceNames []string) (int64, error) {
+	if len(sourceNames) == 0 || len(sourceNames) > 100 {
+		return 0, fmt.Errorf("source names must contain between 1 and 100 entries")
+	}
+	args := make([]any, 0, len(sourceNames))
+	for _, name := range sourceNames {
+		name = strings.TrimSpace(name)
+		if name == "" {
+			return 0, fmt.Errorf("source name must not be empty")
+		}
+		args = append(args, name)
+	}
+	result, err := db.ExecContext(ctx, `UPDATE source_fetches f JOIN sources s ON s.source_id=f.source_id
+		SET f.parse_state='pending' WHERE f.fetch_state='success' AND f.payload_id IS NOT NULL
+		AND s.name IN (`+scalarPlaceholders(len(args))+`)`, args...)
+	if err != nil {
+		return 0, err
+	}
+	return result.RowsAffected()
+}
+
 // PersistParseResult atomically stores all identities, source relations,
 // errors and validation jobs produced by one parse run.
 func PersistParseResult(ctx context.Context, db *sql.DB, sourceID, fetchID uint64, result parse.Result, parserVersion string) (PersistedParse, error) {

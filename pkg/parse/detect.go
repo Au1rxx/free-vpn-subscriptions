@@ -80,7 +80,7 @@ func parseURIText(body []byte, format Format) Result {
 		if line == "" || strings.HasPrefix(line, "#") {
 			continue
 		}
-		if discoveredURL(line) {
+		if discoveredURL(line) && !looksLikeHTTPProxy(line) {
 			result.DiscoveredURLs = append(result.DiscoveredURLs, line)
 			continue
 		}
@@ -101,6 +101,14 @@ func parseURIText(body []byte, format Format) Result {
 func discoveredURL(value string) bool {
 	u, err := url.Parse(value)
 	return err == nil && (u.Scheme == "http" || u.Scheme == "https") && u.Host != ""
+}
+
+func looksLikeHTTPProxy(value string) bool {
+	u, err := url.Parse(value)
+	if err != nil || (u.Scheme != "http" && u.Scheme != "https") || u.Port() == "" {
+		return false
+	}
+	return (u.EscapedPath() == "" || u.EscapedPath() == "/") && u.RawQuery == ""
 }
 
 func containsProxyScheme(value string) bool {

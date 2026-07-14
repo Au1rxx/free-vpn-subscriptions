@@ -40,6 +40,14 @@ func ListClassificationCandidates(ctx context.Context, db *sql.DB, limit int) ([
 	if limit < 1 || limit > 10000 {
 		return nil, fmt.Errorf("classification limit must be between 1 and 10000")
 	}
+	ids, err := listClassificationCandidateIDs(ctx, db, limit)
+	if err != nil || len(ids) == 0 {
+		return nil, err
+	}
+	args := make([]any, len(ids))
+	for index, id := range ids {
+		args[index] = id
+	}
 	rows, err := db.QueryContext(ctx, `SELECT n.node_config_id, n.protocol, n.transport, n.security,
 		COALESCE(s.availability_state,'unverified'), n.last_seen_at, s.last_validation_at,
 		COALESCE(s.latency_p50_ms,0), COALESCE(s.source_count,0), COALESCE(s.exit_country,''), COALESCE(s.exit_asn,''),
@@ -51,13 +59,11 @@ func ListClassificationCandidates(ctx context.Context, db *sql.DB, limit int) ([
 		COALESCE(AVG(a.config_accepted),0)
 		FROM node_configs n JOIN endpoints e ON e.endpoint_id=n.endpoint_id
 		LEFT JOIN node_current_status s ON s.node_config_id=n.node_config_id
-		LEFT JOIN node_classifications c ON c.node_config_id=n.node_config_id
 		LEFT JOIN validation_attempts a ON a.node_config_id=n.node_config_id
+		WHERE n.node_config_id IN (`+scalarPlaceholders(len(ids))+`)
 		GROUP BY n.node_config_id, n.protocol, n.transport, n.security, s.availability_state,
 		 n.last_seen_at, s.last_validation_at, s.latency_p50_ms, s.source_count, s.exit_country, s.exit_asn,
-		 e.host, e.address_type, c.classified_at
-		ORDER BY (c.classified_at IS NULL) DESC, COALESCE(s.last_validation_at, '1970-01-01') DESC,
-			COALESCE(c.classified_at, '1970-01-01'), n.node_config_id LIMIT ?`, limit)
+		 e.host, e.address_type ORDER BY n.node_config_id`, args...)
 	if err != nil {
 		return nil, err
 	}
@@ -74,6 +80,40 @@ func ListClassificationCandidates(ctx context.Context, db *sql.DB, limit int) ([
 		candidates = append(candidates, item)
 	}
 	return candidates, rows.Err()
+}
+
+func listClassificationCandidateIDs(ctx context.Context, db *sql.DB, limit int) ([]uint64, error) {
+	rows, err := db.QueryContext(ctx, `SELECT n.node_config_id FROM node_configs n
+		LEFT JOIN node_classifications c ON c.node_config_id=n.node_config_id
+		WHERE c.node_config_id IS NULL ORDER BY n.node_config_id LIMIT ?`, limit)
+	if err != nil {
+		return nil, err
+	}
+	ids, err := scanNodeConfigIDs(rows)
+	if err != nil || len(ids) == limit {
+		return ids, err
+	}
+	rows, err = db.QueryContext(ctx, `SELECT c.node_config_id FROM node_classifications c
+		LEFT JOIN node_current_status s ON s.node_config_id=c.node_config_id
+		ORDER BY COALESCE(s.last_validation_at, '1970-01-01') DESC, c.classified_at, c.node_config_id LIMIT ?`, limit-len(ids))
+	if err != nil {
+		return nil, err
+	}
+	classified, err := scanNodeConfigIDs(rows)
+	return append(ids, classified...), err
+}
+
+func scanNodeConfigIDs(rows *sql.Rows) ([]uint64, error) {
+	defer rows.Close()
+	var ids []uint64
+	for rows.Next() {
+		var id uint64
+		if err := rows.Scan(&id); err != nil {
+			return nil, err
+		}
+		ids = append(ids, id)
+	}
+	return ids, rows.Err()
 }
 
 func WriteClassifications(ctx context.Context, db *sql.DB, updates []ClassificationUpdate, classifiedAt time.Time) error {

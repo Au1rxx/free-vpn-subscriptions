@@ -18,6 +18,7 @@ func TestRootContainsDatabaseCommands(t *testing.T) {
 		"maintain":          false,
 		"export-db":         false,
 		"prune-discovery":   false,
+		"requeue-parses":    false,
 	}
 	for _, command := range root.Commands() {
 		if _, ok := want[command.Name()]; ok {
