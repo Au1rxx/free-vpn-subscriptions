@@ -14,6 +14,7 @@ type Report struct {
 	Rows                    map[string]uint64
 	Policy                  Policy
 	DryRun                  bool
+	StorageMetricRows       int64
 }
 
 func (s Service) Run(ctx context.Context, batchSize int, dryRun bool, now time.Time) (Report, error) {
@@ -29,5 +30,21 @@ func (s Service) Run(ctx context.Context, batchSize int, dryRun bool, now time.T
 	if err != nil {
 		return Report{}, err
 	}
-	return Report{BeforeBytes: stored.BeforeBytes, AfterBytes: stored.AfterBytes, Rows: stored.Rows, Policy: policy, DryRun: dryRun}, nil
+	var storageMetricRows int64
+	if !dryRun {
+		storageMetricRows, err = store.RecordStorageMetrics(
+			ctx, s.DB, now, store.DatabaseCapacityBytes, stored.AfterBytes,
+		)
+		if err != nil {
+			return Report{}, err
+		}
+	}
+	return Report{
+		BeforeBytes:       stored.BeforeBytes,
+		AfterBytes:        stored.AfterBytes,
+		Rows:              stored.Rows,
+		Policy:            policy,
+		DryRun:            dryRun,
+		StorageMetricRows: storageMetricRows,
+	}, nil
 }
