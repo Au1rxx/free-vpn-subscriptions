@@ -12,14 +12,14 @@ import (
 
 // SourceRecord is one fetchable or discoverable public source.
 type SourceRecord struct {
-	ID                                               uint64
-	Kind, Name, URL, CanonicalURL, FormatHint, State string
-	DiscoveryMethod                                  string
-	Depth                                            int
-	Enabled                                          bool
-	Priority                                         int
-	FetchInterval                                    time.Duration
-	ETag, LastModified                               string
+	ID                                                             uint64
+	Kind, Name, URL, CanonicalURL, FormatHint, ProtocolHint, State string
+	DiscoveryMethod                                                string
+	Depth                                                          int
+	Enabled                                                        bool
+	Priority                                                       int
+	FetchInterval                                                  time.Duration
+	ETag, LastModified                                             string
 }
 
 // CanonicalizeSourceURL normalizes identity without discarding query tokens
@@ -66,16 +66,16 @@ func UpsertSource(ctx context.Context, db *sql.DB, source SourceRecord) (SourceR
 	}
 	result, err := db.ExecContext(ctx, `
 		INSERT INTO sources
-		  (name, kind, url, canonical_url, canonical_url_hash, format_hint, discovery_method,
+		  (name, kind, url, canonical_url, canonical_url_hash, format_hint, protocol_hint, discovery_method,
 		   state, enabled, priority, depth, fetch_interval_seconds, next_fetch_at)
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, UTC_TIMESTAMP(6))
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, UTC_TIMESTAMP(6))
 		ON DUPLICATE KEY UPDATE
 		  source_id=LAST_INSERT_ID(source_id), name=VALUES(name), kind=VALUES(kind),
-		  url=VALUES(url), format_hint=VALUES(format_hint), state=VALUES(state),
+		  url=VALUES(url), format_hint=VALUES(format_hint), protocol_hint=VALUES(protocol_hint), state=VALUES(state),
 		  enabled=VALUES(enabled), priority=VALUES(priority), depth=LEAST(depth, VALUES(depth)),
 		  next_fetch_at=IF(last_success_at IS NULL, UTC_TIMESTAMP(6), next_fetch_at),
 		  updated_at=UTC_TIMESTAMP(6)`, source.Name, source.Kind, source.URL, canonical, digest[:],
-		source.FormatHint, source.DiscoveryMethod, source.State, source.Enabled, source.Priority,
+		source.FormatHint, nullString(source.ProtocolHint), source.DiscoveryMethod, source.State, source.Enabled, source.Priority,
 		source.Depth, uint64(source.FetchInterval/time.Second))
 	if err != nil {
 		return SourceRecord{}, fmt.Errorf("upsert source: %w", err)
@@ -100,7 +100,7 @@ func ClaimDueSources(ctx context.Context, db *sql.DB, limit int) ([]SourceRecord
 	}
 	defer tx.Rollback()
 	rows, err := tx.QueryContext(ctx, `
-		SELECT source_id, kind, name, url, canonical_url, format_hint, state, depth,
+		SELECT source_id, kind, name, url, canonical_url, format_hint, COALESCE(protocol_hint,''), state, depth,
 		       enabled, priority, fetch_interval_seconds, COALESCE(etag,''), COALESCE(last_modified,'')
 		FROM sources
 		WHERE enabled=TRUE AND state='active' AND (next_fetch_at IS NULL OR next_fetch_at <= UTC_TIMESTAMP(6))
@@ -115,7 +115,7 @@ func ClaimDueSources(ctx context.Context, db *sql.DB, limit int) ([]SourceRecord
 		var source SourceRecord
 		var interval uint64
 		if err := rows.Scan(&source.ID, &source.Kind, &source.Name, &source.URL, &source.CanonicalURL,
-			&source.FormatHint, &source.State, &source.Depth, &source.Enabled, &source.Priority,
+			&source.FormatHint, &source.ProtocolHint, &source.State, &source.Depth, &source.Enabled, &source.Priority,
 			&interval, &source.ETag, &source.LastModified); err != nil {
 			return nil, err
 		}

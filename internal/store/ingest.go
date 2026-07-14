@@ -45,6 +45,7 @@ type FetchWrite struct {
 type ParseInput struct {
 	FetchID, SourceID uint64
 	FormatHint        string
+	ProtocolHint      string
 	Body              []byte
 }
 
@@ -137,7 +138,7 @@ func ClaimUnparsedFetches(ctx context.Context, db *sql.DB, limit int) ([]ParseIn
 	if limit < 1 || limit > 1000 {
 		return nil, fmt.Errorf("parse claim limit must be between 1 and 1000")
 	}
-	rows, err := db.QueryContext(ctx, `SELECT f.fetch_id, f.source_id, s.format_hint, p.compressed_body, p.original_bytes
+	rows, err := db.QueryContext(ctx, `SELECT f.fetch_id, f.source_id, s.format_hint, COALESCE(s.protocol_hint,''), p.compressed_body, p.original_bytes
 		FROM source_fetches f JOIN sources s ON s.source_id=f.source_id JOIN raw_payloads p ON p.payload_id=f.payload_id
 		WHERE f.fetch_state='success' AND f.parse_state='pending' ORDER BY f.finished_at LIMIT ?`, limit)
 	if err != nil {
@@ -149,7 +150,7 @@ func ClaimUnparsedFetches(ctx context.Context, db *sql.DB, limit int) ([]ParseIn
 		var input ParseInput
 		var compressed []byte
 		var originalBytes int64
-		if err := rows.Scan(&input.FetchID, &input.SourceID, &input.FormatHint, &compressed, &originalBytes); err != nil {
+		if err := rows.Scan(&input.FetchID, &input.SourceID, &input.FormatHint, &input.ProtocolHint, &compressed, &originalBytes); err != nil {
 			return nil, err
 		}
 		body, err := decompressPayload(compressed, originalBytes)

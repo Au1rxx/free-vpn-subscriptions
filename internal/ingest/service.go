@@ -13,7 +13,7 @@ import (
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/parse"
 )
 
-const parserVersion = "fnctl-3"
+const parserVersion = "fnctl-4"
 
 type Service struct {
 	DB    *sql.DB
@@ -29,7 +29,7 @@ func (s *Service) ImportSeeds(ctx context.Context, configured []config.Source) (
 	for _, seed := range configured {
 		interval := time.Duration(seed.FetchIntervalSeconds) * time.Second
 		if _, err := store.UpsertSource(ctx, s.DB, store.SourceRecord{
-			Name: seed.Name, URL: seed.URL, FormatHint: seed.Format, Enabled: seed.Enabled,
+			Name: seed.Name, URL: seed.URL, FormatHint: seed.Format, ProtocolHint: seed.ProtocolHint, Enabled: seed.Enabled,
 			Kind: seed.Kind, DiscoveryMethod: seed.DiscoveryMethod, State: "active", Depth: seed.Depth,
 			Priority: seed.Priority, FetchInterval: interval,
 		}); err != nil {
@@ -87,7 +87,7 @@ func (s *Service) Parse(ctx context.Context, limit int) (ParseSummary, error) {
 	}
 	summary := ParseSummary{Fetches: len(inputs)}
 	for _, input := range inputs {
-		result := parse.Parse(input.Body, parse.Format(input.FormatHint))
+		result := parse.ParseWithProtocolHint(input.Body, parse.Format(input.FormatHint), input.ProtocolHint)
 		persisted, err := store.PersistParseResult(ctx, s.DB, input.SourceID, input.FetchID, result, parserVersion)
 		if err != nil {
 			return summary, err

@@ -16,7 +16,7 @@ func TestIngestEnvelopeRoundTrip(t *testing.T) {
 }
 
 func TestParserVersionIncludesHTTPProxySemantics(t *testing.T) {
-	if parserVersion != "fnctl-3" {
-		t.Fatalf("parserVersion=%q, want fnctl-3", parserVersion)
+	if parserVersion != "fnctl-4" {
+		t.Fatalf("parserVersion=%q, want fnctl-4", parserVersion)
 	}
 }

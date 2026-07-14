@@ -15,6 +15,12 @@ import (
 // Parse detects or honors a subscription format while retaining individual
 // failures instead of discarding them silently.
 func Parse(body []byte, hint Format) Result {
+	return ParseWithProtocolHint(body, hint, "")
+}
+
+// ParseWithProtocolHint parses protocol-specific bare host:port lists while
+// preserving any entries that already carry their own URI scheme.
+func ParseWithProtocolHint(body []byte, hint Format, protocolHint string) Result {
 	format := hint
 	if format == "" || format == FormatAuto {
 		format = detectFormat(body)
@@ -22,14 +28,14 @@ func Parse(body []byte, hint Format) Result {
 	result := Result{Format: format}
 	switch format {
 	case FormatURIList:
-		return parseURIText(body, format)
+		return parseURIText(body, format, protocolHint)
 	case FormatBase64:
 		decoded, err := node.B64Decode(strings.TrimSpace(string(body)))
 		if err != nil {
 			result.Errors = append(result.Errors, newEntryError(0, "invalid_base64", "", body, err))
 			return result
 		}
-		return parseURIText(decoded, format)
+		return parseURIText(decoded, format, protocolHint)
 	case FormatClash:
 		nodes, err := Clash(body)
 		if err != nil {
@@ -73,13 +79,14 @@ func detectFormat(body []byte) Format {
 	return FormatURIList
 }
 
-func parseURIText(body []byte, format Format) Result {
+func parseURIText(body []byte, format Format, protocolHint string) Result {
 	result := Result{Format: format}
 	for index, raw := range strings.Split(string(body), "\n") {
 		line := strings.TrimSpace(raw)
 		if line == "" || strings.HasPrefix(line, "#") {
 			continue
 		}
+		line = applyProtocolHint(line, protocolHint)
 		if discoveredURL(line) && !looksLikeHTTPProxy(line) {
 			result.DiscoveredURLs = append(result.DiscoveredURLs, line)
 			continue
@@ -96,6 +103,18 @@ func parseURIText(body []byte, format Format) Result {
 		result.Nodes = append(result.Nodes, n)
 	}
 	return result
+}
+
+func applyProtocolHint(value, hint string) string {
+	if strings.Contains(value, "://") {
+		return value
+	}
+	switch strings.ToLower(strings.TrimSpace(hint)) {
+	case "http", "https", "socks4", "socks5":
+		return strings.ToLower(strings.TrimSpace(hint)) + "://" + value
+	default:
+		return value
+	}
 }
 
 func discoveredURL(value string) bool {

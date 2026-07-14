@@ -67,6 +67,7 @@ type Source struct {
 	Name                 string `yaml:"name"`
 	URL                  string `yaml:"url"`
 	Format               string `yaml:"format"` // auto | uri-list | base64 | clash | singbox | xray
+	ProtocolHint         string `yaml:"protocol_hint"`
 	Kind                 string `yaml:"kind"`
 	DiscoveryMethod      string `yaml:"discovery_method"`
 	Depth                int    `yaml:"depth"`
@@ -287,6 +288,11 @@ func validate(c *Config) error {
 		case "auto", "uri-list", "base64", "clash", "singbox", "xray":
 		default:
 			return fmt.Errorf("config: sources[%d] %q invalid format %q", i, s.Name, s.Format)
+		}
+		switch s.ProtocolHint {
+		case "", "http", "https", "socks4", "socks5":
+		default:
+			return fmt.Errorf("config: sources[%d] %q invalid protocol_hint %q", i, s.Name, s.ProtocolHint)
 		}
 	}
 	return nil

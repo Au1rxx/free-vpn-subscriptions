@@ -27,6 +27,16 @@ func TestParseURIListKeepsHTTPProxiesAsNodes(t *testing.T) {
 	}
 }
 
+func TestParseURIListAppliesProtocolHintOnlyToBareEndpoints(t *testing.T) {
+	result := ParseWithProtocolHint([]byte("192.0.2.1:1080\nsocks5://192.0.2.2:2080\n# comment\n"), FormatURIList, "socks4")
+	if len(result.Nodes) != 2 || len(result.Errors) != 0 || len(result.DiscoveredURLs) != 0 {
+		t.Fatalf("hinted result: nodes=%d errors=%d urls=%d", len(result.Nodes), len(result.Errors), len(result.DiscoveredURLs))
+	}
+	if result.Nodes[0].Protocol != "socks4" || result.Nodes[1].Protocol != "socks5" {
+		t.Fatalf("protocols=%q/%q", result.Nodes[0].Protocol, result.Nodes[1].Protocol)
+	}
+}
+
 func TestParseAutoDetectsBase64AndClash(t *testing.T) {
 	uri := "trojan://pw@example.com:443?sni=example.com"
 	encoded := base64.StdEncoding.EncodeToString([]byte(uri))

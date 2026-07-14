@@ -95,6 +95,7 @@ func TestLoadDetailedSourceMetadata(t *testing.T) {
     format: auto
     kind: github-wiki
     discovery_method: researched-seed
+    protocol_hint: socks5
     depth: 1
     priority: 90
     fetch_interval_seconds: 1800
@@ -108,7 +109,25 @@ func TestLoadDetailedSourceMetadata(t *testing.T) {
 		t.Fatal(err)
 	}
 	source := cfg.Sources[0]
-	if source.Kind != "github-wiki" || source.DiscoveryMethod != "researched-seed" || source.Depth != 1 || source.Priority != 90 || source.FetchIntervalSeconds != 1800 {
+	if source.Kind != "github-wiki" || source.DiscoveryMethod != "researched-seed" || source.ProtocolHint != "socks5" || source.Depth != 1 || source.Priority != 90 || source.FetchIntervalSeconds != 1800 {
 		t.Fatalf("source metadata=%+v", source)
+	}
+}
+
+func TestLoadRejectsUnknownSourceProtocolHint(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "config.yaml")
+	data := []byte(`sources:
+  - name: fixture
+    url: https://example.test/proxies
+    format: uri-list
+    protocol_hint: vless
+    enabled: true
+`)
+	if err := os.WriteFile(path, data, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := Load(path); err == nil {
+		t.Fatal("expected invalid protocol_hint error")
 	}
 }
