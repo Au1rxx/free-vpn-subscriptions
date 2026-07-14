@@ -187,53 +187,93 @@ func RequeueSourceParses(ctx context.Context, db *sql.DB, sourceNames []string) 
 	return result.RowsAffected()
 }
 
-// PersistParseResult atomically stores all identities, source relations,
-// errors and validation jobs produced by one parse run.
+// PersistParseResult durably stores identities and validation jobs in bounded
+// transactions, then atomically finalizes source relations and parse metadata.
 func PersistParseResult(ctx context.Context, db *sql.DB, sourceID, fetchID uint64, result parse.Result, parserVersion string) (PersistedParse, error) {
-	tx, err := db.BeginTx(ctx, nil)
+	parseRunID, completed, err := ensureParseRun(ctx, db, fetchID, result, parserVersion)
 	if err != nil {
 		return PersistedParse{}, err
 	}
-	defer tx.Rollback()
-	var existing uint64
-	err = tx.QueryRowContext(ctx, `SELECT parse_run_id FROM parse_runs WHERE fetch_id=? AND parser_version=?`, fetchID, parserVersion).Scan(&existing)
-	if err == nil {
-		return PersistedParse{ParseRunID: existing}, tx.Commit()
-	}
-	if err != sql.ErrNoRows {
-		return PersistedParse{}, err
+	if completed {
+		return PersistedParse{ParseRunID: parseRunID}, nil
 	}
 	started := time.Now().UTC()
-	insert, err := tx.ExecContext(ctx, `INSERT INTO parse_runs
-		(fetch_id, parser_version, detected_format, started_at, finished_at, input_entries,
-		 success_entries, error_entries, discovered_urls, parse_state)
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'success')`, fetchID, parserVersion, string(result.Format), started, time.Now().UTC(),
-		len(result.Nodes)+len(result.Errors)+len(result.DiscoveredURLs), len(result.Nodes), len(result.Errors), len(result.DiscoveredURLs))
-	if err != nil {
-		return PersistedParse{}, fmt.Errorf("insert parse run: %w", err)
-	}
-	parseRunID, err := insert.LastInsertId()
-	if err != nil {
-		return PersistedParse{}, err
-	}
-	report := PersistedParse{ParseRunID: uint64(parseRunID)}
+	report := PersistedParse{ParseRunID: parseRunID}
 	for start := 0; start < len(result.Nodes); start += nodePersistBatchSize {
 		end := start + nodePersistBatchSize
 		if end > len(result.Nodes) {
 			end = len(result.Nodes)
 		}
+		tx, err := db.BeginTx(ctx, nil)
+		if err != nil {
+			return report, err
+		}
 		batchReport, err := persistNodeBatch(ctx, tx, sourceID, fetchID, result.Nodes[start:end], parserVersion, started)
 		if err != nil {
-			return PersistedParse{}, err
+			_ = tx.Rollback()
+			return report, err
+		}
+		if err := tx.Commit(); err != nil {
+			return report, err
 		}
 		report.NewEndpoints += batchReport.NewEndpoints
 		report.NewConfigs += batchReport.NewConfigs
 		report.QueueJobs += batchReport.QueueJobs
 	}
+	if err := finishParseRun(ctx, db, sourceID, fetchID, parseRunID, result, started); err != nil {
+		return report, err
+	}
+	report.Errors = len(result.Errors)
+	return report, nil
+}
+
+func ensureParseRun(ctx context.Context, db *sql.DB, fetchID uint64, result parse.Result, parserVersion string) (uint64, bool, error) {
+	tx, err := db.BeginTx(ctx, nil)
+	if err != nil {
+		return 0, false, err
+	}
+	defer tx.Rollback()
+	var existing uint64
+	var state string
+	err = tx.QueryRowContext(ctx, `SELECT parse_run_id, parse_state FROM parse_runs WHERE fetch_id=? AND parser_version=?`, fetchID, parserVersion).Scan(&existing, &state)
+	if err == nil {
+		if err := tx.Commit(); err != nil {
+			return 0, false, err
+		}
+		return existing, state == "success", nil
+	}
+	if err != sql.ErrNoRows {
+		return 0, false, err
+	}
+	started := time.Now().UTC()
+	insert, err := tx.ExecContext(ctx, `INSERT INTO parse_runs
+		(fetch_id, parser_version, detected_format, started_at, finished_at, input_entries,
+		 success_entries, error_entries, discovered_urls, parse_state)
+		VALUES (?, ?, ?, ?, NULL, ?, ?, ?, ?, 'running')`, fetchID, parserVersion, string(result.Format), started,
+		len(result.Nodes)+len(result.Errors)+len(result.DiscoveredURLs), len(result.Nodes), len(result.Errors), len(result.DiscoveredURLs))
+	if err != nil {
+		return 0, false, fmt.Errorf("insert parse run: %w", err)
+	}
+	parseRunID, err := insert.LastInsertId()
+	if err != nil {
+		return 0, false, err
+	}
+	if err := tx.Commit(); err != nil {
+		return 0, false, err
+	}
+	return uint64(parseRunID), false, nil
+}
+
+func finishParseRun(ctx context.Context, db *sql.DB, sourceID, fetchID, parseRunID uint64, result parse.Result, started time.Time) error {
+	tx, err := db.BeginTx(ctx, nil)
+	if err != nil {
+		return err
+	}
+	defer tx.Rollback()
 	if len(result.Nodes) > 0 {
 		if _, err := tx.ExecContext(ctx, `UPDATE node_source_stats SET is_active=FALSE
 			WHERE source_id=? AND last_fetch_id<>? AND is_active=TRUE`, sourceID, fetchID); err != nil {
-			return PersistedParse{}, fmt.Errorf("deactivate missing source nodes: %w", err)
+			return fmt.Errorf("deactivate missing source nodes: %w", err)
 		}
 	}
 	for _, entry := range result.Errors {
@@ -245,17 +285,20 @@ func PersistParseResult(ctx context.Context, db *sql.DB, sourceID, fetchID uint6
 			ON DUPLICATE KEY UPDATE last_seen_at=VALUES(last_seen_at), seen_count=seen_count+1`,
 			parseRunID, sourceID, fetchID, nullInt(entry.Line), nullString(entry.Scheme), entry.Code,
 			sample[:], bounded(entry.Message, 1024), started, started, started); err != nil {
-			return PersistedParse{}, fmt.Errorf("insert parse error: %w", err)
+			return fmt.Errorf("insert parse error: %w", err)
 		}
-		report.Errors++
+	}
+	finished := time.Now().UTC()
+	if _, err := tx.ExecContext(ctx, `UPDATE parse_runs SET detected_format=?, finished_at=?,
+		input_entries=?, success_entries=?, error_entries=?, discovered_urls=?, parse_state='success', error_summary=NULL
+		WHERE parse_run_id=?`, string(result.Format), finished,
+		len(result.Nodes)+len(result.Errors)+len(result.DiscoveredURLs), len(result.Nodes), len(result.Errors), len(result.DiscoveredURLs), parseRunID); err != nil {
+		return fmt.Errorf("finish parse run: %w", err)
 	}
 	if _, err := tx.ExecContext(ctx, `UPDATE source_fetches SET parse_state='success' WHERE fetch_id=?`, fetchID); err != nil {
-		return PersistedParse{}, err
+		return err
 	}
-	if err := tx.Commit(); err != nil {
-		return PersistedParse{}, err
-	}
-	return report, nil
+	return tx.Commit()
 }
 
 type preparedNode struct {
@@ -453,7 +496,9 @@ func upsertNodeRelations(ctx context.Context, tx *sql.Tx, nodeIDs []uint64, sour
 		query.WriteString("(?,?,?,?,?)")
 		args = append(args, id, sourceID, fetchID, seen, seen)
 	}
-	query.WriteString(` ON DUPLICATE KEY UPDATE last_fetch_id=VALUES(last_fetch_id), last_seen_at=VALUES(last_seen_at), seen_count=seen_count+1, is_active=TRUE`)
+	query.WriteString(` ON DUPLICATE KEY UPDATE
+		seen_count=seen_count+IF(last_fetch_id<>VALUES(last_fetch_id),1,0),
+		last_fetch_id=VALUES(last_fetch_id), last_seen_at=VALUES(last_seen_at), is_active=TRUE`)
 	_, err := tx.ExecContext(ctx, query.String(), args...)
 	return err
 }
