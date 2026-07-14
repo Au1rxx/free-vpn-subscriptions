@@ -1,0 +1,60 @@
+{
+  "outbounds": [
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "6ZhroVa0UjRSUl06",
+      "server": "23.100.50.48",
+      "server_port": 443,
+      "tag": "01-shadowsocks-@v2raybaaz [🌶]",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "3K7ZItDk9Co2eOew",
+      "server": "168.63.58.89",
+      "server_port": 443,
+      "tag": "02-shadowsocks-EPODONIOS",
+      "type": "shadowsocks"
+    },
+    {
+      "password": "XG59623478",
+      "server": "singular-lark.rooster465.autos",
+      "server_port": 443,
+      "tag": "03-trojan-🇮🇪 IE 11",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": ""
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-shadowsocks-@v2raybaaz [🌶]",
+        "02-shadowsocks-EPODONIOS",
+        "03-trojan-🇮🇪 IE 11"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-shadowsocks-@v2raybaaz [🌶]",
+        "02-shadowsocks-EPODONIOS",
+        "03-trojan-🇮🇪 IE 11"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
