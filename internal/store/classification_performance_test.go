@@ -9,6 +9,12 @@ import (
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/config"
 )
 
+func TestClassificationWritesUseBoundedThousandRowBatches(t *testing.T) {
+	if classificationWriteBatchSize != 1000 {
+		t.Fatalf("classification write batch=%d, want 1000", classificationWriteBatchSize)
+	}
+}
+
 func TestListClassificationCandidatesIsBoundedIntegration(t *testing.T) {
 	configPath := os.Getenv("VPN_NODE_TEST_CONFIG")
 	if configPath == "" {

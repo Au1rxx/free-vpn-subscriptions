@@ -9,6 +9,8 @@ import (
 	"time"
 )
 
+const classificationWriteBatchSize = 1000
+
 type ClassificationCandidate struct {
 	NodeConfigID                                                       uint64
 	Protocol, Transport, Security, Availability, ExitCountry, ExitASN  string
@@ -122,8 +124,8 @@ func WriteClassifications(ctx context.Context, db *sql.DB, updates []Classificat
 		return err
 	}
 	defer tx.Rollback()
-	for start := 0; start < len(updates); start += 500 {
-		end := start + 500
+	for start := 0; start < len(updates); start += classificationWriteBatchSize {
+		end := start + classificationWriteBatchSize
 		if end > len(updates) {
 			end = len(updates)
 		}
