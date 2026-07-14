@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"database/sql"
+	"fmt"
 	"os"
 	"strconv"
 	"testing"
@@ -256,6 +257,67 @@ func TestNodeExpiryIsThirtyDaysAfterLastObservation(t *testing.T) {
 	seen := time.Date(2026, 7, 14, 0, 0, 0, 0, time.UTC)
 	if got, want := nodeExpiresAt(seen), seen.Add(30*24*time.Hour); !got.Equal(want) {
 		t.Fatalf("node expiry=%s, want %s", got, want)
+	}
+}
+
+func TestPersistParseResultBatchesParseErrorsIntegration(t *testing.T) {
+	configPath := os.Getenv("VPN_NODE_TEST_CONFIG")
+	if configPath == "" {
+		t.Skip("VPN_NODE_TEST_CONFIG is not set")
+	}
+	cfg, err := config.Load(configPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 12*time.Second)
+	defer cancel()
+	db, err := Open(ctx, cfg.Database, cfg.Database.Name)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer db.Close()
+	suffix := strconv.FormatInt(time.Now().UnixNano(), 10)
+	source, err := UpsertSource(ctx, db, SourceRecord{
+		Name:    "parse-error-batch-" + suffix,
+		URL:     "https://example.invalid/parse-error-batch-" + suffix,
+		Enabled: true,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	fetch, err := FinishFetch(ctx, db, FetchWrite{
+		SourceID: source.ID, StatusCode: 200, Body: []byte("parse-error-batch"),
+		StartedAt: time.Now().UTC(), FinishedAt: time.Now().UTC(),
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() {
+		_, _ = db.ExecContext(context.Background(), `DELETE FROM sources WHERE source_id=?`, source.ID)
+		_, _ = db.ExecContext(context.Background(), `DELETE FROM raw_payloads WHERE content_sha256=?`, fetch.PayloadHash[:])
+	}()
+	const errorCount = 200
+	errors := make([]parse.EntryError, 0, errorCount)
+	for i := 0; i < errorCount; i++ {
+		errors = append(errors, parse.EntryError{
+			Line: i + 1, Code: "parse_failed", SampleHash: fmt.Sprintf("sample-%d", i), Message: "invalid test entry",
+		})
+	}
+	report, err := PersistParseResult(ctx, db, source.ID, fetch.ID,
+		parse.Result{Format: parse.FormatURIList, Errors: errors}, "parse-error-batch-test")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if report.Errors != errorCount {
+		t.Fatalf("persisted errors=%d, want %d", report.Errors, errorCount)
+	}
+	var persisted int
+	if err := db.QueryRowContext(ctx, `SELECT COUNT(*) FROM parse_errors WHERE parse_run_id=?`,
+		report.ParseRunID).Scan(&persisted); err != nil {
+		t.Fatal(err)
+	}
+	if persisted != errorCount {
+		t.Fatalf("database parse errors=%d, want %d", persisted, errorCount)
 	}
 }
 

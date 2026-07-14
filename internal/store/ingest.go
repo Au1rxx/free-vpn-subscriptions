@@ -18,7 +18,10 @@ import (
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/parse"
 )
 
-const nodePersistBatchSize = 1000
+const (
+	nodePersistBatchSize       = 1000
+	parseErrorPersistBatchSize = 500
+)
 const nodeTTL = 30 * 24 * time.Hour
 
 // FetchRecord is a persisted terminal source fetch.
@@ -302,17 +305,8 @@ func finishParseRun(ctx context.Context, db *sql.DB, sourceID, fetchID, parseRun
 			return fmt.Errorf("deactivate missing source nodes: %w", err)
 		}
 	}
-	for _, entry := range result.Errors {
-		sample := sha256.Sum256([]byte(entry.SampleHash))
-		if _, err := tx.ExecContext(ctx, `INSERT INTO parse_errors
-			(parse_run_id, source_id, fetch_id, line_number, scheme_hint, error_code,
-			 sample_sha256, error_message, first_seen_at, last_seen_at, expires_at)
-			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DATE_ADD(?, INTERVAL 90 DAY))
-			ON DUPLICATE KEY UPDATE last_seen_at=VALUES(last_seen_at), seen_count=seen_count+1`,
-			parseRunID, sourceID, fetchID, nullInt(entry.Line), nullString(entry.Scheme), entry.Code,
-			sample[:], bounded(entry.Message, 1024), started, started, started); err != nil {
-			return fmt.Errorf("insert parse error: %w", err)
-		}
+	if err := insertParseErrors(ctx, tx, parseRunID, sourceID, fetchID, result.Errors, started); err != nil {
+		return err
 	}
 	finished := time.Now().UTC()
 	if _, err := tx.ExecContext(ctx, `UPDATE parse_runs SET detected_format=?, finished_at=?,
@@ -325,6 +319,35 @@ func finishParseRun(ctx context.Context, db *sql.DB, sourceID, fetchID, parseRun
 		return err
 	}
 	return tx.Commit()
+}
+
+func insertParseErrors(ctx context.Context, tx *sql.Tx, parseRunID, sourceID, fetchID uint64, entries []parse.EntryError, seen time.Time) error {
+	for start := 0; start < len(entries); start += parseErrorPersistBatchSize {
+		end := start + parseErrorPersistBatchSize
+		if end > len(entries) {
+			end = len(entries)
+		}
+		var query strings.Builder
+		query.WriteString(`INSERT INTO parse_errors
+			(parse_run_id, source_id, fetch_id, line_number, scheme_hint, error_code,
+			 sample_sha256, error_message, first_seen_at, last_seen_at, expires_at) VALUES `)
+		args := make([]any, 0, (end-start)*11)
+		for index, entry := range entries[start:end] {
+			if index > 0 {
+				query.WriteByte(',')
+			}
+			query.WriteString("(?,?,?,?,?,?,?,?,?,?,DATE_ADD(?, INTERVAL 90 DAY))")
+			sample := sha256.Sum256([]byte(entry.SampleHash))
+			args = append(args, parseRunID, sourceID, fetchID, nullInt(entry.Line), nullString(entry.Scheme),
+				entry.Code, sample[:], bounded(entry.Message, 1024), seen, seen, seen)
+		}
+		query.WriteString(` ON DUPLICATE KEY UPDATE
+			last_seen_at=VALUES(last_seen_at), seen_count=seen_count+1`)
+		if _, err := tx.ExecContext(ctx, query.String(), args...); err != nil {
+			return fmt.Errorf("insert parse error batch: %w", err)
+		}
+	}
+	return nil
 }
 
 type preparedNode struct {
