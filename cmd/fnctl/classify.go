@@ -61,9 +61,13 @@ func newClassifyCmd() *cobra.Command {
 			}
 			totalCandidates += report.Candidates
 			totalClassified += report.Classified
-			remaining, err = store.CountUnclassified(cmd.Context(), db)
-			if err != nil {
-				return err
+			if all {
+				remaining = remainingAfterClassification(remaining, report.Classified)
+			} else {
+				remaining, err = store.CountUnclassified(cmd.Context(), db)
+				if err != nil {
+					return err
+				}
 			}
 			if !all || remaining == 0 || report.Classified == 0 {
 				break
@@ -83,4 +87,11 @@ func classificationBatchSize(limit, remaining int, all bool) int {
 		return remaining
 	}
 	return limit
+}
+
+func remainingAfterClassification(remaining, classified int) int {
+	if classified >= remaining {
+		return 0
+	}
+	return remaining - classified
 }

@@ -13,3 +13,15 @@ func TestClassificationBatchSizeRefreshesWhenAllNodesAreClassified(t *testing.T)
 		t.Fatalf("ordinary refresh batch=%d, want 10000", got)
 	}
 }
+
+func TestRemainingClassificationCountDecrementsWithoutFullRescan(t *testing.T) {
+	if got := remainingAfterClassification(2000000, 10000); got != 1990000 {
+		t.Fatalf("remaining=%d", got)
+	}
+	if got := remainingAfterClassification(5000, 5000); got != 0 {
+		t.Fatalf("final remaining=%d", got)
+	}
+	if got := remainingAfterClassification(0, 10000); got != 0 {
+		t.Fatalf("refresh changed remaining=%d", got)
+	}
+}
