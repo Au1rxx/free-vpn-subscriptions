@@ -23,6 +23,8 @@ func newValidateWorkerCmd() *cobra.Command {
 		defer db.Close()
 		worker := validation.Worker{Queue: validation.SQLQueue{DB: db}, ValidatorID: validatorID,
 			Concurrency: concurrency, Lease: 2 * time.Minute,
+			Performance: validation.SampleRequest{URL: cfg.Verify.PerformanceURL, Bytes: cfg.Verify.PerformanceBytes,
+				Timeout: time.Duration(cfg.Verify.PerformanceTimeoutMS) * time.Millisecond},
 			Request: verify.Request{Targets: cfg.Verify.Targets,
 				Timeout:    time.Duration(cfg.Verify.TimeoutMS) * time.Millisecond,
 				SingBoxBin: cfg.Verify.SingBoxBin, StartupTimeout: time.Duration(cfg.Verify.StartupTimeoutMS) * time.Millisecond}}
@@ -52,10 +54,16 @@ func newValidationStatusCmd() *cobra.Command {
 		if err != nil {
 			return err
 		}
-		fmt.Fprintf(cmd.OutOrStdout(), "batches=%d attempts=%d current_statuses=%d pending_jobs=%d leased_jobs=%d expired_leases=%d\n",
-			status.Batches, status.Attempts, status.CurrentStatuses, status.PendingJobs, status.LeasedJobs, status.ExpiredLeases)
-		fmt.Fprintf(cmd.OutOrStdout(), "passed=%d partial=%d failed=%d available=%d degraded=%d unavailable=%d\n",
-			status.Passed, status.Partial, status.Failed, status.Available, status.Degraded, status.Unavailable)
+		fmt.Fprint(cmd.OutOrStdout(), formatValidationStatus(status))
 		return nil
 	}}
+}
+
+func formatValidationStatus(status store.ValidationStatus) string {
+	return fmt.Sprintf("batches=%d attempts=%d current_statuses=%d pending_jobs=%d leased_jobs=%d expired_leases=%d\n"+
+		"passed=%d partial=%d failed=%d available=%d degraded=%d unavailable=%d\n"+
+		"performance_attempts=%d performance_successes=%d average_bytes_per_second=%d\n",
+		status.Batches, status.Attempts, status.CurrentStatuses, status.PendingJobs, status.LeasedJobs, status.ExpiredLeases,
+		status.Passed, status.Partial, status.Failed, status.Available, status.Degraded, status.Unavailable,
+		status.PerformanceAttempts, status.PerformanceSuccesses, status.AverageBytesPerSecond)
 }

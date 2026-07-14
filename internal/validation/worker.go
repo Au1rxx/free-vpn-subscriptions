@@ -43,6 +43,7 @@ type Worker struct {
 	Concurrency int
 	Lease       time.Duration
 	Request     verify.Request
+	Performance SampleRequest
 }
 
 type WorkerReport struct{ Claimed, Passed, Partial, Failed, PersistErrors int }
@@ -138,7 +139,15 @@ func (w Worker) processJob(ctx context.Context, job store.ValidationJob) (bool, 
 	quick := w.Checker.Check(jobCtx, &configured)
 	var result verify.Result
 	if quick.Passed {
-		result = w.Engine.Verify(jobCtx, &configured, w.Request)
+		request := w.Request
+		if job.PerformanceDue && w.Performance.URL != "" {
+			request.PerformanceProbe = func(ctx context.Context, dialer verify.ProxyDialer) verify.PerformanceResult {
+				sample := (PerformanceSampler{}).Sample(ctx, dialer, w.Performance)
+				return verify.PerformanceResult{Attempted: true, Bytes: sample.Bytes,
+					BytesPerSecond: sample.BytesPerSecond, ErrorCode: sample.ErrorCode}
+			}
+		}
+		result = w.Engine.Verify(jobCtx, &configured, request)
 	} else {
 		result = verify.Result{Node: &configured, Protocol: configured.Protocol, ErrorCode: quick.ErrorCode,
 			ErrorSummary: quick.ErrorSummary, Targets: nil}

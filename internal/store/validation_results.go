@@ -95,13 +95,17 @@ func PersistValidationResult(ctx context.Context, db *sql.DB, write ValidationWr
 		(validation_job_id, validation_batch_id, node_config_id, validator_id, stage, round_number,
 		 started_at, finished_at, config_accepted, proxy_started, passed, partial_success,
 		 target_count, success_count, dns_ms, connect_ms, tls_ms, proxy_start_ms, ttfb_ms,
-		 total_ms, http_median_ms, exit_ip, exit_country, exit_asn, target_results, error_code, error_summary)
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+		 total_ms, http_median_ms, performance_bytes, bytes_per_second, performance_error_code,
+		 exit_ip, exit_country, exit_asn, target_results, error_code, error_summary)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
 		write.JobID, batchID, write.NodeConfigID, write.ValidatorID, write.Stage, write.Round,
 		write.StartedAt, write.FinishedAt, write.Result.ConfigAccepted, write.Result.ProxyStarted,
 		write.Result.Passed, write.Result.PartialSuccess, write.Result.Attempts, write.Result.Successes,
 		nullInt(metrics.DNSMS), nullInt(metrics.ConnectMS), nullInt(metrics.TLSMS), nullInt(write.Result.StartMS),
 		nullInt(metrics.TTFBMS), nullInt(metrics.TotalMS), nullInt(write.Result.HTTPMedianMS),
+		performanceValue(write.Result.Performance.Attempted, write.Result.Performance.Bytes),
+		performanceValue(write.Result.Performance.Attempted, write.Result.Performance.BytesPerSecond),
+		nullString(write.Result.Performance.ErrorCode),
 		nullString(write.Result.ExitIP), nullString(write.Result.ExitCountry), nullString(write.Result.ExitASN),
 		targetJSON, nullString(write.Result.ErrorCode), nullString(bounded(write.Result.ErrorSummary, 1024)))
 	if err != nil {
@@ -154,6 +158,13 @@ func PersistValidationResult(ctx context.Context, db *sql.DB, write ValidationWr
 		return ErrLeaseOwnership
 	}
 	return tx.Commit()
+}
+
+func performanceValue(attempted bool, value int64) any {
+	if !attempted {
+		return nil
+	}
+	return value
 }
 
 type targetMetrics struct{ DNSMS, ConnectMS, TLSMS, TTFBMS, TotalMS int }

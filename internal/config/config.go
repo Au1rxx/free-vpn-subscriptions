@@ -35,17 +35,20 @@ type DatabaseConfig struct {
 }
 
 type VerifyConfig struct {
-	Enabled          bool     `yaml:"enabled"`
-	CandidatePool    int      `yaml:"candidate_pool"`
-	BatchSize        int      `yaml:"batch_size"`
-	BasePort         int      `yaml:"base_port"`
-	Concurrency      int      `yaml:"concurrency"`
-	TimeoutMS        int      `yaml:"timeout_ms"`
-	Rounds           int      `yaml:"rounds"`
-	RoundGapMS       int      `yaml:"round_gap_ms"`
-	Targets          []string `yaml:"targets"`
-	SingBoxBin       string   `yaml:"sing_box_bin"`
-	StartupTimeoutMS int      `yaml:"startup_timeout_ms"`
+	Enabled              bool     `yaml:"enabled"`
+	CandidatePool        int      `yaml:"candidate_pool"`
+	BatchSize            int      `yaml:"batch_size"`
+	BasePort             int      `yaml:"base_port"`
+	Concurrency          int      `yaml:"concurrency"`
+	TimeoutMS            int      `yaml:"timeout_ms"`
+	Rounds               int      `yaml:"rounds"`
+	RoundGapMS           int      `yaml:"round_gap_ms"`
+	Targets              []string `yaml:"targets"`
+	SingBoxBin           string   `yaml:"sing_box_bin"`
+	StartupTimeoutMS     int      `yaml:"startup_timeout_ms"`
+	PerformanceURL       string   `yaml:"performance_url"`
+	PerformanceBytes     int64    `yaml:"performance_bytes"`
+	PerformanceTimeoutMS int      `yaml:"performance_timeout_ms"`
 }
 
 type GeoIPConfig struct {
@@ -241,6 +244,15 @@ func applyDefaults(c *Config) {
 	}
 	if c.Verify.StartupTimeoutMS == 0 {
 		c.Verify.StartupTimeoutMS = 10000
+	}
+	if c.Verify.PerformanceURL == "" {
+		c.Verify.PerformanceURL = "https://speed.cloudflare.com/__down?bytes=262144"
+	}
+	if c.Verify.PerformanceBytes == 0 {
+		c.Verify.PerformanceBytes = 256 << 10
+	}
+	if c.Verify.PerformanceTimeoutMS == 0 {
+		c.Verify.PerformanceTimeoutMS = 15000
 	}
 }
 

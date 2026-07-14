@@ -51,6 +51,7 @@ type Result struct {
 	Protocol, ErrorCode, ErrorSummary, ExitIP, ExitCountry, ExitASN string
 	StartMS, HTTPMedianMS, Successes, Attempts                      int
 	Targets                                                         []TargetResult
+	Performance                                                     PerformanceResult
 }
 
 // Run verifies nodes and returns the subset confirmed to forward HTTP traffic.

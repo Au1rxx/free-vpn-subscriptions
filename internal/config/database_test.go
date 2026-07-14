@@ -35,6 +35,11 @@ func TestDatabaseDefaults(t *testing.T) {
 	if cfg.Database.MaxOpenConns != 20 || cfg.Database.MaxIdleConns != 10 {
 		t.Fatalf("pool=%d/%d", cfg.Database.MaxOpenConns, cfg.Database.MaxIdleConns)
 	}
+	if cfg.Verify.PerformanceURL != "https://speed.cloudflare.com/__down?bytes=262144" ||
+		cfg.Verify.PerformanceBytes != 256<<10 || cfg.Verify.PerformanceTimeoutMS != 15000 {
+		t.Fatalf("performance defaults=%q/%d/%d", cfg.Verify.PerformanceURL,
+			cfg.Verify.PerformanceBytes, cfg.Verify.PerformanceTimeoutMS)
+	}
 }
 
 func TestDatabaseRejectsUnknownTLSMode(t *testing.T) {

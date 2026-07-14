@@ -25,6 +25,17 @@ func TestPerformanceSamplerDefaultsCapsAndStopsEarly(t *testing.T) {
 	}
 }
 
+func TestPerformanceSamplerRejectsEmptyResponse(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(http.ResponseWriter, *http.Request) {}))
+	defer server.Close()
+	result := (PerformanceSampler{}).Sample(context.Background(), server.Client(), SampleRequest{
+		URL: server.URL, Bytes: 256 << 10, Timeout: time.Second,
+	})
+	if result.ErrorCode != "empty_sample" || result.Bytes != 0 || result.BytesPerSecond != 0 {
+		t.Fatalf("empty sample result=%+v", result)
+	}
+}
+
 type zeroReader struct{}
 
 func (zeroReader) Read(buffer []byte) (int, error) {

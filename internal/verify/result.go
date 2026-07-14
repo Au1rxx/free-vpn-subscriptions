@@ -28,11 +28,23 @@ type TargetResult struct {
 }
 
 type Request struct {
-	Targets        []string
-	Timeout        time.Duration
-	BasePort       int
-	SingBoxBin     string
-	StartupTimeout time.Duration
+	Targets          []string
+	Timeout          time.Duration
+	BasePort         int
+	SingBoxBin       string
+	StartupTimeout   time.Duration
+	PerformanceProbe func(context.Context, ProxyDialer) PerformanceResult
+}
+
+type ProxyDialer interface {
+	Do(*http.Request) (*http.Response, error)
+}
+
+type PerformanceResult struct {
+	Attempted      bool
+	Bytes          int64
+	BytesPerSecond int64
+	ErrorCode      string
 }
 
 type Engine struct{}
@@ -83,7 +95,15 @@ func (Engine) Verify(ctx context.Context, n *node.Node, request Request) Result 
 		}
 	}
 	finalizeEngineResult(&result)
+	runPerformanceProbe(ctx, client, request, &result)
 	return result
+}
+
+func runPerformanceProbe(ctx context.Context, client ProxyDialer, request Request, result *Result) {
+	if result == nil || result.Successes == 0 || request.PerformanceProbe == nil {
+		return
+	}
+	result.Performance = request.PerformanceProbe(ctx, client)
 }
 
 func socksHTTPClient(port int, timeout time.Duration) (*http.Client, error) {

@@ -64,3 +64,19 @@ func TestFormatDatabaseStatusIsBoundedAndContainsNoDSN(t *testing.T) {
 		t.Fatalf("status output too long: %d lines", lines)
 	}
 }
+
+func TestFormatValidationStatusIncludesPerformanceCoverage(t *testing.T) {
+	status := store.ValidationStatus{Batches: 10, Attempts: 20, CurrentStatuses: 18,
+		PendingJobs: 5, LeasedJobs: 2, ExpiredLeases: 1, Passed: 8, Partial: 2, Failed: 10,
+		Available: 8, Degraded: 2, Unavailable: 10, PerformanceAttempts: 7,
+		PerformanceSuccesses: 6, AverageBytesPerSecond: 1048576}
+	out := formatValidationStatus(status)
+	for _, want := range []string{"attempts=20", "performance_attempts=7", "performance_successes=6", "average_bytes_per_second=1048576"} {
+		if !strings.Contains(out, want) {
+			t.Errorf("validation status missing %q: %s", want, out)
+		}
+	}
+	if lines := strings.Count(out, "\n"); lines > 5 {
+		t.Fatalf("validation status output too long: %d lines", lines)
+	}
+}

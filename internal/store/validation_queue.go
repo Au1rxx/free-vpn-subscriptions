@@ -17,6 +17,7 @@ type ValidationJob struct {
 	LeaseOwner                 string
 	LeasedUntil, NextAttemptAt time.Time
 	NormalizedConfig           []byte
+	PerformanceDue             bool
 }
 
 func ClaimValidationJobs(ctx context.Context, db *sql.DB, owner string, limit int, lease time.Duration) ([]ValidationJob, error) {
@@ -39,7 +40,10 @@ func ClaimValidationJobs(ctx context.Context, db *sql.DB, owner string, limit in
 	defer tx.Rollback()
 	rows, err := tx.QueryContext(ctx, `SELECT q.validation_job_id, q.node_config_id, q.stage,
 		q.priority, q.job_state, q.attempts, COALESCE(q.lease_owner,''),
-		q.next_attempt_at, q.leased_until, n.protocol, n.normalized_config
+		q.next_attempt_at, q.leased_until, n.protocol, n.normalized_config,
+		NOT EXISTS (SELECT 1 FROM validation_attempts a
+			WHERE a.node_config_id=q.node_config_id AND a.performance_bytes IS NOT NULL
+			AND a.started_at >= DATE_SUB(UTC_TIMESTAMP(6), INTERVAL 24 HOUR))
 		FROM validation_queue q JOIN node_configs n ON n.node_config_id=q.node_config_id
 		WHERE (q.job_state='pending' AND q.next_attempt_at <= UTC_TIMESTAMP(6))
 		   OR (q.job_state='leased' AND q.leased_until <= UTC_TIMESTAMP(6))
@@ -54,7 +58,7 @@ func ClaimValidationJobs(ctx context.Context, db *sql.DB, owner string, limit in
 		var leasedUntil sql.NullTime
 		if err := rows.Scan(&job.ID, &job.NodeConfigID, &job.Stage, &job.Priority, &job.State,
 			&job.Attempts, &job.LeaseOwner, &job.NextAttemptAt, &leasedUntil,
-			&job.Protocol, &job.NormalizedConfig); err != nil {
+			&job.Protocol, &job.NormalizedConfig, &job.PerformanceDue); err != nil {
 			rows.Close()
 			return nil, err
 		}

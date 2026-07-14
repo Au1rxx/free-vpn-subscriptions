@@ -68,6 +68,10 @@ func (PerformanceSampler) Sample(ctx context.Context, dialer ProxyDialer, reques
 		result.ErrorCode = "sample_read_failed"
 		return result
 	}
+	if read == 0 {
+		result.ErrorCode = "empty_sample"
+		return result
+	}
 	if duration > 0 {
 		result.BytesPerSecond = int64(float64(read) / duration.Seconds())
 	}

@@ -55,6 +55,13 @@ func TestMigrationFilesContainCriticalUniqueKeys(t *testing.T) {
 	}
 }
 
+func TestMigrationFilesClassifyPerformanceSamplingErrors(t *testing.T) {
+	ddl := readMigrationDDL(t)
+	if !regexp.MustCompile("`performance_error_code` VARCHAR\\(64\\) NULL COMMENT '[^']*[\\x{4e00}-\\x{9fff}][^']*'").MatchString(ddl) {
+		t.Fatal("performance_error_code migration with Chinese comment is missing")
+	}
+}
+
 func readMigrationDDL(t *testing.T) string {
 	t.Helper()
 	entries, err := fs.ReadDir(dbmigrations.Files, ".")
