@@ -10,10 +10,18 @@ type IngestStatus struct {
 	Sources, EnabledSources, Fetches, PendingFetches, ParseRuns, Endpoints, Configs, ParseErrors, QueuePending uint64
 	Fetches24H, SuccessfulFetches24H, FailedFetches24H                                                         uint64
 	ByProtocol                                                                                                 map[string]uint64
+	SourceKinds                                                                                                map[string]SourceKindStatus
+	FetchErrorCounts24H, ParseErrorCounts                                                                      []NamedCount
+}
+
+type SourceKindStatus struct{ Total, Enabled uint64 }
+type NamedCount struct {
+	Name  string
+	Count uint64
 }
 
 func ReadIngestStatus(ctx context.Context, db *sql.DB) (IngestStatus, error) {
-	status := IngestStatus{ByProtocol: make(map[string]uint64)}
+	status := IngestStatus{ByProtocol: make(map[string]uint64), SourceKinds: make(map[string]SourceKindStatus)}
 	err := db.QueryRowContext(ctx, `SELECT
 		(SELECT COUNT(*) FROM sources),
 		(SELECT COUNT(*) FROM sources WHERE enabled=TRUE AND state='active'),
@@ -48,5 +56,62 @@ func ReadIngestStatus(ctx context.Context, db *sql.DB) (IngestStatus, error) {
 		}
 		status.ByProtocol[protocol] = count
 	}
-	return status, rows.Err()
+	if err := rows.Close(); err != nil {
+		return IngestStatus{}, err
+	}
+	if err := rows.Err(); err != nil {
+		return IngestStatus{}, err
+	}
+	rows, err = db.QueryContext(ctx, `SELECT COALESCE(NULLIF(kind,''),'unknown'), COUNT(*),
+		SUM(enabled=TRUE AND state='active') FROM sources GROUP BY kind ORDER BY kind`)
+	if err != nil {
+		return IngestStatus{}, fmt.Errorf("read source kind distribution: %w", err)
+	}
+	for rows.Next() {
+		var kind string
+		var item SourceKindStatus
+		if err := rows.Scan(&kind, &item.Total, &item.Enabled); err != nil {
+			rows.Close()
+			return IngestStatus{}, err
+		}
+		status.SourceKinds[kind] = item
+	}
+	if err := rows.Close(); err != nil {
+		return IngestStatus{}, err
+	}
+	if err := rows.Err(); err != nil {
+		return IngestStatus{}, err
+	}
+	rows, err = db.QueryContext(ctx, `SELECT CONCAT(COALESCE(error_code,'unknown'),
+		IF(http_status IS NULL,'',CONCAT('_http_',http_status))), COUNT(*) AS occurrences
+		FROM source_fetches WHERE fetch_state='failed'
+		AND finished_at >= UTC_TIMESTAMP(6) - INTERVAL 24 HOUR
+		GROUP BY error_code, http_status ORDER BY occurrences DESC, error_code LIMIT 20`)
+	if err != nil {
+		return IngestStatus{}, fmt.Errorf("read fetch error distribution: %w", err)
+	}
+	status.FetchErrorCounts24H, err = scanNamedCounts(rows)
+	if err != nil {
+		return IngestStatus{}, err
+	}
+	rows, err = db.QueryContext(ctx, `SELECT error_code, SUM(seen_count) AS occurrences
+		FROM parse_errors GROUP BY error_code ORDER BY occurrences DESC, error_code LIMIT 20`)
+	if err != nil {
+		return IngestStatus{}, fmt.Errorf("read parse error distribution: %w", err)
+	}
+	status.ParseErrorCounts, err = scanNamedCounts(rows)
+	return status, err
+}
+
+func scanNamedCounts(rows *sql.Rows) ([]NamedCount, error) {
+	defer rows.Close()
+	var counts []NamedCount
+	for rows.Next() {
+		var item NamedCount
+		if err := rows.Scan(&item.Name, &item.Count); err != nil {
+			return nil, err
+		}
+		counts = append(counts, item)
+	}
+	return counts, rows.Err()
 }

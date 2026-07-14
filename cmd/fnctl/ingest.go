@@ -122,6 +122,21 @@ func formatIngestStatus(status store.IngestStatus) string {
 	for _, protocol := range protocols {
 		fmt.Fprintf(&output, "protocol=%s configs=%d\n", protocol, status.ByProtocol[protocol])
 	}
+	kinds := make([]string, 0, len(status.SourceKinds))
+	for kind := range status.SourceKinds {
+		kinds = append(kinds, kind)
+	}
+	sort.Strings(kinds)
+	for _, kind := range kinds {
+		item := status.SourceKinds[kind]
+		fmt.Fprintf(&output, "source_kind=%s total=%d enabled=%d\n", kind, item.Total, item.Enabled)
+	}
+	for _, item := range status.FetchErrorCounts24H {
+		fmt.Fprintf(&output, "fetch_error=%s count=%d\n", item.Name, item.Count)
+	}
+	for _, item := range status.ParseErrorCounts {
+		fmt.Fprintf(&output, "parse_error=%s count=%d\n", item.Name, item.Count)
+	}
 	return output.String()
 }
 

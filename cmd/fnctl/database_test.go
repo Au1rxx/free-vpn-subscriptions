@@ -85,9 +85,12 @@ func TestFormatValidationStatusIncludesPerformanceCoverage(t *testing.T) {
 
 func TestFormatIngestStatusIncludesSourceHealth(t *testing.T) {
 	status := store.IngestStatus{Sources: 65, EnabledSources: 63, Fetches24H: 60,
-		SuccessfulFetches24H: 57, FailedFetches24H: 3, ByProtocol: map[string]uint64{}}
+		SuccessfulFetches24H: 57, FailedFetches24H: 3, ByProtocol: map[string]uint64{},
+		SourceKinds:         map[string]store.SourceKindStatus{"github-raw": {Total: 40, Enabled: 39}},
+		FetchErrorCounts24H: []store.NamedCount{{Name: "http_status_http_404", Count: 2}},
+		ParseErrorCounts:    []store.NamedCount{{Name: "invalid_uri", Count: 7}}}
 	out := formatIngestStatus(status)
-	for _, want := range []string{"sources=65", "enabled_sources=63", "fetches_24h=60", "successful_fetches_24h=57", "failed_fetches_24h=3"} {
+	for _, want := range []string{"sources=65", "enabled_sources=63", "fetches_24h=60", "successful_fetches_24h=57", "failed_fetches_24h=3", "source_kind=github-raw total=40 enabled=39", "fetch_error=http_status_http_404 count=2", "parse_error=invalid_uri count=7"} {
 		if !strings.Contains(out, want) {
 			t.Errorf("ingest status missing %q: %s", want, out)
 		}
