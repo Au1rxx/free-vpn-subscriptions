@@ -4,6 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"sync"
 	"time"
@@ -73,6 +74,7 @@ func (w Worker) RunOnce(ctx context.Context, limit int) (WorkerReport, error) {
 	semaphore := make(chan struct{}, w.Concurrency)
 	var wait sync.WaitGroup
 	var mutex sync.Mutex
+	var firstPersistError error
 	for _, job := range jobs {
 		if ctx.Err() != nil {
 			break
@@ -89,6 +91,9 @@ func (w Worker) RunOnce(ctx context.Context, limit int) (WorkerReport, error) {
 			switch {
 			case persistErr != nil:
 				report.PersistErrors++
+				if firstPersistError == nil {
+					firstPersistError = persistErr
+				}
 			case passed:
 				report.Passed++
 			case partial:
@@ -103,7 +108,7 @@ func (w Worker) RunOnce(ctx context.Context, limit int) (WorkerReport, error) {
 		return report, ctx.Err()
 	}
 	if report.PersistErrors > 0 {
-		return report, fmt.Errorf("%d validation results failed to persist", report.PersistErrors)
+		return report, fmt.Errorf("%d validation results failed to persist: %w", report.PersistErrors, firstPersistError)
 	}
 	return report, nil
 }
@@ -152,12 +157,31 @@ func (w Worker) processJob(ctx context.Context, job store.ValidationJob) (bool, 
 		result = verify.Result{Node: &configured, Protocol: configured.Protocol, ErrorCode: quick.ErrorCode,
 			ErrorSummary: quick.ErrorSummary, Targets: nil}
 	}
-	cancel()
-	<-leaseDone
-	persistErr := w.Queue.Persist(ctx, store.ValidationWrite{JobID: job.ID, NodeConfigID: job.NodeConfigID,
+	persistErr := w.persistWithRetry(jobCtx, store.ValidationWrite{JobID: job.ID, NodeConfigID: job.NodeConfigID,
 		Owner: w.ValidatorID, ValidatorID: w.ValidatorID, Stage: job.Stage, Engine: "sing-box",
 		StartedAt: started, FinishedAt: time.Now().UTC(), Result: result})
+	cancel()
+	<-leaseDone
 	return result.Passed, result.PartialSuccess, persistErr
+}
+
+func (w Worker) persistWithRetry(ctx context.Context, write store.ValidationWrite) error {
+	var err error
+	for attempt := 0; attempt < 3; attempt++ {
+		if err = w.Queue.Persist(ctx, write); err == nil {
+			return nil
+		}
+		if errors.Is(err, store.ErrLeaseOwnership) || errors.Is(err, store.ErrStaleValidation) || ctx.Err() != nil {
+			return err
+		}
+		delay := time.Duration(attempt+1) * 100 * time.Millisecond
+		select {
+		case <-ctx.Done():
+			return ctx.Err()
+		case <-time.After(delay):
+		}
+	}
+	return err
 }
 
 func (w Worker) Run(ctx context.Context, limit int, idleDelay time.Duration) error {

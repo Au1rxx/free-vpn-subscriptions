@@ -3,6 +3,7 @@ package validation
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"sync"
 	"testing"
 	"time"
@@ -13,9 +14,11 @@ import (
 )
 
 type fakeQueue struct {
-	jobs      []store.ValidationJob
-	mu        sync.Mutex
-	persisted int
+	jobs            []store.ValidationJob
+	mu              sync.Mutex
+	persisted       int
+	persistCalls    int
+	persistFailures int
 }
 
 func (q *fakeQueue) Claim(context.Context, string, int, time.Duration) ([]store.ValidationJob, error) {
@@ -24,8 +27,12 @@ func (q *fakeQueue) Claim(context.Context, string, int, time.Duration) ([]store.
 func (q *fakeQueue) Extend(context.Context, uint64, string, time.Duration) error { return nil }
 func (q *fakeQueue) Persist(_ context.Context, _ store.ValidationWrite) error {
 	q.mu.Lock()
+	defer q.mu.Unlock()
+	q.persistCalls++
+	if q.persistCalls <= q.persistFailures {
+		return errors.New("temporary database lock")
+	}
 	q.persisted++
-	q.mu.Unlock()
 	return nil
 }
 
@@ -70,5 +77,17 @@ func TestWorkerSchedulesPerformanceProbeOnlyWhenDue(t *testing.T) {
 	}
 	if len(engine.performanceProbeStates) != 2 || !engine.performanceProbeStates[0] || engine.performanceProbeStates[1] {
 		t.Fatalf("performance probe states=%v", engine.performanceProbeStates)
+	}
+}
+
+func TestWorkerRetriesTransientPersistenceErrors(t *testing.T) {
+	configured := &node.Node{Protocol: node.ProtoVLESS, Server: "192.0.2.1", Port: 443, UUID: "id"}
+	body, _ := json.Marshal(configured)
+	queue := &fakeQueue{jobs: []store.ValidationJob{{ID: 1, NodeConfigID: 2, Stage: "connectivity", NormalizedConfig: body}}, persistFailures: 2}
+	worker := Worker{Queue: queue, Engine: &fakeEngine{}, Checker: QuickChecker{Prober: &fakeProber{}, Resolver: fakeResolver{}},
+		ValidatorID: "ai-a1", Concurrency: 1, Lease: 10 * time.Millisecond}
+	report, err := worker.RunOnce(context.Background(), 10)
+	if err != nil || report.PersistErrors != 0 || queue.persisted != 1 || queue.persistCalls != 3 {
+		t.Fatalf("report=%+v persisted=%d calls=%d err=%v", report, queue.persisted, queue.persistCalls, err)
 	}
 }
