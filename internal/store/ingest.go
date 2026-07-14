@@ -201,6 +201,10 @@ func PersistParseResult(ctx context.Context, db *sql.DB, sourceID, fetchID uint6
 	if completed {
 		return PersistedParse{ParseRunID: parseRunID}, nil
 	}
+	var sourceQuality float64
+	if err := db.QueryRowContext(ctx, `SELECT quality_score FROM sources WHERE source_id=?`, sourceID).Scan(&sourceQuality); err != nil {
+		return PersistedParse{}, fmt.Errorf("read source quality: %w", err)
+	}
 	if processedNodes > len(result.Nodes) {
 		return PersistedParse{ParseRunID: parseRunID}, fmt.Errorf("parse progress %d exceeds node count %d", processedNodes, len(result.Nodes))
 	}
@@ -215,7 +219,7 @@ func PersistParseResult(ctx context.Context, db *sql.DB, sourceID, fetchID uint6
 		if err != nil {
 			return report, err
 		}
-		batchReport, err := persistNodeBatch(ctx, tx, sourceID, fetchID, result.Nodes[start:end], parserVersion, started)
+		batchReport, err := persistNodeBatch(ctx, tx, sourceID, fetchID, sourceQuality, result.Nodes[start:end], parserVersion, started)
 		if err != nil {
 			_ = tx.Rollback()
 			return report, err
@@ -358,7 +362,7 @@ type preparedNode struct {
 	canonical         []byte
 }
 
-func persistNodeBatch(ctx context.Context, tx *sql.Tx, sourceID, fetchID uint64, nodes []*node.Node, parserVersion string, seen time.Time) (PersistedParse, error) {
+func persistNodeBatch(ctx context.Context, tx *sql.Tx, sourceID, fetchID uint64, sourceQuality float64, nodes []*node.Node, parserVersion string, seen time.Time) (PersistedParse, error) {
 	prepared := make([]preparedNode, 0, len(nodes))
 	for _, n := range nodes {
 		canonical, err := n.CanonicalJSON()
@@ -451,7 +455,7 @@ func persistNodeBatch(ctx context.Context, tx *sql.Tx, sourceID, fetchID uint64,
 			nodeIDs = append(nodeIDs, id)
 		}
 	}
-	if err := upsertNodeRelations(ctx, tx, nodeIDs, sourceID, fetchID, seen); err != nil {
+	if err := upsertNodeRelations(ctx, tx, nodeIDs, sourceID, fetchID, sourceQuality, seen); err != nil {
 		return PersistedParse{}, err
 	}
 	existingQueue, err := selectQueuedNodeIDs(ctx, tx, nodeIDs)
@@ -534,20 +538,21 @@ func selectConfigIDs(ctx context.Context, tx *sql.Tx, prepared []preparedNode) (
 	return ids, rows.Err()
 }
 
-func upsertNodeRelations(ctx context.Context, tx *sql.Tx, nodeIDs []uint64, sourceID, fetchID uint64, seen time.Time) error {
+func upsertNodeRelations(ctx context.Context, tx *sql.Tx, nodeIDs []uint64, sourceID, fetchID uint64, sourceQuality float64, seen time.Time) error {
 	var query strings.Builder
-	query.WriteString(`INSERT INTO node_source_stats (node_config_id, source_id, last_fetch_id, first_seen_at, last_seen_at) VALUES `)
-	args := make([]any, 0, len(nodeIDs)*5)
+	query.WriteString(`INSERT INTO node_source_stats (node_config_id, source_id, last_fetch_id, first_seen_at, last_seen_at, source_quality) VALUES `)
+	args := make([]any, 0, len(nodeIDs)*6)
 	for index, id := range nodeIDs {
 		if index > 0 {
 			query.WriteByte(',')
 		}
-		query.WriteString("(?,?,?,?,?)")
-		args = append(args, id, sourceID, fetchID, seen, seen)
+		query.WriteString("(?,?,?,?,?,?)")
+		args = append(args, id, sourceID, fetchID, seen, seen, sourceQuality)
 	}
 	query.WriteString(` ON DUPLICATE KEY UPDATE
 		seen_count=seen_count+IF(last_fetch_id<>VALUES(last_fetch_id),1,0),
-		last_fetch_id=VALUES(last_fetch_id), last_seen_at=VALUES(last_seen_at), is_active=TRUE`)
+		last_fetch_id=VALUES(last_fetch_id), last_seen_at=VALUES(last_seen_at),
+		source_quality=VALUES(source_quality), is_active=TRUE`)
 	_, err := tx.ExecContext(ctx, query.String(), args...)
 	return err
 }

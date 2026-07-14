@@ -112,6 +112,7 @@ func newIngestStatusCmd() *cobra.Command {
 func formatIngestStatus(status store.IngestStatus) string {
 	var output strings.Builder
 	fmt.Fprintf(&output, "sources=%d enabled_sources=%d fetches=%d pending_fetches=%d parse_runs=%d\n", status.Sources, status.EnabledSources, status.Fetches, status.PendingFetches, status.ParseRuns)
+	fmt.Fprintf(&output, "source_quality scored_sources=%d average=%d maximum=%d\n", status.ScoredSources, status.AverageSourceQuality, status.MaximumSourceQuality)
 	fmt.Fprintf(&output, "endpoints=%d configs=%d parse_errors=%d queue_pending=%d\n", status.Endpoints, status.Configs, status.ParseErrors, status.QueuePending)
 	fmt.Fprintf(&output, "fetches_24h=%d successful_fetches_24h=%d failed_fetches_24h=%d\n", status.Fetches24H, status.SuccessfulFetches24H, status.FailedFetches24H)
 	protocols := make([]string, 0, len(status.ByProtocol))

@@ -50,6 +50,9 @@ func TestPersistParseResultIntegration(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	if _, err := db.ExecContext(ctx, `UPDATE sources SET quality_score=73 WHERE source_id=?`, source.ID); err != nil {
+		t.Fatal(err)
+	}
 	fetch, err := FinishFetch(ctx, db, FetchWrite{SourceID: source.ID, StatusCode: 200, Body: []byte("integration"), StartedAt: time.Now().UTC(), FinishedAt: time.Now().UTC()})
 	if err != nil {
 		t.Fatal(err)
@@ -84,6 +87,15 @@ func TestPersistParseResultIntegration(t *testing.T) {
 	if missingExpiry != 0 {
 		t.Fatalf("persisted configs without expiry: %d", missingExpiry)
 	}
+	var relationQuality float64
+	if err := db.QueryRowContext(ctx, `SELECT source_quality FROM node_source_stats
+		WHERE source_id=? AND node_config_id=(SELECT node_config_id FROM node_configs WHERE config_fingerprint=?)`,
+		source.ID, firstFingerprint[:]).Scan(&relationQuality); err != nil {
+		t.Fatal(err)
+	}
+	if relationQuality != 73 {
+		t.Fatalf("source relation quality=%v, want 73", relationQuality)
+	}
 	var seenBefore int
 	if err := db.QueryRowContext(ctx, `SELECT seen_count FROM node_source_stats
 		WHERE source_id=? AND node_config_id=(SELECT node_config_id FROM node_configs WHERE config_fingerprint=?)`,
@@ -97,6 +109,9 @@ func TestPersistParseResultIntegration(t *testing.T) {
 	if _, err := db.ExecContext(ctx, `UPDATE source_fetches SET parse_state='pending' WHERE fetch_id=?`, fetch.ID); err != nil {
 		t.Fatal(err)
 	}
+	if _, err := db.ExecContext(ctx, `UPDATE sources SET quality_score=61 WHERE source_id=?`, source.ID); err != nil {
+		t.Fatal(err)
+	}
 	if _, err := PersistParseResult(ctx, db, source.ID, fetch.ID, parse.Result{Format: parse.FormatURIList, Nodes: nodes}, "integration-test"); err != nil {
 		t.Fatal(err)
 	}
@@ -108,6 +123,14 @@ func TestPersistParseResultIntegration(t *testing.T) {
 	}
 	if seenAfter != seenBefore {
 		t.Fatalf("same fetch replay changed seen_count from %d to %d", seenBefore, seenAfter)
+	}
+	if err := db.QueryRowContext(ctx, `SELECT source_quality FROM node_source_stats
+		WHERE source_id=? AND node_config_id=(SELECT node_config_id FROM node_configs WHERE config_fingerprint=?)`,
+		source.ID, firstFingerprint[:]).Scan(&relationQuality); err != nil {
+		t.Fatal(err)
+	}
+	if relationQuality != 61 {
+		t.Fatalf("refreshed source relation quality=%v, want 61", relationQuality)
 	}
 }
 

@@ -74,6 +74,12 @@ func newClassifyCmd() *cobra.Command {
 			}
 		}
 		fmt.Fprintf(cmd.OutOrStdout(), "candidates=%d classified=%d unclassified_remaining=%d\n", totalCandidates, totalClassified, remaining)
+		sourceReport, err := classify.RefreshSourceQualities(cmd.Context(), db, time.Now().UTC())
+		if err != nil {
+			return err
+		}
+		fmt.Fprintf(cmd.OutOrStdout(), "source_candidates=%d source_scored=%d source_written=%d\n",
+			sourceReport.Candidates, sourceReport.Scored, sourceReport.Written)
 		return nil
 	}}
 	command.Flags().IntVar(&limit, "limit", 1000, "maximum nodes to classify")
