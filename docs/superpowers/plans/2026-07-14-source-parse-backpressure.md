@@ -27,20 +27,20 @@
 - Consumes: `ClaimDueSources(ctx context.Context, db *sql.DB, limit int) ([]SourceRecord, error)`
 - Produces: 待解析成功正文存在时的来源级领取背压。
 
-- [ ] **Step 1: 写隔离 MySQL 集成测试**
+- [x] **Step 1: 写隔离 MySQL 集成测试**
 
 测试创建随机临时数据库及最小 `sources`、`source_fetches` 表，写入一个到期来源和一条
 `fetch_state='success', parse_state='pending'` 记录。断言首次领取返回 0 个；把
 `parse_state` 更新为 `success` 后，断言第二次领取返回该来源。测试通过
 `VPN_NODE_TEST_CONFIG` 读取连接信息，`defer` 删除临时数据库。
 
-- [ ] **Step 2: 运行 RED**
+- [x] **Step 2: 运行 RED**
 
 Run: `go test ./internal/store -run TestClaimDueSourcesDefersSourceWithPendingParse -count=1 -v`
 
 Expected: FAIL，报告有待解析正文时仍领取了 1 个来源。
 
-- [ ] **Step 3: 实现最小 SQL 修复**
+- [x] **Step 3: 实现最小 SQL 修复**
 
 把 `ClaimDueSources` 的外层表设为别名 `s`，在到期条件后增加：
 
@@ -55,7 +55,7 @@ AND NOT EXISTS (
 
 保留现有排序、批次上限、行锁和领取后 `next_fetch_at` 更新。
 
-- [ ] **Step 4: 运行 GREEN 和全量回归**
+- [x] **Step 4: 运行 GREEN 和全量回归**
 
 Run:
 
@@ -68,7 +68,7 @@ go test -race ./internal/store ./internal/sources
 
 Expected: 全部退出码 0，无失败或 race。
 
-- [ ] **Step 5: 提交修复**
+- [x] **Step 5: 提交修复**
 
 ```bash
 git add internal/store/sources.go internal/store/sources_backpressure_test.go

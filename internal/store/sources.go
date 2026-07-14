@@ -100,11 +100,15 @@ func ClaimDueSources(ctx context.Context, db *sql.DB, limit int) ([]SourceRecord
 	}
 	defer tx.Rollback()
 	rows, err := tx.QueryContext(ctx, `
-		SELECT source_id, kind, name, url, canonical_url, format_hint, COALESCE(protocol_hint,''), state, depth,
-		       enabled, priority, fetch_interval_seconds, COALESCE(etag,''), COALESCE(last_modified,'')
-		FROM sources
-		WHERE enabled=TRUE AND state='active' AND (next_fetch_at IS NULL OR next_fetch_at <= UTC_TIMESTAMP(6))
-		ORDER BY priority DESC, COALESCE(next_fetch_at, '1970-01-01') ASC
+		SELECT s.source_id, s.kind, s.name, s.url, s.canonical_url, s.format_hint, COALESCE(s.protocol_hint,''), s.state, s.depth,
+		       s.enabled, s.priority, s.fetch_interval_seconds, COALESCE(s.etag,''), COALESCE(s.last_modified,'')
+		FROM sources s
+		WHERE s.enabled=TRUE AND s.state='active' AND (s.next_fetch_at IS NULL OR s.next_fetch_at <= UTC_TIMESTAMP(6))
+		  AND NOT EXISTS (
+			SELECT 1 FROM source_fetches f
+			WHERE f.source_id=s.source_id AND f.fetch_state='success' AND f.parse_state='pending'
+		  )
+		ORDER BY s.priority DESC, COALESCE(s.next_fetch_at, '1970-01-01') ASC
 		LIMIT ? FOR UPDATE SKIP LOCKED`, limit)
 	if err != nil {
 		return nil, fmt.Errorf("claim due sources: %w", err)
