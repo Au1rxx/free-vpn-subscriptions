@@ -73,6 +73,15 @@ func TestPersistParseResultIntegration(t *testing.T) {
 	if report.NewEndpoints != 1 || report.NewConfigs != 2 || report.QueueJobs != 2 {
 		t.Fatalf("unexpected persistence report: %+v", report)
 	}
+	firstFingerprint, secondFingerprint := nodes[0].ConfigFingerprint(), nodes[1].ConfigFingerprint()
+	var missingExpiry int
+	if err := db.QueryRowContext(ctx, `SELECT COUNT(*) FROM node_configs
+		WHERE config_fingerprint IN (?,?) AND expires_at IS NULL`, firstFingerprint[:], secondFingerprint[:]).Scan(&missingExpiry); err != nil {
+		t.Fatal(err)
+	}
+	if missingExpiry != 0 {
+		t.Fatalf("persisted configs without expiry: %d", missingExpiry)
+	}
 }
 
 func TestPayloadCompressionRoundTrip(t *testing.T) {
@@ -100,5 +109,12 @@ func TestNodeIdentityKeepsSameEndpointDifferentConfigs(t *testing.T) {
 	}
 	if a.ConfigFingerprint() == b.ConfigFingerprint() {
 		t.Fatal("different configurations collapsed")
+	}
+}
+
+func TestNodeExpiryIsThirtyDaysAfterLastObservation(t *testing.T) {
+	seen := time.Date(2026, 7, 14, 0, 0, 0, 0, time.UTC)
+	if got, want := nodeExpiresAt(seen), seen.Add(30*24*time.Hour); !got.Equal(want) {
+		t.Fatalf("node expiry=%s, want %s", got, want)
 	}
 }

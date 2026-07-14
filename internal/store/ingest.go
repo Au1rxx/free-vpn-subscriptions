@@ -18,6 +18,7 @@ import (
 )
 
 const nodePersistBatchSize = 1000
+const nodeTTL = 30 * 24 * time.Hour
 
 // FetchRecord is a persisted terminal source fetch.
 type FetchRecord struct {
@@ -229,6 +230,12 @@ func PersistParseResult(ctx context.Context, db *sql.DB, sourceID, fetchID uint6
 		report.NewConfigs += batchReport.NewConfigs
 		report.QueueJobs += batchReport.QueueJobs
 	}
+	if len(result.Nodes) > 0 {
+		if _, err := tx.ExecContext(ctx, `UPDATE node_source_stats SET is_active=FALSE
+			WHERE source_id=? AND last_fetch_id<>? AND is_active=TRUE`, sourceID, fetchID); err != nil {
+			return PersistedParse{}, fmt.Errorf("deactivate missing source nodes: %w", err)
+		}
+	}
 	for _, entry := range result.Errors {
 		sample := sha256.Sum256([]byte(entry.SampleHash))
 		if _, err := tx.ExecContext(ctx, `INSERT INTO parse_errors
@@ -312,18 +319,18 @@ func persistNodeBatch(ctx context.Context, tx *sql.Tx, sourceID, fetchID uint64,
 		return PersistedParse{}, err
 	}
 	var configSQL strings.Builder
-	configSQL.WriteString(`INSERT INTO node_configs (endpoint_id, config_fingerprint, protocol, transport, security, normalized_config, config_bytes, parser_version, first_seen_at, last_seen_at) VALUES `)
-	configArgs := make([]any, 0, len(prepared)*10)
+	configSQL.WriteString(`INSERT INTO node_configs (endpoint_id, config_fingerprint, protocol, transport, security, normalized_config, config_bytes, parser_version, first_seen_at, last_seen_at, expires_at) VALUES `)
+	configArgs := make([]any, 0, len(prepared)*11)
 	uniqueConfigs := make(map[string]bool)
 	for index, item := range prepared {
 		if index > 0 {
 			configSQL.WriteByte(',')
 		}
-		configSQL.WriteString("(?,?,?,?,?,?,?,?,?,?)")
+		configSQL.WriteString("(?,?,?,?,?,?,?,?,?,?,?)")
 		endpointID := endpointIDs[endpointMapKey(item.hostHash[:], item.n.Port)]
 		configArgs = append(configArgs, endpointID, item.configFingerprint[:], item.n.Protocol,
 			classificationValue(item.n.Network, "tcp"), classificationValue(item.n.Security, "none"), item.canonical,
-			len(item.canonical), parserVersion, seen, seen)
+			len(item.canonical), parserVersion, seen, seen, nodeExpiresAt(seen))
 		key := string(item.configFingerprint[:])
 		if !uniqueConfigs[key] {
 			uniqueConfigs[key] = true
@@ -332,7 +339,7 @@ func persistNodeBatch(ctx context.Context, tx *sql.Tx, sourceID, fetchID uint64,
 			}
 		}
 	}
-	configSQL.WriteString(` ON DUPLICATE KEY UPDATE last_seen_at=VALUES(last_seen_at), endpoint_id=VALUES(endpoint_id)`)
+	configSQL.WriteString(` ON DUPLICATE KEY UPDATE last_seen_at=VALUES(last_seen_at), expires_at=VALUES(expires_at), endpoint_id=VALUES(endpoint_id)`)
 	if _, err := tx.ExecContext(ctx, configSQL.String(), configArgs...); err != nil {
 		return PersistedParse{}, fmt.Errorf("batch upsert node configs: %w", err)
 	}
@@ -385,6 +392,8 @@ func classificationValue(value, fallback string) string {
 	}
 	return value
 }
+
+func nodeExpiresAt(seen time.Time) time.Time { return seen.Add(nodeTTL) }
 
 func selectEndpointIDs(ctx context.Context, tx *sql.Tx, prepared []preparedNode) (map[string]uint64, error) {
 	query := `SELECT endpoint_id, host_hash, port FROM endpoints WHERE (host_hash, port) IN (` + rowPlaceholders(len(prepared), 2) + `)`
@@ -529,12 +538,12 @@ func upsertNodeConfig(ctx context.Context, tx *sql.Tx, endpointID uint64, n *nod
 	fingerprint := n.ConfigFingerprint()
 	result, err := tx.ExecContext(ctx, `INSERT INTO node_configs
 		(endpoint_id, config_fingerprint, protocol, transport, security, normalized_config,
-		 config_bytes, parser_version, first_seen_at, last_seen_at)
-		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+		 config_bytes, parser_version, first_seen_at, last_seen_at, expires_at)
+		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 		ON DUPLICATE KEY UPDATE node_config_id=LAST_INSERT_ID(node_config_id),
-		last_seen_at=VALUES(last_seen_at), endpoint_id=VALUES(endpoint_id)`, endpointID, fingerprint[:],
+		last_seen_at=VALUES(last_seen_at), expires_at=VALUES(expires_at), endpoint_id=VALUES(endpoint_id)`, endpointID, fingerprint[:],
 		n.Protocol, defaultString(n.Network, "tcp"), defaultString(n.Security, "none"), canonical,
-		len(canonical), parserVersion, seen, seen)
+		len(canonical), parserVersion, seen, seen, nodeExpiresAt(seen))
 	if err != nil {
 		return 0, false, fmt.Errorf("upsert node config: %w", err)
 	}

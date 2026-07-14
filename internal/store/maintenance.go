@@ -73,8 +73,45 @@ func RunMaintenance(ctx context.Context, db *sql.DB, policy MaintenancePolicy, n
 			}
 		}
 	}
+	var missingExpiry, staleRelations uint64
+	if err := db.QueryRowContext(ctx, `SELECT COUNT(*) FROM node_configs WHERE expires_at IS NULL`).Scan(&missingExpiry); err != nil {
+		return report, err
+	}
+	if err := db.QueryRowContext(ctx, `SELECT COUNT(*) FROM node_source_stats
+		WHERE is_active=TRUE AND last_seen_at < DATE_SUB(?, INTERVAL 30 DAY)`, now).Scan(&staleRelations); err != nil {
+		return report, err
+	}
+	report.Rows["node_configs_missing_expiry"] = missingExpiry
+	report.Rows["node_source_stats_stale"] = staleRelations
+	if !dryRun {
+		for {
+			result, err := db.ExecContext(ctx, `UPDATE node_configs
+				SET expires_at=DATE_ADD(last_seen_at, INTERVAL 30 DAY) WHERE expires_at IS NULL LIMIT ?`, batchSize)
+			if err != nil {
+				return report, err
+			}
+			affected, _ := result.RowsAffected()
+			if affected < int64(batchSize) {
+				break
+			}
+		}
+		for {
+			result, err := db.ExecContext(ctx, `UPDATE node_source_stats SET is_active=FALSE
+				WHERE is_active=TRUE AND last_seen_at < DATE_SUB(?, INTERVAL 30 DAY) LIMIT ?`, now, batchSize)
+			if err != nil {
+				return report, err
+			}
+			affected, _ := result.RowsAffected()
+			if affected < int64(batchSize) {
+				break
+			}
+		}
+	}
 	var purgeCount uint64
-	if err := db.QueryRowContext(ctx, `SELECT COUNT(*) FROM node_configs n WHERE n.expires_at < ? AND NOT EXISTS (SELECT 1 FROM node_source_stats s WHERE s.node_config_id=n.node_config_id AND s.is_active=TRUE)`, now).Scan(&purgeCount); err != nil {
+	if err := db.QueryRowContext(ctx, `SELECT COUNT(*) FROM node_configs n
+		WHERE COALESCE(n.expires_at, DATE_ADD(n.last_seen_at, INTERVAL 30 DAY)) < ?
+		AND NOT EXISTS (SELECT 1 FROM node_source_stats s WHERE s.node_config_id=n.node_config_id
+			AND s.is_active=TRUE AND s.last_seen_at >= DATE_SUB(?, INTERVAL 30 DAY))`, now, now).Scan(&purgeCount); err != nil {
 		return report, err
 	}
 	report.Rows["node_configs"] = purgeCount
@@ -82,13 +119,19 @@ func RunMaintenance(ctx context.Context, db *sql.DB, policy MaintenancePolicy, n
 		_, err := db.ExecContext(ctx, `INSERT INTO node_tombstones (config_fingerprint, endpoint_fingerprint, protocol, first_seen_at, last_seen_at, last_success_at, ever_succeeded, best_quality_score, source_count, purge_reason, purged_at)
 			SELECT n.config_fingerprint, UNHEX(SHA2(CONCAT(e.host,':',e.port),256)), n.protocol, n.first_seen_at, n.last_seen_at, n.last_success_at, n.last_success_at IS NOT NULL, COALESCE(s.quality_score,0), COALESCE(s.source_count,0), 'ttl_expired', ?
 			FROM node_configs n JOIN endpoints e ON e.endpoint_id=n.endpoint_id LEFT JOIN node_current_status s ON s.node_config_id=n.node_config_id
-			WHERE n.expires_at < ? AND NOT EXISTS (SELECT 1 FROM node_source_stats ns WHERE ns.node_config_id=n.node_config_id AND ns.is_active=TRUE)
-			ON DUPLICATE KEY UPDATE last_seen_at=VALUES(last_seen_at), purged_at=VALUES(purged_at)`, now, now)
+			WHERE COALESCE(n.expires_at, DATE_ADD(n.last_seen_at, INTERVAL 30 DAY)) < ?
+			AND NOT EXISTS (SELECT 1 FROM node_source_stats ns WHERE ns.node_config_id=n.node_config_id
+				AND ns.is_active=TRUE AND ns.last_seen_at >= DATE_SUB(?, INTERVAL 30 DAY))
+			ON DUPLICATE KEY UPDATE last_seen_at=VALUES(last_seen_at), purged_at=VALUES(purged_at)`, now, now, now)
 		if err != nil {
 			return report, err
 		}
 		for {
-			result, err := db.ExecContext(ctx, `DELETE FROM node_configs WHERE node_config_id IN (SELECT node_config_id FROM (SELECT n.node_config_id FROM node_configs n WHERE n.expires_at < ? AND NOT EXISTS (SELECT 1 FROM node_source_stats s WHERE s.node_config_id=n.node_config_id AND s.is_active=TRUE) LIMIT ?) expired)`, now, batchSize)
+			result, err := db.ExecContext(ctx, `DELETE FROM node_configs WHERE node_config_id IN
+				(SELECT node_config_id FROM (SELECT n.node_config_id FROM node_configs n
+				WHERE COALESCE(n.expires_at, DATE_ADD(n.last_seen_at, INTERVAL 30 DAY)) < ?
+				AND NOT EXISTS (SELECT 1 FROM node_source_stats s WHERE s.node_config_id=n.node_config_id
+					AND s.is_active=TRUE AND s.last_seen_at >= DATE_SUB(?, INTERVAL 30 DAY)) LIMIT ?) expired)`, now, now, batchSize)
 			if err != nil {
 				return report, err
 			}
