@@ -6,7 +6,7 @@ import (
 	"io"
 	"net"
 	"net/http"
-	"reflect"
+	"net/http/httptest"
 	"strings"
 	"testing"
 )
@@ -17,34 +17,66 @@ func (function roundTripFunc) RoundTrip(request *http.Request) (*http.Response, 
 	return function(request)
 }
 
-func TestDoFallsBackFromTMeNXDomain(t *testing.T) {
-	var hosts []string
-	client := &http.Client{Transport: roundTripFunc(func(request *http.Request) (*http.Response, error) {
-		hosts = append(hosts, request.URL.Hostname())
-		if request.URL.Hostname() == "t.me" {
-			return nil, &net.DNSError{Name: "t.me", Err: "no such host", IsNotFound: true}
-		}
-		if request.URL.Path != "/s/channel" || request.URL.RawQuery != "q=1" {
-			t.Fatalf("fallback changed URL path or query: %s", request.URL)
+func TestDoFallsBackFromTMeNXDomainWithoutBreakingRedirects(t *testing.T) {
+	var paths []string
+	server := httptest.NewTLSServer(http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+		paths = append(paths, request.URL.RequestURI())
+		if request.Host != "t.me" {
+			t.Errorf("request host=%q, want t.me", request.Host)
 		}
 		if request.Header.Get("If-None-Match") != `"same"` {
-			t.Fatalf("fallback dropped conditional request header: %v", request.Header)
+			t.Errorf("fallback dropped conditional request header: %v", request.Header)
 		}
-		return &http.Response{StatusCode: http.StatusOK, Header: make(http.Header),
-			Body: io.NopCloser(strings.NewReader("preview")), Request: request}, nil
-	})}
+		if request.URL.Path == "/s/channel" {
+			http.Redirect(writer, request, "https://t.me/channel?q=1", http.StatusFound)
+			return
+		}
+		_, _ = io.WriteString(writer, "preview")
+	}))
+	defer server.Close()
+
+	initialDials := 0
+	transport := server.Client().Transport.(*http.Transport).Clone()
+	transport.TLSClientConfig = transport.TLSClientConfig.Clone()
+	transport.TLSClientConfig.InsecureSkipVerify = true // Test server certificate is not issued for t.me.
+	transport.DialContext = func(context.Context, string, string) (net.Conn, error) {
+		initialDials++
+		return nil, &net.DNSError{Name: "t.me", Err: "no such host", IsNotFound: true}
+	}
+	client := &http.Client{Transport: transport}
 	request, err := http.NewRequest(http.MethodGet, "https://t.me/s/channel?q=1", nil)
 	if err != nil {
 		t.Fatal(err)
 	}
 	request.Header.Set("If-None-Match", `"same"`)
-	response, err := Do(client, request)
+	aliasDials := 0
+	response, err := doWithNetwork(client, request,
+		func(_ context.Context, host string) ([]string, error) {
+			if host != telegramFallbackHost {
+				t.Errorf("lookup host=%q", host)
+			}
+			return []string{"203.0.113.10"}, nil
+		},
+		func(ctx context.Context, network, address string) (net.Conn, error) {
+			aliasDials++
+			if address != "203.0.113.10:443" {
+				t.Errorf("alias address=%q", address)
+				return nil, errors.New("unexpected alias address")
+			}
+			return (&net.Dialer{}).DialContext(ctx, network, strings.TrimPrefix(server.URL, "https://"))
+		})
 	if err != nil || response.StatusCode != http.StatusOK {
 		t.Fatalf("response=%v err=%v", response, err)
 	}
 	response.Body.Close()
-	if !reflect.DeepEqual(hosts, []string{"t.me", "telegram.me"}) {
-		t.Fatalf("request hosts=%v", hosts)
+	if initialDials != 1 || aliasDials != 2 {
+		t.Fatalf("initial dials=%d alias dials=%d", initialDials, aliasDials)
+	}
+	if strings.Join(paths, ",") != "/s/channel?q=1,/channel?q=1" {
+		t.Fatalf("paths=%v", paths)
+	}
+	if response.Request.URL.Hostname() != "t.me" {
+		t.Fatalf("final URL host=%q", response.Request.URL.Hostname())
 	}
 }
 
@@ -103,21 +135,17 @@ func TestDoDoesNotRetryHTTPStatus(t *testing.T) {
 }
 
 func TestDoReportsFallbackFailure(t *testing.T) {
-	calls := 0
 	fallbackErr := errors.New("fallback unavailable")
-	client := &http.Client{Transport: roundTripFunc(func(request *http.Request) (*http.Response, error) {
-		calls++
-		if request.URL.Hostname() == "t.me" {
-			return nil, &net.DNSError{Name: "t.me", Err: "no such host", IsNotFound: true}
-		}
-		return nil, fallbackErr
-	})}
+	transport := http.DefaultTransport.(*http.Transport).Clone()
+	transport.DialContext = func(context.Context, string, string) (net.Conn, error) {
+		return nil, &net.DNSError{Name: "t.me", Err: "no such host", IsNotFound: true}
+	}
+	client := &http.Client{Transport: transport}
 	request, _ := http.NewRequest(http.MethodGet, "https://t.me/s/channel", nil)
-	_, err := Do(client, request)
+	_, err := doWithNetwork(client, request,
+		func(context.Context, string) ([]string, error) { return []string{"203.0.113.10"}, nil },
+		func(context.Context, string, string) (net.Conn, error) { return nil, fallbackErr })
 	if !errors.Is(err, fallbackErr) || !strings.Contains(err.Error(), "telegram.me fallback failed") {
 		t.Fatalf("unexpected fallback error: %v", err)
-	}
-	if calls != 2 {
-		t.Fatalf("calls=%d, want 2", calls)
 	}
 }
