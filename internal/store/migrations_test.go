@@ -6,7 +6,19 @@ import (
 	"strings"
 	"testing"
 	"testing/fstest"
+
+	dbmigrations "github.com/Au1rxx/free-vpn-subscriptions/db/migrations"
 )
+
+func TestEmbeddedMigrationFilesParse(t *testing.T) {
+	got, err := loadMigrations(dbmigrations.Files)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(got) != 8 || got[0].Version != "0001" || got[7].Version != "0008" {
+		t.Fatalf("embedded migrations=%v", got)
+	}
+}
 
 func TestSplitStatements(t *testing.T) {
 	source := "-- fnctl:statement\nCREATE TABLE a(id INT);\n-- fnctl:statement\nCREATE TABLE b(id INT);\n"
