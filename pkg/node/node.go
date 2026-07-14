@@ -23,6 +23,18 @@ const (
 	ProtoHTTPS     = "https"
 )
 
+// IsSupportedProtocol reports whether protocol has a normalized node model.
+func IsSupportedProtocol(protocol string) bool {
+	switch protocol {
+	case ProtoVLESS, ProtoVMess, ProtoTrojan, ProtoSS, ProtoSSR,
+		ProtoHysteria, ProtoHysteria2, ProtoTUIC, ProtoWireGuard,
+		ProtoSOCKS4, ProtoSOCKS5, ProtoHTTP, ProtoHTTPS:
+		return true
+	default:
+		return false
+	}
+}
+
 // Node is the normalized representation of a proxy endpoint. Fields are a
 // superset of what each protocol needs; unused fields are simply empty.
 type Node struct {

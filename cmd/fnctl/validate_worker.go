@@ -9,19 +9,23 @@ import (
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/store"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/validation"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/verify"
+	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 )
 
 func newValidateWorkerCmd() *cobra.Command {
 	var once bool
 	limit, concurrency := 40, 20
-	validatorID := "ai-a1"
+	validatorID, initialProtocol := "ai-a1", ""
 	command := &cobra.Command{Use: "validate-worker", Short: "Lease and deeply validate queued nodes", RunE: func(cmd *cobra.Command, _ []string) error {
+		if initialProtocol != "" && !node.IsSupportedProtocol(initialProtocol) {
+			return fmt.Errorf("unsupported initial protocol %q", initialProtocol)
+		}
 		cfg, db, _, err := openIngestService(cmd.Context())
 		if err != nil {
 			return err
 		}
 		defer db.Close()
-		worker := validation.Worker{Queue: validation.SQLQueue{DB: db}, ValidatorID: validatorID,
+		worker := validation.Worker{Queue: validation.SQLQueue{DB: db, InitialProtocol: initialProtocol}, ValidatorID: validatorID,
 			Concurrency: concurrency, Lease: 2 * time.Minute,
 			Performance: validation.SampleRequest{URL: cfg.Verify.PerformanceURL, Bytes: cfg.Verify.PerformanceBytes,
 				Timeout: time.Duration(cfg.Verify.PerformanceTimeoutMS) * time.Millisecond},
@@ -40,6 +44,7 @@ func newValidateWorkerCmd() *cobra.Command {
 	command.Flags().IntVar(&limit, "limit", 40, "jobs claimed per batch (1-1000)")
 	command.Flags().IntVar(&concurrency, "concurrency", 20, "maximum parallel validations")
 	command.Flags().StringVar(&validatorID, "validator-id", "ai-a1", "stable validator identity")
+	command.Flags().StringVar(&initialProtocol, "initial-protocol", "", "only claim due, never-attempted jobs for this protocol")
 	return command
 }
 

@@ -21,6 +21,38 @@ type ValidationJob struct {
 }
 
 func ClaimValidationJobs(ctx context.Context, db *sql.DB, owner string, limit int, lease time.Duration) ([]ValidationJob, error) {
+	return claimValidationJobs(ctx, db, owner, limit, lease, `SELECT q.validation_job_id, q.node_config_id, q.stage,
+		q.priority, q.job_state, q.attempts, COALESCE(q.lease_owner,''),
+		q.next_attempt_at, q.leased_until, n.protocol, n.normalized_config,
+		NOT EXISTS (SELECT 1 FROM validation_attempts a
+			WHERE a.node_config_id=q.node_config_id AND a.performance_bytes IS NOT NULL
+			AND a.started_at >= DATE_SUB(UTC_TIMESTAMP(6), INTERVAL 24 HOUR))
+		FROM validation_queue q JOIN node_configs n ON n.node_config_id=q.node_config_id
+		WHERE (q.job_state='pending' AND q.next_attempt_at <= UTC_TIMESTAMP(6))
+		   OR (q.job_state='leased' AND q.leased_until <= UTC_TIMESTAMP(6))
+		ORDER BY q.priority DESC, q.next_attempt_at ASC, q.validation_job_id ASC
+		LIMIT ? FOR UPDATE SKIP LOCKED`, limit)
+}
+
+func ClaimInitialValidationJobsByProtocol(ctx context.Context, db *sql.DB, owner, protocol string, limit int, lease time.Duration) ([]ValidationJob, error) {
+	if protocol == "" {
+		return nil, fmt.Errorf("initial validation protocol is required")
+	}
+	return claimValidationJobs(ctx, db, owner, limit, lease, `SELECT q.validation_job_id, q.node_config_id, q.stage,
+		q.priority, q.job_state, q.attempts, COALESCE(q.lease_owner,''),
+		q.next_attempt_at, q.leased_until, n.protocol, n.normalized_config,
+		NOT EXISTS (SELECT 1 FROM validation_attempts a
+			WHERE a.node_config_id=q.node_config_id AND a.performance_bytes IS NOT NULL
+			AND a.started_at >= DATE_SUB(UTC_TIMESTAMP(6), INTERVAL 24 HOUR))
+		FROM node_configs n FORCE INDEX (idx_node_configs_export)
+		JOIN validation_queue q ON q.node_config_id=n.node_config_id
+		WHERE n.is_exportable=0 AND n.protocol=? AND q.attempts=0
+		  AND q.job_state='pending' AND q.next_attempt_at <= UTC_TIMESTAMP(6)
+		ORDER BY n.last_success_at ASC, n.node_config_id ASC
+		LIMIT ? FOR UPDATE OF q SKIP LOCKED`, protocol, limit)
+}
+
+func claimValidationJobs(ctx context.Context, db *sql.DB, owner string, limit int, lease time.Duration, selectQuery string, selectArgs ...any) ([]ValidationJob, error) {
 	if owner == "" {
 		return nil, fmt.Errorf("validation lease owner is required")
 	}
@@ -38,17 +70,7 @@ func ClaimValidationJobs(ctx context.Context, db *sql.DB, owner string, limit in
 		return nil, err
 	}
 	defer tx.Rollback()
-	rows, err := tx.QueryContext(ctx, `SELECT q.validation_job_id, q.node_config_id, q.stage,
-		q.priority, q.job_state, q.attempts, COALESCE(q.lease_owner,''),
-		q.next_attempt_at, q.leased_until, n.protocol, n.normalized_config,
-		NOT EXISTS (SELECT 1 FROM validation_attempts a
-			WHERE a.node_config_id=q.node_config_id AND a.performance_bytes IS NOT NULL
-			AND a.started_at >= DATE_SUB(UTC_TIMESTAMP(6), INTERVAL 24 HOUR))
-		FROM validation_queue q JOIN node_configs n ON n.node_config_id=q.node_config_id
-		WHERE (q.job_state='pending' AND q.next_attempt_at <= UTC_TIMESTAMP(6))
-		   OR (q.job_state='leased' AND q.leased_until <= UTC_TIMESTAMP(6))
-		ORDER BY q.priority DESC, q.next_attempt_at ASC, q.validation_job_id ASC
-		LIMIT ? FOR UPDATE SKIP LOCKED`, limit)
+	rows, err := tx.QueryContext(ctx, selectQuery, selectArgs...)
 	if err != nil {
 		return nil, fmt.Errorf("select validation jobs: %w", err)
 	}

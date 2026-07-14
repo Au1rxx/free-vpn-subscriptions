@@ -9,7 +9,7 @@
 **Tech Stack:** Go 1.25、`database/sql`、MySQL 9.7 `FOR UPDATE OF q SKIP LOCKED`、Cobra、Bash、systemd。
 
 **Status:** Active
-**Progress:** 0/5 tasks complete (0%)
+**Progress:** 3/5 tasks complete (60%)
 **Updated:** 2026-07-14
 
 ## Global Constraints
@@ -51,15 +51,15 @@
 
 ### Task 1: 过滤领取事务
 
-- [ ] **Task 1: 为指定协议领取未首验任务**
-  - Status: pending
+- [x] **Task 1: 为指定协议领取未首验任务**
+  - Status: completed
   - Files: `internal/store/validation_queue.go`, `internal/store/validation_queue_test.go`
   - Interfaces:
     - Consumes: `ClaimValidationJobs(ctx context.Context, db *sql.DB, owner string, limit int, lease time.Duration)` 的现有租约语义。
     - Produces: `ClaimInitialValidationJobsByProtocol(ctx context.Context, db *sql.DB, owner, protocol string, limit int, lease time.Duration) ([]ValidationJob, error)`。
   - Acceptance: 混合协议夹具只领取目标协议；排除 attempts>0、未到期、leased 和 exportable 行；并发 owner 不重复领取；旧接口测试保持通过。
   - Verification: `VPN_NODE_TEST_CONFIG=/tmp/vpn-node-validation-test.yaml go test ./internal/store -run 'TestClaimInitialValidationJobsByProtocol' -count=1 -v`
-  - Evidence: 验证通过后填写。
+  - Evidence: `2026-07-14` RED 仅因新函数未定义而失败；GREEN 在 MySQL 9.7 临时库通过过滤和双 owner 并发测试（4 个唯一任务、0 重复），旧参数校验测试通过；cleanup 后匹配测试库数量为 0。
 
   - [ ] **Step 1: 写 RED 集成测试和临时库夹具**
 
@@ -115,8 +115,8 @@
 
 ### Task 2: 协议校验、SQLQueue 路由与 CLI
 
-- [ ] **Task 2: 增加 `--initial-protocol` 并在数据库连接前拒绝非法值**
-  - Status: pending
+- [x] **Task 2: 增加 `--initial-protocol` 并在数据库连接前拒绝非法值**
+  - Status: completed
   - Files: `pkg/node/node.go`, `pkg/node/node_test.go`, `internal/validation/worker.go`, `internal/validation/worker_test.go`, `cmd/fnctl/validate_worker.go`, `cmd/fnctl/validate_worker_test.go`
   - Interfaces:
     - Produces: `node.IsSupportedProtocol(protocol string) bool`。
@@ -124,7 +124,7 @@
     - Produces: Cobra 字符串参数 `--initial-protocol`。
   - Acceptance: 所有 13 个模型协议通过校验，未知值失败；CLI 在读取不存在的 config 前返回 unsupported protocol；空参数行为不变。
   - Verification: `go test ./pkg/node ./internal/validation ./cmd/fnctl -count=1`
-  - Evidence: 验证通过后填写。
+  - Evidence: helper 与 flag 测试先分别因 undefined 和 unknown flag 失败；实现后 `pkg/node`、`internal/validation`、`cmd/fnctl` 全部通过。13 个协议常量均被识别，非法协议在不存在的 config 被读取前返回明确错误，空 flag 默认兼容旧路径。
 
   - [ ] **Step 1: 写协议与 CLI RED 测试**
 
@@ -173,12 +173,12 @@
 
 ### Task 3: 公共仓库全量验证与审阅
 
-- [ ] **Task 3: 完成回归、竞态、静态检查与差异审阅**
-  - Status: pending
+- [x] **Task 3: 完成回归、竞态、静态检查与差异审阅**
+  - Status: completed
   - Files: Task 1/2 的全部公共仓库文件、本计划文件。
   - Acceptance: 全仓测试、vet、相关 race 测试全部通过；无 migration 变化；审阅无 Critical/Important 问题。
   - Verification: 下述命令全部退出 0。
-  - Evidence: 验证通过后填写。
+  - Evidence: `go test ./...`、`go vet ./...`、4 个相关包 race、带真实 MySQL 的过滤领取 race、`git diff --check` 全部退出 0；migration diff 为空。代码审阅无 Critical/Important 发现。生产只读 EXPLAIN 使用 `idx_node_configs_export` 与 `uk_validation_queue_node_stage` 且无 filesort；HTTP/HTTPS/SOCKS5 到期未首验候选分别为 502,196/466,710/499,694。
 
   - [ ] **Step 1: 运行全量和竞态验证**
 
@@ -275,6 +275,7 @@
 ## Change Log
 
 - 2026-07-14: 从已批准的 `docs/superpowers/specs/2026-07-14-protocol-fair-validation-bootstrap-design.md` 创建；明确公共代码、私有 systemd 和生产无重启验收边界。
+- 2026-07-14: 完成公共仓库 TDD、MySQL 并发验证、全仓回归和生产 EXPLAIN；无 schema 变化。
 
 ## Rollback
 

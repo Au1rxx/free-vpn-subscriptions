@@ -24,9 +24,15 @@ type VerificationEngine interface {
 	Verify(context.Context, *node.Node, verify.Request) verify.Result
 }
 
-type SQLQueue struct{ DB *sql.DB }
+type SQLQueue struct {
+	DB              *sql.DB
+	InitialProtocol string
+}
 
 func (q SQLQueue) Claim(ctx context.Context, owner string, limit int, lease time.Duration) ([]store.ValidationJob, error) {
+	if q.InitialProtocol != "" {
+		return store.ClaimInitialValidationJobsByProtocol(ctx, q.DB, owner, q.InitialProtocol, limit, lease)
+	}
 	return store.ClaimValidationJobs(ctx, q.DB, owner, limit, lease)
 }
 func (q SQLQueue) Extend(ctx context.Context, jobID uint64, owner string, lease time.Duration) error {
