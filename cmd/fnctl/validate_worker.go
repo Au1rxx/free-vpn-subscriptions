@@ -60,10 +60,11 @@ func newValidationStatusCmd() *cobra.Command {
 }
 
 func formatValidationStatus(status store.ValidationStatus) string {
-	return fmt.Sprintf("batches=%d attempts=%d current_statuses=%d pending_jobs=%d leased_jobs=%d expired_leases=%d\n"+
-		"passed=%d partial=%d failed=%d available=%d degraded=%d unavailable=%d\n"+
+	return fmt.Sprintf("batches=%d attempts=%d current_statuses=%d pending_jobs=%d eligible_pending_jobs=%d leased_jobs=%d expired_leases=%d oldest_pending_age_seconds=%d\n"+
+		"passed=%d partial=%d failed=%d available=%d available_24h=%d degraded=%d unavailable=%d\n"+
 		"performance_attempts=%d performance_successes=%d average_bytes_per_second=%d\n",
-		status.Batches, status.Attempts, status.CurrentStatuses, status.PendingJobs, status.LeasedJobs, status.ExpiredLeases,
-		status.Passed, status.Partial, status.Failed, status.Available, status.Degraded, status.Unavailable,
+		status.Batches, status.Attempts, status.CurrentStatuses, status.PendingJobs, status.EligiblePendingJobs,
+		status.LeasedJobs, status.ExpiredLeases, status.OldestPendingAgeSeconds,
+		status.Passed, status.Partial, status.Failed, status.Available, status.Available24H, status.Degraded, status.Unavailable,
 		status.PerformanceAttempts, status.PerformanceSuccesses, status.AverageBytesPerSecond)
 }

@@ -1,11 +1,27 @@
 package ingest
 
 import (
+	"context"
 	"testing"
 	"time"
 
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/store"
 )
+
+func TestServiceReplaySpoolReportsEmptyQueue(t *testing.T) {
+	spool, err := NewSpool(t.TempDir(), 1<<20)
+	if err != nil {
+		t.Fatal(err)
+	}
+	service := Service{Spool: spool}
+	report, err := service.ReplaySpool(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+	if report != (ReplayReport{}) {
+		t.Fatalf("unexpected replay report: %+v", report)
+	}
+}
 
 func TestIngestEnvelopeRoundTrip(t *testing.T) {
 	write := store.FetchWrite{SourceID: 7, FinishedAt: time.Unix(100, 0), StatusCode: 200, FinalURL: "https://example.test/sub", Body: []byte("nodes"), Duration: 25 * time.Millisecond}

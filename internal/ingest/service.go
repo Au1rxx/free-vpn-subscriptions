@@ -21,7 +21,9 @@ type Service struct {
 }
 
 type ImportSummary struct{ Sources, InsertedOrUpdated int }
-type FetchSummary struct{ Sources, Success, NotModified, Failed, Spooled, Bytes int }
+type FetchSummary struct {
+	Sources, Success, NotModified, Failed, Spooled, Replayed, Quarantined, Bytes int
+}
 type ParseSummary struct{ Fetches, Nodes, Errors, NewEndpoints, NewConfigs, QueueJobs, Discovered int }
 
 func (s *Service) ImportSeeds(ctx context.Context, configured []config.Source) (ImportSummary, error) {
@@ -41,11 +43,17 @@ func (s *Service) ImportSeeds(ctx context.Context, configured []config.Source) (
 }
 
 func (s *Service) Fetch(ctx context.Context, limit int) (FetchSummary, error) {
+	summary := FetchSummary{}
+	replay, err := s.ReplaySpool(ctx)
+	summary.Replayed, summary.Quarantined = replay.Persisted, replay.Quarantined
+	if err != nil {
+		return summary, fmt.Errorf("replay fetch spool: %w", err)
+	}
 	claimed, err := store.ClaimDueSources(ctx, s.DB, limit)
 	if err != nil {
-		return FetchSummary{}, err
+		return summary, err
 	}
-	summary := FetchSummary{Sources: len(claimed)}
+	summary.Sources = len(claimed)
 	for _, source := range claimed {
 		started := time.Now().UTC()
 		response, fetchErr := sources.FetchRaw(ctx, sources.Request{
@@ -78,6 +86,15 @@ func (s *Service) Fetch(ctx context.Context, limit int) (FetchSummary, error) {
 		}
 	}
 	return summary, nil
+}
+
+// ReplaySpool persists fetches retained during a prior transient database
+// failure before claiming new network work.
+func (s *Service) ReplaySpool(ctx context.Context) (ReplayReport, error) {
+	if s.Spool == nil {
+		return ReplayReport{}, nil
+	}
+	return s.Spool.Replay(ctx, s)
 }
 
 func (s *Service) Parse(ctx context.Context, limit int) (ParseSummary, error) {

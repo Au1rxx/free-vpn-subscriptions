@@ -44,8 +44,9 @@ func newFetchCmd() *cobra.Command {
 		if err != nil {
 			return err
 		}
-		fmt.Fprintf(cmd.OutOrStdout(), "sources=%d success=%d not_modified=%d failed=%d spooled=%d bytes=%d\n",
-			summary.Sources, summary.Success, summary.NotModified, summary.Failed, summary.Spooled, summary.Bytes)
+		fmt.Fprintf(cmd.OutOrStdout(), "sources=%d success=%d not_modified=%d failed=%d spooled=%d replayed=%d quarantined=%d bytes=%d\n",
+			summary.Sources, summary.Success, summary.NotModified, summary.Failed, summary.Spooled,
+			summary.Replayed, summary.Quarantined, summary.Bytes)
 		return nil
 	}}
 	command.Flags().IntVar(&limit, "limit", 100, "maximum due sources to fetch (1-1000)")
@@ -110,8 +111,9 @@ func newIngestStatusCmd() *cobra.Command {
 
 func formatIngestStatus(status store.IngestStatus) string {
 	var output strings.Builder
-	fmt.Fprintf(&output, "sources=%d fetches=%d pending_fetches=%d parse_runs=%d\n", status.Sources, status.Fetches, status.PendingFetches, status.ParseRuns)
+	fmt.Fprintf(&output, "sources=%d enabled_sources=%d fetches=%d pending_fetches=%d parse_runs=%d\n", status.Sources, status.EnabledSources, status.Fetches, status.PendingFetches, status.ParseRuns)
 	fmt.Fprintf(&output, "endpoints=%d configs=%d parse_errors=%d queue_pending=%d\n", status.Endpoints, status.Configs, status.ParseErrors, status.QueuePending)
+	fmt.Fprintf(&output, "fetches_24h=%d successful_fetches_24h=%d failed_fetches_24h=%d\n", status.Fetches24H, status.SuccessfulFetches24H, status.FailedFetches24H)
 	protocols := make([]string, 0, len(status.ByProtocol))
 	for protocol := range status.ByProtocol {
 		protocols = append(protocols, protocol)

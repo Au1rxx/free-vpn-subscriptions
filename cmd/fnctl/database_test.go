@@ -68,15 +68,27 @@ func TestFormatDatabaseStatusIsBoundedAndContainsNoDSN(t *testing.T) {
 func TestFormatValidationStatusIncludesPerformanceCoverage(t *testing.T) {
 	status := store.ValidationStatus{Batches: 10, Attempts: 20, CurrentStatuses: 18,
 		PendingJobs: 5, LeasedJobs: 2, ExpiredLeases: 1, Passed: 8, Partial: 2, Failed: 10,
-		Available: 8, Degraded: 2, Unavailable: 10, PerformanceAttempts: 7,
+		Available: 8, Available24H: 6, Degraded: 2, Unavailable: 10,
+		EligiblePendingJobs: 4, OldestPendingAgeSeconds: 3600, PerformanceAttempts: 7,
 		PerformanceSuccesses: 6, AverageBytesPerSecond: 1048576}
 	out := formatValidationStatus(status)
-	for _, want := range []string{"attempts=20", "performance_attempts=7", "performance_successes=6", "average_bytes_per_second=1048576"} {
+	for _, want := range []string{"attempts=20", "available_24h=6", "eligible_pending_jobs=4", "oldest_pending_age_seconds=3600", "performance_attempts=7", "performance_successes=6", "average_bytes_per_second=1048576"} {
 		if !strings.Contains(out, want) {
 			t.Errorf("validation status missing %q: %s", want, out)
 		}
 	}
 	if lines := strings.Count(out, "\n"); lines > 5 {
 		t.Fatalf("validation status output too long: %d lines", lines)
+	}
+}
+
+func TestFormatIngestStatusIncludesSourceHealth(t *testing.T) {
+	status := store.IngestStatus{Sources: 65, EnabledSources: 63, Fetches24H: 60,
+		SuccessfulFetches24H: 57, FailedFetches24H: 3, ByProtocol: map[string]uint64{}}
+	out := formatIngestStatus(status)
+	for _, want := range []string{"sources=65", "enabled_sources=63", "fetches_24h=60", "successful_fetches_24h=57", "failed_fetches_24h=3"} {
+		if !strings.Contains(out, want) {
+			t.Errorf("ingest status missing %q: %s", want, out)
+		}
 	}
 }
