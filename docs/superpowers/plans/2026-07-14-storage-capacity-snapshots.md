@@ -8,9 +8,9 @@
 
 **Tech Stack:** Go、database/sql、MySQL 9.7、现有真实 MySQL 集成测试、systemd。
 
-**Status:** Active
+**Status:** Completed
 
-**Progress:** 0/2 tasks complete (0%)
+**Progress:** 2/2 tasks complete (100%)
 
 **Updated:** 2026-07-14
 
@@ -27,14 +27,16 @@
 
 ## Tasks
 
-- [ ] **Task 1: 以真实 MySQL 集成测试实现幂等表级采样**
-  - Status: pending
+- [x] **Task 1: 以真实 MySQL 集成测试实现幂等表级采样**
+  - Status: completed
   - Files: `internal/store/storage_metrics.go`, `internal/store/storage_metrics_test.go`
   - Acceptance: 首次采样行数等于当前 schema 表数；字段、50GiB 容量和使用率正确；相同时间重试不增加行数并更新水位；零容量在访问数据库前失败；测试清理完整。
   - Verification: `VPN_NODE_TEST_CONFIG=/etc/free-vpn-harvester/config.yaml go test ./internal/store -run TestRecordStorageMetricsIntegration -count=1 -v`
-  - Evidence: 记录 RED 未定义符号、GREEN 写入行数、幂等结果和测试前后生产表行数。
+  - Evidence: RED 在三个调用点因 `RecordStorageMetrics` 未定义编译失败；GREEN 真实 MySQL
+    集成测试 2.84 秒通过，首次完整写入、同时间幂等更新、50GiB/10%→20% 和零容量均符合
+    契约。defer 清理后生产 `storage_metrics` 仍为 0；store 测试和 vet 通过。
 
-  - [ ] **Step 1: 写入失败集成测试**
+  - [x] **Step 1: 写入失败集成测试**
 
     加载 `VPN_NODE_TEST_CONFIG`，以 20 秒 context 打开真实 MySQL。采样时间使用
     `time.Now().UTC().Add(24*time.Hour).Truncate(time.Microsecond)`，避免与生产维护冲突；defer
@@ -48,7 +50,7 @@
     schema/name/capacity/usage 为 `vpn_nodes`、`node_configs`、`50<<30`、`10.000`。再次以
     `10<<30` 调用，行数不增加且 usage 更新为 `20.000`。零容量返回错误。
 
-  - [ ] **Step 2: 运行 RED**
+  - [x] **Step 2: 运行 RED**
 
     Run:
 
@@ -60,7 +62,7 @@
 
     Expected: 编译失败，`RecordStorageMetrics` 未定义。
 
-  - [ ] **Step 3: 实现最小采样函数**
+  - [x] **Step 3: 实现最小采样函数**
 
     新文件导出：
 
@@ -73,32 +75,40 @@
     插入 9 个业务字段，使用 `ON DUPLICATE KEY UPDATE` 更新行数、字节、容量、使用率；错误包装
     为 `record storage metrics`。返回 `RowsAffected()`。
 
-  - [ ] **Step 4: 运行 GREEN、重复和清理检查**
+  - [x] **Step 4: 运行 GREEN、重复和清理检查**
 
     运行 targeted integration 两次；每次测试前后查询 `storage_metrics` 总行数必须相同，确保
     defer 清理。执行 `go test ./internal/store -count=1` 和 `go vet ./internal/store`。
 
-  - [ ] **Step 5: 提交存储层**
+  - [x] **Step 5: 提交存储层**
 
     ```bash
     git add internal/store/storage_metrics.go internal/store/storage_metrics_test.go
     git commit -m "feat: persist storage capacity snapshots"
     ```
 
-- [ ] **Task 2: 接入维护服务、部署并生成首组生产快照**
-  - Status: pending
+- [x] **Task 2: 接入维护服务、部署并生成首组生产快照**
+  - Status: completed
   - Files: `internal/maintain/service.go`, `cmd/fnctl/maintain.go`, `cmd/fnctl/maintain_test.go`, `docs/superpowers/plans/2026-07-14-storage-capacity-snapshots.md`
   - Acceptance: dry-run 报告采样 0；非 dry-run 在维护成功后记录完整表组并报告行数；全量测试通过；生产首组恰好覆盖 22 张表且核心运行态不变。
   - Verification: `go test ./... -count=1 && go vet ./...`
-  - Evidence: 记录全量测试、二进制 SHA、生产维护输出、快照时间/行数/水位、PID 和影子 epoch。
+  - Evidence: CLI 合同先因字段/helper 未定义按预期 RED，随后 targeted 测试通过；`go test ./...`、
+    `go vet ./...` 及 store/maintain/fnctl race 测试全部退出 0。部署二进制 SHA256 为
+    `3044e6520a5a22d49270289b442d9865f5d13f79ad7964befc268b80a79975d9`，备份位于
+    `/var/lib/free-vpn-harvester/deploy-backups/storage-metrics-20260714T160352Z/fnctl`。
+    部署前后 dry-run 都输出 `storage_metric_rows=0` 且表行数不变；生产维护于
+    `2026-07-14 16:04:11–16:04:53 UTC` 成功，输出 `storage_metric_rows=22`。首组快照时间为
+    `2026-07-14 16:04:12.872490 UTC`，22 行覆盖 22 张表，容量均为 53,687,091,200 字节，
+    使用率均为 10.294%，数据/索引/总字节分别为 2,903,293,952 / 1,991,180,288 /
+    4,894,474,240。隧道和验证 Worker PID、`NRestarts=0`、影子 epoch 1784024768 未变化。
 
-  - [ ] **Step 1: 写入 service/CLI 失败合同**
+  - [x] **Step 1: 写入 service/CLI 失败合同**
 
     新建 `cmd/fnctl/maintain_test.go`，构造 `maintain.Report{StorageMetricRows: 22}`，调用
     `writeMaintenanceReport(&buffer, report)`，要求输出含 `storage_metric_rows=22`。先运行
     `go test ./cmd/fnctl -run TestWriteMaintenanceReport -count=1`，旧代码因字段和函数未定义失败。
 
-  - [ ] **Step 2: 在非 dry-run 成功路径记录快照**
+  - [x] **Step 2: 在非 dry-run 成功路径记录快照**
 
     `RunMaintenance` 成功后：
 
@@ -117,7 +127,7 @@
     `writeMaintenanceReport(io.Writer, maintain.Report) error`，单行末尾追加
     `storage_metric_rows=%d`，命令调用该 helper。
 
-  - [ ] **Step 3: 运行全量验证**
+  - [x] **Step 3: 运行全量验证**
 
     Run:
 
@@ -131,25 +141,25 @@
 
     Expected: 全部退出 0。
 
-  - [ ] **Step 4: 构建并原子部署 fnctl**
+  - [x] **Step 4: 构建并原子部署 fnctl**
 
     构建临时二进制、记录 SHA；备份当前 `/opt/free-vpn-harvester/fnctl`，安装 `.fnctl.new` 后
     同文件系统 `mv -f`。部署前后记录隧道/验证 Worker PID、`NRestarts` 和影子 epoch，不重启
     任何长驻 service。
 
-  - [ ] **Step 5: 验证 dry-run 只读并执行一次生产维护**
+  - [x] **Step 5: 验证 dry-run 只读并执行一次生产维护**
 
     先记录 `storage_metrics` 行数，运行 `fnctl maintain --dry-run`，确认行数不变且
     `storage_metric_rows=0`。随后 `systemctl start --no-block free-vpn-maintain.service`，后台等待
     结果；要求 Result=success、TTL/异常计数符合策略、`storage_metric_rows=22`。
 
-  - [ ] **Step 6: 验证首组容量历史和运行态**
+  - [x] **Step 6: 验证首组容量历史和运行态**
 
     SQL 要求最新 `sampled_at` 恰好 22 行、22 个不同表、capacity 全为 53,687,091,200、使用率
     一致且约 10%；`node_configs` 等主要表字段非零。核心 PID/重启次数、影子 epoch、严格影子
     门禁和 legacy 发布状态不变。
 
-  - [ ] **Step 7: 提交服务接入和计划证据**
+  - [x] **Step 7: 提交服务接入和计划证据**
 
     ```bash
     git add internal/maintain/service.go cmd/fnctl/maintain.go \
@@ -169,6 +179,9 @@
 ## Change Log
 
 - 2026-07-14: 从已批准容量快照设计创建；初始进度 0/2。
+- 2026-07-14: Task 1 完成；真实 MySQL RED/GREEN、幂等和清理验证通过，进度 1/2。
+- 2026-07-14: Task 2 完成；服务/CLI 接入、全量与 race 验证、原子部署、dry-run 不变量、
+  生产首组 22 表容量快照及核心运行态验收全部通过，进度 2/2。
 
 ## Rollback
 
@@ -176,5 +189,5 @@
 
 ## Completion
 
-完成标准是生产首组容量历史、dry-run 不变量、全量测试和核心运行态全部验证。总体目标继续等待
-48/72 小时门槛，公共发布保持 legacy。
+生产首组容量历史、dry-run 不变量、全量测试和核心运行态均已验证。总体目标继续等待 48/72
+小时门槛，公共发布保持 legacy。
