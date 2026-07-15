@@ -1,0 +1,42 @@
+proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: 01-shadowsocks-EPODONIOS
+      password: gUwJ1ZTfKHBVJnUQ
+      port: 443
+      server: 168.63.58.89
+      type: ss
+      udp: true
+    - name: "02-trojan-\U0001F1EE\U0001F1EA IE 6"
+      password: XG59623478
+      port: 443
+      server: singular-lark.rooster465.autos
+      skip-cert-verify: false
+      sni: singular-lark.rooster465.autos
+      type: trojan
+      udp: true
+    - name: "03-trojan-\U0001F1EE\U0001F1EA IE 4"
+      password: XG59623478
+      port: 443
+      server: 3.249.67.252
+      skip-cert-verify: false
+      sni: singular-lark.rooster465.autos
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-shadowsocks-EPODONIOS
+        - "02-trojan-\U0001F1EE\U0001F1EA IE 6"
+        - "03-trojan-\U0001F1EE\U0001F1EA IE 4"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-shadowsocks-EPODONIOS
+        - "02-trojan-\U0001F1EE\U0001F1EA IE 6"
+        - "03-trojan-\U0001F1EE\U0001F1EA IE 4"
+      type: select
+rules:
+    - MATCH,select
