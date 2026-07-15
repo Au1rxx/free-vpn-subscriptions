@@ -1,0 +1,78 @@
+{
+  "outbounds": [
+    {
+      "server": "45.130.125.207",
+      "server_port": 443,
+      "tag": "01-vless-⚡ b2n.ir/v2ray-configs | 491",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "support.zoom.us.yxls.eu.cc"
+      },
+      "type": "vless",
+      "uuid": "6680846a-8a57-4dfd-9a0e-63209cfc8535"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "45.206.5.122",
+      "server_port": 443,
+      "tag": "02-vless-🇨🇦 加拿大 | CAN",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "pPi-WO8qQFFZ9UJWNLW9YClbjcoAAZWJQ2_FM3Kjhz8",
+          "short_id": "500aec9e9e5e2212"
+        },
+        "server_name": "storage.yandex.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "11e57eeb-ffdf-4983-a9fa-ad352dea7253"
+    },
+    {
+      "server": "45.130.125.114",
+      "server_port": 8443,
+      "tag": "03-vless-⚡ b2n.ir/v2ray-configs | 356",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "srv10.perfectbulk.info"
+      },
+      "type": "vless",
+      "uuid": "f3b8c2a1-9d4e-4b7f-a6c5-2e8d1f0b4a93"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-vless-⚡ b2n.ir/v2ray-configs | 491",
+        "02-vless-🇨🇦 加拿大 | CAN",
+        "03-vless-⚡ b2n.ir/v2ray-configs | 356"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-vless-⚡ b2n.ir/v2ray-configs | 491",
+        "02-vless-🇨🇦 加拿大 | CAN",
+        "03-vless-⚡ b2n.ir/v2ray-configs | 356"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

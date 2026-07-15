@@ -1,0 +1,53 @@
+proxies:
+    - name: 01-vless-⚡ b2n.ir/v2ray-configs | 491
+      network: ws
+      port: 443
+      server: 45.130.125.207
+      servername: support.zoom.us.yxls.eu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6680846a-8a57-4dfd-9a0e-63209cfc8535
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: "02-vless-\U0001F1E8\U0001F1E6 加拿大 | CAN"
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: pPi-WO8qQFFZ9UJWNLW9YClbjcoAAZWJQ2_FM3Kjhz8
+        short-id: 500aec9e9e5e2212
+      server: 45.206.5.122
+      servername: storage.yandex.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 11e57eeb-ffdf-4983-a9fa-ad352dea7253
+    - name: 03-vless-⚡ b2n.ir/v2ray-configs | 356
+      network: ws
+      port: 8443
+      server: 45.130.125.114
+      servername: srv10.perfectbulk.info
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: f3b8c2a1-9d4e-4b7f-a6c5-2e8d1f0b4a93
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-vless-⚡ b2n.ir/v2ray-configs | 491
+        - "02-vless-\U0001F1E8\U0001F1E6 加拿大 | CAN"
+        - 03-vless-⚡ b2n.ir/v2ray-configs | 356
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-vless-⚡ b2n.ir/v2ray-configs | 491
+        - "02-vless-\U0001F1E8\U0001F1E6 加拿大 | CAN"
+        - 03-vless-⚡ b2n.ir/v2ray-configs | 356
+      type: select
+rules:
+    - MATCH,select
