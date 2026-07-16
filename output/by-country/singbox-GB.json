@@ -1,0 +1,80 @@
+{
+  "outbounds": [
+    {
+      "method": "aes-128-gcm",
+      "password": "shadowsocks",
+      "server": "141.98.101.182",
+      "server_port": 443,
+      "tag": "01-shadowsocks-🇬🇧GB-141.98.101.182-0160",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-128-gcm",
+      "password": "shadowsocks",
+      "server": "141.98.101.179",
+      "server_port": 443,
+      "tag": "02-shadowsocks-🇬🇧GB-141.98.101.179-0163",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "rc4-md5",
+      "password": "14fFPrbezE3HDZzsMOr6",
+      "server": "146.70.61.37",
+      "server_port": 8080,
+      "tag": "03-shadowsocks-🇬🇧GB-146.70.61.37-5970",
+      "type": "shadowsocks"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "31.76.91.102",
+      "server_port": 443,
+      "tag": "04-vless-🇯🇵 日本 | JPN",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "USffNprEM08MHiuVy5bj6-kvxugxycuZcgQDFJyz2Wc",
+          "short_id": "8f9d033ad6d2cebf"
+        },
+        "server_name": "jp1.cyphervpn.pro",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "8bba3194-4856-46d1-8319-075817d87eb1"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-shadowsocks-🇬🇧GB-141.98.101.182-0160",
+        "02-shadowsocks-🇬🇧GB-141.98.101.179-0163",
+        "03-shadowsocks-🇬🇧GB-146.70.61.37-5970",
+        "04-vless-🇯🇵 日本 | JPN"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-shadowsocks-🇬🇧GB-141.98.101.182-0160",
+        "02-shadowsocks-🇬🇧GB-141.98.101.179-0163",
+        "03-shadowsocks-🇬🇧GB-146.70.61.37-5970",
+        "04-vless-🇯🇵 日本 | JPN"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
