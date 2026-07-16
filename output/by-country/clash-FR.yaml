@@ -1,49 +1,67 @@
 proxies:
-    - name: "01-hysteria2- By EbraSha \U0001F9BE"
-      password: dongtaiwang.com
-      port: 22000
-      server: 62.210.124.146
-      skip-cert-verify: true
-      sni: www.microsoft.com
-      type: hysteria2
+    - name: "01-vless-\U0001F1EB\U0001F1F7 FR 1"
+      network: tcp
+      port: 22223
+      server: 51.44.144.101
+      type: vless
+      udp: true
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
     - cipher: chacha20-ietf-poly1305
-      name: 02-shadowsocks-EPODONIOS
+      name: "02-shadowsocks-\U0001F1EB\U0001F1F7 FR 3"
+      password: Vr06rU_v1vFPYeXq9zbsAA
+      port: 1080
+      server: 194.187.249.218
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: 03-shadowsocks-EPODONIOS
+      password: Vr06rU_v1vFPYeXq9zbsAA
+      port: 1080
+      server: 163.172.244.41
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: 04-shadowsocks-EPODONIOS
+      password: Vr06rU_v1vFPYeXq9zbsAA
+      port: 1080
+      server: 194.187.249.220
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "05-shadowsocks-\U0001FAAD28@oneclickvpnkeys"
       password: Vr06rU_v1vFPYeXq9zbsAA
       port: 1080
       server: 185.156.173.206
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
-      name: "03-shadowsocks-\U0001F1EB\U0001F1F7FR-\U0001F680@VPNine1"
+      name: 06-shadowsocks-EPODONIOS
       password: Vr06rU_v1vFPYeXq9zbsAA
       port: 1080
-      server: 62.210.123.100
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: "04-shadowsocks-\U0001FAAD57@oneclickvpnkeys"
-      password: Vr06rU_v1vFPYeXq9zbsAA
-      port: 1080
-      server: 163.172.244.41
+      server: 217.138.207.106
       type: ss
       udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - "01-hysteria2- By EbraSha \U0001F9BE"
-        - 02-shadowsocks-EPODONIOS
-        - "03-shadowsocks-\U0001F1EB\U0001F1F7FR-\U0001F680@VPNine1"
-        - "04-shadowsocks-\U0001FAAD57@oneclickvpnkeys"
+        - "01-vless-\U0001F1EB\U0001F1F7 FR 1"
+        - "02-shadowsocks-\U0001F1EB\U0001F1F7 FR 3"
+        - 03-shadowsocks-EPODONIOS
+        - 04-shadowsocks-EPODONIOS
+        - "05-shadowsocks-\U0001FAAD28@oneclickvpnkeys"
+        - 06-shadowsocks-EPODONIOS
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - "01-hysteria2- By EbraSha \U0001F9BE"
-        - 02-shadowsocks-EPODONIOS
-        - "03-shadowsocks-\U0001F1EB\U0001F1F7FR-\U0001F680@VPNine1"
-        - "04-shadowsocks-\U0001FAAD57@oneclickvpnkeys"
+        - "01-vless-\U0001F1EB\U0001F1F7 FR 1"
+        - "02-shadowsocks-\U0001F1EB\U0001F1F7 FR 3"
+        - 03-shadowsocks-EPODONIOS
+        - 04-shadowsocks-EPODONIOS
+        - "05-shadowsocks-\U0001FAAD28@oneclickvpnkeys"
+        - 06-shadowsocks-EPODONIOS
       type: select
 rules:
     - MATCH,select
