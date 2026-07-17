@@ -91,6 +91,26 @@ func TestReadValidationStatusAggregatesEachTable(t *testing.T) {
 	}
 }
 
+func TestReadValidationStatusRunsIndependentAggregatesConcurrently(t *testing.T) {
+	db, ctx := openValidationStatusTestDatabase(t)
+	original := validationStatusQueries
+	validationStatusQueries = []string{
+		`SELECT 0 FROM (SELECT SLEEP(0.5)) AS delay_row`,
+		`SELECT 0,0,0,0,0 FROM (SELECT SLEEP(0.5)) AS delay_row`,
+		`SELECT 0,0,0,0,0,0,0 FROM (SELECT SLEEP(0.5)) AS delay_row`,
+		`SELECT 0,0,0,0,0,0,0,0,0,0,0,0,0 FROM (SELECT SLEEP(0.5)) AS delay_row`,
+	}
+	t.Cleanup(func() { validationStatusQueries = original })
+
+	started := time.Now()
+	if _, err := ReadValidationStatus(ctx, db); err != nil {
+		t.Fatal(err)
+	}
+	if elapsed := time.Since(started); elapsed >= 1500*time.Millisecond {
+		t.Fatalf("independent aggregates took %s, want less than 1.5s", elapsed)
+	}
+}
+
 func openValidationStatusTestDatabase(t *testing.T) (*sql.DB, context.Context) {
 	t.Helper()
 	configPath := os.Getenv("VPN_NODE_TEST_CONFIG")
