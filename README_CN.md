@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-![节点](https://img.shields.io/badge/节点-150-brightgreen) ![存活](https://img.shields.io/badge/存活-2296-blue) ![中位延迟](https://img.shields.io/badge/中位延迟-399ms-orange) ![更新](https://img.shields.io/badge/更新-2026-07-17_18:17_UTC-informational)
+![节点](https://img.shields.io/badge/节点-150-brightgreen) ![存活](https://img.shields.io/badge/存活-2303-blue) ![中位延迟](https://img.shields.io/badge/中位延迟-402ms-orange) ![更新](https://img.shields.io/badge/更新-2026-07-17_19:23_UTC-informational)
 
 > **获取可用免费 VPN 的最简单方式 —— 复制订阅链接,粘贴到客户端,连上。**  
 > 无需注册。无需付费。无需安装任何二进制。每小时从公共源自动抓取 —— 每个发布的节点都在几分钟前通过 sing-box 真实转发过 HTTP 流量。
@@ -77,8 +77,8 @@ proxy-groups:
 
 | 国家/地区 | 节点数 | Clash | sing-box | v2ray |
 |---|---|---|---|---|
-| 🇯🇵 Japan (`JP`) | 95 | [clash-JP.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-JP.yaml) | [singbox-JP.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-JP.json) | [v2ray-base64-JP.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-JP.txt) |
-| 🇺🇸 United States (`US`) | 32 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
+| 🇯🇵 Japan (`JP`) | 102 | [clash-JP.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-JP.yaml) | [singbox-JP.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-JP.json) | [v2ray-base64-JP.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-JP.txt) |
+| 🇺🇸 United States (`US`) | 30 | [clash-US.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-US.yaml) | [singbox-US.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-US.json) | [v2ray-base64-US.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-US.txt) |
 | 🇩🇪 Germany (`DE`) | 5 | [clash-DE.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-DE.yaml) | [singbox-DE.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-DE.json) | [v2ray-base64-DE.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-DE.txt) |
 | 🇨🇦 Canada (`CA`) | 4 | [clash-CA.yaml](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/clash-CA.yaml) | [singbox-CA.json](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/singbox-CA.json) | [v2ray-base64-CA.txt](https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/by-country/v2ray-base64-CA.txt) |
 
@@ -102,14 +102,14 @@ proxy-groups:
 ## 📊 实时统计
 
 - **精选节点数**: 150
-- **全源存活总数**: 2296
-- **最快延迟**: 33 ms
-- **中位延迟**: 399 ms
-- **最后更新 (UTC)**: 2026-07-17 18:17 UTC
+- **全源存活总数**: 2303
+- **最快延迟**: 26 ms
+- **中位延迟**: 402 ms
+- **最后更新 (UTC)**: 2026-07-17 19:23 UTC
 
-**协议分布:** shadowsocks × 24 · trojan × 101 · vless × 14 · vmess × 11
+**协议分布:** shadowsocks × 21 · trojan × 105 · vless × 11 · vmess × 13
 
-**本次使用的源:** `barry-far-v2ray` × 1 · `epodonios` × 6 · `mahdi0024` × 58 · `mahdibland-aggregator` × 27 · `mahdibland-shadowsocks` × 25 · `matin-v2ray` × 2 · `ninjastrikers` × 5 · `pawdroid` × 8 · `ruking-clash` × 2 · `snakem982` × 13 · `surfboard-eternity` × 3
+**本次使用的源:** `epodonios` × 5 · `mahdi0024` × 66 · `mahdibland-aggregator` × 22 · `mahdibland-shadowsocks` × 26 · `matin-v2ray` × 1 · `mfuu-clash` × 1 · `ninjastrikers` × 4 · `pawdroid` × 5 · `ruking-clash` × 2 · `snakem982` × 15 · `surfboard-eternity` × 3
 
 ## ❓ 常见问题
 
