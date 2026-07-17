@@ -1,0 +1,46 @@
+proxies:
+    - name: 01-vless-荷兰 V2CROSS.COM
+      network: ws
+      port: 2087
+      server: 188.164.248.143
+      servername: vp24.cc.cd
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7b102311-43fd-4e8f-877e-8090623c101d
+    - name: 02-vless-荷兰 V2CROSS.COM
+      network: ws
+      port: 8443
+      server: 188.164.248.123
+      servername: vp21.cc.cd
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7b102311-43fd-4e8f-877e-8090623c101d
+    - cipher: chacha20-ietf-poly1305
+      name: "03-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-5801"
+      password: hbGrpfvNrJsUmKmPbR3iY2
+      port: 443
+      server: tinkered-pennies-puppies.freesocks.work
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-vless-荷兰 V2CROSS.COM
+        - 02-vless-荷兰 V2CROSS.COM
+        - "03-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-5801"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-vless-荷兰 V2CROSS.COM
+        - 02-vless-荷兰 V2CROSS.COM
+        - "03-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-5801"
+      type: select
+rules:
+    - MATCH,select
