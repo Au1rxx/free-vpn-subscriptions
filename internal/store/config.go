@@ -51,7 +51,7 @@ func NewMySQLConfig(cfg appconfig.DatabaseConfig, password, database string) *my
 		ParseTime:         true,
 		TLSConfig:         tlsMode,
 		Timeout:           10 * time.Second,
-		ReadTimeout:       30 * time.Second,
+		ReadTimeout:       2 * time.Minute,
 		WriteTimeout:      30 * time.Second,
 		RejectReadOnly:    true,
 		CheckConnLiveness: true,

@@ -4,6 +4,7 @@ import (
 	"os"
 	"path/filepath"
 	"testing"
+	"time"
 
 	appconfig "github.com/Au1rxx/free-vpn-subscriptions/internal/config"
 )
@@ -48,5 +49,8 @@ func TestNewMySQLConfigPreservesPasswordAndRequiresTLS(t *testing.T) {
 	}
 	if got.TLSConfig != "skip-verify" || !got.ParseTime || got.Loc.String() != "UTC" {
 		t.Fatalf("tls/time config=%q/%v/%v", got.TLSConfig, got.ParseTime, got.Loc)
+	}
+	if got.ReadTimeout != 2*time.Minute {
+		t.Fatalf("read timeout=%s, want 2m", got.ReadTimeout)
 	}
 }
