@@ -1,0 +1,70 @@
+proxies:
+    - name: 01-vless-荷兰 V2CROSS.COM
+      network: ws
+      port: 2087
+      server: 188.164.248.143
+      servername: vp24.cc.cd
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7b102311-43fd-4e8f-877e-8090623c101d
+    - cipher: chacha20-ietf-poly1305
+      name: "02-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-2229"
+      password: hbGrpfvNrJsUmKmPbR3iY2
+      port: 443
+      server: tinkered-pennies-puppies.freesocks.work
+      type: ss
+      udp: true
+    - cipher: aes-128-cfb
+      name: "03-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-4178"
+      password: shadowsocks
+      port: 443
+      server: 109.201.152.181
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: "04-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0178"
+      password: CJmTCCx7Ltud
+      port: 8388
+      server: 108.181.58.239
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: 05-shadowsocks- ⚙️76@oneclickvpnkeys
+      password: VpKABcOpNNA0l5G2AVOmw8
+      port: 62685
+      server: 213.109.147.242
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: 06-shadowsocks-EPODONIOS
+      password: shadowsocks
+      port: 443
+      server: 158.173.20.208
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-vless-荷兰 V2CROSS.COM
+        - "02-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-2229"
+        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-4178"
+        - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0178"
+        - 05-shadowsocks- ⚙️76@oneclickvpnkeys
+        - 06-shadowsocks-EPODONIOS
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-vless-荷兰 V2CROSS.COM
+        - "02-shadowsocks-\U0001F1FA\U0001F1F8US-147.90.234.133-2229"
+        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-4178"
+        - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.58.239-0178"
+        - 05-shadowsocks- ⚙️76@oneclickvpnkeys
+        - 06-shadowsocks-EPODONIOS
+      type: select
+rules:
+    - MATCH,select
