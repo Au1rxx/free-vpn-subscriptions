@@ -1,0 +1,85 @@
+proxies:
+    - cipher: aes-256-cfb
+      name: "01-shadowsocks-\U0001F1EC\U0001F1E7GB-18.133.180.164-3101"
+      password: amazonskr05
+      port: 443
+      server: 18.133.180.164
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: "02-shadowsocks-\U0001F7E0\U0001F1EC\U0001F1E7[\U0001F3AC\U0001F916\U0001F4FA\U0001F3AD]_github.com/Ruk1ng001_2bf36e44"
+      password: amazonskr05
+      port: 443
+      server: 13.135.248.162
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: "03-shadowsocks-\U0001F1EC\U0001F1E7GB-18.175.139.211-3125"
+      password: amazonskr05
+      port: 443
+      server: 18.175.139.211
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: 04-shadowsocks-⚙️28@oneclickvpnkeys
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.181
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "05-shadowsocks-\U0001F1EC\U0001F1E7 GB 1"
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.179
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "06-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.178-0232"
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.178
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: 07-shadowsocks-EPODONIOS
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.182
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: "08-shadowsocks-\U0001F1EC\U0001F1E7GB-94.156.250.148-0236"
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 94.156.250.148
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - "01-shadowsocks-\U0001F1EC\U0001F1E7GB-18.133.180.164-3101"
+        - "02-shadowsocks-\U0001F7E0\U0001F1EC\U0001F1E7[\U0001F3AC\U0001F916\U0001F4FA\U0001F3AD]_github.com/Ruk1ng001_2bf36e44"
+        - "03-shadowsocks-\U0001F1EC\U0001F1E7GB-18.175.139.211-3125"
+        - 04-shadowsocks-⚙️28@oneclickvpnkeys
+        - "05-shadowsocks-\U0001F1EC\U0001F1E7 GB 1"
+        - "06-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.178-0232"
+        - 07-shadowsocks-EPODONIOS
+        - "08-shadowsocks-\U0001F1EC\U0001F1E7GB-94.156.250.148-0236"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - "01-shadowsocks-\U0001F1EC\U0001F1E7GB-18.133.180.164-3101"
+        - "02-shadowsocks-\U0001F7E0\U0001F1EC\U0001F1E7[\U0001F3AC\U0001F916\U0001F4FA\U0001F3AD]_github.com/Ruk1ng001_2bf36e44"
+        - "03-shadowsocks-\U0001F1EC\U0001F1E7GB-18.175.139.211-3125"
+        - 04-shadowsocks-⚙️28@oneclickvpnkeys
+        - "05-shadowsocks-\U0001F1EC\U0001F1E7 GB 1"
+        - "06-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.178-0232"
+        - 07-shadowsocks-EPODONIOS
+        - "08-shadowsocks-\U0001F1EC\U0001F1E7GB-94.156.250.148-0236"
+      type: select
+rules:
+    - MATCH,select
