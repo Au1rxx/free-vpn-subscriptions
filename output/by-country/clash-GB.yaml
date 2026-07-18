@@ -1,0 +1,49 @@
+proxies:
+    - cipher: aes-256-cfb
+      name: 01-shadowsocks-⚙️4@oneclickvpnkeys
+      password: amazonskr05
+      port: 443
+      server: 18.175.139.211
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: 02-shadowsocks-@v2ray_configs_pools
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.181
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: "03-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.182-0250"
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.182
+      type: ss
+      udp: true
+    - cipher: rc4-md5
+      name: "04-shadowsocks-\U0001F1EC\U0001F1E7GB-146.70.61.37-0077"
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.61.37
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-shadowsocks-⚙️4@oneclickvpnkeys
+        - 02-shadowsocks-@v2ray_configs_pools
+        - "03-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.182-0250"
+        - "04-shadowsocks-\U0001F1EC\U0001F1E7GB-146.70.61.37-0077"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-shadowsocks-⚙️4@oneclickvpnkeys
+        - 02-shadowsocks-@v2ray_configs_pools
+        - "03-shadowsocks-\U0001F1EC\U0001F1E7GB-141.98.101.182-0250"
+        - "04-shadowsocks-\U0001F1EC\U0001F1E7GB-146.70.61.37-0077"
+      type: select
+rules:
+    - MATCH,select
