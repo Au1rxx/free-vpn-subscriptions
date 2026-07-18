@@ -6,21 +6,18 @@ proxies:
       server: 108.181.118.10
       type: ss
       udp: true
-    - name: 02-vless-加拿大 TELUS
-      network: ws
-      port: 443
-      server: 74.49.214.20
-      servername: cf11.evan00.dpdns.org
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7612dd26-d0ce-4fe0-be7c-d093bb8645da
     - cipher: aes-128-gcm
-      name: "03-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0115"
+      name: "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0115"
       password: shadowsocks
       port: 443
       server: 149.22.95.183
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: 03-shadowsocks-EPODONIOS
+      password: Vr06rU_v1vFPYeXq9zbsAA
+      port: 1080
+      server: 184.75.221.134
       type: ss
       udp: true
     - cipher: rc4-md5
@@ -30,32 +27,23 @@ proxies:
       server: 137.184.174.93
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: "05-shadowsocks-@v2raybaaz[\U0001F1E8\U0001F1E6]"
-      password: Vr06rU_v1vFPYeXq9zbsAA
-      port: 1080
-      server: 184.75.221.134
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - "01-shadowsocks-\U0001F1E8\U0001F1E6CA-108.181.118.10-0102"
-        - 02-vless-加拿大 TELUS
-        - "03-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0115"
+        - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0115"
+        - 03-shadowsocks-EPODONIOS
         - "04-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0078"
-        - "05-shadowsocks-@v2raybaaz[\U0001F1E8\U0001F1E6]"
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - "01-shadowsocks-\U0001F1E8\U0001F1E6CA-108.181.118.10-0102"
-        - 02-vless-加拿大 TELUS
-        - "03-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0115"
+        - "02-shadowsocks-\U0001F1E8\U0001F1E6CA-149.22.95.183-0115"
+        - 03-shadowsocks-EPODONIOS
         - "04-shadowsocks-\U0001F1E8\U0001F1E6CA-137.184.174.93-0078"
-        - "05-shadowsocks-@v2raybaaz[\U0001F1E8\U0001F1E6]"
       type: select
 rules:
     - MATCH,select
