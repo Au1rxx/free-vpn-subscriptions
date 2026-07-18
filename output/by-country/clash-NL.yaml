@@ -1,26 +1,23 @@
 proxies:
-    - name: 01-vless-荷兰 V2CROSS.COM
-      network: ws
-      port: 2087
-      server: 188.164.248.143
-      servername: vp24.cc.cd
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7b102311-43fd-4e8f-877e-8090623c101d
     - cipher: chacha20-ietf-poly1305
-      name: "02-shadowsocks-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
+      name: "01-shadowsocks-\U0001F1FA\U0001F1F8US-38.135.24.131-0211"
       password: hbGrpfvNrJsUmKmPbR3iY2
       port: 443
       server: tinkered-pennies-puppies.freesocks.work
       type: ss
       udp: true
-    - cipher: aes-128-cfb
-      name: "03-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0104"
+    - cipher: aes-128-gcm
+      name: "02-shadowsocks-\U0001F1F3\U0001F1F1NL-158.173.20.171-5898"
       password: shadowsocks
       port: 443
-      server: 109.201.152.181
+      server: 158.173.20.171
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: 03-shadowsocks-EPODONIOS
+      password: shadowsocks
+      port: 443
+      server: 158.173.20.208
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
@@ -31,40 +28,49 @@ proxies:
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
-      name: 05-shadowsocks-TEL:Father_vpn
+      name: "05-shadowsocks-\U0001F1F3\U0001F1F1NL-213.109.147.242-6071"
+      password: VpKABcOpNNA0l5G2AVOmw8
+      port: 62685
+      server: 213.109.147.242
+      type: ss
+      udp: true
+    - cipher: aes-128-cfb
+      name: "06-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0104"
+      password: shadowsocks
+      port: 443
+      server: 109.201.152.181
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: 07-shadowsocks-@one_shop_official
       password: CJmTCCx7Ltud
       port: 8388
       server: 108.181.58.239
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: 06-shadowsocks-EPODONIOS
-      password: shadowsocks
-      port: 443
-      server: 158.173.20.208
       type: ss
       udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-vless-荷兰 V2CROSS.COM
-        - "02-shadowsocks-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
-        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0104"
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-38.135.24.131-0211"
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-158.173.20.171-5898"
+        - 03-shadowsocks-EPODONIOS
         - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0180"
-        - 05-shadowsocks-TEL:Father_vpn
-        - 06-shadowsocks-EPODONIOS
+        - "05-shadowsocks-\U0001F1F3\U0001F1F1NL-213.109.147.242-6071"
+        - "06-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0104"
+        - 07-shadowsocks-@one_shop_official
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-vless-荷兰 V2CROSS.COM
-        - "02-shadowsocks-\U0001F1FA\U0001F1F8 US美国(mibei77.com 米贝节点分享)"
-        - "03-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0104"
+        - "01-shadowsocks-\U0001F1FA\U0001F1F8US-38.135.24.131-0211"
+        - "02-shadowsocks-\U0001F1F3\U0001F1F1NL-158.173.20.171-5898"
+        - 03-shadowsocks-EPODONIOS
         - "04-shadowsocks-\U0001F1F3\U0001F1F1NL-108.181.126.122-0180"
-        - 05-shadowsocks-TEL:Father_vpn
-        - 06-shadowsocks-EPODONIOS
+        - "05-shadowsocks-\U0001F1F3\U0001F1F1NL-213.109.147.242-6071"
+        - "06-shadowsocks-\U0001F1F3\U0001F1F1NL-109.201.152.181-0104"
+        - 07-shadowsocks-@one_shop_official
       type: select
 rules:
     - MATCH,select
