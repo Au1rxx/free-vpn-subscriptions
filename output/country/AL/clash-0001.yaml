@@ -6,16 +6,9 @@ proxies:
       server: 130.49.189.158
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: 02-shadowsocks-shadowsocks-21041285
-      password: 3JB91l5ol2HvkPUduw2hj4
-      port: 57925
-      server: 157.22.240.141
-      type: ss
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: 03-vless-vless-23844904
+      name: 02-vless-vless-23844904
       network: tcp
       port: 443
       reality-opts:
@@ -32,16 +25,14 @@ proxy-groups:
       name: auto
       proxies:
         - 01-shadowsocks-shadowsocks-45640611
-        - 02-shadowsocks-shadowsocks-21041285
-        - 03-vless-vless-23844904
+        - 02-vless-vless-23844904
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - 01-shadowsocks-shadowsocks-45640611
-        - 02-shadowsocks-shadowsocks-21041285
-        - 03-vless-vless-23844904
+        - 02-vless-vless-23844904
       type: select
 rules:
     - MATCH,select
