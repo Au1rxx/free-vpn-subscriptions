@@ -1,0 +1,62 @@
+proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: 01-shadowsocks-@filembad
+      password: 9g5FMKiBS7Lw1ooW
+      port: 443
+      server: 52.236.93.73
+      type: ss
+      udp: true
+    - name: "02-trojan-\U0001F1EE\U0001F1EAIE-52.212.156.233-5950"
+      password: OD90375861
+      port: 443
+      server: wired-tick.rooster465.autos
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+    - name: "03-trojan-\U0001F1EE\U0001F1EAIE-3.255.100.31-0100"
+      password: NQ26071394
+      port: 443
+      server: thankful-piranha.rooster465.autos
+      skip-cert-verify: false
+      sni: thankful-piranha.rooster465.autos
+      type: trojan
+      udp: true
+    - name: "04-trojan-\U0001F1EE\U0001F1EAIE-108.131.117.154-0094"
+      password: NQ26071394
+      port: 443
+      server: funky-opossum.rooster465.autos
+      skip-cert-verify: false
+      sni: funky-opossum.rooster465.autos
+      type: trojan
+      udp: true
+    - name: "05-trojan-\U0001F1EE\U0001F1EAIE-3.249.67.252-0535"
+      password: XG59623478
+      port: 443
+      server: 3.249.67.252
+      skip-cert-verify: false
+      sni: singular-lark.rooster465.autos
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-shadowsocks-@filembad
+        - "02-trojan-\U0001F1EE\U0001F1EAIE-52.212.156.233-5950"
+        - "03-trojan-\U0001F1EE\U0001F1EAIE-3.255.100.31-0100"
+        - "04-trojan-\U0001F1EE\U0001F1EAIE-108.131.117.154-0094"
+        - "05-trojan-\U0001F1EE\U0001F1EAIE-3.249.67.252-0535"
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-shadowsocks-@filembad
+        - "02-trojan-\U0001F1EE\U0001F1EAIE-52.212.156.233-5950"
+        - "03-trojan-\U0001F1EE\U0001F1EAIE-3.255.100.31-0100"
+        - "04-trojan-\U0001F1EE\U0001F1EAIE-108.131.117.154-0094"
+        - "05-trojan-\U0001F1EE\U0001F1EAIE-3.249.67.252-0535"
+      type: select
+rules:
+    - MATCH,select
