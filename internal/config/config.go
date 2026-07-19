@@ -4,12 +4,15 @@ package config
 import (
 	"fmt"
 	"os"
+	"path/filepath"
+	"strings"
 
 	"gopkg.in/yaml.v3"
 )
 
 type Config struct {
 	Sources   []Source        `yaml:"sources"`
+	Database  DatabaseConfig  `yaml:"database"`
 	Probe     ProbeConfig     `yaml:"probe"`
 	Verify    VerifyConfig    `yaml:"verify"`
 	Aggregate AggregateConfig `yaml:"aggregate"`
@@ -18,33 +21,59 @@ type Config struct {
 	Readme    ReadmeConfig    `yaml:"readme"`
 }
 
+// DatabaseConfig contains non-secret MySQL connection settings. The password
+// is always read from PasswordFile at runtime and must never be stored here.
+type DatabaseConfig struct {
+	Enabled      bool   `yaml:"enabled"`
+	Address      string `yaml:"address"`
+	Name         string `yaml:"name"`
+	User         string `yaml:"user"`
+	PasswordFile string `yaml:"password_file"`
+	TLSMode      string `yaml:"tls_mode"`
+	MaxOpenConns int    `yaml:"max_open_conns"`
+	MaxIdleConns int    `yaml:"max_idle_conns"`
+}
+
 type VerifyConfig struct {
-	Enabled        bool     `yaml:"enabled"`
-	CandidatePool  int      `yaml:"candidate_pool"`
-	BatchSize      int      `yaml:"batch_size"`
-	BasePort       int      `yaml:"base_port"`
-	Concurrency    int      `yaml:"concurrency"`
-	TimeoutMS      int      `yaml:"timeout_ms"`
-	Rounds         int      `yaml:"rounds"`
-	RoundGapMS     int      `yaml:"round_gap_ms"`
-	Targets        []string `yaml:"targets"`
-	SingBoxBin     string   `yaml:"sing_box_bin"`
-	StartupTimeoutMS int    `yaml:"startup_timeout_ms"`
+	Enabled              bool     `yaml:"enabled"`
+	CandidatePool        int      `yaml:"candidate_pool"`
+	BatchSize            int      `yaml:"batch_size"`
+	BasePort             int      `yaml:"base_port"`
+	Concurrency          int      `yaml:"concurrency"`
+	TimeoutMS            int      `yaml:"timeout_ms"`
+	Rounds               int      `yaml:"rounds"`
+	RoundGapMS           int      `yaml:"round_gap_ms"`
+	Targets              []string `yaml:"targets"`
+	SingBoxBin           string   `yaml:"sing_box_bin"`
+	StartupTimeoutMS     int      `yaml:"startup_timeout_ms"`
+	PerformanceURL       string   `yaml:"performance_url"`
+	PerformanceBytes     int64    `yaml:"performance_bytes"`
+	PerformanceTimeoutMS int      `yaml:"performance_timeout_ms"`
 }
 
 type GeoIPConfig struct {
 	Enabled       bool   `yaml:"enabled"`
 	DBURL         string `yaml:"db_url"`
 	DBPath        string `yaml:"db_path"`
+	CityDBURL     string `yaml:"city_db_url"`
+	CityDBPath    string `yaml:"city_db_path"`
+	ASNDBURL      string `yaml:"asn_db_url"`
+	ASNDBPath     string `yaml:"asn_db_path"`
 	MinPerCountry int    `yaml:"min_per_country"`
 }
 
 // Source describes a single upstream subscription feed.
 type Source struct {
-	Name    string `yaml:"name"`
-	URL     string `yaml:"url"`
-	Format  string `yaml:"format"`  // uri-list | base64 | clash
-	Enabled bool   `yaml:"enabled"`
+	Name                 string `yaml:"name"`
+	URL                  string `yaml:"url"`
+	Format               string `yaml:"format"` // auto | uri-list | base64 | clash | singbox | xray
+	ProtocolHint         string `yaml:"protocol_hint"`
+	Kind                 string `yaml:"kind"`
+	DiscoveryMethod      string `yaml:"discovery_method"`
+	Depth                int    `yaml:"depth"`
+	Priority             int    `yaml:"priority"`
+	FetchIntervalSeconds int    `yaml:"fetch_interval_seconds"`
+	Enabled              bool   `yaml:"enabled"`
 }
 
 type ProbeConfig struct {
@@ -62,8 +91,8 @@ type AggregateConfig struct {
 }
 
 type OutputConfig struct {
-	Dir     string     `yaml:"dir"`
-	Formats []string   `yaml:"formats"`
+	Dir     string      `yaml:"dir"`
+	Formats []string    `yaml:"formats"`
 	Pages   PagesConfig `yaml:"pages"`
 }
 
@@ -88,6 +117,9 @@ func Load(path string) (*Config, error) {
 	if err := yaml.Unmarshal(data, &cfg); err != nil {
 		return nil, fmt.Errorf("config parse: %w", err)
 	}
+	if err := expandCredentialDirectory(&cfg); err != nil {
+		return nil, err
+	}
 	applyDefaults(&cfg)
 	if err := validate(&cfg); err != nil {
 		return nil, err
@@ -95,7 +127,47 @@ func Load(path string) (*Config, error) {
 	return &cfg, nil
 }
 
+func expandCredentialDirectory(c *Config) error {
+	path := c.Database.PasswordFile
+	if path != "%d" && !strings.HasPrefix(path, "%d/") {
+		return nil
+	}
+	directory := os.Getenv("CREDENTIALS_DIRECTORY")
+	if directory == "" {
+		return fmt.Errorf("config: password_file uses %%d but CREDENTIALS_DIRECTORY is empty")
+	}
+	relative := strings.TrimPrefix(path, "%d")
+	relative = strings.TrimPrefix(relative, "/")
+	if relative == "" {
+		c.Database.PasswordFile = filepath.Clean(directory)
+		return nil
+	}
+	if filepath.Clean(relative) != relative || strings.HasPrefix(relative, "..") {
+		return fmt.Errorf("config: password_file credential path is invalid")
+	}
+	c.Database.PasswordFile = filepath.Join(directory, relative)
+	return nil
+}
+
 func applyDefaults(c *Config) {
+	if c.Database.Address == "" {
+		c.Database.Address = "127.0.0.1:13306"
+	}
+	if c.Database.Name == "" {
+		c.Database.Name = "vpn_nodes"
+	}
+	if c.Database.User == "" {
+		c.Database.User = "adminai"
+	}
+	if c.Database.TLSMode == "" {
+		c.Database.TLSMode = "required"
+	}
+	if c.Database.MaxOpenConns == 0 {
+		c.Database.MaxOpenConns = 20
+	}
+	if c.Database.MaxIdleConns == 0 {
+		c.Database.MaxIdleConns = 10
+	}
 	if c.Probe.TimeoutMS == 0 {
 		c.Probe.TimeoutMS = 3000
 	}
@@ -122,6 +194,18 @@ func applyDefaults(c *Config) {
 	}
 	if c.GeoIP.DBPath == "" {
 		c.GeoIP.DBPath = "output/.cache/GeoLite2-Country.mmdb"
+	}
+	if c.GeoIP.CityDBURL == "" {
+		c.GeoIP.CityDBURL = "https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-City.mmdb"
+	}
+	if c.GeoIP.CityDBPath == "" {
+		c.GeoIP.CityDBPath = "output/.cache/GeoLite2-City.mmdb"
+	}
+	if c.GeoIP.ASNDBURL == "" {
+		c.GeoIP.ASNDBURL = "https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-ASN.mmdb"
+	}
+	if c.GeoIP.ASNDBPath == "" {
+		c.GeoIP.ASNDBPath = "output/.cache/GeoLite2-ASN.mmdb"
 	}
 	if c.GeoIP.MinPerCountry == 0 {
 		c.GeoIP.MinPerCountry = 3
@@ -162,9 +246,29 @@ func applyDefaults(c *Config) {
 	if c.Verify.StartupTimeoutMS == 0 {
 		c.Verify.StartupTimeoutMS = 10000
 	}
+	if c.Verify.PerformanceURL == "" {
+		c.Verify.PerformanceURL = "https://speed.cloudflare.com/__down?bytes=262144"
+	}
+	if c.Verify.PerformanceBytes == 0 {
+		c.Verify.PerformanceBytes = 256 << 10
+	}
+	if c.Verify.PerformanceTimeoutMS == 0 {
+		c.Verify.PerformanceTimeoutMS = 15000
+	}
 }
 
 func validate(c *Config) error {
+	switch c.Database.TLSMode {
+	case "required", "verify-ca", "verify-identity":
+	default:
+		return fmt.Errorf("config: database tls_mode %q is invalid", c.Database.TLSMode)
+	}
+	if c.Database.MaxOpenConns < 1 {
+		return fmt.Errorf("config: database max_open_conns must be positive")
+	}
+	if c.Database.MaxIdleConns < 0 || c.Database.MaxIdleConns > c.Database.MaxOpenConns {
+		return fmt.Errorf("config: database max_idle_conns must be between 0 and max_open_conns")
+	}
 	if len(c.Sources) == 0 {
 		return fmt.Errorf("config: no sources defined")
 	}
@@ -181,9 +285,14 @@ func validate(c *Config) error {
 			return fmt.Errorf("config: sources[%d] %q missing url", i, s.Name)
 		}
 		switch s.Format {
-		case "uri-list", "base64", "clash":
+		case "auto", "uri-list", "base64", "clash", "singbox", "xray":
 		default:
-			return fmt.Errorf("config: sources[%d] %q invalid format %q (want uri-list|base64|clash)", i, s.Name, s.Format)
+			return fmt.Errorf("config: sources[%d] %q invalid format %q", i, s.Name, s.Format)
+		}
+		switch s.ProtocolHint {
+		case "", "http", "https", "socks4", "socks5":
+		default:
+			return fmt.Errorf("config: sources[%d] %q invalid protocol_hint %q", i, s.Name, s.ProtocolHint)
 		}
 	}
 	return nil

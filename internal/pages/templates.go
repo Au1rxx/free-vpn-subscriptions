@@ -62,6 +62,7 @@ const tplIndex = `<!DOCTYPE html>
       <code><a href="{{.URLV2ray}}" target="_blank" rel="noopener">{{.URLV2ray}}</a></code>
     </div>
   </div>
+  <p><a href="{{.RepoURL}}/tree/main/output" target="_blank" rel="noopener">Database-classified shards: stable · all verified · protocol · country · network</a></p>
 </section>
 
 {{if .Countries}}

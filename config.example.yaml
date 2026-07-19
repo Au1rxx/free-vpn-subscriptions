@@ -1,10 +1,23 @@
 # config.yaml — aggregator configuration
 
+database:
+  enabled: false
+  address: 127.0.0.1:13306
+  name: vpn_nodes
+  user: adminai
+  password_file: /run/credentials/free-vpn-harvester.service/mysql-password
+  tls_mode: required
+  max_open_conns: 20
+  max_idle_conns: 10
+
 sources:
   - name: nodefree
     url: https://nodefree.org/dy/2026/04/20260419.yaml
     format: clash
     enabled: true
+
+  # 持久采集支持 auto、uri-list、base64、clash、singbox 和 xray；
+  # 成功解析的配置全部入库，不按单来源截断。
 
   - name: anaer
     url: https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml
@@ -39,3 +52,6 @@ output:
 readme:
   title: "Free VPN Subscriptions"
   repo_url: "https://github.com/Au1rxx/free-vpn-subscriptions"
+
+# validate-worker 默认每批领取 40 条、并发 20；validator-id 在当前机器固定为 ai-a1。
+# Hysteria/Hysteria2/TUIC/WireGuard 会直接进入协议引擎，不执行 TCP 预筛。

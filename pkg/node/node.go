@@ -8,12 +8,32 @@ import "fmt"
 
 // Protocol identifiers.
 const (
-	ProtoVLESS      = "vless"
-	ProtoVMess      = "vmess"
-	ProtoTrojan     = "trojan"
-	ProtoSS         = "shadowsocks"
-	ProtoHysteria2  = "hysteria2"
+	ProtoVLESS     = "vless"
+	ProtoVMess     = "vmess"
+	ProtoTrojan    = "trojan"
+	ProtoSS        = "shadowsocks"
+	ProtoSSR       = "shadowsocksr"
+	ProtoHysteria  = "hysteria"
+	ProtoHysteria2 = "hysteria2"
+	ProtoTUIC      = "tuic"
+	ProtoWireGuard = "wireguard"
+	ProtoSOCKS4    = "socks4"
+	ProtoSOCKS5    = "socks5"
+	ProtoHTTP      = "http"
+	ProtoHTTPS     = "https"
 )
+
+// IsSupportedProtocol reports whether protocol has a normalized node model.
+func IsSupportedProtocol(protocol string) bool {
+	switch protocol {
+	case ProtoVLESS, ProtoVMess, ProtoTrojan, ProtoSS, ProtoSSR,
+		ProtoHysteria, ProtoHysteria2, ProtoTUIC, ProtoWireGuard,
+		ProtoSOCKS4, ProtoSOCKS5, ProtoHTTP, ProtoHTTPS:
+		return true
+	default:
+		return false
+	}
+}
 
 // Node is the normalized representation of a proxy endpoint. Fields are a
 // superset of what each protocol needs; unused fields are simply empty.
@@ -26,13 +46,14 @@ type Node struct {
 	// Credentials — only one of UUID / Password / (Cipher+Password) is set
 	// depending on protocol.
 	UUID     string `json:"uuid,omitempty"`
+	Username string `json:"username,omitempty"`
 	Password string `json:"password,omitempty"`
 	Cipher   string `json:"cipher,omitempty"`
 	AlterID  int    `json:"alter_id,omitempty"`
 
 	// Transport.
-	Network     string `json:"network,omitempty"`      // tcp|ws|grpc|quic
-	Security    string `json:"security,omitempty"`     // none|tls|reality
+	Network     string `json:"network,omitempty"`  // tcp|ws|grpc|quic
+	Security    string `json:"security,omitempty"` // none|tls|reality
 	SNI         string `json:"sni,omitempty"`
 	ALPN        string `json:"alpn,omitempty"`
 	Fingerprint string `json:"fingerprint,omitempty"`
@@ -53,6 +74,10 @@ type Node struct {
 	TCPLatencyMS int    `json:"tcp_latency_ms,omitempty"`
 	Country      string `json:"country,omitempty"`
 	SourceName   string `json:"source_name,omitempty"`
+
+	// Extra keeps protocol-specific settings that affect whether a complete
+	// configuration is interchangeable with another one.
+	Extra map[string]string `json:"extra,omitempty"`
 }
 
 // Key returns a stable deduplication key: protocol + server + port.
@@ -65,16 +90,24 @@ func (n *Node) Key() string {
 
 // Valid checks the minimum required fields are present.
 func (n *Node) Valid() bool {
-	if n.Server == "" || n.Port <= 0 || n.Port > 65535 {
+	if n.Server == "" || len(n.Server) > 253 || n.Port <= 0 || n.Port > 65535 {
 		return false
 	}
 	switch n.Protocol {
 	case ProtoVLESS, ProtoVMess:
 		return n.UUID != ""
-	case ProtoTrojan, ProtoHysteria2:
+	case ProtoTrojan, ProtoHysteria, ProtoHysteria2:
 		return n.Password != ""
 	case ProtoSS:
 		return n.Password != "" && n.Cipher != ""
+	case ProtoSSR:
+		return n.Password != "" && n.Cipher != "" && n.Extra["protocol"] != "" && n.Extra["obfs"] != ""
+	case ProtoTUIC:
+		return n.UUID != "" && n.Password != ""
+	case ProtoWireGuard:
+		return n.Password != "" && n.PublicKey != ""
+	case ProtoSOCKS4, ProtoSOCKS5, ProtoHTTP, ProtoHTTPS:
+		return (n.Username == "" && n.Password == "") || (n.Username != "" && n.Password != "")
 	}
 	return false
 }

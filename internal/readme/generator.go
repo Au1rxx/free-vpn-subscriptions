@@ -72,6 +72,7 @@ func Generate(in Input, loc Locale) string {
 	fmt.Fprintf(&b, "| Clash / Clash Verge / ClashX | `clash.yaml` | `%s/raw/main/output/clash.yaml` |\n", in.RepoURL)
 	fmt.Fprintf(&b, "| sing-box | `singbox.json` | `%s/raw/main/output/singbox.json` |\n", in.RepoURL)
 	fmt.Fprintf(&b, "| v2rayN / v2rayNG / Shadowrocket / NekoBox | `v2ray-base64` | `%s/raw/main/output/v2ray-base64.txt` |\n\n", in.RepoURL)
+	fmt.Fprintf(&b, "> Database-classified shards (stable / all verified / protocol / country / network): [%s/tree/main/output](%s/tree/main/output)\n\n", in.RepoURL, in.RepoURL)
 
 	// Per-country
 	if in.CountryEnabled && in.MinPerCountry > 0 && len(in.Summary.ByCountry) > 0 {
