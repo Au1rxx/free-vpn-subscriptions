@@ -37,6 +37,13 @@ type Report struct {
 	Bytes       int64          `json:"output_bytes"`
 }
 
+type databaseStatus struct {
+	aggregate.Summary
+	SchemaVersion   int    `json:"schema_version"`
+	DataSource      string `json:"data_source"`
+	StatisticsScope string `json:"statistics_scope"`
+}
+
 type item struct {
 	node *node.Node
 	meta store.ExportMeta
@@ -179,18 +186,23 @@ func Generate(root string, nodes []*node.Node, metadata []store.ExportMeta, shar
 	return report, nil
 }
 
-func buildLegacyStatus(all, selected []item, generatedAt time.Time) aggregate.Summary {
+func buildLegacyStatus(all, selected []item, generatedAt time.Time) databaseStatus {
 	// Database export has no per-run fetch stage. Preserve the public JSON
 	// contract by reporting the current exportable snapshot for fetch/alive/verified.
-	status := aggregate.Summary{
-		TotalFetched:    len(all),
-		TotalAlive:      len(all),
-		TotalVerified:   len(all),
-		TotalSelected:   len(selected),
-		BySource:        make(map[string]int),
-		ByProtocol:      make(map[string]int),
-		ByCountry:       make(map[string]int),
-		GeneratedAtUnix: generatedAt.Unix(),
+	status := databaseStatus{
+		Summary: aggregate.Summary{
+			TotalFetched:    len(all),
+			TotalAlive:      len(all),
+			TotalVerified:   len(all),
+			TotalSelected:   len(selected),
+			BySource:        make(map[string]int),
+			ByProtocol:      make(map[string]int),
+			ByCountry:       make(map[string]int),
+			GeneratedAtUnix: generatedAt.Unix(),
+		},
+		SchemaVersion:   2,
+		DataSource:      "database",
+		StatisticsScope: "exportable_snapshot",
 	}
 	latencies := make([]int, 0, len(selected))
 	for _, value := range selected {

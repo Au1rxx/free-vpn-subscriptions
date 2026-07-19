@@ -84,6 +84,17 @@ func TestGenerateClassifiedAndLegacyOutputs(t *testing.T) {
 	if status.MinLatencyMS != 10 || status.MedianLatencyMS != 20 || status.GeneratedAtUnix == 0 {
 		t.Fatalf("status quality=%+v", status)
 	}
+	var scope struct {
+		SchemaVersion   int    `json:"schema_version"`
+		DataSource      string `json:"data_source"`
+		StatisticsScope string `json:"statistics_scope"`
+	}
+	if err := json.Unmarshal(statusBody, &scope); err != nil {
+		t.Fatal(err)
+	}
+	if scope.SchemaVersion != 2 || scope.DataSource != "database" || scope.StatisticsScope != "exportable_snapshot" {
+		t.Fatalf("status scope=%+v", scope)
+	}
 	if _, err := os.Stat(filepath.Join(root, ".next")); !os.IsNotExist(err) {
 		t.Fatalf("staging directory remains: %v", err)
 	}

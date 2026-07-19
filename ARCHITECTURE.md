@@ -199,7 +199,7 @@ The binary writes:
 | sing-box | `output/singbox.json` | sing-box CLI + mobile apps |
 | v2ray-base64 | `output/v2ray-base64.txt` | v2rayN, v2rayNG, Shadowrocket |
 | Per-country variants | `output/by-country/{clash,singbox,v2ray-base64}-XX.{yaml,json,txt}` | targeted subscriptions |
-| Status | `output/status.json` | summary for dashboards |
+| Status | `output/status.json` | backward-compatible dashboard summary; database exports identify `schema_version=2`, `data_source=database`, and `statistics_scope=exportable_snapshot` |
 | READMEs | `README.md`, `README_CN.md`, …, `README_RU.md` | GitHub repo front page |
 | Pages site | `docs/index.{en,zh,ja,ko,es,pt,ru}.html`, `docs/XX.{en,zh,ja,ko,es,pt,ru}.html` per qualifying country, `docs/guides/{slug}.{en,zh}.html`, `docs/sitemap.xml`, `docs/robots.txt` | SEO landing for au1rxx.github.io |
 
@@ -373,6 +373,6 @@ geoip:
 
 ## Monitoring
 
-- **Latest status**: `output/status.json` — totals and breakdowns per run.
+- **Latest status**: `output/status.json` — legacy aggregation reports per-run totals; database mode preserves those fields for compatibility and explicitly marks them as the current exportable snapshot. Use `output/manifest.json` for the full database collection counts and shard inventory.
 - **Workflow log**: Actions tab → `Aggregate & Publish` → latest run.
 - **Output diff**: `git log -p output/` shows exactly which nodes changed hour over hour.
