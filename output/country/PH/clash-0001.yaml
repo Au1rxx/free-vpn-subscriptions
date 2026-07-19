@@ -6,9 +6,17 @@ proxies:
       server: 38.54.80.160
       type: ss
       udp: true
+    - name: 02-trojan-trojan-29228112
+      password: "3632736327"
+      port: 2398
+      server: 47.80.107.173
+      skip-cert-verify: false
+      sni: flb06181447.tmdsb.org
+      type: trojan
+      udp: true
     - alterId: 0
       cipher: auto
-      name: 02-vmess-vmess-99462
+      name: 03-vmess-vmess-99462
       network: ws
       port: 80
       server: 61.245.11.60
@@ -17,7 +25,7 @@ proxies:
       uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
     - alterId: 0
       cipher: auto
-      name: 03-vmess-vmess-2387870
+      name: 04-vmess-vmess-2387870
       network: ws
       port: 80
       server: 61.245.11.60
@@ -29,16 +37,18 @@ proxy-groups:
       name: auto
       proxies:
         - 01-shadowsocks-shadowsocks-242
-        - 02-vmess-vmess-99462
-        - 03-vmess-vmess-2387870
+        - 02-trojan-trojan-29228112
+        - 03-vmess-vmess-99462
+        - 04-vmess-vmess-2387870
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - 01-shadowsocks-shadowsocks-242
-        - 02-vmess-vmess-99462
-        - 03-vmess-vmess-2387870
+        - 02-trojan-trojan-29228112
+        - 03-vmess-vmess-99462
+        - 04-vmess-vmess-2387870
       type: select
 rules:
     - MATCH,select
