@@ -14,6 +14,7 @@ import (
 	"time"
 	"unicode"
 
+	"github.com/Au1rxx/free-vpn-subscriptions/internal/aggregate"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/store"
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/emit"
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
@@ -146,6 +147,13 @@ func Generate(root string, nodes []*node.Node, metadata []store.ExportMeta, shar
 	if err := writeLegacy(staging, legacy, &report); err != nil {
 		return Report{}, err
 	}
+	status, err := json.MarshalIndent(buildLegacyStatus(all, legacy, report.GeneratedAt), "", "  ")
+	if err != nil {
+		return Report{}, err
+	}
+	if err := writeOutput(staging, "status.json", append(status, '\n'), &report); err != nil {
+		return Report{}, err
+	}
 	manifestReport := report
 	manifestReport.Files++
 	var manifest []byte
@@ -169,6 +177,44 @@ func Generate(root string, nodes []*node.Node, metadata []store.ExportMeta, shar
 		return Report{}, err
 	}
 	return report, nil
+}
+
+func buildLegacyStatus(all, selected []item, generatedAt time.Time) aggregate.Summary {
+	// Database export has no per-run fetch stage. Preserve the public JSON
+	// contract by reporting the current exportable snapshot for fetch/alive/verified.
+	status := aggregate.Summary{
+		TotalFetched:    len(all),
+		TotalAlive:      len(all),
+		TotalVerified:   len(all),
+		TotalSelected:   len(selected),
+		BySource:        make(map[string]int),
+		ByProtocol:      make(map[string]int),
+		ByCountry:       make(map[string]int),
+		GeneratedAtUnix: generatedAt.Unix(),
+	}
+	latencies := make([]int, 0, len(selected))
+	for _, value := range selected {
+		if value.node.SourceName != "" {
+			status.BySource[value.node.SourceName]++
+		}
+		status.ByProtocol[value.node.Protocol]++
+		if value.meta.Country != "" {
+			status.ByCountry[value.meta.Country]++
+		}
+		if value.node.LatencyMS > 0 {
+			latencies = append(latencies, value.node.LatencyMS)
+		}
+	}
+	if len(latencies) > 0 {
+		sort.Ints(latencies)
+		status.MinLatencyMS = latencies[0]
+		middle := len(latencies) / 2
+		status.MedianLatencyMS = latencies[middle]
+		if len(latencies)%2 == 0 {
+			status.MedianLatencyMS = (latencies[middle-1] + latencies[middle]) / 2
+		}
+	}
+	return status
 }
 
 func addGroups(collections map[string][]item, prefix string, values []item, key func(item) string) {

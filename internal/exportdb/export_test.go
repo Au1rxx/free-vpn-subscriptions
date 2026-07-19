@@ -2,11 +2,13 @@ package exportdb
 
 import (
 	"encoding/base64"
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"strings"
 	"testing"
 
+	"github.com/Au1rxx/free-vpn-subscriptions/internal/aggregate"
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/store"
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 )
@@ -27,9 +29,9 @@ func TestShardBoundsAtTenThousandNodes(t *testing.T) {
 func TestGenerateClassifiedAndLegacyOutputs(t *testing.T) {
 	root := t.TempDir()
 	nodes := []*node.Node{
-		{Protocol: node.ProtoVLESS, Server: "one.example", Port: 443, UUID: "a", Country: "US"},
-		{Protocol: node.ProtoTUIC, Server: "two.example", Port: 443, UUID: "b", Password: "p", Country: "JP"},
-		{Protocol: node.ProtoSS, Server: "three.example", Port: 8388, Cipher: "aes-128-gcm", Password: "p", Country: "US"},
+		{Protocol: node.ProtoVLESS, Server: "one.example", Port: 443, UUID: "a", Country: "US", LatencyMS: 10},
+		{Protocol: node.ProtoTUIC, Server: "two.example", Port: 443, UUID: "b", Password: "p", Country: "JP", LatencyMS: 30},
+		{Protocol: node.ProtoSS, Server: "three.example", Port: 8388, Cipher: "aes-128-gcm", Password: "p", Country: "US", LatencyMS: 50},
 	}
 	metadata := []store.ExportMeta{
 		{ConfigID: 1, Grade: "A", Score: 88, Country: "US", NetworkClass: "cloud"},
@@ -44,7 +46,7 @@ func TestGenerateClassifiedAndLegacyOutputs(t *testing.T) {
 		t.Fatalf("report=%+v", report)
 	}
 	for _, path := range []string{
-		"clash.yaml", "singbox.json", "v2ray-base64.txt", "manifest.json",
+		"clash.yaml", "singbox.json", "v2ray-base64.txt", "manifest.json", "status.json",
 		"stable/clash-0001.yaml", "all-verified/clash-0001.yaml",
 		"protocol/vless/singbox-0001.json", "country/US/v2ray-base64-0001.txt",
 		"network/cloud/clash-0001.yaml",
@@ -63,6 +65,24 @@ func TestGenerateClassifiedAndLegacyOutputs(t *testing.T) {
 	}
 	if strings.Contains(string(decoded), "three.example") {
 		t.Fatal("legacy stable output contains grade D node")
+	}
+	statusBody, err := os.ReadFile(filepath.Join(root, "status.json"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	var status aggregate.Summary
+	if err := json.Unmarshal(statusBody, &status); err != nil {
+		t.Fatal(err)
+	}
+	if status.TotalFetched != 3 || status.TotalAlive != 3 || status.TotalVerified != 3 || status.TotalSelected != 2 {
+		t.Fatalf("status totals=%+v", status)
+	}
+	if status.ByProtocol[node.ProtoVLESS] != 1 || status.ByProtocol[node.ProtoTUIC] != 1 ||
+		status.ByCountry["US"] != 1 || status.ByCountry["JP"] != 1 {
+		t.Fatalf("status breakdowns=%+v", status)
+	}
+	if status.MinLatencyMS != 10 || status.MedianLatencyMS != 20 || status.GeneratedAtUnix == 0 {
+		t.Fatalf("status quality=%+v", status)
 	}
 	if _, err := os.Stat(filepath.Join(root, ".next")); !os.IsNotExist(err) {
 		t.Fatalf("staging directory remains: %v", err)
