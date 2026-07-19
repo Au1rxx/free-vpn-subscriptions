@@ -1,31 +1,32 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: 01-shadowsocks-shadowsocks-3278
-      password: ZET59LF6DvCC8KVt
-      port: 9005
-      server: 5.188.181.201
-      type: ss
-      udp: true
     - cipher: chacha20-ietf-poly1305
-      name: 02-shadowsocks-shadowsocks-11052
+      name: 01-shadowsocks-shadowsocks-11052
       password: qItG8SueYQcP
       port: 8388
       server: 140.174.184.5
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
-      name: 03-shadowsocks-shadowsocks-16132
+      name: 02-shadowsocks-shadowsocks-16132
       password: WSyL4XTwNsdv
       port: 8388
       server: 108.181.121.226
       type: ss
       udp: true
-    - name: 04-trojan-trojan-46244303
+    - name: 03-trojan-trojan-46244303
       password: 2eutknankxtbgkwcajzt
       port: 52794
       server: 193.148.19.213
       skip-cert-verify: true
       sni: 193.148.19.213
+      type: trojan
+      udp: true
+    - name: 04-trojan-trojan-2473912
+      password: 2eutknankxtbgkwcajzt
+      port: 52794
+      server: 193.148.19.210
+      skip-cert-verify: true
+      sni: www.vk.com
       type: trojan
       udp: true
     - name: 05-trojan-trojan-116312
@@ -36,31 +37,9 @@ proxies:
       sni: www.vk.com
       type: trojan
       udp: true
-    - name: 06-trojan-trojan-2473912
-      password: 2eutknankxtbgkwcajzt
-      port: 52794
-      server: 193.148.19.210
-      skip-cert-verify: true
-      sni: www.vk.com
-      type: trojan
-      udp: true
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: 07-vless-vless-29413121
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: OCLtjVdRxsou3429LRfjkDYgiAPs24TSgSeFZpChCEw
-        short-id: d67ec5a8fc40ebea
-      server: isp04.myxasecure.space
-      servername: isp04.myxasecure.space
-      tls: true
-      type: vless
-      udp: true
-      uuid: c04bf2df-2b7f-44da-a893-3792d3910fd8
     - alterId: 0
       cipher: auto
-      name: 08-vmess-vmess-99676
+      name: 06-vmess-vmess-99676
       network: tcp
       port: 22324
       server: 85.90.217.42
@@ -71,27 +50,23 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-shadowsocks-shadowsocks-3278
-        - 02-shadowsocks-shadowsocks-11052
-        - 03-shadowsocks-shadowsocks-16132
-        - 04-trojan-trojan-46244303
+        - 01-shadowsocks-shadowsocks-11052
+        - 02-shadowsocks-shadowsocks-16132
+        - 03-trojan-trojan-46244303
+        - 04-trojan-trojan-2473912
         - 05-trojan-trojan-116312
-        - 06-trojan-trojan-2473912
-        - 07-vless-vless-29413121
-        - 08-vmess-vmess-99676
+        - 06-vmess-vmess-99676
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-shadowsocks-shadowsocks-3278
-        - 02-shadowsocks-shadowsocks-11052
-        - 03-shadowsocks-shadowsocks-16132
-        - 04-trojan-trojan-46244303
+        - 01-shadowsocks-shadowsocks-11052
+        - 02-shadowsocks-shadowsocks-16132
+        - 03-trojan-trojan-46244303
+        - 04-trojan-trojan-2473912
         - 05-trojan-trojan-116312
-        - 06-trojan-trojan-2473912
-        - 07-vless-vless-29413121
-        - 08-vmess-vmess-99676
+        - 06-vmess-vmess-99676
       type: select
 rules:
     - MATCH,select
