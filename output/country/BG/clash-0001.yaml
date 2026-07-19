@@ -1,0 +1,37 @@
+proxies:
+    - cipher: aes-256-gcm
+      name: 01-shadowsocks-shadowsocks-11088
+      password: lGqs95QkFHo2NV
+      port: 5499
+      server: 38.244.132.14
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      name: 02-vless-vless-29325115
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 18v5wyhLfN0F4DPllINqZWfdW_clrJyX5mFmTE4RSlg
+        short-id: db4b1632
+      server: 13.140.29.192
+      servername: support.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3da2625a-5925-42ad-ad50-b03124b41e54
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-shadowsocks-shadowsocks-11088
+        - 02-vless-vless-29325115
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-shadowsocks-shadowsocks-11088
+        - 02-vless-vless-29325115
+      type: select
+rules:
+    - MATCH,select

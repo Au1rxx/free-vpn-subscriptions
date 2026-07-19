@@ -1,0 +1,58 @@
+{
+  "outbounds": [
+    {
+      "server": "200.8.200.191",
+      "server_port": 8088,
+      "tag": "01-http-http-1362637",
+      "type": "http"
+    },
+    {
+      "server": "38.159.62.32",
+      "server_port": 999,
+      "tag": "02-http-http-1454031",
+      "type": "http"
+    },
+    {
+      "server": "190.97.239.40",
+      "server_port": 999,
+      "tag": "03-http-http-1338418",
+      "type": "http"
+    },
+    {
+      "server": "190.94.212.249",
+      "server_port": 999,
+      "tag": "04-http-http-1338221",
+      "type": "http"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-http-http-1362637",
+        "02-http-http-1454031",
+        "03-http-http-1338418",
+        "04-http-http-1338221"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-http-http-1362637",
+        "02-http-http-1454031",
+        "03-http-http-1338418",
+        "04-http-http-1338221"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

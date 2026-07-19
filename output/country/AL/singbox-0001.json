@@ -1,0 +1,87 @@
+{
+  "outbounds": [
+    {
+      "server": "94.154.152.13",
+      "server_port": 8079,
+      "tag": "01-http-http-1601547",
+      "type": "http"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "WR5Ho8vVqnDaH49WLh98Nc",
+      "server": "130.49.189.158",
+      "server_port": 10792,
+      "tag": "02-shadowsocks-shadowsocks-45640611",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "3JB91l5ol2HvkPUduw2hj4",
+      "server": "157.22.240.141",
+      "server_port": 57925,
+      "tag": "03-shadowsocks-shadowsocks-21041285",
+      "type": "shadowsocks"
+    },
+    {
+      "server": "91.98.161.17",
+      "server_port": 1080,
+      "tag": "04-socks5-socks5-1105826",
+      "type": "socks",
+      "version": "5"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "alban2.helper-internet.com",
+      "server_port": 443,
+      "tag": "05-vless-vless-23844904",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE",
+          "short_id": "ff776ff77be48b88"
+        },
+        "server_name": "alban2.helper-internet.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "59da5351-5151-417d-b2f7-6923848b717e"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-http-http-1601547",
+        "02-shadowsocks-shadowsocks-45640611",
+        "03-shadowsocks-shadowsocks-21041285",
+        "04-socks5-socks5-1105826",
+        "05-vless-vless-23844904"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-http-http-1601547",
+        "02-shadowsocks-shadowsocks-45640611",
+        "03-shadowsocks-shadowsocks-21041285",
+        "04-socks5-socks5-1105826",
+        "05-vless-vless-23844904"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

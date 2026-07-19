@@ -1,0 +1,107 @@
+{
+  "outbounds": [
+    {
+      "server": "46.55.3.113",
+      "server_port": 4145,
+      "tag": "01-socks4-socks4-515101",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "185.163.47.132",
+      "server_port": 443,
+      "tag": "02-vless-vless-23883904",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "Ua80Sem5yHVDbRu37u1yYM5vWBzinhru__7ACrvnx1E"
+        },
+        "server_name": "console.cloud.yandex.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "type": "vless",
+      "uuid": "99eb8d4a-bb06-4a07-a79b-348ac037dc3e"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "185.163.47.132",
+      "server_port": 443,
+      "tag": "03-vless-vless-21263285",
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "Ua80Sem5yHVDbRu37u1yYM5vWBzinhru__7ACrvnx1E"
+        },
+        "server_name": "console.cloud.yandex.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "type": "vless",
+      "uuid": "99eb8d4a-bb06-4a07-a79b-348ac037dc3e"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "185.163.47.132",
+      "server_port": 443,
+      "tag": "04-vless-vless-21263286",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "Ua80Sem5yHVDbRu37u1yYM5vWBzinhru__7ACrvnx1E"
+        },
+        "server_name": "console.cloud.yandex.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "99eb8d4a-bb06-4a07-a79b-348ac037dc3e"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-socks4-socks4-515101",
+        "02-vless-vless-23883904",
+        "03-vless-vless-21263285",
+        "04-vless-vless-21263286"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-socks4-socks4-515101",
+        "02-vless-vless-23883904",
+        "03-vless-vless-21263285",
+        "04-vless-vless-21263286"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

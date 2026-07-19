@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: 01-vless-vless-23844908
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+        short-id: ff776ff77be48b88
+      server: grek.helper-internet.com
+      servername: grek.helper-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 59da5351-5151-417d-b2f7-6923848b717e
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-vless-vless-23844908
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-vless-vless-23844908
+      type: select
+rules:
+    - MATCH,select

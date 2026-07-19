@@ -1,0 +1,47 @@
+proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: 01-shadowsocks-shadowsocks-45640611
+      password: WR5Ho8vVqnDaH49WLh98Nc
+      port: 10792
+      server: 130.49.189.158
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: 02-shadowsocks-shadowsocks-21041285
+      password: 3JB91l5ol2HvkPUduw2hj4
+      port: 57925
+      server: 157.22.240.141
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: 03-vless-vless-23844904
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+        short-id: ff776ff77be48b88
+      server: alban2.helper-internet.com
+      servername: alban2.helper-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 59da5351-5151-417d-b2f7-6923848b717e
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-shadowsocks-shadowsocks-45640611
+        - 02-shadowsocks-shadowsocks-21041285
+        - 03-vless-vless-23844904
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-shadowsocks-shadowsocks-45640611
+        - 02-shadowsocks-shadowsocks-21041285
+        - 03-vless-vless-23844904
+      type: select
+rules:
+    - MATCH,select

@@ -1,0 +1,64 @@
+{
+  "outbounds": [
+    {
+      "congestion_control": "bbr",
+      "password": "RBK3FbuEqeWNvM5JxAtKV0bI",
+      "server": "147.224.251.52",
+      "server_port": 443,
+      "tag": "01-tuic-tuic-26935306",
+      "tls": {
+        "alpn": [
+          "h3"
+        ],
+        "enabled": true,
+        "insecure": true,
+        "server_name": "129.146.243.146.sslip.io"
+      },
+      "type": "tuic",
+      "uuid": "25a54c97-c3c3-4505-8d11-93d742eff8fb"
+    },
+    {
+      "congestion_control": "bbr",
+      "password": "dongtaiwang.com",
+      "server": "62.210.24.143",
+      "server_port": 33888,
+      "tag": "02-tuic-tuic-37873478",
+      "tls": {
+        "alpn": [
+          "h3"
+        ],
+        "enabled": true,
+        "insecure": true,
+        "server_name": "bing.com"
+      },
+      "type": "tuic",
+      "uuid": "9adb384a-0f16-4501-a8f3-b6b2556fce87"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-tuic-tuic-26935306",
+        "02-tuic-tuic-37873478"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-tuic-tuic-26935306",
+        "02-tuic-tuic-37873478"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

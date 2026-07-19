@@ -1,0 +1,95 @@
+{
+  "outbounds": [
+    {
+      "server": "203.96.224.198",
+      "server_port": 8080,
+      "tag": "01-http-http-29469701",
+      "type": "http"
+    },
+    {
+      "server": "123.200.7.110",
+      "server_port": 8080,
+      "tag": "02-http-http-1199368",
+      "type": "http"
+    },
+    {
+      "server": "59.153.16.105",
+      "server_port": 20909,
+      "tag": "03-http-http-1516140",
+      "type": "http"
+    },
+    {
+      "server": "103.149.75.82",
+      "server_port": 1080,
+      "tag": "04-socks4-socks4-157344",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "server": "103.83.233.165",
+      "server_port": 1080,
+      "tag": "05-socks4-socks4-172033",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "server": "121.200.60.122",
+      "server_port": 4153,
+      "tag": "06-socks4-socks4-227365",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "server": "206.123.156.231",
+      "server_port": 8543,
+      "tag": "07-socks5-socks5-37181028",
+      "type": "socks",
+      "version": "5"
+    },
+    {
+      "server": "206.123.156.223",
+      "server_port": 6295,
+      "tag": "08-socks5-socks5-42650845",
+      "type": "socks",
+      "version": "5"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-http-http-29469701",
+        "02-http-http-1199368",
+        "03-http-http-1516140",
+        "04-socks4-socks4-157344",
+        "05-socks4-socks4-172033",
+        "06-socks4-socks4-227365",
+        "07-socks5-socks5-37181028",
+        "08-socks5-socks5-42650845"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-http-http-29469701",
+        "02-http-http-1199368",
+        "03-http-http-1516140",
+        "04-socks4-socks4-157344",
+        "05-socks4-socks4-172033",
+        "06-socks4-socks4-227365",
+        "07-socks5-socks5-37181028",
+        "08-socks5-socks5-42650845"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

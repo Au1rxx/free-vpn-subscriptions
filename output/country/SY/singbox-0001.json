@@ -1,0 +1,67 @@
+{
+  "outbounds": [
+    {
+      "server": "78.155.67.224",
+      "server_port": 8080,
+      "tag": "01-http-http-1574905",
+      "type": "http"
+    },
+    {
+      "server": "193.43.159.95",
+      "server_port": 8080,
+      "tag": "02-http-http-1346358",
+      "type": "http"
+    },
+    {
+      "server": "89.43.132.250",
+      "server_port": 8080,
+      "tag": "03-http-http-1592853",
+      "type": "http"
+    },
+    {
+      "server": "78.155.64.122",
+      "server_port": 8080,
+      "tag": "04-http-http-1574901",
+      "type": "http"
+    },
+    {
+      "server": "205.209.66.105",
+      "server_port": 1080,
+      "tag": "05-socks4-socks4-402534",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-http-http-1574905",
+        "02-http-http-1346358",
+        "03-http-http-1592853",
+        "04-http-http-1574901",
+        "05-socks4-socks4-402534"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-http-http-1574905",
+        "02-http-http-1346358",
+        "03-http-http-1592853",
+        "04-http-http-1574901",
+        "05-socks4-socks4-402534"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

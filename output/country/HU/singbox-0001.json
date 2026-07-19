@@ -1,0 +1,62 @@
+{
+  "outbounds": [
+    {
+      "password": "C0ldyfh-vpnjantit.com",
+      "server": "hu2.vpnjantit.com",
+      "server_port": 4443,
+      "tag": "01-trojan-trojan-34693904",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "hu2.vpnjantit.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "type": "trojan"
+    },
+    {
+      "password": "C0ldyfh-vpnjantit.com",
+      "server": "hu2.vpnjantit.com",
+      "server_port": 4443,
+      "tag": "02-trojan-trojan-34693903",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "hu2.vpnjantit.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "android"
+        }
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-trojan-trojan-34693904",
+        "02-trojan-trojan-34693903"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-trojan-trojan-34693904",
+        "02-trojan-trojan-34693903"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

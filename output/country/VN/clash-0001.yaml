@@ -1,0 +1,77 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: 01-vless-vless-21194285
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+        short-id: 43dcff53849b81e6
+      server: 160.191.164.164
+      servername: auto.quattro-tech.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 497631c4-a1a4-0030-a86a-f42873473bb6
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: 02-vless-vless-2307683
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+        short-id: 43dcff53849b81e6
+      server: 160.191.164.164
+      servername: auto.quattro-tech.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 497631c4-a1a4-0030-a86a-f42873473bb6
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: 03-vless-vless-2307682
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+        short-id: 43dcff53849b81e6
+      server: 160.191.164.164
+      servername: auto.quattro-tech.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 497631c4-a1a4-0030-a86a-f42873473bb6
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: 04-vless-vless-52263
+      network: raw
+      port: 8443
+      reality-opts:
+        public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+        short-id: 43dcff53849b81e6
+      server: 160.191.164.164
+      servername: auto.quattro-tech.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 497631c4-a1a4-0030-a86a-f42873473bb6
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-vless-vless-21194285
+        - 02-vless-vless-2307683
+        - 03-vless-vless-2307682
+        - 04-vless-vless-52263
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-vless-vless-21194285
+        - 02-vless-vless-2307683
+        - 03-vless-vless-2307682
+        - 04-vless-vless-52263
+      type: select
+rules:
+    - MATCH,select

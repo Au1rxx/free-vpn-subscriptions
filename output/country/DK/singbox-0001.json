@@ -1,0 +1,103 @@
+{
+  "outbounds": [
+    {
+      "server": "46.62.189.77",
+      "server_port": 8888,
+      "tag": "01-http-http-1490685",
+      "type": "http"
+    },
+    {
+      "server": "teain.org",
+      "server_port": 1001,
+      "tag": "02-vless-vless-27033",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "ECxm-BdHYhxYK9MtN33NkkrFSdFZXp-OB-yhN8AleRY",
+          "short_id": "a62d513cd709744a"
+        },
+        "server_name": "knox.cdn-apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "type": "vless",
+      "uuid": "5ae768bf-2ea0-22d2-eade-6763e14dc745"
+    },
+    {
+      "server": "teain.org",
+      "server_port": 1001,
+      "tag": "03-vless-vless-2312607",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "ECxm-BdHYhxYK9MtN33NkkrFSdFZXp-OB-yhN8AleRY",
+          "short_id": "a62d513cd709744a"
+        },
+        "server_name": "knox.cdn-apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "5ae768bf-2ea0-22d2-eade-6763e14dc745"
+    },
+    {
+      "server": "teain.org",
+      "server_port": 1001,
+      "tag": "04-vless-vless-16961",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "ECxm-BdHYhxYK9MtN33NkkrFSdFZXp-OB-yhN8AleRY",
+          "short_id": "a62d513cd709744a"
+        },
+        "server_name": "knox.cdn-apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "type": "vless",
+      "uuid": "5ae768bf-2ea0-22d2-eade-6763e14dc745"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-http-http-1490685",
+        "02-vless-vless-27033",
+        "03-vless-vless-2312607",
+        "04-vless-vless-16961"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-http-http-1490685",
+        "02-vless-vless-27033",
+        "03-vless-vless-2312607",
+        "04-vless-vless-16961"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

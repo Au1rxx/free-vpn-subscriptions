@@ -1,0 +1,58 @@
+proxies:
+    - client-fingerprint: ios
+      name: 01-vless-vless-27033
+      network: tcp
+      port: 1001
+      reality-opts:
+        public-key: ECxm-BdHYhxYK9MtN33NkkrFSdFZXp-OB-yhN8AleRY
+        short-id: a62d513cd709744a
+      server: teain.org
+      servername: knox.cdn-apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5ae768bf-2ea0-22d2-eade-6763e14dc745
+    - client-fingerprint: chrome
+      name: 02-vless-vless-2312607
+      network: tcp
+      port: 1001
+      reality-opts:
+        public-key: ECxm-BdHYhxYK9MtN33NkkrFSdFZXp-OB-yhN8AleRY
+        short-id: a62d513cd709744a
+      server: teain.org
+      servername: knox.cdn-apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5ae768bf-2ea0-22d2-eade-6763e14dc745
+    - client-fingerprint: ios
+      name: 03-vless-vless-16961
+      network: tcp
+      port: 1001
+      reality-opts:
+        public-key: ECxm-BdHYhxYK9MtN33NkkrFSdFZXp-OB-yhN8AleRY
+        short-id: a62d513cd709744a
+      server: teain.org
+      servername: knox.cdn-apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5ae768bf-2ea0-22d2-eade-6763e14dc745
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-vless-vless-27033
+        - 02-vless-vless-2312607
+        - 03-vless-vless-16961
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-vless-vless-27033
+        - 02-vless-vless-2312607
+        - 03-vless-vless-16961
+      type: select
+rules:
+    - MATCH,select
