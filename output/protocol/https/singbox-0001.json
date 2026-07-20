@@ -1,0 +1,41 @@
+{
+  "outbounds": [
+    {
+      "password": "exaxgqkKkd0TAMrCxeonWg==",
+      "server": "twmoon1-cdn-route.couldflare-cdn.com",
+      "server_port": 1443,
+      "tag": "01-https-https-62868726",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "twmoon1-cdn-route.couldflare-cdn.com"
+      },
+      "type": "http",
+      "username": "mrwdfNTD8M79LCukCieldrqZWqs="
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-https-https-62868726"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-https-https-62868726"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
