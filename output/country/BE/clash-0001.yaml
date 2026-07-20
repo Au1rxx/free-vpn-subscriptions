@@ -6,33 +6,17 @@ proxies:
       server: 194.187.251.2
       type: ss
       udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: 02-vless-vless-26927
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 08u-fNMdTjjUwYv4GPbG7VK1ep2vh4Fv-puMcmFzhz0
-        short-id: ""
-      server: digital.try-me.store
-      servername: digital.try-me.store
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6a467642-9488-405a-96d5-c43dff70d35b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - 01-shadowsocks-shadowsocks-37391027
-        - 02-vless-vless-26927
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - 01-shadowsocks-shadowsocks-37391027
-        - 02-vless-vless-26927
       type: select
 rules:
     - MATCH,select
