@@ -1,16 +1,23 @@
 {
   "outbounds": [
     {
+      "server": "202.21.115.178",
+      "server_port": 8080,
+      "tag": "01-http-http-1365550",
+      "type": "http"
+    },
+    {
       "server": "119.40.98.26",
       "server_port": 8069,
-      "tag": "01-socks4-socks4-222926",
+      "tag": "02-socks4-socks4-222926",
       "type": "socks",
       "version": "4"
     },
     {
       "interval": "5m",
       "outbounds": [
-        "01-socks4-socks4-222926"
+        "01-http-http-1365550",
+        "02-socks4-socks4-222926"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -19,7 +26,8 @@
     {
       "outbounds": [
         "auto",
-        "01-socks4-socks4-222926"
+        "01-http-http-1365550",
+        "02-socks4-socks4-222926"
       ],
       "tag": "select",
       "type": "selector"
