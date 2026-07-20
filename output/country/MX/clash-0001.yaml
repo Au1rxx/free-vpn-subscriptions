@@ -1,13 +1,22 @@
-proxies: []
+proxies:
+    - name: 01-vless-vless-61247
+      network: ws
+      port: 8880
+      server: 185.176.24.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - 01-vless-vless-61247
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - 01-vless-vless-61247
       type: select
 rules:
     - MATCH,select

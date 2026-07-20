@@ -13,10 +13,10 @@ proxies:
       type: vless
       udp: true
       uuid: 497631c4-a1a4-0030-a86a-f42873473bb6
-    - client-fingerprint: chrome
+    - client-fingerprint: edge
       flow: xtls-rprx-vision
-      name: 02-vless-vless-21194285
-      network: tcp
+      name: 02-vless-vless-52263
+      network: raw
       port: 8443
       reality-opts:
         public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
@@ -27,10 +27,10 @@ proxies:
       type: vless
       udp: true
       uuid: 497631c4-a1a4-0030-a86a-f42873473bb6
-    - client-fingerprint: edge
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: 03-vless-vless-52263
-      network: raw
+      name: 03-vless-vless-21194285
+      network: tcp
       port: 8443
       reality-opts:
         public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
@@ -46,16 +46,16 @@ proxy-groups:
       name: auto
       proxies:
         - 01-vless-vless-2307682
-        - 02-vless-vless-21194285
-        - 03-vless-vless-52263
+        - 02-vless-vless-52263
+        - 03-vless-vless-21194285
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - 01-vless-vless-2307682
-        - 02-vless-vless-21194285
-        - 03-vless-vless-52263
+        - 02-vless-vless-52263
+        - 03-vless-vless-21194285
       type: select
 rules:
     - MATCH,select
