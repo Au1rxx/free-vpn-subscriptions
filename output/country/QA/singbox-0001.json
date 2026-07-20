@@ -1,0 +1,53 @@
+{
+  "outbounds": [
+    {
+      "server": "206.123.156.228",
+      "server_port": 7250,
+      "tag": "01-socks5-socks5-906769",
+      "type": "socks",
+      "version": "5"
+    },
+    {
+      "server": "206.123.156.228",
+      "server_port": 6544,
+      "tag": "02-socks5-socks5-906518",
+      "type": "socks",
+      "version": "5"
+    },
+    {
+      "server": "206.123.156.202",
+      "server_port": 10167,
+      "tag": "03-socks5-socks5-892345",
+      "type": "socks",
+      "version": "5"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "01-socks5-socks5-906769",
+        "02-socks5-socks5-906518",
+        "03-socks5-socks5-892345"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "01-socks5-socks5-906769",
+        "02-socks5-socks5-906518",
+        "03-socks5-socks5-892345"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
