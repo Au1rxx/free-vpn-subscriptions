@@ -15,7 +15,7 @@ func TestEmbeddedMigrationFilesParse(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(got) != 8 || got[0].Version != "0001" || got[7].Version != "0008" {
+	if len(got) != 9 || got[0].Version != "0001" || got[8].Version != "0009" {
 		t.Fatalf("embedded migrations=%v", got)
 	}
 }

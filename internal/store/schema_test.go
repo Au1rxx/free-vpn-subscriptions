@@ -69,6 +69,17 @@ func TestMigrationFilesPersistSourceProtocolHint(t *testing.T) {
 	}
 }
 
+func TestMigrationFilesCoverValidationStatusAggregation(t *testing.T) {
+	ddl := readMigrationDDL(t)
+	want := "`idx_node_current_validation_status` (`availability_state`, `last_validation_at`, `quality_grade`, `quality_score`)"
+	if !strings.Contains(ddl, want) {
+		t.Fatalf("validation status covering index is missing: %s", want)
+	}
+	if !regexp.MustCompile("`idx_node_current_validation_status`[^;]*COMMENT '[^']*[\\x{4e00}-\\x{9fff}][^']*'").MatchString(ddl) {
+		t.Fatal("validation status covering index lacks a Chinese comment")
+	}
+}
+
 func readMigrationDDL(t *testing.T) string {
 	t.Helper()
 	entries, err := fs.ReadDir(dbmigrations.Files, ".")
