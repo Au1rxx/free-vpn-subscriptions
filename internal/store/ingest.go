@@ -6,6 +6,7 @@ import (
 	"context"
 	"crypto/sha256"
 	"database/sql"
+	"errors"
 	"fmt"
 	"io"
 	"net"
@@ -16,11 +17,13 @@ import (
 
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/parse"
+	"github.com/go-sql-driver/mysql"
 )
 
 const (
 	nodePersistBatchSize       = 1000
 	parseErrorPersistBatchSize = 500
+	parseBatchMaxAttempts      = 4
 )
 const nodeTTL = 30 * 24 * time.Hour
 
@@ -215,22 +218,23 @@ func PersistParseResult(ctx context.Context, db *sql.DB, sourceID, fetchID uint6
 		if end > len(result.Nodes) {
 			end = len(result.Nodes)
 		}
-		tx, err := db.BeginTx(ctx, nil)
-		if err != nil {
-			return report, err
-		}
-		batchReport, err := persistNodeBatch(ctx, tx, sourceID, fetchID, sourceQuality, result.Nodes[start:end], parserVersion, started)
-		if err != nil {
-			_ = tx.Rollback()
-			return report, err
-		}
-		if _, err := tx.ExecContext(ctx, `UPDATE parse_runs SET error_summary=?
-			WHERE parse_run_id=? AND parse_state='running'`, formatParseProgress(end), parseRunID); err != nil {
-			_ = tx.Rollback()
-			return report, fmt.Errorf("checkpoint parse progress: %w", err)
-		}
-		if err := tx.Commit(); err != nil {
-			return report, err
+		var batchReport PersistedParse
+		for attempt := 1; ; attempt++ {
+			batchReport, err = persistNodeBatchTransaction(ctx, db, sourceID, fetchID, sourceQuality,
+				result.Nodes[start:end], parserVersion, started, parseRunID, end)
+			if err == nil {
+				break
+			}
+			if !shouldRetryParseBatch(err, attempt) {
+				return report, err
+			}
+			timer := time.NewTimer(time.Duration(1<<(attempt-1)) * 50 * time.Millisecond)
+			select {
+			case <-ctx.Done():
+				timer.Stop()
+				return report, ctx.Err()
+			case <-timer.C:
+			}
 		}
 		report.NewEndpoints += batchReport.NewEndpoints
 		report.NewConfigs += batchReport.NewConfigs
@@ -241,6 +245,35 @@ func PersistParseResult(ctx context.Context, db *sql.DB, sourceID, fetchID uint6
 	}
 	report.Errors = len(result.Errors)
 	return report, nil
+}
+
+func persistNodeBatchTransaction(ctx context.Context, db *sql.DB, sourceID, fetchID uint64, sourceQuality float64,
+	nodes []*node.Node, parserVersion string, started time.Time, parseRunID uint64, processedNodes int) (PersistedParse, error) {
+	tx, err := db.BeginTx(ctx, nil)
+	if err != nil {
+		return PersistedParse{}, err
+	}
+	defer tx.Rollback()
+	batchReport, err := persistNodeBatch(ctx, tx, sourceID, fetchID, sourceQuality, nodes, parserVersion, started)
+	if err != nil {
+		return PersistedParse{}, err
+	}
+	if _, err := tx.ExecContext(ctx, `UPDATE parse_runs SET error_summary=?
+		WHERE parse_run_id=? AND parse_state='running'`, formatParseProgress(processedNodes), parseRunID); err != nil {
+		return PersistedParse{}, fmt.Errorf("checkpoint parse progress: %w", err)
+	}
+	if err := tx.Commit(); err != nil {
+		return PersistedParse{}, err
+	}
+	return batchReport, nil
+}
+
+func shouldRetryParseBatch(err error, attempt int) bool {
+	if attempt >= parseBatchMaxAttempts {
+		return false
+	}
+	var mysqlErr *mysql.MySQLError
+	return errors.As(err, &mysqlErr) && (mysqlErr.Number == 1213 || mysqlErr.Number == 1205)
 }
 
 func ensureParseRun(ctx context.Context, db *sql.DB, fetchID uint64, result parse.Result, parserVersion string) (uint64, bool, int, error) {
