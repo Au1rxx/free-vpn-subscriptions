@@ -1,13 +1,25 @@
-proxies: []
+proxies:
+    - name: 01-vless-vless-59595888
+      network: ws
+      port: 443
+      server: 170.114.45.6
+      servername: support.zoom.us.yxls.eu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5aafc2be-9348-4dec-b896-f4a91253bbca
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - 01-vless-vless-59595888
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - 01-vless-vless-59595888
       type: select
 rules:
     - MATCH,select
