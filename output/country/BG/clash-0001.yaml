@@ -6,17 +6,29 @@ proxies:
       server: 38.244.132.14
       type: ss
       udp: true
+    - name: 02-vless-vless-2298542
+      network: ws
+      port: 443
+      server: 108.165.233.223
+      servername: netlivpn4813.ddhshhshs.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2388e166-3890-33ae-f77e-efac00000001
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - 01-shadowsocks-shadowsocks-11088
+        - 02-vless-vless-2298542
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - 01-shadowsocks-shadowsocks-11088
+        - 02-vless-vless-2298542
       type: select
 rules:
     - MATCH,select

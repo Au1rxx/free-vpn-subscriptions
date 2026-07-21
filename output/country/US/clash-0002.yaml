@@ -1,0 +1,35 @@
+proxies:
+    - alterId: 2
+      cipher: auto
+      name: 01-vmess-vmess-2125910
+      network: tcp
+      port: 30804
+      server: v4.hdacd.com
+      type: vmess
+      udp: true
+      uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
+    - alterId: 1
+      cipher: auto
+      name: 02-vmess-vmess-2387878
+      network: tcp
+      port: 22324
+      server: 216.106.183.35
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - 01-vmess-vmess-2125910
+        - 02-vmess-vmess-2387878
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - 01-vmess-vmess-2125910
+        - 02-vmess-vmess-2387878
+      type: select
+rules:
+    - MATCH,select
