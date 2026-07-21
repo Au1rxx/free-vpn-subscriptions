@@ -35,7 +35,7 @@ var validationStatusQueries = []string{
 		COALESCE(SUM(performance_bytes IS NOT NULL),0),
 		COALESCE(SUM(performance_bytes > 0 AND performance_error_code IS NULL),0),
 		CAST(COALESCE(AVG(CASE WHEN performance_error_code IS NULL THEN NULLIF(bytes_per_second,0) END),0) AS UNSIGNED)
-	FROM validation_attempts`,
+	FROM validation_attempts FORCE INDEX (idx_validation_attempts_status)`,
 	`SELECT
 		COUNT(*),
 		COALESCE(SUM(availability_state='available'),0),

@@ -71,12 +71,19 @@ func TestMigrationFilesPersistSourceProtocolHint(t *testing.T) {
 
 func TestMigrationFilesCoverValidationStatusAggregation(t *testing.T) {
 	ddl := readMigrationDDL(t)
-	want := "`idx_node_current_validation_status` (`availability_state`, `last_validation_at`, `quality_grade`, `quality_score`)"
-	if !strings.Contains(ddl, want) {
-		t.Fatalf("validation status covering index is missing: %s", want)
+	wants := []string{
+		"`idx_node_current_validation_status` (`availability_state`, `last_validation_at`, `quality_grade`, `quality_score`)",
+		"`idx_validation_attempts_status` (`passed`, `partial_success`, `performance_bytes`, `performance_error_code`, `bytes_per_second`)",
 	}
-	if !regexp.MustCompile("`idx_node_current_validation_status`[^;]*COMMENT '[^']*[\\x{4e00}-\\x{9fff}][^']*'").MatchString(ddl) {
-		t.Fatal("validation status covering index lacks a Chinese comment")
+	for _, want := range wants {
+		if !strings.Contains(ddl, want) {
+			t.Fatalf("validation status covering index is missing: %s", want)
+		}
+	}
+	for _, index := range []string{"idx_node_current_validation_status", "idx_validation_attempts_status"} {
+		if !regexp.MustCompile("`" + index + "`[^;]*COMMENT '[^']*[\\x{4e00}-\\x{9fff}][^']*'").MatchString(ddl) {
+			t.Fatalf("validation status covering index %s lacks a Chinese comment", index)
+		}
 	}
 }
 

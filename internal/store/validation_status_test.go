@@ -25,6 +25,9 @@ func TestValidationStatusQueriesUseOneAggregatePerTable(t *testing.T) {
 			t.Errorf("table %s is read %d times, want 1", table, count)
 		}
 	}
+	if !strings.Contains(combined, "from validation_attempts force index (idx_validation_attempts_status)") {
+		t.Fatal("validation attempt aggregate must use its covering index")
+	}
 }
 
 func TestReadValidationStatusAggregatesEachTable(t *testing.T) {
@@ -157,7 +160,8 @@ func openValidationStatusTestDatabase(t *testing.T) (*sql.DB, context.Context) {
 			partial_success BOOLEAN NOT NULL,
 			performance_bytes BIGINT UNSIGNED NULL,
 			performance_error_code VARCHAR(64) NULL,
-			bytes_per_second BIGINT UNSIGNED NULL
+			bytes_per_second BIGINT UNSIGNED NULL,
+			KEY idx_validation_attempts_status (passed,partial_success,performance_bytes,performance_error_code,bytes_per_second)
 		)`,
 		`CREATE TABLE node_current_status (
 			node_config_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
