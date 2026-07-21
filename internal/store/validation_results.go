@@ -46,6 +46,12 @@ func PersistValidationResult(ctx context.Context, db *sql.DB, write ValidationWr
 		return err
 	}
 	defer tx.Rollback()
+	// Ingestion writes node_configs before validation_queue. Use the same
+	// global order here so result persistence cannot deadlock with bulk enqueue.
+	var failures int
+	if err := tx.QueryRowContext(ctx, `SELECT consecutive_failures FROM node_configs WHERE node_config_id=? FOR UPDATE`, write.NodeConfigID).Scan(&failures); err != nil {
+		return err
+	}
 	var leasedNode uint64
 	var leaseOwner, jobState string
 	if err := tx.QueryRowContext(ctx, `SELECT node_config_id, COALESCE(lease_owner,''), job_state
@@ -63,10 +69,6 @@ func PersistValidationResult(ctx context.Context, db *sql.DB, write ValidationWr
 		return ErrStaleValidation
 	}
 	state, availability, quality := validationState(write.Result)
-	var failures int
-	if err := tx.QueryRowContext(ctx, `SELECT consecutive_failures FROM node_configs WHERE node_config_id=?`, write.NodeConfigID).Scan(&failures); err != nil {
-		return err
-	}
 	if write.Result.Passed || write.Result.PartialSuccess {
 		failures = 0
 	} else {
