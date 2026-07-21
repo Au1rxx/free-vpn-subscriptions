@@ -15,12 +15,21 @@ proxies:
       sni: flb06181447.tmdsb.org
       type: trojan
       udp: true
+    - name: 03-trojan-trojan-25994263
+      password: "3632736327"
+      port: 2398
+      server: flb06181447.tmdsb.org
+      skip-cert-verify: false
+      sni: flb06181447.tmdsb.org
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - 01-trojan-trojan-29228112
         - 02-trojan-trojan-17824027
+        - 03-trojan-trojan-25994263
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -28,6 +37,7 @@ proxy-groups:
         - auto
         - 01-trojan-trojan-29228112
         - 02-trojan-trojan-17824027
+        - 03-trojan-trojan-25994263
       type: select
 rules:
     - MATCH,select
