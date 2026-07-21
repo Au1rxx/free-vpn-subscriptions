@@ -21,7 +21,23 @@ proxies:
       sni: 193.148.19.213
       type: trojan
       udp: true
-    - name: 04-trojan-trojan-56203977
+    - name: 04-trojan-trojan-2473912
+      password: 2eutknankxtbgkwcajzt
+      port: 52794
+      server: 193.148.19.210
+      skip-cert-verify: true
+      sni: www.vk.com
+      type: trojan
+      udp: true
+    - name: 05-trojan-trojan-80890727
+      password: 2eutknankxtbgkwcajzt
+      port: 52794
+      server: 193.148.19.213
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
+    - name: 06-trojan-trojan-56203977
       password: 2eutknankxtbgkwcajzt
       port: 52794
       server: 193.148.19.213
@@ -29,7 +45,7 @@ proxies:
       sni: 193.148.19.213
       type: trojan
       udp: true
-    - name: 05-trojan-trojan-2473912
+    - name: 07-trojan-trojan-116312
       password: 2eutknankxtbgkwcajzt
       port: 52794
       server: 193.148.19.210
@@ -37,17 +53,23 @@ proxies:
       sni: www.vk.com
       type: trojan
       udp: true
-    - name: 06-trojan-trojan-116312
-      password: 2eutknankxtbgkwcajzt
-      port: 52794
-      server: 193.148.19.210
-      skip-cert-verify: true
-      sni: www.vk.com
-      type: trojan
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: 08-vless-vless-80990733
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: pPGE5Uacj1AGAB_WLOXB_UUnVBOmuJGH0vTSfmRBKzM
+        short-id: 2e40144ddc07e8e1
+      server: es01.tunnely.ru
+      servername: es01.tunnely.ru
+      tls: true
+      type: vless
       udp: true
+      uuid: 31649657-6c78-4c2c-b25b-5cd574b082b5
     - alterId: 0
       cipher: auto
-      name: 07-vmess-vmess-5259765
+      name: 09-vmess-vmess-5259765
       network: raw
       port: 22324
       server: 85.90.217.42
@@ -56,7 +78,16 @@ proxies:
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - alterId: 0
       cipher: auto
-      name: 08-vmess-vmess-2386872
+      name: 10-vmess-vmess-99676
+      network: tcp
+      port: 22324
+      server: 85.90.217.42
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
+    - alterId: 0
+      cipher: auto
+      name: 11-vmess-vmess-2386872
       network: tcp
       port: 22324
       server: 85.90.217.42
@@ -70,11 +101,14 @@ proxy-groups:
         - 01-shadowsocks-shadowsocks-11052
         - 02-shadowsocks-shadowsocks-16132
         - 03-trojan-trojan-46244303
-        - 04-trojan-trojan-56203977
-        - 05-trojan-trojan-2473912
-        - 06-trojan-trojan-116312
-        - 07-vmess-vmess-5259765
-        - 08-vmess-vmess-2386872
+        - 04-trojan-trojan-2473912
+        - 05-trojan-trojan-80890727
+        - 06-trojan-trojan-56203977
+        - 07-trojan-trojan-116312
+        - 08-vless-vless-80990733
+        - 09-vmess-vmess-5259765
+        - 10-vmess-vmess-99676
+        - 11-vmess-vmess-2386872
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -83,11 +117,14 @@ proxy-groups:
         - 01-shadowsocks-shadowsocks-11052
         - 02-shadowsocks-shadowsocks-16132
         - 03-trojan-trojan-46244303
-        - 04-trojan-trojan-56203977
-        - 05-trojan-trojan-2473912
-        - 06-trojan-trojan-116312
-        - 07-vmess-vmess-5259765
-        - 08-vmess-vmess-2386872
+        - 04-trojan-trojan-2473912
+        - 05-trojan-trojan-80890727
+        - 06-trojan-trojan-56203977
+        - 07-trojan-trojan-116312
+        - 08-vless-vless-80990733
+        - 09-vmess-vmess-5259765
+        - 10-vmess-vmess-99676
+        - 11-vmess-vmess-2386872
       type: select
 rules:
     - MATCH,select
