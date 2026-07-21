@@ -80,6 +80,17 @@ func TestMigrationFilesCoverValidationStatusAggregation(t *testing.T) {
 	}
 }
 
+func TestMigrationFilesCoverNodeAPIPagination(t *testing.T) {
+	ddl := readMigrationDDL(t)
+	want := "`idx_node_configs_protocol_seen_id` (`protocol`, `last_seen_at`, `node_config_id`)"
+	if !strings.Contains(ddl, want) {
+		t.Fatalf("Node API pagination index is missing: %s", want)
+	}
+	if !regexp.MustCompile("`idx_node_configs_protocol_seen_id`[^;]*COMMENT '[^']*[\\x{4e00}-\\x{9fff}][^']*'").MatchString(ddl) {
+		t.Fatal("Node API pagination index lacks a Chinese comment")
+	}
+}
+
 func readMigrationDDL(t *testing.T) string {
 	t.Helper()
 	entries, err := fs.ReadDir(dbmigrations.Files, ".")
