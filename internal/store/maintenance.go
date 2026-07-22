@@ -25,13 +25,53 @@ func ReadStorageBytes(ctx context.Context, db *sql.DB) (uint64, error) {
 }
 
 type MaintenancePolicy struct {
-	RawPayloadDays, ParseErrorDays, AttemptDays, FetchDays, ExportDays int
-	PauseColdSources, StoreRawBodies                                   bool
+	RawPayloadDays, ParseErrorDays, AttemptDays, BatchDays, FetchDays, ExportDays int
+	PauseColdSources                                                              bool
 }
 type MaintenanceReport struct {
 	BeforeBytes, AfterBytes uint64
 	Rows                    map[string]uint64
 	DryRun                  bool
+}
+
+type maintenanceTarget struct {
+	name, countSQL, deleteSQL string
+	days                      int
+}
+
+const validationAttemptRollupDatesSQL = `SELECT DISTINCT DATE(started_at)
+	FROM validation_attempts FORCE INDEX (idx_validation_attempts_cleanup)
+	WHERE finished_at < ? ORDER BY DATE(started_at)`
+
+func ValidationAttemptRollupDatesBefore(ctx context.Context, db *sql.DB, cutoff time.Time) ([]time.Time, error) {
+	rows, err := db.QueryContext(ctx, validationAttemptRollupDatesSQL, cutoff)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	dates := make([]time.Time, 0)
+	for rows.Next() {
+		var date time.Time
+		if err := rows.Scan(&date); err != nil {
+			return nil, err
+		}
+		dates = append(dates, date.UTC())
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return dates, nil
+}
+
+func maintenanceTargets(policy MaintenancePolicy) []maintenanceTarget {
+	return []maintenanceTarget{
+		{"raw_payloads", `SELECT COUNT(*) FROM raw_payloads WHERE last_seen_at < DATE_SUB(?, INTERVAL ? DAY)`, `DELETE FROM raw_payloads WHERE last_seen_at < DATE_SUB(?, INTERVAL ? DAY) LIMIT ?`, policy.RawPayloadDays},
+		{"parse_errors", `SELECT COUNT(*) FROM parse_errors WHERE last_seen_at < DATE_SUB(?, INTERVAL ? DAY)`, `DELETE FROM parse_errors WHERE last_seen_at < DATE_SUB(?, INTERVAL ? DAY) LIMIT ?`, policy.ParseErrorDays},
+		{"validation_attempts", `SELECT COUNT(*) FROM validation_attempts WHERE finished_at < DATE_SUB(?, INTERVAL ? DAY)`, `DELETE FROM validation_attempts WHERE finished_at < DATE_SUB(?, INTERVAL ? DAY) LIMIT ?`, policy.AttemptDays},
+		{"validation_batches", `SELECT COUNT(*) FROM validation_batches b WHERE b.started_at < DATE_SUB(?, INTERVAL ? DAY) AND NOT EXISTS (SELECT 1 FROM validation_attempts a WHERE a.validation_batch_id=b.validation_batch_id)`, `DELETE FROM validation_batches WHERE validation_batch_id IN (SELECT validation_batch_id FROM (SELECT b.validation_batch_id FROM validation_batches b FORCE INDEX (idx_validation_batches_cleanup) WHERE b.started_at < DATE_SUB(?, INTERVAL ? DAY) AND NOT EXISTS (SELECT 1 FROM validation_attempts a WHERE a.validation_batch_id=b.validation_batch_id) ORDER BY b.started_at,b.validation_batch_id LIMIT ?) expired)`, policy.BatchDays},
+		{"source_fetches", `SELECT COUNT(*) FROM source_fetches WHERE finished_at < DATE_SUB(?, INTERVAL ? DAY)`, `DELETE FROM source_fetches WHERE finished_at < DATE_SUB(?, INTERVAL ? DAY) LIMIT ?`, policy.FetchDays},
+		{"export_members", `SELECT COUNT(*) FROM export_members WHERE created_at < DATE_SUB(?, INTERVAL ? DAY)`, `DELETE FROM export_members WHERE created_at < DATE_SUB(?, INTERVAL ? DAY) LIMIT ?`, policy.ExportDays},
+	}
 }
 
 func RunMaintenance(ctx context.Context, db *sql.DB, policy MaintenancePolicy, now time.Time, batchSize int, dryRun bool) (MaintenanceReport, error) {
@@ -43,17 +83,7 @@ func RunMaintenance(ctx context.Context, db *sql.DB, policy MaintenancePolicy, n
 		return MaintenanceReport{}, err
 	}
 	report := MaintenanceReport{BeforeBytes: before, AfterBytes: before, Rows: map[string]uint64{}, DryRun: dryRun}
-	targets := []struct {
-		name, countSQL, deleteSQL string
-		days                      int
-	}{
-		{"raw_payloads", `SELECT COUNT(*) FROM raw_payloads WHERE last_seen_at < DATE_SUB(?, INTERVAL ? DAY)`, `DELETE FROM raw_payloads WHERE last_seen_at < DATE_SUB(?, INTERVAL ? DAY) LIMIT ?`, policy.RawPayloadDays},
-		{"parse_errors", `SELECT COUNT(*) FROM parse_errors WHERE last_seen_at < DATE_SUB(?, INTERVAL ? DAY)`, `DELETE FROM parse_errors WHERE last_seen_at < DATE_SUB(?, INTERVAL ? DAY) LIMIT ?`, policy.ParseErrorDays},
-		{"validation_attempts", `SELECT COUNT(*) FROM validation_attempts WHERE finished_at < DATE_SUB(?, INTERVAL ? DAY)`, `DELETE FROM validation_attempts WHERE finished_at < DATE_SUB(?, INTERVAL ? DAY) LIMIT ?`, policy.AttemptDays},
-		{"source_fetches", `SELECT COUNT(*) FROM source_fetches WHERE finished_at < DATE_SUB(?, INTERVAL ? DAY)`, `DELETE FROM source_fetches WHERE finished_at < DATE_SUB(?, INTERVAL ? DAY) LIMIT ?`, policy.FetchDays},
-		{"export_members", `SELECT COUNT(*) FROM export_members WHERE created_at < DATE_SUB(?, INTERVAL ? DAY)`, `DELETE FROM export_members WHERE created_at < DATE_SUB(?, INTERVAL ? DAY) LIMIT ?`, policy.ExportDays},
-	}
-	for _, target := range targets {
+	for _, target := range maintenanceTargets(policy) {
 		var count uint64
 		if err := db.QueryRowContext(ctx, target.countSQL, now, target.days).Scan(&count); err != nil {
 			return report, err

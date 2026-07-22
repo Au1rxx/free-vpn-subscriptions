@@ -11,9 +11,9 @@ first="$("$work_dir/fnctl" migrate --config "$config_path")"
 second="$("$work_dir/fnctl" migrate --config "$config_path")"
 status="$("$work_dir/fnctl" db-status --config "$config_path")"
 
-grep -Fq 'migrations_total=9' <<<"$first"
-grep -Fq 'migrations_total=9 applied=0 skipped=9' <<<"$second"
-grep -Fq 'migrations=9 tables=22 empty_table_comments=0 empty_column_comments=0 enabled_policies=6' <<<"$status"
+grep -Fq 'migrations_total=12' <<<"$first"
+grep -Fq 'migrations_total=12 applied=0 skipped=12' <<<"$second"
+grep -Fq 'migrations=12 tables=22 empty_table_comments=0 empty_column_comments=0 enabled_policies=7' <<<"$status"
 grep -Fq 'read_only=false' <<<"$status"
 
 printf '%s\n' "$first"

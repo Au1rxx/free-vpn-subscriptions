@@ -1,23 +1,23 @@
 package maintain
 
 type Policy struct {
-	RawPayloadDays, ParseErrorDays, AttemptDays, FetchDays, ExportDays int
-	PauseColdSources, StoreRawBodies                                   bool
+	RawPayloadDays, ParseErrorDays, AttemptDays, BatchDays, FetchDays, ExportDays int
+	PauseColdSources                                                              bool
 }
 
 func PolicyForUsage(percent float64) Policy {
-	policy := Policy{RawPayloadDays: 30, ParseErrorDays: 90, AttemptDays: 180, FetchDays: 365, ExportDays: 365, StoreRawBodies: true}
+	policy := Policy{RawPayloadDays: 30, ParseErrorDays: 30, AttemptDays: 14, BatchDays: 14, FetchDays: 90, ExportDays: 30}
 	switch {
 	case percent >= 94:
-		policy.RawPayloadDays, policy.ParseErrorDays, policy.AttemptDays, policy.FetchDays, policy.ExportDays = 1, 7, 30, 60, 90
-		policy.PauseColdSources, policy.StoreRawBodies = true, false
+		policy.RawPayloadDays, policy.ParseErrorDays, policy.AttemptDays, policy.BatchDays, policy.FetchDays, policy.ExportDays = 1, 1, 1, 1, 7, 1
+		policy.PauseColdSources = true
 	case percent >= 90:
-		policy.RawPayloadDays, policy.ParseErrorDays, policy.AttemptDays, policy.FetchDays, policy.ExportDays = 3, 14, 60, 90, 180
-		policy.PauseColdSources, policy.StoreRawBodies = true, false
+		policy.RawPayloadDays, policy.ParseErrorDays, policy.AttemptDays, policy.BatchDays, policy.FetchDays, policy.ExportDays = 3, 3, 2, 2, 14, 3
+		policy.PauseColdSources = true
 	case percent >= 80:
-		policy.RawPayloadDays, policy.ParseErrorDays, policy.AttemptDays, policy.FetchDays, policy.ExportDays = 7, 30, 90, 180, 180
+		policy.RawPayloadDays, policy.ParseErrorDays, policy.AttemptDays, policy.BatchDays, policy.FetchDays, policy.ExportDays = 7, 7, 3, 3, 30, 7
 	case percent >= 70:
-		policy.RawPayloadDays, policy.ParseErrorDays = 14, 30
+		policy.RawPayloadDays, policy.ParseErrorDays, policy.AttemptDays, policy.BatchDays, policy.FetchDays, policy.ExportDays = 14, 14, 7, 7, 60, 14
 	}
 	return policy
 }

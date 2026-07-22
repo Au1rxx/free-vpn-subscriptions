@@ -181,21 +181,39 @@ func writeClassificationBatch(ctx context.Context, tx *sql.Tx, updates []Classif
 	return err
 }
 
-func RollupDailyStats(ctx context.Context, db *sql.DB, date time.Time) (int64, error) {
-	result, err := db.ExecContext(ctx, `INSERT INTO node_daily_stats
+const rollupDailyStatsSQL = `INSERT INTO node_daily_stats
 		(stat_date, node_config_id, validation_count, success_count, partial_count, failure_count,
-		 success_rate, latency_p50_ms, latency_p95_ms, source_count, quality_score, quality_grade)
+		 success_rate, latency_p50_ms, latency_p95_ms, source_count, quality_score, quality_grade, finalized_at)
 		SELECT DATE(?), a.node_config_id, COUNT(*), SUM(a.passed), SUM(a.partial_success),
 		 SUM(NOT a.passed AND NOT a.partial_success), AVG(a.passed),
 		 AVG(a.http_median_ms), MAX(a.http_median_ms), MAX(COALESCE(s.source_count,0)),
-		 MAX(COALESCE(s.quality_score,0)), MAX(COALESCE(s.quality_grade,'U'))
+		 MAX(COALESCE(s.quality_score,0)), MAX(COALESCE(s.quality_grade,'U')), ?
 		FROM validation_attempts a LEFT JOIN node_current_status s ON s.node_config_id=a.node_config_id
 		WHERE a.started_at >= DATE(?) AND a.started_at < DATE_ADD(DATE(?), INTERVAL 1 DAY)
 		GROUP BY a.node_config_id
-		ON DUPLICATE KEY UPDATE validation_count=VALUES(validation_count), success_count=VALUES(success_count),
-		 partial_count=VALUES(partial_count), failure_count=VALUES(failure_count), success_rate=VALUES(success_rate),
-		 latency_p50_ms=VALUES(latency_p50_ms), latency_p95_ms=VALUES(latency_p95_ms),
-		 source_count=VALUES(source_count), quality_score=VALUES(quality_score), quality_grade=VALUES(quality_grade)`, date, date, date)
+		ON DUPLICATE KEY UPDATE
+		 validation_count=IF(finalized_at IS NULL,VALUES(validation_count),validation_count),
+		 success_count=IF(finalized_at IS NULL,VALUES(success_count),success_count),
+		 partial_count=IF(finalized_at IS NULL,VALUES(partial_count),partial_count),
+		 failure_count=IF(finalized_at IS NULL,VALUES(failure_count),failure_count),
+		 success_rate=IF(finalized_at IS NULL,VALUES(success_rate),success_rate),
+		 latency_p50_ms=IF(finalized_at IS NULL,VALUES(latency_p50_ms),latency_p50_ms),
+		 latency_p95_ms=IF(finalized_at IS NULL,VALUES(latency_p95_ms),latency_p95_ms),
+		 source_count=IF(finalized_at IS NULL,VALUES(source_count),source_count),
+		 quality_score=IF(finalized_at IS NULL,VALUES(quality_score),quality_score),
+		 quality_grade=IF(finalized_at IS NULL,VALUES(quality_grade),quality_grade),
+		 finalized_at=COALESCE(finalized_at,VALUES(finalized_at))`
+
+func RollupDailyStats(ctx context.Context, db *sql.DB, date time.Time) (int64, error) {
+	return rollupDailyStats(ctx, db, date, nil)
+}
+
+func FinalizeDailyStats(ctx context.Context, db *sql.DB, date, finalizedAt time.Time) (int64, error) {
+	return rollupDailyStats(ctx, db, date, finalizedAt.UTC())
+}
+
+func rollupDailyStats(ctx context.Context, db *sql.DB, date time.Time, finalizedAt any) (int64, error) {
+	result, err := db.ExecContext(ctx, rollupDailyStatsSQL, date, finalizedAt, date, date)
 	if err != nil {
 		return 0, err
 	}

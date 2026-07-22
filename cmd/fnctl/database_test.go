@@ -38,19 +38,19 @@ func TestFormatDatabaseStatusIsBoundedAndContainsNoDSN(t *testing.T) {
 			Version: "9.7.1-cloud", Cipher: "TLS_AES_128_GCM_SHA256",
 			TimeZone: "UTC", Charset: "utf8mb4", Collation: "utf8mb4_0900_ai_ci",
 		},
-		AppliedMigrations:   6,
+		AppliedMigrations:   12,
 		BusinessTables:      22,
 		EmptyTableComments:  0,
 		EmptyColumnComments: 0,
-		EnabledPolicies:     6,
+		EnabledPolicies:     7,
 		DataBytes:           1024,
 		IndexBytes:          2048,
 		AllocatedBytes:      4096,
 	}
 	out := formatDatabaseStatus(status)
 	for _, want := range []string{
-		"version=9.7.1-cloud", "tls=TLS_AES_128_GCM_SHA256", "migrations=6", "tables=22",
-		"empty_table_comments=0", "empty_column_comments=0", "enabled_policies=6",
+		"version=9.7.1-cloud", "tls=TLS_AES_128_GCM_SHA256", "migrations=12", "tables=22",
+		"empty_table_comments=0", "empty_column_comments=0", "enabled_policies=7",
 		"allocated_bytes=4096", "total_bytes=4096",
 	} {
 		if !strings.Contains(out, want) {

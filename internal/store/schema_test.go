@@ -87,6 +87,25 @@ func TestMigrationFilesCoverValidationStatusAggregation(t *testing.T) {
 	}
 }
 
+func TestMigrationFilesDefineSustainableRetention(t *testing.T) {
+	ddl := readMigrationDDL(t)
+	for _, want := range []string{
+		"`idx_validation_batches_cleanup` (`started_at`, `validation_batch_id`)",
+		"`idx_validation_attempts_rollup` (`started_at`, `node_config_id`)",
+		"`finalized_at` DATETIME(6) NULL COMMENT '验证明细删除前完成汇总的时间'",
+		"('validation_batches', 'validation_batch', 14, 7, 70, 90, 'rollup_then_delete'",
+		"('validation_attempts', 'validation_attempt', 14, 7, 70, 90, 'rollup_then_delete'",
+		"('source_fetches', 'source_fetch', 90, 60, 70, 90, 'rollup_then_delete'",
+	} {
+		if !strings.Contains(ddl, want) {
+			t.Fatalf("sustainable retention contract is missing: %s", want)
+		}
+	}
+	if !regexp.MustCompile("`idx_validation_batches_cleanup`[^;]*COMMENT '[^']*[\\x{4e00}-\\x{9fff}][^']*'").MatchString(ddl) {
+		t.Fatal("validation batch cleanup index lacks a Chinese comment")
+	}
+}
+
 func TestMigrationFilesCoverNodeAPIPagination(t *testing.T) {
 	ddl := readMigrationDDL(t)
 	want := "`idx_node_configs_protocol_seen_id` (`protocol`, `last_seen_at`, `node_config_id`)"
