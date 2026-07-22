@@ -33,7 +33,7 @@ fnctl db-status --config /etc/free-vpn-harvester/config.yaml
 make test-migrations CONFIG=/etc/free-vpn-harvester/config.yaml
 ```
 
-迁移验收会重复执行迁移，确认第二次全部跳过，并检查：12 个迁移、22 张业务表、所有表和字段中文备注完整、7 条容量/TTL 策略启用、数据库可写、TLS 与 UTC 正常。迁移采用可重复执行的 DDL；MySQL DDL 会隐式提交，因此只有一个版本的全部语句成功后才记录版本。
+迁移验收会重复执行迁移，确认第二次全部跳过，并检查：12 个迁移、22 张业务表、所有表和字段中文备注完整、7 条容量/TTL 策略启用、数据库可写、TLS 与 UTC 正常。迁移连接保留 10 秒建连和 30 秒写入上限，但在线 DDL 的读取等待由命令级 context/受管服务超时控制，不套用普通查询的 2 分钟读取上限。MySQL DDL 会隐式提交，因此只有一个版本的全部语句成功后才记录版本。
 
 ## 50GB 容量和 TTL
 

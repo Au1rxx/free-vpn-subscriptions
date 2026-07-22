@@ -57,3 +57,11 @@ func NewMySQLConfig(cfg appconfig.DatabaseConfig, password, database string) *my
 		CheckConnLiveness: true,
 	}
 }
+
+// NewMigrationMySQLConfig preserves connection and write bounds while letting
+// the command context own the deadline for online DDL that can exceed two minutes.
+func NewMigrationMySQLConfig(cfg appconfig.DatabaseConfig, password, database string) *mysql.Config {
+	result := NewMySQLConfig(cfg, password, database)
+	result.ReadTimeout = 0
+	return result
+}

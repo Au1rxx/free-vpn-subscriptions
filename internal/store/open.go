@@ -7,6 +7,7 @@ import (
 	"time"
 
 	appconfig "github.com/Au1rxx/free-vpn-subscriptions/internal/config"
+	"github.com/go-sql-driver/mysql"
 )
 
 // ServerInfo captures the server properties required by the harvester.
@@ -22,11 +23,21 @@ type ServerInfo struct {
 // Open creates and verifies a bounded MySQL connection pool. It deliberately
 // does not expose the generated DSN in returned errors.
 func Open(ctx context.Context, cfg appconfig.DatabaseConfig, database string) (*sql.DB, error) {
+	return open(ctx, cfg, database, NewMySQLConfig)
+}
+
+// OpenMigration creates a bounded pool whose reads are governed by the
+// caller's context rather than the short runtime query timeout.
+func OpenMigration(ctx context.Context, cfg appconfig.DatabaseConfig, database string) (*sql.DB, error) {
+	return open(ctx, cfg, database, NewMigrationMySQLConfig)
+}
+
+func open(ctx context.Context, cfg appconfig.DatabaseConfig, database string, newConfig func(appconfig.DatabaseConfig, string, string) *mysql.Config) (*sql.DB, error) {
 	password, err := ReadPassword(cfg.PasswordFile)
 	if err != nil {
 		return nil, err
 	}
-	db, err := sql.Open("mysql", NewMySQLConfig(cfg, password, database).FormatDSN())
+	db, err := sql.Open("mysql", newConfig(cfg, password, database).FormatDSN())
 	if err != nil {
 		return nil, fmt.Errorf("open database: %w", err)
 	}

@@ -22,7 +22,7 @@ func newMigrateCmd() *cobra.Command {
 				return err
 			}
 			ctx := cmd.Context()
-			admin, err := store.Open(ctx, cfg.Database, "")
+			admin, err := store.OpenMigration(ctx, cfg.Database, "")
 			if err != nil {
 				return err
 			}
@@ -31,7 +31,7 @@ func newMigrateCmd() *cobra.Command {
 				return err
 			}
 			results, err := store.Migrate(ctx, admin, func(ctx context.Context, database string) (*sql.DB, error) {
-				return store.Open(ctx, cfg.Database, database)
+				return store.OpenMigration(ctx, cfg.Database, database)
 			}, dbmigrations.Files, cfg.Database.Name)
 			if err != nil {
 				return err

@@ -54,3 +54,14 @@ func TestNewMySQLConfigPreservesPasswordAndRequiresTLS(t *testing.T) {
 		t.Fatalf("read timeout=%s, want 2m", got.ReadTimeout)
 	}
 }
+
+func TestNewMigrationMySQLConfigAllowsLongOnlineDDL(t *testing.T) {
+	cfg := appconfig.DatabaseConfig{Address: "127.0.0.1:13306", User: "db-user", TLSMode: "required"}
+	got := NewMigrationMySQLConfig(cfg, "secret", "vpn_nodes")
+	if got.ReadTimeout != 0 {
+		t.Fatalf("migration read timeout=%s, want disabled for bounded command context", got.ReadTimeout)
+	}
+	if got.Timeout != 10*time.Second || got.WriteTimeout != 30*time.Second || got.TLSConfig != "skip-verify" {
+		t.Fatalf("migration transport safety changed: timeout=%s write=%s tls=%q", got.Timeout, got.WriteTimeout, got.TLSConfig)
+	}
+}
