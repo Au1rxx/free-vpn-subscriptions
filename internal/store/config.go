@@ -65,3 +65,11 @@ func NewMigrationMySQLConfig(cfg appconfig.DatabaseConfig, password, database st
 	result.ReadTimeout = 0
 	return result
 }
+
+// NewMaintenanceMySQLConfig preserves connection and write bounds while
+// letting the systemd-owned command context bound scans over retained history.
+func NewMaintenanceMySQLConfig(cfg appconfig.DatabaseConfig, password, database string) *mysql.Config {
+	result := NewMySQLConfig(cfg, password, database)
+	result.ReadTimeout = 0
+	return result
+}

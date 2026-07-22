@@ -7,17 +7,25 @@ import (
 	"time"
 
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/maintain"
+	"github.com/Au1rxx/free-vpn-subscriptions/internal/store"
 	"github.com/spf13/cobra"
 )
 
 func newMaintainCmd() *cobra.Command {
 	dryRun, batchSize := false, 1000
 	command := &cobra.Command{Use: "maintain", Short: "Enforce TTL and the 50GB capacity policy", RunE: func(cmd *cobra.Command, _ []string) error {
-		_, db, _, err := openIngestService(cmd.Context())
+		cfg, err := loadDatabaseConfig()
+		if err != nil {
+			return err
+		}
+		db, err := store.OpenMaintenance(cmd.Context(), cfg.Database, cfg.Database.Name)
 		if err != nil {
 			return err
 		}
 		defer db.Close()
+		if _, err := store.CheckServer(cmd.Context(), db); err != nil {
+			return err
+		}
 		report, err := (maintain.Service{DB: db}).Run(cmd.Context(), batchSize, dryRun, time.Now().UTC())
 		if err != nil {
 			return err

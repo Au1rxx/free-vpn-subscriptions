@@ -65,3 +65,14 @@ func TestNewMigrationMySQLConfigAllowsLongOnlineDDL(t *testing.T) {
 		t.Fatalf("migration transport safety changed: timeout=%s write=%s tls=%q", got.Timeout, got.WriteTimeout, got.TLSConfig)
 	}
 }
+
+func TestNewMaintenanceMySQLConfigAllowsLongBoundedMaintenance(t *testing.T) {
+	cfg := appconfig.DatabaseConfig{Address: "127.0.0.1:13306", User: "db-user", TLSMode: "required"}
+	got := NewMaintenanceMySQLConfig(cfg, "secret", "vpn_nodes")
+	if got.ReadTimeout != 0 {
+		t.Fatalf("maintenance read timeout=%s, want disabled for bounded command context", got.ReadTimeout)
+	}
+	if got.Timeout != 10*time.Second || got.WriteTimeout != 30*time.Second || got.TLSConfig != "skip-verify" {
+		t.Fatalf("maintenance transport safety changed: timeout=%s write=%s tls=%q", got.Timeout, got.WriteTimeout, got.TLSConfig)
+	}
+}

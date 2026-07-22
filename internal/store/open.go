@@ -32,6 +32,12 @@ func OpenMigration(ctx context.Context, cfg appconfig.DatabaseConfig, database s
 	return open(ctx, cfg, database, NewMigrationMySQLConfig)
 }
 
+// OpenMaintenance creates a bounded pool whose reads are governed by the
+// maintenance unit context rather than the short interactive query timeout.
+func OpenMaintenance(ctx context.Context, cfg appconfig.DatabaseConfig, database string) (*sql.DB, error) {
+	return open(ctx, cfg, database, NewMaintenanceMySQLConfig)
+}
+
 func open(ctx context.Context, cfg appconfig.DatabaseConfig, database string, newConfig func(appconfig.DatabaseConfig, string, string) *mysql.Config) (*sql.DB, error) {
 	password, err := ReadPassword(cfg.PasswordFile)
 	if err != nil {
