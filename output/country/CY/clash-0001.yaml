@@ -1,6 +1,19 @@
 proxies:
     - client-fingerprint: chrome
-      name: 01-vless-vless-115073952
+      name: 01-vless-vless-135793420
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ
+        short-id: a8ae
+      server: 194.76.154.31
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
+    - client-fingerprint: chrome
+      name: 02-vless-vless-115073952
       network: tcp
       port: 40443
       reality-opts:
@@ -13,20 +26,7 @@ proxies:
       udp: true
       uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
     - client-fingerprint: firefox
-      name: 02-vless-vless-113404806
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ
-        short-id: a8ae
-      server: 194.76.154.31
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
-    - client-fingerprint: firefox
-      name: 03-vless-vless-114359407
+      name: 03-vless-vless-113404806
       network: tcp
       port: 40443
       reality-opts:
@@ -52,8 +52,8 @@ proxies:
       udp: true
       uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
     - client-fingerprint: firefox
-      name: 05-vless-vless-117872359
-      network: raw
+      name: 05-vless-vless-114359407
+      network: tcp
       port: 40443
       reality-opts:
         public-key: MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ
@@ -64,9 +64,9 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
-    - client-fingerprint: chrome
-      name: 06-vless-vless-135793420
-      network: tcp
+    - client-fingerprint: firefox
+      name: 06-vless-vless-117872359
+      network: raw
       port: 40443
       reality-opts:
         public-key: MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ
@@ -81,23 +81,23 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-vless-vless-115073952
-        - 02-vless-vless-113404806
-        - 03-vless-vless-114359407
+        - 01-vless-vless-135793420
+        - 02-vless-vless-115073952
+        - 03-vless-vless-113404806
         - 04-vless-vless-148276404
-        - 05-vless-vless-117872359
-        - 06-vless-vless-135793420
+        - 05-vless-vless-114359407
+        - 06-vless-vless-117872359
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-vless-vless-115073952
-        - 02-vless-vless-113404806
-        - 03-vless-vless-114359407
+        - 01-vless-vless-135793420
+        - 02-vless-vless-115073952
+        - 03-vless-vless-113404806
         - 04-vless-vless-148276404
-        - 05-vless-vless-117872359
-        - 06-vless-vless-135793420
+        - 05-vless-vless-114359407
+        - 06-vless-vless-117872359
       type: select
 rules:
     - MATCH,select
