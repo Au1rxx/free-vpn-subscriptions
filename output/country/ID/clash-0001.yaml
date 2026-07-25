@@ -1,13 +1,25 @@
-proxies: []
+proxies:
+    - name: 01-vless-vless-154371166
+      network: xhttp
+      port: 443
+      server: 188.72.103.3
+      servername: cherry.benzogangmoney.space
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8b9094c7-e3e1-42bf-a0aa-18a88dfa632b
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - 01-vless-vless-154371166
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - 01-vless-vless-154371166
       type: select
 rules:
     - MATCH,select

@@ -6,10 +6,10 @@ proxies:
       server: 38.244.132.14
       type: ss
       udp: true
-    - client-fingerprint: chrome
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: 02-vless-vless-151539179
-      network: raw
+      name: 02-vless-vless-150824330
+      network: tcp
       port: 443
       reality-opts:
         public-key: koIuNibeQcUFNPBwA_jvFdKgd8-GHT7RcjPhq9EywAQ
@@ -20,10 +20,10 @@ proxies:
       type: vless
       udp: true
       uuid: 75bf4758-0dfa-4b7e-8a73-813088edb780
-    - client-fingerprint: firefox
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: 03-vless-vless-150824330
-      network: tcp
+      name: 03-vless-vless-151539179
+      network: raw
       port: 443
       reality-opts:
         public-key: koIuNibeQcUFNPBwA_jvFdKgd8-GHT7RcjPhq9EywAQ
@@ -39,16 +39,16 @@ proxy-groups:
       name: auto
       proxies:
         - 01-shadowsocks-shadowsocks-11088
-        - 02-vless-vless-151539179
-        - 03-vless-vless-150824330
+        - 02-vless-vless-150824330
+        - 03-vless-vless-151539179
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - 01-shadowsocks-shadowsocks-11088
-        - 02-vless-vless-151539179
-        - 03-vless-vless-150824330
+        - 02-vless-vless-150824330
+        - 03-vless-vless-151539179
       type: select
 rules:
     - MATCH,select
