@@ -1,10 +1,34 @@
 {
   "outbounds": [
     {
+      "password": "grape_288923",
+      "server": "194.247.182.201",
+      "server_port": 8443,
+      "tag": "01-hysteria2-hysteria2-133881751",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "grape-coffee-fi.gleeze.com"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "password": "grape_288923",
+      "server": "194.247.182.201",
+      "server_port": 8443,
+      "tag": "02-hysteria2-hysteria2-120743381",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "grape-coffee-fi.gleeze.com"
+      },
+      "type": "hysteria2"
+    },
+    {
       "flow": "xtls-rprx-vision",
       "server": "82.22.53.30",
       "server_port": 448,
-      "tag": "01-vless-vless-2351579",
+      "tag": "03-vless-vless-2351579",
       "tls": {
         "enabled": true,
         "insecure": false,
@@ -23,9 +47,34 @@
       "uuid": "f82944fe-9863-494a-9a2d-0f3120a774c6"
     },
     {
+      "flow": "xtls-rprx-vision",
+      "server": "82.22.53.30",
+      "server_port": 448,
+      "tag": "04-vless-vless-86657996",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "0B7XMJC-mBqvUkf_on0wPZeW1iVmZIbEPVyvz-V_jRI",
+          "short_id": "60d7a9bbacadc0fb"
+        },
+        "server_name": "www.googletagmanager.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "f82944fe-9863-494a-9a2d-0f3120a774c6"
+    },
+    {
       "interval": "5m",
       "outbounds": [
-        "01-vless-vless-2351579"
+        "01-hysteria2-hysteria2-133881751",
+        "02-hysteria2-hysteria2-120743381",
+        "03-vless-vless-2351579",
+        "04-vless-vless-86657996"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -34,7 +83,10 @@
     {
       "outbounds": [
         "auto",
-        "01-vless-vless-2351579"
+        "01-hysteria2-hysteria2-133881751",
+        "02-hysteria2-hysteria2-120743381",
+        "03-vless-vless-2351579",
+        "04-vless-vless-86657996"
       ],
       "tag": "select",
       "type": "selector"

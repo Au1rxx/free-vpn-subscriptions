@@ -6,29 +6,33 @@ proxies:
       server: 38.244.132.14
       type: ss
       udp: true
-    - name: 02-vless-vless-2298542
-      network: ws
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: 02-vless-vless-143873860
+      network: tcp
       port: 443
-      server: 108.165.233.223
-      servername: netlivpn4813.ddhshhshs.workers.dev
-      skip-cert-verify: false
+      reality-opts:
+        public-key: koIuNibeQcUFNPBwA_jvFdKgd8-GHT7RcjPhq9EywAQ
+        short-id: bb186e4397a2792d
+      server: 2.27.105.172
+      servername: www.yandex.ru
       tls: true
       type: vless
       udp: true
-      uuid: 2388e166-3890-33ae-f77e-efac00000001
+      uuid: 75bf4758-0dfa-4b7e-8a73-813088edb780
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - 01-shadowsocks-shadowsocks-11088
-        - 02-vless-vless-2298542
+        - 02-vless-vless-143873860
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - 01-shadowsocks-shadowsocks-11088
-        - 02-vless-vless-2298542
+        - 02-vless-vless-143873860
       type: select
 rules:
     - MATCH,select
