@@ -35,6 +35,11 @@ type Report struct {
 	Collections map[string]int `json:"collections"`
 	Files       int            `json:"file_count"`
 	Bytes       int64          `json:"output_bytes"`
+
+	// Render inputs for the README and Pages site. Excluded from JSON so the
+	// published manifest and the stored export-run record keep their shape.
+	Summary  aggregate.Summary `json:"-"`
+	Selected []*node.Node      `json:"-"`
 }
 
 type databaseStatus struct {
@@ -154,9 +159,15 @@ func Generate(root string, nodes []*node.Node, metadata []store.ExportMeta, shar
 	if err := writeLegacy(staging, legacy, &report); err != nil {
 		return Report{}, err
 	}
-	status, err := json.MarshalIndent(buildLegacyStatus(all, legacy, report.GeneratedAt), "", "  ")
+	legacyStatus := buildLegacyStatus(all, legacy, report.GeneratedAt)
+	status, err := json.MarshalIndent(legacyStatus, "", "  ")
 	if err != nil {
 		return Report{}, err
+	}
+	report.Summary = legacyStatus.Summary
+	report.Selected = make([]*node.Node, len(legacy))
+	for index, value := range legacy {
+		report.Selected[index] = value.node
 	}
 	if err := writeOutput(staging, "status.json", append(status, '\n'), &report); err != nil {
 		return Report{}, err

@@ -127,3 +127,51 @@ func TestExportMembersIncludeDetailedCollections(t *testing.T) {
 		t.Fatalf("invalid run UUID %q", uuid)
 	}
 }
+
+func TestGenerateExposesSiteRenderInputs(t *testing.T) {
+	nodes := []*node.Node{
+		{Protocol: node.ProtoVLESS, Server: "one.example", Port: 443, UUID: "a", Country: "US", LatencyMS: 10},
+		{Protocol: node.ProtoTUIC, Server: "two.example", Port: 443, UUID: "b", Password: "p", Country: "JP", LatencyMS: 30},
+		{Protocol: node.ProtoSS, Server: "three.example", Port: 8388, Cipher: "aes-128-gcm", Password: "p", Country: "US", LatencyMS: 50},
+	}
+	metadata := []store.ExportMeta{
+		{ConfigID: 1, Grade: "A", Score: 88, Country: "US", NetworkClass: "cloud"},
+		{ConfigID: 2, Grade: "B", Score: 70, Country: "JP", NetworkClass: "hosting"},
+		{ConfigID: 3, Grade: "D", Score: 40, Country: "US", NetworkClass: "isp"},
+	}
+	report, err := Generate(t.TempDir(), nodes, metadata, 2)
+	if err != nil {
+		t.Fatal(err)
+	}
+	// Only the stable grades (A, B) are published, so the site renders those.
+	if len(report.Selected) != 2 {
+		t.Fatalf("selected=%d", len(report.Selected))
+	}
+	if report.Summary.TotalSelected != 2 || report.Summary.TotalVerified != 3 {
+		t.Fatalf("summary=%+v", report.Summary)
+	}
+	if report.Summary.ByCountry["US"] != 1 || report.Summary.ByCountry["JP"] != 1 {
+		t.Fatalf("by_country=%v", report.Summary.ByCountry)
+	}
+	if report.Summary.GeneratedAtUnix == 0 {
+		t.Fatal("generated_at_unix is zero")
+	}
+}
+
+func TestManifestExcludesSiteRenderInputs(t *testing.T) {
+	root := t.TempDir()
+	nodes := []*node.Node{{Protocol: node.ProtoVLESS, Server: "one.example", Port: 443, UUID: "a", Country: "US", LatencyMS: 10}}
+	metadata := []store.ExportMeta{{ConfigID: 1, Grade: "A", Score: 88, Country: "US", NetworkClass: "cloud"}}
+	if _, err := Generate(root, nodes, metadata, 2); err != nil {
+		t.Fatal(err)
+	}
+	body, err := os.ReadFile(filepath.Join(root, "manifest.json"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, field := range []string{"Summary", "Selected", "by_country", "total_selected"} {
+		if strings.Contains(string(body), field) {
+			t.Fatalf("manifest leaked %q: %s", field, body)
+		}
+	}
+}
