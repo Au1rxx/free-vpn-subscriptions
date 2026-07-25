@@ -108,6 +108,7 @@ De los ~150 que publicamos cada ejecución, un cliente típico encuentra **80-12
 	DisclaimerHeading: "## ⚠️ Aviso legal",
 	DisclaimerBody:    "Este repositorio agrega configuraciones de proxy **compartidas públicamente** por voluntarios externos. No operamos ningún servidor, no garantizamos disponibilidad ni seguridad, y no somos responsables del uso que hagas. Destinado a uso educativo y de conectividad personal. Cumple con todas las leyes aplicables en tu jurisdicción.",
 
+	StarCTA:            "⭐ **Dale una estrella al repositorio** si te ahorró tiempo: es la única señal que usamos para decidir qué seguir construyendo.",
 	StarHistoryHeading: "## ⭐ Historia de estrellas",
 	FinalCTA:           "Si este proyecto te ayudó, déjale una ⭐ — cada estrella hace más fácil que otros lo encuentren.",
 }

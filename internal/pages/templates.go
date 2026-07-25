@@ -9,6 +9,8 @@ const tplIndex = `<!DOCTYPE html>
 <title>{{.Title}}</title>
 <meta name="description" content="{{.Description}}">
 <meta name="keywords" content="{{.Keywords}}">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="theme-color" content="#0f172a">
 <link rel="canonical" href="{{.Canonical}}">
 {{range .Alternates}}<link rel="alternate" hreflang="{{.Code}}" href="{{.URL}}">
 {{end}}<meta property="og:type" content="website">
@@ -16,11 +18,14 @@ const tplIndex = `<!DOCTYPE html>
 <meta property="og:description" content="{{.Description}}">
 <meta property="og:url" content="{{.Canonical}}">
 <meta property="og:image" content="{{.OGImage}}">
+<meta property="og:image:alt" content="{{.OGImageAlt}}">
+<meta property="og:site_name" content="{{.SiteName}}">
 <meta property="og:locale" content="{{.LangAttr}}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{.Title}}">
 <meta name="twitter:description" content="{{.Description}}">
 <meta name="twitter:image" content="{{.OGImage}}">
+<meta name="twitter:image:alt" content="{{.OGImageAlt}}">
 <script type="application/ld+json">{{.JSONLD}}</script>
 <style>` + css + `</style>
 </head>
@@ -130,6 +135,8 @@ const tplCountry = `<!DOCTYPE html>
 <title>{{.Title}}</title>
 <meta name="description" content="{{.Description}}">
 <meta name="keywords" content="{{.Keywords}}">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="theme-color" content="#0f172a">
 <link rel="canonical" href="{{.Canonical}}">
 {{range .Alternates}}<link rel="alternate" hreflang="{{.Code}}" href="{{.URL}}">
 {{end}}<meta property="og:type" content="website">
@@ -137,11 +144,14 @@ const tplCountry = `<!DOCTYPE html>
 <meta property="og:description" content="{{.Description}}">
 <meta property="og:url" content="{{.Canonical}}">
 <meta property="og:image" content="{{.OGImage}}">
+<meta property="og:image:alt" content="{{.OGImageAlt}}">
+<meta property="og:site_name" content="{{.SiteName}}">
 <meta property="og:locale" content="{{.LangAttr}}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{.Title}}">
 <meta name="twitter:description" content="{{.Description}}">
 <meta name="twitter:image" content="{{.OGImage}}">
+<meta name="twitter:image:alt" content="{{.OGImageAlt}}">
 <script type="application/ld+json">{{.JSONLD}}</script>
 <style>` + css + `</style>
 </head>
@@ -214,6 +224,8 @@ const tplGuide = `<!DOCTYPE html>
 <title>{{.Title}}</title>
 <meta name="description" content="{{.Description}}">
 <meta name="keywords" content="{{.Keywords}}">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="theme-color" content="#0f172a">
 <link rel="canonical" href="{{.Canonical}}">
 {{range .Alternates}}<link rel="alternate" hreflang="{{.Code}}" href="{{.URL}}">
 {{end}}<meta property="og:type" content="article">
@@ -221,11 +233,14 @@ const tplGuide = `<!DOCTYPE html>
 <meta property="og:description" content="{{.Description}}">
 <meta property="og:url" content="{{.Canonical}}">
 <meta property="og:image" content="{{.OGImage}}">
+<meta property="og:image:alt" content="{{.OGImageAlt}}">
+<meta property="og:site_name" content="{{.SiteName}}">
 <meta property="og:locale" content="{{.LangAttr}}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{.Title}}">
 <meta name="twitter:description" content="{{.Description}}">
 <meta name="twitter:image" content="{{.OGImage}}">
+<meta name="twitter:image:alt" content="{{.OGImageAlt}}">
 <script type="application/ld+json">{{.JSONLD}}</script>
 <style>` + css + `</style>
 </head>

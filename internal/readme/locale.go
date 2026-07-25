@@ -4,10 +4,10 @@ package readme
 // language. A new Locale must populate every field; partial translations
 // would mix languages which hurts SEO (Google sees the page as non-cohesive).
 type Locale struct {
-	Code         string // "en", "zh", "ja", ...
-	DisplayName  string // "English", "简体中文", "日本語"
-	FileName     string // "README.md", "README_CN.md"
-	LangAttr     string // HTML lang attribute: "en", "zh-Hans", "ja"
+	Code        string // "en", "zh", "ja", ...
+	DisplayName string // "English", "简体中文", "日本語"
+	FileName    string // "README.md", "README_CN.md"
+	LangAttr    string // HTML lang attribute: "en", "zh-Hans", "ja"
 
 	// Badges
 	BadgeNodes   string // "nodes"
@@ -31,19 +31,19 @@ type Locale struct {
 	VerificationBody    string
 
 	// One-click subscribe
-	SubscribeHeading     string
-	SubscribeIntro       string
-	SubscribeColClient   string
-	SubscribeColFormat   string
-	SubscribeColURL      string
+	SubscribeHeading   string
+	SubscribeIntro     string
+	SubscribeColClient string
+	SubscribeColFormat string
+	SubscribeColURL    string
 
 	// Clients
-	ClientsHeading  string
-	ClientsWindows  string
-	ClientsMacOS    string
-	ClientsIOS      string
-	ClientsAndroid  string
-	ClientsLinux    string
+	ClientsHeading string
+	ClientsWindows string
+	ClientsMacOS   string
+	ClientsIOS     string
+	ClientsAndroid string
+	ClientsLinux   string
 
 	// Stats
 	StatsHeading     string
@@ -90,7 +90,10 @@ type Locale struct {
 
 	// Star History
 	StarHistoryHeading string
-	FinalCTA           string
+	// StarCTA is rendered right after the subscription table — the moment a
+	// reader has what they came for is the moment they are most likely to star.
+	StarCTA  string
+	FinalCTA string
 }
 
 // Locales returns every supported locale in fixed order so switcher bars are

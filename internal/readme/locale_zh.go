@@ -108,6 +108,7 @@ proxy-groups:
 	DisclaimerHeading: "## ⚠️ 免责声明",
 	DisclaimerBody:    "本仓库聚合第三方志愿者**公开分享**的代理配置。我们不运营任何服务器,不保证可用性或安全性,不为使用行为负责。仅供学习和个人连接使用。请遵守所在司法管辖区的法律。",
 
+	StarCTA:            "⭐ **点个 Star** —— 如果它帮你省了时间。这是我们判断该继续做什么的唯一信号。",
 	StarHistoryHeading: "## ⭐ Star 历史",
 	FinalCTA:           "如果这个项目帮到你,点个 ⭐ —— 每一颗 star 都能帮更多人发现它。",
 }

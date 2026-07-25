@@ -66,6 +66,8 @@ type guideCtx struct {
 	Keywords     string
 	Canonical    string
 	OGImage      string
+	OGImageAlt   string
+	SiteName     string
 	LangAttr     string
 	Alternates   []langAlt
 	LanguageSw   []langSwitch
@@ -107,6 +109,8 @@ type pageCtx struct {
 	Keywords    string
 	Canonical   string
 	OGImage     string
+	OGImageAlt  string
+	SiteName    string
 	LangAttr    string
 	Alternates  []langAlt
 	LanguageSw  []langSwitch
@@ -187,6 +191,8 @@ func Generate(in Input, outDir string) error {
 			Keywords:     l10n.IndexKeywords,
 			Canonical:    idxCanonical,
 			OGImage:      in.RepoURL + "/raw/main/assets/hero.png",
+			OGImageAlt:   in.Title,
+			SiteName:     in.Title,
 			LangAttr:     l10n.LangAttr,
 			Alternates:   indexAlternates(in.SiteURL),
 			LanguageSw:   indexLangSwitcher(in.SiteURL, loc),
@@ -220,6 +226,8 @@ func Generate(in Input, outDir string) error {
 				Keywords:                fmt.Sprintf(l10n.CountryKeywordsTpl, nameLower, nameLower, nameLower, nameLower, nameLower, nameLower),
 				Canonical:               canonical,
 				OGImage:                 in.RepoURL + "/raw/main/assets/hero.png",
+				OGImageAlt:              in.Title,
+				SiteName:                in.Title,
 				LangAttr:                l10n.LangAttr,
 				Alternates:              countryAlternates(in.SiteURL, ccLower),
 				LanguageSw:              countryLangSwitcher(in.SiteURL, ccLower, loc),
@@ -272,7 +280,8 @@ func Generate(in Input, outDir string) error {
 
 	// sitemap.xml + robots.txt (locale-agnostic)
 	countriesEN := buildCountryRows(in, "")
-	if err := writeSitemap(filepath.Join(outDir, "sitemap.xml"), in.SiteURL, countriesEN); err != nil {
+	if err := writeSitemap(filepath.Join(outDir, "sitemap.xml"), in.SiteURL, countriesEN,
+		time.Unix(in.Summary.GeneratedAtUnix, 0).UTC()); err != nil {
 		return err
 	}
 	if err := os.WriteFile(filepath.Join(outDir, "robots.txt"),
@@ -336,11 +345,13 @@ func writeTemplate(path string, body string, ctx any) error {
 	return t.Execute(f, ctx)
 }
 
-func writeSitemap(path, siteURL string, countries []countryRow) error {
+func writeSitemap(path, siteURL string, countries []countryRow, generatedAt time.Time) error {
 	var b strings.Builder
 	b.WriteString(`<?xml version="1.0" encoding="UTF-8"?>` + "\n")
 	b.WriteString(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">` + "\n")
-	lastmod := time.Now().UTC().Format("2006-01-02")
+	// Full W3C datetime rather than a bare date: these pages carry an hourly
+	// changefreq, so a day-granular lastmod understates how fresh they are.
+	lastmod := generatedAt.Format(time.RFC3339)
 
 	// Home
 	writeSitemapEntry(&b, siteURL+"/", lastmod, "hourly", "1.0", indexURLsByLocale(siteURL))
@@ -653,6 +664,8 @@ func buildGuideCtx(in Input, g guideSpec, loc, updated, homeURL string) guideCtx
 		Keywords:     content.Keywords,
 		Canonical:    canonical,
 		OGImage:      in.RepoURL + "/raw/main/assets/hero.png",
+		OGImageAlt:   in.Title,
+		SiteName:     in.Title,
 		LangAttr:     localeLangAttr(loc),
 		Alternates:   guideAlternates(in.SiteURL, g.Slug),
 		LanguageSw:   guideLangSwitcher(in.SiteURL, g.Slug, loc),

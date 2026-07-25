@@ -108,6 +108,7 @@ Of the ~150 we publish each run, a typical client finds **80-120 nodes that serv
 	DisclaimerHeading: "## ⚠️ Disclaimer",
 	DisclaimerBody:    "This repository aggregates **publicly shared** proxy configurations from third-party volunteers. We do not operate any servers, do not warrant availability or security, and are not responsible for how you use them. Intended for educational and personal connectivity use. Comply with all applicable laws in your jurisdiction.",
 
+	StarCTA:            "⭐ **Star this repo** if it saved you time — it is the only signal we use to decide what to keep building.",
 	StarHistoryHeading: "## ⭐ Star History",
 	FinalCTA:           "If this project helped you, give it a ⭐ — every star makes it easier for others to find.",
 }

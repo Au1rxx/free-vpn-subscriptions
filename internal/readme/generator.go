@@ -41,7 +41,13 @@ func Generate(in Input, loc Locale) string {
 	fmt.Fprintf(&b, "<p align=\"center\"><img src=\"%s/raw/main/assets/hero.png\" alt=\"%s — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray\" width=\"780\"></p>\n\n",
 		in.RepoURL, in.Title)
 
-	// Badges
+	// Badges. The star counter leads: it is the one badge that carries social
+	// proof rather than describing the feed, and it links straight to the
+	// stargazers page.
+	if slug := repoSlug(in.RepoURL); slug != "" {
+		fmt.Fprintf(&b, "[![GitHub stars](https://img.shields.io/github/stars/%s?style=flat&color=gold&logo=github)](%s/stargazers) ",
+			slug, in.RepoURL)
+	}
 	fmt.Fprintf(&b, "![%s](https://img.shields.io/badge/%s-%d-brightgreen) ",
 		loc.BadgeNodes, loc.BadgeNodes, in.Summary.TotalSelected)
 	fmt.Fprintf(&b, "![%s](https://img.shields.io/badge/%s-%d-blue) ",
@@ -73,6 +79,10 @@ func Generate(in Input, loc Locale) string {
 	fmt.Fprintf(&b, "| sing-box | `singbox.json` | `%s/raw/main/output/singbox.json` |\n", in.RepoURL)
 	fmt.Fprintf(&b, "| v2rayN / v2rayNG / Shadowrocket / NekoBox | `v2ray-base64` | `%s/raw/main/output/v2ray-base64.txt` |\n\n", in.RepoURL)
 	fmt.Fprintf(&b, "> Database-classified shards (stable / all verified / protocol / country / network): [%s/tree/main/output](%s/tree/main/output)\n\n", in.RepoURL, in.RepoURL)
+
+	if loc.StarCTA != "" {
+		fmt.Fprintf(&b, "%s\n\n", loc.StarCTA)
+	}
 
 	// Per-country
 	if in.CountryEnabled && in.MinPerCountry > 0 && len(in.Summary.ByCountry) > 0 {
@@ -134,10 +144,13 @@ func Generate(in Input, loc Locale) string {
 	// Disclaimer
 	fmt.Fprintf(&b, "%s\n\n%s\n\n", loc.DisclaimerHeading, loc.DisclaimerBody)
 
-	// Star History
-	fmt.Fprintf(&b, "%s\n\n", loc.StarHistoryHeading)
-	fmt.Fprintf(&b, "[![Star History Chart](https://api.star-history.com/svg?repos=%s&type=Date)](https://www.star-history.com/#%s&Date)\n\n",
-		repoSlug(in.RepoURL), repoSlug(in.RepoURL))
+	// Star History — skipped entirely when the repo is not on GitHub, since
+	// star-history.com can only chart GitHub repositories.
+	if slug := repoSlug(in.RepoURL); slug != "" {
+		fmt.Fprintf(&b, "%s\n\n", loc.StarHistoryHeading)
+		fmt.Fprintf(&b, "[![Star History Chart](https://api.star-history.com/svg?repos=%s&type=Date)](https://www.star-history.com/#%s&Date)\n\n",
+			slug, slug)
+	}
 
 	b.WriteString("---\n\n")
 	b.WriteString(loc.FinalCTA + "\n")
@@ -282,8 +295,21 @@ func sortedKeys(m map[string]int) []string {
 	return keys
 }
 
+// repoSlug extracts "owner/name" from a GitHub repository URL. Anything that
+// is not a plain github.com repository URL yields "", so callers omit the
+// shields.io and star-history widgets instead of emitting a broken image URL.
 func repoSlug(repoURL string) string {
-	s := strings.TrimPrefix(repoURL, "https://github.com/")
-	s = strings.TrimSuffix(s, "/")
-	return s
+	trimmed := strings.TrimSuffix(strings.TrimSpace(repoURL), "/")
+	for _, prefix := range []string{"https://github.com/", "http://github.com/"} {
+		slug, found := strings.CutPrefix(trimmed, prefix)
+		if !found {
+			continue
+		}
+		owner, name, split := strings.Cut(slug, "/")
+		if !split || owner == "" || name == "" || strings.Contains(name, "/") {
+			return ""
+		}
+		return slug
+	}
+	return ""
 }
