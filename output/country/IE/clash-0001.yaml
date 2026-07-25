@@ -1,6 +1,13 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: 01-shadowsocks-shadowsocks-150910540
+      password: vWcimUSiT1rfVM1v
+      port: 443
+      server: 20.107.187.192
+      type: ss
+      udp: true
     - client-fingerprint: firefox
-      name: 01-vless-vless-148521735
+      name: 02-vless-vless-148521735
       network: tcp
       port: 22014
       reality-opts:
@@ -12,20 +19,6 @@ proxies:
       type: vless
       udp: true
       uuid: 4b1d39f2-42d4-4850-8b8a-fd4fa2f1ae55
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: 02-vless-vless-147368320
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: OCLtjVdRxsou3429LRfjkDYgiAPs24TSgSeFZpChCEw
-        short-id: d67ec5a8fc40ebea
-      server: ire03.myxasecure.space
-      servername: ire03.myxasecure.space
-      tls: true
-      type: vless
-      udp: true
-      uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
     - client-fingerprint: firefox
       name: 03-vless-vless-148521740
       network: tcp
@@ -95,45 +88,46 @@ proxies:
       udp: true
       uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
     - client-fingerprint: firefox
-      name: 09-vless-vless-143509256
+      flow: xtls-rprx-vision
+      name: 09-vless-vless-147368320
       network: tcp
-      port: 22014
+      port: 443
       reality-opts:
-        public-key: OncWhxWwzrKOFH21JT9WxcenacQuc7ZmuQy_rZFJ8xg
-        short-id: c6e19c434dc87df7
-      server: ie.sv.temas-bor.ir
-      servername: login.yahoo.com
+        public-key: OCLtjVdRxsou3429LRfjkDYgiAPs24TSgSeFZpChCEw
+        short-id: d67ec5a8fc40ebea
+      server: ire03.myxasecure.space
+      servername: ire03.myxasecure.space
       tls: true
       type: vless
       udp: true
-      uuid: 4b1d39f2-42d4-4850-8b8a-fd4fa2f1ae55
+      uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-vless-vless-148521735
-        - 02-vless-vless-147368320
+        - 01-shadowsocks-shadowsocks-150910540
+        - 02-vless-vless-148521735
         - 03-vless-vless-148521740
         - 04-vless-vless-148521739
         - 05-shadowsocks-shadowsocks-140902052
         - 06-shadowsocks-shadowsocks-140895862
         - 07-vless-vless-148366746
         - 08-vless-vless-148420169
-        - 09-vless-vless-143509256
+        - 09-vless-vless-147368320
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-vless-vless-148521735
-        - 02-vless-vless-147368320
+        - 01-shadowsocks-shadowsocks-150910540
+        - 02-vless-vless-148521735
         - 03-vless-vless-148521740
         - 04-vless-vless-148521739
         - 05-shadowsocks-shadowsocks-140902052
         - 06-shadowsocks-shadowsocks-140895862
         - 07-vless-vless-148366746
         - 08-vless-vless-148420169
-        - 09-vless-vless-143509256
+        - 09-vless-vless-147368320
       type: select
 rules:
     - MATCH,select
