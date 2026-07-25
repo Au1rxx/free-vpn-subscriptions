@@ -18,6 +18,9 @@ const parserVersion = "fnctl-4"
 type Service struct {
 	DB    *sql.DB
 	Spool *Spool
+	// Response ceilings for a single upstream fetch. Zero falls back to the
+	// sources package defaults.
+	MaxBodyBytes, MaxDecodedBytes int64
 }
 
 type ImportSummary struct{ Sources, InsertedOrUpdated int }
@@ -59,6 +62,7 @@ func (s *Service) Fetch(ctx context.Context, limit int) (FetchSummary, error) {
 		response, fetchErr := sources.FetchRaw(ctx, sources.Request{
 			URL: source.URL, ETag: source.ETag, LastModified: source.LastModified,
 			Timeout: 30 * time.Second, MaxRedirects: 5,
+			MaxBodyBytes: s.MaxBodyBytes, MaxDecodedBytes: s.MaxDecodedBytes,
 		})
 		write := store.FetchWrite{SourceID: source.ID, StartedAt: started, FinishedAt: time.Now().UTC()}
 		if fetchErr != nil {

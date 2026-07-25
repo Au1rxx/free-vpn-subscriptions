@@ -13,6 +13,7 @@ import (
 type Config struct {
 	Sources   []Source        `yaml:"sources"`
 	Database  DatabaseConfig  `yaml:"database"`
+	Fetch     FetchConfig     `yaml:"fetch"`
 	Probe     ProbeConfig     `yaml:"probe"`
 	Verify    VerifyConfig    `yaml:"verify"`
 	Aggregate AggregateConfig `yaml:"aggregate"`
@@ -32,6 +33,14 @@ type DatabaseConfig struct {
 	TLSMode      string `yaml:"tls_mode"`
 	MaxOpenConns int    `yaml:"max_open_conns"`
 	MaxIdleConns int    `yaml:"max_idle_conns"`
+}
+
+// FetchConfig bounds how much of a single upstream response we buffer. The
+// large aggregate feeds grow month over month, so these ceilings are raised
+// from config instead of requiring a rebuild.
+type FetchConfig struct {
+	MaxBodyBytes    int64 `yaml:"max_body_bytes"`
+	MaxDecodedBytes int64 `yaml:"max_decoded_bytes"`
 }
 
 type VerifyConfig struct {
@@ -168,6 +177,12 @@ func applyDefaults(c *Config) {
 	if c.Database.MaxIdleConns == 0 {
 		c.Database.MaxIdleConns = 10
 	}
+	if c.Fetch.MaxBodyBytes == 0 {
+		c.Fetch.MaxBodyBytes = 192 << 20
+	}
+	if c.Fetch.MaxDecodedBytes == 0 {
+		c.Fetch.MaxDecodedBytes = 384 << 20
+	}
 	if c.Probe.TimeoutMS == 0 {
 		c.Probe.TimeoutMS = 3000
 	}
@@ -268,6 +283,12 @@ func validate(c *Config) error {
 	}
 	if c.Database.MaxIdleConns < 0 || c.Database.MaxIdleConns > c.Database.MaxOpenConns {
 		return fmt.Errorf("config: database max_idle_conns must be between 0 and max_open_conns")
+	}
+	if c.Fetch.MaxBodyBytes < 1 {
+		return fmt.Errorf("config: fetch max_body_bytes must be positive")
+	}
+	if c.Fetch.MaxDecodedBytes < c.Fetch.MaxBodyBytes {
+		return fmt.Errorf("config: fetch max_decoded_bytes must be at least max_body_bytes")
 	}
 	if len(c.Sources) == 0 {
 		return fmt.Errorf("config: no sources defined")

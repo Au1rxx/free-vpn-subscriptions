@@ -34,6 +34,12 @@ sources:
     format: uri-list
     enabled: false
 
+# Per-response ceilings for a single upstream fetch. Raise these when a large
+# aggregate feed outgrows the limit and starts reporting body_too_large.
+fetch:
+  max_body_bytes: 201326592     # 192 MiB compressed
+  max_decoded_bytes: 402653184  # 384 MiB decoded
+
 probe:
   timeout_ms: 3000
   concurrency: 80

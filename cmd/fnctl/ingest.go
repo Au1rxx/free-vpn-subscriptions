@@ -225,7 +225,10 @@ func openIngestService(ctx context.Context) (*config.Config, *sql.DB, *ingest.Se
 		db.Close()
 		return nil, nil, nil, err
 	}
-	return cfg, db, &ingest.Service{DB: db, Spool: spool}, nil
+	return cfg, db, &ingest.Service{
+		DB: db, Spool: spool,
+		MaxBodyBytes: cfg.Fetch.MaxBodyBytes, MaxDecodedBytes: cfg.Fetch.MaxDecodedBytes,
+	}, nil
 }
 
 func selectDiscoverer(kind string) (discovery.Discoverer, error) {
