@@ -1,25 +1,23 @@
 proxies:
-    - name: 01-vless-vless-4646837
-      network: ws
-      port: 443
-      server: support.zoom.us
-      servername: support.zoom.us.yxls.eu.cc
-      skip-cert-verify: false
-      tls: true
-      type: vless
+    - name: 01-trojan-trojan-119270
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20056
+      server: 45.67.201.210
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
       udp: true
-      uuid: 5aafc2be-9348-4dec-b896-f4a91253bbca
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-vless-vless-4646837
+        - 01-trojan-trojan-119270
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-vless-vless-4646837
+        - 01-trojan-trojan-119270
       type: select
 rules:
     - MATCH,select

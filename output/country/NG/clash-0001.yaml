@@ -1,13 +1,33 @@
-proxies: []
+proxies:
+    - name: 01-trojan-trojan-119268
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20051
+      server: 45.67.201.210
+      skip-cert-verify: true
+      sni: ng.catxstar.com
+      type: trojan
+      udp: true
+    - name: 02-trojan-trojan-119293
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20103
+      server: 45.67.201.210
+      skip-cert-verify: true
+      sni: ng.catxstar.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - 01-trojan-trojan-119268
+        - 02-trojan-trojan-119293
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - 01-trojan-trojan-119268
+        - 02-trojan-trojan-119293
       type: select
 rules:
     - MATCH,select

@@ -1,52 +1,40 @@
 proxies:
-    - name: 01-vless-vless-89301153
+    - name: 01-vless-vless-93598
       network: ws
       port: 22573
       server: uae.unixzone.us
       type: vless
       udp: true
       uuid: 39947382-3212-41c9-bc3a-589574ac8b23
-    - name: 02-vless-vless-81052
+    - name: 02-vless-vless-89301153
+      network: ws
+      port: 22573
+      server: uae.unixzone.us
+      type: vless
+      udp: true
+      uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+    - name: 03-vless-vless-81052
       network: ws
       port: 22573
       server: 84.235.244.108
       type: vless
       udp: true
       uuid: 39947382-3212-41c9-bc3a-589574ac8b23
-    - name: 03-vless-vless-93598
-      network: ws
-      port: 22573
-      server: uae.unixzone.us
-      type: vless
-      udp: true
-      uuid: 39947382-3212-41c9-bc3a-589574ac8b23
-    - name: 04-vless-vless-145908410
-      network: ws
-      port: 443
-      server: 199.232.78.159
-      servername: ssl.fastly.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 453c5a8d-b667-40a2-b664-c60c17f1db01
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-vless-vless-89301153
-        - 02-vless-vless-81052
-        - 03-vless-vless-93598
-        - 04-vless-vless-145908410
+        - 01-vless-vless-93598
+        - 02-vless-vless-89301153
+        - 03-vless-vless-81052
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-vless-vless-89301153
-        - 02-vless-vless-81052
-        - 03-vless-vless-93598
-        - 04-vless-vless-145908410
+        - 01-vless-vless-93598
+        - 02-vless-vless-89301153
+        - 03-vless-vless-81052
       type: select
 rules:
     - MATCH,select
