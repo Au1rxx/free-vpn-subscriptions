@@ -6,17 +6,26 @@ proxies:
       skip-cert-verify: false
       sni: hopp-legend-se.roxa.org
       type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: 02-shadowsocks-shadowsocks-231
+      password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
+      port: 990
+      server: 185.213.23.63
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - 01-hysteria2-hysteria2-131230480
+        - 02-shadowsocks-shadowsocks-231
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - 01-hysteria2-hysteria2-131230480
+        - 02-shadowsocks-shadowsocks-231
       type: select
 rules:
     - MATCH,select

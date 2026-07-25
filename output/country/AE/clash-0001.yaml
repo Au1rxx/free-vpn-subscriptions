@@ -1,12 +1,11 @@
 proxies:
-    - name: 01-trojan-trojan-122892
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20086
-      server: d3.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
+    - name: 01-vless-vless-81052
+      network: ws
+      port: 22573
+      server: 84.235.244.108
+      type: vless
       udp: true
+      uuid: 39947382-3212-41c9-bc3a-589574ac8b23
     - name: 02-vless-vless-93598
       network: ws
       port: 22573
@@ -14,14 +13,7 @@ proxies:
       type: vless
       udp: true
       uuid: 39947382-3212-41c9-bc3a-589574ac8b23
-    - name: 03-vless-vless-81052
-      network: ws
-      port: 22573
-      server: 84.235.244.108
-      type: vless
-      udp: true
-      uuid: 39947382-3212-41c9-bc3a-589574ac8b23
-    - name: 04-vless-vless-89301153
+    - name: 03-vless-vless-89301153
       network: ws
       port: 22573
       server: uae.unixzone.us
@@ -32,19 +24,17 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-trojan-trojan-122892
+        - 01-vless-vless-81052
         - 02-vless-vless-93598
-        - 03-vless-vless-81052
-        - 04-vless-vless-89301153
+        - 03-vless-vless-89301153
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-trojan-trojan-122892
+        - 01-vless-vless-81052
         - 02-vless-vless-93598
-        - 03-vless-vless-81052
-        - 04-vless-vless-89301153
+        - 03-vless-vless-89301153
       type: select
 rules:
     - MATCH,select
