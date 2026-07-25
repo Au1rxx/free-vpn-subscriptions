@@ -1,13 +1,23 @@
-proxies: []
+proxies:
+    - name: 01-trojan-trojan-122884
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20066
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - 01-trojan-trojan-122884
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - 01-trojan-trojan-122884
       type: select
 rules:
     - MATCH,select

@@ -1,13 +1,28 @@
 proxies:
-    - name: 01-trojan-trojan-119248
+    - cipher: chacha20-ietf-poly1305
+      name: 01-shadowsocks-shadowsocks-125093
+      password: d7zh2lMrXNH5+8+8pKzlxiCU9NN022ih+uAyxj5d4qo=
+      port: 31700
+      server: 102.129.229.85
+      type: ss
+      udp: true
+    - name: 02-trojan-trojan-123708
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20023
-      server: 45.67.201.210
+      server: kkvlvvq-a.catcat321.com
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: 03-trojan-trojan-122843
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20006
+      server: d3.catcat321.com
       skip-cert-verify: true
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: 02-trojan-trojan-119235
+    - name: 04-trojan-trojan-119235
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20006
       server: 45.67.201.210
@@ -15,49 +30,49 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: 03-vless-vless-140799465
+    - name: 05-vless-vless-140799465
       network: ws
       port: 80
       server: 18.238.109.113
       type: vless
       udp: true
       uuid: f27894bf-349c-44e6-a0ce-4c787e18476f
-    - name: 04-vless-vless-140799466
+    - name: 06-vless-vless-140799466
       network: ws
       port: 80
       server: 18.238.109.26
       type: vless
       udp: true
       uuid: f27894bf-349c-44e6-a0ce-4c787e18476f
-    - name: 05-vless-vless-140799467
+    - name: 07-vless-vless-140799467
       network: ws
       port: 80
       server: 18.238.109.28
       type: vless
       udp: true
       uuid: f27894bf-349c-44e6-a0ce-4c787e18476f
-    - name: 06-vless-vless-32061697
+    - name: 08-vless-vless-32061697
       network: ws
       port: 8080
       server: 170.114.46.6
       type: vless
       udp: true
       uuid: 564150f0-c0ad-46d1-8cf1-71e1900322e8
-    - name: 07-vless-vless-23842910
+    - name: 09-vless-vless-23842910
       network: ws
       port: 8080
       server: 170.114.45.6
       type: vless
       udp: true
       uuid: 564150f0-c0ad-46d1-8cf1-71e1900322e8
-    - name: 08-vless-vless-133584423
+    - name: 10-vless-vless-133584423
       network: ws
       port: 80
       server: www.true.th
       type: vless
       udp: true
       uuid: f27894bf-349c-44e6-a0ce-4c787e18476f
-    - name: 09-vless-vless-98046449
+    - name: 11-vless-vless-98046449
       network: ws
       port: 80
       server: 18.239.134.69
@@ -68,29 +83,33 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-trojan-trojan-119248
-        - 02-trojan-trojan-119235
-        - 03-vless-vless-140799465
-        - 04-vless-vless-140799466
-        - 05-vless-vless-140799467
-        - 06-vless-vless-32061697
-        - 07-vless-vless-23842910
-        - 08-vless-vless-133584423
-        - 09-vless-vless-98046449
+        - 01-shadowsocks-shadowsocks-125093
+        - 02-trojan-trojan-123708
+        - 03-trojan-trojan-122843
+        - 04-trojan-trojan-119235
+        - 05-vless-vless-140799465
+        - 06-vless-vless-140799466
+        - 07-vless-vless-140799467
+        - 08-vless-vless-32061697
+        - 09-vless-vless-23842910
+        - 10-vless-vless-133584423
+        - 11-vless-vless-98046449
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-trojan-trojan-119248
-        - 02-trojan-trojan-119235
-        - 03-vless-vless-140799465
-        - 04-vless-vless-140799466
-        - 05-vless-vless-140799467
-        - 06-vless-vless-32061697
-        - 07-vless-vless-23842910
-        - 08-vless-vless-133584423
-        - 09-vless-vless-98046449
+        - 01-shadowsocks-shadowsocks-125093
+        - 02-trojan-trojan-123708
+        - 03-trojan-trojan-122843
+        - 04-trojan-trojan-119235
+        - 05-vless-vless-140799465
+        - 06-vless-vless-140799466
+        - 07-vless-vless-140799467
+        - 08-vless-vless-32061697
+        - 09-vless-vless-23842910
+        - 10-vless-vless-133584423
+        - 11-vless-vless-98046449
       type: select
 rules:
     - MATCH,select

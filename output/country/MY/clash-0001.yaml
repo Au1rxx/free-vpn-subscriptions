@@ -1,28 +1,12 @@
 proxies:
-    - name: 01-trojan-trojan-2479722
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20031
-      server: kkvlvvq-a.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
-    - name: 02-trojan-trojan-123710
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20031
-      server: kkvlvvq-a.catcat321.com
-      skip-cert-verify: false
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
-    - name: 03-vless-vless-67235
+    - name: 01-vless-vless-67235
       network: ws
       port: 443
       server: 208.84.103.60
       type: vless
       udp: true
       uuid: SoonTeam
-    - name: 04-vless-vless-16522
+    - name: 02-vless-vless-16522
       network: ws
       port: 443
       server: sexi.carderrr.com
@@ -31,7 +15,7 @@ proxies:
       uuid: SoonTeam
     - alterId: 0
       cipher: auto
-      name: 05-vmess-vmess-2568849
+      name: 03-vmess-vmess-2568849
       network: raw
       port: 10000
       server: 47.250.135.244
@@ -40,7 +24,7 @@ proxies:
       uuid: aedc66b8-99d7-4a21-8310-61870e7f870d
     - alterId: 0
       cipher: auto
-      name: 06-vmess-vmess-2387868
+      name: 04-vmess-vmess-2387868
       network: ws
       port: 43063
       server: 47.250.45.234
@@ -49,7 +33,7 @@ proxies:
       uuid: c77f48f5-4be3-4461-b52b-49998e7b897b
     - alterId: 0
       cipher: auto
-      name: 07-vmess-vmess-16063
+      name: 05-vmess-vmess-16063
       network: ws
       port: 43063
       server: 47.250.45.234
@@ -60,25 +44,21 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-trojan-trojan-2479722
-        - 02-trojan-trojan-123710
-        - 03-vless-vless-67235
-        - 04-vless-vless-16522
-        - 05-vmess-vmess-2568849
-        - 06-vmess-vmess-2387868
-        - 07-vmess-vmess-16063
+        - 01-vless-vless-67235
+        - 02-vless-vless-16522
+        - 03-vmess-vmess-2568849
+        - 04-vmess-vmess-2387868
+        - 05-vmess-vmess-16063
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-trojan-trojan-2479722
-        - 02-trojan-trojan-123710
-        - 03-vless-vless-67235
-        - 04-vless-vless-16522
-        - 05-vmess-vmess-2568849
-        - 06-vmess-vmess-2387868
-        - 07-vmess-vmess-16063
+        - 01-vless-vless-67235
+        - 02-vless-vless-16522
+        - 03-vmess-vmess-2568849
+        - 04-vmess-vmess-2387868
+        - 05-vmess-vmess-16063
       type: select
 rules:
     - MATCH,select
