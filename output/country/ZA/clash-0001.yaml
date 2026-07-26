@@ -1,13 +1,13 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: 01-shadowsocks-shadowsocks-236
+      name: shadowsocks-236
       password: aduB9HGxQHjA2SBMRjkHX6
       port: 443
       server: 102.37.156.224
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
-      name: 02-shadowsocks-shadowsocks-246
+      name: shadowsocks-246
       password: Xsy8Ox4yOV3xLlpxtjzs3X
       port: 16233
       server: 102.133.165.160
@@ -15,7 +15,7 @@ proxies:
       udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: 03-vless-vless-13067286
+      name: vless-13067286
       network: tcp
       port: 24822
       reality-opts:
@@ -29,7 +29,7 @@ proxies:
       uuid: 9c3f61dc-ab33-48d3-b829-bc1cad0f31f7
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: 04-vless-vless-5223784
+      name: vless-5223784
       network: raw
       port: 24822
       reality-opts:
@@ -43,7 +43,7 @@ proxies:
       uuid: 9c3f61dc-ab33-48d3-b829-bc1cad0f31f7
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: 05-vless-vless-2327662
+      name: vless-2327662
       network: tcp
       port: 24822
       reality-opts:
@@ -57,7 +57,7 @@ proxies:
       uuid: 9c3f61dc-ab33-48d3-b829-bc1cad0f31f7
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: 06-vless-vless-2327661
+      name: vless-2327661
       network: tcp
       port: 24822
       reality-opts:
@@ -73,23 +73,23 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-shadowsocks-shadowsocks-236
-        - 02-shadowsocks-shadowsocks-246
-        - 03-vless-vless-13067286
-        - 04-vless-vless-5223784
-        - 05-vless-vless-2327662
-        - 06-vless-vless-2327661
+        - shadowsocks-236
+        - shadowsocks-246
+        - vless-13067286
+        - vless-5223784
+        - vless-2327662
+        - vless-2327661
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-shadowsocks-shadowsocks-236
-        - 02-shadowsocks-shadowsocks-246
-        - 03-vless-vless-13067286
-        - 04-vless-vless-5223784
-        - 05-vless-vless-2327662
-        - 06-vless-vless-2327661
+        - shadowsocks-236
+        - shadowsocks-246
+        - vless-13067286
+        - vless-5223784
+        - vless-2327662
+        - vless-2327661
       type: select
 rules:
     - MATCH,select

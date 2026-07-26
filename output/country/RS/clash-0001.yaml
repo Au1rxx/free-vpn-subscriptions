@@ -1,19 +1,32 @@
 proxies:
-    - name: 01-vless-vless-92753922
-      network: raw
-      port: 30153
-      server: 195.133.18.161
+    - client-fingerprint: qq
+      name: vless-156436192
+      network: grpc
+      port: 9888
+      reality-opts:
+        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+        short-id: aabb
+      server: 185.207.64.114
+      servername: dl.google.com
+      tls: true
       type: vless
       udp: true
-      uuid: da97d2d7-d255-4efd-8398-7101d698768e
-    - name: 02-vless-vless-91985770
+      uuid: 884d811f-577b-421e-aabb-608660b0ecfa
+    - name: vless-139367211
       network: tcp
       port: 30153
       server: 195.133.18.161
       type: vless
       udp: true
       uuid: da97d2d7-d255-4efd-8398-7101d698768e
-    - name: 03-vless-vless-139367211
+    - name: vless-92753922
+      network: raw
+      port: 30153
+      server: 195.133.18.161
+      type: vless
+      udp: true
+      uuid: da97d2d7-d255-4efd-8398-7101d698768e
+    - name: vless-91985770
       network: tcp
       port: 30153
       server: 195.133.18.161
@@ -24,17 +37,19 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-vless-vless-92753922
-        - 02-vless-vless-91985770
-        - 03-vless-vless-139367211
+        - vless-156436192
+        - vless-139367211
+        - vless-92753922
+        - vless-91985770
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-vless-vless-92753922
-        - 02-vless-vless-91985770
-        - 03-vless-vless-139367211
+        - vless-156436192
+        - vless-139367211
+        - vless-92753922
+        - vless-91985770
       type: select
 rules:
     - MATCH,select

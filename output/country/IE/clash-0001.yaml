@@ -1,13 +1,20 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: 01-shadowsocks-shadowsocks-150910540
+      name: shadowsocks-156551172
+      password: nHCcsXK2rEcs9lRi
+      port: 443
+      server: 20.107.187.192
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-150910540
       password: vWcimUSiT1rfVM1v
       port: 443
       server: 20.107.187.192
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
-      name: 02-shadowsocks-shadowsocks-140895862
+      name: shadowsocks-140895862
       password: sCw2bhRZmJhpmgrL
       port: 443
       server: 4.210.67.30
@@ -15,7 +22,7 @@ proxies:
       udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: 03-vless-vless-148420169
+      name: vless-148420169
       network: tcp
       port: 443
       reality-opts:
@@ -29,7 +36,7 @@ proxies:
       uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: 04-vless-vless-147368320
+      name: vless-147368320
       network: tcp
       port: 443
       reality-opts:
@@ -43,7 +50,7 @@ proxies:
       uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: 05-vless-vless-148366746
+      name: vless-148366746
       network: tcp
       port: 443
       reality-opts:
@@ -59,21 +66,23 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - 01-shadowsocks-shadowsocks-150910540
-        - 02-shadowsocks-shadowsocks-140895862
-        - 03-vless-vless-148420169
-        - 04-vless-vless-147368320
-        - 05-vless-vless-148366746
+        - shadowsocks-156551172
+        - shadowsocks-150910540
+        - shadowsocks-140895862
+        - vless-148420169
+        - vless-147368320
+        - vless-148366746
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - 01-shadowsocks-shadowsocks-150910540
-        - 02-shadowsocks-shadowsocks-140895862
-        - 03-vless-vless-148420169
-        - 04-vless-vless-147368320
-        - 05-vless-vless-148366746
+        - shadowsocks-156551172
+        - shadowsocks-150910540
+        - shadowsocks-140895862
+        - vless-148420169
+        - vless-147368320
+        - vless-148366746
       type: select
 rules:
     - MATCH,select
