@@ -1,13 +1,29 @@
-proxies: []
+proxies:
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-161214333
+      network: tcp
+      port: 20071
+      reality-opts:
+        public-key: zX5dT9fA8VRXb3XSB8olbacIR1Dq69juoC7US2paR08
+        short-id: a02bf9
+      server: ukraine.xiaomaimai.dpdns.org
+      servername: www.lamer.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 65c56e1f-5c41-40bc-b0b5-9346772476ca
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - vless-161214333
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-161214333
       type: select
 rules:
     - MATCH,select
