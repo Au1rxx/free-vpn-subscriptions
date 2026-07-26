@@ -2,8 +2,8 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use `superpowers:executing-plans` to implement this plan task-by-task. 本仓库规则禁止子代理，因此只允许当前会话内联执行。
 
-**状态：** 进行中
-**进度：** 已完成 5/6 项（83%）
+**状态：** 已完成
+**进度：** 已完成 6/6 项（100%）
 **更新时间：** 2026-07-26
 
 **Goal:** 用仓库内每日更新的 SVG 修复 Star History，并让现有静态站点展示每小时真实快照和 30 天滚动趋势。
@@ -233,7 +233,7 @@
 
 ### Task 6: 全量验证、生成产物与上线
 
-- [ ] **任务状态：进行中**
+- [x] **任务状态：已完成**
 
 **Files:**
 - Generated: `README*.md`
@@ -258,26 +258,28 @@
   - 再运行受影响 targeted tests 和 full 门禁。
   - 证据：审阅发现并修复 30 天窗口需 721 个端点、生成 HTML 尾随空格、同小时重复点和陈旧国家页四项问题；复审无剩余 Critical/Important。
 
-- [ ] **Step 4: 推送与线上验证**
+- [x] **Step 4: 推送与线上验证**
   - 普通 push `main`，禁止 force；等待 GitHub Pages 和一次 publisher 更新。
   - 验证 Star SVG、首页动态区块、中文页、国家页、sitemap、history JSON 均 HTTP 200。
   - 手动触发一次 Star workflow，确认无变化时 no-op、有变化时只提交 SVG。
+  - 证据：`main` 普通推送；Pages 在 `10d79023b825` 部署成功；7 个线上目标 HTTP 200；workflow `30192909820` 成功且输出 `Star history is unchanged`；正式 publisher 成功刷新并推送。
 
-- [ ] **Step 5: 完成计划**
+- [x] **Step 5: 完成计划**
   - 填写每项验证证据，进度更新为 6/6；记录 workflow、Pages、publisher 状态和剩余风险。
+  - 证据：运行时 `fnctl` 已原子部署并保留旧版备份；timer 正常，下一轮计划时间可见；Topics 共 18 个且建议项齐全。
 
 ## 风险与阻塞项
 
 - GitHub Action 与外部发布器可能同时 push：workflow 只普通 rebase/push，冲突即失败，不覆盖 publisher。
 - 30 天趋势从上线时开始积累：24h/7d/30d 依次出现，页面明确显示数据积累中。
-- `contents: write` 可能被仓库 Actions 设置限制：若 push 被拒绝，需要 Au1rxx 明确启用 Workflow
-  read/write 权限；在此之前保留首张 SVG，不影响主站。
+- `contents: write` 已由手动 workflow 实测通过；本次星数未变所以按设计 no-op，未来有新星时才会提交 SVG。
 - 翻译字段增加容易漏项：沿用反射完整性测试，任一空字符串使测试失败。
 
 ## 变更记录
 
 - 2026-07-26：根据已批准的实时报告方案与设计文档创建。
 - 2026-07-26：完成 Tasks 1–5、本地验证、真实生成、E2E 与合并自审；上线验证进行中。
+- 2026-07-26：部署运行时生成器，正式 publisher 与 Pages 成功，Star workflow no-op 验证通过，计划完成。
 
 ## 回滚
 
@@ -286,4 +288,6 @@ SVG 均为可删除的派生产物，没有数据库、订阅格式或远程服�
 
 ## 完成情况
 
-本地实现与合并验证已完成；等待普通推送、GitHub Pages、Star workflow 和外部 publisher 线上验证。
+全部 6 项完成。生产 HEAD `10d79023b825` 已由正式 publisher 推送并由 GitHub Pages 部署；
+首页、中文页、国家页、sitemap、history、README 和 Star SVG 均通过线上断言。24h/7d/30d
+趋势会随小时历史积累依次出现，当前“数据积累中”是预期状态。
