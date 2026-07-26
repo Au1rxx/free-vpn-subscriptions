@@ -6,8 +6,8 @@ var RU = Locale{
 	FileName:    "README_RU.md",
 	LangAttr:    "ru",
 
-	BadgeNodes:   "узлы",
-	BadgeAlive:   "живые",
+	BadgeNodes:   "отобрано",
+	BadgeAlive:   "проверено",
 	BadgeMedian:  "медиана--rtt",
 	BadgeUpdated: "обновлено",
 

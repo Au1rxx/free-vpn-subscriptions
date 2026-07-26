@@ -88,3 +88,64 @@ func TestRepoSlug(t *testing.T) {
 		}
 	}
 }
+
+// The reader came for a subscription URL. Keeping it above the pitch is the
+// whole point of the layout, so assert it rather than trusting section order.
+func TestSubscribeTableComesBeforeThePitch(t *testing.T) {
+	in := testInput()
+	for _, loc := range Locales() {
+		body := Generate(in, loc)
+		subscribe := strings.Index(body, loc.SubscribeHeading)
+		why := strings.Index(body, loc.WhyHeading)
+		if subscribe < 0 || why < 0 {
+			t.Fatalf("locale %q is missing a section", loc.Code)
+		}
+		if subscribe > why {
+			t.Errorf("locale %q puts the subscription table after the pitch", loc.Code)
+		}
+	}
+}
+
+func TestSubscribeURLLandsInTheFirstScreen(t *testing.T) {
+	const budget = 40 // roughly one screen of rendered README
+	for _, loc := range Locales() {
+		body := Generate(testInput(), loc)
+		found := -1
+		for i, line := range strings.Split(body, "\n") {
+			if strings.Contains(line, "output/clash.yaml") {
+				found = i + 1
+				break
+			}
+		}
+		switch {
+		case found < 0:
+			t.Errorf("locale %q renders no subscription URL", loc.Code)
+		case found > budget:
+			t.Errorf("locale %q puts the first subscription URL on line %d, past the %d-line fold", loc.Code, found, budget)
+		}
+	}
+}
+
+// The verification section is the longest by far; collapsed it stops pushing
+// everything else below the fold.
+func TestVerificationDetailIsCollapsed(t *testing.T) {
+	for _, loc := range Locales() {
+		body := Generate(testInput(), loc)
+		summary := "<summary><b>" + headingText(loc.VerificationHeading) + "</b></summary>"
+		if !strings.Contains(body, summary) {
+			t.Errorf("locale %q does not collapse the verification section", loc.Code)
+		}
+	}
+}
+
+func TestHeadingText(t *testing.T) {
+	for input, want := range map[string]string{
+		"## 🔬 How we verify": "🔬 How we verify",
+		"# Title":            "Title",
+		"Already plain":      "Already plain",
+	} {
+		if got := headingText(input); got != want {
+			t.Errorf("headingText(%q)=%q want %q", input, got, want)
+		}
+	}
+}

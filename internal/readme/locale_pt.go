@@ -6,8 +6,8 @@ var PT = Locale{
 	FileName:    "README_PT.md",
 	LangAttr:    "pt",
 
-	BadgeNodes:   "nós",
-	BadgeAlive:   "ativos",
+	BadgeNodes:   "selecionados",
+	BadgeAlive:   "verificados",
 	BadgeMedian:  "rtt--mediano",
 	BadgeUpdated: "atualizado",
 

@@ -6,8 +6,8 @@ var KO = Locale{
 	FileName:    "README_KO.md",
 	LangAttr:    "ko",
 
-	BadgeNodes:   "노드",
-	BadgeAlive:   "생존",
+	BadgeNodes:   "선별",
+	BadgeAlive:   "검증됨",
 	BadgeMedian:  "중앙값--rtt",
 	BadgeUpdated: "업데이트",
 

@@ -6,8 +6,8 @@ var ES = Locale{
 	FileName:    "README_ES.md",
 	LangAttr:    "es",
 
-	BadgeNodes:   "nodos",
-	BadgeAlive:   "activos",
+	BadgeNodes:   "seleccionados",
+	BadgeAlive:   "verificados",
 	BadgeMedian:  "rtt--mediana",
 	BadgeUpdated: "actualizado",
 

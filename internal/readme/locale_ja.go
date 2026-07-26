@@ -6,8 +6,8 @@ var JA = Locale{
 	FileName:    "README_JA.md",
 	LangAttr:    "ja",
 
-	BadgeNodes:   "ノード",
-	BadgeAlive:   "生存",
+	BadgeNodes:   "厳選",
+	BadgeAlive:   "検証済み",
 	BadgeMedian:  "中央値--rtt",
 	BadgeUpdated: "更新",
 

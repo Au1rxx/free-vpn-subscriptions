@@ -66,15 +66,10 @@ func Generate(in Input, loc Locale) string {
 	fmt.Fprintf(&b, "> %s\n\n", loc.Hook2)
 	fmt.Fprintf(&b, "> %s\n\n", loc.KeywordLine)
 
-	// Why
-	fmt.Fprintf(&b, "%s\n\n%s\n\n", loc.WhyHeading, loc.WhyBody)
-	fmt.Fprintf(&b, "> 📖 How the fetch → probe → rank pipeline works: [ARCHITECTURE.md](./ARCHITECTURE.md)\n\n")
-
-	// Verification — the single most-asked question on any free-VPN list.
-	// Placed directly after Why so the credibility story is up-front rather
-	// than buried in the FAQ.
-	fmt.Fprintf(&b, "%s\n\n%s\n\n", loc.VerificationHeading, loc.VerificationBody)
-
+	// Subscribe. This is what the reader came for, so it goes above the
+	// pitch and the methodology: the two highest-starred repositories in this
+	// niche both put their links within the first screen, and a reader who has
+	// to scroll past two essays to find a URL has already left.
 	// Subscribe
 	fmt.Fprintf(&b, "%s\n\n%s\n\n", loc.SubscribeHeading, loc.SubscribeIntro)
 	fmt.Fprintf(&b, "| %s | %s | %s |\n|---|---|---|\n",
@@ -87,6 +82,16 @@ func Generate(in Input, loc Locale) string {
 	if loc.StarCTA != "" {
 		fmt.Fprintf(&b, "%s\n\n", loc.StarCTA)
 	}
+
+	// Why
+	fmt.Fprintf(&b, "%s\n\n%s\n\n", loc.WhyHeading, loc.WhyBody)
+	fmt.Fprintf(&b, "> 📖 How the fetch → probe → rank pipeline works: [ARCHITECTURE.md](./ARCHITECTURE.md)\n\n")
+
+	// Verification — the single most-asked question on any free-VPN list, but
+	// also the longest section by far. Collapsed: the sceptic who wants it
+	// opens it, and everyone else keeps the subscription table on screen.
+	fmt.Fprintf(&b, "<details>\n<summary><b>%s</b></summary>\n\n%s\n\n</details>\n\n",
+		headingText(loc.VerificationHeading), loc.VerificationBody)
 
 	// Per-country
 	if in.CountryEnabled && in.MinPerCountry > 0 && len(in.Summary.ByCountry) > 0 {
@@ -174,7 +179,13 @@ func renderLangSwitcher(current Locale) string {
 			parts = append(parts, fmt.Sprintf("[%s](./%s)", label, loc.FileName))
 		}
 	}
-	return strings.Join(parts, " · ")
+	return `<div align="center">` + "\n\n" + strings.Join(parts, " · ") + "\n\n</div>"
+}
+
+// headingText strips the Markdown heading markers so a heading can be reused
+// as a <summary> label, where a leading "##" would render literally.
+func headingText(heading string) string {
+	return strings.TrimSpace(strings.TrimLeft(strings.TrimSpace(heading), "#"))
 }
 
 // renderByCountry appends a "By Country" section listing available

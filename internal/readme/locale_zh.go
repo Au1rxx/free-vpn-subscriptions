@@ -6,8 +6,8 @@ var ZH = Locale{
 	FileName:    "README_CN.md",
 	LangAttr:    "zh-Hans",
 
-	BadgeNodes:   "节点",
-	BadgeAlive:   "存活",
+	BadgeNodes:   "精选",
+	BadgeAlive:   "已验证",
 	BadgeMedian:  "中位延迟",
 	BadgeUpdated: "更新",
 
