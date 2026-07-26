@@ -11,10 +11,9 @@ snapshots are not maintained.
 Do not include exploit details, credentials, or live node URIs in a public
 issue.
 
-Use a private contact method listed on the
-[maintainer's GitHub profile](https://github.com/Au1rxx). If none is
-available, open a minimal issue asking the maintainer to arrange private
-contact. Include no sensitive technical details in that issue.
+Submit the report through GitHub's private
+["Report a vulnerability"](https://github.com/Au1rxx/free-vpn-subscriptions/security/advisories/new)
+form.
 
 In the private report, please include:
 

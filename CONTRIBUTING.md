@@ -59,11 +59,10 @@ All three must pass. A few things worth knowing before you start:
 
 ## Security
 
-Please do not put exploit details or credentials in a public issue. Use a
-private contact method listed on the
-[maintainer's GitHub profile](https://github.com/Au1rxx). If none is
-available, open a minimal issue asking the maintainer to arrange private
-contact, without including the sensitive details.
+Please do not put exploit details or credentials in a public issue. Use
+GitHub's private
+["Report a vulnerability"](https://github.com/Au1rxx/free-vpn-subscriptions/security/advisories/new)
+form instead.
 
 ## What this project will not do
 
