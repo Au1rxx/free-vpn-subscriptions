@@ -3,7 +3,7 @@
 > **For agentic workers:** REQUIRED SUB-SKILL: Use `superpowers:executing-plans` to implement this plan task-by-task. 本仓库规则禁止子代理，因此只允许当前会话内联执行。
 
 **状态：** 进行中
-**进度：** 已完成 4/6 项（67%）
+**进度：** 已完成 5/6 项（83%）
 **更新时间：** 2026-07-26
 
 **Goal:** 用仓库内每日更新的 SVG 修复 Star History，并让现有静态站点展示每小时真实快照和 30 天滚动趋势。
@@ -206,7 +206,7 @@
 
 ### Task 5: 合规结构化数据与 sitemap
 
-- [ ] **任务状态：进行中**
+- [x] **任务状态：已完成**
 
 **Files:**
 - Modify: `internal/pages/pages.go`
@@ -214,25 +214,26 @@
 - Modify: `internal/pages/l10n.go`
 - Modify: `ARCHITECTURE.md`
 
-- [ ] **Step 1: 写 JSON-LD/sitemap RED 测试**
+- [x] **Step 1: 写 JSON-LD/sitemap RED 测试**
   - 解析 JSON-LD，断言 `WebSite`、`Dataset`、3 个 `DataDownload`、真实 `dateModified`，且不存在 `aggregateRating`。
   - 断言首页/国家页 sitemap 有准确 lastmod，指南条目没有本轮动态 lastmod。
   - 断言 7 语言 FAQ 不再声称 GitHub Actions 聚合。
   - Run: `go test ./internal/pages -run 'JSONLD|Sitemap|FAQ' -count=1`
   - Expected: FAIL。
 
-- [ ] **Step 2: 实现并更新架构文档**
+- [x] **Step 2: 实现并更新架构文档**
   - 用 `Dataset` 替换 `SoftwareApplication`；下载 URL/MIME、免费状态、许可证和语言与页面一致。
   - `writeSitemapEntry` 仅在 lastmod 非空时输出标签；指南传空值。
   - `ARCHITECTURE.md` 更新 SEO 表、滚动历史和 Star Action，删除评分富结果说法。
 
-- [ ] **Step 3: 验证并提交**
+- [x] **Step 3: 验证并提交**
   - Run: `go test ./internal/pages -count=1`
   - Commit: `fix: make page metadata evidence-based`
+  - 证据：2026-07-26 pages 全包测试退出 0；JSON-LD 可解析且含 3 个真实下载，静态指南 sitemap 条目不再伪造动态 `lastmod`。
 
 ### Task 6: 全量验证、生成产物与上线
 
-- [ ] **任务状态：未开始**
+- [ ] **任务状态：进行中**
 
 **Files:**
 - Generated: `README*.md`

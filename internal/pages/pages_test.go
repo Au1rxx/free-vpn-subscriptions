@@ -1,6 +1,7 @@
 package pages
 
 import (
+	"encoding/json"
 	"math"
 	"os"
 	"path/filepath"
@@ -94,6 +95,92 @@ func TestSitemapUsesFullDatetimeAndAlternates(t *testing.T) {
 	for _, absent := range []string{"/xx.html", "/sg.html"} {
 		if strings.Contains(text, absent) {
 			t.Errorf("sitemap should not list %s", absent)
+		}
+	}
+
+	home := sitemapEntryContaining(t, text, "<loc>https://example.github.io/repo/</loc>")
+	country := sitemapEntryContaining(t, text, "<loc>https://example.github.io/repo/us.html</loc>")
+	guide := sitemapEntryContaining(t, text, "<loc>https://example.github.io/repo/guides/")
+	for name, entry := range map[string]string{"home": home, "country": country} {
+		if !strings.Contains(entry, "<lastmod>2026-07-25T13:30:00Z</lastmod>") {
+			t.Errorf("%s sitemap entry missing accurate lastmod: %s", name, entry)
+		}
+	}
+	if strings.Contains(guide, "<lastmod>") {
+		t.Errorf("guide entry must not inherit dynamic lastmod: %s", guide)
+	}
+}
+
+func TestIndexJSONLDDescribesCurrentDatasetWithoutFabricatedRating(t *testing.T) {
+	dir := t.TempDir()
+	if err := Generate(testInput(), dir); err != nil {
+		t.Fatal(err)
+	}
+	body, err := os.ReadFile(filepath.Join(dir, "index.html"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	raw := extractJSONLD(t, string(body))
+	if strings.Contains(raw, "aggregateRating") || strings.Contains(raw, "SoftwareApplication") {
+		t.Fatalf("JSON-LD contains unsupported software rating claims: %s", raw)
+	}
+
+	var graph []map[string]any
+	if err := json.Unmarshal([]byte(raw), &graph); err != nil {
+		t.Fatalf("parse JSON-LD: %v", err)
+	}
+	website := graphNode(t, graph, "WebSite")
+	if website["dateModified"] != "2026-07-25T13:30:00Z" {
+		t.Errorf("WebSite dateModified = %v", website["dateModified"])
+	}
+	dataset := graphNode(t, graph, "Dataset")
+	if dataset["dateModified"] != "2026-07-25T13:30:00Z" {
+		t.Errorf("Dataset dateModified = %v", dataset["dateModified"])
+	}
+	if dataset["isAccessibleForFree"] != true {
+		t.Errorf("Dataset isAccessibleForFree = %v", dataset["isAccessibleForFree"])
+	}
+	if dataset["license"] != "https://opensource.org/licenses/MIT" {
+		t.Errorf("Dataset license = %v", dataset["license"])
+	}
+	distributions, ok := dataset["distribution"].([]any)
+	if !ok || len(distributions) != 3 {
+		t.Fatalf("Dataset distributions = %#v", dataset["distribution"])
+	}
+	wantDownloads := map[string]string{
+		"https://github.com/example/repo/raw/main/output/clash.yaml":       "application/yaml",
+		"https://github.com/example/repo/raw/main/output/singbox.json":     "application/json",
+		"https://github.com/example/repo/raw/main/output/v2ray-base64.txt": "text/plain",
+	}
+	for _, value := range distributions {
+		download, ok := value.(map[string]any)
+		if !ok {
+			t.Fatalf("distribution is not an object: %#v", value)
+		}
+		if download["@type"] != "DataDownload" {
+			t.Errorf("distribution @type = %v", download["@type"])
+		}
+		url, _ := download["contentUrl"].(string)
+		mime, _ := download["encodingFormat"].(string)
+		if wantDownloads[url] != mime {
+			t.Errorf("distribution %q MIME = %q", url, mime)
+		}
+		delete(wantDownloads, url)
+	}
+	if len(wantDownloads) != 0 {
+		t.Errorf("missing distributions: %#v", wantDownloads)
+	}
+	graphNode(t, graph, "FAQPage")
+}
+
+func TestFAQDescribesExternalPublisherInEveryLocale(t *testing.T) {
+	for _, locale := range supportedLocales {
+		answer := pageLocales[locale].FAQ2A
+		if answer == "" {
+			t.Errorf("%s FAQ2A is empty", locale)
+		}
+		if strings.Contains(strings.ToLower(answer), "github action") {
+			t.Errorf("%s FAQ incorrectly says aggregation runs in GitHub Actions: %q", locale, answer)
 		}
 	}
 }
@@ -265,6 +352,46 @@ func sectionByID(t *testing.T, body, id string) string {
 		t.Fatalf("section %s has no closing tag", id)
 	}
 	return body[start : start+end]
+}
+
+func sitemapEntryContaining(t *testing.T, sitemap, needle string) string {
+	t.Helper()
+	position := strings.Index(sitemap, needle)
+	if position < 0 {
+		t.Fatalf("sitemap entry containing %q not found", needle)
+	}
+	start := strings.LastIndex(sitemap[:position], "<url>")
+	end := strings.Index(sitemap[position:], "</url>")
+	if start < 0 || end < 0 {
+		t.Fatalf("malformed sitemap around %q", needle)
+	}
+	return sitemap[start : position+end+len("</url>")]
+}
+
+func extractJSONLD(t *testing.T, body string) string {
+	t.Helper()
+	const startTag = `<script type="application/ld+json">`
+	start := strings.Index(body, startTag)
+	if start < 0 {
+		t.Fatal("JSON-LD script not found")
+	}
+	start += len(startTag)
+	end := strings.Index(body[start:], "</script>")
+	if end < 0 {
+		t.Fatal("JSON-LD script is not closed")
+	}
+	return body[start : start+end]
+}
+
+func graphNode(t *testing.T, graph []map[string]any, nodeType string) map[string]any {
+	t.Helper()
+	for _, node := range graph {
+		if node["@type"] == nodeType {
+			return node
+		}
+	}
+	t.Fatalf("JSON-LD node %s not found", nodeType)
+	return nil
 }
 
 func firstLines(s string, n int) string {

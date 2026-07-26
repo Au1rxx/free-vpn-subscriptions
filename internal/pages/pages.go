@@ -516,8 +516,8 @@ func writeSitemap(path, siteURL string, countries []countryRow, generatedAt time
 	var b strings.Builder
 	b.WriteString(`<?xml version="1.0" encoding="UTF-8"?>` + "\n")
 	b.WriteString(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">` + "\n")
-	// Full W3C datetime rather than a bare date: these pages carry an hourly
-	// changefreq, so a day-granular lastmod understates how fresh they are.
+	// Full W3C datetime rather than a bare date for pages whose content was
+	// regenerated from the current network snapshot.
 	lastmod := generatedAt.Format(time.RFC3339)
 
 	// Home
@@ -533,7 +533,7 @@ func writeSitemap(path, siteURL string, countries []countryRow, generatedAt time
 	// Guide pages
 	for _, g := range guides {
 		baseURL := siteURL + "/guides/" + g.Slug + ".html"
-		writeSitemapEntry(&b, baseURL, lastmod, "weekly", "0.7", guideURLsByLocale(siteURL, g.Slug))
+		writeSitemapEntry(&b, baseURL, "", "weekly", "0.7", guideURLsByLocale(siteURL, g.Slug))
 	}
 
 	b.WriteString("</urlset>\n")
@@ -541,7 +541,11 @@ func writeSitemap(path, siteURL string, countries []countryRow, generatedAt time
 }
 
 func writeSitemapEntry(b *strings.Builder, loc, lastmod, changefreq, priority string, alternates map[string]string) {
-	fmt.Fprintf(b, "  <url>\n    <loc>%s</loc>\n    <lastmod>%s</lastmod>\n    <changefreq>%s</changefreq>\n    <priority>%s</priority>\n", loc, lastmod, changefreq, priority)
+	fmt.Fprintf(b, "  <url>\n    <loc>%s</loc>\n", loc)
+	if lastmod != "" {
+		fmt.Fprintf(b, "    <lastmod>%s</lastmod>\n", lastmod)
+	}
+	fmt.Fprintf(b, "    <changefreq>%s</changefreq>\n    <priority>%s</priority>\n", changefreq, priority)
 	codes := sortedKeys(alternates)
 	for _, code := range codes {
 		fmt.Fprintf(b, "    <xhtml:link rel=\"alternate\" hreflang=\"%s\" href=\"%s\"/>\n", code, alternates[code])
@@ -698,37 +702,47 @@ func hreflangCode(loc string) string {
 
 // indexJSONLD returns the structured data graph for the landing page.
 func indexJSONLD(in Input, l10n pageL10n, canonical, loc string) template.JS {
+	modified := time.Unix(in.Summary.GeneratedAtUnix, 0).UTC().Format(time.RFC3339)
 	graph := []any{
 		map[string]any{
-			"@context":    "https://schema.org",
-			"@type":       "WebSite",
-			"name":        l10n.IndexHeading,
-			"url":         canonical,
-			"description": fmt.Sprintf("%d hourly-refreshed free VPN nodes, TCP+TLS verified.", in.Summary.TotalSelected),
-			"inLanguage":  l10n.LangAttr,
+			"@context":     "https://schema.org",
+			"@type":        "WebSite",
+			"name":         l10n.IndexHeading,
+			"url":          canonical,
+			"description":  fmt.Sprintf(l10n.IndexDescriptionTpl, in.Summary.TotalSelected),
+			"inLanguage":   l10n.LangAttr,
+			"dateModified": modified,
 		},
 		map[string]any{
 			"@context":            "https://schema.org",
-			"@type":               "SoftwareApplication",
+			"@type":               "Dataset",
 			"name":                l10n.IndexHeading,
-			"operatingSystem":     "Windows, macOS, iOS, Android, Linux",
-			"applicationCategory": "NetworkingApplication",
-			"description":         "Free VPN subscription aggregator for Clash, sing-box, and v2ray.",
-			"offers": map[string]any{
-				"@type":         "Offer",
-				"price":         "0",
-				"priceCurrency": "USD",
-			},
-			"aggregateRating": map[string]any{
-				"@type":       "AggregateRating",
-				"ratingValue": "4.6",
-				"reviewCount": "47",
+			"description":         fmt.Sprintf(l10n.IndexDescriptionTpl, in.Summary.TotalSelected),
+			"url":                 canonical,
+			"inLanguage":          l10n.LangAttr,
+			"dateModified":        modified,
+			"license":             "https://opensource.org/licenses/MIT",
+			"isAccessibleForFree": true,
+			"keywords":            l10n.IndexKeywords,
+			"distribution": []any{
+				dataDownload("Clash YAML subscription", in.RepoURL+"/raw/main/output/clash.yaml", "application/yaml"),
+				dataDownload("sing-box JSON subscription", in.RepoURL+"/raw/main/output/singbox.json", "application/json"),
+				dataDownload("v2ray base64 subscription", in.RepoURL+"/raw/main/output/v2ray-base64.txt", "text/plain"),
 			},
 		},
 		faqSchema(l10n),
 	}
 	b, _ := json.Marshal(graph)
 	return template.JS(b)
+}
+
+func dataDownload(name, contentURL, encodingFormat string) map[string]any {
+	return map[string]any{
+		"@type":          "DataDownload",
+		"name":           name,
+		"contentUrl":     contentURL,
+		"encodingFormat": encodingFormat,
+	}
 }
 
 func countryJSONLD(in Input, l10n pageL10n, c countryRow, canonical, loc string) template.JS {
