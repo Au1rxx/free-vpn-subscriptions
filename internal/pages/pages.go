@@ -46,6 +46,12 @@ type countryRow struct {
 	URLPage  string // locale-specific page URL
 }
 
+type metricRow struct {
+	Name    string
+	Count   int
+	Percent string
+}
+
 // langAlt is used for <link rel="alternate" hreflang=...> tags.
 type langAlt struct {
 	Code string // hreflang value, e.g. "en", "zh-Hans", "x-default"
@@ -138,6 +144,11 @@ type pageCtx struct {
 	URLClash                string
 	URLSing                 string
 	URLV2ray                string
+	ProtocolRows            []metricRow
+	TopCountries            []metricRow
+	Trends                  TrendSummary
+	TrendSVG                template.HTML
+	CountryProtocols        []metricRow
 
 	// Guides (shown only on index page)
 	Guides []guideLink
@@ -164,6 +175,7 @@ func Generate(in Input, outDir string) error {
 			homeURL = in.SiteURL + "/index" + suffix + ".html"
 		}
 		countries := buildCountryRows(in, suffix)
+		trends := BuildTrends(in.History, time.Unix(in.Summary.GeneratedAtUnix, 0).UTC())
 
 		// Index page
 		idxTitle := fmt.Sprintf(l10n.IndexTitleTpl, in.Summary.TotalSelected)
@@ -208,6 +220,10 @@ func Generate(in Input, outDir string) error {
 			URLClash:     in.RepoURL + "/raw/main/output/clash.yaml",
 			URLSing:      in.RepoURL + "/raw/main/output/singbox.json",
 			URLV2ray:     in.RepoURL + "/raw/main/output/v2ray-base64.txt",
+			ProtocolRows: buildMetricRows(in.Summary.ByProtocol),
+			TopCountries: buildTopCountryRows(countries),
+			Trends:       trends,
+			TrendSVG:     renderTrendSVG(in.History),
 			Guides:       guideLinks,
 			JSONLD:       indexJSONLD(in, l10n, idxCanonical, loc),
 		}
@@ -248,6 +264,7 @@ func Generate(in Input, outDir string) error {
 				URLClash:                c.URLClash,
 				URLSing:                 c.URLSing,
 				URLV2ray:                c.URLV2ray,
+				CountryProtocols:        buildCountryProtocolRows(in.Selected, c.CC),
 				JSONLD:                  countryJSONLD(in, l10n, c, canonical, loc),
 			}
 			countryFile := ccLower + suffix + ".html"
@@ -330,9 +347,158 @@ func buildCountryRows(in Input, localeSuffix string) []countryRow {
 	return out
 }
 
+func buildMetricRows(counts map[string]int) []metricRow {
+	type rawMetric struct {
+		name      string
+		count     int
+		tenths    int
+		remainder int
+	}
+	raw := make([]rawMetric, 0, len(counts))
+	total := 0
+	for name, count := range counts {
+		if count <= 0 {
+			continue
+		}
+		raw = append(raw, rawMetric{name: strings.ToUpper(name), count: count})
+		total += count
+	}
+	sort.Slice(raw, func(i, j int) bool {
+		if raw[i].count != raw[j].count {
+			return raw[i].count > raw[j].count
+		}
+		return raw[i].name < raw[j].name
+	})
+	if total == 0 {
+		return nil
+	}
+
+	assigned := 0
+	for i := range raw {
+		scaled := raw[i].count * 1000
+		raw[i].tenths = scaled / total
+		raw[i].remainder = scaled % total
+		assigned += raw[i].tenths
+	}
+	order := make([]int, len(raw))
+	for i := range order {
+		order[i] = i
+	}
+	sort.SliceStable(order, func(i, j int) bool {
+		return raw[order[i]].remainder > raw[order[j]].remainder
+	})
+	for i := 0; i < 1000-assigned; i++ {
+		raw[order[i%len(order)]].tenths++
+	}
+
+	rows := make([]metricRow, 0, len(raw))
+	for _, item := range raw {
+		rows = append(rows, metricRow{
+			Name:    item.name,
+			Count:   item.count,
+			Percent: fmt.Sprintf("%.1f%%", float64(item.tenths)/10),
+		})
+	}
+	return rows
+}
+
+func buildTopCountryRows(countries []countryRow) []metricRow {
+	total := 0
+	for _, country := range countries {
+		total += country.Count
+	}
+	if len(countries) > 8 {
+		countries = countries[:8]
+	}
+	rows := make([]metricRow, 0, len(countries))
+	for _, country := range countries {
+		percent := "0.0%"
+		if total > 0 {
+			percent = fmt.Sprintf("%.1f%%", float64(country.Count)*100/float64(total))
+		}
+		rows = append(rows, metricRow{
+			Name:    country.Flag + " " + country.Name,
+			Count:   country.Count,
+			Percent: percent,
+		})
+	}
+	return rows
+}
+
+func buildCountryProtocolRows(nodes []*node.Node, country string) []metricRow {
+	counts := make(map[string]int)
+	for _, candidate := range nodes {
+		if candidate == nil || !strings.EqualFold(candidate.Country, country) {
+			continue
+		}
+		counts[candidate.Protocol]++
+	}
+	return buildMetricRows(counts)
+}
+
+func renderTrendSVG(points []HistoryPoint) template.HTML {
+	if len(points) < 2 {
+		return ""
+	}
+	sorted := append([]HistoryPoint(nil), points...)
+	sort.Slice(sorted, func(i, j int) bool {
+		return sorted[i].GeneratedAt.Before(sorted[j].GeneratedAt)
+	})
+
+	const (
+		width   = 760
+		height  = 180
+		padding = 24
+	)
+	minValue, maxValue := sorted[0].Selected, sorted[0].Selected
+	for _, point := range sorted[1:] {
+		if point.Selected < minValue {
+			minValue = point.Selected
+		}
+		if point.Selected > maxValue {
+			maxValue = point.Selected
+		}
+	}
+	valueRange := maxValue - minValue
+	if valueRange == 0 {
+		valueRange = 1
+	}
+	start := sorted[0].GeneratedAt.Unix()
+	duration := sorted[len(sorted)-1].GeneratedAt.Unix() - start
+	if duration <= 0 {
+		duration = int64(len(sorted) - 1)
+	}
+
+	var coordinates strings.Builder
+	for i, point := range sorted {
+		elapsed := point.GeneratedAt.Unix() - start
+		if sorted[len(sorted)-1].GeneratedAt.Unix() == start {
+			elapsed = int64(i)
+		}
+		x := float64(padding) + float64(elapsed)*float64(width-2*padding)/float64(duration)
+		y := float64(height-padding) - float64(point.Selected-minValue)*float64(height-2*padding)/float64(valueRange)
+		if i > 0 {
+			coordinates.WriteByte(' ')
+		}
+		fmt.Fprintf(&coordinates, "%.1f,%.1f", x, y)
+	}
+
+	var svg strings.Builder
+	fmt.Fprintf(&svg, `<svg class="trend-chart" viewBox="0 0 %d %d" role="img" aria-label="30-day selected node trend">`, width, height)
+	svg.WriteString(`<title>30-day selected node trend</title>`)
+	svg.WriteString(`<desc>Selected nodes over the retained hourly history.</desc>`)
+	fmt.Fprintf(&svg, `<line x1="%d" y1="%d" x2="%d" y2="%d" class="chart-axis"/>`, padding, height-padding, width-padding, height-padding)
+	fmt.Fprintf(&svg, `<polyline points="%s" class="chart-line"/>`, coordinates.String())
+	fmt.Fprintf(&svg, `<text x="%d" y="%d" class="chart-label">%d</text>`, padding, padding-6, maxValue)
+	fmt.Fprintf(&svg, `<text x="%d" y="%d" class="chart-label">%d</text>`, padding, height-6, minValue)
+	svg.WriteString(`</svg>`)
+	return template.HTML(svg.String())
+}
+
 func writeTemplate(path string, body string, ctx any) error {
 	funcs := template.FuncMap{
-		"safe": func(s string) template.HTML { return template.HTML(s) },
+		"safe":  func(s string) template.HTML { return template.HTML(s) },
+		"delta": func(value int) string { return fmt.Sprintf("%+d", value) },
 	}
 	t, err := template.New(path).Funcs(funcs).Parse(body)
 	if err != nil {

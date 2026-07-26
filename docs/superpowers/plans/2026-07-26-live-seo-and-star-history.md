@@ -3,7 +3,7 @@
 > **For agentic workers:** REQUIRED SUB-SKILL: Use `superpowers:executing-plans` to implement this plan task-by-task. 本仓库规则禁止子代理，因此只允许当前会话内联执行。
 
 **状态：** 进行中
-**进度：** 已完成 3/6 项（50%）
+**进度：** 已完成 4/6 项（67%）
 **更新时间：** 2026-07-26
 
 **Goal:** 用仓库内每日更新的 SVG 修复 Star History，并让现有静态站点展示每小时真实快照和 30 天滚动趋势。
@@ -170,7 +170,7 @@
 
 ### Task 4: 实时落地页与国家页内容
 
-- [ ] **任务状态：进行中**
+- [x] **任务状态：已完成**
 
 **Files:**
 - Modify: `internal/pages/pages.go`
@@ -182,30 +182,31 @@
 - Produces: `metricRow{Name string; Count int; Percent string}`、`TrendSummary` 和安全的内联趋势 SVG。
 - Extends: `pageCtx`，增加 `ProtocolRows`、`TopCountries`、`Trends`、`TrendSVG`、`CountryProtocols`。
 
-- [ ] **Step 1: 写 7 语言页面 RED 测试**
+- [x] **Step 1: 写 7 语言页面 RED 测试**
   - 首页必须展示当前快照、真实协议分布、前 8 国家、趋势文字、更新时间、验证方法、限制和选择指南。
   - 国家页必须展示该国家协议组成；所有百分比合计允许四舍五入误差不超过 0.2%。
   - Run: `go test ./internal/pages -run 'Live|Protocol|Locale' -count=1`
   - Expected: FAIL，模板尚无这些区块。
 
-- [ ] **Step 2: 实现数据派生与零 JS 图表**
+- [x] **Step 2: 实现数据派生与零 JS 图表**
   - 从同一次 `Summary/Selected` 排序协议和国家；相同数量按稳定字典序。
   - 趋势 SVG 使用 `template.HTML` 前必须只由数值和固定标签构造，并包含可访问 title/desc。
   - 历史不足显示本地化“数据积累中”，不得渲染虚假 delta。
 
-- [ ] **Step 3: 完成全部本地化和样式**
+- [x] **Step 3: 完成全部本地化和样式**
   - 为 `en/zh/ja/ko/es/pt/ru` 填满新增字段，复用 README 已审阅的验证与限制文案。
   - 扩展现有 CSS 的 card/table/grid，保持移动端可读、无外部资源、首屏订阅链接位置不后移。
   - Run: `go test ./internal/pages -count=1`
   - Expected: PASS。
 
-- [ ] **Step 4: 验证并提交**
+- [x] **Step 4: 验证并提交**
   - Run: `go test ./internal/pages ./internal/readme -count=1`
   - Commit: `feat: add live network report to pages`
+  - 证据：2026-07-26 targeted tests 退出 0；七种语言均覆盖实时报告，协议占比精确合计 100.0%，订阅卡仍先于报告区块。
 
 ### Task 5: 合规结构化数据与 sitemap
 
-- [ ] **任务状态：未开始**
+- [ ] **任务状态：进行中**
 
 **Files:**
 - Modify: `internal/pages/pages.go`
