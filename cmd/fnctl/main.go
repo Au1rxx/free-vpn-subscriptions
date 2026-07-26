@@ -272,6 +272,12 @@ func writeOutputs(cfg *config.Config, selected []*node.Node, summary aggregate.S
 	}
 
 	if cfg.Output.Pages.Enabled {
+		history := preparePageHistory(
+			filepath.Join(cfg.Output.Pages.Dir, "data", "network-history.json"),
+			summary,
+			cfg.GeoIP.MinPerCountry,
+			os.Stderr,
+		)
 		if err := pages.Generate(pages.Input{
 			Title:         cfg.Readme.Title,
 			RepoURL:       cfg.Readme.RepoURL,
@@ -279,6 +285,7 @@ func writeOutputs(cfg *config.Config, selected []*node.Node, summary aggregate.S
 			Summary:       summary,
 			Selected:      selected,
 			MinPerCountry: cfg.GeoIP.MinPerCountry,
+			History:       history,
 		}, cfg.Output.Pages.Dir); err != nil {
 			return fmt.Errorf("pages: %w", err)
 		}

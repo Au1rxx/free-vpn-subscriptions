@@ -32,6 +32,7 @@ type Input struct {
 	Summary       aggregate.Summary
 	Selected      []*node.Node
 	MinPerCountry int
+	History       []HistoryPoint
 }
 
 type countryRow struct {

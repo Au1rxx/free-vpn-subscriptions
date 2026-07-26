@@ -3,7 +3,7 @@
 > **For agentic workers:** REQUIRED SUB-SKILL: Use `superpowers:executing-plans` to implement this plan task-by-task. 本仓库规则禁止子代理，因此只允许当前会话内联执行。
 
 **状态：** 进行中
-**进度：** 已完成 2/6 项（33%）
+**进度：** 已完成 3/6 项（50%）
 **更新时间：** 2026-07-26
 
 **Goal:** 用仓库内每日更新的 SVG 修复 Star History，并让现有静态站点展示每小时真实快照和 30 天滚动趋势。
@@ -127,12 +127,13 @@
 
 ### Task 3: 30 天历史与趋势计算
 
-- [ ] **任务状态：进行中**
+- [x] **任务状态：已完成**
 
 **Files:**
 - Create: `internal/pages/history.go`
 - Create: `internal/pages/history_test.go`
 - Create: `cmd/fnctl/page_history.go`
+- Create: `cmd/fnctl/page_history_test.go`
 - Modify: `cmd/fnctl/main.go`
 - Modify: `cmd/fnctl/export_db.go`
 - Modify: `internal/pages/pages.go`
@@ -145,30 +146,31 @@
 - Produces: `pages.BuildTrends(points []HistoryPoint, now time.Time) TrendSummary`。
 - Extends: `pages.Input.History []HistoryPoint`。
 
-- [ ] **Step 1: 写历史 RED 测试**
+- [x] **Step 1: 写历史 RED 测试**
   - 覆盖缺失文件初始化、同 timestamp 去重、乱序排序、未来点拒绝、未知 schema、损坏 JSON、720 点截断和原子写入。
   - 覆盖 24h/7d/30d 最近不晚于目标时刻的点，以及历史不足的 `Available=false`。
   - Run: `go test ./internal/pages -run 'History|Trend' -count=1`
   - Expected: FAIL，类型和函数尚不存在。
 
-- [ ] **Step 2: 实现历史模型与计算**
+- [x] **Step 2: 实现历史模型与计算**
   - JSON 顶层固定 `schema_version: 1`；UTC RFC3339；`Countries` 只统计达到 `MinPerCountry` 的国家。
   - 临时文件权限 `0644`，成功 `Sync/Close/Rename`；错误绝不覆盖旧文件。
   - Run: `go test ./internal/pages -run 'History|Trend' -count=1`
   - Expected: PASS。
 
-- [ ] **Step 3: 接入两个发布入口并验证降级**
+- [x] **Step 3: 接入两个发布入口并验证降级**
   - `preparePageHistory` 捕获历史错误，向 stderr 输出单行 `warning: page history: ...`，并返回仅含当前点的 slice。
   - legacy `writeOutputs` 与 DB `renderSite` 均在调用 `pages.Generate` 前准备历史。
   - 测试损坏文件时站点仍生成、原文件未覆盖、趋势显示数据积累中。
 
-- [ ] **Step 4: 验证并提交**
+- [x] **Step 4: 验证并提交**
   - Run: `go test ./internal/pages ./cmd/fnctl -count=1`
   - Commit: `feat: retain rolling network history`
+  - 证据：2026-07-26 targeted tests 退出 0；覆盖 720 点上限、去重、趋势边界和损坏文件降级后继续生成页面。
 
 ### Task 4: 实时落地页与国家页内容
 
-- [ ] **任务状态：未开始**
+- [ ] **任务状态：进行中**
 
 **Files:**
 - Modify: `internal/pages/pages.go`
