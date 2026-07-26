@@ -202,7 +202,7 @@ The binary writes:
 | Status | `output/status.json` | backward-compatible dashboard summary; database exports identify `schema_version=2`, `data_source=database`, and `statistics_scope=exportable_snapshot` |
 | READMEs | `README.md`, `README_CN.md`, …, `README_RU.md` | GitHub repo front page |
 | Pages site | `docs/index.{en,zh,ja,ko,es,pt,ru}.html`, `docs/XX.{en,zh,ja,ko,es,pt,ru}.html` per qualifying country, `docs/guides/{slug}.{en,zh}.html`, `docs/sitemap.xml`, `docs/robots.txt` | SEO landing for au1rxx.github.io |
-| Rolling history | `docs/data/network-history.json` | Up to 720 hourly snapshots used by the live 24 h / 7 d / 30 d report |
+| Rolling history | `docs/data/network-history.json` | Up to 721 endpoints covering 720 hourly intervals for the live 24 h / 7 d / 30 d report |
 
 The Clash emitter builds a `proxy-groups` selector with a URL-test probe (`http://www.gstatic.com/generate_204`, 300s interval) — clients auto-pick the fastest node in real use.
 
@@ -283,7 +283,7 @@ Every HTML page carries a consistent set of metadata. Implementation: [`internal
 
 ## Rolling live data and star history
 
-The external publisher owns node statistics. Before rendering Pages it appends the current export to `docs/data/network-history.json`, deduplicates timestamps, sorts in UTC, and keeps at most 720 hourly points (30 days). Writes use a temporary file plus `fsync`, close, and rename. If the history is corrupt, has an unknown schema, or contains a future point, publication continues with the current snapshot and the existing file is left untouched.
+The external publisher owns node statistics. Before rendering Pages it appends the current export to `docs/data/network-history.json`, keeps only the latest snapshot in each UTC hour, sorts it, and retains at most 721 endpoints (the current sample plus the sample 720 hours earlier). Writes use a temporary file plus `fsync`, close, and rename. If the history is corrupt, has an unknown schema, or contains a future point, publication continues with the current snapshot and the existing file is left untouched.
 
 Star history has a separate data owner and cadence. `.github/workflows/update-star-history.yml` runs daily (and on manual dispatch), reads timestamped stargazers with the repository-scoped token, and deterministically regenerates `assets/star-history.svg`. It commits only when the SVG changes. This Action never reads node sources, the validation database, or publisher credentials.
 

@@ -52,8 +52,8 @@ Action 构建 `fnctl`、生成 SVG、仅在文件变化时提交；推送前重�
 ```
 
 `pages` 包提供独立的历史加载/更新函数；两个发布入口在调用 `pages.Generate` 前使用它，并把
-结果通过 `pages.Input` 传入。函数按 `generated_at` 去重追加当前点、按时间排序并保留最近
-720 点，写入采用同目录临时文件加 rename。文件不存在时从当前点初始化；`countries` 明确是
+结果通过 `pages.Input` 传入。函数按 UTC 小时去重追加当前点、按时间排序并保留最近
+721 个端点（当前点加 720 小时前基线），写入采用同目录临时文件加 rename。文件不存在时从当前点初始化；`countries` 明确是
 满足 `MinPerCountry`、实际拥有国家页的国家数量。
 
 未知 schema、损坏 JSON 或未来时间点不会覆盖原文件：命令层输出一条有界 warning，并让页面
@@ -98,7 +98,7 @@ Action 构建 `fnctl`、生成 SVG、仅在文件变化时提交；推送前重�
 ## 测试与验收
 
 - Star API 分页、日期累计、XML 转义和确定性 SVG 单元测试；README 断言只引用本地 SVG。
-- 历史初始化、去重、乱序、720 点截断、损坏/schema 错误和 24h/7d/30d 计算单元测试。
+- 历史初始化、去重、乱序、721 端点截断、损坏/schema 错误和 24h/7d/30d 计算单元测试。
 - Pages 测试覆盖 7 种语言的实时区块、协议比例、国家链接和历史不足状态。
 - JSON-LD 解析测试断言存在 Dataset/DataDownload、没有 AggregateRating，数据与页面一致。
 - sitemap 测试断言首页/国家页 lastmod 准确、指南不伪造本轮 lastmod。

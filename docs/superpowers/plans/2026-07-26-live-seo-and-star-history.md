@@ -8,7 +8,7 @@
 
 **Goal:** 用仓库内每日更新的 SVG 修复 Star History，并让现有静态站点展示每小时真实快照和 30 天滚动趋势。
 
-**Architecture:** 现有发布器继续拥有节点数据和 Pages 生成；`docs/data/network-history.json` 保存最多 720 个小时点。独立 GitHub Action 使用仓库 `GITHUB_TOKEN` 每日生成 `assets/star-history.svg`，不接触节点源或数据库。
+**Architecture:** 现有发布器继续拥有节点数据和 Pages 生成；`docs/data/network-history.json` 保存最多 721 个端点，用于覆盖完整 720 小时区间。独立 GitHub Action 使用仓库 `GITHUB_TOKEN` 每日生成 `assets/star-history.svg`，不接触节点源或数据库。
 
 **Tech Stack:** Go 标准库、Cobra、`html/template`、GitHub REST API、GitHub Actions、静态 HTML/SVG/JSON。
 
@@ -147,7 +147,7 @@
 - Extends: `pages.Input.History []HistoryPoint`。
 
 - [x] **Step 1: 写历史 RED 测试**
-  - 覆盖缺失文件初始化、同 timestamp 去重、乱序排序、未来点拒绝、未知 schema、损坏 JSON、720 点截断和原子写入。
+  - 覆盖缺失文件初始化、同一 UTC 小时去重、乱序排序、未来点拒绝、未知 schema、损坏 JSON、721 端点截断和原子写入。
   - 覆盖 24h/7d/30d 最近不晚于目标时刻的点，以及历史不足的 `Available=false`。
   - Run: `go test ./internal/pages -run 'History|Trend' -count=1`
   - Expected: FAIL，类型和函数尚不存在。
@@ -166,7 +166,7 @@
 - [x] **Step 4: 验证并提交**
   - Run: `go test ./internal/pages ./cmd/fnctl -count=1`
   - Commit: `feat: retain rolling network history`
-  - 证据：2026-07-26 targeted tests 退出 0；覆盖 720 点上限、去重、趋势边界和损坏文件降级后继续生成页面。
+  - 证据：2026-07-26 targeted tests 退出 0；覆盖 721 端点上限、同小时去重、趋势边界和损坏文件降级后继续生成页面。
 
 ### Task 4: 实时落地页与国家页内容
 

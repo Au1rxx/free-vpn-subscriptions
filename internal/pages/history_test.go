@@ -8,11 +8,11 @@ import (
 	"time"
 )
 
-func TestUpdateHistorySortsDeduplicatesAndKeepsLatest720Points(t *testing.T) {
+func TestUpdateHistorySortsDeduplicatesAndKeepsThirtyDaysOfHourlyIntervals(t *testing.T) {
 	path := filepath.Join(t.TempDir(), "data", "network-history.json")
 	start := time.Date(2026, 6, 1, 0, 0, 0, 0, time.UTC)
-	points := make([]HistoryPoint, 0, 721)
-	for i := 0; i < 721; i++ {
+	points := make([]HistoryPoint, 0, 722)
+	for i := 0; i < 722; i++ {
 		points = append(points, HistoryPoint{
 			GeneratedAt:     start.Add(time.Duration(i) * time.Hour),
 			Selected:        i,
@@ -29,8 +29,8 @@ func TestUpdateHistorySortsDeduplicatesAndKeepsLatest720Points(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(got) != 720 {
-		t.Fatalf("points = %d, want 720", len(got))
+	if len(got) != 721 {
+		t.Fatalf("points = %d, want 721 endpoints for 720 hourly intervals", len(got))
 	}
 	if !got[0].GeneratedAt.Equal(start.Add(time.Hour)) {
 		t.Fatalf("oldest point = %s, want %s", got[0].GeneratedAt, start.Add(time.Hour))
@@ -50,8 +50,12 @@ func TestUpdateHistorySortsDeduplicatesAndKeepsLatest720Points(t *testing.T) {
 	if err := json.Unmarshal(body, &stored); err != nil {
 		t.Fatal(err)
 	}
-	if stored.SchemaVersion != 1 || len(stored.Points) != 720 {
+	if stored.SchemaVersion != 1 || len(stored.Points) != 721 {
 		t.Fatalf("stored history = version %d, points %d", stored.SchemaVersion, len(stored.Points))
+	}
+	trends := BuildTrends(got, current.GeneratedAt)
+	if !trends.Days30.Available {
+		t.Fatal("30-day trend is unavailable at full history capacity")
 	}
 }
 

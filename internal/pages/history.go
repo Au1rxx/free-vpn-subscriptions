@@ -14,7 +14,9 @@ import (
 
 const (
 	historySchemaVersion = 1
-	maxHistoryPoints     = 30 * 24
+	// A 30-day delta spans 720 hourly intervals and therefore needs both
+	// endpoints: the current sample plus the sample 720 hours earlier.
+	maxHistoryPoints = 30*24 + 1
 )
 
 // HistoryPoint is one hourly public-network snapshot.
