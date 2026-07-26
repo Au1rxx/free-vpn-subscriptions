@@ -1,4 +1,13 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-2387870
+      network: ws
+      port: 80
+      server: 61.245.11.60
+      type: vmess
+      udp: true
+      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
     - name: trojan-2493846
       password: BxceQaOe
       port: 443
@@ -148,10 +157,25 @@ proxies:
       type: vless
       udp: true
       uuid: 0c5853e1-a606-4aa2-bbfa-86a7b58d43b1
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-161185331
+      network: tcp
+      port: 41639
+      reality-opts:
+        public-key: nBsIaD1ngEZoLYTGSjQiEigvafTyOHFwwcAjFaBjt00
+        short-id: 0c343439
+      server: 72.18.215.40
+      servername: apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 083f9234-76f8-47f4-915e-726a767b7ad5
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-2387870
         - trojan-2493846
         - trojan-2493847
         - trojan-2493848
@@ -167,11 +191,13 @@ proxy-groups:
         - vless-138305752
         - vless-140905075
         - vless-150920425
+        - vless-161185331
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-2387870
         - trojan-2493846
         - trojan-2493847
         - trojan-2493848
@@ -187,6 +213,7 @@ proxy-groups:
         - vless-138305752
         - vless-140905075
         - vless-150920425
+        - vless-161185331
       type: select
 rules:
     - MATCH,select
