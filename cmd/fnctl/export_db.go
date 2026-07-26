@@ -93,6 +93,12 @@ func renderSite(cfg *config.Config, root string, report exportdb.Report) (int, e
 	if !filepath.IsAbs(directory) {
 		directory = filepath.Join(root, directory)
 	}
+	history := preparePageHistory(
+		filepath.Join(directory, "data", "network-history.json"),
+		report.Summary,
+		cfg.GeoIP.MinPerCountry,
+		os.Stderr,
+	)
 	if err := pages.Generate(pages.Input{
 		Title:         cfg.Readme.Title,
 		RepoURL:       cfg.Readme.RepoURL,
@@ -100,6 +106,7 @@ func renderSite(cfg *config.Config, root string, report exportdb.Report) (int, e
 		Summary:       report.Summary,
 		Selected:      report.Selected,
 		MinPerCountry: cfg.GeoIP.MinPerCountry,
+		History:       history,
 	}, directory); err != nil {
 		return 0, fmt.Errorf("pages: %w", err)
 	}

@@ -76,6 +76,22 @@ func TestGenerateOmitsStarBadgeForNonGitHubRepo(t *testing.T) {
 	}
 }
 
+func TestGenerateUsesSelfHostedStarHistoryForEveryLocale(t *testing.T) {
+	const image = "https://github.com/example/repo/raw/main/assets/star-history.svg"
+	for _, loc := range Locales() {
+		body := Generate(testInput(), loc)
+		if !strings.Contains(body, "[![Star History Chart]("+image+")]") {
+			t.Errorf("locale %q does not use the self-hosted chart", loc.Code)
+		}
+		if strings.Contains(body, "api.star-history.com") {
+			t.Errorf("locale %q still uses the third-party chart", loc.Code)
+		}
+		if !strings.Contains(body, "https://github.com/example/repo/stargazers") {
+			t.Errorf("locale %q chart does not link to stargazers", loc.Code)
+		}
+	}
+}
+
 func TestRepoSlug(t *testing.T) {
 	for input, want := range map[string]string{
 		"https://github.com/example/repo":      "example/repo",

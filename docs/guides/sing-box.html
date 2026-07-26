@@ -92,6 +92,46 @@
   .country-flag { font-size: 32px; }
   .country-name { font-weight: 600; color: #f1f5f9; font-size: 14px; }
   .country-count { color: #94a3b8; font-size: 13px; }
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 12px; margin: 20px 0;
+  }
+  .stat-card {
+    display: flex; flex-direction: column; gap: 2px; padding: 16px;
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+  }
+  .stat-card strong { color: #f8fafc; font-size: 24px; }
+  .stat-card span { color: #94a3b8; font-size: 13px; }
+  .report-grid {
+    display: grid; grid-template-columns: minmax(0,2fr) minmax(0,3fr);
+    gap: 16px; margin-top: 16px;
+  }
+  .report-panel {
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+    padding: 18px;
+  }
+  .report-panel h3 { margin: 0 0 12px; color: #f1f5f9; font-size: 17px; }
+  .metric-list { display: flex; flex-direction: column; gap: 8px; }
+  .metric-row {
+    display: grid; grid-template-columns: minmax(0,1fr) auto 64px;
+    gap: 12px; align-items: center; padding: 8px 10px;
+    background: #0f172a; border-radius: 7px; color: #cbd5e1;
+  }
+  .metric-row strong { color: #f8fafc; }
+  .metric-row span:last-child { text-align: right; color: #93c5fd; font-variant-numeric: tabular-nums; }
+  .trend-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+  .trend-card {
+    display: flex; flex-direction: column; gap: 5px; padding: 12px;
+    background: #111c31; border-radius: 8px; color: #94a3b8; font-size: 12px;
+  }
+  .trend-card strong { color: #f1f5f9; font-size: 14px; }
+  .trend-chart { width: 100%; height: auto; margin-top: 16px; }
+  .chart-axis { stroke: #475569; stroke-width: 1; }
+  .chart-line { fill: none; stroke: #60a5fa; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  .chart-label { fill: #94a3b8; font-size: 11px; }
+  .info-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+  .info-grid h2 { font-size: 18px; }
+  .info-grid p { color: #cbd5e1; margin-bottom: 0; }
   .client-list { padding-left: 20px; }
   .client-list li { margin-bottom: 6px; color: #cbd5e1; }
   details { margin: 10px 0; padding: 12px 16px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; }
@@ -104,13 +144,20 @@
   footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
   footer a { color: #93c5fd; }
   footer .small { font-size: 12px; margin-top: 8px; max-width: 680px; margin-left: auto; margin-right: auto; }
+  @media (max-width: 700px) {
+    .card { padding: 22px 18px; margin: 14px 12px; }
+    .lang-switch { padding-left: 16px; padding-right: 16px; text-align: center; }
+    .stat-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .report-grid, .info-grid { grid-template-columns: 1fr; }
+    .trend-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 <div class="lang-switch">
-  <strong>English</strong>
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/guides/sing-box.zh.html">简体中文</a>
-  
+<strong>English</strong>
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/guides/sing-box.zh.html">简体中文</a>
+
 </div>
 
 <nav class="breadcrumb">
@@ -123,7 +170,7 @@
   <p class="meta">
     <span class="badge badge-blue">sing-box</span>
     <span class="badge badge-gray">Windows, macOS, Linux, iOS, Android</span>
-    <span class="badge badge-green">updated · 2026-07-26 07:16 UTC</span>
+    <span class="badge badge-green">updated · 2026-07-26 07:23 UTC</span>
   </p>
   <p class="repo">
     <a href="https://github.com/SagerNet/sing-box/releases/latest" class="btn-outline" target="_blank" rel="noopener">⬇ Download sing-box</a>
@@ -144,63 +191,63 @@
 <section class="card">
   <h2>🪜 Steps</h2>
   <ol class="steps">
-    
+
     <li>
       <h3>Pick a client</h3>
       <p>sing-box ships as a CLI (Windows/macOS/Linux) and native apps for iOS/Android. For desktop GUIs try <a href="https://github.com/hiddify/hiddify-app/releases" target="_blank" rel="noopener">Hiddify Next</a>. On iOS grab the free <a href="https://apps.apple.com/app/sing-box/id6451272673" target="_blank" rel="noopener">sing-box app</a>; on Android grab it from <a href="https://github.com/SagerNet/sing-box/releases/latest" target="_blank" rel="noopener">GitHub releases</a>.</p>
     </li>
-    
+
     <li>
       <h3>Copy the sing-box subscription URL</h3>
       <p>On the <a href="../index.html">homepage</a>, copy the <strong>sing-box</strong> URL (ends in <code>singbox.json</code>).</p>
     </li>
-    
+
     <li>
       <h3>Import (GUI route)</h3>
       <p>In Hiddify Next or the sing-box app: <strong>Profiles</strong> → <strong>Add Profile</strong> → paste the URL. Enable the profile, toggle the VPN switch.</p>
     </li>
-    
+
     <li>
       <h3>Import (CLI route)</h3>
       <p>Save the JSON locally: <code>curl -o config.json &lt;subscription URL&gt;</code>. Run: <code>sing-box run -c config.json</code>. By default this starts a SOCKS5 + HTTP proxy on <code>127.0.0.1:2080</code>/<code>2081</code>.</p>
     </li>
-    
+
     <li>
       <h3>Enable TUN (optional, CLI route)</h3>
       <p>For full-system routing, edit <code>config.json</code> and add a TUN inbound (see <a href="https://sing-box.sagernet.org/configuration/inbound/tun/" target="_blank" rel="noopener">docs</a>). Run <code>sing-box</code> as root/admin. All TCP+UDP routes through the selected node.</p>
     </li>
-    
+
     <li>
       <h3>Verify</h3>
       <p><code>curl --proxy socks5://127.0.0.1:2080 https://ipinfo.io</code> (CLI) or open a browser (GUI). Country should match your picked node.</p>
     </li>
-    
+
   </ol>
 </section>
 
 <section class="card">
   <h2>💡 Tips &amp; Troubleshooting</h2>
-  
+
   <details><summary>Why use sing-box over Clash?</summary><p>sing-box has first-class support for modern protocols (VLESS+Reality, Hysteria2, TUIC) and is lighter. Clash Meta supports them too but sing-box's implementation tends to be closer to upstream specs.</p></details>
-  
+
   <details><summary>Can I auto-update the subscription?</summary><p>In GUI: enable auto-update in profile settings, set 1 hour. For CLI: add a cron entry — <code>0 * * * * curl -o /etc/sing-box/config.json &lt;URL&gt; && systemctl reload sing-box</code>.</p></details>
-  
+
   <details><summary>macOS menu bar client?</summary><p>Try <a href="https://github.com/hiddify/hiddify-app/releases" target="_blank" rel="noopener">Hiddify Next</a> or <a href="https://github.com/yichengchen/ClashX/releases" target="_blank" rel="noopener">ClashX Meta</a>.</p></details>
-  
+
   <details><summary>Android has no system proxy — how does sing-box route traffic?</summary><p>The sing-box Android app uses VPNService, same as v2rayNG. All traffic goes through it when the toggle is on.</p></details>
-  
+
 </section>
 
 <section class="card">
   <h2>📚 Other guides</h2>
   <ul class="client-list">
-    
+
     <li><a href="clash-verge.html">Clash Verge</a> · Windows, macOS, Linux</li>
-    
+
     <li><a href="v2rayng.html">v2rayNG</a> · Android 5.0&#43;</li>
-    
+
     <li><a href="shadowrocket.html">Shadowrocket</a> · iOS 15&#43;, iPadOS 15&#43;</li>
-    
+
   </ul>
 </section>
 

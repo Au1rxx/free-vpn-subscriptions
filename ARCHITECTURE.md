@@ -202,6 +202,7 @@ The binary writes:
 | Status | `output/status.json` | backward-compatible dashboard summary; database exports identify `schema_version=2`, `data_source=database`, and `statistics_scope=exportable_snapshot` |
 | READMEs | `README.md`, `README_CN.md`, …, `README_RU.md` | GitHub repo front page |
 | Pages site | `docs/index.{en,zh,ja,ko,es,pt,ru}.html`, `docs/XX.{en,zh,ja,ko,es,pt,ru}.html` per qualifying country, `docs/guides/{slug}.{en,zh}.html`, `docs/sitemap.xml`, `docs/robots.txt` | SEO landing for au1rxx.github.io |
+| Rolling history | `docs/data/network-history.json` | Up to 721 endpoints covering 720 hourly intervals for the live 24 h / 7 d / 30 d report |
 
 The Clash emitter builds a `proxy-groups` selector with a URL-test probe (`http://www.gstatic.com/generate_204`, 300s interval) — clients auto-pick the fastest node in real use.
 
@@ -214,11 +215,12 @@ This trips people up, so it gets its own section: **GitHub Pages does not run Go
 │ External scheduler (off-Actions) │  push   │ GitHub Pages (static CDN)  │
 │ hourly + ±30 min jitter          │────────▶│                            │
 │                                  │         │ au1rxx.github.io/...       │
-│ go build → fnctl aggregate       │         │   ├─ index.html            │
-│   ├─ fetch + probe + rank        │         │   ├─ index.zh.html         │
-│   └─ internal/pages.Generate()   │         │   ├─ us.html / us.zh.html  │
-│        writes docs/*.html        │         │   ├─ guides/*.html         │
-│ git add docs/ && git push        │         │   ├─ sitemap.xml           │
+│ fnctl export-db --site-root      │         │   ├─ index.html            │
+│   ├─ export verified DB snapshot │         │   ├─ index.zh.html         │
+│   └─ render subscriptions,       │         │   ├─ us.html / us.zh.html  │
+│      READMEs, Pages + history    │         │   ├─ guides/*.html         │
+│ git add generated files && push  │         │   ├─ data/network-history  │
+│                                  │         │   └─ sitemap.xml           │
 └──────────────────────────────────┘         │   └─ robots.txt            │
                                              │                            │
                                              │  ← browser requests static │
@@ -229,7 +231,7 @@ This trips people up, so it gets its own section: **GitHub Pages does not run Go
 
 Practical consequences:
 - All internationalization (i18n) must be baked into distinct URLs (`index.html` vs `index.zh.html`) — there is no `Accept-Language` negotiation.
-- All dynamic values (node counts, timestamps, RTT medians) are re-computed and re-written into the HTML on each Actions run. A change in the live stats requires a new push.
+- All dynamic values (node counts, timestamps, RTT medians and rolling trends) are re-computed and re-written into the HTML on each external publisher run. A change in the live stats requires a new push.
 - `.nojekyll` exists in `docs/` so Pages serves files verbatim and doesn't try to run Jekyll over them.
 
 ## Multilingual rendering
@@ -270,14 +272,22 @@ Every HTML page carries a consistent set of metadata. Implementation: [`internal
 | `<link rel="canonical">` | Points at the locale-specific URL to avoid dup-content flagging |
 | `<link rel="alternate" hreflang>` (× N locales + `x-default`) | Tells Google which version to serve per user locale |
 | `og:type / og:locale / og:image` + Twitter card tags | Link-preview cards on Reddit, Slack, Twitter, Discord |
-| JSON-LD `WebSite` | Sitelinks search box + site name |
-| JSON-LD `SoftwareApplication` with `AggregateRating` | Rich-result eligibility |
+| JSON-LD `WebSite` | Site identity and current `dateModified` |
+| JSON-LD `Dataset` + three `DataDownload` entries | Describes the actual Clash, sing-box and v2ray downloads without unsupported review claims |
 | JSON-LD `FAQPage` | FAQ rich snippet on the index page |
 | JSON-LD `WebPage` + `BreadcrumbList` | Breadcrumb trail on country pages |
 | JSON-LD `HowTo` | Step-by-step rich snippet on guide pages (one `HowToStep` per guide step) |
-| `sitemap.xml` + `robots.txt` | Crawl discovery; hourly `changefreq` on home, weekly on guides |
+| `sitemap.xml` + `robots.txt` | Crawl discovery; live index/country pages receive the export timestamp, static guides omit `lastmod` |
 
-`inLanguage` is set on every JSON-LD entity so Google can serve the right version per query locale. All page weight stays under 20 KB (inline CSS, no JS, no external fetches) — Core Web Vitals green by construction.
+`inLanguage` is set on every JSON-LD entity so Google can serve the right version per query locale. CSS is inline and the pages use no client-side JavaScript, analytics, or third-party runtime fetches.
+
+## Rolling live data and star history
+
+The external publisher owns node statistics. Before rendering Pages it appends the current export to `docs/data/network-history.json`, keeps only the latest snapshot in each UTC hour, sorts it, and retains at most 721 endpoints (the current sample plus the sample 720 hours earlier). Writes use a temporary file plus `fsync`, close, and rename. If the history is corrupt, has an unknown schema, or contains a future point, publication continues with the current snapshot and the existing file is left untouched.
+
+After a successful render, the generator removes obsolete two-character country-page clusters that are no longer present in the current qualified-country set. It skips cleanup when no country data is available, so a temporary GeoIP failure cannot erase the last good country pages. Index pages, guides, `.nojekyll`, and unmanaged files are never cleanup targets.
+
+Star history has a separate data owner and cadence. `.github/workflows/update-star-history.yml` runs daily (and on manual dispatch), reads timestamped stargazers with the repository-scoped token, and deterministically regenerates `assets/star-history.svg`. It commits only when the SVG changes. This Action never reads node sources, the validation database, or publisher credentials.
 
 ### Hero image
 

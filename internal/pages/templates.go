@@ -32,8 +32,8 @@ const tplIndex = `<!DOCTYPE html>
 <body>
 <div class="lang-switch">
   <span>{{.L10n.LanguageLabel}}</span>
-  {{range .LanguageSw}}{{if .Current}}<strong>{{.Label}}</strong>{{else}}<a href="{{.URL}}">{{.Label}}</a>{{end}}
-  {{end}}
+{{range .LanguageSw}}{{if .Current}}<strong>{{.Label}}</strong>{{else}}<a href="{{.URL}}">{{.Label}}</a>{{end}}
+{{end}}
 </div>
 
 <header class="hero">
@@ -70,18 +70,93 @@ const tplIndex = `<!DOCTYPE html>
   <p><a href="{{.RepoURL}}/tree/main/output" target="_blank" rel="noopener">Database-classified shards: stable · all verified · protocol · country · network</a></p>
 </section>
 
+<section class="card" id="live-report">
+  <h2>{{.L10n.LiveHeading}}</h2>
+  <p>{{.L10n.LiveIntro}}</p>
+  <div class="stat-grid">
+    <div class="stat-card"><strong>{{.Stats.TotalSelected}}</strong><span>{{.L10n.SnapshotSelected}}</span></div>
+    <div class="stat-card"><strong>{{.Stats.TotalVerified}}</strong><span>{{.L10n.SnapshotVerified}}</span></div>
+    <div class="stat-card"><strong>{{len .Countries}}</strong><span>{{.L10n.SnapshotCountries}}</span></div>
+    <div class="stat-card"><strong>{{.Stats.MedianLatencyMS}} ms</strong><span>{{.L10n.BadgeMedianRTT}}</span></div>
+  </div>
+  <div class="report-grid">
+    <div class="report-panel">
+      <h3>{{.L10n.ProtocolHeading}}</h3>
+      <div class="metric-list">
+{{range .ProtocolRows}}<div class="metric-row"><span>{{.Name}}</span><strong>{{.Count}}</strong><span>{{.Percent}}</span></div>
+{{end}}
+      </div>
+    </div>
+    <div class="report-panel">
+      <h3>{{.L10n.TrendHeading}}</h3>
+      <div class="trend-grid">
+        <div class="trend-card" data-window="24h">
+          <strong>{{.L10n.Trend24h}}</strong>
+{{if .Trends.Hours24.Available}}
+          <span>{{.L10n.TrendSelected}} {{delta .Trends.Hours24.Selected}}</span>
+          <span>{{.L10n.TrendVerified}} {{delta .Trends.Hours24.Verified}}</span>
+          <span>{{.L10n.TrendLatency}} {{delta .Trends.Hours24.MedianLatencyMS}} ms</span>
+{{else}}<span>{{.L10n.TrendAccumulating}}</span>{{end}}
+        </div>
+        <div class="trend-card" data-window="7d">
+          <strong>{{.L10n.Trend7d}}</strong>
+{{if .Trends.Days7.Available}}
+          <span>{{.L10n.TrendSelected}} {{delta .Trends.Days7.Selected}}</span>
+          <span>{{.L10n.TrendVerified}} {{delta .Trends.Days7.Verified}}</span>
+          <span>{{.L10n.TrendLatency}} {{delta .Trends.Days7.MedianLatencyMS}} ms</span>
+{{else}}<span>{{.L10n.TrendAccumulating}}</span>{{end}}
+        </div>
+        <div class="trend-card" data-window="30d">
+          <strong>{{.L10n.Trend30d}}</strong>
+{{if .Trends.Days30.Available}}
+          <span>{{.L10n.TrendSelected}} {{delta .Trends.Days30.Selected}}</span>
+          <span>{{.L10n.TrendVerified}} {{delta .Trends.Days30.Verified}}</span>
+          <span>{{.L10n.TrendLatency}} {{delta .Trends.Days30.MedianLatencyMS}} ms</span>
+{{else}}<span>{{.L10n.TrendAccumulating}}</span>{{end}}
+        </div>
+      </div>
+    </div>
+  </div>
+{{if .TrendSVG}}{{.TrendSVG}}{{end}}
+</section>
+
+{{if .TopCountries}}
+<section class="card" id="top-countries">
+  <h2>{{.L10n.TopCountriesHeading}}</h2>
+  <div class="metric-list">
+{{range .TopCountries}}<div class="metric-row"><span>{{.Name}}</span><strong>{{.Count}}</strong><span>{{.Percent}}</span></div>
+{{end}}
+  </div>
+</section>
+{{end}}
+
+<section class="card info-grid">
+  <div>
+    <h2>{{.L10n.VerificationHeading}}</h2>
+    <p>{{.L10n.VerificationText}}</p>
+  </div>
+  <div>
+    <h2>{{.L10n.LimitationsHeading}}</h2>
+    <p>{{.L10n.LimitationsText}}</p>
+  </div>
+  <div>
+    <h2>{{.L10n.SelectionHeading}}</h2>
+    <p>{{.L10n.SelectionText}}</p>
+  </div>
+</section>
+
 {{if .Countries}}
 <section class="card">
   <h2>{{.L10n.ByCountryHeading}}</h2>
   <p>{{.L10n.ByCountryIntro}}</p>
   <div class="country-grid">
-    {{range .Countries}}
+{{range .Countries}}
     <a class="country-card" href="{{.URLPage}}">
       <div class="country-flag">{{.Flag}}</div>
       <div class="country-name">{{.Name}}</div>
       <div class="country-count">{{.Count}} {{$.L10n.NodesSuffix}}</div>
     </a>
-    {{end}}
+{{end}}
   </div>
 </section>
 {{end}}
@@ -91,9 +166,9 @@ const tplIndex = `<!DOCTYPE html>
   <h2>{{.L10n.GuidesHeading}}</h2>
   <p>{{.L10n.GuidesIntro}}</p>
   <ul class="client-list">
-    {{range .Guides}}
+{{range .Guides}}
     <li><a href="{{.URL}}"><strong>{{.Name}}</strong></a> · {{.OS}}</li>
-    {{end}}
+{{end}}
   </ul>
 </section>
 {{end}}
@@ -158,8 +233,8 @@ const tplCountry = `<!DOCTYPE html>
 <body>
 <div class="lang-switch">
   <span>{{.L10n.LanguageLabel}}</span>
-  {{range .LanguageSw}}{{if .Current}}<strong>{{.Label}}</strong>{{else}}<a href="{{.URL}}">{{.Label}}</a>{{end}}
-  {{end}}
+{{range .LanguageSw}}{{if .Current}}<strong>{{.Label}}</strong>{{else}}<a href="{{.URL}}">{{.Label}}</a>{{end}}
+{{end}}
 </div>
 
 <nav class="breadcrumb">
@@ -193,18 +268,29 @@ const tplCountry = `<!DOCTYPE html>
   </div>
 </section>
 
+{{if .CountryProtocols}}
+<section class="card" id="country-protocols">
+  <h2>{{.L10n.CountryProtocolHeading}}</h2>
+  <p>{{.L10n.CountryProtocolIntro}}</p>
+  <div class="metric-list">
+{{range .CountryProtocols}}<div class="metric-row"><span>{{.Name}}</span><strong>{{.Count}}</strong><span>{{.Percent}}</span></div>
+{{end}}
+  </div>
+</section>
+{{end}}
+
 <section class="card">
   <h2>{{.L10n.CountryOtherHeading}}</h2>
   <div class="country-grid">
-    {{range .Countries}}
-    {{if ne .CC $.CurrentCC}}
+{{range .Countries}}
+{{if ne .CC $.CurrentCC}}
     <a class="country-card" href="{{.URLPage}}">
       <div class="country-flag">{{.Flag}}</div>
       <div class="country-name">{{.Name}}</div>
       <div class="country-count">{{.Count}} {{$.L10n.NodesSuffix}}</div>
     </a>
-    {{end}}
-    {{end}}
+{{end}}
+{{end}}
   </div>
 </section>
 
@@ -246,8 +332,8 @@ const tplGuide = `<!DOCTYPE html>
 </head>
 <body>
 <div class="lang-switch">
-  {{range .LanguageSw}}{{if .Current}}<strong>{{.Label}}</strong>{{else}}<a href="{{.URL}}">{{.Label}}</a>{{end}}
-  {{end}}
+{{range .LanguageSw}}{{if .Current}}<strong>{{.Label}}</strong>{{else}}<a href="{{.URL}}">{{.Label}}</a>{{end}}
+{{end}}
 </div>
 
 <nav class="breadcrumb">
@@ -281,28 +367,28 @@ const tplGuide = `<!DOCTYPE html>
 <section class="card">
   <h2>{{.L10n.StepsHeading}}</h2>
   <ol class="steps">
-    {{range .Steps}}
+{{range .Steps}}
     <li>
       <h3>{{.Title}}</h3>
       <p>{{.Body}}</p>
     </li>
-    {{end}}
+{{end}}
   </ol>
 </section>
 
 <section class="card">
   <h2>{{.L10n.TipsHeading}}</h2>
-  {{range .Tips}}
+{{range .Tips}}
   <details><summary>{{.Q}}</summary><p>{{.A}}</p></details>
-  {{end}}
+{{end}}
 </section>
 
 <section class="card">
   <h2>{{.L10n.OtherGuidesHeading}}</h2>
   <ul class="client-list">
-    {{range .OtherGuides}}
+{{range .OtherGuides}}
     <li><a href="{{.URL}}">{{.Name}}</a> · {{.OS}}</li>
-    {{end}}
+{{end}}
   </ul>
 </section>
 
@@ -313,8 +399,7 @@ const tplGuide = `<!DOCTYPE html>
 </html>
 `
 
-// css is the inline stylesheet — kept minimal so page weight stays under 20 KB
-// and no external fetch can block render.
+// css stays inline so no external fetch can block the static page render.
 const css = `
   :root { color-scheme: dark; }
   * { box-sizing: border-box; }
@@ -381,6 +466,46 @@ const css = `
   .country-flag { font-size: 32px; }
   .country-name { font-weight: 600; color: #f1f5f9; font-size: 14px; }
   .country-count { color: #94a3b8; font-size: 13px; }
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 12px; margin: 20px 0;
+  }
+  .stat-card {
+    display: flex; flex-direction: column; gap: 2px; padding: 16px;
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+  }
+  .stat-card strong { color: #f8fafc; font-size: 24px; }
+  .stat-card span { color: #94a3b8; font-size: 13px; }
+  .report-grid {
+    display: grid; grid-template-columns: minmax(0,2fr) minmax(0,3fr);
+    gap: 16px; margin-top: 16px;
+  }
+  .report-panel {
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+    padding: 18px;
+  }
+  .report-panel h3 { margin: 0 0 12px; color: #f1f5f9; font-size: 17px; }
+  .metric-list { display: flex; flex-direction: column; gap: 8px; }
+  .metric-row {
+    display: grid; grid-template-columns: minmax(0,1fr) auto 64px;
+    gap: 12px; align-items: center; padding: 8px 10px;
+    background: #0f172a; border-radius: 7px; color: #cbd5e1;
+  }
+  .metric-row strong { color: #f8fafc; }
+  .metric-row span:last-child { text-align: right; color: #93c5fd; font-variant-numeric: tabular-nums; }
+  .trend-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+  .trend-card {
+    display: flex; flex-direction: column; gap: 5px; padding: 12px;
+    background: #111c31; border-radius: 8px; color: #94a3b8; font-size: 12px;
+  }
+  .trend-card strong { color: #f1f5f9; font-size: 14px; }
+  .trend-chart { width: 100%; height: auto; margin-top: 16px; }
+  .chart-axis { stroke: #475569; stroke-width: 1; }
+  .chart-line { fill: none; stroke: #60a5fa; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  .chart-label { fill: #94a3b8; font-size: 11px; }
+  .info-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+  .info-grid h2 { font-size: 18px; }
+  .info-grid p { color: #cbd5e1; margin-bottom: 0; }
   .client-list { padding-left: 20px; }
   .client-list li { margin-bottom: 6px; color: #cbd5e1; }
   details { margin: 10px 0; padding: 12px 16px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; }
@@ -393,4 +518,11 @@ const css = `
   footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
   footer a { color: #93c5fd; }
   footer .small { font-size: 12px; margin-top: 8px; max-width: 680px; margin-left: auto; margin-right: auto; }
+  @media (max-width: 700px) {
+    .card { padding: 22px 18px; margin: 14px 12px; }
+    .lang-switch { padding-left: 16px; padding-right: 16px; text-align: center; }
+    .stat-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .report-grid, .info-grid { grid-template-columns: 1fr; }
+    .trend-grid { grid-template-columns: 1fr; }
+  }
 `

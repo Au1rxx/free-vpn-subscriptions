@@ -92,6 +92,46 @@
   .country-flag { font-size: 32px; }
   .country-name { font-weight: 600; color: #f1f5f9; font-size: 14px; }
   .country-count { color: #94a3b8; font-size: 13px; }
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 12px; margin: 20px 0;
+  }
+  .stat-card {
+    display: flex; flex-direction: column; gap: 2px; padding: 16px;
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+  }
+  .stat-card strong { color: #f8fafc; font-size: 24px; }
+  .stat-card span { color: #94a3b8; font-size: 13px; }
+  .report-grid {
+    display: grid; grid-template-columns: minmax(0,2fr) minmax(0,3fr);
+    gap: 16px; margin-top: 16px;
+  }
+  .report-panel {
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+    padding: 18px;
+  }
+  .report-panel h3 { margin: 0 0 12px; color: #f1f5f9; font-size: 17px; }
+  .metric-list { display: flex; flex-direction: column; gap: 8px; }
+  .metric-row {
+    display: grid; grid-template-columns: minmax(0,1fr) auto 64px;
+    gap: 12px; align-items: center; padding: 8px 10px;
+    background: #0f172a; border-radius: 7px; color: #cbd5e1;
+  }
+  .metric-row strong { color: #f8fafc; }
+  .metric-row span:last-child { text-align: right; color: #93c5fd; font-variant-numeric: tabular-nums; }
+  .trend-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+  .trend-card {
+    display: flex; flex-direction: column; gap: 5px; padding: 12px;
+    background: #111c31; border-radius: 8px; color: #94a3b8; font-size: 12px;
+  }
+  .trend-card strong { color: #f1f5f9; font-size: 14px; }
+  .trend-chart { width: 100%; height: auto; margin-top: 16px; }
+  .chart-axis { stroke: #475569; stroke-width: 1; }
+  .chart-line { fill: none; stroke: #60a5fa; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  .chart-label { fill: #94a3b8; font-size: 11px; }
+  .info-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+  .info-grid h2 { font-size: 18px; }
+  .info-grid p { color: #cbd5e1; margin-bottom: 0; }
   .client-list { padding-left: 20px; }
   .client-list li { margin-bottom: 6px; color: #cbd5e1; }
   details { margin: 10px 0; padding: 12px 16px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; }
@@ -104,13 +144,20 @@
   footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
   footer a { color: #93c5fd; }
   footer .small { font-size: 12px; margin-top: 8px; max-width: 680px; margin-left: auto; margin-right: auto; }
+  @media (max-width: 700px) {
+    .card { padding: 22px 18px; margin: 14px 12px; }
+    .lang-switch { padding-left: 16px; padding-right: 16px; text-align: center; }
+    .stat-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .report-grid, .info-grid { grid-template-columns: 1fr; }
+    .trend-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 <div class="lang-switch">
-  <strong>English</strong>
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/guides/clash-verge.zh.html">简体中文</a>
-  
+<strong>English</strong>
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/guides/clash-verge.zh.html">简体中文</a>
+
 </div>
 
 <nav class="breadcrumb">
@@ -123,7 +170,7 @@
   <p class="meta">
     <span class="badge badge-blue">Clash Verge</span>
     <span class="badge badge-gray">Windows, macOS, Linux</span>
-    <span class="badge badge-green">updated · 2026-07-26 07:16 UTC</span>
+    <span class="badge badge-green">updated · 2026-07-26 07:23 UTC</span>
   </p>
   <p class="repo">
     <a href="https://github.com/clash-verge-rev/clash-verge-rev/releases/latest" class="btn-outline" target="_blank" rel="noopener">⬇ Download Clash Verge</a>
@@ -144,63 +191,63 @@
 <section class="card">
   <h2>🪜 Steps</h2>
   <ol class="steps">
-    
+
     <li>
       <h3>Install Clash Verge</h3>
       <p>Download the latest release from <a href="https://github.com/clash-verge-rev/clash-verge-rev/releases/latest" target="_blank" rel="noopener">Clash Verge Rev</a>. Pick the installer matching your OS (<code>.msi</code> for Windows, <code>.dmg</code> for macOS, <code>.deb</code>/<code>.rpm</code>/<code>.AppImage</code> for Linux). Run it and launch the app.</p>
     </li>
-    
+
     <li>
       <h3>Open the Subscriptions panel</h3>
       <p>In the left sidebar, click <strong>Profiles</strong>. You'll see an empty list the first time. Click the <strong>+</strong> or <strong>Import</strong> button at the top.</p>
     </li>
-    
+
     <li>
       <h3>Paste the subscription URL</h3>
       <p>Copy the Clash URL from the <a href="../index.html">homepage</a> and paste it into the URL field. Give it any name you like. Click <strong>Save</strong>. Clash Verge will download the profile in a few seconds.</p>
     </li>
-    
+
     <li>
       <h3>Enable the profile</h3>
       <p>Click the profile card so it shows as active. In the <strong>Proxies</strong> tab you should now see a selector group with all the free nodes.</p>
     </li>
-    
+
     <li>
       <h3>Turn on system proxy</h3>
       <p>Back on the dashboard, toggle <strong>System Proxy</strong> or <strong>TUN Mode</strong> ON. System proxy works for browsers; TUN mode routes all traffic including CLI tools and games — TUN mode requires admin/sudo the first time.</p>
     </li>
-    
+
     <li>
       <h3>Test it</h3>
       <p>Open a browser and go to <code>ipinfo.io</code>. The country should match the node you picked. If it still shows your home country, double-check the proxy toggle and that your browser isn't bypassing system proxy (Firefox has its own proxy settings).</p>
     </li>
-    
+
   </ol>
 </section>
 
 <section class="card">
   <h2>💡 Tips &amp; Troubleshooting</h2>
-  
+
   <details><summary>Which node should I pick?</summary><p>Start with the selector group's auto-select (URL-Test) — it picks the fastest by latency. If a node feels slow, switch to a different country manually.</p></details>
-  
+
   <details><summary>How do I update the subscription?</summary><p>Right-click the profile card → <strong>Update</strong>. Or enable auto-update in the profile settings (we recommend every 1 hour since upstream is refreshed hourly).</p></details>
-  
+
   <details><summary>Can I use this with browsers only (no TUN)?</summary><p>Yes. Turn on <strong>System Proxy</strong> only. Most browsers respect it. Chrome/Edge use system proxy by default; Firefox needs "Use system proxy settings" in its Network settings.</p></details>
-  
+
   <details><summary>Clash Verge says &#34;profile update failed&#34;</summary><p>Usually a transient GitHub raw content outage. Retry in a few minutes. If it persists, check that you can open the subscription URL directly in a browser.</p></details>
-  
+
 </section>
 
 <section class="card">
   <h2>📚 Other guides</h2>
   <ul class="client-list">
-    
+
     <li><a href="v2rayng.html">v2rayNG</a> · Android 5.0&#43;</li>
-    
+
     <li><a href="shadowrocket.html">Shadowrocket</a> · iOS 15&#43;, iPadOS 15&#43;</li>
-    
+
     <li><a href="sing-box.html">sing-box</a> · Windows, macOS, Linux, iOS, Android</li>
-    
+
   </ul>
 </section>
 

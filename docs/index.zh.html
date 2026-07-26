@@ -30,7 +30,7 @@
 <meta name="twitter:description" content="来自公共源的 2000 个 TCP&#43;TLS 实测节点,每小时自动刷新。复制订阅链接粘贴到客户端即可,支持 Clash、sing-box、v2ray。">
 <meta name="twitter:image" content="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png">
 <meta name="twitter:image:alt" content="Free VPN Subscriptions">
-<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebSite","description":"2000 hourly-refreshed free VPN nodes, TCP+TLS verified.","inLanguage":"zh-Hans","name":"免费 VPN 订阅","url":"https://au1rxx.github.io/free-vpn-subscriptions/index.zh.html"},{"@context":"https://schema.org","@type":"SoftwareApplication","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.6","reviewCount":"47"},"applicationCategory":"NetworkingApplication","description":"Free VPN subscription aggregator for Clash, sing-box, and v2ray.","name":"免费 VPN 订阅","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"operatingSystem":"Windows, macOS, iOS, Android, Linux"},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"是的。所有节点由第三方志愿者运营并公开免费订阅。本项目不运营任何服务器,只做测试、排名和重新打包。"},"name":"真的完全免费吗?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"GitHub Actions 每小时运行一次:拉取所有上游源,对每个节点做 TCP+TLS 探测,丢弃死节点,按延迟排序,提交新文件。"},"name":"数据多新?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"免费节点能看到你所有流量。绝不要用来登录银行、邮箱等敏感账号。用来突破地区限制访问公开内容没问题。真正需要隐私请自建 VPS 或付费服务。"},"name":"这些节点可以信任吗?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"我们验证 TCP 可达和 TLS 握手,但节点仍可能配额用完、路由被污染或证书到期。多试几个,selector 组自带 fallback。"},"name":"列表里有些节点连不上?"}]}]</script>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebSite","dateModified":"2026-07-26T07:23:46Z","description":"来自公共源的 2000 个 TCP+TLS 实测节点,每小时自动刷新。复制订阅链接粘贴到客户端即可,支持 Clash、sing-box、v2ray。","inLanguage":"zh-Hans","name":"免费 VPN 订阅","url":"https://au1rxx.github.io/free-vpn-subscriptions/index.zh.html"},{"@context":"https://schema.org","@type":"Dataset","dateModified":"2026-07-26T07:23:46Z","description":"来自公共源的 2000 个 TCP+TLS 实测节点,每小时自动刷新。复制订阅链接粘贴到客户端即可,支持 Clash、sing-box、v2ray。","distribution":[{"@type":"DataDownload","contentUrl":"https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/clash.yaml","encodingFormat":"application/yaml","name":"Clash YAML subscription"},{"@type":"DataDownload","contentUrl":"https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/singbox.json","encodingFormat":"application/json","name":"sing-box JSON subscription"},{"@type":"DataDownload","contentUrl":"https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/v2ray-base64.txt","encodingFormat":"text/plain","name":"v2ray base64 subscription"}],"inLanguage":"zh-Hans","isAccessibleForFree":true,"keywords":"免费 VPN 订阅,免费机场,免费梯子,clash 订阅,v2ray 订阅,sing-box 订阅,VLESS,Reality,Trojan,Shadowsocks,Hysteria2,每小时刷新,免费节点","license":"https://opensource.org/licenses/MIT","name":"免费 VPN 订阅","url":"https://au1rxx.github.io/free-vpn-subscriptions/index.zh.html"},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"是的。所有节点由第三方志愿者运营并公开免费订阅。本项目不运营任何服务器,只做测试、排名和重新打包。"},"name":"真的完全免费吗?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"外部调度器约每小时运行一次发布程序；数据有变化时，会刷新已验证数据库导出、订阅文件和本站页面。"},"name":"数据多新?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"免费节点能看到你所有流量。绝不要用来登录银行、邮箱等敏感账号。用来突破地区限制访问公开内容没问题。真正需要隐私请自建 VPS 或付费服务。"},"name":"这些节点可以信任吗?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"我们验证 TCP 可达和 TLS 握手,但节点仍可能配额用完、路由被污染或证书到期。多试几个,selector 组自带 fallback。"},"name":"列表里有些节点连不上?"}]}]</script>
 <style>
   :root { color-scheme: dark; }
   * { box-sizing: border-box; }
@@ -97,6 +97,46 @@
   .country-flag { font-size: 32px; }
   .country-name { font-weight: 600; color: #f1f5f9; font-size: 14px; }
   .country-count { color: #94a3b8; font-size: 13px; }
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 12px; margin: 20px 0;
+  }
+  .stat-card {
+    display: flex; flex-direction: column; gap: 2px; padding: 16px;
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+  }
+  .stat-card strong { color: #f8fafc; font-size: 24px; }
+  .stat-card span { color: #94a3b8; font-size: 13px; }
+  .report-grid {
+    display: grid; grid-template-columns: minmax(0,2fr) minmax(0,3fr);
+    gap: 16px; margin-top: 16px;
+  }
+  .report-panel {
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+    padding: 18px;
+  }
+  .report-panel h3 { margin: 0 0 12px; color: #f1f5f9; font-size: 17px; }
+  .metric-list { display: flex; flex-direction: column; gap: 8px; }
+  .metric-row {
+    display: grid; grid-template-columns: minmax(0,1fr) auto 64px;
+    gap: 12px; align-items: center; padding: 8px 10px;
+    background: #0f172a; border-radius: 7px; color: #cbd5e1;
+  }
+  .metric-row strong { color: #f8fafc; }
+  .metric-row span:last-child { text-align: right; color: #93c5fd; font-variant-numeric: tabular-nums; }
+  .trend-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+  .trend-card {
+    display: flex; flex-direction: column; gap: 5px; padding: 12px;
+    background: #111c31; border-radius: 8px; color: #94a3b8; font-size: 12px;
+  }
+  .trend-card strong { color: #f1f5f9; font-size: 14px; }
+  .trend-chart { width: 100%; height: auto; margin-top: 16px; }
+  .chart-axis { stroke: #475569; stroke-width: 1; }
+  .chart-line { fill: none; stroke: #60a5fa; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  .chart-label { fill: #94a3b8; font-size: 11px; }
+  .info-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+  .info-grid h2 { font-size: 18px; }
+  .info-grid p { color: #cbd5e1; margin-bottom: 0; }
   .client-list { padding-left: 20px; }
   .client-list li { margin-bottom: 6px; color: #cbd5e1; }
   details { margin: 10px 0; padding: 12px 16px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; }
@@ -109,19 +149,26 @@
   footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
   footer a { color: #93c5fd; }
   footer .small { font-size: 12px; margin-top: 8px; max-width: 680px; margin-left: auto; margin-right: auto; }
+  @media (max-width: 700px) {
+    .card { padding: 22px 18px; margin: 14px 12px; }
+    .lang-switch { padding-left: 16px; padding-right: 16px; text-align: center; }
+    .stat-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .report-grid, .info-grid { grid-template-columns: 1fr; }
+    .trend-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 <div class="lang-switch">
   <span>语言:</span>
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/">English</a>
-  <strong>简体中文</strong>
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/index.ja.html">日本語</a>
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/index.ko.html">한국어</a>
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/index.es.html">Español</a>
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/index.pt.html">Português</a>
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/index.ru.html">Русский</a>
-  
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/">English</a>
+<strong>简体中文</strong>
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/index.ja.html">日本語</a>
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/index.ko.html">한국어</a>
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/index.es.html">Español</a>
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/index.pt.html">Português</a>
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/index.ru.html">Русский</a>
+
 </div>
 
 <header class="hero">
@@ -129,9 +176,9 @@
   <p class="sub">获取可用免费 VPN 的最简单方式——复制订阅链接,粘贴到客户端,连上就用。</p>
   <p class="meta">
     <span class="badge badge-green">节点 · 2000</span>
-    <span class="badge badge-blue">存活 · 7769</span>
+    <span class="badge badge-blue">存活 · 7771</span>
     <span class="badge badge-orange">中位延迟 · 583 ms</span>
-    <span class="badge badge-gray">更新 · 2026-07-26 07:16 UTC</span>
+    <span class="badge badge-gray">更新 · 2026-07-26 07:23 UTC</span>
   </p>
   <p class="repo">
     <a href="https://github.com/Au1rxx/free-vpn-subscriptions" class="btn-outline" target="_blank" rel="noopener">⭐ GitHub 上点 Star</a>
@@ -158,276 +205,355 @@
   <p><a href="https://github.com/Au1rxx/free-vpn-subscriptions/tree/main/output" target="_blank" rel="noopener">Database-classified shards: stable · all verified · protocol · country · network</a></p>
 </section>
 
+<section class="card" id="live-report">
+  <h2>📊 实时网络报告</h2>
+  <p>以下内容由最新一轮小时级发布数据自动生成，节点数量和滚动趋势会随订阅文件一起更新。</p>
+  <div class="stat-grid">
+    <div class="stat-card"><strong>2000</strong><span>精选节点</span></div>
+    <div class="stat-card"><strong>7771</strong><span>已验证节点</span></div>
+    <div class="stat-card"><strong>44</strong><span>覆盖国家</span></div>
+    <div class="stat-card"><strong>583 ms</strong><span>中位延迟</span></div>
+  </div>
+  <div class="report-grid">
+    <div class="report-panel">
+      <h3>协议分布</h3>
+      <div class="metric-list">
+<div class="metric-row"><span>TROJAN</span><strong>1103</strong><span>55.2%</span></div>
+<div class="metric-row"><span>SOCKS5</span><strong>259</strong><span>13.0%</span></div>
+<div class="metric-row"><span>HTTP</span><strong>221</strong><span>11.1%</span></div>
+<div class="metric-row"><span>SHADOWSOCKS</span><strong>190</strong><span>9.5%</span></div>
+<div class="metric-row"><span>HYSTERIA2</span><strong>82</strong><span>4.1%</span></div>
+<div class="metric-row"><span>SOCKS4</span><strong>81</strong><span>4.1%</span></div>
+<div class="metric-row"><span>VLESS</span><strong>61</strong><span>3.0%</span></div>
+<div class="metric-row"><span>HTTPS</span><strong>1</strong><span>0.0%</span></div>
+<div class="metric-row"><span>TUIC</span><strong>1</strong><span>0.0%</span></div>
+<div class="metric-row"><span>VMESS</span><strong>1</strong><span>0.0%</span></div>
+
+      </div>
+    </div>
+    <div class="report-panel">
+      <h3>滚动网络趋势</h3>
+      <div class="trend-grid">
+        <div class="trend-card" data-window="24h">
+          <strong>24 小时</strong>
+<span>历史数据积累中</span>
+        </div>
+        <div class="trend-card" data-window="7d">
+          <strong>7 天</strong>
+<span>历史数据积累中</span>
+        </div>
+        <div class="trend-card" data-window="30d">
+          <strong>30 天</strong>
+<span>历史数据积累中</span>
+        </div>
+      </div>
+    </div>
+  </div>
+<svg class="trend-chart" viewBox="0 0 760 180" role="img" aria-label="30-day selected node trend"><title>30-day selected node trend</title><desc>Selected nodes over the retained hourly history.</desc><line x1="24" y1="156" x2="736" y2="156" class="chart-axis"/><polyline points="24.0,156.0 736.0,156.0" class="chart-line"/><text x="24" y="18" class="chart-label">2000</text><text x="24" y="174" class="chart-label">2000</text></svg>
+</section>
+
+
+<section class="card" id="top-countries">
+  <h2>本轮节点最多的国家</h2>
+  <div class="metric-list">
+<div class="metric-row"><span>🇳🇱 Netherlands</span><strong>351</strong><span>17.9%</span></div>
+<div class="metric-row"><span>🇫🇷 France</span><strong>270</strong><span>13.8%</span></div>
+<div class="metric-row"><span>🇰🇷 Korea</span><strong>220</strong><span>11.2%</span></div>
+<div class="metric-row"><span>🇦🇺 Australia</span><strong>195</strong><span>10.0%</span></div>
+<div class="metric-row"><span>🇯🇵 Japan</span><strong>159</strong><span>8.1%</span></div>
+<div class="metric-row"><span>🇺🇸 United States</span><strong>123</strong><span>6.3%</span></div>
+<div class="metric-row"><span>🇵🇱 Poland</span><strong>98</strong><span>5.0%</span></div>
+<div class="metric-row"><span>🇭🇰 Hong Kong</span><strong>68</strong><span>3.5%</span></div>
+
+  </div>
+</section>
+
+
+<section class="card info-grid">
+  <div>
+    <h2>节点如何验证</h2>
+    <p>公开配置会先标准化和去重，发布前再通过代理发出真实 HTTP 与 HTTPS 请求，确认流量能够端到端转发。</p>
+  </div>
+  <div>
+    <h2>验证不能证明什么</h2>
+    <p>一次小请求成功不代表带宽充足或未来持续可用。免费节点仍可能在两次小时更新之间变慢或失效。</p>
+  </div>
+  <div>
+    <h2>该选择哪种订阅？</h2>
+    <p>需要自动容错可用全局 Clash 链接；需要指定出口地区可选国家订阅；sing-box 或 v2ray 用户请选择客户端对应格式。</p>
+  </div>
+</section>
+
 
 <section class="card">
   <h2>🌍 按国家订阅</h2>
   <p>只想要特定地区的节点?选一个针对性订阅链接:</p>
   <div class="country-grid">
-    
+
     <a class="country-card" href="nl.zh.html">
       <div class="country-flag">🇳🇱</div>
       <div class="country-name">Netherlands</div>
-      <div class="country-count">352 节点</div>
+      <div class="country-count">351 节点</div>
     </a>
-    
+
     <a class="country-card" href="fr.zh.html">
       <div class="country-flag">🇫🇷</div>
       <div class="country-name">France</div>
       <div class="country-count">270 节点</div>
     </a>
-    
+
     <a class="country-card" href="kr.zh.html">
       <div class="country-flag">🇰🇷</div>
       <div class="country-name">Korea</div>
       <div class="country-count">220 节点</div>
     </a>
-    
+
     <a class="country-card" href="au.zh.html">
       <div class="country-flag">🇦🇺</div>
       <div class="country-name">Australia</div>
-      <div class="country-count">194 节点</div>
+      <div class="country-count">195 节点</div>
     </a>
-    
+
     <a class="country-card" href="jp.zh.html">
       <div class="country-flag">🇯🇵</div>
       <div class="country-name">Japan</div>
-      <div class="country-count">158 节点</div>
+      <div class="country-count">159 节点</div>
     </a>
-    
+
     <a class="country-card" href="us.zh.html">
       <div class="country-flag">🇺🇸</div>
       <div class="country-name">United States</div>
       <div class="country-count">123 节点</div>
     </a>
-    
+
     <a class="country-card" href="pl.zh.html">
       <div class="country-flag">🇵🇱</div>
       <div class="country-name">Poland</div>
-      <div class="country-count">95 节点</div>
+      <div class="country-count">98 节点</div>
     </a>
-    
+
     <a class="country-card" href="hk.zh.html">
       <div class="country-flag">🇭🇰</div>
       <div class="country-name">Hong Kong</div>
       <div class="country-count">68 节点</div>
     </a>
-    
+
     <a class="country-card" href="de.zh.html">
       <div class="country-flag">🇩🇪</div>
       <div class="country-name">Germany</div>
       <div class="country-count">67 节点</div>
     </a>
-    
+
     <a class="country-card" href="sg.zh.html">
       <div class="country-flag">🇸🇬</div>
       <div class="country-name">Singapore</div>
-      <div class="country-count">64 节点</div>
+      <div class="country-count">63 节点</div>
     </a>
-    
+
     <a class="country-card" href="cn.zh.html">
       <div class="country-flag">🇨🇳</div>
       <div class="country-name">China</div>
       <div class="country-count">43 节点</div>
     </a>
-    
+
     <a class="country-card" href="in.zh.html">
       <div class="country-flag">🇮🇳</div>
       <div class="country-name">India</div>
-      <div class="country-count">28 节点</div>
+      <div class="country-count">26 节点</div>
     </a>
-    
+
     <a class="country-card" href="id.zh.html">
       <div class="country-flag">🇮🇩</div>
       <div class="country-name">Indonesia</div>
       <div class="country-count">23 节点</div>
     </a>
-    
+
     <a class="country-card" href="fi.zh.html">
       <div class="country-flag">🇫🇮</div>
       <div class="country-name">Finland</div>
       <div class="country-count">22 节点</div>
     </a>
-    
+
     <a class="country-card" href="gb.zh.html">
       <div class="country-flag">🇬🇧</div>
       <div class="country-name">United Kingdom</div>
       <div class="country-count">22 节点</div>
     </a>
-    
+
     <a class="country-card" href="tr.zh.html">
       <div class="country-flag">🇹🇷</div>
       <div class="country-name">Turkey</div>
       <div class="country-count">22 节点</div>
     </a>
-    
+
     <a class="country-card" href="ru.zh.html">
       <div class="country-flag">🇷🇺</div>
       <div class="country-name">Russia</div>
       <div class="country-count">16 节点</div>
     </a>
-    
+
     <a class="country-card" href="vn.zh.html">
       <div class="country-flag">🇻🇳</div>
       <div class="country-name">Vietnam</div>
       <div class="country-count">16 节点</div>
     </a>
-    
+
     <a class="country-card" href="tw.zh.html">
       <div class="country-flag">🇹🇼</div>
       <div class="country-name">Taiwan</div>
-      <div class="country-count">13 节点</div>
+      <div class="country-count">14 节点</div>
     </a>
-    
+
     <a class="country-card" href="br.zh.html">
       <div class="country-flag">🇧🇷</div>
       <div class="country-name">Brazil</div>
       <div class="country-count">12 节点</div>
     </a>
-    
+
     <a class="country-card" href="ca.zh.html">
       <div class="country-flag">🇨🇦</div>
       <div class="country-name">Canada</div>
       <div class="country-count">10 节点</div>
     </a>
-    
+
     <a class="country-card" href="ec.zh.html">
       <div class="country-flag">🇪🇨</div>
       <div class="country-name">Ecuador</div>
       <div class="country-count">10 节点</div>
     </a>
-    
+
     <a class="country-card" href="se.zh.html">
       <div class="country-flag">🇸🇪</div>
       <div class="country-name">Sweden</div>
       <div class="country-count">9 节点</div>
     </a>
-    
+
     <a class="country-card" href="bd.zh.html">
       <div class="country-flag">🇧🇩</div>
       <div class="country-name">BD</div>
       <div class="country-count">8 节点</div>
     </a>
-    
+
     <a class="country-card" href="co.zh.html">
       <div class="country-flag">🇨🇴</div>
       <div class="country-name">Colombia</div>
       <div class="country-count">8 节点</div>
     </a>
-    
+
     <a class="country-card" href="ar.zh.html">
       <div class="country-flag">🇦🇷</div>
       <div class="country-name">Argentina</div>
       <div class="country-count">6 节点</div>
     </a>
-    
+
     <a class="country-card" href="ch.zh.html">
       <div class="country-flag">🇨🇭</div>
       <div class="country-name">Switzerland</div>
       <div class="country-count">6 节点</div>
     </a>
-    
-    <a class="country-card" href="it.zh.html">
-      <div class="country-flag">🇮🇹</div>
-      <div class="country-name">Italy</div>
-      <div class="country-count">6 节点</div>
-    </a>
-    
+
     <a class="country-card" href="kh.zh.html">
       <div class="country-flag">🇰🇭</div>
       <div class="country-name">KH</div>
       <div class="country-count">6 节点</div>
     </a>
-    
+
     <a class="country-card" href="ro.zh.html">
       <div class="country-flag">🇷🇴</div>
       <div class="country-name">Romania</div>
       <div class="country-count">6 节点</div>
     </a>
-    
+
     <a class="country-card" href="t1.zh.html">
       <div class="country-flag">🇹🇖</div>
       <div class="country-name">T1</div>
       <div class="country-count">6 节点</div>
     </a>
-    
+
     <a class="country-card" href="th.zh.html">
       <div class="country-flag">🇹🇭</div>
       <div class="country-name">Thailand</div>
       <div class="country-count">6 节点</div>
     </a>
-    
+
+    <a class="country-card" href="it.zh.html">
+      <div class="country-flag">🇮🇹</div>
+      <div class="country-name">Italy</div>
+      <div class="country-count">5 节点</div>
+    </a>
+
     <a class="country-card" href="mx.zh.html">
       <div class="country-flag">🇲🇽</div>
       <div class="country-name">Mexico</div>
       <div class="country-count">5 节点</div>
     </a>
-    
+
     <a class="country-card" href="ua.zh.html">
       <div class="country-flag">🇺🇦</div>
       <div class="country-name">Ukraine</div>
       <div class="country-count">5 节点</div>
     </a>
-    
+
     <a class="country-card" href="es.zh.html">
       <div class="country-flag">🇪🇸</div>
       <div class="country-name">Spain</div>
       <div class="country-count">4 节点</div>
     </a>
-    
+
     <a class="country-card" href="ir.zh.html">
       <div class="country-flag">🇮🇷</div>
       <div class="country-name">IR</div>
       <div class="country-count">4 节点</div>
     </a>
-    
-    <a class="country-card" href="lt.zh.html">
-      <div class="country-flag">🇱🇹</div>
-      <div class="country-name">Lithuania</div>
-      <div class="country-count">4 节点</div>
-    </a>
-    
+
     <a class="country-card" href="bg.zh.html">
       <div class="country-flag">🇧🇬</div>
       <div class="country-name">Bulgaria</div>
       <div class="country-count">3 节点</div>
     </a>
-    
+
     <a class="country-card" href="do.zh.html">
       <div class="country-flag">🇩🇴</div>
       <div class="country-name">DO</div>
       <div class="country-count">3 节点</div>
     </a>
-    
+
     <a class="country-card" href="hn.zh.html">
       <div class="country-flag">🇭🇳</div>
       <div class="country-name">HN</div>
       <div class="country-count">3 节点</div>
     </a>
-    
+
     <a class="country-card" href="is.zh.html">
       <div class="country-flag">🇮🇸</div>
       <div class="country-name">Iceland</div>
       <div class="country-count">3 节点</div>
     </a>
-    
+
+    <a class="country-card" href="lt.zh.html">
+      <div class="country-flag">🇱🇹</div>
+      <div class="country-name">Lithuania</div>
+      <div class="country-count">3 节点</div>
+    </a>
+
     <a class="country-card" href="no.zh.html">
       <div class="country-flag">🇳🇴</div>
       <div class="country-name">Norway</div>
       <div class="country-count">3 节点</div>
     </a>
-    
+
     <a class="country-card" href="ph.zh.html">
       <div class="country-flag">🇵🇭</div>
       <div class="country-name">Philippines</div>
       <div class="country-count">3 节点</div>
     </a>
-    
+
     <a class="country-card" href="rs.zh.html">
       <div class="country-flag">🇷🇸</div>
       <div class="country-name">Serbia</div>
       <div class="country-count">3 节点</div>
     </a>
-    
+
   </div>
 </section>
 
@@ -437,15 +563,15 @@
   <h2>📖 客户端图文教程</h2>
   <p>新手?按平台挑一篇跟着做:</p>
   <ul class="client-list">
-    
+
     <li><a href="guides/clash-verge.zh.html"><strong>Clash Verge</strong></a> · Windows, macOS, Linux</li>
-    
+
     <li><a href="guides/v2rayng.zh.html"><strong>v2rayNG</strong></a> · Android 5.0&#43;</li>
-    
+
     <li><a href="guides/shadowrocket.zh.html"><strong>Shadowrocket</strong></a> · iOS 15&#43;, iPadOS 15&#43;</li>
-    
+
     <li><a href="guides/sing-box.zh.html"><strong>sing-box</strong></a> · Windows, macOS, Linux, iOS, Android</li>
-    
+
   </ul>
 </section>
 
@@ -464,7 +590,7 @@
 <section class="card">
   <h2>❓ 常见问题</h2>
   <details><summary>真的完全免费吗?</summary><p>是的。所有节点由第三方志愿者运营并公开免费订阅。本项目不运营任何服务器,只做测试、排名和重新打包。</p></details>
-  <details><summary>数据多新?</summary><p>GitHub Actions 每小时运行一次:拉取所有上游源,对每个节点做 TCP&#43;TLS 探测,丢弃死节点,按延迟排序,提交新文件。</p></details>
+  <details><summary>数据多新?</summary><p>外部调度器约每小时运行一次发布程序；数据有变化时，会刷新已验证数据库导出、订阅文件和本站页面。</p></details>
   <details><summary>这些节点可以信任吗?</summary><p>免费节点能看到你所有流量。绝不要用来登录银行、邮箱等敏感账号。用来突破地区限制访问公开内容没问题。真正需要隐私请自建 VPS 或付费服务。</p></details>
   <details><summary>列表里有些节点连不上?</summary><p>我们验证 TCP 可达和 TLS 握手,但节点仍可能配额用完、路由被污染或证书到期。多试几个,selector 组自带 fallback。</p></details>
 </section>

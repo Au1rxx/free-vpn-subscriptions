@@ -1,8 +1,11 @@
 package pages
 
 import (
+	"encoding/json"
+	"math"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"testing"
 	"time"
@@ -52,6 +55,80 @@ func TestGenerateEmitsIndexingMetaTags(t *testing.T) {
 	}
 }
 
+func TestGenerateDoesNotEmitTrailingWhitespace(t *testing.T) {
+	dir := t.TempDir()
+	if err := Generate(testInput(), dir); err != nil {
+		t.Fatal(err)
+	}
+	err := filepath.WalkDir(dir, func(path string, entry os.DirEntry, walkErr error) error {
+		if walkErr != nil {
+			return walkErr
+		}
+		if entry.IsDir() {
+			return nil
+		}
+		body, err := os.ReadFile(path)
+		if err != nil {
+			return err
+		}
+		for index, line := range strings.Split(string(body), "\n") {
+			if strings.TrimRight(line, " \t") != line {
+				t.Fatalf("%s:%d has trailing whitespace: %q", path, index+1, line)
+			}
+		}
+		return nil
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestGenerateRemovesStaleCountryPagesAndPreservesUnmanagedFiles(t *testing.T) {
+	dir := t.TempDir()
+	for _, name := range []string{"zz.html", "zz.zh.html", "custom.html", ".nojekyll"} {
+		if err := os.WriteFile(filepath.Join(dir, name), []byte("sentinel"), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if err := Generate(testInput(), dir); err != nil {
+		t.Fatal(err)
+	}
+	for _, stale := range []string{"zz.html", "zz.zh.html"} {
+		if _, err := os.Stat(filepath.Join(dir, stale)); !os.IsNotExist(err) {
+			t.Errorf("stale generated country page %s still exists", stale)
+		}
+	}
+	for _, preserved := range []string{"custom.html", ".nojekyll"} {
+		body, err := os.ReadFile(filepath.Join(dir, preserved))
+		if err != nil {
+			t.Errorf("preserved file %s: %v", preserved, err)
+			continue
+		}
+		if string(body) != "sentinel" {
+			t.Errorf("preserved file %s was modified", preserved)
+		}
+	}
+}
+
+func TestGeneratePreservesCountryPagesWhenCountryDataIsUnavailable(t *testing.T) {
+	dir := t.TempDir()
+	for _, name := range []string{"zz.html", "zz.zh.html"} {
+		if err := os.WriteFile(filepath.Join(dir, name), []byte("sentinel"), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	in := testInput()
+	in.Summary.ByCountry = nil
+	if err := Generate(in, dir); err != nil {
+		t.Fatal(err)
+	}
+	for _, name := range []string{"zz.html", "zz.zh.html"} {
+		if _, err := os.Stat(filepath.Join(dir, name)); err != nil {
+			t.Errorf("country page %s was removed during missing GeoIP data: %v", name, err)
+		}
+	}
+}
+
 // Country and guide pages are separate templates, so they can drift from the
 // index template's meta block.
 func TestGenerateEmitsIndexingMetaOnEveryTemplate(t *testing.T) {
@@ -94,6 +171,301 @@ func TestSitemapUsesFullDatetimeAndAlternates(t *testing.T) {
 			t.Errorf("sitemap should not list %s", absent)
 		}
 	}
+
+	home := sitemapEntryContaining(t, text, "<loc>https://example.github.io/repo/</loc>")
+	country := sitemapEntryContaining(t, text, "<loc>https://example.github.io/repo/us.html</loc>")
+	guide := sitemapEntryContaining(t, text, "<loc>https://example.github.io/repo/guides/")
+	for name, entry := range map[string]string{"home": home, "country": country} {
+		if !strings.Contains(entry, "<lastmod>2026-07-25T13:30:00Z</lastmod>") {
+			t.Errorf("%s sitemap entry missing accurate lastmod: %s", name, entry)
+		}
+	}
+	if strings.Contains(guide, "<lastmod>") {
+		t.Errorf("guide entry must not inherit dynamic lastmod: %s", guide)
+	}
+}
+
+func TestIndexJSONLDDescribesCurrentDatasetWithoutFabricatedRating(t *testing.T) {
+	dir := t.TempDir()
+	if err := Generate(testInput(), dir); err != nil {
+		t.Fatal(err)
+	}
+	body, err := os.ReadFile(filepath.Join(dir, "index.html"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	raw := extractJSONLD(t, string(body))
+	if strings.Contains(raw, "aggregateRating") || strings.Contains(raw, "SoftwareApplication") {
+		t.Fatalf("JSON-LD contains unsupported software rating claims: %s", raw)
+	}
+
+	var graph []map[string]any
+	if err := json.Unmarshal([]byte(raw), &graph); err != nil {
+		t.Fatalf("parse JSON-LD: %v", err)
+	}
+	website := graphNode(t, graph, "WebSite")
+	if website["dateModified"] != "2026-07-25T13:30:00Z" {
+		t.Errorf("WebSite dateModified = %v", website["dateModified"])
+	}
+	dataset := graphNode(t, graph, "Dataset")
+	if dataset["dateModified"] != "2026-07-25T13:30:00Z" {
+		t.Errorf("Dataset dateModified = %v", dataset["dateModified"])
+	}
+	if dataset["isAccessibleForFree"] != true {
+		t.Errorf("Dataset isAccessibleForFree = %v", dataset["isAccessibleForFree"])
+	}
+	if dataset["license"] != "https://opensource.org/licenses/MIT" {
+		t.Errorf("Dataset license = %v", dataset["license"])
+	}
+	distributions, ok := dataset["distribution"].([]any)
+	if !ok || len(distributions) != 3 {
+		t.Fatalf("Dataset distributions = %#v", dataset["distribution"])
+	}
+	wantDownloads := map[string]string{
+		"https://github.com/example/repo/raw/main/output/clash.yaml":       "application/yaml",
+		"https://github.com/example/repo/raw/main/output/singbox.json":     "application/json",
+		"https://github.com/example/repo/raw/main/output/v2ray-base64.txt": "text/plain",
+	}
+	for _, value := range distributions {
+		download, ok := value.(map[string]any)
+		if !ok {
+			t.Fatalf("distribution is not an object: %#v", value)
+		}
+		if download["@type"] != "DataDownload" {
+			t.Errorf("distribution @type = %v", download["@type"])
+		}
+		url, _ := download["contentUrl"].(string)
+		mime, _ := download["encodingFormat"].(string)
+		if wantDownloads[url] != mime {
+			t.Errorf("distribution %q MIME = %q", url, mime)
+		}
+		delete(wantDownloads, url)
+	}
+	if len(wantDownloads) != 0 {
+		t.Errorf("missing distributions: %#v", wantDownloads)
+	}
+	graphNode(t, graph, "FAQPage")
+}
+
+func TestFAQDescribesExternalPublisherInEveryLocale(t *testing.T) {
+	for _, locale := range supportedLocales {
+		answer := pageLocales[locale].FAQ2A
+		if answer == "" {
+			t.Errorf("%s FAQ2A is empty", locale)
+		}
+		if strings.Contains(strings.ToLower(answer), "github action") {
+			t.Errorf("%s FAQ incorrectly says aggregation runs in GitHub Actions: %q", locale, answer)
+		}
+	}
+}
+
+func TestGenerateLiveReportForEveryLocale(t *testing.T) {
+	in := testInput()
+	now := time.Unix(in.Summary.GeneratedAtUnix, 0).UTC()
+	in.Summary.TotalVerified = 260
+	in.Summary.ByCountry = map[string]int{
+		"US": 40, "JP": 20, "DE": 15, "FR": 12, "NL": 10,
+		"SG": 9, "GB": 8, "CA": 7, "AU": 6, "XX": 99,
+	}
+	in.History = []HistoryPoint{
+		{GeneratedAt: now.Add(-30 * 24 * time.Hour), Selected: 80, Verified: 200, MedianLatencyMS: 300, Countries: 7},
+		{GeneratedAt: now.Add(-7 * 24 * time.Hour), Selected: 90, Verified: 220, MedianLatencyMS: 260, Countries: 8},
+		{GeneratedAt: now.Add(-24 * time.Hour), Selected: 100, Verified: 240, MedianLatencyMS: 230, Countries: 8},
+		{GeneratedAt: now, Selected: 120, Verified: 260, MedianLatencyMS: 210, Countries: 9},
+	}
+
+	dir := t.TempDir()
+	if err := Generate(in, dir); err != nil {
+		t.Fatal(err)
+	}
+	for _, locale := range supportedLocales {
+		l10n := pageLocales[locale]
+		name := "index" + localeSuffix(locale) + ".html"
+		body, err := os.ReadFile(filepath.Join(dir, name))
+		if err != nil {
+			t.Fatalf("%s: %v", name, err)
+		}
+		text := string(body)
+		for _, want := range []string{
+			`id="live-report"`,
+			l10n.LiveHeading,
+			l10n.ProtocolHeading,
+			l10n.TopCountriesHeading,
+			l10n.TrendHeading,
+			l10n.VerificationHeading,
+			l10n.VerificationText,
+			l10n.LimitationsHeading,
+			l10n.LimitationsText,
+			l10n.SelectionHeading,
+			l10n.SelectionText,
+			`data-window="24h"`,
+			`data-window="7d"`,
+			`data-window="30d"`,
+			`aria-label="30-day selected node trend"`,
+			"VLESS",
+			"66.7%",
+		} {
+			if want == "" || !strings.Contains(text, want) {
+				t.Errorf("%s missing live report content %q", name, want)
+			}
+		}
+		if strings.Index(text, in.RepoURL+"/raw/main/output/clash.yaml") > strings.Index(text, `id="live-report"`) {
+			t.Errorf("%s moved the subscription card below the live report", name)
+		}
+
+		topSection := sectionByID(t, text, "top-countries")
+		if got := strings.Count(topSection, `class="metric-row"`); got != 8 {
+			t.Errorf("%s top country rows = %d, want 8", name, got)
+		}
+	}
+}
+
+func TestGenerateShowsAccumulatingStateWhenTrendHistoryIsInsufficient(t *testing.T) {
+	in := testInput()
+	now := time.Unix(in.Summary.GeneratedAtUnix, 0).UTC()
+	in.History = []HistoryPoint{{
+		GeneratedAt: now, Selected: in.Summary.TotalSelected,
+		Verified: in.Summary.TotalVerified, MedianLatencyMS: in.Summary.MedianLatencyMS,
+	}}
+	dir := t.TempDir()
+	if err := Generate(in, dir); err != nil {
+		t.Fatal(err)
+	}
+	for _, locale := range supportedLocales {
+		body, err := os.ReadFile(filepath.Join(dir, "index"+localeSuffix(locale)+".html"))
+		if err != nil {
+			t.Fatal(err)
+		}
+		if got := strings.Count(string(body), pageLocales[locale].TrendAccumulating); got != 3 {
+			t.Errorf("%s accumulating labels = %d, want 3", locale, got)
+		}
+	}
+}
+
+func TestCountryPageShowsCountryProtocolComposition(t *testing.T) {
+	in := testInput()
+	in.Summary.ByCountry = map[string]int{"US": 4}
+	in.Selected = []*node.Node{
+		{Protocol: node.ProtoVLESS, Country: "US"},
+		{Protocol: node.ProtoVLESS, Country: "US"},
+		{Protocol: node.ProtoVLESS, Country: "US"},
+		{Protocol: node.ProtoTrojan, Country: "US"},
+	}
+	dir := t.TempDir()
+	if err := Generate(in, dir); err != nil {
+		t.Fatal(err)
+	}
+	body, err := os.ReadFile(filepath.Join(dir, "us.html"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	text := string(body)
+	for _, want := range []string{
+		`id="country-protocols"`,
+		pageLocales["en"].CountryProtocolHeading,
+		"VLESS", "75.0%", "TROJAN", "25.0%",
+	} {
+		if want == "" || !strings.Contains(text, want) {
+			t.Errorf("country page missing %q", want)
+		}
+	}
+}
+
+func TestMetricRowsPercentagesAddToExactly100(t *testing.T) {
+	rows := buildMetricRows(map[string]int{"vless": 1, "trojan": 1, "shadowsocks": 1})
+	var total float64
+	for _, row := range rows {
+		value, err := strconv.ParseFloat(strings.TrimSuffix(row.Percent, "%"), 64)
+		if err != nil {
+			t.Fatal(err)
+		}
+		total += value
+	}
+	if math.Abs(total-100) > 0.001 {
+		t.Fatalf("percent total = %.1f, want 100.0", total)
+	}
+	if rows[0].Name != "SHADOWSOCKS" || rows[0].Count != 1 {
+		t.Fatalf("equal-count rows not sorted by name: %+v", rows)
+	}
+}
+
+func TestRenderTrendSVGIsDeterministicAccessibleAndScriptFree(t *testing.T) {
+	now := time.Date(2026, 7, 26, 12, 0, 0, 0, time.UTC)
+	points := []HistoryPoint{
+		{GeneratedAt: now.Add(-48 * time.Hour), Selected: 100},
+		{GeneratedAt: now.Add(-24 * time.Hour), Selected: 80},
+		{GeneratedAt: now, Selected: 120},
+	}
+	first := string(renderTrendSVG(points))
+	second := string(renderTrendSVG(points))
+	if first != second {
+		t.Fatal("trend SVG is not deterministic")
+	}
+	for _, want := range []string{
+		"<svg", "<title>30-day selected node trend</title>",
+		"<desc>Selected nodes over the retained hourly history.</desc>",
+		`aria-label="30-day selected node trend"`, "<polyline",
+	} {
+		if !strings.Contains(first, want) {
+			t.Errorf("trend SVG missing %q", want)
+		}
+	}
+	if strings.Contains(strings.ToLower(first), "<script") {
+		t.Fatal("trend SVG contains script")
+	}
+}
+
+func sectionByID(t *testing.T, body, id string) string {
+	t.Helper()
+	start := strings.Index(body, `id="`+id+`"`)
+	if start < 0 {
+		t.Fatalf("section %s not found", id)
+	}
+	end := strings.Index(body[start:], "</section>")
+	if end < 0 {
+		t.Fatalf("section %s has no closing tag", id)
+	}
+	return body[start : start+end]
+}
+
+func sitemapEntryContaining(t *testing.T, sitemap, needle string) string {
+	t.Helper()
+	position := strings.Index(sitemap, needle)
+	if position < 0 {
+		t.Fatalf("sitemap entry containing %q not found", needle)
+	}
+	start := strings.LastIndex(sitemap[:position], "<url>")
+	end := strings.Index(sitemap[position:], "</url>")
+	if start < 0 || end < 0 {
+		t.Fatalf("malformed sitemap around %q", needle)
+	}
+	return sitemap[start : position+end+len("</url>")]
+}
+
+func extractJSONLD(t *testing.T, body string) string {
+	t.Helper()
+	const startTag = `<script type="application/ld+json">`
+	start := strings.Index(body, startTag)
+	if start < 0 {
+		t.Fatal("JSON-LD script not found")
+	}
+	start += len(startTag)
+	end := strings.Index(body[start:], "</script>")
+	if end < 0 {
+		t.Fatal("JSON-LD script is not closed")
+	}
+	return body[start : start+end]
+}
+
+func graphNode(t *testing.T, graph []map[string]any, nodeType string) map[string]any {
+	t.Helper()
+	for _, node := range graph {
+		if node["@type"] == nodeType {
+			return node
+		}
+	}
+	t.Fatalf("JSON-LD node %s not found", nodeType)
+	return nil
 }
 
 func firstLines(s string, n int) string {

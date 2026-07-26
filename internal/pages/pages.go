@@ -32,6 +32,7 @@ type Input struct {
 	Summary       aggregate.Summary
 	Selected      []*node.Node
 	MinPerCountry int
+	History       []HistoryPoint
 }
 
 type countryRow struct {
@@ -43,6 +44,12 @@ type countryRow struct {
 	URLSing  string
 	URLV2ray string
 	URLPage  string // locale-specific page URL
+}
+
+type metricRow struct {
+	Name    string
+	Count   int
+	Percent string
 }
 
 // langAlt is used for <link rel="alternate" hreflang=...> tags.
@@ -137,6 +144,11 @@ type pageCtx struct {
 	URLClash                string
 	URLSing                 string
 	URLV2ray                string
+	ProtocolRows            []metricRow
+	TopCountries            []metricRow
+	Trends                  TrendSummary
+	TrendSVG                template.HTML
+	CountryProtocols        []metricRow
 
 	// Guides (shown only on index page)
 	Guides []guideLink
@@ -163,6 +175,7 @@ func Generate(in Input, outDir string) error {
 			homeURL = in.SiteURL + "/index" + suffix + ".html"
 		}
 		countries := buildCountryRows(in, suffix)
+		trends := BuildTrends(in.History, time.Unix(in.Summary.GeneratedAtUnix, 0).UTC())
 
 		// Index page
 		idxTitle := fmt.Sprintf(l10n.IndexTitleTpl, in.Summary.TotalSelected)
@@ -207,6 +220,10 @@ func Generate(in Input, outDir string) error {
 			URLClash:     in.RepoURL + "/raw/main/output/clash.yaml",
 			URLSing:      in.RepoURL + "/raw/main/output/singbox.json",
 			URLV2ray:     in.RepoURL + "/raw/main/output/v2ray-base64.txt",
+			ProtocolRows: buildMetricRows(in.Summary.ByProtocol),
+			TopCountries: buildTopCountryRows(countries),
+			Trends:       trends,
+			TrendSVG:     renderTrendSVG(in.History),
 			Guides:       guideLinks,
 			JSONLD:       indexJSONLD(in, l10n, idxCanonical, loc),
 		}
@@ -247,6 +264,7 @@ func Generate(in Input, outDir string) error {
 				URLClash:                c.URLClash,
 				URLSing:                 c.URLSing,
 				URLV2ray:                c.URLV2ray,
+				CountryProtocols:        buildCountryProtocolRows(in.Selected, c.CC),
 				JSONLD:                  countryJSONLD(in, l10n, c, canonical, loc),
 			}
 			countryFile := ccLower + suffix + ".html"
@@ -289,8 +307,83 @@ func Generate(in Input, outDir string) error {
 		0o644); err != nil {
 		return err
 	}
+	if err := removeStaleCountryPages(outDir, in); err != nil {
+		return err
+	}
 
 	return nil
+}
+
+func removeStaleCountryPages(outDir string, in Input) error {
+	expected := make(map[string]bool)
+	for _, loc := range supportedLocales {
+		suffix := localeSuffix(loc)
+		for _, country := range buildCountryRows(in, suffix) {
+			expected[strings.ToLower(country.CC)+suffix+".html"] = true
+		}
+	}
+	if len(expected) == 0 {
+		return nil
+	}
+
+	entries, err := os.ReadDir(outDir)
+	if err != nil {
+		return fmt.Errorf("list generated pages: %w", err)
+	}
+	candidates := make(map[string][]string)
+	for _, entry := range entries {
+		if entry.IsDir() {
+			continue
+		}
+		code, ok := managedCountryPageCode(entry.Name())
+		if ok {
+			candidates[code] = append(candidates[code], entry.Name())
+		}
+	}
+	for _, names := range candidates {
+		// Generated countries have one page per locale. Requiring at least two
+		// variants avoids treating an unrelated two-character HTML file as ours.
+		if len(names) < 2 {
+			continue
+		}
+		for _, name := range names {
+			if expected[name] {
+				continue
+			}
+			if err := os.Remove(filepath.Join(outDir, name)); err != nil {
+				return fmt.Errorf("remove stale country page %s: %w", name, err)
+			}
+		}
+	}
+	return nil
+}
+
+func managedCountryPageCode(name string) (string, bool) {
+	if !strings.HasSuffix(name, ".html") {
+		return "", false
+	}
+	parts := strings.Split(strings.TrimSuffix(name, ".html"), ".")
+	if len(parts) < 1 || len(parts) > 2 || len(parts[0]) != 2 {
+		return "", false
+	}
+	for _, char := range parts[0] {
+		if (char < 'a' || char > 'z') && (char < '0' || char > '9') {
+			return "", false
+		}
+	}
+	if len(parts) == 2 {
+		known := false
+		for _, loc := range supportedLocales {
+			if suffix := localeSuffix(loc); suffix != "" && parts[1] == strings.TrimPrefix(suffix, ".") {
+				known = true
+				break
+			}
+		}
+		if !known {
+			return "", false
+		}
+	}
+	return parts[0], true
 }
 
 func buildCountryRows(in Input, localeSuffix string) []countryRow {
@@ -329,9 +422,158 @@ func buildCountryRows(in Input, localeSuffix string) []countryRow {
 	return out
 }
 
+func buildMetricRows(counts map[string]int) []metricRow {
+	type rawMetric struct {
+		name      string
+		count     int
+		tenths    int
+		remainder int
+	}
+	raw := make([]rawMetric, 0, len(counts))
+	total := 0
+	for name, count := range counts {
+		if count <= 0 {
+			continue
+		}
+		raw = append(raw, rawMetric{name: strings.ToUpper(name), count: count})
+		total += count
+	}
+	sort.Slice(raw, func(i, j int) bool {
+		if raw[i].count != raw[j].count {
+			return raw[i].count > raw[j].count
+		}
+		return raw[i].name < raw[j].name
+	})
+	if total == 0 {
+		return nil
+	}
+
+	assigned := 0
+	for i := range raw {
+		scaled := raw[i].count * 1000
+		raw[i].tenths = scaled / total
+		raw[i].remainder = scaled % total
+		assigned += raw[i].tenths
+	}
+	order := make([]int, len(raw))
+	for i := range order {
+		order[i] = i
+	}
+	sort.SliceStable(order, func(i, j int) bool {
+		return raw[order[i]].remainder > raw[order[j]].remainder
+	})
+	for i := 0; i < 1000-assigned; i++ {
+		raw[order[i%len(order)]].tenths++
+	}
+
+	rows := make([]metricRow, 0, len(raw))
+	for _, item := range raw {
+		rows = append(rows, metricRow{
+			Name:    item.name,
+			Count:   item.count,
+			Percent: fmt.Sprintf("%.1f%%", float64(item.tenths)/10),
+		})
+	}
+	return rows
+}
+
+func buildTopCountryRows(countries []countryRow) []metricRow {
+	total := 0
+	for _, country := range countries {
+		total += country.Count
+	}
+	if len(countries) > 8 {
+		countries = countries[:8]
+	}
+	rows := make([]metricRow, 0, len(countries))
+	for _, country := range countries {
+		percent := "0.0%"
+		if total > 0 {
+			percent = fmt.Sprintf("%.1f%%", float64(country.Count)*100/float64(total))
+		}
+		rows = append(rows, metricRow{
+			Name:    country.Flag + " " + country.Name,
+			Count:   country.Count,
+			Percent: percent,
+		})
+	}
+	return rows
+}
+
+func buildCountryProtocolRows(nodes []*node.Node, country string) []metricRow {
+	counts := make(map[string]int)
+	for _, candidate := range nodes {
+		if candidate == nil || !strings.EqualFold(candidate.Country, country) {
+			continue
+		}
+		counts[candidate.Protocol]++
+	}
+	return buildMetricRows(counts)
+}
+
+func renderTrendSVG(points []HistoryPoint) template.HTML {
+	if len(points) < 2 {
+		return ""
+	}
+	sorted := append([]HistoryPoint(nil), points...)
+	sort.Slice(sorted, func(i, j int) bool {
+		return sorted[i].GeneratedAt.Before(sorted[j].GeneratedAt)
+	})
+
+	const (
+		width   = 760
+		height  = 180
+		padding = 24
+	)
+	minValue, maxValue := sorted[0].Selected, sorted[0].Selected
+	for _, point := range sorted[1:] {
+		if point.Selected < minValue {
+			minValue = point.Selected
+		}
+		if point.Selected > maxValue {
+			maxValue = point.Selected
+		}
+	}
+	valueRange := maxValue - minValue
+	if valueRange == 0 {
+		valueRange = 1
+	}
+	start := sorted[0].GeneratedAt.Unix()
+	duration := sorted[len(sorted)-1].GeneratedAt.Unix() - start
+	if duration <= 0 {
+		duration = int64(len(sorted) - 1)
+	}
+
+	var coordinates strings.Builder
+	for i, point := range sorted {
+		elapsed := point.GeneratedAt.Unix() - start
+		if sorted[len(sorted)-1].GeneratedAt.Unix() == start {
+			elapsed = int64(i)
+		}
+		x := float64(padding) + float64(elapsed)*float64(width-2*padding)/float64(duration)
+		y := float64(height-padding) - float64(point.Selected-minValue)*float64(height-2*padding)/float64(valueRange)
+		if i > 0 {
+			coordinates.WriteByte(' ')
+		}
+		fmt.Fprintf(&coordinates, "%.1f,%.1f", x, y)
+	}
+
+	var svg strings.Builder
+	fmt.Fprintf(&svg, `<svg class="trend-chart" viewBox="0 0 %d %d" role="img" aria-label="30-day selected node trend">`, width, height)
+	svg.WriteString(`<title>30-day selected node trend</title>`)
+	svg.WriteString(`<desc>Selected nodes over the retained hourly history.</desc>`)
+	fmt.Fprintf(&svg, `<line x1="%d" y1="%d" x2="%d" y2="%d" class="chart-axis"/>`, padding, height-padding, width-padding, height-padding)
+	fmt.Fprintf(&svg, `<polyline points="%s" class="chart-line"/>`, coordinates.String())
+	fmt.Fprintf(&svg, `<text x="%d" y="%d" class="chart-label">%d</text>`, padding, padding-6, maxValue)
+	fmt.Fprintf(&svg, `<text x="%d" y="%d" class="chart-label">%d</text>`, padding, height-6, minValue)
+	svg.WriteString(`</svg>`)
+	return template.HTML(svg.String())
+}
+
 func writeTemplate(path string, body string, ctx any) error {
 	funcs := template.FuncMap{
-		"safe": func(s string) template.HTML { return template.HTML(s) },
+		"safe":  func(s string) template.HTML { return template.HTML(s) },
+		"delta": func(value int) string { return fmt.Sprintf("%+d", value) },
 	}
 	t, err := template.New(path).Funcs(funcs).Parse(body)
 	if err != nil {
@@ -349,8 +591,8 @@ func writeSitemap(path, siteURL string, countries []countryRow, generatedAt time
 	var b strings.Builder
 	b.WriteString(`<?xml version="1.0" encoding="UTF-8"?>` + "\n")
 	b.WriteString(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">` + "\n")
-	// Full W3C datetime rather than a bare date: these pages carry an hourly
-	// changefreq, so a day-granular lastmod understates how fresh they are.
+	// Full W3C datetime rather than a bare date for pages whose content was
+	// regenerated from the current network snapshot.
 	lastmod := generatedAt.Format(time.RFC3339)
 
 	// Home
@@ -366,7 +608,7 @@ func writeSitemap(path, siteURL string, countries []countryRow, generatedAt time
 	// Guide pages
 	for _, g := range guides {
 		baseURL := siteURL + "/guides/" + g.Slug + ".html"
-		writeSitemapEntry(&b, baseURL, lastmod, "weekly", "0.7", guideURLsByLocale(siteURL, g.Slug))
+		writeSitemapEntry(&b, baseURL, "", "weekly", "0.7", guideURLsByLocale(siteURL, g.Slug))
 	}
 
 	b.WriteString("</urlset>\n")
@@ -374,7 +616,11 @@ func writeSitemap(path, siteURL string, countries []countryRow, generatedAt time
 }
 
 func writeSitemapEntry(b *strings.Builder, loc, lastmod, changefreq, priority string, alternates map[string]string) {
-	fmt.Fprintf(b, "  <url>\n    <loc>%s</loc>\n    <lastmod>%s</lastmod>\n    <changefreq>%s</changefreq>\n    <priority>%s</priority>\n", loc, lastmod, changefreq, priority)
+	fmt.Fprintf(b, "  <url>\n    <loc>%s</loc>\n", loc)
+	if lastmod != "" {
+		fmt.Fprintf(b, "    <lastmod>%s</lastmod>\n", lastmod)
+	}
+	fmt.Fprintf(b, "    <changefreq>%s</changefreq>\n    <priority>%s</priority>\n", changefreq, priority)
 	codes := sortedKeys(alternates)
 	for _, code := range codes {
 		fmt.Fprintf(b, "    <xhtml:link rel=\"alternate\" hreflang=\"%s\" href=\"%s\"/>\n", code, alternates[code])
@@ -531,37 +777,47 @@ func hreflangCode(loc string) string {
 
 // indexJSONLD returns the structured data graph for the landing page.
 func indexJSONLD(in Input, l10n pageL10n, canonical, loc string) template.JS {
+	modified := time.Unix(in.Summary.GeneratedAtUnix, 0).UTC().Format(time.RFC3339)
 	graph := []any{
 		map[string]any{
-			"@context":    "https://schema.org",
-			"@type":       "WebSite",
-			"name":        l10n.IndexHeading,
-			"url":         canonical,
-			"description": fmt.Sprintf("%d hourly-refreshed free VPN nodes, TCP+TLS verified.", in.Summary.TotalSelected),
-			"inLanguage":  l10n.LangAttr,
+			"@context":     "https://schema.org",
+			"@type":        "WebSite",
+			"name":         l10n.IndexHeading,
+			"url":          canonical,
+			"description":  fmt.Sprintf(l10n.IndexDescriptionTpl, in.Summary.TotalSelected),
+			"inLanguage":   l10n.LangAttr,
+			"dateModified": modified,
 		},
 		map[string]any{
 			"@context":            "https://schema.org",
-			"@type":               "SoftwareApplication",
+			"@type":               "Dataset",
 			"name":                l10n.IndexHeading,
-			"operatingSystem":     "Windows, macOS, iOS, Android, Linux",
-			"applicationCategory": "NetworkingApplication",
-			"description":         "Free VPN subscription aggregator for Clash, sing-box, and v2ray.",
-			"offers": map[string]any{
-				"@type":         "Offer",
-				"price":         "0",
-				"priceCurrency": "USD",
-			},
-			"aggregateRating": map[string]any{
-				"@type":       "AggregateRating",
-				"ratingValue": "4.6",
-				"reviewCount": "47",
+			"description":         fmt.Sprintf(l10n.IndexDescriptionTpl, in.Summary.TotalSelected),
+			"url":                 canonical,
+			"inLanguage":          l10n.LangAttr,
+			"dateModified":        modified,
+			"license":             "https://opensource.org/licenses/MIT",
+			"isAccessibleForFree": true,
+			"keywords":            l10n.IndexKeywords,
+			"distribution": []any{
+				dataDownload("Clash YAML subscription", in.RepoURL+"/raw/main/output/clash.yaml", "application/yaml"),
+				dataDownload("sing-box JSON subscription", in.RepoURL+"/raw/main/output/singbox.json", "application/json"),
+				dataDownload("v2ray base64 subscription", in.RepoURL+"/raw/main/output/v2ray-base64.txt", "text/plain"),
 			},
 		},
 		faqSchema(l10n),
 	}
 	b, _ := json.Marshal(graph)
 	return template.JS(b)
+}
+
+func dataDownload(name, contentURL, encodingFormat string) map[string]any {
+	return map[string]any{
+		"@type":          "DataDownload",
+		"name":           name,
+		"contentUrl":     contentURL,
+		"encodingFormat": encodingFormat,
+	}
 }
 
 func countryJSONLD(in Input, l10n pageL10n, c countryRow, canonical, loc string) template.JS {

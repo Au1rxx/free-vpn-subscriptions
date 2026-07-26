@@ -92,6 +92,46 @@
   .country-flag { font-size: 32px; }
   .country-name { font-weight: 600; color: #f1f5f9; font-size: 14px; }
   .country-count { color: #94a3b8; font-size: 13px; }
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 12px; margin: 20px 0;
+  }
+  .stat-card {
+    display: flex; flex-direction: column; gap: 2px; padding: 16px;
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+  }
+  .stat-card strong { color: #f8fafc; font-size: 24px; }
+  .stat-card span { color: #94a3b8; font-size: 13px; }
+  .report-grid {
+    display: grid; grid-template-columns: minmax(0,2fr) minmax(0,3fr);
+    gap: 16px; margin-top: 16px;
+  }
+  .report-panel {
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+    padding: 18px;
+  }
+  .report-panel h3 { margin: 0 0 12px; color: #f1f5f9; font-size: 17px; }
+  .metric-list { display: flex; flex-direction: column; gap: 8px; }
+  .metric-row {
+    display: grid; grid-template-columns: minmax(0,1fr) auto 64px;
+    gap: 12px; align-items: center; padding: 8px 10px;
+    background: #0f172a; border-radius: 7px; color: #cbd5e1;
+  }
+  .metric-row strong { color: #f8fafc; }
+  .metric-row span:last-child { text-align: right; color: #93c5fd; font-variant-numeric: tabular-nums; }
+  .trend-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+  .trend-card {
+    display: flex; flex-direction: column; gap: 5px; padding: 12px;
+    background: #111c31; border-radius: 8px; color: #94a3b8; font-size: 12px;
+  }
+  .trend-card strong { color: #f1f5f9; font-size: 14px; }
+  .trend-chart { width: 100%; height: auto; margin-top: 16px; }
+  .chart-axis { stroke: #475569; stroke-width: 1; }
+  .chart-line { fill: none; stroke: #60a5fa; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  .chart-label { fill: #94a3b8; font-size: 11px; }
+  .info-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+  .info-grid h2 { font-size: 18px; }
+  .info-grid p { color: #cbd5e1; margin-bottom: 0; }
   .client-list { padding-left: 20px; }
   .client-list li { margin-bottom: 6px; color: #cbd5e1; }
   details { margin: 10px 0; padding: 12px 16px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; }
@@ -104,13 +144,20 @@
   footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
   footer a { color: #93c5fd; }
   footer .small { font-size: 12px; margin-top: 8px; max-width: 680px; margin-left: auto; margin-right: auto; }
+  @media (max-width: 700px) {
+    .card { padding: 22px 18px; margin: 14px 12px; }
+    .lang-switch { padding-left: 16px; padding-right: 16px; text-align: center; }
+    .stat-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .report-grid, .info-grid { grid-template-columns: 1fr; }
+    .trend-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 <div class="lang-switch">
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/guides/clash-verge.html">English</a>
-  <strong>简体中文</strong>
-  
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/guides/clash-verge.html">English</a>
+<strong>简体中文</strong>
+
 </div>
 
 <nav class="breadcrumb">
@@ -123,7 +170,7 @@
   <p class="meta">
     <span class="badge badge-blue">Clash Verge</span>
     <span class="badge badge-gray">Windows, macOS, Linux</span>
-    <span class="badge badge-green">更新 · 2026-07-26 07:16 UTC</span>
+    <span class="badge badge-green">更新 · 2026-07-26 07:23 UTC</span>
   </p>
   <p class="repo">
     <a href="https://github.com/clash-verge-rev/clash-verge-rev/releases/latest" class="btn-outline" target="_blank" rel="noopener">⬇ 下载 Clash Verge</a>
@@ -144,63 +191,63 @@
 <section class="card">
   <h2>🪜 操作步骤</h2>
   <ol class="steps">
-    
+
     <li>
       <h3>安装 Clash Verge</h3>
       <p>去 <a href="https://github.com/clash-verge-rev/clash-verge-rev/releases/latest" target="_blank" rel="noopener">Clash Verge Rev</a> 下载最新版本。Windows 选 <code>.msi</code>,macOS 选 <code>.dmg</code>,Linux 选 <code>.deb</code>/<code>.rpm</code>/<code>.AppImage</code>。双击安装后打开。</p>
     </li>
-    
+
     <li>
       <h3>打开订阅面板</h3>
       <p>点左侧栏的 <strong>订阅</strong> (Profiles)。第一次打开是空的。点顶部的 <strong>+</strong> 或 <strong>导入</strong>。</p>
     </li>
-    
+
     <li>
       <h3>粘贴订阅链接</h3>
       <p>从<a href="../index.html">首页</a>复制 Clash 的订阅 URL,粘贴到 URL 输入框。名称随便填。点 <strong>保存</strong>,几秒后配置下载完成。</p>
     </li>
-    
+
     <li>
       <h3>启用订阅</h3>
       <p>点一下刚才的订阅卡片,让它变成激活状态(边框变蓝)。切到 <strong>代理</strong> (Proxies) 标签,能看到选择器组里列出了所有免费节点。</p>
     </li>
-    
+
     <li>
       <h3>打开系统代理</h3>
       <p>回到<strong>主页</strong>,打开 <strong>系统代理</strong> 或 <strong>TUN 模式</strong> 开关。系统代理只对浏览器生效;TUN 模式接管所有流量(包括终端/游戏),首次启用需要管理员权限。</p>
     </li>
-    
+
     <li>
       <h3>验证</h3>
       <p>浏览器打开 <code>ipinfo.io</code>,显示的国家应该和你选的节点一致。如果还是国内 IP,检查系统代理开关,以及浏览器有没有绕过系统代理(Firefox 要手动勾 "使用系统代理设置")。</p>
     </li>
-    
+
   </ol>
 </section>
 
 <section class="card">
   <h2>💡 常见问题排错</h2>
-  
+
   <details><summary>选哪个节点最好?</summary><p>先用选择器组里的 URL-Test (自动选最快),它会按延迟挑最快那个。觉得慢就手动换一个国家。</p></details>
-  
+
   <details><summary>怎么更新订阅?</summary><p>右键订阅卡片 → <strong>更新</strong>。或在订阅设置里开自动更新,建议间隔 1 小时(上游每小时刷新)。</p></details>
-  
+
   <details><summary>只用浏览器不想开 TUN 可以吗?</summary><p>可以。只打开 <strong>系统代理</strong> 就行,大部分浏览器都会走。Chrome/Edge 默认走系统代理;Firefox 要在网络设置里勾 "使用系统代理"。</p></details>
-  
+
   <details><summary>提示 &#34;profile update failed&#34; 订阅更新失败</summary><p>通常是 GitHub raw 临时抽风,等几分钟再试。如果一直失败,把订阅 URL 粘到浏览器看能不能打开,确认网络可达。</p></details>
-  
+
 </section>
 
 <section class="card">
   <h2>📚 其他客户端教程</h2>
   <ul class="client-list">
-    
+
     <li><a href="v2rayng.zh.html">v2rayNG</a> · Android 5.0&#43;</li>
-    
+
     <li><a href="shadowrocket.zh.html">Shadowrocket</a> · iOS 15&#43;, iPadOS 15&#43;</li>
-    
+
     <li><a href="sing-box.zh.html">sing-box</a> · Windows, macOS, Linux, iOS, Android</li>
-    
+
   </ul>
 </section>
 

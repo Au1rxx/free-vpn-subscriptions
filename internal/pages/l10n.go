@@ -9,23 +9,45 @@ type pageL10n struct {
 	NativeName string
 
 	// <title> / heading
-	IndexTitleTpl        string // %d selected
-	IndexDescriptionTpl  string // %d selected
-	IndexKeywords        string
-	IndexHeading         string
-	IndexSubTagline      string // short pitch beneath hero
+	IndexTitleTpl       string // %d selected
+	IndexDescriptionTpl string // %d selected
+	IndexKeywords       string
+	IndexHeading        string
+	IndexSubTagline     string // short pitch beneath hero
 
-	BadgeNodes        string
-	BadgeAlive        string
-	BadgeMedianRTT    string
-	BadgeUpdated      string
-	BadgeUpdatedUnit  string // "ms" suffix if needed — leave empty normally
+	BadgeNodes       string
+	BadgeAlive       string
+	BadgeMedianRTT   string
+	BadgeUpdated     string
+	BadgeUpdatedUnit string // "ms" suffix if needed — leave empty normally
 
-	OneClickHeading  string
-	OneClickIntro    string
-	ColClash         string // label for Clash row
-	ColSing          string
-	ColV2ray         string
+	OneClickHeading string
+	OneClickIntro   string
+	ColClash        string // label for Clash row
+	ColSing         string
+	ColV2ray        string
+
+	LiveHeading         string
+	LiveIntro           string
+	SnapshotSelected    string
+	SnapshotVerified    string
+	SnapshotCountries   string
+	ProtocolHeading     string
+	TopCountriesHeading string
+	TrendHeading        string
+	Trend24h            string
+	Trend7d             string
+	Trend30d            string
+	TrendSelected       string
+	TrendVerified       string
+	TrendLatency        string
+	TrendAccumulating   string
+	VerificationHeading string
+	VerificationText    string
+	LimitationsHeading  string
+	LimitationsText     string
+	SelectionHeading    string
+	SelectionText       string
 
 	ByCountryHeading string
 	ByCountryIntro   string
@@ -56,15 +78,17 @@ type pageL10n struct {
 	FooterDisclaimer string
 
 	// Country page strings
-	CountryTitleTpl        string // %s name, %d count
-	CountryDescriptionTpl  string
-	CountryKeywordsTpl     string // %s name (6 insertions)
-	CountryHeadingTpl      string // %s flag, %s name
-	CountrySubTpl          string // %d count, %s name
-	CountryBreadcrumb      string // "← All countries"
-	CountryOtherHeading    string // "Other countries"
+	CountryTitleTpl            string // %s name, %d count
+	CountryDescriptionTpl      string
+	CountryKeywordsTpl         string // %s name (6 insertions)
+	CountryHeadingTpl          string // %s flag, %s name
+	CountrySubTpl              string // %d count, %s name
+	CountryBreadcrumb          string // "← All countries"
+	CountryOtherHeading        string // "Other countries"
 	CountrySubscribeHeadingTpl string // "Subscribe to %s nodes only"
-	CountryStarHistoryNote string
+	CountryStarHistoryNote     string
+	CountryProtocolHeading     string
+	CountryProtocolIntro       string
 
 	// Language switcher preamble
 	LanguageLabel string // "Language:" / "语言:"
@@ -92,6 +116,28 @@ var pageLocales = map[string]pageL10n{
 		ColSing:         "sing-box",
 		ColV2ray:        "v2rayN / v2rayNG / Shadowrocket / NekoBox",
 
+		LiveHeading:         "📊 Live Network Report",
+		LiveIntro:           "A machine-generated snapshot from the latest hourly export. Counts and rolling trends update with the subscription files.",
+		SnapshotSelected:    "curated nodes",
+		SnapshotVerified:    "verified nodes",
+		SnapshotCountries:   "countries",
+		ProtocolHeading:     "Protocol distribution",
+		TopCountriesHeading: "Top countries in this snapshot",
+		TrendHeading:        "Rolling network trends",
+		Trend24h:            "24 hours",
+		Trend7d:             "7 days",
+		Trend30d:            "30 days",
+		TrendSelected:       "curated",
+		TrendVerified:       "verified",
+		TrendLatency:        "median RTT",
+		TrendAccumulating:   "Collecting enough history",
+		VerificationHeading: "How nodes are verified",
+		VerificationText:    "Public configurations are normalized and deduplicated, then checked with real HTTP and HTTPS requests through the proxy before publication.",
+		LimitationsHeading:  "What the checks do not prove",
+		LimitationsText:     "A successful small request does not measure bandwidth or future availability. Free nodes can slow down or disappear between hourly updates.",
+		SelectionHeading:    "Which subscription should I use?",
+		SelectionText:       "Use the global Clash URL for automatic fallback, a country feed for a specific exit region, or the sing-box/v2ray format required by your client.",
+
 		ByCountryHeading: "🌍 By Country",
 		ByCountryIntro:   "Want nodes in a specific region only? Choose a targeted subscription:",
 		NodesSuffix:      "nodes",
@@ -110,7 +156,7 @@ var pageLocales = map[string]pageL10n{
 		FAQ1Q:      "Is this actually free?",
 		FAQ1A:      "Yes. Nodes are operated by third-party volunteers. We don't run any servers — we just test, rank, and repackage what's already public.",
 		FAQ2Q:      "How fresh is the data?",
-		FAQ2A:      "A GitHub Action runs every hour: pulls all upstream sources, TCP+TLS probes every node, drops anything dead, sorts by latency, commits new output files.",
+		FAQ2A:      "An external scheduler runs the publisher about once an hour, refreshing the verified database export, subscription files, and this site whenever the data changes.",
 		FAQ3Q:      "Can I trust these nodes?",
 		FAQ3A:      "Free nodes see all your traffic. Never use them for banking, login, or anything sensitive. Fine for bypassing geo-blocks on public content. Use your own VPS or a paid provider for real privacy.",
 		FAQ4Q:      "Why do some nodes fail?",
@@ -128,6 +174,8 @@ var pageLocales = map[string]pageL10n{
 		CountryBreadcrumb:          "← All countries",
 		CountryOtherHeading:        "🌍 Other countries",
 		CountrySubscribeHeadingTpl: "🚀 Subscribe to %s nodes only",
+		CountryProtocolHeading:     "Protocol mix for this country",
+		CountryProtocolIntro:       "Counts and percentages reflect this country's nodes in the latest curated snapshot.",
 
 		LanguageLabel: "Language:",
 	},
@@ -152,6 +200,28 @@ var pageLocales = map[string]pageL10n{
 		ColSing:         "sing-box",
 		ColV2ray:        "v2rayN / v2rayNG / Shadowrocket / NekoBox",
 
+		LiveHeading:         "📊 实时网络报告",
+		LiveIntro:           "以下内容由最新一轮小时级发布数据自动生成，节点数量和滚动趋势会随订阅文件一起更新。",
+		SnapshotSelected:    "精选节点",
+		SnapshotVerified:    "已验证节点",
+		SnapshotCountries:   "覆盖国家",
+		ProtocolHeading:     "协议分布",
+		TopCountriesHeading: "本轮节点最多的国家",
+		TrendHeading:        "滚动网络趋势",
+		Trend24h:            "24 小时",
+		Trend7d:             "7 天",
+		Trend30d:            "30 天",
+		TrendSelected:       "精选",
+		TrendVerified:       "已验证",
+		TrendLatency:        "中位延迟",
+		TrendAccumulating:   "历史数据积累中",
+		VerificationHeading: "节点如何验证",
+		VerificationText:    "公开配置会先标准化和去重，发布前再通过代理发出真实 HTTP 与 HTTPS 请求，确认流量能够端到端转发。",
+		LimitationsHeading:  "验证不能证明什么",
+		LimitationsText:     "一次小请求成功不代表带宽充足或未来持续可用。免费节点仍可能在两次小时更新之间变慢或失效。",
+		SelectionHeading:    "该选择哪种订阅？",
+		SelectionText:       "需要自动容错可用全局 Clash 链接；需要指定出口地区可选国家订阅；sing-box 或 v2ray 用户请选择客户端对应格式。",
+
 		ByCountryHeading: "🌍 按国家订阅",
 		ByCountryIntro:   "只想要特定地区的节点?选一个针对性订阅链接:",
 		NodesSuffix:      "节点",
@@ -170,7 +240,7 @@ var pageLocales = map[string]pageL10n{
 		FAQ1Q:      "真的完全免费吗?",
 		FAQ1A:      "是的。所有节点由第三方志愿者运营并公开免费订阅。本项目不运营任何服务器,只做测试、排名和重新打包。",
 		FAQ2Q:      "数据多新?",
-		FAQ2A:      "GitHub Actions 每小时运行一次:拉取所有上游源,对每个节点做 TCP+TLS 探测,丢弃死节点,按延迟排序,提交新文件。",
+		FAQ2A:      "外部调度器约每小时运行一次发布程序；数据有变化时，会刷新已验证数据库导出、订阅文件和本站页面。",
 		FAQ3Q:      "这些节点可以信任吗?",
 		FAQ3A:      "免费节点能看到你所有流量。绝不要用来登录银行、邮箱等敏感账号。用来突破地区限制访问公开内容没问题。真正需要隐私请自建 VPS 或付费服务。",
 		FAQ4Q:      "列表里有些节点连不上?",
@@ -188,6 +258,8 @@ var pageLocales = map[string]pageL10n{
 		CountryBreadcrumb:          "← 所有国家",
 		CountryOtherHeading:        "🌍 其他国家",
 		CountrySubscribeHeadingTpl: "🚀 仅订阅 %s 节点",
+		CountryProtocolHeading:     "该国家的协议组成",
+		CountryProtocolIntro:       "数量和占比来自最新一轮精选节点快照。",
 
 		LanguageLabel: "语言:",
 	},
@@ -212,6 +284,28 @@ var pageLocales = map[string]pageL10n{
 		ColSing:         "sing-box",
 		ColV2ray:        "v2rayN / v2rayNG / Shadowrocket / NekoBox",
 
+		LiveHeading:         "📊 リアルタイムネットワークレポート",
+		LiveIntro:           "最新の毎時エクスポートから自動生成したスナップショットです。件数とローリング傾向は購読ファイルと一緒に更新されます。",
+		SnapshotSelected:    "厳選ノード",
+		SnapshotVerified:    "検証済みノード",
+		SnapshotCountries:   "対象国",
+		ProtocolHeading:     "プロトコル分布",
+		TopCountriesHeading: "今回ノード数が多い国",
+		TrendHeading:        "ローリングネットワーク傾向",
+		Trend24h:            "24 時間",
+		Trend7d:             "7 日",
+		Trend30d:            "30 日",
+		TrendSelected:       "厳選",
+		TrendVerified:       "検証済み",
+		TrendLatency:        "中央値 RTT",
+		TrendAccumulating:   "履歴データを蓄積中",
+		VerificationHeading: "ノードの検証方法",
+		VerificationText:    "公開設定を正規化・重複排除し、公開前にプロキシ経由で実際の HTTP / HTTPS リクエストを送り、端末間の転送を確認します。",
+		LimitationsHeading:  "検証で分からないこと",
+		LimitationsText:     "小さなリクエストの成功は帯域幅や将来の可用性を保証しません。無料ノードは次の毎時更新までに遅延・停止する場合があります。",
+		SelectionHeading:    "どの購読を選ぶ？",
+		SelectionText:       "自動フォールバックには全体 Clash、出口地域を固定するなら国別、sing-box / v2ray はクライアントに合う形式を選んでください。",
+
 		ByCountryHeading: "🌍 国別購読",
 		ByCountryIntro:   "特定地域のノードだけ欲しい?専用の購読リンクを選んでください:",
 		NodesSuffix:      "ノード",
@@ -230,7 +324,7 @@ var pageLocales = map[string]pageL10n{
 		FAQ1Q:      "本当に無料?",
 		FAQ1A:      "はい。全ノードはサードパーティのボランティアが運営し、自分で公開購読を出しています。当リポジトリはサーバーを持たず、既に公開されているものをテスト・順位付け・再パッケージしているだけです。",
 		FAQ2Q:      "データはどれくらい新しい?",
-		FAQ2A:      "GitHub Actions が毎時実行されます: すべての上流ソースを取得 → TCP+TLS プローブ → 死ノード除去 → レイテンシ順ソート → 新しい出力ファイルをコミット。",
+		FAQ2A:      "外部スケジューラが約 1 時間ごとに公開処理を実行し、データ変更時に検証済みデータベースのエクスポート、購読ファイル、サイトを更新します。",
 		FAQ3Q:      "これらのノードは信用できる?",
 		FAQ3A:      "無料ノードは全トラフィックが運営者に見えます。銀行・ログイン・機密情報に絶対使わないでください。公開コンテンツのジオブロック突破には問題ありません。本当のプライバシーには自前 VPS か有料サービスを。",
 		FAQ4Q:      "リストにあるのに繋がらないノードがあるのはなぜ?",
@@ -248,6 +342,8 @@ var pageLocales = map[string]pageL10n{
 		CountryBreadcrumb:          "← 国一覧",
 		CountryOtherHeading:        "🌍 他の国",
 		CountrySubscribeHeadingTpl: "🚀 %s のノードのみ購読",
+		CountryProtocolHeading:     "この国のプロトコル構成",
+		CountryProtocolIntro:       "件数と割合は最新の厳選ノードスナップショットに基づきます。",
 
 		LanguageLabel: "言語:",
 	},
@@ -272,6 +368,28 @@ var pageLocales = map[string]pageL10n{
 		ColSing:         "sing-box",
 		ColV2ray:        "v2rayN / v2rayNG / Shadowrocket / NekoBox",
 
+		LiveHeading:         "📊 실시간 네트워크 보고서",
+		LiveIntro:           "최신 시간별 내보내기에서 자동 생성한 스냅샷입니다. 수치와 롤링 추세는 구독 파일과 함께 갱신됩니다.",
+		SnapshotSelected:    "선별 노드",
+		SnapshotVerified:    "검증 노드",
+		SnapshotCountries:   "대상 국가",
+		ProtocolHeading:     "프로토콜 분포",
+		TopCountriesHeading: "이번 스냅샷의 상위 국가",
+		TrendHeading:        "롤링 네트워크 추세",
+		Trend24h:            "24시간",
+		Trend7d:             "7일",
+		Trend30d:            "30일",
+		TrendSelected:       "선별",
+		TrendVerified:       "검증",
+		TrendLatency:        "중앙값 RTT",
+		TrendAccumulating:   "기록 데이터 수집 중",
+		VerificationHeading: "노드 검증 방법",
+		VerificationText:    "공개 설정을 정규화하고 중복 제거한 뒤, 게시 전에 프록시를 통한 실제 HTTP 및 HTTPS 요청으로 종단 간 전달을 확인합니다.",
+		LimitationsHeading:  "검증으로 알 수 없는 것",
+		LimitationsText:     "작은 요청 성공은 대역폭이나 향후 가용성을 보장하지 않습니다. 무료 노드는 다음 시간별 갱신 전에 느려지거나 사라질 수 있습니다.",
+		SelectionHeading:    "어떤 구독을 선택할까요?",
+		SelectionText:       "자동 대체에는 전체 Clash, 특정 출구 지역에는 국가별 구독, sing-box 또는 v2ray는 클라이언트에 맞는 형식을 사용하세요.",
+
 		ByCountryHeading: "🌍 국가별 구독",
 		ByCountryIntro:   "특정 지역 노드만 원하시나요? 전용 구독 링크를 선택하세요:",
 		NodesSuffix:      "노드",
@@ -290,7 +408,7 @@ var pageLocales = map[string]pageL10n{
 		FAQ1Q:      "정말 무료인가요?",
 		FAQ1A:      "네. 모든 노드는 제3자 자원봉사자가 운영하며 공개 구독을 스스로 게시합니다. 저희는 어떤 서버도 운영하지 않으며, 이미 공개된 것을 테스트하고 순위를 매기고 재포장할 뿐입니다.",
 		FAQ2Q:      "데이터는 얼마나 신선한가요?",
-		FAQ2A:      "GitHub Action이 매시간 실행됩니다: 모든 상위 소스 가져오기 → 각 노드 TCP+TLS 프로브 → 죽은 것 제거 → 레이턴시 순 정렬 → 새 출력 파일 커밋.",
+		FAQ2A:      "외부 스케줄러가 약 한 시간마다 게시 작업을 실행하며, 데이터가 바뀌면 검증된 데이터베이스 내보내기, 구독 파일과 사이트를 갱신합니다.",
 		FAQ3Q:      "이 노드들을 신뢰할 수 있나요?",
 		FAQ3A:      "무료 노드는 모든 트래픽을 운영자가 볼 수 있습니다. 은행 거래, 로그인, 민감한 작업에는 절대 사용하지 마세요. 공개 콘텐츠의 지역 제한 우회에는 적합합니다. 실제 프라이버시에는 자체 VPS / 유료 서비스를 사용하세요.",
 		FAQ4Q:      "목록에 있는데 작동하지 않는 노드가 있는 이유는?",
@@ -308,6 +426,8 @@ var pageLocales = map[string]pageL10n{
 		CountryBreadcrumb:          "← 모든 국가",
 		CountryOtherHeading:        "🌍 다른 국가",
 		CountrySubscribeHeadingTpl: "🚀 %s 노드만 구독",
+		CountryProtocolHeading:     "이 국가의 프로토콜 구성",
+		CountryProtocolIntro:       "수와 비율은 최신 선별 노드 스냅샷을 기준으로 합니다.",
 
 		LanguageLabel: "언어:",
 	},
@@ -332,6 +452,28 @@ var pageLocales = map[string]pageL10n{
 		ColSing:         "sing-box",
 		ColV2ray:        "v2rayN / v2rayNG / Shadowrocket / NekoBox",
 
+		LiveHeading:         "📊 Informe de red en vivo",
+		LiveIntro:           "Instantánea generada automáticamente desde la última exportación horaria. Los recuentos y tendencias se actualizan junto con las suscripciones.",
+		SnapshotSelected:    "nodos seleccionados",
+		SnapshotVerified:    "nodos verificados",
+		SnapshotCountries:   "países",
+		ProtocolHeading:     "Distribución de protocolos",
+		TopCountriesHeading: "Países con más nodos en esta instantánea",
+		TrendHeading:        "Tendencias móviles de la red",
+		Trend24h:            "24 horas",
+		Trend7d:             "7 días",
+		Trend30d:            "30 días",
+		TrendSelected:       "seleccionados",
+		TrendVerified:       "verificados",
+		TrendLatency:        "RTT mediana",
+		TrendAccumulating:   "Acumulando historial",
+		VerificationHeading: "Cómo verificamos los nodos",
+		VerificationText:    "Normalizamos y deduplicamos configuraciones públicas; antes de publicarlas enviamos solicitudes HTTP y HTTPS reales a través del proxy.",
+		LimitationsHeading:  "Lo que la prueba no demuestra",
+		LimitationsText:     "Una solicitud pequeña exitosa no mide el ancho de banda ni garantiza disponibilidad futura. Un nodo gratis puede ralentizarse o desaparecer entre actualizaciones.",
+		SelectionHeading:    "¿Qué suscripción elegir?",
+		SelectionText:       "Usa Clash global para respaldo automático, una fuente por país para una salida concreta o el formato sing-box/v2ray que requiera tu cliente.",
+
 		ByCountryHeading: "🌍 Por país",
 		ByCountryIntro:   "¿Quieres nodos solo en una región específica? Elige una suscripción dirigida:",
 		NodesSuffix:      "nodos",
@@ -350,7 +492,7 @@ var pageLocales = map[string]pageL10n{
 		FAQ1Q:      "¿Es realmente gratis?",
 		FAQ1A:      "Sí. Los nodos son operados por voluntarios externos que publican sus propias suscripciones gratuitas. Nosotros no operamos ningún servidor — solo probamos, clasificamos y reempaquetamos lo que ya es público.",
 		FAQ2Q:      "¿Qué tan reciente es la información?",
-		FAQ2A:      "Una GitHub Action se ejecuta cada hora: trae todas las fuentes, prueba cada nodo con TCP+TLS, elimina los muertos, ordena por latencia y comitea los archivos nuevos.",
+		FAQ2A:      "Un programador externo ejecuta el publicador aproximadamente cada hora y, cuando cambian los datos, actualiza la exportación verificada, las suscripciones y este sitio.",
 		FAQ3Q:      "¿Puedo confiar en estos nodos?",
 		FAQ3A:      "Los nodos gratis ven todo tu tráfico. Nunca los uses para banca, login o algo sensible. Bien para saltar bloqueos geográficos en contenido público. Usa tu propio VPS o un proveedor de pago para privacidad real.",
 		FAQ4Q:      "¿Por qué algunos nodos listados fallan?",
@@ -368,6 +510,8 @@ var pageLocales = map[string]pageL10n{
 		CountryBreadcrumb:          "← Todos los países",
 		CountryOtherHeading:        "🌍 Otros países",
 		CountrySubscribeHeadingTpl: "🚀 Suscribirse solo a nodos de %s",
+		CountryProtocolHeading:     "Protocolos de este país",
+		CountryProtocolIntro:       "Los recuentos y porcentajes corresponden a la última instantánea seleccionada.",
 
 		LanguageLabel: "Idioma:",
 	},
@@ -392,6 +536,28 @@ var pageLocales = map[string]pageL10n{
 		ColSing:         "sing-box",
 		ColV2ray:        "v2rayN / v2rayNG / Shadowrocket / NekoBox",
 
+		LiveHeading:         "📊 Relatório de rede ao vivo",
+		LiveIntro:           "Instantâneo gerado automaticamente a partir da exportação horária mais recente. Contagens e tendências são atualizadas com as assinaturas.",
+		SnapshotSelected:    "nós selecionados",
+		SnapshotVerified:    "nós verificados",
+		SnapshotCountries:   "países",
+		ProtocolHeading:     "Distribuição de protocolos",
+		TopCountriesHeading: "Países com mais nós neste instantâneo",
+		TrendHeading:        "Tendências móveis da rede",
+		Trend24h:            "24 horas",
+		Trend7d:             "7 dias",
+		Trend30d:            "30 dias",
+		TrendSelected:       "selecionados",
+		TrendVerified:       "verificados",
+		TrendLatency:        "RTT mediano",
+		TrendAccumulating:   "Acumulando histórico",
+		VerificationHeading: "Como verificamos os nós",
+		VerificationText:    "Configurações públicas são normalizadas e deduplicadas; antes da publicação enviamos requisições HTTP e HTTPS reais através do proxy.",
+		LimitationsHeading:  "O que o teste não comprova",
+		LimitationsText:     "Uma pequena requisição bem-sucedida não mede banda nem garante disponibilidade futura. Nós grátis podem ficar lentos ou sumir entre atualizações.",
+		SelectionHeading:    "Qual assinatura escolher?",
+		SelectionText:       "Use Clash global para fallback automático, uma fonte por país para uma saída específica ou o formato sing-box/v2ray exigido pelo cliente.",
+
 		ByCountryHeading: "🌍 Por país",
 		ByCountryIntro:   "Quer nós apenas em uma região específica? Escolha uma assinatura direcionada:",
 		NodesSuffix:      "nós",
@@ -410,7 +576,7 @@ var pageLocales = map[string]pageL10n{
 		FAQ1Q:      "Isso é realmente grátis?",
 		FAQ1A:      "Sim. Os nós são operados por voluntários de terceiros que publicam suas próprias assinaturas gratuitas. Nós não operamos nenhum servidor — apenas testamos, classificamos e reempacotamos o que já é público.",
 		FAQ2Q:      "Quão atualizados são os dados?",
-		FAQ2A:      "Uma GitHub Action roda a cada hora: puxa todas as fontes, faz sondagem TCP+TLS em cada nó, descarta os mortos, ordena por latência e comita os novos arquivos.",
+		FAQ2A:      "Um agendador externo executa o publicador aproximadamente a cada hora e, quando os dados mudam, atualiza a exportação verificada, as assinaturas e este site.",
 		FAQ3Q:      "Posso confiar nesses nós?",
 		FAQ3A:      "Nós gratuitos veem todo o seu tráfego. Nunca os use para banco, login ou algo sensível. Bom para driblar bloqueios geográficos em conteúdo público. Use seu próprio VPS ou serviço pago para privacidade real.",
 		FAQ4Q:      "Por que alguns nós listados falham?",
@@ -428,6 +594,8 @@ var pageLocales = map[string]pageL10n{
 		CountryBreadcrumb:          "← Todos os países",
 		CountryOtherHeading:        "🌍 Outros países",
 		CountrySubscribeHeadingTpl: "🚀 Assinar apenas nós de %s",
+		CountryProtocolHeading:     "Protocolos deste país",
+		CountryProtocolIntro:       "As contagens e porcentagens refletem o instantâneo selecionado mais recente.",
 
 		LanguageLabel: "Idioma:",
 	},
@@ -452,6 +620,28 @@ var pageLocales = map[string]pageL10n{
 		ColSing:         "sing-box",
 		ColV2ray:        "v2rayN / v2rayNG / Shadowrocket / NekoBox",
 
+		LiveHeading:         "📊 Отчёт о сети в реальном времени",
+		LiveIntro:           "Автоматический снимок последнего ежечасного экспорта. Счётчики и скользящие тренды обновляются вместе с подписками.",
+		SnapshotSelected:    "отобрано узлов",
+		SnapshotVerified:    "проверено узлов",
+		SnapshotCountries:   "стран",
+		ProtocolHeading:     "Распределение протоколов",
+		TopCountriesHeading: "Страны с наибольшим числом узлов",
+		TrendHeading:        "Скользящие тренды сети",
+		Trend24h:            "24 часа",
+		Trend7d:             "7 дней",
+		Trend30d:            "30 дней",
+		TrendSelected:       "отобрано",
+		TrendVerified:       "проверено",
+		TrendLatency:        "медиана RTT",
+		TrendAccumulating:   "Накапливаем историю",
+		VerificationHeading: "Как проверяются узлы",
+		VerificationText:    "Публичные конфигурации нормализуются и дедуплицируются, затем перед публикацией через прокси выполняются реальные HTTP- и HTTPS-запросы.",
+		LimitationsHeading:  "Чего проверка не доказывает",
+		LimitationsText:     "Успешный небольшой запрос не измеряет пропускную способность и не гарантирует будущую доступность. Бесплатный узел может замедлиться или исчезнуть между обновлениями.",
+		SelectionHeading:    "Какую подписку выбрать?",
+		SelectionText:       "Глобальная Clash даёт автоматический fallback, страновая — нужный регион выхода, а для sing-box/v2ray выбирайте формат вашего клиента.",
+
 		ByCountryHeading: "🌍 По странам",
 		ByCountryIntro:   "Нужны узлы только в определённом регионе? Выберите целевую подписку:",
 		NodesSuffix:      "узлов",
@@ -470,7 +660,7 @@ var pageLocales = map[string]pageL10n{
 		FAQ1Q:      "Это правда бесплатно?",
 		FAQ1A:      "Да. Узлы управляются сторонними волонтёрами, которые сами публикуют свои бесплатные подписки. Мы не управляем никакими серверами — только тестируем, ранжируем и переупаковываем то, что уже публично.",
 		FAQ2Q:      "Насколько свежие данные?",
-		FAQ2A:      "GitHub Action запускается каждый час: получает все источники, проводит TCP+TLS проверку каждого узла, отбрасывает мёртвые, сортирует по задержке и коммитит новые файлы.",
+		FAQ2A:      "Внешний планировщик запускает публикацию примерно раз в час и при изменении данных обновляет проверенный экспорт базы, подписки и этот сайт.",
 		FAQ3Q:      "Можно ли доверять этим узлам?",
 		FAQ3A:      "Бесплатные узлы видят весь ваш трафик. Никогда не используйте их для банкинга, логинов или чего-то чувствительного. Подходит для обхода гео-блокировок на публичном контенте. Для реальной приватности используйте свой VPS или платный сервис.",
 		FAQ4Q:      "Почему некоторые узлы из списка не работают?",
@@ -488,6 +678,8 @@ var pageLocales = map[string]pageL10n{
 		CountryBreadcrumb:          "← Все страны",
 		CountryOtherHeading:        "🌍 Другие страны",
 		CountrySubscribeHeadingTpl: "🚀 Подписаться только на узлы %s",
+		CountryProtocolHeading:     "Протоколы этой страны",
+		CountryProtocolIntro:       "Числа и проценты относятся к последнему снимку отобранных узлов.",
 
 		LanguageLabel: "Язык:",
 	},
