@@ -1,8 +1,6 @@
 package emit
 
 import (
-	"fmt"
-
 	"gopkg.in/yaml.v3"
 
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
@@ -12,8 +10,9 @@ import (
 func Clash(nodes []*node.Node) (string, error) {
 	proxies := make([]map[string]any, 0, len(nodes))
 	names := make([]string, 0, len(nodes))
-	for i, n := range nodes {
-		p := clashProxy(n, i)
+	alloc := newNameAllocator()
+	for _, n := range nodes {
+		p := clashProxy(n, alloc)
 		if p == nil {
 			continue
 		}
@@ -46,8 +45,8 @@ func Clash(nodes []*node.Node) (string, error) {
 	return string(b), nil
 }
 
-func clashProxy(n *node.Node, idx int) map[string]any {
-	name := fmt.Sprintf("%02d-%s-%s", idx+1, n.Protocol, safe(n.Name))
+func clashProxy(n *node.Node, alloc *nameAllocator) map[string]any {
+	name := alloc.name(n)
 	p := map[string]any{
 		"name":   name,
 		"server": n.Server,

@@ -2,7 +2,6 @@ package emit
 
 import (
 	"encoding/json"
-	"fmt"
 
 	"github.com/Au1rxx/free-vpn-subscriptions/internal/verify"
 	"github.com/Au1rxx/free-vpn-subscriptions/pkg/node"
@@ -14,8 +13,9 @@ func Singbox(nodes []*node.Node) (string, error) {
 	endpoints := []map[string]any{}
 	tags := []string{}
 
-	for i, n := range nodes {
-		ob := singboxOutbound(n, i)
+	alloc := newNameAllocator()
+	for _, n := range nodes {
+		ob := singboxOutbound(n, alloc)
 		if ob == nil {
 			continue
 		}
@@ -58,8 +58,8 @@ func Singbox(nodes []*node.Node) (string, error) {
 	return string(b), nil
 }
 
-func singboxOutbound(n *node.Node, idx int) map[string]any {
-	tag := fmt.Sprintf("%02d-%s-%s", idx+1, n.Protocol, safe(n.Name))
+func singboxOutbound(n *node.Node, alloc *nameAllocator) map[string]any {
+	tag := alloc.name(n)
 	return SingboxOutbound(n, tag)
 }
 

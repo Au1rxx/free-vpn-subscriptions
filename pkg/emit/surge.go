@@ -15,8 +15,9 @@ func Surge(nodes []*node.Node) (string, error) {
 	var lines []string
 	var names []string
 	lines = append(lines, "[Proxy]")
-	for i, n := range nodes {
-		line, name := surgeLine(n, i)
+	alloc := newNameAllocator()
+	for _, n := range nodes {
+		line, name := surgeLine(n, alloc)
 		if line == "" {
 			continue
 		}
@@ -31,8 +32,8 @@ func Surge(nodes []*node.Node) (string, error) {
 	return strings.Join(lines, "\n") + "\n", nil
 }
 
-func surgeLine(n *node.Node, idx int) (string, string) {
-	name := fmt.Sprintf("%02d-%s-%s", idx+1, n.Protocol, safe(n.Name))
+func surgeLine(n *node.Node, alloc *nameAllocator) (string, string) {
+	name := alloc.name(n)
 	switch n.Protocol {
 	case node.ProtoSS:
 		return fmt.Sprintf("%s = ss, %s, %d, encrypt-method=%s, password=%s",

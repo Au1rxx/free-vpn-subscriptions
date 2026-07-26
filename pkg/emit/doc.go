@@ -10,7 +10,7 @@
 //   - QuantumultX — QuanX server_local (partial: SS/Trojan/VMess)
 //   - Loon        — Loon conf (partial: SS/Trojan/VMess)
 //
-// Stability
+// # Stability
 //
 // This package is public but pre-1.0. The Clash/Singbox/V2RayBase64 outputs
 // include an opinionated selector/url-test group; the Surge/Loon outputs add

@@ -13,8 +13,9 @@ import (
 func QuantumultX(nodes []*node.Node) (string, error) {
 	var lines []string
 	lines = append(lines, "[server_local]")
-	for i, n := range nodes {
-		line := quanxLine(n, i)
+	alloc := newNameAllocator()
+	for _, n := range nodes {
+		line := quanxLine(n, alloc)
 		if line == "" {
 			continue
 		}
@@ -23,8 +24,8 @@ func QuantumultX(nodes []*node.Node) (string, error) {
 	return strings.Join(lines, "\n") + "\n", nil
 }
 
-func quanxLine(n *node.Node, idx int) string {
-	tag := fmt.Sprintf("%02d-%s-%s", idx+1, n.Protocol, safe(n.Name))
+func quanxLine(n *node.Node, alloc *nameAllocator) string {
+	tag := alloc.name(n)
 	switch n.Protocol {
 	case node.ProtoSS:
 		parts := []string{
