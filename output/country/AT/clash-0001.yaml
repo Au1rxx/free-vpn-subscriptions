@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-2297599
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 5GhMSJXQv1wXHVD999YHRRj83m-7VKH8qb_vTxBGbng
+        short-id: "08"
+      server: 77.73.131.154
+      servername: vindobona.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1f4c983e-382c-d2fa-b2dc-7981f02b34de
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-2335815
@@ -29,7 +43,7 @@ proxies:
       uuid: bcc094e4-1a85-8a25-f8e1-5b08b9af841c
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-2297599
+      name: vless-21020648
       network: tcp
       port: 443
       reality-opts:
@@ -55,39 +69,25 @@ proxies:
       type: vless
       udp: true
       uuid: 1f4c983e-382c-d2fa-b2dc-7981f02b34de
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-21020648
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 5GhMSJXQv1wXHVD999YHRRj83m-7VKH8qb_vTxBGbng
-        short-id: "08"
-      server: 77.73.131.154
-      servername: vindobona.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1f4c983e-382c-d2fa-b2dc-7981f02b34de
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-2297599
         - vless-2335815
         - vless-2335816
-        - vless-2297599
-        - vless-51273384
         - vless-21020648
+        - vless-51273384
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-2297599
         - vless-2335815
         - vless-2335816
-        - vless-2297599
-        - vless-51273384
         - vless-21020648
+        - vless-51273384
       type: select
 rules:
     - MATCH,select

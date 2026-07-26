@@ -1,39 +1,11 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-156551172
-      password: nHCcsXK2rEcs9lRi
-      port: 443
-      server: 20.107.187.192
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-150910540
-      password: vWcimUSiT1rfVM1v
-      port: 443
-      server: 20.107.187.192
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-140895862
       password: sCw2bhRZmJhpmgrL
       port: 443
       server: 4.210.67.30
       type: ss
       udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-148420169
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: OCLtjVdRxsou3429LRfjkDYgiAPs24TSgSeFZpChCEw
-        short-id: d67ec5a8fc40ebea
-      server: ire03.myxasecure.space
-      servername: ire03.myxasecure.space
-      tls: true
-      type: vless
-      udp: true
-      uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-147368320
@@ -62,27 +34,55 @@ proxies:
       type: vless
       udp: true
       uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-148420169
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: OCLtjVdRxsou3429LRfjkDYgiAPs24TSgSeFZpChCEw
+        short-id: d67ec5a8fc40ebea
+      server: ire03.myxasecure.space
+      servername: ire03.myxasecure.space
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-150910540
+      password: vWcimUSiT1rfVM1v
+      port: 443
+      server: 20.107.187.192
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-156551172
+      password: nHCcsXK2rEcs9lRi
+      port: 443
+      server: 20.107.187.192
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-156551172
-        - shadowsocks-150910540
         - shadowsocks-140895862
-        - vless-148420169
         - vless-147368320
         - vless-148366746
+        - vless-148420169
+        - shadowsocks-150910540
+        - shadowsocks-156551172
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-156551172
-        - shadowsocks-150910540
         - shadowsocks-140895862
-        - vless-148420169
         - vless-147368320
         - vless-148366746
+        - vless-148420169
+        - shadowsocks-150910540
+        - shadowsocks-156551172
       type: select
 rules:
     - MATCH,select
