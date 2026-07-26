@@ -242,18 +242,21 @@
 - Generated: `docs/data/network-history.json`
 - Update: 本计划的状态、证据、变更记录和完成情况。
 
-- [ ] **Step 1: 全量本地门禁**
+- [x] **Step 1: 全量本地门禁**
   - Run: `go build ./... && go vet ./... && go test ./... -count=1`
   - Expected: exit 0，无失败或跳过的确定性测试。
+  - 证据：合并结果 `42b892651ce0` 提交前，build、vet、全测试、工作树与暂存 diff-check 均退出 0。
 
-- [ ] **Step 2: 生成并做本地 E2E**
+- [x] **Step 2: 生成并做本地 E2E**
   - 使用现有 DB export/site-root 发布入口生成所有 README 和 Pages，不直接编辑生成文件。
   - 启动临时静态服务器，检查 `/`、`/index.zh.html`、一个国家页、`/sitemap.xml`、
     `/data/network-history.json` 和仓库 SVG；检查 JSON-LD 可解析且 HTML 无第三方运行时请求。
+  - 证据：真实数据库导出成功；6 个目标均 HTTP 200，旧国家页为 404，JSON-LD/XML/JSON 解析及零第三方脚本断言通过。
 
-- [ ] **Step 3: 完整 diff 与独立审阅**
+- [x] **Step 3: 完整 diff 与独立审阅**
   - 检查生成文件规模、无凭据/上游 URL、无无关改动；执行 `code-review` 并解决 Critical/Important。
   - 再运行受影响 targeted tests 和 full 门禁。
+  - 证据：审阅发现并修复 30 天窗口需 721 个端点、生成 HTML 尾随空格、同小时重复点和陈旧国家页四项问题；复审无剩余 Critical/Important。
 
 - [ ] **Step 4: 推送与线上验证**
   - 普通 push `main`，禁止 force；等待 GitHub Pages 和一次 publisher 更新。
@@ -274,6 +277,7 @@
 ## 变更记录
 
 - 2026-07-26：根据已批准的实时报告方案与设计文档创建。
+- 2026-07-26：完成 Tasks 1–5、本地验证、真实生成、E2E 与合并自审；上线验证进行中。
 
 ## 回滚
 
@@ -282,4 +286,4 @@ SVG 均为可删除的派生产物，没有数据库、订阅格式或远程服�
 
 ## 完成情况
 
-尚未开始执行；完成后补充最终验证、审阅结果、线上状态和剩余风险。
+本地实现与合并验证已完成；等待普通推送、GitHub Pages、Star workflow 和外部 publisher 线上验证。
