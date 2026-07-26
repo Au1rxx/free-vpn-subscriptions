@@ -1,0 +1,49 @@
+name: Suggest a source
+description: Propose a public subscription feed to aggregate
+labels: ["source"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We only aggregate sources that are public and need no account, token,
+        or payment. The live source list is not published — see
+        [ARCHITECTURE.md](https://github.com/Au1rxx/free-vpn-subscriptions/blob/main/ARCHITECTURE.md)
+        for why.
+  - type: input
+    id: url
+    attributes:
+      label: Source URL
+    validations:
+      required: true
+  - type: dropdown
+    id: format
+    attributes:
+      label: Format
+      options:
+        - uri-list (one vless:// / vmess:// / trojan:// ... per line)
+        - base64 (base64-encoded uri-list)
+        - Clash YAML
+        - not sure
+    validations:
+      required: true
+  - type: dropdown
+    id: auth
+    attributes:
+      label: Does it require an account, token, or payment?
+      options:
+        - "No — fully public"
+        - "Yes"
+    validations:
+      required: true
+  - type: input
+    id: frequency
+    attributes:
+      label: How often does it update?
+      placeholder: "e.g. every 30 minutes, daily, unknown"
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else worth knowing
+      description: >
+        For example: it is a mirror of another list, it is rate-limited, or it
+        mostly carries one protocol.

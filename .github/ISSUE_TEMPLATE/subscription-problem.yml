@@ -1,0 +1,67 @@
+name: Subscription problem
+description: A subscription file is empty, malformed, stale, or nothing in it connects
+labels: ["subscription"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Individual dead nodes are expected — they come from public sources and
+        die constantly, and `clash.yaml` ships with a `url-test` group so your
+        client can skip them. Please report a problem with the *file*, not with
+        one node.
+  - type: checkboxes
+    id: checked
+    attributes:
+      label: Before reporting
+      options:
+        - label: I re-fetched the subscription (it is rewritten every hour)
+          required: true
+        - label: I tried more than one node, or my client's automatic selection
+          required: true
+  - type: dropdown
+    id: file
+    attributes:
+      label: Which file?
+      options:
+        - output/clash.yaml
+        - output/singbox.json
+        - output/v2ray-base64.txt
+        - a sharded file under output/ (country, protocol, network, stable)
+        - other / not sure
+    validations:
+      required: true
+  - type: input
+    id: client
+    attributes:
+      label: Client and version
+      placeholder: "e.g. Clash Verge 2.4.2, sing-box 1.13, v2rayNG 1.10.7"
+    validations:
+      required: true
+  - type: dropdown
+    id: symptom
+    attributes:
+      label: What is wrong?
+      options:
+        - The file fails to import / parse
+        - The file is empty or has far fewer nodes than usual
+        - The `updated` badge is many hours old
+        - The file imports but no node connects at all
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: Details
+      description: >
+        Exact error text if there is one. Please redact anything you consider
+        sensitive, and do not paste full node URIs with credentials.
+    validations:
+      required: true
+  - type: input
+    id: region
+    attributes:
+      label: Country / network (optional)
+      description: >
+        Reachability varies a lot by ISP. Knowing where you are helps tell a
+        local block apart from a broken file.
