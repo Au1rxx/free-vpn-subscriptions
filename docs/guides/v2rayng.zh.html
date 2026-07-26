@@ -92,6 +92,46 @@
   .country-flag { font-size: 32px; }
   .country-name { font-weight: 600; color: #f1f5f9; font-size: 14px; }
   .country-count { color: #94a3b8; font-size: 13px; }
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 12px; margin: 20px 0;
+  }
+  .stat-card {
+    display: flex; flex-direction: column; gap: 2px; padding: 16px;
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+  }
+  .stat-card strong { color: #f8fafc; font-size: 24px; }
+  .stat-card span { color: #94a3b8; font-size: 13px; }
+  .report-grid {
+    display: grid; grid-template-columns: minmax(0,2fr) minmax(0,3fr);
+    gap: 16px; margin-top: 16px;
+  }
+  .report-panel {
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+    padding: 18px;
+  }
+  .report-panel h3 { margin: 0 0 12px; color: #f1f5f9; font-size: 17px; }
+  .metric-list { display: flex; flex-direction: column; gap: 8px; }
+  .metric-row {
+    display: grid; grid-template-columns: minmax(0,1fr) auto 64px;
+    gap: 12px; align-items: center; padding: 8px 10px;
+    background: #0f172a; border-radius: 7px; color: #cbd5e1;
+  }
+  .metric-row strong { color: #f8fafc; }
+  .metric-row span:last-child { text-align: right; color: #93c5fd; font-variant-numeric: tabular-nums; }
+  .trend-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+  .trend-card {
+    display: flex; flex-direction: column; gap: 5px; padding: 12px;
+    background: #111c31; border-radius: 8px; color: #94a3b8; font-size: 12px;
+  }
+  .trend-card strong { color: #f1f5f9; font-size: 14px; }
+  .trend-chart { width: 100%; height: auto; margin-top: 16px; }
+  .chart-axis { stroke: #475569; stroke-width: 1; }
+  .chart-line { fill: none; stroke: #60a5fa; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  .chart-label { fill: #94a3b8; font-size: 11px; }
+  .info-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+  .info-grid h2 { font-size: 18px; }
+  .info-grid p { color: #cbd5e1; margin-bottom: 0; }
   .client-list { padding-left: 20px; }
   .client-list li { margin-bottom: 6px; color: #cbd5e1; }
   details { margin: 10px 0; padding: 12px 16px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; }
@@ -104,13 +144,20 @@
   footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
   footer a { color: #93c5fd; }
   footer .small { font-size: 12px; margin-top: 8px; max-width: 680px; margin-left: auto; margin-right: auto; }
+  @media (max-width: 700px) {
+    .card { padding: 22px 18px; margin: 14px 12px; }
+    .lang-switch { padding-left: 16px; padding-right: 16px; text-align: center; }
+    .stat-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .report-grid, .info-grid { grid-template-columns: 1fr; }
+    .trend-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 <div class="lang-switch">
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/guides/v2rayng.html">English</a>
-  <strong>简体中文</strong>
-  
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/guides/v2rayng.html">English</a>
+<strong>简体中文</strong>
+
 </div>
 
 <nav class="breadcrumb">
@@ -123,7 +170,7 @@
   <p class="meta">
     <span class="badge badge-blue">v2rayNG</span>
     <span class="badge badge-gray">Android 5.0&#43;</span>
-    <span class="badge badge-green">更新 · 2026-07-26 06:17 UTC</span>
+    <span class="badge badge-green">更新 · 2026-07-26 07:06 UTC</span>
   </p>
   <p class="repo">
     <a href="https://github.com/2dust/v2rayNG/releases/latest" class="btn-outline" target="_blank" rel="noopener">⬇ 下载 v2rayNG</a>
@@ -144,63 +191,63 @@
 <section class="card">
   <h2>🪜 操作步骤</h2>
   <ol class="steps">
-    
+
     <li>
       <h3>安装 v2rayNG</h3>
       <p>去 <a href="https://github.com/2dust/v2rayNG/releases/latest" target="_blank" rel="noopener">v2rayNG Releases</a> 下载最新 <code>.apk</code>。安装时安卓可能提示"允许安装未知来源应用",给浏览器授权即可。部分地区的 Google Play 也能装。</p>
     </li>
-    
+
     <li>
       <h3>复制订阅链接</h3>
       <p>在<a href="../index.html">首页</a>,长按 <strong>v2rayN / v2rayNG</strong> 那一行的 URL,选 <strong>复制链接</strong>。这是 v2ray-base64 格式。</p>
     </li>
-    
+
     <li>
       <h3>添加为订阅组</h3>
       <p>打开 v2rayNG,点 <strong>≡</strong> → <strong>订阅设置</strong> → <strong>+</strong>。名字随便填,把 URL 粘进 <strong>URL</strong>,其他默认,点 <strong>✓</strong>。</p>
     </li>
-    
+
     <li>
       <h3>更新订阅</h3>
       <p>回主界面,点 <strong>≡</strong> → <strong>更新订阅 (不使用代理)</strong>。几秒后能看到节点列表。</p>
     </li>
-    
+
     <li>
       <h3>测试并连接</h3>
       <p>点任意一个服务器,然后点右下角大 <strong>V</strong> 按钮启动 VPN。安卓会弹 VPN 权限提示,点"允许"。V 变绿就是连上了。</p>
     </li>
-    
+
     <li>
       <h3>验证国家</h3>
       <p>浏览器打开 <code>ipinfo.io</code>,显示的国家应该和你选的节点一致。如果还是国内 IP,点 V 断开重连一下。</p>
     </li>
-    
+
   </ol>
 </section>
 
 <section class="card">
   <h2>💡 常见问题排错</h2>
-  
+
   <details><summary>要不要开分应用代理?</summary><p>普通上网默认全局就行。想让银行 App、本地应用不走 VPN,在 <strong>设置 → 分应用代理</strong> 把它们排除。</p></details>
-  
+
   <details><summary>怎么找最快的节点?</summary><p>点 <strong>≡</strong> → <strong>真连接延迟测试</strong>,v2rayNG 会测每个节点。按延迟排序,选最低那个。</p></details>
-  
+
   <details><summary>某个节点突然连不上</summary><p>换同一国家的另一个节点。免费节点会轮换,我们每小时刷新一次列表。</p></details>
-  
+
   <details><summary>Android TV 能用 v2rayNG 吗?</summary><p>能,但要用 sideload 或 adb 安装。遥控器操作有点别扭,Android TV 建议用 Clash Meta for Android TV。</p></details>
-  
+
 </section>
 
 <section class="card">
   <h2>📚 其他客户端教程</h2>
   <ul class="client-list">
-    
+
     <li><a href="clash-verge.zh.html">Clash Verge</a> · Windows, macOS, Linux</li>
-    
+
     <li><a href="shadowrocket.zh.html">Shadowrocket</a> · iOS 15&#43;, iPadOS 15&#43;</li>
-    
+
     <li><a href="sing-box.zh.html">sing-box</a> · Windows, macOS, Linux, iOS, Android</li>
-    
+
   </ul>
 </section>
 

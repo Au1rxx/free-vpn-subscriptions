@@ -30,7 +30,7 @@
 <meta name="twitter:description" content="2000 TCP&#43;TLS-verified free VPN nodes from public sources. Hourly refresh. Copy a Clash, sing-box or v2ray URL and paste into your client.">
 <meta name="twitter:image" content="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png">
 <meta name="twitter:image:alt" content="Free VPN Subscriptions">
-<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebSite","description":"2000 hourly-refreshed free VPN nodes, TCP+TLS verified.","inLanguage":"en","name":"Free VPN Subscriptions","url":"https://au1rxx.github.io/free-vpn-subscriptions/"},{"@context":"https://schema.org","@type":"SoftwareApplication","aggregateRating":{"@type":"AggregateRating","ratingValue":"4.6","reviewCount":"47"},"applicationCategory":"NetworkingApplication","description":"Free VPN subscription aggregator for Clash, sing-box, and v2ray.","name":"Free VPN Subscriptions","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"operatingSystem":"Windows, macOS, iOS, Android, Linux"},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"Yes. Nodes are operated by third-party volunteers. We don't run any servers — we just test, rank, and repackage what's already public."},"name":"Is this actually free?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"A GitHub Action runs every hour: pulls all upstream sources, TCP+TLS probes every node, drops anything dead, sorts by latency, commits new output files."},"name":"How fresh is the data?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"Free nodes see all your traffic. Never use them for banking, login, or anything sensitive. Fine for bypassing geo-blocks on public content. Use your own VPS or a paid provider for real privacy."},"name":"Can I trust these nodes?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"We verify TCP reachability and TLS handshakes, but a node may still have an expired quota, bad routing, or revoked certs. Try a few; the selector group gives you fallbacks."},"name":"Why do some nodes fail?"}]}]</script>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebSite","dateModified":"2026-07-26T07:06:16Z","description":"2000 TCP+TLS-verified free VPN nodes from public sources. Hourly refresh. Copy a Clash, sing-box or v2ray URL and paste into your client.","inLanguage":"en","name":"Free VPN Subscriptions","url":"https://au1rxx.github.io/free-vpn-subscriptions/"},{"@context":"https://schema.org","@type":"Dataset","dateModified":"2026-07-26T07:06:16Z","description":"2000 TCP+TLS-verified free VPN nodes from public sources. Hourly refresh. Copy a Clash, sing-box or v2ray URL and paste into your client.","distribution":[{"@type":"DataDownload","contentUrl":"https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/clash.yaml","encodingFormat":"application/yaml","name":"Clash YAML subscription"},{"@type":"DataDownload","contentUrl":"https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/singbox.json","encodingFormat":"application/json","name":"sing-box JSON subscription"},{"@type":"DataDownload","contentUrl":"https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/output/v2ray-base64.txt","encodingFormat":"text/plain","name":"v2ray base64 subscription"}],"inLanguage":"en","isAccessibleForFree":true,"keywords":"free vpn, vpn subscription, clash, sing-box, v2ray, vless, reality, trojan, shadowsocks, hysteria2, proxy list, free proxy","license":"https://opensource.org/licenses/MIT","name":"Free VPN Subscriptions","url":"https://au1rxx.github.io/free-vpn-subscriptions/"},{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"Yes. Nodes are operated by third-party volunteers. We don't run any servers — we just test, rank, and repackage what's already public."},"name":"Is this actually free?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"An external scheduler runs the publisher about once an hour, refreshing the verified database export, subscription files, and this site whenever the data changes."},"name":"How fresh is the data?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"Free nodes see all your traffic. Never use them for banking, login, or anything sensitive. Fine for bypassing geo-blocks on public content. Use your own VPS or a paid provider for real privacy."},"name":"Can I trust these nodes?"},{"@type":"Question","acceptedAnswer":{"@type":"Answer","text":"We verify TCP reachability and TLS handshakes, but a node may still have an expired quota, bad routing, or revoked certs. Try a few; the selector group gives you fallbacks."},"name":"Why do some nodes fail?"}]}]</script>
 <style>
   :root { color-scheme: dark; }
   * { box-sizing: border-box; }
@@ -97,6 +97,46 @@
   .country-flag { font-size: 32px; }
   .country-name { font-weight: 600; color: #f1f5f9; font-size: 14px; }
   .country-count { color: #94a3b8; font-size: 13px; }
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 12px; margin: 20px 0;
+  }
+  .stat-card {
+    display: flex; flex-direction: column; gap: 2px; padding: 16px;
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+  }
+  .stat-card strong { color: #f8fafc; font-size: 24px; }
+  .stat-card span { color: #94a3b8; font-size: 13px; }
+  .report-grid {
+    display: grid; grid-template-columns: minmax(0,2fr) minmax(0,3fr);
+    gap: 16px; margin-top: 16px;
+  }
+  .report-panel {
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+    padding: 18px;
+  }
+  .report-panel h3 { margin: 0 0 12px; color: #f1f5f9; font-size: 17px; }
+  .metric-list { display: flex; flex-direction: column; gap: 8px; }
+  .metric-row {
+    display: grid; grid-template-columns: minmax(0,1fr) auto 64px;
+    gap: 12px; align-items: center; padding: 8px 10px;
+    background: #0f172a; border-radius: 7px; color: #cbd5e1;
+  }
+  .metric-row strong { color: #f8fafc; }
+  .metric-row span:last-child { text-align: right; color: #93c5fd; font-variant-numeric: tabular-nums; }
+  .trend-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+  .trend-card {
+    display: flex; flex-direction: column; gap: 5px; padding: 12px;
+    background: #111c31; border-radius: 8px; color: #94a3b8; font-size: 12px;
+  }
+  .trend-card strong { color: #f1f5f9; font-size: 14px; }
+  .trend-chart { width: 100%; height: auto; margin-top: 16px; }
+  .chart-axis { stroke: #475569; stroke-width: 1; }
+  .chart-line { fill: none; stroke: #60a5fa; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  .chart-label { fill: #94a3b8; font-size: 11px; }
+  .info-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+  .info-grid h2 { font-size: 18px; }
+  .info-grid p { color: #cbd5e1; margin-bottom: 0; }
   .client-list { padding-left: 20px; }
   .client-list li { margin-bottom: 6px; color: #cbd5e1; }
   details { margin: 10px 0; padding: 12px 16px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; }
@@ -109,19 +149,26 @@
   footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
   footer a { color: #93c5fd; }
   footer .small { font-size: 12px; margin-top: 8px; max-width: 680px; margin-left: auto; margin-right: auto; }
+  @media (max-width: 700px) {
+    .card { padding: 22px 18px; margin: 14px 12px; }
+    .lang-switch { padding-left: 16px; padding-right: 16px; text-align: center; }
+    .stat-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .report-grid, .info-grid { grid-template-columns: 1fr; }
+    .trend-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 <div class="lang-switch">
   <span>Language:</span>
-  <strong>English</strong>
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/index.zh.html">简体中文</a>
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/index.ja.html">日本語</a>
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/index.ko.html">한국어</a>
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/index.es.html">Español</a>
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/index.pt.html">Português</a>
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/index.ru.html">Русский</a>
-  
+<strong>English</strong>
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/index.zh.html">简体中文</a>
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/index.ja.html">日本語</a>
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/index.ko.html">한국어</a>
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/index.es.html">Español</a>
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/index.pt.html">Português</a>
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/index.ru.html">Русский</a>
+
 </div>
 
 <header class="hero">
@@ -129,9 +176,9 @@
   <p class="sub">The easiest way to get a working free VPN — copy a subscription link, paste it into your client, connect.</p>
   <p class="meta">
     <span class="badge badge-green">nodes · 2000</span>
-    <span class="badge badge-blue">alive · 7811</span>
-    <span class="badge badge-orange">median RTT · 584 ms</span>
-    <span class="badge badge-gray">updated · 2026-07-26 06:17 UTC</span>
+    <span class="badge badge-blue">alive · 7777</span>
+    <span class="badge badge-orange">median RTT · 583 ms</span>
+    <span class="badge badge-gray">updated · 2026-07-26 07:06 UTC</span>
   </p>
   <p class="repo">
     <a href="https://github.com/Au1rxx/free-vpn-subscriptions" class="btn-outline" target="_blank" rel="noopener">⭐ Star on GitHub</a>
@@ -158,276 +205,354 @@
   <p><a href="https://github.com/Au1rxx/free-vpn-subscriptions/tree/main/output" target="_blank" rel="noopener">Database-classified shards: stable · all verified · protocol · country · network</a></p>
 </section>
 
+<section class="card" id="live-report">
+  <h2>📊 Live Network Report</h2>
+  <p>A machine-generated snapshot from the latest hourly export. Counts and rolling trends update with the subscription files.</p>
+  <div class="stat-grid">
+    <div class="stat-card"><strong>2000</strong><span>curated nodes</span></div>
+    <div class="stat-card"><strong>7777</strong><span>verified nodes</span></div>
+    <div class="stat-card"><strong>44</strong><span>countries</span></div>
+    <div class="stat-card"><strong>583 ms</strong><span>median RTT</span></div>
+  </div>
+  <div class="report-grid">
+    <div class="report-panel">
+      <h3>Protocol distribution</h3>
+      <div class="metric-list">
+<div class="metric-row"><span>TROJAN</span><strong>1096</strong><span>54.8%</span></div>
+<div class="metric-row"><span>SOCKS5</span><strong>265</strong><span>13.3%</span></div>
+<div class="metric-row"><span>HTTP</span><strong>225</strong><span>11.3%</span></div>
+<div class="metric-row"><span>SHADOWSOCKS</span><strong>187</strong><span>9.4%</span></div>
+<div class="metric-row"><span>SOCKS4</span><strong>84</strong><span>4.2%</span></div>
+<div class="metric-row"><span>HYSTERIA2</span><strong>83</strong><span>4.1%</span></div>
+<div class="metric-row"><span>VLESS</span><strong>58</strong><span>2.9%</span></div>
+<div class="metric-row"><span>HTTPS</span><strong>1</strong><span>0.0%</span></div>
+<div class="metric-row"><span>VMESS</span><strong>1</strong><span>0.0%</span></div>
+
+      </div>
+    </div>
+    <div class="report-panel">
+      <h3>Rolling network trends</h3>
+      <div class="trend-grid">
+        <div class="trend-card" data-window="24h">
+          <strong>24 hours</strong>
+<span>Collecting enough history</span>
+        </div>
+        <div class="trend-card" data-window="7d">
+          <strong>7 days</strong>
+<span>Collecting enough history</span>
+        </div>
+        <div class="trend-card" data-window="30d">
+          <strong>30 days</strong>
+<span>Collecting enough history</span>
+        </div>
+      </div>
+    </div>
+  </div>
+<svg class="trend-chart" viewBox="0 0 760 180" role="img" aria-label="30-day selected node trend"><title>30-day selected node trend</title><desc>Selected nodes over the retained hourly history.</desc><line x1="24" y1="156" x2="736" y2="156" class="chart-axis"/><polyline points="24.0,156.0 736.0,156.0" class="chart-line"/><text x="24" y="18" class="chart-label">2000</text><text x="24" y="174" class="chart-label">2000</text></svg>
+</section>
+
+
+<section class="card" id="top-countries">
+  <h2>Top countries in this snapshot</h2>
+  <div class="metric-list">
+<div class="metric-row"><span>🇳🇱 Netherlands</span><strong>351</strong><span>17.9%</span></div>
+<div class="metric-row"><span>🇫🇷 France</span><strong>267</strong><span>13.6%</span></div>
+<div class="metric-row"><span>🇰🇷 Korea</span><strong>218</strong><span>11.1%</span></div>
+<div class="metric-row"><span>🇦🇺 Australia</span><strong>194</strong><span>9.9%</span></div>
+<div class="metric-row"><span>🇯🇵 Japan</span><strong>159</strong><span>8.1%</span></div>
+<div class="metric-row"><span>🇺🇸 United States</span><strong>123</strong><span>6.3%</span></div>
+<div class="metric-row"><span>🇵🇱 Poland</span><strong>94</strong><span>4.8%</span></div>
+<div class="metric-row"><span>🇭🇰 Hong Kong</span><strong>68</strong><span>3.5%</span></div>
+
+  </div>
+</section>
+
+
+<section class="card info-grid">
+  <div>
+    <h2>How nodes are verified</h2>
+    <p>Public configurations are normalized and deduplicated, then checked with real HTTP and HTTPS requests through the proxy before publication.</p>
+  </div>
+  <div>
+    <h2>What the checks do not prove</h2>
+    <p>A successful small request does not measure bandwidth or future availability. Free nodes can slow down or disappear between hourly updates.</p>
+  </div>
+  <div>
+    <h2>Which subscription should I use?</h2>
+    <p>Use the global Clash URL for automatic fallback, a country feed for a specific exit region, or the sing-box/v2ray format required by your client.</p>
+  </div>
+</section>
+
 
 <section class="card">
   <h2>🌍 By Country</h2>
   <p>Want nodes in a specific region only? Choose a targeted subscription:</p>
   <div class="country-grid">
-    
+
     <a class="country-card" href="nl.html">
       <div class="country-flag">🇳🇱</div>
       <div class="country-name">Netherlands</div>
-      <div class="country-count">354 nodes</div>
+      <div class="country-count">351 nodes</div>
     </a>
-    
+
     <a class="country-card" href="fr.html">
       <div class="country-flag">🇫🇷</div>
       <div class="country-name">France</div>
-      <div class="country-count">268 nodes</div>
+      <div class="country-count">267 nodes</div>
     </a>
-    
+
     <a class="country-card" href="kr.html">
       <div class="country-flag">🇰🇷</div>
       <div class="country-name">Korea</div>
-      <div class="country-count">219 nodes</div>
+      <div class="country-count">218 nodes</div>
     </a>
-    
+
     <a class="country-card" href="au.html">
       <div class="country-flag">🇦🇺</div>
       <div class="country-name">Australia</div>
-      <div class="country-count">192 nodes</div>
+      <div class="country-count">194 nodes</div>
     </a>
-    
+
     <a class="country-card" href="jp.html">
       <div class="country-flag">🇯🇵</div>
       <div class="country-name">Japan</div>
-      <div class="country-count">158 nodes</div>
+      <div class="country-count">159 nodes</div>
     </a>
-    
+
     <a class="country-card" href="us.html">
       <div class="country-flag">🇺🇸</div>
       <div class="country-name">United States</div>
-      <div class="country-count">122 nodes</div>
+      <div class="country-count">123 nodes</div>
     </a>
-    
+
     <a class="country-card" href="pl.html">
       <div class="country-flag">🇵🇱</div>
       <div class="country-name">Poland</div>
-      <div class="country-count">98 nodes</div>
+      <div class="country-count">94 nodes</div>
     </a>
-    
+
     <a class="country-card" href="hk.html">
       <div class="country-flag">🇭🇰</div>
       <div class="country-name">Hong Kong</div>
       <div class="country-count">68 nodes</div>
     </a>
-    
+
     <a class="country-card" href="de.html">
       <div class="country-flag">🇩🇪</div>
       <div class="country-name">Germany</div>
       <div class="country-count">67 nodes</div>
     </a>
-    
+
     <a class="country-card" href="sg.html">
       <div class="country-flag">🇸🇬</div>
       <div class="country-name">Singapore</div>
-      <div class="country-count">58 nodes</div>
+      <div class="country-count">65 nodes</div>
     </a>
-    
+
     <a class="country-card" href="cn.html">
       <div class="country-flag">🇨🇳</div>
       <div class="country-name">China</div>
-      <div class="country-count">40 nodes</div>
+      <div class="country-count">42 nodes</div>
     </a>
-    
+
     <a class="country-card" href="in.html">
       <div class="country-flag">🇮🇳</div>
       <div class="country-name">India</div>
-      <div class="country-count">31 nodes</div>
+      <div class="country-count">30 nodes</div>
     </a>
-    
-    <a class="country-card" href="gb.html">
-      <div class="country-flag">🇬🇧</div>
-      <div class="country-name">United Kingdom</div>
-      <div class="country-count">24 nodes</div>
-    </a>
-    
+
     <a class="country-card" href="fi.html">
       <div class="country-flag">🇫🇮</div>
       <div class="country-name">Finland</div>
-      <div class="country-count">23 nodes</div>
+      <div class="country-count">24 nodes</div>
     </a>
-    
+
     <a class="country-card" href="id.html">
       <div class="country-flag">🇮🇩</div>
       <div class="country-name">Indonesia</div>
       <div class="country-count">23 nodes</div>
     </a>
-    
+
+    <a class="country-card" href="gb.html">
+      <div class="country-flag">🇬🇧</div>
+      <div class="country-name">United Kingdom</div>
+      <div class="country-count">22 nodes</div>
+    </a>
+
     <a class="country-card" href="tr.html">
       <div class="country-flag">🇹🇷</div>
       <div class="country-name">Turkey</div>
-      <div class="country-count">22 nodes</div>
+      <div class="country-count">21 nodes</div>
     </a>
-    
+
     <a class="country-card" href="ru.html">
       <div class="country-flag">🇷🇺</div>
       <div class="country-name">Russia</div>
-      <div class="country-count">19 nodes</div>
+      <div class="country-count">16 nodes</div>
     </a>
-    
+
     <a class="country-card" href="vn.html">
       <div class="country-flag">🇻🇳</div>
       <div class="country-name">Vietnam</div>
-      <div class="country-count">18 nodes</div>
+      <div class="country-count">16 nodes</div>
     </a>
-    
+
     <a class="country-card" href="tw.html">
       <div class="country-flag">🇹🇼</div>
       <div class="country-name">Taiwan</div>
       <div class="country-count">13 nodes</div>
     </a>
-    
+
     <a class="country-card" href="br.html">
       <div class="country-flag">🇧🇷</div>
       <div class="country-name">Brazil</div>
-      <div class="country-count">11 nodes</div>
+      <div class="country-count">12 nodes</div>
     </a>
-    
+
+    <a class="country-card" href="ca.html">
+      <div class="country-flag">🇨🇦</div>
+      <div class="country-name">Canada</div>
+      <div class="country-count">10 nodes</div>
+    </a>
+
     <a class="country-card" href="co.html">
       <div class="country-flag">🇨🇴</div>
       <div class="country-name">Colombia</div>
       <div class="country-count">10 nodes</div>
     </a>
-    
+
     <a class="country-card" href="ec.html">
       <div class="country-flag">🇪🇨</div>
       <div class="country-name">Ecuador</div>
       <div class="country-count">10 nodes</div>
     </a>
-    
+
     <a class="country-card" href="se.html">
       <div class="country-flag">🇸🇪</div>
       <div class="country-name">Sweden</div>
       <div class="country-count">10 nodes</div>
     </a>
-    
-    <a class="country-card" href="ca.html">
-      <div class="country-flag">🇨🇦</div>
-      <div class="country-name">Canada</div>
-      <div class="country-count">9 nodes</div>
-    </a>
-    
+
     <a class="country-card" href="bd.html">
       <div class="country-flag">🇧🇩</div>
       <div class="country-name">BD</div>
       <div class="country-count">8 nodes</div>
     </a>
-    
-    <a class="country-card" href="th.html">
-      <div class="country-flag">🇹🇭</div>
-      <div class="country-name">Thailand</div>
-      <div class="country-count">7 nodes</div>
-    </a>
-    
+
     <a class="country-card" href="ar.html">
       <div class="country-flag">🇦🇷</div>
       <div class="country-name">Argentina</div>
       <div class="country-count">6 nodes</div>
     </a>
-    
+
     <a class="country-card" href="ch.html">
       <div class="country-flag">🇨🇭</div>
       <div class="country-name">Switzerland</div>
       <div class="country-count">6 nodes</div>
     </a>
-    
+
     <a class="country-card" href="it.html">
       <div class="country-flag">🇮🇹</div>
       <div class="country-name">Italy</div>
       <div class="country-count">6 nodes</div>
     </a>
-    
+
     <a class="country-card" href="kh.html">
       <div class="country-flag">🇰🇭</div>
       <div class="country-name">KH</div>
       <div class="country-count">6 nodes</div>
     </a>
-    
+
     <a class="country-card" href="ro.html">
       <div class="country-flag">🇷🇴</div>
       <div class="country-name">Romania</div>
       <div class="country-count">6 nodes</div>
     </a>
-    
+
     <a class="country-card" href="t1.html">
       <div class="country-flag">🇹🇖</div>
       <div class="country-name">T1</div>
       <div class="country-count">6 nodes</div>
     </a>
-    
+
+    <a class="country-card" href="th.html">
+      <div class="country-flag">🇹🇭</div>
+      <div class="country-name">Thailand</div>
+      <div class="country-count">6 nodes</div>
+    </a>
+
+    <a class="country-card" href="mx.html">
+      <div class="country-flag">🇲🇽</div>
+      <div class="country-name">Mexico</div>
+      <div class="country-count">5 nodes</div>
+    </a>
+
+    <a class="country-card" href="ua.html">
+      <div class="country-flag">🇺🇦</div>
+      <div class="country-name">Ukraine</div>
+      <div class="country-count">5 nodes</div>
+    </a>
+
     <a class="country-card" href="es.html">
       <div class="country-flag">🇪🇸</div>
       <div class="country-name">Spain</div>
       <div class="country-count">4 nodes</div>
     </a>
-    
+
     <a class="country-card" href="ir.html">
       <div class="country-flag">🇮🇷</div>
       <div class="country-name">IR</div>
       <div class="country-count">4 nodes</div>
     </a>
-    
+
     <a class="country-card" href="lt.html">
       <div class="country-flag">🇱🇹</div>
       <div class="country-name">Lithuania</div>
       <div class="country-count">4 nodes</div>
     </a>
-    
-    <a class="country-card" href="mx.html">
-      <div class="country-flag">🇲🇽</div>
-      <div class="country-name">Mexico</div>
-      <div class="country-count">4 nodes</div>
-    </a>
-    
-    <a class="country-card" href="ua.html">
-      <div class="country-flag">🇺🇦</div>
-      <div class="country-name">Ukraine</div>
-      <div class="country-count">4 nodes</div>
-    </a>
-    
+
     <a class="country-card" href="bg.html">
       <div class="country-flag">🇧🇬</div>
       <div class="country-name">Bulgaria</div>
       <div class="country-count">3 nodes</div>
     </a>
-    
+
     <a class="country-card" href="do.html">
       <div class="country-flag">🇩🇴</div>
       <div class="country-name">DO</div>
       <div class="country-count">3 nodes</div>
     </a>
-    
+
     <a class="country-card" href="hn.html">
       <div class="country-flag">🇭🇳</div>
       <div class="country-name">HN</div>
       <div class="country-count">3 nodes</div>
     </a>
-    
+
     <a class="country-card" href="is.html">
       <div class="country-flag">🇮🇸</div>
       <div class="country-name">Iceland</div>
       <div class="country-count">3 nodes</div>
     </a>
-    
+
     <a class="country-card" href="no.html">
       <div class="country-flag">🇳🇴</div>
       <div class="country-name">Norway</div>
       <div class="country-count">3 nodes</div>
     </a>
-    
+
     <a class="country-card" href="ph.html">
       <div class="country-flag">🇵🇭</div>
       <div class="country-name">Philippines</div>
       <div class="country-count">3 nodes</div>
     </a>
-    
+
     <a class="country-card" href="rs.html">
       <div class="country-flag">🇷🇸</div>
       <div class="country-name">Serbia</div>
       <div class="country-count">3 nodes</div>
     </a>
-    
+
   </div>
 </section>
 
@@ -437,15 +562,15 @@
   <h2>📖 Step-by-step Guides</h2>
   <p>New to VPN clients? Pick your platform:</p>
   <ul class="client-list">
-    
+
     <li><a href="guides/clash-verge.html"><strong>Clash Verge</strong></a> · Windows, macOS, Linux</li>
-    
+
     <li><a href="guides/v2rayng.html"><strong>v2rayNG</strong></a> · Android 5.0&#43;</li>
-    
+
     <li><a href="guides/shadowrocket.html"><strong>Shadowrocket</strong></a> · iOS 15&#43;, iPadOS 15&#43;</li>
-    
+
     <li><a href="guides/sing-box.html"><strong>sing-box</strong></a> · Windows, macOS, Linux, iOS, Android</li>
-    
+
   </ul>
 </section>
 
@@ -464,7 +589,7 @@
 <section class="card">
   <h2>❓ FAQ</h2>
   <details><summary>Is this actually free?</summary><p>Yes. Nodes are operated by third-party volunteers. We don&#39;t run any servers — we just test, rank, and repackage what&#39;s already public.</p></details>
-  <details><summary>How fresh is the data?</summary><p>A GitHub Action runs every hour: pulls all upstream sources, TCP&#43;TLS probes every node, drops anything dead, sorts by latency, commits new output files.</p></details>
+  <details><summary>How fresh is the data?</summary><p>An external scheduler runs the publisher about once an hour, refreshing the verified database export, subscription files, and this site whenever the data changes.</p></details>
   <details><summary>Can I trust these nodes?</summary><p>Free nodes see all your traffic. Never use them for banking, login, or anything sensitive. Fine for bypassing geo-blocks on public content. Use your own VPS or a paid provider for real privacy.</p></details>
   <details><summary>Why do some nodes fail?</summary><p>We verify TCP reachability and TLS handshakes, but a node may still have an expired quota, bad routing, or revoked certs. Try a few; the selector group gives you fallbacks.</p></details>
 </section>

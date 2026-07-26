@@ -92,6 +92,46 @@
   .country-flag { font-size: 32px; }
   .country-name { font-weight: 600; color: #f1f5f9; font-size: 14px; }
   .country-count { color: #94a3b8; font-size: 13px; }
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 12px; margin: 20px 0;
+  }
+  .stat-card {
+    display: flex; flex-direction: column; gap: 2px; padding: 16px;
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+  }
+  .stat-card strong { color: #f8fafc; font-size: 24px; }
+  .stat-card span { color: #94a3b8; font-size: 13px; }
+  .report-grid {
+    display: grid; grid-template-columns: minmax(0,2fr) minmax(0,3fr);
+    gap: 16px; margin-top: 16px;
+  }
+  .report-panel {
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+    padding: 18px;
+  }
+  .report-panel h3 { margin: 0 0 12px; color: #f1f5f9; font-size: 17px; }
+  .metric-list { display: flex; flex-direction: column; gap: 8px; }
+  .metric-row {
+    display: grid; grid-template-columns: minmax(0,1fr) auto 64px;
+    gap: 12px; align-items: center; padding: 8px 10px;
+    background: #0f172a; border-radius: 7px; color: #cbd5e1;
+  }
+  .metric-row strong { color: #f8fafc; }
+  .metric-row span:last-child { text-align: right; color: #93c5fd; font-variant-numeric: tabular-nums; }
+  .trend-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+  .trend-card {
+    display: flex; flex-direction: column; gap: 5px; padding: 12px;
+    background: #111c31; border-radius: 8px; color: #94a3b8; font-size: 12px;
+  }
+  .trend-card strong { color: #f1f5f9; font-size: 14px; }
+  .trend-chart { width: 100%; height: auto; margin-top: 16px; }
+  .chart-axis { stroke: #475569; stroke-width: 1; }
+  .chart-line { fill: none; stroke: #60a5fa; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  .chart-label { fill: #94a3b8; font-size: 11px; }
+  .info-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+  .info-grid h2 { font-size: 18px; }
+  .info-grid p { color: #cbd5e1; margin-bottom: 0; }
   .client-list { padding-left: 20px; }
   .client-list li { margin-bottom: 6px; color: #cbd5e1; }
   details { margin: 10px 0; padding: 12px 16px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; }
@@ -104,13 +144,20 @@
   footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
   footer a { color: #93c5fd; }
   footer .small { font-size: 12px; margin-top: 8px; max-width: 680px; margin-left: auto; margin-right: auto; }
+  @media (max-width: 700px) {
+    .card { padding: 22px 18px; margin: 14px 12px; }
+    .lang-switch { padding-left: 16px; padding-right: 16px; text-align: center; }
+    .stat-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .report-grid, .info-grid { grid-template-columns: 1fr; }
+    .trend-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 <div class="lang-switch">
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/guides/sing-box.html">English</a>
-  <strong>简体中文</strong>
-  
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/guides/sing-box.html">English</a>
+<strong>简体中文</strong>
+
 </div>
 
 <nav class="breadcrumb">
@@ -123,7 +170,7 @@
   <p class="meta">
     <span class="badge badge-blue">sing-box</span>
     <span class="badge badge-gray">Windows, macOS, Linux, iOS, Android</span>
-    <span class="badge badge-green">更新 · 2026-07-26 06:17 UTC</span>
+    <span class="badge badge-green">更新 · 2026-07-26 07:06 UTC</span>
   </p>
   <p class="repo">
     <a href="https://github.com/SagerNet/sing-box/releases/latest" class="btn-outline" target="_blank" rel="noopener">⬇ 下载 sing-box</a>
@@ -144,63 +191,63 @@
 <section class="card">
   <h2>🪜 操作步骤</h2>
   <ol class="steps">
-    
+
     <li>
       <h3>挑一种客户端</h3>
       <p>sing-box 有两种形态:命令行二进制 (Windows/macOS/Linux) 和移动端原生 App (iOS/Android)。桌面想要图形界面,装 <a href="https://github.com/hiddify/hiddify-app/releases" target="_blank" rel="noopener">Hiddify Next</a>。iOS 装免费的 <a href="https://apps.apple.com/app/sing-box/id6451272673" target="_blank" rel="noopener">sing-box</a>;安卓去 <a href="https://github.com/SagerNet/sing-box/releases/latest" target="_blank" rel="noopener">GitHub Releases</a> 下 APK。</p>
     </li>
-    
+
     <li>
       <h3>复制 sing-box 订阅链接</h3>
       <p>在<a href="../index.html">首页</a>复制 <strong>sing-box</strong> 那一行的 URL (结尾是 <code>singbox.json</code>)。</p>
     </li>
-    
+
     <li>
       <h3>导入 (图形界面路线)</h3>
       <p>打开 Hiddify Next 或 sing-box App:<strong>Profiles</strong> → <strong>Add Profile</strong> → 粘 URL。启用 profile,拨 VPN 开关。</p>
     </li>
-    
+
     <li>
       <h3>导入 (命令行路线)</h3>
       <p>把 JSON 保存到本地:<code>curl -o config.json &lt;订阅 URL&gt;</code>。运行:<code>sing-box run -c config.json</code>。默认在 <code>127.0.0.1:2080</code>/<code>2081</code> 起 SOCKS5 + HTTP 代理。浏览器或系统代理指到这里。</p>
     </li>
-    
+
     <li>
       <h3>开启 TUN (可选,CLI 路线)</h3>
       <p>想全局接管所有流量,改 <code>config.json</code> 加一个 TUN inbound (参考<a href="https://sing-box.sagernet.org/configuration/inbound/tun/" target="_blank" rel="noopener">官方文档</a>)。<code>sing-box</code> 以 root/管理员运行。所有 TCP+UDP 都走所选节点。</p>
     </li>
-    
+
     <li>
       <h3>验证</h3>
       <p><code>curl --proxy socks5://127.0.0.1:2080 https://ipinfo.io</code> (CLI) 或直接打开浏览器 (GUI),国家应该匹配所选节点。</p>
     </li>
-    
+
   </ol>
 </section>
 
 <section class="card">
   <h2>💡 常见问题排错</h2>
-  
+
   <details><summary>sing-box 和 Clash 选哪个?</summary><p>sing-box 对新协议 (VLESS+Reality、Hysteria2、TUIC) 原生支持更好,体量更轻。Clash Meta 也支持这些协议,但 sing-box 实现更贴近官方规范。</p></details>
-  
+
   <details><summary>能自动更新订阅吗?</summary><p>GUI 里开自动更新,间隔设 1 小时。CLI 加个 cron:<code>0 * * * * curl -o /etc/sing-box/config.json &lt;URL&gt; && systemctl reload sing-box</code>。</p></details>
-  
+
   <details><summary>macOS 有菜单栏版吗?</summary><p>用 <a href="https://github.com/hiddify/hiddify-app/releases" target="_blank" rel="noopener">Hiddify Next</a> 或 <a href="https://github.com/yichengchen/ClashX/releases" target="_blank" rel="noopener">ClashX Meta</a>。sing-box 自己暂时没发 macOS 原生 GUI。</p></details>
-  
+
   <details><summary>安卓没系统代理,sing-box 怎么接管流量?</summary><p>sing-box 安卓 App 用 VPNService,和 v2rayNG 一样。开关打开就全局生效。</p></details>
-  
+
 </section>
 
 <section class="card">
   <h2>📚 其他客户端教程</h2>
   <ul class="client-list">
-    
+
     <li><a href="clash-verge.zh.html">Clash Verge</a> · Windows, macOS, Linux</li>
-    
+
     <li><a href="v2rayng.zh.html">v2rayNG</a> · Android 5.0&#43;</li>
-    
+
     <li><a href="shadowrocket.zh.html">Shadowrocket</a> · iOS 15&#43;, iPadOS 15&#43;</li>
-    
+
   </ul>
 </section>
 

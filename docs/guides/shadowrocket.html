@@ -92,6 +92,46 @@
   .country-flag { font-size: 32px; }
   .country-name { font-weight: 600; color: #f1f5f9; font-size: 14px; }
   .country-count { color: #94a3b8; font-size: 13px; }
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 12px; margin: 20px 0;
+  }
+  .stat-card {
+    display: flex; flex-direction: column; gap: 2px; padding: 16px;
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+  }
+  .stat-card strong { color: #f8fafc; font-size: 24px; }
+  .stat-card span { color: #94a3b8; font-size: 13px; }
+  .report-grid {
+    display: grid; grid-template-columns: minmax(0,2fr) minmax(0,3fr);
+    gap: 16px; margin-top: 16px;
+  }
+  .report-panel {
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+    padding: 18px;
+  }
+  .report-panel h3 { margin: 0 0 12px; color: #f1f5f9; font-size: 17px; }
+  .metric-list { display: flex; flex-direction: column; gap: 8px; }
+  .metric-row {
+    display: grid; grid-template-columns: minmax(0,1fr) auto 64px;
+    gap: 12px; align-items: center; padding: 8px 10px;
+    background: #0f172a; border-radius: 7px; color: #cbd5e1;
+  }
+  .metric-row strong { color: #f8fafc; }
+  .metric-row span:last-child { text-align: right; color: #93c5fd; font-variant-numeric: tabular-nums; }
+  .trend-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+  .trend-card {
+    display: flex; flex-direction: column; gap: 5px; padding: 12px;
+    background: #111c31; border-radius: 8px; color: #94a3b8; font-size: 12px;
+  }
+  .trend-card strong { color: #f1f5f9; font-size: 14px; }
+  .trend-chart { width: 100%; height: auto; margin-top: 16px; }
+  .chart-axis { stroke: #475569; stroke-width: 1; }
+  .chart-line { fill: none; stroke: #60a5fa; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  .chart-label { fill: #94a3b8; font-size: 11px; }
+  .info-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+  .info-grid h2 { font-size: 18px; }
+  .info-grid p { color: #cbd5e1; margin-bottom: 0; }
   .client-list { padding-left: 20px; }
   .client-list li { margin-bottom: 6px; color: #cbd5e1; }
   details { margin: 10px 0; padding: 12px 16px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; }
@@ -104,13 +144,20 @@
   footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
   footer a { color: #93c5fd; }
   footer .small { font-size: 12px; margin-top: 8px; max-width: 680px; margin-left: auto; margin-right: auto; }
+  @media (max-width: 700px) {
+    .card { padding: 22px 18px; margin: 14px 12px; }
+    .lang-switch { padding-left: 16px; padding-right: 16px; text-align: center; }
+    .stat-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .report-grid, .info-grid { grid-template-columns: 1fr; }
+    .trend-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 <div class="lang-switch">
-  <strong>English</strong>
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/guides/shadowrocket.zh.html">简体中文</a>
-  
+<strong>English</strong>
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/guides/shadowrocket.zh.html">简体中文</a>
+
 </div>
 
 <nav class="breadcrumb">
@@ -123,7 +170,7 @@
   <p class="meta">
     <span class="badge badge-blue">Shadowrocket</span>
     <span class="badge badge-gray">iOS 15&#43;, iPadOS 15&#43;</span>
-    <span class="badge badge-green">updated · 2026-07-26 06:17 UTC</span>
+    <span class="badge badge-green">updated · 2026-07-26 07:06 UTC</span>
   </p>
   <p class="repo">
     <a href="https://apps.apple.com/app/shadowrocket/id932747118" class="btn-outline" target="_blank" rel="noopener">⬇ Download Shadowrocket</a>
@@ -144,63 +191,63 @@
 <section class="card">
   <h2>🪜 Steps</h2>
   <ol class="steps">
-    
+
     <li>
       <h3>Install Shadowrocket</h3>
       <p>Shadowrocket is a paid app (~$2.99) on the App Store. It's <strong>not available on the China App Store</strong> — sign into an Apple ID from a supported region (US, JP, HK, etc.). If you can't, use the free <a href="https://apps.apple.com/app/loon/id1373567447" target="_blank" rel="noopener">Loon</a> alternative or <a href="https://apps.apple.com/app/sing-box/id6451272673" target="_blank" rel="noopener">sing-box</a> (free).</p>
     </li>
-    
+
     <li>
       <h3>Copy the v2ray subscription URL</h3>
       <p>On the <a href="../index.html">homepage</a>, tap and hold the <strong>v2rayN / v2rayNG / Shadowrocket</strong> URL, pick <strong>Copy</strong>. This is the v2ray base64 format that Shadowrocket understands.</p>
     </li>
-    
+
     <li>
       <h3>Import via Subscribe</h3>
       <p>Open Shadowrocket → tap <strong>+</strong> (top right) → <strong>Type</strong> → <strong>Subscribe</strong>. Paste the URL into <strong>URL</strong>, name it anything, tap <strong>Save</strong>.</p>
     </li>
-    
+
     <li>
       <h3>Update the subscription</h3>
       <p>Back on the main list, pull down to refresh, or tap the subscription row → <strong>Update</strong>. You should see dozens of nodes appear.</p>
     </li>
-    
+
     <li>
       <h3>Choose connection mode</h3>
       <p>At the bottom tap <strong>Config</strong>. <strong>Global Proxy</strong> routes everything; <strong>Proxy (Rule-based)</strong> only proxies what the ruleset says. Toggle the main switch on the home screen to connect. iOS will request VPN permission the first time.</p>
     </li>
-    
+
     <li>
       <h3>Verify</h3>
       <p>Safari → <code>ipinfo.io</code>. Country should match your chosen node. If not, try another node — free nodes sometimes have broken routing on iOS's stricter TLS stack.</p>
     </li>
-    
+
   </ol>
 </section>
 
 <section class="card">
   <h2>💡 Tips &amp; Troubleshooting</h2>
-  
+
   <details><summary>The App Store says Shadowrocket isn&#39;t available in my region</summary><p>You need an Apple ID from the US, Japan, Hong Kong, or similar. Create a new Apple ID with a non-China region and no payment method. Alternatively, use sing-box (free) or Loon.</p></details>
-  
+
   <details><summary>Auto-update the subscription?</summary><p>Tap the subscription row → enable <strong>Auto Update</strong>. Set interval to <strong>1 hour</strong> since we refresh every hour.</p></details>
-  
+
   <details><summary>How do I pick the fastest node?</summary><p>Tap any server → <strong>Latency Test</strong> (the lightning icon). Or long-press the subscription → <strong>Latency Test All</strong>.</p></details>
-  
+
   <details><summary>Nothing loads after I connect</summary><p>Toggle the VPN switch off and on once. If still broken, try a different node. VLESS+Reality and Hysteria2 sometimes need ruleset adjustments on iOS.</p></details>
-  
+
 </section>
 
 <section class="card">
   <h2>📚 Other guides</h2>
   <ul class="client-list">
-    
+
     <li><a href="clash-verge.html">Clash Verge</a> · Windows, macOS, Linux</li>
-    
+
     <li><a href="v2rayng.html">v2rayNG</a> · Android 5.0&#43;</li>
-    
+
     <li><a href="sing-box.html">sing-box</a> · Windows, macOS, Linux, iOS, Android</li>
-    
+
   </ul>
 </section>
 

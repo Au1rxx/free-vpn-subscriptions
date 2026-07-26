@@ -92,6 +92,46 @@
   .country-flag { font-size: 32px; }
   .country-name { font-weight: 600; color: #f1f5f9; font-size: 14px; }
   .country-count { color: #94a3b8; font-size: 13px; }
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 12px; margin: 20px 0;
+  }
+  .stat-card {
+    display: flex; flex-direction: column; gap: 2px; padding: 16px;
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+  }
+  .stat-card strong { color: #f8fafc; font-size: 24px; }
+  .stat-card span { color: #94a3b8; font-size: 13px; }
+  .report-grid {
+    display: grid; grid-template-columns: minmax(0,2fr) minmax(0,3fr);
+    gap: 16px; margin-top: 16px;
+  }
+  .report-panel {
+    background: #0f172a; border: 1px solid #334155; border-radius: 10px;
+    padding: 18px;
+  }
+  .report-panel h3 { margin: 0 0 12px; color: #f1f5f9; font-size: 17px; }
+  .metric-list { display: flex; flex-direction: column; gap: 8px; }
+  .metric-row {
+    display: grid; grid-template-columns: minmax(0,1fr) auto 64px;
+    gap: 12px; align-items: center; padding: 8px 10px;
+    background: #0f172a; border-radius: 7px; color: #cbd5e1;
+  }
+  .metric-row strong { color: #f8fafc; }
+  .metric-row span:last-child { text-align: right; color: #93c5fd; font-variant-numeric: tabular-nums; }
+  .trend-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+  .trend-card {
+    display: flex; flex-direction: column; gap: 5px; padding: 12px;
+    background: #111c31; border-radius: 8px; color: #94a3b8; font-size: 12px;
+  }
+  .trend-card strong { color: #f1f5f9; font-size: 14px; }
+  .trend-chart { width: 100%; height: auto; margin-top: 16px; }
+  .chart-axis { stroke: #475569; stroke-width: 1; }
+  .chart-line { fill: none; stroke: #60a5fa; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+  .chart-label { fill: #94a3b8; font-size: 11px; }
+  .info-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; }
+  .info-grid h2 { font-size: 18px; }
+  .info-grid p { color: #cbd5e1; margin-bottom: 0; }
   .client-list { padding-left: 20px; }
   .client-list li { margin-bottom: 6px; color: #cbd5e1; }
   details { margin: 10px 0; padding: 12px 16px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; }
@@ -104,13 +144,20 @@
   footer { text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 14px; }
   footer a { color: #93c5fd; }
   footer .small { font-size: 12px; margin-top: 8px; max-width: 680px; margin-left: auto; margin-right: auto; }
+  @media (max-width: 700px) {
+    .card { padding: 22px 18px; margin: 14px 12px; }
+    .lang-switch { padding-left: 16px; padding-right: 16px; text-align: center; }
+    .stat-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .report-grid, .info-grid { grid-template-columns: 1fr; }
+    .trend-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 <div class="lang-switch">
-  <a href="https://au1rxx.github.io/free-vpn-subscriptions/guides/shadowrocket.html">English</a>
-  <strong>简体中文</strong>
-  
+<a href="https://au1rxx.github.io/free-vpn-subscriptions/guides/shadowrocket.html">English</a>
+<strong>简体中文</strong>
+
 </div>
 
 <nav class="breadcrumb">
@@ -123,7 +170,7 @@
   <p class="meta">
     <span class="badge badge-blue">Shadowrocket</span>
     <span class="badge badge-gray">iOS 15&#43;, iPadOS 15&#43;</span>
-    <span class="badge badge-green">更新 · 2026-07-26 06:17 UTC</span>
+    <span class="badge badge-green">更新 · 2026-07-26 07:06 UTC</span>
   </p>
   <p class="repo">
     <a href="https://apps.apple.com/app/shadowrocket/id932747118" class="btn-outline" target="_blank" rel="noopener">⬇ 下载 Shadowrocket</a>
@@ -144,63 +191,63 @@
 <section class="card">
   <h2>🪜 操作步骤</h2>
   <ol class="steps">
-    
+
     <li>
       <h3>安装 Shadowrocket</h3>
       <p>Shadowrocket (小火箭) 是 App Store 付费应用,约 $2.99。<strong>中国区 App Store 没有</strong>,得用非中国区 Apple ID 登录(美区、日区、港区都行)。没非中国区账号的,改用免费 <a href="https://apps.apple.com/app/loon/id1373567447" target="_blank" rel="noopener">Loon</a> 或 <a href="https://apps.apple.com/app/sing-box/id6451272673" target="_blank" rel="noopener">sing-box</a> (免费)。</p>
     </li>
-    
+
     <li>
       <h3>复制 v2ray 订阅链接</h3>
       <p>在<a href="../index.html">首页</a>,长按 <strong>v2rayN / v2rayNG / Shadowrocket</strong> 那行 URL,选 <strong>复制</strong>。这是 v2ray base64 格式,Shadowrocket 认得。</p>
     </li>
-    
+
     <li>
       <h3>通过 Subscribe 导入</h3>
       <p>打开 Shadowrocket → 点右上 <strong>+</strong> → <strong>Type</strong> → <strong>Subscribe</strong>。把 URL 粘进 <strong>URL</strong>,名字随便,点 <strong>Save</strong>。</p>
     </li>
-    
+
     <li>
       <h3>更新订阅</h3>
       <p>回主界面,下拉刷新,或点订阅那一行 → <strong>Update</strong>。能看到几十个节点。</p>
     </li>
-    
+
     <li>
       <h3>选连接模式</h3>
       <p>底部点 <strong>Config</strong>。<strong>Global Proxy</strong> 是全局;<strong>Proxy (Rule-based)</strong> 是按规则走(推荐)。回主屏幕拨开关连接。第一次 iOS 会弹 VPN 权限,点允许。</p>
     </li>
-    
+
     <li>
       <h3>验证</h3>
       <p>Safari 打开 <code>ipinfo.io</code>,国家应该和所选节点一致。如果没变,换一个节点——iOS 的 TLS 栈比较严,部分免费节点在 iOS 上会抽风。</p>
     </li>
-    
+
   </ol>
 </section>
 
 <section class="card">
   <h2>💡 常见问题排错</h2>
-  
+
   <details><summary>App Store 显示 Shadowrocket 在该地区不可用</summary><p>需要美区/日区/港区 Apple ID。自己注册一个非中国区账号,不用绑定付款方式。实在搞不定就用免费的 sing-box 或 Loon。</p></details>
-  
+
   <details><summary>订阅怎么自动更新?</summary><p>点订阅那一行 → 打开 <strong>Auto Update</strong>,间隔设 <strong>1 小时</strong> (和我们上游刷新频率一致)。</p></details>
-  
+
   <details><summary>怎么挑最快的节点?</summary><p>点任意服务器 → <strong>Latency Test</strong> (闪电图标)。或长按订阅 → <strong>Latency Test All</strong> 批量测。</p></details>
-  
+
   <details><summary>连上了但打不开网页</summary><p>VPN 开关关了再开一次。还是不行就换节点。VLESS+Reality 和 Hysteria2 在 iOS 上偶尔需要调分流规则。</p></details>
-  
+
 </section>
 
 <section class="card">
   <h2>📚 其他客户端教程</h2>
   <ul class="client-list">
-    
+
     <li><a href="clash-verge.zh.html">Clash Verge</a> · Windows, macOS, Linux</li>
-    
+
     <li><a href="v2rayng.zh.html">v2rayNG</a> · Android 5.0&#43;</li>
-    
+
     <li><a href="sing-box.zh.html">sing-box</a> · Windows, macOS, Linux, iOS, Android</li>
-    
+
   </ul>
 </section>
 
