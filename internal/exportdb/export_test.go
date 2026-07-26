@@ -3,6 +3,7 @@ package exportdb
 import (
 	"encoding/base64"
 	"encoding/json"
+	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
@@ -172,6 +173,64 @@ func TestManifestExcludesSiteRenderInputs(t *testing.T) {
 	for _, field := range []string{"Summary", "Selected", "by_country", "total_selected"} {
 		if strings.Contains(string(body), field) {
 			t.Fatalf("manifest leaked %q: %s", field, body)
+		}
+	}
+}
+
+// Shard contents must not depend on the ranking of the input: quality scores
+// are re-measured every run, and a rank-sensitive layout rewrites whole shards
+// on every publish even when the node set is unchanged.
+func TestCollectionShardsAreIndependentOfInputOrder(t *testing.T) {
+	build := func() ([]*node.Node, []store.ExportMeta) {
+		var nodes []*node.Node
+		var metadata []store.ExportMeta
+		for i := 1; i <= 6; i++ {
+			nodes = append(nodes, &node.Node{
+				Protocol: node.ProtoVLESS,
+				Server:   fmt.Sprintf("host%02d.example", i),
+				Port:     443,
+				UUID:     fmt.Sprintf("uuid-%02d", i),
+				Name:     fmt.Sprintf("vless-%02d", i),
+				Country:  "US",
+			})
+			metadata = append(metadata, store.ExportMeta{
+				ConfigID: uint64(i), Grade: "A", Score: 90, Country: "US", NetworkClass: "cloud",
+			})
+		}
+		return nodes, metadata
+	}
+
+	ranked, rankedMeta := build()
+	rootA := t.TempDir()
+	if _, err := Generate(rootA, ranked, rankedMeta, 2); err != nil {
+		t.Fatal(err)
+	}
+
+	// Same nodes, reversed ranking — as if every score had been re-measured.
+	reversed, reversedMeta := build()
+	for i, j := 0, len(reversed)-1; i < j; i, j = i+1, j-1 {
+		reversed[i], reversed[j] = reversed[j], reversed[i]
+		reversedMeta[i], reversedMeta[j] = reversedMeta[j], reversedMeta[i]
+	}
+	rootB := t.TempDir()
+	if _, err := Generate(rootB, reversed, reversedMeta, 2); err != nil {
+		t.Fatal(err)
+	}
+
+	for _, name := range []string{
+		"all-verified/clash-0001.yaml", "all-verified/clash-0002.yaml",
+		"all-verified/singbox-0001.json", "country/US/clash-0001.yaml",
+	} {
+		a, err := os.ReadFile(filepath.Join(rootA, name))
+		if err != nil {
+			t.Fatal(err)
+		}
+		b, err := os.ReadFile(filepath.Join(rootB, name))
+		if err != nil {
+			t.Fatal(err)
+		}
+		if string(a) != string(b) {
+			t.Errorf("%s differs when only the input ranking changed", name)
 		}
 	}
 }

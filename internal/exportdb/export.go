@@ -280,13 +280,33 @@ func shard(values []item, size int) [][]item {
 }
 
 func writeCollection(root, collection string, values []item, shardSize int, report *Report) error {
-	for index, part := range shard(values, shardSize) {
+	for index, part := range shard(stableOrder(values), shardSize) {
 		base := filepath.Join(collection, fmt.Sprintf("%%s-%04d", index+1))
 		if err := writeFormats(root, base, part, report); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+// stableOrder returns a copy ordered by a key that does not move between runs.
+//
+// Callers hand us the ranked list, but shard membership must not inherit that
+// ranking: quality scores and latencies are re-measured every run, so a
+// rank-ordered list reshuffles on each export and every shard past the first
+// gets rewritten wholesale. One publish rewrote 17,091 of 17,091 lines in
+// singbox-0003.json while only ~20 of 1,100 nodes had actually changed.
+// Ordering by config ID means a node moves only when the set itself changes.
+//
+// The legacy top-level files deliberately keep the ranked order: there the
+// position is meaningful to the reader.
+func stableOrder(values []item) []item {
+	ordered := make([]item, len(values))
+	copy(ordered, values)
+	sort.SliceStable(ordered, func(i, j int) bool {
+		return ordered[i].meta.ConfigID < ordered[j].meta.ConfigID
+	})
+	return ordered
 }
 
 func writeLegacy(root string, values []item, report *Report) error {
