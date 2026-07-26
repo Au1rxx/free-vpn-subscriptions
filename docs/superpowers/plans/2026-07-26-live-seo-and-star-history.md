@@ -3,7 +3,7 @@
 > **For agentic workers:** REQUIRED SUB-SKILL: Use `superpowers:executing-plans` to implement this plan task-by-task. 本仓库规则禁止子代理，因此只允许当前会话内联执行。
 
 **状态：** 进行中
-**进度：** 已完成 0/6 项（0%）
+**进度：** 已完成 1/6 项（17%）
 **更新时间：** 2026-07-26
 
 **Goal:** 用仓库内每日更新的 SVG 修复 Star History，并让现有静态站点展示每小时真实快照和 30 天滚动趋势。
@@ -51,6 +51,8 @@
 
 ### Task 1: Star History API 与确定性 SVG
 
+- [x] **任务状态：已完成**
+
 **Files:**
 - Create: `internal/starhistory/starhistory.go`
 - Create: `internal/starhistory/starhistory_test.go`
@@ -63,30 +65,33 @@
 - Produces: `starhistory.RenderSVG(repo string, stars []time.Time) ([]byte, error)`
 - Produces: `newStarHistoryCmd() *cobra.Command`
 
-- [ ] **Step 1: 写 API 分页和 SVG RED 测试**
+- [x] **Step 1: 写 API 分页和 SVG RED 测试**
   - `httptest.Server` 返回两页 `starred_at`，断言携带 `Accept: application/vnd.github.star+json` 和 Bearer token。
   - 断言重复/乱序时间按 UTC 日期累计，SVG 包含 `<svg`、仓库标题、最终星数且两次输出字节一致。
   - Run: `go test ./internal/starhistory -count=1`
   - Expected: FAIL，包或函数尚不存在。
 
-- [ ] **Step 2: 实现最小 API 与 SVG**
+- [x] **Step 2: 实现最小 API 与 SVG**
   - 校验 `owner/repo`、token 和 HTTP 状态；跟随 RFC 5988 `Link rel="next"`，限制最多 100 页。
   - SVG 仅使用转义后的文本、折线、坐标轴和 `<title>/<desc>`；不嵌入当前时间。
   - Run: `go test ./internal/starhistory -count=1`
   - Expected: PASS。
 
-- [ ] **Step 3: 写 CLI RED 测试并实现**
+- [x] **Step 3: 写 CLI RED 测试并实现**
   - 命令：`fnctl star-history --repo owner/repo --output assets/star-history.svg`。
   - token 只从 `GITHUB_TOKEN` 读取；缺失 token、无效 repo、API 非 2xx 必须返回错误；输出通过临时文件加 rename。
   - 在 `newRootCmd` 注册 `newStarHistoryCmd()`。
   - Run: `go test ./cmd/fnctl -run StarHistory -count=1`
   - Expected: 先 FAIL，实施后 PASS。
 
-- [ ] **Step 4: 验证并提交**
+- [x] **Step 4: 验证并提交**
   - Run: `go test ./internal/starhistory ./cmd/fnctl -count=1`
   - Commit: `feat: add deterministic star history generator`
+  - 证据：2026-07-26 targeted tests 退出 0；另验证分页跨 origin 会在携带 token 前失败。
 
 ### Task 2: README 本地图片与每日 Action
+
+- [ ] **任务状态：进行中**
 
 **Files:**
 - Modify: `internal/readme/generator.go`
@@ -120,6 +125,8 @@
   - Commit: `fix: self-host the star history chart`
 
 ### Task 3: 30 天历史与趋势计算
+
+- [ ] **任务状态：未开始**
 
 **Files:**
 - Create: `internal/pages/history.go`
@@ -160,6 +167,8 @@
 
 ### Task 4: 实时落地页与国家页内容
 
+- [ ] **任务状态：未开始**
+
 **Files:**
 - Modify: `internal/pages/pages.go`
 - Modify: `internal/pages/templates.go`
@@ -193,6 +202,8 @@
 
 ### Task 5: 合规结构化数据与 sitemap
 
+- [ ] **任务状态：未开始**
+
 **Files:**
 - Modify: `internal/pages/pages.go`
 - Modify: `internal/pages/pages_test.go`
@@ -216,6 +227,8 @@
   - Commit: `fix: make page metadata evidence-based`
 
 ### Task 6: 全量验证、生成产物与上线
+
+- [ ] **任务状态：未开始**
 
 **Files:**
 - Generated: `README*.md`
