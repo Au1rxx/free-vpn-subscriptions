@@ -32,8 +32,8 @@ const tplIndex = `<!DOCTYPE html>
 <body>
 <div class="lang-switch">
   <span>{{.L10n.LanguageLabel}}</span>
-  {{range .LanguageSw}}{{if .Current}}<strong>{{.Label}}</strong>{{else}}<a href="{{.URL}}">{{.Label}}</a>{{end}}
-  {{end}}
+{{range .LanguageSw}}{{if .Current}}<strong>{{.Label}}</strong>{{else}}<a href="{{.URL}}">{{.Label}}</a>{{end}}
+{{end}}
 </div>
 
 <header class="hero">
@@ -83,8 +83,8 @@ const tplIndex = `<!DOCTYPE html>
     <div class="report-panel">
       <h3>{{.L10n.ProtocolHeading}}</h3>
       <div class="metric-list">
-        {{range .ProtocolRows}}<div class="metric-row"><span>{{.Name}}</span><strong>{{.Count}}</strong><span>{{.Percent}}</span></div>
-        {{end}}
+{{range .ProtocolRows}}<div class="metric-row"><span>{{.Name}}</span><strong>{{.Count}}</strong><span>{{.Percent}}</span></div>
+{{end}}
       </div>
     </div>
     <div class="report-panel">
@@ -92,40 +92,40 @@ const tplIndex = `<!DOCTYPE html>
       <div class="trend-grid">
         <div class="trend-card" data-window="24h">
           <strong>{{.L10n.Trend24h}}</strong>
-          {{if .Trends.Hours24.Available}}
+{{if .Trends.Hours24.Available}}
           <span>{{.L10n.TrendSelected}} {{delta .Trends.Hours24.Selected}}</span>
           <span>{{.L10n.TrendVerified}} {{delta .Trends.Hours24.Verified}}</span>
           <span>{{.L10n.TrendLatency}} {{delta .Trends.Hours24.MedianLatencyMS}} ms</span>
-          {{else}}<span>{{.L10n.TrendAccumulating}}</span>{{end}}
+{{else}}<span>{{.L10n.TrendAccumulating}}</span>{{end}}
         </div>
         <div class="trend-card" data-window="7d">
           <strong>{{.L10n.Trend7d}}</strong>
-          {{if .Trends.Days7.Available}}
+{{if .Trends.Days7.Available}}
           <span>{{.L10n.TrendSelected}} {{delta .Trends.Days7.Selected}}</span>
           <span>{{.L10n.TrendVerified}} {{delta .Trends.Days7.Verified}}</span>
           <span>{{.L10n.TrendLatency}} {{delta .Trends.Days7.MedianLatencyMS}} ms</span>
-          {{else}}<span>{{.L10n.TrendAccumulating}}</span>{{end}}
+{{else}}<span>{{.L10n.TrendAccumulating}}</span>{{end}}
         </div>
         <div class="trend-card" data-window="30d">
           <strong>{{.L10n.Trend30d}}</strong>
-          {{if .Trends.Days30.Available}}
+{{if .Trends.Days30.Available}}
           <span>{{.L10n.TrendSelected}} {{delta .Trends.Days30.Selected}}</span>
           <span>{{.L10n.TrendVerified}} {{delta .Trends.Days30.Verified}}</span>
           <span>{{.L10n.TrendLatency}} {{delta .Trends.Days30.MedianLatencyMS}} ms</span>
-          {{else}}<span>{{.L10n.TrendAccumulating}}</span>{{end}}
+{{else}}<span>{{.L10n.TrendAccumulating}}</span>{{end}}
         </div>
       </div>
     </div>
   </div>
-  {{if .TrendSVG}}{{.TrendSVG}}{{end}}
+{{if .TrendSVG}}{{.TrendSVG}}{{end}}
 </section>
 
 {{if .TopCountries}}
 <section class="card" id="top-countries">
   <h2>{{.L10n.TopCountriesHeading}}</h2>
   <div class="metric-list">
-    {{range .TopCountries}}<div class="metric-row"><span>{{.Name}}</span><strong>{{.Count}}</strong><span>{{.Percent}}</span></div>
-    {{end}}
+{{range .TopCountries}}<div class="metric-row"><span>{{.Name}}</span><strong>{{.Count}}</strong><span>{{.Percent}}</span></div>
+{{end}}
   </div>
 </section>
 {{end}}
@@ -150,13 +150,13 @@ const tplIndex = `<!DOCTYPE html>
   <h2>{{.L10n.ByCountryHeading}}</h2>
   <p>{{.L10n.ByCountryIntro}}</p>
   <div class="country-grid">
-    {{range .Countries}}
+{{range .Countries}}
     <a class="country-card" href="{{.URLPage}}">
       <div class="country-flag">{{.Flag}}</div>
       <div class="country-name">{{.Name}}</div>
       <div class="country-count">{{.Count}} {{$.L10n.NodesSuffix}}</div>
     </a>
-    {{end}}
+{{end}}
   </div>
 </section>
 {{end}}
@@ -166,9 +166,9 @@ const tplIndex = `<!DOCTYPE html>
   <h2>{{.L10n.GuidesHeading}}</h2>
   <p>{{.L10n.GuidesIntro}}</p>
   <ul class="client-list">
-    {{range .Guides}}
+{{range .Guides}}
     <li><a href="{{.URL}}"><strong>{{.Name}}</strong></a> · {{.OS}}</li>
-    {{end}}
+{{end}}
   </ul>
 </section>
 {{end}}
@@ -233,8 +233,8 @@ const tplCountry = `<!DOCTYPE html>
 <body>
 <div class="lang-switch">
   <span>{{.L10n.LanguageLabel}}</span>
-  {{range .LanguageSw}}{{if .Current}}<strong>{{.Label}}</strong>{{else}}<a href="{{.URL}}">{{.Label}}</a>{{end}}
-  {{end}}
+{{range .LanguageSw}}{{if .Current}}<strong>{{.Label}}</strong>{{else}}<a href="{{.URL}}">{{.Label}}</a>{{end}}
+{{end}}
 </div>
 
 <nav class="breadcrumb">
@@ -273,8 +273,8 @@ const tplCountry = `<!DOCTYPE html>
   <h2>{{.L10n.CountryProtocolHeading}}</h2>
   <p>{{.L10n.CountryProtocolIntro}}</p>
   <div class="metric-list">
-    {{range .CountryProtocols}}<div class="metric-row"><span>{{.Name}}</span><strong>{{.Count}}</strong><span>{{.Percent}}</span></div>
-    {{end}}
+{{range .CountryProtocols}}<div class="metric-row"><span>{{.Name}}</span><strong>{{.Count}}</strong><span>{{.Percent}}</span></div>
+{{end}}
   </div>
 </section>
 {{end}}
@@ -282,15 +282,15 @@ const tplCountry = `<!DOCTYPE html>
 <section class="card">
   <h2>{{.L10n.CountryOtherHeading}}</h2>
   <div class="country-grid">
-    {{range .Countries}}
-    {{if ne .CC $.CurrentCC}}
+{{range .Countries}}
+{{if ne .CC $.CurrentCC}}
     <a class="country-card" href="{{.URLPage}}">
       <div class="country-flag">{{.Flag}}</div>
       <div class="country-name">{{.Name}}</div>
       <div class="country-count">{{.Count}} {{$.L10n.NodesSuffix}}</div>
     </a>
-    {{end}}
-    {{end}}
+{{end}}
+{{end}}
   </div>
 </section>
 
@@ -332,8 +332,8 @@ const tplGuide = `<!DOCTYPE html>
 </head>
 <body>
 <div class="lang-switch">
-  {{range .LanguageSw}}{{if .Current}}<strong>{{.Label}}</strong>{{else}}<a href="{{.URL}}">{{.Label}}</a>{{end}}
-  {{end}}
+{{range .LanguageSw}}{{if .Current}}<strong>{{.Label}}</strong>{{else}}<a href="{{.URL}}">{{.Label}}</a>{{end}}
+{{end}}
 </div>
 
 <nav class="breadcrumb">
@@ -367,28 +367,28 @@ const tplGuide = `<!DOCTYPE html>
 <section class="card">
   <h2>{{.L10n.StepsHeading}}</h2>
   <ol class="steps">
-    {{range .Steps}}
+{{range .Steps}}
     <li>
       <h3>{{.Title}}</h3>
       <p>{{.Body}}</p>
     </li>
-    {{end}}
+{{end}}
   </ol>
 </section>
 
 <section class="card">
   <h2>{{.L10n.TipsHeading}}</h2>
-  {{range .Tips}}
+{{range .Tips}}
   <details><summary>{{.Q}}</summary><p>{{.A}}</p></details>
-  {{end}}
+{{end}}
 </section>
 
 <section class="card">
   <h2>{{.L10n.OtherGuidesHeading}}</h2>
   <ul class="client-list">
-    {{range .OtherGuides}}
+{{range .OtherGuides}}
     <li><a href="{{.URL}}">{{.Name}}</a> · {{.OS}}</li>
-    {{end}}
+{{end}}
   </ul>
 </section>
 

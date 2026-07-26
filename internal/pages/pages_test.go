@@ -55,6 +55,34 @@ func TestGenerateEmitsIndexingMetaTags(t *testing.T) {
 	}
 }
 
+func TestGenerateDoesNotEmitTrailingWhitespace(t *testing.T) {
+	dir := t.TempDir()
+	if err := Generate(testInput(), dir); err != nil {
+		t.Fatal(err)
+	}
+	err := filepath.WalkDir(dir, func(path string, entry os.DirEntry, walkErr error) error {
+		if walkErr != nil {
+			return walkErr
+		}
+		if entry.IsDir() {
+			return nil
+		}
+		body, err := os.ReadFile(path)
+		if err != nil {
+			return err
+		}
+		for index, line := range strings.Split(string(body), "\n") {
+			if strings.TrimRight(line, " \t") != line {
+				t.Fatalf("%s:%d has trailing whitespace: %q", path, index+1, line)
+			}
+		}
+		return nil
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
 // Country and guide pages are separate templates, so they can drift from the
 // index template's meta block.
 func TestGenerateEmitsIndexingMetaOnEveryTemplate(t *testing.T) {

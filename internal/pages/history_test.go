@@ -86,6 +86,32 @@ func TestUpdateHistoryRejectsCorruptUnknownAndFutureHistoryWithoutOverwriting(t 
 	}
 }
 
+func TestUpdateHistoryKeepsOnlyLatestSnapshotWithinTheSameUTCHour(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "network-history.json")
+	hour := time.Date(2026, 7, 26, 4, 0, 0, 0, time.UTC)
+	writeHistoryDocument(t, path, 1, []HistoryPoint{{
+		GeneratedAt: hour.Add(5 * time.Minute),
+		Selected:    100,
+		Verified:    200,
+	}})
+	current := HistoryPoint{
+		GeneratedAt: hour.Add(55 * time.Minute),
+		Selected:    150,
+		Verified:    250,
+	}
+
+	got, err := UpdateHistory(path, current)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(got) != 1 {
+		t.Fatalf("points = %d, want one point per UTC hour", len(got))
+	}
+	if !got[0].GeneratedAt.Equal(current.GeneratedAt) || got[0].Selected != 150 {
+		t.Fatalf("same-hour point = %+v, want latest snapshot", got[0])
+	}
+}
+
 func TestBuildTrendsUsesLatestPointAtOrBeforeEachWindow(t *testing.T) {
 	now := time.Date(2026, 7, 26, 12, 0, 0, 0, time.UTC)
 	points := []HistoryPoint{

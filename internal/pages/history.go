@@ -60,13 +60,13 @@ func UpdateHistory(path string, current HistoryPoint) ([]HistoryPoint, error) {
 	}
 	points = append(points, current)
 
-	byTime := make(map[int64]HistoryPoint, len(points))
+	byHour := make(map[int64]HistoryPoint, len(points))
 	for _, point := range points {
 		point.GeneratedAt = point.GeneratedAt.UTC()
-		byTime[point.GeneratedAt.UnixNano()] = point
+		byHour[point.GeneratedAt.Truncate(time.Hour).Unix()] = point
 	}
 	points = points[:0]
-	for _, point := range byTime {
+	for _, point := range byHour {
 		points = append(points, point)
 	}
 	sort.Slice(points, func(i, j int) bool {
