@@ -3,7 +3,7 @@
 > **For agentic workers:** REQUIRED SUB-SKILL: Use `superpowers:executing-plans` to implement this plan task-by-task. 本仓库规则禁止子代理，因此只允许当前会话内联执行。
 
 **状态：** 进行中
-**进度：** 已完成 1/6 项（17%）
+**进度：** 已完成 2/6 项（33%）
 **更新时间：** 2026-07-26
 
 **Goal:** 用仓库内每日更新的 SVG 修复 Star History，并让现有静态站点展示每小时真实快照和 30 天滚动趋势。
@@ -91,7 +91,7 @@
 
 ### Task 2: README 本地图片与每日 Action
 
-- [ ] **任务状态：进行中**
+- [x] **任务状态：已完成**
 
 **Files:**
 - Modify: `internal/readme/generator.go`
@@ -103,30 +103,31 @@
 - Consumes: `fnctl star-history`。
 - Produces: 7 个 README 均引用 `<RepoURL>/raw/main/assets/star-history.svg`。
 
-- [ ] **Step 1: 写 README RED 测试**
+- [x] **Step 1: 写 README RED 测试**
   - 对所有 locale 断言存在仓库内 SVG 和 `/stargazers` 链接，不含 `api.star-history.com`。
   - Run: `go test ./internal/readme -run Star -count=1`
   - Expected: FAIL，当前仍引用第三方 API。
 
-- [ ] **Step 2: 修改生成器并生成首张 SVG**
+- [x] **Step 2: 修改生成器并生成首张 SVG**
   - README Star History 图片使用仓库 raw URL，非 GitHub repo 继续完全省略该区块。
   - 使用当前 Au1rxx 凭据以环境变量方式运行新命令，凭据不进入参数、日志或文件。
   - Run: `go test ./internal/readme -run Star -count=1`
   - Expected: PASS，`file assets/star-history.svg` 识别为 SVG。
 
-- [ ] **Step 3: 新增每日 workflow**
+- [x] **Step 3: 新增每日 workflow**
   - `schedule: "17 3 * * *"` + `workflow_dispatch`，`permissions: contents: write`，同名 `concurrency`。
   - 使用 `actions/checkout@v4`、`actions/setup-go@v5`，先运行 targeted tests，再以 `${{ github.token }}` 生成 SVG。
   - 仅有 diff 时提交；`git pull --rebase origin main` 后普通 push，禁止 force。
   - 用 PyYAML 解析 workflow 并断言 schedule、权限、测试和生成步骤存在。
 
-- [ ] **Step 4: 验证并提交**
+- [x] **Step 4: 验证并提交**
   - Run: `go test ./internal/readme ./internal/starhistory ./cmd/fnctl -count=1`
   - Commit: `fix: self-host the star history chart`
+  - 证据：2026-07-26 targeted tests 退出 0；workflow 结构断言通过，SVG XML 可解析且重复生成字节一致。
 
 ### Task 3: 30 天历史与趋势计算
 
-- [ ] **任务状态：未开始**
+- [ ] **任务状态：进行中**
 
 **Files:**
 - Create: `internal/pages/history.go`

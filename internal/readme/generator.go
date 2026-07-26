@@ -157,7 +157,7 @@ func Generate(in Input, loc Locale) string {
 	// star-history.com can only chart GitHub repositories.
 	if slug := repoSlug(in.RepoURL); slug != "" {
 		fmt.Fprintf(&b, "%s\n\n", loc.StarHistoryHeading)
-		fmt.Fprintf(&b, "[![Star History Chart](https://api.star-history.com/svg?repos=%s&type=Date)](https://www.star-history.com/#%s&Date)\n\n",
+		fmt.Fprintf(&b, "[![Star History Chart](https://github.com/%s/raw/main/assets/star-history.svg)](https://github.com/%s/stargazers)\n\n",
 			slug, slug)
 	}
 
