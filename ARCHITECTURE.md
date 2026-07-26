@@ -285,6 +285,8 @@ Every HTML page carries a consistent set of metadata. Implementation: [`internal
 
 The external publisher owns node statistics. Before rendering Pages it appends the current export to `docs/data/network-history.json`, keeps only the latest snapshot in each UTC hour, sorts it, and retains at most 721 endpoints (the current sample plus the sample 720 hours earlier). Writes use a temporary file plus `fsync`, close, and rename. If the history is corrupt, has an unknown schema, or contains a future point, publication continues with the current snapshot and the existing file is left untouched.
 
+After a successful render, the generator removes obsolete two-character country-page clusters that are no longer present in the current qualified-country set. It skips cleanup when no country data is available, so a temporary GeoIP failure cannot erase the last good country pages. Index pages, guides, `.nojekyll`, and unmanaged files are never cleanup targets.
+
 Star history has a separate data owner and cadence. `.github/workflows/update-star-history.yml` runs daily (and on manual dispatch), reads timestamped stargazers with the repository-scoped token, and deterministically regenerates `assets/star-history.svg`. It commits only when the SVG changes. This Action never reads node sources, the validation database, or publisher credentials.
 
 ### Hero image

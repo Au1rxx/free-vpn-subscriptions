@@ -83,6 +83,52 @@ func TestGenerateDoesNotEmitTrailingWhitespace(t *testing.T) {
 	}
 }
 
+func TestGenerateRemovesStaleCountryPagesAndPreservesUnmanagedFiles(t *testing.T) {
+	dir := t.TempDir()
+	for _, name := range []string{"zz.html", "zz.zh.html", "custom.html", ".nojekyll"} {
+		if err := os.WriteFile(filepath.Join(dir, name), []byte("sentinel"), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if err := Generate(testInput(), dir); err != nil {
+		t.Fatal(err)
+	}
+	for _, stale := range []string{"zz.html", "zz.zh.html"} {
+		if _, err := os.Stat(filepath.Join(dir, stale)); !os.IsNotExist(err) {
+			t.Errorf("stale generated country page %s still exists", stale)
+		}
+	}
+	for _, preserved := range []string{"custom.html", ".nojekyll"} {
+		body, err := os.ReadFile(filepath.Join(dir, preserved))
+		if err != nil {
+			t.Errorf("preserved file %s: %v", preserved, err)
+			continue
+		}
+		if string(body) != "sentinel" {
+			t.Errorf("preserved file %s was modified", preserved)
+		}
+	}
+}
+
+func TestGeneratePreservesCountryPagesWhenCountryDataIsUnavailable(t *testing.T) {
+	dir := t.TempDir()
+	for _, name := range []string{"zz.html", "zz.zh.html"} {
+		if err := os.WriteFile(filepath.Join(dir, name), []byte("sentinel"), 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+	in := testInput()
+	in.Summary.ByCountry = nil
+	if err := Generate(in, dir); err != nil {
+		t.Fatal(err)
+	}
+	for _, name := range []string{"zz.html", "zz.zh.html"} {
+		if _, err := os.Stat(filepath.Join(dir, name)); err != nil {
+			t.Errorf("country page %s was removed during missing GeoIP data: %v", name, err)
+		}
+	}
+}
+
 // Country and guide pages are separate templates, so they can drift from the
 // index template's meta block.
 func TestGenerateEmitsIndexingMetaOnEveryTemplate(t *testing.T) {

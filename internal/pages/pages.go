@@ -307,8 +307,83 @@ func Generate(in Input, outDir string) error {
 		0o644); err != nil {
 		return err
 	}
+	if err := removeStaleCountryPages(outDir, in); err != nil {
+		return err
+	}
 
 	return nil
+}
+
+func removeStaleCountryPages(outDir string, in Input) error {
+	expected := make(map[string]bool)
+	for _, loc := range supportedLocales {
+		suffix := localeSuffix(loc)
+		for _, country := range buildCountryRows(in, suffix) {
+			expected[strings.ToLower(country.CC)+suffix+".html"] = true
+		}
+	}
+	if len(expected) == 0 {
+		return nil
+	}
+
+	entries, err := os.ReadDir(outDir)
+	if err != nil {
+		return fmt.Errorf("list generated pages: %w", err)
+	}
+	candidates := make(map[string][]string)
+	for _, entry := range entries {
+		if entry.IsDir() {
+			continue
+		}
+		code, ok := managedCountryPageCode(entry.Name())
+		if ok {
+			candidates[code] = append(candidates[code], entry.Name())
+		}
+	}
+	for _, names := range candidates {
+		// Generated countries have one page per locale. Requiring at least two
+		// variants avoids treating an unrelated two-character HTML file as ours.
+		if len(names) < 2 {
+			continue
+		}
+		for _, name := range names {
+			if expected[name] {
+				continue
+			}
+			if err := os.Remove(filepath.Join(outDir, name)); err != nil {
+				return fmt.Errorf("remove stale country page %s: %w", name, err)
+			}
+		}
+	}
+	return nil
+}
+
+func managedCountryPageCode(name string) (string, bool) {
+	if !strings.HasSuffix(name, ".html") {
+		return "", false
+	}
+	parts := strings.Split(strings.TrimSuffix(name, ".html"), ".")
+	if len(parts) < 1 || len(parts) > 2 || len(parts[0]) != 2 {
+		return "", false
+	}
+	for _, char := range parts[0] {
+		if (char < 'a' || char > 'z') && (char < '0' || char > '9') {
+			return "", false
+		}
+	}
+	if len(parts) == 2 {
+		known := false
+		for _, loc := range supportedLocales {
+			if suffix := localeSuffix(loc); suffix != "" && parts[1] == strings.TrimPrefix(suffix, ".") {
+				known = true
+				break
+			}
+		}
+		if !known {
+			return "", false
+		}
+	}
+	return parts[0], true
 }
 
 func buildCountryRows(in Input, localeSuffix string) []countryRow {
