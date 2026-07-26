@@ -54,8 +54,12 @@ func Generate(in Input, loc Locale) string {
 		loc.BadgeAlive, loc.BadgeAlive, in.Summary.TotalAlive)
 	fmt.Fprintf(&b, "![%s](https://img.shields.io/badge/%s-%dms-orange) ",
 		loc.BadgeMedian, loc.BadgeMedian, in.Summary.MedianLatencyMS)
-	fmt.Fprintf(&b, "![%s](https://img.shields.io/badge/%s-%s-informational)\n\n",
+	fmt.Fprintf(&b, "![%s](https://img.shields.io/badge/%s-%s-informational) ",
 		loc.BadgeUpdated, loc.BadgeUpdated, strings.ReplaceAll(updated, " ", "_"))
+	if slug := repoSlug(in.RepoURL); slug != "" {
+		fmt.Fprintf(&b, "[![License](https://img.shields.io/github/license/%s?color=blue)](%s/blob/main/LICENSE)", slug, in.RepoURL)
+	}
+	b.WriteString("\n\n")
 
 	// Hook
 	fmt.Fprintf(&b, "> %s  \n", loc.Hook1)

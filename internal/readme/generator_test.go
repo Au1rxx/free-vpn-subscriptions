@@ -61,6 +61,9 @@ func TestGenerateRendersStarConversionElements(t *testing.T) {
 		if !strings.Contains(body, loc.StarCTA) {
 			t.Errorf("locale %q missing star call to action", loc.Code)
 		}
+		if !strings.Contains(body, "https://img.shields.io/github/license/example/repo") {
+			t.Errorf("locale %q missing license badge", loc.Code)
+		}
 	}
 }
 
