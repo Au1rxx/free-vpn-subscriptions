@@ -13,12 +13,21 @@ proxies:
       skip-cert-verify: false
       sni: hopp-legend-se.roxa.org
       type: hysteria2
+    - name: trojan-176269131
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20085
+      server: hkdcrtc-e.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-231
         - hysteria2-131230480
+        - trojan-176269131
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +35,7 @@ proxy-groups:
         - auto
         - shadowsocks-231
         - hysteria2-131230480
+        - trojan-176269131
       type: select
 rules:
     - MATCH,select
