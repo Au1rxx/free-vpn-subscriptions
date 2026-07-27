@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: chrome
+      name: vless-175441466
+      network: tcp
+      port: 10071
+      reality-opts:
+        public-key: RsO3PRzPHqGLfioO6C1kQOWatqjo15KnUUbkdE7VKEs
+        short-id: 8ffa8cbc6d67cffa
+      server: gov.viranix.ir
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1b73f053-2709-4698-bbec-cb20e8a5f288
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-175441466
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-175441466
+      type: select
+rules:
+    - MATCH,select

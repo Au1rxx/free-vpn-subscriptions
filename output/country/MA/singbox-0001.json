@@ -1,0 +1,49 @@
+{
+  "outbounds": [
+    {
+      "server": "gov.viranix.ir",
+      "server_port": 10068,
+      "tag": "vless-175441465",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "RsO3PRzPHqGLfioO6C1kQOWatqjo15KnUUbkdE7VKEs",
+          "short_id": "8ffa8cbc6d67cffa"
+        },
+        "server_name": "play.google.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "1b73f053-2709-4698-bbec-cb20e8a5f288"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-175441465"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-175441465"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
