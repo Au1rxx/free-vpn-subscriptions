@@ -6,19 +6,13 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
-    - client-fingerprint: chrome
-      name: vless-2300824
-      network: tcp
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-26744
+      password: QFWzCw2uX9B9i6qAYeFBIE
       port: 443
-      reality-opts:
-        public-key: OZVjfQBboTDTBw0baMFqzVPsVUI4FNQmspTEb0b0zW4
-        short-id: a1b2c3d4
-      server: 151.242.191.161
-      servername: www.samsung.com
-      tls: true
-      type: vless
+      server: 154.46.31.106
+      type: ss
       udp: true
-      uuid: 301d514e-4aa0-47b0-ba44-a0cb891cd52f
     - client-fingerprint: chrome
       name: vless-23907911
       network: tcp
@@ -321,12 +315,38 @@ proxies:
       type: vless
       udp: true
       uuid: 5d509a60-737f-4dd5-ab57-4396361a1011
+    - client-fingerprint: chrome
+      name: vless-177813859
+      network: tcp
+      port: 22002
+      reality-opts:
+        public-key: OncWhxWwzrKOFH21JT9WxcenacQuc7ZmuQy_rZFJ8xg
+        short-id: c6e19c434dc87df7
+      server: bg.sv.temas-bor.ir
+      servername: login.yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5d509a60-737f-4dd5-ab57-4396361a1011
+    - client-fingerprint: chrome
+      name: vless-177813860
+      network: tcp
+      port: 22002
+      reality-opts:
+        public-key: OncWhxWwzrKOFH21JT9WxcenacQuc7ZmuQy_rZFJ8xg
+        short-id: c6e19c434dc87df7
+      server: bg.sv.temas-bor.ir
+      servername: login.yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5d509a60-737f-4dd5-ab57-4396361a1011
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-17587
-        - vless-2300824
+        - shadowsocks-26744
         - vless-23907911
         - vless-37586024
         - vless-40323528
@@ -353,13 +373,15 @@ proxy-groups:
         - vless-175655219
         - vless-177193686
         - vless-177277756
+        - vless-177813859
+        - vless-177813860
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-17587
-        - vless-2300824
+        - shadowsocks-26744
         - vless-23907911
         - vless-37586024
         - vless-40323528
@@ -386,6 +408,8 @@ proxy-groups:
         - vless-175655219
         - vless-177193686
         - vless-177277756
+        - vless-177813859
+        - vless-177813860
       type: select
 rules:
     - MATCH,select
