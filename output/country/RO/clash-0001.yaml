@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-14509
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: 6AOnobBShzL_N96JRBNMfbL84_3myz8ZbKfZUEqRXiY
+        short-id: ""
+      server: 72.5.42.70
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ab51054f-de76-4a0f-9f3a-b44c8df86a6c
     - name: hysteria2-17587
       password: 35415e5e-3666-4454-8c45-903af0fcddf4
       port: 47257
@@ -244,10 +258,24 @@ proxies:
       skip-cert-verify: false
       sni: ro.h2corp.org
       type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-168286794
+      network: tcp
+      port: 10091
+      reality-opts:
+        public-key: RsO3PRzPHqGLfioO6C1kQOWatqjo15KnUUbkdE7VKEs
+        short-id: 8ffa8cbc6d67cffa
+      server: gov.viranix.ir
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 09c3a956-075e-43b1-a125-2df71dac7aec
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-14509
         - hysteria2-17587
         - shadowsocks-130484
         - vless-2104046
@@ -270,11 +298,13 @@ proxy-groups:
         - hysteria2-153592304
         - hysteria2-157363875
         - hysteria2-163625323
+        - vless-168286794
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-14509
         - hysteria2-17587
         - shadowsocks-130484
         - vless-2104046
@@ -297,6 +327,7 @@ proxy-groups:
         - hysteria2-153592304
         - hysteria2-157363875
         - hysteria2-163625323
+        - vless-168286794
       type: select
 rules:
     - MATCH,select
