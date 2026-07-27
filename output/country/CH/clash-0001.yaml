@@ -1,14 +1,4 @@
 proxies:
-    - name: vless-2066045
-      network: ws
-      port: 443
-      server: 104.21.117.9
-      servername: netlivpn2950.bbxff.workers.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: bd9ff08b-d042-3650-48e4-c4b400000000
     - name: vless-2350769
       network: ws
       port: 443
@@ -180,11 +170,24 @@ proxies:
       server: 146.70.26.156
       type: ss
       udp: true
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-177265753
+      network: tcp
+      port: 9882
+      reality-opts:
+        public-key: srYLsJ-AMYXRUMvzxveyGG2HNUiclZp7rV5Jkbhfuk8
+        short-id: ""
+      server: 82.202.159.157
+      servername: amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 884d811f-577b-421e-aabb-608660b0ecfa
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-2066045
         - vless-2350769
         - vless-23713257
         - vless-23875904
@@ -200,12 +203,12 @@ proxy-groups:
         - vless-156784172
         - vless-166269162
         - shadowsocks-175455221
+        - vless-177265753
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-2066045
         - vless-2350769
         - vless-23713257
         - vless-23875904
@@ -221,6 +224,7 @@ proxy-groups:
         - vless-156784172
         - vless-166269162
         - shadowsocks-175455221
+        - vless-177265753
       type: select
 rules:
     - MATCH,select
