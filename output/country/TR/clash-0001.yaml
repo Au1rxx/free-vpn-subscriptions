@@ -15,6 +15,15 @@ proxies:
       server: 185.123.101.64
       type: ss
       udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-99063
+      network: tcp
+      port: 22324
+      server: 5.188.190.252
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
@@ -94,16 +103,6 @@ proxies:
       type: vless
       udp: true
       uuid: acc50200-7f21-4f90-9cca-0057efcbf042
-    - name: vless-48569243
-      network: ws
-      port: 443
-      server: 198.202.211.1
-      servername: sinavm3.soft10.ir
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 963c91fc-1ce7-4fc7-806f-0a2e7b03bfee
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-67963628
@@ -225,12 +224,27 @@ proxies:
       type: vless
       udp: true
       uuid: acc50200-7f21-4f90-9cca-0057efcbf042
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-170091587
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: da5UVhoC5QOCDm84AxB-RRxf0z2nySZ3lOemgqizLS4
+        short-id: ""
+      server: pro-tr.emrata.top
+      servername: pro-tr.emrata.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: f81b1299-f813-46ef-aed1-63afa5e61c91
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-230
         - shadowsocks-11086
+        - vmess-99063
         - shadowsocks-128223
         - vless-10795036
         - vless-42863745
@@ -238,7 +252,6 @@ proxy-groups:
         - vless-43038384
         - vless-45809610
         - vless-45828610
-        - vless-48569243
         - vless-67963628
         - vless-115068950
         - vless-115088951
@@ -250,6 +263,7 @@ proxy-groups:
         - hysteria2-165370453
         - vless-165933066
         - vless-168344641
+        - vless-170091587
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -257,6 +271,7 @@ proxy-groups:
         - auto
         - vmess-230
         - shadowsocks-11086
+        - vmess-99063
         - shadowsocks-128223
         - vless-10795036
         - vless-42863745
@@ -264,7 +279,6 @@ proxy-groups:
         - vless-43038384
         - vless-45809610
         - vless-45828610
-        - vless-48569243
         - vless-67963628
         - vless-115068950
         - vless-115088951
@@ -276,6 +290,7 @@ proxy-groups:
         - hysteria2-165370453
         - vless-165933066
         - vless-168344641
+        - vless-170091587
       type: select
 rules:
     - MATCH,select
