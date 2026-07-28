@@ -19,6 +19,13 @@ proxies:
       type: vless
       udp: true
       uuid: 301d514e-4aa0-47b0-ba44-a0cb891cd52f
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-130484
+      password: QFWzCw2uX9B9i6qAYeFBIE
+      port: 443
+      server: bogging-eyeteeth-fly.freesocks.work
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       name: vless-23907911
       network: tcp
@@ -308,12 +315,27 @@ proxies:
       type: vless
       udp: true
       uuid: 97c9c483-5bcc-4918-8922-9f28c827710c
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-187563194
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
+        short-id: 00bca5982f82d083
+      server: 79.108.161.101
+      servername: eu-central.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: fc1b3bda-b226-452a-8c5c-b0e36a1f8f88
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-17587
         - vless-50107
+        - shadowsocks-130484
         - vless-23907911
         - vless-37586024
         - vless-40323528
@@ -339,6 +361,7 @@ proxy-groups:
         - vless-177813859
         - vless-177813860
         - vless-183988177
+        - vless-187563194
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -346,6 +369,7 @@ proxy-groups:
         - auto
         - hysteria2-17587
         - vless-50107
+        - shadowsocks-130484
         - vless-23907911
         - vless-37586024
         - vless-40323528
@@ -371,6 +395,7 @@ proxy-groups:
         - vless-177813859
         - vless-177813860
         - vless-183988177
+        - vless-187563194
       type: select
 rules:
     - MATCH,select
