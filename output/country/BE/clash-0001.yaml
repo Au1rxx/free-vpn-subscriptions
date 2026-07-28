@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: chrome
+      name: vless-175441463
+      network: tcp
+      port: 10015
+      reality-opts:
+        public-key: RsO3PRzPHqGLfioO6C1kQOWatqjo15KnUUbkdE7VKEs
+        short-id: 8ffa8cbc6d67cffa
+      server: gov.viranix.ir
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1b73f053-2709-4698-bbec-cb20e8a5f288
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-175455224
       password: XF0klw7870vXn3uQIxe19Q
@@ -49,6 +62,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-175441463
         - shadowsocks-175455224
         - vless-177813858
         - vless-177986887
@@ -58,6 +72,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-175441463
         - shadowsocks-175455224
         - vless-177813858
         - vless-177986887
