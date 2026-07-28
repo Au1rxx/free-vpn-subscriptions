@@ -1,6 +1,15 @@
 proxies:
     - alterId: 0
       cipher: auto
+      name: vmess-99462
+      network: ws
+      port: 80
+      server: 61.245.11.60
+      type: vmess
+      udp: true
+      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
+    - alterId: 0
+      cipher: auto
       name: vmess-2357840
       network: ws
       port: 80
@@ -62,6 +71,14 @@ proxies:
       server: 119.246.1.143
       skip-cert-verify: true
       sni: t.me%2fripaojiedian
+      type: trojan
+      udp: true
+    - name: trojan-161284462
+      password: "521314"
+      port: 443
+      server: 118.218.10.159
+      skip-cert-verify: false
+      sni: hhtj.hhllfly.kdns.fr
       type: trojan
       udp: true
     - cipher: chacha20-ietf-poly1305
@@ -133,10 +150,31 @@ proxies:
       sni: hhtj.hhllfly.kdns.fr
       type: trojan
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-184905738
+      password: XF0klw7870vXn3uQIxe19Q
+      port: 1080
+      server: 68.168.114.226
+      type: ss
+      udp: true
+    - client-fingerprint: edge
+      name: vless-185199688
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: SthWDW71MJzhV10XWlbGwdc0BJ6W1ILfny_xn2D0e1A
+        short-id: 0ac1b591aafcfa51
+      server: 89.125.55.113
+      servername: cdn-spb.buildsnow.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: f9922bed-4524-4a6a-8709-9c2e26dedee9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-99462
         - vmess-2357840
         - trojan-2493846
         - trojan-2493847
@@ -145,17 +183,21 @@ proxy-groups:
         - trojan-70506696
         - trojan-106541849
         - trojan-133769367
+        - trojan-161284462
         - shadowsocks-175455232
         - vless-179191097
         - vless-182814894
         - vless-182833885
         - vless-183436424
         - trojan-183951970
+        - shadowsocks-184905738
+        - vless-185199688
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-99462
         - vmess-2357840
         - trojan-2493846
         - trojan-2493847
@@ -164,12 +206,15 @@ proxy-groups:
         - trojan-70506696
         - trojan-106541849
         - trojan-133769367
+        - trojan-161284462
         - shadowsocks-175455232
         - vless-179191097
         - vless-182814894
         - vless-182833885
         - vless-183436424
         - trojan-183951970
+        - shadowsocks-184905738
+        - vless-185199688
       type: select
 rules:
     - MATCH,select

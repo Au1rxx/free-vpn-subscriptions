@@ -1,0 +1,22 @@
+proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-184905695
+      password: XF0klw7870vXn3uQIxe19Q
+      port: 1080
+      server: 156.146.40.84
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-184905695
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-184905695
+      type: select
+rules:
+    - MATCH,select

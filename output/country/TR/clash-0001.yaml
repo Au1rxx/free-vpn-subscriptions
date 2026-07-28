@@ -6,15 +6,6 @@ proxies:
       server: 185.123.101.64
       type: ss
       udp: true
-    - alterId: 1
-      cipher: auto
-      name: vmess-24092
-      network: tcp
-      port: 22324
-      server: 5.188.190.252
-      type: vmess
-      udp: true
-      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
@@ -106,20 +97,13 @@ proxies:
       type: vless
       udp: true
       uuid: acc50200-7f21-4f90-9cca-0057efcbf042
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-138343752
+    - name: vless-125478900
       network: tcp
-      port: 443
-      reality-opts:
-        public-key: OCLtjVdRxsou3429LRfjkDYgiAPs24TSgSeFZpChCEw
-        short-id: d67ec5a8fc40ebea
-      server: tur02.myxasecure.space
-      servername: tur02.myxasecure.space
-      tls: true
+      port: 18244
+      server: 185.128.139.11
       type: vless
       udp: true
-      uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
+      uuid: 0d543aed-4e30-4553-b5ac-211419bb0961
     - client-fingerprint: chrome
       name: vless-156768177
       network: tcp
@@ -188,12 +172,24 @@ proxies:
       type: vless
       udp: true
       uuid: 1f29762d-3f23-4207-9e39-f774de5d49ba
+    - client-fingerprint: chrome
+      name: vless-185124687
+      network: tcp
+      port: 9090
+      reality-opts:
+        public-key: VPD--NqsJ9fyU-xAGks-zUk-cPQjO66EMpovwLLsjm4
+        short-id: 8a881d1f3005
+      server: sir.m2love2.top
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a00a4a9f-4ee7-458e-9485-4047d250c296
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11086
-        - vmess-24092
         - shadowsocks-128223
         - vless-10795036
         - vless-42863745
@@ -201,20 +197,20 @@ proxy-groups:
         - vless-65199002
         - vless-67963628
         - vless-115088951
-        - vless-138343752
+        - vless-125478900
         - vless-156768177
         - hysteria2-165370453
         - vless-168344641
         - vless-170942022
         - vless-175441469
         - vless-180177979
+        - vless-185124687
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-11086
-        - vmess-24092
         - shadowsocks-128223
         - vless-10795036
         - vless-42863745
@@ -222,13 +218,14 @@ proxy-groups:
         - vless-65199002
         - vless-67963628
         - vless-115088951
-        - vless-138343752
+        - vless-125478900
         - vless-156768177
         - hysteria2-165370453
         - vless-168344641
         - vless-170942022
         - vless-175441469
         - vless-180177979
+        - vless-185124687
       type: select
 rules:
     - MATCH,select
