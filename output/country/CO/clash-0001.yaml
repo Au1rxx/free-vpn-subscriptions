@@ -1,13 +1,28 @@
-proxies: []
+proxies:
+    - client-fingerprint: chrome
+      name: vless-101126778
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: jgf0wWpgkEJZzu9wu45Ms33SNZpibtx507rpvzfz3mQ
+        short-id: 635a76c25a4b1820
+      server: 2.26.254.62
+      servername: www.amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8fef09bc-a48a-44ae-95cd-118e58ab796a
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - vless-101126778
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-101126778
       type: select
 rules:
     - MATCH,select

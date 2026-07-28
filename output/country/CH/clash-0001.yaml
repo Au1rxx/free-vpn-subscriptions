@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-2066045
+      network: ws
+      port: 443
+      server: 104.21.117.9
+      servername: netlivpn2950.bbxff.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bd9ff08b-d042-3650-48e4-c4b400000000
     - name: vless-2152654
       network: ws
       port: 2053
@@ -166,13 +176,6 @@ proxies:
       type: vless
       udp: true
       uuid: b4bc10bf-80f9-40c9-b4e5-29817c2f0992
-    - name: vless-166269162
-      network: raw
-      port: 12001
-      server: animall-zooke.fardaty.ir
-      type: vless
-      udp: true
-      uuid: e912f8d6-f59a-48b1-b5ad-bbe548d7ebf3
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-175455221
       password: XF0klw7870vXn3uQIxe19Q
@@ -314,10 +317,78 @@ proxies:
       type: vless
       udp: true
       uuid: 884d811f-577b-421e-aabb-608660b0ecfa
+    - client-fingerprint: firefox
+      name: vless-180284213
+      network: grpc
+      port: 16923
+      reality-opts:
+        public-key: _QeslG3rHGM7DoM99pYC8-jpc16pM2MbNZ6NRMoxmHA
+        short-id: 10ffb85da1c2d986
+      server: 152.233.31.68
+      servername: api-maps.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 156d4820-1ec2-4491-a644-36b1941d4d57
+    - name: vless-180332215
+      network: ws
+      port: 443
+      server: 104.17.147.22
+      servername: netlivpn6982.bshsb72772.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 52ac9e7a-9b2e-4369-a824-864f00000000
+    - name: vless-180332216
+      network: ws
+      port: 443
+      server: 104.17.148.22
+      servername: netlivpn6982.bshsb72772.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 52ac9e7a-9b2e-4369-a824-864f00000000
+    - name: vless-180470213
+      network: ws
+      port: 443
+      server: 104.17.147.22
+      servername: netlivpn5505.ffffdsaaa.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: f6b5a6a3-f3e1-63ca-bb68-bdc400000000
+    - name: vless-180470214
+      network: ws
+      port: 443
+      server: 104.17.148.22
+      servername: netlivpn5505.ffffdsaaa.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: f6b5a6a3-f3e1-63ca-bb68-bdc400000000
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-180473214
+      network: tcp
+      port: 1443
+      reality-opts:
+        public-key: rvOPhBAT3c5Uok7UDuxVfML3j4mib3Y9MU_Cd9M822c
+        short-id: 0441f3e34348cb45
+      server: ch.snowfalls.top
+      servername: ch.snowfalls.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: f9922bed-4524-4a6a-8709-9c2e26dedee9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-2066045
         - vless-2152654
         - vless-2350769
         - vless-23713257
@@ -332,7 +403,6 @@ proxy-groups:
         - vless-151593179
         - vless-151593180
         - vless-156784172
-        - vless-166269162
         - shadowsocks-175455221
         - vless-175692217
         - vless-175703217
@@ -346,11 +416,18 @@ proxy-groups:
         - vless-178063885
         - vless-178073885
         - vless-179189099
+        - vless-180284213
+        - vless-180332215
+        - vless-180332216
+        - vless-180470213
+        - vless-180470214
+        - vless-180473214
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-2066045
         - vless-2152654
         - vless-2350769
         - vless-23713257
@@ -365,7 +442,6 @@ proxy-groups:
         - vless-151593179
         - vless-151593180
         - vless-156784172
-        - vless-166269162
         - shadowsocks-175455221
         - vless-175692217
         - vless-175703217
@@ -379,6 +455,12 @@ proxy-groups:
         - vless-178063885
         - vless-178073885
         - vless-179189099
+        - vless-180284213
+        - vless-180332215
+        - vless-180332216
+        - vless-180470213
+        - vless-180470214
+        - vless-180473214
       type: select
 rules:
     - MATCH,select

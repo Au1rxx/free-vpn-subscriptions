@@ -13,6 +13,19 @@ proxies:
       udp: true
       uuid: 8b575b35-3c7c-42b0-ac80-2aa6b0d7717c
     - client-fingerprint: chrome
+      name: vless-13919
+      network: tcp
+      port: 51114
+      reality-opts:
+        public-key: lf7NJGZAcj3b-YdbsmD6oEISr0dZRjp_gM8ZhLHwb0U
+        short-id: 772e
+      server: 90.156.255.198
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8b575b35-3c7c-42b0-ac80-2aa6b0d7717c
+    - client-fingerprint: chrome
       name: vless-14620
       network: tcp
       port: 43798
@@ -38,19 +51,6 @@ proxies:
       type: vless
       udp: true
       uuid: 079c1b04-7ef9-4c49-8a7a-849a18ba7b9b
-    - client-fingerprint: chrome
-      name: vless-70791
-      network: tcp
-      port: 53231
-      reality-opts:
-        public-key: 3mRweaWR6pK4HsbEtu874rNG9qBgdOMmSsKE4RkWSmk
-        short-id: 4ffbd0f3117c6f
-      server: 45.130.214.192
-      servername: yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4b8d8d7f-a8b4-4e44-80a9-6f13c3149b52
     - client-fingerprint: chrome
       name: vless-82387
       network: tcp
@@ -247,19 +247,6 @@ proxies:
       udp: true
       uuid: 079c1b04-7ef9-4c49-8a7a-849a18ba7b9b
     - client-fingerprint: chrome
-      name: vless-29439107
-      network: raw
-      port: 40478
-      reality-opts:
-        public-key: lcJ0LSh015XRfz5-7wB_hln3-bq5ZatFgPugSUCrdR0
-        short-id: 3c
-      server: 37.233.82.140
-      servername: yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e977d854-33f3-4345-abee-bf3fa9a6d880
-    - client-fingerprint: chrome
       name: vless-32154696
       network: raw
       port: 39771
@@ -398,14 +385,28 @@ proxies:
       type: vless
       udp: true
       uuid: 5b96be74-656d-4bb7-85c2-d2d8a3b7c2f3
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-180315215
+      network: tcp
+      port: 12303
+      reality-opts:
+        public-key: djNTwe-D7XWCrj4sG3b0Kz2tSuJ7epWKoQYHIv1AtzQ
+        short-id: 4646ff0a2c0bafbb
+      server: 185.236.22.229
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 40e2d726-40fb-46c8-b4e2-5a88de1d3da6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-13918
+        - vless-13919
         - vless-14620
         - vless-24289
-        - vless-70791
         - vless-82387
         - vless-82389
         - vless-2292671
@@ -421,7 +422,6 @@ proxy-groups:
         - vless-13093440
         - vless-13095583
         - vless-13135668
-        - vless-29439107
         - vless-32154696
         - vless-37552023
         - vless-46184914
@@ -435,15 +435,16 @@ proxy-groups:
         - vless-154266162
         - vless-154408161
         - vless-173246245
+        - vless-180315215
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-13918
+        - vless-13919
         - vless-14620
         - vless-24289
-        - vless-70791
         - vless-82387
         - vless-82389
         - vless-2292671
@@ -459,7 +460,6 @@ proxy-groups:
         - vless-13093440
         - vless-13095583
         - vless-13135668
-        - vless-29439107
         - vless-32154696
         - vless-37552023
         - vless-46184914
@@ -473,6 +473,7 @@ proxy-groups:
         - vless-154266162
         - vless-154408161
         - vless-173246245
+        - vless-180315215
       type: select
 rules:
     - MATCH,select
