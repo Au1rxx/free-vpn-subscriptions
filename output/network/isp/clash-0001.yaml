@@ -1,13 +1,4 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-99462
-      network: ws
-      port: 80
-      server: 61.245.11.60
-      type: vmess
-      udp: true
-      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
     - name: trojan-2493846
       password: BxceQaOe
       port: 443
@@ -81,14 +72,6 @@ proxies:
       sni: t.me%2fripaojiedian
       type: trojan
       udp: true
-    - name: trojan-161284462
-      password: "521314"
-      port: 443
-      server: 118.218.10.159
-      skip-cert-verify: false
-      sni: hhtj.hhllfly.kdns.fr
-      type: trojan
-      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-175455232
       password: XF0klw7870vXn3uQIxe19Q
@@ -150,8 +133,35 @@ proxies:
       server: 68.168.114.226
       type: ss
       udp: true
-    - client-fingerprint: edge
-      name: vless-185199688
+    - name: vless-185764708
+      network: tcp
+      port: 1525
+      server: 194.77.220.156
+      type: vless
+      udp: true
+      uuid: 11065cf9-b0ba-4503-ac39-adaa92995130
+    - name: vless-187471199
+      network: ws
+      port: 12323
+      server: 121.179.3.58
+      servername: l.m.j.u.w.9.y.i.m.y.s.8.p.y.us.art-us.kdns.fr
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 90235096-9296-3d36-c77c-715577598fd5
+    - name: vless-187471205
+      network: ws
+      port: 20600
+      server: 218.150.34.228
+      servername: l.m.j.u.w.9.y.i.m.y.s.8.p.y.us.art-us.kdns.fr
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 90235096-9296-3d36-c77c-715577598fd5
+    - client-fingerprint: chrome
+      name: vless-187561192
       network: grpc
       port: 443
       reality-opts:
@@ -163,18 +173,10 @@ proxies:
       type: vless
       udp: true
       uuid: f9922bed-4524-4a6a-8709-9c2e26dedee9
-    - name: vless-185764708
-      network: tcp
-      port: 1525
-      server: 194.77.220.156
-      type: vless
-      udp: true
-      uuid: 11065cf9-b0ba-4503-ac39-adaa92995130
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-99462
         - trojan-2493846
         - trojan-2493847
         - trojan-2493848
@@ -184,21 +186,21 @@ proxy-groups:
         - trojan-106541849
         - vless-126155517
         - trojan-133769367
-        - trojan-161284462
         - shadowsocks-175455232
         - shadowsocks-175455233
         - vless-179191097
         - vless-182833885
         - vless-183436424
         - shadowsocks-184905738
-        - vless-185199688
         - vless-185764708
+        - vless-187471199
+        - vless-187471205
+        - vless-187561192
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-99462
         - trojan-2493846
         - trojan-2493847
         - trojan-2493848
@@ -208,15 +210,16 @@ proxy-groups:
         - trojan-106541849
         - vless-126155517
         - trojan-133769367
-        - trojan-161284462
         - shadowsocks-175455232
         - shadowsocks-175455233
         - vless-179191097
         - vless-182833885
         - vless-183436424
         - shadowsocks-184905738
-        - vless-185199688
         - vless-185764708
+        - vless-187471199
+        - vless-187471205
+        - vless-187561192
       type: select
 rules:
     - MATCH,select
