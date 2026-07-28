@@ -1,0 +1,94 @@
+{
+  "outbounds": [
+    {
+      "server": "46.8.220.182",
+      "server_port": 443,
+      "tag": "vless-180177828",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "vxhkDXfYpz1OLqZ-_9QVoQr3_UJLtJFheb5bD5YH7z8",
+          "short_id": "3303c7a5"
+        },
+        "server_name": "media2.tcpdoor.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "transport": {
+        "service_name": "grpc",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "218fd696-e3a2-4c33-b397-a5f13a82969e"
+    },
+    {
+      "server": "185.39.204.155",
+      "server_port": 8443,
+      "tag": "vless-180177979",
+      "transport": {
+        "service_name": "grpc",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "1f29762d-3f23-4207-9e39-f774de5d49ba"
+    },
+    {
+      "password": "FC60532879",
+      "server": "saved-mudfish.rooster465.autos",
+      "server_port": 443,
+      "tag": "trojan-180177986",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "saved-mudfish.rooster465.autos"
+      },
+      "type": "trojan"
+    },
+    {
+      "password": "FC60532879",
+      "server": "quick-tiger.rooster465.autos",
+      "server_port": 443,
+      "tag": "trojan-180177987",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "quick-tiger.rooster465.autos"
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-180177828",
+        "vless-180177979",
+        "trojan-180177986",
+        "trojan-180177987"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-180177828",
+        "vless-180177979",
+        "trojan-180177986",
+        "trojan-180177987"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

@@ -1,0 +1,57 @@
+proxies:
+    - client-fingerprint: safari
+      name: vless-180177828
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: vxhkDXfYpz1OLqZ-_9QVoQr3_UJLtJFheb5bD5YH7z8
+        short-id: 3303c7a5
+      server: 46.8.220.182
+      servername: media2.tcpdoor.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+    - name: vless-180177979
+      network: grpc
+      port: 8443
+      server: 185.39.204.155
+      type: vless
+      udp: true
+      uuid: 1f29762d-3f23-4207-9e39-f774de5d49ba
+    - name: trojan-180177986
+      password: FC60532879
+      port: 443
+      server: saved-mudfish.rooster465.autos
+      skip-cert-verify: false
+      sni: saved-mudfish.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-180177987
+      password: FC60532879
+      port: 443
+      server: quick-tiger.rooster465.autos
+      skip-cert-verify: false
+      sni: quick-tiger.rooster465.autos
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-180177828
+        - vless-180177979
+        - trojan-180177986
+        - trojan-180177987
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-180177828
+        - vless-180177979
+        - trojan-180177986
+        - trojan-180177987
+      type: select
+rules:
+    - MATCH,select
