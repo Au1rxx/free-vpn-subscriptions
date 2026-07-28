@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-2152654
+      network: ws
+      port: 2053
+      server: 104.21.200.243
+      servername: netlivpn2584.vjvdgbc.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7074b9d7-2183-8919-fc11-ca5e00000000
     - name: vless-2350769
       network: ws
       port: 443
@@ -290,10 +300,25 @@ proxies:
       type: vless
       udp: true
       uuid: cb33f1fc-5b49-4e16-882b-8aee00000000
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-179189099
+      network: raw
+      port: 9882
+      reality-opts:
+        public-key: srYLsJ-AMYXRUMvzxveyGG2HNUiclZp7rV5Jkbhfuk8
+        short-id: ""
+      server: 82.202.159.157
+      servername: amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 884d811f-577b-421e-aabb-608660b0ecfa
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-2152654
         - vless-2350769
         - vless-23713257
         - vless-23875904
@@ -320,11 +345,13 @@ proxy-groups:
         - vless-177986892
         - vless-178063885
         - vless-178073885
+        - vless-179189099
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-2152654
         - vless-2350769
         - vless-23713257
         - vless-23875904
@@ -351,6 +378,7 @@ proxy-groups:
         - vless-177986892
         - vless-178063885
         - vless-178073885
+        - vless-179189099
       type: select
 rules:
     - MATCH,select
