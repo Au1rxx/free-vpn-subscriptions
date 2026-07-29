@@ -13,17 +13,26 @@ proxies:
       type: vless
       udp: true
       uuid: f165affe-ffb4-4f13-a081-f14434e51152
+    - name: vless-197904534
+      network: ws
+      port: 8080
+      server: pax.godp.ir
+      type: vless
+      udp: true
+      uuid: c69ab9e3-43e8-4d39-a87b-64543c86eedf
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-192064512
+        - vless-197904534
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-192064512
+        - vless-197904534
       type: select
 rules:
     - MATCH,select
