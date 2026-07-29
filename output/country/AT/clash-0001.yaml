@@ -1,35 +1,7 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-2297598
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 5GhMSJXQv1wXHVD999YHRRj83m-7VKH8qb_vTxBGbng
-        short-id: "08"
-      server: 77.73.131.154
-      servername: vindobona.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1f4c983e-382c-d2fa-b2dc-7981f02b34de
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-2297599
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 5GhMSJXQv1wXHVD999YHRRj83m-7VKH8qb_vTxBGbng
-        short-id: "08"
-      server: 77.73.131.154
-      servername: vindobona.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1f4c983e-382c-d2fa-b2dc-7981f02b34de
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-2297600
       network: tcp
       port: 443
       reality-opts:
@@ -127,13 +99,24 @@ proxies:
       type: vless
       udp: true
       uuid: e911c552-3a98-41e0-b5fb-0dd3879887b7
+    - client-fingerprint: firefox
+      name: vless-197476145
+      network: grpc
+      port: 16923
+      reality-opts:
+        public-key: _QeslG3rHGM7DoM99pYC8-jpc16pM2MbNZ6NRMoxmHA
+        short-id: 10ffb85da1c2d986
+      server: 152.53.47.153
+      servername: api-maps.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: d41fc81c-8679-494e-a687-60b15af4b14d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-2297598
         - vless-2297599
-        - vless-2297600
         - vless-2335815
         - vless-2335816
         - vless-21020648
@@ -141,14 +124,13 @@ proxy-groups:
         - vless-75701298
         - vless-78387670
         - vless-86641996
+        - vless-197476145
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-2297598
         - vless-2297599
-        - vless-2297600
         - vless-2335815
         - vless-2335816
         - vless-21020648
@@ -156,6 +138,7 @@ proxy-groups:
         - vless-75701298
         - vless-78387670
         - vless-86641996
+        - vless-197476145
       type: select
 rules:
     - MATCH,select
