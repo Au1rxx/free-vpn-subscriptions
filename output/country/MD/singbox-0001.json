@@ -1,0 +1,50 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "mold1.panel11.ru",
+      "server_port": 443,
+      "tag": "vless-192064512",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "hkIcYGdaztjQD_PGSyljnzpVu5fQNdetqSlXk3rUllY",
+          "short_id": "41d87f620985209c"
+        },
+        "server_name": "mold1.panel11.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "f165affe-ffb4-4f13-a081-f14434e51152"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-192064512"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-192064512"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
