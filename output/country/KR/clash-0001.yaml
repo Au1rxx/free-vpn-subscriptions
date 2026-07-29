@@ -7,6 +7,13 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-cfb
+      name: shadowsocks-249
+      password: qwerREWQ@@
+      port: 2078
+      server: 27.255.82.134
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-260
       password: qwerREWQ@@
       port: 4652
@@ -48,13 +55,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9f4b666c-ecf1-49e9-8ab8-9ae2c4f4c613
-    - name: vless-70285
-      network: tcp
-      port: 32521
-      server: 43.108.23.174
-      type: vless
-      udp: true
-      uuid: 4ecdf2bd-3ef1-4356-8323-420ed29e8e89
     - client-fingerprint: chrome
       name: vless-77486
       network: tcp
@@ -122,13 +122,6 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-gcm
-      name: shadowsocks-125598
-      password: PCnnH6SQSnfoS27
-      port: 8091
-      server: 141.164.45.187
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
       name: shadowsocks-125599
       password: cdBIDV42DCwnfIN
       port: 8119
@@ -139,6 +132,13 @@ proxies:
       name: shadowsocks-125600
       password: Y6R9pAtvxxzmGC
       port: 8888
+      server: 141.164.45.187
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-125601
+      password: Y6R9pAtvxxzmGC
+      port: 9090
       server: 141.164.45.187
       type: ss
       udp: true
@@ -579,18 +579,26 @@ proxies:
       type: vless
       udp: true
       uuid: efb0a3fe-af52-45c5-b397-1a6866d88d67
+    - name: trojan-197447121
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 9450
+      server: 154.64.226.149
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-207
+        - shadowsocks-249
         - shadowsocks-260
         - shadowsocks-278
         - shadowsocks-283
         - shadowsocks-287
         - vless-13565
         - vless-14113
-        - vless-70285
         - vless-77486
         - vmess-96535
         - vmess-96596
@@ -599,9 +607,9 @@ proxy-groups:
         - shadowsocks-125595
         - shadowsocks-125596
         - shadowsocks-125597
-        - shadowsocks-125598
         - shadowsocks-125599
         - shadowsocks-125600
+        - shadowsocks-125601
         - shadowsocks-125602
         - vmess-144713
         - vmess-145107
@@ -654,19 +662,20 @@ proxy-groups:
         - vmess-192463085
         - vmess-192463135
         - vless-194881718
+        - trojan-197447121
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-207
+        - shadowsocks-249
         - shadowsocks-260
         - shadowsocks-278
         - shadowsocks-283
         - shadowsocks-287
         - vless-13565
         - vless-14113
-        - vless-70285
         - vless-77486
         - vmess-96535
         - vmess-96596
@@ -675,9 +684,9 @@ proxy-groups:
         - shadowsocks-125595
         - shadowsocks-125596
         - shadowsocks-125597
-        - shadowsocks-125598
         - shadowsocks-125599
         - shadowsocks-125600
+        - shadowsocks-125601
         - shadowsocks-125602
         - vmess-144713
         - vmess-145107
@@ -730,6 +739,7 @@ proxy-groups:
         - vmess-192463085
         - vmess-192463135
         - vless-194881718
+        - trojan-197447121
       type: select
 rules:
     - MATCH,select
