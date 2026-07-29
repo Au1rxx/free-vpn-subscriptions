@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-gcm
+      name: shadowsocks-207
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 141.164.45.187
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
       name: shadowsocks-210
       password: TEzjfAYq2IjtuoS
       port: 6679
@@ -22,13 +29,6 @@ proxies:
       type: vmess
       udp: true
       uuid: b5e9480a-b7aa-40a4-f9a7-5299b5e363b4
-    - cipher: aes-256-cfb
-      name: shadowsocks-278
-      password: qwerREWQ@@
-      port: 4652
-      server: 218.237.185.230
-      type: ss
-      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-283
       password: qwerREWQ@@
@@ -176,6 +176,13 @@ proxies:
       type: vmess
       udp: true
       uuid: 5155860e-d07d-46c3-9128-3afbd84626c7
+    - name: vless-2081047
+      network: ws
+      port: 8880
+      server: 172.64.88.251
+      type: vless
+      udp: true
+      uuid: 87a5d3eb-afd4-4193-9787-c54ef7c26c8c
     - name: vless-2095053
       network: tcp
       port: 32521
@@ -456,6 +463,13 @@ proxies:
       type: vless
       udp: true
       uuid: 8546bcef-8456-41a2-82bc-d2231b42b769
+    - name: vless-166190161
+      network: ws
+      port: 8880
+      server: 172.64.88.251
+      type: vless
+      udp: true
+      uuid: 87a5d3eb-afd4-4193-9787-c54ef7c26c8c
     - name: vless-166237162
       network: ws
       port: 8880
@@ -557,14 +571,40 @@ proxies:
       type: vless
       udp: true
       uuid: d6bdda67-168d-4501-a2c1-ef01070cb327
+    - alterId: 0
+      cipher: auto
+      name: vmess-192463085
+      network: tcp
+      port: 8888
+      server: 146.56.112.110
+      type: vmess
+      udp: true
+      uuid: e7c302f3-90d6-42dd-9d7d-94a3683a3707
+    - alterId: 0
+      cipher: auto
+      name: vmess-192463135
+      network: ws
+      port: 80
+      server: 132.145.80.230
+      type: vmess
+      udp: true
+      uuid: 5155860e-d07d-46c3-9128-3afbd84626c7
+    - name: trojan-192566822
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 9450
+      server: rr2.tube-cat.com
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-207
         - shadowsocks-210
         - shadowsocks-260
         - vmess-263
-        - shadowsocks-278
         - shadowsocks-283
         - shadowsocks-287
         - vless-13565
@@ -584,6 +624,7 @@ proxy-groups:
         - vmess-144713
         - vmess-145107
         - vmess-145108
+        - vless-2081047
         - vless-2095053
         - vless-2315826
         - vless-2315827
@@ -616,6 +657,7 @@ proxy-groups:
         - vless-166185162
         - vless-166187167
         - vless-166187168
+        - vless-166190161
         - vless-166237162
         - vless-166260161
         - vmess-168659359
@@ -629,15 +671,18 @@ proxy-groups:
         - vless-192040508
         - vless-192040512
         - vless-192059510
+        - vmess-192463085
+        - vmess-192463135
+        - trojan-192566822
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-207
         - shadowsocks-210
         - shadowsocks-260
         - vmess-263
-        - shadowsocks-278
         - shadowsocks-283
         - shadowsocks-287
         - vless-13565
@@ -657,6 +702,7 @@ proxy-groups:
         - vmess-144713
         - vmess-145107
         - vmess-145108
+        - vless-2081047
         - vless-2095053
         - vless-2315826
         - vless-2315827
@@ -689,6 +735,7 @@ proxy-groups:
         - vless-166185162
         - vless-166187167
         - vless-166187168
+        - vless-166190161
         - vless-166237162
         - vless-166260161
         - vmess-168659359
@@ -702,6 +749,9 @@ proxy-groups:
         - vless-192040508
         - vless-192040512
         - vless-192059510
+        - vmess-192463085
+        - vmess-192463135
+        - trojan-192566822
       type: select
 rules:
     - MATCH,select
