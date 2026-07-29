@@ -15,12 +15,22 @@ proxies:
       skip-cert-verify: true
       sni: ajax.microsoft.com
       type: hysteria2
+    - alterId: 0
+      cipher: auto
+      name: vmess-200292606
+      network: ws
+      port: 36801
+      server: 68.155.86.84
+      type: vmess
+      udp: true
+      uuid: a6ab6513-6ec3-327f-a068-b89fe72954b8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-188189765
         - hysteria2-200242610
+        - vmess-200292606
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -28,6 +38,7 @@ proxy-groups:
         - auto
         - vmess-188189765
         - hysteria2-200242610
+        - vmess-200292606
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-91986752
+      network: tcp
+      port: 12528
+      server: 120.227.1.43
+      type: vless
+      udp: true
+      uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-184905719
       password: XF0klw7870vXn3uQIxe19Q
@@ -17,6 +24,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-91986752
         - shadowsocks-184905719
         - shadowsocks-184905743
       type: url-test
@@ -24,6 +32,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-91986752
         - shadowsocks-184905719
         - shadowsocks-184905743
       type: select

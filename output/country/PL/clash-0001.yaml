@@ -6,6 +6,14 @@ proxies:
       server: 92.118.205.211
       type: ss
       udp: true
+    - name: trojan-11910
+      password: humanity
+      port: 443
+      server: 172.64.152.23
+      skip-cert-verify: false
+      sni: www.creationlong.org
+      type: trojan
+      udp: true
     - name: trojan-11918
       password: humanity
       port: 443
@@ -902,6 +910,13 @@ proxies:
       type: vless
       udp: true
       uuid: f6a2cd4a-b755-4b9f-b854-40101e28e217
+    - name: vless-89300154
+      network: ws
+      port: 9815
+      server: 128.204.223.94
+      type: vless
+      udp: true
+      uuid: 37a0bd7c-8b9f-4693-8916-bd1e2da0a817
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-96658022
@@ -1318,20 +1333,6 @@ proxies:
       type: vless
       udp: true
       uuid: a34b5e88-cf0d-4c01-8199-2d1002d3c787
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-197583464
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: EyzTSZxq5qlUT2xW0l7VP-DzIh2ucabMan9ekEv9Owo
-        short-id: 143627f1
-      server: uwu.spectrumproxy.shop
-      servername: uwu.spectrumproxy.shop
-      tls: true
-      type: vless
-      udp: true
-      uuid: 76713d07-5a6b-49c2-abd8-bc450a2fa7fc
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-197904545
@@ -1367,11 +1368,26 @@ proxies:
       skip-cert-verify: false
       sni: 2.59.163.171.nip.io
       type: hysteria2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-200270606
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: EyzTSZxq5qlUT2xW0l7VP-DzIh2ucabMan9ekEv9Owo
+        short-id: 143627f1
+      server: uwu.spectrumproxy.shop
+      servername: uwu.spectrumproxy.shop
+      tls: true
+      type: vless
+      udp: true
+      uuid: 76713d07-5a6b-49c2-abd8-bc450a2fa7fc
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11081
+        - trojan-11910
         - trojan-11918
         - trojan-11925
         - trojan-11928
@@ -1471,6 +1487,7 @@ proxy-groups:
         - vless-72942585
         - vless-78258676
         - vless-81138728
+        - vless-89300154
         - vless-96658022
         - vless-103939669
         - vless-106681850
@@ -1503,16 +1520,17 @@ proxy-groups:
         - vless-194742180
         - vless-194744185
         - vless-197471139
-        - vless-197583464
         - vless-197904545
         - vless-199316744
         - hysteria2-200242420
+        - vless-200270606
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-11081
+        - trojan-11910
         - trojan-11918
         - trojan-11925
         - trojan-11928
@@ -1612,6 +1630,7 @@ proxy-groups:
         - vless-72942585
         - vless-78258676
         - vless-81138728
+        - vless-89300154
         - vless-96658022
         - vless-103939669
         - vless-106681850
@@ -1644,10 +1663,10 @@ proxy-groups:
         - vless-194742180
         - vless-194744185
         - vless-197471139
-        - vless-197583464
         - vless-197904545
         - vless-199316744
         - hysteria2-200242420
+        - vless-200270606
       type: select
 rules:
     - MATCH,select
