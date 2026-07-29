@@ -1,12 +1,5 @@
 proxies:
     - cipher: aes-256-gcm
-      name: shadowsocks-11086
-      password: faBAoD54k87UJG7
-      port: 2376
-      server: 185.123.101.64
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
       port: 8119
@@ -145,23 +138,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1b73f053-2709-4698-bbec-cb20e8a5f288
-    - name: vless-177294755
-      network: ws
-      port: 2096
-      server: z-e-u-s-panel-ogpqo9.z-e-u-s-7mdylr.workers.dev
-      servername: z-e-u-s-panel-ogpqo9.z-e-u-s-7mdylr.workers.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 50414e45-4c5f-5a45-5553-bd98522d0938
-    - name: vless-180177979
-      network: grpc
-      port: 8443
-      server: 185.39.204.155
-      type: vless
-      udp: true
-      uuid: 1f29762d-3f23-4207-9e39-f774de5d49ba
     - name: hysteria2-187264192
       password: 67a1454f-5a95-4e30-9723-1ffcbe7e97f9
       port: 443
@@ -204,33 +180,6 @@ proxies:
       type: vless
       udp: true
       uuid: acc50200-7f21-4f90-9cca-0057efcbf042
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-192036505
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: OCLtjVdRxsou3429LRfjkDYgiAPs24TSgSeFZpChCEw
-        short-id: d67ec5a8fc40ebea
-      server: tur01.myxasecure.space
-      servername: tur01.myxasecure.space
-      tls: true
-      type: vless
-      udp: true
-      uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
-    - client-fingerprint: chrome
-      name: vless-192036517
-      network: tcp
-      port: 17462
-      reality-opts:
-        public-key: Yl6ip7DyV1H-HWAg5mAGcHHq1cX6yEqC_Avf7B0txXc
-        short-id: e97a9e58192b0f
-      server: vip.persiadesign.tr
-      servername: www.yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0b5fc7a9-8316-444f-b715-54a4250c6177
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-192055515
@@ -245,24 +194,17 @@ proxies:
       type: vless
       udp: true
       uuid: acc50200-7f21-4f90-9cca-0057efcbf042
-    - client-fingerprint: chrome
-      name: vless-192146691
-      network: tcp
-      port: 17462
-      reality-opts:
-        public-key: Yl6ip7DyV1H-HWAg5mAGcHHq1cX6yEqC_Avf7B0txXc
-        short-id: e97a9e58192b0f
-      server: vip.persiadesign.tr
-      servername: www.yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0b5fc7a9-8316-444f-b715-54a4250c6177
+    - name: hysteria2-194840591
+      password: 67a1454f-5a95-4e30-9723-1ffcbe7e97f9
+      port: 443
+      server: taga8.api3-max.ru
+      skip-cert-verify: true
+      sni: taga8.api3-max.ru
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-11086
         - shadowsocks-128223
         - vless-10795036
         - vless-42863745
@@ -274,22 +216,17 @@ proxy-groups:
         - vless-168344641
         - vless-170942022
         - vless-175441469
-        - vless-177294755
-        - vless-180177979
         - hysteria2-187264192
         - shadowsocks-187267192
         - vless-189874220
         - vless-189874221
-        - vless-192036505
-        - vless-192036517
         - vless-192055515
-        - vless-192146691
+        - hysteria2-194840591
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-11086
         - shadowsocks-128223
         - vless-10795036
         - vless-42863745
@@ -301,16 +238,12 @@ proxy-groups:
         - vless-168344641
         - vless-170942022
         - vless-175441469
-        - vless-177294755
-        - vless-180177979
         - hysteria2-187264192
         - shadowsocks-187267192
         - vless-189874220
         - vless-189874221
-        - vless-192036505
-        - vless-192036517
         - vless-192055515
-        - vless-192146691
+        - hysteria2-194840591
       type: select
 rules:
     - MATCH,select
