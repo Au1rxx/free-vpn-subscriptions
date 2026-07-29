@@ -8,17 +8,26 @@ proxies:
       type: vmess
       udp: true
       uuid: a6ab6513-6ec3-327f-a068-b89fe72954b8
+    - name: hysteria2-194840577
+      password: ba845a48-cfcb-48c4-ab8c-0836e360112e
+      port: 56787
+      server: ceo67.ceoiii.com
+      skip-cert-verify: true
+      sni: ajax.microsoft.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-188189765
+        - hysteria2-194840577
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-188189765
+        - hysteria2-194840577
       type: select
 rules:
     - MATCH,select
