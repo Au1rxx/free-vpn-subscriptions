@@ -28,6 +28,20 @@ proxies:
       udp: true
       uuid: 6fdfdb73-51b0-4a14-89a5-c9355a0e0397
     - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-16943
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: vCxfuNNmogA1DlPkjvmKb7_hSgXqe4MboPfi2s1JZG0
+        short-id: b318242471ba4f5b
+      server: raff-vpn-kz-server1.ru
+      servername: google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6fdfdb73-51b0-4a14-89a5-c9355a0e0397
+    - client-fingerprint: chrome
       name: vless-24815
       network: tcp
       port: 38065
@@ -40,6 +54,19 @@ proxies:
       type: vless
       udp: true
       uuid: 4b9063e0-3288-44e9-9aac-80fbfce323a0
+    - client-fingerprint: chrome
+      name: vless-60029
+      network: tcp
+      port: 35728
+      reality-opts:
+        public-key: vhUFNoFcvtZAVMo8y5K5eU2V43m5q6yjmWIhp5RkFng
+        short-id: 69a2
+      server: 178.236.16.98
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a00d89f6-ab7e-4e30-a5e5-54c701d62c93
     - client-fingerprint: chrome
       name: vless-2299725
       network: tcp
@@ -215,26 +242,15 @@ proxies:
       type: vless
       udp: true
       uuid: 6fdfdb73-51b0-4a14-89a5-c9355a0e0397
-    - client-fingerprint: qq
-      name: vless-197435714
-      network: grpc
-      port: 9887
-      reality-opts:
-        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
-        short-id: aabbccdd
-      server: 80.78.246.111
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 884d811f-577b-421e-aabb-608660b0ecfa
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-13460
         - vless-13461
+        - vless-16943
         - vless-24815
+        - vless-60029
         - vless-2299725
         - vless-2299726
         - vless-2316705
@@ -248,7 +264,6 @@ proxy-groups:
         - vless-26642145
         - vless-27088259
         - vless-43014378
-        - vless-197435714
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -256,7 +271,9 @@ proxy-groups:
         - auto
         - vless-13460
         - vless-13461
+        - vless-16943
         - vless-24815
+        - vless-60029
         - vless-2299725
         - vless-2299726
         - vless-2316705
@@ -270,7 +287,6 @@ proxy-groups:
         - vless-26642145
         - vless-27088259
         - vless-43014378
-        - vless-197435714
       type: select
 rules:
     - MATCH,select
