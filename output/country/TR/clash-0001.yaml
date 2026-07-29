@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-gcm
+      name: shadowsocks-11086
+      password: faBAoD54k87UJG7
+      port: 2376
+      server: 185.123.101.64
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
       port: 8119
@@ -20,6 +27,15 @@ proxies:
       type: vless
       udp: true
       uuid: acc50200-7f21-4f90-9cca-0057efcbf042
+    - alterId: 0
+      cipher: auto
+      name: vmess-15966446
+      network: tcp
+      port: 22324
+      server: 5.188.190.252
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-42863745
@@ -91,20 +107,6 @@ proxies:
       udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-189874220
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: rNBFVzV18kAj_ei4AqsgZywzmvD36WK9hcRdVnpHPAM
-        short-id: c0573c8280a0c019
-      server: 91.124.63.229
-      servername: www.ya.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: acc50200-7f21-4f90-9cca-0057efcbf042
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-189874221
       network: tcp
       port: 443
@@ -121,8 +123,10 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-11086
         - shadowsocks-128223
         - vless-10795036
+        - vmess-15966446
         - vless-42863745
         - vless-45828610
         - hysteria2-165370453
@@ -130,15 +134,16 @@ proxy-groups:
         - shadowsocks-184905726
         - hysteria2-187264192
         - shadowsocks-187267192
-        - vless-189874220
         - vless-189874221
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-11086
         - shadowsocks-128223
         - vless-10795036
+        - vmess-15966446
         - vless-42863745
         - vless-45828610
         - hysteria2-165370453
@@ -146,7 +151,6 @@ proxy-groups:
         - shadowsocks-184905726
         - hysteria2-187264192
         - shadowsocks-187267192
-        - vless-189874220
         - vless-189874221
       type: select
 rules:
