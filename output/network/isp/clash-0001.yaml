@@ -1,4 +1,13 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-2357840
+      network: ws
+      port: 80
+      server: 61.245.11.60
+      type: vmess
+      udp: true
+      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
     - name: trojan-2493846
       password: BxceQaOe
       port: 443
@@ -40,6 +49,13 @@ proxies:
       type: trojan
       udp: true
     - name: vless-76190122
+      network: tcp
+      port: 49853
+      server: 193.124.204.145
+      type: vless
+      udp: true
+      uuid: 5ed7b151-b781-4dba-800d-e3f824f1416f
+    - name: vless-83773748
       network: tcp
       port: 49853
       server: 193.124.204.145
@@ -122,16 +138,60 @@ proxies:
       sni: aa.ccmusic.jp
       type: trojan
       udp: true
+    - name: vless-201320356
+      network: tcp
+      port: 2552
+      server: 195.21.129.117
+      type: vless
+      udp: true
+      uuid: d8b42cd5-a149-4356-9e61-000000000000
+    - name: vless-201320357
+      network: tcp
+      port: 2553
+      server: 195.21.129.117
+      type: vless
+      udp: true
+      uuid: d8b42cd5-a149-4356-9e61-000000000000
+    - name: vless-201320358
+      network: tcp
+      port: 2550
+      server: 78.154.108.146
+      type: vless
+      udp: true
+      uuid: d8b42cd5-a149-4356-9e61-000000000000
+    - name: vless-201320359
+      network: tcp
+      port: 2551
+      server: 78.154.108.200
+      type: vless
+      udp: true
+      uuid: d8b42cd5-a149-4356-9e61-000000000000
+    - name: vless-201320360
+      network: tcp
+      port: 1447
+      server: 78.154.108.26
+      type: vless
+      udp: true
+      uuid: d8b42cd5-a149-4356-9e61-111111111111
+    - name: vless-201320361
+      network: tcp
+      port: 1446
+      server: 78.154.108.51
+      type: vless
+      udp: true
+      uuid: d8b42cd5-a149-4356-9e61-111111111111
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-2357840
         - trojan-2493846
         - trojan-2493847
         - trojan-2493848
         - trojan-2493849
         - trojan-70506696
         - vless-76190122
+        - vless-83773748
         - trojan-106541849
         - trojan-133769367
         - shadowsocks-175455232
@@ -142,17 +202,25 @@ proxy-groups:
         - vless-198824233
         - vless-198824234
         - trojan-201299290
+        - vless-201320356
+        - vless-201320357
+        - vless-201320358
+        - vless-201320359
+        - vless-201320360
+        - vless-201320361
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-2357840
         - trojan-2493846
         - trojan-2493847
         - trojan-2493848
         - trojan-2493849
         - trojan-70506696
         - vless-76190122
+        - vless-83773748
         - trojan-106541849
         - trojan-133769367
         - shadowsocks-175455232
@@ -163,6 +231,12 @@ proxy-groups:
         - vless-198824233
         - vless-198824234
         - trojan-201299290
+        - vless-201320356
+        - vless-201320357
+        - vless-201320358
+        - vless-201320359
+        - vless-201320360
+        - vless-201320361
       type: select
 rules:
     - MATCH,select
