@@ -1,13 +1,25 @@
-proxies: []
+proxies:
+    - name: vless-197583414
+      network: ws
+      port: 2053
+      server: 91.192.102.170
+      servername: forfreeuse.sub-flow.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c7e9c591-2764-423a-afca-efbd010fd396
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - vless-197583414
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-197583414
       type: select
 rules:
     - MATCH,select
