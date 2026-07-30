@@ -16,12 +16,23 @@ proxies:
       type: vless
       udp: true
       uuid: 33d5ecd8-b530-4040-9c40-98b6805a3992
+    - name: vless-205248961
+      network: ws
+      port: 443
+      server: 108.162.194.119
+      servername: files104.noonpanir.info
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 33d5ecd8-b530-4040-9c40-98b6805a3992
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-200242275
         - vless-202730754
+        - vless-205248961
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -29,6 +40,7 @@ proxy-groups:
         - auto
         - shadowsocks-200242275
         - vless-202730754
+        - vless-205248961
       type: select
 rules:
     - MATCH,select

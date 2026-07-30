@@ -6,15 +6,6 @@ proxies:
       server: 185.123.101.64
       type: ss
       udp: true
-    - alterId: 1
-      cipher: auto
-      name: vmess-24092
-      network: tcp
-      port: 22324
-      server: 5.188.190.252
-      type: vmess
-      udp: true
-      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
@@ -168,12 +159,39 @@ proxies:
       type: vless
       udp: true
       uuid: 5256d367-4c83-484f-b230-9a6045cb31ee
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-205252960
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: da5UVhoC5QOCDm84AxB-RRxf0z2nySZ3lOemgqizLS4
+        short-id: ""
+      server: pro-tr.emrata.top
+      servername: pro-tr.emrata.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5256d367-4c83-484f-b230-9a6045cb31ee
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-205263963
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: rNBFVzV18kAj_ei4AqsgZywzmvD36WK9hcRdVnpHPAM
+        short-id: c0573c8280a0c019
+      server: 146.103.26.87
+      servername: www.ya.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: acc50200-7f21-4f90-9cca-0057efcbf042
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11086
-        - vmess-24092
         - shadowsocks-128223
         - vless-10795036
         - vless-42863745
@@ -188,13 +206,14 @@ proxy-groups:
         - vless-202742756
         - vless-203838255
         - vless-203838256
+        - vless-205252960
+        - vless-205263963
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-11086
-        - vmess-24092
         - shadowsocks-128223
         - vless-10795036
         - vless-42863745
@@ -209,6 +228,8 @@ proxy-groups:
         - vless-202742756
         - vless-203838255
         - vless-203838256
+        - vless-205252960
+        - vless-205263963
       type: select
 rules:
     - MATCH,select
