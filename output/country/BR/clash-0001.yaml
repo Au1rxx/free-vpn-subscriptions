@@ -6,17 +6,29 @@ proxies:
       server: 137.131.170.144
       type: ss
       udp: true
+    - name: vless-202730754
+      network: ws
+      port: 443
+      server: love.ns.cloudflare.com
+      servername: files104.noonpanir.info
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 33d5ecd8-b530-4040-9c40-98b6805a3992
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-200242275
+        - vless-202730754
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-200242275
+        - vless-202730754
       type: select
 rules:
     - MATCH,select
