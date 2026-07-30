@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-gcm
-      name: shadowsocks-11086
-      password: faBAoD54k87UJG7
-      port: 2376
-      server: 185.123.101.64
-      type: ss
-      udp: true
     - alterId: 1
       cipher: auto
       name: vmess-24092
@@ -140,11 +133,38 @@ proxies:
       type: vless
       udp: true
       uuid: 9c32f85f-6e9c-429f-b7dc-3eeb8901259e
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-203838255
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: da5UVhoC5QOCDm84AxB-RRxf0z2nySZ3lOemgqizLS4
+        short-id: ""
+      server: pro-tr.emrata.top
+      servername: pro-tr.emrata.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3c6275a3-9d27-4f19-8f87-f9da04db78e8
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-203838256
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: da5UVhoC5QOCDm84AxB-RRxf0z2nySZ3lOemgqizLS4
+        short-id: ""
+      server: pro-tr.emrata.top
+      servername: pro-tr.emrata.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5256d367-4c83-484f-b230-9a6045cb31ee
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-11086
         - vmess-24092
         - shadowsocks-128223
         - vless-10795036
@@ -158,12 +178,13 @@ proxy-groups:
         - hysteria2-200394230
         - vless-201287612
         - vless-202742756
+        - vless-203838255
+        - vless-203838256
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-11086
         - vmess-24092
         - shadowsocks-128223
         - vless-10795036
@@ -177,6 +198,8 @@ proxy-groups:
         - hysteria2-200394230
         - vless-201287612
         - vless-202742756
+        - vless-203838255
+        - vless-203838256
       type: select
 rules:
     - MATCH,select
