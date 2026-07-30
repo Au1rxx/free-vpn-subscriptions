@@ -1,47 +1,22 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-175455224
-      password: XF0klw7870vXn3uQIxe19Q
-      port: 1080
-      server: 185.210.217.94
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-184905718
       password: XF0klw7870vXn3uQIxe19Q
       port: 1080
       server: 194.187.251.2
       type: ss
       udp: true
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-197904535
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: cv_KJnMzQUZruACPbH-BCgLWrYqPm2dbUymg-gW_sVc
-        short-id: ""
-      server: 109.69.218.168
-      servername: agile-raptor.cdn.cachefleet.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c28ee61d-0d43-4e69-8e6a-6397ed0ffc03
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-175455224
         - shadowsocks-184905718
-        - vless-197904535
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-175455224
         - shadowsocks-184905718
-        - vless-197904535
       type: select
 rules:
     - MATCH,select
