@@ -6,17 +6,26 @@ proxies:
       skip-cert-verify: false
       sni: hopp-legend-se.roxa.org
       type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-184905713
+      password: XF0klw7870vXn3uQIxe19Q
+      port: 1080
+      server: 185.253.97.206
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-131230480
+        - shadowsocks-184905713
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-131230480
+        - shadowsocks-184905713
       type: select
 rules:
     - MATCH,select
