@@ -6,15 +6,6 @@ proxies:
       server: 185.123.101.64
       type: ss
       udp: true
-    - alterId: 1
-      cipher: auto
-      name: vmess-24092
-      network: tcp
-      port: 22324
-      server: 5.188.190.252
-      type: vmess
-      udp: true
-      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
@@ -22,20 +13,6 @@ proxies:
       server: 38.180.113.194
       type: ss
       udp: true
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-10795036
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: rNBFVzV18kAj_ei4AqsgZywzmvD36WK9hcRdVnpHPAM
-        short-id: c0573c8280a0c019
-      server: try.north-1winter.cv
-      servername: www.ya.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: acc50200-7f21-4f90-9cca-0057efcbf042
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-42863745
@@ -98,13 +75,6 @@ proxies:
       skip-cert-verify: true
       sni: taga9.api3-max.ru
       type: hysteria2
-    - name: vless-202742756
-      network: raw
-      port: 14610
-      server: 87.120.106.226
-      type: vless
-      udp: true
-      uuid: 9c32f85f-6e9c-429f-b7dc-3eeb8901259e
     - name: hysteria2-207301014
       password: 67a1454f-5a95-4e30-9723-1ffcbe7e97f9
       port: 443
@@ -133,45 +103,48 @@ proxies:
       type: vless
       udp: true
       uuid: 7dfe2f33-54c5-43cf-a654-7c8919a266be
+    - name: hysteria2-208461845
+      password: 67a1454f-5a95-4e30-9723-1ffcbe7e97f9
+      port: 443
+      server: taga6.api3-max.ru
+      skip-cert-verify: true
+      sni: taga6.api3-max.ru
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11086
-        - vmess-24092
         - shadowsocks-128223
-        - vless-10795036
         - vless-42863745
         - vless-45828610
         - vless-175441469
         - shadowsocks-187267192
         - vless-200275603
         - hysteria2-200394230
-        - vless-202742756
         - hysteria2-207301014
         - vless-207330015
         - vless-207330017
         - vless-207330018
+        - hysteria2-208461845
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-11086
-        - vmess-24092
         - shadowsocks-128223
-        - vless-10795036
         - vless-42863745
         - vless-45828610
         - vless-175441469
         - shadowsocks-187267192
         - vless-200275603
         - hysteria2-200394230
-        - vless-202742756
         - hysteria2-207301014
         - vless-207330015
         - vless-207330017
         - vless-207330018
+        - hysteria2-208461845
       type: select
 rules:
     - MATCH,select
