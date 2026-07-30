@@ -1,13 +1,4 @@
 proxies:
-    - alterId: 1
-      cipher: auto
-      name: vmess-24092
-      network: tcp
-      port: 22324
-      server: 5.188.190.252
-      type: vmess
-      udp: true
-      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
@@ -111,11 +102,24 @@ proxies:
       type: vless
       udp: true
       uuid: 1b73f053-2709-4698-bbec-cb20e8a5f288
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-211486814
+      network: tcp
+      port: 39756
+      reality-opts:
+        public-key: dDf2TcDNn3Kk8pAp4EnNC4ZUAmGkzAapRFGFe-41IEk
+        short-id: 86f6705960e3e3
+      server: 43.255.156.59
+      servername: iosapps.itunes.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-24092
         - shadowsocks-128223
         - vless-175441469
         - shadowsocks-187267192
@@ -129,12 +133,12 @@ proxy-groups:
         - hysteria2-209378677
         - vless-209406677
         - vless-209446110
+        - vless-211486814
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-24092
         - shadowsocks-128223
         - vless-175441469
         - shadowsocks-187267192
@@ -148,6 +152,7 @@ proxy-groups:
         - hysteria2-209378677
         - vless-209406677
         - vless-209446110
+        - vless-211486814
       type: select
 rules:
     - MATCH,select

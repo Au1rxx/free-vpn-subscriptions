@@ -1,5 +1,18 @@
 proxies:
     - client-fingerprint: chrome
+      name: vless-13918
+      network: tcp
+      port: 51114
+      reality-opts:
+        public-key: lf7NJGZAcj3b-YdbsmD6oEISr0dZRjp_gM8ZhLHwb0U
+        short-id: 772e
+      server: 90.156.255.198
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8b575b35-3c7c-42b0-ac80-2aa6b0d7717c
+    - client-fingerprint: chrome
       name: vless-13919
       network: tcp
       port: 51114
@@ -467,10 +480,21 @@ proxies:
       type: vless
       udp: true
       uuid: 3ad1d277-5715-4ca1-84db-5baea72f822d
+    - name: vless-211482827
+      network: tcp
+      port: 443
+      server: lv-ddc.astralweb.tech
+      servername: lv-ddc.astralweb.tech
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3ad1d277-5715-4ca1-84db-5baea72f822d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-13918
         - vless-13919
         - vless-14620
         - vless-24289
@@ -509,11 +533,13 @@ proxy-groups:
         - vless-194753187
         - vless-197461130
         - vless-207322024
+        - vless-211482827
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-13918
         - vless-13919
         - vless-14620
         - vless-24289
@@ -552,6 +578,7 @@ proxy-groups:
         - vless-194753187
         - vless-197461130
         - vless-207322024
+        - vless-211482827
       type: select
 rules:
     - MATCH,select
