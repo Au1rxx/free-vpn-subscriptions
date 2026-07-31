@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-27030
+      network: tcp
+      port: 10086
+      server: 204.216.216.23
+      type: vless
+      udp: true
+      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - name: vless-85980
       network: ws
       port: 80
@@ -42,6 +49,24 @@ proxies:
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - flow: xtls-rprx-vision
+      name: vless-45772613
+      network: tcp
+      port: 443
+      server: 185.119.19.105
+      servername: u695099u8adcedd7s8746.gogocs.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5d02517f-63d5-3e9f-b467-1bcf4d4e25d3
+    - name: vless-51272389
+      network: ws
+      port: 80
+      server: 57.131.32.191
+      type: vless
+      udp: true
+      uuid: 1e280316-0408-47c4-b058-05b8f1f17f02
+    - flow: xtls-rprx-vision
       name: vless-59597883
       network: tcp
       port: 443
@@ -63,12 +88,15 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-27030
         - vless-85980
         - shadowsocks-127110
         - vless-2291711
         - vless-2297535
         - vless-2327854
         - vless-2327855
+        - vless-45772613
+        - vless-51272389
         - vless-59597883
         - vless-80961737
       type: url-test
@@ -76,12 +104,15 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-27030
         - vless-85980
         - shadowsocks-127110
         - vless-2291711
         - vless-2297535
         - vless-2327854
         - vless-2327855
+        - vless-45772613
+        - vless-51272389
         - vless-59597883
         - vless-80961737
       type: select
