@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-gcm
+      name: shadowsocks-207
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 141.164.45.187
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
       name: shadowsocks-210
       password: TEzjfAYq2IjtuoS
       port: 6679
@@ -356,6 +363,15 @@ proxies:
       udp: true
     - alterId: 0
       cipher: auto
+      name: vmess-192463085
+      network: tcp
+      port: 8888
+      server: 146.56.112.110
+      type: vmess
+      udp: true
+      uuid: e7c302f3-90d6-42dd-9d7d-94a3683a3707
+    - alterId: 0
+      cipher: auto
       name: vmess-192463135
       network: ws
       port: 80
@@ -491,10 +507,29 @@ proxies:
       type: vless
       udp: true
       uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+    - name: vless-212023509
+      network: ws
+      port: 443
+      server: 144.24.73.232
+      servername: mkvmh.alnm.a7e.hh.vavava.kdns.fr
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+    - name: trojan-212116890
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 9450
+      server: 154.64.226.149
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-207
         - shadowsocks-210
         - vmess-244
         - vmess-263
@@ -535,6 +570,7 @@ proxy-groups:
         - trojan-190599905
         - trojan-192020285
         - trojan-192032508
+        - vmess-192463085
         - vmess-192463135
         - trojan-192566822
         - trojan-197447121
@@ -551,11 +587,14 @@ proxy-groups:
         - vless-210050461
         - trojan-211474808
         - vless-211484828
+        - vless-212023509
+        - trojan-212116890
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-207
         - shadowsocks-210
         - vmess-244
         - vmess-263
@@ -596,6 +635,7 @@ proxy-groups:
         - trojan-190599905
         - trojan-192020285
         - trojan-192032508
+        - vmess-192463085
         - vmess-192463135
         - trojan-192566822
         - trojan-197447121
@@ -612,6 +652,8 @@ proxy-groups:
         - vless-210050461
         - trojan-211474808
         - vless-211484828
+        - vless-212023509
+        - trojan-212116890
       type: select
 rules:
     - MATCH,select

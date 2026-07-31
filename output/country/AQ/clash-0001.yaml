@@ -9,17 +9,29 @@ proxies:
       type: vless
       udp: true
       uuid: 916e3030-6eac-418b-9402-7508ca7d6280
+    - name: vless-212010510
+      network: ws
+      port: 8443
+      server: 104.18.42.98
+      servername: aq.nanniang.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 916e3030-6eac-418b-9402-7508ca7d6280
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-197468128
+        - vless-212010510
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-197468128
+        - vless-212010510
       type: select
 rules:
     - MATCH,select
