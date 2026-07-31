@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-16521
+      network: tcp
+      port: 10086
+      server: 204.216.216.23
+      type: vless
+      udp: true
+      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - name: vless-27030
       network: tcp
       port: 10086
@@ -6,6 +13,20 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-66990
+      network: raw
+      port: 1114
+      reality-opts:
+        public-key: WfkCF0eEuIoO0MyJsKOddU89QrTzCZ4y2dzCJbH99CQ
+        short-id: 79a1e14b
+      server: 204.216.216.23
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6ba2eac6-0ec9-44ca-a42b-a8e23aafb530
     - name: vless-85980
       network: ws
       port: 80
@@ -161,24 +182,13 @@ proxies:
       type: vless
       udp: true
       uuid: a8f84171-5f96-4547-b621-59758fe668c8
-    - client-fingerprint: chrome
-      name: vless-211489811
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: f6lqLBe6F_9QDEn8G7v58Wxq8qqTKgEAfuyMxn6_2Qk
-        short-id: dbf867415845f0ac
-      server: 31.77.154.77
-      servername: owa.ozon.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6f93f3eb-8ff2-4da4-837b-8a333c281ff3
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-16521
         - vless-27030
+        - vless-66990
         - vless-85980
         - shadowsocks-127110
         - vless-2291712
@@ -196,13 +206,14 @@ proxy-groups:
         - vless-45772613
         - vless-59597883
         - vless-209411684
-        - vless-211489811
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-16521
         - vless-27030
+        - vless-66990
         - vless-85980
         - shadowsocks-127110
         - vless-2291712
@@ -220,7 +231,6 @@ proxy-groups:
         - vless-45772613
         - vless-59597883
         - vless-209411684
-        - vless-211489811
       type: select
 rules:
     - MATCH,select
