@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-126171
+      password: TEzjfAYq2IjtuoS
+      port: 6697
+      server: 154.223.16.96
+      type: ss
+      udp: true
     - name: vless-213125944
       network: tcp
       port: 62145
@@ -10,12 +17,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-126171
         - vless-213125944
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-126171
         - vless-213125944
       type: select
 rules:
