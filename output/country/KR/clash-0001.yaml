@@ -1,4 +1,18 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-207
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 141.164.45.187
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-210
+      password: TEzjfAYq2IjtuoS
+      port: 6679
+      server: 141.164.45.187
+      type: ss
+      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-244
@@ -199,13 +213,6 @@ proxies:
       type: vless
       udp: true
       uuid: 814bd064-544d-4255-a070-5705c03f6da9
-    - name: vless-13009916
-      network: ws
-      port: 8880
-      server: www.gov.ua
-      type: vless
-      udp: true
-      uuid: e974d4c7-2376-4b65-aa40-0680961ff5e4
     - client-fingerprint: firefox
       name: vless-23895912
       network: tcp
@@ -232,13 +239,6 @@ proxies:
       type: vless
       udp: true
       uuid: a5a82872-616b-49f6-a40a-6a54feeb5dd0
-    - name: vless-26599141
-      network: ws
-      port: 8880
-      server: 104.17.26.45
-      type: vless
-      udp: true
-      uuid: 2e9012a2-7f8c-4233-b78b-5228a9a4951b
     - client-fingerprint: chrome
       name: vless-37574023
       network: tcp
@@ -287,13 +287,6 @@ proxies:
       type: vless
       udp: true
       uuid: 2e9012a2-7f8c-4233-b78b-5228a9a4951b
-    - name: vless-166190161
-      network: ws
-      port: 8880
-      server: 172.64.88.251
-      type: vless
-      udp: true
-      uuid: 87a5d3eb-afd4-4193-9787-c54ef7c26c8c
     - alterId: 0
       cipher: auto
       name: vmess-168659359
@@ -493,10 +486,36 @@ proxies:
       skip-cert-verify: true
       sni: vpn-kr-003.fastervpn.world
       type: hysteria2
+    - name: trojan-221036750
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 9450
+      server: rr2.tube-cat.com
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-221036751
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 9450
+      server: 154.64.226.149
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-221036752
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 9450
+      server: 154.64.226.149
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-207
+        - shadowsocks-210
         - vmess-244
         - shadowsocks-278
         - shadowsocks-283
@@ -521,15 +540,12 @@ proxy-groups:
         - shadowsocks-4892328
         - vless-12945899
         - vless-12945900
-        - vless-13009916
         - vless-23895912
         - vless-23895913
-        - vless-26599141
         - vless-37574023
         - vless-48555241
         - vless-59621877
         - vless-166117161
-        - vless-166190161
         - vmess-168659359
         - trojan-176269123
         - trojan-187602950
@@ -554,11 +570,16 @@ proxy-groups:
         - trojan-211474808
         - trojan-212116890
         - hysteria2-215228348
+        - trojan-221036750
+        - trojan-221036751
+        - trojan-221036752
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-207
+        - shadowsocks-210
         - vmess-244
         - shadowsocks-278
         - shadowsocks-283
@@ -583,15 +604,12 @@ proxy-groups:
         - shadowsocks-4892328
         - vless-12945899
         - vless-12945900
-        - vless-13009916
         - vless-23895912
         - vless-23895913
-        - vless-26599141
         - vless-37574023
         - vless-48555241
         - vless-59621877
         - vless-166117161
-        - vless-166190161
         - vmess-168659359
         - trojan-176269123
         - trojan-187602950
@@ -616,6 +634,9 @@ proxy-groups:
         - trojan-211474808
         - trojan-212116890
         - hysteria2-215228348
+        - trojan-221036750
+        - trojan-221036751
+        - trojan-221036752
       type: select
 rules:
     - MATCH,select
