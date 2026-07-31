@@ -1,0 +1,53 @@
+{
+  "outbounds": [
+    {
+      "server": "152.233.41.31",
+      "server_port": 16923,
+      "tag": "vless-214725292",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "_QeslG3rHGM7DoM99pYC8-jpc16pM2MbNZ6NRMoxmHA",
+          "short_id": "10ffb85da1c2d986"
+        },
+        "server_name": "mail.yandex.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "service_name": "neurex",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "b8e74de0-42c6-4b84-8889-bf348f32730c"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-214725292"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-214725292"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
