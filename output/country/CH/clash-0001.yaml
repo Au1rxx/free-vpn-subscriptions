@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-2066045
+      network: ws
+      port: 443
+      server: 104.21.117.9
+      servername: netlivpn2950.bbxff.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bd9ff08b-d042-3650-48e4-c4b400000000
     - name: trojan-38691648
       password: y3b03zx3tznhyo538p4c
       port: 53261
@@ -628,10 +638,24 @@ proxies:
       type: vless
       udp: true
       uuid: b4bc10bf-80f9-40c9-b4e5-29817c2f0992
+    - client-fingerprint: chrome
+      name: vless-222590702
+      network: grpc
+      port: 2045
+      reality-opts:
+        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+        short-id: 6ba85179e30d4fc2
+      server: 83.228.224.100
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8ba5361f-2d12-40fe-9f33-eca6847f1475
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-2066045
         - trojan-38691648
         - trojan-51444474
         - trojan-51753352
@@ -682,11 +706,13 @@ proxy-groups:
         - vless-212136059
         - vless-220495589
         - vless-222430503
+        - vless-222590702
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-2066045
         - trojan-38691648
         - trojan-51444474
         - trojan-51753352
@@ -737,6 +763,7 @@ proxy-groups:
         - vless-212136059
         - vless-220495589
         - vless-222430503
+        - vless-222590702
       type: select
 rules:
     - MATCH,select
