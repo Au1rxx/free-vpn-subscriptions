@@ -7,9 +7,31 @@
       "type": "http"
     },
     {
+      "flow": "xtls-rprx-vision",
+      "server": "hu001.kubservice.icu",
+      "server_port": 443,
+      "tag": "vless-226116738",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "z-TKWOWgZLfzQ-wNdwXQqVwaUgCmbchM2Xtrk1NGynU"
+        },
+        "server_name": "hu001.kubservice.icu",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "type": "vless",
+      "uuid": "1a0bd0ba-df37-4d86-84ee-5f6eb4210d07"
+    },
+    {
       "interval": "5m",
       "outbounds": [
-        "http-220532093"
+        "http-220532093",
+        "vless-226116738"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -18,7 +40,8 @@
     {
       "outbounds": [
         "auto",
-        "http-220532093"
+        "http-220532093",
+        "vless-226116738"
       ],
       "tag": "select",
       "type": "selector"
