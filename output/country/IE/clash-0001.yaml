@@ -1,14 +1,4 @@
 proxies:
-    - name: vless-97592120
-      network: ws
-      port: 443
-      server: 104.17.28.89
-      servername: workspace.evan00.dpdns.org
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1078d418-b4e0-4668-9018-dc90c2042d61
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-224636345
       password: aBlqdfDv1aTb2klr
@@ -44,23 +34,30 @@ proxies:
       type: vless
       udp: true
       uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-232930907
+      password: ARrBg9S9kosSo3tG
+      port: 443
+      server: 20.223.136.145
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-97592120
         - shadowsocks-224636345
         - vless-226116739
         - vless-228750115
+        - shadowsocks-232930907
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-97592120
         - shadowsocks-224636345
         - vless-226116739
         - vless-228750115
+        - shadowsocks-232930907
       type: select
 rules:
     - MATCH,select
