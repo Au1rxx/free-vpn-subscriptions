@@ -29,20 +29,6 @@ proxies:
       uuid: 1f4c983e-382c-d2fa-b2dc-7981f02b34de
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-2335815
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: LaGTRJ1CJnnYV7FnyqQnU28I0xFTPFKI8xmUFwig5ic
-        short-id: c410508e9721512b
-      server: 152.53.46.27
-      servername: stackoverflow.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: bcc094e4-1a85-8a25-f8e1-5b08b9af841c
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
       name: vless-2335816
       network: tcp
       port: 443
@@ -69,16 +55,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1f4c983e-382c-d2fa-b2dc-7981f02b34de
-    - name: vless-75701298
-      network: ws
-      port: 443
-      server: 162.159.38.119
-      servername: vod.ensf.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: e911c552-3a98-41e0-b5fb-0dd3879887b7
     - name: vless-78387670
       network: ws
       port: 443
@@ -185,16 +161,28 @@ proxies:
       type: vless
       udp: true
       uuid: 29498268-55f3-4b51-ba1a-1eba23f4ab63
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-228821625
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: IuvAXlAWBpeXehmEk0P-FIGTctUhny2H3UilbWWfJC0
+        short-id: 122218f4c1f172e4
+      server: api.yandex-dev.online
+      servername: api.yandex-dev.online
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9c4c3007-ad10-443b-bdbf-4787e6d40aa7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-2297598
         - vless-2297600
-        - vless-2335815
         - vless-2335816
         - vless-51273384
-        - vless-75701298
         - vless-78387670
         - vless-86641996
         - vless-86641997
@@ -205,6 +193,7 @@ proxy-groups:
         - vless-213112939
         - vless-226116709
         - vless-228657694
+        - vless-228821625
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -212,10 +201,8 @@ proxy-groups:
         - auto
         - vless-2297598
         - vless-2297600
-        - vless-2335815
         - vless-2335816
         - vless-51273384
-        - vless-75701298
         - vless-78387670
         - vless-86641996
         - vless-86641997
@@ -226,6 +213,7 @@ proxy-groups:
         - vless-213112939
         - vless-226116709
         - vless-228657694
+        - vless-228821625
       type: select
 rules:
     - MATCH,select
