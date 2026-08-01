@@ -13,12 +13,20 @@ proxies:
       type: vless
       udp: true
       uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+    - name: vless-226742552
+      network: raw
+      port: 62145
+      server: 157.137.228.255
+      type: vless
+      udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-126171
         - vless-226585576
+        - vless-226742552
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +34,7 @@ proxy-groups:
         - auto
         - shadowsocks-126171
         - vless-226585576
+        - vless-226742552
       type: select
 rules:
     - MATCH,select

@@ -6,13 +6,6 @@ proxies:
       server: 141.164.45.187
       type: ss
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-210
-      password: TEzjfAYq2IjtuoS
-      port: 6679
-      server: 141.164.45.187
-      type: ss
-      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-244
@@ -245,15 +238,6 @@ proxies:
       server: 141.164.45.187
       type: ss
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-5259790
-      network: raw
-      port: 443
-      server: 140.238.2.250
-      type: vmess
-      udp: true
-      uuid: 41a7089a-040b-4538-8b8d-010902405bde
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-12945899
@@ -312,19 +296,20 @@ proxies:
       type: vless
       udp: true
       uuid: 2e9012a2-7f8c-4233-b78b-5228a9a4951b
-    - client-fingerprint: chrome
-      name: vless-37574023
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: 9HIcma6Y5a0yddTqa3_zNUyItI3J-g99GdT0u0Moqzw
-        short-id: 87478274a30fcaea
-      server: 151.245.106.49
-      servername: www.cloudflare.com
-      tls: true
+    - name: vless-34870915
+      network: ws
+      port: 8880
+      server: 104.21.88.129
       type: vless
       udp: true
-      uuid: a5a82872-616b-49f6-a40a-6a54feeb5dd0
+      uuid: d829cf8d-0a32-4e60-bcc3-a03fb4658ea4
+    - name: vless-37601023
+      network: ws
+      port: 8880
+      server: 172.67.179.98
+      type: vless
+      udp: true
+      uuid: d829cf8d-0a32-4e60-bcc3-a03fb4658ea4
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-48555241
@@ -353,6 +338,13 @@ proxies:
       type: vless
       udp: true
       uuid: 814bd064-544d-4255-a070-5705c03f6da9
+    - name: vless-65105006
+      network: ws
+      port: 8880
+      server: 104.17.26.45
+      type: vless
+      udp: true
+      uuid: 2e9012a2-7f8c-4233-b78b-5228a9a4951b
     - flow: xtls-rprx-vision
       name: vless-68001628
       network: tcp
@@ -615,12 +607,18 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - name: vless-222603702
+      network: ws
+      port: 8880
+      server: codecanyon.net
+      type: vless
+      udp: true
+      uuid: f12cc297-c9ce-4cdb-98d4-8e47c3f09644
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-207
-        - shadowsocks-210
         - vmess-244
         - shadowsocks-260
         - vmess-263
@@ -651,16 +649,17 @@ proxy-groups:
         - vless-2344693
         - vmess-2393100
         - shadowsocks-4892330
-        - vmess-5259790
         - vless-12945899
         - vless-12945900
         - vless-13009916
         - vless-23856902
         - vmess-23958910
         - vless-26599141
-        - vless-37574023
+        - vless-34870915
+        - vless-37601023
         - vless-48555241
         - vless-59621877
+        - vless-65105006
         - vless-68001628
         - vless-151601180
         - vless-166117161
@@ -693,13 +692,13 @@ proxy-groups:
         - trojan-221036750
         - trojan-221036751
         - trojan-221036752
+        - vless-222603702
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-207
-        - shadowsocks-210
         - vmess-244
         - shadowsocks-260
         - vmess-263
@@ -730,16 +729,17 @@ proxy-groups:
         - vless-2344693
         - vmess-2393100
         - shadowsocks-4892330
-        - vmess-5259790
         - vless-12945899
         - vless-12945900
         - vless-13009916
         - vless-23856902
         - vmess-23958910
         - vless-26599141
-        - vless-37574023
+        - vless-34870915
+        - vless-37601023
         - vless-48555241
         - vless-59621877
+        - vless-65105006
         - vless-68001628
         - vless-151601180
         - vless-166117161
@@ -772,6 +772,7 @@ proxy-groups:
         - trojan-221036750
         - trojan-221036751
         - trojan-221036752
+        - vless-222603702
       type: select
 rules:
     - MATCH,select
