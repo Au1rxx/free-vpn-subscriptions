@@ -1,13 +1,29 @@
-proxies: []
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-156850172
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: 0QOg0Zo5ap0n33VXkkN1-k9R9IOkI3igM5Nlg5cRdDQ
+        short-id: aa
+      server: hia.waols.click
+      servername: cdn.ir
+      tls: true
+      type: vless
+      udp: true
+      uuid: teymur_vpn
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - vless-156850172
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-156850172
       type: select
 rules:
     - MATCH,select
