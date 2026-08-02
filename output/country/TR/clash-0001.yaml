@@ -6,6 +6,15 @@ proxies:
       server: 185.123.101.64
       type: ss
       udp: true
+    - alterId: 1
+      cipher: auto
+      name: vmess-24092
+      network: tcp
+      port: 22324
+      server: 5.188.190.252
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - alterId: 0
       cipher: auto
       name: vmess-99063
@@ -360,11 +369,67 @@ proxies:
       type: vless
       udp: true
       uuid: ab7d5ea9-6eca-47c3-b14b-67378fc2d7c2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-244945240
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Fd7epdoLVi5UHgGe_2pHYzh3efwKFKPwBC0UhuB5JWM
+        short-id: 8cce20a6ad40c0a2
+      server: 77.83.245.42
+      servername: dev.cloud-compute.rest
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-244945241
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Fd7epdoLVi5UHgGe_2pHYzh3efwKFKPwBC0UhuB5JWM
+        short-id: 8cce20a6ad40c0a2
+      server: dev.cloud-compute.rest
+      servername: dev.cloud-compute.rest
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
+    - client-fingerprint: chrome
+      name: vless-244954243
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: aFsY-EZjSNTomlAFShKwQIQMJ5pHiZQXXJpWvcz8WkQ
+        short-id: 0858af97f4e7324d
+      server: 62.133.63.94
+      servername: web.stapika.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 504d0b6e-400d-45ec-b2d0-1c79006ebc16
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-244966233
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: zvbLa6BrfAeAKIg4TZ2AASiEZ9ntYCSEFhgkbqWwkQg
+        short-id: 4e9b5c2d1a3f5728
+      server: 87.120.106.126
+      servername: tr.tunnelx.space
+      tls: true
+      type: vless
+      udp: true
+      uuid: ab7d5ea9-6eca-47c3-b14b-67378fc2d7c2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11086
+        - vmess-24092
         - vmess-99063
         - shadowsocks-128223
         - shadowsocks-187267192
@@ -395,12 +460,17 @@ proxy-groups:
         - vless-243885385
         - vless-244433785
         - vless-244463786
+        - vless-244945240
+        - vless-244945241
+        - vless-244954243
+        - vless-244966233
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-11086
+        - vmess-24092
         - vmess-99063
         - shadowsocks-128223
         - shadowsocks-187267192
@@ -431,6 +501,10 @@ proxy-groups:
         - vless-243885385
         - vless-244433785
         - vless-244463786
+        - vless-244945240
+        - vless-244945241
+        - vless-244954243
+        - vless-244966233
       type: select
 rules:
     - MATCH,select

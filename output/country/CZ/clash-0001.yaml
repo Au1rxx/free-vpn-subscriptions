@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-91983773
+      network: tcp
+      port: 20342
+      server: 193.124.57.208
+      type: vless
+      udp: true
+      uuid: 5eecb34f-c905-4c77-b7fb-d830b451cd11
     - name: vless-115176513
       network: tcp
       port: 20342
@@ -8,6 +15,13 @@ proxies:
       uuid: 5eecb34f-c905-4c77-b7fb-d830b451cd11
     - name: vless-122735515
       network: tcp
+      port: 20342
+      server: 141.133.172.222
+      type: vless
+      udp: true
+      uuid: 5eecb34f-c905-4c77-b7fb-d830b451cd11
+    - name: vless-151522179
+      network: raw
       port: 20342
       server: 141.133.172.222
       type: vless
@@ -35,6 +49,19 @@ proxies:
       udp: true
       uuid: 5eecb34f-c905-4c77-b7fb-d830b451cd11
     - client-fingerprint: firefox
+      name: vless-238564653
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: aFsY-EZjSNTomlAFShKwQIQMJ5pHiZQXXJpWvcz8WkQ
+        short-id: 0858af97f4e7324d
+      server: 103.200.28.187
+      servername: web.mayluck.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 504d0b6e-400d-45ec-b2d0-1c79006ebc16
+    - client-fingerprint: firefox
       name: vless-238670352
       network: tcp
       port: 2053
@@ -47,27 +74,60 @@ proxies:
       type: vless
       udp: true
       uuid: 504d0b6e-400d-45ec-b2d0-1c79006ebc16
+    - name: vless-244956242
+      network: tcp
+      port: 20342
+      server: 141.133.172.222
+      type: vless
+      udp: true
+      uuid: 5eecb34f-c905-4c77-b7fb-d830b451cd11
+    - name: vless-244956243
+      network: tcp
+      port: 20342
+      server: 141.133.172.222
+      type: vless
+      udp: true
+      uuid: 5eecb34f-c905-4c77-b7fb-d830b451cd11
+    - name: vless-244956244
+      network: tcp
+      port: 20342
+      server: 141.133.172.222
+      type: vless
+      udp: true
+      uuid: 5eecb34f-c905-4c77-b7fb-d830b451cd11
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-91983773
         - vless-115176513
         - vless-122735515
+        - vless-151522179
         - vless-185067690
         - vless-232800732
         - vless-232800733
+        - vless-238564653
         - vless-238670352
+        - vless-244956242
+        - vless-244956243
+        - vless-244956244
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-91983773
         - vless-115176513
         - vless-122735515
+        - vless-151522179
         - vless-185067690
         - vless-232800732
         - vless-232800733
+        - vless-238564653
         - vless-238670352
+        - vless-244956242
+        - vless-244956243
+        - vless-244956244
       type: select
 rules:
     - MATCH,select

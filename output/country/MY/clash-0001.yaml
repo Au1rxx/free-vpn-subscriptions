@@ -16,12 +16,23 @@ proxies:
       skip-cert-verify: true
       sni: my1.ktmhyld.com
       type: hysteria2
+    - name: vless-244960234
+      network: ws
+      port: 443
+      server: zjmy.zywm.eu.org
+      servername: zjmy.zywm.eu.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 83564060-4069-40b4-e657-adccef9c4b62
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-241316755
         - hysteria2-243885369
+        - vless-244960234
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -29,6 +40,7 @@ proxy-groups:
         - auto
         - vless-241316755
         - hysteria2-243885369
+        - vless-244960234
       type: select
 rules:
     - MATCH,select
