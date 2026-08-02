@@ -1,0 +1,72 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "37.221.208.37",
+      "server_port": 443,
+      "tag": "vless-236539909",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "z-TKWOWgZLfzQ-wNdwXQqVwaUgCmbchM2Xtrk1NGynU"
+        },
+        "server_name": "hu0001.kubservice.icu",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "type": "vless",
+      "uuid": "767a17d0-0579-4d98-ae13-413198f44752"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "hu0001.kubservice.icu",
+      "server_port": 443,
+      "tag": "vless-236576909",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "z-TKWOWgZLfzQ-wNdwXQqVwaUgCmbchM2Xtrk1NGynU"
+        },
+        "server_name": "hu0001.kubservice.icu",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "type": "vless",
+      "uuid": "767a17d0-0579-4d98-ae13-413198f44752"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-236539909",
+        "vless-236576909"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-236539909",
+        "vless-236576909"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
