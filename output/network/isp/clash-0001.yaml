@@ -1,4 +1,22 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-2357840
+      network: ws
+      port: 80
+      server: 61.245.11.60
+      type: vmess
+      udp: true
+      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
+    - alterId: 0
+      cipher: auto
+      name: vmess-2387870
+      network: ws
+      port: 80
+      server: 61.245.11.60
+      type: vmess
+      udp: true
+      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
     - name: trojan-2493846
       password: BxceQaOe
       port: 443
@@ -135,30 +153,10 @@ proxies:
       type: vless
       udp: true
       uuid: c7e9c591-2764-423a-afca-efbd010fd396
-    - name: vless-232819151
-      network: ws
-      port: 37020
-      server: 121.159.11.183
-      servername: sni.ehb.cc.cd
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: ef6c9625-62de-4b9d-b7e2-0d4a9f67a9b2
     - name: vless-232836146
       network: ws
       port: 10616
       server: 171.103.22.35
-      servername: sni.ehb.cc.cd
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: ef6c9625-62de-4b9d-b7e2-0d4a9f67a9b2
-    - name: vless-232836147
-      network: ws
-      port: 10026
-      server: 171.103.221.162
       servername: sni.ehb.cc.cd
       skip-cert-verify: false
       tls: true
@@ -247,10 +245,22 @@ proxies:
       type: vless
       udp: true
       uuid: 53d683c2-a651-4deb-aa72-028f326fab7b
+    - name: vless-239162714
+      network: ws
+      port: 12545
+      server: 211.220.53.131
+      servername: sni.ehb.cc.cd
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ef6c9625-62de-4b9d-b7e2-0d4a9f67a9b2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-2357840
+        - vmess-2387870
         - trojan-2493846
         - trojan-2493847
         - trojan-2493848
@@ -267,9 +277,7 @@ proxy-groups:
         - vmess-202892926
         - vless-207973654
         - vless-216230213
-        - vless-232819151
         - vless-232836146
-        - vless-232836147
         - vless-232836148
         - vless-234462661
         - vless-234988438
@@ -277,11 +285,14 @@ proxy-groups:
         - vless-236539909
         - vless-237066856
         - vless-237111604
+        - vless-239162714
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-2357840
+        - vmess-2387870
         - trojan-2493846
         - trojan-2493847
         - trojan-2493848
@@ -298,9 +309,7 @@ proxy-groups:
         - vmess-202892926
         - vless-207973654
         - vless-216230213
-        - vless-232819151
         - vless-232836146
-        - vless-232836147
         - vless-232836148
         - vless-234462661
         - vless-234988438
@@ -308,6 +317,7 @@ proxy-groups:
         - vless-236539909
         - vless-237066856
         - vless-237111604
+        - vless-239162714
       type: select
 rules:
     - MATCH,select

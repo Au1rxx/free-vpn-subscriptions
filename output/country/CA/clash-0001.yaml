@@ -6,6 +6,13 @@ proxies:
       server: 137.184.174.93
       type: ss
       udp: true
+    - cipher: aes-128-gcm
+      name: shadowsocks-208
+      password: shadowsocks
+      port: 443
+      server: 149.22.95.183
+      type: ss
+      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-11074
       password: KixLvKzwjekG00rm
@@ -822,16 +829,6 @@ proxies:
       type: vless
       udp: true
       uuid: 304a1e62-eb26-4b44-994e-b96a70fff9b4
-    - name: vless-218397121
-      network: ws
-      port: 443
-      server: 104.17.108.69
-      servername: 89drg3d.zenvorix.ir
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3a17b816-a8ae-415d-a592-29345d7a7591
     - name: vless-222579701
       network: ws
       port: 8443
@@ -872,11 +869,25 @@ proxies:
       type: vless
       udp: true
       uuid: 304a1e62-eb26-4b44-994e-b96a70fff9b4
+    - client-fingerprint: firefox
+      name: vless-239186032
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: aFsY-EZjSNTomlAFShKwQIQMJ5pHiZQXXJpWvcz8WkQ
+        short-id: 0858af97f4e7324d
+      server: 78.111.91.166
+      servername: web.demiurgitut.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 504d0b6e-400d-45ec-b2d0-1c79006ebc16
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-166
+        - shadowsocks-208
         - shadowsocks-11074
         - vmess-16065
         - vmess-16103
@@ -955,17 +966,18 @@ proxy-groups:
         - vless-216235213
         - vless-216320444
         - vless-218395123
-        - vless-218397121
         - vless-222579701
         - vless-222579702
         - vless-222579703
         - vless-224658186
+        - vless-239186032
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-166
+        - shadowsocks-208
         - shadowsocks-11074
         - vmess-16065
         - vmess-16103
@@ -1044,11 +1056,11 @@ proxy-groups:
         - vless-216235213
         - vless-216320444
         - vless-218395123
-        - vless-218397121
         - vless-222579701
         - vless-222579702
         - vless-222579703
         - vless-224658186
+        - vless-239186032
       type: select
 rules:
     - MATCH,select
