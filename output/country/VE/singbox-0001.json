@@ -1,0 +1,42 @@
+{
+  "outbounds": [
+    {
+      "server": "38.76.9.0",
+      "server_port": 999,
+      "tag": "http-91987220",
+      "type": "http"
+    },
+    {
+      "server": "38.224.153.128",
+      "server_port": 999,
+      "tag": "http-239221951",
+      "type": "http"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "http-91987220",
+        "http-239221951"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "http-91987220",
+        "http-239221951"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
