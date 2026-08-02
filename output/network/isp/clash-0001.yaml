@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-112939
+      password: tsuchiya
+      port: 443
+      server: 161.34.39.108
+      skip-cert-verify: false
+      sni: aa.ccmusic.jp
+      type: trojan
+      udp: true
     - name: trojan-2493846
       password: BxceQaOe
       port: 443
@@ -47,13 +55,6 @@ proxies:
       sni: t.me%2fripaojiedian
       type: trojan
       udp: true
-    - name: vless-176747394
-      network: tcp
-      port: 49853
-      server: 193.124.204.145
-      type: vless
-      udp: true
-      uuid: 5ed7b151-b781-4dba-800d-e3f824f1416f
     - name: vless-198824234
       network: tcp
       port: 49853
@@ -61,20 +62,6 @@ proxies:
       type: vless
       udp: true
       uuid: 5ed7b151-b781-4dba-800d-e3f824f1416f
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-237111604
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: r6LKP3g2W5ruKICTDfH8rwM1PbMjdcgHU7cG6jppxTs
-        short-id: 27e53bbcab7593d7
-      server: 62.152.56.243
-      servername: api-maps.yandex.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 53d683c2-a651-4deb-aa72-028f326fab7b
     - client-fingerprint: firefox
       name: vless-240797188
       network: grpc
@@ -95,37 +82,44 @@ proxies:
       type: vless
       udp: true
       uuid: 35c13bb9-9d22-4d89-bfd2-76fe7abf04ff
+    - name: vless-246594057
+      network: raw
+      port: 29
+      server: 194.77.220.41
+      type: vless
+      udp: true
+      uuid: 35c13bb9-9d22-4d89-bfd2-76fe7abf04ff
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-112939
         - trojan-2493846
         - trojan-2493847
         - trojan-2493848
         - trojan-70506696
         - trojan-106541849
         - trojan-133769367
-        - vless-176747394
         - vless-198824234
-        - vless-237111604
         - vless-240797188
         - vless-244408784
+        - vless-246594057
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-112939
         - trojan-2493846
         - trojan-2493847
         - trojan-2493848
         - trojan-70506696
         - trojan-106541849
         - trojan-133769367
-        - vless-176747394
         - vless-198824234
-        - vless-237111604
         - vless-240797188
         - vless-244408784
+        - vless-246594057
       type: select
 rules:
     - MATCH,select
