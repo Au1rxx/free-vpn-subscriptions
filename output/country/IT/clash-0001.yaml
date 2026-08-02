@@ -13,6 +13,13 @@ proxies:
       server: 185.213.20.110
       type: ss
       udp: true
+    - name: vless-2327852
+      network: raw
+      port: 10086
+      server: 204.216.216.23
+      type: vless
+      udp: true
+      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - name: vless-2327853
       network: tcp
       port: 10086
@@ -34,20 +41,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-220493428
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: jWVk2Z7eFkyDcu2xgzqX8JsPbZuCVhHUWD463Vfgazw
-        short-id: 7a5b89ecdb01f781
-      server: 94.126.206.121
-      servername: www.eni.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a8f84171-5f96-4547-b621-59758fe668c8
     - name: vless-222527015
       network: tcp
       port: 443
@@ -75,19 +68,33 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
+    - client-fingerprint: chrome
+      name: vless-243885365
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: F2VfBr2UmjDTErB_oruvW5aIvzH_xGfM2AW5_w-DF0I
+        short-id: ""
+      server: pro-it.emrata.top
+      servername: pro-it.emrata.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4bce450e-0a37-4fdd-8c9e-ba6a5e4730aa
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-16521
         - shadowsocks-127110
+        - vless-2327852
         - vless-2327853
         - vless-2327854
         - vless-2327855
-        - vless-220493428
         - vless-222527015
         - vless-238618666
         - vless-239195035
+        - vless-243885365
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -95,13 +102,14 @@ proxy-groups:
         - auto
         - vless-16521
         - shadowsocks-127110
+        - vless-2327852
         - vless-2327853
         - vless-2327854
         - vless-2327855
-        - vless-220493428
         - vless-222527015
         - vless-238618666
         - vless-239195035
+        - vless-243885365
       type: select
 rules:
     - MATCH,select

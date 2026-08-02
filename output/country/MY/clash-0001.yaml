@@ -18,12 +18,20 @@ proxies:
       type: vless
       udp: true
       uuid: 83564060-4069-40b4-e657-adccef9c4b62
+    - name: hysteria2-243885369
+      password: b111a7bb-7be3-4d0b-9e7b-ea8f33d03e17
+      port: 18385
+      server: my1.ktmhyld.com
+      skip-cert-verify: true
+      sni: my1.ktmhyld.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-193263790
         - vless-241316755
+        - hysteria2-243885369
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -31,6 +39,7 @@ proxy-groups:
         - auto
         - vmess-193263790
         - vless-241316755
+        - hysteria2-243885369
       type: select
 rules:
     - MATCH,select
