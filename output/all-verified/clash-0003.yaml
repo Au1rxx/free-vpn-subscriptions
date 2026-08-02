@@ -1,19 +1,5 @@
 proxies:
     - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-238635658
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: APXp2igsjxFmGkpb3L98I__FTySIY6saN6skP2y0ank
-        short-id: c6d439fd92614ab0
-      server: 78.40.195.56
-      servername: 19.07-7.yunus.guru
-      tls: true
-      type: vless
-      udp: true
-      uuid: a5ea9247-79f3-4655-aece-3fb51e1e669e
-    - client-fingerprint: firefox
       name: vless-238635659
       network: tcp
       port: 22012
@@ -916,6 +902,14 @@ proxies:
       type: vless
       udp: true
       uuid: ef6c9625-62de-4b9d-b7e2-0d4a9f67a9b2
+    - name: trojan-239174033
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20004
+      server: oplosgru-c.catcat321.com
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: trojan-239174034
       password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
       port: 20004
@@ -1198,6 +1192,20 @@ proxies:
       uuid: c6666ab2-c3e4-4504-bf2f-8b6672b00927
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-239200034
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: EltWI8AOqkN8lMjRycweRRoFRah5hu6xiKtgBmQOdE8
+        short-id: ""
+      server: premium-us.geodema.network
+      servername: premium-us.geodema.network
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd8c8f5c-f102-0064-8ade-238b874fcf65
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-239200035
       network: tcp
       port: 8443
@@ -1357,11 +1365,33 @@ proxies:
       type: vless
       udp: true
       uuid: fc1ee51e-72ec-4af0-ab0f-540c9e22427b
+    - alterId: 1
+      cipher: auto
+      name: vmess-239246926
+      network: tcp
+      port: 11777
+      server: r8f4n-g05.jp02-e3-vm0.entry.fr0528.art
+      type: vmess
+      udp: true
+      uuid: 8ee65c79-4487-32ff-b896-62c8dce05921
+    - cipher: aes-256-cfb
+      name: shadowsocks-239246932
+      password: amazonskr05
+      port: 443
+      server: 54.196.207.151
+      type: ss
+      udp: true
+    - name: hysteria2-239246944
+      password: 57ad54a0-59ca-4553-bdad-35aab6bd3aa5
+      port: 9992
+      server: 104.36.86.93
+      skip-cert-verify: true
+      sni: 104.36.86.93
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-238635658
         - vless-238635659
         - vless-238636653
         - vless-238636654
@@ -1435,6 +1465,7 @@ proxy-groups:
         - vless-239158805
         - vless-239162713
         - vless-239162714
+        - trojan-239174033
         - trojan-239174034
         - vless-239176034
         - vless-239176035
@@ -1459,6 +1490,7 @@ proxy-groups:
         - vless-239196038
         - vless-239197040
         - vless-239199034
+        - vless-239200034
         - vless-239200035
         - vless-239202032
         - vless-239202034
@@ -1471,12 +1503,14 @@ proxy-groups:
         - vless-239206036
         - vless-239207032
         - vless-239207033
+        - vmess-239246926
+        - shadowsocks-239246932
+        - hysteria2-239246944
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-238635658
         - vless-238635659
         - vless-238636653
         - vless-238636654
@@ -1550,6 +1584,7 @@ proxy-groups:
         - vless-239158805
         - vless-239162713
         - vless-239162714
+        - trojan-239174033
         - trojan-239174034
         - vless-239176034
         - vless-239176035
@@ -1574,6 +1609,7 @@ proxy-groups:
         - vless-239196038
         - vless-239197040
         - vless-239199034
+        - vless-239200034
         - vless-239200035
         - vless-239202032
         - vless-239202034
@@ -1586,6 +1622,9 @@ proxy-groups:
         - vless-239206036
         - vless-239207032
         - vless-239207033
+        - vmess-239246926
+        - shadowsocks-239246932
+        - hysteria2-239246944
       type: select
 rules:
     - MATCH,select
