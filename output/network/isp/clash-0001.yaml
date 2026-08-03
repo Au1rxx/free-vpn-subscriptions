@@ -1,13 +1,4 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-99462
-      network: ws
-      port: 80
-      server: 61.245.11.60
-      type: vmess
-      udp: true
-      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
     - name: trojan-112939
       password: tsuchiya
       port: 443
@@ -16,15 +7,6 @@ proxies:
       sni: aa.ccmusic.jp
       type: trojan
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-2387870
-      network: ws
-      port: 80
-      server: 61.245.11.60
-      type: vmess
-      udp: true
-      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
     - name: trojan-2493846
       password: BxceQaOe
       port: 443
@@ -88,6 +70,19 @@ proxies:
       sni: t.me%2fripaojiedian
       type: trojan
       udp: true
+    - client-fingerprint: safari
+      name: vless-166107163
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: aBs0x09cXtjTpsrGb21cJsEmDsaCaC1RPeutNu404V0
+        short-id: 6fa13cdb
+      server: 45.151.62.156
+      servername: dogs.abvphelp.cc
+      tls: true
+      type: vless
+      udp: true
+      uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
     - name: vless-176747394
       network: tcp
       port: 49853
@@ -167,39 +162,11 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
-    - client-fingerprint: firefox
-      name: vless-248690937
-      network: grpc
-      port: 2096
-      reality-opts:
-        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-        short-id: ""
-      server: 94.103.2.247
-      servername: id.vk.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: b4bc10bf-80f9-40c9-b4e5-29817c2f0992
-    - client-fingerprint: edge
-      name: vless-248690940
-      network: grpc
-      port: 2096
-      reality-opts:
-        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-        short-id: ""
-      server: 94.103.2.253
-      servername: id.vk.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: b4bc10bf-80f9-40c9-b4e5-29817c2f0992
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-99462
         - trojan-112939
-        - vmess-2387870
         - trojan-2493846
         - trojan-2493847
         - trojan-2493848
@@ -208,6 +175,7 @@ proxy-groups:
         - vless-83773748
         - trojan-106541849
         - trojan-133769367
+        - vless-166107163
         - vless-176747394
         - vless-198824233
         - vless-198824234
@@ -217,16 +185,12 @@ proxy-groups:
         - vless-244408784
         - hysteria2-248653936
         - hysteria2-248653937
-        - vless-248690937
-        - vless-248690940
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-99462
         - trojan-112939
-        - vmess-2387870
         - trojan-2493846
         - trojan-2493847
         - trojan-2493848
@@ -235,6 +199,7 @@ proxy-groups:
         - vless-83773748
         - trojan-106541849
         - trojan-133769367
+        - vless-166107163
         - vless-176747394
         - vless-198824233
         - vless-198824234
@@ -244,8 +209,6 @@ proxy-groups:
         - vless-244408784
         - hysteria2-248653936
         - hysteria2-248653937
-        - vless-248690937
-        - vless-248690940
       type: select
 rules:
     - MATCH,select
