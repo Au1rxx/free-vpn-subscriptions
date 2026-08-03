@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-2066045
+      network: ws
+      port: 443
+      server: 104.21.117.9
+      servername: netlivpn2950.bbxff.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bd9ff08b-d042-3650-48e4-c4b400000000
     - name: trojan-38691648
       password: y3b03zx3tznhyo538p4c
       port: 53261
@@ -615,20 +625,6 @@ proxies:
       type: vless
       udp: true
       uuid: b4bc10bf-80f9-40c9-b4e5-29817c2f0992
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-242777376
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: q_lfutznS1iTS7bGphTIGMYVeht-8clcf_IfzIf4mBQ
-        short-id: 10a5c8e2f4b7d936
-      server: 199.68.196.79
-      servername: ch.tunnelx.space
-      tls: true
-      type: vless
-      udp: true
-      uuid: ab7d5ea9-6eca-47c3-b14b-67378fc2d7c2
     - client-fingerprint: qq
       name: vless-245488052
       network: grpc
@@ -670,10 +666,50 @@ proxies:
       type: vless
       udp: true
       uuid: 6af3672b-8994-4cf1-aa15-23ce6574ebf0
+    - client-fingerprint: qq
+      name: vless-248680939
+      network: grpc
+      port: 25123
+      reality-opts:
+        public-key: R2CmFr4ZCkHZMvI8HBb8KhRgI2nVWcZhswOtcjHy1Ds
+        short-id: e5140c8f7a2d693b
+      server: 179.237.107.37
+      servername: cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6af3672b-8994-4cf1-aa15-23ce6574ebf0
+    - client-fingerprint: firefox
+      name: vless-248690937
+      network: grpc
+      port: 2096
+      reality-opts:
+        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+        short-id: ""
+      server: 94.103.2.247
+      servername: id.vk.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b4bc10bf-80f9-40c9-b4e5-29817c2f0992
+    - client-fingerprint: edge
+      name: vless-248690940
+      network: grpc
+      port: 2096
+      reality-opts:
+        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+        short-id: ""
+      server: 94.103.2.253
+      servername: id.vk.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b4bc10bf-80f9-40c9-b4e5-29817c2f0992
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-2066045
         - trojan-38691648
         - trojan-51444474
         - trojan-51753352
@@ -723,15 +759,18 @@ proxy-groups:
         - vless-209446150
         - vless-222430503
         - vless-233010802
-        - vless-242777376
         - vless-245488052
         - vless-245966800
         - vless-246547913
+        - vless-248680939
+        - vless-248690937
+        - vless-248690940
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-2066045
         - trojan-38691648
         - trojan-51444474
         - trojan-51753352
@@ -781,10 +820,12 @@ proxy-groups:
         - vless-209446150
         - vless-222430503
         - vless-233010802
-        - vless-242777376
         - vless-245488052
         - vless-245966800
         - vless-246547913
+        - vless-248680939
+        - vless-248690937
+        - vless-248690940
       type: select
 rules:
     - MATCH,select
