@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-gcm
+      name: shadowsocks-11086
+      password: faBAoD54k87UJG7
+      port: 2376
+      server: 185.123.101.64
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
       port: 8119
@@ -48,10 +55,25 @@ proxies:
       skip-cert-verify: false
       sni: taga2.api3-max.ru
       type: hysteria2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-258529273
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: da5UVhoC5QOCDm84AxB-RRxf0z2nySZ3lOemgqizLS4
+        short-id: ""
+      server: 2.26.94.15
+      servername: pro-tr.emrata.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0c0a91de-5250-4d6c-9922-f3594d99f096
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-11086
         - shadowsocks-128223
         - hysteria2-200394229
         - hysteria2-209378676
@@ -59,11 +81,13 @@ proxy-groups:
         - vless-248674937
         - vless-250813319
         - hysteria2-254908437
+        - vless-258529273
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-11086
         - shadowsocks-128223
         - hysteria2-200394229
         - hysteria2-209378676
@@ -71,6 +95,7 @@ proxy-groups:
         - vless-248674937
         - vless-250813319
         - hysteria2-254908437
+        - vless-258529273
       type: select
 rules:
     - MATCH,select

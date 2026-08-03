@@ -13,14 +13,14 @@ proxies:
       server: 185.213.20.110
       type: ss
       udp: true
-    - name: vless-2327852
-      network: raw
+    - name: vless-2327854
+      network: tcp
       port: 10086
       server: 204.216.216.23
       type: vless
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
-    - name: vless-2327854
+    - name: vless-2327856
       network: tcp
       port: 10086
       server: 204.216.216.23
@@ -60,17 +60,31 @@ proxies:
       type: vless
       udp: true
       uuid: 1a6d2f60-6c75-470b-891a-457b13d70a8e
+    - client-fingerprint: qq
+      name: vless-258547269
+      network: tcp
+      port: 6500
+      reality-opts:
+        public-key: lQbgwNDYw6Zbjdim0JtXUarzb-3GSjDvtX6FJYZD9Qo
+        short-id: ""
+      server: 57.131.18.86
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1a6d2f60-6c75-470b-891a-457b13d70a8e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-27030
         - shadowsocks-127110
-        - vless-2327852
         - vless-2327854
+        - vless-2327856
         - vless-239195035
         - vless-250698739
         - vless-250749460
+        - vless-258547269
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -78,11 +92,12 @@ proxy-groups:
         - auto
         - vless-27030
         - shadowsocks-127110
-        - vless-2327852
         - vless-2327854
+        - vless-2327856
         - vless-239195035
         - vless-250698739
         - vless-250749460
+        - vless-258547269
       type: select
 rules:
     - MATCH,select
