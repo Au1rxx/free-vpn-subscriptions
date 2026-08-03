@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-16521
-      network: tcp
-      port: 10086
-      server: 204.216.216.23
-      type: vless
-      udp: true
-      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - cipher: aes-256-gcm
       name: shadowsocks-127110
       password: RexnBgU7EV5ADxG
@@ -15,6 +8,13 @@ proxies:
       udp: true
     - name: vless-2327852
       network: raw
+      port: 10086
+      server: 204.216.216.23
+      type: vless
+      udp: true
+      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
+    - name: vless-2327854
+      network: tcp
       port: 10086
       server: 204.216.216.23
       type: vless
@@ -50,9 +50,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-16521
         - shadowsocks-127110
         - vless-2327852
+        - vless-2327854
         - vless-250698739
         - vless-250749460
       type: url-test
@@ -60,9 +60,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vless-16521
         - shadowsocks-127110
         - vless-2327852
+        - vless-2327854
         - vless-250698739
         - vless-250749460
       type: select

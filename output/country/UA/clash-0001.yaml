@@ -1,13 +1,23 @@
-proxies: []
+proxies:
+    - name: trojan-257074144
+      password: 41c406e2-12b5-41f2-a329-d0621052d675
+      port: 20066
+      server: hkdcrtc-e.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - trojan-257074144
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-257074144
       type: select
 rules:
     - MATCH,select
