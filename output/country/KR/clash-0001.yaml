@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-gcm
+      name: shadowsocks-207
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 141.164.45.187
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
       name: shadowsocks-210
       password: TEzjfAYq2IjtuoS
       port: 6679
@@ -447,13 +454,6 @@ proxies:
       type: vless
       udp: true
       uuid: 814bd064-544d-4255-a070-5705c03f6da9
-    - name: hysteria2-240834300
-      password: 300f8c21-6341-4503-a5db-c13d331c63c8
-      port: 20801
-      server: hg1.yuanbaojc.site
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
     - name: hysteria2-244985386
       password: 300f8c21-6341-4503-a5db-c13d331c63c8
       port: 20801
@@ -512,19 +512,6 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
-    - client-fingerprint: chrome
-      name: vless-252842232
-      network: tcp
-      port: 8686
-      reality-opts:
-        public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
-        short-id: 628b3c90c98ead4f
-      server: 54.180.99.219
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
     - name: hysteria2-254963815
       password: 300f8c21-6341-4503-a5db-c13d331c63c8
       port: 20801
@@ -532,10 +519,35 @@ proxies:
       skip-cert-verify: true
       sni: hg1.yuanbaojc.site
       type: hysteria2
+    - name: trojan-255434904
+      password: ND91608427
+      port: 443
+      server: definite-malamute.rooster465.autos
+      skip-cert-verify: true
+      sni: definite-malamute.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-255434905
+      password: ND91608427
+      port: 443
+      server: saving-octopus.rooster465.autos
+      skip-cert-verify: true
+      sni: saving-octopus.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-255434906
+      password: ND91608427
+      port: 443
+      server: moved-meerkat.rooster465.autos
+      skip-cert-verify: true
+      sni: moved-meerkat.rooster465.autos
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-207
         - shadowsocks-210
         - vmess-244
         - shadowsocks-260
@@ -587,20 +599,22 @@ proxy-groups:
         - trojan-221036751
         - trojan-221036752
         - vless-233010793
-        - hysteria2-240834300
         - hysteria2-244985386
         - vmess-245482709
         - vless-245966817
         - vless-246471914
         - hysteria2-248653936
         - hysteria2-248653937
-        - vless-252842232
         - hysteria2-254963815
+        - trojan-255434904
+        - trojan-255434905
+        - trojan-255434906
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-207
         - shadowsocks-210
         - vmess-244
         - shadowsocks-260
@@ -652,15 +666,16 @@ proxy-groups:
         - trojan-221036751
         - trojan-221036752
         - vless-233010793
-        - hysteria2-240834300
         - hysteria2-244985386
         - vmess-245482709
         - vless-245966817
         - vless-246471914
         - hysteria2-248653936
         - hysteria2-248653937
-        - vless-252842232
         - hysteria2-254963815
+        - trojan-255434904
+        - trojan-255434905
+        - trojan-255434906
       type: select
 rules:
     - MATCH,select
