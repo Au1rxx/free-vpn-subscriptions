@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-112939
-      password: tsuchiya
-      port: 443
-      server: 161.34.39.108
-      skip-cert-verify: false
-      sni: aa.ccmusic.jp
-      type: trojan
-      udp: true
     - name: trojan-2493846
       password: BxceQaOe
       port: 443
@@ -90,13 +82,6 @@ proxies:
       type: vless
       udp: true
       uuid: 5ed7b151-b781-4dba-800d-e3f824f1416f
-    - name: vless-198824233
-      network: tcp
-      port: 49853
-      server: 193.124.204.145
-      type: vless
-      udp: true
-      uuid: 5ed7b151-b781-4dba-800d-e3f824f1416f
     - name: vless-198824234
       network: tcp
       port: 49853
@@ -104,6 +89,15 @@ proxies:
       type: vless
       udp: true
       uuid: 5ed7b151-b781-4dba-800d-e3f824f1416f
+    - alterId: 0
+      cipher: auto
+      name: vmess-202892926
+      network: ws
+      port: 80
+      server: 61.245.11.60
+      type: vmess
+      udp: true
+      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
     - name: vless-216230213
       network: ws
       port: 2053
@@ -148,6 +142,13 @@ proxies:
       type: vless
       udp: true
       uuid: 35c13bb9-9d22-4d89-bfd2-76fe7abf04ff
+    - name: vless-246594057
+      network: raw
+      port: 29
+      server: 194.77.220.41
+      type: vless
+      udp: true
+      uuid: 35c13bb9-9d22-4d89-bfd2-76fe7abf04ff
     - name: hysteria2-248653936
       password: 300f8c21-6341-4503-a5db-c13d331c63c8
       port: 20801
@@ -162,11 +163,35 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
+    - alterId: 0
+      cipher: auto
+      name: vmess-252807568
+      network: ws
+      port: 443
+      server: 210.138.37.53
+      servername: drbkg16egf3fzlm3.v.3dns.vip
+      skip-cert-verify: false
+      tls: true
+      type: vmess
+      udp: true
+      uuid: f23bb427c1f94373876c2f43e9f790f3
+    - client-fingerprint: firefox
+      name: vless-252851224
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: K9vJ2zLFxi3VTmrguyLC1KrC920axeFSeA8x_xY4Xhw
+        short-id: ""
+      server: 185.229.9.176
+      servername: id.pervye.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5bb5061e-ee43-4e72-b5af-9f7614272595
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-112939
         - trojan-2493846
         - trojan-2493847
         - trojan-2493848
@@ -177,20 +202,22 @@ proxy-groups:
         - trojan-133769367
         - vless-166107163
         - vless-176747394
-        - vless-198824233
         - vless-198824234
+        - vmess-202892926
         - vless-216230213
         - vless-235036178
         - vless-240797188
         - vless-244408784
+        - vless-246594057
         - hysteria2-248653936
         - hysteria2-248653937
+        - vmess-252807568
+        - vless-252851224
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-112939
         - trojan-2493846
         - trojan-2493847
         - trojan-2493848
@@ -201,14 +228,17 @@ proxy-groups:
         - trojan-133769367
         - vless-166107163
         - vless-176747394
-        - vless-198824233
         - vless-198824234
+        - vmess-202892926
         - vless-216230213
         - vless-235036178
         - vless-240797188
         - vless-244408784
+        - vless-246594057
         - hysteria2-248653936
         - hysteria2-248653937
+        - vmess-252807568
+        - vless-252851224
       type: select
 rules:
     - MATCH,select
