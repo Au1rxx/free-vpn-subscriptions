@@ -13,6 +13,13 @@ proxies:
       server: 149.22.95.183
       type: ss
       udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-11074
+      password: KixLvKzwjekG00rm
+      port: 8080
+      server: 185.196.61.82
+      type: ss
+      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-16065
@@ -138,6 +145,15 @@ proxies:
       type: vless
       udp: true
       uuid: a71c8954-66a8-4321-bedb-2336230d81ce
+    - alterId: 0
+      cipher: auto
+      name: vmess-32178698
+      network: raw
+      port: 18000
+      server: 23.162.200.198
+      type: vmess
+      udp: true
+      uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
     - alterId: 0
       cipher: auto
       name: vmess-48649242
@@ -827,12 +843,20 @@ proxies:
       type: vless
       udp: true
       uuid: 304a1e62-eb26-4b44-994e-b96a70fff9b4
+    - name: vless-256440533
+      network: tcp
+      port: 27775
+      server: 3.99.41.4
+      type: vless
+      udp: true
+      uuid: 309c4bd0-7430-b8aa-2238-1075e9e29370
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-166
         - shadowsocks-208
+        - shadowsocks-11074
         - vmess-16065
         - vmess-16103
         - vless-46267
@@ -843,6 +867,7 @@ proxy-groups:
         - vless-18572420
         - vless-23853903
         - vless-24252274
+        - vmess-32178698
         - vmess-48649242
         - vless-56204024
         - vless-57233965
@@ -910,6 +935,7 @@ proxy-groups:
         - vless-246531912
         - vless-248555399
         - vless-248673937
+        - vless-256440533
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -917,6 +943,7 @@ proxy-groups:
         - auto
         - shadowsocks-166
         - shadowsocks-208
+        - shadowsocks-11074
         - vmess-16065
         - vmess-16103
         - vless-46267
@@ -927,6 +954,7 @@ proxy-groups:
         - vless-18572420
         - vless-23853903
         - vless-24252274
+        - vmess-32178698
         - vmess-48649242
         - vless-56204024
         - vless-57233965
@@ -994,6 +1022,7 @@ proxy-groups:
         - vless-246531912
         - vless-248555399
         - vless-248673937
+        - vless-256440533
       type: select
 rules:
     - MATCH,select
