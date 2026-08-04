@@ -1,12 +1,5 @@
 proxies:
     - cipher: aes-256-gcm
-      name: shadowsocks-11086
-      password: faBAoD54k87UJG7
-      port: 2376
-      server: 185.123.101.64
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
       port: 8119
@@ -34,34 +27,23 @@ proxies:
       skip-cert-verify: false
       sni: taga2.api3-max.ru
       type: hysteria2
-    - name: vless-266979491
-      network: ws
-      port: 2053
-      server: 45.74.178.108
-      type: vless
-      udp: true
-      uuid: 20d21fbc-0965-4f8e-9d21-ed31fac8ade9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-11086
         - shadowsocks-128223
         - hysteria2-200394229
         - vless-212135092
         - hysteria2-254908437
-        - vless-266979491
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-11086
         - shadowsocks-128223
         - hysteria2-200394229
         - vless-212135092
         - hysteria2-254908437
-        - vless-266979491
       type: select
 rules:
     - MATCH,select
