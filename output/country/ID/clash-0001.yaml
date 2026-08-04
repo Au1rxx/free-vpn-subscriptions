@@ -1,6 +1,20 @@
 proxies:
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-262165736
+      network: tcp
+      port: 10053
+      reality-opts:
+        public-key: o-ud3x7exNVYmknsVseZyUGMyK_680Nub0Cf6W4KiRw
+        short-id: cbbf64
+      server: family.bucket.9.kfc-520.com
+      servername: www.amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d516ffe9-f519-3c47-872b-666249bdc7b7
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-262738851
       network: tcp
       port: 10053
@@ -17,12 +31,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-262165736
         - vless-262738851
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-262165736
         - vless-262738851
       type: select
 rules:
