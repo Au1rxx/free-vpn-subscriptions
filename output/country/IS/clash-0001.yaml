@@ -1,46 +1,4 @@
 proxies:
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-86657996
-      network: tcp
-      port: 448
-      reality-opts:
-        public-key: 0B7XMJC-mBqvUkf_on0wPZeW1iVmZIbEPVyvz-V_jRI
-        short-id: 60d7a9bbacadc0fb
-      server: 82.22.53.30
-      servername: www.googletagmanager.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f82944fe-9863-494a-9a2d-0f3120a774c6
-    - name: hysteria2-120743381
-      password: grape_288923
-      port: 8443
-      server: 194.247.182.201
-      skip-cert-verify: true
-      sni: grape-coffee-fi.gleeze.com
-      type: hysteria2
-    - name: hysteria2-133881751
-      password: grape_288923
-      port: 8443
-      server: 194.247.182.201
-      skip-cert-verify: false
-      sni: grape-coffee-fi.gleeze.com
-      type: hysteria2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-156842174
-      network: raw
-      port: 448
-      reality-opts:
-        public-key: 0B7XMJC-mBqvUkf_on0wPZeW1iVmZIbEPVyvz-V_jRI
-        short-id: 60d7a9bbacadc0fb
-      server: 82.22.53.30
-      servername: www.googletagmanager.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f82944fe-9863-494a-9a2d-0f3120a774c6
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-189940229
@@ -83,45 +41,21 @@ proxies:
       type: vless
       udp: true
       uuid: f82944fe-9863-494a-9a2d-0f3120a774c6
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-222508013
-      network: tcp
-      port: 448
-      reality-opts:
-        public-key: 0B7XMJC-mBqvUkf_on0wPZeW1iVmZIbEPVyvz-V_jRI
-        short-id: 60d7a9bbacadc0fb
-      server: 82.22.53.30
-      servername: www.googletagmanager.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f82944fe-9863-494a-9a2d-0f3120a774c6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-86657996
-        - hysteria2-120743381
-        - hysteria2-133881751
-        - vless-156842174
         - vless-189940229
         - vless-192065506
         - vless-199316742
-        - vless-222508013
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-86657996
-        - hysteria2-120743381
-        - hysteria2-133881751
-        - vless-156842174
         - vless-189940229
         - vless-192065506
         - vless-199316742
-        - vless-222508013
       type: select
 rules:
     - MATCH,select
