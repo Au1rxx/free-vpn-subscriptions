@@ -13,17 +13,33 @@ proxies:
       type: vless
       udp: true
       uuid: teymur_vpn
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-262165774
+      network: tcp
+      port: 10033
+      reality-opts:
+        public-key: mQvQHrpr_4068cLt-AOl44mQN6YccQv7yLfCP5Kp9HU
+        short-id: "667925235980"
+      server: family.bucket.9.kfc-520.com
+      servername: www.hp.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d516ffe9-f519-3c47-872b-666249bdc7b7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-156850172
+        - vless-262165774
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-156850172
+        - vless-262165774
       type: select
 rules:
     - MATCH,select
