@@ -1,27 +1,4 @@
 proxies:
-    - alterId: 2
-      cipher: auto
-      name: vmess-2175489
-      network: tcp
-      port: 30804
-      server: v4.hdacd.com
-      type: vmess
-      udp: true
-      uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-262771349
-      password: qJpsd87U4PLLrWRV
-      port: 443
-      server: 20.234.89.202
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-262776484
-      password: 4Xm1rUWXnSpTKvvF
-      port: 443
-      server: 20.234.89.202
-      type: ss
-      udp: true
     - name: trojan-266835572
       password: ND91608427
       port: 443
@@ -118,13 +95,18 @@ proxies:
       sni: skilled-lioness.rooster465.autos
       type: trojan
       udp: true
+    - name: trojan-273329902
+      password: ND91608427
+      port: 443
+      server: willing-beagle.rooster465.autos
+      skip-cert-verify: true
+      sni: willing-beagle.rooster465.autos
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-2175489
-        - shadowsocks-262771349
-        - shadowsocks-262776484
         - trojan-266835572
         - trojan-266972540
         - trojan-266972541
@@ -137,14 +119,12 @@ proxy-groups:
         - trojan-270661237
         - trojan-270681479
         - trojan-270681498
+        - trojan-273329902
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-2175489
-        - shadowsocks-262771349
-        - shadowsocks-262776484
         - trojan-266835572
         - trojan-266972540
         - trojan-266972541
@@ -157,6 +137,7 @@ proxy-groups:
         - trojan-270661237
         - trojan-270681479
         - trojan-270681498
+        - trojan-273329902
       type: select
 rules:
     - MATCH,select
