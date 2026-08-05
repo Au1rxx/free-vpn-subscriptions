@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-11086
+      password: faBAoD54k87UJG7
+      port: 2376
+      server: 185.123.101.64
+      type: ss
+      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-99063
@@ -36,23 +43,41 @@ proxies:
       type: vless
       udp: true
       uuid: 87d2ab46-0575-42e7-8bf8-4d8b0cb484f0
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-281618223
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: da5UVhoC5QOCDm84AxB-RRxf0z2nySZ3lOemgqizLS4
+        short-id: ""
+      server: pro-tr.emrata.top
+      servername: pro-tr.emrata.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57b575f7-f738-42c3-8151-e6bacc8c6717
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-11086
         - vmess-99063
         - shadowsocks-128223
         - vless-212135092
         - vless-280054103
+        - vless-281618223
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-11086
         - vmess-99063
         - shadowsocks-128223
         - vless-212135092
         - vless-280054103
+        - vless-281618223
       type: select
 rules:
     - MATCH,select
