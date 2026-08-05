@@ -12,7 +12,6 @@ func TestRootContainsDatabaseCommands(t *testing.T) {
 	want := map[string]bool{
 		"aggregate": false, "migrate": false, "db-status": false,
 		"import-seeds": false, "fetch": false, "parse": false, "discover": false, "ingest-status": false,
-		"archive-status": false, "recover-legacy-spool": false,
 		"validate-worker":   false,
 		"validation-status": false,
 		"classify":          false,
@@ -39,7 +38,7 @@ func TestFormatDatabaseStatusIsBoundedAndContainsNoDSN(t *testing.T) {
 			Version: "9.7.1-cloud", Cipher: "TLS_AES_128_GCM_SHA256",
 			TimeZone: "UTC", Charset: "utf8mb4", Collation: "utf8mb4_0900_ai_ci",
 		},
-		AppliedMigrations:   13,
+		AppliedMigrations:   12,
 		BusinessTables:      22,
 		EmptyTableComments:  0,
 		EmptyColumnComments: 0,
@@ -50,7 +49,7 @@ func TestFormatDatabaseStatusIsBoundedAndContainsNoDSN(t *testing.T) {
 	}
 	out := formatDatabaseStatus(status)
 	for _, want := range []string{
-		"version=9.7.1-cloud", "tls=TLS_AES_128_GCM_SHA256", "migrations=13", "tables=22",
+		"version=9.7.1-cloud", "tls=TLS_AES_128_GCM_SHA256", "migrations=12", "tables=22",
 		"empty_table_comments=0", "empty_column_comments=0", "enabled_policies=7",
 		"allocated_bytes=4096", "total_bytes=4096",
 	} {

@@ -1,9 +1,7 @@
 package ingest
 
 import (
-	"compress/gzip"
 	"context"
-	"encoding/json"
 	"os"
 	"path/filepath"
 	"testing"
@@ -51,64 +49,5 @@ func TestSpoolQuarantinesCorruptionAndEnforcesLimit(t *testing.T) {
 	}
 	if err := spool.Enqueue(FetchEnvelope{SourceID: 3, FetchedAt: time.Now(), Body: make([]byte, 4096)}); spoolErrorCode(err) != "spool_full" {
 		t.Fatalf("expected spool_full, got %v", err)
-	}
-}
-
-func TestSpoolEnvelopeLimitCoversFiftyMiBBody(t *testing.T) {
-	spool, err := NewSpool(t.TempDir(), 1<<20, 50<<20)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if spool.MaxEnvelopeBytes <= 64<<20 {
-		t.Fatalf("max envelope bytes=%d", spool.MaxEnvelopeBytes)
-	}
-}
-
-func TestSpoolRetainsOversizedEnvelopeWithoutQuarantine(t *testing.T) {
-	spool, err := NewSpool(t.TempDir(), 1<<20, 16)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if err := spool.Enqueue(FetchEnvelope{SourceID: 5, FetchedAt: time.Now(), Body: make([]byte, 2<<20)}); err != nil {
-		t.Fatal(err)
-	}
-	report, err := spool.Replay(context.Background(), &recordingPersister{})
-	if spoolErrorCode(err) != "spool_envelope_too_large" || report.Quarantined != 0 || report.Failed != 1 {
-		t.Fatalf("report=%+v err=%v", report, err)
-	}
-	entries, globErr := filepath.Glob(filepath.Join(spool.Dir, "*.json.gz"))
-	if globErr != nil || len(entries) != 1 {
-		t.Fatalf("entries=%v err=%v", entries, globErr)
-	}
-}
-
-func TestSpoolQuarantinesTrailingJSON(t *testing.T) {
-	spool, err := NewSpool(t.TempDir(), 1<<20)
-	if err != nil {
-		t.Fatal(err)
-	}
-	path := filepath.Join(spool.Dir, "000-trailing.json.gz")
-	file, err := os.Create(path)
-	if err != nil {
-		t.Fatal(err)
-	}
-	writer := gzip.NewWriter(file)
-	envelope := FetchEnvelope{SourceID: 6, FetchedAt: time.Now()}
-	encoded, err := json.Marshal(envelope)
-	if err != nil {
-		t.Fatal(err)
-	}
-	if _, err := writer.Write(append(encoded, []byte("{}")...)); err != nil {
-		t.Fatal(err)
-	}
-	if err := writer.Close(); err != nil {
-		t.Fatal(err)
-	}
-	if err := file.Close(); err != nil {
-		t.Fatal(err)
-	}
-	report, err := spool.Replay(context.Background(), &recordingPersister{})
-	if err != nil || report.Quarantined != 1 {
-		t.Fatalf("report=%+v err=%v", report, err)
 	}
 }

@@ -55,14 +55,13 @@ func newFetchCmd() *cobra.Command {
 
 func newParseCmd() *cobra.Command {
 	limit := 100
-	storageKind := store.StorageDatabase
 	command := &cobra.Command{Use: "parse", Short: "Parse one bounded pending fetch batch", RunE: func(cmd *cobra.Command, _ []string) error {
 		_, db, service, err := openIngestService(cmd.Context())
 		if err != nil {
 			return err
 		}
 		defer db.Close()
-		summary, err := service.ParseStorage(cmd.Context(), storageKind, limit)
+		summary, err := service.Parse(cmd.Context(), limit)
 		if err != nil {
 			return err
 		}
@@ -71,7 +70,6 @@ func newParseCmd() *cobra.Command {
 		return nil
 	}}
 	command.Flags().IntVar(&limit, "limit", 100, "maximum pending fetches to parse (1-1000)")
-	command.Flags().StringVar(&storageKind, "storage-kind", store.StorageDatabase, "payload storage backend: database or filesystem")
 	return command
 }
 
@@ -109,70 +107,6 @@ func newIngestStatusCmd() *cobra.Command {
 		fmt.Fprint(cmd.OutOrStdout(), formatIngestStatus(status))
 		return nil
 	}}
-}
-
-func newArchiveStatusCmd() *cobra.Command {
-	return &cobra.Command{Use: "archive-status", Short: "Show bounded filesystem payload health", RunE: func(cmd *cobra.Command, _ []string) error {
-		cfg, db, service, err := openIngestService(cmd.Context())
-		if err != nil {
-			return err
-		}
-		defer db.Close()
-		payloads, err := store.ListFilesystemPayloads(cmd.Context(), db)
-		if err != nil {
-			return err
-		}
-		references := make([]ingest.ArchiveReference, 0, len(payloads))
-		for _, payload := range payloads {
-			references = append(references, ingest.ArchiveReference{
-				Key: payload.ArchiveKey, SHA256: payload.SHA256,
-				OriginalBytes: payload.OriginalBytes, CompressedBytes: payload.CompressedBytes,
-			})
-		}
-		status, err := ingest.InspectArchive(cmd.Context(), service.Archive, references, filepath.Join(cfg.Output.Dir, ".spool", "quarantine"))
-		if err != nil {
-			return err
-		}
-		fmt.Fprint(cmd.OutOrStdout(), formatArchiveStatus(status))
-		return nil
-	}}
-}
-
-func formatArchiveStatus(status ingest.ArchiveStatus) string {
-	return fmt.Sprintf("files=%d referenced=%d missing=%d corrupt=%d unreferenced=%d bytes=%d quarantine_files=%d quarantine_bytes=%d\n",
-		status.Files, status.Referenced, status.Missing, status.Corrupt, status.Unreferenced, status.Bytes,
-		status.QuarantineFiles, status.QuarantineBytes)
-}
-
-func newRecoverLegacySpoolCmd() *cobra.Command {
-	var inputDirectory string
-	var sourceID uint64
-	limit := 1
-	newestFirst := true
-	command := &cobra.Command{Use: "recover-legacy-spool", Short: "Archive and register bounded legacy spool files without deleting originals", RunE: func(cmd *cobra.Command, _ []string) error {
-		cfg, db, service, err := openIngestService(cmd.Context())
-		if err != nil {
-			return err
-		}
-		defer db.Close()
-		results, err := ingest.RecoverLegacyDirectory(cmd.Context(), inputDirectory, sourceID, limit,
-			ingest.EnvelopeLimitForBody(cfg.Fetch.MaxBodyBytes), service.Archive, service, newestFirst)
-		if err != nil {
-			return err
-		}
-		for _, result := range results {
-			fmt.Fprintf(cmd.OutOrStdout(), "file=%s source_id=%d status=%s archive_key=%s\n",
-				filepath.Base(result.Path), result.SourceID, result.Status, result.ArchiveKey)
-		}
-		return nil
-	}}
-	command.Flags().StringVar(&inputDirectory, "input-dir", "", "directory containing legacy .json.gz.corrupt files")
-	command.Flags().Uint64Var(&sourceID, "source-id", 0, "expected source id")
-	command.Flags().IntVar(&limit, "limit", 1, "maximum legacy files to process (1-100)")
-	command.Flags().BoolVar(&newestFirst, "newest-first", true, "process lexical newest files first")
-	_ = command.MarkFlagRequired("input-dir")
-	_ = command.MarkFlagRequired("source-id")
-	return command
 }
 
 func formatIngestStatus(status store.IngestStatus) string {
@@ -286,25 +220,15 @@ func openIngestService(ctx context.Context) (*config.Config, *sql.DB, *ingest.Se
 		db.Close()
 		return nil, nil, nil, err
 	}
-	spool, err := ingest.NewSpool(filepath.Join(cfg.Output.Dir, ".spool"), 2<<30, ingestSpoolBodyLimit(cfg))
-	if err != nil {
-		db.Close()
-		return nil, nil, nil, err
-	}
-	archive, err := ingest.NewPayloadArchive(cfg.Fetch.ArchiveDirectory)
+	spool, err := ingest.NewSpool(filepath.Join(cfg.Output.Dir, ".spool"), 2<<30)
 	if err != nil {
 		db.Close()
 		return nil, nil, nil, err
 	}
 	return cfg, db, &ingest.Service{
-		DB: db, Spool: spool, Archive: archive,
+		DB: db, Spool: spool,
 		MaxBodyBytes: cfg.Fetch.MaxBodyBytes, MaxDecodedBytes: cfg.Fetch.MaxDecodedBytes,
-		ArchiveThresholdBytes: cfg.Fetch.ArchiveThresholdBytes, ArchiveWriteEnabled: cfg.Fetch.ArchiveWriteEnabled,
 	}, nil
-}
-
-func ingestSpoolBodyLimit(cfg *config.Config) int64 {
-	return cfg.Fetch.MaxBodyBytes
 }
 
 func selectDiscoverer(kind string) (discovery.Discoverer, error) {
