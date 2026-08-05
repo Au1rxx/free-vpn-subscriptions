@@ -15,6 +15,20 @@ proxies:
       uuid: 6fdfdb73-51b0-4a14-89a5-c9355a0e0397
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-13461
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: vCxfuNNmogA1DlPkjvmKb7_hSgXqe4MboPfi2s1JZG0
+        short-id: b318242471ba4f5b
+      server: 178.236.17.86
+      servername: google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6fdfdb73-51b0-4a14-89a5-c9355a0e0397
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-16943
       network: tcp
       port: 443
@@ -53,15 +67,6 @@ proxies:
       type: vless
       udp: true
       uuid: a00d89f6-ab7e-4e30-a5e5-54c701d62c93
-    - alterId: 0
-      cipher: auto
-      name: vmess-98535
-      network: ws
-      port: 80
-      server: 38.107.234.57
-      type: vmess
-      udp: true
-      uuid: 567f4be5-12ab-42e1-b8d9-db6fd1fdd31c
     - client-fingerprint: chrome
       name: vless-2104050
       network: raw
@@ -227,6 +232,13 @@ proxies:
       type: vmess
       udp: true
       uuid: 567f4be5-12ab-42e1-b8d9-db6fd1fdd31c
+    - name: vless-176747394
+      network: tcp
+      port: 49853
+      server: 193.124.204.145
+      type: vless
+      udp: true
+      uuid: 5ed7b151-b781-4dba-800d-e3f824f1416f
     - alterId: 0
       cipher: auto
       name: vmess-214740290
@@ -249,29 +261,29 @@ proxies:
       type: vless
       udp: true
       uuid: 4b9063e0-3288-44e9-9aac-80fbfce323a0
-    - client-fingerprint: firefox
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-272692137
+      name: vless-235036191
       network: tcp
-      port: 48905
+      port: 443
       reality-opts:
-        public-key: XIubADu7punjUa2oUfHj2vTmUzUJXN_xDrGsmf_LslY
-        short-id: ""
-      server: 38.180.37.243
-      servername: creators.radeon.com
+        public-key: vCxfuNNmogA1DlPkjvmKb7_hSgXqe4MboPfi2s1JZG0
+        short-id: b318242471ba4f5b
+      server: 178.236.17.86
+      servername: google.com
       tls: true
       type: vless
       udp: true
-      uuid: c9cbfe43-4087-4069-8bca-225f9a26a94f
+      uuid: 6fdfdb73-51b0-4a14-89a5-c9355a0e0397
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-13460
+        - vless-13461
         - vless-16943
         - vless-24815
         - vless-60029
-        - vmess-98535
         - vless-2104050
         - vless-2299725
         - vless-2299726
@@ -285,19 +297,20 @@ proxy-groups:
         - vless-43014378
         - vmess-141152300
         - vmess-175761220
+        - vless-176747394
         - vmess-214740290
         - vless-220470679
-        - vless-272692137
+        - vless-235036191
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-13460
+        - vless-13461
         - vless-16943
         - vless-24815
         - vless-60029
-        - vmess-98535
         - vless-2104050
         - vless-2299725
         - vless-2299726
@@ -311,9 +324,10 @@ proxy-groups:
         - vless-43014378
         - vmess-141152300
         - vmess-175761220
+        - vless-176747394
         - vmess-214740290
         - vless-220470679
-        - vless-272692137
+        - vless-235036191
       type: select
 rules:
     - MATCH,select
