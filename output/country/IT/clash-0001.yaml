@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-16521
+      network: tcp
+      port: 10086
+      server: 204.216.216.23
+      type: vless
+      udp: true
+      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - cipher: aes-256-gcm
       name: shadowsocks-127110
       password: RexnBgU7EV5ADxG
@@ -66,16 +73,6 @@ proxies:
       skip-cert-verify: true
       sni: it-one.quiet-rogue.site
       type: hysteria2
-    - name: vless-277259441
-      network: ws
-      port: 443
-      server: freev2.cloudflare.182682.xyz
-      servername: it-mil.862400.xyz
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 98ca432c-4dd0-452e-a49c-552620e14358
     - client-fingerprint: chrome
       name: vless-277405491
       network: tcp
@@ -100,6 +97,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-16521
         - shadowsocks-127110
         - vless-2327855
         - vless-2327856
@@ -109,7 +107,6 @@ proxy-groups:
         - hysteria2-271206430
         - shadowsocks-272762015
         - hysteria2-273329903
-        - vless-277259441
         - vless-277405491
         - shadowsocks-279482610
       type: url-test
@@ -117,6 +114,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-16521
         - shadowsocks-127110
         - vless-2327855
         - vless-2327856
@@ -126,7 +124,6 @@ proxy-groups:
         - hysteria2-271206430
         - shadowsocks-272762015
         - hysteria2-273329903
-        - vless-277259441
         - vless-277405491
         - shadowsocks-279482610
       type: select
