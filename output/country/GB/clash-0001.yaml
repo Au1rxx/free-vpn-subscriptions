@@ -7,24 +7,10 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-128-gcm
-      name: shadowsocks-225
-      password: shadowsocks
-      port: 443
-      server: 141.98.101.178
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
       name: shadowsocks-226
       password: shadowsocks
       port: 443
       server: 141.98.101.179
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: shadowsocks-227
-      password: shadowsocks
-      port: 443
-      server: 141.98.101.182
       type: ss
       udp: true
     - cipher: aes-256-gcm
@@ -1042,6 +1028,20 @@ proxies:
       type: vless
       udp: true
       uuid: 49e76398-5127-4005-90cb-c2a971f745f1
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-250750436
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: 5GhMSJXQv1wXHVD999YHRRj83m-7VKH8qb_vTxBGbng
+        short-id: "08"
+      server: 77.73.131.154
+      servername: vindobona.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1f4c983e-382c-d2fa-b2dc-7981f02b34de
     - name: vless-250764438
       network: ws
       port: 8443
@@ -1268,14 +1268,49 @@ proxies:
       server: 144.24.229.202
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      name: vless-275149920
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 118rMk41g_0BeoQDR2V_1f8ABzC1WKXdolzE-LxqowM
+        short-id: bff835c98c
+      server: 91.103.140.243
+      servername: www.amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c8dcbe44-5714-4f99-8d7a-aadebea34abf
+    - name: vless-275311729
+      network: ws
+      port: 443
+      server: 162.159.38.119
+      servername: ohpwiljo8.roborocks.ir
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8a6729c4-81d4-4b05-8747-3fffc17b6a64
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-275313732
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: ABNRlkjlonYV9TOFYgjWwz0wn1s6sg_yCErsLYkU_Sg
+        short-id: d6ff9019a77e354a
+      server: 144.31.213.225
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9e3de7f7-a595-4117-b1b6-dc41eb870ab1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-165
-        - shadowsocks-225
         - shadowsocks-226
-        - shadowsocks-227
         - shadowsocks-240
         - shadowsocks-271
         - vmess-16082
@@ -1378,6 +1413,7 @@ proxy-groups:
         - vless-236517909
         - vless-244970243
         - vless-246597053
+        - vless-250750436
         - vless-250764438
         - vless-252865224
         - vless-257009707
@@ -1399,15 +1435,16 @@ proxy-groups:
         - shadowsocks-274255177
         - shadowsocks-274255180
         - shadowsocks-274255182
+        - vless-275149920
+        - vless-275311729
+        - vless-275313732
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-165
-        - shadowsocks-225
         - shadowsocks-226
-        - shadowsocks-227
         - shadowsocks-240
         - shadowsocks-271
         - vmess-16082
@@ -1510,6 +1547,7 @@ proxy-groups:
         - vless-236517909
         - vless-244970243
         - vless-246597053
+        - vless-250750436
         - vless-250764438
         - vless-252865224
         - vless-257009707
@@ -1531,6 +1569,9 @@ proxy-groups:
         - shadowsocks-274255177
         - shadowsocks-274255180
         - shadowsocks-274255182
+        - vless-275149920
+        - vless-275311729
+        - vless-275313732
       type: select
 rules:
     - MATCH,select
