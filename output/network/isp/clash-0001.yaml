@@ -1,6 +1,15 @@
 proxies:
     - alterId: 0
       cipher: auto
+      name: vmess-2357840
+      network: ws
+      port: 80
+      server: 61.245.11.60
+      type: vmess
+      udp: true
+      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
+    - alterId: 0
+      cipher: auto
       name: vmess-2387870
       network: ws
       port: 80
@@ -104,6 +113,13 @@ proxies:
       type: vless
       udp: true
       uuid: 5ed7b151-b781-4dba-800d-e3f824f1416f
+    - name: vless-198824234
+      network: tcp
+      port: 49853
+      server: 193.124.204.145
+      type: vless
+      udp: true
+      uuid: 5ed7b151-b781-4dba-800d-e3f824f1416f
     - alterId: 0
       cipher: auto
       name: vmess-202892926
@@ -153,34 +169,6 @@ proxies:
       type: vless
       udp: true
       uuid: d8b42cd5-a149-4356-9e61-000000000000
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-269088733
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: jAJoyWJ4nMGai3H9BOa6QMUr2Vvpgqs8VipbaO5mCVU
-        short-id: 3130197867c23edb
-      server: 62.152.58.114
-      servername: wl-13-1.nodes.ac
-      tls: true
-      type: vless
-      udp: true
-      uuid: cdfa626f-ce5f-462e-8f09-52f0dca980c0
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-269088734
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: jAJoyWJ4nMGai3H9BOa6QMUr2Vvpgqs8VipbaO5mCVU
-        short-id: 3130197867c23edb
-      server: 62.152.58.114
-      servername: wl-13-1.nodes.ac
-      tls: true
-      type: vless
-      udp: true
-      uuid: cdfa626f-ce5f-462e-8f09-52f0dca980c0
     - name: vless-270695473
       network: ws
       port: 57878
@@ -206,6 +194,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-2357840
         - vmess-2387870
         - trojan-2493846
         - trojan-2493847
@@ -218,13 +207,12 @@ proxy-groups:
         - trojan-133769367
         - vless-166107163
         - vless-176747394
+        - vless-198824234
         - vmess-202892926
         - vmess-252807568
         - vless-256442534
         - vless-268509226
         - vless-268523225
-        - vless-269088733
-        - vless-269088734
         - vless-270695473
         - vless-270710466
       type: url-test
@@ -232,6 +220,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vmess-2357840
         - vmess-2387870
         - trojan-2493846
         - trojan-2493847
@@ -244,13 +233,12 @@ proxy-groups:
         - trojan-133769367
         - vless-166107163
         - vless-176747394
+        - vless-198824234
         - vmess-202892926
         - vmess-252807568
         - vless-256442534
         - vless-268509226
         - vless-268523225
-        - vless-269088733
-        - vless-269088734
         - vless-270695473
         - vless-270710466
       type: select
