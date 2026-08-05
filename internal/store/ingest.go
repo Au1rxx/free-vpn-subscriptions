@@ -21,9 +21,12 @@ import (
 )
 
 const (
-	nodePersistBatchSize       = 1000
-	parseErrorPersistBatchSize = 500
-	parseBatchMaxAttempts      = 4
+	nodePersistBatchSize             = 1000
+	parseErrorPersistBatchSize       = 500
+	parseBatchMaxAttempts            = 4
+	StorageDatabase                  = "database"
+	StorageFilesystem                = "filesystem"
+	maxMediumBlobBytes         int64 = 1<<24 - 1
 )
 const nodeTTL = 30 * 24 * time.Hour
 
@@ -45,8 +48,42 @@ type FetchWrite struct {
 	StatusCode                                                 int
 	FinalURL, ETag, LastModified, ContentType, ContentEncoding string
 	Body                                                       []byte
+	ExternalPayload                                            *ExternalPayload
+	ResponseBytes                                              int64
 	Duration                                                   time.Duration
 	ErrorCode, ErrorSummary                                    string
+}
+
+// ExternalPayload describes a body already durably stored outside MySQL.
+type ExternalPayload struct {
+	SHA256          [32]byte `json:"sha256"`
+	OriginalBytes   int64    `json:"original_bytes"`
+	CompressedBytes int64    `json:"compressed_bytes"`
+	Compression     string   `json:"compression"`
+	ArchiveKey      string   `json:"archive_key"`
+}
+
+type PayloadStorageError struct {
+	Code string
+	Err  error
+}
+
+func (e *PayloadStorageError) Error() string { return e.Code + ": " + e.Err.Error() }
+func (e *PayloadStorageError) Unwrap() error { return e.Err }
+
+func payloadStorageErrorCode(err error) string {
+	var typed *PayloadStorageError
+	if errors.As(err, &typed) {
+		return typed.Code
+	}
+	return ""
+}
+
+// IsDatabasePayloadTooLarge reports a deterministic MEDIUMBLOB overflow so
+// ingestion can choose the filesystem backend instead of treating it as a
+// transient database outage.
+func IsDatabasePayloadTooLarge(err error) bool {
+	return payloadStorageErrorCode(err) == "database_payload_too_large"
 }
 
 // ParseInput is a claimed successful response ready for parsing.
@@ -54,7 +91,47 @@ type ParseInput struct {
 	FetchID, SourceID uint64
 	FormatHint        string
 	ProtocolHint      string
+	PayloadHash       [32]byte
+	StorageKind       string
+	ArchiveKey        string
+	OriginalBytes     int64
+	CompressedBytes   int64
 	Body              []byte
+}
+
+func RecoveredFetchExists(ctx context.Context, db *sql.DB, sourceID uint64, fetchedAt time.Time, digest [32]byte) (bool, error) {
+	var exists bool
+	err := db.QueryRowContext(ctx, `SELECT EXISTS(
+		SELECT 1 FROM source_fetches f JOIN raw_payloads p ON p.payload_id=f.payload_id
+		WHERE f.source_id=? AND f.finished_at=? AND p.content_sha256=?)`,
+		sourceID, fetchedAt.UTC().Truncate(time.Microsecond), digest[:]).Scan(&exists)
+	return exists, err
+}
+
+func ListFilesystemPayloads(ctx context.Context, db *sql.DB) ([]ExternalPayload, error) {
+	rows, err := db.QueryContext(ctx, `SELECT content_sha256, original_bytes, compressed_bytes, compression, archive_key
+		FROM raw_payloads WHERE storage_kind=? ORDER BY payload_id`, StorageFilesystem)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var payloads []ExternalPayload
+	for rows.Next() {
+		var payload ExternalPayload
+		var digest []byte
+		if err := rows.Scan(&digest, &payload.OriginalBytes, &payload.CompressedBytes, &payload.Compression, &payload.ArchiveKey); err != nil {
+			return nil, err
+		}
+		if len(digest) != sha256.Size {
+			return nil, fmt.Errorf("filesystem payload sha256 has %d bytes", len(digest))
+		}
+		copy(payload.SHA256[:], digest)
+		if err := validateExternalPayload(&payload); err != nil {
+			return nil, err
+		}
+		payloads = append(payloads, payload)
+	}
+	return payloads, rows.Err()
 }
 
 // PersistedParse summarizes one all-or-nothing parse transaction.
@@ -83,20 +160,43 @@ func FinishFetch(ctx context.Context, db *sql.DB, write FetchWrite) (FetchRecord
 	if write.StatusCode == 304 && write.ErrorCode == "" {
 		state = "not_modified"
 	}
-	if len(write.Body) > 0 && write.ErrorCode == "" && write.StatusCode >= 200 && write.StatusCode < 300 {
-		compressed, err := compressPayload(write.Body)
-		if err != nil {
-			return FetchRecord{}, err
+	hasPayload := len(write.Body) > 0 || write.ExternalPayload != nil
+	if hasPayload && write.ErrorCode == "" && write.StatusCode >= 200 && write.StatusCode < 300 {
+		storageKind := StorageDatabase
+		compression := "gzip"
+		originalBytes := int64(len(write.Body))
+		var compressedBytes int64
+		var compressedBody, archiveKey any
+		if write.ExternalPayload != nil {
+			if len(write.Body) != 0 {
+				return FetchRecord{}, fmt.Errorf("external payload cannot include an inline body")
+			}
+			if err := validateExternalPayload(write.ExternalPayload); err != nil {
+				return FetchRecord{}, err
+			}
+			storageKind = StorageFilesystem
+			compression = write.ExternalPayload.Compression
+			originalBytes = write.ExternalPayload.OriginalBytes
+			compressedBytes = write.ExternalPayload.CompressedBytes
+			archiveKey = write.ExternalPayload.ArchiveKey
+			digest = write.ExternalPayload.SHA256
+		} else {
+			compressed, err := compressDatabasePayload(write.Body, maxMediumBlobBytes)
+			if err != nil {
+				return FetchRecord{}, err
+			}
+			compressedBytes = int64(len(compressed))
+			compressedBody = compressed
 		}
 		result, err := tx.ExecContext(ctx, `
 			INSERT INTO raw_payloads
 			  (content_sha256, content_type, content_encoding, compression, original_bytes,
-			   compressed_bytes, compressed_body, first_seen_at, last_seen_at, expires_at)
-			VALUES (?, ?, ?, 'gzip', ?, ?, ?, ?, ?, DATE_ADD(?, INTERVAL 30 DAY))
+			   compressed_bytes, compressed_body, storage_kind, archive_key, first_seen_at, last_seen_at, expires_at)
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DATE_ADD(?, INTERVAL 30 DAY))
 			ON DUPLICATE KEY UPDATE payload_id=LAST_INSERT_ID(payload_id),
 			  last_seen_at=VALUES(last_seen_at), expires_at=VALUES(expires_at), reference_count=reference_count+1`,
-			digest[:], nullString(write.ContentType), nullString(write.ContentEncoding), len(write.Body), len(compressed), compressed,
-			write.FinishedAt, write.FinishedAt, write.FinishedAt)
+			digest[:], nullString(write.ContentType), nullString(write.ContentEncoding), compression, originalBytes,
+			compressedBytes, compressedBody, storageKind, archiveKey, write.FinishedAt, write.FinishedAt, write.FinishedAt)
 		if err != nil {
 			return FetchRecord{}, fmt.Errorf("upsert payload: %w", err)
 		}
@@ -106,6 +206,12 @@ func FinishFetch(ctx context.Context, db *sql.DB, write FetchWrite) (FetchRecord
 		}
 		payloadID, state, parseState = id, "success", "pending"
 	}
+	responseBytes := int64(len(write.Body))
+	if write.ResponseBytes > 0 {
+		responseBytes = write.ResponseBytes
+	} else if write.ExternalPayload != nil {
+		responseBytes = write.ExternalPayload.OriginalBytes
+	}
 	result, err := tx.ExecContext(ctx, `
 		INSERT INTO source_fetches
 		  (source_id, payload_id, started_at, finished_at, http_status, final_url, etag,
@@ -114,7 +220,7 @@ func FinishFetch(ctx context.Context, db *sql.DB, write FetchWrite) (FetchRecord
 		VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, write.SourceID, payloadID,
 		write.StartedAt, write.FinishedAt, nullInt(write.StatusCode), nullString(write.FinalURL),
 		nullString(write.ETag), nullString(write.LastModified), nullString(write.ContentType),
-		nullString(write.ContentEncoding), len(write.Body), durationMilliseconds(write.Duration),
+		nullString(write.ContentEncoding), responseBytes, durationMilliseconds(write.Duration),
 		state, parseState, nullString(write.ErrorCode), nullString(bounded(write.ErrorSummary, 1024)))
 	if err != nil {
 		return FetchRecord{}, fmt.Errorf("insert source fetch: %w", err)
@@ -143,12 +249,23 @@ func FinishFetch(ctx context.Context, db *sql.DB, write FetchWrite) (FetchRecord
 
 // ClaimUnparsedFetches loads a bounded set of deduplicated payloads.
 func ClaimUnparsedFetches(ctx context.Context, db *sql.DB, limit int) ([]ParseInput, error) {
+	return ClaimUnparsedFetchesByStorage(ctx, db, StorageDatabase, limit)
+}
+
+// ClaimUnparsedFetchesByStorage loads a bounded set from exactly one payload
+// backend so large filesystem bodies cannot consume the normal parse batch.
+func ClaimUnparsedFetchesByStorage(ctx context.Context, db *sql.DB, storageKind string, limit int) ([]ParseInput, error) {
+	if storageKind != StorageDatabase && storageKind != StorageFilesystem {
+		return nil, fmt.Errorf("storage kind must be %q or %q", StorageDatabase, StorageFilesystem)
+	}
 	if limit < 1 || limit > 1000 {
 		return nil, fmt.Errorf("parse claim limit must be between 1 and 1000")
 	}
-	rows, err := db.QueryContext(ctx, `SELECT f.fetch_id, f.source_id, s.format_hint, COALESCE(s.protocol_hint,''), p.compressed_body, p.original_bytes
+	rows, err := db.QueryContext(ctx, `SELECT f.fetch_id, f.source_id, s.format_hint, COALESCE(s.protocol_hint,''),
+		p.content_sha256, p.storage_kind, COALESCE(p.archive_key,''), p.compressed_body, p.original_bytes, p.compressed_bytes
 		FROM source_fetches f JOIN sources s ON s.source_id=f.source_id JOIN raw_payloads p ON p.payload_id=f.payload_id
-		WHERE f.fetch_state='success' AND f.parse_state='pending' ORDER BY f.finished_at LIMIT ?`, limit)
+		WHERE f.fetch_state='success' AND f.parse_state='pending' AND p.storage_kind=?
+		ORDER BY f.finished_at LIMIT ?`, storageKind, limit)
 	if err != nil {
 		return nil, err
 	}
@@ -156,19 +273,53 @@ func ClaimUnparsedFetches(ctx context.Context, db *sql.DB, limit int) ([]ParseIn
 	var inputs []ParseInput
 	for rows.Next() {
 		var input ParseInput
+		var digest []byte
 		var compressed []byte
-		var originalBytes int64
-		if err := rows.Scan(&input.FetchID, &input.SourceID, &input.FormatHint, &input.ProtocolHint, &compressed, &originalBytes); err != nil {
+		if err := rows.Scan(&input.FetchID, &input.SourceID, &input.FormatHint, &input.ProtocolHint,
+			&digest, &input.StorageKind, &input.ArchiveKey, &compressed, &input.OriginalBytes, &input.CompressedBytes); err != nil {
 			return nil, err
 		}
-		body, err := decompressPayload(compressed, originalBytes)
-		if err != nil {
-			return nil, fmt.Errorf("decompress fetch %d: %w", input.FetchID, err)
+		if len(digest) != sha256.Size {
+			return nil, fmt.Errorf("fetch %d payload sha256 has %d bytes", input.FetchID, len(digest))
 		}
-		input.Body = body
+		copy(input.PayloadHash[:], digest)
+		if storageKind == StorageDatabase {
+			if len(compressed) == 0 || input.ArchiveKey != "" {
+				return nil, fmt.Errorf("fetch %d has invalid database payload metadata", input.FetchID)
+			}
+			body, err := decompressPayload(compressed, input.OriginalBytes)
+			if err != nil {
+				return nil, fmt.Errorf("decompress fetch %d: %w", input.FetchID, err)
+			}
+			input.Body = body
+		} else if len(compressed) != 0 || input.ArchiveKey == "" {
+			return nil, fmt.Errorf("fetch %d has invalid filesystem payload metadata", input.FetchID)
+		}
 		inputs = append(inputs, input)
 	}
 	return inputs, rows.Err()
+}
+
+func validateExternalPayload(payload *ExternalPayload) error {
+	if payload == nil {
+		return fmt.Errorf("external payload is required")
+	}
+	if payload.SHA256 == ([32]byte{}) {
+		return fmt.Errorf("external payload sha256 is required")
+	}
+	if payload.OriginalBytes < 1 {
+		return fmt.Errorf("external payload original bytes must be positive")
+	}
+	if payload.CompressedBytes < 1 {
+		return fmt.Errorf("external payload compressed bytes must be positive")
+	}
+	if payload.Compression != "gzip" {
+		return fmt.Errorf("external payload compression must be gzip")
+	}
+	if strings.TrimSpace(payload.ArchiveKey) == "" {
+		return fmt.Errorf("external payload archive key is required")
+	}
+	return nil
 }
 
 // RequeueSourceParses schedules successful payloads from explicitly named
@@ -699,6 +850,17 @@ func compressPayload(body []byte) ([]byte, error) {
 		return nil, err
 	}
 	return output.Bytes(), nil
+}
+
+func compressDatabasePayload(body []byte, maximumBytes int64) ([]byte, error) {
+	compressed, err := compressPayload(body)
+	if err != nil {
+		return nil, err
+	}
+	if int64(len(compressed)) > maximumBytes {
+		return nil, &PayloadStorageError{Code: "database_payload_too_large", Err: fmt.Errorf("compressed payload uses %d of %d bytes", len(compressed), maximumBytes)}
+	}
+	return compressed, nil
 }
 
 func decompressPayload(body []byte, expected int64) ([]byte, error) {

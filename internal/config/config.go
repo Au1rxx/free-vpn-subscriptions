@@ -39,8 +39,11 @@ type DatabaseConfig struct {
 // large aggregate feeds grow month over month, so these ceilings are raised
 // from config instead of requiring a rebuild.
 type FetchConfig struct {
-	MaxBodyBytes    int64 `yaml:"max_body_bytes"`
-	MaxDecodedBytes int64 `yaml:"max_decoded_bytes"`
+	MaxBodyBytes          int64  `yaml:"max_body_bytes"`
+	MaxDecodedBytes       int64  `yaml:"max_decoded_bytes"`
+	ArchiveDirectory      string `yaml:"archive_directory"`
+	ArchiveThresholdBytes int64  `yaml:"archive_threshold_bytes"`
+	ArchiveWriteEnabled   bool   `yaml:"archive_write_enabled"`
 }
 
 type VerifyConfig struct {
@@ -183,6 +186,9 @@ func applyDefaults(c *Config) {
 	if c.Fetch.MaxDecodedBytes == 0 {
 		c.Fetch.MaxDecodedBytes = 384 << 20
 	}
+	if c.Fetch.ArchiveThresholdBytes == 0 {
+		c.Fetch.ArchiveThresholdBytes = 50 << 20
+	}
 	if c.Probe.TimeoutMS == 0 {
 		c.Probe.TimeoutMS = 3000
 	}
@@ -200,6 +206,9 @@ func applyDefaults(c *Config) {
 	}
 	if c.Output.Dir == "" {
 		c.Output.Dir = "output"
+	}
+	if c.Fetch.ArchiveDirectory == "" {
+		c.Fetch.ArchiveDirectory = filepath.Join(c.Output.Dir, ".raw-archive")
 	}
 	if len(c.Output.Formats) == 0 {
 		c.Output.Formats = []string{"clash", "v2ray-base64"}
@@ -289,6 +298,12 @@ func validate(c *Config) error {
 	}
 	if c.Fetch.MaxDecodedBytes < c.Fetch.MaxBodyBytes {
 		return fmt.Errorf("config: fetch max_decoded_bytes must be at least max_body_bytes")
+	}
+	if c.Fetch.ArchiveThresholdBytes < 1 {
+		return fmt.Errorf("config: fetch archive_threshold_bytes must be positive")
+	}
+	if c.Fetch.ArchiveWriteEnabled && strings.TrimSpace(c.Fetch.ArchiveDirectory) == "" {
+		return fmt.Errorf("config: fetch archive_directory is required when archive_write_enabled is true")
 	}
 	if len(c.Sources) == 0 {
 		return fmt.Errorf("config: no sources defined")

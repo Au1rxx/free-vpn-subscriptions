@@ -69,6 +69,20 @@ func TestMigrationFilesPersistSourceProtocolHint(t *testing.T) {
 	}
 }
 
+func TestMigrationFilesAddInstantFilesystemPayloadMetadata(t *testing.T) {
+	ddl := readMigrationDDL(t)
+	for _, want := range []string{
+		"ALTER TABLE `raw_payloads`",
+		"`storage_kind` VARCHAR(16) NOT NULL DEFAULT 'database' COMMENT '原始正文存储后端'",
+		"`archive_key` VARCHAR(255) NULL COMMENT '文件归档根目录下的相对键'",
+		"ALGORITHM=INSTANT",
+	} {
+		if !strings.Contains(ddl, want) {
+			t.Fatalf("filesystem payload migration is missing %q", want)
+		}
+	}
+}
+
 func TestMigrationFilesCoverValidationStatusAggregation(t *testing.T) {
 	ddl := readMigrationDDL(t)
 	wants := []string{

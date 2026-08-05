@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+      - name: Quick tests
+        run: make test-quick
+      - name: Full Go tests
+        run: go test ./... -count=1
+      - name: Vet
+        run: go vet ./...
+      - name: Build fnctl
+        run: go build ./cmd/fnctl

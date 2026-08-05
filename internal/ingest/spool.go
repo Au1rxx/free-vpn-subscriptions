@@ -14,6 +14,8 @@ import (
 	"sort"
 	"strings"
 	"time"
+
+	"github.com/Au1rxx/free-vpn-subscriptions/internal/store"
 )
 
 const defaultSpoolBytes = int64(2 << 30)
@@ -21,18 +23,20 @@ const defaultSpoolBytes = int64(2 << 30)
 // FetchEnvelope is the credential-sensitive response persisted during a
 // database outage. The spool directory and files are owner-only.
 type FetchEnvelope struct {
-	SourceID        uint64    `json:"source_id"`
-	FetchedAt       time.Time `json:"fetched_at"`
-	StatusCode      int       `json:"status_code"`
-	FinalURL        string    `json:"final_url,omitempty"`
-	ETag            string    `json:"etag,omitempty"`
-	LastModified    string    `json:"last_modified,omitempty"`
-	ContentType     string    `json:"content_type,omitempty"`
-	ContentEncoding string    `json:"content_encoding,omitempty"`
-	Body            []byte    `json:"body,omitempty"`
-	DurationMS      uint64    `json:"duration_ms,omitempty"`
-	ErrorCode       string    `json:"error_code,omitempty"`
-	ErrorSummary    string    `json:"error_summary,omitempty"`
+	SourceID        uint64                 `json:"source_id"`
+	FetchedAt       time.Time              `json:"fetched_at"`
+	StatusCode      int                    `json:"status_code"`
+	FinalURL        string                 `json:"final_url,omitempty"`
+	ETag            string                 `json:"etag,omitempty"`
+	LastModified    string                 `json:"last_modified,omitempty"`
+	ContentType     string                 `json:"content_type,omitempty"`
+	ContentEncoding string                 `json:"content_encoding,omitempty"`
+	Body            []byte                 `json:"body,omitempty"`
+	ExternalPayload *store.ExternalPayload `json:"external_payload,omitempty"`
+	ResponseBytes   int64                  `json:"response_bytes,omitempty"`
+	DurationMS      uint64                 `json:"duration_ms,omitempty"`
+	ErrorCode       string                 `json:"error_code,omitempty"`
+	ErrorSummary    string                 `json:"error_summary,omitempty"`
 }
 
 // Persister accepts one replayed fetch. Success authorizes file deletion.
@@ -45,8 +49,9 @@ type ReplayReport struct {
 }
 
 type Spool struct {
-	Dir      string
-	MaxBytes int64
+	Dir              string
+	MaxBytes         int64
+	MaxEnvelopeBytes int64
 }
 
 type SpoolError struct {
@@ -64,20 +69,37 @@ func spoolErrorCode(err error) string {
 	return ""
 }
 
-func NewSpool(directory string, maximumBytes int64) (*Spool, error) {
+func NewSpool(directory string, maximumBytes int64, maximumBodyBytes ...int64) (*Spool, error) {
 	if directory == "" {
 		return nil, fmt.Errorf("spool directory is required")
 	}
 	if maximumBytes <= 0 {
 		maximumBytes = defaultSpoolBytes
 	}
+	if len(maximumBodyBytes) > 1 {
+		return nil, fmt.Errorf("spool accepts at most one body limit")
+	}
+	bodyLimit := int64(50 << 20)
+	if len(maximumBodyBytes) == 1 {
+		bodyLimit = maximumBodyBytes[0]
+	}
+	if bodyLimit < 1 {
+		return nil, fmt.Errorf("spool body limit must be positive")
+	}
+	envelopeLimit := EnvelopeLimitForBody(bodyLimit)
 	if err := os.MkdirAll(directory, 0o700); err != nil {
 		return nil, err
 	}
 	if err := os.Chmod(directory, 0o700); err != nil {
 		return nil, err
 	}
-	return &Spool{Dir: directory, MaxBytes: maximumBytes}, nil
+	return &Spool{Dir: directory, MaxBytes: maximumBytes, MaxEnvelopeBytes: envelopeLimit}, nil
+}
+
+// EnvelopeLimitForBody includes JSON Base64 expansion and bounded metadata
+// overhead for one inline spool body.
+func EnvelopeLimitForBody(bodyBytes int64) int64 {
+	return ((bodyBytes + 2) / 3 * 4) + (1 << 20)
 }
 
 // Enqueue atomically writes gzip JSON and rejects writes that exceed the
@@ -161,8 +183,12 @@ func (s *Spool) Replay(ctx context.Context, persister Persister) (ReplayReport, 
 			return report, err
 		}
 		path := filepath.Join(s.Dir, name)
-		envelope, err := readEnvelope(path)
+		envelope, err := readEnvelope(path, s.MaxEnvelopeBytes)
 		if err != nil {
+			if spoolErrorCode(err) == "spool_envelope_too_large" {
+				report.Failed++
+				return report, err
+			}
 			if quarantineErr := s.quarantine(path, name); quarantineErr != nil {
 				return report, quarantineErr
 			}
@@ -184,7 +210,7 @@ func (s *Spool) Replay(ctx context.Context, persister Persister) (ReplayReport, 
 	return report, nil
 }
 
-func readEnvelope(path string) (FetchEnvelope, error) {
+func readEnvelope(path string, maximumBytes int64) (FetchEnvelope, error) {
 	file, err := os.Open(path)
 	if err != nil {
 		return FetchEnvelope{}, err
@@ -195,9 +221,23 @@ func readEnvelope(path string) (FetchEnvelope, error) {
 		return FetchEnvelope{}, err
 	}
 	defer reader.Close()
-	decoder := json.NewDecoder(io.LimitReader(reader, 64<<20))
+	limited := &io.LimitedReader{R: reader, N: maximumBytes + 1}
+	decoder := json.NewDecoder(limited)
 	var envelope FetchEnvelope
 	if err := decoder.Decode(&envelope); err != nil {
+		if limited.N == 0 {
+			return FetchEnvelope{}, &SpoolError{Code: "spool_envelope_too_large", Err: fmt.Errorf("spool envelope exceeds %d bytes", maximumBytes)}
+		}
+		return FetchEnvelope{}, err
+	}
+	var trailing any
+	if err := decoder.Decode(&trailing); err != io.EOF {
+		if limited.N == 0 {
+			return FetchEnvelope{}, &SpoolError{Code: "spool_envelope_too_large", Err: fmt.Errorf("spool envelope exceeds %d bytes", maximumBytes)}
+		}
+		if err == nil {
+			return FetchEnvelope{}, fmt.Errorf("spool envelope contains trailing JSON")
+		}
 		return FetchEnvelope{}, err
 	}
 	if envelope.SourceID == 0 || envelope.FetchedAt.IsZero() {
