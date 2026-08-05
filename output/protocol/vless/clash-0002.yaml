@@ -1,0 +1,26 @@
+proxies:
+    - flow: xtls-rprx-vision
+      name: vless-279525860
+      network: tcp
+      port: 443
+      server: nasnet-162191099-direct.mbghalibaf.com
+      servername: nasnet-162191099-direct.mbghalibaf.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e8b1500b-e9e8-5492-8312-f4eadf7d0767
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-279525860
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-279525860
+      type: select
+rules:
+    - MATCH,select

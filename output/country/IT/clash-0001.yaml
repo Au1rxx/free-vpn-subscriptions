@@ -6,6 +6,13 @@ proxies:
       server: 185.213.20.110
       type: ss
       udp: true
+    - name: vless-2327855
+      network: tcp
+      port: 10086
+      server: 204.216.216.23
+      type: vless
+      udp: true
+      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - name: vless-2327856
       network: tcp
       port: 10086
@@ -82,11 +89,19 @@ proxies:
       type: vless
       udp: true
       uuid: 2e4101cd-40b4-4d1a-8df6-cc949c136e5a
+    - cipher: aes-256-gcm
+      name: shadowsocks-279482610
+      password: d1fa2f4b98a38bc8
+      port: 10901
+      server: it2.levikogjgfdd.ir
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-127110
+        - vless-2327855
         - vless-2327856
         - vless-59597883
         - vless-239195035
@@ -96,12 +111,14 @@ proxy-groups:
         - hysteria2-273329903
         - vless-277259441
         - vless-277405491
+        - shadowsocks-279482610
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-127110
+        - vless-2327855
         - vless-2327856
         - vless-59597883
         - vless-239195035
@@ -111,6 +128,7 @@ proxy-groups:
         - hysteria2-273329903
         - vless-277259441
         - vless-277405491
+        - shadowsocks-279482610
       type: select
 rules:
     - MATCH,select
