@@ -1,14 +1,4 @@
 proxies:
-    - name: vless-2066045
-      network: ws
-      port: 443
-      server: 104.21.117.9
-      servername: netlivpn2950.bbxff.workers.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: bd9ff08b-d042-3650-48e4-c4b400000000
     - name: trojan-38691648
       password: y3b03zx3tznhyo538p4c
       port: 53261
@@ -62,29 +52,43 @@ proxies:
       type: vless
       udp: true
       uuid: 2224085c-ab5e-48ac-bcdb-c67a983f70e2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-281610221
+      network: raw
+      port: 8464
+      reality-opts:
+        public-key: TGyAcC_Doy-9s59Fra8U5M-9bQCrULrJWNxfMR9mZjE
+        short-id: bfd331f9
+      server: edges.api-gateway-dev.top
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2224085c-ab5e-48ac-bcdb-c67a983f70e2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-2066045
         - trojan-38691648
         - trojan-51444474
         - trojan-51753352
         - shadowsocks-175455221
         - trojan-267016931
         - vless-279500869
+        - vless-281610221
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-2066045
         - trojan-38691648
         - trojan-51444474
         - trojan-51753352
         - shadowsocks-175455221
         - trojan-267016931
         - vless-279500869
+        - vless-281610221
       type: select
 rules:
     - MATCH,select

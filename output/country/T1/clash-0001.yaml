@@ -1,13 +1,73 @@
-proxies: []
+proxies:
+    - name: vless-281650963
+      network: ws
+      port: 443
+      server: 3x-ui-multi-production-5f14.up.railway.app
+      servername: 3x-ui-multi-production-5f14.up.railway.app
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 67f20960-bfdf-43a9-a33b-bd456749cce2
+    - name: vless-281650970
+      network: ws
+      port: 443
+      server: 3x-ui-multi-production-5f14.up.railway.app
+      servername: 3x-ui-multi-production-5f14.up.railway.app
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 712af74a-c9bf-4ff3-8bae-7024b1ec0a24
+    - name: vless-281650979
+      network: ws
+      port: 443
+      server: 3x-ui-multi-production-5f14.up.railway.app
+      servername: 3x-ui-multi-production-5f14.up.railway.app
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 78ac1880-2385-4d44-83e5-7d6af59e80a3
+    - name: vless-281652949
+      network: ws
+      port: 443
+      server: 3x-ui-multi-production-5f14.up.railway.app
+      servername: 3x-ui-multi-production-5f14.up.railway.app
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: b66830b2-de34-42d9-ac7e-def7bcd1485f
+    - name: vless-281652952
+      network: ws
+      port: 443
+      server: 3x-ui-multi-production-5f14.up.railway.app
+      servername: 3x-ui-multi-production-5f14.up.railway.app
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bee2d8a6-5979-4e25-9aec-994a9d1f7778
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - vless-281650963
+        - vless-281650970
+        - vless-281650979
+        - vless-281652949
+        - vless-281652952
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-281650963
+        - vless-281650970
+        - vless-281650979
+        - vless-281652949
+        - vless-281652952
       type: select
 rules:
     - MATCH,select
