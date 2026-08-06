@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-292956736
+      password: MWY3YTJjMDA1MTJjODJhOGRmZDE2ZTc4NDc5Y2Jl
+      port: 11104
+      server: 95.38.187.39
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-290320184
@@ -54,6 +61,20 @@ proxies:
       type: vless
       udp: true
       uuid: 298b91eb-462f-4df0-9c38-d0cc42b969c8
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-292960747
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: TlpXTLz1Y-v8B6q9MX55U6eypjfL0LCSNE5zQP4yRHw
+        short-id: bbc68cec8bb8d2e3
+      server: node16.mxvpn.dev
+      servername: node16.mxvpn.dev
+      tls: true
+      type: vless
+      udp: true
+      uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
     - client-fingerprint: qq
       name: vless-288143060
       network: grpc
@@ -139,10 +160,12 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-292956736
         - vless-290320184
         - vless-288131050
         - vless-288255451
         - vless-288124052
+        - vless-292960747
         - vless-288143060
         - hysteria2-271206441
         - hysteria2-209378680
@@ -158,10 +181,12 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-292956736
         - vless-290320184
         - vless-288131050
         - vless-288255451
         - vless-288124052
+        - vless-292960747
         - vless-288143060
         - hysteria2-271206441
         - hysteria2-209378680

@@ -13,13 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9c639277-373a-4e66-8987-982b172972ae
-    - cipher: 2022-blake3-aes-256-gcm
-      name: shadowsocks-283689999
-      password: aMVCBvxurcuK4oBwbTyDdhdbbn8a4sNHpMrJVfgmVtM=:JrbEhtlNmGP4TJU1WiJ3yxfg3TfoRHvmH8l2+gCoTxs=
-      port: 50667
-      server: 78.47.35.178
-      type: ss
-      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-11081
       password: Y6R9pAtvxxzmGC
@@ -31,22 +24,6 @@ proxies:
       password: ND91608427
       port: 443
       server: 202.78.163.248
-      skip-cert-verify: false
-      sni: relaxed-gull.rooster465.autos
-      type: trojan
-      udp: true
-    - name: trojan-283683743
-      password: ND91608427
-      port: 443
-      server: relaxed-gull.rooster465.autos
-      skip-cert-verify: true
-      sni: relaxed-gull.rooster465.autos
-      type: trojan
-      udp: true
-    - name: trojan-269132010
-      password: ND91608427
-      port: 443
-      server: relaxed-gull.rooster465.autos
       skip-cert-verify: false
       sni: relaxed-gull.rooster465.autos
       type: trojan
@@ -96,6 +73,14 @@ proxies:
       port: 443
       server: relaxed-gull.rooster465.autos
       skip-cert-verify: false
+      sni: relaxed-gull.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-283683743
+      password: ND91608427
+      port: 443
+      server: relaxed-gull.rooster465.autos
+      skip-cert-verify: true
       sni: relaxed-gull.rooster465.autos
       type: trojan
       udp: true
@@ -171,22 +156,28 @@ proxies:
       sni: relaxed-gull.rooster465.autos
       type: trojan
       udp: true
+    - name: trojan-269132010
+      password: ND91608427
+      port: 443
+      server: relaxed-gull.rooster465.autos
+      skip-cert-verify: false
+      sni: relaxed-gull.rooster465.autos
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-288139058
-        - shadowsocks-283689999
         - shadowsocks-11081
         - trojan-275270504
-        - trojan-283683743
-        - trojan-269132010
         - trojan-269060761
         - trojan-270660238
         - trojan-255434921
         - trojan-286085590
         - trojan-264886067
         - trojan-286091591
+        - trojan-283683743
         - trojan-264886112
         - trojan-268441965
         - trojan-257074116
@@ -196,23 +187,22 @@ proxy-groups:
         - trojan-286085591
         - trojan-280054244
         - trojan-268441964
+        - trojan-269132010
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-288139058
-        - shadowsocks-283689999
         - shadowsocks-11081
         - trojan-275270504
-        - trojan-283683743
-        - trojan-269132010
         - trojan-269060761
         - trojan-270660238
         - trojan-255434921
         - trojan-286085590
         - trojan-264886067
         - trojan-286091591
+        - trojan-283683743
         - trojan-264886112
         - trojan-268441965
         - trojan-257074116
@@ -222,6 +212,7 @@ proxy-groups:
         - trojan-286085591
         - trojan-280054244
         - trojan-268441964
+        - trojan-269132010
       type: select
 rules:
     - MATCH,select

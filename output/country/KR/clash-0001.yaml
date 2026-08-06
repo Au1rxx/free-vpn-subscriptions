@@ -69,15 +69,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 41a7089a-040b-4538-8b8d-010902405bde
-    - alterId: 0
-      cipher: auto
-      name: vmess-96596
-      network: tcp
-      port: 8888
-      server: 146.56.112.110
-      type: vmess
-      udp: true
-      uuid: e7c302f3-90d6-42dd-9d7d-94a3683a3707
     - cipher: aes-256-gcm
       name: shadowsocks-125595
       password: RexnBgU7EV5ADxG
@@ -251,6 +242,17 @@ proxies:
       type: vless
       udp: true
       uuid: 2e9012a2-7f8c-4233-b78b-5228a9a4951b
+    - flow: xtls-rprx-vision
+      name: vless-68001628
+      network: tcp
+      port: 443
+      server: ako.pagate.top
+      servername: ako.pagate.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e6d8d743-a9bc-48c9-be99-8f3cc94d16e1
     - name: trojan-84489892
       password: p5jTPcffLgi4gaNOJd2KUTb9YEPBBD5B
       port: 56127
@@ -668,6 +670,14 @@ proxies:
       server: 54.180.228.238
       skip-cert-verify: false
       sni: pure-ram.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-260682471
+      password: ND91608427
+      port: 443
+      server: saving-octopus.rooster465.autos
+      skip-cert-verify: true
+      sni: saving-octopus.rooster465.autos
       type: trojan
       udp: true
     - name: trojan-260683469
@@ -2042,14 +2052,6 @@ proxies:
       sni: select-ferret.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-280990236
-      password: 41c406e2-12b5-41f2-a329-d0621052d675
-      port: 20088
-      server: oplosgru-c.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-281603213
       password: ND91608427
       port: 443
@@ -2097,6 +2099,27 @@ proxies:
       sni: pure-ram.rooster465.autos
       type: trojan
       udp: true
+    - name: trojan-292617716
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 9450
+      server: 154.64.226.149
+      skip-cert-verify: true
+      sni: 154.64.226.149
+      type: trojan
+      udp: true
+    - client-fingerprint: chrome
+      name: vless-292623716
+      network: tcp
+      port: 8686
+      reality-opts:
+        public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
+        short-id: 628b3c90c98ead4f
+      server: 52.78.211.116
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
 proxy-groups:
     - interval: 300
       name: auto
@@ -2109,7 +2132,6 @@ proxy-groups:
         - vless-46374
         - vless-77486
         - vmess-96535
-        - vmess-96596
         - shadowsocks-125595
         - shadowsocks-125596
         - vmess-144713
@@ -2129,6 +2151,7 @@ proxy-groups:
         - vless-48555241
         - vless-59621877
         - vless-65105006
+        - vless-68001628
         - trojan-84489892
         - trojan-98121908
         - trojan-123134632
@@ -2180,6 +2203,7 @@ proxy-groups:
         - trojan-260680490
         - trojan-260680491
         - trojan-260680492
+        - trojan-260682471
         - trojan-260683469
         - hysteria2-260690818
         - trojan-260700825
@@ -2352,13 +2376,14 @@ proxy-groups:
         - trojan-280979843
         - trojan-280979844
         - trojan-280979845
-        - trojan-280990236
         - trojan-281603213
         - trojan-283684741
         - trojan-283703025
         - hysteria2-285778602
         - trojan-286091588
         - trojan-286091590
+        - trojan-292617716
+        - vless-292623716
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -2372,7 +2397,6 @@ proxy-groups:
         - vless-46374
         - vless-77486
         - vmess-96535
-        - vmess-96596
         - shadowsocks-125595
         - shadowsocks-125596
         - vmess-144713
@@ -2392,6 +2416,7 @@ proxy-groups:
         - vless-48555241
         - vless-59621877
         - vless-65105006
+        - vless-68001628
         - trojan-84489892
         - trojan-98121908
         - trojan-123134632
@@ -2443,6 +2468,7 @@ proxy-groups:
         - trojan-260680490
         - trojan-260680491
         - trojan-260680492
+        - trojan-260682471
         - trojan-260683469
         - hysteria2-260690818
         - trojan-260700825
@@ -2615,13 +2641,14 @@ proxy-groups:
         - trojan-280979843
         - trojan-280979844
         - trojan-280979845
-        - trojan-280990236
         - trojan-281603213
         - trojan-283684741
         - trojan-283703025
         - hysteria2-285778602
         - trojan-286091588
         - trojan-286091590
+        - trojan-292617716
+        - vless-292623716
       type: select
 rules:
     - MATCH,select
