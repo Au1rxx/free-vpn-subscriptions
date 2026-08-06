@@ -33,6 +33,13 @@ proxies:
       server: 129.151.73.137
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-289952635
+      password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
+      port: 61312
+      server: 129.151.74.38
+      type: ss
+      udp: true
     - cipher: rc4-md5
       name: shadowsocks-165
       password: 14fFPrbezE3HDZzsMOr6
@@ -63,20 +70,20 @@ proxies:
       sni: gb21-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
       type: trojan
       udp: true
-    - name: trojan-279470302
-      password: MiTiVPN
-      port: 443
-      server: 151.101.56.8
-      skip-cert-verify: true
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
     - name: trojan-222616511
       password: MiTiVPN
       port: 443
       server: 104.21.18.41
       skip-cert-verify: true
       sni: gb21-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
+      type: trojan
+      udp: true
+    - name: trojan-279470302
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.8
+      skip-cert-verify: true
+      sni: ssl.fastly.com
       type: trojan
       udp: true
 proxy-groups:
@@ -87,12 +94,13 @@ proxy-groups:
         - shadowsocks-285885320
         - vless-288076536
         - shadowsocks-269029126
+        - shadowsocks-289952635
         - shadowsocks-165
         - shadowsocks-240
         - trojan-232939916
         - trojan-248664936
-        - trojan-279470302
         - trojan-222616511
+        - trojan-279470302
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -102,12 +110,13 @@ proxy-groups:
         - shadowsocks-285885320
         - vless-288076536
         - shadowsocks-269029126
+        - shadowsocks-289952635
         - shadowsocks-165
         - shadowsocks-240
         - trojan-232939916
         - trojan-248664936
-        - trojan-279470302
         - trojan-222616511
+        - trojan-279470302
       type: select
 rules:
     - MATCH,select

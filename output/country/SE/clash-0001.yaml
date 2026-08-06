@@ -1,60 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-13199
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: B3MWDjEWGQsObyH-9npa_PlkaoQDBqzwlwURFK1zlE8
-        short-id: 3e0527d94cc8d1
-      server: 148.253.211.10
-      servername: vk.me
-      tls: true
-      type: vless
-      udp: true
-      uuid: 60576147-90e7-4afc-9cf9-c7361a8c7fd8
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-49270
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: B3MWDjEWGQsObyH-9npa_PlkaoQDBqzwlwURFK1zlE8
-        short-id: 3e0527d94cc8d1
-      server: 148.253.211.10
-      servername: vk.me
-      tls: true
-      type: vless
-      udp: true
-      uuid: 60576147-90e7-4afc-9cf9-c7361a8c7fd8
-    - client-fingerprint: ios
-      flow: xtls-rprx-vision
-      name: vless-2313761
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: B3MWDjEWGQsObyH-9npa_PlkaoQDBqzwlwURFK1zlE8
-        short-id: 3e0527d94cc8d1
-      server: 148.253.211.10
-      servername: vk.me
-      tls: true
-      type: vless
-      udp: true
-      uuid: 60576147-90e7-4afc-9cf9-c7361a8c7fd8
-    - client-fingerprint: ios
-      flow: xtls-rprx-vision
-      name: vless-5206814
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: B3MWDjEWGQsObyH-9npa_PlkaoQDBqzwlwURFK1zlE8
-        short-id: 3e0527d94cc8d1
-      server: 148.253.211.10
-      servername: vk.me
-      tls: true
-      type: vless
-      udp: true
-      uuid: 60576147-90e7-4afc-9cf9-c7361a8c7fd8
     - name: hysteria2-58965449
       password: 71cada65-d23e-418c-88e4-a06188d14689
       port: 443
@@ -193,32 +137,6 @@ proxies:
       udp: true
       uuid: 02ae7872-1c03-4214-8b95-14c126da831e
     - client-fingerprint: firefox
-      name: vless-285191034
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: AAZjVvbC7AwPKot_1ygO5VMpN7XYifCA7lG0RNR5sEk
-        short-id: ""
-      server: 2.26.79.43
-      servername: pro-se.emrata.top
-      tls: true
-      type: vless
-      udp: true
-      uuid: 02ae7872-1c03-4214-8b95-14c126da831e
-    - client-fingerprint: firefox
-      name: vless-285191035
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: AAZjVvbC7AwPKot_1ygO5VMpN7XYifCA7lG0RNR5sEk
-        short-id: ""
-      server: 2.26.79.57
-      servername: pro-se.emrata.top
-      tls: true
-      type: vless
-      udp: true
-      uuid: 02ae7872-1c03-4214-8b95-14c126da831e
-    - client-fingerprint: firefox
       name: vless-285717931
       network: tcp
       port: 443
@@ -278,14 +196,17 @@ proxies:
       type: vless
       udp: true
       uuid: f128bc2c-8018-43a1-8ed7-66eabc8f157c
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-289952651
+      password: BsVzyLrGhbw4MivQz7k1_Q
+      port: 60035
+      server: 201.34.136.122
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-13199
-        - vless-49270
-        - vless-2313761
-        - vless-5206814
         - hysteria2-58965449
         - vless-122693517
         - vless-123530139
@@ -299,22 +220,17 @@ proxy-groups:
         - vless-279374536
         - vless-280054105
         - vless-283707023
-        - vless-285191034
-        - vless-285191035
         - vless-285717931
         - vless-285717932
         - vless-285765933
         - trojan-285788947
         - vless-285853436
+        - shadowsocks-289952651
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-13199
-        - vless-49270
-        - vless-2313761
-        - vless-5206814
         - hysteria2-58965449
         - vless-122693517
         - vless-123530139
@@ -328,13 +244,12 @@ proxy-groups:
         - vless-279374536
         - vless-280054105
         - vless-283707023
-        - vless-285191034
-        - vless-285191035
         - vless-285717931
         - vless-285717932
         - vless-285765933
         - trojan-285788947
         - vless-285853436
+        - shadowsocks-289952651
       type: select
 rules:
     - MATCH,select

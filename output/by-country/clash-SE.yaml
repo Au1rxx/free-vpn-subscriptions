@@ -1,18 +1,5 @@
 proxies:
     - client-fingerprint: firefox
-      name: vless-285191034
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: AAZjVvbC7AwPKot_1ygO5VMpN7XYifCA7lG0RNR5sEk
-        short-id: ""
-      server: 2.26.79.43
-      servername: pro-se.emrata.top
-      tls: true
-      type: vless
-      udp: true
-      uuid: 02ae7872-1c03-4214-8b95-14c126da831e
-    - client-fingerprint: firefox
       name: vless-285765933
       network: tcp
       port: 443
@@ -51,31 +38,11 @@ proxies:
       type: vless
       udp: true
       uuid: 02ae7872-1c03-4214-8b95-14c126da831e
-    - client-fingerprint: firefox
-      name: vless-285191035
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: AAZjVvbC7AwPKot_1ygO5VMpN7XYifCA7lG0RNR5sEk
-        short-id: ""
-      server: 2.26.79.57
-      servername: pro-se.emrata.top
-      tls: true
-      type: vless
-      udp: true
-      uuid: 02ae7872-1c03-4214-8b95-14c126da831e
     - name: hysteria2-254908439
       password: 71cada65-d23e-418c-88e4-a06188d14689
       port: 443
       server: 87.121.105.108
       skip-cert-verify: false
-      sni: swe-one.quiet-rogue.site
-      type: hysteria2
-    - name: hysteria2-58965449
-      password: 71cada65-d23e-418c-88e4-a06188d14689
-      port: 443
-      server: swe-one.quiet-rogue.site
-      skip-cert-verify: true
       sni: swe-one.quiet-rogue.site
       type: hysteria2
     - name: hysteria2-192020441
@@ -99,11 +66,25 @@ proxies:
       skip-cert-verify: true
       sni: swe-one.quiet-rogue.site
       type: hysteria2
+    - name: hysteria2-58965449
+      password: 71cada65-d23e-418c-88e4-a06188d14689
+      port: 443
+      server: swe-one.quiet-rogue.site
+      skip-cert-verify: true
+      sni: swe-one.quiet-rogue.site
+      type: hysteria2
     - cipher: aes-256-cfb
       name: shadowsocks-262859887
       password: amazonskr05
       port: 443
       server: 13.61.13.49
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-289952651
+      password: BsVzyLrGhbw4MivQz7k1_Q
+      port: 60035
+      server: 201.34.136.122
       type: ss
       udp: true
     - name: trojan-285788947
@@ -118,34 +99,32 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-285191034
         - vless-285765933
         - vless-285717932
         - vless-285717931
-        - vless-285191035
         - hysteria2-254908439
-        - hysteria2-58965449
         - hysteria2-192020441
         - hysteria2-197436120
         - hysteria2-278435171
+        - hysteria2-58965449
         - shadowsocks-262859887
+        - shadowsocks-289952651
         - trojan-285788947
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-285191034
         - vless-285765933
         - vless-285717932
         - vless-285717931
-        - vless-285191035
         - hysteria2-254908439
-        - hysteria2-58965449
         - hysteria2-192020441
         - hysteria2-197436120
         - hysteria2-278435171
+        - hysteria2-58965449
         - shadowsocks-262859887
+        - shadowsocks-289952651
         - trojan-285788947
       type: select
 rules:
