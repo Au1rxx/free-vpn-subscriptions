@@ -6,13 +6,6 @@ proxies:
       server: 102.129.229.85
       type: ss
       udp: true
-    - name: vless-272661138
-      network: tcp
-      port: 1083
-      server: 157.85.102.28
-      type: vless
-      udp: true
-      uuid: b93efa30-e2c5-401c-9ec7-22e30266cc60
     - name: vless-277255316
       network: ws
       port: 443
@@ -23,21 +16,28 @@ proxies:
       type: vless
       udp: true
       uuid: 7ce54bb3-d612-4aa7-be08-089d3c461d53
+    - name: vless-293233472
+      network: tcp
+      port: 1083
+      server: 157.85.102.28
+      type: vless
+      udp: true
+      uuid: b93efa30-e2c5-401c-9ec7-22e30266cc60
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-125093
-        - vless-272661138
         - vless-277255316
+        - vless-293233472
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-125093
-        - vless-272661138
         - vless-277255316
+        - vless-293233472
       type: select
 rules:
     - MATCH,select
