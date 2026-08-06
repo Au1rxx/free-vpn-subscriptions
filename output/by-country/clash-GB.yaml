@@ -8,20 +8,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-293468273
-      password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
-      port: 61312
-      server: 129.151.75.186
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-293468259
-      password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
-      port: 61312
-      server: 129.151.72.21
-      type: ss
-      udp: true
     - name: vless-294222037
       network: ws
       port: 443
@@ -46,6 +32,13 @@ proxies:
       server: 158.173.24.73
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-293468259
+      password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
+      port: 61312
+      server: 129.151.72.21
+      type: ss
+      udp: true
     - cipher: rc4-md5
       name: shadowsocks-165
       password: 14fFPrbezE3HDZzsMOr6
@@ -67,13 +60,6 @@ proxies:
       server: 129.151.92.200
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-269029126
-      password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
-      port: 61312
-      server: 129.151.73.137
-      type: ss
-      udp: true
     - cipher: 2022-blake3-aes-256-gcm
       name: shadowsocks-283689999
       password: aMVCBvxurcuK4oBwbTyDdhdbbn8a4sNHpMrJVfgmVtM=:JrbEhtlNmGP4TJU1WiJ3yxfg3TfoRHvmH8l2+gCoTxs=
@@ -88,7 +74,15 @@ proxies:
       server: 94.156.250.148
       type: ss
       udp: true
-    - name: trojan-248664936
+    - name: trojan-222616511
+      password: MiTiVPN
+      port: 443
+      server: 104.21.18.41
+      skip-cert-verify: true
+      sni: gb21-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
+      type: trojan
+      udp: true
+    - name: trojan-232939916
       password: MiTiVPN
       port: 443
       server: 104.21.18.41
@@ -96,11 +90,11 @@ proxies:
       sni: gb21-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
       type: trojan
       udp: true
-    - name: trojan-222616511
+    - name: trojan-248664936
       password: MiTiVPN
       port: 443
       server: 104.21.18.41
-      skip-cert-verify: true
+      skip-cert-verify: false
       sni: gb21-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
       type: trojan
       udp: true
@@ -120,57 +114,45 @@ proxies:
       sni: ssl.fastly.com
       type: trojan
       udp: true
-    - name: trojan-232939916
-      password: MiTiVPN
-      port: 443
-      server: 104.21.18.41
-      skip-cert-verify: false
-      sni: gb21-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-296358831
-        - shadowsocks-293468273
-        - shadowsocks-293468259
         - vless-294222037
         - hysteria2-292956733
         - shadowsocks-126252
+        - shadowsocks-293468259
         - shadowsocks-165
         - shadowsocks-289952635
         - shadowsocks-285885312
-        - shadowsocks-269029126
         - shadowsocks-283689999
         - shadowsocks-240
-        - trojan-248664936
         - trojan-222616511
+        - trojan-232939916
+        - trojan-248664936
         - trojan-291118007
         - trojan-279470302
-        - trojan-232939916
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-296358831
-        - shadowsocks-293468273
-        - shadowsocks-293468259
         - vless-294222037
         - hysteria2-292956733
         - shadowsocks-126252
+        - shadowsocks-293468259
         - shadowsocks-165
         - shadowsocks-289952635
         - shadowsocks-285885312
-        - shadowsocks-269029126
         - shadowsocks-283689999
         - shadowsocks-240
-        - trojan-248664936
         - trojan-222616511
+        - trojan-232939916
+        - trojan-248664936
         - trojan-291118007
         - trojan-279470302
-        - trojan-232939916
       type: select
 rules:
     - MATCH,select
