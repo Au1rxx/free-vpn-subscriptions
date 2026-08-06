@@ -1,0 +1,86 @@
+{
+  "outbounds": [
+    {
+      "server": "103.202.223.2",
+      "server_port": 8070,
+      "tag": "http-1132779",
+      "type": "http"
+    },
+    {
+      "server": "103.136.107.60",
+      "server_port": 100,
+      "tag": "http-10824366",
+      "type": "http"
+    },
+    {
+      "server": "27.147.177.74",
+      "server_port": 55,
+      "tag": "http-1435317",
+      "type": "http"
+    },
+    {
+      "server": "119.18.147.179",
+      "server_port": 1080,
+      "tag": "socks4-222469",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "server": "203.169.27.149",
+      "server_port": 1080,
+      "tag": "socks4-86681412",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "server": "103.149.75.82",
+      "server_port": 1080,
+      "tag": "socks4-157344",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "server": "59.152.97.233",
+      "server_port": 1080,
+      "tag": "socks5-1028906",
+      "type": "socks",
+      "version": "5"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "http-1132779",
+        "http-10824366",
+        "http-1435317",
+        "socks4-222469",
+        "socks4-86681412",
+        "socks4-157344",
+        "socks5-1028906"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "http-1132779",
+        "http-10824366",
+        "http-1435317",
+        "socks4-222469",
+        "socks4-86681412",
+        "socks4-157344",
+        "socks5-1028906"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

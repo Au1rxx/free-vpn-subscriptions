@@ -1,0 +1,62 @@
+{
+  "outbounds": [
+    {
+      "server": "89.167.124.218",
+      "server_port": 8888,
+      "tag": "http-1590722",
+      "type": "http"
+    },
+    {
+      "method": "aes-256-gcm",
+      "password": "lGqs95QkFHo2NV",
+      "server": "38.244.132.14",
+      "server_port": 5499,
+      "tag": "shadowsocks-11088",
+      "type": "shadowsocks"
+    },
+    {
+      "server": "91.92.80.199",
+      "server_port": 4145,
+      "tag": "socks4-616061",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "server": "176.65.140.216",
+      "server_port": 1081,
+      "tag": "socks5-267016529",
+      "type": "socks",
+      "version": "5"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "http-1590722",
+        "shadowsocks-11088",
+        "socks4-616061",
+        "socks5-267016529"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "http-1590722",
+        "shadowsocks-11088",
+        "socks4-616061",
+        "socks5-267016529"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

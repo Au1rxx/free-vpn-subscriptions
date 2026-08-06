@@ -1,0 +1,63 @@
+{
+  "outbounds": [
+    {
+      "password": "vpn-hy2-lv-2026",
+      "server": "185.236.22.119",
+      "server_port": 8444,
+      "tag": "hysteria2-232798723",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "185.236.22.119"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "password": "vpn-hy2-lv-2026",
+      "server": "185.236.22.119",
+      "server_port": 8444,
+      "tag": "hysteria2-248653949",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "185.236.22.119"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "server": "176.65.140.216",
+      "server_port": 1085,
+      "tag": "socks5-222614811",
+      "type": "socks",
+      "version": "5"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-232798723",
+        "hysteria2-248653949",
+        "socks5-222614811"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-232798723",
+        "hysteria2-248653949",
+        "socks5-222614811"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

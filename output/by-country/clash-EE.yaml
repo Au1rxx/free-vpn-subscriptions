@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: edge
+      name: vless-285722932
+      network: grpc
+      port: 8113
+      reality-opts:
+        public-key: 1XNcujMbWdVkVnPV4JvvIllMFdRXToudea_mqzXcMWg
+        short-id: a4f8c92d
+      server: 31.56.187.165
+      servername: westondigita.cloud
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5c6d8045-9de9-45e4-b495-463fc3f1a828
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-285722932
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-285722932
+      type: select
+rules:
+    - MATCH,select

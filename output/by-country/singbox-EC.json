@@ -1,0 +1,50 @@
+{
+  "outbounds": [
+    {
+      "server": "45.186.6.104",
+      "server_port": 3128,
+      "tag": "http-1476441",
+      "type": "http"
+    },
+    {
+      "server": "181.39.25.196",
+      "server_port": 8118,
+      "tag": "http-1304912",
+      "type": "http"
+    },
+    {
+      "server": "186.5.94.206",
+      "server_port": 999,
+      "tag": "http-1327105",
+      "type": "http"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "http-1476441",
+        "http-1304912",
+        "http-1327105"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "http-1476441",
+        "http-1304912",
+        "http-1327105"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

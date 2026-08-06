@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-321
+      password: GA9KzeEgvfxNrgmM
+      port: 9019
+      server: 5.188.181.201
+      type: ss
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-11052
       password: qItG8SueYQcP
@@ -88,6 +95,13 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - name: hysteria2-280054104
+      password: 9d3356a0-c07e-43cc-b30e-450bd50521b8
+      port: 2056
+      server: xby.mangshe.xyz
+      skip-cert-verify: true
+      sni: mg2.mangshe.xyz
+      type: hysteria2
     - name: hysteria2-283692018
       password: 9d3356a0-c07e-43cc-b30e-450bd50521b8
       port: 2056
@@ -99,6 +113,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-321
         - shadowsocks-11052
         - shadowsocks-16132
         - vmess-99676
@@ -110,12 +125,14 @@ proxy-groups:
         - trojan-56203977
         - trojan-80890727
         - trojan-89194153
+        - hysteria2-280054104
         - hysteria2-283692018
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-321
         - shadowsocks-11052
         - shadowsocks-16132
         - vmess-99676
@@ -127,6 +144,7 @@ proxy-groups:
         - trojan-56203977
         - trojan-80890727
         - trojan-89194153
+        - hysteria2-280054104
         - hysteria2-283692018
       type: select
 rules:

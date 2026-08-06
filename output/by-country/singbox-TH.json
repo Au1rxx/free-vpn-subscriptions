@@ -1,0 +1,89 @@
+{
+  "outbounds": [
+    {
+      "server": "157.85.102.28",
+      "server_port": 1083,
+      "tag": "vless-283730018",
+      "type": "vless",
+      "uuid": "b93efa30-e2c5-401c-9ec7-22e30266cc60"
+    },
+    {
+      "server": "47.81.56.193",
+      "server_port": 8888,
+      "tag": "http-1497977",
+      "type": "http"
+    },
+    {
+      "server": "202.28.194.139",
+      "server_port": 31280,
+      "tag": "http-1365655",
+      "type": "http"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "lhuULRwO4slM6k262pAC4cbq5A1H6z8eaOHV27vi7Yw=",
+      "server": "47.81.56.202",
+      "server_port": 44617,
+      "tag": "shadowsocks-180181213",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "d7zh2lMrXNH5+8+8pKzlxiCU9NN022ih+uAyxj5d4qo=",
+      "server": "102.129.229.85",
+      "server_port": 31700,
+      "tag": "shadowsocks-125093",
+      "type": "shadowsocks"
+    },
+    {
+      "server": "43.164.3.124",
+      "server_port": 1080,
+      "tag": "socks5-112366954",
+      "type": "socks",
+      "version": "5"
+    },
+    {
+      "server": "38.76.215.92",
+      "server_port": 1080,
+      "tag": "socks5-235062750",
+      "type": "socks",
+      "version": "5"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-283730018",
+        "http-1497977",
+        "http-1365655",
+        "shadowsocks-180181213",
+        "shadowsocks-125093",
+        "socks5-112366954",
+        "socks5-235062750"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-283730018",
+        "http-1497977",
+        "http-1365655",
+        "shadowsocks-180181213",
+        "shadowsocks-125093",
+        "socks5-112366954",
+        "socks5-235062750"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

@@ -1,0 +1,103 @@
+proxies:
+    - client-fingerprint: firefox
+      name: vless-285191024
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: F2VfBr2UmjDTErB_oruvW5aIvzH_xGfM2AW5_w-DF0I
+        short-id: ""
+      server: 31.76.37.7
+      servername: pro-it.emrata.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: 02ae7872-1c03-4214-8b95-14c126da831e
+    - client-fingerprint: firefox
+      name: vless-285723930
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: F2VfBr2UmjDTErB_oruvW5aIvzH_xGfM2AW5_w-DF0I
+        short-id: ""
+      server: 31.76.37.7
+      servername: pro-it.emrata.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: 02ae7872-1c03-4214-8b95-14c126da831e
+    - client-fingerprint: chrome
+      name: vless-283707021
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: F2VfBr2UmjDTErB_oruvW5aIvzH_xGfM2AW5_w-DF0I
+        short-id: ""
+      server: pro-it.emrata.top
+      servername: pro-it.emrata.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: 02ae7872-1c03-4214-8b95-14c126da831e
+    - name: hysteria2-273329903
+      password: 71cada65-d23e-418c-88e4-a06188d14689
+      port: 443
+      server: it-one.quiet-rogue.site
+      skip-cert-verify: true
+      sni: it-one.quiet-rogue.site
+      type: hysteria2
+    - name: hysteria2-271206430
+      password: 71cada65-d23e-418c-88e4-a06188d14689
+      port: 443
+      server: it-one.quiet-rogue.site
+      skip-cert-verify: false
+      sni: it-one.quiet-rogue.site
+      type: hysteria2
+    - cipher: aes-256-gcm
+      name: shadowsocks-127110
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 185.213.20.110
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-272762015
+      password: d1fa2f4b98a38bc8
+      port: 10901
+      server: 62.76.234.75
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-279482610
+      password: d1fa2f4b98a38bc8
+      port: 10901
+      server: it2.levikogjgfdd.ir
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-285191024
+        - vless-285723930
+        - vless-283707021
+        - hysteria2-273329903
+        - hysteria2-271206430
+        - shadowsocks-127110
+        - shadowsocks-272762015
+        - shadowsocks-279482610
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-285191024
+        - vless-285723930
+        - vless-283707021
+        - hysteria2-273329903
+        - hysteria2-271206430
+        - shadowsocks-127110
+        - shadowsocks-272762015
+        - shadowsocks-279482610
+      type: select
+rules:
+    - MATCH,select
