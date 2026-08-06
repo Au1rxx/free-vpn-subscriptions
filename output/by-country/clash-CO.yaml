@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-295082733
+      network: tcp
+      port: 62145
+      server: 157.137.238.184
+      type: vless
+      udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
     - name: vless-293468275
       network: tcp
       port: 62145
@@ -24,6 +31,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-295082733
         - vless-293468275
         - vless-293468276
         - vless-293468274
@@ -32,6 +40,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-295082733
         - vless-293468275
         - vless-293468276
         - vless-293468274
