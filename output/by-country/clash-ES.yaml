@@ -1,4 +1,15 @@
 proxies:
+    - flow: xtls-rprx-vision
+      name: vless-293468286
+      network: tcp
+      port: 8443
+      server: sa-5aa57e0610303959.sr-2d8f3689990d9528.r.vpvpn.club
+      servername: api-6a739dd5.noooo.win
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 20ffa82f-cdfa-4630-9941-a5cea3216efa
     - name: hysteria2-280054104
       password: 9d3356a0-c07e-43cc-b30e-450bd50521b8
       port: 2056
@@ -72,6 +83,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-293468286
         - hysteria2-280054104
         - shadowsocks-16132
         - shadowsocks-11052
@@ -86,6 +98,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-293468286
         - hysteria2-280054104
         - shadowsocks-16132
         - shadowsocks-11052
