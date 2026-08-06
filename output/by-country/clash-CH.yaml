@@ -15,14 +15,6 @@ proxies:
       sni: 86.106.84.195
       type: trojan
       udp: true
-    - name: trojan-51444474
-      password: y3b03zx3tznhyo538p4c
-      port: 53261
-      server: 86.106.84.195
-      skip-cert-verify: true
-      sni: ""
-      type: trojan
-      udp: true
     - name: trojan-38691648
       password: y3b03zx3tznhyo538p4c
       port: 53261
@@ -31,14 +23,22 @@ proxies:
       sni: 86.106.84.195
       type: trojan
       udp: true
+    - name: trojan-51444474
+      password: y3b03zx3tznhyo538p4c
+      port: 53261
+      server: 86.106.84.195
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-267016931
         - trojan-51753352
-        - trojan-51444474
         - trojan-38691648
+        - trojan-51444474
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -46,8 +46,8 @@ proxy-groups:
         - auto
         - trojan-267016931
         - trojan-51753352
-        - trojan-51444474
         - trojan-38691648
+        - trojan-51444474
       type: select
 rules:
     - MATCH,select

@@ -34,13 +34,16 @@ proxies:
       type: vless
       udp: true
       uuid: c67eb9b2-f600-4b59-ba90-258e5a72d498
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-289952635
-      password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
-      port: 61312
-      server: 129.151.74.38
-      type: ss
+    - name: vless-294222037
+      network: ws
+      port: 443
+      server: 8.6.112.223
+      servername: ohpwiljo8.roborocks.ir
+      skip-cert-verify: false
+      tls: true
+      type: vless
       udp: true
+      uuid: 8a6729c4-81d4-4b05-8747-3fffc17b6a64
     - name: vless-290620764
       network: grpc
       port: 443
@@ -56,6 +59,13 @@ proxies:
       password: shadowsocks
       port: 443
       server: 158.173.24.73
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-289952635
+      password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
+      port: 61312
+      server: 129.151.74.38
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
@@ -109,20 +119,20 @@ proxies:
       sni: gb21-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
       type: trojan
       udp: true
-    - name: trojan-232939916
-      password: MiTiVPN
-      port: 443
-      server: 104.21.18.41
-      skip-cert-verify: false
-      sni: gb21-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
-      type: trojan
-      udp: true
     - name: trojan-279470302
       password: MiTiVPN
       port: 443
       server: 151.101.56.8
       skip-cert-verify: true
       sni: ssl.fastly.com
+      type: trojan
+      udp: true
+    - name: trojan-232939916
+      password: MiTiVPN
+      port: 443
+      server: 104.21.18.41
+      skip-cert-verify: false
+      sni: gb21-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
       type: trojan
       udp: true
 proxy-groups:
@@ -133,9 +143,10 @@ proxy-groups:
         - shadowsocks-293468273
         - shadowsocks-293468259
         - vless-292964752
-        - shadowsocks-289952635
+        - vless-294222037
         - vless-290620764
         - shadowsocks-126252
+        - shadowsocks-289952635
         - shadowsocks-285885312
         - shadowsocks-165
         - shadowsocks-269029126
@@ -143,8 +154,8 @@ proxy-groups:
         - shadowsocks-240
         - trojan-248664936
         - trojan-222616511
-        - trojan-232939916
         - trojan-279470302
+        - trojan-232939916
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -154,9 +165,10 @@ proxy-groups:
         - shadowsocks-293468273
         - shadowsocks-293468259
         - vless-292964752
-        - shadowsocks-289952635
+        - vless-294222037
         - vless-290620764
         - shadowsocks-126252
+        - shadowsocks-289952635
         - shadowsocks-285885312
         - shadowsocks-165
         - shadowsocks-269029126
@@ -164,8 +176,8 @@ proxy-groups:
         - shadowsocks-240
         - trojan-248664936
         - trojan-222616511
-        - trojan-232939916
         - trojan-279470302
+        - trojan-232939916
       type: select
 rules:
     - MATCH,select
