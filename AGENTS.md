@@ -6,6 +6,7 @@
 - 当前分支只用于向终端用户提供订阅文件、生成 README、生成站点、必要静态资产和问题反馈入口。
 - harvester 源码、测试、migration、采集源、构建、systemd 和部署文档只存在于私有运维仓库，不得复制到本仓库。
 - 历史提交和 `v0.1.0`–`v0.5.2` 标签为既有依赖保留，不代表当前分支继续提供 Go module；不得强推或重写历史。
+- 远程分支只允许 `main`；禁止创建源码开发分支。上述 8 个历史标签已经冻结，禁止移动、删除或新增公共 `v*` 标签。
 
 ## 允许内容
 
@@ -26,6 +27,7 @@
 - 禁止 Go、Shell、SQL、Terraform、Python、JavaScript、TypeScript、Rust、C/C++、Java、Kotlin、Ruby、PHP 等程序或运维实现文件，即使把它们放进 `docs/` 或 `output/`；
 - 禁止采集源清单、数据库连接配置、归档配置、凭据、内部日志和服务器路径细节；
 - 禁止在本仓库构建、测试或运行 harvester。
+- 禁止通过 branch、tag、release asset 或生成目录重新引入 harvester 源码；既有消费者必须固定到不高于 `v0.5.2` 的历史版本，不得依赖 `main`。
 
 ## 修改与发布
 
