@@ -1,0 +1,93 @@
+proxies:
+    - name: vless-281652965
+      network: ws
+      port: 443
+      server: 3x-ui-multi-production-5f14.up.railway.app
+      servername: 3x-ui-multi-production-5f14.up.railway.app
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4043d34-b418-4bee-9578-d9214011b2f5
+    - name: vless-281652973
+      network: ws
+      port: 443
+      server: 104.16.79.73
+      servername: soucuovls.pages.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: dd321f25-8f90-4e7c-a1fa-01883a8988a7
+    - name: vless-281652975
+      network: ws
+      port: 443
+      server: 172.64.32.2
+      servername: soucuovls.pages.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: dd321f25-8f90-4e7c-a1fa-01883a8988a7
+    - name: vless-281652976
+      network: ws
+      port: 443
+      server: 188.114.97.6
+      servername: soucuovls.pages.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: dd321f25-8f90-4e7c-a1fa-01883a8988a7
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-281652980
+      network: tcp
+      port: 993
+      reality-opts:
+        public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
+        short-id: ""
+      server: 170.168.97.3
+      servername: download.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e6d41d6f-d58a-7650-bba4-d7f0dde3ba4d
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-281653949
+      network: tcp
+      port: 57228
+      reality-opts:
+        public-key: iWiQ0JyYhl_yzWSbIh4L4wOiiXBOhNVMhWmgtDvF1jo
+        short-id: 6e3e0d3abe3e78a4
+      server: 77.91.84.96
+      servername: www.googletagmanager.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f319a005-6bd0-44b3-910c-a596a2573efe
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-281652965
+        - vless-281652973
+        - vless-281652975
+        - vless-281652976
+        - vless-281652980
+        - vless-281653949
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-281652965
+        - vless-281652973
+        - vless-281652975
+        - vless-281652976
+        - vless-281652980
+        - vless-281653949
+      type: select
+rules:
+    - MATCH,select
