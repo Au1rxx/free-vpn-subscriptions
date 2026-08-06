@@ -12,6 +12,13 @@ proxies:
       type: vless
       udp: true
       uuid: 1b92d620-add7-42bd-ac1b-93ee4dfacee0
+    - name: vless-288149062
+      network: ws
+      port: 2200
+      server: 201.51.2.6
+      type: vless
+      udp: true
+      uuid: eb135f2b-4b9e-4abb-9a89-78242613da61
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-285743927
@@ -40,21 +47,32 @@ proxies:
       type: vless
       udp: true
       uuid: 25284d30-b4e6-4f86-b214-a78d4365ed05
+    - name: vless-288149063
+      network: ws
+      port: 4100
+      server: 5.129.252.140
+      type: vless
+      udp: true
+      uuid: eb135f2b-4b9e-4abb-9a89-78242613da61
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-285811222
+        - vless-288149062
         - vless-285743927
         - vless-285191033
+        - vless-288149063
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-285811222
+        - vless-288149062
         - vless-285743927
         - vless-285191033
+        - vless-288149063
       type: select
 rules:
     - MATCH,select

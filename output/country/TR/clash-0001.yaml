@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-gcm
+      name: shadowsocks-11086
+      password: faBAoD54k87UJG7
+      port: 2376
+      server: 185.123.101.64
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
       port: 8119
@@ -65,27 +72,38 @@ proxies:
       type: vmess
       udp: true
       uuid: cd78a4ff-a880-40c3-8417-e6a2a38c8963
+    - name: vless-288255446
+      network: ws
+      port: 5001
+      server: 158.94.216.164
+      type: vless
+      udp: true
+      uuid: 4370c4d4-149d-4201-b790-8b4f4f2d723f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-11086
         - shadowsocks-128223
         - vless-212135092
         - vmess-283674398
         - vless-283707024
         - vless-285765934
         - vmess-286074243
+        - vless-288255446
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-11086
         - shadowsocks-128223
         - vless-212135092
         - vmess-283674398
         - vless-283707024
         - vless-285765934
         - vmess-286074243
+        - vless-288255446
       type: select
 rules:
     - MATCH,select
