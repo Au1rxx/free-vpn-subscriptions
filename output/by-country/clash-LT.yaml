@@ -1,0 +1,25 @@
+proxies:
+    - name: vless-306412251
+      network: tcp
+      port: 443
+      server: ddc-chr-lt2.astralweb.tech
+      servername: ddc-chr-lt2.astralweb.tech
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd1673b3-7cec-4fe6-bedf-b534eb54e647
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-306412251
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-306412251
+      type: select
+rules:
+    - MATCH,select

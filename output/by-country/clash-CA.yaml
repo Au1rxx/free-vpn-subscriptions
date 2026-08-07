@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-306412240
+      network: tcp
+      port: 15029
+      server: can.lorqina.ir
+      type: vless
+      udp: true
+      uuid: c47b7032-5184-4034-9a81-346c35c61fc5
     - name: vless-303600429
       network: ws
       port: 443
@@ -72,6 +79,13 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - name: hysteria2-188185580
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: vpn-ca-002.fastervpn.world
+      skip-cert-verify: true
+      sni: vpn-ca-002.fastervpn.world
+      type: hysteria2
     - name: hysteria2-200242607
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -92,13 +106,6 @@ proxies:
       server: vpn-ca-001.fastervpn.world
       skip-cert-verify: true
       sni: vpn-ca-001.fastervpn.world
-      type: hysteria2
-    - name: hysteria2-188185580
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: vpn-ca-002.fastervpn.world
-      skip-cert-verify: true
-      sni: vpn-ca-002.fastervpn.world
       type: hysteria2
     - cipher: aes-128-gcm
       name: shadowsocks-208
@@ -125,6 +132,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-306412240
         - vless-303600429
         - hysteria2-209378681
         - hysteria2-296307832
@@ -135,10 +143,10 @@ proxy-groups:
         - hysteria2-211462813
         - hysteria2-290610754
         - hysteria2-256991694
+        - hysteria2-188185580
         - hysteria2-200242607
         - hysteria2-256991693
         - hysteria2-200394189
-        - hysteria2-188185580
         - shadowsocks-208
         - shadowsocks-11074
         - shadowsocks-166
@@ -147,6 +155,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-306412240
         - vless-303600429
         - hysteria2-209378681
         - hysteria2-296307832
@@ -157,10 +166,10 @@ proxy-groups:
         - hysteria2-211462813
         - hysteria2-290610754
         - hysteria2-256991694
+        - hysteria2-188185580
         - hysteria2-200242607
         - hysteria2-256991693
         - hysteria2-200394189
-        - hysteria2-188185580
         - shadowsocks-208
         - shadowsocks-11074
         - shadowsocks-166

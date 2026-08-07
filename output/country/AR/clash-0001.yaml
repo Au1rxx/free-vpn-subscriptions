@@ -1,13 +1,29 @@
-proxies: []
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-307399643
+      network: tcp
+      port: 20003
+      reality-opts:
+        public-key: peVrf5lyNHI-ccxWEYQUEPS5t5OAiGr5yBHaWQn1VC4
+        short-id: 7a2109f7fd8a3719
+      server: main.themisterzodd.com
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 48385d5d-78b4-44f2-a5c5-33a8a455871a
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - vless-307399643
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-307399643
       type: select
 rules:
     - MATCH,select
