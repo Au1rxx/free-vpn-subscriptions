@@ -1,9 +1,25 @@
 proxies:
+    - name: trojan-270682465
+      password: S.ibYdZshHTF-ne.M+.Fznp_-hyFFnCSix
+      port: 443
+      server: 149.104.104.58
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - name: trojan-266972552
       password: S.ibYdZshHTF-ne.M+.Fznp_-hyFFnCSix
       port: 443
       server: 149.104.104.58
       skip-cert-verify: false
+      sni: 149.104.104.58
+      type: trojan
+      udp: true
+    - name: trojan-51454158
+      password: S.ibYdZshHTF-ne.M+.Fznp_-hyFFnCSix
+      port: 443
+      server: 149.104.104.58
+      skip-cert-verify: true
       sni: 149.104.104.58
       type: trojan
       udp: true
@@ -23,7 +39,7 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: trojan-270682465
+    - name: trojan-250743442
       password: S.ibYdZshHTF-ne.M+.Fznp_-hyFFnCSix
       port: 443
       server: 149.104.104.58
@@ -31,23 +47,37 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - name: trojan-86441008
+      password: S.ibYdZshHTF-ne.M+.Fznp_-hyFFnCSix
+      port: 443
+      server: 149.104.104.58
+      skip-cert-verify: false
+      sni: 149.104.104.58
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-270682465
         - trojan-266972552
+        - trojan-51454158
         - trojan-266972553
         - trojan-260770145
-        - trojan-270682465
+        - trojan-250743442
+        - trojan-86441008
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-270682465
         - trojan-266972552
+        - trojan-51454158
         - trojan-266972553
         - trojan-260770145
-        - trojan-270682465
+        - trojan-250743442
+        - trojan-86441008
       type: select
 rules:
     - MATCH,select
