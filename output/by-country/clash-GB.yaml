@@ -1,4 +1,43 @@
 proxies:
+    - client-fingerprint: chrome
+      name: vless-299814626
+      network: grpc
+      port: 2053
+      reality-opts:
+        public-key: GS0dfvzX-bVKBDl2brVxsrE6T2WyXXkfgP3x-mQC7BY
+        short-id: 524efc1f88592266
+      server: gr048.bamajobin.ir
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d9aa9ea3-9388-483f-a58d-a754f33ec505
+    - client-fingerprint: firefox
+      name: vless-300181826
+      network: grpc
+      port: 2053
+      reality-opts:
+        public-key: GS0dfvzX-bVKBDl2brVxsrE6T2WyXXkfgP3x-mQC7BY
+        short-id: 524efc1f88592266
+      server: gb1.levikogjgfdd.ir
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d9aa9ea3-9388-483f-a58d-a754f33ec505
+    - client-fingerprint: chrome
+      name: vless-299814625
+      network: grpc
+      port: 2053
+      reality-opts:
+        public-key: GS0dfvzX-bVKBDl2brVxsrE6T2WyXXkfgP3x-mQC7BY
+        short-id: 524efc1f88592266
+      server: 54.37.6.119
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d9aa9ea3-9388-483f-a58d-a754f33ec505
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-299162399
       password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
@@ -6,13 +45,6 @@ proxies:
       server: 129.151.91.89
       type: ss
       udp: true
-    - name: hysteria2-292956733
-      password: 68b4b16e-2759-47a4-8a69-33118edf5ce6
-      port: 443
-      server: ang.leontunel.ru
-      skip-cert-verify: false
-      sni: ang.leontunel.ru
-      type: hysteria2
     - cipher: aes-128-gcm
       name: shadowsocks-126252
       password: shadowsocks
@@ -39,13 +71,6 @@ proxies:
       password: 14fFPrbezE3HDZzsMOr6
       port: 8080
       server: 146.70.61.37
-      type: ss
-      udp: true
-    - cipher: 2022-blake3-aes-256-gcm
-      name: shadowsocks-283689999
-      password: aMVCBvxurcuK4oBwbTyDdhdbbn8a4sNHpMrJVfgmVtM=:JrbEhtlNmGP4TJU1WiJ3yxfg3TfoRHvmH8l2+gCoTxs=
-      port: 50667
-      server: 78.47.35.178
       type: ss
       udp: true
     - cipher: aes-256-gcm
@@ -83,13 +108,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-299814626
+        - vless-300181826
+        - vless-299814625
         - shadowsocks-299162399
-        - hysteria2-292956733
         - shadowsocks-126252
         - shadowsocks-293468259
         - shadowsocks-285885312
         - shadowsocks-165
-        - shadowsocks-283689999
         - shadowsocks-240
         - trojan-222616511
         - trojan-232939916
@@ -99,13 +125,14 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-299814626
+        - vless-300181826
+        - vless-299814625
         - shadowsocks-299162399
-        - hysteria2-292956733
         - shadowsocks-126252
         - shadowsocks-293468259
         - shadowsocks-285885312
         - shadowsocks-165
-        - shadowsocks-283689999
         - shadowsocks-240
         - trojan-222616511
         - trojan-232939916

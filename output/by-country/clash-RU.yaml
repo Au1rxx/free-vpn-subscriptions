@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: chrome
+      name: vless-299808617
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: eU2IqYoHVYNfFqNlTNEAGooWqL2WqKbbQwxAPRu_7wc
+        short-id: 93762a4ddf178703
+      server: 83.217.192.233
+      servername: api.univesalsrv.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1b92d620-add7-42bd-ac1b-93ee4dfacee0
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-299808617
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-299808617
+      type: select
+rules:
+    - MATCH,select

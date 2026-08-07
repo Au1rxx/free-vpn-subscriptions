@@ -1,4 +1,45 @@
 proxies:
+    - name: vless-299814601
+      network: tcp
+      port: 26795
+      server: 65.109.208.236
+      type: vless
+      udp: true
+      uuid: c896406b-ccc4-4c37-8b8c-15964f32a9a2
+    - alterId: 0
+      cipher: auto
+      name: vmess-299816606
+      network: tcp
+      port: 46962
+      server: 65.109.208.236
+      type: vmess
+      udp: true
+      uuid: c896406b-ccc4-4c37-8b8c-15964f32a9a2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-299810625
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: TlpXTLz1Y-v8B6q9MX55U6eypjfL0LCSNE5zQP4yRHw
+        short-id: bbc68cec8bb8d2e3
+      server: 144.31.226.177
+      servername: node15.mxvpn.dev
+      tls: true
+      type: vless
+      udp: true
+      uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
+    - flow: xtls-rprx-vision
+      name: vless-300171825
+      network: tcp
+      port: 8443
+      server: 193.29.224.185
+      servername: fi1.hys.braidx.tech
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8787dd0a-095a-414e-804f-a7d16a1ae166
     - name: hysteria2-271206441
       password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
       port: 8443
@@ -58,26 +99,14 @@ proxies:
       sni: flll-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
       type: trojan
       udp: true
-    - name: trojan-285797949
-      password: MiTiVPN
-      port: 443
-      server: 140.248.185.253
-      skip-cert-verify: false
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
-    - name: trojan-285797948
-      password: MiTiVPN
-      port: 443
-      server: 140.248.185.253
-      skip-cert-verify: true
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-299814601
+        - vmess-299816606
+        - vless-299810625
+        - vless-300171825
         - hysteria2-271206441
         - hysteria2-209378680
         - hysteria2-216302447
@@ -86,13 +115,15 @@ proxy-groups:
         - trojan-226579431
         - trojan-226579430
         - trojan-232939919
-        - trojan-285797949
-        - trojan-285797948
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-299814601
+        - vmess-299816606
+        - vless-299810625
+        - vless-300171825
         - hysteria2-271206441
         - hysteria2-209378680
         - hysteria2-216302447
@@ -101,8 +132,6 @@ proxy-groups:
         - trojan-226579431
         - trojan-226579430
         - trojan-232939919
-        - trojan-285797949
-        - trojan-285797948
       type: select
 rules:
     - MATCH,select
