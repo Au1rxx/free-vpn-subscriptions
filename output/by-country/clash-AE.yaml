@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-311055072
+      network: ws
+      port: 49471
+      server: tom.myona.top
+      type: vless
+      udp: true
+      uuid: 3f8af6ef-621d-42da-9266-c66530c1145c
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-308291390
@@ -17,12 +24,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-311055072
         - vless-308291390
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-311055072
         - vless-308291390
       type: select
 rules:
