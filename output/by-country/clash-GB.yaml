@@ -6,13 +6,6 @@ proxies:
       server: 129.151.64.166
       type: ss
       udp: true
-    - name: vless-313170059
-      network: raw
-      port: 2020
-      server: 164.37.111.117
-      type: vless
-      udp: true
-      uuid: 0dbacd35-9159-4648-89ac-c38b741567a8
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-300751357
       password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
@@ -73,20 +66,11 @@ proxies:
       sni: default.fastly.com
       type: trojan
       udp: true
-    - name: trojan-232939916
-      password: MiTiVPN
-      port: 443
-      server: 104.21.18.41
-      skip-cert-verify: false
-      sni: gb21-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-315968707
-        - vless-313170059
         - shadowsocks-300751357
         - shadowsocks-300751356
         - shadowsocks-165
@@ -95,14 +79,12 @@ proxy-groups:
         - trojan-303521549
         - trojan-248664936
         - trojan-315415971
-        - trojan-232939916
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-315968707
-        - vless-313170059
         - shadowsocks-300751357
         - shadowsocks-300751356
         - shadowsocks-165
@@ -111,7 +93,6 @@ proxy-groups:
         - trojan-303521549
         - trojan-248664936
         - trojan-315415971
-        - trojan-232939916
       type: select
 rules:
     - MATCH,select

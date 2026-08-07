@@ -6,66 +6,17 @@ proxies:
       server: 103.120.178.193
       type: ss
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-27048
-      password: RexnBgU7EV5ADxG
-      port: 7002
-      server: 172.105.39.124
-      type: ss
-      udp: true
-    - name: trojan-286081587
-      password: 41c406e2-12b5-41f2-a329-d0621052d675
-      port: 20034
-      server: 157.254.38.210
-      skip-cert-verify: false
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-283678742
-      password: 41c406e2-12b5-41f2-a329-d0621052d675
-      port: 20034
-      server: 157.254.38.210
-      skip-cert-verify: false
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-277471445
-      password: 41c406e2-12b5-41f2-a329-d0621052d675
-      port: 20034
-      server: oplosgru-c.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-280054238
-      password: 41c406e2-12b5-41f2-a329-d0621052d675
-      port: 20034
-      server: oplosgru-c.catcat321.com
-      skip-cert-verify: false
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-125111
-        - shadowsocks-27048
-        - trojan-286081587
-        - trojan-283678742
-        - trojan-277471445
-        - trojan-280054238
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-125111
-        - shadowsocks-27048
-        - trojan-286081587
-        - trojan-283678742
-        - trojan-277471445
-        - trojan-280054238
       type: select
 rules:
     - MATCH,select

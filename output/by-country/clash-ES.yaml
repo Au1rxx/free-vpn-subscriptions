@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-318027224
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: 7IMomzYtfCCiH3ytALMNYEIJxQBXUhvsrdk9u261DSw
+        short-id: 9be860ff7908
+      server: 217.71.200.132
+      servername: sp.cryptoofarm.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 16ab4d4a-fd81-4535-9b7b-346677226ce8
     - name: hysteria2-283692018
       password: 9d3356a0-c07e-43cc-b30e-450bd50521b8
       port: 2056
@@ -27,14 +41,6 @@ proxies:
       server: 140.174.184.5
       type: ss
       udp: true
-    - name: trojan-116312
-      password: 2eutknankxtbgkwcajzt
-      port: 52794
-      server: 193.148.19.210
-      skip-cert-verify: true
-      sni: www.vk.com
-      type: trojan
-      udp: true
     - name: trojan-46244303
       password: 2eutknankxtbgkwcajzt
       port: 52794
@@ -49,6 +55,14 @@ proxies:
       server: 193.148.19.213
       skip-cert-verify: true
       sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-116312
+      password: 2eutknankxtbgkwcajzt
+      port: 52794
+      server: 193.148.19.210
+      skip-cert-verify: true
+      sni: www.vk.com
       type: trojan
       udp: true
     - name: trojan-2473912
@@ -79,13 +93,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-318027224
         - hysteria2-283692018
         - hysteria2-290329794
         - shadowsocks-16132
         - shadowsocks-11052
-        - trojan-116312
         - trojan-46244303
         - trojan-89194153
+        - trojan-116312
         - trojan-2473912
         - trojan-80890727
         - trojan-56203977
@@ -94,13 +109,14 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-318027224
         - hysteria2-283692018
         - hysteria2-290329794
         - shadowsocks-16132
         - shadowsocks-11052
-        - trojan-116312
         - trojan-46244303
         - trojan-89194153
+        - trojan-116312
         - trojan-2473912
         - trojan-80890727
         - trojan-56203977

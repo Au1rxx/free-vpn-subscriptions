@@ -17,13 +17,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 9db4c708-aef8-4359-821b-38e47990be0d
-    - cipher: aes-256-gcm
-      name: shadowsocks-27048
-      password: RexnBgU7EV5ADxG
-      port: 7002
-      server: 172.105.39.124
-      type: ss
-      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-125111
       password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
@@ -31,6 +24,15 @@ proxies:
       server: 103.120.178.193
       type: ss
       udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-2387858
+      network: ws
+      port: 80
+      server: 152.67.8.205
+      type: vmess
+      udp: true
+      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
     - alterId: 0
       cipher: auto
       name: vmess-2387859
@@ -119,6 +121,20 @@ proxies:
       type: vless
       udp: true
       uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-250670739
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: g77ZJbm18JEotapmVRjaXi133MzkbhkU2lxhVeXx8zw
+        short-id: 68a8
+      server: 5.253.42.164
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
     - client-fingerprint: firefox
       name: vless-250761440
       network: tcp
@@ -233,14 +249,22 @@ proxies:
       type: vless
       udp: true
       uuid: 57efd68b-1b54-4e7a-aa69-341cc99bd613
+    - name: trojan-317656167
+      password: 41c406e2-12b5-41f2-a329-d0621052d675
+      port: 20034
+      server: 157.254.38.210
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-262
         - vmess-25686
-        - shadowsocks-27048
         - shadowsocks-125111
+        - vmess-2387858
         - vmess-2387859
         - vmess-18657421
         - vless-202734758
@@ -248,6 +272,7 @@ proxy-groups:
         - vless-207907581
         - vless-211485818
         - vless-234984371
+        - vless-250670739
         - vless-250761440
         - vless-252763617
         - vless-252867231
@@ -258,6 +283,7 @@ proxy-groups:
         - trojan-283678742
         - trojan-286081587
         - vless-314904546
+        - trojan-317656167
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -265,8 +291,8 @@ proxy-groups:
         - auto
         - vmess-262
         - vmess-25686
-        - shadowsocks-27048
         - shadowsocks-125111
+        - vmess-2387858
         - vmess-2387859
         - vmess-18657421
         - vless-202734758
@@ -274,6 +300,7 @@ proxy-groups:
         - vless-207907581
         - vless-211485818
         - vless-234984371
+        - vless-250670739
         - vless-250761440
         - vless-252763617
         - vless-252867231
@@ -284,6 +311,7 @@ proxy-groups:
         - trojan-283678742
         - trojan-286081587
         - vless-314904546
+        - trojan-317656167
       type: select
 rules:
     - MATCH,select

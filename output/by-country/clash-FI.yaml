@@ -1,4 +1,20 @@
 proxies:
+    - cipher: 2022-blake3-aes-256-gcm
+      name: shadowsocks-318025222
+      password: Qy0sbkElH54n+7CzLYK2kxmYzXhlW5ue5pL/EbinJrs=:6kcro2JWRvYBom13BJWnb89RYTrQtG70KBhE3arb9T4=
+      port: 21871
+      server: 65.109.208.236
+      type: ss
+      udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-317700167
+      network: tcp
+      port: 46962
+      server: fin1.levikogjgfdd.ir
+      type: vmess
+      udp: true
+      uuid: c896406b-ccc4-4c37-8b8c-15964f32a9a2
     - name: hysteria2-271206441
       password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
       port: 8443
@@ -27,11 +43,11 @@ proxies:
       skip-cert-verify: false
       sni: gretacoin.shop
       type: hysteria2
-    - cipher: 2022-blake3-aes-256-gcm
-      name: shadowsocks-318025222
-      password: Qy0sbkElH54n+7CzLYK2kxmYzXhlW5ue5pL/EbinJrs=:6kcro2JWRvYBom13BJWnb89RYTrQtG70KBhE3arb9T4=
-      port: 21871
-      server: 65.109.208.236
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-211463809
+      password: TmXSpcRBbhvHDg66bo2w89bToxQsbMoa
+      port: 10808
+      server: 31.76.30.79
       type: ss
       udp: true
     - cipher: 2022-blake3-aes-256-gcm
@@ -65,43 +81,37 @@ proxies:
       sni: default.fastly.com
       type: trojan
       udp: true
-    - name: trojan-232939919
-      password: MiTiVPN
-      port: 443
-      server: 172.66.40.99
-      skip-cert-verify: false
-      sni: flll-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-318025222
+        - vmess-317700167
         - hysteria2-271206441
         - hysteria2-216302447
         - hysteria2-209378680
         - hysteria2-184903690
-        - shadowsocks-318025222
+        - shadowsocks-211463809
         - shadowsocks-299806583
         - trojan-226579431
         - trojan-226579430
         - trojan-303521547
-        - trojan-232939919
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-318025222
+        - vmess-317700167
         - hysteria2-271206441
         - hysteria2-216302447
         - hysteria2-209378680
         - hysteria2-184903690
-        - shadowsocks-318025222
+        - shadowsocks-211463809
         - shadowsocks-299806583
         - trojan-226579431
         - trojan-226579430
         - trojan-303521547
-        - trojan-232939919
       type: select
 rules:
     - MATCH,select
