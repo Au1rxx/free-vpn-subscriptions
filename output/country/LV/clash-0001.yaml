@@ -6,6 +6,20 @@ proxies:
       type: vless
       udp: true
       uuid: 7e5964d036b843ff885b86c4d3bfd466
+    - name: vless-51336384
+      network: tcp
+      port: 25703
+      server: 85.159.228.250
+      type: vless
+      udp: true
+      uuid: 7e5964d036b843ff885b86c4d3bfd466
+    - name: vless-51336385
+      network: raw
+      port: 25703
+      server: 85.159.228.250
+      type: vless
+      udp: true
+      uuid: 7e5964d036b843ff885b86c4d3bfd466
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-194753187
@@ -83,11 +97,20 @@ proxies:
       type: vless
       udp: true
       uuid: d7e9b7e6-b704-49f5-aa9a-2db7382d0443
+    - name: vless-301386075
+      network: tcp
+      port: 24478
+      server: 217.145.79.102
+      type: vless
+      udp: true
+      uuid: f937575c-35c2-4889-832e-b67935d565d8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-46184914
+        - vless-51336384
+        - vless-51336385
         - vless-194753187
         - hysteria2-232798723
         - vless-232803726
@@ -95,12 +118,15 @@ proxy-groups:
         - hysteria2-248653949
         - vless-270717475
         - vless-299814615
+        - vless-301386075
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-46184914
+        - vless-51336384
+        - vless-51336385
         - vless-194753187
         - hysteria2-232798723
         - vless-232803726
@@ -108,6 +134,7 @@ proxy-groups:
         - hysteria2-248653949
         - vless-270717475
         - vless-299814615
+        - vless-301386075
       type: select
 rules:
     - MATCH,select

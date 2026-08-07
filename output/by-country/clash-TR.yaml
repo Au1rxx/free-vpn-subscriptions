@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: edge
+      name: vless-301180081
+      network: tcp
+      port: 8765
+      reality-opts:
+        public-key: ZrRUiPYpM3K35z4cTmMoDSBcQu_lk5k5NU4TrftiSEA
+        short-id: 1c4ea737d9264da3
+      server: a70e1e500a951bdda70e1e500a951bdd.ssdhdd.org
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 352fc42a-8cf9-4608-8ca8-fe8f4310c7d4
     - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
@@ -17,6 +30,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-301180081
         - shadowsocks-128223
         - shadowsocks-11086
       type: url-test
@@ -24,6 +38,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-301180081
         - shadowsocks-128223
         - shadowsocks-11086
       type: select
