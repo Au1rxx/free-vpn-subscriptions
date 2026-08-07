@@ -1,4 +1,11 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-299162399
+      password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
+      port: 61312
+      server: 129.151.91.89
+      type: ss
+      udp: true
     - name: hysteria2-292956733
       password: 68b4b16e-2759-47a4-8a69-33118edf5ce6
       port: 443
@@ -72,18 +79,11 @@ proxies:
       sni: gb21-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
       type: trojan
       udp: true
-    - name: trojan-291118007
-      password: MiTiVPN
-      port: 443
-      server: 151.101.56.8
-      skip-cert-verify: false
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-299162399
         - hysteria2-292956733
         - shadowsocks-126252
         - shadowsocks-293468259
@@ -94,12 +94,12 @@ proxy-groups:
         - trojan-222616511
         - trojan-232939916
         - trojan-248664936
-        - trojan-291118007
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-299162399
         - hysteria2-292956733
         - shadowsocks-126252
         - shadowsocks-293468259
@@ -110,7 +110,6 @@ proxy-groups:
         - trojan-222616511
         - trojan-232939916
         - trojan-248664936
-        - trojan-291118007
       type: select
 rules:
     - MATCH,select
