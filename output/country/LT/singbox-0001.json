@@ -1,0 +1,44 @@
+{
+  "outbounds": [
+    {
+      "server": "ddc-chr-lt2.astralweb.tech",
+      "server_port": 443,
+      "tag": "vless-306412251",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "ddc-chr-lt2.astralweb.tech",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "cd1673b3-7cec-4fe6-bedf-b534eb54e647"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-306412251"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-306412251"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
