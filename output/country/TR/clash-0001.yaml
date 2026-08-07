@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-gcm
+      name: shadowsocks-11086
+      password: faBAoD54k87UJG7
+      port: 2376
+      server: 185.123.101.64
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
       port: 8119
@@ -46,25 +53,53 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
+    - alterId: 0
+      cipher: auto
+      name: vmess-298024124
+      network: raw
+      port: 22324
+      server: trk.levikogjgfdd.ir
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
+    - client-fingerprint: edge
+      name: vless-301180081
+      network: tcp
+      port: 8765
+      reality-opts:
+        public-key: ZrRUiPYpM3K35z4cTmMoDSBcQu_lk5k5NU4TrftiSEA
+        short-id: 1c4ea737d9264da3
+      server: a70e1e500a951bdda70e1e500a951bdd.ssdhdd.org
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 352fc42a-8cf9-4608-8ca8-fe8f4310c7d4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-11086
         - shadowsocks-128223
         - vless-212135092
         - vmess-283674398
         - vmess-286074243
         - vmess-290620771
+        - vmess-298024124
+        - vless-301180081
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-11086
         - shadowsocks-128223
         - vless-212135092
         - vmess-283674398
         - vmess-286074243
         - vmess-290620771
+        - vmess-298024124
+        - vless-301180081
       type: select
 rules:
     - MATCH,select
