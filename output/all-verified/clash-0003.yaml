@@ -1,4 +1,52 @@
 proxies:
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-311412342
+      network: raw
+      port: 40002
+      reality-opts:
+        public-key: uHCIeXxIcEoZ89kaNNBIKsy4axPMsBb2xeOMww7d1DY
+        short-id: 1a6b1f9d0e
+      server: 185.141.227.141
+      servername: ads.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 41784775-8846-4579-9d9d-9ad6ea802e2e
+    - name: vless-311417335
+      network: tcp
+      port: 443
+      server: 31.56.185.19
+      servername: nl1-akn.astralweb.tech
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5dc56757-458e-4df2-9e71-2a14ce47e8af
+    - name: vless-311417336
+      network: tcp
+      port: 443
+      server: 84.32.186.166
+      servername: ddc-chr.astralweb.tech
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5dc56757-458e-4df2-9e71-2a14ce47e8af
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-311418334
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: D0AQp0cWaQR55Q-zPwp6__AxN9CoT9neZj0UzlNcLCk
+        short-id: bd72
+      server: 77.233.214.116
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 69a74770-7152-4a27-bef0-2615ca16e1b1
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-311428359
@@ -37,17 +85,6 @@ proxies:
       type: vless
       udp: true
       uuid: e6d41d6f-d58a-7650-bba4-d7f0dde3ba4d
-    - flow: xtls-rprx-vision
-      name: vless-311433354
-      network: tcp
-      port: 443
-      server: ako.pagate.top
-      servername: ako.pagate.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: e6d8d743-a9bc-48c9-be99-8f3cc94d16e1
     - client-fingerprint: chrome
       name: vless-311434348
       network: raw
@@ -1556,6 +1593,13 @@ proxies:
       type: vless
       udp: true
       uuid: e6d41d6f-d58a-7650-bba4-d7f0dde3ba4d
+    - name: vless-315940637
+      network: ws
+      port: 2200
+      server: 104.171.137.148
+      type: vless
+      udp: true
+      uuid: a484645e-59df-4980-b649-92b71250ec60
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-315968707
       password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
@@ -1590,14 +1634,24 @@ proxies:
       type: vless
       udp: true
       uuid: 23e18cb4-9db3-4eb1-93d3-26c62095159d
+    - name: vless-316031135
+      network: ws
+      port: 8080
+      server: 40.160.69.53
+      type: vless
+      udp: true
+      uuid: 11af1c47-865a-47c6-92ff-118013655d78
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-311412342
+        - vless-311417335
+        - vless-311417336
+        - vless-311418334
         - vless-311428359
         - vless-311430348
         - vless-311433353
-        - vless-311433354
         - vless-311434348
         - vmess-311516947
         - vless-311804770
@@ -1745,18 +1799,23 @@ proxy-groups:
         - vless-315448469
         - vless-315449670
         - vless-315455670
+        - vless-315940637
         - shadowsocks-315968707
         - vless-315975707
         - vless-316031133
+        - vless-316031135
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-311412342
+        - vless-311417335
+        - vless-311417336
+        - vless-311418334
         - vless-311428359
         - vless-311430348
         - vless-311433353
-        - vless-311433354
         - vless-311434348
         - vmess-311516947
         - vless-311804770
@@ -1904,9 +1963,11 @@ proxy-groups:
         - vless-315448469
         - vless-315449670
         - vless-315455670
+        - vless-315940637
         - shadowsocks-315968707
         - vless-315975707
         - vless-316031133
+        - vless-316031135
       type: select
 rules:
     - MATCH,select
