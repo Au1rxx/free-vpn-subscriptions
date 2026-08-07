@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-304125990
+      password: 8a05860b-5a5e-4a69-ae4b-a4a0244017f2
+      port: 24408
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - name: hysteria2-278435154
       password: 18cf8030-1ceb-4b7d-8c0c-c036413c144e
       port: 4433
@@ -24,6 +32,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-304125990
         - hysteria2-278435154
         - shadowsocks-125111
         - shadowsocks-27048
@@ -32,6 +41,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-304125990
         - hysteria2-278435154
         - shadowsocks-125111
         - shadowsocks-27048

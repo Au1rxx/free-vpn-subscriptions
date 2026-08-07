@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-303666502
+      network: ws
+      port: 443
+      server: freev2.cloudflare.182682.xyz
+      servername: it-mil.862400.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7f2935fa-3845-466c-9320-c17aed65f454
     - name: hysteria2-273329903
       password: 71cada65-d23e-418c-88e4-a06188d14689
       port: 443
@@ -45,6 +55,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-303666502
         - hysteria2-273329903
         - hysteria2-290329793
         - hysteria2-271206430
@@ -56,6 +67,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-303666502
         - hysteria2-273329903
         - hysteria2-290329793
         - hysteria2-271206430

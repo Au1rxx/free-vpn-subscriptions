@@ -1,12 +1,5 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-299162383
-      password: YjliYmFlNzVmMmE4ZmJkYjAxNzQ2NWUyNzZlNjhkZGU=
-      port: 59319
-      server: 147.15.42.184
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-300751392
       password: YjliYmFlNzVmMmE4ZmJkYjAxNzQ2NWUyNzZlNjhkZGU=
       port: 59319
@@ -34,25 +27,32 @@ proxies:
       server: 147.15.111.237
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-299162383
+      password: YjliYmFlNzVmMmE4ZmJkYjAxNzQ2NWUyNzZlNjhkZGU=
+      port: 59319
+      server: 147.15.42.184
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-299162383
         - shadowsocks-300751392
         - shadowsocks-300751387
         - shadowsocks-293468281
         - shadowsocks-300751390
+        - shadowsocks-299162383
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-299162383
         - shadowsocks-300751392
         - shadowsocks-300751387
         - shadowsocks-293468281
         - shadowsocks-300751390
+        - shadowsocks-299162383
       type: select
 rules:
     - MATCH,select
