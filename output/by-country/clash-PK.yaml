@@ -1,0 +1,23 @@
+proxies:
+    - name: trojan-260770145
+      password: S.ibYdZshHTF-ne.M+.Fznp_-hyFFnCSix
+      port: 443
+      server: 149.104.104.58
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - trojan-260770145
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - trojan-260770145
+      type: select
+rules:
+    - MATCH,select

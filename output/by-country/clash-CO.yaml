@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-305234713
+      network: raw
+      port: 62145
+      server: 149.130.187.58
+      type: vless
+      udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
     - name: vless-301337016
       network: tcp
       port: 62145
@@ -6,98 +13,19 @@ proxies:
       type: vless
       udp: true
       uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-    - name: vless-300572441
-      network: tcp
-      port: 62145
-      server: 149.130.185.99
-      type: vless
-      udp: true
-      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-    - name: vless-300572444
-      network: tcp
-      port: 62145
-      server: 149.130.187.58
-      type: vless
-      udp: true
-      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-    - name: vless-300572439
-      network: tcp
-      port: 62145
-      server: 157.137.237.111
-      type: vless
-      udp: true
-      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-    - name: vless-300751385
-      network: tcp
-      port: 62145
-      server: 157.137.227.5
-      type: vless
-      udp: true
-      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-    - name: vless-300572443
-      network: tcp
-      port: 62145
-      server: 157.137.211.212
-      type: vless
-      udp: true
-      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-    - name: vless-300751384
-      network: tcp
-      port: 62145
-      server: 149.130.178.238
-      type: vless
-      udp: true
-      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-    - name: vless-300751382
-      network: tcp
-      port: 62145
-      server: 157.137.236.11
-      type: vless
-      udp: true
-      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-    - name: vless-300751367
-      network: tcp
-      port: 62145
-      server: 149.130.183.151
-      type: vless
-      udp: true
-      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-    - name: vless-300572440
-      network: tcp
-      port: 62145
-      server: 157.137.228.187
-      type: vless
-      udp: true
-      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-305234713
         - vless-301337016
-        - vless-300572441
-        - vless-300572444
-        - vless-300572439
-        - vless-300751385
-        - vless-300572443
-        - vless-300751384
-        - vless-300751382
-        - vless-300751367
-        - vless-300572440
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-305234713
         - vless-301337016
-        - vless-300572441
-        - vless-300572444
-        - vless-300572439
-        - vless-300751385
-        - vless-300572443
-        - vless-300751384
-        - vless-300751382
-        - vless-300751367
-        - vless-300572440
       type: select
 rules:
     - MATCH,select
