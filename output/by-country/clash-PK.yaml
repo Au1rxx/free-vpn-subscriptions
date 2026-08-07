@@ -15,21 +15,12 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: trojan-2501875
-      password: S.ibYdZshHTF-ne.M+.Fznp_-hyFFnCSix
-      port: 443
-      server: 149.104.104.58
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-2501876
         - trojan-270682465
-        - trojan-2501875
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -37,7 +28,6 @@ proxy-groups:
         - auto
         - trojan-2501876
         - trojan-270682465
-        - trojan-2501875
       type: select
 rules:
     - MATCH,select
