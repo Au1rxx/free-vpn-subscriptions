@@ -1,4 +1,18 @@
 proxies:
+    - name: vless-314904520
+      network: tcp
+      port: 16506
+      server: 87.76.154.18
+      type: vless
+      udp: true
+      uuid: 411279b4-233f-4abe-950c-956b6ffc921b
+    - name: vless-314906523
+      network: tcp
+      port: 17262
+      server: 87.76.154.21
+      type: vless
+      udp: true
+      uuid: 8d1bef3f-e128-428f-b6a1-d11b2010eed4
     - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
@@ -17,6 +31,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-314904520
+        - vless-314906523
         - shadowsocks-128223
         - shadowsocks-11086
       type: url-test
@@ -24,6 +40,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-314904520
+        - vless-314906523
         - shadowsocks-128223
         - shadowsocks-11086
       type: select
