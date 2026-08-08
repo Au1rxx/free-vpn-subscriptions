@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-gcm
+      name: shadowsocks-330821176
+      password: d99c422199e62b6b
+      port: 10910
+      server: 195.133.23.5
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
       name: shadowsocks-328234565
       password: 6b39ae3234dfd68b
       port: 10808
@@ -115,6 +122,20 @@ proxies:
       type: vless
       udp: true
       uuid: 598b823c-d3fc-4013-aae5-837f10080f7a
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-330838075
+      network: tcp
+      port: 43000
+      reality-opts:
+        public-key: CH7SpnfklhoBKYhez8VhcLzr9wzFkvbKAThOU_3y9lE
+        short-id: 7523ef69
+      server: 81.94.148.119
+      servername: iv.kommersant.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 25d25f21-7a9e-426f-8c14-0c06782585ff
     - name: vless-326622357
       network: ws
       port: 4100
@@ -122,17 +143,11 @@ proxies:
       type: vless
       udp: true
       uuid: 2a88091e-e3f8-4478-9751-6ce0557a7f2e
-    - cipher: aes-256-gcm
-      name: shadowsocks-330068382
-      password: 81a20429165df87e
-      port: 10806
-      server: 195.133.23.200
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-330821176
         - shadowsocks-328234565
         - vless-326668146
         - vless-326674152
@@ -142,13 +157,14 @@ proxy-groups:
         - vless-328943469
         - vless-326670153
         - vless-326670152
+        - vless-330838075
         - vless-326622357
-        - shadowsocks-330068382
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-330821176
         - shadowsocks-328234565
         - vless-326668146
         - vless-326674152
@@ -158,8 +174,8 @@ proxy-groups:
         - vless-328943469
         - vless-326670153
         - vless-326670152
+        - vless-330838075
         - vless-326622357
-        - shadowsocks-330068382
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-330341882
+      password: dd0d1895-9d32-4092-8ea1-92555956d2e2
+      port: 24407
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-125111
       password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
@@ -29,7 +37,7 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: trojan-317656167
+    - name: trojan-283678742
       password: 41c406e2-12b5-41f2-a329-d0621052d675
       port: 20034
       server: 157.254.38.210
@@ -41,21 +49,23 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-330341882
         - shadowsocks-125111
         - shadowsocks-27048
         - trojan-324604288
         - trojan-324604287
-        - trojan-317656167
+        - trojan-283678742
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-330341882
         - shadowsocks-125111
         - shadowsocks-27048
         - trojan-324604288
         - trojan-324604287
-        - trojan-317656167
+        - trojan-283678742
       type: select
 rules:
     - MATCH,select

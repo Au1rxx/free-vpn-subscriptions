@@ -1,4 +1,24 @@
 proxies:
+    - name: hysteria2-331170962
+      password: 18cf8030-1ceb-4b7d-8c0c-c036413c144e
+      port: 4466
+      server: 140.99.130.34
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-330598943
+      network: grpc
+      port: 10037
+      reality-opts:
+        public-key: wOu-BMrXvk9KX23JZrlpUlF4SMjDcejm0vNECdhy5xE
+        short-id: 686c0ef0
+      server: sg2-r.link-t7.com
+      servername: s0.awsstatic.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7651FEC2-07B1-4904-8985-8EAAA1B781F3
     - client-fingerprint: chrome
       name: vless-326558357
       network: grpc
@@ -12,6 +32,13 @@ proxies:
       type: vless
       udp: true
       uuid: 7651FEC2-07B1-4904-8985-8EAAA1B781F3
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-330068385
+      password: Y2QwZTQ0MDYzOWFhNjA5YmE0NTZhNWFkODkzMWNmODU=
+      port: 56927
+      server: 140.245.109.33
+      type: ss
+      udp: true
     - name: vless-329297897
       network: ws
       port: 17658
@@ -81,20 +108,6 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - name: hysteria2-280054121
-      password: 9d3356a0-c07e-43cc-b30e-450bd50521b8
-      port: 2060
-      server: xjp2.mangshe.xyz
-      skip-cert-verify: true
-      sni: xjp2.mangshe.xyz
-      type: hysteria2
-    - name: hysteria2-307174591
-      password: 9d3356a0-c07e-43cc-b30e-450bd50521b8
-      port: 2060
-      server: xjp3.mangshe.xyz
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
     - name: hysteria2-48396256
       password: qQe1z5kU8kN6SlKnDt9Ru3Qp
       port: 443
@@ -106,6 +119,13 @@ proxies:
       password: qQe1z5kU8kN6SlKnDt9Ru3Qp
       port: 443
       server: 47.129.9.33
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
+    - name: hysteria2-307174591
+      password: 9d3356a0-c07e-43cc-b30e-450bd50521b8
+      port: 2060
+      server: xjp3.mangshe.xyz
       skip-cert-verify: true
       sni: ""
       type: hysteria2
@@ -130,13 +150,13 @@ proxies:
       skip-cert-verify: true
       sni: xjp3.mangshe.xyz
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-330068385
-      password: Y2QwZTQ0MDYzOWFhNjA5YmE0NTZhNWFkODkzMWNmODU=
-      port: 56927
-      server: 140.245.109.33
-      type: ss
-      udp: true
+    - name: hysteria2-280054121
+      password: 9d3356a0-c07e-43cc-b30e-450bd50521b8
+      port: 2060
+      server: xjp2.mangshe.xyz
+      skip-cert-verify: true
+      sni: xjp2.mangshe.xyz
+      type: hysteria2
     - cipher: 2022-blake3-aes-256-gcm
       name: shadowsocks-126340
       password: fnvo82p9y4AKykZXyIFtnodFy6fQmWnVlI2SvGleOB0=
@@ -183,14 +203,6 @@ proxies:
       sni: www.nintendogames.net
       type: trojan
       udp: true
-    - name: trojan-303521550
-      password: MiTiVPN
-      port: 443
-      server: 199.232.78.150
-      skip-cert-verify: true
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
     - name: trojan-237099593
       password: d1960ba9f0f6353353994fa844cf817b
       port: 6357
@@ -231,11 +243,22 @@ proxies:
       sni: www.nintendogames.net
       type: trojan
       udp: true
+    - name: trojan-303521550
+      password: MiTiVPN
+      port: 443
+      server: 199.232.78.150
+      skip-cert-verify: true
+      sni: ssl.fastly.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-331170962
+        - vless-330598943
         - vless-326558357
+        - shadowsocks-330068385
         - vless-329297897
         - vless-328935462
         - vless-328935461
@@ -245,32 +268,34 @@ proxy-groups:
         - hysteria2-5115794
         - hysteria2-5115797
         - hysteria2-48396255
-        - hysteria2-280054121
-        - hysteria2-307174591
         - hysteria2-48396256
         - hysteria2-48396258
+        - hysteria2-307174591
         - hysteria2-48396260
         - hysteria2-5115795
         - hysteria2-280054106
-        - shadowsocks-330068385
+        - hysteria2-280054121
         - shadowsocks-126340
         - shadowsocks-11079
         - trojan-95305971
         - trojan-33238130
         - trojan-198804551
         - trojan-189706220
-        - trojan-303521550
         - trojan-237099593
         - trojan-182535618
         - trojan-188185699
         - trojan-187328192
         - trojan-268441825
+        - trojan-303521550
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-331170962
+        - vless-330598943
         - vless-326558357
+        - shadowsocks-330068385
         - vless-329297897
         - vless-328935462
         - vless-328935461
@@ -280,26 +305,25 @@ proxy-groups:
         - hysteria2-5115794
         - hysteria2-5115797
         - hysteria2-48396255
-        - hysteria2-280054121
-        - hysteria2-307174591
         - hysteria2-48396256
         - hysteria2-48396258
+        - hysteria2-307174591
         - hysteria2-48396260
         - hysteria2-5115795
         - hysteria2-280054106
-        - shadowsocks-330068385
+        - hysteria2-280054121
         - shadowsocks-126340
         - shadowsocks-11079
         - trojan-95305971
         - trojan-33238130
         - trojan-198804551
         - trojan-189706220
-        - trojan-303521550
         - trojan-237099593
         - trojan-182535618
         - trojan-188185699
         - trojan-187328192
         - trojan-268441825
+        - trojan-303521550
       type: select
 rules:
     - MATCH,select
