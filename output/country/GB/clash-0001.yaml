@@ -50,6 +50,13 @@ proxies:
       type: vless
       udp: true
       uuid: 52b71b75-4b77-4cec-990b-046ec1938e1f
+    - cipher: aes-128-gcm
+      name: shadowsocks-126252
+      password: shadowsocks
+      port: 443
+      server: 158.173.24.73
+      type: ss
+      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-143572
@@ -73,6 +80,13 @@ proxies:
       type: vless
       udp: true
       uuid: 52b71b75-4b77-4cec-990b-046ec1938e1f
+    - name: vless-2327788
+      network: ws
+      port: 80
+      server: 57.129.132.223
+      type: vless
+      udp: true
+      uuid: 9e20b04d-5a81-4e16-b421-01e502f0aac6
     - alterId: 0
       cipher: auto
       name: vmess-2380869
@@ -123,6 +137,13 @@ proxies:
       type: vmess
       udp: true
       uuid: a25cbf11-2908-4a1b-a3a8-9a571777dca3
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-37998200
+      password: zz0dHjDfoaSaZuRFLGH-hNfBALSEJUYD
+      port: 1234
+      server: 194.164.92.198
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-59590881
@@ -244,19 +265,6 @@ proxies:
         public-key: GS0dfvzX-bVKBDl2brVxsrE6T2WyXXkfgP3x-mQC7BY
         short-id: 524efc1f88592266
       server: 54.37.6.119
-      servername: play.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d9aa9ea3-9388-483f-a58d-a754f33ec505
-    - client-fingerprint: firefox
-      name: vless-268509224
-      network: grpc
-      port: 2053
-      reality-opts:
-        public-key: GS0dfvzX-bVKBDl2brVxsrE6T2WyXXkfgP3x-mQC7BY
-        short-id: 524efc1f88592266
-      server: 57.129.141.109
       servername: play.google.com
       tls: true
       type: vless
@@ -430,13 +438,6 @@ proxies:
       type: vless
       udp: true
       uuid: 22a0751d-4db7-4a51-ba80-d8ddf24e0b77
-    - name: vless-309190899
-      network: tcp
-      port: 13561
-      server: 87.242.85.201
-      type: vless
-      udp: true
-      uuid: 22a0751d-4db7-4a51-ba80-d8ddf24e0b77
     - name: vless-309692592
       network: tcp
       port: 2020
@@ -548,27 +549,6 @@ proxies:
       uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-326589357
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: b75SrHI--As9QxOVfRIPkGmGfXjs53CGAjbws2K99Rs
-        short-id: ""
-      server: 194.150.166.12
-      servername: www.avito.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
-    - name: vless-326625752
-      network: tcp
-      port: 13561
-      server: 87.242.85.201
-      type: vless
-      udp: true
-      uuid: 22a0751d-4db7-4a51-ba80-d8ddf24e0b77
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
       name: vless-326719972
       network: raw
       port: 443
@@ -634,6 +614,16 @@ proxies:
       server: 129.151.66.64
       type: ss
       udp: true
+    - name: vless-332389821
+      network: ws
+      port: 443
+      server: 140.248.186.45
+      servername: ssl.fastly.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: XpnTeam-17
 proxy-groups:
     - interval: 300
       name: auto
@@ -643,13 +633,16 @@ proxy-groups:
         - vless-13088
         - vmess-16082
         - vless-78502
+        - shadowsocks-126252
         - vmess-143572
         - vless-2309768
+        - vless-2327788
         - vmess-2380869
         - vmess-2380876
         - vmess-2386864
         - vless-5202828
         - vmess-15949822
+        - shadowsocks-37998200
         - vless-59590881
         - vless-70610695
         - vmess-192069504
@@ -661,7 +654,6 @@ proxy-groups:
         - vless-258556270
         - vless-264917054
         - vless-268509223
-        - vless-268509224
         - vless-270709474
         - vless-272802976
         - vless-275149920
@@ -678,7 +670,6 @@ proxy-groups:
         - vless-306414227
         - vless-308070015
         - vless-309190898
-        - vless-309190899
         - vless-309692592
         - vless-311063063
         - vless-311428356
@@ -690,8 +681,6 @@ proxy-groups:
         - trojan-322724945
         - vless-324346875
         - vless-324910718
-        - vless-326589357
-        - vless-326625752
         - vless-326719972
         - trojan-328213266
         - vless-328850460
@@ -700,6 +689,7 @@ proxy-groups:
         - shadowsocks-329268446
         - shadowsocks-329270445
         - shadowsocks-330068372
+        - vless-332389821
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -710,13 +700,16 @@ proxy-groups:
         - vless-13088
         - vmess-16082
         - vless-78502
+        - shadowsocks-126252
         - vmess-143572
         - vless-2309768
+        - vless-2327788
         - vmess-2380869
         - vmess-2380876
         - vmess-2386864
         - vless-5202828
         - vmess-15949822
+        - shadowsocks-37998200
         - vless-59590881
         - vless-70610695
         - vmess-192069504
@@ -728,7 +721,6 @@ proxy-groups:
         - vless-258556270
         - vless-264917054
         - vless-268509223
-        - vless-268509224
         - vless-270709474
         - vless-272802976
         - vless-275149920
@@ -745,7 +737,6 @@ proxy-groups:
         - vless-306414227
         - vless-308070015
         - vless-309190898
-        - vless-309190899
         - vless-309692592
         - vless-311063063
         - vless-311428356
@@ -757,8 +748,6 @@ proxy-groups:
         - trojan-322724945
         - vless-324346875
         - vless-324910718
-        - vless-326589357
-        - vless-326625752
         - vless-326719972
         - trojan-328213266
         - vless-328850460
@@ -767,6 +756,7 @@ proxy-groups:
         - shadowsocks-329268446
         - shadowsocks-329270445
         - shadowsocks-330068372
+        - vless-332389821
       type: select
 rules:
     - MATCH,select
