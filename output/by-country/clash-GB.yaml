@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-328213266
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.8
+      skip-cert-verify: false
+      sni: default.fastly.com
+      type: trojan
+      udp: true
     - name: vless-324376875
       network: tcp
       port: 35412
@@ -6,21 +14,6 @@ proxies:
       type: vless
       udp: true
       uuid: bfa91d79-049c-41e1-be94-029397377150
-    - name: trojan-322724945
-      password: MiTiVPN
-      port: 443
-      server: 151.101.56.8
-      skip-cert-verify: true
-      sni: default.fastly.com
-      type: trojan
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-300751357
-      password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
-      port: 61312
-      server: 129.151.64.56
-      type: ss
-      udp: true
     - cipher: rc4-md5
       name: shadowsocks-165
       password: 14fFPrbezE3HDZzsMOr6
@@ -35,12 +28,27 @@ proxies:
       server: 94.156.250.148
       type: ss
       udp: true
-    - name: trojan-248664936
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-300751357
+      password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
+      port: 61312
+      server: 129.151.64.56
+      type: ss
+      udp: true
+    - name: trojan-232939916
       password: MiTiVPN
       port: 443
       server: 104.21.18.41
       skip-cert-verify: false
       sni: gb21-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
+      type: trojan
+      udp: true
+    - name: trojan-322724945
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.8
+      skip-cert-verify: true
+      sni: default.fastly.com
       type: trojan
       udp: true
     - name: trojan-315415971
@@ -67,43 +75,35 @@ proxies:
       sni: default.fastly.com
       type: trojan
       udp: true
-    - name: trojan-232939916
-      password: MiTiVPN
-      port: 443
-      server: 104.21.18.41
-      skip-cert-verify: false
-      sni: gb21-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-328213266
         - vless-324376875
-        - trojan-322724945
-        - shadowsocks-300751357
         - shadowsocks-165
         - shadowsocks-240
-        - trojan-248664936
+        - shadowsocks-300751357
+        - trojan-232939916
+        - trojan-322724945
         - trojan-315415971
         - trojan-222616511
         - trojan-303521549
-        - trojan-232939916
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-328213266
         - vless-324376875
-        - trojan-322724945
-        - shadowsocks-300751357
         - shadowsocks-165
         - shadowsocks-240
-        - trojan-248664936
+        - shadowsocks-300751357
+        - trojan-232939916
+        - trojan-322724945
         - trojan-315415971
         - trojan-222616511
         - trojan-303521549
-        - trojan-232939916
       type: select
 rules:
     - MATCH,select

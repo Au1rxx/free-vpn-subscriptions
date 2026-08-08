@@ -1,0 +1,58 @@
+{
+  "outbounds": [
+    {
+      "password": "S.ibYdZshHTF-ne.M+.Fznp_-hyFFnCSix",
+      "server": "149.104.104.58",
+      "server_port": 443,
+      "tag": "trojan-37432022",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "149.104.104.58",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "trojan"
+    },
+    {
+      "password": "S.ibYdZshHTF-ne.M+.Fznp_-hyFFnCSix",
+      "server": "149.104.104.58",
+      "server_port": 443,
+      "tag": "trojan-2501876",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "149.104.104.58"
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-37432022",
+        "trojan-2501876"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-37432022",
+        "trojan-2501876"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

@@ -8,15 +8,6 @@ proxies:
       type: vmess
       udp: true
       uuid: eea1090b-71a9-42df-a617-c6c4ba5bc3d4
-    - alterId: 0
-      cipher: auto
-      name: vmess-322766944
-      network: raw
-      port: 46962
-      server: fin1.levikogjgfdd.ir
-      type: vmess
-      udp: true
-      uuid: c896406b-ccc4-4c37-8b8c-15964f32a9a2
     - client-fingerprint: chrome
       name: vless-327171472
       network: tcp
@@ -30,6 +21,21 @@ proxies:
       type: vless
       udp: true
       uuid: 735f7616-a5cc-45ce-9bdc-b741054cb13e
+    - name: trojan-328213264
+      password: MiTiVPN
+      port: 443
+      server: 140.248.185.253
+      skip-cert-verify: false
+      sni: default.fastly.com
+      type: trojan
+      udp: true
+    - name: vless-328257985
+      network: ws
+      port: 50303
+      server: 65.108.156.124
+      type: vless
+      udp: true
+      uuid: b4469373-b425-4902-80d4-a00e00ada7de
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-324415883
@@ -58,14 +64,6 @@ proxies:
       type: vless
       udp: true
       uuid: f692629b-3557-488a-9c9b-60775331e423
-    - name: trojan-322723946
-      password: MiTiVPN
-      port: 443
-      server: 140.248.185.253
-      skip-cert-verify: true
-      sni: default.fastly.com
-      type: trojan
-      udp: true
     - name: vless-325103931
       network: ws
       port: 443
@@ -216,12 +214,28 @@ proxies:
       server: 31.76.30.79
       type: ss
       udp: true
+    - name: trojan-232939919
+      password: MiTiVPN
+      port: 443
+      server: 172.66.40.99
+      skip-cert-verify: false
+      sni: flll-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
+      type: trojan
+      udp: true
     - name: trojan-226579431
       password: MiTiVPN
       port: 443
       server: 172.66.40.99
       skip-cert-verify: true
       sni: flll-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
+      type: trojan
+      udp: true
+    - name: trojan-322723946
+      password: MiTiVPN
+      port: 443
+      server: 140.248.185.253
+      skip-cert-verify: true
+      sni: default.fastly.com
       type: trojan
       udp: true
     - name: trojan-226579430
@@ -240,16 +254,24 @@ proxies:
       sni: default.fastly.com
       type: trojan
       udp: true
+    - name: trojan-322723945
+      password: MiTiVPN
+      port: 443
+      server: 140.248.185.253
+      skip-cert-verify: true
+      sni: default.fastly.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-326753248
-        - vmess-322766944
         - vless-327171472
+        - trojan-328213264
+        - vless-328257985
         - vless-324415883
         - vless-324396143
-        - trojan-322723946
         - vless-325103931
         - vless-324415882
         - vless-324396142
@@ -264,20 +286,23 @@ proxy-groups:
         - shadowsocks-318025222
         - shadowsocks-299806583
         - shadowsocks-211463809
+        - trojan-232939919
         - trojan-226579431
+        - trojan-322723946
         - trojan-226579430
         - trojan-303521547
+        - trojan-322723945
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-326753248
-        - vmess-322766944
         - vless-327171472
+        - trojan-328213264
+        - vless-328257985
         - vless-324415883
         - vless-324396143
-        - trojan-322723946
         - vless-325103931
         - vless-324415882
         - vless-324396142
@@ -292,9 +317,12 @@ proxy-groups:
         - shadowsocks-318025222
         - shadowsocks-299806583
         - shadowsocks-211463809
+        - trojan-232939919
         - trojan-226579431
+        - trojan-322723946
         - trojan-226579430
         - trojan-303521547
+        - trojan-322723945
       type: select
 rules:
     - MATCH,select
