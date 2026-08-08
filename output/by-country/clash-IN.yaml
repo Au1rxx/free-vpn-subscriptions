@@ -6,17 +6,26 @@ proxies:
       server: 103.120.178.193
       type: ss
       udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-27048
+      password: RexnBgU7EV5ADxG
+      port: 7002
+      server: 172.105.39.124
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-125111
+        - shadowsocks-27048
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-125111
+        - shadowsocks-27048
       type: select
 rules:
     - MATCH,select

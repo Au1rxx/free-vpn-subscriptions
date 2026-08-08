@@ -1,11 +1,13 @@
 proxies:
-    - cipher: 2022-blake3-aes-256-gcm
-      name: shadowsocks-318025222
-      password: Qy0sbkElH54n+7CzLYK2kxmYzXhlW5ue5pL/EbinJrs=:6kcro2JWRvYBom13BJWnb89RYTrQtG70KBhE3arb9T4=
-      port: 21871
-      server: 65.109.208.236
-      type: ss
+    - alterId: 0
+      cipher: auto
+      name: vmess-322766944
+      network: raw
+      port: 46962
+      server: fin1.levikogjgfdd.ir
+      type: vmess
       udp: true
+      uuid: c896406b-ccc4-4c37-8b8c-15964f32a9a2
     - name: vless-321087274
       network: raw
       port: 26795
@@ -27,15 +29,6 @@ proxies:
       skip-cert-verify: true
       sni: on.cryptoofarm.com
       type: hysteria2
-    - alterId: 0
-      cipher: auto
-      name: vmess-317700167
-      network: tcp
-      port: 46962
-      server: fin1.levikogjgfdd.ir
-      type: vmess
-      udp: true
-      uuid: c896406b-ccc4-4c37-8b8c-15964f32a9a2
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-320830498
@@ -73,6 +66,14 @@ proxies:
       type: vmess
       udp: true
       uuid: c896406b-ccc4-4c37-8b8c-15964f32a9a2
+    - name: trojan-322723946
+      password: MiTiVPN
+      port: 443
+      server: 140.248.185.253
+      skip-cert-verify: true
+      sni: default.fastly.com
+      type: trojan
+      udp: true
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-320830453
@@ -158,6 +159,13 @@ proxies:
       sni: fi-one.quiet-rogue.site
       type: hysteria2
     - cipher: 2022-blake3-aes-256-gcm
+      name: shadowsocks-318025222
+      password: Qy0sbkElH54n+7CzLYK2kxmYzXhlW5ue5pL/EbinJrs=:6kcro2JWRvYBom13BJWnb89RYTrQtG70KBhE3arb9T4=
+      port: 21871
+      server: 65.109.208.236
+      type: ss
+      udp: true
+    - cipher: 2022-blake3-aes-256-gcm
       name: shadowsocks-299806583
       password: Qy0sbkElH54n+7CzLYK2kxmYzXhlW5ue5pL/EbinJrs=:2Q4nSpOBVHnUlNkXNHZBq7rLd8nwGlWb4Xd5XF/Job4=
       port: 21871
@@ -206,14 +214,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-318025222
+        - vmess-322766944
         - vless-321087274
         - vless-321026798
         - hysteria2-320830455
-        - vmess-317700167
         - vless-320830498
         - vless-320830459
         - vmess-319398169
+        - trojan-322723946
         - vless-320830453
         - vless-320830517
         - vless-320830499
@@ -222,6 +230,7 @@ proxy-groups:
         - hysteria2-216302447
         - hysteria2-184903690
         - hysteria2-209378680
+        - shadowsocks-318025222
         - shadowsocks-299806583
         - shadowsocks-10809794
         - shadowsocks-211463809
@@ -233,14 +242,14 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - shadowsocks-318025222
+        - vmess-322766944
         - vless-321087274
         - vless-321026798
         - hysteria2-320830455
-        - vmess-317700167
         - vless-320830498
         - vless-320830459
         - vmess-319398169
+        - trojan-322723946
         - vless-320830453
         - vless-320830517
         - vless-320830499
@@ -249,6 +258,7 @@ proxy-groups:
         - hysteria2-216302447
         - hysteria2-184903690
         - hysteria2-209378680
+        - shadowsocks-318025222
         - shadowsocks-299806583
         - shadowsocks-10809794
         - shadowsocks-211463809

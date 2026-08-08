@@ -18,6 +18,13 @@ proxies:
       type: vmess
       udp: true
       uuid: 9a1a05d9-69be-45d3-e326-c6621edf7b31
+    - name: vless-322749944
+      network: tcp
+      port: 110
+      server: 144.31.157.202
+      type: vless
+      udp: true
+      uuid: b1d206b2-83b8-4756-aa3d-838242451c8d
     - name: vless-321026797
       network: ws
       port: 50303
@@ -66,6 +73,14 @@ proxies:
       type: vless
       udp: true
       uuid: 95e8532b-cc69-42d4-9553-e3c23292b15b
+    - name: trojan-322724944
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.7
+      skip-cert-verify: true
+      sni: default.fastly.com
+      type: trojan
+      udp: true
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-320830462
@@ -149,29 +164,6 @@ proxies:
       type: vless
       udp: true
       uuid: 95e8532b-cc69-42d4-9553-e3c23292b15b
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-318031227
-      network: tcp
-      port: 11762
-      reality-opts:
-        public-key: R2gKMF0Tetlnesc1pPkZH9NaOeehw-f5_U9JKG_cLjU
-        short-id: ""
-      server: 157.90.165.181
-      servername: swdist.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7c9b4360-6be9-47f2-ace9-b87297ea3d8f
-    - alterId: 0
-      cipher: auto
-      name: vmess-318037220
-      network: tcp
-      port: 27726
-      server: fj260403.freechatup.com
-      type: vmess
-      udp: true
-      uuid: 98e2be3c-8f84-4b85-996b-b68dcc2fbcb6
     - name: hysteria2-310636726
       password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
       port: 8443
@@ -440,14 +432,6 @@ proxies:
       sni: next-turkey.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-312437949
-      password: MiTiVPN
-      port: 443
-      server: 104.254.140.62
-      skip-cert-verify: false
-      sni: ddp-mehrosaboran--mehrosaboran--mehrosaboran.kingnetwork.ir
-      type: trojan
-      udp: true
     - name: trojan-266972509
       password: ND91608427
       port: 443
@@ -584,12 +568,12 @@ proxies:
       sni: next-turkey.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-182595885
-      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
-      port: 20041
-      server: hkdcrtc-e.catcat321.com
-      skip-cert-verify: true
-      sni: ""
+    - name: trojan-312437949
+      password: MiTiVPN
+      port: 443
+      server: 104.254.140.62
+      skip-cert-verify: false
+      sni: ddp-mehrosaboran--mehrosaboran--mehrosaboran.kingnetwork.ir
       type: trojan
       udp: true
     - name: trojan-312437947
@@ -632,6 +616,14 @@ proxies:
       sni: gentle-raptor.rooster465.autos
       type: trojan
       udp: true
+    - name: trojan-182595885
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20041
+      server: hkdcrtc-e.catcat321.com
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
     - name: trojan-285849755
       password: ND91608427
       port: 443
@@ -640,24 +632,56 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - name: trojan-279493864
+      password: ND91608427
+      port: 443
+      server: next-turkey.rooster465.autos
+      skip-cert-verify: true
+      sni: next-turkey.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-303521548
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.7
+      skip-cert-verify: true
+      sni: default.fastly.com
+      type: trojan
+      udp: true
+    - name: trojan-200581052
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20041
+      server: hkdcrtc-e.catcat321.com
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-200581053
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20041
+      server: hkdcrtc-e.catcat321.com
+      skip-cert-verify: true
+      sni: de.catxstar.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-321022796
         - vmess-319400171
+        - vless-322749944
         - vless-321026797
         - vless-320830471
         - vless-320830475
         - vless-321076275
+        - trojan-322724944
         - vless-320830462
         - vless-320830468
         - vless-320830476
         - vless-320830477
         - vless-320830469
         - vless-319371203
-        - vless-318031227
-        - vmess-318037220
         - hysteria2-310636726
         - hysteria2-71125758
         - hysteria2-48396262
@@ -696,7 +720,6 @@ proxy-groups:
         - shadowsocks-11078
         - trojan-305213712
         - trojan-269040542
-        - trojan-312437949
         - trojan-266972509
         - trojan-285797958
         - trojan-266972508
@@ -714,13 +737,18 @@ proxy-groups:
         - trojan-270681493
         - trojan-270681474
         - trojan-277396512
-        - trojan-182595885
+        - trojan-312437949
         - trojan-312437947
         - trojan-220451403
         - trojan-315414971
         - trojan-176269129
         - trojan-270681490
+        - trojan-182595885
         - trojan-285849755
+        - trojan-279493864
+        - trojan-303521548
+        - trojan-200581052
+        - trojan-200581053
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -728,18 +756,18 @@ proxy-groups:
         - auto
         - shadowsocks-321022796
         - vmess-319400171
+        - vless-322749944
         - vless-321026797
         - vless-320830471
         - vless-320830475
         - vless-321076275
+        - trojan-322724944
         - vless-320830462
         - vless-320830468
         - vless-320830476
         - vless-320830477
         - vless-320830469
         - vless-319371203
-        - vless-318031227
-        - vmess-318037220
         - hysteria2-310636726
         - hysteria2-71125758
         - hysteria2-48396262
@@ -778,7 +806,6 @@ proxy-groups:
         - shadowsocks-11078
         - trojan-305213712
         - trojan-269040542
-        - trojan-312437949
         - trojan-266972509
         - trojan-285797958
         - trojan-266972508
@@ -796,13 +823,18 @@ proxy-groups:
         - trojan-270681493
         - trojan-270681474
         - trojan-277396512
-        - trojan-182595885
+        - trojan-312437949
         - trojan-312437947
         - trojan-220451403
         - trojan-315414971
         - trojan-176269129
         - trojan-270681490
+        - trojan-182595885
         - trojan-285849755
+        - trojan-279493864
+        - trojan-303521548
+        - trojan-200581052
+        - trojan-200581053
       type: select
 rules:
     - MATCH,select
