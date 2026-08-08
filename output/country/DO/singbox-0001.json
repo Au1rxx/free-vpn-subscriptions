@@ -1,0 +1,34 @@
+{
+  "outbounds": [
+    {
+      "server": "200.107.206.10",
+      "server_port": 999,
+      "tag": "http-134129762",
+      "type": "http"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "http-134129762"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "http-134129762"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

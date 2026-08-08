@@ -9,20 +9,6 @@ proxies:
       type: vless
       udp: true
       uuid: 0970324b-8c61-4ae7-8c3f-385a6f1e17e4
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-48077
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: guJkFJanzPgJRd__HcpMC4rZW6LNbobsUmEIIYHE6yI
-        short-id: 757cf45f2a32834a
-      server: 144.31.119.37
-      servername: fl3.waspnest.space
-      tls: true
-      type: vless
-      udp: true
-      uuid: 66b63d3a-54ac-41f1-91f7-e74b171f3029
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-88792
@@ -37,6 +23,13 @@ proxies:
       type: vless
       udp: true
       uuid: 66b63d3a-54ac-41f1-91f7-e74b171f3029
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-10809794
+      password: cAqbBYBB0f9CAmpU_mc_7FyvvLCcwzt0
+      port: 8388
+      server: 31.76.80.205
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-67756878
@@ -79,6 +72,19 @@ proxies:
       type: vless
       udp: true
       uuid: 0a76a766-d141-44b8-944e-dff757d7116f
+    - client-fingerprint: firefox
+      name: vless-89286156
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 6p0aVCkOgd-xaxqSMANYABL6O4Tdbftnxjiy5qcmISQ
+        short-id: 0b
+      server: 45.155.52.231
+      servername: ru2.skydrgn-online.online
+      tls: true
+      type: vless
+      udp: true
+      uuid: 219f9fec-8983-4f6f-af8c-31bd0c6dbf19
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-94298519
@@ -773,16 +779,26 @@ proxies:
       type: vmess
       udp: true
       uuid: eea1090b-71a9-42df-a617-c6c4ba5bc3d4
+    - alterId: 0
+      cipher: auto
+      name: vmess-319398169
+      network: raw
+      port: 46962
+      server: fin1.levikogjgfdd.ir
+      type: vmess
+      udp: true
+      uuid: c896406b-ccc4-4c37-8b8c-15964f32a9a2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-46567
-        - vless-48077
         - vless-88792
+        - shadowsocks-10809794
         - vless-67756878
         - vless-67848628
         - vless-70791305
+        - vless-89286156
         - vless-94298519
         - vless-97634377
         - vless-101042775
@@ -844,17 +860,19 @@ proxy-groups:
         - shadowsocks-318025222
         - vless-318035241
         - vmess-318037222
+        - vmess-319398169
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-46567
-        - vless-48077
         - vless-88792
+        - shadowsocks-10809794
         - vless-67756878
         - vless-67848628
         - vless-70791305
+        - vless-89286156
         - vless-94298519
         - vless-97634377
         - vless-101042775
@@ -916,6 +934,7 @@ proxy-groups:
         - shadowsocks-318025222
         - vless-318035241
         - vmess-318037222
+        - vmess-319398169
       type: select
 rules:
     - MATCH,select
