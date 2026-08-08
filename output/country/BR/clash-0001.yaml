@@ -1,14 +1,4 @@
 proxies:
-    - name: vless-49305
-      network: ws
-      port: 2053
-      server: 149.33.19.136
-      servername: vpn47.cc.cd
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0970324b-8c61-4ae7-8c3f-385a6f1e17e4
     - client-fingerprint: chrome
       name: vless-54469
       network: tcp
@@ -25,19 +15,6 @@ proxies:
     - client-fingerprint: chrome
       name: vless-2341645
       network: tcp
-      port: 34045
-      reality-opts:
-        public-key: cDaDzPr3PlS3NM8lreHZbdo-Mhqz8vMBzMSkHXhGIUA
-        short-id: e8ab71d0
-      server: 167.234.255.2
-      servername: visit-this-invitation-link-to-join-tg-enkelte-notif.ekt.me
-      tls: true
-      type: vless
-      udp: true
-      uuid: d8dd94fd-540e-461d-b5d4-acebef02c22a
-    - client-fingerprint: chrome
-      name: vless-220502707
-      network: raw
       port: 34045
       reality-opts:
         public-key: cDaDzPr3PlS3NM8lreHZbdo-Mhqz8vMBzMSkHXhGIUA
@@ -174,14 +151,19 @@ proxies:
       server: 147.15.120.123
       type: ss
       udp: true
+    - name: hysteria2-326482357
+      password: df8d55f9-fb51-442d-902a-bf8160dc051b
+      port: 11100
+      server: brb.nnpy.org
+      skip-cert-verify: true
+      sni: www.bing.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-49305
         - vless-54469
         - vless-2341645
-        - vless-220502707
         - vless-233010807
         - vless-236585910
         - vless-237106610
@@ -194,15 +176,14 @@ proxy-groups:
         - vless-305221713
         - vless-305226715
         - shadowsocks-310636716
+        - hysteria2-326482357
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-49305
         - vless-54469
         - vless-2341645
-        - vless-220502707
         - vless-233010807
         - vless-236585910
         - vless-237106610
@@ -215,6 +196,7 @@ proxy-groups:
         - vless-305221713
         - vless-305226715
         - shadowsocks-310636716
+        - hysteria2-326482357
       type: select
 rules:
     - MATCH,select
