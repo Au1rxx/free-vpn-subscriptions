@@ -6,6 +6,13 @@ proxies:
       server: 102.129.229.85
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-180181213
+      password: lhuULRwO4slM6k262pAC4cbq5A1H6z8eaOHV27vi7Yw=
+      port: 44617
+      server: 47.81.56.202
+      type: ss
+      udp: true
     - name: vless-277255316
       network: ws
       port: 443
@@ -26,21 +33,41 @@ proxies:
       type: vless
       udp: true
       uuid: 7ce54bb3-d612-4aa7-be08-089d3c461d53
+    - name: vless-324633058
+      network: ws
+      port: 80
+      server: www.true.th
+      type: vless
+      udp: true
+      uuid: 63ae5b68-f6f8-432e-b440-d975053cfbc2
+    - name: vless-324639045
+      network: ws
+      port: 80
+      server: 18.239.134.69
+      type: vless
+      udp: true
+      uuid: de27291c-15a9-4256-9ba7-ad517569877e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-125093
+        - shadowsocks-180181213
         - vless-277255316
         - vless-312051662
+        - vless-324633058
+        - vless-324639045
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-125093
+        - shadowsocks-180181213
         - vless-277255316
         - vless-312051662
+        - vless-324633058
+        - vless-324639045
       type: select
 rules:
     - MATCH,select
