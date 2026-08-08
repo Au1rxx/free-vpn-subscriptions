@@ -23,12 +23,23 @@ proxies:
       type: vless
       udp: true
       uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
+    - name: vless-328943470
+      network: tcp
+      port: 443
+      server: ddc-chr-lt2.astralweb.tech
+      servername: ddc-chr-lt2.astralweb.tech
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5dc56757-458e-4df2-9e71-2a14ce47e8af
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-326674151
         - vless-326746250
+        - vless-328943470
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -36,6 +47,7 @@ proxy-groups:
         - auto
         - vless-326674151
         - vless-326746250
+        - vless-328943470
       type: select
 rules:
     - MATCH,select

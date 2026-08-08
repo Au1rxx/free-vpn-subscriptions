@@ -12,6 +12,32 @@ proxies:
       type: vless
       udp: true
       uuid: 7651FEC2-07B1-4904-8985-8EAAA1B781F3
+    - client-fingerprint: chrome
+      name: vless-328869457
+      network: grpc
+      port: 10129
+      reality-opts:
+        public-key: wOu-BMrXvk9KX23JZrlpUlF4SMjDcejm0vNECdhy5xE
+        short-id: 686c0ef0
+      server: 43.198.96.23
+      servername: s0.awsstatic.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7651FEC2-07B1-4904-8985-8EAAA1B781F3
+    - client-fingerprint: chrome
+      name: vless-328851457
+      network: grpc
+      port: 10126
+      reality-opts:
+        public-key: wOu-BMrXvk9KX23JZrlpUlF4SMjDcejm0vNECdhy5xE
+        short-id: 686c0ef0
+      server: 18.166.210.12
+      servername: s0.awsstatic.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7651FEC2-07B1-4904-8985-8EAAA1B781F3
     - name: hysteria2-280054118
       password: 9d3356a0-c07e-43cc-b30e-450bd50521b8
       port: 2056
@@ -264,6 +290,14 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - name: trojan-317659174
+      password: ND91608427
+      port: 443
+      server: dynamic-grubworm.rooster465.autos
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - name: trojan-264255951
       password: ND91608427
       port: 443
@@ -368,14 +402,6 @@ proxies:
       sni: ace-starling.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-317659174
-      password: ND91608427
-      port: 443
-      server: dynamic-grubworm.rooster465.autos
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
     - name: trojan-270681501
       password: ND91608427
       port: 443
@@ -384,19 +410,13 @@ proxies:
       sni: upright-hamster.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-305213719
-      password: ND91608427
-      port: 443
-      server: 91.199.84.120
-      skip-cert-verify: false
-      sni: dynamic-grubworm.rooster465.autos
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-324398584
+        - vless-328869457
+        - vless-328851457
         - hysteria2-280054118
         - hysteria2-4524389
         - hysteria2-296929603
@@ -429,6 +449,7 @@ proxy-groups:
         - trojan-305213714
         - trojan-313390424
         - trojan-269060762
+        - trojan-317659174
         - trojan-264255951
         - trojan-293233460
         - trojan-279550589
@@ -442,15 +463,15 @@ proxy-groups:
         - trojan-293233458
         - trojan-293233459
         - trojan-266972494
-        - trojan-317659174
         - trojan-270681501
-        - trojan-305213719
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-324398584
+        - vless-328869457
+        - vless-328851457
         - hysteria2-280054118
         - hysteria2-4524389
         - hysteria2-296929603
@@ -483,6 +504,7 @@ proxy-groups:
         - trojan-305213714
         - trojan-313390424
         - trojan-269060762
+        - trojan-317659174
         - trojan-264255951
         - trojan-293233460
         - trojan-279550589
@@ -496,9 +518,7 @@ proxy-groups:
         - trojan-293233458
         - trojan-293233459
         - trojan-266972494
-        - trojan-317659174
         - trojan-270681501
-        - trojan-305213719
       type: select
 rules:
     - MATCH,select
