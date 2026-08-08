@@ -1,25 +1,4 @@
 proxies:
-    - name: vless-321026799
-      network: ws
-      port: 50303
-      server: 91.124.63.210
-      type: vless
-      udp: true
-      uuid: b4469373-b425-4902-80d4-a00e00ada7de
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-320830520
-      network: tcp
-      port: 8443
-      reality-opts:
-        public-key: Lq1xwc-Qd0Te8sV-NxrJLQO6JbvPkknki6inkKj5_WQ
-        short-id: 22c6f049621c44ec
-      server: tr2.odavpn.online
-      servername: www.sony.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 16ab4d4a-fd81-4535-9b7b-346677226ce8
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-324417882
@@ -34,6 +13,19 @@ proxies:
       type: vless
       udp: true
       uuid: 16ab4d4a-fd81-4535-9b7b-346677226ce8
+    - client-fingerprint: chrome
+      name: vless-327167481
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: trwUo_vBd0fSJVmNXWjRSnD8t3vP06WHjEVgit1Vqj0
+        short-id: 49329b1b0384
+      server: 144.225.65.199
+      servername: video.media.yql.yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 37cc1639-92bc-40f2-bd06-261c1fca5f05
     - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
@@ -52,9 +44,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-321026799
-        - vless-320830520
         - vless-324417882
+        - vless-327167481
         - shadowsocks-128223
         - shadowsocks-11086
       type: url-test
@@ -62,9 +53,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vless-321026799
-        - vless-320830520
         - vless-324417882
+        - vless-327167481
         - shadowsocks-128223
         - shadowsocks-11086
       type: select

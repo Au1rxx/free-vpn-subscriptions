@@ -1,0 +1,45 @@
+proxies:
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-326653050
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: N0QyBaacGqSpRv_Ib4jsSx5A1kfE8IE1w0HcDB5w1BE
+        short-id: ""
+      server: ee01.fi1-cosmostechnology.ru
+      servername: fi1-cosmostechnology.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: f692629b-3557-488a-9c9b-60775331e423
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-326668148
+      network: tcp
+      port: 40006
+      reality-opts:
+        public-key: uHCIeXxIcEoZ89kaNNBIKsy4axPMsBb2xeOMww7d1DY
+        short-id: 1a6b1f9d0e
+      server: 185.141.227.141
+      servername: ads.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 41784775-8846-4579-9d9d-9ad6ea802e2e
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-326653050
+        - vless-326668148
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-326653050
+        - vless-326668148
+      type: select
+rules:
+    - MATCH,select
