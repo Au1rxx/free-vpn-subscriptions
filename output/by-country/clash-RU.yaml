@@ -6,17 +6,35 @@ proxies:
       server: 37.77.105.11
       type: ss
       udp: true
+    - name: vless-321062276
+      network: ws
+      port: 4100
+      server: 168.222.140.155
+      type: vless
+      udp: true
+      uuid: 2aa7f4b1-e859-46d0-b8ac-8587811ab7b1
+    - name: vless-321071274
+      network: ws
+      port: 4100
+      server: 77.222.38.3
+      type: vless
+      udp: true
+      uuid: 6d662736-24ea-4f8e-9e73-acbc14d09cb1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-319591659
+        - vless-321062276
+        - vless-321071274
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-319591659
+        - vless-321062276
+        - vless-321071274
       type: select
 rules:
     - MATCH,select
