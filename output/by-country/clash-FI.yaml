@@ -1,4 +1,32 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-281461528
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: TlpXTLz1Y-v8B6q9MX55U6eypjfL0LCSNE5zQP4yRHw
+        short-id: bbc68cec8bb8d2e3
+      server: node16.mxvpn.dev
+      servername: node16.mxvpn.dev
+      tls: true
+      type: vless
+      udp: true
+      uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-288131050
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: TlpXTLz1Y-v8B6q9MX55U6eypjfL0LCSNE5zQP4yRHw
+        short-id: bbc68cec8bb8d2e3
+      server: node15.mxvpn.dev
+      servername: node15.mxvpn.dev
+      tls: true
+      type: vless
+      udp: true
+      uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-256467532
@@ -45,6 +73,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-281461528
+        - vless-288131050
         - vless-256467532
         - vless-290320184
         - hysteria2-271206441
@@ -54,6 +84,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-281461528
+        - vless-288131050
         - vless-256467532
         - vless-290320184
         - hysteria2-271206441
