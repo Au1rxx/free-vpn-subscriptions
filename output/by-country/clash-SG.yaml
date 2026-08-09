@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-2326763
+      network: ws
+      port: 8880
+      server: log.bpminecraft.com
+      type: vless
+      udp: true
+      uuid: 999c9769-28db-425a-84d8-ccd7a3321406
     - alterId: 0
       cipher: auto
       name: vmess-5258760
@@ -239,20 +246,11 @@ proxies:
       type: vless
       udp: true
       uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
-    - name: vless-326744248
-      network: ws
-      port: 443
-      server: 162.159.44.195
-      servername: hhlfy.twiladaphne.ndjp.net
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-2326763
         - vmess-5258760
         - vmess-96607
         - vless-200268606
@@ -282,12 +280,12 @@ proxy-groups:
         - vless-13097683
         - vless-13125514
         - vless-192061506
-        - vless-326744248
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-2326763
         - vmess-5258760
         - vmess-96607
         - vless-200268606
@@ -317,7 +315,6 @@ proxy-groups:
         - vless-13097683
         - vless-13125514
         - vless-192061506
-        - vless-326744248
       type: select
 rules:
     - MATCH,select
