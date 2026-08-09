@@ -8,7 +8,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-[![GitHub stars](https://img.shields.io/github/stars/Au1rxx/free-vpn-subscriptions?style=flat&color=gold&logo=github)](https://github.com/Au1rxx/free-vpn-subscriptions/stargazers) ![精选](https://img.shields.io/badge/精选-2000-brightgreen) ![已验证](https://img.shields.io/badge/已验证-4193-blue) ![中位延迟](https://img.shields.io/badge/中位延迟-505ms-orange) ![更新](https://img.shields.io/badge/更新-2026-08-09_13:19_UTC-informational) [![License](https://img.shields.io/github/license/Au1rxx/free-vpn-subscriptions?color=blue)](https://github.com/Au1rxx/free-vpn-subscriptions/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/Au1rxx/free-vpn-subscriptions?style=flat&color=gold&logo=github)](https://github.com/Au1rxx/free-vpn-subscriptions/stargazers) ![精选](https://img.shields.io/badge/精选-2000-brightgreen) ![已验证](https://img.shields.io/badge/已验证-4217-blue) ![中位延迟](https://img.shields.io/badge/中位延迟-505ms-orange) ![更新](https://img.shields.io/badge/更新-2026-08-09_14:23_UTC-informational) [![License](https://img.shields.io/github/license/Au1rxx/free-vpn-subscriptions?color=blue)](https://github.com/Au1rxx/free-vpn-subscriptions/blob/main/LICENSE)
 
 > **获取可用免费 VPN 的最简单方式 —— 复制订阅链接,粘贴到客户端,连上。**  
 > 无需注册。无需付费。无需安装任何二进制。每小时从公共源自动抓取 —— 每个发布的节点都在几分钟前通过 sing-box 真实转发过 HTTP 流量。
@@ -135,10 +135,10 @@ proxy-groups:
 ## 📊 实时统计
 
 - **精选节点数**: 2000
-- **全源存活总数**: 4193
+- **全源存活总数**: 4217
 - **最快延迟**: 38 ms
 - **中位延迟**: 505 ms
-- **最后更新 (UTC)**: 2026-08-09 13:19 UTC
+- **最后更新 (UTC)**: 2026-08-09 14:23 UTC
 
 **协议分布:** http × 138 · https × 5 · hysteria2 × 172 · shadowsocks × 173 · socks4 × 42 · socks5 × 111 · trojan × 924 · tuic × 3 · vless × 422 · vmess × 10
 

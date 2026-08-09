@@ -8,7 +8,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-[![GitHub stars](https://img.shields.io/github/stars/Au1rxx/free-vpn-subscriptions?style=flat&color=gold&logo=github)](https://github.com/Au1rxx/free-vpn-subscriptions/stargazers) ![厳選](https://img.shields.io/badge/厳選-2000-brightgreen) ![検証済み](https://img.shields.io/badge/検証済み-4193-blue) ![中央値--rtt](https://img.shields.io/badge/中央値--rtt-505ms-orange) ![更新](https://img.shields.io/badge/更新-2026-08-09_13:19_UTC-informational) [![License](https://img.shields.io/github/license/Au1rxx/free-vpn-subscriptions?color=blue)](https://github.com/Au1rxx/free-vpn-subscriptions/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/Au1rxx/free-vpn-subscriptions?style=flat&color=gold&logo=github)](https://github.com/Au1rxx/free-vpn-subscriptions/stargazers) ![厳選](https://img.shields.io/badge/厳選-2000-brightgreen) ![検証済み](https://img.shields.io/badge/検証済み-4217-blue) ![中央値--rtt](https://img.shields.io/badge/中央値--rtt-505ms-orange) ![更新](https://img.shields.io/badge/更新-2026-08-09_14:23_UTC-informational) [![License](https://img.shields.io/github/license/Au1rxx/free-vpn-subscriptions?color=blue)](https://github.com/Au1rxx/free-vpn-subscriptions/blob/main/LICENSE)
 
 > **動作する無料 VPN を手に入れる一番かんたんな方法 —— 購読リンクをコピーしてクライアントに貼るだけ。**  
 > 登録不要。支払い不要。バイナリのインストール不要。公開ソースから毎時自動更新 —— 公開される全ノードは、数分前に sing-box 経由で実 HTTP トラフィックを転送した実績があります。
@@ -135,10 +135,10 @@ proxy-groups:
 ## 📊 リアルタイム統計
 
 - **選定ノード**: 2000
-- **全ソース生存数**: 4193
+- **全ソース生存数**: 4217
 - **最速 RTT**: 38 ms
 - **中央値 RTT**: 505 ms
-- **最終更新 (UTC)**: 2026-08-09 13:19 UTC
+- **最終更新 (UTC)**: 2026-08-09 14:23 UTC
 
 **プロトコル構成:** http × 138 · https × 5 · hysteria2 × 172 · shadowsocks × 173 · socks4 × 42 · socks5 × 111 · trojan × 924 · tuic × 3 · vless × 422 · vmess × 10
 

@@ -8,7 +8,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-[![GitHub stars](https://img.shields.io/github/stars/Au1rxx/free-vpn-subscriptions?style=flat&color=gold&logo=github)](https://github.com/Au1rxx/free-vpn-subscriptions/stargazers) ![seleccionados](https://img.shields.io/badge/seleccionados-2000-brightgreen) ![verificados](https://img.shields.io/badge/verificados-4193-blue) ![rtt--mediana](https://img.shields.io/badge/rtt--mediana-505ms-orange) ![actualizado](https://img.shields.io/badge/actualizado-2026-08-09_13:19_UTC-informational) [![License](https://img.shields.io/github/license/Au1rxx/free-vpn-subscriptions?color=blue)](https://github.com/Au1rxx/free-vpn-subscriptions/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/Au1rxx/free-vpn-subscriptions?style=flat&color=gold&logo=github)](https://github.com/Au1rxx/free-vpn-subscriptions/stargazers) ![seleccionados](https://img.shields.io/badge/seleccionados-2000-brightgreen) ![verificados](https://img.shields.io/badge/verificados-4217-blue) ![rtt--mediana](https://img.shields.io/badge/rtt--mediana-505ms-orange) ![actualizado](https://img.shields.io/badge/actualizado-2026-08-09_14:23_UTC-informational) [![License](https://img.shields.io/github/license/Au1rxx/free-vpn-subscriptions?color=blue)](https://github.com/Au1rxx/free-vpn-subscriptions/blob/main/LICENSE)
 
 > **La forma más fácil de obtener una VPN gratuita que funciona — copia un enlace de suscripción, pégalo en tu cliente, conecta.**  
 > Sin registro. Sin pago. Sin instalar ningún binario. Actualizado cada hora desde fuentes públicas — cada nodo publicado ha reenviado tráfico HTTP real a través de sing-box hace minutos.
@@ -135,10 +135,10 @@ De los ~150 que publicamos cada ejecución, un cliente típico encuentra **80-12
 ## 📊 Estadísticas en vivo
 
 - **Nodos seleccionados**: 2000
-- **Activos en todas las fuentes**: 4193
+- **Activos en todas las fuentes**: 4217
 - **RTT del nodo más rápido**: 38 ms
 - **RTT mediana**: 505 ms
-- **Última actualización (UTC)**: 2026-08-09 13:19 UTC
+- **Última actualización (UTC)**: 2026-08-09 14:23 UTC
 
 **Mezcla de protocolos:** http × 138 · https × 5 · hysteria2 × 172 · shadowsocks × 173 · socks4 × 42 · socks5 × 111 · trojan × 924 · tuic × 3 · vless × 422 · vmess × 10
 

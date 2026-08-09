@@ -8,7 +8,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-[![GitHub stars](https://img.shields.io/github/stars/Au1rxx/free-vpn-subscriptions?style=flat&color=gold&logo=github)](https://github.com/Au1rxx/free-vpn-subscriptions/stargazers) ![curated](https://img.shields.io/badge/curated-2000-brightgreen) ![verified](https://img.shields.io/badge/verified-4193-blue) ![median--rtt](https://img.shields.io/badge/median--rtt-505ms-orange) ![updated](https://img.shields.io/badge/updated-2026-08-09_13:19_UTC-informational) [![License](https://img.shields.io/github/license/Au1rxx/free-vpn-subscriptions?color=blue)](https://github.com/Au1rxx/free-vpn-subscriptions/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/Au1rxx/free-vpn-subscriptions?style=flat&color=gold&logo=github)](https://github.com/Au1rxx/free-vpn-subscriptions/stargazers) ![curated](https://img.shields.io/badge/curated-2000-brightgreen) ![verified](https://img.shields.io/badge/verified-4217-blue) ![median--rtt](https://img.shields.io/badge/median--rtt-505ms-orange) ![updated](https://img.shields.io/badge/updated-2026-08-09_14:23_UTC-informational) [![License](https://img.shields.io/github/license/Au1rxx/free-vpn-subscriptions?color=blue)](https://github.com/Au1rxx/free-vpn-subscriptions/blob/main/LICENSE)
 
 > **The easiest way to get a working free VPN — copy a subscription link, paste it into your client, connect.**  
 > No signup. No payment. No installation of binaries. Refreshed hourly from public sources — every published node has demonstrably forwarded real HTTP traffic through sing-box minutes ago.
@@ -135,10 +135,10 @@ New to VPN clients? Pick your platform and follow the tutorial:
 ## 📊 Live Stats
 
 - **Nodes selected**: 2000
-- **Alive across all sources**: 4193
+- **Alive across all sources**: 4217
 - **Fastest node RTT**: 38 ms
 - **Median RTT**: 505 ms
-- **Last updated (UTC)**: 2026-08-09 13:19 UTC
+- **Last updated (UTC)**: 2026-08-09 14:23 UTC
 
 **Protocol mix:** http × 138 · https × 5 · hysteria2 × 172 · shadowsocks × 173 · socks4 × 42 · socks5 × 111 · trojan × 924 · tuic × 3 · vless × 422 · vmess × 10
 
