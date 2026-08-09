@@ -50,6 +50,13 @@ proxies:
       skip-cert-verify: true
       sni: vpn-ca-002.fastervpn.world
       type: hysteria2
+    - name: hysteria2-324432613
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: 15.222.3.181
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
     - name: hysteria2-296307833
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -85,13 +92,6 @@ proxies:
       skip-cert-verify: true
       sni: vpn-ca-002.fastervpn.world
       type: hysteria2
-    - name: hysteria2-324432613
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: 15.222.3.181
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
     - name: hysteria2-256991694
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -113,13 +113,6 @@ proxies:
       server: 149.22.95.183
       type: ss
       udp: true
-    - cipher: rc4-md5
-      name: shadowsocks-166
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 137.184.174.93
-      type: ss
-      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-11074
       password: KixLvKzwjekG00rm
@@ -127,9 +120,30 @@ proxies:
       server: 185.196.61.82
       type: ss
       udp: true
+    - cipher: rc4-md5
+      name: shadowsocks-166
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 137.184.174.93
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-200282613
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: kjiuPmjM4IutdZudHfcPZHEwcrBEFY4qBLlvfC6A_Ss
+        short-id: b9f8d3f8
+      server: 216.152.147.28
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d9e4721d-cdac-44c7-bc91-117367eac194
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-258647517
       network: tcp
       port: 443
       reality-opts:
@@ -152,18 +166,19 @@ proxy-groups:
         - hysteria2-209378681
         - hysteria2-296307832
         - hysteria2-209378682
+        - hysteria2-324432613
         - hysteria2-296307833
         - hysteria2-200394189
         - hysteria2-290610754
         - hysteria2-200242607
         - hysteria2-207301018
-        - hysteria2-324432613
         - hysteria2-256991694
         - hysteria2-256991693
         - shadowsocks-208
-        - shadowsocks-166
         - shadowsocks-11074
+        - shadowsocks-166
         - vless-200282613
+        - vless-258647517
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -176,18 +191,19 @@ proxy-groups:
         - hysteria2-209378681
         - hysteria2-296307832
         - hysteria2-209378682
+        - hysteria2-324432613
         - hysteria2-296307833
         - hysteria2-200394189
         - hysteria2-290610754
         - hysteria2-200242607
         - hysteria2-207301018
-        - hysteria2-324432613
         - hysteria2-256991694
         - hysteria2-256991693
         - shadowsocks-208
-        - shadowsocks-166
         - shadowsocks-11074
+        - shadowsocks-166
         - vless-200282613
+        - vless-258647517
       type: select
 rules:
     - MATCH,select
