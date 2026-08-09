@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-332701908
+      network: grpc
+      port: 8443
+      server: 185.39.204.155
+      type: vless
+      udp: true
+      uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
     - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
@@ -17,6 +24,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-332701908
         - shadowsocks-128223
         - shadowsocks-11086
       type: url-test
@@ -24,6 +32,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-332701908
         - shadowsocks-128223
         - shadowsocks-11086
       type: select
