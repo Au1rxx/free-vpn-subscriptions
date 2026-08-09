@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-330341882
-      password: dd0d1895-9d32-4092-8ea1-92555956d2e2
-      port: 24407
-      server: v1in2.stableq.top
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
     - name: hysteria2-278435154
       password: 18cf8030-1ceb-4b7d-8c0c-c036413c144e
       port: 4433
@@ -21,21 +13,29 @@ proxies:
       server: 103.120.178.193
       type: ss
       udp: true
+    - name: trojan-280054238
+      password: 41c406e2-12b5-41f2-a329-d0621052d675
+      port: 20034
+      server: oplosgru-c.catcat321.com
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-330341882
         - hysteria2-278435154
         - shadowsocks-125111
+        - trojan-280054238
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-330341882
         - hysteria2-278435154
         - shadowsocks-125111
+        - trojan-280054238
       type: select
 rules:
     - MATCH,select

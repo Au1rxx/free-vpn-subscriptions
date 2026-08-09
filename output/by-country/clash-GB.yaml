@@ -12,18 +12,18 @@ proxies:
       type: vless
       udp: true
       uuid: c8dcbe44-5714-4f99-8d7a-aadebea34abf
-    - cipher: rc4-md5
-      name: shadowsocks-165
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 146.70.61.37
-      type: ss
-      udp: true
     - cipher: aes-128-gcm
       name: shadowsocks-126252
       password: shadowsocks
       port: 443
       server: 158.173.24.73
+      type: ss
+      udp: true
+    - cipher: rc4-md5
+      name: shadowsocks-165
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.61.37
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
@@ -48,37 +48,27 @@ proxies:
       sni: default.fastly.com
       type: trojan
       udp: true
-    - name: trojan-303521549
-      password: MiTiVPN
-      port: 443
-      server: 151.101.56.8
-      skip-cert-verify: true
-      sni: default.fastly.com
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-332701896
-        - shadowsocks-165
         - shadowsocks-126252
+        - shadowsocks-165
         - shadowsocks-37998200
         - shadowsocks-240
         - trojan-315415971
-        - trojan-303521549
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-332701896
-        - shadowsocks-165
         - shadowsocks-126252
+        - shadowsocks-165
         - shadowsocks-37998200
         - shadowsocks-240
         - trojan-315415971
-        - trojan-303521549
       type: select
 rules:
     - MATCH,select

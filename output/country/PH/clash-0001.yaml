@@ -1,22 +1,23 @@
 proxies:
-    - cipher: aes-256-gcm
-      name: shadowsocks-126216
-      password: g5MeD6Ft3CWlJId
-      port: 5004
-      server: 156.244.8.155
-      type: ss
+    - name: trojan-122847
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20013
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
       udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-126216
+        - trojan-122847
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-126216
+        - trojan-122847
       type: select
 rules:
     - MATCH,select
