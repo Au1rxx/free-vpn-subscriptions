@@ -15,12 +15,27 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-335016427
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: UdeZc5DrXa8lWOET4wlBp55-nXskqsvoU-2kVvd3zBg
+        short-id: 7a3f9e2b1c8d4f6a
+      server: 202.155.14.176
+      servername: id.cdn-global.pro
+      tls: true
+      type: vless
+      udp: true
+      uuid: 02e2d68f-9982-4467-ad47-00cbeeae30e6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-119270
         - trojan-202722757
+        - vless-335016427
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -28,6 +43,7 @@ proxy-groups:
         - auto
         - trojan-119270
         - trojan-202722757
+        - vless-335016427
       type: select
 rules:
     - MATCH,select

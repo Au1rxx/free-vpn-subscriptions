@@ -1,4 +1,20 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-335055010
+      network: tcp
+      port: 29019
+      server: 366-1095.rabbitpro-in-3.com
+      type: vmess
+      udp: true
+      uuid: e351d6d8-c167-3e07-8fda-3f2f4ec0760b
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-335068431
+      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+      port: 50099
+      server: 36.224.154.243
+      type: ss
+      udp: true
     - name: hysteria2-16610
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -42,17 +58,17 @@ proxies:
       sni: 127.0.0.1
       type: hysteria2
     - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-241
-      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
-      port: 50099
-      server: r3mrcg001287h3p.cybervena.com
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-299806588
       password: b1ae0fce-9340-4f2e-882d-fdb2218e2e2b
       port: 50099
       server: 36.224.177.236
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-241
+      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+      port: 50099
+      server: r3mrcg001287h3p.cybervena.com
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
@@ -90,50 +106,45 @@ proxies:
       server: namrcg001640lrm.cybervena.com
       type: ss
       udp: true
-    - name: vless-332389822
-      network: tcp
-      port: 32355
-      server: 103.227.225.198
-      type: vless
-      udp: true
-      uuid: a2f6da81-64bd-4b86-b806-5658e161b7e4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-335055010
+        - shadowsocks-335068431
         - hysteria2-16610
         - hysteria2-200242609
         - hysteria2-307174592
         - hysteria2-207301017
         - hysteria2-137781265
         - hysteria2-328918461
-        - shadowsocks-241
         - shadowsocks-299806588
+        - shadowsocks-241
         - shadowsocks-289214843
         - shadowsocks-303
         - shadowsocks-443
         - shadowsocks-298
         - shadowsocks-11005
-        - vless-332389822
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-335055010
+        - shadowsocks-335068431
         - hysteria2-16610
         - hysteria2-200242609
         - hysteria2-307174592
         - hysteria2-207301017
         - hysteria2-137781265
         - hysteria2-328918461
-        - shadowsocks-241
         - shadowsocks-299806588
+        - shadowsocks-241
         - shadowsocks-289214843
         - shadowsocks-303
         - shadowsocks-443
         - shadowsocks-298
         - shadowsocks-11005
-        - vless-332389822
       type: select
 rules:
     - MATCH,select

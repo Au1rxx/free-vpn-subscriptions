@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-335125326
+      password: 71cada65-d23e-418c-88e4-a06188d14689
+      port: 443
+      server: 31.76.113.32
+      skip-cert-verify: true
+      sni: it-one.quiet-rogue.site
+      type: hysteria2
     - name: hysteria2-271206430
       password: 71cada65-d23e-418c-88e4-a06188d14689
       port: 443
@@ -6,6 +13,34 @@ proxies:
       skip-cert-verify: false
       sni: it-one.quiet-rogue.site
       type: hysteria2
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-334999961
+      network: tcp
+      port: 2096
+      reality-opts:
+        public-key: pWPvxPIVtdzgaL0cdFZ73qn1FihjKDZ7TE55wg57Vl8
+        short-id: 9b43ece6010612b0
+      server: 178.253.55.89
+      servername: it-one.quiet-rogue.site
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0f2dc4af-951f-4690-922e-07c6e8bab26a
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-335141358
+      network: raw
+      port: 2096
+      reality-opts:
+        public-key: pWPvxPIVtdzgaL0cdFZ73qn1FihjKDZ7TE55wg57Vl8
+        short-id: 9b43ece6010612b0
+      server: 178.253.55.89
+      servername: it-one.quiet-rogue.site
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0f2dc4af-951f-4690-922e-07c6e8bab26a
     - name: hysteria2-273329903
       password: 71cada65-d23e-418c-88e4-a06188d14689
       port: 443
@@ -20,30 +55,27 @@ proxies:
       server: 185.213.20.110
       type: ss
       udp: true
-    - name: vless-2327852
-      network: raw
-      port: 10086
-      server: 204.216.216.23
-      type: vless
-      udp: true
-      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-335125326
         - hysteria2-271206430
+        - vless-334999961
+        - vless-335141358
         - hysteria2-273329903
         - shadowsocks-127110
-        - vless-2327852
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-335125326
         - hysteria2-271206430
+        - vless-334999961
+        - vless-335141358
         - hysteria2-273329903
         - shadowsocks-127110
-        - vless-2327852
       type: select
 rules:
     - MATCH,select

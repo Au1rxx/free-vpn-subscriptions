@@ -1,4 +1,38 @@
 proxies:
+    - name: vless-334968650
+      network: grpc
+      port: 443
+      server: 109.104.106.51
+      servername: ro.cdn-global.pro
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 02e2d68f-9982-4467-ad47-00cbeeae30e6
+    - name: vless-335140325
+      network: grpc
+      port: 443
+      server: 109.104.106.51
+      servername: ro.cdn-global.pro
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 02e2d68f-9982-4467-ad47-00cbeeae30e6
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-335141366
+      network: tcp
+      port: 55555
+      reality-opts:
+        public-key: PH97MWo9GJbJNzsqX5RXPoFs4KCNjcikYGn2aQXV1BA
+        short-id: 59ff141b
+      server: ak-hk01.ziyoufly.xyz
+      servername: www.hkexpress.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 107d414f-3418-490d-bb3b-bafa8d21882a
     - client-fingerprint: chrome
       name: vless-270708468
       network: tcp
@@ -25,6 +59,13 @@ proxies:
       type: vless
       udp: true
       uuid: bc5b801f-49a7-4db7-ac92-a2c57d42d132
+    - name: hysteria2-335068381
+      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+      port: 8443
+      server: 93.114.194.121
+      skip-cert-verify: false
+      sni: grape-zet-ro-turbo.bumbleshrimp.com
+      type: hysteria2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-26744
       password: QFWzCw2uX9B9i6qAYeFBIE
@@ -92,8 +133,12 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-334968650
+        - vless-335140325
+        - vless-335141366
         - vless-270708468
         - vless-23907911
+        - hysteria2-335068381
         - shadowsocks-26744
         - hysteria2-315405971
         - hysteria2-293679165
@@ -108,8 +153,12 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-334968650
+        - vless-335140325
+        - vless-335141366
         - vless-270708468
         - vless-23907911
+        - hysteria2-335068381
         - shadowsocks-26744
         - hysteria2-315405971
         - hysteria2-293679165
