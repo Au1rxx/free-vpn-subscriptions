@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-2066045
+      network: ws
+      port: 443
+      server: 104.21.117.9
+      servername: netlivpn2950.bbxff.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bd9ff08b-d042-3650-48e4-c4b400000000
     - name: trojan-38691648
       password: y3b03zx3tznhyo538p4c
       port: 53261
@@ -22,6 +32,13 @@ proxies:
       skip-cert-verify: true
       sni: 86.106.84.195
       type: trojan
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-175455221
+      password: XF0klw7870vXn3uQIxe19Q
+      port: 1080
+      server: 146.70.26.156
+      type: ss
       udp: true
     - name: trojan-267016931
       password: y3b03zx3tznhyo538p4c
@@ -49,9 +66,11 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-2066045
         - trojan-38691648
         - trojan-51444474
         - trojan-51753352
+        - shadowsocks-175455221
         - trojan-267016931
         - vless-335150357
       type: url-test
@@ -59,9 +78,11 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-2066045
         - trojan-38691648
         - trojan-51444474
         - trojan-51753352
+        - shadowsocks-175455221
         - trojan-267016931
         - vless-335150357
       type: select

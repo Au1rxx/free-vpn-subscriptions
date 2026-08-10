@@ -6,14 +6,6 @@ proxies:
       server: 102.129.229.85
       type: ss
       udp: true
-    - name: trojan-180238213
-      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
-      port: 20006
-      server: oplosgru-c.catcat321.com
-      skip-cert-verify: true
-      sni: ""
-      type: trojan
-      udp: true
     - name: vless-277255316
       network: ws
       port: 443
@@ -24,6 +16,30 @@ proxies:
       type: vless
       udp: true
       uuid: 7ce54bb3-d612-4aa7-be08-089d3c461d53
+    - name: vless-312051662
+      network: ws
+      port: 443
+      server: 3.162.103.26
+      servername: d1yxsk0zprgivr.cloudfront.net
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7ce54bb3-d612-4aa7-be08-089d3c461d53
+    - name: vless-324633058
+      network: ws
+      port: 80
+      server: www.true.th
+      type: vless
+      udp: true
+      uuid: 63ae5b68-f6f8-432e-b440-d975053cfbc2
+    - name: vless-324639045
+      network: ws
+      port: 80
+      server: 18.239.134.69
+      type: vless
+      udp: true
+      uuid: de27291c-15a9-4256-9ba7-ad517569877e
     - name: vless-335001959
       network: ws
       port: 80
@@ -79,13 +95,25 @@ proxies:
       type: vless
       udp: true
       uuid: de27291c-15a9-4256-9ba7-ad517569877e
+    - name: vless-343569278
+      network: ws
+      port: 443
+      server: 3.170.185.91
+      servername: d1yxsk0zprgivr.cloudfront.net
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7ce54bb3-d612-4aa7-be08-089d3c461d53
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-125093
-        - trojan-180238213
         - vless-277255316
+        - vless-312051662
+        - vless-324633058
+        - vless-324639045
         - vless-335001959
         - vless-335001960
         - vless-335023052
@@ -93,14 +121,17 @@ proxy-groups:
         - vless-335155322
         - vless-335155323
         - vless-339818788
+        - vless-343569278
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-125093
-        - trojan-180238213
         - vless-277255316
+        - vless-312051662
+        - vless-324633058
+        - vless-324639045
         - vless-335001959
         - vless-335001960
         - vless-335023052
@@ -108,6 +139,7 @@ proxy-groups:
         - vless-335155322
         - vless-335155323
         - vless-339818788
+        - vless-343569278
       type: select
 rules:
     - MATCH,select
