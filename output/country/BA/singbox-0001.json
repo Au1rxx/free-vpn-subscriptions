@@ -1,0 +1,35 @@
+{
+  "outbounds": [
+    {
+      "server": "109.165.248.250",
+      "server_port": 5678,
+      "tag": "socks4-355938309",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "socks4-355938309"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "socks4-355938309"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

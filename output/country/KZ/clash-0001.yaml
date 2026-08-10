@@ -1,7 +1,42 @@
 proxies:
     - client-fingerprint: chrome
+      name: vless-24815
+      network: tcp
+      port: 38065
+      reality-opts:
+        public-key: dSSDPTK6AHfAdRAXD9i4rzqcNIY65RxlF25UyCKdiyo
+        short-id: fa
+      server: 83.222.23.81
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4b9063e0-3288-44e9-9aac-80fbfce323a0
+    - client-fingerprint: chrome
       name: vless-2104050
       network: raw
+      port: 19747
+      reality-opts:
+        public-key: ZO9dTeg1slvTXgVsBsaJ1BDvz_YUImTLJjbHs-GdVyM
+        short-id: "2001"
+      server: 77.73.232.61
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2a9ed01e-5455-44b4-a66a-76ee8165f0ac
+    - alterId: 0
+      cipher: auto
+      name: vmess-2123908
+      network: ws
+      port: 80
+      server: 38.107.234.57
+      type: vmess
+      udp: true
+      uuid: 567f4be5-12ab-42e1-b8d9-db6fd1fdd31c
+    - client-fingerprint: chrome
+      name: vless-2299725
+      network: tcp
       port: 19747
       reality-opts:
         public-key: ZO9dTeg1slvTXgVsBsaJ1BDvz_YUImTLJjbHs-GdVyM
@@ -103,7 +138,10 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-24815
         - vless-2104050
+        - vmess-2123908
+        - vless-2299725
         - vless-2299726
         - vless-2328818
         - vmess-2387867
@@ -116,7 +154,10 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-24815
         - vless-2104050
+        - vmess-2123908
+        - vless-2299725
         - vless-2299726
         - vless-2328818
         - vmess-2387867
