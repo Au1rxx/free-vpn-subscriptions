@@ -1,48 +1,4 @@
 proxies:
-    - name: vless-335073379
-      network: grpc
-      port: 8443
-      server: 95.85.224.3
-      type: vless
-      udp: true
-      uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
-    - name: vless-335019567
-      network: grpc
-      port: 443
-      server: 217.9.12.229
-      servername: ee2.cdn-global.pro
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 02e2d68f-9982-4467-ad47-00cbeeae30e6
-    - name: vless-335019566
-      network: grpc
-      port: 443
-      server: 217.9.12.228
-      servername: ee2.cdn-global.pro
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 02e2d68f-9982-4467-ad47-00cbeeae30e6
-    - name: vless-335070421
-      network: ws
-      port: 443
-      server: estproxy2.lockdwn.com
-      type: vless
-      udp: true
-      uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
-    - name: vless-335085853
-      network: tcp
-      port: 8443
-      server: estproxy2.lockdwn.com
-      servername: estproxy2.lockdwn.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-339761468
@@ -57,20 +13,20 @@ proxies:
       type: vless
       udp: true
       uuid: f61025f4-7973-4e3e-883c-a0fe85f0489c
-    - client-fingerprint: chrome
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-335148326
+      name: vless-344504054
       network: tcp
       port: 443
       reality-opts:
-        public-key: g-WqfHKjac71MMtkmq5bIvTFavzXTCAnEI_17KoTNSQ
-        short-id: ""
-      server: 91.235.234.186
-      servername: us7fs3.proxen.pdevinfra.com
+        public-key: RO5YMxxtJmZo2w370qG-seJ41toowHPbz6i2uXJ2gG0
+        short-id: 7a3f9e2b1c8d4f6a
+      server: 217.9.12.234
+      servername: ee.cdn-global.pro
       tls: true
       type: vless
       udp: true
-      uuid: 4593aa27-a2a1-412f-935f-3829495c0970
+      uuid: 02e2d68f-9982-4467-ad47-00cbeeae30e6
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-339830792
@@ -87,61 +43,51 @@ proxies:
       uuid: 02e2d68f-9982-4467-ad47-00cbeeae30e6
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-335019570
+      name: vless-344505676
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: NiCJO84l7l--GJ10ggvb6HcOS8qLR30pWTphwvWozhg
+        short-id: ""
+      server: 46.22.216.31
+      servername: mail.protech-plus.ee
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4612258c-15e8-4459-a3b6-8b6571699c5f
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-344505611
       network: tcp
       port: 443
       reality-opts:
         public-key: RO5YMxxtJmZo2w370qG-seJ41toowHPbz6i2uXJ2gG0
         short-id: 7a3f9e2b1c8d4f6a
-      server: 217.9.12.234
+      server: 217.9.12.14
       servername: ee.cdn-global.pro
       tls: true
       type: vless
       udp: true
       uuid: 02e2d68f-9982-4467-ad47-00cbeeae30e6
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-335040321
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: ssUaeu3bK736H8bu52KI3lQePkZWbzWShqvd-bcEWFo
-        short-id: c5d83fa0bd95c00a
-      server: 5.175.178.104
-      servername: es.bbobr.win
-      tls: true
-      type: vless
-      udp: true
-      uuid: 541cbb83-6c17-42b3-ba51-840c27962e02
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-335073379
-        - vless-335019567
-        - vless-335019566
-        - vless-335070421
-        - vless-335085853
         - vless-339761468
-        - vless-335148326
+        - vless-344504054
         - vless-339830792
-        - vless-335019570
-        - vless-335040321
+        - vless-344505676
+        - vless-344505611
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-335073379
-        - vless-335019567
-        - vless-335019566
-        - vless-335070421
-        - vless-335085853
         - vless-339761468
-        - vless-335148326
+        - vless-344504054
         - vless-339830792
-        - vless-335019570
-        - vless-335040321
+        - vless-344505676
+        - vless-344505611
       type: select
 rules:
     - MATCH,select
