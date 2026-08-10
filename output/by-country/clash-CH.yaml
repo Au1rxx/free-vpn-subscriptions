@@ -13,12 +13,12 @@ proxies:
       type: vless
       udp: true
       uuid: 5710bc50-f5ff-02f4-a3f5-067959ed2644
-    - name: trojan-267016931
+    - name: trojan-51753352
       password: y3b03zx3tznhyo538p4c
       port: 53261
       server: 86.106.84.195
       skip-cert-verify: true
-      sni: speedtest.tinkoff.ru
+      sni: 86.106.84.195
       type: trojan
       udp: true
     - name: trojan-51444474
@@ -29,7 +29,7 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: trojan-51753352
+    - name: trojan-38691648
       password: y3b03zx3tznhyo538p4c
       port: 53261
       server: 86.106.84.195
@@ -37,23 +37,33 @@ proxies:
       sni: 86.106.84.195
       type: trojan
       udp: true
+    - name: trojan-267016931
+      password: y3b03zx3tznhyo538p4c
+      port: 53261
+      server: 86.106.84.195
+      skip-cert-verify: true
+      sni: speedtest.tinkoff.ru
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-335150357
-        - trojan-267016931
-        - trojan-51444474
         - trojan-51753352
+        - trojan-51444474
+        - trojan-38691648
+        - trojan-267016931
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-335150357
-        - trojan-267016931
-        - trojan-51444474
         - trojan-51753352
+        - trojan-51444474
+        - trojan-38691648
+        - trojan-267016931
       type: select
 rules:
     - MATCH,select
