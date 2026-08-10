@@ -1,13 +1,4 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-347603535
-      network: tcp
-      port: 29009
-      server: 366-1095.rabbitpro-in-3.com
-      type: vmess
-      udp: true
-      uuid: e351d6d8-c167-3e07-8fda-3f2f4ec0760b
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-125093
       password: d7zh2lMrXNH5+8+8pKzlxiCU9NN022ih+uAyxj5d4qo=
@@ -15,6 +6,16 @@ proxies:
       server: 102.129.229.85
       type: ss
       udp: true
+    - name: vless-277255316
+      network: ws
+      port: 443
+      server: www.true.th
+      servername: d1yxsk0zprgivr.cloudfront.net
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7ce54bb3-d612-4aa7-be08-089d3c461d53
     - name: vless-335155323
       network: ws
       port: 443
@@ -25,30 +26,21 @@ proxies:
       type: vless
       udp: true
       uuid: 7ce54bb3-d612-4aa7-be08-089d3c461d53
-    - name: vless-324633058
-      network: ws
-      port: 80
-      server: www.true.th
-      type: vless
-      udp: true
-      uuid: 63ae5b68-f6f8-432e-b440-d975053cfbc2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-347603535
         - shadowsocks-125093
+        - vless-277255316
         - vless-335155323
-        - vless-324633058
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-347603535
         - shadowsocks-125093
+        - vless-277255316
         - vless-335155323
-        - vless-324633058
       type: select
 rules:
     - MATCH,select

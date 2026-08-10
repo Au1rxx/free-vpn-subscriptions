@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-357997124
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.7
+      skip-cert-verify: false
+      sni: default.fastly.com
+      type: trojan
+      udp: true
     - name: vless-356463261
       network: tcp
       port: 2056
@@ -47,15 +55,6 @@ proxies:
       type: vless
       udp: true
       uuid: a06119a7-4f1a-4592-86d9-e050a332b2b3
-    - alterId: 0
-      cipher: auto
-      name: vmess-347603509
-      network: tcp
-      port: 2095
-      server: ape.malwarewatch.info
-      type: vmess
-      udp: true
-      uuid: e10b6c95-7923-471a-9967-73ee7cf26cea
     - name: vless-349736912
       network: tcp
       port: 22222
@@ -133,15 +132,6 @@ proxies:
       type: vless
       udp: true
       uuid: 83cfaa27-1c29-4cfe-8953-0e18a03cc7ab
-    - alterId: 0
-      cipher: auto
-      name: vmess-346091345
-      network: tcp
-      port: 2095
-      server: ape.malwarewatch.info
-      type: vmess
-      udp: true
-      uuid: e10b6c95-7923-471a-9967-73ee7cf26cea
     - name: vless-351822954
       network: ws
       port: 2053
@@ -152,6 +142,20 @@ proxies:
       type: vless
       udp: true
       uuid: 1b6410b4-0c59-4a91-9e5e-d74557677dbb
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-356529354
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: c9FNVDSx_oUTDFW0JewGq511wlGweUkQGgPPY9vsCVM
+        short-id: 08804e078e1257c8
+      server: 188.225.72.231
+      servername: stratix.orbvia.online
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1bced29a-3051-42b8-b393-005135b97616
     - name: vless-351822955
       network: ws
       port: 2053
@@ -330,11 +334,32 @@ proxies:
       server: 209.46.102.22
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-360153941
+      password: 595096fe-fa20-4660-7f54-516f286ad65f=
+      port: 33651
+      server: panel4.lavazemtahrirr.ir
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-345555291
+      password: ZAFTgqKMjkPWM47BNc0gJG7ekoLaa+NOgeuUfA2Yb5M=
+      port: 56985
+      server: e3.cover20.ir
+      type: ss
+      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-11078
       password: XKFKl2rULjIp74
       port: 8008
       server: 185.226.172.8
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-276
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 213.202.208.199
       type: ss
       udp: true
     - name: trojan-322723944
@@ -369,14 +394,6 @@ proxies:
       sni: default.fastly.com
       type: trojan
       udp: true
-    - name: trojan-357997124
-      password: MiTiVPN
-      port: 443
-      server: 151.101.56.7
-      skip-cert-verify: false
-      sni: default.fastly.com
-      type: trojan
-      udp: true
     - name: trojan-328213265
       password: MiTiVPN
       port: 443
@@ -403,43 +420,17 @@ proxies:
       type: vless
       udp: true
       uuid: 9500cf8b-020a-4a70-906c-e14bb5375875
-    - client-fingerprint: chrome
-      name: vless-279518855
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: S8O8R938N960cpQfIIDXsJTxeGAkbVv6PlIqP0-d30w
-        short-id: 1ea59febb8d4fc8e
-      server: api.noneok.com
-      servername: api.noneok.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a8e3155b-ceb1-4fcb-bc0c-2e77ec005401
-    - client-fingerprint: chrome
-      name: vless-270540227
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: S8O8R938N960cpQfIIDXsJTxeGAkbVv6PlIqP0-d30w
-        short-id: 1ea59febb8d4fc8e
-      server: 88.216.220.87
-      servername: api.noneok.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a8e3155b-ceb1-4fcb-bc0c-2e77ec005401
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-357997124
         - vless-356463261
         - vless-349780709
         - vless-349736913
         - vless-349780706
         - vless-349780707
         - vless-351853347
-        - vmess-347603509
         - vless-349736912
         - vless-349780708
         - vless-355439185
@@ -447,8 +438,8 @@ proxy-groups:
         - vless-351857345
         - hysteria2-355425185
         - vless-355454185
-        - vmess-346091345
         - vless-351822954
+        - vless-356529354
         - vless-351822955
         - hysteria2-248709607
         - hysteria2-310636726
@@ -474,29 +465,29 @@ proxy-groups:
         - hysteria2-335125327
         - hysteria2-71125758
         - shadowsocks-209
+        - shadowsocks-360153941
+        - shadowsocks-345555291
         - shadowsocks-11078
+        - shadowsocks-276
         - trojan-322723944
         - trojan-303521548
         - trojan-315414971
         - trojan-335135334
-        - trojan-357997124
         - trojan-328213265
         - trojan-322724944
         - vless-332701846
-        - vless-279518855
-        - vless-270540227
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-357997124
         - vless-356463261
         - vless-349780709
         - vless-349736913
         - vless-349780706
         - vless-349780707
         - vless-351853347
-        - vmess-347603509
         - vless-349736912
         - vless-349780708
         - vless-355439185
@@ -504,8 +495,8 @@ proxy-groups:
         - vless-351857345
         - hysteria2-355425185
         - vless-355454185
-        - vmess-346091345
         - vless-351822954
+        - vless-356529354
         - vless-351822955
         - hysteria2-248709607
         - hysteria2-310636726
@@ -531,17 +522,17 @@ proxy-groups:
         - hysteria2-335125327
         - hysteria2-71125758
         - shadowsocks-209
+        - shadowsocks-360153941
+        - shadowsocks-345555291
         - shadowsocks-11078
+        - shadowsocks-276
         - trojan-322723944
         - trojan-303521548
         - trojan-315414971
         - trojan-335135334
-        - trojan-357997124
         - trojan-328213265
         - trojan-322724944
         - vless-332701846
-        - vless-279518855
-        - vless-270540227
       type: select
 rules:
     - MATCH,select

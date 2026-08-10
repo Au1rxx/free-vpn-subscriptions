@@ -13,6 +13,13 @@ proxies:
       server: 38.180.113.194
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-360153942
+      password: LHZzf4y0j2WQlZsTh0NzPxVmTYufR-TA
+      port: 1080
+      server: sub.almavpn.shop
+      type: ss
+      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-11086
       password: faBAoD54k87UJG7
@@ -20,29 +27,14 @@ proxies:
       server: 185.123.101.64
       type: ss
       udp: true
-    - name: vless-332701908
-      network: grpc
-      port: 8443
-      server: 185.39.204.155
-      type: vless
-      udp: true
-      uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
-    - name: vless-212135092
-      network: grpc
-      port: 8443
-      server: 185.39.204.155
-      type: vless
-      udp: true
-      uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-356463262
         - shadowsocks-128223
+        - shadowsocks-360153942
         - shadowsocks-11086
-        - vless-332701908
-        - vless-212135092
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -50,9 +42,8 @@ proxy-groups:
         - auto
         - vless-356463262
         - shadowsocks-128223
+        - shadowsocks-360153942
         - shadowsocks-11086
-        - vless-332701908
-        - vless-212135092
       type: select
 rules:
     - MATCH,select
