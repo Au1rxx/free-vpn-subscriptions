@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-344505608
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: OFmJtVi6OB9E6KIc5QV5YmoouimRFc-Se9hICjtV8hQ
-        short-id: ""
-      server: 143.246.194.26
-      servername: sw.rexten.cc
-      tls: true
-      type: vless
-      udp: true
-      uuid: f61025f4-7973-4e3e-883c-a0fe85f0489c
     - cipher: aes-256-cfb
       name: shadowsocks-310636689
       password: amazonskr05
@@ -27,30 +13,19 @@ proxies:
       server: 13.61.13.49
       type: ss
       udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-310636691
-      password: amazonskr05
-      port: 443
-      server: 13.50.4.72
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-344505608
         - shadowsocks-310636689
         - shadowsocks-262859887
-        - shadowsocks-310636691
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-344505608
         - shadowsocks-310636689
         - shadowsocks-262859887
-        - shadowsocks-310636691
       type: select
 rules:
     - MATCH,select

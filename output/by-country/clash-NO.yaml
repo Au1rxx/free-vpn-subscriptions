@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: chrome
+      name: vless-356461263
+      network: tcp
+      port: 6800
+      reality-opts:
+        public-key: lQbgwNDYw6Zbjdim0JtXUarzb-3GSjDvtX6FJYZD9Qo
+        short-id: ""
+      server: no-fardad.oorluma.ir
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 73435d4e-2ac1-4dba-900e-81aac3dc5913
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-231
       password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
@@ -10,12 +23,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-356461263
         - shadowsocks-231
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-356461263
         - shadowsocks-231
       type: select
 rules:
