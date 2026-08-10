@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-349689743
+      password: 6b39ae3234dfd68b
+      port: 10808
+      server: 185.22.155.162
+      type: ss
+      udp: true
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-347636096
@@ -31,6 +38,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-349689743
         - vless-347636096
         - vless-347603545
       type: url-test
@@ -38,6 +46,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-349689743
         - vless-347636096
         - vless-347603545
       type: select
