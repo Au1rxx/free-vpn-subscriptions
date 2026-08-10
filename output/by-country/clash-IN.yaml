@@ -1,4 +1,20 @@
 proxies:
+    - name: trojan-336694500
+      password: a62b8eeb-dc53-4462-9ac9-ba889618ff8f
+      port: 24408
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-336694499
+      password: a62b8eeb-dc53-4462-9ac9-ba889618ff8f
+      port: 24407
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-25686
@@ -26,6 +42,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-336694500
+        - trojan-336694499
         - vmess-25686
         - shadowsocks-27048
         - shadowsocks-125111
@@ -34,6 +52,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-336694500
+        - trojan-336694499
         - vmess-25686
         - shadowsocks-27048
         - shadowsocks-125111
