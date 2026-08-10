@@ -1,23 +1,33 @@
 proxies:
-    - name: trojan-192569864
-      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+    - name: trojan-119270
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20056
-      server: oplosgru-c.catcat321.com
+      server: 45.67.201.210
       skip-cert-verify: true
-      sni: oplosgru-c.catcat321.com
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-202722757
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20120
+      server: oplosgru-c.catcat321.com
+      skip-cert-verify: false
+      sni: hk.catxstar.com
       type: trojan
       udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-192569864
+        - trojan-119270
+        - trojan-202722757
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-192569864
+        - trojan-119270
+        - trojan-202722757
       type: select
 rules:
     - MATCH,select

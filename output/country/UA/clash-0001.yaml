@@ -1,23 +1,63 @@
 proxies:
-    - name: trojan-192569962
+    - name: trojan-194707948
       password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20066
+      server: oplosgru-c.catcat321.com
+      skip-cert-verify: true
+      sni: oplosgru-c.catcat321.com
+      type: trojan
+      udp: true
+    - name: trojan-200254603
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20066
+      server: 157.254.38.210
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-268441765
+      password: 41c406e2-12b5-41f2-a329-d0621052d675
+      port: 20066
+      server: hkdcrtc-e.catcat321.com
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-270658236
+      password: 41c406e2-12b5-41f2-a329-d0621052d675
+      port: 20066
+      server: 157.254.38.210
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-271216292
+      password: 41c406e2-12b5-41f2-a329-d0621052d675
       port: 20066
       server: hkdcrtc-e.catcat321.com
       skip-cert-verify: true
-      sni: hkdcrtc-e.catcat321.com
+      sni: ""
       type: trojan
       udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-192569962
+        - trojan-194707948
+        - trojan-200254603
+        - trojan-268441765
+        - trojan-270658236
+        - trojan-271216292
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-192569962
+        - trojan-194707948
+        - trojan-200254603
+        - trojan-268441765
+        - trojan-270658236
+        - trojan-271216292
       type: select
 rules:
     - MATCH,select

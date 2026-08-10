@@ -1,17 +1,38 @@
 proxies:
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-194753187
+      network: tcp
+      port: 13443
+      reality-opts:
+        public-key: gc9oXe37KCCm3J1dJ03wdGsnxPBdeEkRPOvl_t-vfVM
+        short-id: a7f3c91b2e6d84c0
+      server: 195.123.208.92
+      servername: auto.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: fc1b3bda-b226-452a-8c5c-b0e36a1f8f88
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-270717475
+      network: tcp
+      port: 13443
+      reality-opts:
+        public-key: gc9oXe37KCCm3J1dJ03wdGsnxPBdeEkRPOvl_t-vfVM
+        short-id: a7f3c91b2e6d84c0
+      server: 195.123.208.92
+      servername: auto.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: fc1b3bda-b226-452a-8c5c-b0e36a1f8f88
     - name: hysteria2-248653949
       password: vpn-hy2-lv-2026
       port: 8444
       server: 185.236.22.119
       skip-cert-verify: true
       sni: ""
-      type: hysteria2
-    - name: hysteria2-232798723
-      password: vpn-hy2-lv-2026
-      port: 8444
-      server: 185.236.22.119
-      skip-cert-verify: true
-      sni: 185.236.22.119
       type: hysteria2
     - name: vless-51336384
       network: tcp
@@ -31,8 +52,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-194753187
+        - vless-270717475
         - hysteria2-248653949
-        - hysteria2-232798723
         - vless-51336384
         - vless-51336385
       type: url-test
@@ -40,8 +62,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-194753187
+        - vless-270717475
         - hysteria2-248653949
-        - hysteria2-232798723
         - vless-51336384
         - vless-51336385
       type: select
