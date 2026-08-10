@@ -1,4 +1,20 @@
 proxies:
+    - name: trojan-351803523
+      password: 2fc2268f-8483-499f-b05f-e0f682f19d61
+      port: 24407
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-351803524
+      password: 2fc2268f-8483-499f-b05f-e0f682f19d61
+      port: 24408
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-344505630
@@ -45,6 +61,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-351803523
+        - trojan-351803524
         - vless-344505630
         - vless-347654097
         - shadowsocks-125111
@@ -54,6 +72,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-351803523
+        - trojan-351803524
         - vless-344505630
         - vless-347654097
         - shadowsocks-125111

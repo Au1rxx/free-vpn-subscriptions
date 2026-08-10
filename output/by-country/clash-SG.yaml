@@ -1,6 +1,20 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-351837528
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: EiIdnnsMW7waNJlc0R6BLwMArlo5yfuy_MJmyYDHT2M
+        short-id: 3147cef25996255f
+      server: 140.245.42.185
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 55f6633c-51d4-46d0-ad36-532a42fcdcb6
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-346111108
       network: tcp
       port: 443
@@ -70,6 +84,20 @@ proxies:
       udp: true
       uuid: f12bbae7-fd8e-4430-8420-fcbd61e73cd7
     - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-351873073
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: Q-KGWRW9iVz7ZuDV1e25zguf2XxbFXiGlOJjwWJ0diA
+        short-id: cb9bc58a5976598a
+      server: 149.118.62.150
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f12bbae7-fd8e-4430-8420-fcbd61e73cd7
+    - client-fingerprint: chrome
       name: vless-347628098
       network: tcp
       port: 8686
@@ -77,6 +105,19 @@ proxies:
         public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
         short-id: 628b3c90c98ead4f
       server: 13.212.69.215
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
+    - client-fingerprint: chrome
+      name: vless-351822951
+      network: tcp
+      port: 8686
+      reality-opts:
+        public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
+        short-id: 628b3c90c98ead4f
+      server: 13.214.139.74
       servername: www.apple.com
       tls: true
       type: vless
@@ -120,16 +161,6 @@ proxies:
       type: vless
       udp: true
       uuid: 3534d1f5-cf1d-490c-adbe-7365f2ff0151
-    - name: vless-339758478
-      network: ws
-      port: 443
-      server: 172.66.44.97
-      servername: josni.hoyes.cloudns.ch
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 83afd88f-200f-4d89-bfc7-66eff160c1d8
     - name: vless-347641098
       network: ws
       port: 443
@@ -698,20 +729,36 @@ proxies:
       type: vless
       udp: true
       uuid: 1bc380b1-cff7-446f-b13f-5c0ad29fc75a
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-12945891
+      network: tcp
+      port: 19261
+      reality-opts:
+        public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+        short-id: 48050fab
+      server: 103.106.229.190
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 814bd064-544d-4255-a070-5705c03f6da9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-351837528
         - vless-346111108
         - vless-343537281
         - vless-344505685
         - vless-344505684
         - vless-346118728
+        - vless-351873073
         - vless-347628098
+        - vless-351822951
         - vless-346171895
         - vless-347641099
         - vless-344505675
-        - vless-339758478
         - vless-347641098
         - vless-344505579
         - vless-344505665
@@ -768,21 +815,24 @@ proxy-groups:
         - vless-13097683
         - vless-335074406
         - vless-324423666
+        - vless-12945891
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-351837528
         - vless-346111108
         - vless-343537281
         - vless-344505685
         - vless-344505684
         - vless-346118728
+        - vless-351873073
         - vless-347628098
+        - vless-351822951
         - vless-346171895
         - vless-347641099
         - vless-344505675
-        - vless-339758478
         - vless-347641098
         - vless-344505579
         - vless-344505665
@@ -839,6 +889,7 @@ proxy-groups:
         - vless-13097683
         - vless-335074406
         - vless-324423666
+        - vless-12945891
       type: select
 rules:
     - MATCH,select
