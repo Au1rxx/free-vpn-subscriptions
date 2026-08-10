@@ -1,6 +1,53 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-339755471
+      password: IlSY+D+ttxp8OM8tXCCsWnKh3Eh6Kl4rAAv3nE0X08Q=
+      port: 56985
+      server: e3.cover20.ir
+      type: ss
+      udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-339761476
+      network: tcp
+      port: 1013
+      server: 176.120.17.21
+      servername: astra.iraniangamersclub.ir
+      skip-cert-verify: false
+      tls: true
+      type: vmess
+      udp: true
+      uuid: a5f72792-832a-46a0-b584-ed0eba9741e0
+    - name: vless-339831788
+      network: tcp
+      port: 22222
+      server: 3.126.61.199
+      type: vless
+      udp: true
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
     - name: vless-334979663
       network: tcp
+      port: 2096
+      server: 155.254.35.31
+      type: vless
+      udp: true
+      uuid: de9fe68c-d7ff-4fed-8c24-9cf89e14e54a
+    - name: vless-339803788
+      network: tcp
+      port: 2096
+      server: 155.254.35.31
+      type: vless
+      udp: true
+      uuid: de9fe68c-d7ff-4fed-8c24-9cf89e14e54a
+    - name: vless-339831789
+      network: tcp
+      port: 22223
+      server: 3.126.61.199
+      type: vless
+      udp: true
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+    - name: vless-341324480
+      network: raw
       port: 2096
       server: 155.254.35.31
       type: vless
@@ -62,6 +109,13 @@ proxies:
       type: vless
       udp: true
       uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
+    - name: vless-341324479
+      network: raw
+      port: 5794
+      server: 178.83.46.30
+      type: vless
+      udp: true
+      uuid: ddd72e51-9224-43a2-b3a0-9c4170f78ed1
     - name: hysteria2-335125327
       password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
       port: 8443
@@ -464,6 +518,20 @@ proxies:
       type: vless
       udp: true
       uuid: 76713d07-5a6b-49c2-abd8-bc450a2fa7fc
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-339869788
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: qTfZpilVyQrFDIgxmEsd18Ph3c_-8O-R_af4o_WQ_Tg
+        short-id: f74c6a18133e2e72
+      server: fsur.noode.work
+      servername: johnydeep.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 528c9248-7b50-45fb-9188-e46d889dafe6
     - name: hysteria2-335068379
       password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
       port: 8443
@@ -1096,23 +1164,22 @@ proxies:
       sni: default.fastly.com
       type: trojan
       udp: true
-    - name: trojan-325097933
-      password: MiTiVPN
-      port: 443
-      server: 104.254.140.62
-      skip-cert-verify: false
-      sni: ddp-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.kingnetwork.ir
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-339755471
+        - vmess-339761476
+        - vless-339831788
         - vless-334979663
+        - vless-339803788
+        - vless-339831789
+        - vless-341324480
         - vless-303648449
         - vless-325101948
         - vless-279516862
         - vless-335150339
+        - vless-341324479
         - hysteria2-335125327
         - vless-303543547
         - vless-330554942
@@ -1146,6 +1213,7 @@ proxy-groups:
         - vless-335149356
         - vless-335149354
         - vless-277255314
+        - vless-339869788
         - hysteria2-335068379
         - trojan-335135334
         - vless-335149355
@@ -1210,17 +1278,23 @@ proxy-groups:
         - trojan-315414971
         - trojan-285797946
         - trojan-328213265
-        - trojan-325097933
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-339755471
+        - vmess-339761476
+        - vless-339831788
         - vless-334979663
+        - vless-339803788
+        - vless-339831789
+        - vless-341324480
         - vless-303648449
         - vless-325101948
         - vless-279516862
         - vless-335150339
+        - vless-341324479
         - hysteria2-335125327
         - vless-303543547
         - vless-330554942
@@ -1254,6 +1328,7 @@ proxy-groups:
         - vless-335149356
         - vless-335149354
         - vless-277255314
+        - vless-339869788
         - hysteria2-335068379
         - trojan-335135334
         - vless-335149355
@@ -1318,7 +1393,6 @@ proxy-groups:
         - trojan-315414971
         - trojan-285797946
         - trojan-328213265
-        - trojan-325097933
       type: select
 rules:
     - MATCH,select
