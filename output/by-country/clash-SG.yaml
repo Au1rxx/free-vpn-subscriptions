@@ -7,6 +7,19 @@ proxies:
       udp: true
       uuid: 999c9769-28db-425a-84d8-ccd7a3321406
     - client-fingerprint: chrome
+      name: vless-242881566
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: T4CMxxAJiCcrGk2r87kMkDcvmfNs3nL-gKleaE1wTHQ
+        short-id: fb7ebc9996caf9ac
+      server: 217.217.254.126
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6b408e62-c5d5-45e1-ae3a-4c9833d46d82
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-189834220
       network: raw
@@ -20,27 +33,6 @@ proxies:
       type: vless
       udp: true
       uuid: 814bd064-544d-4255-a070-5705c03f6da9
-    - name: vless-178016886
-      network: ws
-      port: 8880
-      server: 172.64.80.1
-      type: vless
-      udp: true
-      uuid: 84270e8b-567e-45c6-b2f2-56ec9a67ae1e
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-209446161
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: bMcyxNueltQhz5Kuxcf8odDStWHowYfLhKNdCbUweDc
-        short-id: d1742269
-      server: 91.192.81.214
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 607801ac-dbdd-4938-a167-129015d9978e
     - name: hysteria2-48396260
       password: qQe1z5kU8kN6SlKnDt9Ru3Qp
       port: 443
@@ -196,16 +188,6 @@ proxies:
       type: vless
       udp: true
       uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
-    - name: vless-326744248
-      network: ws
-      port: 443
-      server: 162.159.44.195
-      servername: hhlfy.twiladaphne.ndjp.net
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
     - name: vless-239178035
       network: ws
       port: 8880
@@ -214,6 +196,16 @@ proxies:
       udp: true
       uuid: 160ca353-676d-4b7f-a041-0289e388b865
     - name: vless-144479
+      network: ws
+      port: 443
+      server: 104.18.34.124
+      servername: hhlfy.twiladaphne.ndjp.net
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
+    - name: vless-13142558
       network: ws
       port: 443
       server: 104.18.34.124
@@ -233,24 +225,13 @@ proxies:
       type: vless
       udp: true
       uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
-    - name: vless-299812589
-      network: ws
-      port: 443
-      server: 172.66.44.97
-      servername: josni.hoyes.cloudns.ch
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 83afd88f-200f-4d89-bfc7-66eff160c1d8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-2326763
+        - vless-242881566
         - vless-189834220
-        - vless-178016886
-        - vless-209446161
         - hysteria2-48396260
         - hysteria2-48396255
         - hysteria2-48396256
@@ -271,20 +252,18 @@ proxy-groups:
         - vless-95106
         - vless-38398
         - vless-5041085
-        - vless-326744248
         - vless-239178035
         - vless-144479
+        - vless-13142558
         - vless-13065303
-        - vless-299812589
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-2326763
+        - vless-242881566
         - vless-189834220
-        - vless-178016886
-        - vless-209446161
         - hysteria2-48396260
         - hysteria2-48396255
         - hysteria2-48396256
@@ -305,11 +284,10 @@ proxy-groups:
         - vless-95106
         - vless-38398
         - vless-5041085
-        - vless-326744248
         - vless-239178035
         - vless-144479
+        - vless-13142558
         - vless-13065303
-        - vless-299812589
       type: select
 rules:
     - MATCH,select
