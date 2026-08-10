@@ -1,16 +1,16 @@
 proxies:
-    - name: hysteria2-273329903
-      password: 71cada65-d23e-418c-88e4-a06188d14689
-      port: 443
-      server: it-one.quiet-rogue.site
-      skip-cert-verify: true
-      sni: it-one.quiet-rogue.site
-      type: hysteria2
     - name: hysteria2-271206430
       password: 71cada65-d23e-418c-88e4-a06188d14689
       port: 443
       server: it-one.quiet-rogue.site
       skip-cert-verify: false
+      sni: it-one.quiet-rogue.site
+      type: hysteria2
+    - name: hysteria2-273329903
+      password: 71cada65-d23e-418c-88e4-a06188d14689
+      port: 443
+      server: it-one.quiet-rogue.site
+      skip-cert-verify: true
       sni: it-one.quiet-rogue.site
       type: hysteria2
     - name: hysteria2-290329793
@@ -27,6 +27,13 @@ proxies:
       server: 185.213.20.110
       type: ss
       udp: true
+    - name: vless-2327852
+      network: raw
+      port: 10086
+      server: 204.216.216.23
+      type: vless
+      udp: true
+      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - name: vless-16521
       network: tcp
       port: 10086
@@ -38,20 +45,22 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-273329903
         - hysteria2-271206430
+        - hysteria2-273329903
         - hysteria2-290329793
         - shadowsocks-127110
+        - vless-2327852
         - vless-16521
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-273329903
         - hysteria2-271206430
+        - hysteria2-273329903
         - hysteria2-290329793
         - shadowsocks-127110
+        - vless-2327852
         - vless-16521
       type: select
 rules:

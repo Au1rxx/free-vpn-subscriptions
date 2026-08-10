@@ -13,6 +13,15 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-99676
+      network: tcp
+      port: 22324
+      server: 85.90.217.42
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - name: trojan-116312
       password: 2eutknankxtbgkwcajzt
       port: 52794
@@ -79,19 +88,13 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: hysteria2-271206416
-      password: 18cf8030-1ceb-4b7d-8c0c-c036413c144e
-      port: 4433
-      server: es1.xiaoliyu.cyou
-      skip-cert-verify: true
-      sni: es1.xiaoliyu.cyou
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11052
         - shadowsocks-16132
+        - vmess-99676
         - trojan-116312
         - vmess-2386872
         - trojan-2473912
@@ -100,7 +103,6 @@ proxy-groups:
         - trojan-56203977
         - trojan-80890727
         - trojan-89194153
-        - hysteria2-271206416
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -108,6 +110,7 @@ proxy-groups:
         - auto
         - shadowsocks-11052
         - shadowsocks-16132
+        - vmess-99676
         - trojan-116312
         - vmess-2386872
         - trojan-2473912
@@ -116,7 +119,6 @@ proxy-groups:
         - trojan-56203977
         - trojan-80890727
         - trojan-89194153
-        - hysteria2-271206416
       type: select
 rules:
     - MATCH,select

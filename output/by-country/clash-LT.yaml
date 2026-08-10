@@ -1,0 +1,43 @@
+proxies:
+    - client-fingerprint: firefox
+      name: vless-40219540
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: II9Tn-HPL7xcENiybDfQ_bSw31rSzQbIGYn-hCxdb2w
+        short-id: ccda00cc
+      server: 46.29.234.210
+      servername: www.tradingview.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+    - client-fingerprint: chrome
+      name: vless-35278600
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: II9Tn-HPL7xcENiybDfQ_bSw31rSzQbIGYn-hCxdb2w
+        short-id: ccda00cc
+      server: 46.29.234.210
+      servername: www.tradingview.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-40219540
+        - vless-35278600
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-40219540
+        - vless-35278600
+      type: select
+rules:
+    - MATCH,select

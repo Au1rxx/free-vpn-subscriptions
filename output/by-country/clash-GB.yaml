@@ -13,13 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1e973bda-3a02-4431-9df8-83595f6f65d8
-    - cipher: rc4-md5
-      name: shadowsocks-165
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 146.70.61.37
-      type: ss
-      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-240
       password: RexnBgU7EV5ADxG
@@ -27,21 +20,46 @@ proxies:
       server: 94.156.250.148
       type: ss
       udp: true
+    - cipher: aes-128-gcm
+      name: shadowsocks-227
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.182
+      type: ss
+      udp: true
+    - cipher: rc4-md5
+      name: shadowsocks-165
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.61.37
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: shadowsocks-271
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.181
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-320830489
-        - shadowsocks-165
         - shadowsocks-240
+        - shadowsocks-227
+        - shadowsocks-165
+        - shadowsocks-271
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-320830489
-        - shadowsocks-165
         - shadowsocks-240
+        - shadowsocks-227
+        - shadowsocks-165
+        - shadowsocks-271
       type: select
 rules:
     - MATCH,select
