@@ -1,0 +1,139 @@
+proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-366575667
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8qUm4S6MR9bLa-ZfblO64aKjRIwGEFEwdVIxgz_tbn4
+        short-id: 33b5887524592cad
+      server: arclo.ciphero.xyz
+      servername: arclo.ciphero.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1bced29a-3051-42b8-b393-005135b97616
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-366580667
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: DUJWZCU-CjH9TglyqNQjydr7sp1ujsn2gHcXGWmgRj8
+        short-id: e0331b94eb540116
+      server: five.neobo-tooth.ru
+      servername: vk.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0c6b632a-cd96-4b74-9b51-151e3b5697db
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-366587667
+      network: tcp
+      port: 20725
+      reality-opts:
+        public-key: hceZHd9X9FSbWGXGgm3OWN-4Au26rrsriTcyHw5M3VU
+        short-id: 0102ac4e
+      server: rm-jp-01.409648.xyz
+      servername: buylite.tv.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6dcb725e-947e-4bbe-bb35-903374d57179
+    - name: vless-368456533
+      network: ws
+      port: 8443
+      server: 193.232.178.149
+      servername: edge.yzkvm.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bba95b1f-f48c-454b-897b-a6c6bc307df1
+    - name: vless-368456534
+      network: ws
+      port: 2087
+      server: 188.164.248.32
+      servername: jcxjcnasvip.jcdenas.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5b06a1b1-8839-4969-874a-3b501528275b
+    - name: vless-368456535
+      network: ws
+      port: 8443
+      server: 8.35.211.224
+      servername: pphmsubs.911388.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2c029086-e4b3-4f22-82d8-b84dd70f243c
+    - name: vless-368456536
+      network: ws
+      port: 2083
+      server: 8.39.125.209
+      servername: pphmsubs.911388.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2c029086-e4b3-4f22-82d8-b84dd70f243c
+    - name: vless-368456537
+      network: ws
+      port: 2083
+      server: 188.164.248.72
+      servername: jcxjcnasvip.jcdenas.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5b06a1b1-8839-4969-874a-3b501528275b
+    - name: vless-368456561
+      network: tcp
+      port: 62145
+      server: 149.130.189.106
+      type: vless
+      udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+    - name: vless-368456562
+      network: tcp
+      port: 62145
+      server: 157.137.234.207
+      type: vless
+      udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-366575667
+        - vless-366580667
+        - vless-366587667
+        - vless-368456533
+        - vless-368456534
+        - vless-368456535
+        - vless-368456536
+        - vless-368456537
+        - vless-368456561
+        - vless-368456562
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-366575667
+        - vless-366580667
+        - vless-366587667
+        - vless-368456533
+        - vless-368456534
+        - vless-368456535
+        - vless-368456536
+        - vless-368456537
+        - vless-368456561
+        - vless-368456562
+      type: select
+rules:
+    - MATCH,select

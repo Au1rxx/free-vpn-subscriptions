@@ -6,17 +6,35 @@ proxies:
       type: vless
       udp: true
       uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+    - name: vless-366391769
+      network: tcp
+      port: 62145
+      server: 158.247.126.107
+      type: vless
+      udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+    - name: vless-366469580
+      network: tcp
+      port: 62145
+      server: 158.247.126.107
+      type: vless
+      udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-362369192
+        - vless-366391769
+        - vless-366469580
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-362369192
+        - vless-366391769
+        - vless-366469580
       type: select
 rules:
     - MATCH,select
