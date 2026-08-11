@@ -1,22 +1,44 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-262859887
-      password: amazonskr05
-      port: 443
-      server: 13.61.13.49
-      type: ss
+    - client-fingerprint: chrome
+      name: vless-368490531
+      network: grpc
+      port: 9878
+      reality-opts:
+        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+        short-id: aabbccdd
+      server: 31.130.151.125
+      servername: dl.google.com
+      tls: true
+      type: vless
       udp: true
+      uuid: 130e6aab-9eba-441e-9021-22cbccc72832
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-366565667
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: EbXSjwJKAI1cmU2TK3af62qS2k58x8Rnct1525c0m1I
+        short-id: 2d127d11297df7de
+      server: 88.216.130.130
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 641baa2f-6f74-4ecf-b948-032d19ba0142
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-262859887
+        - vless-368490531
+        - vless-366565667
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-262859887
+        - vless-368490531
+        - vless-366565667
       type: select
 rules:
     - MATCH,select

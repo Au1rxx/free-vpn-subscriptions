@@ -9,19 +9,6 @@ proxies:
       udp: true
       uuid: 2571f762-03af-4c30-8eb9-6652102e7cd3
     - client-fingerprint: chrome
-      name: vless-356460260
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: wjwbbmCr0pjMb6Qvvcf7KMrE-w92jsqJbrNQy8g5EDg
-        short-id: 617a11ec485b2d90
-      server: 78.17.159.71
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 14927bde-0fc8-447c-8c5f-e7fd1bfc6698
-    - client-fingerprint: chrome
       name: vless-366469577
       network: grpc
       port: 443
@@ -74,25 +61,18 @@ proxies:
       type: vless
       udp: true
       uuid: 0d735822-3785-11f1-b1ef-3e73c4f3b53d
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-356464262
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
-        short-id: ff776ff77be48b88
-      server: pol3.freeinternat.com
-      servername: pol3.freeinternat.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: fbb74aa8-b89a-4f20-9504-6b25aadf6681
     - name: hysteria2-308070007
       password: 7836b28e-8451-4596-ad3e-e3601b2335ba
       port: 8443
       server: 78.159.240.69
       skip-cert-verify: true
+      sni: quic.tyr-agentstvo.tech
+      type: hysteria2
+    - name: hysteria2-356459253
+      password: 7836b28e-8451-4596-ad3e-e3601b2335ba
+      port: 8443
+      server: 78.159.240.69
+      skip-cert-verify: false
       sni: quic.tyr-agentstvo.tech
       type: hysteria2
     - cipher: aes-256-gcm
@@ -101,14 +81,6 @@ proxies:
       port: 5600
       server: 92.118.205.211
       type: ss
-      udp: true
-    - name: trojan-283683743
-      password: ND91608427
-      port: 443
-      server: relaxed-gull.rooster465.autos
-      skip-cert-verify: true
-      sni: relaxed-gull.rooster465.autos
-      type: trojan
       udp: true
     - name: trojan-257074116
       password: ND91608427
@@ -123,6 +95,14 @@ proxies:
       port: 443
       server: relaxed-gull.rooster465.autos
       skip-cert-verify: false
+      sni: relaxed-gull.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-283683743
+      password: ND91608427
+      port: 443
+      server: relaxed-gull.rooster465.autos
+      skip-cert-verify: true
       sni: relaxed-gull.rooster465.autos
       type: trojan
       udp: true
@@ -190,10 +170,10 @@ proxies:
       sni: relaxed-gull.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-275270504
+    - name: trojan-269132010
       password: ND91608427
       port: 443
-      server: 202.78.163.248
+      server: relaxed-gull.rooster465.autos
       skip-cert-verify: false
       sni: relaxed-gull.rooster465.autos
       type: trojan
@@ -230,10 +210,10 @@ proxies:
       sni: discrete-basilisk.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-269132010
+    - name: trojan-275270504
       password: ND91608427
       port: 443
-      server: relaxed-gull.rooster465.autos
+      server: 202.78.163.248
       skip-cert-verify: false
       sni: relaxed-gull.rooster465.autos
       type: trojan
@@ -270,26 +250,10 @@ proxies:
       sni: discrete-basilisk.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-335068471
-      password: ND91608427
-      port: 443
-      server: discrete-basilisk.rooster465.autos
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
     - name: trojan-335212801
       password: ND91608427
       port: 443
       server: 202.78.163.148
-      skip-cert-verify: false
-      sni: discrete-basilisk.rooster465.autos
-      type: trojan
-      udp: true
-    - name: trojan-270681485
-      password: ND91608427
-      port: 443
-      server: discrete-basilisk.rooster465.autos
       skip-cert-verify: false
       sni: discrete-basilisk.rooster465.autos
       type: trojan
@@ -302,22 +266,37 @@ proxies:
       sni: discrete-basilisk.rooster465.autos
       type: trojan
       udp: true
+    - name: trojan-335068471
+      password: ND91608427
+      port: 443
+      server: discrete-basilisk.rooster465.autos
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-270681485
+      password: ND91608427
+      port: 443
+      server: discrete-basilisk.rooster465.autos
+      skip-cert-verify: false
+      sni: discrete-basilisk.rooster465.autos
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-362176259
-        - vless-356460260
         - vless-366469577
         - vless-366469578
         - vless-362383192
         - vless-366273019
-        - vless-356464262
         - hysteria2-308070007
+        - hysteria2-356459253
         - shadowsocks-11081
-        - trojan-283683743
         - trojan-257074116
         - trojan-286091591
+        - trojan-283683743
         - trojan-264886112
         - trojan-293233462
         - trojan-264886067
@@ -326,37 +305,36 @@ proxy-groups:
         - trojan-286085590
         - trojan-264886113
         - trojan-268441964
-        - trojan-275270504
+        - trojan-269132010
         - trojan-270660238
         - trojan-293233464
         - trojan-293233463
         - trojan-268441965
-        - trojan-269132010
+        - trojan-275270504
         - trojan-262786493
         - trojan-286085591
         - trojan-319333043
         - trojan-280054244
-        - trojan-335068471
         - trojan-335212801
-        - trojan-270681485
         - trojan-269060761
+        - trojan-335068471
+        - trojan-270681485
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-362176259
-        - vless-356460260
         - vless-366469577
         - vless-366469578
         - vless-362383192
         - vless-366273019
-        - vless-356464262
         - hysteria2-308070007
+        - hysteria2-356459253
         - shadowsocks-11081
-        - trojan-283683743
         - trojan-257074116
         - trojan-286091591
+        - trojan-283683743
         - trojan-264886112
         - trojan-293233462
         - trojan-264886067
@@ -365,20 +343,20 @@ proxy-groups:
         - trojan-286085590
         - trojan-264886113
         - trojan-268441964
-        - trojan-275270504
+        - trojan-269132010
         - trojan-270660238
         - trojan-293233464
         - trojan-293233463
         - trojan-268441965
-        - trojan-269132010
+        - trojan-275270504
         - trojan-262786493
         - trojan-286085591
         - trojan-319333043
         - trojan-280054244
-        - trojan-335068471
         - trojan-335212801
-        - trojan-270681485
         - trojan-269060761
+        - trojan-335068471
+        - trojan-270681485
       type: select
 rules:
     - MATCH,select
