@@ -12,17 +12,26 @@ proxies:
       type: vless
       udp: true
       uuid: 73435d4e-2ac1-4dba-900e-81aac3dc5913
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-231
+      password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
+      port: 990
+      server: 185.213.23.63
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-370782847
+        - shadowsocks-231
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-370782847
+        - shadowsocks-231
       type: select
 rules:
     - MATCH,select
