@@ -26,12 +26,39 @@ proxies:
       type: vless
       udp: true
       uuid: 641baa2f-6f74-4ecf-b948-032d19ba0142
+    - name: trojan-370766855
+      password: SrELvzRC7y7gMcypgQ8VSSSxzj354XEf
+      port: 5222
+      server: se.netzrun.at
+      skip-cert-verify: false
+      sni: se.netzrun.at
+      type: trojan
+      udp: true
+    - name: trojan-370766848
+      password: SrELvzRC7y7gMcypgQ8VSSSxzj354XEf
+      port: 5222
+      server: dc-109-se.netzrun.at
+      skip-cert-verify: false
+      sni: dc-109-se.netzrun.at
+      type: trojan
+      udp: true
+    - name: trojan-370766854
+      password: SrELvzRC7y7gMcypgQ8VSSSxzj354XEf
+      port: 5222
+      server: se-01.netzrun.at
+      skip-cert-verify: false
+      sni: se-01.netzrun.at
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-368490531
         - vless-366565667
+        - trojan-370766855
+        - trojan-370766848
+        - trojan-370766854
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -39,6 +66,9 @@ proxy-groups:
         - auto
         - vless-368490531
         - vless-366565667
+        - trojan-370766855
+        - trojan-370766848
+        - trojan-370766854
       type: select
 rules:
     - MATCH,select
