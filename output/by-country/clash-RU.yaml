@@ -7,6 +7,13 @@ proxies:
       sni: ru.federal-usa.com
       type: trojan
       udp: true
+    - name: vless-395879279
+      network: ws
+      port: 4100
+      server: 194.26.229.222
+      type: vless
+      udp: true
+      uuid: b3d66abd-ea82-4616-92f0-1dec8d1e4cfc
     - name: vless-391664886
       network: ws
       port: 4100
@@ -22,21 +29,33 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - name: trojan-393751595
+      password: 08QNE5JBq7kTV6b9Dd6e_w-y4WhjMLS9
+      port: 8443
+      server: ru.federal-usa.com
+      skip-cert-verify: false
+      sni: ru.federal-usa.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-387460669
+        - vless-395879279
         - vless-391664886
         - trojan-381343463
+        - trojan-393751595
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-387460669
+        - vless-395879279
         - vless-391664886
         - trojan-381343463
+        - trojan-393751595
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-197468129
+      network: ws
+      port: 8443
+      server: fast.nanniang.top
+      servername: mo-akile.nanniang.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 916e3030-6eac-418b-9402-7508ca7d6280
     - name: trojan-387719476
       password: smart@hkteVBi9aMFp-veBGU72OSCx
       port: 21523
@@ -11,12 +21,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-197468129
         - trojan-387719476
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-197468129
         - trojan-387719476
       type: select
 rules:
