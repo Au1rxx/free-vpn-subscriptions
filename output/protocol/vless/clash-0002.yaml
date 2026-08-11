@@ -1,0 +1,92 @@
+proxies:
+    - name: vless-391805698
+      network: ws
+      port: 443
+      server: x4g-production-c371.up.railway.app
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d8d939d7-a91b-34e9-84ca-836cdea4d0b1
+    - name: vless-391805699
+      network: ws
+      port: 443
+      server: x4g-production-c371.up.railway.app
+      servername: x4g-production-c371.up.railway.app
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d8d939d7-a91b-34e9-84ca-836cdea4d0b1
+    - name: vless-391805700
+      network: ws
+      port: 2053
+      server: 172.67.118.45
+      servername: music1000.melobitmusic1.ir
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: da4747a6-be0d-4c1b-90f4-d82ec3012be2
+    - name: vless-391807698
+      network: tcp
+      port: 22222
+      server: 3.71.241.48
+      type: vless
+      udp: true
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+    - name: vless-391807699
+      network: tcp
+      port: 22223
+      server: 3.71.241.48
+      type: vless
+      udp: true
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+    - name: vless-391807700
+      network: tcp
+      port: 22224
+      server: 3.71.241.48
+      type: vless
+      udp: true
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-391850776
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: cNWgfJHerzIEb0RXxncP8R9Ex8-FkALOtbhneEIHpR0
+        short-id: a1b2c4d4a1b2c5d5
+      server: 85.209.135.10
+      servername: www.sciencedirect.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9500cf8b-020a-4a70-906c-e14bb5375875
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-391805698
+        - vless-391805699
+        - vless-391805700
+        - vless-391807698
+        - vless-391807699
+        - vless-391807700
+        - vless-391850776
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-391805698
+        - vless-391805699
+        - vless-391805700
+        - vless-391807698
+        - vless-391807699
+        - vless-391807700
+        - vless-391850776
+      type: select
+rules:
+    - MATCH,select
