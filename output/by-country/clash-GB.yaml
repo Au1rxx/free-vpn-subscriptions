@@ -6,6 +6,16 @@ proxies:
       type: vless
       udp: true
       uuid: ae1c12b0-df98-5f76-9adc-bd3380a3dbbd
+    - name: vless-404164481
+      network: ws
+      port: 443
+      server: 140.248.186.45
+      servername: ssl.fastly.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: XpnTeam-29
     - name: hysteria2-387719513
       password: 22d891f5-ad85-4824-b0b8-e30cf3d37eb5
       port: 2056
@@ -78,18 +88,12 @@ proxies:
       type: vless
       udp: true
       uuid: SoonTeam
-    - name: vless-334986653
-      network: tcp
-      port: 20190
-      server: 169.197.113.179
-      type: vless
-      udp: true
-      uuid: ad4dd89a-2e4b-4f33-bb96-7e9c4eb85d0b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-395879277
+        - vless-404164481
         - hysteria2-387719513
         - shadowsocks-387719480
         - shadowsocks-227
@@ -100,13 +104,13 @@ proxy-groups:
         - trojan-379268098
         - trojan-387464373
         - vless-335009635
-        - vless-334986653
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-395879277
+        - vless-404164481
         - hysteria2-387719513
         - shadowsocks-387719480
         - shadowsocks-227
@@ -117,7 +121,6 @@ proxy-groups:
         - trojan-379268098
         - trojan-387464373
         - vless-335009635
-        - vless-334986653
       type: select
 rules:
     - MATCH,select

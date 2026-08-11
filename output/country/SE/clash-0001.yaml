@@ -94,20 +94,14 @@ proxies:
       type: vless
       udp: true
       uuid: 5d577f62-28a8-4b7e-9441-9307b6132065
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-393790595
-      network: tcp
-      port: 43821
-      reality-opts:
-        public-key: Xx3r5KsSKa1I8O3avmwMbgXOWj_-MqiqzTO_7BzBxyU
-        short-id: 58c5b3ee013bdc8f
-      server: 62.60.231.42
-      servername: www.twitch.tv
-      tls: true
-      type: vless
+    - name: trojan-404344004
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.0
+      skip-cert-verify: true
+      sni: default.fastly.com
+      type: trojan
       udp: true
-      uuid: f7e0e597-636e-4550-9f54-6ab1c0e8cf49
 proxy-groups:
     - interval: 300
       name: auto
@@ -119,7 +113,7 @@ proxy-groups:
         - vless-366468578
         - vless-377163834
         - vless-387719563
-        - vless-393790595
+        - trojan-404344004
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -132,7 +126,7 @@ proxy-groups:
         - vless-366468578
         - vless-377163834
         - vless-387719563
-        - vless-393790595
+        - trojan-404344004
       type: select
 rules:
     - MATCH,select

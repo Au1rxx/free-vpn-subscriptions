@@ -1,11 +1,32 @@
 proxies:
-    - name: vless-393775596
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-402297862
       network: tcp
-      port: 62145
-      server: 143.47.188.131
+      port: 443
+      reality-opts:
+        public-key: X6zcH8pCUXrauNQvbNkm8e_oTdB0wOr8eCMCzs3b1Tc
+        short-id: ""
+      server: 94.249.225.81
+      servername: warm-gazelle.cdn.cachefleet.com
+      tls: true
       type: vless
       udp: true
-      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+      uuid: f4dbc770-016d-4a0f-82f0-d83ee6f45da3
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-402297863
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: X6zcH8pCUXrauNQvbNkm8e_oTdB0wOr8eCMCzs3b1Tc
+        short-id: ""
+      server: 94.249.225.83
+      servername: plucky-kestrel.cdn.cachefleet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f4dbc770-016d-4a0f-82f0-d83ee6f45da3
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-400117110
@@ -71,6 +92,17 @@ proxies:
       type: vless
       udp: true
       uuid: 6aa2af7b-352b-436b-85e8-272d50f6500c
+    - flow: xtls-rprx-vision
+      name: vless-404163493
+      network: tcp
+      port: 443
+      server: 64.188.77.184
+      servername: nl13.fast-connect-service.site
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: "8033102198"
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-398009838
@@ -85,16 +117,16 @@ proxies:
       type: vless
       udp: true
       uuid: f4dbc770-016d-4a0f-82f0-d83ee6f45da3
-    - name: vless-391805698
+    - name: vless-404162482
       network: ws
       port: 443
-      server: x4g-production-c371.up.railway.app
-      servername: ""
+      server: 69.46.46.123
+      servername: x4g-production-4b3e8.up.railway.app
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: d8d939d7-a91b-34e9-84ca-836cdea4d0b1
+      uuid: 23182cbe-e05a-80f3-8f8b-230d00c68b6e
     - flow: xtls-rprx-vision
       name: vless-398007832
       network: tcp
@@ -982,10 +1014,10 @@ proxies:
       type: vless
       udp: true
       uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
-    - name: vless-381448988
+    - name: vless-393775596
       network: tcp
       port: 62145
-      server: 92.5.237.183
+      server: 143.47.188.131
       type: vless
       udp: true
       uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
@@ -996,18 +1028,33 @@ proxies:
       type: vless
       udp: true
       uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+    - client-fingerprint: firefox
+      name: vless-194881715
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: VmBEjLUpiEnoNIaPNGDfVPIOzH_ktSDdsGGAvissxgI
+        short-id: ""
+      server: 2.26.82.237
+      servername: speed.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 906be882-7f16-47c3-8702-59db2ada9688
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-393775596
+        - vless-402297862
+        - vless-402297863
         - vless-400117110
         - vless-393956869
         - vless-400116103
         - vless-393858045
         - vless-393858046
+        - vless-404163493
         - vless-398009838
-        - vless-391805698
+        - vless-404162482
         - vless-398007832
         - hysteria2-335172120
         - hysteria2-283692019
@@ -1134,21 +1181,24 @@ proxy-groups:
         - trojan-387717296
         - vless-332701905
         - vless-211490815
-        - vless-381448988
+        - vless-393775596
         - vless-366304219
+        - vless-194881715
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-393775596
+        - vless-402297862
+        - vless-402297863
         - vless-400117110
         - vless-393956869
         - vless-400116103
         - vless-393858045
         - vless-393858046
+        - vless-404163493
         - vless-398009838
-        - vless-391805698
+        - vless-404162482
         - vless-398007832
         - hysteria2-335172120
         - hysteria2-283692019
@@ -1275,8 +1325,9 @@ proxy-groups:
         - trojan-387717296
         - vless-332701905
         - vless-211490815
-        - vless-381448988
+        - vless-393775596
         - vless-366304219
+        - vless-194881715
       type: select
 rules:
     - MATCH,select
