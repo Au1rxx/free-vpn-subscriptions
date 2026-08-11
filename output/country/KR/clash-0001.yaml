@@ -6,15 +6,6 @@ proxies:
       server: 141.164.45.187
       type: ss
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-244
-      network: ws
-      port: 443
-      server: 152.67.218.38
-      type: vmess
-      udp: true
-      uuid: b5e9480a-b7aa-40a4-f9a7-5299b5e363b4
     - cipher: aes-256-cfb
       name: shadowsocks-260
       password: qwerREWQ@@
@@ -45,6 +36,17 @@ proxies:
       server: 211.178.105.134
       type: ss
       udp: true
+    - flow: xtls-rprx-vision
+      name: vless-46374
+      network: tcp
+      port: 443
+      server: 132.145.89.30
+      servername: ako.pagate.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e6d8d743-a9bc-48c9-be99-8f3cc94d16e1
     - alterId: 0
       cipher: auto
       name: vmess-96535
@@ -165,15 +167,6 @@ proxies:
       type: vless
       udp: true
       uuid: df26029b-bffe-4ce2-9246-25b52ed2b1c7
-    - alterId: 0
-      cipher: auto
-      name: vmess-2393100
-      network: ws
-      port: 443
-      server: 152.67.218.38
-      type: vmess
-      udp: true
-      uuid: b5e9480a-b7aa-40a4-f9a7-5299b5e363b4
     - cipher: aes-256-gcm
       name: shadowsocks-4892328
       password: faBAoD54k87UJG7
@@ -362,15 +355,6 @@ proxies:
       type: vless
       udp: true
       uuid: 814bd064-544d-4255-a070-5705c03f6da9
-    - alterId: 0
-      cipher: auto
-      name: vmess-245482709
-      network: ws
-      port: 443
-      server: 152.67.218.38
-      type: vmess
-      udp: true
-      uuid: b5e9480a-b7aa-40a4-f9a7-5299b5e363b4
     - name: trojan-255434904
       password: ND91608427
       port: 443
@@ -2209,20 +2193,6 @@ proxies:
       uuid: 53b59cb5-c741-3399-9065-93dc34685f5b
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-366556667
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: fI-eoLmyyeYXgUHr2SWzHcwxkhxmDj2QBnivpUPYfVY
-        short-id: e3db542f549f5504
-      server: 52.141.0.244
-      servername: www.stanford.edu
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5822b465-036b-4a3b-89d0-b3e52ae20815
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-370779846
       network: raw
       port: 443
@@ -2255,16 +2225,29 @@ proxies:
       type: vless
       udp: true
       uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
+    - client-fingerprint: chrome
+      name: vless-376121748
+      network: tcp
+      port: 8686
+      reality-opts:
+        public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
+        short-id: 628b3c90c98ead4f
+      server: 54.180.145.58
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-210
-        - vmess-244
         - shadowsocks-260
         - vmess-263
         - shadowsocks-283
         - shadowsocks-287
+        - vless-46374
         - vmess-96535
         - shadowsocks-125593
         - shadowsocks-125594
@@ -2281,7 +2264,6 @@ proxy-groups:
         - vless-2081047
         - vless-2322618
         - vless-2342799
-        - vmess-2393100
         - shadowsocks-4892328
         - shadowsocks-4892330
         - vmess-5259790
@@ -2301,7 +2283,6 @@ proxy-groups:
         - hysteria2-215228348
         - vless-221036763
         - vless-233010793
-        - vmess-245482709
         - trojan-255434904
         - trojan-255434905
         - trojan-255434906
@@ -2531,21 +2512,21 @@ proxy-groups:
         - trojan-344504071
         - vless-344505593
         - vless-344505631
-        - vless-366556667
         - vless-370779846
         - vless-370888052
         - vless-372866002
+        - vless-376121748
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-210
-        - vmess-244
         - shadowsocks-260
         - vmess-263
         - shadowsocks-283
         - shadowsocks-287
+        - vless-46374
         - vmess-96535
         - shadowsocks-125593
         - shadowsocks-125594
@@ -2562,7 +2543,6 @@ proxy-groups:
         - vless-2081047
         - vless-2322618
         - vless-2342799
-        - vmess-2393100
         - shadowsocks-4892328
         - shadowsocks-4892330
         - vmess-5259790
@@ -2582,7 +2562,6 @@ proxy-groups:
         - hysteria2-215228348
         - vless-221036763
         - vless-233010793
-        - vmess-245482709
         - trojan-255434904
         - trojan-255434905
         - trojan-255434906
@@ -2812,10 +2791,10 @@ proxy-groups:
         - trojan-344504071
         - vless-344505593
         - vless-344505631
-        - vless-366556667
         - vless-370779846
         - vless-370888052
         - vless-372866002
+        - vless-376121748
       type: select
 rules:
     - MATCH,select
