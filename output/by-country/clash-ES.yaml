@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-372933402
+      password: SrELvzRC7y7gMcypgQ8VSSSxzj354XEf
+      port: 5222
+      server: dc-106-es.netzrun.at
+      skip-cert-verify: false
+      sni: dc-106-es.netzrun.at
+      type: trojan
+      udp: true
     - name: trojan-370766847
       password: SrELvzRC7y7gMcypgQ8VSSSxzj354XEf
       port: 5222
@@ -21,15 +29,7 @@ proxies:
       server: 140.174.184.5
       type: ss
       udp: true
-    - name: trojan-80890727
-      password: 2eutknankxtbgkwcajzt
-      port: 52794
-      server: 193.148.19.213
-      skip-cert-verify: true
-      sni: ""
-      type: trojan
-      udp: true
-    - name: trojan-56203977
+    - name: trojan-46244303
       password: 2eutknankxtbgkwcajzt
       port: 52794
       server: 193.148.19.213
@@ -43,14 +43,6 @@ proxies:
       server: 193.148.19.213
       skip-cert-verify: true
       sni: ""
-      type: trojan
-      udp: true
-    - name: trojan-46244303
-      password: 2eutknankxtbgkwcajzt
-      port: 52794
-      server: 193.148.19.213
-      skip-cert-verify: true
-      sni: 193.148.19.213
       type: trojan
       udp: true
     - name: trojan-116312
@@ -69,43 +61,51 @@ proxies:
       sni: www.vk.com
       type: trojan
       udp: true
-    - name: trojan-372933402
-      password: SrELvzRC7y7gMcypgQ8VSSSxzj354XEf
-      port: 5222
-      server: dc-106-es.netzrun.at
-      skip-cert-verify: false
-      sni: dc-106-es.netzrun.at
+    - name: trojan-56203977
+      password: 2eutknankxtbgkwcajzt
+      port: 52794
+      server: 193.148.19.213
+      skip-cert-verify: true
+      sni: 193.148.19.213
+      type: trojan
+      udp: true
+    - name: trojan-80890727
+      password: 2eutknankxtbgkwcajzt
+      port: 52794
+      server: 193.148.19.213
+      skip-cert-verify: true
+      sni: ""
       type: trojan
       udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-372933402
         - trojan-370766847
         - shadowsocks-16132
         - shadowsocks-11052
-        - trojan-80890727
-        - trojan-56203977
-        - trojan-89194153
         - trojan-46244303
+        - trojan-89194153
         - trojan-116312
         - trojan-2473912
-        - trojan-372933402
+        - trojan-56203977
+        - trojan-80890727
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-372933402
         - trojan-370766847
         - shadowsocks-16132
         - shadowsocks-11052
-        - trojan-80890727
-        - trojan-56203977
-        - trojan-89194153
         - trojan-46244303
+        - trojan-89194153
         - trojan-116312
         - trojan-2473912
-        - trojan-372933402
+        - trojan-56203977
+        - trojan-80890727
       type: select
 rules:
     - MATCH,select
