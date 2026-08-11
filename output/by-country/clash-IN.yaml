@@ -13,13 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: 19001d44-63d4-496f-9a58-312a5d65668c
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-125111
-      password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
-      port: 31348
-      server: 103.120.178.193
-      type: ss
-      udp: true
     - name: trojan-379354475
       password: 1ddfe222-43d3-4589-9e05-0e3f787df64b
       port: 24408
@@ -36,23 +29,30 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-125111
+      password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
+      port: 31348
+      server: 103.120.178.193
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-379140751
-        - shadowsocks-125111
         - trojan-379354475
         - trojan-379354474
+        - shadowsocks-125111
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-379140751
-        - shadowsocks-125111
         - trojan-379354475
         - trojan-379354474
+        - shadowsocks-125111
       type: select
 rules:
     - MATCH,select

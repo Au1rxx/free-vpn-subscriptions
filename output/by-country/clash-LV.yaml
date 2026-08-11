@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-379299605
+      network: tcp
+      port: 47424
+      server: 46.8.228.91
+      type: vless
+      udp: true
+      uuid: 6de486c1-dbad-4540-8875-98c35e9cd173
     - name: hysteria2-248653949
       password: vpn-hy2-lv-2026
       port: 8444
@@ -17,6 +24,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-379299605
         - hysteria2-248653949
         - hysteria2-232798723
       type: url-test
@@ -24,6 +32,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-379299605
         - hysteria2-248653949
         - hysteria2-232798723
       type: select
