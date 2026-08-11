@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-370772849
+      network: tcp
+      port: 8088
+      reality-opts:
+        public-key: dx7cY0aeosAvz0hzRR9DrAtAiKAuMH44KRBSufYYMmk
+        short-id: 992a171518f6f60e
+      server: 64.49.13.112
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 20df639d-1ede-42fc-95ce-592746690de2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-360153942
       password: LHZzf4y0j2WQlZsTh0NzPxVmTYufR-TA
@@ -24,6 +38,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-370772849
         - shadowsocks-360153942
         - shadowsocks-128223
         - shadowsocks-11086
@@ -32,6 +47,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-370772849
         - shadowsocks-360153942
         - shadowsocks-128223
         - shadowsocks-11086

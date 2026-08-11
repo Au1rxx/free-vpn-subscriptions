@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-370766847
+      password: SrELvzRC7y7gMcypgQ8VSSSxzj354XEf
+      port: 5222
+      server: dc-106-es.netzrun.at
+      skip-cert-verify: false
+      sni: dc-106-es.netzrun.at
+      type: trojan
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-16132
       password: WSyL4XTwNsdv
@@ -61,7 +69,7 @@ proxies:
       sni: www.vk.com
       type: trojan
       udp: true
-    - name: trojan-370766847
+    - name: trojan-372933402
       password: SrELvzRC7y7gMcypgQ8VSSSxzj354XEf
       port: 5222
       server: dc-106-es.netzrun.at
@@ -73,6 +81,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-370766847
         - shadowsocks-16132
         - shadowsocks-11052
         - trojan-80890727
@@ -81,12 +90,13 @@ proxy-groups:
         - trojan-46244303
         - trojan-116312
         - trojan-2473912
-        - trojan-370766847
+        - trojan-372933402
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-370766847
         - shadowsocks-16132
         - shadowsocks-11052
         - trojan-80890727
@@ -95,7 +105,7 @@ proxy-groups:
         - trojan-46244303
         - trojan-116312
         - trojan-2473912
-        - trojan-370766847
+        - trojan-372933402
       type: select
 rules:
     - MATCH,select

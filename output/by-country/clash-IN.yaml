@@ -13,30 +13,12 @@ proxies:
       server: 172.105.39.124
       type: ss
       udp: true
-    - name: trojan-351803524
-      password: 2fc2268f-8483-499f-b05f-e0f682f19d61
-      port: 24408
-      server: v1in2.stableq.top
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
-    - name: trojan-351803523
-      password: 2fc2268f-8483-499f-b05f-e0f682f19d61
-      port: 24407
-      server: v1in2.stableq.top
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-125111
         - shadowsocks-27048
-        - trojan-351803524
-        - trojan-351803523
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -44,8 +26,6 @@ proxy-groups:
         - auto
         - shadowsocks-125111
         - shadowsocks-27048
-        - trojan-351803524
-        - trojan-351803523
       type: select
 rules:
     - MATCH,select

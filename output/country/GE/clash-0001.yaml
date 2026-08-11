@@ -7,17 +7,27 @@ proxies:
       sni: dc-74-ge.netzrun.at
       type: trojan
       udp: true
+    - name: trojan-372933408
+      password: SrELvzRC7y7gMcypgQ8VSSSxzj354XEf
+      port: 5222
+      server: dc-74-ge.netzrun.at
+      skip-cert-verify: false
+      sni: dc-74-ge.netzrun.at
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-370766853
+        - trojan-372933408
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-370766853
+        - trojan-372933408
       type: select
 rules:
     - MATCH,select

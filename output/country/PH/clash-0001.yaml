@@ -1,13 +1,24 @@
-proxies: []
+proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-372899003
+      network: raw
+      port: 27136
+      server: 366-1095.rabbitpro-in-3.com
+      type: vmess
+      udp: true
+      uuid: e351d6d8-c167-3e07-8fda-3f2f4ec0760b
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - vmess-372899003
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-372899003
       type: select
 rules:
     - MATCH,select

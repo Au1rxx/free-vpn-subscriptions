@@ -12,6 +12,13 @@ proxies:
       type: vless
       udp: true
       uuid: f5e5da05-ef1d-4a19-b75d-aaf30c93bb1a
+    - name: vless-370772845
+      network: ws
+      port: 443
+      server: 94.183.170.231
+      type: vless
+      udp: true
+      uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-366414929
@@ -48,23 +55,35 @@ proxies:
       sni: dc-114-ee.netzrun.at
       type: trojan
       udp: true
+    - name: trojan-372933405
+      password: SrELvzRC7y7gMcypgQ8VSSSxzj354XEf
+      port: 5222
+      server: dc-114-ee.netzrun.at
+      skip-cert-verify: false
+      sni: dc-114-ee.netzrun.at
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-366471577
+        - vless-370772845
         - vless-366414929
         - vless-366414930
         - trojan-370766850
+        - trojan-372933405
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-366471577
+        - vless-370772845
         - vless-366414929
         - vless-366414930
         - trojan-370766850
+        - trojan-372933405
       type: select
 rules:
     - MATCH,select
