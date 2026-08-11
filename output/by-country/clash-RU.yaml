@@ -1,0 +1,22 @@
+proxies:
+    - name: vless-362361192
+      network: ws
+      port: 2200
+      server: 217.149.23.169
+      type: vless
+      udp: true
+      uuid: 4cbdaf4f-ca34-4a00-9a96-49eaa6564b42
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-362361192
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-362361192
+      type: select
+rules:
+    - MATCH,select

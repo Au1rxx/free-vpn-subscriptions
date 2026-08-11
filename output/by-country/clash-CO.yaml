@@ -1,0 +1,22 @@
+proxies:
+    - name: vless-362369192
+      network: raw
+      port: 62145
+      server: 157.137.229.129
+      type: vless
+      udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-362369192
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-362369192
+      type: select
+rules:
+    - MATCH,select
