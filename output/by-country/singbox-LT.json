@@ -1,0 +1,49 @@
+{
+  "outbounds": [
+    {
+      "password": "smart@hkteVBi9aMFp-veBGU72OSCx",
+      "server": "z-eu2.251313.xyz",
+      "server_port": 10011,
+      "tag": "trojan-387719553",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.cloudflare.com"
+      },
+      "type": "trojan"
+    },
+    {
+      "server": "213.197.136.218",
+      "server_port": 5678,
+      "tag": "socks4-448865",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-387719553",
+        "socks4-448865"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-387719553",
+        "socks4-448865"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

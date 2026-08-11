@@ -13,12 +13,45 @@ proxies:
       type: vless
       udp: true
       uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+    - name: vless-387719522
+      network: tcp
+      port: 62145
+      server: 157.137.231.159
+      type: vless
+      udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+    - name: vless-387719526
+      network: tcp
+      port: 62145
+      server: 157.137.237.51
+      type: vless
+      udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+    - name: vless-387719527
+      network: tcp
+      port: 62145
+      server: 149.130.161.150
+      type: vless
+      udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+    - name: trojan-387719584
+      password: smart@hkteVBi9aMFp-veBGU72OSCx
+      port: 10003
+      server: z-us1.251313.xyz
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-381390988
         - vless-382544661
+        - vless-387719522
+        - vless-387719526
+        - vless-387719527
+        - trojan-387719584
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +59,10 @@ proxy-groups:
         - auto
         - vless-381390988
         - vless-382544661
+        - vless-387719522
+        - vless-387719526
+        - vless-387719527
+        - trojan-387719584
       type: select
 rules:
     - MATCH,select

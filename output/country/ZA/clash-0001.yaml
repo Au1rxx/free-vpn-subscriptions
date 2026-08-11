@@ -13,12 +13,21 @@ proxies:
       server: 102.133.165.160
       type: ss
       udp: true
+    - name: trojan-387719588
+      password: smart@hkteVBi9aMFp-veBGU72OSCx
+      port: 443
+      server: starlink-za.251313.xyz
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-236
         - shadowsocks-246
+        - trojan-387719588
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +35,7 @@ proxy-groups:
         - auto
         - shadowsocks-236
         - shadowsocks-246
+        - trojan-387719588
       type: select
 rules:
     - MATCH,select

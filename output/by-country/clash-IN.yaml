@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-379140751
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: aGnuEqGr0P1reQd3FC-AvDppjiHZBH9itV33XDaKOg4
-        short-id: 53bf38279e382cb0
-      server: 157.245.97.66
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 19001d44-63d4-496f-9a58-312a5d65668c
     - name: trojan-379354475
       password: 1ddfe222-43d3-4589-9e05-0e3f787df64b
       port: 24408
@@ -29,6 +15,14 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - name: trojan-387719485
+      password: smart@hkteVBi9aMFp-veBGU72OSCx
+      port: 10006
+      server: z-sg1.251313.xyz
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-125111
       password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
@@ -43,57 +37,25 @@ proxies:
       server: 172.105.39.124
       type: ss
       udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-344505630
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: aGnuEqGr0P1reQd3FC-AvDppjiHZBH9itV33XDaKOg4
-        short-id: 53bf38279e382cb0
-      server: 157.245.97.66
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 19001d44-63d4-496f-9a58-312a5d65668c
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-207907581
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
-        short-id: 88b6
-      server: 5.253.30.99
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-379140751
         - trojan-379354475
         - trojan-379354474
+        - trojan-387719485
         - shadowsocks-125111
         - shadowsocks-27048
-        - vless-344505630
-        - vless-207907581
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-379140751
         - trojan-379354475
         - trojan-379354474
+        - trojan-387719485
         - shadowsocks-125111
         - shadowsocks-27048
-        - vless-344505630
-        - vless-207907581
       type: select
 rules:
     - MATCH,select

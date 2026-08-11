@@ -1,4 +1,19 @@
 proxies:
+    - name: trojan-387719508
+      password: smart@hkteVBi9aMFp-veBGU72OSCx
+      port: 443
+      server: starlink-ch.251313.xyz
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-175455221
+      password: XF0klw7870vXn3uQIxe19Q
+      port: 1080
+      server: 146.70.26.156
+      type: ss
+      udp: true
     - name: trojan-51753352
       password: y3b03zx3tznhyo538p4c
       port: 53261
@@ -35,6 +50,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-387719508
+        - shadowsocks-175455221
         - trojan-51753352
         - trojan-267016931
         - trojan-51444474
@@ -44,6 +61,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-387719508
+        - shadowsocks-175455221
         - trojan-51753352
         - trojan-267016931
         - trojan-51444474

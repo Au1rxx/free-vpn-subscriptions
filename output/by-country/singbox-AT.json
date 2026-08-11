@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "smart@hkteVBi9aMFp-veBGU72OSCx",
+      "server": "z-eu2.251313.xyz",
+      "server_port": 10023,
+      "tag": "trojan-387719524",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.cloudflare.com"
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-387719524"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-387719524"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

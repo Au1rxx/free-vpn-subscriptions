@@ -1,6 +1,40 @@
 {
   "outbounds": [
     {
+      "password": "smart@hkteVBi9aMFp-veBGU72OSCx",
+      "server": "starlink-it.251313.xyz",
+      "server_port": 443,
+      "tag": "trojan-387719502",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.cloudflare.com"
+      },
+      "type": "trojan"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "xit.saturn-cloud.net",
+      "server_port": 443,
+      "tag": "vless-387719534",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "UjwVdSvY-6dV5UKCNO7ROokiSF_aLaXYyUaG6RybOmI",
+          "short_id": "2762604ed2e0fa2f"
+        },
+        "server_name": "xit.saturn-cloud.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "95ae0de8-d944-4b1e-b450-d34d80f9a528"
+    },
+    {
       "flow": "xtls-rprx-vision",
       "server": "xit.saturn-cloud.net",
       "server_port": 443,
@@ -30,18 +64,18 @@
     },
     {
       "method": "aes-256-gcm",
-      "password": "RexnBgU7EV5ADxG",
-      "server": "185.213.20.110",
-      "server_port": 7001,
-      "tag": "shadowsocks-127110",
-      "type": "shadowsocks"
-    },
-    {
-      "method": "aes-256-gcm",
       "password": "d1fa2f4b98a38bc8",
       "server": "62.76.234.188",
       "server_port": 10901,
       "tag": "shadowsocks-335068443",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-gcm",
+      "password": "RexnBgU7EV5ADxG",
+      "server": "185.213.20.110",
+      "server_port": 7001,
+      "tag": "shadowsocks-127110",
       "type": "shadowsocks"
     },
     {
@@ -52,13 +86,6 @@
       "version": "4"
     },
     {
-      "server": "66.163.119.55",
-      "server_port": 10006,
-      "tag": "socks5-263263017",
-      "type": "socks",
-      "version": "5"
-    },
-    {
       "server": "149.62.186.244",
       "server_port": 1080,
       "tag": "socks5-739092",
@@ -66,15 +93,24 @@
       "version": "5"
     },
     {
+      "server": "66.163.119.55",
+      "server_port": 10006,
+      "tag": "socks5-263263017",
+      "type": "socks",
+      "version": "5"
+    },
+    {
       "interval": "5m",
       "outbounds": [
+        "trojan-387719502",
+        "vless-387719534",
         "vless-382544673",
         "http-264669383",
-        "shadowsocks-127110",
         "shadowsocks-335068443",
+        "shadowsocks-127110",
         "socks4-260521",
-        "socks5-263263017",
-        "socks5-739092"
+        "socks5-739092",
+        "socks5-263263017"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -83,13 +119,15 @@
     {
       "outbounds": [
         "auto",
+        "trojan-387719502",
+        "vless-387719534",
         "vless-382544673",
         "http-264669383",
-        "shadowsocks-127110",
         "shadowsocks-335068443",
+        "shadowsocks-127110",
         "socks4-260521",
-        "socks5-263263017",
-        "socks5-739092"
+        "socks5-739092",
+        "socks5-263263017"
       ],
       "tag": "select",
       "type": "selector"

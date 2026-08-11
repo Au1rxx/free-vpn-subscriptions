@@ -1,0 +1,80 @@
+{
+  "outbounds": [
+    {
+      "password": "smart@hkteVBi9aMFp-veBGU72OSCx",
+      "server": "z-hk1.251313.xyz",
+      "server_port": 21525,
+      "tag": "trojan-387719488",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.cloudflare.com"
+      },
+      "type": "trojan"
+    },
+    {
+      "server": "180.191.125.28",
+      "server_port": 8081,
+      "tag": "http-368575520",
+      "type": "http"
+    },
+    {
+      "server": "180.195.99.168",
+      "server_port": 8081,
+      "tag": "http-335419773",
+      "type": "http"
+    },
+    {
+      "server": "180.191.143.157",
+      "server_port": 8081,
+      "tag": "http-373919715",
+      "type": "http"
+    },
+    {
+      "server": "112.208.175.172",
+      "server_port": 8081,
+      "tag": "http-372904326",
+      "type": "http"
+    },
+    {
+      "server": "180.191.152.7",
+      "server_port": 8082,
+      "tag": "http-335313639",
+      "type": "http"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-387719488",
+        "http-368575520",
+        "http-335419773",
+        "http-373919715",
+        "http-372904326",
+        "http-335313639"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-387719488",
+        "http-368575520",
+        "http-335419773",
+        "http-373919715",
+        "http-372904326",
+        "http-335313639"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
