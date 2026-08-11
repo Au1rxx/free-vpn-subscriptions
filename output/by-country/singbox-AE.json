@@ -1,0 +1,60 @@
+{
+  "outbounds": [
+    {
+      "server": "135.136.182.102",
+      "server_port": 1080,
+      "tag": "socks4-397032670",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "server": "135.136.182.102",
+      "server_port": 1080,
+      "tag": "socks5-397042009",
+      "type": "socks",
+      "version": "5"
+    },
+    {
+      "server": "uae.unixzone.us",
+      "server_port": 22573,
+      "tag": "vless-274599317",
+      "transport": {
+        "headers": {
+          "Host": "uae.unixzone.us"
+        },
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "39947382-3212-41c9-bc3a-589574ac8b23"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "socks4-397032670",
+        "socks5-397042009",
+        "vless-274599317"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "socks4-397032670",
+        "socks5-397042009",
+        "vless-274599317"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

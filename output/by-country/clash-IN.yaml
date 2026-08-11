@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-387719485
-      password: smart@hkteVBi9aMFp-veBGU72OSCx
-      port: 10006
-      server: z-sg1.251313.xyz
-      skip-cert-verify: true
-      sni: www.cloudflare.com
-      type: trojan
-      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-125111
       password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
@@ -14,19 +6,64 @@ proxies:
       server: 103.120.178.193
       type: ss
       udp: true
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-211485818
+      network: raw
+      port: 40443
+      reality-opts:
+        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
+        short-id: 88b6
+      server: 5.253.30.99
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
+    - client-fingerprint: firefox
+      name: vless-250761440
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: GAYlNViQ9mkjs0iTjNmijAIXOaK2h0P2opHCYOrCNy0
+        short-id: ae3ba555edc1ba0a
+      server: 194.61.31.126
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7f1f5848-da44-47df-8581-df83e88ee2b3
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-250670739
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: g77ZJbm18JEotapmVRjaXi133MzkbhkU2lxhVeXx8zw
+        short-id: 68a8
+      server: 5.253.42.164
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-387719485
         - shadowsocks-125111
+        - vless-211485818
+        - vless-250761440
+        - vless-250670739
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-387719485
         - shadowsocks-125111
+        - vless-211485818
+        - vless-250761440
+        - vless-250670739
       type: select
 rules:
     - MATCH,select

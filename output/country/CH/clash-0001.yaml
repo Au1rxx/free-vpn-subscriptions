@@ -1,14 +1,4 @@
 proxies:
-    - name: vless-2066045
-      network: ws
-      port: 443
-      server: 104.21.117.9
-      servername: netlivpn2950.bbxff.workers.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: bd9ff08b-d042-3650-48e4-c4b400000000
     - name: trojan-38691648
       password: y3b03zx3tznhyo538p4c
       port: 53261
@@ -76,19 +66,30 @@ proxies:
       sni: speedtest.tinkoff.ru
       type: trojan
       udp: true
-    - name: trojan-387719508
-      password: smart@hkteVBi9aMFp-veBGU72OSCx
+    - name: vless-379161835
+      network: ws
       port: 443
-      server: starlink-ch.251313.xyz
-      skip-cert-verify: true
-      sni: www.cloudflare.com
-      type: trojan
+      server: 95.129.236.252
+      servername: azs.benz.ink
+      skip-cert-verify: false
+      tls: true
+      type: vless
       udp: true
+      uuid: 851ed0d8-a37b-452d-8ef2-5b6c2d28a060
+    - name: vless-379161836
+      network: ws
+      port: 443
+      server: 95.129.236.252
+      servername: azs.benz.ink
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 851ed0d8-a37b-452d-8ef2-5b6c2d28a060
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-2066045
         - trojan-38691648
         - trojan-51444474
         - trojan-51753352
@@ -96,13 +97,13 @@ proxy-groups:
         - vless-97620363
         - shadowsocks-175455221
         - trojan-267016931
-        - trojan-387719508
+        - vless-379161835
+        - vless-379161836
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-2066045
         - trojan-38691648
         - trojan-51444474
         - trojan-51753352
@@ -110,7 +111,8 @@ proxy-groups:
         - vless-97620363
         - shadowsocks-175455221
         - trojan-267016931
-        - trojan-387719508
+        - vless-379161835
+        - vless-379161836
       type: select
 rules:
     - MATCH,select

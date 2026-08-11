@@ -1,33 +1,4 @@
 proxies:
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-389707578
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: sBSNX3DhJSWOkqTmRHisayVLisCBQLb4JcpKzwCrvC0
-        short-id: ""
-      server: 164.37.105.38
-      servername: gb.cdn.cachefleet.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f4dbc770-016d-4a0f-82f0-d83ee6f45da3
-    - name: trojan-387719533
-      password: smart@hkteVBi9aMFp-veBGU72OSCx
-      port: 443
-      server: starlink-uk.251313.xyz
-      skip-cert-verify: true
-      sni: www.cloudflare.com
-      type: trojan
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-387719480
-      password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
-      port: 61312
-      server: 129.151.68.189
-      type: ss
-      udp: true
     - name: vless-395879277
       network: raw
       port: 443
@@ -35,6 +6,20 @@ proxies:
       type: vless
       udp: true
       uuid: ae1c12b0-df98-5f76-9adc-bd3380a3dbbd
+    - name: hysteria2-387719513
+      password: 22d891f5-ad85-4824-b0b8-e30cf3d37eb5
+      port: 2056
+      server: yg3.mangshe.xyz
+      skip-cert-verify: true
+      sni: yg3.mangshe.xyz
+      type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-387719480
+      password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
+      port: 61312
+      server: 129.151.68.189
+      type: ss
+      udp: true
     - cipher: aes-128-gcm
       name: shadowsocks-227
       password: shadowsocks
@@ -49,11 +34,11 @@ proxies:
       server: 141.98.101.181
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-344505594
-      password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
-      port: 61312
-      server: 129.151.81.224
+    - cipher: rc4-md5
+      name: shadowsocks-165
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.61.37
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
@@ -61,13 +46,6 @@ proxies:
       password: zz0dHjDfoaSaZuRFLGH-hNfBALSEJUYD
       port: 1234
       server: 194.164.92.198
-      type: ss
-      udp: true
-    - cipher: rc4-md5
-      name: shadowsocks-165
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 146.70.61.37
       type: ss
       udp: true
     - cipher: aes-256-gcm
@@ -93,39 +71,53 @@ proxies:
       sni: gb-ss-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.mitivpn.lifestyle
       type: trojan
       udp: true
+    - name: vless-335009635
+      network: tcp
+      port: 443
+      server: 191.215.37.90
+      type: vless
+      udp: true
+      uuid: SoonTeam
+    - name: vless-334986653
+      network: tcp
+      port: 20190
+      server: 169.197.113.179
+      type: vless
+      udp: true
+      uuid: ad4dd89a-2e4b-4f33-bb96-7e9c4eb85d0b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-389707578
-        - trojan-387719533
-        - shadowsocks-387719480
         - vless-395879277
+        - hysteria2-387719513
+        - shadowsocks-387719480
         - shadowsocks-227
         - shadowsocks-271
-        - shadowsocks-344505594
-        - shadowsocks-37998200
         - shadowsocks-165
+        - shadowsocks-37998200
         - shadowsocks-240
         - trojan-379268098
         - trojan-387464373
+        - vless-335009635
+        - vless-334986653
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-389707578
-        - trojan-387719533
-        - shadowsocks-387719480
         - vless-395879277
+        - hysteria2-387719513
+        - shadowsocks-387719480
         - shadowsocks-227
         - shadowsocks-271
-        - shadowsocks-344505594
-        - shadowsocks-37998200
         - shadowsocks-165
+        - shadowsocks-37998200
         - shadowsocks-240
         - trojan-379268098
         - trojan-387464373
+        - vless-335009635
+        - vless-334986653
       type: select
 rules:
     - MATCH,select

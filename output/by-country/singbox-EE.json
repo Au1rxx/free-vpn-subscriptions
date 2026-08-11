@@ -1,23 +1,40 @@
 {
   "outbounds": [
     {
-      "server": "estproxy2.lockdwn.com",
-      "server_port": 443,
-      "tag": "vless-391663887",
+      "server": "5.45.119.70",
+      "server_port": 1080,
+      "tag": "socks5-335086866",
+      "type": "socks",
+      "version": "5"
+    },
+    {
+      "server": "95.85.224.3",
+      "server_port": 8443,
+      "tag": "vless-335073379",
       "transport": {
-        "headers": {
-          "Host": "estproxy2.lockdwn.com"
-        },
-        "path": "/",
-        "type": "ws"
+        "service_name": "grpc",
+        "type": "grpc"
       },
       "type": "vless",
-      "uuid": "19f54e37-5fae-47f6-bc10-e71ccbc58389"
+      "uuid": "7e8f7489-e65f-4be6-93ed-867a74ec6759"
+    },
+    {
+      "server": "95.85.224.3",
+      "server_port": 8443,
+      "tag": "vless-330581942",
+      "transport": {
+        "service_name": "grpc",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "7e8f7489-e65f-4be6-93ed-867a74ec6759"
     },
     {
       "interval": "5m",
       "outbounds": [
-        "vless-391663887"
+        "socks5-335086866",
+        "vless-335073379",
+        "vless-330581942"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -26,7 +43,9 @@
     {
       "outbounds": [
         "auto",
-        "vless-391663887"
+        "socks5-335086866",
+        "vless-335073379",
+        "vless-330581942"
       ],
       "tag": "select",
       "type": "selector"

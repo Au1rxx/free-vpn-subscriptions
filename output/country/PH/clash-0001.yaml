@@ -17,21 +17,12 @@ proxies:
       type: vmess
       udp: true
       uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
-    - name: trojan-387719488
-      password: smart@hkteVBi9aMFp-veBGU72OSCx
-      port: 21525
-      server: z-hk1.251313.xyz
-      skip-cert-verify: true
-      sni: www.cloudflare.com
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-2357840
         - vmess-2387870
-        - trojan-387719488
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -39,7 +30,6 @@ proxy-groups:
         - auto
         - vmess-2357840
         - vmess-2387870
-        - trojan-387719488
       type: select
 rules:
     - MATCH,select
