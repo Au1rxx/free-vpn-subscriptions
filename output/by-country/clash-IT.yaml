@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-382544673
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: UjwVdSvY-6dV5UKCNO7ROokiSF_aLaXYyUaG6RybOmI
+        short-id: 2762604ed2e0fa2f
+      server: xit.saturn-cloud.net
+      servername: xit.saturn-cloud.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 95ae0de8-d944-4b1e-b450-d34d80f9a528
     - cipher: aes-256-gcm
       name: shadowsocks-127110
       password: RexnBgU7EV5ADxG
@@ -17,6 +31,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-382544673
         - shadowsocks-127110
         - shadowsocks-335068443
       type: url-test
@@ -24,6 +39,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-382544673
         - shadowsocks-127110
         - shadowsocks-335068443
       type: select

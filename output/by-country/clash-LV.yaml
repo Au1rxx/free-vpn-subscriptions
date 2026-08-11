@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-381431989
+      network: tcp
+      port: 47424
+      server: 46.8.228.91
+      type: vless
+      udp: true
+      uuid: 6de486c1-dbad-4540-8875-98c35e9cd173
     - name: vless-379299605
       network: tcp
       port: 47424
@@ -24,6 +31,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-381431989
         - vless-379299605
         - hysteria2-248653949
         - hysteria2-232798723
@@ -32,6 +40,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-381431989
         - vless-379299605
         - hysteria2-248653949
         - hysteria2-232798723

@@ -1,18 +1,17 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-381348764
+      password: uTBjZhDmOMwBVAJI
+      port: 8388
+      server: 45.32.16.53
+      type: ss
+      udp: true
     - name: trojan-379383351
       password: 7d8e6db4-96cc-4710-afc0-619edde2d7a1
       port: 55682
       server: t11.qifei.app
       skip-cert-verify: true
       sni: t11.qifei.app
-      type: trojan
-      udp: true
-    - name: trojan-372803807
-      password: 7d8e6db4-96cc-4710-afc0-619edde2d7a1
-      port: 55682
-      server: t11.qifei.app
-      skip-cert-verify: true
-      sni: ""
       type: trojan
       udp: true
     - name: vless-379292295
@@ -84,13 +83,6 @@ proxies:
       skip-cert-verify: false
       sni: freedom.chenlan.top
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-381348764
-      password: uTBjZhDmOMwBVAJI
-      port: 8388
-      server: 45.32.16.53
-      type: ss
-      udp: true
     - cipher: aes-128-gcm
       name: shadowsocks-218
       password: shadowsocks
@@ -112,12 +104,36 @@ proxies:
       server: 149.22.87.241
       type: ss
       udp: true
+    - name: trojan-372803807
+      password: 7d8e6db4-96cc-4710-afc0-619edde2d7a1
+      port: 55682
+      server: t11.qifei.app
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-385411360
+      password: 7d8e6db4-96cc-4710-afc0-619edde2d7a1
+      port: 55682
+      server: 160.16.110.77
+      skip-cert-verify: true
+      sni: t11.qifei.app
+      type: trojan
+      udp: true
     - name: trojan-260676474
       password: ND91608427
       port: 443
       server: 13.230.118.96
       skip-cert-verify: false
       sni: real-werewolf.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-385411361
+      password: 7d8e6db4-96cc-4710-afc0-619edde2d7a1
+      port: 55682
+      server: t11.qifei.app
+      skip-cert-verify: false
+      sni: t11.qifei.app
       type: trojan
       udp: true
     - name: trojan-280979837
@@ -3162,12 +3178,22 @@ proxies:
       type: vless
       udp: true
       uuid: cc9082e4-9c7c-4cef-a0f5-963363bed638
+    - name: vless-334978652
+      network: ws
+      port: 7219
+      server: 151.241.129.98
+      servername: 7nnoiou0z.3xn99hzq2sh7iekktpkeq7rofs3qc8iohrqs4pb9p.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d33ac0d8-d558-41bc-9805-9420fa965f8c
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-381348764
         - trojan-379383351
-        - trojan-372803807
         - vless-379292295
         - vless-379363869
         - vless-377165826
@@ -3177,11 +3203,13 @@ proxy-groups:
         - hysteria2-11309677
         - hysteria2-318025219
         - hysteria2-293233438
-        - shadowsocks-381348764
         - shadowsocks-218
         - shadowsocks-213
         - shadowsocks-211
+        - trojan-372803807
+        - trojan-385411360
         - trojan-260676474
+        - trojan-385411361
         - trojan-280979837
         - trojan-269040540
         - trojan-260676475
@@ -3540,13 +3568,14 @@ proxy-groups:
         - vless-197619540
         - vless-334982668
         - vless-192058504
+        - vless-334978652
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-381348764
         - trojan-379383351
-        - trojan-372803807
         - vless-379292295
         - vless-379363869
         - vless-377165826
@@ -3556,11 +3585,13 @@ proxy-groups:
         - hysteria2-11309677
         - hysteria2-318025219
         - hysteria2-293233438
-        - shadowsocks-381348764
         - shadowsocks-218
         - shadowsocks-213
         - shadowsocks-211
+        - trojan-372803807
+        - trojan-385411360
         - trojan-260676474
+        - trojan-385411361
         - trojan-280979837
         - trojan-269040540
         - trojan-260676475
@@ -3919,6 +3950,7 @@ proxy-groups:
         - vless-197619540
         - vless-334982668
         - vless-192058504
+        - vless-334978652
       type: select
 rules:
     - MATCH,select
