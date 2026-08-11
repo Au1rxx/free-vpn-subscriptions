@@ -1,4 +1,24 @@
 proxies:
+    - name: vless-78387670
+      network: ws
+      port: 443
+      server: 103.161.237.54
+      servername: vod.ensf.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e911c552-3a98-41e0-b5fb-0dd3879887b7
+    - name: vless-86641996
+      network: ws
+      port: 443
+      server: 103.161.237.54
+      servername: vod.ensf.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e911c552-3a98-41e0-b5fb-0dd3879887b7
     - name: vless-86641997
       network: ws
       port: 443
@@ -131,17 +151,12 @@ proxies:
       type: vless
       udp: true
       uuid: ab7d5ea9-6eca-47c3-b14b-67378fc2d7c2
-    - name: vless-355445185
-      network: tcp
-      port: 14006
-      server: 185.126.236.181
-      type: vless
-      udp: true
-      uuid: 36da22bd-ab50-4759-9ce2-f894db39358e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-78387670
+        - vless-86641996
         - vless-86641997
         - vless-109550836
         - vless-238588660
@@ -152,12 +167,13 @@ proxy-groups:
         - vless-332701842
         - vless-335076404
         - vless-337233012
-        - vless-355445185
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-78387670
+        - vless-86641996
         - vless-86641997
         - vless-109550836
         - vless-238588660
@@ -168,7 +184,6 @@ proxy-groups:
         - vless-332701842
         - vless-335076404
         - vless-337233012
-        - vless-355445185
       type: select
 rules:
     - MATCH,select

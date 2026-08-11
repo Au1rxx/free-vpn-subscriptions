@@ -1,0 +1,77 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "94.249.225.79",
+      "server_port": 443,
+      "tag": "vless-387524883",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "X6zcH8pCUXrauNQvbNkm8e_oTdB0wOr8eCMCzs3b1Tc"
+        },
+        "server_name": "grand-lynx.cdn.cachefleet.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "f4dbc770-016d-4a0f-82f0-d83ee6f45da3"
+    },
+    {
+      "server": "ansooyefilter-hhh.up.railway.app",
+      "server_port": 443,
+      "tag": "vless-387524884",
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "ansooyefilter-hhh.up.railway.app",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "headers": {
+          "Host": "ansooyefilter-hhh.up.railway.app"
+        },
+        "path": "/ws/f4e637c2-f9c0-0bce-75f9-f1f4e44d1553",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "f4e637c2-f9c0-0bce-75f9-f1f4e44d1553"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-387524883",
+        "vless-387524884"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-387524883",
+        "vless-387524884"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
