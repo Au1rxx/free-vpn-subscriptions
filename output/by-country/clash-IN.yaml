@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-379140751
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: aGnuEqGr0P1reQd3FC-AvDppjiHZBH9itV33XDaKOg4
+        short-id: 53bf38279e382cb0
+      server: 157.245.97.66
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 19001d44-63d4-496f-9a58-312a5d65668c
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-125111
       password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
@@ -6,17 +20,39 @@ proxies:
       server: 103.120.178.193
       type: ss
       udp: true
+    - name: trojan-379354475
+      password: 1ddfe222-43d3-4589-9e05-0e3f787df64b
+      port: 24408
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-379354474
+      password: 1ddfe222-43d3-4589-9e05-0e3f787df64b
+      port: 24407
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-379140751
         - shadowsocks-125111
+        - trojan-379354475
+        - trojan-379354474
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-379140751
         - shadowsocks-125111
+        - trojan-379354475
+        - trojan-379354474
       type: select
 rules:
     - MATCH,select

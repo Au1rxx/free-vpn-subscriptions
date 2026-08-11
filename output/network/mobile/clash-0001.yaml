@@ -6,17 +6,32 @@ proxies:
       type: vless
       udp: true
       uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
+    - client-fingerprint: chrome
+      name: vless-379164386
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: l1mx_plNc2oiWxJCcZLh3SGfFU-5QxYpgQ__Ea59WEg
+        short-id: 91d568bc3b
+      server: 134.17.16.156
+      servername: ads.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8fab26eb-f2eb-4c10-a11d-f7e5202930e4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-91986752
+        - vless-379164386
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-91986752
+        - vless-379164386
       type: select
 rules:
     - MATCH,select

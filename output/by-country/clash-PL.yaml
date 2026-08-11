@@ -1,5 +1,33 @@
 proxies:
     - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-379189692
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: 83.168.108.200
+      servername: pol3.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: fbb74aa8-b89a-4f20-9504-6b25aadf6681
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-379189691
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: 83.168.108.200
+      servername: pol3.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: fbb74aa8-b89a-4f20-9504-6b25aadf6681
+    - client-fingerprint: chrome
       name: vless-370790860
       network: grpc
       port: 80
@@ -300,6 +328,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-379189692
+        - vless-379189691
         - vless-370790860
         - vless-370872052
         - vmess-370806846
@@ -339,6 +369,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-379189692
+        - vless-379189691
         - vless-370790860
         - vless-370872052
         - vmess-370806846
