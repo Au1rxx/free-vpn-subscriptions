@@ -13,29 +13,17 @@ proxies:
       type: vless
       udp: true
       uuid: da679dcf-b250-453c-8627-0d434cd960aa
-    - name: vless-374945510
-      network: ws
-      port: 443
-      server: 150.241.101.218.fwqfw783rg2dad.website
-      servername: 150.241.101.218.fwqfw783rg2dad.website
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9efe092e-e4ae-4601-bb89-169fcb3db39b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-379179826
-        - vless-374945510
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-379179826
-        - vless-374945510
       type: select
 rules:
     - MATCH,select

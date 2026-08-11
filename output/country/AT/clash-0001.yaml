@@ -1,24 +1,4 @@
 proxies:
-    - name: vless-78387670
-      network: ws
-      port: 443
-      server: 103.161.237.54
-      servername: vod.ensf.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: e911c552-3a98-41e0-b5fb-0dd3879887b7
-    - name: vless-86641996
-      network: ws
-      port: 443
-      server: 103.161.237.54
-      servername: vod.ensf.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: e911c552-3a98-41e0-b5fb-0dd3879887b7
     - name: vless-86641997
       network: ws
       port: 443
@@ -95,20 +75,6 @@ proxies:
       type: vless
       udp: true
       uuid: ab7d5ea9-6eca-47c3-b14b-67378fc2d7c2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-252860230
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: UO3EObgU3xUrhIGEE0gfCn5ZOz8YxNcwwW6ZaYzD3SA
-        short-id: 4e9b0c2d1a3f5768
-      server: 152.53.114.186
-      servername: as.tunnelx.space
-      tls: true
-      type: vless
-      udp: true
-      uuid: ab7d5ea9-6eca-47c3-b14b-67378fc2d7c2
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-332701840
@@ -172,53 +138,37 @@ proxies:
       type: vless
       udp: true
       uuid: 36da22bd-ab50-4759-9ce2-f894db39358e
-    - name: trojan-372933400
-      password: SrELvzRC7y7gMcypgQ8VSSSxzj354XEf
-      port: 5222
-      server: at-lb-rtt.netzrun.at
-      skip-cert-verify: false
-      sni: at-lb-rtt.netzrun.at
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-78387670
-        - vless-86641996
         - vless-86641997
         - vless-109550836
         - vless-238588660
         - vless-240780061
         - vless-242814375
         - vless-244385785
-        - vless-252860230
         - vless-332701840
         - vless-332701842
         - vless-335076404
         - vless-337233012
         - vless-355445185
-        - trojan-372933400
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-78387670
-        - vless-86641996
         - vless-86641997
         - vless-109550836
         - vless-238588660
         - vless-240780061
         - vless-242814375
         - vless-244385785
-        - vless-252860230
         - vless-332701840
         - vless-332701842
         - vless-335076404
         - vless-337233012
         - vless-355445185
-        - trojan-372933400
       type: select
 rules:
     - MATCH,select
