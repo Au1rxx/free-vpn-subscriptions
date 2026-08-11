@@ -1,12 +1,5 @@
 proxies:
     - cipher: aes-256-cfb
-      name: shadowsocks-283
-      password: qwerREWQ@@
-      port: 13979
-      server: 221.139.79.57
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
       name: shadowsocks-287
       password: qwerREWQ@@
       port: 6123
@@ -233,11 +226,24 @@ proxies:
       sni: t11.qifei.app
       type: trojan
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-398005837
+      network: tcp
+      port: 8433
+      reality-opts:
+        public-key: VnpuNVes24AiqJofMykF5ZPj_1ufZZyHnj_oAZ4_8kw
+        short-id: 81f3d1e4c057
+      server: 193.17.183.81
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3a4dbd51-72ea-4c20-a764-f51de001c0ab
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-283
         - shadowsocks-287
         - shadowsocks-26744
         - vmess-2357840
@@ -263,12 +269,12 @@ proxy-groups:
         - trojan-395852278
         - trojan-395852279
         - trojan-395852280
+        - vless-398005837
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-283
         - shadowsocks-287
         - shadowsocks-26744
         - vmess-2357840
@@ -294,6 +300,7 @@ proxy-groups:
         - trojan-395852278
         - trojan-395852279
         - trojan-395852280
+        - vless-398005837
       type: select
 rules:
     - MATCH,select

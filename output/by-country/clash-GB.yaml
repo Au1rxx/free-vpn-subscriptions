@@ -1,50 +1,7 @@
 proxies:
-    - name: trojan-387464373
-      password: MiTiVPN
-      port: 443
-      server: 104.17.148.22
-      skip-cert-verify: false
-      sni: gb-ss-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.mitivpn.lifestyle
-      type: trojan
-      udp: true
-    - name: vless-387522412
-      network: tcp
-      port: 443
-      server: 191.215.37.90
-      type: vless
-      udp: true
-      uuid: SoonTeam
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-389707578
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: sBSNX3DhJSWOkqTmRHisayVLisCBQLb4JcpKzwCrvC0
-        short-id: ""
-      server: 164.37.105.38
-      servername: gb.cdn.cachefleet.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f4dbc770-016d-4a0f-82f0-d83ee6f45da3
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-387522410
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: JeaMU58AmMJ2JqJ-QGotRFua9DYxxveqw7I_XMWCu34
-        short-id: 2da3ecc3ad9a323b
-      server: 139.59.191.88
-      servername: www.stanford.edu
-      tls: true
-      type: vless
-      udp: true
-      uuid: a6c5f4c7-073f-416b-b5e3-4a86ec2d9f22
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-387522411
       network: tcp
       port: 443
       reality-opts:
@@ -128,15 +85,19 @@ proxies:
       sni: gb-ss-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.mitivpn.lifestyle
       type: trojan
       udp: true
+    - name: trojan-387464373
+      password: MiTiVPN
+      port: 443
+      server: 104.17.148.22
+      skip-cert-verify: false
+      sni: gb-ss-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.mitivpn.lifestyle
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-387464373
-        - vless-387522412
         - vless-389707578
-        - vless-387522410
-        - vless-387522411
         - trojan-387719533
         - shadowsocks-387719480
         - vless-395879277
@@ -147,16 +108,13 @@ proxy-groups:
         - shadowsocks-165
         - shadowsocks-240
         - trojan-379268098
+        - trojan-387464373
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-387464373
-        - vless-387522412
         - vless-389707578
-        - vless-387522410
-        - vless-387522411
         - trojan-387719533
         - shadowsocks-387719480
         - vless-395879277
@@ -167,6 +125,7 @@ proxy-groups:
         - shadowsocks-165
         - shadowsocks-240
         - trojan-379268098
+        - trojan-387464373
       type: select
 rules:
     - MATCH,select
