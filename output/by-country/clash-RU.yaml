@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-412878197
+      password: 08QNE5JBq7kTV6b9Dd6e_w-y4WhjMLS9
+      port: 8443
+      server: 144.31.50.75
+      skip-cert-verify: false
+      sni: ru.federal-usa.com
+      type: trojan
+      udp: true
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-410646197
@@ -28,14 +36,6 @@ proxies:
       sni: ru.federal-usa.com
       type: trojan
       udp: true
-    - name: trojan-412878197
-      password: 08QNE5JBq7kTV6b9Dd6e_w-y4WhjMLS9
-      port: 8443
-      server: 144.31.50.75
-      skip-cert-verify: false
-      sni: ru.federal-usa.com
-      type: trojan
-      udp: true
     - name: trojan-387460669
       password: 08QNE5JBq7kTV6b9Dd6e_w-y4WhjMLS9
       port: 8443
@@ -52,27 +52,37 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - name: trojan-412965792
+      password: 08QNE5JBq7kTV6b9Dd6e_w-y4WhjMLS9
+      port: 8443
+      server: 144.31.50.75
+      skip-cert-verify: false
+      sni: ru.federal-usa.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-412878197
         - vless-410646197
         - hysteria2-387719495
         - trojan-393751595
-        - trojan-412878197
         - trojan-387460669
         - trojan-381343463
+        - trojan-412965792
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-412878197
         - vless-410646197
         - hysteria2-387719495
         - trojan-393751595
-        - trojan-412878197
         - trojan-387460669
         - trojan-381343463
+        - trojan-412965792
       type: select
 rules:
     - MATCH,select
