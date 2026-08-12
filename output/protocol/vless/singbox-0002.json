@@ -1,0 +1,127 @@
+{
+  "outbounds": [
+    {
+      "server": "ns.o11111o.club",
+      "server_port": 443,
+      "tag": "vless-438290183",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc"
+        },
+        "server_name": "id.vk.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "service_name": "vless-grpc-reality",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "b1b3e430-ff52-44b8-b95d-27fa580fbc4f"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "de3.neobo-tooth.ru",
+      "server_port": 2053,
+      "tag": "vless-438290184",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "E6u2RbffXIPvia5v5iIZVj6U_VpSBWmGTsHHNtH-5Rg",
+          "short_id": "417063feab794131"
+        },
+        "server_name": "vk.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "b6c29ae7-4748-4049-b642-b695c0d2c776"
+    },
+    {
+      "server": "x4g-production-a362.up.railway.app",
+      "server_port": 443,
+      "tag": "vless-438290187",
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "x4g-production-a362.up.railway.app",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "headers": {
+          "Host": "x4g-production-a362.up.railway.app"
+        },
+        "path": "/ws/d11be14c-1af3-2fcb-c1ea-1bd86499b9b8",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "d11be14c-1af3-2fcb-c1ea-1bd86499b9b8"
+    },
+    {
+      "server": "31.76.46.138",
+      "server_port": 20422,
+      "tag": "vless-438290188",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "ZUQTvwYk_hDqSrw36uc18MkeEIXIGZZGsf5XWVwdqAQ",
+          "short_id": "90"
+        },
+        "server_name": "yahoo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "d8523317-503e-43ad-b2c3-e5f77d725848"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-438290183",
+        "vless-438290184",
+        "vless-438290187",
+        "vless-438290188"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-438290183",
+        "vless-438290184",
+        "vless-438290187",
+        "vless-438290188"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

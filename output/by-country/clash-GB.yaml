@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-425785801
-      network: tcp
-      port: 443
-      server: 191.215.37.90
-      type: vless
-      udp: true
-      uuid: ae1c12b0-df98-5f76-9adc-bd3380a3dbbd
     - client-fingerprint: qq
       name: vless-432138468
       network: tcp
@@ -66,6 +59,13 @@ proxies:
       skip-cert-verify: true
       sni: yg3.mangshe.xyz
       type: hysteria2
+    - cipher: aes-128-gcm
+      name: shadowsocks-126252
+      password: shadowsocks
+      port: 443
+      server: 158.173.24.73
+      type: ss
+      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-240
       password: RexnBgU7EV5ADxG
@@ -140,16 +140,23 @@ proxies:
       type: vless
       udp: true
       uuid: ad4dd89a-2e4b-4f33-bb96-7e9c4eb85d0b
+    - name: vless-334986653
+      network: tcp
+      port: 20190
+      server: 169.197.113.179
+      type: vless
+      udp: true
+      uuid: ad4dd89a-2e4b-4f33-bb96-7e9c4eb85d0b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-425785801
         - vless-432138468
         - vless-429851174
         - vless-429870183
         - vless-429847173
         - hysteria2-387719513
+        - shadowsocks-126252
         - shadowsocks-240
         - shadowsocks-415241978
         - shadowsocks-271
@@ -160,17 +167,18 @@ proxy-groups:
         - trojan-419356366
         - trojan-387464373
         - vless-343547278
+        - vless-334986653
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-425785801
         - vless-432138468
         - vless-429851174
         - vless-429870183
         - vless-429847173
         - hysteria2-387719513
+        - shadowsocks-126252
         - shadowsocks-240
         - shadowsocks-415241978
         - shadowsocks-271
@@ -181,6 +189,7 @@ proxy-groups:
         - trojan-419356366
         - trojan-387464373
         - vless-343547278
+        - vless-334986653
       type: select
 rules:
     - MATCH,select
