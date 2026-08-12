@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-415250973
-      password: MiTiVPN
-      port: 443
-      server: 151.101.56.0
-      skip-cert-verify: false
-      sni: default.fastly.com
-      type: trojan
-      udp: true
     - client-fingerprint: chrome
       name: vless-421497447
       network: tcp
@@ -28,21 +20,29 @@ proxies:
       sni: default.fastly.com
       type: trojan
       udp: true
+    - name: trojan-415250973
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.0
+      skip-cert-verify: false
+      sni: default.fastly.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-415250973
         - vless-421497447
         - trojan-404344004
+        - trojan-415250973
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-415250973
         - vless-421497447
         - trojan-404344004
+        - trojan-415250973
       type: select
 rules:
     - MATCH,select
