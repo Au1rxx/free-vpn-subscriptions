@@ -87,18 +87,18 @@ proxies:
       server: 141.98.101.181
       type: ss
       udp: true
-    - cipher: rc4-md5
-      name: shadowsocks-165
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 146.70.61.37
-      type: ss
-      udp: true
     - cipher: aes-128-gcm
       name: shadowsocks-227
       password: shadowsocks
       port: 443
       server: 141.98.101.182
+      type: ss
+      udp: true
+    - cipher: rc4-md5
+      name: shadowsocks-165
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.61.37
       type: ss
       udp: true
     - name: trojan-379268098
@@ -133,6 +133,13 @@ proxies:
       sni: gb-ss-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.mitivpn.lifestyle
       type: trojan
       udp: true
+    - name: vless-343547278
+      network: tcp
+      port: 20190
+      server: 169.197.113.179
+      type: vless
+      udp: true
+      uuid: ad4dd89a-2e4b-4f33-bb96-7e9c4eb85d0b
 proxy-groups:
     - interval: 300
       name: auto
@@ -146,12 +153,13 @@ proxy-groups:
         - shadowsocks-240
         - shadowsocks-415241978
         - shadowsocks-271
-        - shadowsocks-165
         - shadowsocks-227
+        - shadowsocks-165
         - trojan-379268098
         - trojan-408674648
         - trojan-419356366
         - trojan-387464373
+        - vless-343547278
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -166,12 +174,13 @@ proxy-groups:
         - shadowsocks-240
         - shadowsocks-415241978
         - shadowsocks-271
-        - shadowsocks-165
         - shadowsocks-227
+        - shadowsocks-165
         - trojan-379268098
         - trojan-408674648
         - trojan-419356366
         - trojan-387464373
+        - vless-343547278
       type: select
 rules:
     - MATCH,select

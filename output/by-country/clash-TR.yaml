@@ -13,16 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
-    - name: vless-425651182
-      network: tcp
-      port: 443
-      server: 93.114.98.10
-      servername: chctksqf36b2.dop66.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 27acaca7-7646-472a-b5d6-3a4f63a7e556
     - client-fingerprint: firefox
       name: vless-429868175
       network: tcp
@@ -43,11 +33,11 @@ proxies:
       server: tr-1.stunnel.cc
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-415021109
-      password: KxJVQc8ZjDgRNhFaesshNDEZqBexyyZv
-      port: 1080
-      server: sub.almavpn.shop
+    - cipher: aes-256-gcm
+      name: shadowsocks-11086
+      password: faBAoD54k87UJG7
+      port: 2376
+      server: 185.123.101.64
       type: ss
       udp: true
     - cipher: aes-256-gcm
@@ -57,36 +47,34 @@ proxies:
       server: 38.180.113.194
       type: ss
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-11086
-      password: faBAoD54k87UJG7
-      port: 2376
-      server: 185.123.101.64
-      type: ss
+    - name: vless-212135092
+      network: grpc
+      port: 8443
+      server: 185.39.204.155
+      type: vless
       udp: true
+      uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-425785787
-        - vless-425651182
         - vless-429868175
         - shadowsocks-138388752
-        - shadowsocks-415021109
-        - shadowsocks-128223
         - shadowsocks-11086
+        - shadowsocks-128223
+        - vless-212135092
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-425785787
-        - vless-425651182
         - vless-429868175
         - shadowsocks-138388752
-        - shadowsocks-415021109
-        - shadowsocks-128223
         - shadowsocks-11086
+        - shadowsocks-128223
+        - vless-212135092
       type: select
 rules:
     - MATCH,select

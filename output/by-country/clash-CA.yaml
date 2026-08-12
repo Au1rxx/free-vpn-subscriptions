@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: qq
+      name: vless-436147475
+      network: tcp
+      port: 7006
+      reality-opts:
+        public-key: 0QdpIQcpbMkJCpL1XY0soedKEfJfHgIKz3tWmjLa6yE
+        short-id: ""
+      server: canadaandjake.hchdhsbs12gd.ir
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 67f37ffe-c8c4-4ced-8f9c-5b45738224f1
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-428711854
@@ -61,12 +74,26 @@ proxies:
       skip-cert-verify: true
       sni: vpn-ca-001.fastervpn.world
       type: hysteria2
+    - name: hysteria2-200242607
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: vpn-ca-002.fastervpn.world
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
     - name: hysteria2-188185580
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
       server: vpn-ca-002.fastervpn.world
       skip-cert-verify: true
       sni: vpn-ca-002.fastervpn.world
+      type: hysteria2
+    - name: hysteria2-256991694
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: 99.79.62.65
+      skip-cert-verify: true
+      sni: ""
       type: hysteria2
     - name: hysteria2-398030046
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
@@ -82,26 +109,12 @@ proxies:
       skip-cert-verify: true
       sni: google.com
       type: hysteria2
-    - name: hysteria2-200242607
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: vpn-ca-002.fastervpn.world
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
     - name: hysteria2-211462813
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
       server: 99.79.62.65
       skip-cert-verify: true
       sni: vpn-ca-002.fastervpn.world
-      type: hysteria2
-    - name: hysteria2-256991694
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: 99.79.62.65
-      skip-cert-verify: true
-      sni: ""
       type: hysteria2
     - cipher: aes-128-gcm
       name: shadowsocks-208
@@ -131,45 +144,63 @@ proxies:
       server: 185.196.61.82
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-258647517
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: kjiuPmjM4IutdZudHfcPZHEwcrBEFY4qBLlvfC6A_Ss
+        short-id: b9f8d3f8
+      server: 216.152.147.28
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d9e4721d-cdac-44c7-bc91-117367eac194
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-436147475
         - vless-428711854
         - vless-429853175
         - vless-429879174
         - vless-429860178
         - hysteria2-200394189
+        - hysteria2-200242607
         - hysteria2-188185580
+        - hysteria2-256991694
         - hysteria2-398030046
         - hysteria2-391797697
-        - hysteria2-200242607
         - hysteria2-211462813
-        - hysteria2-256991694
         - shadowsocks-208
         - shadowsocks-166
         - shadowsocks-415242973
         - shadowsocks-11074
+        - vless-258647517
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-436147475
         - vless-428711854
         - vless-429853175
         - vless-429879174
         - vless-429860178
         - hysteria2-200394189
+        - hysteria2-200242607
         - hysteria2-188185580
+        - hysteria2-256991694
         - hysteria2-398030046
         - hysteria2-391797697
-        - hysteria2-200242607
         - hysteria2-211462813
-        - hysteria2-256991694
         - shadowsocks-208
         - shadowsocks-166
         - shadowsocks-415242973
         - shadowsocks-11074
+        - vless-258647517
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: qq
+      name: vless-436147483
+      network: tcp
+      port: 7006
+      reality-opts:
+        public-key: 0QdpIQcpbMkJCpL1XY0soedKEfJfHgIKz3tWmjLa6yE
+        short-id: ""
+      server: sanswithelpusplz.hchdhsbs12gd.ir
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 67f37ffe-c8c4-4ced-8f9c-5b45738224f1
     - client-fingerprint: chrome
       name: vless-432050995
       network: tcp
@@ -25,15 +38,7 @@ proxies:
       type: vless
       udp: true
       uuid: 1bdb202e-b99b-4ff8-b81c-c732645e0703
-    - name: trojan-267016931
-      password: y3b03zx3tznhyo538p4c
-      port: 53261
-      server: 86.106.84.195
-      skip-cert-verify: true
-      sni: speedtest.tinkoff.ru
-      type: trojan
-      udp: true
-    - name: trojan-51753352
+    - name: trojan-38691648
       password: y3b03zx3tznhyo538p4c
       port: 53261
       server: 86.106.84.195
@@ -49,7 +54,7 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: trojan-38691648
+    - name: trojan-51753352
       password: y3b03zx3tznhyo538p4c
       port: 53261
       server: 86.106.84.195
@@ -57,27 +62,37 @@ proxies:
       sni: 86.106.84.195
       type: trojan
       udp: true
+    - name: trojan-267016931
+      password: y3b03zx3tznhyo538p4c
+      port: 53261
+      server: 86.106.84.195
+      skip-cert-verify: true
+      sni: speedtest.tinkoff.ru
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-436147483
         - vless-432050995
         - vless-432138463
-        - trojan-267016931
-        - trojan-51753352
-        - trojan-51444474
         - trojan-38691648
+        - trojan-51444474
+        - trojan-51753352
+        - trojan-267016931
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-436147483
         - vless-432050995
         - vless-432138463
-        - trojan-267016931
-        - trojan-51753352
-        - trojan-51444474
         - trojan-38691648
+        - trojan-51444474
+        - trojan-51753352
+        - trojan-267016931
       type: select
 rules:
     - MATCH,select

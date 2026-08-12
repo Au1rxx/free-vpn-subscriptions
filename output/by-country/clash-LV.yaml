@@ -6,13 +6,6 @@ proxies:
       type: vless
       udp: true
       uuid: 7b9a0c53-d488-4f2f-9035-816f2fe01fcd
-    - name: hysteria2-248653949
-      password: vpn-hy2-lv-2026
-      port: 8444
-      server: 185.236.22.119
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
     - name: hysteria2-232798723
       password: vpn-hy2-lv-2026
       port: 8444
@@ -20,21 +13,28 @@ proxies:
       skip-cert-verify: true
       sni: 185.236.22.119
       type: hysteria2
+    - name: hysteria2-248653949
+      password: vpn-hy2-lv-2026
+      port: 8444
+      server: 185.236.22.119
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-429862173
-        - hysteria2-248653949
         - hysteria2-232798723
+        - hysteria2-248653949
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-429862173
-        - hysteria2-248653949
         - hysteria2-232798723
+        - hysteria2-248653949
       type: select
 rules:
     - MATCH,select
