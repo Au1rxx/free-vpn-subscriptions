@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-404348003
+      network: tcp
+      port: 37145
+      server: crossover.proxy.rlwy.net
+      type: vless
+      udp: true
+      uuid: 79d85781-8b4b-4e67-a2d9-f299e92e46b8
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-402297862
@@ -29,7 +36,7 @@ proxies:
       uuid: f4dbc770-016d-4a0f-82f0-d83ee6f45da3
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-400117110
+      name: vless-404354004
       network: tcp
       port: 443
       reality-opts:
@@ -43,18 +50,28 @@ proxies:
       uuid: f4dbc770-016d-4a0f-82f0-d83ee6f45da3
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-393956869
-      network: raw
+      name: vless-400117110
+      network: tcp
       port: 443
       reality-opts:
-        public-key: L0acYoTxKR5ix7LXAmP10cy06n2JjgkXTojGjtWAqww
-        short-id: ed7b9bdfedb9b8e5
-      server: nl.go-vpn.club
-      servername: gateway.icloud.com
+        public-key: X6zcH8pCUXrauNQvbNkm8e_oTdB0wOr8eCMCzs3b1Tc
+        short-id: ""
+      server: 94.249.225.83
+      servername: plucky-kestrel.cdn.cachefleet.com
       tls: true
       type: vless
       udp: true
-      uuid: 40de6299-d792-4868-8a82-411ead0aa943
+      uuid: f4dbc770-016d-4a0f-82f0-d83ee6f45da3
+    - name: vless-404344006
+      network: ws
+      port: 443
+      server: x4g-production-1039.up.railway.app
+      servername: x4g-production-1039.up.railway.app
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 05d90003-3769-27d7-b54d-3c875aa56cf6
     - client-fingerprint: chrome
       name: vless-400116103
       network: tcp
@@ -68,30 +85,6 @@ proxies:
       type: vless
       udp: true
       uuid: b3eed393-e990-40a0-978c-689d40be9da4
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-393858045
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: lrnJvIO_un7MHXi61-rep_YCjIbZ7OvyUTwtFZza0Es
-        short-id: 8b4342b5722e1458
-      server: 185.170.211.186
-      servername: nl3.bbobr.win
-      tls: true
-      type: vless
-      udp: true
-      uuid: 541cbb83-6c17-42b3-ba51-840c27962e02
-    - name: vless-393858046
-      network: ws
-      port: 443
-      server: 69.46.46.40
-      servername: rvg-production-aa52.up.railway.app
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6aa2af7b-352b-436b-85e8-272d50f6500c
     - flow: xtls-rprx-vision
       name: vless-404163493
       network: tcp
@@ -215,6 +208,13 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - name: hysteria2-349775705
+      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+      port: 8443
+      server: 205.237.109.219
+      skip-cert-verify: false
+      sni: grape-turbo-fr.roxa.org
+      type: hysteria2
     - name: hysteria2-26500142
       password: LzMWgm6LaNWCm11bFTbynDPq2TqQj03t
       port: 443
@@ -285,13 +285,6 @@ proxies:
       skip-cert-verify: false
       sni: grape-turbo-fr.roxa.org
       type: hysteria2
-    - name: hysteria2-349775705
-      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
-      port: 8443
-      server: 205.237.109.219
-      skip-cert-verify: false
-      sni: grape-turbo-fr.roxa.org
-      type: hysteria2
     - name: hysteria2-280054095
       password: Oz_Kx9342gefwJ89x3_M9z32kzf9KJq003_s
       port: 8443
@@ -325,6 +318,13 @@ proxies:
       password: YTEyZDI0OGQwM2ZmZjc4ZTg1ZTBiYTNlZTZkZjIxODM=
       port: 45819
       server: 152.70.53.15
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-11025
+      password: k1dBOmOB4oqi7Ump37a1bQ
+      port: 8080
+      server: 82.38.31.198
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
@@ -720,13 +720,6 @@ proxies:
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-11025
-      password: k1dBOmOB4oqi7Ump37a1bQ
-      port: 8080
-      server: 82.38.31.198
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-11033
       password: k1dBOmOB4oqi7Ump37a1bQ
       port: 8080
@@ -1045,13 +1038,13 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-404348003
         - vless-402297862
         - vless-402297863
+        - vless-404354004
         - vless-400117110
-        - vless-393956869
+        - vless-404344006
         - vless-400116103
-        - vless-393858045
-        - vless-393858046
         - vless-404163493
         - vless-398009838
         - vless-404162482
@@ -1067,6 +1060,7 @@ proxy-groups:
         - hysteria2-303644432
         - hysteria2-335068376
         - hysteria2-376104735
+        - hysteria2-349775705
         - hysteria2-26500142
         - hysteria2-308070023
         - hysteria2-290329796
@@ -1077,12 +1071,12 @@ proxy-groups:
         - hysteria2-197583438
         - hysteria2-179702012
         - hysteria2-197435869
-        - hysteria2-349775705
         - hysteria2-280054095
         - hysteria2-277955495
         - hysteria2-330068376
         - hysteria2-145042
         - shadowsocks-293468269
+        - shadowsocks-11025
         - shadowsocks-277388490
         - shadowsocks-112078279
         - shadowsocks-91981760
@@ -1139,7 +1133,6 @@ proxy-groups:
         - shadowsocks-170
         - shadowsocks-11045
         - shadowsocks-198822224
-        - shadowsocks-11025
         - shadowsocks-11033
         - shadowsocks-212
         - shadowsocks-11048
@@ -1189,13 +1182,13 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-404348003
         - vless-402297862
         - vless-402297863
+        - vless-404354004
         - vless-400117110
-        - vless-393956869
+        - vless-404344006
         - vless-400116103
-        - vless-393858045
-        - vless-393858046
         - vless-404163493
         - vless-398009838
         - vless-404162482
@@ -1211,6 +1204,7 @@ proxy-groups:
         - hysteria2-303644432
         - hysteria2-335068376
         - hysteria2-376104735
+        - hysteria2-349775705
         - hysteria2-26500142
         - hysteria2-308070023
         - hysteria2-290329796
@@ -1221,12 +1215,12 @@ proxy-groups:
         - hysteria2-197583438
         - hysteria2-179702012
         - hysteria2-197435869
-        - hysteria2-349775705
         - hysteria2-280054095
         - hysteria2-277955495
         - hysteria2-330068376
         - hysteria2-145042
         - shadowsocks-293468269
+        - shadowsocks-11025
         - shadowsocks-277388490
         - shadowsocks-112078279
         - shadowsocks-91981760
@@ -1283,7 +1277,6 @@ proxy-groups:
         - shadowsocks-170
         - shadowsocks-11045
         - shadowsocks-198822224
-        - shadowsocks-11025
         - shadowsocks-11033
         - shadowsocks-212
         - shadowsocks-11048

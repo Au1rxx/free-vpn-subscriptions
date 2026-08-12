@@ -1,11 +1,18 @@
 proxies:
-    - name: vless-395879277
-      network: raw
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-404354003
+      network: tcp
       port: 443
-      server: 191.215.37.90
+      reality-opts:
+        public-key: sBSNX3DhJSWOkqTmRHisayVLisCBQLb4JcpKzwCrvC0
+        short-id: ""
+      server: 164.37.105.35
+      servername: sl.cdn.cachefleet.com
+      tls: true
       type: vless
       udp: true
-      uuid: ae1c12b0-df98-5f76-9adc-bd3380a3dbbd
+      uuid: f4dbc770-016d-0064-82f0-d83ee6f45da3
     - name: vless-404164481
       network: ws
       port: 443
@@ -88,11 +95,18 @@ proxies:
       type: vless
       udp: true
       uuid: SoonTeam
+    - name: vless-335165673
+      network: raw
+      port: 20190
+      server: 169.197.113.179
+      type: vless
+      udp: true
+      uuid: ad4dd89a-2e4b-4f33-bb96-7e9c4eb85d0b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-395879277
+        - vless-404354003
         - vless-404164481
         - hysteria2-387719513
         - shadowsocks-387719480
@@ -104,12 +118,13 @@ proxy-groups:
         - trojan-379268098
         - trojan-387464373
         - vless-335009635
+        - vless-335165673
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-395879277
+        - vless-404354003
         - vless-404164481
         - hysteria2-387719513
         - shadowsocks-387719480
@@ -121,6 +136,7 @@ proxy-groups:
         - trojan-379268098
         - trojan-387464373
         - vless-335009635
+        - vless-335165673
       type: select
 rules:
     - MATCH,select
