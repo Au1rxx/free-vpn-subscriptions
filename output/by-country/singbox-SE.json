@@ -1,6 +1,20 @@
 {
   "outbounds": [
     {
+      "server": "vips.irhubby.ir",
+      "server_port": 8080,
+      "tag": "vless-442396840",
+      "transport": {
+        "headers": {
+          "Host": "vips.irhubby.ir"
+        },
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "1ea8f3da-4dbd-4330-90dd-69cc234db81f"
+    },
+    {
       "password": "MiTiVPN",
       "server": "151.101.56.0",
       "server_port": 443,
@@ -11,6 +25,29 @@
         ],
         "enabled": true,
         "insecure": true,
+        "server_name": "default.fastly.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "headers": {
+          "Host": "s4z-mitivpn--mitivpn------mitivpn.global.ssl.fastly.net"
+        },
+        "path": "/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/s-w@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN",
+        "type": "ws"
+      },
+      "type": "trojan"
+    },
+    {
+      "password": "MiTiVPN",
+      "server": "151.101.56.0",
+      "server_port": 443,
+      "tag": "trojan-442481154",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
         "server_name": "default.fastly.com",
         "utls": {
           "enabled": true,
@@ -48,7 +85,9 @@
     {
       "interval": "5m",
       "outbounds": [
+        "vless-442396840",
         "trojan-404344004",
+        "trojan-442481154",
         "trojan-415250973"
       ],
       "tag": "auto",
@@ -58,7 +97,9 @@
     {
       "outbounds": [
         "auto",
+        "vless-442396840",
         "trojan-404344004",
+        "trojan-442481154",
         "trojan-415250973"
       ],
       "tag": "select",

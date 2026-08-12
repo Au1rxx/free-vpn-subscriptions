@@ -1,4 +1,24 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-442447884
+      network: tcp
+      port: 80
+      server: pl1.levikogjgfdd.ir
+      type: vmess
+      udp: true
+      uuid: 055de40d-c5d0-4064-b124-949ba284c3b4
+    - flow: xtls-rprx-vision
+      name: vless-442407840
+      network: tcp
+      port: 443
+      server: 95.85.253.5
+      servername: pl4.fast-connect-service.site
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: "8033102198"
     - flow: xtls-rprx-vision
       name: vless-436248619
       network: tcp
@@ -330,6 +350,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-442447884
+        - vless-442407840
         - vless-436248619
         - vless-438228689
         - vless-439864593
@@ -372,6 +394,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vmess-442447884
+        - vless-442407840
         - vless-436248619
         - vless-438228689
         - vless-439864593
