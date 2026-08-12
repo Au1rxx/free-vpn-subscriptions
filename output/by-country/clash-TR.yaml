@@ -14,6 +14,20 @@ proxies:
       uuid: 160201ba-df99-4a03-a0c2-9c4aa7a5fb57
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-425785787
+      network: tcp
+      port: 13868
+      reality-opts:
+        public-key: FaX6hUpswBFFN-GaXFmFK8bVWYcPlrB4KP26n_INgko
+        short-id: e852dc
+      server: 81.177.215.156
+      servername: amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-423595737
       network: tcp
       port: 13868
@@ -71,18 +85,12 @@ proxies:
       type: vless
       udp: true
       uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
-    - name: vless-332701908
-      network: grpc
-      port: 8443
-      server: 185.39.204.155
-      type: vless
-      udp: true
-      uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-419357361
+        - vless-425785787
         - vless-423595737
         - vless-425651182
         - shadowsocks-138388752
@@ -90,13 +98,13 @@ proxy-groups:
         - shadowsocks-128223
         - shadowsocks-11086
         - vless-212135092
-        - vless-332701908
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-419357361
+        - vless-425785787
         - vless-423595737
         - vless-425651182
         - shadowsocks-138388752
@@ -104,7 +112,6 @@ proxy-groups:
         - shadowsocks-128223
         - shadowsocks-11086
         - vless-212135092
-        - vless-332701908
       type: select
 rules:
     - MATCH,select

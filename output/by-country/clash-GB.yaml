@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-425785801
+      network: tcp
+      port: 443
+      server: 191.215.37.90
+      type: vless
+      udp: true
+      uuid: ae1c12b0-df98-5f76-9adc-bd3380a3dbbd
     - name: hysteria2-387719513
       password: 22d891f5-ad85-4824-b0b8-e30cf3d37eb5
       port: 2056
@@ -11,13 +18,6 @@ proxies:
       password: RexnBgU7EV5ADxG
       port: 7001
       server: 94.156.250.148
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-387719480
-      password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
-      port: 61312
-      server: 129.151.68.189
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
@@ -48,6 +48,14 @@ proxies:
       server: 141.98.101.182
       type: ss
       udp: true
+    - name: trojan-387464373
+      password: MiTiVPN
+      port: 443
+      server: 104.17.148.22
+      skip-cert-verify: false
+      sni: gb-ss-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.mitivpn.lifestyle
+      type: trojan
+      udp: true
     - name: trojan-419356366
       password: MiTiVPN
       port: 443
@@ -75,13 +83,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-425785801
         - hysteria2-387719513
         - shadowsocks-240
-        - shadowsocks-387719480
         - shadowsocks-415241978
         - shadowsocks-271
         - shadowsocks-165
         - shadowsocks-227
+        - trojan-387464373
         - trojan-419356366
         - trojan-379268098
         - vless-334986653
@@ -90,13 +99,14 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-425785801
         - hysteria2-387719513
         - shadowsocks-240
-        - shadowsocks-387719480
         - shadowsocks-415241978
         - shadowsocks-271
         - shadowsocks-165
         - shadowsocks-227
+        - trojan-387464373
         - trojan-419356366
         - trojan-379268098
         - vless-334986653
