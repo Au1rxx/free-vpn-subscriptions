@@ -6,6 +6,46 @@ proxies:
       type: vless
       udp: true
       uuid: ae1c12b0-df98-5f76-9adc-bd3380a3dbbd
+    - client-fingerprint: firefox
+      name: vless-429851174
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: R0Iip6sJXLO1OKQ68Jfi01mj3kiN6FtGsY4vOkGV5ho
+        short-id: 403d24a2
+      server: 167.104.223.65
+      servername: www.canonical.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+    - client-fingerprint: firefox
+      name: vless-429870183
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: JH8yFK9WKJnwxF4HTGO2ZOXZDlaDqYzx3e5PvyeU8ww
+        short-id: 6edb6b2ddfed9e1c
+      server: 51.89.194.151
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: bb742567-ec51-4956-9d3d-099e1a4d48c4
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-429847173
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: 6AOnobBShzL_N96JRBNMfbL84_3myz8ZbKfZUEqRXiY
+        short-id: ""
+      server: 149.248.77.106
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 000f16e8-cc68-4951-b336-acd81996efde
     - name: hysteria2-387719513
       password: 22d891f5-ad85-4824-b0b8-e30cf3d37eb5
       port: 2056
@@ -48,11 +88,19 @@ proxies:
       server: 141.98.101.182
       type: ss
       udp: true
-    - name: trojan-387464373
+    - name: trojan-379268098
       password: MiTiVPN
       port: 443
       server: 104.17.148.22
-      skip-cert-verify: false
+      skip-cert-verify: true
+      sni: gb-ss-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.mitivpn.lifestyle
+      type: trojan
+      udp: true
+    - name: trojan-408674648
+      password: MiTiVPN
+      port: 443
+      server: 104.17.148.22
+      skip-cert-verify: true
       sni: gb-ss-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.mitivpn.lifestyle
       type: trojan
       udp: true
@@ -64,52 +112,51 @@ proxies:
       sni: default.fastly.com
       type: trojan
       udp: true
-    - name: trojan-379268098
+    - name: trojan-387464373
       password: MiTiVPN
       port: 443
       server: 104.17.148.22
-      skip-cert-verify: true
+      skip-cert-verify: false
       sni: gb-ss-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.mitivpn.lifestyle
       type: trojan
       udp: true
-    - name: vless-334986653
-      network: tcp
-      port: 20190
-      server: 169.197.113.179
-      type: vless
-      udp: true
-      uuid: ad4dd89a-2e4b-4f33-bb96-7e9c4eb85d0b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-425785801
+        - vless-429851174
+        - vless-429870183
+        - vless-429847173
         - hysteria2-387719513
         - shadowsocks-240
         - shadowsocks-415241978
         - shadowsocks-271
         - shadowsocks-165
         - shadowsocks-227
-        - trojan-387464373
-        - trojan-419356366
         - trojan-379268098
-        - vless-334986653
+        - trojan-408674648
+        - trojan-419356366
+        - trojan-387464373
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-425785801
+        - vless-429851174
+        - vless-429870183
+        - vless-429847173
         - hysteria2-387719513
         - shadowsocks-240
         - shadowsocks-415241978
         - shadowsocks-271
         - shadowsocks-165
         - shadowsocks-227
-        - trojan-387464373
-        - trojan-419356366
         - trojan-379268098
-        - vless-334986653
+        - trojan-408674648
+        - trojan-419356366
+        - trojan-387464373
       type: select
 rules:
     - MATCH,select

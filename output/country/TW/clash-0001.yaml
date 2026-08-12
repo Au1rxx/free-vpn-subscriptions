@@ -1,12 +1,5 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-241
-      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
-      port: 50099
-      server: r3mrcg001287h3p.cybervena.com
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-298
       password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
       port: 50099
@@ -123,11 +116,31 @@ proxies:
       server: 36.224.162.2
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-428711837
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: aTPjxfJ5QPGxYRyQ8SRnYwyXUhuasda7i5Dc5VoKxVY
+        short-id: 4c9fbcb1
+      server: sg01.18adae16-f183-4aaf-9227-67dc4b27fec6.984b277d-718f-4ba8-9e06-0036b675c900.byteprivatelink.com
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06cf100d-ca6d-4ebe-b44a-1bb15b8346cf
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-429834180
+      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+      port: 50099
+      server: 61.231.48.199
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-241
         - shadowsocks-298
         - shadowsocks-303
         - hysteria2-16610
@@ -143,12 +156,13 @@ proxy-groups:
         - hysteria2-307174592
         - hysteria2-328918461
         - shadowsocks-347614096
+        - vless-428711837
+        - shadowsocks-429834180
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-241
         - shadowsocks-298
         - shadowsocks-303
         - hysteria2-16610
@@ -164,6 +178,8 @@ proxy-groups:
         - hysteria2-307174592
         - hysteria2-328918461
         - shadowsocks-347614096
+        - vless-428711837
+        - shadowsocks-429834180
       type: select
 rules:
     - MATCH,select

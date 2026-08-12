@@ -1,11 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-419356365
-      password: U9YAoqBgg5VyGBc6vQv1sN
-      port: 7538
-      server: 194.61.121.93
-      type: ss
-      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-425655186
@@ -44,6 +37,19 @@ proxies:
       type: vless
       udp: true
       uuid: "8033102198"
+    - client-fingerprint: firefox
+      name: vless-429868173
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: JldKt40jK4uwPfwxy5RNZSvMf11bHIEphKmPNEmlRmg
+        short-id: 6c3d30b55a969136
+      server: 54.37.136.194
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a60bc8c8-1447-4f2c-a09c-c4293b257fd8
     - flow: xtls-rprx-vision
       name: vless-421497443
       network: tcp
@@ -66,11 +72,29 @@ proxies:
       type: vless
       udp: true
       uuid: "8033102198"
+    - flow: xtls-rprx-vision
+      name: vless-429862177
+      network: raw
+      port: 443
+      server: 82.26.91.87
+      servername: faster.yandex-apicloud.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7e760d89-a8f4-4a87-8f10-b4af28c61b7f
     - cipher: aes-256-gcm
       name: shadowsocks-11081
       password: Y6R9pAtvxxzmGC
       port: 5600
       server: 92.118.205.211
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-419356365
+      password: U9YAoqBgg5VyGBc6vQv1sN
+      port: 7538
+      server: 194.61.121.93
       type: ss
       udp: true
     - name: trojan-270660238
@@ -277,14 +301,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-419356365
         - vmess-425655186
         - vless-423596739
         - vless-425785795
         - vless-425785807
+        - vless-429868173
         - vless-421497443
         - vless-425785808
+        - vless-429862177
         - shadowsocks-11081
+        - shadowsocks-419356365
         - trojan-270660238
         - trojan-262786493
         - trojan-257074116
@@ -315,14 +341,16 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - shadowsocks-419356365
         - vmess-425655186
         - vless-423596739
         - vless-425785795
         - vless-425785807
+        - vless-429868173
         - vless-421497443
         - vless-425785808
+        - vless-429862177
         - shadowsocks-11081
+        - shadowsocks-419356365
         - trojan-270660238
         - trojan-262786493
         - trojan-257074116

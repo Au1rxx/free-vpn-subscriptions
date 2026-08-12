@@ -6,13 +6,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
-    - name: vless-85980
-      network: ws
-      port: 80
-      server: ov-italy1.09vpn.com
-      type: vless
-      udp: true
-      uuid: 1e280316-0408-47c4-b058-05b8f1f17f02
     - cipher: aes-256-gcm
       name: shadowsocks-127110
       password: RexnBgU7EV5ADxG
@@ -191,12 +184,38 @@ proxies:
       type: vless
       udp: true
       uuid: 95ae0de8-d944-4b1e-b450-d34d80f9a528
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-429865174
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: UjwVdSvY-6dV5UKCNO7ROokiSF_aLaXYyUaG6RybOmI
+        short-id: 2762604ed2e0fa2f
+      server: 45.155.68.66
+      servername: xit.saturn-cloud.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 95ae0de8-d944-4b1e-b450-d34d80f9a528
+    - client-fingerprint: firefox
+      name: vless-429873172
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-16521
-        - vless-85980
         - shadowsocks-127110
         - vless-2291712
         - vless-2297536
@@ -215,13 +234,14 @@ proxy-groups:
         - vless-421499442
         - shadowsocks-423587489
         - vless-425785798
+        - vless-429865174
+        - vless-429873172
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-16521
-        - vless-85980
         - shadowsocks-127110
         - vless-2291712
         - vless-2297536
@@ -240,6 +260,8 @@ proxy-groups:
         - vless-421499442
         - shadowsocks-423587489
         - vless-425785798
+        - vless-429865174
+        - vless-429873172
       type: select
 rules:
     - MATCH,select
