@@ -17,6 +17,13 @@ proxies:
       type: vmess
       udp: true
       uuid: 9db4c708-aef8-4359-821b-38e47990be0d
+    - cipher: aes-256-gcm
+      name: shadowsocks-27048
+      password: RexnBgU7EV5ADxG
+      port: 7002
+      server: 172.105.39.124
+      type: ss
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-125111
       password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
@@ -218,12 +225,43 @@ proxies:
       type: vless
       udp: true
       uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
+    - name: trojan-406420827
+      password: b3f564b8-b3de-415f-901a-b989768c3464
+      port: 24407
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-406420828
+      password: b3f564b8-b3de-415f-901a-b989768c3464
+      port: 24408
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-408149643
+      network: tcp
+      port: 20843
+      reality-opts:
+        public-key: 3gomAzFXNmwrb-llPQCDK_xkPFOyBmVKR52iy8U3yjg
+        short-id: aad7f0276f60244b
+      server: 34.124.166.13
+      servername: www.spotify.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 16b3793b-3335-4832-b1fd-877b2c5e15d6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-262
         - vmess-25686
+        - shadowsocks-27048
         - shadowsocks-125111
         - vmess-2387858
         - vmess-2387859
@@ -240,6 +278,9 @@ proxy-groups:
         - vless-254931446
         - vless-254950445
         - vless-347654097
+        - trojan-406420827
+        - trojan-406420828
+        - vless-408149643
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -247,6 +288,7 @@ proxy-groups:
         - auto
         - vmess-262
         - vmess-25686
+        - shadowsocks-27048
         - shadowsocks-125111
         - vmess-2387858
         - vmess-2387859
@@ -263,6 +305,9 @@ proxy-groups:
         - vless-254931446
         - vless-254950445
         - vless-347654097
+        - trojan-406420827
+        - trojan-406420828
+        - vless-408149643
       type: select
 rules:
     - MATCH,select

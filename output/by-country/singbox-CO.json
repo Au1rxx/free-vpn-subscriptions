@@ -1,0 +1,63 @@
+{
+  "outbounds": [
+    {
+      "server": "158.247.125.162",
+      "server_port": 62145,
+      "tag": "vless-408443414",
+      "type": "vless",
+      "uuid": "8fb65472-5957-4f64-ba2d-b5812b2f155a"
+    },
+    {
+      "server": "158.247.125.162",
+      "server_port": 62145,
+      "tag": "vless-408149621",
+      "type": "vless",
+      "uuid": "8fb65472-5957-4f64-ba2d-b5812b2f155a"
+    },
+    {
+      "server": "181.174.231.58",
+      "server_port": 999,
+      "tag": "http-1303660",
+      "type": "http"
+    },
+    {
+      "password": "test123",
+      "server": "91.148.134.67",
+      "server_port": 1080,
+      "tag": "socks5-60057371",
+      "type": "socks",
+      "username": "test123",
+      "version": "5"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-408443414",
+        "vless-408149621",
+        "http-1303660",
+        "socks5-60057371"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-408443414",
+        "vless-408149621",
+        "http-1303660",
+        "socks5-60057371"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

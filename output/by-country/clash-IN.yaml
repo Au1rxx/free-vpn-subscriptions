@@ -1,4 +1,34 @@
 proxies:
+    - name: trojan-406420827
+      password: b3f564b8-b3de-415f-901a-b989768c3464
+      port: 24407
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-408149643
+      network: tcp
+      port: 20843
+      reality-opts:
+        public-key: 3gomAzFXNmwrb-llPQCDK_xkPFOyBmVKR52iy8U3yjg
+        short-id: aad7f0276f60244b
+      server: 34.124.166.13
+      servername: www.spotify.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 16b3793b-3335-4832-b1fd-877b2c5e15d6
+    - name: trojan-406420828
+      password: b3f564b8-b3de-415f-901a-b989768c3464
+      port: 24408
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-125111
       password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
@@ -6,6 +36,27 @@ proxies:
       server: 103.120.178.193
       type: ss
       udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-27048
+      password: RexnBgU7EV5ADxG
+      port: 7002
+      server: 172.105.39.124
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-252867231
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: g77ZJbm18JEotapmVRjaXi133MzkbhkU2lxhVeXx8zw
+        short-id: 68a8
+      server: 5.253.42.164
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-211485818
@@ -21,6 +72,20 @@ proxies:
       udp: true
       uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
     - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-252763617
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: g77ZJbm18JEotapmVRjaXi133MzkbhkU2lxhVeXx8zw
+        short-id: 68a8
+      server: 5.253.42.164
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
+    - client-fingerprint: firefox
       name: vless-250761440
       network: tcp
       port: 2053
@@ -33,37 +98,65 @@ proxies:
       type: vless
       udp: true
       uuid: 7f1f5848-da44-47df-8581-df83e88ee2b3
-    - client-fingerprint: firefox
+    - client-fingerprint: qq
       flow: xtls-rprx-vision
-      name: vless-250670739
+      name: vless-202734758
       network: tcp
       port: 40443
       reality-opts:
-        public-key: g77ZJbm18JEotapmVRjaXi133MzkbhkU2lxhVeXx8zw
-        short-id: 68a8
-      server: 5.253.42.164
+        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
+        short-id: 88b6
+      server: 5.253.30.99
       servername: deepl.com
       tls: true
       type: vless
       udp: true
-      uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
+      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-234984371
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
+        short-id: 88b6
+      server: 5.253.30.99
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-406420827
+        - vless-408149643
+        - trojan-406420828
         - shadowsocks-125111
+        - shadowsocks-27048
+        - vless-252867231
         - vless-211485818
+        - vless-252763617
         - vless-250761440
-        - vless-250670739
+        - vless-202734758
+        - vless-234984371
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-406420827
+        - vless-408149643
+        - trojan-406420828
         - shadowsocks-125111
+        - shadowsocks-27048
+        - vless-252867231
         - vless-211485818
+        - vless-252763617
         - vless-250761440
-        - vless-250670739
+        - vless-202734758
+        - vless-234984371
       type: select
 rules:
     - MATCH,select
