@@ -6,6 +6,28 @@ proxies:
       server: e1.cover20.ir
       type: ss
       udp: true
+    - name: trojan-419356368
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.9
+      skip-cert-verify: true
+      sni: default.fastly.com
+      type: trojan
+      udp: true
+    - name: vless-419361360
+      network: tcp
+      port: 22224
+      server: 63.186.162.237
+      type: vless
+      udp: true
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+    - name: vless-419361358
+      network: tcp
+      port: 22222
+      server: 63.186.162.237
+      type: vless
+      udp: true
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
     - flow: xtls-rprx-vision
       name: vless-412872055
       network: tcp
@@ -17,6 +39,27 @@ proxies:
       type: vless
       udp: true
       uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+    - name: vless-419361359
+      network: tcp
+      port: 22223
+      server: 63.186.162.237
+      type: vless
+      udp: true
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-419358358
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 5jbcp5sIqgP82WsskUhSENWnfk0ZUSWIBlbqKHkIJA0
+        short-id: ""
+      server: n1.famlegacy.online
+      servername: n1.famlegacy.online
+      tls: true
+      type: vless
+      udp: true
+      uuid: 47975fcf-1f4c-4808-9012-114569b081e4
     - flow: xtls-rprx-vision
       name: vless-415023105
       network: tcp
@@ -39,6 +82,20 @@ proxies:
       type: vless
       udp: true
       uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-419321127
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: 6RshLCSAs31qGRa_tWi63KClbh2Kzj9ooXpdaPJKbjs
+        short-id: a6bbc4aecf5d961f
+      server: de-193-58.neobo-tooth.ru
+      servername: vk.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: b6c29ae7-4748-4049-b642-b695c0d2c776
     - flow: xtls-rprx-vision
       name: vless-415023108
       network: tcp
@@ -300,10 +357,10 @@ proxies:
       server: 213.202.208.199
       type: ss
       udp: true
-    - name: trojan-419356368
+    - name: trojan-404344005
       password: MiTiVPN
       port: 443
-      server: 151.101.56.9
+      server: 151.101.56.7
       skip-cert-verify: true
       sni: default.fastly.com
       type: trojan
@@ -316,49 +373,20 @@ proxies:
       sni: ssl.fastly.com
       type: trojan
       udp: true
-    - name: trojan-404344005
-      password: MiTiVPN
-      port: 443
-      server: 151.101.56.7
-      skip-cert-verify: true
-      sni: default.fastly.com
-      type: trojan
-      udp: true
-    - name: vless-391807699
-      network: tcp
-      port: 22223
-      server: 3.71.241.48
-      type: vless
-      udp: true
-      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-    - name: vless-391807698
-      network: tcp
-      port: 22222
-      server: 3.71.241.48
-      type: vless
-      udp: true
-      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-    - client-fingerprint: chrome
-      name: vless-270540227
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: S8O8R938N960cpQfIIDXsJTxeGAkbVv6PlIqP0-d30w
-        short-id: 1ea59febb8d4fc8e
-      server: 88.216.220.87
-      servername: api.noneok.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a8e3155b-ceb1-4fcb-bc0c-2e77ec005401
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-412872072
+        - trojan-419356368
+        - vless-419361360
+        - vless-419361358
         - vless-412872055
+        - vless-419361359
+        - vless-419358358
         - vless-415023105
         - vless-415264975
+        - vless-419321127
         - vless-415023108
         - vless-415023106
         - vless-417407769
@@ -391,21 +419,23 @@ proxy-groups:
         - shadowsocks-383438271
         - shadowsocks-11078
         - shadowsocks-276
-        - trojan-419356368
-        - trojan-404344003
         - trojan-404344005
-        - vless-391807699
-        - vless-391807698
-        - vless-270540227
+        - trojan-404344003
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-412872072
+        - trojan-419356368
+        - vless-419361360
+        - vless-419361358
         - vless-412872055
+        - vless-419361359
+        - vless-419358358
         - vless-415023105
         - vless-415264975
+        - vless-419321127
         - vless-415023108
         - vless-415023106
         - vless-417407769
@@ -438,12 +468,8 @@ proxy-groups:
         - shadowsocks-383438271
         - shadowsocks-11078
         - shadowsocks-276
-        - trojan-419356368
-        - trojan-404344003
         - trojan-404344005
-        - vless-391807699
-        - vless-391807698
-        - vless-270540227
+        - trojan-404344003
       type: select
 rules:
     - MATCH,select
