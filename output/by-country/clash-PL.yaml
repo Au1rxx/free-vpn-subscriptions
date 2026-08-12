@@ -27,20 +27,6 @@ proxies:
       type: vless
       udp: true
       uuid: fbb74aa8-b89a-4f20-9504-6b25aadf6681
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-408634804
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: KOgPteoWEwtVtykS2FGV5NHdZw6197VzbITPGkUJDBQ
-        short-id: ""
-      server: 144.31.3.136
-      servername: proud-dynamo.cdn.cachefleet.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f4dbc770-016d-4a0f-82f0-d83ee6f45da3
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-381349764
       password: VJtsgllDDJfNmaTe
@@ -54,14 +40,6 @@ proxies:
       port: 5600
       server: 92.118.205.211
       type: ss
-      udp: true
-    - name: trojan-283683743
-      password: ND91608427
-      port: 443
-      server: relaxed-gull.rooster465.autos
-      skip-cert-verify: true
-      sni: relaxed-gull.rooster465.autos
-      type: trojan
       udp: true
     - name: trojan-286085590
       password: ND91608427
@@ -95,12 +73,12 @@ proxies:
       sni: discrete-basilisk.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-269060761
+    - name: trojan-283683743
       password: ND91608427
       port: 443
-      server: discrete-basilisk.rooster465.autos
-      skip-cert-verify: false
-      sni: discrete-basilisk.rooster465.autos
+      server: relaxed-gull.rooster465.autos
+      skip-cert-verify: true
+      sni: relaxed-gull.rooster465.autos
       type: trojan
       udp: true
     - name: trojan-264886112
@@ -109,14 +87,6 @@ proxies:
       server: relaxed-gull.rooster465.autos
       skip-cert-verify: true
       sni: ""
-      type: trojan
-      udp: true
-    - name: trojan-269132010
-      password: ND91608427
-      port: 443
-      server: relaxed-gull.rooster465.autos
-      skip-cert-verify: false
-      sni: relaxed-gull.rooster465.autos
       type: trojan
       udp: true
     - name: trojan-264886113
@@ -133,22 +103,6 @@ proxies:
       server: discrete-basilisk.rooster465.autos
       skip-cert-verify: true
       sni: ""
-      type: trojan
-      udp: true
-    - name: trojan-275270504
-      password: ND91608427
-      port: 443
-      server: 202.78.163.248
-      skip-cert-verify: false
-      sni: relaxed-gull.rooster465.autos
-      type: trojan
-      udp: true
-    - name: trojan-335212801
-      password: ND91608427
-      port: 443
-      server: 202.78.163.148
-      skip-cert-verify: false
-      sni: discrete-basilisk.rooster465.autos
       type: trojan
       udp: true
     - name: trojan-268441965
@@ -175,12 +129,36 @@ proxies:
       sni: relaxed-gull.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-335068471
+    - name: trojan-269060761
       password: ND91608427
       port: 443
       server: discrete-basilisk.rooster465.autos
       skip-cert-verify: false
-      sni: ""
+      sni: discrete-basilisk.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-275270504
+      password: ND91608427
+      port: 443
+      server: 202.78.163.248
+      skip-cert-verify: false
+      sni: relaxed-gull.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-269132010
+      password: ND91608427
+      port: 443
+      server: relaxed-gull.rooster465.autos
+      skip-cert-verify: false
+      sni: relaxed-gull.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-335212801
+      password: ND91608427
+      port: 443
+      server: 202.78.163.148
+      skip-cert-verify: false
+      sni: discrete-basilisk.rooster465.autos
       type: trojan
       udp: true
     - name: trojan-319333043
@@ -255,31 +233,37 @@ proxies:
       sni: relaxed-gull.rooster465.autos
       type: trojan
       udp: true
+    - name: trojan-335068471
+      password: ND91608427
+      port: 443
+      server: discrete-basilisk.rooster465.autos
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-412906197
         - vless-413094574
-        - vless-408634804
         - shadowsocks-381349764
         - shadowsocks-11081
-        - trojan-283683743
         - trojan-286085590
         - trojan-257074116
         - trojan-264886067
         - trojan-293233463
-        - trojan-269060761
+        - trojan-283683743
         - trojan-264886112
-        - trojan-269132010
         - trojan-264886113
         - trojan-262786493
-        - trojan-275270504
-        - trojan-335212801
         - trojan-268441965
         - trojan-255434921
         - trojan-286091591
-        - trojan-335068471
+        - trojan-269060761
+        - trojan-275270504
+        - trojan-269132010
+        - trojan-335212801
         - trojan-319333043
         - trojan-270681485
         - trojan-293233466
@@ -289,6 +273,7 @@ proxy-groups:
         - trojan-293233462
         - trojan-286085591
         - trojan-270660238
+        - trojan-335068471
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -296,25 +281,23 @@ proxy-groups:
         - auto
         - vless-412906197
         - vless-413094574
-        - vless-408634804
         - shadowsocks-381349764
         - shadowsocks-11081
-        - trojan-283683743
         - trojan-286085590
         - trojan-257074116
         - trojan-264886067
         - trojan-293233463
-        - trojan-269060761
+        - trojan-283683743
         - trojan-264886112
-        - trojan-269132010
         - trojan-264886113
         - trojan-262786493
-        - trojan-275270504
-        - trojan-335212801
         - trojan-268441965
         - trojan-255434921
         - trojan-286091591
-        - trojan-335068471
+        - trojan-269060761
+        - trojan-275270504
+        - trojan-269132010
+        - trojan-335212801
         - trojan-319333043
         - trojan-270681485
         - trojan-293233466
@@ -324,6 +307,7 @@ proxy-groups:
         - trojan-293233462
         - trojan-286085591
         - trojan-270660238
+        - trojan-335068471
       type: select
 rules:
     - MATCH,select
