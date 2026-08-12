@@ -58,6 +58,13 @@ proxies:
       skip-cert-verify: true
       sni: yg3.mangshe.xyz
       type: hysteria2
+    - cipher: aes-128-gcm
+      name: shadowsocks-126252
+      password: shadowsocks
+      port: 443
+      server: 158.173.24.73
+      type: ss
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-387719480
       password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
@@ -79,6 +86,13 @@ proxies:
       server: 94.156.250.148
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-37998200
+      password: zz0dHjDfoaSaZuRFLGH-hNfBALSEJUYD
+      port: 1234
+      server: 194.164.92.198
+      type: ss
+      udp: true
     - cipher: aes-128-gcm
       name: shadowsocks-227
       password: shadowsocks
@@ -91,13 +105,6 @@ proxies:
       password: 14fFPrbezE3HDZzsMOr6
       port: 8080
       server: 146.70.61.37
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-37998200
-      password: zz0dHjDfoaSaZuRFLGH-hNfBALSEJUYD
-      port: 1234
-      server: 194.164.92.198
       type: ss
       udp: true
     - name: trojan-379268098
@@ -116,20 +123,14 @@ proxies:
       sni: gb-ss-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.mitivpn.lifestyle
       type: trojan
       udp: true
-    - name: vless-335009635
-      network: tcp
+    - name: trojan-408674648
+      password: MiTiVPN
       port: 443
-      server: 191.215.37.90
-      type: vless
+      server: 104.17.148.22
+      skip-cert-verify: true
+      sni: gb-ss-mitivpn--mitivpn--mitivpn---mitivpn--mitivpn--mitivpn.mitivpn.lifestyle
+      type: trojan
       udp: true
-      uuid: SoonTeam
-    - name: vless-335165673
-      network: raw
-      port: 20190
-      server: 169.197.113.179
-      type: vless
-      udp: true
-      uuid: ad4dd89a-2e4b-4f33-bb96-7e9c4eb85d0b
 proxy-groups:
     - interval: 300
       name: auto
@@ -139,16 +140,16 @@ proxy-groups:
         - vless-406367569
         - vless-404164481
         - hysteria2-387719513
+        - shadowsocks-126252
         - shadowsocks-387719480
         - shadowsocks-271
         - shadowsocks-240
+        - shadowsocks-37998200
         - shadowsocks-227
         - shadowsocks-165
-        - shadowsocks-37998200
         - trojan-379268098
         - trojan-387464373
-        - vless-335009635
-        - vless-335165673
+        - trojan-408674648
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -159,16 +160,16 @@ proxy-groups:
         - vless-406367569
         - vless-404164481
         - hysteria2-387719513
+        - shadowsocks-126252
         - shadowsocks-387719480
         - shadowsocks-271
         - shadowsocks-240
+        - shadowsocks-37998200
         - shadowsocks-227
         - shadowsocks-165
-        - shadowsocks-37998200
         - trojan-379268098
         - trojan-387464373
-        - vless-335009635
-        - vless-335165673
+        - trojan-408674648
       type: select
 rules:
     - MATCH,select
