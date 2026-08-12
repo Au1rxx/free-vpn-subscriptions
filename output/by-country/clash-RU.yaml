@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-430120432
+      network: tcp
+      port: 445
+      server: 193.164.149.83
+      type: vless
+      udp: true
+      uuid: 844a8b1c-16dd-46b1-83c3-8220e1055a4a
     - name: hysteria2-387719495
       password: 22d891f5-ad85-4824-b0b8-e30cf3d37eb5
       port: 2056
@@ -6,14 +13,6 @@ proxies:
       skip-cert-verify: true
       sni: els1.mangshe.xyz
       type: hysteria2
-    - name: trojan-381343463
-      password: 08QNE5JBq7kTV6b9Dd6e_w-y4WhjMLS9
-      port: 8443
-      server: ru.federal-usa.com
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
     - name: trojan-402260863
       password: 08QNE5JBq7kTV6b9Dd6e_w-y4WhjMLS9
       port: 8443
@@ -38,12 +37,28 @@ proxies:
       sni: ru.federal-usa.com
       type: trojan
       udp: true
+    - name: trojan-381343463
+      password: 08QNE5JBq7kTV6b9Dd6e_w-y4WhjMLS9
+      port: 8443
+      server: ru.federal-usa.com
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - name: trojan-425785761
       password: 08QNE5JBq7kTV6b9Dd6e_w-y4WhjMLS9
       port: 8443
       server: ru.federal-usa.com
       skip-cert-verify: false
       sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-421495445
+      password: 08QNE5JBq7kTV6b9Dd6e_w-y4WhjMLS9
+      port: 8443
+      server: ru.federal-usa.com
+      skip-cert-verify: false
+      sni: ru.federal-usa.com
       type: trojan
       udp: true
     - name: trojan-415140107
@@ -58,24 +73,28 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-430120432
         - hysteria2-387719495
-        - trojan-381343463
         - trojan-402260863
         - trojan-417302904
         - trojan-400112106
+        - trojan-381343463
         - trojan-425785761
+        - trojan-421495445
         - trojan-415140107
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-430120432
         - hysteria2-387719495
-        - trojan-381343463
         - trojan-402260863
         - trojan-417302904
         - trojan-400112106
+        - trojan-381343463
         - trojan-425785761
+        - trojan-421495445
         - trojan-415140107
       type: select
 rules:
