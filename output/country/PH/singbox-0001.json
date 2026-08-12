@@ -1,15 +1,29 @@
 {
   "outbounds": [
     {
-      "server": "120.28.192.179",
-      "server_port": 5050,
-      "tag": "http-1194272",
+      "alter_id": 0,
+      "security": "auto",
+      "server": "61.245.11.60",
+      "server_port": 80,
+      "tag": "vmess-2387870",
+      "transport": {
+        "path": "/vmess/",
+        "type": "ws"
+      },
+      "type": "vmess",
+      "uuid": "a3e3a710-79f8-4ae0-b83c-607aab40d197"
+    },
+    {
+      "server": "126.209.110.254",
+      "server_port": 8082,
+      "tag": "http-433161169",
       "type": "http"
     },
     {
       "interval": "5m",
       "outbounds": [
-        "http-1194272"
+        "vmess-2387870",
+        "http-433161169"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -18,7 +32,8 @@
     {
       "outbounds": [
         "auto",
-        "http-1194272"
+        "vmess-2387870",
+        "http-433161169"
       ],
       "tag": "select",
       "type": "selector"
