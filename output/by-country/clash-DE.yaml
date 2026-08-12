@@ -90,6 +90,17 @@ proxies:
       type: vless
       udp: true
       uuid: b6c29ae7-4748-4049-b642-b695c0d2c776
+    - flow: xtls-rprx-vision
+      name: vless-413085575
+      network: tcp
+      port: 443
+      server: de151.mechvpn.online
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-410777223
@@ -104,6 +115,20 @@ proxies:
       type: vless
       udp: true
       uuid: 1b7ee703-fa08-4305-8469-ae3e30e61e44
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-413085574
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 6RshLCSAs31qGRa_tWi63KClbh2Kzj9ooXpdaPJKbjs
+        short-id: a6bbc4aecf5d961f
+      server: de-193-58.neobo-tooth.ru
+      servername: vk.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: b6c29ae7-4748-4049-b642-b695c0d2c776
     - name: hysteria2-24902
       password: zhangyang
       port: 6443
@@ -146,6 +171,13 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - name: hysteria2-273329883
+      password: 2ef4cf10-34df-4c0f-9d82-bf6ca9e45025
+      port: 443
+      server: node-degame.bangboonet.ru
+      skip-cert-verify: true
+      sni: node-degame.bangboonet.ru
+      type: hysteria2
     - name: hysteria2-248709607
       password: qQe1z5kU8kN6SlKnDt9Ru3Qp
       port: 443
@@ -167,26 +199,19 @@ proxies:
       skip-cert-verify: false
       sni: node-degame.bangboonet.ru
       type: hysteria2
+    - name: hysteria2-269029125
+      password: 2ef4cf10-34df-4c0f-9d82-bf6ca9e45025
+      port: 443
+      server: node-degame.bangboonet.ru
+      skip-cert-verify: false
+      sni: node-degame.bangboonet.ru
+      type: hysteria2
     - name: hysteria2-254908443
       password: Krab9Hyst2_Rk7pQ2xL
       port: 36723
       server: 95.164.123.231
       skip-cert-verify: true
       sni: www.cloudflare.com
-      type: hysteria2
-    - name: hysteria2-177193639
-      password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
-      port: 443
-      server: 91.196.32.163
-      skip-cert-verify: true
-      sni: germany3.h2corp.local
-      type: hysteria2
-    - name: hysteria2-213095942
-      password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
-      port: 443
-      server: 91.196.32.163
-      skip-cert-verify: true
-      sni: 91.196.32.163
       type: hysteria2
     - name: hysteria2-71125758
       password: 0I_Vi934gK9_Mq3240Xs_Bv2_kUi8Q34183g9hj_Bv6_7a
@@ -209,19 +234,19 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - name: hysteria2-273329883
-      password: 2ef4cf10-34df-4c0f-9d82-bf6ca9e45025
+    - name: hysteria2-177193639
+      password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
       port: 443
-      server: node-degame.bangboonet.ru
+      server: 91.196.32.163
       skip-cert-verify: true
-      sni: node-degame.bangboonet.ru
+      sni: germany3.h2corp.local
       type: hysteria2
-    - name: hysteria2-269029125
-      password: 2ef4cf10-34df-4c0f-9d82-bf6ca9e45025
+    - name: hysteria2-213095942
+      password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
       port: 443
-      server: node-degame.bangboonet.ru
-      skip-cert-verify: false
-      sni: node-degame.bangboonet.ru
+      server: 91.196.32.163
+      skip-cert-verify: true
+      sni: 91.196.32.163
       type: hysteria2
     - cipher: aes-256-cfb
       name: shadowsocks-387719497
@@ -237,6 +262,13 @@ proxies:
       server: 91.107.139.186
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-209
+      password: 1hhrqrokj3ag
+      port: 8388
+      server: 209.46.102.22
+      type: ss
+      udp: true
     - cipher: 2022-blake3-aes-256-gcm
       name: shadowsocks-383438271
       password: hXITs2DFbIvD2OPk83+ZMnk4sqJ2bQjxf3gnDLv/m44=:0kzEU0GpjBdnug71Mf76r29FUctQg5c+zRy5E6E+5cE=
@@ -249,13 +281,6 @@ proxies:
       password: XKFKl2rULjIp74
       port: 8008
       server: 185.226.172.8
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-209
-      password: 1hhrqrokj3ag
-      port: 8388
-      server: 209.46.102.22
       type: ss
       udp: true
     - cipher: aes-256-cfb
@@ -317,29 +342,31 @@ proxy-groups:
         - trojan-408523878
         - vless-410782223
         - vless-412872056
+        - vless-413085575
         - vless-410777223
+        - vless-413085574
         - hysteria2-24902
         - hysteria2-248653948
         - hysteria2-48396262
         - hysteria2-131172
         - hysteria2-232804831
         - hysteria2-248653939
+        - hysteria2-273329883
         - hysteria2-248709607
         - hysteria2-376104739
         - hysteria2-391647886
+        - hysteria2-269029125
         - hysteria2-254908443
-        - hysteria2-177193639
-        - hysteria2-213095942
         - hysteria2-71125758
         - hysteria2-177823913
         - hysteria2-200242612
-        - hysteria2-273329883
-        - hysteria2-269029125
+        - hysteria2-177193639
+        - hysteria2-213095942
         - shadowsocks-387719497
         - shadowsocks-393854033
+        - shadowsocks-209
         - shadowsocks-383438271
         - shadowsocks-11078
-        - shadowsocks-209
         - shadowsocks-387719478
         - shadowsocks-276
         - trojan-387464370
@@ -360,29 +387,31 @@ proxy-groups:
         - trojan-408523878
         - vless-410782223
         - vless-412872056
+        - vless-413085575
         - vless-410777223
+        - vless-413085574
         - hysteria2-24902
         - hysteria2-248653948
         - hysteria2-48396262
         - hysteria2-131172
         - hysteria2-232804831
         - hysteria2-248653939
+        - hysteria2-273329883
         - hysteria2-248709607
         - hysteria2-376104739
         - hysteria2-391647886
+        - hysteria2-269029125
         - hysteria2-254908443
-        - hysteria2-177193639
-        - hysteria2-213095942
         - hysteria2-71125758
         - hysteria2-177823913
         - hysteria2-200242612
-        - hysteria2-273329883
-        - hysteria2-269029125
+        - hysteria2-177193639
+        - hysteria2-213095942
         - shadowsocks-387719497
         - shadowsocks-393854033
+        - shadowsocks-209
         - shadowsocks-383438271
         - shadowsocks-11078
-        - shadowsocks-209
         - shadowsocks-387719478
         - shadowsocks-276
         - trojan-387464370
