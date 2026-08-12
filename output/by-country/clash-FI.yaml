@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-417358570
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: 8qUm4S6MR9bLa-ZfblO64aKjRIwGEFEwdVIxgz_tbn4
+        short-id: 33b5887524592cad
+      server: 188.120.237.251
+      servername: boltea.ciphero.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: b50a52ba-891f-44ff-af82-f5f0f3317024
     - name: vless-415258978
       network: grpc
       port: 443
@@ -147,13 +161,6 @@ proxies:
       skip-cert-verify: false
       sni: hopp-legend-se.roxa.org
       type: hysteria2
-    - name: hysteria2-184903690
-      password: velluto_8325804083:b12eebc2-369c-4f3c-96a0-a8bd150ca8d5
-      port: 35000
-      server: 31.76.30.79
-      skip-cert-verify: false
-      sni: gretacoin.shop
-      type: hysteria2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-379361871
       password: rSeYcig_XBy8q3k33NpK3A
@@ -189,10 +196,19 @@ proxies:
       server: 93.123.13.7
       type: ss
       udp: true
+    - name: trojan-419356367
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.9
+      skip-cert-verify: false
+      sni: default.fastly.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-417358570
         - vless-415258978
         - vless-415260972
         - vless-415285973
@@ -205,17 +221,18 @@ proxy-groups:
         - vless-415285972
         - vless-413087573
         - hysteria2-271206441
-        - hysteria2-184903690
         - shadowsocks-379361871
         - shadowsocks-376006390
         - shadowsocks-398004834
         - shadowsocks-336700747
         - shadowsocks-398004833
+        - trojan-419356367
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-417358570
         - vless-415258978
         - vless-415260972
         - vless-415285973
@@ -228,12 +245,12 @@ proxy-groups:
         - vless-415285972
         - vless-413087573
         - hysteria2-271206441
-        - hysteria2-184903690
         - shadowsocks-379361871
         - shadowsocks-376006390
         - shadowsocks-398004834
         - shadowsocks-336700747
         - shadowsocks-398004833
+        - trojan-419356367
       type: select
 rules:
     - MATCH,select
