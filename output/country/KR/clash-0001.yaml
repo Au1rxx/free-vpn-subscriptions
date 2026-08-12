@@ -1,4 +1,13 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-244
+      network: ws
+      port: 443
+      server: 152.67.218.38
+      type: vmess
+      udp: true
+      uuid: b5e9480a-b7aa-40a4-f9a7-5299b5e363b4
     - cipher: aes-256-cfb
       name: shadowsocks-260
       password: qwerREWQ@@
@@ -2065,10 +2074,24 @@ proxies:
       type: vless
       udp: true
       uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
+    - client-fingerprint: chrome
+      name: vless-410803223
+      network: raw
+      port: 8686
+      reality-opts:
+        public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
+        short-id: 628b3c90c98ead4f
+      server: 3.37.55.114
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f0b9ae63-91a7-4673-924e-498e0e0828c0
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-244
         - shadowsocks-260
         - shadowsocks-278
         - shadowsocks-283
@@ -2319,11 +2342,13 @@ proxy-groups:
         - vless-408149647
         - vless-408686083
         - vless-410617283
+        - vless-410803223
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-244
         - shadowsocks-260
         - shadowsocks-278
         - shadowsocks-283
@@ -2574,6 +2599,7 @@ proxy-groups:
         - vless-408149647
         - vless-408686083
         - vless-410617283
+        - vless-410803223
       type: select
 rules:
     - MATCH,select
