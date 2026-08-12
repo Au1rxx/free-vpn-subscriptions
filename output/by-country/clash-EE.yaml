@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-423596740
+      network: tcp
+      port: 2053
+      server: 40.66.33.31
+      type: vless
+      udp: true
+      uuid: 5c5f21f2-8527-4d45-95d0-0c72871d22e7
     - name: vless-335073379
       network: grpc
       port: 8443
@@ -17,6 +24,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-423596740
         - vless-335073379
         - vless-330581942
       type: url-test
@@ -24,6 +32,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-423596740
         - vless-335073379
         - vless-330581942
       type: select

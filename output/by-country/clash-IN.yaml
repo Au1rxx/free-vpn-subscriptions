@@ -19,12 +19,42 @@ proxies:
       type: vless
       udp: true
       uuid: 7f1f5848-da44-47df-8581-df83e88ee2b3
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-252763617
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: g77ZJbm18JEotapmVRjaXi133MzkbhkU2lxhVeXx8zw
+        short-id: 68a8
+      server: 5.253.42.164
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-252867231
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: g77ZJbm18JEotapmVRjaXi133MzkbhkU2lxhVeXx8zw
+        short-id: 68a8
+      server: 5.253.42.164
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-125111
         - vless-250761440
+        - vless-252763617
+        - vless-252867231
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -32,6 +62,8 @@ proxy-groups:
         - auto
         - shadowsocks-125111
         - vless-250761440
+        - vless-252763617
+        - vless-252867231
       type: select
 rules:
     - MATCH,select

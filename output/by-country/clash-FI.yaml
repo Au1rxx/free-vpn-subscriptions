@@ -13,6 +13,13 @@ proxies:
       type: vless
       udp: true
       uuid: b50a52ba-891f-44ff-af82-f5f0f3317024
+    - name: vless-423597739
+      network: tcp
+      port: 2064
+      server: 40.66.33.31
+      type: vless
+      udp: true
+      uuid: 841be8d9-964f-4183-9e99-a65e41c3a018
     - name: vless-415258978
       network: grpc
       port: 443
@@ -88,6 +95,32 @@ proxies:
       type: vless
       udp: true
       uuid: 22199ed8-5f22-4906-9917-67e3609d8776
+    - client-fingerprint: qq
+      name: vless-423492004
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
+        short-id: abcd
+      server: 95.163.232.183
+      servername: 5post-gate.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4c26836a-422b-4c7b-a927-e25a86283486
+    - client-fingerprint: qq
+      name: vless-423500004
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
+        short-id: abcd
+      server: 95.163.232.183
+      servername: 5post-gate.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 88ada5a5-4668-4c98-afb9-c4785613a723
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-419557361
@@ -149,6 +182,20 @@ proxies:
       type: vless
       udp: true
       uuid: 22199ed8-5f22-4906-9917-67e3609d8776
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-423595740
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
+        short-id: a696de84963656de
+      server: 95.85.224.51
+      servername: max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
     - client-fingerprint: qq
       name: vless-415285972
       network: grpc
@@ -184,13 +231,6 @@ proxies:
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-398004834
-      password: 8yezd40lr2w4zz08
-      port: 16460
-      server: 93.123.13.7
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-398004833
       password: 8cmuvza9gyetx0z8
       port: 25783
@@ -204,53 +244,68 @@ proxies:
       server: 65.109.178.10
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-398004834
+      password: 8yezd40lr2w4zz08
+      port: 16460
+      server: 93.123.13.7
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-417358570
+        - vless-423597739
         - vless-415258978
         - vless-415260972
         - vless-415285973
         - vless-417221202
         - vless-415268972
         - vless-415258980
+        - vless-423492004
+        - vless-423500004
         - vless-419557361
         - trojan-419356367
         - vless-415260975
         - vless-415258981
         - vless-415258979
+        - vless-423595740
         - vless-415285972
         - hysteria2-271206441
         - shadowsocks-336700747
         - shadowsocks-376006390
-        - shadowsocks-398004834
         - shadowsocks-398004833
         - shadowsocks-379361871
+        - shadowsocks-398004834
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-417358570
+        - vless-423597739
         - vless-415258978
         - vless-415260972
         - vless-415285973
         - vless-417221202
         - vless-415268972
         - vless-415258980
+        - vless-423492004
+        - vless-423500004
         - vless-419557361
         - trojan-419356367
         - vless-415260975
         - vless-415258981
         - vless-415258979
+        - vless-423595740
         - vless-415285972
         - hysteria2-271206441
         - shadowsocks-336700747
         - shadowsocks-376006390
-        - shadowsocks-398004834
         - shadowsocks-398004833
         - shadowsocks-379361871
+        - shadowsocks-398004834
       type: select
 rules:
     - MATCH,select
