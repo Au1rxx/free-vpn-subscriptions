@@ -6,6 +6,13 @@ proxies:
       server: 185.123.101.64
       type: ss
       udp: true
+    - name: vless-21689012
+      network: raw
+      port: 18244
+      server: 185.128.139.11
+      type: vless
+      udp: true
+      uuid: 0d543aed-4e30-4553-b5ac-211419bb0961
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-138388752
       password: tunnel-fbrof
@@ -56,20 +63,20 @@ proxies:
       type: vless
       udp: true
       uuid: 6423193f-06ec-4ca6-b8a4-74e21dbb3970
-    - client-fingerprint: firefox
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-423484004
-      network: tcp
-      port: 13868
+      name: vless-410786223
+      network: raw
+      port: 1050
       reality-opts:
-        public-key: FaX6hUpswBFFN-GaXFmFK8bVWYcPlrB4KP26n_INgko
-        short-id: e852dc
-      server: 81.177.215.156
-      servername: amd.com
+        public-key: W6rwa-_z6GYG3cmVxqVjOOn7LsvpAFllkbATsO-CnxU
+        short-id: bc6d2d6095e5f634
+      server: tr2ri.mobleamiri10.ir
+      servername: play.google.com
       tls: true
       type: vless
       udp: true
-      uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
+      uuid: 6423193f-06ec-4ca6-b8a4-74e21dbb3970
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-423595737
@@ -141,34 +148,6 @@ proxies:
       uuid: c06ab4be-e7e4-4f53-a5bb-bb500b58f2a7
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-461629157
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: rNBFVzV18kAj_ei4AqsgZywzmvD36WK9hcRdVnpHPAM
-        short-id: c0573c8280a0c019
-      server: try.watch-store.cc
-      servername: www.ya.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: acc50200-7f21-4f90-9cca-0057efcbf042
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-461842954
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: rNBFVzV18kAj_ei4AqsgZywzmvD36WK9hcRdVnpHPAM
-        short-id: c0573c8280a0c019
-      server: try.watch-store.cc
-      servername: www.ya.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: acc50200-7f21-4f90-9cca-0057efcbf042
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
       name: vless-465827646
       network: tcp
       port: 13868
@@ -202,55 +181,68 @@ proxies:
       type: vless
       udp: true
       uuid: 0d543aed-4e30-4553-b5ac-211419bb0961
+    - client-fingerprint: chrome
+      name: vless-472531256
+      network: tcp
+      port: 37211
+      reality-opts:
+        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
+        short-id: aa6f080efb8928f9
+      server: gtc.hekmatdarai.ir
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11086
+        - vless-21689012
         - shadowsocks-138388752
         - vless-151458179
         - vless-212135092
         - vless-332701908
         - trojan-393837570
         - vless-408496771
-        - vless-423484004
+        - vless-410786223
         - vless-423595737
         - vless-425785787
         - vless-429860172
         - vless-429868175
         - vless-455161247
         - vless-457463722
-        - vless-461629157
-        - vless-461842954
         - vless-465827646
         - vless-468154183
         - vless-470980121
         - vless-470980122
+        - vless-472531256
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-11086
+        - vless-21689012
         - shadowsocks-138388752
         - vless-151458179
         - vless-212135092
         - vless-332701908
         - trojan-393837570
         - vless-408496771
-        - vless-423484004
+        - vless-410786223
         - vless-423595737
         - vless-425785787
         - vless-429860172
         - vless-429868175
         - vless-455161247
         - vless-457463722
-        - vless-461629157
-        - vless-461842954
         - vless-465827646
         - vless-468154183
         - vless-470980121
         - vless-470980122
+        - vless-472531256
       type: select
 rules:
     - MATCH,select

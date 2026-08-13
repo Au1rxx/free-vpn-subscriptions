@@ -1,0 +1,43 @@
+{
+  "outbounds": [
+    {
+      "server": "201.46.86.37",
+      "server_port": 8080,
+      "tag": "http-300244613",
+      "type": "http"
+    },
+    {
+      "server": "103.88.234.239",
+      "server_port": 40009,
+      "tag": "socks5-400265675",
+      "type": "socks",
+      "version": "5"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "http-300244613",
+        "socks5-400265675"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "http-300244613",
+        "socks5-400265675"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

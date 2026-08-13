@@ -15,6 +15,20 @@ proxies:
       uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-453254843
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: g0mDPNlv3uOrnxXvBYP3cEjd0ewJuIFlBh93KE5bU3A
+        short-id: d0ca141e839394a3
+      server: 84.32.49.223
+      servername: dsech.mostserv.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 463a26c2-eba8-40ea-89c4-ee5c1373ccbe
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-468905069
       network: tcp
       port: 443
@@ -69,20 +83,34 @@ proxies:
       type: vless
       udp: true
       uuid: 463a26c2-eba8-40ea-89c4-ee5c1373ccbe
-    - client-fingerprint: firefox
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-461675261
+      name: vless-473977749
       network: tcp
       port: 443
       reality-opts:
-        public-key: qR4AuNiWRXOMdzZY-v3KJwpS27LU3T62UhDjxhVqfH0
-        short-id: 9c2378562188c3cb
-      server: 84.32.217.226
-      servername: sweden.nosok-top.com
+        public-key: g0mDPNlv3uOrnxXvBYP3cEjd0ewJuIFlBh93KE5bU3A
+        short-id: d0ca141e839394a3
+      server: 84.32.49.223
+      servername: dsech.mostserv.xyz
       tls: true
       type: vless
       udp: true
-      uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
+      uuid: 463a26c2-eba8-40ea-89c4-ee5c1373ccbe
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-473977750
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: g0mDPNlv3uOrnxXvBYP3cEjd0ewJuIFlBh93KE5bU3A
+        short-id: d0ca141e839394a3
+      server: dsech.mostserv.xyz
+      servername: dsech.mostserv.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 463a26c2-eba8-40ea-89c4-ee5c1373ccbe
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-468895854
@@ -97,29 +125,42 @@ proxies:
       type: vless
       udp: true
       uuid: 46102c9e-441e-49b6-9ab6-9de2b585b202
+    - name: hysteria2-474576737
+      password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
+      port: 43327
+      server: 2.27.23.44
+      skip-cert-verify: false
+      sni: gate-v1.not-a-projects.xyz
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-463824722
+        - vless-453254843
         - vless-468905069
         - vless-470380345
         - vless-470976121
         - vless-461814958
-        - vless-461675261
+        - vless-473977749
+        - vless-473977750
         - vless-468895854
+        - hysteria2-474576737
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-463824722
+        - vless-453254843
         - vless-468905069
         - vless-470380345
         - vless-470976121
         - vless-461814958
-        - vless-461675261
+        - vless-473977749
+        - vless-473977750
         - vless-468895854
+        - hysteria2-474576737
       type: select
 rules:
     - MATCH,select
