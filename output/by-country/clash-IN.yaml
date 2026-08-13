@@ -1,20 +1,18 @@
 proxies:
-    - name: trojan-438278734
-      password: 2698d056-474d-47ce-bfa0-832b85bf2df9
-      port: 24408
-      server: v1in2.stableq.top
-      skip-cert-verify: false
-      sni: v1in2.stableq.top
-      type: trojan
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-447927482
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: sbl95eJz_SP1vYb8doCjAJOo0o5NveutEb9J-XKGl1w
+        short-id: 9c2378562188c3cb
+      server: apxc.falsemirrov.com
+      servername: apxc.falsemirrov.com
+      tls: true
+      type: vless
       udp: true
-    - name: trojan-438278733
-      password: 2698d056-474d-47ce-bfa0-832b85bf2df9
-      port: 24407
-      server: v1in2.stableq.top
-      skip-cert-verify: false
-      sni: v1in2.stableq.top
-      type: trojan
-      udp: true
+      uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
     - client-fingerprint: firefox
       name: vless-446498120
       network: raw
@@ -28,13 +26,6 @@ proxies:
       type: vless
       udp: true
       uuid: 7f1f5848-da44-47df-8581-df83e88ee2b3
-    - cipher: aes-256-gcm
-      name: shadowsocks-27048
-      password: RexnBgU7EV5ADxG
-      port: 7002
-      server: 172.105.39.124
-      type: ss
-      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-125111
       password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
@@ -42,25 +33,30 @@ proxies:
       server: 103.120.178.193
       type: ss
       udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-27048
+      password: RexnBgU7EV5ADxG
+      port: 7002
+      server: 172.105.39.124
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-438278734
-        - trojan-438278733
+        - vless-447927482
         - vless-446498120
-        - shadowsocks-27048
         - shadowsocks-125111
+        - shadowsocks-27048
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-438278734
-        - trojan-438278733
+        - vless-447927482
         - vless-446498120
-        - shadowsocks-27048
         - shadowsocks-125111
+        - shadowsocks-27048
       type: select
 rules:
     - MATCH,select

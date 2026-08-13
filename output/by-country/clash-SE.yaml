@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-448702657
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.0
+      skip-cert-verify: false
+      sni: default.fastly.com
+      type: trojan
+      udp: true
     - name: vless-442396840
       network: ws
       port: 8080
@@ -26,6 +34,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-448702657
         - vless-442396840
         - trojan-404344004
         - trojan-415250973
@@ -34,6 +43,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-448702657
         - vless-442396840
         - trojan-404344004
         - trojan-415250973

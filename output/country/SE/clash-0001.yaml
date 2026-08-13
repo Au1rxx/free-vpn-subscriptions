@@ -114,6 +114,14 @@ proxies:
       type: vless
       udp: true
       uuid: 4cbefb4d-328c-411d-bf76-780df1082df8
+    - name: trojan-448702657
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.0
+      skip-cert-verify: false
+      sni: default.fastly.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -128,6 +136,7 @@ proxy-groups:
         - vless-442396840
         - trojan-442481154
         - vless-446492119
+        - trojan-448702657
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -143,6 +152,7 @@ proxy-groups:
         - vless-442396840
         - trojan-442481154
         - vless-446492119
+        - trojan-448702657
       type: select
 rules:
     - MATCH,select
