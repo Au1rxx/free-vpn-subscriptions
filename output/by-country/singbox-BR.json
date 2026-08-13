@@ -1,0 +1,73 @@
+{
+  "outbounds": [
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "YjliYmFlNzVmMmE4ZmJkYjAxNzQ2NWUyNzZlNjhkZGU=",
+      "server": "163.176.178.88",
+      "server_port": 59319,
+      "tag": "shadowsocks-467980768",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "2022-blake3-chacha20-poly1305",
+      "password": "7qKgkFPiuE7SbagJv9Qjyb1QXHPEMi2tuEnVaavwhcM=",
+      "server": "147.15.91.100",
+      "server_port": 59319,
+      "tag": "shadowsocks-467980767",
+      "type": "shadowsocks"
+    },
+    {
+      "server": "179.189.253.193",
+      "server_port": 5432,
+      "tag": "socks4-440380884",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "server": "144.22.165.206",
+      "server_port": 1088,
+      "tag": "socks5-61846339",
+      "type": "socks",
+      "version": "5"
+    },
+    {
+      "server": "161.35.90.93",
+      "server_port": 1082,
+      "tag": "socks5-335124318",
+      "type": "socks",
+      "version": "5"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "shadowsocks-467980768",
+        "shadowsocks-467980767",
+        "socks4-440380884",
+        "socks5-61846339",
+        "socks5-335124318"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "shadowsocks-467980768",
+        "shadowsocks-467980767",
+        "socks4-440380884",
+        "socks5-61846339",
+        "socks5-335124318"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

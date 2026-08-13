@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-16521
+      network: tcp
+      port: 10086
+      server: 204.216.216.23
+      type: vless
+      udp: true
+      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - name: vless-85980
       network: ws
       port: 80
@@ -6,6 +13,13 @@ proxies:
       type: vless
       udp: true
       uuid: 1e280316-0408-47c4-b058-05b8f1f17f02
+    - name: vless-91310
+      network: ws
+      port: 80
+      server: ov-italy1.09vpn.com
+      type: vless
+      udp: true
+      uuid: 049e56d8-0ba0-49e3-b764-ee04122b9f00
     - cipher: aes-256-gcm
       name: shadowsocks-127110
       password: RexnBgU7EV5ADxG
@@ -55,6 +69,13 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
+    - name: vless-2327855
+      network: tcp
+      port: 10086
+      server: 204.216.216.23
+      type: vless
+      udp: true
+      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-13056446
@@ -76,13 +97,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1e280316-0408-47c4-b058-05b8f1f17f02
-    - name: vless-80961737
-      network: ws
-      port: 80
-      server: 57.131.32.191
-      type: vless
-      udp: true
-      uuid: 049e56d8-0ba0-49e3-b764-ee04122b9f00
     - name: vless-232946909
       network: ws
       port: 80
@@ -257,20 +271,36 @@ proxies:
       server: 194.87.47.61
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-467949103
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: LS-zg9fF_5TvNfMCIKngy5AMue1hF-hsk3hShsHGXT4
+        short-id: e5fa48b9363c6a88
+      server: 46.28.68.63
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 44927d9f-1a75-4c03-ab8c-79898adaaece
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-16521
         - vless-85980
+        - vless-91310
         - shadowsocks-127110
         - vless-2291712
         - vless-2315831
         - vless-2327852
         - vless-2327853
         - vless-2327854
+        - vless-2327855
         - vless-13056446
         - vless-51272389
-        - vless-80961737
         - vless-232946909
         - vless-239195035
         - vless-262807489
@@ -286,21 +316,24 @@ proxy-groups:
         - vless-429873172
         - vless-436156735
         - shadowsocks-455141248
+        - vless-467949103
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-16521
         - vless-85980
+        - vless-91310
         - shadowsocks-127110
         - vless-2291712
         - vless-2315831
         - vless-2327852
         - vless-2327853
         - vless-2327854
+        - vless-2327855
         - vless-13056446
         - vless-51272389
-        - vless-80961737
         - vless-232946909
         - vless-239195035
         - vless-262807489
@@ -316,6 +349,7 @@ proxy-groups:
         - vless-429873172
         - vless-436156735
         - shadowsocks-455141248
+        - vless-467949103
       type: select
 rules:
     - MATCH,select
