@@ -6,6 +6,13 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - name: hysteria2-157363875
+      password: uj7XGZGUqRlmdpk6rysyZMN333RWsxTFj0hBIMaFV-NUCd5r
+      port: 443
+      server: ro.h2corp.org
+      skip-cert-verify: true
+      sni: ro.h2corp.org
+      type: hysteria2
     - name: hysteria2-290666035
       password: gf1:gfhysteria2024
       port: 443
@@ -27,20 +34,6 @@ proxies:
       skip-cert-verify: true
       sni: ro.h2corp.org
       type: hysteria2
-    - name: hysteria2-153592304
-      password: uj7XGZGUqRlmdpk6rysyZMN333RWsxTFj0hBIMaFV-NUCd5r
-      port: 443
-      server: ro.h2corp.org
-      skip-cert-verify: false
-      sni: ro.h2corp.org
-      type: hysteria2
-    - name: hysteria2-157363875
-      password: uj7XGZGUqRlmdpk6rysyZMN333RWsxTFj0hBIMaFV-NUCd5r
-      port: 443
-      server: ro.h2corp.org
-      skip-cert-verify: true
-      sni: ro.h2corp.org
-      type: hysteria2
     - name: hysteria2-17587
       password: 35415e5e-3666-4454-8c45-903af0fcddf4
       port: 47257
@@ -48,13 +41,13 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-130484
-      password: QFWzCw2uX9B9i6qAYeFBIE
+    - name: hysteria2-153592304
+      password: uj7XGZGUqRlmdpk6rysyZMN333RWsxTFj0hBIMaFV-NUCd5r
       port: 443
-      server: bogging-eyeteeth-fly.freesocks.work
-      type: ss
-      udp: true
+      server: ro.h2corp.org
+      skip-cert-verify: false
+      sni: ro.h2corp.org
+      type: hysteria2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-26744
       password: QFWzCw2uX9B9i6qAYeFBIE
@@ -62,33 +55,40 @@ proxies:
       server: 154.46.31.106
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-130484
+      password: QFWzCw2uX9B9i6qAYeFBIE
+      port: 443
+      server: bogging-eyeteeth-fly.freesocks.work
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-315405971
+        - hysteria2-157363875
         - hysteria2-290666035
         - hysteria2-163625323
         - hysteria2-243885379
-        - hysteria2-153592304
-        - hysteria2-157363875
         - hysteria2-17587
-        - shadowsocks-130484
+        - hysteria2-153592304
         - shadowsocks-26744
+        - shadowsocks-130484
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-315405971
+        - hysteria2-157363875
         - hysteria2-290666035
         - hysteria2-163625323
         - hysteria2-243885379
-        - hysteria2-153592304
-        - hysteria2-157363875
         - hysteria2-17587
-        - shadowsocks-130484
+        - hysteria2-153592304
         - shadowsocks-26744
+        - shadowsocks-130484
       type: select
 rules:
     - MATCH,select

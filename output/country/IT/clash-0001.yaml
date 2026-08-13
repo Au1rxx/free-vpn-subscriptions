@@ -6,13 +6,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
-    - name: vless-27030
-      network: tcp
-      port: 10086
-      server: 204.216.216.23
-      type: vless
-      udp: true
-      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - name: vless-77398
       network: ws
       port: 80
@@ -125,6 +118,13 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
+    - name: vless-328932460
+      network: ws
+      port: 80
+      server: ov-italy1.09vpn.com
+      type: vless
+      udp: true
+      uuid: 049e56d8-0ba0-49e3-b764-ee04122b9f00
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-366304220
@@ -271,12 +271,18 @@ proxies:
       type: vless
       udp: true
       uuid: 95ae0de8-d944-4b1e-b450-d34d80f9a528
+    - cipher: aes-256-gcm
+      name: shadowsocks-455141248
+      password: d1fa2f4b98a38bc8
+      port: 10901
+      server: 194.87.47.61
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-16521
-        - vless-27030
         - vless-77398
         - vless-85980
         - shadowsocks-127110
@@ -291,6 +297,7 @@ proxy-groups:
         - vless-232946909
         - vless-239195035
         - vless-262807489
+        - vless-328932460
         - vless-366304220
         - vless-382544673
         - vless-387719534
@@ -302,13 +309,13 @@ proxy-groups:
         - vless-429865174
         - vless-429873172
         - vless-436156735
+        - shadowsocks-455141248
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-16521
-        - vless-27030
         - vless-77398
         - vless-85980
         - shadowsocks-127110
@@ -323,6 +330,7 @@ proxy-groups:
         - vless-232946909
         - vless-239195035
         - vless-262807489
+        - vless-328932460
         - vless-366304220
         - vless-382544673
         - vless-387719534
@@ -334,6 +342,7 @@ proxy-groups:
         - vless-429865174
         - vless-429873172
         - vless-436156735
+        - shadowsocks-455141248
       type: select
 rules:
     - MATCH,select

@@ -1,13 +1,27 @@
 proxies:
-    - client-fingerprint: firefox
+    - cipher: aes-256-gcm
+      name: shadowsocks-455141249
+      password: d99c422199e62b6b
+      port: 30331
+      server: 195.133.23.5
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-455139248
+      password: 81a20429165df87e
+      port: 30331
+      server: 195.133.23.200
+      type: ss
+      udp: true
+    - client-fingerprint: qq
       flow: xtls-rprx-vision
-      name: vless-447927496
-      network: tcp
+      name: vless-453207312
+      network: raw
       port: 443
       reality-opts:
         public-key: ckPCrgbrSdQaz1j3vP0-f0P8F4E8ZucQTeQGtxBKagU
         short-id: 3882f019072c5dcd
-      server: vruaz.mostserv.xyz
+      server: 185.221.199.121
       servername: vruaz.mostserv.xyz
       tls: true
       type: vless
@@ -15,7 +29,7 @@ proxies:
       uuid: 463a26c2-eba8-0031-89c4-ee5c1373ccbe
     - client-fingerprint: qq
       flow: xtls-rprx-vision
-      name: vless-448611313
+      name: vless-455178650
       network: raw
       port: 443
       reality-opts:
@@ -26,7 +40,21 @@ proxies:
       tls: true
       type: vless
       udp: true
-      uuid: 4d60292c-fa80-4d0c-b48c-5c88fd42abce
+      uuid: bf1b23d5-8b6c-448a-a8f1-9cb9f7cb473e
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-453178860
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: D6eH_KAZTcKXOUy7MVB7tU21JVYrIO4n0t8rpSzWjyE
+        short-id: 36a7af09338157bc
+      server: 155.212.211.121
+      servername: ru1.prime-net.me
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3a80bd86-9dea-4eb2-963b-53e175dcd347
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-448909352
@@ -48,23 +76,38 @@ proxies:
       skip-cert-verify: true
       sni: els1.mangshe.xyz
       type: hysteria2
+    - cipher: aes-256-gcm
+      name: shadowsocks-455141247
+      password: bdb313adf74c2ede
+      port: 30331
+      server: 46.17.40.234
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-447927496
-        - vless-448611313
+        - shadowsocks-455141249
+        - shadowsocks-455139248
+        - vless-453207312
+        - vless-455178650
+        - vless-453178860
         - vless-448909352
         - hysteria2-387719495
+        - shadowsocks-455141247
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-447927496
-        - vless-448611313
+        - shadowsocks-455141249
+        - shadowsocks-455139248
+        - vless-453207312
+        - vless-455178650
+        - vless-453178860
         - vless-448909352
         - hysteria2-387719495
+        - shadowsocks-455141247
       type: select
 rules:
     - MATCH,select
