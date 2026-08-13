@@ -14,18 +14,19 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-gcm
-      name: shadowsocks-11086
-      password: faBAoD54k87UJG7
-      port: 2376
-      server: 185.123.101.64
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
       port: 8119
       server: 38.180.113.194
       type: ss
+      udp: true
+    - name: trojan-393837570
+      password: tunnel-ljlcf
+      port: 8441
+      server: tr-1.stunnel.cc
+      skip-cert-verify: false
+      sni: tr-1.stunnel.cc
+      type: trojan
       udp: true
 proxy-groups:
     - interval: 300
@@ -33,8 +34,8 @@ proxy-groups:
       proxies:
         - vless-442404840
         - shadowsocks-138388752
-        - shadowsocks-11086
         - shadowsocks-128223
+        - trojan-393837570
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -42,8 +43,8 @@ proxy-groups:
         - auto
         - vless-442404840
         - shadowsocks-138388752
-        - shadowsocks-11086
         - shadowsocks-128223
+        - trojan-393837570
       type: select
 rules:
     - MATCH,select

@@ -8,6 +8,15 @@ proxies:
       type: vmess
       udp: true
       uuid: 9db4c708-aef8-4359-821b-38e47990be0d
+    - alterId: 0
+      cipher: auto
+      name: vmess-25686
+      network: ws
+      port: 80
+      server: 152.67.8.205
+      type: vmess
+      udp: true
+      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
     - cipher: aes-256-gcm
       name: shadowsocks-27048
       password: RexnBgU7EV5ADxG
@@ -315,11 +324,26 @@ proxies:
       type: vless
       udp: true
       uuid: 7f1f5848-da44-47df-8581-df83e88ee2b3
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-447927482
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: sbl95eJz_SP1vYb8doCjAJOo0o5NveutEb9J-XKGl1w
+        short-id: 9c2378562188c3cb
+      server: apxc.falsemirrov.com
+      servername: apxc.falsemirrov.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-262
+        - vmess-25686
         - shadowsocks-27048
         - shadowsocks-125111
         - vmess-2387858
@@ -345,12 +369,14 @@ proxy-groups:
         - vless-442402840
         - vless-442483156
         - vless-446498120
+        - vless-447927482
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-262
+        - vmess-25686
         - shadowsocks-27048
         - shadowsocks-125111
         - vmess-2387858
@@ -376,6 +402,7 @@ proxy-groups:
         - vless-442402840
         - vless-442483156
         - vless-446498120
+        - vless-447927482
       type: select
 rules:
     - MATCH,select
