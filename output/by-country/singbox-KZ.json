@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "owefv0_92Z540k2F_nx83245_J9130oS_tY",
+      "server": "5.180.27.210",
+      "server_port": 8443,
+      "tag": "hysteria2-468892453",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "borat-hopp.bumbleshrimp.com"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-468892453"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-468892453"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-468905072
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: GUdrwZxYWVvIFgC2fSJDs6U5Un6c7t1Yuvzl7yI1ohU
+        short-id: 2f6a8c3e90b2d574
+      server: 2.26.130.157
+      servername: nora.mycdn-me.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: bda0ede7-ef0a-4fbc-b3b6-1205e55ffb48
     - cipher: aes-256-gcm
       name: shadowsocks-127110
       password: RexnBgU7EV5ADxG
@@ -24,6 +38,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-468905072
         - shadowsocks-127110
         - shadowsocks-455141248
         - shadowsocks-423587489
@@ -32,6 +47,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-468905072
         - shadowsocks-127110
         - shadowsocks-455141248
         - shadowsocks-423587489

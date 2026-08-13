@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-468154183
+      network: ws
+      port: 52315
+      server: 38.180.112.246
+      type: vless
+      udp: true
+      uuid: c06ab4be-e7e4-4f53-a5bb-bb500b58f2a7
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-465827646
@@ -55,35 +62,27 @@ proxies:
       server: 185.123.101.64
       type: ss
       udp: true
-    - name: trojan-393837570
-      password: tunnel-ljlcf
-      port: 8441
-      server: tr-1.stunnel.cc
-      skip-cert-verify: false
-      sni: tr-1.stunnel.cc
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-468154183
         - vless-465827646
         - vless-461842954
         - vless-461629157
         - shadowsocks-138388752
         - shadowsocks-11086
-        - trojan-393837570
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-468154183
         - vless-465827646
         - vless-461842954
         - vless-461629157
         - shadowsocks-138388752
         - shadowsocks-11086
-        - trojan-393837570
       type: select
 rules:
     - MATCH,select

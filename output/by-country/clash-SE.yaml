@@ -15,6 +15,20 @@ proxies:
       uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-468905069
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: g0mDPNlv3uOrnxXvBYP3cEjd0ewJuIFlBh93KE5bU3A
+        short-id: d0ca141e839394a3
+      server: 88.216.189.217
+      servername: dsech.mostserv.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 463a26c2-eba8-40ea-89c4-ee5c1373ccbe
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-461814958
       network: tcp
       port: 443
@@ -41,61 +55,39 @@ proxies:
       type: vless
       udp: true
       uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
-    - name: trojan-404344004
-      password: MiTiVPN
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-468895854
+      network: tcp
       port: 443
-      server: 151.101.56.0
-      skip-cert-verify: true
-      sni: default.fastly.com
-      type: trojan
+      reality-opts:
+        public-key: TK_buEqf86vPwxx15k8BYC2Ln7nkywSQYdLCqDk2KFI
+        short-id: bc29bbdf41ce2bea
+      server: 193.181.29.146
+      servername: www.amd.com
+      tls: true
+      type: vless
       udp: true
-    - name: trojan-415250973
-      password: MiTiVPN
-      port: 443
-      server: 151.101.56.0
-      skip-cert-verify: false
-      sni: default.fastly.com
-      type: trojan
-      udp: true
-    - name: trojan-442481154
-      password: MiTiVPN
-      port: 443
-      server: 151.101.56.0
-      skip-cert-verify: false
-      sni: default.fastly.com
-      type: trojan
-      udp: true
-    - name: trojan-448702657
-      password: MiTiVPN
-      port: 443
-      server: 151.101.56.0
-      skip-cert-verify: false
-      sni: default.fastly.com
-      type: trojan
-      udp: true
+      uuid: 46102c9e-441e-49b6-9ab6-9de2b585b202
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-463824722
+        - vless-468905069
         - vless-461814958
         - vless-461675261
-        - trojan-404344004
-        - trojan-415250973
-        - trojan-442481154
-        - trojan-448702657
+        - vless-468895854
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-463824722
+        - vless-468905069
         - vless-461814958
         - vless-461675261
-        - trojan-404344004
-        - trojan-415250973
-        - trojan-442481154
-        - trojan-448702657
+        - vless-468895854
       type: select
 rules:
     - MATCH,select
