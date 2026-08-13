@@ -23,6 +23,14 @@ proxies:
       sni: default.fastly.com
       type: trojan
       udp: true
+    - name: trojan-442481154
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.0
+      skip-cert-verify: false
+      sni: default.fastly.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -30,6 +38,7 @@ proxy-groups:
         - trojan-448702657
         - trojan-404344004
         - trojan-415250973
+        - trojan-442481154
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -38,6 +47,7 @@ proxy-groups:
         - trojan-448702657
         - trojan-404344004
         - trojan-415250973
+        - trojan-442481154
       type: select
 rules:
     - MATCH,select

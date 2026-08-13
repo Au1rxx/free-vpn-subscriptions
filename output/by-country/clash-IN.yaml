@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-451043327
+      password: 9968a75e-b38c-43e4-9c04-d3108f04d6cf
+      port: 24407
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-447927482
@@ -40,6 +48,14 @@ proxies:
       type: vless
       udp: true
       uuid: 7f1f5848-da44-47df-8581-df83e88ee2b3
+    - name: trojan-451043328
+      password: 9968a75e-b38c-43e4-9c04-d3108f04d6cf
+      port: 24408
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-125111
       password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
@@ -58,9 +74,11 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-451043327
         - vless-447927482
         - vless-448891352
         - vless-446498120
+        - trojan-451043328
         - shadowsocks-125111
         - shadowsocks-27048
       type: url-test
@@ -68,9 +86,11 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-451043327
         - vless-447927482
         - vless-448891352
         - vless-446498120
+        - trojan-451043328
         - shadowsocks-125111
         - shadowsocks-27048
       type: select
