@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-453054141
+      network: tcp
+      port: 50159
+      reality-opts:
+        public-key: odXlgxKTcj9KjOBT0FhPJ13uhgA2D0Fu32XqyUT-NR4
+        short-id: b843cb6d2e089840
+      server: 203.69.151.155
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 93025051-0abd-4889-b702-987cb247a596
     - name: hysteria2-16610
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -98,20 +112,21 @@ proxies:
       type: ss
       udp: true
     - client-fingerprint: chrome
-      name: vless-266835581
+      flow: xtls-rprx-vision
+      name: vless-453219719
       network: tcp
-      port: 443
+      port: 50159
       reality-opts:
-        public-key: HsoG0C19O-NY_EcFpK0ybZv9lFol0MjDJLzjDzWAGXs
-        short-id: d79d3dc3816c329d
-      server: 35.187.156.27
+        public-key: odXlgxKTcj9KjOBT0FhPJ13uhgA2D0Fu32XqyUT-NR4
+        short-id: b843cb6d2e089840
+      server: 203.69.151.155
       servername: www.cloudflare.com
       tls: true
       type: vless
       udp: true
-      uuid: b8ca2900-3ed7-4b58-970e-060d0a6cbf99
+      uuid: 93025051-0abd-4889-b702-987cb247a596
     - client-fingerprint: chrome
-      name: vless-266998489
+      name: vless-266835581
       network: tcp
       port: 443
       reality-opts:
@@ -127,6 +142,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-453054141
         - hysteria2-16610
         - hysteria2-207301017
         - hysteria2-200242609
@@ -141,13 +157,14 @@ proxy-groups:
         - shadowsocks-48398240
         - shadowsocks-241
         - shadowsocks-289214843
+        - vless-453219719
         - vless-266835581
-        - vless-266998489
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-453054141
         - hysteria2-16610
         - hysteria2-207301017
         - hysteria2-200242609
@@ -162,8 +179,8 @@ proxy-groups:
         - shadowsocks-48398240
         - shadowsocks-241
         - shadowsocks-289214843
+        - vless-453219719
         - vless-266835581
-        - vless-266998489
       type: select
 rules:
     - MATCH,select

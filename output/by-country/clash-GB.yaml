@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-453054120
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: lE6w45X8Bwb0HscO6Wa5wnN0qlw7wUuaCW8-iYL5HAQ
+        short-id: bc609efa3b2d052f
+      server: pnnsh.falsemirrov.com
+      servername: pnnsh.falsemirrov.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
     - cipher: aes-128-gcm
       name: shadowsocks-126252
       password: shadowsocks
@@ -77,6 +91,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-453054120
         - shadowsocks-126252
         - shadowsocks-415241978
         - shadowsocks-227
@@ -92,6 +107,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-453054120
         - shadowsocks-126252
         - shadowsocks-415241978
         - shadowsocks-227
