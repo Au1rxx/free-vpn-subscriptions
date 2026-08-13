@@ -28,28 +28,6 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - flow: xtls-rprx-vision
-      name: vless-450949403
-      network: tcp
-      port: 443
-      server: 95.85.253.5
-      servername: pl4.fast-connect-service.site
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 551955b3-46e9-5129-95c9-e7474c15ed6b
-    - flow: xtls-rprx-vision
-      name: vless-450949400
-      network: tcp
-      port: 443
-      server: 95.85.253.134
-      servername: pl5.fast-connect-service.site
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 551955b3-46e9-5129-95c9-e7474c15ed6b
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-455198076
@@ -69,13 +47,6 @@ proxies:
       password: Y6R9pAtvxxzmGC
       port: 5600
       server: 92.118.205.211
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-419356365
-      password: U9YAoqBgg5VyGBc6vQv1sN
-      port: 7538
-      server: 194.61.121.93
       type: ss
       udp: true
     - name: trojan-262786493
@@ -214,6 +185,14 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - name: trojan-264886067
+      password: ND91608427
+      port: 443
+      server: 202.78.163.148
+      skip-cert-verify: true
+      sni: discrete-basilisk.rooster465.autos
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -221,11 +200,8 @@ proxy-groups:
         - vless-455198060
         - vless-455161249
         - trojan-453179914
-        - vless-450949403
-        - vless-450949400
         - vless-455198076
         - shadowsocks-11081
-        - shadowsocks-419356365
         - trojan-262786493
         - trojan-268441965
         - trojan-335212801
@@ -243,6 +219,7 @@ proxy-groups:
         - trojan-453181866
         - trojan-264886112
         - trojan-455144261
+        - trojan-264886067
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -251,11 +228,8 @@ proxy-groups:
         - vless-455198060
         - vless-455161249
         - trojan-453179914
-        - vless-450949403
-        - vless-450949400
         - vless-455198076
         - shadowsocks-11081
-        - shadowsocks-419356365
         - trojan-262786493
         - trojan-268441965
         - trojan-335212801
@@ -273,6 +247,7 @@ proxy-groups:
         - trojan-453181866
         - trojan-264886112
         - trojan-455144261
+        - trojan-264886067
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-457576632
+      network: raw
+      port: 2059
+      server: 4.185.112.1
+      type: vless
+      udp: true
+      uuid: 5c5f21f2-8527-4d45-95d0-0c72871d22e7
     - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
@@ -32,6 +39,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-457576632
         - shadowsocks-128223
         - shadowsocks-138388752
         - shadowsocks-11086
@@ -41,6 +49,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-457576632
         - shadowsocks-128223
         - shadowsocks-138388752
         - shadowsocks-11086
