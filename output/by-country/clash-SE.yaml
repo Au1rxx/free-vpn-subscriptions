@@ -25,20 +25,6 @@ proxies:
       uuid: d7d8af23-36cd-4c66-a42a-4469c177210f
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-455353752
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: qR4AuNiWRXOMdzZY-v3KJwpS27LU3T62UhDjxhVqfH0
-        short-id: 9c2378562188c3cb
-      server: 185.189.46.78
-      servername: sweden.nosok-top.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
       name: vless-461814958
       network: tcp
       port: 443
@@ -65,11 +51,11 @@ proxies:
       type: vless
       udp: true
       uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
-    - name: trojan-448702657
+    - name: trojan-404344004
       password: MiTiVPN
       port: 443
       server: 151.101.56.0
-      skip-cert-verify: false
+      skip-cert-verify: true
       sni: default.fastly.com
       type: trojan
       udp: true
@@ -81,15 +67,15 @@ proxies:
       sni: default.fastly.com
       type: trojan
       udp: true
-    - name: trojan-404344004
+    - name: trojan-442481154
       password: MiTiVPN
       port: 443
       server: 151.101.56.0
-      skip-cert-verify: true
+      skip-cert-verify: false
       sni: default.fastly.com
       type: trojan
       udp: true
-    - name: trojan-442481154
+    - name: trojan-448702657
       password: MiTiVPN
       port: 443
       server: 151.101.56.0
@@ -103,13 +89,12 @@ proxy-groups:
       proxies:
         - vless-463824722
         - vless-457591632
-        - vless-455353752
         - vless-461814958
         - vless-461675261
-        - trojan-448702657
-        - trojan-415250973
         - trojan-404344004
+        - trojan-415250973
         - trojan-442481154
+        - trojan-448702657
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -117,13 +102,12 @@ proxy-groups:
         - auto
         - vless-463824722
         - vless-457591632
-        - vless-455353752
         - vless-461814958
         - vless-461675261
-        - trojan-448702657
-        - trojan-415250973
         - trojan-404344004
+        - trojan-415250973
         - trojan-442481154
+        - trojan-448702657
       type: select
 rules:
     - MATCH,select

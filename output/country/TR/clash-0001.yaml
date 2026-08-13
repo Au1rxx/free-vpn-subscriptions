@@ -13,6 +13,13 @@ proxies:
       server: tr-1.stunnel.cc
       type: ss
       udp: true
+    - name: vless-151458179
+      network: tcp
+      port: 18244
+      server: 185.128.139.11
+      type: vless
+      udp: true
+      uuid: 0d543aed-4e30-4553-b5ac-211419bb0961
     - name: vless-212135092
       network: grpc
       port: 8443
@@ -69,6 +76,14 @@ proxies:
       type: vless
       udp: true
       uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
+    - name: trojan-393837570
+      password: tunnel-ljlcf
+      port: 8441
+      server: tr-1.stunnel.cc
+      skip-cert-verify: false
+      sni: tr-1.stunnel.cc
+      type: trojan
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-408496771
@@ -215,17 +230,33 @@ proxies:
       type: vless
       udp: true
       uuid: acc50200-7f21-4f90-9cca-0057efcbf042
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-465827646
+      network: tcp
+      port: 13868
+      reality-opts:
+        public-key: FaX6hUpswBFFN-GaXFmFK8bVWYcPlrB4KP26n_INgko
+        short-id: e852dc
+      server: 81.177.215.156
+      servername: amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11086
         - shadowsocks-138388752
+        - vless-151458179
         - vless-212135092
         - vless-332701908
         - vless-335060012
         - vless-335140343
         - vless-389696277
+        - trojan-393837570
         - vless-408496771
         - vless-410786223
         - vless-423484004
@@ -238,6 +269,7 @@ proxy-groups:
         - vless-457576632
         - vless-461629157
         - vless-461842954
+        - vless-465827646
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -245,11 +277,13 @@ proxy-groups:
         - auto
         - shadowsocks-11086
         - shadowsocks-138388752
+        - vless-151458179
         - vless-212135092
         - vless-332701908
         - vless-335060012
         - vless-335140343
         - vless-389696277
+        - trojan-393837570
         - vless-408496771
         - vless-410786223
         - vless-423484004
@@ -262,6 +296,7 @@ proxy-groups:
         - vless-457576632
         - vless-461629157
         - vless-461842954
+        - vless-465827646
       type: select
 rules:
     - MATCH,select

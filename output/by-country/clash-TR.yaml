@@ -8,6 +8,20 @@ proxies:
       uuid: 5c5f21f2-8527-4d45-95d0-0c72871d22e7
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-465827646
+      network: tcp
+      port: 13868
+      reality-opts:
+        public-key: FaX6hUpswBFFN-GaXFmFK8bVWYcPlrB4KP26n_INgko
+        short-id: e852dc
+      server: 81.177.215.156
+      servername: amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06d44c57-8e1a-41f4-b9c4-65d35869e078
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-461842954
       network: tcp
       port: 443
@@ -34,13 +48,6 @@ proxies:
       type: vless
       udp: true
       uuid: acc50200-7f21-4f90-9cca-0057efcbf042
-    - cipher: aes-256-gcm
-      name: shadowsocks-11086
-      password: faBAoD54k87UJG7
-      port: 2376
-      server: 185.123.101.64
-      type: ss
-      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-138388752
       password: tunnel-fbrof
@@ -48,25 +55,44 @@ proxies:
       server: tr-1.stunnel.cc
       type: ss
       udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-11086
+      password: faBAoD54k87UJG7
+      port: 2376
+      server: 185.123.101.64
+      type: ss
+      udp: true
+    - name: trojan-393837570
+      password: tunnel-ljlcf
+      port: 8441
+      server: tr-1.stunnel.cc
+      skip-cert-verify: false
+      sni: tr-1.stunnel.cc
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-457576632
+        - vless-465827646
         - vless-461842954
         - vless-461629157
-        - shadowsocks-11086
         - shadowsocks-138388752
+        - shadowsocks-11086
+        - trojan-393837570
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-457576632
+        - vless-465827646
         - vless-461842954
         - vless-461629157
-        - shadowsocks-11086
         - shadowsocks-138388752
+        - shadowsocks-11086
+        - trojan-393837570
       type: select
 rules:
     - MATCH,select

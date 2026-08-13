@@ -1,4 +1,11 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-465806703
+      password: ytw2awn
+      port: 443
+      server: pl134.vpnbook.com
+      type: ss
+      udp: true
     - flow: xtls-rprx-vision
       name: vless-459505033
       network: tcp
@@ -10,28 +17,19 @@ proxies:
       type: vless
       udp: true
       uuid: "8033102198"
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-465806704
+      password: ytw2awn
+      port: 443
+      server: pl140.vpnbook.com
+      type: ss
+      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-11081
       password: Y6R9pAtvxxzmGC
       port: 5600
       server: 92.118.205.211
       type: ss
-      udp: true
-    - name: trojan-262786493
-      password: ND91608427
-      port: 443
-      server: discrete-basilisk.rooster465.autos
-      skip-cert-verify: true
-      sni: ""
-      type: trojan
-      udp: true
-    - name: trojan-268441965
-      password: ND91608427
-      port: 443
-      server: 202.78.163.148
-      skip-cert-verify: false
-      sni: discrete-basilisk.rooster465.autos
-      type: trojan
       udp: true
     - name: trojan-335212801
       password: ND91608427
@@ -47,6 +45,14 @@ proxies:
       server: 202.78.163.148
       skip-cert-verify: true
       sni: discrete-basilisk.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-262786493
+      password: ND91608427
+      port: 443
+      server: discrete-basilisk.rooster465.autos
+      skip-cert-verify: true
+      sni: ""
       type: trojan
       udp: true
     - name: trojan-335068471
@@ -129,6 +135,14 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - name: trojan-268441965
+      password: ND91608427
+      port: 443
+      server: 202.78.163.148
+      skip-cert-verify: false
+      sni: discrete-basilisk.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-453179914
       password: AE62539071
       port: 443
@@ -137,19 +151,11 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: trojan-280054244
+    - name: trojan-286085591
       password: ND91608427
       port: 443
-      server: discrete-basilisk.rooster465.autos
+      server: 202.78.163.248
       skip-cert-verify: false
-      sni: discrete-basilisk.rooster465.autos
-      type: trojan
-      udp: true
-    - name: trojan-257074116
-      password: ND91608427
-      port: 443
-      server: relaxed-gull.rooster465.autos
-      skip-cert-verify: true
       sni: relaxed-gull.rooster465.autos
       type: trojan
       udp: true
@@ -177,20 +183,12 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: trojan-268441964
+    - name: trojan-280054244
       password: ND91608427
       port: 443
-      server: relaxed-gull.rooster465.autos
+      server: discrete-basilisk.rooster465.autos
       skip-cert-verify: false
-      sni: relaxed-gull.rooster465.autos
-      type: trojan
-      udp: true
-    - name: trojan-286085591
-      password: ND91608427
-      port: 443
-      server: 202.78.163.248
-      skip-cert-verify: false
-      sni: relaxed-gull.rooster465.autos
+      sni: discrete-basilisk.rooster465.autos
       type: trojan
       udp: true
     - name: trojan-275270504
@@ -209,14 +207,6 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: trojan-286091591
-      password: ND91608427
-      port: 443
-      server: relaxed-gull.rooster465.autos
-      skip-cert-verify: false
-      sni: relaxed-gull.rooster465.autos
-      type: trojan
-      udp: true
     - name: trojan-264886067
       password: ND91608427
       port: 443
@@ -233,6 +223,14 @@ proxies:
       sni: relaxed-gull.rooster465.autos
       type: trojan
       udp: true
+    - name: trojan-286091591
+      password: ND91608427
+      port: 443
+      server: relaxed-gull.rooster465.autos
+      skip-cert-verify: false
+      sni: relaxed-gull.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-455144261
       password: AE62539071
       port: 443
@@ -241,24 +239,33 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: trojan-255434921
+    - name: trojan-257074116
       password: ND91608427
       port: 443
-      server: discrete-basilisk.rooster465.autos
+      server: relaxed-gull.rooster465.autos
       skip-cert-verify: true
-      sni: discrete-basilisk.rooster465.autos
+      sni: relaxed-gull.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-268441964
+      password: ND91608427
+      port: 443
+      server: relaxed-gull.rooster465.autos
+      skip-cert-verify: false
+      sni: relaxed-gull.rooster465.autos
       type: trojan
       udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-465806703
         - vless-459505033
+        - shadowsocks-465806704
         - shadowsocks-11081
-        - trojan-262786493
-        - trojan-268441965
         - trojan-335212801
         - trojan-286085590
+        - trojan-262786493
         - trojan-335068471
         - trojan-283683743
         - trojan-269060761
@@ -269,32 +276,33 @@ proxy-groups:
         - trojan-293233463
         - trojan-319333043
         - trojan-264886112
+        - trojan-268441965
         - trojan-453179914
-        - trojan-280054244
-        - trojan-257074116
+        - trojan-286085591
         - trojan-264886113
         - trojan-270681485
         - trojan-455144257
-        - trojan-268441964
-        - trojan-286085591
+        - trojan-280054244
         - trojan-275270504
         - trojan-453181866
-        - trojan-286091591
         - trojan-264886067
         - trojan-269132010
+        - trojan-286091591
         - trojan-455144261
-        - trojan-255434921
+        - trojan-257074116
+        - trojan-268441964
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-465806703
         - vless-459505033
+        - shadowsocks-465806704
         - shadowsocks-11081
-        - trojan-262786493
-        - trojan-268441965
         - trojan-335212801
         - trojan-286085590
+        - trojan-262786493
         - trojan-335068471
         - trojan-283683743
         - trojan-269060761
@@ -305,21 +313,21 @@ proxy-groups:
         - trojan-293233463
         - trojan-319333043
         - trojan-264886112
+        - trojan-268441965
         - trojan-453179914
-        - trojan-280054244
-        - trojan-257074116
+        - trojan-286085591
         - trojan-264886113
         - trojan-270681485
         - trojan-455144257
-        - trojan-268441964
-        - trojan-286085591
+        - trojan-280054244
         - trojan-275270504
         - trojan-453181866
-        - trojan-286091591
         - trojan-264886067
         - trojan-269132010
+        - trojan-286091591
         - trojan-455144261
-        - trojan-255434921
+        - trojan-257074116
+        - trojan-268441964
       type: select
 rules:
     - MATCH,select

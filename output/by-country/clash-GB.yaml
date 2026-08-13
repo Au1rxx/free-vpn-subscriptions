@@ -1,4 +1,18 @@
 proxies:
+    - name: vless-465809710
+      network: tcp
+      port: 2040
+      server: microb.pymmaster.shop
+      type: vless
+      udp: true
+      uuid: ab34edc2-b617-4598-ba0a-e15d3b78fe21
+    - name: vless-465809709
+      network: tcp
+      port: 2020
+      server: microb.pymmaster.shop
+      type: vless
+      udp: true
+      uuid: ab34edc2-b617-4598-ba0a-e15d3b78fe21
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-459508013
@@ -66,18 +80,18 @@ proxies:
       server: 146.70.61.37
       type: ss
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-240
-      password: RexnBgU7EV5ADxG
-      port: 7001
-      server: 94.156.250.148
-      type: ss
-      udp: true
     - cipher: aes-128-gcm
       name: shadowsocks-227
       password: shadowsocks
       port: 443
       server: 141.98.101.182
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-240
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 94.156.250.148
       type: ss
       udp: true
     - name: trojan-419356366
@@ -100,6 +114,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-465809710
+        - vless-465809709
         - vless-459508013
         - trojan-463864258
         - vless-463888256
@@ -108,8 +124,8 @@ proxy-groups:
         - shadowsocks-271
         - shadowsocks-453054119
         - shadowsocks-165
-        - shadowsocks-240
         - shadowsocks-227
+        - shadowsocks-240
         - trojan-419356366
         - trojan-455145249
       type: url-test
@@ -117,6 +133,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-465809710
+        - vless-465809709
         - vless-459508013
         - trojan-463864258
         - vless-463888256
@@ -125,8 +143,8 @@ proxy-groups:
         - shadowsocks-271
         - shadowsocks-453054119
         - shadowsocks-165
-        - shadowsocks-240
         - shadowsocks-227
+        - shadowsocks-240
         - trojan-419356366
         - trojan-455145249
       type: select

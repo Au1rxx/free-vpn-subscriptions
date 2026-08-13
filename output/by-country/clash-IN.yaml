@@ -15,6 +15,48 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-465827621
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: sbl95eJz_SP1vYb8doCjAJOo0o5NveutEb9J-XKGl1w
+        short-id: 9c2378562188c3cb
+      server: 157.20.27.29
+      servername: apxc.falsemirrov.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-465827626
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: sbl95eJz_SP1vYb8doCjAJOo0o5NveutEb9J-XKGl1w
+        short-id: 9c2378562188c3cb
+      server: 157.20.27.29
+      servername: apxc.falsemirrov.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-465827622
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: sbl95eJz_SP1vYb8doCjAJOo0o5NveutEb9J-XKGl1w
+        short-id: 9c2378562188c3cb
+      server: 157.20.27.52
+      servername: apxc.falsemirrov.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-463878256
@@ -36,11 +78,32 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-465827623
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: sbl95eJz_SP1vYb8doCjAJOo0o5NveutEb9J-XKGl1w
+        short-id: 9c2378562188c3cb
+      server: apxc.falsemirrov.com
+      servername: apxc.falsemirrov.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-125111
       password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
       port: 31348
       server: 103.120.178.193
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-27048
+      password: RexnBgU7EV5ADxG
+      port: 7002
+      server: 172.105.39.124
       type: ss
       udp: true
 proxy-groups:
@@ -49,9 +112,14 @@ proxy-groups:
       proxies:
         - trojan-463730959
         - trojan-463730960
+        - vless-465827621
+        - vless-465827626
+        - vless-465827622
         - vless-463878256
         - hysteria2-461629121
+        - vless-465827623
         - shadowsocks-125111
+        - shadowsocks-27048
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -59,9 +127,14 @@ proxy-groups:
         - auto
         - trojan-463730959
         - trojan-463730960
+        - vless-465827621
+        - vless-465827626
+        - vless-465827622
         - vless-463878256
         - hysteria2-461629121
+        - vless-465827623
         - shadowsocks-125111
+        - shadowsocks-27048
       type: select
 rules:
     - MATCH,select

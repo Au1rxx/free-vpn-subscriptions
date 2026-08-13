@@ -1,0 +1,49 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "62.233.43.158",
+      "server_port": 9893,
+      "tag": "vless-465851916",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "GVNhQWxHlpnqLnhlOeFpagU1QLVVHBepBQN0YcPjXVg"
+        },
+        "server_name": "io.ozone.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "type": "vless",
+      "uuid": "553e3253-c454-431d-a7e6-42bc06ea5e14"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-465851916"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-465851916"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
