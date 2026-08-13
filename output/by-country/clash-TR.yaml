@@ -6,6 +6,34 @@ proxies:
       type: vless
       udp: true
       uuid: 5c5f21f2-8527-4d45-95d0-0c72871d22e7
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-461842954
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: rNBFVzV18kAj_ei4AqsgZywzmvD36WK9hcRdVnpHPAM
+        short-id: c0573c8280a0c019
+      server: try.watch-store.cc
+      servername: www.ya.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: acc50200-7f21-4f90-9cca-0057efcbf042
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-461629157
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: rNBFVzV18kAj_ei4AqsgZywzmvD36WK9hcRdVnpHPAM
+        short-id: c0573c8280a0c019
+      server: try.watch-store.cc
+      servername: www.ya.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: acc50200-7f21-4f90-9cca-0057efcbf042
     - cipher: aes-256-gcm
       name: shadowsocks-128223
       password: cdBIDV42DCwnfIN
@@ -27,33 +55,27 @@ proxies:
       server: 185.123.101.64
       type: ss
       udp: true
-    - name: trojan-393837570
-      password: tunnel-ljlcf
-      port: 8441
-      server: tr-1.stunnel.cc
-      skip-cert-verify: false
-      sni: tr-1.stunnel.cc
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-457576632
+        - vless-461842954
+        - vless-461629157
         - shadowsocks-128223
         - shadowsocks-138388752
         - shadowsocks-11086
-        - trojan-393837570
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-457576632
+        - vless-461842954
+        - vless-461629157
         - shadowsocks-128223
         - shadowsocks-138388752
         - shadowsocks-11086
-        - trojan-393837570
       type: select
 rules:
     - MATCH,select
