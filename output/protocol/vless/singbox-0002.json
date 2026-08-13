@@ -1,0 +1,94 @@
+{
+  "outbounds": [
+    {
+      "server": "31.76.46.138",
+      "server_port": 20422,
+      "tag": "vless-446509121",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "ZUQTvwYk_hDqSrw36uc18MkeEIXIGZZGsf5XWVwdqAQ",
+          "short_id": "90"
+        },
+        "server_name": "yahoo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "d8523317-503e-43ad-b2c3-e5f77d725848"
+    },
+    {
+      "server": "188.114.97.3",
+      "server_port": 443,
+      "tag": "vless-446511119",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "hhlfy.twiladaphne.ndjp.net"
+      },
+      "transport": {
+        "headers": {
+          "Host": "hhlfy.twiladaphne.ndjp.net"
+        },
+        "path": "/sg-melbi",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "e5cc16a6-ea42-46b2-82ae-ad2157e1641b"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "ee-2-gatev1.dedicated.cdnnow.xyz",
+      "server_port": 12303,
+      "tag": "vless-446512119",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "ens3hLP8kjd-Zye3nW1Q_CC2kJFo0PdPbplj9VLwkWg",
+          "short_id": "faa145dab838eac4"
+        },
+        "server_name": "music.yandex.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "type": "vless",
+      "uuid": "ec94f044-eb08-4f41-9a03-f3d9c92f5713"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-446509121",
+        "vless-446511119",
+        "vless-446512119"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-446509121",
+        "vless-446511119",
+        "vless-446512119"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

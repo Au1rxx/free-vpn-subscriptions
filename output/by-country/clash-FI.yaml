@@ -1,4 +1,13 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-444459995
+      network: tcp
+      port: 2086
+      server: 65.109.178.10
+      type: vmess
+      udp: true
+      uuid: f6361af8-bb8f-4609-bf5d-3fc0f688f47b
     - client-fingerprint: qq
       name: vless-442394840
       network: grpc
@@ -51,19 +60,6 @@ proxies:
       type: vless
       udp: true
       uuid: 67f37ffe-c8c4-4ced-8f9c-5b45738224f1
-    - client-fingerprint: qq
-      name: vless-434022581
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
-        short-id: abcd
-      server: 95.163.232.183
-      servername: 5post-gate.x5.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 56fcd547-a9ee-4beb-a53f-333ea5fe5583
     - name: vless-442394841
       network: ws
       port: 443
@@ -84,19 +80,6 @@ proxies:
       type: vless
       udp: true
       uuid: 06e49ceb-3d54-44ee-a4b0-eecfac99dd87
-    - client-fingerprint: qq
-      name: vless-434016232
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
-        short-id: abcd
-      server: 95.163.232.183
-      servername: 5post-gate.x5.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3296c810-cc6a-475a-928a-9fb278614fe4
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-436252615
@@ -169,17 +152,17 @@ proxies:
       sni: gretacoin.shop
       type: hysteria2
     - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-336700747
-      password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
-      port: 42982
-      server: autodiscover.fuzzyaytor.cyou
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-379361871
       password: rSeYcig_XBy8q3k33NpK3A
       port: 1080
       server: 65.109.178.10
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-336700747
+      password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
+      port: 42982
+      server: autodiscover.fuzzyaytor.cyou
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
@@ -208,14 +191,13 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-444459995
         - vless-442394840
         - vless-438231929
         - vless-442412840
         - vless-436248635
-        - vless-434022581
         - vless-442394841
         - vless-439855594
-        - vless-434016232
         - vless-436252615
         - vless-436248628
         - vless-436254613
@@ -223,8 +205,8 @@ proxy-groups:
         - vless-436250614
         - hysteria2-271206441
         - hysteria2-184903690
-        - shadowsocks-336700747
         - shadowsocks-379361871
+        - shadowsocks-336700747
         - shadowsocks-376006390
         - shadowsocks-398004833
         - trojan-419356368
@@ -233,14 +215,13 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vmess-444459995
         - vless-442394840
         - vless-438231929
         - vless-442412840
         - vless-436248635
-        - vless-434022581
         - vless-442394841
         - vless-439855594
-        - vless-434016232
         - vless-436252615
         - vless-436248628
         - vless-436254613
@@ -248,8 +229,8 @@ proxy-groups:
         - vless-436250614
         - hysteria2-271206441
         - hysteria2-184903690
-        - shadowsocks-336700747
         - shadowsocks-379361871
+        - shadowsocks-336700747
         - shadowsocks-376006390
         - shadowsocks-398004833
         - trojan-419356368

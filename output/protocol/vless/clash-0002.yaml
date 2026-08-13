@@ -1,0 +1,56 @@
+proxies:
+    - client-fingerprint: chrome
+      name: vless-446509121
+      network: raw
+      port: 20422
+      reality-opts:
+        public-key: ZUQTvwYk_hDqSrw36uc18MkeEIXIGZZGsf5XWVwdqAQ
+        short-id: "90"
+      server: 31.76.46.138
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d8523317-503e-43ad-b2c3-e5f77d725848
+    - name: vless-446511119
+      network: ws
+      port: 443
+      server: 188.114.97.3
+      servername: hhlfy.twiladaphne.ndjp.net
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-446512119
+      network: tcp
+      port: 12303
+      reality-opts:
+        public-key: ens3hLP8kjd-Zye3nW1Q_CC2kJFo0PdPbplj9VLwkWg
+        short-id: faa145dab838eac4
+      server: ee-2-gatev1.dedicated.cdnnow.xyz
+      servername: music.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: ec94f044-eb08-4f41-9a03-f3d9c92f5713
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-446509121
+        - vless-446511119
+        - vless-446512119
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-446509121
+        - vless-446511119
+        - vless-446512119
+      type: select
+rules:
+    - MATCH,select
