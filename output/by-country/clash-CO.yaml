@@ -1,22 +1,22 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-125093
-      password: d7zh2lMrXNH5+8+8pKzlxiCU9NN022ih+uAyxj5d4qo=
-      port: 31700
-      server: 102.129.229.85
-      type: ss
+    - name: vless-463745415
+      network: tcp
+      port: 62145
+      server: 157.137.224.236
+      type: vless
       udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-125093
+        - vless-463745415
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-125093
+        - vless-463745415
       type: select
 rules:
     - MATCH,select

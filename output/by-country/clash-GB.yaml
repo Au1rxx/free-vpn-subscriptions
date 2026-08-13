@@ -13,30 +13,24 @@ proxies:
       type: vless
       udp: true
       uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
-    - name: vless-455171250
+    - name: trojan-463864258
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.8
+      skip-cert-verify: false
+      sni: default.fastly.com
+      type: trojan
+      udp: true
+    - name: vless-463888256
       network: ws
-      port: 8443
-      server: www.speedtest.net
-      servername: free-irancell.warzonmob.ir
+      port: 443
+      server: 199.232.78.160
+      servername: ssl.fastly.com
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: b1e6a8df-effc-4b70-9132-4dca98085420
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-455198059
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: lE6w45X8Bwb0HscO6Wa5wnN0qlw7wUuaCW8-iYL5HAQ
-        short-id: bc609efa3b2d052f
-      server: 164.37.105.2
-      servername: pnnsh.falsemirrov.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
+      uuid: XpnTeam-35
     - name: hysteria2-387719513
       password: 22d891f5-ad85-4824-b0b8-e30cf3d37eb5
       port: 2056
@@ -65,13 +59,6 @@ proxies:
       server: 129.151.86.242
       type: ss
       udp: true
-    - cipher: aes-128-gcm
-      name: shadowsocks-227
-      password: shadowsocks
-      port: 443
-      server: 141.98.101.182
-      type: ss
-      udp: true
     - cipher: rc4-md5
       name: shadowsocks-165
       password: 14fFPrbezE3HDZzsMOr6
@@ -86,7 +73,14 @@ proxies:
       server: 94.156.250.148
       type: ss
       udp: true
-    - name: trojan-463864258
+    - cipher: aes-128-gcm
+      name: shadowsocks-227
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.182
+      type: ss
+      udp: true
+    - name: trojan-419356366
       password: MiTiVPN
       port: 443
       server: 151.101.56.8
@@ -94,7 +88,7 @@ proxies:
       sni: default.fastly.com
       type: trojan
       udp: true
-    - name: trojan-419356366
+    - name: trojan-455145249
       password: MiTiVPN
       port: 443
       server: 151.101.56.8
@@ -107,34 +101,34 @@ proxy-groups:
       name: auto
       proxies:
         - vless-459508013
-        - vless-455171250
-        - vless-455198059
+        - trojan-463864258
+        - vless-463888256
         - hysteria2-387719513
         - shadowsocks-415241978
         - shadowsocks-271
         - shadowsocks-453054119
-        - shadowsocks-227
         - shadowsocks-165
         - shadowsocks-240
-        - trojan-463864258
+        - shadowsocks-227
         - trojan-419356366
+        - trojan-455145249
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-459508013
-        - vless-455171250
-        - vless-455198059
+        - trojan-463864258
+        - vless-463888256
         - hysteria2-387719513
         - shadowsocks-415241978
         - shadowsocks-271
         - shadowsocks-453054119
-        - shadowsocks-227
         - shadowsocks-165
         - shadowsocks-240
-        - trojan-463864258
+        - shadowsocks-227
         - trojan-419356366
+        - trojan-455145249
       type: select
 rules:
     - MATCH,select

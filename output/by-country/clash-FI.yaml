@@ -9,6 +9,19 @@ proxies:
       type: vless
       udp: true
       uuid: 859e1cf3-6a34-4363-9297-232cab8c46f0
+    - client-fingerprint: qq
+      name: vless-463878255
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
+        short-id: abcd
+      server: 95.163.232.183
+      servername: 5post-gate.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 50f7afdb-6864-4092-9528-4ba96fb6c9fe
     - client-fingerprint: chrome
       name: vless-457577632
       network: raw
@@ -22,6 +35,26 @@ proxies:
       type: vless
       udp: true
       uuid: 694eb5d5-794c-4389-af65-e5a4b8489dae
+    - name: vless-463893255
+      network: ws
+      port: 443
+      server: 199.232.78.150
+      servername: ssl.fastly.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c796825a-68ff-46a4-9fd7-51ba54fa6db5
+    - name: vless-463893256
+      network: ws
+      port: 443
+      server: 199.232.78.159
+      servername: ssl.fastly.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c796825a-68ff-46a4-9fd7-51ba54fa6db5
     - client-fingerprint: edge
       name: vless-457581632
       network: tcp
@@ -85,33 +118,14 @@ proxies:
       type: vless
       udp: true
       uuid: e91150f1-d121-4b92-bd2a-4b33474d8c02
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-455163251
-      network: raw
+    - name: trojan-463864259
+      password: MiTiVPN
       port: 443
-      reality-opts:
-        public-key: lQ8pnlOU0kqS77TA7Fftl8nSzktXLzFpOLGqCZEAhjg
-        short-id: aaec521b22bbe6cb
-      server: fin1.panel11.ru
-      servername: fin1.panel11.ru
-      tls: true
-      type: vless
+      server: 151.101.56.9
+      skip-cert-verify: false
+      sni: default.fastly.com
+      type: trojan
       udp: true
-      uuid: 7957928d-bcfb-45bb-8e78-a072ef578ae4
-    - client-fingerprint: qq
-      name: vless-455162250
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
-        short-id: abcd
-      server: 95.163.232.183
-      servername: 5post-gate.x5.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6c12377b-5f3e-46c6-b5be-2b8d2ab78e4d
     - client-fingerprint: qq
       name: vless-459568924
       network: grpc
@@ -157,10 +171,24 @@ proxies:
       sni: hopp-legend-se.roxa.org
       type: hysteria2
     - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-398004833
+      password: 8cmuvza9gyetx0z8
+      port: 25783
+      server: 93.123.13.7
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-376006390
       password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
       port: 42982
       server: 217.28.129.81
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-398004834
+      password: 8yezd40lr2w4zz08
+      port: 16460
+      server: 93.123.13.7
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
@@ -177,36 +205,7 @@ proxies:
       server: 65.109.178.10
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-398004834
-      password: 8yezd40lr2w4zz08
-      port: 16460
-      server: 93.123.13.7
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-398004833
-      password: 8cmuvza9gyetx0z8
-      port: 25783
-      server: 93.123.13.7
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-211463809
-      password: TmXSpcRBbhvHDg66bo2w89bToxQsbMoa
-      port: 10808
-      server: 31.76.30.79
-      type: ss
-      udp: true
     - name: trojan-448702659
-      password: MiTiVPN
-      port: 443
-      server: 151.101.56.9
-      skip-cert-verify: false
-      sni: default.fastly.com
-      type: trojan
-      udp: true
-    - name: trojan-463864259
       password: MiTiVPN
       port: 443
       server: 151.101.56.9
@@ -238,6 +237,14 @@ proxies:
       sni: default.fastly.com
       type: trojan
       udp: true
+    - name: trojan-455145250
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.9
+      skip-cert-verify: false
+      sni: default.fastly.com
+      type: trojan
+      udp: true
     - name: trojan-419356368
       password: MiTiVPN
       port: 443
@@ -251,29 +258,30 @@ proxy-groups:
       name: auto
       proxies:
         - vless-459558910
+        - vless-463878255
         - vless-457577632
+        - vless-463893255
+        - vless-463893256
         - vless-457581632
         - vless-457587634
         - vless-457582632
         - vless-459551895
         - vless-457491553
-        - vless-455163251
-        - vless-455162250
+        - trojan-463864259
         - vless-459568924
         - vless-459506015
         - vless-457568632
         - hysteria2-271206441
+        - shadowsocks-398004833
         - shadowsocks-376006390
+        - shadowsocks-398004834
         - shadowsocks-336700747
         - shadowsocks-379361871
-        - shadowsocks-398004834
-        - shadowsocks-398004833
-        - shadowsocks-211463809
         - trojan-448702659
-        - trojan-463864259
         - trojan-419356367
         - trojan-448702660
         - trojan-448702658
+        - trojan-455145250
         - trojan-419356368
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -281,29 +289,30 @@ proxy-groups:
       proxies:
         - auto
         - vless-459558910
+        - vless-463878255
         - vless-457577632
+        - vless-463893255
+        - vless-463893256
         - vless-457581632
         - vless-457587634
         - vless-457582632
         - vless-459551895
         - vless-457491553
-        - vless-455163251
-        - vless-455162250
+        - trojan-463864259
         - vless-459568924
         - vless-459506015
         - vless-457568632
         - hysteria2-271206441
+        - shadowsocks-398004833
         - shadowsocks-376006390
+        - shadowsocks-398004834
         - shadowsocks-336700747
         - shadowsocks-379361871
-        - shadowsocks-398004834
-        - shadowsocks-398004833
-        - shadowsocks-211463809
         - trojan-448702659
-        - trojan-463864259
         - trojan-419356367
         - trojan-448702660
         - trojan-448702658
+        - trojan-455145250
         - trojan-419356368
       type: select
 rules:

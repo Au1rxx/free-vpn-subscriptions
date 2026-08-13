@@ -1,18 +1,4 @@
 proxies:
-    - name: hysteria2-461629121
-      password: 4e756809
-      port: 12694
-      server: 92.4.68.18
-      skip-cert-verify: true
-      sni: www.bing.com
-      type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-125111
-      password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
-      port: 31348
-      server: 103.120.178.193
-      type: ss
-      udp: true
     - name: trojan-463730959
       password: 00954640-916f-48d8-aa9a-baee2d828d0e
       port: 24407
@@ -29,23 +15,53 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-463878256
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
+        short-id: 88b6
+      server: 5.253.30.99
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
+    - name: hysteria2-461629121
+      password: 4e756809
+      port: 12694
+      server: 92.4.68.18
+      skip-cert-verify: true
+      sni: www.bing.com
+      type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-125111
+      password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
+      port: 31348
+      server: 103.120.178.193
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-461629121
-        - shadowsocks-125111
         - trojan-463730959
         - trojan-463730960
+        - vless-463878256
+        - hysteria2-461629121
+        - shadowsocks-125111
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-461629121
-        - shadowsocks-125111
         - trojan-463730959
         - trojan-463730960
+        - vless-463878256
+        - hysteria2-461629121
+        - shadowsocks-125111
       type: select
 rules:
     - MATCH,select
