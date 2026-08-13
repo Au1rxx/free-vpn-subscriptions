@@ -1,4 +1,27 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-474579650
+      network: tcp
+      port: 47919
+      server: 31.57.26.186
+      type: vmess
+      udp: true
+      uuid: 8104ae40-996f-4d4d-a17d-2a271479b635
+    - name: vless-51336384
+      network: tcp
+      port: 25703
+      server: 85.159.228.250
+      type: vless
+      udp: true
+      uuid: 7e5964d036b843ff885b86c4d3bfd466
+    - name: hysteria2-474576733
+      password: b8f1b61e-d5c4-4765-866d-ece1fc8e590b
+      port: 9443
+      server: 104.165.205.239
+      skip-cert-verify: true
+      sni: onecloudstream.com
+      type: hysteria2
     - name: hysteria2-468900567
       password: b8f1b61e-d5c4-4765-866d-ece1fc8e590b
       port: 8443
@@ -48,61 +71,31 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: hysteria2-248653949
-      password: vpn-hy2-lv-2026
-      port: 8444
-      server: 185.236.22.119
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
-    - name: hysteria2-232798723
-      password: vpn-hy2-lv-2026
-      port: 8444
-      server: 185.236.22.119
-      skip-cert-verify: true
-      sni: 185.236.22.119
-      type: hysteria2
-    - name: hysteria2-474576733
-      password: b8f1b61e-d5c4-4765-866d-ece1fc8e590b
-      port: 9443
-      server: 104.165.205.239
-      skip-cert-verify: true
-      sni: onecloudstream.com
-      type: hysteria2
-    - name: hysteria2-474576734
-      password: b8f1b61e-d5c4-4765-866d-ece1fc8e590b
-      port: 9443
-      server: 104.165.205.65
-      skip-cert-verify: true
-      sni: onecloudstream.com
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-474579650
+        - vless-51336384
+        - hysteria2-474576733
         - hysteria2-468900567
         - hysteria2-468900565
         - hysteria2-468900566
         - vless-453273842
         - vless-468900811
-        - hysteria2-248653949
-        - hysteria2-232798723
-        - hysteria2-474576733
-        - hysteria2-474576734
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-474579650
+        - vless-51336384
+        - hysteria2-474576733
         - hysteria2-468900567
         - hysteria2-468900565
         - hysteria2-468900566
         - vless-453273842
         - vless-468900811
-        - hysteria2-248653949
-        - hysteria2-232798723
-        - hysteria2-474576733
-        - hysteria2-474576734
       type: select
 rules:
     - MATCH,select

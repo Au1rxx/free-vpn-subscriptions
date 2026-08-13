@@ -1,13 +1,23 @@
-proxies: []
+proxies:
+    - name: trojan-455144275
+      password: AE62539071
+      port: 443
+      server: smiling-ray.rooster465.autos
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - trojan-455144275
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-455144275
       type: select
 rules:
     - MATCH,select

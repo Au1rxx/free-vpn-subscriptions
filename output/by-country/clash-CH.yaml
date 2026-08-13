@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-51444474
+      password: y3b03zx3tznhyo538p4c
+      port: 53261
+      server: 86.106.84.195
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-468240599
@@ -13,17 +21,49 @@ proxies:
       type: vless
       udp: true
       uuid: 2f3a2a4d-ca46-4012-a472-b559d379ad0a
+    - name: trojan-38691648
+      password: y3b03zx3tznhyo538p4c
+      port: 53261
+      server: 86.106.84.195
+      skip-cert-verify: true
+      sni: 86.106.84.195
+      type: trojan
+      udp: true
+    - name: trojan-474861674
+      password: y3b03zx3tznhyo538p4c
+      port: 53261
+      server: 86.106.84.195
+      skip-cert-verify: true
+      sni: speedtest.tinkoff.ru
+      type: trojan
+      udp: true
+    - name: trojan-267016931
+      password: y3b03zx3tznhyo538p4c
+      port: 53261
+      server: 86.106.84.195
+      skip-cert-verify: true
+      sni: speedtest.tinkoff.ru
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-51444474
         - vless-468240599
+        - trojan-38691648
+        - trojan-474861674
+        - trojan-267016931
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-51444474
         - vless-468240599
+        - trojan-38691648
+        - trojan-474861674
+        - trojan-267016931
       type: select
 rules:
     - MATCH,select

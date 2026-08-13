@@ -1,0 +1,54 @@
+{
+  "outbounds": [
+    {
+      "password": "ba07a8af-5544-48ac-ab62-3b6c00a44fa6",
+      "server": "oplosgru-c.catcat321.com",
+      "server_port": 20068,
+      "tag": "trojan-187263979",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "oplosgru-c.catcat321.com"
+      },
+      "type": "trojan"
+    },
+    {
+      "password": "41c406e2-12b5-41f2-a329-d0621052d675",
+      "server": "oplosgru-c.catcat321.com",
+      "server_port": 20068,
+      "tag": "trojan-266954118",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "hk.catxstar.com"
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-187263979",
+        "trojan-266954118"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-187263979",
+        "trojan-266954118"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

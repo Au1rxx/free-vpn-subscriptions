@@ -1,7 +1,56 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-423587489
+      password: Y6R9pAtvxxzmGC
+      port: 9090
+      server: 38.180.194.61
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-468905072
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: GUdrwZxYWVvIFgC2fSJDs6U5Un6c7t1Yuvzl7yI1ohU
+        short-id: 2f6a8c3e90b2d574
+      server: 2.26.130.157
+      servername: nora.mycdn-me.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: bda0ede7-ef0a-4fbc-b3b6-1205e55ffb48
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-474717137
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: GUdrwZxYWVvIFgC2fSJDs6U5Un6c7t1Yuvzl7yI1ohU
+        short-id: 2f6a8c3e90b2d574
+      server: 2.26.130.157
+      servername: nora.mycdn-me.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: bda0ede7-ef0a-4fbc-b3b6-1205e55ffb48
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-474982714
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: GUdrwZxYWVvIFgC2fSJDs6U5Un6c7t1Yuvzl7yI1ohU
+        short-id: 2f6a8c3e90b2d574
+      server: 2.26.130.157
+      servername: nora.mycdn-me.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: bda0ede7-ef0a-4fbc-b3b6-1205e55ffb48
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-474982713
       network: tcp
       port: 443
       reality-opts:
@@ -20,37 +69,75 @@ proxies:
       server: 185.213.20.110
       type: ss
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-455141248
-      password: d1fa2f4b98a38bc8
-      port: 10901
-      server: 194.87.47.61
-      type: ss
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-474982712
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: GUdrwZxYWVvIFgC2fSJDs6U5Un6c7t1Yuvzl7yI1ohU
+        short-id: 2f6a8c3e90b2d574
+      server: 2.26.130.157
+      servername: nora.mycdn-me.ru
+      tls: true
+      type: vless
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-423587489
-      password: Y6R9pAtvxxzmGC
-      port: 9090
-      server: 38.180.194.61
-      type: ss
+      uuid: bda0ede7-ef0a-4fbc-b3b6-1205e55ffb48
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-415024107
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: UjwVdSvY-6dV5UKCNO7ROokiSF_aLaXYyUaG6RybOmI
+        short-id: 2762604ed2e0fa2f
+      server: xit.saturn-cloud.net
+      servername: ""
+      tls: true
+      type: vless
       udp: true
+      uuid: 95ae0de8-d944-4b1e-b450-d34d80f9a528
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-415024108
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: UjwVdSvY-6dV5UKCNO7ROokiSF_aLaXYyUaG6RybOmI
+        short-id: 2762604ed2e0fa2f
+      server: xit.saturn-cloud.net
+      servername: xit.saturn-cloud.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 95ae0de8-d944-4b1e-b450-d34d80f9a528
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-468905072
-        - shadowsocks-127110
-        - shadowsocks-455141248
         - shadowsocks-423587489
+        - vless-468905072
+        - vless-474717137
+        - vless-474982714
+        - vless-474982713
+        - shadowsocks-127110
+        - vless-474982712
+        - vless-415024107
+        - vless-415024108
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-468905072
-        - shadowsocks-127110
-        - shadowsocks-455141248
         - shadowsocks-423587489
+        - vless-468905072
+        - vless-474717137
+        - vless-474982714
+        - vless-474982713
+        - shadowsocks-127110
+        - vless-474982712
+        - vless-415024107
+        - vless-415024108
       type: select
 rules:
     - MATCH,select
