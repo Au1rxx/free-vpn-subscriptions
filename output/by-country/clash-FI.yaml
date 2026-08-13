@@ -21,6 +21,16 @@ proxies:
       type: vless
       udp: true
       uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
+    - name: vless-450884942
+      network: ws
+      port: 443
+      server: 199.232.78.159
+      servername: ssl.fastly.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 885bb65f-65a8-473b-a074-f6ccde529211
     - alterId: 0
       cipher: auto
       name: vmess-444459995
@@ -69,32 +79,6 @@ proxies:
       udp: true
       uuid: b2e0f075-16e9-439c-b7b0-66b7009e6965
     - client-fingerprint: qq
-      name: vless-442394840
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
-        short-id: abcd
-      server: 95.163.232.183
-      servername: 5post-gate.x5.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0acdb0b7-6f1c-4b75-af04-671d820ff214
-    - client-fingerprint: qq
-      name: vless-442412840
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
-        short-id: abcd
-      server: 95.163.232.183
-      servername: 5post-gate.x5.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 98e579e8-73bf-4af6-9c5d-02eb86fc4544
-    - client-fingerprint: qq
       name: vless-448606314
       network: grpc
       port: 443
@@ -107,16 +91,6 @@ proxies:
       type: vless
       udp: true
       uuid: 22adba9e-fce2-4ea6-95e2-9018ad44111b
-    - name: vless-442394841
-      network: ws
-      port: 443
-      server: 199.232.78.159
-      servername: ssl.fastly.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0e87d003-3b20-41c4-bf3f-c006d0c94685
     - client-fingerprint: qq
       name: vless-446499119
       network: grpc
@@ -254,21 +228,27 @@ proxies:
       sni: default.fastly.com
       type: trojan
       udp: true
+    - name: trojan-419356367
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.9
+      skip-cert-verify: false
+      sni: default.fastly.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-448702659
         - vless-448717657
+        - vless-450884942
         - vmess-444459995
         - trojan-448702658
         - vless-448606313
         - vless-448614313
         - vless-450832931
-        - vless-442394840
-        - vless-442412840
         - vless-448606314
-        - vless-442394841
         - vless-446499119
         - vless-446494120
         - vless-450824931
@@ -284,6 +264,7 @@ proxy-groups:
         - shadowsocks-211463809
         - trojan-419356368
         - trojan-448702660
+        - trojan-419356367
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -291,15 +272,13 @@ proxy-groups:
         - auto
         - trojan-448702659
         - vless-448717657
+        - vless-450884942
         - vmess-444459995
         - trojan-448702658
         - vless-448606313
         - vless-448614313
         - vless-450832931
-        - vless-442394840
-        - vless-442412840
         - vless-448606314
-        - vless-442394841
         - vless-446499119
         - vless-446494120
         - vless-450824931
@@ -315,6 +294,7 @@ proxy-groups:
         - shadowsocks-211463809
         - trojan-419356368
         - trojan-448702660
+        - trojan-419356367
       type: select
 rules:
     - MATCH,select
