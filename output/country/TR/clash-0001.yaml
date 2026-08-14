@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-60428
+      network: tcp
+      port: 18244
+      server: 185.128.139.11
+      type: vless
+      udp: true
+      uuid: 0d543aed-4e30-4553-b5ac-211419bb0961
     - name: vless-23920901
       network: ws
       port: 2200
@@ -72,19 +79,6 @@ proxies:
       uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
     - client-fingerprint: qq
       name: vless-500717544
-      network: tcp
-      port: 37211
-      reality-opts:
-        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
-        short-id: aa6f080efb8928f9
-      server: 146.103.26.96
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
-    - client-fingerprint: ios
-      name: vless-500732252
       network: tcp
       port: 37211
       reality-opts:
@@ -213,6 +207,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-60428
         - vless-23920901
         - vless-212135092
         - vless-332701908
@@ -222,7 +217,6 @@ proxy-groups:
         - trojan-485795336
         - vless-494492362
         - vless-500717544
-        - vless-500732252
         - vless-501276417
         - vless-501276418
         - vless-501276419
@@ -238,6 +232,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-60428
         - vless-23920901
         - vless-212135092
         - vless-332701908
@@ -247,7 +242,6 @@ proxy-groups:
         - trojan-485795336
         - vless-494492362
         - vless-500717544
-        - vless-500732252
         - vless-501276417
         - vless-501276418
         - vless-501276419
