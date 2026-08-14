@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: edge
+      name: vless-487303248
+      network: tcp
+      port: 37211
+      reality-opts:
+        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
+        short-id: aa6f080efb8928f9
+      server: 146.103.26.96
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
     - client-fingerprint: chrome
       name: vless-472531256
       network: tcp
@@ -26,6 +39,45 @@ proxies:
       type: vless
       udp: true
       uuid: 224398db-7e90-421d-95be-178ec8c9d653
+    - client-fingerprint: firefox
+      name: vless-487303249
+      network: tcp
+      port: 37211
+      reality-opts:
+        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
+        short-id: aa6f080efb8928f9
+      server: 146.103.26.96
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
+    - client-fingerprint: safari
+      name: vless-487298981
+      network: tcp
+      port: 37211
+      reality-opts:
+        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
+        short-id: aa6f080efb8928f9
+      server: gtc.hekmatdarai.ir
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
+    - client-fingerprint: firefox
+      name: vless-487298986
+      network: tcp
+      port: 37211
+      reality-opts:
+        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
+        short-id: aa6f080efb8928f9
+      server: gtc.hekmatdarai.ir
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-483683872
@@ -40,21 +92,38 @@ proxies:
       type: vless
       udp: true
       uuid: bf3cd821-7936-494c-97af-e12817f18fa4
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-138388752
+      password: tunnel-fbrof
+      port: 8444
+      server: tr-1.stunnel.cc
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-487303248
         - vless-472531256
         - vless-477079800
+        - vless-487303249
+        - vless-487298981
+        - vless-487298986
         - vless-483683872
+        - shadowsocks-138388752
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-487303248
         - vless-472531256
         - vless-477079800
+        - vless-487303249
+        - vless-487298981
+        - vless-487298986
         - vless-483683872
+        - shadowsocks-138388752
       type: select
 rules:
     - MATCH,select

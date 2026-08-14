@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-487329178
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: -nB-tCeZ4Zr72ArHUKnbUphbs4PlBS6iId6PkrPQQTE
+        short-id: 84f9881951050a30
+      server: 164.37.104.234
+      servername: gb1.murhost.network
+      tls: true
+      type: vless
+      udp: true
+      uuid: a6f6d9c9-9d43-4d0e-bf95-4b87cc5bbaac
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-479043180
@@ -13,78 +27,16 @@ proxies:
       type: vless
       udp: true
       uuid: 19ac8928-fe6e-49af-a223-9ca127e4018f
-    - client-fingerprint: firefox
-      name: vless-258556270
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 118rMk41g_0BeoQDR2V_1f8ABzC1WKXdolzE-LxqowM
-        short-id: bff835c98c
-      server: 91.103.140.243
-      servername: www.amd.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c8dcbe44-5714-4f99-8d7a-aadebea34abf
-    - name: vless-395880280
+    - name: vless-487976015
       network: ws
       port: 443
-      server: 172.67.178.251
+      server: 172.64.80.1
       servername: admin.jikebet.com
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
       uuid: c0f16ee2-a909-4890-ab1c-96489230658a
-    - name: vless-385440365
-      network: ws
-      port: 443
-      server: 104.21.67.171
-      servername: admin.jikebet.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c0f16ee2-a909-4890-ab1c-96489230658a
-    - name: vless-383521622
-      network: ws
-      port: 443
-      server: admin.jikebet.com
-      servername: admin.jikebet.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c0f16ee2-a909-4890-ab1c-96489230658a
-    - cipher: aes-128-gcm
-      name: shadowsocks-227
-      password: shadowsocks
-      port: 443
-      server: 141.98.101.182
-      type: ss
-      udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-2380869
-      network: tcp
-      port: 22324
-      server: 66.163.117.58
-      type: vmess
-      udp: true
-      uuid: 04621bae-ab36-11ec-b909-0242ac120002
-    - client-fingerprint: chrome
-      name: vless-272802976
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: 118rMk41g_0BeoQDR2V_1f8ABzC1WKXdolzE-LxqowM
-        short-id: bff835c98c
-      server: 91.103.140.243
-      servername: www.amd.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c8dcbe44-5714-4f99-8d7a-aadebea34abf
     - name: hysteria2-474576863
       password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
       port: 8080
@@ -99,35 +51,79 @@ proxies:
       skip-cert-verify: false
       sni: hopp-legend-se.roxa.org
       type: hysteria2
+    - cipher: rc4-md5
+      name: shadowsocks-165
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.61.37
+      type: ss
+      udp: true
+    - cipher: rc4-md5
+      name: shadowsocks-468218595
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.23.32
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: shadowsocks-271
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.181
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-240
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 94.156.250.148
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-415241978
+      password: zRZNBszYyWo5
+      port: 8388
+      server: 51.77.225.200
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: shadowsocks-227
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.182
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-487329178
         - vless-479043180
-        - vless-258556270
-        - vless-395880280
-        - vless-385440365
-        - vless-383521622
-        - shadowsocks-227
-        - vmess-2380869
-        - vless-272802976
+        - vless-487976015
         - hysteria2-474576863
         - hysteria2-474576864
+        - shadowsocks-165
+        - shadowsocks-468218595
+        - shadowsocks-271
+        - shadowsocks-240
+        - shadowsocks-415241978
+        - shadowsocks-227
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-487329178
         - vless-479043180
-        - vless-258556270
-        - vless-395880280
-        - vless-385440365
-        - vless-383521622
-        - shadowsocks-227
-        - vmess-2380869
-        - vless-272802976
+        - vless-487976015
         - hysteria2-474576863
         - hysteria2-474576864
+        - shadowsocks-165
+        - shadowsocks-468218595
+        - shadowsocks-271
+        - shadowsocks-240
+        - shadowsocks-415241978
+        - shadowsocks-227
       type: select
 rules:
     - MATCH,select

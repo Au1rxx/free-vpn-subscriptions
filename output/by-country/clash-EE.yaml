@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-330581942
-      network: grpc
-      port: 8443
-      server: 95.85.224.3
-      type: vless
-      udp: true
-      uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-477040435
@@ -34,28 +27,6 @@ proxies:
       type: vless
       udp: true
       uuid: dc7940e0-6bff-45e3-853d-4007561803c3
-    - flow: xtls-rprx-vision
-      name: vless-438288184
-      network: tcp
-      port: 443
-      server: 138.124.100.128
-      servername: ee4.fast-connect-service.site
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 551955b3-46e9-5129-95c9-e7474c15ed6b
-    - flow: xtls-rprx-vision
-      name: vless-438288185
-      network: tcp
-      port: 443
-      server: 138.124.100.128
-      servername: ee4.fast-connect-service.site
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 551955b3-46e9-5129-95c9-e7474c15ed6b
     - name: vless-477040437
       network: tcp
       port: 8443
@@ -76,74 +47,23 @@ proxies:
       type: vless
       udp: true
       uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
-    - flow: xtls-rprx-vision
-      name: vless-366302219
-      network: tcp
-      port: 443
-      server: 138.124.100.128
-      servername: ee4.fast-connect-service.site
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: "8033102198"
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-339801638
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: g-WqfHKjac71MMtkmq5bIvTFavzXTCAnEI_17KoTNSQ
-        short-id: ""
-      server: 91.235.234.186
-      servername: us7fs3.proxen.pdevinfra.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4593aa27-a2a1-412f-935f-3829495c0970
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-78232669
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: SJkDT_L0eziQR2afDGrkN7-uRxjYu6bZxIGXlKeCvX4
-        short-id: 15aa18f971da1f81
-      server: 185.155.97.241
-      servername: web.max.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0b9bcbc1-b289-4a64-86fa-a5b731b65384
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-330581942
         - vless-477040435
         - vless-477040434
-        - vless-438288184
-        - vless-438288185
         - vless-477040437
         - vless-477040439
-        - vless-366302219
-        - vless-339801638
-        - vless-78232669
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-330581942
         - vless-477040435
         - vless-477040434
-        - vless-438288184
-        - vless-438288185
         - vless-477040437
         - vless-477040439
-        - vless-366302219
-        - vless-339801638
-        - vless-78232669
       type: select
 rules:
     - MATCH,select

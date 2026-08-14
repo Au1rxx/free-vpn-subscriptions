@@ -1,20 +1,6 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-200265609
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 989gq45ogQSZLDoUTcLNSYW5v_3ER7W_6Oi_8swZzXo
-        short-id: cb55f541
-      server: 178.83.31.93
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4a97788b-5d8a-410c-875c-ba36930e185e
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-473977749
       network: tcp
       port: 443
@@ -41,20 +27,6 @@ proxies:
       type: vless
       udp: true
       uuid: 463a26c2-eba8-40ea-89c4-ee5c1373ccbe
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-453254843
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: g0mDPNlv3uOrnxXvBYP3cEjd0ewJuIFlBh93KE5bU3A
-        short-id: d0ca141e839394a3
-      server: 84.32.49.223
-      servername: dsech.mostserv.xyz
-      tls: true
-      type: vless
-      udp: true
-      uuid: 463a26c2-eba8-40ea-89c4-ee5c1373ccbe
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-479046188
@@ -69,6 +41,13 @@ proxies:
       type: vless
       udp: true
       uuid: 27a804fb-c042-46d6-a977-a3eb14ccb222
+    - name: hysteria2-487303214
+      password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
+      port: 43327
+      server: 2.27.23.44
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
     - name: hysteria2-474576737
       password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
       port: 43327
@@ -87,11 +66,10 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-200265609
         - vless-473977749
         - vless-473977750
-        - vless-453254843
         - vless-479046188
+        - hysteria2-487303214
         - hysteria2-474576737
         - hysteria2-467980811
       type: url-test
@@ -99,11 +77,10 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vless-200265609
         - vless-473977749
         - vless-473977750
-        - vless-453254843
         - vless-479046188
+        - hysteria2-487303214
         - hysteria2-474576737
         - hysteria2-467980811
       type: select
