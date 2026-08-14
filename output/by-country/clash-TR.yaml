@@ -1,17 +1,24 @@
 proxies:
-    - client-fingerprint: edge
-      name: vless-487303248
+    - name: vless-212135092
+      network: grpc
+      port: 8443
+      server: 185.39.204.155
+      type: vless
+      udp: true
+      uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
+    - client-fingerprint: firefox
+      name: vless-429868175
       network: tcp
-      port: 37211
+      port: 2053
       reality-opts:
-        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
-        short-id: aa6f080efb8928f9
-      server: 146.103.26.96
-      servername: www.google.com
+        public-key: _jsI5uVVqXkzCZ0OGJ5U7waecxOEiu2lm-8f8ZyW5mc
+        short-id: f5d596282182b440
+      server: 151.241.226.201
+      servername: www.apple.com
       tls: true
       type: vless
       udp: true
-      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
+      uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-477079800
@@ -26,88 +33,21 @@ proxies:
       type: vless
       udp: true
       uuid: 224398db-7e90-421d-95be-178ec8c9d653
-    - client-fingerprint: firefox
-      name: vless-487303249
-      network: tcp
-      port: 37211
-      reality-opts:
-        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
-        short-id: aa6f080efb8928f9
-      server: 146.103.26.96
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
-    - client-fingerprint: safari
-      name: vless-487298981
-      network: tcp
-      port: 37211
-      reality-opts:
-        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
-        short-id: aa6f080efb8928f9
-      server: gtc.hekmatdarai.ir
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
-    - client-fingerprint: firefox
-      name: vless-487298986
-      network: tcp
-      port: 37211
-      reality-opts:
-        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
-        short-id: aa6f080efb8928f9
-      server: gtc.hekmatdarai.ir
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
-    - client-fingerprint: qq
-      name: vless-483694863
-      network: tcp
-      port: 37211
-      reality-opts:
-        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
-        short-id: aa6f080efb8928f9
-      server: gtc.hekmatdarai.ir
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-138388752
-      password: tunnel-fbrof
-      port: 8444
-      server: tr-1.stunnel.cc
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-487303248
+        - vless-212135092
+        - vless-429868175
         - vless-477079800
-        - vless-487303249
-        - vless-487298981
-        - vless-487298986
-        - vless-483694863
-        - shadowsocks-138388752
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-487303248
+        - vless-212135092
+        - vless-429868175
         - vless-477079800
-        - vless-487303249
-        - vless-487298981
-        - vless-487298986
-        - vless-483694863
-        - shadowsocks-138388752
       type: select
 rules:
     - MATCH,select

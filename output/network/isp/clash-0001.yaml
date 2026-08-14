@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-cfb
+      name: shadowsocks-278
+      password: qwerREWQ@@
+      port: 4652
+      server: 218.237.185.230
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-283
       password: qwerREWQ@@
       port: 13979
@@ -37,6 +44,15 @@ proxies:
       sni: aa.ccmusic.jp
       type: trojan
       udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-2357840
+      network: ws
+      port: 80
+      server: 61.245.11.60
+      type: vmess
+      udp: true
+      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
     - alterId: 0
       cipher: auto
       name: vmess-2387870
@@ -94,6 +110,13 @@ proxies:
       sni: t.me%2fripaojiedian
       type: trojan
       udp: true
+    - name: vless-76190122
+      network: tcp
+      port: 49853
+      server: 193.124.204.145
+      type: vless
+      udp: true
+      uuid: 5ed7b151-b781-4dba-800d-e3f824f1416f
     - name: vless-78289669
       network: raw
       port: 49853
@@ -420,20 +443,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 3a03613b-bbac-4a22-bee6-2c9a751a2761
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-487290980
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 8R53x47787bPBVJnKyLkOhTztNW6djdTh0WEWph8710
-        short-id: "7479"
-      server: 195.133.35.81
-      servername: www.amd.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e2cd1f88-8582-4ab9-9497-de59de37b626
     - name: vless-488106229
       network: ws
       port: 443
@@ -548,15 +557,31 @@ proxies:
       type: vless
       udp: true
       uuid: 62aaf5c1-26a9-4fff-8357-e4f1326a83d2
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-496692729
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: lh3qj3VX335HGH2T3xQ8RHZ4v3zEStbz6ENiPwkILSg
+        short-id: cf43c0c197cd464a
+      server: 62.152.56.73
+      servername: wl-12.nodes.ac
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5946a95a-1d12-4d3c-b6f3-f67e56ae35e8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-278
         - shadowsocks-283
         - shadowsocks-287
         - shadowsocks-26744
         - vmess-99462
         - trojan-145259
+        - vmess-2357840
         - vmess-2387870
         - trojan-2493846
         - trojan-2493847
@@ -564,6 +589,7 @@ proxy-groups:
         - trojan-2493849
         - trojan-2525862
         - trojan-70506696
+        - vless-76190122
         - vless-78289669
         - trojan-79476398
         - vless-83773748
@@ -601,7 +627,6 @@ proxy-groups:
         - trojan-474860662
         - vless-474938694
         - vmess-483453648
-        - vless-487290980
         - vless-488106229
         - vless-488116566
         - vless-488143897
@@ -611,16 +636,19 @@ proxy-groups:
         - vless-488143921
         - vless-488143923
         - vless-490105152
+        - vless-496692729
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-278
         - shadowsocks-283
         - shadowsocks-287
         - shadowsocks-26744
         - vmess-99462
         - trojan-145259
+        - vmess-2357840
         - vmess-2387870
         - trojan-2493846
         - trojan-2493847
@@ -628,6 +656,7 @@ proxy-groups:
         - trojan-2493849
         - trojan-2525862
         - trojan-70506696
+        - vless-76190122
         - vless-78289669
         - trojan-79476398
         - vless-83773748
@@ -665,7 +694,6 @@ proxy-groups:
         - trojan-474860662
         - vless-474938694
         - vmess-483453648
-        - vless-487290980
         - vless-488106229
         - vless-488116566
         - vless-488143897
@@ -675,6 +703,7 @@ proxy-groups:
         - vless-488143921
         - vless-488143923
         - vless-490105152
+        - vless-496692729
       type: select
 rules:
     - MATCH,select

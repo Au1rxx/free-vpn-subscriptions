@@ -1,4 +1,20 @@
 proxies:
+    - name: trojan-119244
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20018
+      server: 45.67.201.210
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-122851
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20018
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: vless-21689012
       network: raw
       port: 18244
@@ -6,13 +22,16 @@ proxies:
       type: vless
       udp: true
       uuid: 0d543aed-4e30-4553-b5ac-211419bb0961
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-138388752
-      password: tunnel-fbrof
-      port: 8444
-      server: tr-1.stunnel.cc
-      type: ss
+    - name: vless-27062851
+      network: ws
+      port: 2087
+      server: mfa.gov.ua
+      servername: fx3l5i2wdfxln0.fx6hsv0.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
       udp: true
+      uuid: 77777777-8a3e-6666-b6d1-a9c5f0e8b3a2
     - name: vless-151458179
       network: tcp
       port: 18244
@@ -42,34 +61,6 @@ proxies:
       sni: tr-1.stunnel.cc
       type: trojan
       udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-408496771
-      network: tcp
-      port: 1050
-      reality-opts:
-        public-key: W6rwa-_z6GYG3cmVxqVjOOn7LsvpAFllkbATsO-CnxU
-        short-id: bc6d2d6095e5f634
-      server: tr2ri.mobleamiri10.ir
-      servername: play.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6423193f-06ec-4ca6-b8a4-74e21dbb3970
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-410786223
-      network: raw
-      port: 1050
-      reality-opts:
-        public-key: W6rwa-_z6GYG3cmVxqVjOOn7LsvpAFllkbATsO-CnxU
-        short-id: bc6d2d6095e5f634
-      server: tr2ri.mobleamiri10.ir
-      servername: play.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6423193f-06ec-4ca6-b8a4-74e21dbb3970
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-429860172
@@ -203,19 +194,6 @@ proxies:
       sni: tr-1.stunnel.cc
       type: trojan
       udp: true
-    - client-fingerprint: safari
-      name: vless-487298981
-      network: tcp
-      port: 37211
-      reality-opts:
-        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
-        short-id: aa6f080efb8928f9
-      server: gtc.hekmatdarai.ir
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
     - client-fingerprint: firefox
       name: vless-487298986
       network: tcp
@@ -279,14 +257,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-119244
+        - trojan-122851
         - vless-21689012
-        - shadowsocks-138388752
+        - vless-27062851
         - vless-151458179
         - vless-212135092
         - vless-332701908
         - trojan-393837570
-        - vless-408496771
-        - vless-410786223
         - vless-429860172
         - vless-429868175
         - vless-468892853
@@ -299,7 +277,6 @@ proxy-groups:
         - vless-481520155
         - vless-483694863
         - trojan-485795336
-        - vless-487298981
         - vless-487298986
         - vless-487303248
         - vless-487303249
@@ -310,14 +287,14 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-119244
+        - trojan-122851
         - vless-21689012
-        - shadowsocks-138388752
+        - vless-27062851
         - vless-151458179
         - vless-212135092
         - vless-332701908
         - trojan-393837570
-        - vless-408496771
-        - vless-410786223
         - vless-429860172
         - vless-429868175
         - vless-468892853
@@ -330,7 +307,6 @@ proxy-groups:
         - vless-481520155
         - vless-483694863
         - trojan-485795336
-        - vless-487298981
         - vless-487298986
         - vless-487303248
         - vless-487303249
