@@ -531,26 +531,6 @@ proxies:
       type: vless
       udp: true
       uuid: b1e6a8df-effc-4b70-9132-4dca98085420
-    - name: vless-463888255
-      network: ws
-      port: 443
-      server: 140.248.186.45
-      servername: ssl.fastly.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: XpnTeam-34
-    - name: vless-463888256
-      network: ws
-      port: 443
-      server: 199.232.78.160
-      servername: ssl.fastly.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: XpnTeam-35
     - alterId: 0
       cipher: auto
       name: vmess-468166901
@@ -567,22 +547,20 @@ proxies:
       server: 146.70.23.32
       type: ss
       udp: true
-    - name: trojan-468892461
-      password: MiTiVPN
-      port: 443
-      server: 151.101.56.8
-      skip-cert-verify: false
-      sni: default.fastly.com
-      type: trojan
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-468887167
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: xTDzV2zSqFQ1-AwiuISHsDtMuHYm61rJ-T21K3gxBxA
+        short-id: 6e8a9bf9c9982640
+      server: 51.68.208.159
+      servername: ads.x5.ru
+      tls: true
+      type: vless
       udp: true
-    - name: trojan-468892462
-      password: MiTiVPN
-      port: 443
-      server: 151.101.56.8
-      skip-cert-verify: false
-      sni: default.fastly.com
-      type: trojan
-      udp: true
+      uuid: dd3d8547-7c07-4318-b2ae-11d1ebae8c60
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-468901426
@@ -696,6 +674,20 @@ proxies:
       type: vless
       udp: true
       uuid: XpnTeam-37
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-483655864
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: CTduQ5Pvex1U2D1ojmFgSF4MQ1N7Yft7EfnEEBK1l1U
+        short-id: c571c801812c
+      server: 45.150.66.201
+      servername: www.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 19ac8928-fe6e-49af-a223-9ca127e4018f
 proxy-groups:
     - interval: 300
       name: auto
@@ -753,12 +745,9 @@ proxy-groups:
         - vless-429870183
         - vmess-446522119
         - vless-455171250
-        - vless-463888255
-        - vless-463888256
         - vmess-468166901
         - shadowsocks-468218595
-        - trojan-468892461
-        - trojan-468892462
+        - vless-468887167
         - vless-468901426
         - vless-470978153
         - hysteria2-474576863
@@ -769,6 +758,7 @@ proxy-groups:
         - vless-481508153
         - vless-483479183
         - vless-483502309
+        - vless-483655864
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -827,12 +817,9 @@ proxy-groups:
         - vless-429870183
         - vmess-446522119
         - vless-455171250
-        - vless-463888255
-        - vless-463888256
         - vmess-468166901
         - shadowsocks-468218595
-        - trojan-468892461
-        - trojan-468892462
+        - vless-468887167
         - vless-468901426
         - vless-470978153
         - hysteria2-474576863
@@ -843,6 +830,7 @@ proxy-groups:
         - vless-481508153
         - vless-483479183
         - vless-483502309
+        - vless-483655864
       type: select
 rules:
     - MATCH,select

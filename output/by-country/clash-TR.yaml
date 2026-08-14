@@ -1,5 +1,18 @@
 proxies:
     - client-fingerprint: chrome
+      name: vless-472531256
+      network: tcp
+      port: 37211
+      reality-opts:
+        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
+        short-id: aa6f080efb8928f9
+      server: gtc.hekmatdarai.ir
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-477079800
       network: tcp
@@ -13,80 +26,35 @@ proxies:
       type: vless
       udp: true
       uuid: 224398db-7e90-421d-95be-178ec8c9d653
-    - client-fingerprint: firefox
-      name: vless-481440925
-      network: tcp
-      port: 1824
-      reality-opts:
-        public-key: JIv_D-Lpo1cosiCUgu-qzGSJwOCGciyXSZ8ucNn6aBo
-        short-id: 8390ee7a5996648b
-      server: tr3.soundfiy.ir
-      servername: www.icloud.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5da21ae5-2d09-4c10-81f3-cc8de5c69415
     - client-fingerprint: chrome
-      name: vless-481520155
+      flow: xtls-rprx-vision
+      name: vless-483683872
       network: raw
-      port: 37211
+      port: 55555
       reality-opts:
-        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
-        short-id: aa6f080efb8928f9
-      server: gtc.hekmatdarai.ir
-      servername: www.google.com
+        public-key: 1XQ60qYOfBZJpcilNV9Fu7OSpuO5_6-zrNZIYhB_YU4
+        short-id: af317506
+      server: uh-tr01.ziyoufly.xyz
+      servername: fin.club
       tls: true
       type: vless
       udp: true
-      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
-    - client-fingerprint: chrome
-      name: vless-479256291
-      network: tcp
-      port: 1824
-      reality-opts:
-        public-key: JIv_D-Lpo1cosiCUgu-qzGSJwOCGciyXSZ8ucNn6aBo
-        short-id: 8390ee7a5996648b
-      server: tr3.soundfiy.ir
-      servername: www.icloud.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5da21ae5-2d09-4c10-81f3-cc8de5c69415
-    - name: vless-474690645
-      network: tcp
-      port: 10205
-      server: 31.57.26.186
-      type: vless
-      udp: true
-      uuid: 8104ae40-996f-4d4d-a17d-2a271479b635
-    - name: vless-470980122
-      network: tcp
-      port: 18244
-      server: 185.128.139.11
-      type: vless
-      udp: true
-      uuid: 0d543aed-4e30-4553-b5ac-211419bb0961
+      uuid: bf3cd821-7936-494c-97af-e12817f18fa4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-472531256
         - vless-477079800
-        - vless-481440925
-        - vless-481520155
-        - vless-479256291
-        - vless-474690645
-        - vless-470980122
+        - vless-483683872
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-472531256
         - vless-477079800
-        - vless-481440925
-        - vless-481520155
-        - vless-479256291
-        - vless-474690645
-        - vless-470980122
+        - vless-483683872
       type: select
 rules:
     - MATCH,select
