@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-461629121
-      password: 4e756809
-      port: 12694
-      server: 92.4.68.18
-      skip-cert-verify: true
-      sni: www.bing.com
-      type: hysteria2
     - client-fingerprint: firefox
       name: vless-250761440
       network: tcp
@@ -32,20 +25,6 @@ proxies:
       type: vless
       udp: true
       uuid: 7f1f5848-da44-47df-8581-df83e88ee2b3
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-470976147
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
-        short-id: 88b6
-      server: 5.253.30.99
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
     - alterId: 0
       cipher: auto
       name: vmess-25686
@@ -92,51 +71,27 @@ proxies:
       type: vless
       udp: true
       uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
-    - name: trojan-494469695
-      password: b1d610a5-6d57-482b-b93b-5ad28ccc3533
-      port: 24407
-      server: v1in2.stableq.top
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
-    - name: trojan-494469696
-      password: b1d610a5-6d57-482b-b93b-5ad28ccc3533
-      port: 24408
-      server: v1in2.stableq.top
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-461629121
         - vless-250761440
         - vless-446498120
-        - vless-470976147
         - vmess-25686
         - vmess-262
         - vless-442483156
         - vless-436248614
-        - trojan-494469695
-        - trojan-494469696
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-461629121
         - vless-250761440
         - vless-446498120
-        - vless-470976147
         - vmess-25686
         - vmess-262
         - vless-442483156
         - vless-436248614
-        - trojan-494469695
-        - trojan-494469696
       type: select
 rules:
     - MATCH,select
