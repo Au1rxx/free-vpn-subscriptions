@@ -13,13 +13,32 @@ proxies:
       type: vless
       udp: true
       uuid: 224398db-7e90-421d-95be-178ec8c9d653
-    - name: vless-468154183
-      network: ws
-      port: 52315
-      server: 38.180.112.246
+    - client-fingerprint: firefox
+      name: vless-481440925
+      network: tcp
+      port: 1824
+      reality-opts:
+        public-key: JIv_D-Lpo1cosiCUgu-qzGSJwOCGciyXSZ8ucNn6aBo
+        short-id: 8390ee7a5996648b
+      server: tr3.soundfiy.ir
+      servername: www.icloud.com
+      tls: true
       type: vless
       udp: true
-      uuid: c06ab4be-e7e4-4f53-a5bb-bb500b58f2a7
+      uuid: 5da21ae5-2d09-4c10-81f3-cc8de5c69415
+    - client-fingerprint: chrome
+      name: vless-481520155
+      network: raw
+      port: 37211
+      reality-opts:
+        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
+        short-id: aa6f080efb8928f9
+      server: gtc.hekmatdarai.ir
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
     - client-fingerprint: chrome
       name: vless-479256291
       network: tcp
@@ -47,40 +66,27 @@ proxies:
       type: vless
       udp: true
       uuid: 0d543aed-4e30-4553-b5ac-211419bb0961
-    - client-fingerprint: chrome
-      name: vless-472531256
-      network: tcp
-      port: 37211
-      reality-opts:
-        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
-        short-id: aa6f080efb8928f9
-      server: gtc.hekmatdarai.ir
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-477079800
-        - vless-468154183
+        - vless-481440925
+        - vless-481520155
         - vless-479256291
         - vless-474690645
         - vless-470980122
-        - vless-472531256
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-477079800
-        - vless-468154183
+        - vless-481440925
+        - vless-481520155
         - vless-479256291
         - vless-474690645
         - vless-470980122
-        - vless-472531256
       type: select
 rules:
     - MATCH,select

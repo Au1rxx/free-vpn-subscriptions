@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-482897645
+      network: grpc
+      port: 8180
+      server: g.pl.vpnpplvpn.top
+      servername: vpnforppl.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e4714e7d-4e7b-4b2c-9d26-0c83e8d6d4bf
     - flow: xtls-rprx-vision
       name: vless-436143476
       network: tcp
@@ -38,20 +48,6 @@ proxies:
       type: vless
       udp: true
       uuid: a34b5e88-cf0d-4c01-8199-2d1002d3c787
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-468164043
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: FiGwAuKMy_5VK62hqCxDZn1jUjrplWTM1RmAwoA5o1w
-        short-id: 0d6c02fda165f38c
-      server: 194.93.63.227
-      servername: lbvzo.falsemirrov.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
     - flow: xtls-rprx-vision
       name: vless-477044237
       network: tcp
@@ -77,13 +73,17 @@ proxies:
       type: vless
       udp: true
       uuid: a34b5e88-cf0d-4c01-8199-2d1002d3c787
-    - name: hysteria2-467980807
-      password: 4e82f6c9-e180-4672-9d63-9060679ebdb9
+    - flow: xtls-rprx-vision
+      name: vless-482171310
+      network: tcp
       port: 443
-      server: node.embrofree.org
-      skip-cert-verify: true
-      sni: node.embrofree.org
-      type: hysteria2
+      server: 31.56.188.152
+      servername: pl11.fast-connect-service.site
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 551955b3-46e9-5129-95c9-e7474c15ed6b
     - name: vless-472520255
       network: tcp
       port: 8443
@@ -199,52 +199,17 @@ proxies:
       type: vless
       udp: true
       uuid: a34b5e88-cf0d-4c01-8199-2d1002d3c787
-    - name: trojan-264886113
-      password: ND91608427
-      port: 443
-      server: relaxed-gull.rooster465.autos
-      skip-cert-verify: false
-      sni: relaxed-gull.rooster465.autos
-      type: trojan
-      udp: true
-    - name: trojan-257074116
-      password: ND91608427
-      port: 443
-      server: relaxed-gull.rooster465.autos
-      skip-cert-verify: true
-      sni: relaxed-gull.rooster465.autos
-      type: trojan
-      udp: true
-    - name: trojan-286085591
-      password: ND91608427
-      port: 443
-      server: 202.78.163.248
-      skip-cert-verify: false
-      sni: relaxed-gull.rooster465.autos
-      type: trojan
-      udp: true
-    - flow: xtls-rprx-vision
-      name: vless-397957436
-      network: tcp
-      port: 443
-      server: 82.26.91.87
-      servername: faster.yandex-apicloud.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7e760d89-a8f4-4a87-8f10-b4af28c61b7f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-482897645
         - vless-436143476
         - vless-62228131
         - vless-59455172
-        - vless-468164043
         - vless-477044237
         - vless-245487944
-        - hysteria2-467980807
+        - vless-482171310
         - vless-472520255
         - vless-468885211
         - trojan-319333043
@@ -256,22 +221,18 @@ proxy-groups:
         - vless-383445372
         - vless-474912698
         - vless-62228133
-        - trojan-264886113
-        - trojan-257074116
-        - trojan-286085591
-        - vless-397957436
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-482897645
         - vless-436143476
         - vless-62228131
         - vless-59455172
-        - vless-468164043
         - vless-477044237
         - vless-245487944
-        - hysteria2-467980807
+        - vless-482171310
         - vless-472520255
         - vless-468885211
         - trojan-319333043
@@ -283,10 +244,6 @@ proxy-groups:
         - vless-383445372
         - vless-474912698
         - vless-62228133
-        - trojan-264886113
-        - trojan-257074116
-        - trojan-286085591
-        - vless-397957436
       type: select
 rules:
     - MATCH,select
