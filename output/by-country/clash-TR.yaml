@@ -1,11 +1,11 @@
 proxies:
-    - name: vless-212135092
-      network: grpc
-      port: 8443
-      server: 185.39.204.155
-      type: vless
+    - cipher: 2022-blake3-aes-256-gcm
+      name: shadowsocks-506807194
+      password: O28DIOC3cErTHV1M9l7+6kHQPLj6vyhXYet55g2EnB4=:JHw8K2IWysbbk5kjyOY/laqvJUUa994FRT8pIM6Ryu4=
+      port: 42696
+      server: 3xtr.mamad-imnix.ir
+      type: ss
       udp: true
-      uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
     - client-fingerprint: ios
       name: vless-501276419
       network: tcp
@@ -19,9 +19,36 @@ proxies:
       type: vless
       udp: true
       uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
-    - client-fingerprint: firefox
-      name: vless-429868175
+    - client-fingerprint: qq
+      name: vless-501276421
       network: tcp
+      port: 37211
+      reality-opts:
+        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
+        short-id: aa6f080efb8928f9
+      server: gtc.hekmatdarai.ir
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-503227732
+      network: tcp
+      port: 18020
+      reality-opts:
+        public-key: 0xLgsE7IR5ewIl8gbBvO4199a9Av1_asmucL6V9u6nw
+        short-id: e31e363bd206f49d
+      server: tr2.ramcalshoping.ir
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c05b3513-6fd0-4a12-a888-d40028126d68
+    - client-fingerprint: chrome
+      name: vless-505411599
+      network: raw
       port: 2053
       reality-opts:
         public-key: _jsI5uVVqXkzCZ0OGJ5U7waecxOEiu2lm-8f8ZyW5mc
@@ -32,21 +59,34 @@ proxies:
       type: vless
       udp: true
       uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-496604557
+      password: StZwL7yuGJL70m39D1Uquvrqf32pFAvw
+      port: 1080
+      server: 212.87.198.109
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-212135092
+        - shadowsocks-506807194
         - vless-501276419
-        - vless-429868175
+        - vless-501276421
+        - vless-503227732
+        - vless-505411599
+        - shadowsocks-496604557
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-212135092
+        - shadowsocks-506807194
         - vless-501276419
-        - vless-429868175
+        - vless-501276421
+        - vless-503227732
+        - vless-505411599
+        - shadowsocks-496604557
       type: select
 rules:
     - MATCH,select
