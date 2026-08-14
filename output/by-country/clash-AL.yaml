@@ -1,7 +1,35 @@
 proxies:
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-468896818
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: rCkSHJ7goy7ZvSlau4LfXF-QLloOJMNeMxpeeQtwtVs
+        short-id: 4fa44664f6a566d3
+      server: 130.49.189.41
+      servername: youtube.superbuba.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4cae7df-50a1-428c-bd62-881c8f3bbd90
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-479202842
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: rCkSHJ7goy7ZvSlau4LfXF-QLloOJMNeMxpeeQtwtVs
+        short-id: 4fa44664f6a566d3
+      server: youtube.superbuba.top
+      servername: youtube.superbuba.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4cae7df-50a1-428c-bd62-881c8f3bbd90
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-479094092
       network: tcp
       port: 443
       reality-opts:
@@ -31,7 +59,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-468896818
         - vless-479202842
+        - vless-479094092
         - shadowsocks-344504048
         - shadowsocks-360234355
       type: url-test
@@ -39,7 +69,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-468896818
         - vless-479202842
+        - vless-479094092
         - shadowsocks-344504048
         - shadowsocks-360234355
       type: select

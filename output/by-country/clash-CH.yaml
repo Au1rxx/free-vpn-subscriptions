@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-494496354
+      network: tcp
+      port: 25488
+      reality-opts:
+        public-key: z3eHrafcEv7gDkshLVUyR7GOH2eqxUigKB-LOg8-EgI
+        short-id: 135f036cf30861a5
+      server: 151.243.190.41
+      servername: proxy11.h1guro.ovh
+      tls: true
+      type: vless
+      udp: true
+      uuid: e6c94266-956d-46dd-9fd7-02d38179f7d9
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-494496354
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-494496354
+      type: select
+rules:
+    - MATCH,select
