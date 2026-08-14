@@ -1,11 +1,4 @@
 proxies:
-    - cipher: 2022-blake3-aes-256-gcm
-      name: shadowsocks-506807194
-      password: O28DIOC3cErTHV1M9l7+6kHQPLj6vyhXYet55g2EnB4=:JHw8K2IWysbbk5kjyOY/laqvJUUa994FRT8pIM6Ryu4=
-      port: 42696
-      server: 3xtr.mamad-imnix.ir
-      type: ss
-      udp: true
     - client-fingerprint: chrome
       name: vless-515164913
       network: tcp
@@ -26,21 +19,28 @@ proxies:
       skip-cert-verify: false
       sni: de7.h.fastlanehosting.ru
       type: hysteria2
+    - cipher: 2022-blake3-aes-256-gcm
+      name: shadowsocks-506807194
+      password: O28DIOC3cErTHV1M9l7+6kHQPLj6vyhXYet55g2EnB4=:JHw8K2IWysbbk5kjyOY/laqvJUUa994FRT8pIM6Ryu4=
+      port: 42696
+      server: 3xtr.mamad-imnix.ir
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-506807194
         - vless-515164913
         - hysteria2-509685362
+        - shadowsocks-506807194
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-506807194
         - vless-515164913
         - hysteria2-509685362
+        - shadowsocks-506807194
       type: select
 rules:
     - MATCH,select

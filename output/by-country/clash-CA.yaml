@@ -6,13 +6,6 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - name: hysteria2-200394189
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: vpn-ca-001.fastervpn.world
-      skip-cert-verify: true
-      sni: vpn-ca-001.fastervpn.world
-      type: hysteria2
     - name: hysteria2-468892441
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -34,13 +27,13 @@ proxies:
       skip-cert-verify: true
       sni: css.rbxcdn.com
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-465806702
-      password: ytw2awn
+    - name: hysteria2-200394189
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
-      server: ca225.vpnbook.com
-      type: ss
-      udp: true
+      server: vpn-ca-001.fastervpn.world
+      skip-cert-verify: true
+      sni: vpn-ca-001.fastervpn.world
+      type: hysteria2
     - cipher: rc4-md5
       name: shadowsocks-468218613
       password: 14fFPrbezE3HDZzsMOr6
@@ -62,11 +55,11 @@ proxies:
       server: 51.222.12.127
       type: ss
       udp: true
-    - cipher: aes-128-gcm
-      name: shadowsocks-208
-      password: shadowsocks
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-465806702
+      password: ytw2awn
       port: 443
-      server: 149.22.95.183
+      server: ca225.vpnbook.com
       type: ss
       udp: true
     - cipher: rc4-md5
@@ -76,37 +69,44 @@ proxies:
       server: 137.184.174.93
       type: ss
       udp: true
+    - cipher: aes-128-gcm
+      name: shadowsocks-208
+      password: shadowsocks
+      port: 443
+      server: 149.22.95.183
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-509047556
-        - hysteria2-200394189
         - hysteria2-468892441
         - hysteria2-468892440
         - hysteria2-468892439
-        - shadowsocks-465806702
+        - hysteria2-200394189
         - shadowsocks-468218613
         - shadowsocks-487917493
         - shadowsocks-496614106
-        - shadowsocks-208
+        - shadowsocks-465806702
         - shadowsocks-166
+        - shadowsocks-208
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-509047556
-        - hysteria2-200394189
         - hysteria2-468892441
         - hysteria2-468892440
         - hysteria2-468892439
-        - shadowsocks-465806702
+        - hysteria2-200394189
         - shadowsocks-468218613
         - shadowsocks-487917493
         - shadowsocks-496614106
-        - shadowsocks-208
+        - shadowsocks-465806702
         - shadowsocks-166
+        - shadowsocks-208
       type: select
 rules:
     - MATCH,select

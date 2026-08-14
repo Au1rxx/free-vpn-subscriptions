@@ -12,6 +12,14 @@ proxies:
       type: vless
       udp: true
       uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+    - name: trojan-523267544
+      password: MiTiVPN
+      port: 443
+      server: 199.232.237.245
+      skip-cert-verify: true
+      sni: letsencrypt.org
+      type: trojan
+      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-509711255
@@ -26,13 +34,6 @@ proxies:
       type: vless
       udp: true
       uuid: 2cb6b4d9-0c74-45e2-a4fb-645bb8ac532a
-    - name: hysteria2-474576737
-      password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
-      port: 43327
-      server: 2.27.23.44
-      skip-cert-verify: false
-      sni: gate-v1.not-a-projects.xyz
-      type: hysteria2
     - name: hysteria2-487303214
       password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
       port: 43327
@@ -40,23 +41,50 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - name: hysteria2-467980811
+      password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
+      port: 43327
+      server: 2.27.23.44
+      skip-cert-verify: true
+      sni: gate-v1.not-a-projects.xyz
+      type: hysteria2
+    - name: hysteria2-474576737
+      password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
+      port: 43327
+      server: 2.27.23.44
+      skip-cert-verify: false
+      sni: gate-v1.not-a-projects.xyz
+      type: hysteria2
+    - name: hysteria2-487303205
+      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+      port: 443
+      server: us54.mechvpn.online
+      skip-cert-verify: false
+      sni: us54.mechvpn.online
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-509711220
+        - trojan-523267544
         - vless-509711255
-        - hysteria2-474576737
         - hysteria2-487303214
+        - hysteria2-467980811
+        - hysteria2-474576737
+        - hysteria2-487303205
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-509711220
+        - trojan-523267544
         - vless-509711255
-        - hysteria2-474576737
         - hysteria2-487303214
+        - hysteria2-467980811
+        - hysteria2-474576737
+        - hysteria2-487303205
       type: select
 rules:
     - MATCH,select

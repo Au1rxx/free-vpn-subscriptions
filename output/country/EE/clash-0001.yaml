@@ -1,8 +1,36 @@
 proxies:
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-15723830
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SJkDT_L0eziQR2afDGrkN7-uRxjYu6bZxIGXlKeCvX4
+        short-id: 15aa18f971da1f81
+      server: est.vrsvpn.com
+      servername: web.max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b9bcbc1-b289-4a64-86fa-a5b731b65384
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-26484243
       network: tcp
+      port: 443
+      reality-opts:
+        public-key: SJkDT_L0eziQR2afDGrkN7-uRxjYu6bZxIGXlKeCvX4
+        short-id: 15aa18f971da1f81
+      server: est.vrsvpn.com
+      servername: web.max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b9bcbc1-b289-4a64-86fa-a5b731b65384
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-26581145
+      network: raw
       port: 443
       reality-opts:
         public-key: SJkDT_L0eziQR2afDGrkN7-uRxjYu6bZxIGXlKeCvX4
@@ -44,6 +72,20 @@ proxies:
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-54031095
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SJkDT_L0eziQR2afDGrkN7-uRxjYu6bZxIGXlKeCvX4
+        short-id: 15aa18f971da1f81
+      server: 185.155.97.241
+      servername: web.max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b9bcbc1-b289-4a64-86fa-a5b731b65384
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-62314903
       network: tcp
       port: 443
       reality-opts:
@@ -357,14 +399,24 @@ proxies:
       type: vless
       udp: true
       uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
+    - name: vless-522234428
+      network: ws
+      port: 443
+      server: 94.183.170.231
+      type: vless
+      udp: true
+      uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-15723830
         - vless-26484243
+        - vless-26581145
         - vless-40208529
         - vless-53940396
         - vless-54031095
+        - vless-62314903
         - vless-78232669
         - vless-209446149
         - vless-213110939
@@ -396,15 +448,19 @@ proxy-groups:
         - vless-511769190
         - vless-513835959
         - vless-520937183
+        - vless-522234428
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-15723830
         - vless-26484243
+        - vless-26581145
         - vless-40208529
         - vless-53940396
         - vless-54031095
+        - vless-62314903
         - vless-78232669
         - vless-209446149
         - vless-213110939
@@ -436,6 +492,7 @@ proxy-groups:
         - vless-511769190
         - vless-513835959
         - vless-520937183
+        - vless-522234428
       type: select
 rules:
     - MATCH,select
