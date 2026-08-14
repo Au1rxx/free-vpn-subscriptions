@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-468892535
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: sbl95eJz_SP1vYb8doCjAJOo0o5NveutEb9J-XKGl1w
-        short-id: 9c2378562188c3cb
-      server: 157.20.27.44
-      servername: apxc.falsemirrov.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
     - client-fingerprint: firefox
       name: vless-250761440
       network: tcp
@@ -26,34 +12,6 @@ proxies:
       type: vless
       udp: true
       uuid: 7f1f5848-da44-47df-8581-df83e88ee2b3
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-468892534
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: sbl95eJz_SP1vYb8doCjAJOo0o5NveutEb9J-XKGl1w
-        short-id: 9c2378562188c3cb
-      server: 157.20.27.29
-      servername: apxc.falsemirrov.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ff1b0b50-70dc-4bae-866e-55cff86f4d6d
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-468906021
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: uFpKFKMzIJcnqfmvL8x7ykGigDW23kPkxpTkvwHJzgo
-        short-id: fab4
-      server: 198.105.113.205
-      servername: india-cdn.linus-qanary.lol
-      tls: true
-      type: vless
-      udp: true
-      uuid: 18fd025a-eeb7-4860-b468-299a80b1b2c6
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-206375738
@@ -91,31 +49,36 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-2387859
+      network: ws
+      port: 80
+      server: 152.67.8.205
+      type: vmess
+      udp: true
+      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-468892535
         - vless-250761440
-        - vless-468892534
-        - vless-468906021
         - vless-206375738
         - shadowsocks-125111
         - trojan-483478686
         - trojan-483478687
+        - vmess-2387859
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-468892535
         - vless-250761440
-        - vless-468892534
-        - vless-468906021
         - vless-206375738
         - shadowsocks-125111
         - trojan-483478686
         - trojan-483478687
+        - vmess-2387859
       type: select
 rules:
     - MATCH,select
