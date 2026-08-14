@@ -6,6 +6,14 @@ proxies:
       type: vless
       udp: true
       uuid: 0d543aed-4e30-4553-b5ac-211419bb0961
+    - name: trojan-124610
+      password: tunnel-ljlcf
+      port: 8441
+      server: tr-1.stunnel.cc
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - name: vless-23920901
       network: ws
       port: 2200
@@ -77,84 +85,6 @@ proxies:
       type: vless
       udp: true
       uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
-    - client-fingerprint: qq
-      name: vless-500717544
-      network: tcp
-      port: 37211
-      reality-opts:
-        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
-        short-id: aa6f080efb8928f9
-      server: 146.103.26.96
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
-    - client-fingerprint: safari
-      name: vless-501276417
-      network: tcp
-      port: 37211
-      reality-opts:
-        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
-        short-id: aa6f080efb8928f9
-      server: gtc.hekmatdarai.ir
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
-    - client-fingerprint: firefox
-      name: vless-501276418
-      network: tcp
-      port: 37211
-      reality-opts:
-        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
-        short-id: aa6f080efb8928f9
-      server: gtc.hekmatdarai.ir
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
-    - client-fingerprint: ios
-      name: vless-501276419
-      network: tcp
-      port: 37211
-      reality-opts:
-        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
-        short-id: aa6f080efb8928f9
-      server: 146.103.26.96
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
-    - client-fingerprint: firefox
-      name: vless-501276420
-      network: tcp
-      port: 37211
-      reality-opts:
-        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
-        short-id: aa6f080efb8928f9
-      server: 146.103.26.96
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
-    - client-fingerprint: qq
-      name: vless-501276421
-      network: tcp
-      port: 37211
-      reality-opts:
-        public-key: 2dpt8KZvY90iXmpdsCMkvK_00uHIhNbnz0VYrVFcJ3k
-        short-id: aa6f080efb8928f9
-      server: gtc.hekmatdarai.ir
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f8fd2381-40ea-4b46-973b-f9dab2eed50b
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-503227732
@@ -203,11 +133,25 @@ proxies:
       skip-cert-verify: false
       sni: de7.h.fastlanehosting.ru
       type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-515164913
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: _jsI5uVVqXkzCZ0OGJ5U7waecxOEiu2lm-8f8ZyW5mc
+        short-id: f5d596282182b440
+      server: 151.241.226.201
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-60428
+        - trojan-124610
         - vless-23920901
         - vless-212135092
         - vless-332701908
@@ -216,23 +160,19 @@ proxy-groups:
         - trojan-474860666
         - trojan-485795336
         - vless-494492362
-        - vless-500717544
-        - vless-501276417
-        - vless-501276418
-        - vless-501276419
-        - vless-501276420
-        - vless-501276421
         - vless-503227732
         - shadowsocks-505354635
         - vless-505411599
         - shadowsocks-506807194
         - hysteria2-509685362
+        - vless-515164913
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-60428
+        - trojan-124610
         - vless-23920901
         - vless-212135092
         - vless-332701908
@@ -241,17 +181,12 @@ proxy-groups:
         - trojan-474860666
         - trojan-485795336
         - vless-494492362
-        - vless-500717544
-        - vless-501276417
-        - vless-501276418
-        - vless-501276419
-        - vless-501276420
-        - vless-501276421
         - vless-503227732
         - shadowsocks-505354635
         - vless-505411599
         - shadowsocks-506807194
         - hysteria2-509685362
+        - vless-515164913
       type: select
 rules:
     - MATCH,select
