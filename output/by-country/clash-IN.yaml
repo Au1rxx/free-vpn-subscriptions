@@ -75,15 +75,22 @@ proxies:
       server: 103.120.178.193
       type: ss
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-2387859
-      network: ws
-      port: 80
-      server: 152.67.8.205
-      type: vmess
+    - name: trojan-483478686
+      password: 16e9e21e-51cd-4898-9c57-efe9ff95a2a5
+      port: 24407
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
       udp: true
-      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
+    - name: trojan-483478687
+      password: 16e9e21e-51cd-4898-9c57-efe9ff95a2a5
+      port: 24408
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -94,7 +101,8 @@ proxy-groups:
         - vless-468906021
         - vless-206375738
         - shadowsocks-125111
-        - vmess-2387859
+        - trojan-483478686
+        - trojan-483478687
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -106,7 +114,8 @@ proxy-groups:
         - vless-468906021
         - vless-206375738
         - shadowsocks-125111
-        - vmess-2387859
+        - trojan-483478686
+        - trojan-483478687
       type: select
 rules:
     - MATCH,select
