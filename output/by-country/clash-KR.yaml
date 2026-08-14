@@ -1,4 +1,25 @@
 proxies:
+    - client-fingerprint: chrome
+      name: vless-490096152
+      network: tcp
+      port: 8686
+      reality-opts:
+        public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
+        short-id: 628b3c90c98ead4f
+      server: 3.37.88.18
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
+    - name: trojan-488062307
+      password: AE62539071
+      port: 443
+      server: prepared-monitor.rooster465.autos
+      skip-cert-verify: true
+      sni: prepared-monitor.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-483474691
       password: AE62539071
       port: 443
@@ -20,14 +41,6 @@ proxies:
       type: vless
       udp: true
       uuid: CB9C296F-A571-4B73-961E-142D832F35D0
-    - name: trojan-488062307
-      password: AE62539071
-      port: 443
-      server: prepared-monitor.rooster465.autos
-      skip-cert-verify: true
-      sni: prepared-monitor.rooster465.autos
-      type: trojan
-      udp: true
     - client-fingerprint: chrome
       name: vless-474971664
       network: grpc
@@ -1716,13 +1729,22 @@ proxies:
       sni: humorous-malamute.rooster465.autos
       type: trojan
       udp: true
+    - name: trojan-455383612
+      password: AE62539071
+      port: 443
+      server: allowing-halibut.rooster465.autos
+      skip-cert-verify: false
+      sni: allowing-halibut.rooster465.autos
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-490096152
+        - trojan-488062307
         - trojan-483474691
         - vless-474971666
-        - trojan-488062307
         - vless-474971664
         - trojan-488060304
         - vless-474971665
@@ -1936,14 +1958,16 @@ proxy-groups:
         - trojan-474779689
         - trojan-331180964
         - trojan-260680469
+        - trojan-455383612
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-490096152
+        - trojan-488062307
         - trojan-483474691
         - vless-474971666
-        - trojan-488062307
         - vless-474971664
         - trojan-488060304
         - vless-474971665
@@ -2157,6 +2181,7 @@ proxy-groups:
         - trojan-474779689
         - trojan-331180964
         - trojan-260680469
+        - trojan-455383612
       type: select
 rules:
     - MATCH,select

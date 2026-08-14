@@ -1,0 +1,71 @@
+{
+  "outbounds": [
+    {
+      "password": "018b8e7b-7813-4dcb-84a5-3c98f1521e00",
+      "server": "edu.ruangguru.com",
+      "server_port": 443,
+      "tag": "trojan-490085150",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "id1.nathaya.web.id"
+      },
+      "transport": {
+        "headers": {
+          "Host": "id1.nathaya.web.id"
+        },
+        "path": "/trojan",
+        "type": "ws"
+      },
+      "type": "trojan"
+    },
+    {
+      "server": "103.176.94.234",
+      "server_port": 1080,
+      "tag": "http-1130534",
+      "type": "http"
+    },
+    {
+      "server": "103.166.9.246",
+      "server_port": 80,
+      "tag": "http-240839412",
+      "type": "http"
+    },
+    {
+      "server": "144.79.136.157",
+      "server_port": 8181,
+      "tag": "http-438859823",
+      "type": "http"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-490085150",
+        "http-1130534",
+        "http-240839412",
+        "http-438859823"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-490085150",
+        "http-1130534",
+        "http-240839412",
+        "http-438859823"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
