@@ -29,6 +29,20 @@ proxies:
       uuid: 4a97788b-5d8a-410c-875c-ba36930e185e
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-242829375
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: HKpd1sbrhBds8SJSL0d22MAq_QyTR6EP6y5b5DYol3U
+        short-id: ""
+      server: stockholm-meow.nethcloud.top
+      servername: www.wikihow.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4cbefb4d-328c-411d-bf76-780df1082df8
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-377163834
       network: tcp
       port: 443
@@ -97,18 +111,63 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-509711183
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: V2JprbR_aJkS7uX6anyU3nrswGxdvDQT2HpY4WnzuC8
+        short-id: 5629431325884ff0
+      server: swed4.o4ka-internet.com
+      servername: swed4.o4ka-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2cb6b4d9-0c74-45e2-a4fb-645bb8ac532a
+    - client-fingerprint: firefox
+      name: vless-509711220
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: ECYE8G81FW1V__Y9yBYxIU0TWWcConhXoJncZG1D_0U
+        short-id: 7a08844f
+      server: 103.110.66.158
+      servername: www.telekom.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-509711255
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: V2JprbR_aJkS7uX6anyU3nrswGxdvDQT2HpY4WnzuC8
+        short-id: 5629431325884ff0
+      server: 2.26.55.164
+      servername: swed4.o4ka-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2cb6b4d9-0c74-45e2-a4fb-645bb8ac532a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-200265609
         - vless-202733753
+        - vless-242829375
         - vless-377163834
         - vless-446492119
         - vless-468896870
         - vless-470976121
         - hysteria2-474576737
         - hysteria2-487303214
+        - vless-509711183
+        - vless-509711220
+        - vless-509711255
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -116,12 +175,16 @@ proxy-groups:
         - auto
         - vless-200265609
         - vless-202733753
+        - vless-242829375
         - vless-377163834
         - vless-446492119
         - vless-468896870
         - vless-470976121
         - hysteria2-474576737
         - hysteria2-487303214
+        - vless-509711183
+        - vless-509711220
+        - vless-509711255
       type: select
 rules:
     - MATCH,select

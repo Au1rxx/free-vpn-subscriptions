@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-510717120
+      password: AE62539071
+      port: 443
+      server: kind-stork.rooster465.autos
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - name: trojan-501276512
       password: AE62539071
       port: 443
@@ -49,6 +57,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-510717120
         - trojan-501276512
         - trojan-501276513
         - trojan-501276511
@@ -60,6 +69,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-510717120
         - trojan-501276512
         - trojan-501276513
         - trojan-501276511

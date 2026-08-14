@@ -1,4 +1,32 @@
 proxies:
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-509672380
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: -nB-tCeZ4Zr72ArHUKnbUphbs4PlBS6iId6PkrPQQTE
+        short-id: 84f9881951050a30
+      server: gb1.murhost.network
+      servername: gb1.murhost.network
+      tls: true
+      type: vless
+      udp: true
+      uuid: a6f6d9c9-9d43-4d0e-bf95-4b87cc5bbaac
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-509674367
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: -nB-tCeZ4Zr72ArHUKnbUphbs4PlBS6iId6PkrPQQTE
+        short-id: 84f9881951050a30
+      server: gb1.murhost.network
+      servername: gb1.murhost.network
+      tls: true
+      type: vless
+      udp: true
+      uuid: a6f6d9c9-9d43-4d0e-bf95-4b87cc5bbaac
     - client-fingerprint: ios
       flow: xtls-rprx-vision
       name: vless-501276464
@@ -96,20 +124,13 @@ proxies:
       type: vless
       udp: true
       uuid: 19ac8928-fe6e-49af-a223-9ca127e4018f
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-496844423
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: -nB-tCeZ4Zr72ArHUKnbUphbs4PlBS6iId6PkrPQQTE
-        short-id: 84f9881951050a30
-      server: gb1.murhost.network
-      servername: gb1.murhost.network
-      tls: true
+    - name: vless-509653877
+      network: raw
+      port: 13561
+      server: 87.242.85.201
       type: vless
       udp: true
-      uuid: a6f6d9c9-9d43-4d0e-bf95-4b87cc5bbaac
+      uuid: bfa91d79-049c-41e1-be94-029397377150
     - client-fingerprint: firefox
       name: vless-470978153
       network: tcp
@@ -168,32 +189,11 @@ proxies:
       server: 158.173.24.73
       type: ss
       udp: true
-    - cipher: aes-128-gcm
-      name: shadowsocks-271
-      password: shadowsocks
-      port: 443
-      server: 141.98.101.181
-      type: ss
-      udp: true
     - cipher: rc4-md5
       name: shadowsocks-468218595
       password: 14fFPrbezE3HDZzsMOr6
       port: 8080
       server: 146.70.23.32
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-488065855
-      password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
-      port: 61312
-      server: 129.151.86.99
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-488065856
-      password: MGU4ZjVkMGNhY2Y3YzM0NmIxMDgyNDQ5OGVjZjY2Y2Y=
-      port: 61312
-      server: 129.151.92.159
       type: ss
       udp: true
     - cipher: rc4-md5
@@ -214,6 +214,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-509672380
+        - vless-509674367
         - vless-501276464
         - vless-501276462
         - vless-501276463
@@ -221,17 +223,14 @@ proxy-groups:
         - vless-500985703
         - vless-500717548
         - vless-468901426
-        - vless-496844423
+        - vless-509653877
         - vless-470978153
         - vless-500717547
         - vless-500399277
         - hysteria2-387719513
         - hysteria2-474576864
         - shadowsocks-126252
-        - shadowsocks-271
         - shadowsocks-468218595
-        - shadowsocks-488065855
-        - shadowsocks-488065856
         - shadowsocks-165
         - shadowsocks-240
       type: url-test
@@ -239,6 +238,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-509672380
+        - vless-509674367
         - vless-501276464
         - vless-501276462
         - vless-501276463
@@ -246,17 +247,14 @@ proxy-groups:
         - vless-500985703
         - vless-500717548
         - vless-468901426
-        - vless-496844423
+        - vless-509653877
         - vless-470978153
         - vless-500717547
         - vless-500399277
         - hysteria2-387719513
         - hysteria2-474576864
         - shadowsocks-126252
-        - shadowsocks-271
         - shadowsocks-468218595
-        - shadowsocks-488065855
-        - shadowsocks-488065856
         - shadowsocks-165
         - shadowsocks-240
       type: select
