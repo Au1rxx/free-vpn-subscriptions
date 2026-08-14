@@ -1,0 +1,58 @@
+proxies:
+    - name: vless-490390403
+      network: ws
+      port: 2053
+      server: 188.114.97.6
+      servername: ov.iran-servers.shop
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d361072e-9e0e-4e2d-8ec7-2a4189b5b23a
+    - name: vless-492365454
+      network: ws
+      port: 8080
+      server: 172.67.143.139
+      type: vless
+      udp: true
+      uuid: 18907dc3-7e4c-476f-9ed8-b360db563bf9
+    - client-fingerprint: chrome
+      name: vless-492365455
+      network: tcp
+      port: 8686
+      reality-opts:
+        public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
+        short-id: 628b3c90c98ead4f
+      server: 43.201.20.147
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
+    - name: vless-492376451
+      network: ws
+      port: 80
+      server: 188.114.96.3
+      type: vless
+      udp: true
+      uuid: 7201b2cd-0675-4c1a-9c76-07ca14ffcf08
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-490390403
+        - vless-492365454
+        - vless-492365455
+        - vless-492376451
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-490390403
+        - vless-492365454
+        - vless-492365455
+        - vless-492376451
+      type: select
+rules:
+    - MATCH,select
