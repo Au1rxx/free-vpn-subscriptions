@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-547491625
+      password: sysadmin.sysadmin
+      port: 444
+      server: 167.234.249.46
+      skip-cert-verify: true
+      sni: a.961229.xyz
+      type: hysteria2
     - name: vless-526968590
       network: ws
       port: 4100
@@ -10,12 +17,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-547491625
         - vless-526968590
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-547491625
         - vless-526968590
       type: select
 rules:
