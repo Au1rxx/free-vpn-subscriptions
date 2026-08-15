@@ -16,6 +16,13 @@ proxies:
       udp: true
       uuid: b5e9480a-b7aa-40a4-f9a7-5299b5e363b4
     - cipher: aes-256-cfb
+      name: shadowsocks-249
+      password: qwerREWQ@@
+      port: 2078
+      server: 27.255.82.134
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-260
       password: qwerREWQ@@
       port: 4652
@@ -105,6 +112,15 @@ proxies:
       udp: true
     - alterId: 0
       cipher: auto
+      name: vmess-144713
+      network: ws
+      port: 80
+      server: 132.145.80.230
+      type: vmess
+      udp: true
+      uuid: 5155860e-d07d-46c3-9128-3afbd84626c7
+    - alterId: 0
+      cipher: auto
       name: vmess-145107
       network: tcp
       port: 443
@@ -112,27 +128,15 @@ proxies:
       type: vmess
       udp: true
       uuid: 41a7089a-040b-4538-8b8d-010902405bde
-    - name: vless-2307724
+    - alterId: 0
+      cipher: auto
+      name: vmess-145108
       network: ws
-      port: 8880
-      server: 104.17.170.132
-      type: vless
+      port: 80
+      server: 132.145.80.230
+      type: vmess
       udp: true
-      uuid: 49a9aa25-443b-4fab-9a85-066dd5396c57
-    - name: vless-2331527
-      network: ws
-      port: 8880
-      server: 172.66.200.130
-      type: vless
-      udp: true
-      uuid: a51d8a82-faec-44f4-8882-441a2e7f0ce4
-    - name: vless-2337682
-      network: ws
-      port: 8880
-      server: 172.66.200.130
-      type: vless
-      udp: true
-      uuid: c6171ace-4580-45c7-b00f-5e6c56f48794
+      uuid: 5155860e-d07d-46c3-9128-3afbd84626c7
     - alterId: 0
       cipher: auto
       name: vmess-2393100
@@ -244,20 +248,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 41a7089a-040b-4538-8b8d-010902405bde
-    - name: vless-189789222
-      network: ws
-      port: 8880
-      server: 104.17.170.132
-      type: vless
-      udp: true
-      uuid: 49a9aa25-443b-4fab-9a85-066dd5396c57
-    - name: vless-192059510
-      network: ws
-      port: 8880
-      server: crimson-smoke-7818.397.workers.dev
-      type: vless
-      udp: true
-      uuid: d6bdda67-168d-4501-a2c1-ef01070cb327
     - alterId: 0
       cipher: auto
       name: vmess-192463135
@@ -267,13 +257,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 5155860e-d07d-46c3-9128-3afbd84626c7
-    - name: vless-194881718
-      network: ws
-      port: 8880
-      server: 172.64.88.251
-      type: vless
-      udp: true
-      uuid: efb0a3fe-af52-45c5-b397-1a6866d88d67
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-210050461
@@ -2094,17 +2077,6 @@ proxies:
       sni: communal-sunbird.rooster465.autos
       type: trojan
       udp: true
-    - flow: xtls-rprx-vision
-      name: vless-311433354
-      network: tcp
-      port: 443
-      server: ako.pagate.top
-      servername: ako.pagate.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: e6d8d743-a9bc-48c9-be99-8f3cc94d16e1
     - name: trojan-313165062
       password: ND91608427
       port: 443
@@ -2153,17 +2125,6 @@ proxies:
       sni: saving-octopus.rooster465.autos
       type: trojan
       udp: true
-    - flow: xtls-rprx-vision
-      name: vless-335173289
-      network: tcp
-      port: 443
-      server: 132.145.89.30
-      servername: ako.pagate.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: e6d8d743-a9bc-48c9-be99-8f3cc94d16e1
     - name: trojan-344504071
       password: ND91608427
       port: 443
@@ -5769,19 +5730,6 @@ proxies:
       sni: 193-122-104-200.liao.kdns.fr
       type: hysteria2
     - client-fingerprint: chrome
-      name: vless-556173674
-      network: tcp
-      port: 8686
-      reality-opts:
-        public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
-        short-id: 628b3c90c98ead4f
-      server: 3.35.22.105
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
-    - client-fingerprint: chrome
       name: vless-559132753
       network: tcp
       port: 8686
@@ -6839,12 +6787,20 @@ proxies:
       type: vless
       udp: true
       uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
+    - name: hysteria2-573042057
+      password: 9cfc9458e48c028ec03ff86ebc71c744
+      port: 50160
+      server: 150-230-252-217.liao.kdns.fr
+      skip-cert-verify: true
+      sni: 150-230-252-217.liao.kdns.fr
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-210
         - vmess-244
+        - shadowsocks-249
         - shadowsocks-260
         - vmess-263
         - shadowsocks-278
@@ -6856,10 +6812,9 @@ proxy-groups:
         - trojan-119241
         - trojan-119288
         - shadowsocks-125595
+        - vmess-144713
         - vmess-145107
-        - vless-2307724
-        - vless-2331527
-        - vless-2337682
+        - vmess-145108
         - vmess-2393100
         - shadowsocks-4892330
         - vmess-5259790
@@ -6870,10 +6825,7 @@ proxy-groups:
         - vless-59621877
         - vless-68001628
         - vmess-168659359
-        - vless-189789222
-        - vless-192059510
         - vmess-192463135
-        - vless-194881718
         - vless-210050461
         - trojan-212116890
         - hysteria2-215228348
@@ -7100,14 +7052,12 @@ proxy-groups:
         - trojan-310416987
         - trojan-310416988
         - trojan-310598162
-        - vless-311433354
         - trojan-313165062
         - trojan-319333044
         - trojan-322592226
         - trojan-331180964
         - trojan-331180965
         - trojan-335136326
-        - vless-335173289
         - trojan-344504071
         - trojan-425704516
         - trojan-425785804
@@ -7555,7 +7505,6 @@ proxy-groups:
         - trojan-553326951
         - hysteria2-553326952
         - hysteria2-553326953
-        - vless-556173674
         - vless-559132753
         - vless-559133762
         - trojan-561619422
@@ -7684,6 +7633,7 @@ proxy-groups:
         - trojan-567350157
         - trojan-569122025
         - vless-569536896
+        - hysteria2-573042057
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -7691,6 +7641,7 @@ proxy-groups:
         - auto
         - shadowsocks-210
         - vmess-244
+        - shadowsocks-249
         - shadowsocks-260
         - vmess-263
         - shadowsocks-278
@@ -7702,10 +7653,9 @@ proxy-groups:
         - trojan-119241
         - trojan-119288
         - shadowsocks-125595
+        - vmess-144713
         - vmess-145107
-        - vless-2307724
-        - vless-2331527
-        - vless-2337682
+        - vmess-145108
         - vmess-2393100
         - shadowsocks-4892330
         - vmess-5259790
@@ -7716,10 +7666,7 @@ proxy-groups:
         - vless-59621877
         - vless-68001628
         - vmess-168659359
-        - vless-189789222
-        - vless-192059510
         - vmess-192463135
-        - vless-194881718
         - vless-210050461
         - trojan-212116890
         - hysteria2-215228348
@@ -7946,14 +7893,12 @@ proxy-groups:
         - trojan-310416987
         - trojan-310416988
         - trojan-310598162
-        - vless-311433354
         - trojan-313165062
         - trojan-319333044
         - trojan-322592226
         - trojan-331180964
         - trojan-331180965
         - trojan-335136326
-        - vless-335173289
         - trojan-344504071
         - trojan-425704516
         - trojan-425785804
@@ -8401,7 +8346,6 @@ proxy-groups:
         - trojan-553326951
         - hysteria2-553326952
         - hysteria2-553326953
-        - vless-556173674
         - vless-559132753
         - vless-559133762
         - trojan-561619422
@@ -8530,6 +8474,7 @@ proxy-groups:
         - trojan-567350157
         - trojan-569122025
         - vless-569536896
+        - hysteria2-573042057
       type: select
 rules:
     - MATCH,select

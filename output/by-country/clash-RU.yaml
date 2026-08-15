@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: chrome
+      name: vless-562213169
+      network: grpc
+      port: 16923
+      reality-opts:
+        public-key: _QeslG3rHGM7DoM99pYC8-jpc16pM2MbNZ6NRMoxmHA
+        short-id: 10ffb85da1c2d986
+      server: 201.51.1.84
+      servername: api-maps.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: ba222add-6ac1-45f1-9a18-f91cb38e324f
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-562213169
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-562213169
+      type: select
+rules:
+    - MATCH,select
