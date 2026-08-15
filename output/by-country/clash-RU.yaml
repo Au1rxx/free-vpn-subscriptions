@@ -12,17 +12,30 @@ proxies:
       type: vless
       udp: true
       uuid: ba222add-6ac1-45f1-9a18-f91cb38e324f
+    - flow: xtls-rprx-vision
+      name: vless-561634819
+      network: raw
+      port: 52006
+      server: 139.100.197.28
+      servername: search.setlisting.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 07ac4642-9570-07d0-af45-384f4ee2e56e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-562213169
+        - vless-561634819
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-562213169
+        - vless-561634819
       type: select
 rules:
     - MATCH,select
