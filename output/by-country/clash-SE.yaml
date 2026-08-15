@@ -13,27 +13,19 @@ proxies:
       type: vless
       udp: true
       uuid: 4a97788b-5d8a-410c-875c-ba36930e185e
-    - name: trojan-523267544
-      password: MiTiVPN
-      port: 443
-      server: 199.232.237.245
-      skip-cert-verify: true
-      sni: letsencrypt.org
-      type: trojan
-      udp: true
-    - name: hysteria2-487303214
-      password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
-      port: 43327
-      server: 2.27.23.44
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
     - name: hysteria2-467980811
       password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
       port: 43327
       server: 2.27.23.44
       skip-cert-verify: true
       sni: gate-v1.not-a-projects.xyz
+      type: hysteria2
+    - name: hysteria2-487303214
+      password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
+      port: 43327
+      server: 2.27.23.44
+      skip-cert-verify: true
+      sni: ""
       type: hysteria2
     - name: hysteria2-474576737
       password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
@@ -42,34 +34,23 @@ proxies:
       skip-cert-verify: false
       sni: gate-v1.not-a-projects.xyz
       type: hysteria2
-    - name: hysteria2-487303205
-      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-      port: 443
-      server: us54.mechvpn.online
-      skip-cert-verify: false
-      sni: us54.mechvpn.online
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-470976121
-        - trojan-523267544
-        - hysteria2-487303214
         - hysteria2-467980811
+        - hysteria2-487303214
         - hysteria2-474576737
-        - hysteria2-487303205
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-470976121
-        - trojan-523267544
-        - hysteria2-487303214
         - hysteria2-467980811
+        - hysteria2-487303214
         - hysteria2-474576737
-        - hysteria2-487303205
       type: select
 rules:
     - MATCH,select

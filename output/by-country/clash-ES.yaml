@@ -13,13 +13,6 @@ proxies:
       skip-cert-verify: true
       sni: mg2.mangshe.xyz
       type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-27380
-      password: VcFuyXvND2yQWSFY
-      port: 9054
-      server: 5.188.181.201
-      type: ss
-      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-11052
       password: qItG8SueYQcP
@@ -34,15 +27,22 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-27380
+      password: VcFuyXvND2yQWSFY
+      port: 9054
+      server: 5.188.181.201
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-428711847
         - hysteria2-503283256
-        - shadowsocks-27380
         - shadowsocks-11052
         - shadowsocks-16132
+        - shadowsocks-27380
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -50,9 +50,9 @@ proxy-groups:
         - auto
         - hysteria2-428711847
         - hysteria2-503283256
-        - shadowsocks-27380
         - shadowsocks-11052
         - shadowsocks-16132
+        - shadowsocks-27380
       type: select
 rules:
     - MATCH,select

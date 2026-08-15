@@ -13,12 +13,20 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-537388292
+      password: 2K3rKsTy5mqdETeru9eMn/bYRMaFTovJerZymejO29o=
+      port: 59319
+      server: 147.15.111.47
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-526968590
         - vless-532828548
+        - shadowsocks-537388292
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +34,7 @@ proxy-groups:
         - auto
         - vless-526968590
         - vless-532828548
+        - shadowsocks-537388292
       type: select
 rules:
     - MATCH,select
