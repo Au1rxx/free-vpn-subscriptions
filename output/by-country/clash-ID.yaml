@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-490085150
+      password: 018b8e7b-7813-4dcb-84a5-3c98f1521e00
+      port: 443
+      server: edu.ruangguru.com
+      skip-cert-verify: true
+      sni: id1.nathaya.web.id
+      type: trojan
+      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-547321392
@@ -8,27 +16,19 @@ proxies:
       type: vmess
       udp: true
       uuid: 3a03613b-bbac-4a22-bee6-2c9a751a2761
-    - name: trojan-490085150
-      password: 018b8e7b-7813-4dcb-84a5-3c98f1521e00
-      port: 443
-      server: edu.ruangguru.com
-      skip-cert-verify: true
-      sni: id1.nathaya.web.id
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-547321392
         - trojan-490085150
+        - vmess-547321392
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-547321392
         - trojan-490085150
+        - vmess-547321392
       type: select
 rules:
     - MATCH,select
