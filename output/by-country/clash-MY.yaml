@@ -6,33 +6,17 @@ proxies:
       skip-cert-verify: true
       sni: 47-250-51-16.liao.kdns.fr
       type: hysteria2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-549913446
-      network: tcp
-      port: 13779
-      reality-opts:
-        public-key: llTyp52oRXnJmQ3I9UUrmlwbMA79B-wLCRHCu-8dLGg
-        short-id: af1bdd293097b664
-      server: 142.111.143.223
-      servername: tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 928e6cce-8ced-4243-9a48-a6642edd09b0
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-553326955
-        - vless-549913446
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-553326955
-        - vless-549913446
       type: select
 rules:
     - MATCH,select
