@@ -1,0 +1,77 @@
+{
+  "outbounds": [
+    {
+      "server": "185.193.30.30",
+      "server_port": 8880,
+      "tag": "vless-532828548",
+      "transport": {
+        "headers": {
+          "Host": "vms.lifetime09.workers.dev"
+        },
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "6202b230-417c-4d8e-b624-0f71afa9c75d"
+    },
+    {
+      "server": "179.189.253.193",
+      "server_port": 5432,
+      "tag": "socks4-440380884",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "server": "179.108.153.128",
+      "server_port": 4145,
+      "tag": "socks4-327397",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "server": "170.150.1.253",
+      "server_port": 4145,
+      "tag": "socks4-302413",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "server": "177.74.141.8",
+      "server_port": 5432,
+      "tag": "socks4-323726",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-532828548",
+        "socks4-440380884",
+        "socks4-327397",
+        "socks4-302413",
+        "socks4-323726"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-532828548",
+        "socks4-440380884",
+        "socks4-327397",
+        "socks4-302413",
+        "socks4-323726"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
