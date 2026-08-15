@@ -13,22 +13,6 @@ proxies:
       server: 45.77.232.213
       type: ss
       udp: true
-    - name: trojan-119265
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20048
-      server: 45.67.201.210
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-119305
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20126
-      server: 45.67.201.210
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - client-fingerprint: chrome
       name: vless-248679939
       network: tcp
@@ -277,14 +261,48 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-547757661
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: eaRNeC8fccrx0nBNvBpAXZgK4m4FxfnQ-t0W7NOM7mU
+        short-id: e53048e82bb20077
+      server: 74.113.232.135
+      servername: asia.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-547757662
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: eaRNeC8fccrx0nBNvBpAXZgK4m4FxfnQ-t0W7NOM7mU
+        short-id: e53048e82bb20077
+      server: 74.113.232.135
+      servername: asia.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - name: trojan-548641495
+      password: FH72359861
+      port: 443
+      server: square-pheasant.rooster465.autos
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-234
         - shadowsocks-10992
-        - trojan-119265
-        - trojan-119305
         - vless-248679939
         - vless-275306730
         - vless-332701913
@@ -313,6 +331,9 @@ proxy-groups:
         - vless-532685580
         - trojan-534791189
         - trojan-538662785
+        - vless-547757661
+        - vless-547757662
+        - trojan-548641495
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -320,8 +341,6 @@ proxy-groups:
         - auto
         - shadowsocks-234
         - shadowsocks-10992
-        - trojan-119265
-        - trojan-119305
         - vless-248679939
         - vless-275306730
         - vless-332701913
@@ -350,6 +369,9 @@ proxy-groups:
         - vless-532685580
         - trojan-534791189
         - trojan-538662785
+        - vless-547757661
+        - vless-547757662
+        - trojan-548641495
       type: select
 rules:
     - MATCH,select

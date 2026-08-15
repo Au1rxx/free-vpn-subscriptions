@@ -1,17 +1,4 @@
 proxies:
-    - client-fingerprint: firefox
-      name: vless-429868175
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: _jsI5uVVqXkzCZ0OGJ5U7waecxOEiu2lm-8f8ZyW5mc
-        short-id: f5d596282182b440
-      server: 151.241.226.201
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
     - name: vless-543596058
       network: tcp
       port: 443
@@ -32,21 +19,28 @@ proxies:
       type: vless
       udp: true
       uuid: b3e8986e-cdb5-4e62-aa02-4822f502b62c
+    - cipher: 2022-blake3-aes-256-gcm
+      name: shadowsocks-506807194
+      password: O28DIOC3cErTHV1M9l7+6kHQPLj6vyhXYet55g2EnB4=:JHw8K2IWysbbk5kjyOY/laqvJUUa994FRT8pIM6Ryu4=
+      port: 42696
+      server: 3xtr.mamad-imnix.ir
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-429868175
         - vless-543596058
         - vless-540989044
+        - shadowsocks-506807194
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-429868175
         - vless-543596058
         - vless-540989044
+        - shadowsocks-506807194
       type: select
 rules:
     - MATCH,select

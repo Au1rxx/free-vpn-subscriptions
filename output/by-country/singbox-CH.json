@@ -1,0 +1,49 @@
+{
+  "outbounds": [
+    {
+      "password": "hysteria2_fastlane_sncuo05u1:jrJENxGDByWG0Oi3r8JpGUteDH9FRCIf",
+      "server": "2.26.26.164",
+      "server_port": 1935,
+      "tag": "hysteria2-547757578",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "de9.h.fastlanehosting.ru"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "server": "45.95.232.35",
+      "server_port": 1080,
+      "tag": "socks4-512295",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-547757578",
+        "socks4-512295"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-547757578",
+        "socks4-512295"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

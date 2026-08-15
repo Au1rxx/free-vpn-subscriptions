@@ -1,17 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      name: vless-496559071
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: 6huZliKELOkP6l-eOIFe7PKP5MCGK2p5KzUeXRiMi00
-        short-id: 13e0569248e98a05
-      server: 212.227.235.66
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 855d82bc-8cc6-4037-8da5-df0412f3c063
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-547759053
@@ -26,19 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
-    - client-fingerprint: firefox
-      name: vless-429863177
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: 6huZliKELOkP6l-eOIFe7PKP5MCGK2p5KzUeXRiMi00
-        short-id: 13e0569248e98a05
-      server: 212.227.235.66
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 855d82bc-8cc6-4037-8da5-df0412f3c063
     - client-fingerprint: chrome
       name: vless-498451483
       network: raw
@@ -52,6 +26,41 @@ proxies:
       type: vless
       udp: true
       uuid: 855d82bc-8cc6-4037-8da5-df0412f3c063
+    - name: vless-547759063
+      network: ws
+      port: 443
+      server: 193.238.154.78
+      type: vless
+      udp: true
+      uuid: 7ee30a40-d636-44a2-8317-c5ec2b938059
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-545940632
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: m6RDw1b8R4lCaRUIzhHpy6TtX2Dhk6nyby8dWzeQqA0
+        short-id: dd3ff38418d29d22
+      server: 45.147.251.25
+      servername: eu-west.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - name: hysteria2-428711847
+      password: 1427eb10-7529-4d38-a6a2-01b337868b37
+      port: 4433
+      server: es2.xiaoliyu.cyou
+      skip-cert-verify: true
+      sni: es2.xiaoliyu.cyou
+      type: hysteria2
+    - name: hysteria2-503283256
+      password: 22d891f5-ad85-4824-b0b8-e30cf3d37eb5
+      port: 2056
+      server: xby.mangshe.xyz
+      skip-cert-verify: true
+      sni: mg2.mangshe.xyz
+      type: hysteria2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-11052
       password: qItG8SueYQcP
@@ -66,36 +75,40 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
-    - name: vless-547759063
-      network: ws
-      port: 443
-      server: 193.238.154.78
-      type: vless
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-11026
+      password: k1dBOmOB4oqi7Ump37a1bQ
+      port: 8080
+      server: 82.38.31.200
+      type: ss
       udp: true
-      uuid: 7ee30a40-d636-44a2-8317-c5ec2b938059
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-496559071
         - vless-547759053
-        - vless-429863177
         - vless-498451483
+        - vless-547759063
+        - vless-545940632
+        - hysteria2-428711847
+        - hysteria2-503283256
         - shadowsocks-11052
         - shadowsocks-16132
-        - vless-547759063
+        - shadowsocks-11026
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-496559071
         - vless-547759053
-        - vless-429863177
         - vless-498451483
+        - vless-547759063
+        - vless-545940632
+        - hysteria2-428711847
+        - hysteria2-503283256
         - shadowsocks-11052
         - shadowsocks-16132
-        - vless-547759063
+        - shadowsocks-11026
       type: select
 rules:
     - MATCH,select

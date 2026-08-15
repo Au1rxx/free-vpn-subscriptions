@@ -1,0 +1,31 @@
+proxies:
+    - name: hysteria2-150309880
+      password: ew9_M93_6a31Qd45_hUX3984F_jNZ83x_Nz1l_f
+      port: 8443
+      server: 94.20.88.13
+      skip-cert-verify: true
+      sni: azer-tea-grape.bumbleshrimp.com
+      type: hysteria2
+    - name: hysteria2-150776121
+      password: ew9_M93_6a31Qd45_hUX3984F_jNZ83x_Nz1l_f
+      port: 8443
+      server: 94.20.88.13
+      skip-cert-verify: false
+      sni: azer-tea-grape.bumbleshrimp.com
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-150309880
+        - hysteria2-150776121
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-150309880
+        - hysteria2-150776121
+      type: select
+rules:
+    - MATCH,select

@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-200265609
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 989gq45ogQSZLDoUTcLNSYW5v_3ER7W_6Oi_8swZzXo
-        short-id: cb55f541
-      server: 178.83.31.93
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4a97788b-5d8a-410c-875c-ba36930e185e
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-509711183
@@ -41,31 +27,64 @@ proxies:
       type: vless
       udp: true
       uuid: 2cb6b4d9-0c74-45e2-a4fb-645bb8ac532a
-    - name: trojan-523267544
-      password: MiTiVPN
+    - name: hysteria2-547757570
+      password: b268a3a1-3826-44a3-9ffb-3ac2095300ca
       port: 443
-      server: 199.232.237.245
+      server: se2.hambot.ru
+      skip-cert-verify: false
+      sni: se2.hambot.ru
+      type: hysteria2
+    - name: hysteria2-537797362
+      password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
+      port: 43327
+      server: 2.27.23.44
       skip-cert-verify: true
-      sni: letsencrypt.org
-      type: trojan
-      udp: true
+      sni: 2.27.23.44
+      type: hysteria2
+    - name: hysteria2-467980811
+      password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
+      port: 43327
+      server: 2.27.23.44
+      skip-cert-verify: true
+      sni: gate-v1.not-a-projects.xyz
+      type: hysteria2
+    - name: hysteria2-474576737
+      password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
+      port: 43327
+      server: 2.27.23.44
+      skip-cert-verify: false
+      sni: gate-v1.not-a-projects.xyz
+      type: hysteria2
+    - name: hysteria2-487303214
+      password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
+      port: 43327
+      server: 2.27.23.44
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-200265609
         - vless-509711183
         - vless-509711255
-        - trojan-523267544
+        - hysteria2-547757570
+        - hysteria2-537797362
+        - hysteria2-467980811
+        - hysteria2-474576737
+        - hysteria2-487303214
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-200265609
         - vless-509711183
         - vless-509711255
-        - trojan-523267544
+        - hysteria2-547757570
+        - hysteria2-537797362
+        - hysteria2-467980811
+        - hysteria2-474576737
+        - hysteria2-487303214
       type: select
 rules:
     - MATCH,select

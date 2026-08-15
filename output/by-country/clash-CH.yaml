@@ -1,0 +1,22 @@
+proxies:
+    - name: hysteria2-547757578
+      password: hysteria2_fastlane_sncuo05u1:jrJENxGDByWG0Oi3r8JpGUteDH9FRCIf
+      port: 1935
+      server: 2.26.26.164
+      skip-cert-verify: false
+      sni: de9.h.fastlanehosting.ru
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-547757578
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-547757578
+      type: select
+rules:
+    - MATCH,select
