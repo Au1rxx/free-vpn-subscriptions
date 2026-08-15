@@ -13,17 +13,33 @@ proxies:
       type: vless
       udp: true
       uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-487329175
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bIUHw7kqfyS6-6d7yYjzyXSlc4_CrLZqzdf3KBQfly8
+        short-id: ""
+      server: 84.32.209.80
+      servername: dltch.mostserv.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 463a26c2-eba8-40ea-89c4-ee5c1373ccbe
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-335102643
+        - vless-487329175
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-335102643
+        - vless-487329175
       type: select
 rules:
     - MATCH,select
