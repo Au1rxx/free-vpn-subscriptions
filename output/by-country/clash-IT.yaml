@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-470984109
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: UjwVdSvY-6dV5UKCNO7ROokiSF_aLaXYyUaG6RybOmI
+        short-id: 2762604ed2e0fa2f
+      server: xit.saturn-cloud.net
+      servername: ""
+      tls: true
+      type: vless
+      udp: true
+      uuid: 95ae0de8-d944-4b1e-b450-d34d80f9a528
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-532658543
@@ -24,6 +38,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-470984109
         - vless-532658543
         - shadowsocks-455141248
       type: url-test
@@ -31,6 +46,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-470984109
         - vless-532658543
         - shadowsocks-455141248
       type: select
