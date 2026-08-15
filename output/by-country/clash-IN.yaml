@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-254931446
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
+        short-id: 88b6
+      server: 5.253.30.99
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
     - name: trojan-545921788
       password: 41a46e70-7537-46b4-8249-5746055fe05b
       port: 24408
@@ -22,13 +36,6 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
-    - name: hysteria2-526944590
-      password: 5a0f8574-07a5-45d5-84c9-f8b2c2bcd595
-      port: 51000
-      server: 141.148.222.181
-      skip-cert-verify: true
-      sni: cn.cremedelamer.com
-      type: hysteria2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-125111
       password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
@@ -40,20 +47,20 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-254931446
         - trojan-545921788
         - trojan-545921787
         - hysteria2-461629121
-        - hysteria2-526944590
         - shadowsocks-125111
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-254931446
         - trojan-545921788
         - trojan-545921787
         - hysteria2-461629121
-        - hysteria2-526944590
         - shadowsocks-125111
       type: select
 rules:
