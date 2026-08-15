@@ -12,17 +12,32 @@ proxies:
       type: vless
       udp: true
       uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
+    - client-fingerprint: chrome
+      name: vless-540989044
+      network: tcp
+      port: 57362
+      reality-opts:
+        public-key: ZB8dPnYX8VwMsqp__WdDA_-6rpqzje62Jx7SSfQ2X3s
+        short-id: c659fd2ca3c2
+      server: turk.parsclad.ir
+      servername: timeline.www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b3e8986e-cdb5-4e62-aa02-4822f502b62c
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-429868175
+        - vless-540989044
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-429868175
+        - vless-540989044
       type: select
 rules:
     - MATCH,select
