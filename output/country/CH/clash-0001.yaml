@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-2066045
+      network: ws
+      port: 443
+      server: 104.21.117.9
+      servername: netlivpn2950.bbxff.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bd9ff08b-d042-3650-48e4-c4b400000000
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-429874173
@@ -27,6 +37,20 @@ proxies:
       type: vless
       udp: true
       uuid: e2b8f727-c5ee-47e1-8f1b-7c5c61479ce0
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-453095268
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: KrFnWxAwVGL6tuj1JE0qpykLzY4aOFjyK3OaymF_hT0
+        short-id: e2e66f4537770cef
+      server: 45.90.56.231
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e2b8f727-c5ee-47e1-8f1b-7c5c61479ce0
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-470985969
@@ -41,30 +65,25 @@ proxies:
       type: vless
       udp: true
       uuid: e2b8f727-c5ee-47e1-8f1b-7c5c61479ce0
-    - name: hysteria2-509685361
-      password: hysteria2_fastlane_ob84uf77l:lUuP38xFjIx6t4eU4JjfNoKHohSiaH2n
-      port: 1935
-      server: 2.26.26.164
-      skip-cert-verify: false
-      sni: de9.h.fastlanehosting.ru
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-2066045
         - vless-429874173
         - vless-448867352
+        - vless-453095268
         - vless-470985969
-        - hysteria2-509685361
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-2066045
         - vless-429874173
         - vless-448867352
+        - vless-453095268
         - vless-470985969
-        - hysteria2-509685361
       type: select
 rules:
     - MATCH,select

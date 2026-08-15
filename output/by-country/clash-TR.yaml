@@ -12,13 +12,6 @@ proxies:
       type: vless
       udp: true
       uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
-    - name: hysteria2-509685362
-      password: hysteria2_fastlane_qgbzskayf:eFPuEukyFUf2WH7mBdFn9Xaz9nLnf5td
-      port: 1935
-      server: 2.27.28.105
-      skip-cert-verify: false
-      sni: de7.h.fastlanehosting.ru
-      type: hysteria2
     - cipher: 2022-blake3-aes-256-gcm
       name: shadowsocks-506807194
       password: O28DIOC3cErTHV1M9l7+6kHQPLj6vyhXYet55g2EnB4=:JHw8K2IWysbbk5kjyOY/laqvJUUa994FRT8pIM6Ryu4=
@@ -26,21 +19,28 @@ proxies:
       server: 3xtr.mamad-imnix.ir
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-496604557
+      password: StZwL7yuGJL70m39D1Uquvrqf32pFAvw
+      port: 1080
+      server: 212.87.198.109
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-515164913
-        - hysteria2-509685362
         - shadowsocks-506807194
+        - shadowsocks-496604557
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-515164913
-        - hysteria2-509685362
         - shadowsocks-506807194
+        - shadowsocks-496604557
       type: select
 rules:
     - MATCH,select

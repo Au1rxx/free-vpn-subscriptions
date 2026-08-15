@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: firefox
+      name: vless-526981589
+      network: grpc
+      port: 16923
+      reality-opts:
+        public-key: _QeslG3rHGM7DoM99pYC8-jpc16pM2MbNZ6NRMoxmHA
+        short-id: 10ffb85da1c2d986
+      server: 201.51.1.84
+      servername: api-maps.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: ba222add-6ac1-45f1-9a18-f91cb38e324f
     - flow: xtls-rprx-vision
       name: vless-520255765
       network: raw
@@ -103,20 +116,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9f95449f-4a17-07d0-b4f0-32cd94a6eb64
-    - name: vless-509680380
-      network: ws
-      port: 2200
-      server: 77.222.32.201
-      type: vless
-      udp: true
-      uuid: c366f788-ea31-4a3a-897e-794c9f935896
-    - name: vless-509680381
-      network: ws
-      port: 2200
-      server: 77.222.32.201
-      type: vless
-      udp: true
-      uuid: c366f788-ea31-4a3a-897e-794c9f935896
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-522225816
@@ -160,6 +159,13 @@ proxies:
       type: vless
       udp: true
       uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+    - name: hysteria2-474576770
+      password: d30f8ee5-59df-4a68-9056-32027895f32f
+      port: 443
+      server: tn.tmn141246.ru
+      skip-cert-verify: true
+      sni: live.ok.ru
+      type: hysteria2
     - name: hysteria2-387719495
       password: 22d891f5-ad85-4824-b0b8-e30cf3d37eb5
       port: 2056
@@ -178,6 +184,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-526981589
         - vless-520255765
         - vless-522228440
         - vless-522230428
@@ -187,12 +194,11 @@ proxy-groups:
         - hysteria2-522222553
         - vless-522225814
         - vless-520255764
-        - vless-509680380
-        - vless-509680381
         - vless-522225816
         - vless-520237766
         - vless-522238447
         - vless-522236426
+        - hysteria2-474576770
         - hysteria2-387719495
         - hysteria2-474574895
       type: url-test
@@ -200,6 +206,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-526981589
         - vless-520255765
         - vless-522228440
         - vless-522230428
@@ -209,12 +216,11 @@ proxy-groups:
         - hysteria2-522222553
         - vless-522225814
         - vless-520255764
-        - vless-509680380
-        - vless-509680381
         - vless-522225816
         - vless-520237766
         - vless-522238447
         - vless-522236426
+        - hysteria2-474576770
         - hysteria2-387719495
         - hysteria2-474574895
       type: select
