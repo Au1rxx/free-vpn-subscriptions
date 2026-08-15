@@ -26,30 +26,6 @@ proxies:
       type: vless
       udp: true
       uuid: bb742567-ec51-4956-9d3d-099e1a4d48c4
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-517919072
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: -nB-tCeZ4Zr72ArHUKnbUphbs4PlBS6iId6PkrPQQTE
-        short-id: 84f9881951050a30
-      server: gb1.murhost.network
-      servername: gb1.murhost.network
-      tls: true
-      type: vless
-      udp: true
-      uuid: a6f6d9c9-9d43-4d0e-bf95-4b87cc5bbaac
-    - name: vless-561643544
-      network: grpc
-      port: 443
-      server: 164.37.100.59
-      servername: edge1.numberoneok.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: dcdf114b-e2db-4cc1-bfa4-f30a0a47da7a
     - cipher: rc4-md5
       name: shadowsocks-165
       password: 14fFPrbezE3HDZzsMOr6
@@ -91,29 +67,30 @@ proxies:
       type: vless
       udp: true
       uuid: a6f6d9c9-9d43-4d0e-bf95-4b87cc5bbaac
-    - name: vless-532690620
+    - client-fingerprint: firefox
+      name: vless-470978153
       network: tcp
-      port: 8443
-      server: 89.125.124.178
-      servername: gb.wlrus.cfd
-      skip-cert-verify: false
+      port: 443
+      reality-opts:
+        public-key: 118rMk41g_0BeoQDR2V_1f8ABzC1WKXdolzE-LxqowM
+        short-id: bff835c98c
+      server: 91.103.140.243
+      servername: www.amd.com
       tls: true
       type: vless
       udp: true
-      uuid: d71aecee-ef16-418e-baf5-2b2458122d5a
+      uuid: c8dcbe44-5714-4f99-8d7a-aadebea34abf
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-487329178
         - vless-429870183
-        - vless-517919072
-        - vless-561643544
         - shadowsocks-165
         - vless-258556270
         - shadowsocks-468218595
         - vless-524392788
-        - vless-532690620
+        - vless-470978153
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -121,13 +98,11 @@ proxy-groups:
         - auto
         - vless-487329178
         - vless-429870183
-        - vless-517919072
-        - vless-561643544
         - shadowsocks-165
         - vless-258556270
         - shadowsocks-468218595
         - vless-524392788
-        - vless-532690620
+        - vless-470978153
       type: select
 rules:
     - MATCH,select
