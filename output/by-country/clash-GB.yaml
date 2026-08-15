@@ -1,5 +1,33 @@
 proxies:
     - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-488081002
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: -nB-tCeZ4Zr72ArHUKnbUphbs4PlBS6iId6PkrPQQTE
+        short-id: 84f9881951050a30
+      server: 164.37.104.234
+      servername: gb1.murhost.network
+      tls: true
+      type: vless
+      udp: true
+      uuid: a6f6d9c9-9d43-4d0e-bf95-4b87cc5bbaac
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-490113155
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: -nB-tCeZ4Zr72ArHUKnbUphbs4PlBS6iId6PkrPQQTE
+        short-id: 84f9881951050a30
+      server: gb1.murhost.network
+      servername: gb1.murhost.network
+      tls: true
+      type: vless
+      udp: true
+      uuid: a6f6d9c9-9d43-4d0e-bf95-4b87cc5bbaac
+    - client-fingerprint: firefox
       name: vless-429870183
       network: tcp
       port: 2053
@@ -26,19 +54,9 @@ proxies:
       type: vless
       udp: true
       uuid: a6f6d9c9-9d43-4d0e-bf95-4b87cc5bbaac
-    - name: vless-538641472
-      network: grpc
-      port: 443
-      server: 164.37.100.59
-      servername: edge1.numberoneok.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 788312f9-b95e-46da-9a39-623d798de761
-    - client-fingerprint: chrome
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-490113155
+      name: vless-500717547
       network: tcp
       port: 443
       reality-opts:
@@ -50,6 +68,13 @@ proxies:
       type: vless
       udp: true
       uuid: a6f6d9c9-9d43-4d0e-bf95-4b87cc5bbaac
+    - cipher: rc4-md5
+      name: shadowsocks-165
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.61.37
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-532825411
@@ -64,6 +89,16 @@ proxies:
       type: vless
       udp: true
       uuid: a6f6d9c9-9d43-4d0e-bf95-4b87cc5bbaac
+    - name: vless-538641472
+      network: grpc
+      port: 443
+      server: 164.37.100.59
+      servername: edge1.numberoneok.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 788312f9-b95e-46da-9a39-623d798de761
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-524392788
@@ -95,6 +130,20 @@ proxies:
     - client-fingerprint: safari
       flow: xtls-rprx-vision
       name: vless-509672380
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: -nB-tCeZ4Zr72ArHUKnbUphbs4PlBS6iId6PkrPQQTE
+        short-id: 84f9881951050a30
+      server: gb1.murhost.network
+      servername: gb1.murhost.network
+      tls: true
+      type: vless
+      udp: true
+      uuid: a6f6d9c9-9d43-4d0e-bf95-4b87cc5bbaac
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-500717548
       network: tcp
       port: 443
       reality-opts:
@@ -170,16 +219,13 @@ proxies:
       type: vless
       udp: true
       uuid: c8dcbe44-5714-4f99-8d7a-aadebea34abf
-    - name: vless-500399277
-      network: ws
+    - cipher: aes-128-gcm
+      name: shadowsocks-271
+      password: shadowsocks
       port: 443
-      server: 172.64.80.1
-      servername: admin.jikebet.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
+      server: 141.98.101.181
+      type: ss
       udp: true
-      uuid: c0f16ee2-a909-4890-ab1c-96489230658a
     - client-fingerprint: chrome
       name: vless-272802976
       network: raw
@@ -193,55 +239,77 @@ proxies:
       type: vless
       udp: true
       uuid: c8dcbe44-5714-4f99-8d7a-aadebea34abf
-    - name: trojan-523267543
-      password: MiTiVPN
+    - client-fingerprint: chrome
+      name: vless-275149920
+      network: tcp
       port: 443
-      server: 167.82.101.251
-      skip-cert-verify: true
-      sni: vercel.com
-      type: trojan
+      reality-opts:
+        public-key: 118rMk41g_0BeoQDR2V_1f8ABzC1WKXdolzE-LxqowM
+        short-id: bff835c98c
+      server: 91.103.140.243
+      servername: www.amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c8dcbe44-5714-4f99-8d7a-aadebea34abf
+    - cipher: aes-256-gcm
+      name: shadowsocks-240
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 94.156.250.148
+      type: ss
       udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-488081002
+        - vless-490113155
         - vless-429870183
         - vless-487329178
-        - vless-538641472
-        - vless-490113155
+        - vless-500717547
+        - shadowsocks-165
         - vless-532825411
+        - vless-538641472
         - vless-524392788
         - vless-509674367
         - vless-509672380
+        - vless-500717548
         - vless-258556270
         - vless-496844423
         - vless-483655864
         - vless-532690620
         - vless-470978153
-        - vless-500399277
+        - shadowsocks-271
         - vless-272802976
-        - trojan-523267543
+        - vless-275149920
+        - shadowsocks-240
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-488081002
+        - vless-490113155
         - vless-429870183
         - vless-487329178
-        - vless-538641472
-        - vless-490113155
+        - vless-500717547
+        - shadowsocks-165
         - vless-532825411
+        - vless-538641472
         - vless-524392788
         - vless-509674367
         - vless-509672380
+        - vless-500717548
         - vless-258556270
         - vless-496844423
         - vless-483655864
         - vless-532690620
         - vless-470978153
-        - vless-500399277
+        - shadowsocks-271
         - vless-272802976
-        - trojan-523267543
+        - vless-275149920
+        - shadowsocks-240
       type: select
 rules:
     - MATCH,select
