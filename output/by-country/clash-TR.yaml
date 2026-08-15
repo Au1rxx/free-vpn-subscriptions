@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-532683580
+      network: tcp
+      port: 8443
+      server: 195.162.69.203
+      servername: 195-162-69-203.sslip.io
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 953358cb-82ba-4296-960d-6d2ec3468f4c
     - client-fingerprint: chrome
       name: vless-515164913
       network: tcp
@@ -12,6 +22,16 @@ proxies:
       type: vless
       udp: true
       uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
+    - name: vless-530411275
+      network: ws
+      port: 443
+      server: 104.16.147.125
+      servername: urzpn8e9ub5s.shoameni2.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 50414e45-4c5f-5a45-5553-9568000eed47
     - cipher: 2022-blake3-aes-256-gcm
       name: shadowsocks-506807194
       password: O28DIOC3cErTHV1M9l7+6kHQPLj6vyhXYet55g2EnB4=:JHw8K2IWysbbk5kjyOY/laqvJUUa994FRT8pIM6Ryu4=
@@ -30,7 +50,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-532683580
         - vless-515164913
+        - vless-530411275
         - shadowsocks-506807194
         - shadowsocks-496604557
       type: url-test
@@ -38,7 +60,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-532683580
         - vless-515164913
+        - vless-530411275
         - shadowsocks-506807194
         - shadowsocks-496604557
       type: select

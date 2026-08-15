@@ -1,4 +1,28 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-530411278
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: KOgPteoWEwtVtykS2FGV5NHdZw6197VzbITPGkUJDBQ
+        short-id: ""
+      server: 144.31.3.53
+      servername: proud-dynamo.cdn.cachefleet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 645710cd-317d-420b-bb07-db6620cc65d0
+    - name: vless-530577973
+      network: ws
+      port: 2053
+      server: chatgpt.com
+      servername: music1000.melobitmusic1.ir
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: da4747a6-be0d-4c1b-90f4-d82ec3012be2
     - flow: xtls-rprx-vision
       name: vless-515164895
       network: raw
@@ -86,6 +110,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-530411278
+        - vless-530577973
         - vless-515164895
         - vless-511868725
         - trojan-522232468
@@ -102,6 +128,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-530411278
+        - vless-530577973
         - vless-515164895
         - vless-511868725
         - trojan-522232468

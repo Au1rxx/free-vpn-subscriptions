@@ -1,4 +1,18 @@
 proxies:
+    - name: vless-502356231
+      network: ws
+      port: 443
+      server: 94.183.170.231
+      type: vless
+      udp: true
+      uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
+    - name: vless-502356232
+      network: ws
+      port: 443
+      server: 94.183.170.231
+      type: vless
+      udp: true
+      uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
     - name: vless-520937183
       network: ws
       port: 443
@@ -17,6 +31,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-502356231
+        - vless-502356232
         - vless-520937183
         - vless-522234428
       type: url-test
@@ -24,6 +40,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-502356231
+        - vless-502356232
         - vless-520937183
         - vless-522234428
       type: select
