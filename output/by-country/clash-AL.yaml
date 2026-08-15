@@ -1,0 +1,45 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-430012859
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: rCkSHJ7goy7ZvSlau4LfXF-QLloOJMNeMxpeeQtwtVs
+        short-id: 4fa44664f6a566d3
+      server: youtube.superbuba.top
+      servername: youtube.superbuba.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4cae7df-50a1-428c-bd62-881c8f3bbd90
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-496559064
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: rCkSHJ7goy7ZvSlau4LfXF-QLloOJMNeMxpeeQtwtVs
+        short-id: 4fa44664f6a566d3
+      server: youtube.superbuba.top
+      servername: youtube.superbuba.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4cae7df-50a1-428c-bd62-881c8f3bbd90
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-430012859
+        - vless-496559064
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-430012859
+        - vless-496559064
+      type: select
+rules:
+    - MATCH,select

@@ -1,4 +1,30 @@
 proxies:
+    - name: trojan-119244
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20018
+      server: 45.67.201.210
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-122851
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20018
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: vless-27062851
+      network: ws
+      port: 2087
+      server: mfa.gov.ua
+      servername: fx3l5i2wdfxln0.fx6hsv0.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 77777777-8a3e-6666-b6d1-a9c5f0e8b3a2
     - name: vless-212135092
       network: grpc
       port: 8443
@@ -53,13 +79,6 @@ proxies:
       type: vless
       udp: true
       uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-496604557
-      password: StZwL7yuGJL70m39D1Uquvrqf32pFAvw
-      port: 1080
-      server: 212.87.198.109
-      type: ss
-      udp: true
     - client-fingerprint: chrome
       name: vless-505411599
       network: raw
@@ -142,16 +161,28 @@ proxies:
       type: vless
       udp: true
       uuid: 953358cb-82ba-4296-960d-6d2ec3468f4c
+    - name: vless-538641470
+      network: ws
+      port: 443
+      server: 88.216.69.144
+      servername: r5zenrelur2s.pqzdileiu8es.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 50414e45-4c5f-5a45-5553-4d64f1370eeb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-119244
+        - trojan-122851
+        - vless-27062851
         - vless-212135092
         - vless-332701908
         - vless-429868175
         - vless-477079800
         - vless-494492362
-        - shadowsocks-496604557
         - vless-505411599
         - shadowsocks-506807194
         - vless-515164913
@@ -160,17 +191,20 @@ proxy-groups:
         - vless-530411275
         - vless-530411276
         - vless-532683580
+        - vless-538641470
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-119244
+        - trojan-122851
+        - vless-27062851
         - vless-212135092
         - vless-332701908
         - vless-429868175
         - vless-477079800
         - vless-494492362
-        - shadowsocks-496604557
         - vless-505411599
         - shadowsocks-506807194
         - vless-515164913
@@ -179,6 +213,7 @@ proxy-groups:
         - vless-530411275
         - vless-530411276
         - vless-532683580
+        - vless-538641470
       type: select
 rules:
     - MATCH,select
