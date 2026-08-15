@@ -1,4 +1,32 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-561635563
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: ZXi0bwZwOe9e5CMticA2-bU7qamHgs_sN-2kHygbDyk
+        short-id: e91da98020a38be9
+      server: 95.85.240.30
+      servername: russia.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-0002-9d5e-c541f791b55f
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-561634899
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: z3VKP6dhO20t484bp5k1z-Ezf5GkFpIEsitEVbLqfDw
+        short-id: 75076e902f384f9d
+      server: 62.152.60.56
+      servername: api-maps.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6967d4ec-8c06-4651-8d0b-7f6811563a77
     - name: hysteria2-547757570
       password: b268a3a1-3826-44a3-9ffb-3ac2095300ca
       port: 443
@@ -6,6 +34,20 @@ proxies:
       skip-cert-verify: false
       sni: se2.hambot.ru
       type: hysteria2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-561634900
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: z3VKP6dhO20t484bp5k1z-Ezf5GkFpIEsitEVbLqfDw
+        short-id: 75076e902f384f9d
+      server: 185.229.9.44
+      servername: api-maps.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6967d4ec-8c06-4651-8d0b-7f6811563a77
     - name: hysteria2-537797362
       password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
       port: 43327
@@ -38,7 +80,10 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-561635563
+        - vless-561634899
         - hysteria2-547757570
+        - vless-561634900
         - hysteria2-537797362
         - hysteria2-467980811
         - hysteria2-474576737
@@ -48,7 +93,10 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-561635563
+        - vless-561634899
         - hysteria2-547757570
+        - vless-561634900
         - hysteria2-537797362
         - hysteria2-467980811
         - hysteria2-474576737

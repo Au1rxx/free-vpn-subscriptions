@@ -1,6 +1,20 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-532678575
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: QLjTpkXRB453R9fXhJzKkc_q_gSm2MZrIOuxW4uW-mI
+        short-id: 221873918e0bb74d
+      server: 148.113.5.44
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 72ea5a91-ffcc-43d2-9297-5993c3abf186
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-254931446
       network: tcp
       port: 40443
@@ -61,6 +75,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-532678575
         - vless-254931446
         - vless-206375738
         - trojan-545921788
@@ -72,6 +87,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-532678575
         - vless-254931446
         - vless-206375738
         - trojan-545921788
