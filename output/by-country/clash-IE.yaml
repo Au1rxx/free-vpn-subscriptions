@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-600624526
+      password: FH72359861
+      port: 443
+      server: balanced-heron.rooster465.autos
+      skip-cert-verify: true
+      sni: balanced-heron.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-453179869
       password: AE62539071
       port: 443
@@ -130,6 +138,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-600624526
         - trojan-453179869
         - trojan-470979999
         - hysteria2-561697895
@@ -151,6 +160,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-600624526
         - trojan-453179869
         - trojan-470979999
         - hysteria2-561697895

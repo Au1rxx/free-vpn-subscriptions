@@ -11,20 +11,6 @@ proxies:
       uuid: bd9ff08b-d042-3650-48e4-c4b400000000
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-429874173
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: KrFnWxAwVGL6tuj1JE0qpykLzY4aOFjyK3OaymF_hT0
-        short-id: e2e66f4537770cef
-      server: 45.90.56.231
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e2b8f727-c5ee-47e1-8f1b-7c5c61479ce0
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-453095268
       network: raw
       port: 443
@@ -65,42 +51,34 @@ proxies:
       skip-cert-verify: false
       sni: grape-turbo-fr.roxa.org
       type: hysteria2
-    - client-fingerprint: chrome
-      name: vless-590459032
-      network: grpc
-      port: 9882
-      reality-opts:
-        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
-        short-id: aabbccdd
-      server: 80.78.246.205
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2a650f3b-d95b-4bd6-aadf-16ccc0717155
+    - name: hysteria2-600117032
+      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+      port: 8080
+      server: 46.229.243.131
+      skip-cert-verify: true
+      sni: grape-turbo-fr.roxa.org
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-2066045
-        - vless-429874173
         - vless-453095268
         - vless-470985969
         - hysteria2-547759061
         - hysteria2-589844094
-        - vless-590459032
+        - hysteria2-600117032
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-2066045
-        - vless-429874173
         - vless-453095268
         - vless-470985969
         - hysteria2-547759061
         - hysteria2-589844094
-        - vless-590459032
+        - hysteria2-600117032
       type: select
 rules:
     - MATCH,select

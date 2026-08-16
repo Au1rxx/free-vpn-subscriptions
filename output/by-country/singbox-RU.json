@@ -1,0 +1,78 @@
+{
+  "outbounds": [
+    {
+      "password": "860bf7a5-a27f-4142-9463-3e6260a4dd42",
+      "server": "sochi.fontanvpn.com",
+      "server_port": 443,
+      "tag": "hysteria2-599725208",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "sochi.fontanvpn.com"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "139.100.197.28",
+      "server_port": 52006,
+      "tag": "vless-599725264",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "search.setlisting.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "type": "vless",
+      "uuid": "fb0f5eac-175b-07d0-b64e-19e13a6d9bd0"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "139.100.197.28",
+      "server_port": 52006,
+      "tag": "vless-599725253",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "search.setlisting.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "type": "vless",
+      "uuid": "b3dc8ecd-751d-07d0-b0a9-6ff6f5c74056"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-599725208",
+        "vless-599725264",
+        "vless-599725253"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-599725208",
+        "vless-599725264",
+        "vless-599725253"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
