@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "2a0099ded5baa93c55823af39229c5b1",
+      "server": "185-22-155-81.liao.kdns.fr",
+      "server_port": 50160,
+      "tag": "hysteria2-561706675",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "185-22-155-81.liao.kdns.fr"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-561706675"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-561706675"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

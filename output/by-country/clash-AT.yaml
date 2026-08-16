@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-561639512
+      network: tcp
+      port: 1443
+      reality-opts:
+        public-key: h-ofuILZVZLM3zSC6NIFwL7T7TdXsEsKS04upiMzmQY
+        short-id: 0131f3e34341cb40
+      server: 45.152.241.86
+      servername: davai.kupivodku.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: 27dcb3a9-c82d-4628-a8c4-bae39e6cb4f4
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-561639512
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-561639512
+      type: select
+rules:
+    - MATCH,select

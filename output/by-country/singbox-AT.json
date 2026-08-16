@@ -1,0 +1,50 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "45.152.241.86",
+      "server_port": 1443,
+      "tag": "vless-561639512",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "h-ofuILZVZLM3zSC6NIFwL7T7TdXsEsKS04upiMzmQY",
+          "short_id": "0131f3e34341cb40"
+        },
+        "server_name": "davai.kupivodku.top",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "27dcb3a9-c82d-4628-a8c4-bae39e6cb4f4"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-561639512"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-561639512"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

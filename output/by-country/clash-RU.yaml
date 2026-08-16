@@ -1,0 +1,22 @@
+proxies:
+    - name: hysteria2-561706675
+      password: 2a0099ded5baa93c55823af39229c5b1
+      port: 50160
+      server: 185-22-155-81.liao.kdns.fr
+      skip-cert-verify: false
+      sni: 185-22-155-81.liao.kdns.fr
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-561706675
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-561706675
+      type: select
+rules:
+    - MATCH,select
