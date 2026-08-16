@@ -47,6 +47,28 @@ proxies:
       type: vless
       udp: true
       uuid: f8c5b018-f51a-4137-be8a-50a451630589
+    - flow: xtls-rprx-vision
+      name: vless-474828128
+      network: tcp
+      port: 443
+      server: ru52.mechvpn.online
+      servername: ru52.mechvpn.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+    - flow: xtls-rprx-vision
+      name: vless-608559174
+      network: raw
+      port: 52006
+      server: 139.100.197.28
+      servername: search.setlisting.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6b21490b-b180-07d0-86e5-8fb50d38b200
 proxy-groups:
     - interval: 300
       name: auto
@@ -55,6 +77,8 @@ proxy-groups:
         - vless-628787095
         - vless-628787084
         - vless-628782786
+        - vless-474828128
+        - vless-608559174
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -64,6 +88,8 @@ proxy-groups:
         - vless-628787095
         - vless-628787084
         - vless-628782786
+        - vless-474828128
+        - vless-608559174
       type: select
 rules:
     - MATCH,select

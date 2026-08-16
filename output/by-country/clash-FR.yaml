@@ -1,17 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      name: vless-483563927
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: 6j7SZO4StX_8QkHX9sATJug5nQ4X4XoTj_6B7bClEw4
-        short-id: e52e7fd8585ac5c1
-      server: 51.77.217.70
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ab00e12c-09f1-41c6-8d60-7c6a83f5ca9d
     - client-fingerprint: ios
       name: vless-474977718
       network: raw
@@ -81,6 +68,17 @@ proxies:
       port: 443
       server: fr186.mechvpn.online
       servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+    - flow: xtls-rprx-vision
+      name: vless-632584601
+      network: tcp
+      port: 443
+      server: fr15.mechvpn.online
+      servername: fr15.mechvpn.online
       skip-cert-verify: false
       tls: true
       type: vless
@@ -538,17 +536,24 @@ proxies:
       type: vless
       udp: true
       uuid: 795d5f5b-318c-49a6-844f-ee2ab63bbe94
+    - name: hysteria2-625724276
+      password: 22d891f5-ad85-4824-b0b8-e30cf3d37eb5
+      port: 2056
+      server: flkf3.mangshe.xyz
+      skip-cert-verify: true
+      sni: flkf3.mangshe.xyz
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-483563927
         - vless-474977718
         - vless-428711843
         - vless-548664341
         - vless-412913198
         - vless-483680920
         - vless-415265973
+        - vless-632584601
         - vless-438244532
         - vless-430114435
         - vless-472528256
@@ -589,18 +594,19 @@ proxy-groups:
         - vless-296332834
         - vless-260736820
         - vless-470977973
+        - hysteria2-625724276
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-483563927
         - vless-474977718
         - vless-428711843
         - vless-548664341
         - vless-412913198
         - vless-483680920
         - vless-415265973
+        - vless-632584601
         - vless-438244532
         - vless-430114435
         - vless-472528256
@@ -641,6 +647,7 @@ proxy-groups:
         - vless-296332834
         - vless-260736820
         - vless-470977973
+        - hysteria2-625724276
       type: select
 rules:
     - MATCH,select

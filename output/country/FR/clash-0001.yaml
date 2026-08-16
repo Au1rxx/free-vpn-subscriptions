@@ -7,14 +7,6 @@ proxies:
       sni: www.calmlunch.com
       type: trojan
       udp: true
-    - name: trojan-11690
-      password: humanity
-      port: 443
-      server: 104.19.229.21
-      skip-cert-verify: false
-      sni: www.calmlunch.com
-      type: trojan
-      udp: true
     - name: trojan-11926
       password: humanity
       port: 443
@@ -304,6 +296,14 @@ proxies:
       password: humanity
       port: 443
       server: 212.183.88.136
+      skip-cert-verify: true
+      sni: www.calmlunch.com
+      type: trojan
+      udp: true
+    - name: trojan-2518858
+      password: humanity
+      port: 443
+      server: 45.130.125.75
       skip-cert-verify: true
       sni: www.calmlunch.com
       type: trojan
@@ -3107,13 +3107,6 @@ proxies:
       type: trojan
       udp: true
     - cipher: aes-256-cfb
-      name: shadowsocks-503283202
-      password: amazonskr05
-      port: 443
-      server: 15.188.143.142
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
       name: shadowsocks-503283208
       password: amazonskr05
       port: 443
@@ -4321,12 +4314,22 @@ proxies:
       sni: tough-hermit.rooster465.autos
       type: trojan
       udp: true
+    - flow: xtls-rprx-vision
+      name: vless-632584601
+      network: tcp
+      port: 443
+      server: fr15.mechvpn.online
+      servername: fr15.mechvpn.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-11668
-        - trojan-11690
         - trojan-11926
         - trojan-11949
         - vless-14606
@@ -4362,6 +4365,7 @@ proxy-groups:
         - trojan-2517760
         - trojan-2517808
         - trojan-2518757
+        - trojan-2518858
         - trojan-2518863
         - trojan-2519899
         - trojan-2519900
@@ -4637,7 +4641,6 @@ proxy-groups:
         - vless-502350979
         - vless-502350980
         - trojan-503199069
-        - shadowsocks-503283202
         - shadowsocks-503283208
         - vless-505413093
         - vless-509690496
@@ -4769,13 +4772,13 @@ proxy-groups:
         - trojan-629506679
         - trojan-629507672
         - trojan-629508664
+        - vless-632584601
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-11668
-        - trojan-11690
         - trojan-11926
         - trojan-11949
         - vless-14606
@@ -4811,6 +4814,7 @@ proxy-groups:
         - trojan-2517760
         - trojan-2517808
         - trojan-2518757
+        - trojan-2518858
         - trojan-2518863
         - trojan-2519899
         - trojan-2519900
@@ -5086,7 +5090,6 @@ proxy-groups:
         - vless-502350979
         - vless-502350980
         - trojan-503199069
-        - shadowsocks-503283202
         - shadowsocks-503283208
         - vless-505413093
         - vless-509690496
@@ -5218,6 +5221,7 @@ proxy-groups:
         - trojan-629506679
         - trojan-629507672
         - trojan-629508664
+        - vless-632584601
       type: select
 rules:
     - MATCH,select
