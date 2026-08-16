@@ -1,16 +1,21 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-605957946
-      network: tcp
-      port: 919
-      server: 212.47.250.77
-      type: vmess
-      udp: true
-      uuid: a3aabbed-7636-41a6-8263-c6aadd723d29
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-200265609
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 989gq45ogQSZLDoUTcLNSYW5v_3ER7W_6Oi_8swZzXo
+        short-id: cb55f541
+      server: 178.83.31.93
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4a97788b-5d8a-410c-875c-ba36930e185e
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-470976121
       network: tcp
       port: 443
       reality-opts:
@@ -36,53 +41,21 @@ proxies:
       type: vless
       udp: true
       uuid: 2cb6b4d9-0c74-45e2-a4fb-645bb8ac532a
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-202733753
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: 989gq45ogQSZLDoUTcLNSYW5v_3ER7W_6Oi_8swZzXo
-        short-id: cb55f541
-      server: 178.83.31.93
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4a97788b-5d8a-410c-875c-ba36930e185e
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-509711255
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: V2JprbR_aJkS7uX6anyU3nrswGxdvDQT2HpY4WnzuC8
-        short-id: 5629431325884ff0
-      server: 2.26.55.164
-      servername: swed4.o4ka-internet.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2cb6b4d9-0c74-45e2-a4fb-645bb8ac532a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-605957946
         - vless-200265609
+        - vless-470976121
         - vless-509711183
-        - vless-202733753
-        - vless-509711255
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-605957946
         - vless-200265609
+        - vless-470976121
         - vless-509711183
-        - vless-202733753
-        - vless-509711255
       type: select
 rules:
     - MATCH,select

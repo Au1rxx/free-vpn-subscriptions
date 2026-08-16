@@ -27,6 +27,17 @@ proxies:
       server: 54.36.174.140
       type: ss
       udp: true
+    - flow: xtls-rprx-vision
+      name: vless-468885149
+      network: tcp
+      port: 8443
+      server: 2.26.255.36
+      servername: po1.hys.braidx.tech
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8787dd0a-095a-414e-804f-a7d16a1ae166
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-189868228
@@ -96,6 +107,20 @@ proxies:
       type: vless
       udp: true
       uuid: a34b5e88-cf0d-4c01-8199-2d1002d3c787
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-561635565
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
+        short-id: 00bca5982f82d083
+      server: 144.31.171.143
+      servername: eu-central.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-103939669
@@ -181,68 +206,6 @@ proxies:
       skip-cert-verify: true
       sni: panel.vlessbotkey.ru
       type: hysteria2
-    - name: vless-598106346
-      network: raw
-      port: 27737
-      server: 82.40.62.221
-      type: vless
-      udp: true
-      uuid: 9eb9de08-1b4b-4023-ae0d-cd28246b8778
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-594864109
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: HKpd1sbrhBds8SJSL0d22MAq_QyTR6EP6y5b5DYol3U
-        short-id: ""
-      server: meow-warsaw.nethcloud.top
-      servername: www.wikihow.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a34b5e88-cf0d-4c01-8199-2d1002d3c787
-    - client-fingerprint: firefox
-      name: vless-587204638
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: JldKt40jK4uwPfwxy5RNZSvMf11bHIEphKmPNEmlRmg
-        short-id: 6c3d30b55a969136
-      server: 54.37.136.194
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a60bc8c8-1447-4f2c-a09c-c4293b257fd8
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-553326959
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
-        short-id: 00bca5982f82d083
-      server: 94.183.157.121
-      servername: eu-central.cendora.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-569541893
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
-        short-id: 00bca5982f82d083
-      server: 94.183.157.121
-      servername: eu-central.cendora.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
 proxy-groups:
     - interval: 300
       name: auto
@@ -251,11 +214,13 @@ proxy-groups:
         - shadowsocks-465806704
         - shadowsocks-487917494
         - shadowsocks-487917495
+        - vless-468885149
         - vless-189868228
         - vless-70672696
         - vless-335073380
         - vless-429868173
         - vless-62228131
+        - vless-561635565
         - vless-103939669
         - vless-62228133
         - vless-511868725
@@ -264,11 +229,6 @@ proxy-groups:
         - vless-575672837
         - vless-48583257
         - hysteria2-553326958
-        - vless-598106346
-        - vless-594864109
-        - vless-587204638
-        - vless-553326959
-        - vless-569541893
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -278,11 +238,13 @@ proxy-groups:
         - shadowsocks-465806704
         - shadowsocks-487917494
         - shadowsocks-487917495
+        - vless-468885149
         - vless-189868228
         - vless-70672696
         - vless-335073380
         - vless-429868173
         - vless-62228131
+        - vless-561635565
         - vless-103939669
         - vless-62228133
         - vless-511868725
@@ -291,11 +253,6 @@ proxy-groups:
         - vless-575672837
         - vless-48583257
         - hysteria2-553326958
-        - vless-598106346
-        - vless-594864109
-        - vless-587204638
-        - vless-553326959
-        - vless-569541893
       type: select
 rules:
     - MATCH,select

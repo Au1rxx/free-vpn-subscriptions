@@ -39,14 +39,20 @@ proxies:
       type: vless
       udp: true
       uuid: 7f1f5848-da44-47df-8581-df83e88ee2b3
-    - name: trojan-605980489
-      password: 88b4b7e4-3e6a-4861-9806-1366ba3c1a61
-      port: 24407
-      server: v1in2.stableq.top
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-532678575
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: QLjTpkXRB453R9fXhJzKkc_q_gSm2MZrIOuxW4uW-mI
+        short-id: 221873918e0bb74d
+      server: 148.113.5.44
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
       udp: true
+      uuid: 72ea5a91-ffcc-43d2-9297-5993c3abf186
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-593868023
@@ -140,28 +146,6 @@ proxies:
       type: vless
       udp: true
       uuid: 72ea5a91-ffcc-43d2-9297-5993c3abf186
-    - name: trojan-605980490
-      password: 88b4b7e4-3e6a-4861-9806-1366ba3c1a61
-      port: 24408
-      server: v1in2.stableq.top
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-347654097
-      network: raw
-      port: 40443
-      reality-opts:
-        public-key: g77ZJbm18JEotapmVRjaXi133MzkbhkU2lxhVeXx8zw
-        short-id: 68a8
-      server: 5.253.42.164
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
 proxy-groups:
     - interval: 300
       name: auto
@@ -169,7 +153,7 @@ proxy-groups:
         - vless-446498120
         - vless-442402840
         - vless-250761440
-        - trojan-605980489
+        - vless-532678575
         - vless-593868023
         - vless-590454429
         - vless-595785632
@@ -177,8 +161,6 @@ proxy-groups:
         - vless-599726878
         - vmess-2387859
         - vless-587197637
-        - trojan-605980490
-        - vless-347654097
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -187,7 +169,7 @@ proxy-groups:
         - vless-446498120
         - vless-442402840
         - vless-250761440
-        - trojan-605980489
+        - vless-532678575
         - vless-593868023
         - vless-590454429
         - vless-595785632
@@ -195,8 +177,6 @@ proxy-groups:
         - vless-599726878
         - vmess-2387859
         - vless-587197637
-        - trojan-605980490
-        - vless-347654097
       type: select
 rules:
     - MATCH,select
