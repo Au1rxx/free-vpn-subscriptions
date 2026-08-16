@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-556174673
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: RP93KQEzBP7wvvhwYy5c87IiQbV6xnsx7XgJpajevTA
+        short-id: bc599ecdd54c1b3f
+      server: 88.119.176.121
+      servername: unas.denegnet.cc
+      tls: true
+      type: vless
+      udp: true
+      uuid: 27dcb3a9-c82d-4628-a8c4-bae39e6cb4f4
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-556174673
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-556174673
+      type: select
+rules:
+    - MATCH,select
