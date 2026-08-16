@@ -1,4 +1,25 @@
 proxies:
+    - name: vless-593736080
+      network: ws
+      port: 4100
+      server: 104.171.132.185
+      type: vless
+      udp: true
+      uuid: 112912a9-cedf-485d-b8ed-d8f8d4774437
+    - name: vless-593736091
+      network: ws
+      port: 2200
+      server: 104.171.137.109
+      type: vless
+      udp: true
+      uuid: 5502312d-b5cf-4652-8c59-4d670dd047be
+    - name: vless-593736088
+      network: ws
+      port: 4100
+      server: 104.171.135.186
+      type: vless
+      udp: true
+      uuid: 2c66d559-9889-45c5-a712-d8b7a31fa04d
     - name: hysteria2-561706675
       password: 2a0099ded5baa93c55823af39229c5b1
       port: 50160
@@ -6,17 +27,45 @@ proxies:
       skip-cert-verify: false
       sni: 185-22-155-81.liao.kdns.fr
       type: hysteria2
+    - flow: xtls-rprx-vision
+      name: vless-474828128
+      network: tcp
+      port: 443
+      server: ru52.mechvpn.online
+      servername: ru52.mechvpn.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+    - name: vless-593736084
+      network: ws
+      port: 2200
+      server: 104.171.133.53
+      type: vless
+      udp: true
+      uuid: d5d72f0a-42b0-4f43-b568-9cf7fbff073d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-593736080
+        - vless-593736091
+        - vless-593736088
         - hysteria2-561706675
+        - vless-474828128
+        - vless-593736084
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-593736080
+        - vless-593736091
+        - vless-593736088
         - hysteria2-561706675
+        - vless-474828128
+        - vless-593736084
       type: select
 rules:
     - MATCH,select
