@@ -1,75 +1,31 @@
 proxies:
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-590454426
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
-        short-id: ff776ff77be48b88
-      server: tur4.helper-internet.com
-      servername: tur4.helper-internet.com
-      tls: true
+    - name: vless-212135092
+      network: grpc
+      port: 8443
+      server: 185.39.204.155
       type: vless
       udp: true
-      uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
-    - client-fingerprint: chrome
-      name: vless-494492362
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: _jsI5uVVqXkzCZ0OGJ5U7waecxOEiu2lm-8f8ZyW5mc
-        short-id: f5d596282182b440
-      server: 151.241.226.201
-      servername: www.apple.com
-      tls: true
+      uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
+    - name: vless-622971670
+      network: ws
+      port: 8880
+      server: 104.20.6.153
       type: vless
       udp: true
-      uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
-    - client-fingerprint: chrome
-      name: vless-587204639
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: _jsI5uVVqXkzCZ0OGJ5U7waecxOEiu2lm-8f8ZyW5mc
-        short-id: f5d596282182b440
-      server: 151.241.226.201
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-591639649
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
-        short-id: ff776ff77be48b88
-      server: 103.83.87.238
-      servername: tur4.helper-internet.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
+      uuid: a22bff60-a40a-4250-bde2-4c660e363b47
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-590454426
-        - vless-494492362
-        - vless-587204639
-        - vless-591639649
+        - vless-212135092
+        - vless-622971670
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-590454426
-        - vless-494492362
-        - vless-587204639
-        - vless-591639649
+        - vless-212135092
+        - vless-622971670
       type: select
 rules:
     - MATCH,select

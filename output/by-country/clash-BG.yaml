@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-453073268
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: HDiwGAN66V77CrlCWrDZupEiSQk204dkWRjJok0zYhk
+        short-id: 720148f2fea16d0f
+      server: 82.118.18.202
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 316dda83-17f1-4f29-a05f-b84b7f991b82
     - name: vless-591633797
       network: ws
       port: 443
@@ -6,16 +20,9 @@ proxies:
       type: vless
       udp: true
       uuid: 33851d53-ede0-45f7-9eb8-9aa961f7d200
-    - name: vless-541445569
-      network: ws
-      port: 443
-      server: 195.123.226.21
-      type: vless
-      udp: true
-      uuid: 33851d53-ede0-45f7-9eb8-9aa961f7d200
-    - client-fingerprint: chrome
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-515164909
+      name: vless-429853174
       network: tcp
       port: 443
       reality-opts:
@@ -27,21 +34,30 @@ proxies:
       type: vless
       udp: true
       uuid: 316dda83-17f1-4f29-a05f-b84b7f991b82
+    - name: vless-541445569
+      network: ws
+      port: 443
+      server: 195.123.226.21
+      type: vless
+      udp: true
+      uuid: 33851d53-ede0-45f7-9eb8-9aa961f7d200
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-453073268
         - vless-591633797
+        - vless-429853174
         - vless-541445569
-        - vless-515164909
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-453073268
         - vless-591633797
+        - vless-429853174
         - vless-541445569
-        - vless-515164909
       type: select
 rules:
     - MATCH,select
