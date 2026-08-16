@@ -1,72 +1,68 @@
 proxies:
+    - name: vless-335073379
+      network: grpc
+      port: 8443
+      server: 95.85.224.3
+      type: vless
+      udp: true
+      uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
+    - name: vless-429850175
+      network: tcp
+      port: 8443
+      server: 94.183.170.231
+      servername: estproxy2.lockdwn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
+    - name: vless-453071268
+      network: ws
+      port: 443
+      server: 94.183.170.231
+      type: vless
+      udp: true
+      uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-608526260
+      name: vless-593840022
       network: tcp
       port: 2053
       reality-opts:
         public-key: RwtMzZtTCmy9WRq3_27xeGF8-1l_qPXRVG3yIFp-6Go
         short-id: c0d1d1776fed0f6d
-      server: ee-t3.vinnypuxtomoon.today
+      server: 5.175.178.43
       servername: ee-t3.vinnypuxtomoon.today
       tls: true
       type: vless
       udp: true
       uuid: 629f88a6-b20b-4489-a22f-4d8b418c0488
-    - name: vless-608559127
+    - name: vless-370772845
       network: ws
       port: 443
-      server: estproxy4.lockdwn.com
+      server: 94.183.170.231
       type: vless
       udp: true
-      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-604433653
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: RwtMzZtTCmy9WRq3_27xeGF8-1l_qPXRVG3yIFp-6Go
-        short-id: c0d1d1776fed0f6d
-      server: ee-t3.vinnypuxtomoon.today
-      servername: ee-t3.vinnypuxtomoon.today
-      tls: true
-      type: vless
-      udp: true
-      uuid: 629f88a6-b20b-4489-a22f-4d8b418c0488
-    - name: vless-608559126
-      network: ws
-      port: 443
-      server: estproxy4.lockdwn.com
-      type: vless
-      udp: true
-      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-    - name: hysteria2-589844096
-      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
-      port: 443
-      server: cabinet.wwwinternetvideo.click
-      skip-cert-verify: false
-      sni: cabinet.wwwinternetvideo.click
-      type: hysteria2
+      uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-608526260
-        - vless-608559127
-        - vless-604433653
-        - vless-608559126
-        - hysteria2-589844096
+        - vless-335073379
+        - vless-429850175
+        - vless-453071268
+        - vless-593840022
+        - vless-370772845
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-608526260
-        - vless-608559127
-        - vless-604433653
-        - vless-608559126
-        - hysteria2-589844096
+        - vless-335073379
+        - vless-429850175
+        - vless-453071268
+        - vless-593840022
+        - vless-370772845
       type: select
 rules:
     - MATCH,select

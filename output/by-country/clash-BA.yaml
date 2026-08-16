@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-547768123
+      network: tcp
+      port: 1443
+      reality-opts:
+        public-key: aS94augCCytcbHRn37QNUfrBwAM2cp2RIXFL97yr50o
+        short-id: 0441f3e34348cb45
+      server: bossnia.netotcluchai.top
+      servername: bossnia.netotcluchai.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: 27dcb3a9-c82d-4628-a8c4-bae39e6cb4f4
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-547768123
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-547768123
+      type: select
+rules:
+    - MATCH,select
