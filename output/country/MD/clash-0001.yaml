@@ -13,6 +13,13 @@ proxies:
       skip-cert-verify: false
       sni: md.pubconverter.com
       type: hysteria2
+    - name: hysteria2-589844064
+      password: 62b72631-985d-4768-8b5a-7cc06753e0f0
+      port: 2443
+      server: mdt1.pubconverter.com
+      skip-cert-verify: false
+      sni: md.pubconverter.com
+      type: hysteria2
     - name: hysteria2-589844066
       password: 896002a8-3afc-49e6-8fac-5129fb717b49
       port: 2443
@@ -48,16 +55,31 @@ proxies:
       type: vless
       udp: true
       uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
+    - client-fingerprint: firefox
+      name: vless-628789700
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: doAoyk3TDL7pSojBT8JVINlmjMy31VW7YrHpBhw3bnA
+        short-id: 4b9c77b3
+      server: 185.103.167.231
+      servername: www.tradingview.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8c5b018-f51a-4137-be8a-50a451630589
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-589844055
         - hysteria2-589844056
+        - hysteria2-589844064
         - hysteria2-589844066
         - hysteria2-591436837
         - hysteria2-591436841
         - vless-591639651
+        - vless-628789700
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -65,10 +87,12 @@ proxy-groups:
         - auto
         - hysteria2-589844055
         - hysteria2-589844056
+        - hysteria2-589844064
         - hysteria2-589844066
         - hysteria2-591436837
         - hysteria2-591436841
         - vless-591639651
+        - vless-628789700
       type: select
 rules:
     - MATCH,select

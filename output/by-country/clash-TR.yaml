@@ -13,12 +13,20 @@ proxies:
       type: vless
       udp: true
       uuid: a22bff60-a40a-4250-bde2-4c660e363b47
+    - name: vless-623155618
+      network: tcp
+      port: 64584
+      server: custom.zelnora.ir
+      type: vless
+      udp: true
+      uuid: a19bdc9c-042f-4ee6-a1a7-3dedd2ef337b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-212135092
         - vless-622971670
+        - vless-623155618
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +34,7 @@ proxy-groups:
         - auto
         - vless-212135092
         - vless-622971670
+        - vless-623155618
       type: select
 rules:
     - MATCH,select

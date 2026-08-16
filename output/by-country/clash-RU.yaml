@@ -1,0 +1,69 @@
+proxies:
+    - client-fingerprint: firefox
+      name: vless-628782787
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: BlwOc2kEuypbj92UxsBJ4VoG_zd2dfUIgvmUwQ-IjDA
+        short-id: f63894ed
+      server: 104.171.135.15
+      servername: s3node1.tcpdoor.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8c5b018-f51a-4137-be8a-50a451630589
+    - flow: xtls-rprx-vision
+      name: vless-628787095
+      network: tcp
+      port: 52006
+      server: 139.100.197.28
+      servername: search.setlisting.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 61c5da14-f42b-07d0-b6ff-4b34c32ed05d
+    - flow: xtls-rprx-vision
+      name: vless-628787084
+      network: raw
+      port: 52006
+      server: 139.100.197.28
+      servername: search.setlisting.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9db20832-4f2d-07d0-b674-afde46ca403e
+    - client-fingerprint: edge
+      name: vless-628782786
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: BlwOc2kEuypbj92UxsBJ4VoG_zd2dfUIgvmUwQ-IjDA
+        short-id: f63894ed
+      server: 104.171.135.15
+      servername: s3node1.tcpdoor.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8c5b018-f51a-4137-be8a-50a451630589
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-628782787
+        - vless-628787095
+        - vless-628787084
+        - vless-628782786
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-628782787
+        - vless-628787095
+        - vless-628787084
+        - vless-628782786
+      type: select
+rules:
+    - MATCH,select
