@@ -1,4 +1,15 @@
 proxies:
+    - flow: xtls-rprx-vision
+      name: vless-559144233
+      network: tcp
+      port: 443
+      server: 94.156.181.52
+      servername: ru52.mechvpn.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
     - client-fingerprint: chrome
       name: vless-327175475
       network: tcp
@@ -89,17 +100,11 @@ proxies:
       type: vless
       udp: true
       uuid: 598b823c-d3fc-4013-aae5-837f10080f7a
-    - cipher: aes-256-gcm
-      name: shadowsocks-611712780
-      password: 81a20429165df87e
-      port: 20901
-      server: 195.133.23.200
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-559144233
         - vless-327175475
         - vless-26628142
         - hysteria2-589844049
@@ -107,12 +112,12 @@ proxy-groups:
         - vless-258632532
         - vless-245488007
         - vless-37520047
-        - shadowsocks-611712780
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-559144233
         - vless-327175475
         - vless-26628142
         - hysteria2-589844049
@@ -120,7 +125,6 @@ proxy-groups:
         - vless-258632532
         - vless-245488007
         - vless-37520047
-        - shadowsocks-611712780
       type: select
 rules:
     - MATCH,select
