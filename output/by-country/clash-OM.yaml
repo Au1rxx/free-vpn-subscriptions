@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: chrome
+      name: vless-569540893
+      network: raw
+      port: 33353
+      reality-opts:
+        public-key: lrJShu6JVnQQ54hKEmKWnj5DUcwalnWBbN_HjGFOeB8
+        short-id: ad51aa0889b8da46
+      server: omdr.whooisthebest.ir
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 395ee0ee-4342-472a-9d2b-40a562a0eaa1
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-569540893
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-569540893
+      type: select
+rules:
+    - MATCH,select

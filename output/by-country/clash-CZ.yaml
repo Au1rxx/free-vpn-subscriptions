@@ -1,0 +1,45 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-496838815
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: V-B12dvv0fVIwcmcRNdMQIcc4nmqsYB_PR_3X4VVB0A
+        short-id: 91a7a393d805f5c6
+      server: ch1.murhost.network
+      servername: ch1.murhost.network
+      tls: true
+      type: vless
+      udp: true
+      uuid: a6f6d9c9-9d43-4d0e-bf95-4b87cc5bbaac
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-608559170
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+        short-id: ff776ff77be48b88
+      server: 5.39.202.65
+      servername: cz.helper-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-496838815
+        - vless-608559170
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-496838815
+        - vless-608559170
+      type: select
+rules:
+    - MATCH,select

@@ -19,12 +19,42 @@ proxies:
       skip-cert-verify: false
       sni: borat-hopp.bumbleshrimp.com
       type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-608625366
+      network: grpc
+      port: 9882
+      reality-opts:
+        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+        short-id: aabb
+      server: 91.224.87.22
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2a650f3b-d95b-4bd6-aadf-16ccc0717155
+    - name: hysteria2-474576905
+      password: owefv0_92Z540k2F_nx83245_J9130oS_tY
+      port: 8443
+      server: 5.180.27.210
+      skip-cert-verify: true
+      sni: borat-hopp.bumbleshrimp.com
+      type: hysteria2
+    - name: hysteria2-468892453
+      password: owefv0_92Z540k2F_nx83245_J9130oS_tY
+      port: 8443
+      server: 5.180.27.210
+      skip-cert-verify: false
+      sni: borat-hopp.bumbleshrimp.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-599725223
         - hysteria2-509702269
+        - vless-608625366
+        - hysteria2-474576905
+        - hysteria2-468892453
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -32,6 +62,9 @@ proxy-groups:
         - auto
         - vless-599725223
         - hysteria2-509702269
+        - vless-608625366
+        - hysteria2-474576905
+        - hysteria2-468892453
       type: select
 rules:
     - MATCH,select
