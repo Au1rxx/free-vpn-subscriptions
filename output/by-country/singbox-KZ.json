@@ -1,0 +1,67 @@
+{
+  "outbounds": [
+    {
+      "password": "owefv0_92Z540k2F_nx83245_J9130oS_tY",
+      "server": "5.180.27.221",
+      "server_port": 8443,
+      "tag": "hysteria2-509702269",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "borat-hopp.bumbleshrimp.com"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "server": "91.224.87.22",
+      "server_port": 9882,
+      "tag": "vless-608625366",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU",
+          "short_id": "aabb"
+        },
+        "server_name": "dl.google.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "service_name": "grpc-tunnel",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "2a650f3b-d95b-4bd6-aadf-16ccc0717155"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-509702269",
+        "vless-608625366"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-509702269",
+        "vless-608625366"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

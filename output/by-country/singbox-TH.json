@@ -1,0 +1,42 @@
+{
+  "outbounds": [
+    {
+      "server": "18.239.134.69",
+      "server_port": 80,
+      "tag": "vless-324639045",
+      "transport": {
+        "headers": {
+          "Host": "d2e1v87ko56lyw.cloudfront.net:assets.opensignal.com"
+        },
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "de27291c-15a9-4256-9ba7-ad517569877e"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-324639045"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-324639045"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

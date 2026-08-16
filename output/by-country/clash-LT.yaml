@@ -1,21 +1,7 @@
 proxies:
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-583593360
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: RP93KQEzBP7wvvhwYy5c87IiQbV6xnsx7XgJpajevTA
-        short-id: bc599ecdd54c1b3f
-      server: 88.119.176.146
-      servername: unas.denegnet.cc
-      tls: true
-      type: vless
-      udp: true
-      uuid: 27dcb3a9-c82d-4628-a8c4-bae39e6cb4f4
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-260079409
+      name: vless-465827615
       network: tcp
       port: 443
       reality-opts:
@@ -27,19 +13,58 @@ proxies:
       type: vless
       udp: true
       uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
+    - name: hysteria2-589844065
+      password: 896002a8-3afc-49e6-8fac-5129fb717b49
+      port: 2443
+      server: latvia.koalaexpress.ru
+      skip-cert-verify: false
+      sni: latvia.koalaexpress.ru
+      type: hysteria2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-595959784
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: RP93KQEzBP7wvvhwYy5c87IiQbV6xnsx7XgJpajevTA
+        short-id: bc599ecdd54c1b3f
+      server: unas.denegnet.cc
+      servername: unas.denegnet.cc
+      tls: true
+      type: vless
+      udp: true
+      uuid: 27dcb3a9-c82d-4628-a8c4-bae39e6cb4f4
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-577276252
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: t_qv0VOfWhKZJV_giGC55-ipgHYWo44Yfvik_B8T8ik
+        short-id: 4a46213c935e2ee4
+      server: 31.76.83.114
+      servername: baltic.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-583593360
-        - vless-260079409
+        - vless-465827615
+        - hysteria2-589844065
+        - vless-595959784
+        - vless-577276252
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-583593360
-        - vless-260079409
+        - vless-465827615
+        - hysteria2-589844065
+        - vless-595959784
+        - vless-577276252
       type: select
 rules:
     - MATCH,select

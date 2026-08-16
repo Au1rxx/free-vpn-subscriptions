@@ -14,30 +14,26 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: trojan-183361334
-      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
-      port: 20085
-      server: oplosgru-c.catcat321.com
-      skip-cert-verify: true
-      sni: ""
-      type: trojan
+    - client-fingerprint: qq
+      name: vless-620750820
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: 7i4Y7v80NVAIi_4_9roDkqcXmexIHli87dfZuFaQMUI
+        short-id: 68da
+      server: 46.29.238.139
+      servername: deepl.com
+      tls: true
+      type: vless
       udp: true
-    - name: trojan-184964693
-      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
-      port: 20085
-      server: hkdcrtc-e.catcat321.com
-      skip-cert-verify: true
-      sni: ""
-      type: trojan
-      udp: true
+      uuid: 8384341b-cd89-4a21-a022-cc4bd4e648ca
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-231
         - trojan-176269131
-        - trojan-183361334
-        - trojan-184964693
+        - vless-620750820
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -45,8 +41,7 @@ proxy-groups:
         - auto
         - shadowsocks-231
         - trojan-176269131
-        - trojan-183361334
-        - trojan-184964693
+        - vless-620750820
       type: select
 rules:
     - MATCH,select
