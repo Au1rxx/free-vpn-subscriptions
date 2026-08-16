@@ -83,13 +83,6 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - name: hysteria2-496627717
-      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-      port: 443
-      server: us54.mechvpn.online
-      skip-cert-verify: true
-      sni: us54.mechvpn.online
-      type: hysteria2
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-509711183
@@ -104,19 +97,6 @@ proxies:
       type: vless
       udp: true
       uuid: 2cb6b4d9-0c74-45e2-a4fb-645bb8ac532a
-    - client-fingerprint: firefox
-      name: vless-509711220
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: ECYE8G81FW1V__Y9yBYxIU0TWWcConhXoJncZG1D_0U
-        short-id: 7a08844f
-      server: 103.110.66.158
-      servername: www.telekom.de
-      tls: true
-      type: vless
-      udp: true
-      uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-509711255
@@ -443,6 +423,14 @@ proxies:
       type: vmess
       udp: true
       uuid: a3aabbed-7636-41a6-8263-c6aadd723d29
+    - name: trojan-618069954
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.7
+      skip-cert-verify: true
+      sni: letsencrypt.org
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -455,9 +443,7 @@ proxy-groups:
         - hysteria2-474576737
         - hysteria2-487303205
         - hysteria2-487303214
-        - hysteria2-496627717
         - vless-509711183
-        - vless-509711220
         - vless-509711255
         - hysteria2-537797362
         - hysteria2-547757550
@@ -488,6 +474,7 @@ proxy-groups:
         - hysteria2-608559123
         - vless-608676475
         - vmess-614548015
+        - trojan-618069954
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -501,9 +488,7 @@ proxy-groups:
         - hysteria2-474576737
         - hysteria2-487303205
         - hysteria2-487303214
-        - hysteria2-496627717
         - vless-509711183
-        - vless-509711220
         - vless-509711255
         - hysteria2-537797362
         - hysteria2-547757550
@@ -534,6 +519,7 @@ proxy-groups:
         - hysteria2-608559123
         - vless-608676475
         - vmess-614548015
+        - trojan-618069954
       type: select
 rules:
     - MATCH,select

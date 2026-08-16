@@ -25,26 +25,20 @@ proxies:
       type: vless
       udp: true
       uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
-    - client-fingerprint: firefox
-      name: vless-599726866
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: aUdvs6o4PHN6jmdkIKBA2rHsN_7l8W2SaDfNgzn-BwU
-        short-id: ""
-      server: 185.213.20.133
-      servername: it.monkora.org
-      tls: true
-      type: vless
+    - cipher: aes-256-gcm
+      name: shadowsocks-591158343
+      password: d1fa2f4b98a38bc8
+      port: 10901
+      server: 194.87.47.204
+      type: ss
       udp: true
-      uuid: 921db318-1694-4408-9cc7-c93df39f7f8e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-429873172
         - vless-548666342
-        - vless-599726866
+        - shadowsocks-591158343
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -52,7 +46,7 @@ proxy-groups:
         - auto
         - vless-429873172
         - vless-548666342
-        - vless-599726866
+        - shadowsocks-591158343
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-589844176
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+        short-id: ff776ff77be48b88
+      server: alban5.helper-internet.com
+      servername: alban5.helper-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-430012859
@@ -13,6 +27,20 @@ proxies:
       type: vless
       udp: true
       uuid: d4cae7df-50a1-428c-bd62-881c8f3bbd90
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-599732464
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+        short-id: ff776ff77be48b88
+      server: alban5.helper-internet.com
+      servername: alban5.helper-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-598574222
@@ -45,7 +73,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-589844176
         - vless-430012859
+        - vless-599732464
         - vless-598574222
         - vless-509694491
       type: url-test
@@ -53,7 +83,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-589844176
         - vless-430012859
+        - vless-599732464
         - vless-598574222
         - vless-509694491
       type: select

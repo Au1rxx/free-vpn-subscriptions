@@ -12,19 +12,6 @@ proxies:
       type: vless
       udp: true
       uuid: 633c112c-11dd-48d3-8595-e151dd589ef4
-    - client-fingerprint: firefox
-      name: vless-599726867
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: 6Sxufiga5n4hbEHM3QoZl26B8pn83LRMCwbFsT5wlRQ
-        short-id: a791359f887706c9
-      server: 78.40.209.182
-      servername: node2.vpnushka.lol
-      tls: true
-      type: vless
-      udp: true
-      uuid: 133f76fc-a5ab-463e-b46d-9587d7137e55
     - client-fingerprint: chrome
       name: vless-457577632
       network: raw
@@ -202,12 +189,21 @@ proxies:
       type: vless
       udp: true
       uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
+    - name: vless-538707807
+      network: ws
+      port: 2053
+      server: 213.183.61.100
+      servername: forfreeuse.rtqa.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c7e9c591-2764-423a-afca-efbd010fd396
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-599726871
-        - vless-599726867
         - vless-457577632
         - vless-583608515
         - vless-453256841
@@ -221,13 +217,13 @@ proxy-groups:
         - vless-538640471
         - vless-453054109
         - vless-306701246
+        - vless-538707807
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-599726871
-        - vless-599726867
         - vless-457577632
         - vless-583608515
         - vless-453256841
@@ -241,6 +237,7 @@ proxy-groups:
         - vless-538640471
         - vless-453054109
         - vless-306701246
+        - vless-538707807
       type: select
 rules:
     - MATCH,select

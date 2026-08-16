@@ -1,0 +1,22 @@
+proxies:
+    - name: hysteria2-589844066
+      password: 896002a8-3afc-49e6-8fac-5129fb717b49
+      port: 2443
+      server: mdt1.pubconverter.com
+      skip-cert-verify: false
+      sni: md.pubconverter.com
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-589844066
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-589844066
+      type: select
+rules:
+    - MATCH,select

@@ -1,0 +1,47 @@
+proxies:
+    - name: hysteria2-600117032
+      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+      port: 8080
+      server: 46.229.243.131
+      skip-cert-verify: true
+      sni: grape-turbo-fr.roxa.org
+      type: hysteria2
+    - name: hysteria2-589844094
+      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+      port: 8080
+      server: 46.229.243.131
+      skip-cert-verify: false
+      sni: grape-turbo-fr.roxa.org
+      type: hysteria2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-619566151
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 5If1QVt0r8CM8KuKE2LfhILVdGgvawAFhE0iHInKrTM
+        short-id: ""
+      server: 83.228.242.53
+      servername: ch2kto.pidoras-dns.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 805e7df0-139b-4be2-a736-cab10eb4cce0
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-600117032
+        - hysteria2-589844094
+        - vless-619566151
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-600117032
+        - hysteria2-589844094
+        - vless-619566151
+      type: select
+rules:
+    - MATCH,select
