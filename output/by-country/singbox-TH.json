@@ -1,0 +1,74 @@
+{
+  "outbounds": [
+    {
+      "server": "18.239.134.69",
+      "server_port": 80,
+      "tag": "vless-474994678",
+      "transport": {
+        "headers": {
+          "Host": "d2e1v87ko56lyw.cloudfront.net:assets.opensignal.com"
+        },
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "de27291c-15a9-4256-9ba7-ad517569877e"
+    },
+    {
+      "server": "18.239.134.69",
+      "server_port": 80,
+      "tag": "vless-474994676",
+      "transport": {
+        "headers": {
+          "Host": "d2e1v87ko56lyw.cloudfront.net:assets.opensignal.com"
+        },
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "de27291c-15a9-4256-9ba7-ad517569877e"
+    },
+    {
+      "server": "18.239.134.69",
+      "server_port": 80,
+      "tag": "vless-474994677",
+      "transport": {
+        "headers": {
+          "Host": "d2e1v87ko56lyw.cloudfront.net:assets.opensignal.com"
+        },
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "de27291c-15a9-4256-9ba7-ad517569877e"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-474994678",
+        "vless-474994676",
+        "vless-474994677"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-474994678",
+        "vless-474994676",
+        "vless-474994677"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

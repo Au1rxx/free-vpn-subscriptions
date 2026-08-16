@@ -1,0 +1,91 @@
+{
+  "outbounds": [
+    {
+      "password": "owefv0_92Z540k2F_nx83245_J9130oS_tY",
+      "server": "5.180.27.221",
+      "server_port": 8443,
+      "tag": "hysteria2-509702269",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "borat-hopp.bumbleshrimp.com"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "server": "91.224.87.22",
+      "server_port": 9882,
+      "tag": "vless-608625366",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU",
+          "short_id": "aabb"
+        },
+        "server_name": "dl.google.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "service_name": "grpc-tunnel",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "2a650f3b-d95b-4bd6-aadf-16ccc0717155"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "45.146.131.154",
+      "server_port": 8452,
+      "tag": "vless-468901428",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "neW65LaKi88zH-X9gRQPhl5YqQLz9E4IrVnOpS4BnkU",
+          "short_id": "45b10e93bc618c2c"
+        },
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "9d01e9f2-1569-48cd-beb3-36f706f5ad5b"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-509702269",
+        "vless-608625366",
+        "vless-468901428"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-509702269",
+        "vless-608625366",
+        "vless-468901428"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

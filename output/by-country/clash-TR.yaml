@@ -1,18 +1,12 @@
 proxies:
-    - name: vless-212135092
-      network: grpc
-      port: 8443
-      server: 185.39.204.155
-      type: vless
+    - name: trojan-639242007
+      password: 8bS8vVC5CQ2GsckhMh8IT1jv
+      port: 443
+      server: 193.124.46.65
+      skip-cert-verify: false
+      sni: 193.124.46.65
+      type: trojan
       udp: true
-      uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
-    - name: vless-622971670
-      network: ws
-      port: 8880
-      server: 104.20.6.153
-      type: vless
-      udp: true
-      uuid: a22bff60-a40a-4250-bde2-4c660e363b47
     - name: vless-623155618
       network: tcp
       port: 64584
@@ -24,16 +18,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-212135092
-        - vless-622971670
+        - trojan-639242007
         - vless-623155618
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-212135092
-        - vless-622971670
+        - trojan-639242007
         - vless-623155618
       type: select
 rules:

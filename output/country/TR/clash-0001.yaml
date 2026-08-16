@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-119244
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20018
-      server: 45.67.201.210
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-124610
       password: tunnel-ljlcf
       port: 8441
@@ -15,16 +7,6 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: vless-27062851
-      network: ws
-      port: 2087
-      server: mfa.gov.ua
-      servername: fx3l5i2wdfxln0.fx6hsv0.ccwu.cc
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 77777777-8a3e-6666-b6d1-a9c5f0e8b3a2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-138388752
       password: tunnel-fbrof
@@ -204,18 +186,6 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-565212593
-      network: ws
-      port: 443
-      server: webcorelink4-hubdatagate8-nodestreamab.cloudsync9.com
-      servername: baseportlink5-webgateapi1-hubdatanet.cloudsync9.com
-      skip-cert-verify: false
-      tls: true
-      type: vmess
-      udp: true
-      uuid: dc598800-f4fa-46dd-abd4-218f1ba2f0b4
     - name: trojan-583575821
       password: 8bS8vVC5CQ2GsckhMh8IT1jv
       port: 443
@@ -425,13 +395,6 @@ proxies:
       type: vless
       udp: true
       uuid: 7d641c2e-6897-4b9f-8a82-3f0cc8980db1
-    - name: vless-622971670
-      network: ws
-      port: 8880
-      server: 104.20.6.153
-      type: vless
-      udp: true
-      uuid: a22bff60-a40a-4250-bde2-4c660e363b47
     - name: vless-623155618
       network: tcp
       port: 64584
@@ -458,13 +421,32 @@ proxies:
       sni: 193.124.46.65
       type: trojan
       udp: true
+    - name: trojan-639242007
+      password: 8bS8vVC5CQ2GsckhMh8IT1jv
+      port: 443
+      server: 193.124.46.65
+      skip-cert-verify: false
+      sni: 193.124.46.65
+      type: trojan
+      udp: true
+    - client-fingerprint: chrome
+      name: vless-639922104
+      network: tcp
+      port: 61555
+      reality-opts:
+        public-key: sQFf0v_2dbbqa6Ey6yz8qeG8wmF2VPD1YyqIkG7NPT4
+        short-id: 71efcf4d101327c1
+      server: tkew.colener.ir
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c00dfa61-737b-4f70-94c3-120bf98d8160
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-119244
         - trojan-124610
-        - vless-27062851
         - shadowsocks-138388752
         - vless-212135092
         - vless-332701908
@@ -484,7 +466,6 @@ proxy-groups:
         - vless-559149719
         - vless-561635566
         - trojan-561637551
-        - vmess-565212593
         - trojan-583575821
         - vless-587204639
         - vless-590454426
@@ -504,18 +485,17 @@ proxy-groups:
         - vless-608611365
         - vless-620747938
         - vless-620747939
-        - vless-622971670
         - vless-623155618
         - vless-628789716
         - trojan-635823135
+        - trojan-639242007
+        - vless-639922104
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-119244
         - trojan-124610
-        - vless-27062851
         - shadowsocks-138388752
         - vless-212135092
         - vless-332701908
@@ -535,7 +515,6 @@ proxy-groups:
         - vless-559149719
         - vless-561635566
         - trojan-561637551
-        - vmess-565212593
         - trojan-583575821
         - vless-587204639
         - vless-590454426
@@ -555,10 +534,11 @@ proxy-groups:
         - vless-608611365
         - vless-620747938
         - vless-620747939
-        - vless-622971670
         - vless-623155618
         - vless-628789716
         - trojan-635823135
+        - trojan-639242007
+        - vless-639922104
       type: select
 rules:
     - MATCH,select
