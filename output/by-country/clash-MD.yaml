@@ -1,4 +1,18 @@
 proxies:
+    - name: hysteria2-654428714
+      password: 425e9e31-b017-4e32-bbd3-656473466d5e
+      port: 2443
+      server: mdt1.pubconverter.com
+      skip-cert-verify: false
+      sni: ""
+      type: hysteria2
+    - name: hysteria2-654428715
+      password: 4984930f-4a7a-4dfa-8edc-5d21bbf5ca13
+      port: 2443
+      server: mdt1.pubconverter.com
+      skip-cert-verify: false
+      sni: ""
+      type: hysteria2
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-591639651
@@ -13,17 +27,37 @@ proxies:
       type: vless
       udp: true
       uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-650650359
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+        short-id: ff776ff77be48b88
+      server: mold.helper-internet.com
+      servername: mold.helper-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-654428714
+        - hysteria2-654428715
         - vless-591639651
+        - vless-650650359
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-654428714
+        - hysteria2-654428715
         - vless-591639651
+        - vless-650650359
       type: select
 rules:
     - MATCH,select

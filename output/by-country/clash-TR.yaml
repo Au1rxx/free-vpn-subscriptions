@@ -13,12 +13,22 @@ proxies:
       server: 193.124.46.134
       type: ss
       udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-653885447
+      network: ws
+      port: 58304
+      server: 193.111.78.106
+      type: vmess
+      udp: true
+      uuid: 26b6fd32-04e6-43ff-a065-bea36f748655
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-212135092
         - shadowsocks-652321673
+        - vmess-653885447
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +36,7 @@ proxy-groups:
         - auto
         - vless-212135092
         - shadowsocks-652321673
+        - vmess-653885447
       type: select
 rules:
     - MATCH,select
