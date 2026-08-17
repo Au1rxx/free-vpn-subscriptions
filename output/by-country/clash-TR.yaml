@@ -6,17 +6,26 @@ proxies:
       type: vless
       udp: true
       uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-652321673
+      password: tunnel-fbrof
+      port: 8444
+      server: 193.124.46.134
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-212135092
+        - shadowsocks-652321673
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-212135092
+        - shadowsocks-652321673
       type: select
 rules:
     - MATCH,select
