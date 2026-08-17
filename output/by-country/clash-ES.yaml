@@ -1,28 +1,77 @@
 proxies:
-    - client-fingerprint: chrome
-      name: vless-656230684
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-676697345
       network: tcp
-      port: 2053
+      port: 443
       reality-opts:
-        public-key: 6huZliKELOkP6l-eOIFe7PKP5MCGK2p5KzUeXRiMi00
-        short-id: 13e0569248e98a05
-      server: 212.227.235.66
-      servername: www.apple.com
+        public-key: VJBZx39OxjCu8XzmAFVsh3AgmVGMnY9toMe40epOzSQ
+        short-id: c94159258d
+      server: 192.142.52.91
+      servername: www.cloudflare.com
       tls: true
       type: vless
       udp: true
-      uuid: 855d82bc-8cc6-4037-8da5-df0412f3c063
+      uuid: fd0cb88f-cb45-47a7-adbd-0f44b2424b0f
+    - name: vless-656191936
+      network: tcp
+      port: 443
+      server: 85.90.217.42
+      servername: 85.90.217.42
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    - name: hysteria2-655713406
+      password: 22d891f5-ad85-4824-b0b8-e30cf3d37eb5
+      port: 2056
+      server: xby.mangshe.xyz
+      skip-cert-verify: true
+      sni: xby.mangshe.xyz
+      type: hysteria2
+    - name: hysteria2-503283256
+      password: 22d891f5-ad85-4824-b0b8-e30cf3d37eb5
+      port: 2056
+      server: xby.mangshe.xyz
+      skip-cert-verify: true
+      sni: mg2.mangshe.xyz
+      type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-16132
+      password: WSyL4XTwNsdv
+      port: 8388
+      server: 108.181.121.226
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-11052
+      password: qItG8SueYQcP
+      port: 8388
+      server: 140.174.184.5
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-656230684
+        - vless-676697345
+        - vless-656191936
+        - hysteria2-655713406
+        - hysteria2-503283256
+        - shadowsocks-16132
+        - shadowsocks-11052
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-656230684
+        - vless-676697345
+        - vless-656191936
+        - hysteria2-655713406
+        - hysteria2-503283256
+        - shadowsocks-16132
+        - shadowsocks-11052
       type: select
 rules:
     - MATCH,select

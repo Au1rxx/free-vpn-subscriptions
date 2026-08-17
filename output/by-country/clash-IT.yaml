@@ -12,32 +12,26 @@ proxies:
       type: vless
       udp: true
       uuid: 93fab704-cea7-4ca4-a9ac-5bb46aef263c
-    - client-fingerprint: firefox
-      name: vless-656230736
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
-        short-id: 5b8a942318178e7b
-      server: 57.131.38.163
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - name: hysteria2-653885323
+      password: 10f02d23-1d74-4b6e-b830-815be053281d
+      port: 20000
+      server: 2604:a880:4:1d0:0:3:4c9a:5000
+      skip-cert-verify: true
+      sni: localhost
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-677872654
-        - vless-656230736
+        - hysteria2-653885323
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-677872654
-        - vless-656230736
+        - hysteria2-653885323
       type: select
 rules:
     - MATCH,select

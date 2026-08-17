@@ -9,34 +9,6 @@ proxies:
       type: vless
       udp: true
       uuid: 6705ddbd-04cf-40f6-99b9-36846b08c2a9
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-656233777
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-        short-id: ""
-      server: 178.83.226.55
-      servername: sellflow.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2a77a470-315c-493d-b690-59b814a804cb
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-655776510
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-        short-id: ""
-      server: 178.83.226.55
-      servername: sellflow.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2a77a470-315c-493d-b690-59b814a804cb
     - name: vless-674341238
       network: ws
       port: 443
@@ -47,23 +19,55 @@ proxies:
       type: vless
       udp: true
       uuid: 6705ddbd-04cf-40f6-99b9-36846b08c2a9
+    - name: hysteria2-628782748
+      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+      port: 8080
+      server: 46.229.243.132
+      skip-cert-verify: false
+      sni: grape-turbo-fr.roxa.org
+      type: hysteria2
+    - name: hysteria2-655767081
+      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+      port: 8080
+      server: 46.229.243.132
+      skip-cert-verify: true
+      sni: grape-turbo-fr.roxa.org
+      type: hysteria2
+    - name: hysteria2-589844094
+      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+      port: 8080
+      server: 46.229.243.131
+      skip-cert-verify: false
+      sni: grape-turbo-fr.roxa.org
+      type: hysteria2
+    - name: hysteria2-600117032
+      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+      port: 8080
+      server: 46.229.243.131
+      skip-cert-verify: true
+      sni: grape-turbo-fr.roxa.org
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-674341281
-        - vless-656233777
-        - vless-655776510
         - vless-674341238
+        - hysteria2-628782748
+        - hysteria2-655767081
+        - hysteria2-589844094
+        - hysteria2-600117032
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-674341281
-        - vless-656233777
-        - vless-655776510
         - vless-674341238
+        - hysteria2-628782748
+        - hysteria2-655767081
+        - hysteria2-589844094
+        - hysteria2-600117032
       type: select
 rules:
     - MATCH,select
