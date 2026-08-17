@@ -13,6 +13,13 @@ proxies:
       type: vless
       udp: true
       uuid: 049e56d8-0ba0-49e3-b764-ee04122b9f00
+    - name: vless-2297536
+      network: ws
+      port: 80
+      server: ov-italy1.09vpn.com
+      type: vless
+      udp: true
+      uuid: 1e280316-0408-47c4-b058-05b8f1f17f02
     - name: vless-2327853
       network: tcp
       port: 10086
@@ -122,6 +129,16 @@ proxies:
       type: vless
       udp: true
       uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - name: vless-635900402
+      network: ws
+      port: 443
+      server: 151.101.56.7
+      servername: ssl.fastly.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e0454af2-6fe9-4983-a55d-05e1da202602
     - client-fingerprint: chrome
       name: vless-650644312
       network: tcp
@@ -267,12 +284,26 @@ proxies:
       type: vless
       udp: true
       uuid: 93fab704-cea7-4ca4-a9ac-5bb46aef263c
+    - client-fingerprint: chrome
+      name: vless-682283174
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: D3qByJ6qqJd5phYkfAtJpBqAhSb8VHPax1ZhvI3ZKEE
+        short-id: 96e380212691bba8
+      server: it.morinsq.su
+      servername: it.morinsq.su
+      tls: true
+      type: vless
+      udp: true
+      uuid: 93fab704-cea7-4ca4-a9ac-5bb46aef263c
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-2291711
         - vless-2291713
+        - vless-2297536
         - vless-2327853
         - vless-2327856
         - vless-13056446
@@ -284,6 +315,7 @@ proxy-groups:
         - vless-474979668
         - vless-483686868
         - vless-548666342
+        - vless-635900402
         - vless-650644312
         - hysteria2-653885323
         - vless-656230736
@@ -297,6 +329,7 @@ proxy-groups:
         - vless-676698386
         - vless-677872652
         - vless-677872654
+        - vless-682283174
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -304,6 +337,7 @@ proxy-groups:
         - auto
         - vless-2291711
         - vless-2291713
+        - vless-2297536
         - vless-2327853
         - vless-2327856
         - vless-13056446
@@ -315,6 +349,7 @@ proxy-groups:
         - vless-474979668
         - vless-483686868
         - vless-548666342
+        - vless-635900402
         - vless-650644312
         - hysteria2-653885323
         - vless-656230736
@@ -328,6 +363,7 @@ proxy-groups:
         - vless-676698386
         - vless-677872652
         - vless-677872654
+        - vless-682283174
       type: select
 rules:
     - MATCH,select

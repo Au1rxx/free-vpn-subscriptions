@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-470976121
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 989gq45ogQSZLDoUTcLNSYW5v_3ER7W_6Oi_8swZzXo
-        short-id: cb55f541
-      server: 178.83.31.93
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4a97788b-5d8a-410c-875c-ba36930e185e
     - name: vless-674341303
       network: ws
       port: 443
@@ -63,20 +49,6 @@ proxies:
       type: vless
       udp: true
       uuid: 6705ddbd-04cf-40f6-99b9-36846b08c2a9
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-561635563
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: ZXi0bwZwOe9e5CMticA2-bU7qamHgs_sN-2kHygbDyk
-        short-id: e91da98020a38be9
-      server: 95.85.240.30
-      servername: russia.cendora.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 423b1d79-08c4-0002-9d5e-c541f791b55f
     - name: vless-674341246
       network: ws
       port: 443
@@ -97,6 +69,19 @@ proxies:
       type: vless
       udp: true
       uuid: 6705ddbd-04cf-40f6-99b9-36846b08c2a9
+    - client-fingerprint: chrome
+      name: vless-682283187
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: uag6mQ8Nj62hZYzJhhd4ZZ-0GOGA42khyC6XtRbEnAg
+        short-id: 77ca514a4493ae52
+      server: se.morinsq.su
+      servername: se.morinsq.su
+      tls: true
+      type: vless
+      udp: true
+      uuid: 93fab704-cea7-4ca4-a9ac-5bb46aef263c
     - name: vless-674341306
       network: ws
       port: 443
@@ -268,54 +253,18 @@ proxies:
       skip-cert-verify: true
       sni: 2.27.23.44
       type: hysteria2
-    - name: hysteria2-654428717
-      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-      port: 443
-      server: us63.mechvpn.online
-      skip-cert-verify: false
-      sni: us63.mechvpn.online
-      type: hysteria2
-    - name: hysteria2-654428711
-      password: 3b8c82ed-fe66-472d-915e-034ccb57103f
-      port: 8443
-      server: swe.frkn.org
-      skip-cert-verify: false
-      sni: ""
-      type: hysteria2
-    - name: hysteria2-474576737
-      password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
-      port: 43327
-      server: 2.27.23.44
-      skip-cert-verify: false
-      sni: gate-v1.not-a-projects.xyz
-      type: hysteria2
-    - name: hysteria2-467980811
-      password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
-      port: 43327
-      server: 2.27.23.44
-      skip-cert-verify: true
-      sni: gate-v1.not-a-projects.xyz
-      type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-658270696
-      password: EyGy11BMfeP-6UHjsgajWw
-      port: 8390
-      server: 193.188.21.165
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-470976121
         - vless-674341303
         - vless-674341274
         - vless-674341299
         - vless-674341229
         - vless-674341319
-        - vless-561635563
         - vless-674341246
         - vless-674341276
+        - vless-682283187
         - vless-674341306
         - vless-674341258
         - vless-674341263
@@ -337,25 +286,19 @@ proxy-groups:
         - hysteria2-655649370
         - hysteria2-487303214
         - hysteria2-537797362
-        - hysteria2-654428717
-        - hysteria2-654428711
-        - hysteria2-474576737
-        - hysteria2-467980811
-        - shadowsocks-658270696
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-470976121
         - vless-674341303
         - vless-674341274
         - vless-674341299
         - vless-674341229
         - vless-674341319
-        - vless-561635563
         - vless-674341246
         - vless-674341276
+        - vless-682283187
         - vless-674341306
         - vless-674341258
         - vless-674341263
@@ -377,11 +320,6 @@ proxy-groups:
         - hysteria2-655649370
         - hysteria2-487303214
         - hysteria2-537797362
-        - hysteria2-654428717
-        - hysteria2-654428711
-        - hysteria2-474576737
-        - hysteria2-467980811
-        - shadowsocks-658270696
       type: select
 rules:
     - MATCH,select

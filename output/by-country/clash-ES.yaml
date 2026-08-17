@@ -13,16 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: fd0cb88f-cb45-47a7-adbd-0f44b2424b0f
-    - name: vless-656191936
-      network: tcp
-      port: 443
-      server: 85.90.217.42
-      servername: 85.90.217.42
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
     - name: hysteria2-655713406
       password: 22d891f5-ad85-4824-b0b8-e30cf3d37eb5
       port: 2056
@@ -37,41 +27,21 @@ proxies:
       skip-cert-verify: true
       sni: mg2.mangshe.xyz
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-16132
-      password: WSyL4XTwNsdv
-      port: 8388
-      server: 108.181.121.226
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-11052
-      password: qItG8SueYQcP
-      port: 8388
-      server: 140.174.184.5
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-676697345
-        - vless-656191936
         - hysteria2-655713406
         - hysteria2-503283256
-        - shadowsocks-16132
-        - shadowsocks-11052
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-676697345
-        - vless-656191936
         - hysteria2-655713406
         - hysteria2-503283256
-        - shadowsocks-16132
-        - shadowsocks-11052
       type: select
 rules:
     - MATCH,select
