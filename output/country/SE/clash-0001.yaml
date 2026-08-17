@@ -69,13 +69,6 @@ proxies:
       skip-cert-verify: false
       sni: gate-v1.not-a-projects.xyz
       type: hysteria2
-    - name: hysteria2-487303205
-      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-      port: 443
-      server: us54.mechvpn.online
-      skip-cert-verify: false
-      sni: us54.mechvpn.online
-      type: hysteria2
     - name: hysteria2-487303214
       password: bQzzrPgfj971MZcmKJNQCBC2p3TytvUV
       port: 43327
@@ -124,13 +117,6 @@ proxies:
       server: 2.27.23.44
       skip-cert-verify: true
       sni: 2.27.23.44
-      type: hysteria2
-    - name: hysteria2-547757550
-      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-      port: 443
-      server: us54.mechvpn.online
-      skip-cert-verify: false
-      sni: ""
       type: hysteria2
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
@@ -293,13 +279,16 @@ proxies:
       skip-cert-verify: true
       sni: us65.mechvpn.online
       type: hysteria2
-    - name: hysteria2-591633768
-      password: 425e9e31-b017-4e32-bbd3-656473466d5e
-      port: 2443
-      server: latvia.koalaexpress.ru
+    - name: vless-591633816
+      network: ws
+      port: 443
+      server: 138.199.46.65
+      servername: s3whlhf3.b-cdn.net
       skip-cert-verify: false
-      sni: latvia.koalaexpress.ru
-      type: hysteria2
+      tls: true
+      type: vless
+      udp: true
+      uuid: 99476b8e-517a-4fc2-815e-6f2061c9e22d
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-591636262
@@ -536,6 +525,47 @@ proxies:
       type: vless
       udp: true
       uuid: 2642342c-fa52-4f62-b44d-fb77de8f75e3
+    - client-fingerprint: qq
+      name: vless-648323932
+      network: grpc
+      port: 9871
+      reality-opts:
+        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+        short-id: aabbccdd
+      server: 176.108.245.57
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f4685d27-73e3-4588-9622-add50b84046a
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-649365498
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: hyOYRfDSIYyqALQt3N2H0RjK8gbV1JvPTkNACC4PJF8
+        short-id: 8718c58d3d51db59
+      server: 88.216.130.136
+      servername: sw1.freehiliters.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 348b1b7d-fe7b-43f9-84b5-a2917925c8a8
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-649371373
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: hyOYRfDSIYyqALQt3N2H0RjK8gbV1JvPTkNACC4PJF8
+        short-id: 8718c58d3d51db59
+      server: sw-n3.gsupport.support
+      servername: sw1.freehiliters.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 348b1b7d-fe7b-43f9-84b5-a2917925c8a8
 proxy-groups:
     - interval: 300
       name: auto
@@ -546,13 +576,11 @@ proxy-groups:
         - hysteria2-467980811
         - vless-470976121
         - hysteria2-474576737
-        - hysteria2-487303205
         - hysteria2-487303214
         - hysteria2-496627717
         - vless-509711183
         - vless-509711255
         - hysteria2-537797362
-        - hysteria2-547757550
         - vless-561635563
         - vless-571426359
         - hysteria2-577252111
@@ -568,7 +596,7 @@ proxy-groups:
         - vless-591344882
         - vless-591436868
         - hysteria2-591436869
-        - hysteria2-591633768
+        - vless-591633816
         - vless-591636262
         - vless-591639618
         - vless-593850024
@@ -588,6 +616,9 @@ proxy-groups:
         - vless-646430301
         - hysteria2-647019505
         - vless-647039503
+        - vless-648323932
+        - vless-649365498
+        - vless-649371373
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -599,13 +630,11 @@ proxy-groups:
         - hysteria2-467980811
         - vless-470976121
         - hysteria2-474576737
-        - hysteria2-487303205
         - hysteria2-487303214
         - hysteria2-496627717
         - vless-509711183
         - vless-509711255
         - hysteria2-537797362
-        - hysteria2-547757550
         - vless-561635563
         - vless-571426359
         - hysteria2-577252111
@@ -621,7 +650,7 @@ proxy-groups:
         - vless-591344882
         - vless-591436868
         - hysteria2-591436869
-        - hysteria2-591633768
+        - vless-591633816
         - vless-591636262
         - vless-591639618
         - vless-593850024
@@ -641,6 +670,9 @@ proxy-groups:
         - vless-646430301
         - hysteria2-647019505
         - vless-647039503
+        - vless-648323932
+        - vless-649365498
+        - vless-649371373
       type: select
 rules:
     - MATCH,select
