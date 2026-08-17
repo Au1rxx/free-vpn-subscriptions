@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: ios
+      name: vless-487331641
+      network: grpc
+      port: 9888
+      reality-opts:
+        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+        short-id: aabbccdd
+      server: 176.109.106.34
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 130e6aab-9eba-441e-9021-22cbccc72832
     - client-fingerprint: firefox
       name: vless-656432321
       network: grpc
@@ -42,6 +55,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-487331641
         - vless-656432321
         - vless-669577491
         - vless-669577492
@@ -50,6 +64,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-487331641
         - vless-656432321
         - vless-669577491
         - vless-669577492

@@ -21,12 +21,27 @@ proxies:
       type: vless
       udp: true
       uuid: fd0cb88f-cb45-47a7-adbd-0f44b2424b0f
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-676698421
+      network: tcp
+      port: 59491
+      reality-opts:
+        public-key: o2uLRBkgcAPCavo12l6VUzaSnSmxjUvod-NBSiUPdy8
+        short-id: "85"
+      server: 207.174.133.115
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 59662d36-17d8-46f7-86e1-74eb6c4b26e0
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-490085150
         - vless-676697364
+        - vless-676698421
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -34,6 +49,7 @@ proxy-groups:
         - auto
         - trojan-490085150
         - vless-676697364
+        - vless-676698421
       type: select
 rules:
     - MATCH,select

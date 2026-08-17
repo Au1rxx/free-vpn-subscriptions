@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-654431412
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: m6RDw1b8R4lCaRUIzhHpy6TtX2Dhk6nyby8dWzeQqA0
-        short-id: dd3ff38418d29d22
-      server: 31.76.62.167
-      servername: eu-west.cendora.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
     - name: vless-612170604
       network: grpc
       port: 2083
@@ -79,29 +65,51 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - name: vless-656201408
+      network: grpc
+      port: 2083
+      server: laoye.in-gect.fun
+      servername: laoye.in-gect.fun
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - name: vless-656188025
+      network: grpc
+      port: 2083
+      server: 89.36.161.222
+      servername: laoye.in-gect.fun
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-654431412
         - vless-612170604
         - vless-483669881
         - vless-655776488
         - vless-503223731
         - vless-561641519
         - vless-468900811
+        - vless-656201408
+        - vless-656188025
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-654431412
         - vless-612170604
         - vless-483669881
         - vless-655776488
         - vless-503223731
         - vless-561641519
         - vless-468900811
+        - vless-656201408
+        - vless-656188025
       type: select
 rules:
     - MATCH,select

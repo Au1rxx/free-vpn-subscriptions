@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-646349341
-      network: tcp
-      port: 10000
-      server: 220.130.75.248
-      type: vless
-      udp: true
-      uuid: 431fe973-a43a-4fac-bf83-2a772e0d0625
     - client-fingerprint: firefox
       name: vless-470984246
       network: tcp
@@ -19,13 +12,6 @@ proxies:
       type: vless
       udp: true
       uuid: b8ca2900-3ed7-4b58-970e-060d0a6cbf99
-    - name: hysteria2-667703181
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: 103.115.109.49
-      skip-cert-verify: true
-      sni: https://t.me/wangcai2
-      type: hysteria2
     - name: vless-647042508
       network: tcp
       port: 10000
@@ -151,13 +137,20 @@ proxies:
       type: vless
       udp: true
       uuid: 59662d36-17d8-46f7-86e1-74eb6c4b26e0
+    - alterId: 0
+      cipher: auto
+      name: vmess-674332653
+      network: none
+      port: 31172
+      server: 202.153.4.171
+      type: vmess
+      udp: true
+      uuid: 2bb735a0-b26e-4628-9f1a-23a6661b1275
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-646349341
         - vless-470984246
-        - hysteria2-667703181
         - vless-647042508
         - hysteria2-656706489
         - vless-656168799
@@ -171,14 +164,13 @@ proxy-groups:
         - vless-562186771
         - hysteria2-654428720
         - vless-676698427
+        - vmess-674332653
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-646349341
         - vless-470984246
-        - hysteria2-667703181
         - vless-647042508
         - hysteria2-656706489
         - vless-656168799
@@ -192,6 +184,7 @@ proxy-groups:
         - vless-562186771
         - hysteria2-654428720
         - vless-676698427
+        - vmess-674332653
       type: select
 rules:
     - MATCH,select
