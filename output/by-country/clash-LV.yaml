@@ -1,0 +1,45 @@
+proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-654431409
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: q4_o7NvD6vQg4hYsyO29Q6PVufjTJHDUbQTqstre9EQ
+        short-id: ""
+      server: 31.170.22.217
+      servername: filehost5.videobooster21.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dbacac09-9ee8-400c-b53b-745a769c220a
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-654431414
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: q4_o7NvD6vQg4hYsyO29Q6PVufjTJHDUbQTqstre9EQ
+        short-id: ""
+      server: 31.170.22.219
+      servername: filehost7.videobooster21.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dbacac09-9ee8-400c-b53b-745a769c220a
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-654431409
+        - vless-654431414
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-654431409
+        - vless-654431414
+      type: select
+rules:
+    - MATCH,select

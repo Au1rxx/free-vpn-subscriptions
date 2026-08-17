@@ -1,0 +1,72 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "31.170.22.217",
+      "server_port": 443,
+      "tag": "vless-654431409",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "q4_o7NvD6vQg4hYsyO29Q6PVufjTJHDUbQTqstre9EQ"
+        },
+        "server_name": "filehost5.videobooster21.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "dbacac09-9ee8-400c-b53b-745a769c220a"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "31.170.22.219",
+      "server_port": 443,
+      "tag": "vless-654431414",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "q4_o7NvD6vQg4hYsyO29Q6PVufjTJHDUbQTqstre9EQ"
+        },
+        "server_name": "filehost7.videobooster21.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "dbacac09-9ee8-400c-b53b-745a769c220a"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-654431409",
+        "vless-654431414"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-654431409",
+        "vless-654431414"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

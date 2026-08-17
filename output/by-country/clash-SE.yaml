@@ -26,12 +26,57 @@ proxies:
       type: vless
       udp: true
       uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-202733753
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: 989gq45ogQSZLDoUTcLNSYW5v_3ER7W_6Oi_8swZzXo
+        short-id: cb55f541
+      server: 178.83.31.93
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4a97788b-5d8a-410c-875c-ba36930e185e
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-200265609
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 989gq45ogQSZLDoUTcLNSYW5v_3ER7W_6Oi_8swZzXo
+        short-id: cb55f541
+      server: 178.83.31.93
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4a97788b-5d8a-410c-875c-ba36930e185e
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-646383479
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+        short-id: ff776ff77be48b88
+      server: 185.231.102.223
+      servername: swed1.helper-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-653950131
         - vless-646430301
+        - vless-202733753
+        - vless-200265609
+        - vless-646383479
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -39,6 +84,9 @@ proxy-groups:
         - auto
         - vless-653950131
         - vless-646430301
+        - vless-202733753
+        - vless-200265609
+        - vless-646383479
       type: select
 rules:
     - MATCH,select

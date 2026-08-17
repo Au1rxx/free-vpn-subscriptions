@@ -1,0 +1,74 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "191.44.32.103",
+      "server_port": 5000,
+      "tag": "vless-663853494",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "SLrTZEGZV42hDpfoCkqPZwwVK2V57Db3y6LxKbxexGU",
+          "short_id": "ae85b4253042d74b"
+        },
+        "server_name": "www.vk.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "ead060e5-21f9-5369-b9f9-175ab7faa20f"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "191.44.32.103",
+      "server_port": 5000,
+      "tag": "vless-663843495",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "SLrTZEGZV42hDpfoCkqPZwwVK2V57Db3y6LxKbxexGU",
+          "short_id": "5a7adcf6"
+        },
+        "server_name": "www.vk.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "ead060e5-21f9-5369-b9f9-175ab7faa20f"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-663853494",
+        "vless-663843495"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-663853494",
+        "vless-663843495"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
