@@ -1,0 +1,67 @@
+{
+  "outbounds": [
+    {
+      "server": "5.180.27.159",
+      "server_port": 8445,
+      "tag": "vless-646386014",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "LZF1JDaVO0Mk_YHH19G5Pv1_jVKm_k_0KcJCWhMHRQo",
+          "short_id": "fe8565750f25"
+        },
+        "server_name": "ya.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "service_name": "grpc",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "fd6011da-5c16-463d-8aaf-ff35c1b95a74"
+    },
+    {
+      "password": "3b8c82ed-fe66-472d-915e-034ccb57103f",
+      "server": "kz.frkn.org",
+      "server_port": 443,
+      "tag": "hysteria2-655713361",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "kz.frkn.org"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-646386014",
+        "hysteria2-655713361"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-646386014",
+        "hysteria2-655713361"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

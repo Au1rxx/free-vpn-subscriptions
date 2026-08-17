@@ -12,17 +12,44 @@ proxies:
       type: vless
       udp: true
       uuid: 62a08ea5-0564-47b4-a92c-25be07ad6358
+    - name: hysteria2-589844094
+      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+      port: 8080
+      server: 46.229.243.131
+      skip-cert-verify: false
+      sni: grape-turbo-fr.roxa.org
+      type: hysteria2
+    - name: hysteria2-600117032
+      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+      port: 8080
+      server: 46.229.243.131
+      skip-cert-verify: true
+      sni: grape-turbo-fr.roxa.org
+      type: hysteria2
+    - name: hysteria2-628782748
+      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+      port: 8080
+      server: 46.229.243.132
+      skip-cert-verify: false
+      sni: grape-turbo-fr.roxa.org
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-647047503
+        - hysteria2-589844094
+        - hysteria2-600117032
+        - hysteria2-628782748
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-647047503
+        - hysteria2-589844094
+        - hysteria2-600117032
+        - hysteria2-628782748
       type: select
 rules:
     - MATCH,select

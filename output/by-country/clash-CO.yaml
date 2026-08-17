@@ -1,0 +1,40 @@
+proxies:
+    - name: vless-665280859
+      network: tcp
+      port: 62145
+      server: 149.130.185.200
+      type: vless
+      udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+    - name: vless-665280858
+      network: tcp
+      port: 62145
+      server: 157.137.234.172
+      type: vless
+      udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+    - cipher: aes-256-gcm
+      name: shadowsocks-537388294
+      password: PCnnH6SQSnfoS27
+      port: 8090
+      server: 149.104.107.41
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-665280859
+        - vless-665280858
+        - shadowsocks-537388294
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-665280859
+        - vless-665280858
+        - shadowsocks-537388294
+      type: select
+rules:
+    - MATCH,select

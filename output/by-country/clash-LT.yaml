@@ -1,45 +1,58 @@
 proxies:
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-260079409
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 00n9LplaZ0VGvRS57548s7xe0deFC10pw2fkFHFPplM
-        short-id: ""
-      server: 84.32.209.7
-      servername: dartsearch-cn.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-258652508
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 00n9LplaZ0VGvRS57548s7xe0deFC10pw2fkFHFPplM
-        short-id: ""
-      server: 84.32.209.7
-      servername: dartsearch-cn.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
+    - name: hysteria2-589844065
+      password: 896002a8-3afc-49e6-8fac-5129fb717b49
+      port: 2443
+      server: latvia.koalaexpress.ru
+      skip-cert-verify: false
+      sni: latvia.koalaexpress.ru
+      type: hysteria2
+    - name: hysteria2-591633767
+      password: 137f3b50-a6ba-40e7-b537-e37fab064097
+      port: 2443
+      server: latvia.koalaexpress.ru
+      skip-cert-verify: false
+      sni: latvia.koalaexpress.ru
+      type: hysteria2
+    - name: hysteria2-591633768
+      password: 425e9e31-b017-4e32-bbd3-656473466d5e
+      port: 2443
+      server: latvia.koalaexpress.ru
+      skip-cert-verify: false
+      sni: latvia.koalaexpress.ru
+      type: hysteria2
+    - name: hysteria2-625719949
+      password: 137f3b50-a6ba-40e7-b537-e37fab064097
+      port: 2443
+      server: latvia.koalaexpress.ru
+      skip-cert-verify: true
+      sni: latvia.koalaexpress.ru
+      type: hysteria2
+    - name: hysteria2-650732763
+      password: 425e9e31-b017-4e32-bbd3-656473466d5e
+      port: 2443
+      server: latvia.koalaexpress.ru
+      skip-cert-verify: true
+      sni: latvia.koalaexpress.ru
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-260079409
-        - vless-258652508
+        - hysteria2-589844065
+        - hysteria2-591633767
+        - hysteria2-591633768
+        - hysteria2-625719949
+        - hysteria2-650732763
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-260079409
-        - vless-258652508
+        - hysteria2-589844065
+        - hysteria2-591633767
+        - hysteria2-591633768
+        - hysteria2-625719949
+        - hysteria2-650732763
       type: select
 rules:
     - MATCH,select

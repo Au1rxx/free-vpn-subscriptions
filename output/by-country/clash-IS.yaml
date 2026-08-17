@@ -1,0 +1,37 @@
+proxies:
+    - client-fingerprint: firefox
+      name: vless-646386014
+      network: grpc
+      port: 8445
+      reality-opts:
+        public-key: LZF1JDaVO0Mk_YHH19G5Pv1_jVKm_k_0KcJCWhMHRQo
+        short-id: fe8565750f25
+      server: 5.180.27.159
+      servername: ya.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: fd6011da-5c16-463d-8aaf-ff35c1b95a74
+    - name: hysteria2-655713361
+      password: 3b8c82ed-fe66-472d-915e-034ccb57103f
+      port: 443
+      server: kz.frkn.org
+      skip-cert-verify: false
+      sni: kz.frkn.org
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-646386014
+        - hysteria2-655713361
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-646386014
+        - hysteria2-655713361
+      type: select
+rules:
+    - MATCH,select
