@@ -1,0 +1,45 @@
+proxies:
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-667730906
+      network: tcp
+      port: 10298
+      reality-opts:
+        public-key: KZUlOnK6frAx_HFpwG0TGu-Lwhtu4507gIGNsLK-kko
+        short-id: d0b14a7f0c52
+      server: beatr-hk1.599789.xyz
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dc7c01c9-57a6-4c9e-a966-0260a43a7014
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-667730911
+      network: tcp
+      port: 10298
+      reality-opts:
+        public-key: KZUlOnK6frAx_HFpwG0TGu-Lwhtu4507gIGNsLK-kko
+        short-id: d0b14a7f0c52
+      server: beatr-ma1.599789.xyz
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dc7c01c9-57a6-4c9e-a966-0260a43a7014
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-667730906
+        - vless-667730911
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-667730906
+        - vless-667730911
+      type: select
+rules:
+    - MATCH,select

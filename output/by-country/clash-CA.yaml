@@ -1,5 +1,18 @@
 proxies:
     - client-fingerprint: firefox
+      name: vless-501276503
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 0KeXfLKnfTgIL7U-hSEn284rsECLiru0s0Rd11XzyzQ
+        short-id: d823e50b944daee4
+      server: 66.70.179.198
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 339db138-41ff-44e9-a323-46da89fbf1a7
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-661704684
       network: tcp
@@ -13,6 +26,34 @@ proxies:
       type: vless
       udp: true
       uuid: a71c8954-66a8-4321-bedb-2336230d81ce
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-24252274
+      network: tcp
+      port: 41373
+      reality-opts:
+        public-key: m0GsZOAwvAJEaqh9aH6qfOmBKo0KW0jY_tJEC6KaDEU
+        short-id: 0e
+      server: 130.107.73.148
+      servername: google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a71c8954-66a8-4321-bedb-2336230d81ce
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-667730938
+      network: tcp
+      port: 29889
+      reality-opts:
+        public-key: o2uLRBkgcAPCavo12l6VUzaSnSmxjUvod-NBSiUPdy8
+        short-id: "85"
+      server: beatr-hk1.599789.xyz
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dc7c01c9-57a6-4c9e-a966-0260a43a7014
     - alterId: 0
       cipher: auto
       name: vmess-619700028
@@ -64,39 +105,14 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-487917493
-      password: ytw2awn
-      port: 443
-      server: 142.4.216.225
-      type: ss
-      udp: true
-    - cipher: rc4-md5
-      name: shadowsocks-468218613
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 138.197.141.58
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-415242973
-      password: FD3rCuOsxOay
-      port: 8388
-      server: 15.235.75.71
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-465806702
-      password: ytw2awn
-      port: 443
-      server: ca225.vpnbook.com
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-501276503
         - vless-661704684
+        - vless-24252274
+        - vless-667730938
         - vmess-619700028
         - hysteria2-655838402
         - hysteria2-468892439
@@ -104,16 +120,15 @@ proxy-groups:
         - hysteria2-468892440
         - hysteria2-200394189
         - hysteria2-509047556
-        - shadowsocks-487917493
-        - shadowsocks-468218613
-        - shadowsocks-415242973
-        - shadowsocks-465806702
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-501276503
         - vless-661704684
+        - vless-24252274
+        - vless-667730938
         - vmess-619700028
         - hysteria2-655838402
         - hysteria2-468892439
@@ -121,10 +136,6 @@ proxy-groups:
         - hysteria2-468892440
         - hysteria2-200394189
         - hysteria2-509047556
-        - shadowsocks-487917493
-        - shadowsocks-468218613
-        - shadowsocks-415242973
-        - shadowsocks-465806702
       type: select
 rules:
     - MATCH,select

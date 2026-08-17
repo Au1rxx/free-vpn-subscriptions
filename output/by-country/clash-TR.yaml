@@ -1,20 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-652321673
-      password: tunnel-fbrof
-      port: 8444
-      server: 193.124.46.134
-      type: ss
-      udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-653885447
-      network: ws
-      port: 58304
-      server: 193.111.78.106
-      type: vmess
-      udp: true
-      uuid: 26b6fd32-04e6-43ff-a065-bea36f748655
     - client-fingerprint: chrome
       name: vless-515164913
       network: tcp
@@ -28,43 +12,13 @@ proxies:
       type: vless
       udp: true
       uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
-    - flow: xtls-rprx-vision
-      name: vless-559149719
+    - name: vless-669014513
       network: tcp
       port: 8443
-      server: 193.124.46.65
-      servername: 193.124.46.65
-      skip-cert-verify: false
-      tls: true
+      server: 176.65.151.215
       type: vless
       udp: true
-      uuid: 68bdc1ee-c6ee-4d91-ab52-35ce0d368302
-    - client-fingerprint: firefox
-      name: vless-655574671
-      network: tcp
-      port: 1758
-      reality-opts:
-        public-key: YHpxdq3UWoSZyk_mw5hUWvSkWIN4A8bksnnxrfHrzBE
-        short-id: b5516a2b1bdcb4f6
-      server: klsjdo.restaurantbomb.com
-      servername: www.yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 57d430fa-6b15-41ba-9b94-05a05b64fd66
-    - client-fingerprint: chrome
-      name: vless-654572867
-      network: tcp
-      port: 1758
-      reality-opts:
-        public-key: YHpxdq3UWoSZyk_mw5hUWvSkWIN4A8bksnnxrfHrzBE
-        short-id: b5516a2b1bdcb4f6
-      server: klsjdo.restaurantbomb.com
-      servername: www.yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 57d430fa-6b15-41ba-9b94-05a05b64fd66
+      uuid: bfd814a8-d377-4324-b23e-10d9dcd0a988
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-654432400
@@ -79,6 +33,31 @@ proxies:
       type: vless
       udp: true
       uuid: 629f88a6-b20b-4489-a22f-4d8b418c0488
+    - flow: xtls-rprx-vision
+      name: vless-559149719
+      network: tcp
+      port: 8443
+      server: 193.124.46.65
+      servername: 193.124.46.65
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 68bdc1ee-c6ee-4d91-ab52-35ce0d368302
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-667730930
+      network: tcp
+      port: 36525
+      reality-opts:
+        public-key: o2uLRBkgcAPCavo12l6VUzaSnSmxjUvod-NBSiUPdy8
+        short-id: "85"
+      server: beatr-hk3.599789.xyz
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dc7c01c9-57a6-4c9e-a966-0260a43a7014
     - name: hysteria2-655713421
       password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
       port: 8080
@@ -86,40 +65,27 @@ proxies:
       skip-cert-verify: true
       sni: mercedes-grape.yyuyy.com
       type: hysteria2
-    - name: hysteria2-645328527
-      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
-      port: 8080
-      server: 162.249.124.103
-      skip-cert-verify: false
-      sni: mercedes-grape.yyuyy.com
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-652321673
-        - vmess-653885447
         - vless-515164913
-        - vless-559149719
-        - vless-655574671
-        - vless-654572867
+        - vless-669014513
         - vless-654432400
+        - vless-559149719
+        - vless-667730930
         - hysteria2-655713421
-        - hysteria2-645328527
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-652321673
-        - vmess-653885447
         - vless-515164913
-        - vless-559149719
-        - vless-655574671
-        - vless-654572867
+        - vless-669014513
         - vless-654432400
+        - vless-559149719
+        - vless-667730930
         - hysteria2-655713421
-        - hysteria2-645328527
       type: select
 rules:
     - MATCH,select

@@ -1,0 +1,106 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "beatr-hk1.599789.xyz",
+      "server_port": 10298,
+      "tag": "vless-667730906",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "KZUlOnK6frAx_HFpwG0TGu-Lwhtu4507gIGNsLK-kko",
+          "short_id": "d0b14a7f0c52"
+        },
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "type": "vless",
+      "uuid": "dc7c01c9-57a6-4c9e-a966-0260a43a7014"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "beatr-ma1.599789.xyz",
+      "server_port": 10298,
+      "tag": "vless-667730911",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "KZUlOnK6frAx_HFpwG0TGu-Lwhtu4507gIGNsLK-kko",
+          "short_id": "d0b14a7f0c52"
+        },
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "type": "vless",
+      "uuid": "dc7c01c9-57a6-4c9e-a966-0260a43a7014"
+    },
+    {
+      "server": "175.143.76.177",
+      "server_port": 8181,
+      "tag": "http-229050744",
+      "type": "http"
+    },
+    {
+      "server": "175.136.239.173",
+      "server_port": 8181,
+      "tag": "http-163611211",
+      "type": "http"
+    },
+    {
+      "server": "175.136.239.174",
+      "server_port": 8181,
+      "tag": "http-156534691",
+      "type": "http"
+    },
+    {
+      "server": "175.139.255.25",
+      "server_port": 8181,
+      "tag": "http-48654790",
+      "type": "http"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-667730906",
+        "vless-667730911",
+        "http-229050744",
+        "http-163611211",
+        "http-156534691",
+        "http-48654790"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-667730906",
+        "vless-667730911",
+        "http-229050744",
+        "http-163611211",
+        "http-156534691",
+        "http-48654790"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
