@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-515617402
+      password: AE62539071
+      port: 443
+      server: premium-perch.rooster465.autos
+      skip-cert-verify: true
+      sni: premium-perch.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-515617403
       password: AE62539071
       port: 443
@@ -17483,18 +17491,11 @@ proxies:
       sni: maximum-elk.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-577262934
-      password: AE62539071
-      port: 443
-      server: 54.64.255.224
-      skip-cert-verify: false
-      sni: maximum-elk.rooster465.autos
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-515617402
         - trojan-515617403
         - trojan-515617404
         - trojan-515619400
@@ -19493,12 +19494,12 @@ proxy-groups:
         - trojan-577262931
         - trojan-577262932
         - trojan-577262933
-        - trojan-577262934
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-515617402
         - trojan-515617403
         - trojan-515617404
         - trojan-515619400
@@ -21497,7 +21498,6 @@ proxy-groups:
         - trojan-577262931
         - trojan-577262932
         - trojan-577262933
-        - trojan-577262934
       type: select
 rules:
     - MATCH,select

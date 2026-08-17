@@ -1,20 +1,6 @@
 proxies:
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-470978183
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-        short-id: c39cc7310a
-      server: 169.40.42.182
-      servername: yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
       name: vless-470978184
       network: tcp
       port: 443
@@ -22711,11 +22697,23 @@ proxies:
       type: vless
       udp: true
       uuid: f8c5b018-f51a-4137-be8a-50a451630589
+    - client-fingerprint: firefox
+      name: vless-638467106
+      network: grpc
+      port: 2096
+      reality-opts:
+        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+        short-id: ""
+      server: 185.43.7.212
+      servername: id.vk.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 53b7fdec-4ccb-481a-8d98-83aa19509330
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-470978183
         - vless-470978184
         - vless-470978185
         - vless-470978186
@@ -24715,12 +24713,12 @@ proxy-groups:
         - vless-638467085
         - vless-638467086
         - vless-638467087
+        - vless-638467106
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-470978183
         - vless-470978184
         - vless-470978185
         - vless-470978186
@@ -26720,6 +26718,7 @@ proxy-groups:
         - vless-638467085
         - vless-638467086
         - vless-638467087
+        - vless-638467106
       type: select
 rules:
     - MATCH,select
