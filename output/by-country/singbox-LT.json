@@ -1,6 +1,27 @@
 {
   "outbounds": [
     {
+      "flow": "xtls-rprx-vision",
+      "server": "84.32.209.7",
+      "server_port": 443,
+      "tag": "vless-685581292",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "00n9LplaZ0VGvRS57548s7xe0deFC10pw2fkFHFPplM"
+        },
+        "server_name": "dartsearch-cn.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "f1c496bf-d2ab-45be-bc13-051d60d227b7"
+    },
+    {
       "password": "425e9e31-b017-4e32-bbd3-656473466d5e",
       "server": "latvia.koalaexpress.ru",
       "server_port": 2443,
@@ -13,9 +34,23 @@
       "type": "hysteria2"
     },
     {
+      "password": "425e9e31-b017-4e32-bbd3-656473466d5e",
+      "server": "latvia.koalaexpress.ru",
+      "server_port": 2443,
+      "tag": "hysteria2-650732763",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "latvia.koalaexpress.ru"
+      },
+      "type": "hysteria2"
+    },
+    {
       "interval": "5m",
       "outbounds": [
-        "hysteria2-591633768"
+        "vless-685581292",
+        "hysteria2-591633768",
+        "hysteria2-650732763"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -24,7 +59,9 @@
     {
       "outbounds": [
         "auto",
-        "hysteria2-591633768"
+        "vless-685581292",
+        "hysteria2-591633768",
+        "hysteria2-650732763"
       ],
       "tag": "select",
       "type": "selector"

@@ -1,28 +1,11 @@
 proxies:
-    - name: vless-669875013
-      network: ws
-      port: 443
-      server: 199.232.78.159
-      servername: ssl.fastly.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
+    - cipher: aes-256-gcm
+      name: shadowsocks-684939310
+      password: NTNjMmY0YzM2OTIwYzBkNmJkZGFiNjJmNGUxZGEx
+      port: 995
+      server: helsinki02.npvnot.com
+      type: ss
       udp: true
-      uuid: e0454af2-6fe9-4983-a55d-05e1da202602
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-659683732
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: lQ8pnlOU0kqS77TA7Fftl8nSzktXLzFpOLGqCZEAhjg
-        short-id: aaec521b22bbe6cb
-      server: 185.221.163.211
-      servername: fin1.panel11.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9aff0732-7ce4-4b34-ba20-e67c6df64fdd
     - name: vless-674341271
       network: ws
       port: 2053
@@ -88,19 +71,6 @@ proxies:
       type: vless
       udp: true
       uuid: 604c8c22-1524-4a3f-b85f-d3375482dcc4
-    - client-fingerprint: qq
-      name: vless-477044257
-      network: tcp
-      port: 20422
-      reality-opts:
-        public-key: ZUQTvwYk_hDqSrw36uc18MkeEIXIGZZGsf5XWVwdqAQ
-        short-id: "90"
-      server: 31.76.46.138
-      servername: yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d8523317-503e-43ad-b2c3-e5f77d725848
     - name: vless-676921033
       network: ws
       port: 443
@@ -202,19 +172,38 @@ proxies:
       skip-cert-verify: false
       sni: hopp-legend-se.roxa.org
       type: hysteria2
+    - name: hysteria2-622971569
+      password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
+      port: 443
+      server: fast.wwwinternetvideo.click
+      skip-cert-verify: false
+      sni: fast.wwwinternetvideo.click
+      type: hysteria2
+    - name: hysteria2-654428712
+      password: 3b8c82ed-fe66-472d-915e-034ccb57103f
+      port: 443
+      server: swe2.frkn.org
+      skip-cert-verify: false
+      sni: ""
+      type: hysteria2
+    - cipher: aes-256-gcm
+      name: shadowsocks-676913023
+      password: MTI4OThkNDFkMTRlMGVmNTRhMjk2ZTgxNGEwMDM2
+      port: 995
+      server: helsinki03.npvnot.com
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-669875013
-        - vless-659683732
+        - shadowsocks-684939310
         - vless-674341271
         - vless-678561089
         - vless-674341302
         - vless-682975329
         - vless-676921035
         - vless-681912388
-        - vless-477044257
         - vless-676921033
         - vless-674031496
         - vless-674602381
@@ -226,20 +215,21 @@ proxy-groups:
         - hysteria2-655649371
         - hysteria2-652726847
         - hysteria2-271206441
+        - hysteria2-622971569
+        - hysteria2-654428712
+        - shadowsocks-676913023
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-669875013
-        - vless-659683732
+        - shadowsocks-684939310
         - vless-674341271
         - vless-678561089
         - vless-674341302
         - vless-682975329
         - vless-676921035
         - vless-681912388
-        - vless-477044257
         - vless-676921033
         - vless-674031496
         - vless-674602381
@@ -251,6 +241,9 @@ proxy-groups:
         - hysteria2-655649371
         - hysteria2-652726847
         - hysteria2-271206441
+        - hysteria2-622971569
+        - hysteria2-654428712
+        - shadowsocks-676913023
       type: select
 rules:
     - MATCH,select

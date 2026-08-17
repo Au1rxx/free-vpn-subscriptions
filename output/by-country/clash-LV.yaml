@@ -1,28 +1,4 @@
 proxies:
-    - name: vless-612170604
-      network: grpc
-      port: 2083
-      server: laoye.in-gect.fun
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-483669881
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: cGVu5j95KoeHBkWXveyTKolORbdvZm9g1T6yyo64ZBg
-        short-id: d26f4703cdd30f4e
-      server: 89.36.161.222
-      servername: vk.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - name: hysteria2-232798723
       password: vpn-hy2-lv-2026
       port: 8444
@@ -30,21 +6,26 @@ proxies:
       skip-cert-verify: true
       sni: 185.236.22.119
       type: hysteria2
+    - name: hysteria2-248653949
+      password: vpn-hy2-lv-2026
+      port: 8444
+      server: 185.236.22.119
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-612170604
-        - vless-483669881
         - hysteria2-232798723
+        - hysteria2-248653949
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-612170604
-        - vless-483669881
         - hysteria2-232798723
+        - hysteria2-248653949
       type: select
 rules:
     - MATCH,select

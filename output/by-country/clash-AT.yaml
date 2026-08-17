@@ -1,27 +1,13 @@
 proxies:
-    - client-fingerprint: chrome
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-669867407
+      name: vless-685581268
       network: raw
       port: 443
       reality-opts:
         public-key: UO3EObgU3xUrhIGEE0gfCn5ZOz8YxNcwwW6ZaYzD3SA
         short-id: 4e9b0c2d1a3f5768
       server: 152.53.114.186
-      servername: as.tunnelx.space
-      tls: true
-      type: vless
-      udp: true
-      uuid: ab7d5ea9-6eca-47c3-b14b-67378fc2d7c2
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-661029426
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: UO3EObgU3xUrhIGEE0gfCn5ZOz8YxNcwwW6ZaYzD3SA
-        short-id: 4e9b0c2d1a3f5768
-      server: as.tunnelx.space
       servername: as.tunnelx.space
       tls: true
       type: vless
@@ -139,12 +125,18 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
+    - name: hysteria2-591458938
+      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+      port: 443
+      server: at164.mechvpn.online
+      skip-cert-verify: false
+      sni: ""
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-669867407
-        - vless-661029426
+        - vless-685581268
         - hysteria2-600117026
         - hysteria2-656706469
         - hysteria2-591436834
@@ -161,13 +153,13 @@ proxy-groups:
         - hysteria2-589844057
         - hysteria2-620747902
         - hysteria2-654428716
+        - hysteria2-591458938
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-669867407
-        - vless-661029426
+        - vless-685581268
         - hysteria2-600117026
         - hysteria2-656706469
         - hysteria2-591436834
@@ -184,6 +176,7 @@ proxy-groups:
         - hysteria2-589844057
         - hysteria2-620747902
         - hysteria2-654428716
+        - hysteria2-591458938
       type: select
 rules:
     - MATCH,select

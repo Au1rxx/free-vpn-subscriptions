@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-685046359
+      network: tcp
+      port: 10298
+      reality-opts:
+        public-key: KZUlOnK6frAx_HFpwG0TGu-Lwhtu4507gIGNsLK-kko
+        short-id: d0b14a7f0c52
+      server: beatr-ma1.599789.xyz
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: afa134c3-6a58-4fac-95a5-4cf0eda31681
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-676697339
@@ -27,19 +41,37 @@ proxies:
       type: vless
       udp: true
       uuid: fd0cb88f-cb45-47a7-adbd-0f44b2424b0f
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-685046354
+      network: tcp
+      port: 10298
+      reality-opts:
+        public-key: KZUlOnK6frAx_HFpwG0TGu-Lwhtu4507gIGNsLK-kko
+        short-id: d0b14a7f0c52
+      server: beatr-hk1.599789.xyz
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: afa134c3-6a58-4fac-95a5-4cf0eda31681
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-685046359
         - vless-676697339
         - vless-676697344
+        - vless-685046354
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-685046359
         - vless-676697339
         - vless-676697344
+        - vless-685046354
       type: select
 rules:
     - MATCH,select

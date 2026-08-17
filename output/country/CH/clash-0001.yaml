@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-470985969
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: KrFnWxAwVGL6tuj1JE0qpykLzY4aOFjyK3OaymF_hT0
+        short-id: e2e66f4537770cef
+      server: 45.90.56.231
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e2b8f727-c5ee-47e1-8f1b-7c5c61479ce0
     - name: hysteria2-589844094
       password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
       port: 8080
@@ -144,6 +158,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-470985969
         - hysteria2-589844094
         - hysteria2-600117032
         - hysteria2-628782748
@@ -163,6 +178,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-470985969
         - hysteria2-589844094
         - hysteria2-600117032
         - hysteria2-628782748
