@@ -6,17 +6,49 @@ proxies:
       server: 38.54.93.66
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-676697358
+      network: tcp
+      port: 19660
+      reality-opts:
+        public-key: o2uLRBkgcAPCavo12l6VUzaSnSmxjUvod-NBSiUPdy8
+        short-id: "85"
+      server: beatr-hk3.599789.xyz
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: fd0cb88f-cb45-47a7-adbd-0f44b2424b0f
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-676698415
+      network: tcp
+      port: 19660
+      reality-opts:
+        public-key: o2uLRBkgcAPCavo12l6VUzaSnSmxjUvod-NBSiUPdy8
+        short-id: "85"
+      server: beatr-hk3.599789.xyz
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 59662d36-17d8-46f7-86e1-74eb6c4b26e0
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-98143583
+        - vless-676697358
+        - vless-676698415
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-98143583
+        - vless-676697358
+        - vless-676698415
       type: select
 rules:
     - MATCH,select

@@ -1,7 +1,7 @@
 proxies:
-    - client-fingerprint: chrome
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-667730909
+      name: vless-676697342
       network: tcp
       port: 45003
       reality-opts:
@@ -12,18 +12,34 @@ proxies:
       tls: true
       type: vless
       udp: true
-      uuid: dc7c01c9-57a6-4c9e-a966-0260a43a7014
+      uuid: fd0cb88f-cb45-47a7-adbd-0f44b2424b0f
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-676698399
+      network: tcp
+      port: 45003
+      reality-opts:
+        public-key: UOm0J3F4jQCKZUJXU0roM9yhl7YwTcibxYgXnfY6kF8
+        short-id: 8bce
+      server: beatr-hk3.599789.xyz
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 59662d36-17d8-46f7-86e1-74eb6c4b26e0
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-667730909
+        - vless-676697342
+        - vless-676698399
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-667730909
+        - vless-676697342
+        - vless-676698399
       type: select
 rules:
     - MATCH,select

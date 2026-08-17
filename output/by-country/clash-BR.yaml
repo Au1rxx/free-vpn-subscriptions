@@ -1,4 +1,11 @@
 proxies:
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-674609653
+      password: e7n6+Uknur6uXiP4zuJYN+n6KACAX9+s17J3MLnzNB4=
+      port: 59319
+      server: 129.159.55.129
+      type: ss
+      udp: true
     - flow: xtls-rprx-vision
       name: vless-656162676
       network: tcp
@@ -47,6 +54,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-674609653
         - vless-656162676
         - vless-656156631
         - vless-656142749
@@ -56,6 +64,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-674609653
         - vless-656162676
         - vless-656156631
         - vless-656142749

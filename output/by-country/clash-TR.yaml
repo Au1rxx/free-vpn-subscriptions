@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-676400072
+      network: ws
+      port: 8443
+      server: 172.64.146.62
+      servername: j0in-te1egram-eiiim.danesh-bonyan.store
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: Telegram-EiiiM
     - client-fingerprint: chrome
       name: vless-515164913
       network: tcp
@@ -54,25 +64,43 @@ proxies:
       type: vless
       udp: true
       uuid: 68bdc1ee-c6ee-4d91-ab52-35ce0d368302
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-654432400
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: RwtMzZtTCmy9WRq3_27xeGF8-1l_qPXRVG3yIFp-6Go
+        short-id: c0d1d1776fed0f6d
+      server: 212.64.201.33
+      servername: tr-t.vinnypuxtomoon.today
+      tls: true
+      type: vless
+      udp: true
+      uuid: 629f88a6-b20b-4489-a22f-4d8b418c0488
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-676400072
         - vless-515164913
         - vless-669014513
         - vless-656187930
         - vless-656245061
         - vless-559149719
+        - vless-654432400
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-676400072
         - vless-515164913
         - vless-669014513
         - vless-656187930
         - vless-656245061
         - vless-559149719
+        - vless-654432400
       type: select
 rules:
     - MATCH,select

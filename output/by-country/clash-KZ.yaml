@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: chrome
+      name: vless-675797067
+      network: tcp
+      port: 19747
+      reality-opts:
+        public-key: ZO9dTeg1slvTXgVsBsaJ1BDvz_YUImTLJjbHs-GdVyM
+        short-id: "2001"
+      server: 77.73.232.61
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2a9ed01e-5455-44b4-a66a-76ee8165f0ac
     - client-fingerprint: firefox
       name: vless-646384927
       network: grpc
@@ -30,6 +43,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-675797067
         - vless-646384927
         - vless-655711948
       type: url-test
@@ -37,6 +51,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-675797067
         - vless-646384927
         - vless-655711948
       type: select
