@@ -6,17 +6,17 @@ proxies:
       skip-cert-verify: true
       sni: grape-zet-ro-turbo.bumbleshrimp.com
       type: hysteria2
-    - name: hysteria2-591436842
-      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
-      port: 8443
-      server: 85.204.107.165
-      skip-cert-verify: true
-      sni: grape-zet-ro-turbo.bumbleshrimp.com
-      type: hysteria2
     - name: hysteria2-646349283
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
       port: 8443
       server: 85.204.107.166
+      skip-cert-verify: true
+      sni: grape-zet-ro-turbo.bumbleshrimp.com
+      type: hysteria2
+    - name: hysteria2-591436842
+      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+      port: 8443
+      server: 85.204.107.165
       skip-cert-verify: true
       sni: grape-zet-ro-turbo.bumbleshrimp.com
       type: hysteria2
@@ -25,6 +25,27 @@ proxies:
       port: 8443
       server: 85.204.107.165
       skip-cert-verify: true
+      sni: grape-zet-ro-turbo.bumbleshrimp.com
+      type: hysteria2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-656234906
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 1xxZM10W-A8nuj6MOXFd1kA9lS7bEy-5SO5j-jrd_Cg
+        short-id: b70076439f4a1340
+      server: 82.117.255.87
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b748a230-b157-4401-8423-f8e44df31b5e
+    - name: hysteria2-656706475
+      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+      port: 8443
+      server: 85.204.107.164
+      skip-cert-verify: false
       sni: grape-zet-ro-turbo.bumbleshrimp.com
       type: hysteria2
     - name: vless-653885382
@@ -37,13 +58,6 @@ proxies:
       type: vless
       udp: true
       uuid: 03707fb7-0990-440f-88f6-b0e0f7242a38
-    - name: hysteria2-656706475
-      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
-      port: 8443
-      server: 85.204.107.164
-      skip-cert-verify: false
-      sni: grape-zet-ro-turbo.bumbleshrimp.com
-      type: hysteria2
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-559140234
@@ -58,38 +72,31 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
-    - name: hysteria2-17587
-      password: 35415e5e-3666-4454-8c45-903af0fcddf4
-      port: 47257
-      server: 85.120.228.208
-      skip-cert-verify: true
-      sni: www.bing.com
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-646349284
-        - hysteria2-591436842
         - hysteria2-646349283
+        - hysteria2-591436842
         - hysteria2-656706470
-        - vless-653885382
+        - vless-656234906
         - hysteria2-656706475
+        - vless-653885382
         - vless-559140234
-        - hysteria2-17587
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-646349284
-        - hysteria2-591436842
         - hysteria2-646349283
+        - hysteria2-591436842
         - hysteria2-656706470
-        - vless-653885382
+        - vless-656234906
         - hysteria2-656706475
+        - vless-653885382
         - vless-559140234
-        - hysteria2-17587
       type: select
 rules:
     - MATCH,select

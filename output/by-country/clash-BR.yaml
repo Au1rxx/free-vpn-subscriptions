@@ -11,6 +11,17 @@ proxies:
       udp: true
       uuid: 0000e293-996d-4c32-99dc-29a8aba80d06
     - flow: xtls-rprx-vision
+      name: vless-656162676
+      network: tcp
+      port: 443
+      server: cave.magazinetut.online
+      servername: cave.magazinetut.online
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: a78d6a0b-8751-4e8e-bafa-79a86c5a5fc7
+    - flow: xtls-rprx-vision
       name: vless-656156631
       network: tcp
       port: 443
@@ -32,37 +43,36 @@ proxies:
       type: vless
       udp: true
       uuid: 0000e293-996d-4c32-99dc-29a8aba80d06
-    - client-fingerprint: ios
-      flow: xtls-rprx-vision
-      name: vless-667730913
+    - flow: xtls-rprx-vision
+      name: vless-656191654
       network: tcp
-      port: 11167
-      reality-opts:
-        public-key: zrwJjaWEAfAZ3QCgnLnLoPE-edB_3wvKCqIz9maP02g
-        short-id: ac
-      server: 178.92.205.63
-      servername: www.tesla.com
+      port: 443
+      server: cave.magazinetut.online
+      servername: cave.magazinetut.online
+      skip-cert-verify: true
       tls: true
       type: vless
       udp: true
-      uuid: dc7c01c9-57a6-4c9e-a966-0260a43a7014
+      uuid: 0000e293-996d-4c32-99dc-29a8aba80d06
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-663941923
+        - vless-656162676
         - vless-656156631
         - vless-656142749
-        - vless-667730913
+        - vless-656191654
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-663941923
+        - vless-656162676
         - vless-656156631
         - vless-656142749
-        - vless-667730913
+        - vless-656191654
       type: select
 rules:
     - MATCH,select

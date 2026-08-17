@@ -1,5 +1,61 @@
 proxies:
     - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-470978189
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: kjiuPmjM4IutdZudHfcPZHEwcrBEFY4qBLlvfC6A_Ss
+        short-id: b9f8d3f8
+      server: 216.152.147.28
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d9e4721d-cdac-44c7-bc91-117367eac194
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-619897530
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: wo417FrFdjy7ZhccQ-VWGZEKcoCHSEfyWcJT1pIVc1Y
+        short-id: 3d3c1e645f763ee3
+      server: 158.69.112.254
+      servername: www.speedtest.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 661f395d-b153-4199-a04b-693f5fe7f261
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-656230615
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: kjiuPmjM4IutdZudHfcPZHEwcrBEFY4qBLlvfC6A_Ss
+        short-id: b9f8d3f8
+      server: 216.152.147.28
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d9e4721d-cdac-44c7-bc91-117367eac194
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-656230710
+      network: tcp
+      port: 41373
+      reality-opts:
+        public-key: m0GsZOAwvAJEaqh9aH6qfOmBKo0KW0jY_tJEC6KaDEU
+        short-id: 0e
+      server: 130.107.73.148
+      servername: google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a71c8954-66a8-4321-bedb-2336230d81ce
+    - client-fingerprint: firefox
       name: vless-501276503
       network: tcp
       port: 2053
@@ -26,6 +82,47 @@ proxies:
       type: vless
       udp: true
       uuid: a71c8954-66a8-4321-bedb-2336230d81ce
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-656230635
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 6clD-wWfOGRFlh91SRgnfvtO6BjZP7LM2-B4u7x3gh0
+        short-id: 03c7c40feb004001
+      server: 209.200.246.143
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6ca50712-c5cd-4e32-97c5-bfa6485b848a
+    - client-fingerprint: firefox
+      name: vless-656230614
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 0KeXfLKnfTgIL7U-hSEn284rsECLiru0s0Rd11XzyzQ
+        short-id: d823e50b944daee4
+      server: 66.70.179.198
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 339db138-41ff-44e9-a323-46da89fbf1a7
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-656230633
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: wo417FrFdjy7ZhccQ-VWGZEKcoCHSEfyWcJT1pIVc1Y
+        short-id: 3d3c1e645f763ee3
+      server: 158.69.112.254
+      servername: www.speedtest.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 661f395d-b153-4199-a04b-693f5fe7f261
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-24252274
@@ -40,14 +137,6 @@ proxies:
       type: vless
       udp: true
       uuid: a71c8954-66a8-4321-bedb-2336230d81ce
-    - name: trojan-655646820
-      password: lEjtI3pFYfU7O1UYozJcfZV5K6Fwfths
-      port: 58536
-      server: 64.74.163.118
-      skip-cert-verify: true
-      sni: 64.74.163.118
-      type: trojan
-      udp: true
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-667730938
@@ -71,27 +160,49 @@ proxies:
       type: vmess
       udp: true
       uuid: ebca559c-a4a1-4062-9453-6412d8ff5255
+    - name: trojan-655646820
+      password: lEjtI3pFYfU7O1UYozJcfZV5K6Fwfths
+      port: 58536
+      server: 64.74.163.118
+      skip-cert-verify: true
+      sni: 64.74.163.118
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-470978189
+        - vless-619897530
+        - vless-656230615
+        - vless-656230710
         - vless-501276503
         - vless-661704684
+        - vless-656230635
+        - vless-656230614
+        - vless-656230633
         - vless-24252274
-        - trojan-655646820
         - vless-667730938
         - vmess-619700028
+        - trojan-655646820
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-470978189
+        - vless-619897530
+        - vless-656230615
+        - vless-656230710
         - vless-501276503
         - vless-661704684
+        - vless-656230635
+        - vless-656230614
+        - vless-656230633
         - vless-24252274
-        - trojan-655646820
         - vless-667730938
         - vmess-619700028
+        - trojan-655646820
       type: select
 rules:
     - MATCH,select

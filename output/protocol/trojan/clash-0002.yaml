@@ -1,4 +1,28 @@
 proxies:
+    - name: trojan-494463695
+      password: AE62539071
+      port: 443
+      server: 52.195.10.183
+      skip-cert-verify: false
+      sni: improved-anteater.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-494465695
+      password: AE62539071
+      port: 443
+      server: charmed-fly.rooster465.autos
+      skip-cert-verify: true
+      sni: charmed-fly.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-494465696
+      password: AE62539071
+      port: 443
+      server: clear-killdeer.rooster465.autos
+      skip-cert-verify: true
+      sni: clear-killdeer.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-494467695
       password: AE62539071
       port: 443
@@ -15975,34 +15999,13 @@ proxies:
       sni: smooth-hornet.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-605421697
-      password: FH72359861
-      port: 443
-      server: 13.212.59.213
-      skip-cert-verify: false
-      sni: guided-ferret.rooster465.autos
-      type: trojan
-      udp: true
-    - name: trojan-605428687
-      password: AE62539071
-      port: 443
-      server: 100.22.163.167
-      skip-cert-verify: false
-      sni: bright-baboon.rooster465.autos
-      type: trojan
-      udp: true
-    - name: trojan-605428688
-      password: FH72359861
-      port: 443
-      server: 16.146.11.254
-      skip-cert-verify: false
-      sni: live-stallion.rooster465.autos
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-494463695
+        - trojan-494465695
+        - trojan-494465696
         - trojan-494467695
         - trojan-494467696
         - trojan-494467697
@@ -18000,14 +18003,14 @@ proxy-groups:
         - trojan-605421694
         - trojan-605421695
         - trojan-605421696
-        - trojan-605421697
-        - trojan-605428687
-        - trojan-605428688
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-494463695
+        - trojan-494465695
+        - trojan-494465696
         - trojan-494467695
         - trojan-494467696
         - trojan-494467697
@@ -20005,9 +20008,6 @@ proxy-groups:
         - trojan-605421694
         - trojan-605421695
         - trojan-605421696
-        - trojan-605421697
-        - trojan-605428687
-        - trojan-605428688
       type: select
 rules:
     - MATCH,select

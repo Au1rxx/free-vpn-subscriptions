@@ -13,6 +13,16 @@ proxies:
       type: vless
       udp: true
       uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
+    - name: vless-656189585
+      network: tcp
+      port: 443
+      server: 172.105.169.70
+      servername: 172.105.169.70
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
     - name: trojan-654556166
       password: PQ05174892
       port: 443
@@ -75,6 +85,20 @@ proxies:
       sni: national-stingray.rooster465.autos
       type: trojan
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-656230603
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: a2qGjvUPq6Nz5FTbn_MSHp-055q2h8YXqIL5VIJ5zwE
+        short-id: d15c17cef9b2e456
+      server: 51.161.204.242
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
     - name: trojan-576259135
       password: AE62539071
       port: 443
@@ -149,6 +173,19 @@ proxies:
       type: vless
       udp: true
       uuid: dc7c01c9-57a6-4c9e-a966-0260a43a7014
+    - client-fingerprint: chrome
+      name: vless-656246779
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: cevjPz2GmTrXDFXQbGizdN6t4c6m11kclJEf5nOHOTE
+        short-id: 52dfc493bb6b6c16
+      server: 46.250.240.80
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5c53b9e9-fbe8-4c50-a623-73cdafa3886b
     - name: vless-664922994
       network: ws
       port: 443
@@ -159,28 +196,12 @@ proxies:
       type: vless
       udp: true
       uuid: 6705ddbd-04cf-40f6-99b9-36846b08c2a9
-    - name: vless-664923033
-      network: ws
-      port: 443
-      server: 170.64.229.30
-      servername: kjgdksgghre466.pages.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6705ddbd-04cf-40f6-99b9-36846b08c2a9
-    - name: hysteria2-387719570
-      password: 1427eb10-7529-4d38-a6a2-01b337868b37
-      port: 4433
-      server: au1.xiaoliyu.cyou
-      skip-cert-verify: true
-      sni: au1.xiaoliyu.cyou
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-532685580
+        - vless-656189585
         - trojan-654556166
         - trojan-654555161
         - trojan-654555163
@@ -188,6 +209,7 @@ proxy-groups:
         - vless-667730895
         - trojan-576259137
         - trojan-667593181
+        - vless-656230603
         - trojan-576259135
         - vless-667730939
         - trojan-513884507
@@ -195,15 +217,15 @@ proxy-groups:
         - vless-664923018
         - vless-664922988
         - vless-667730936
+        - vless-656246779
         - vless-664922994
-        - vless-664923033
-        - hysteria2-387719570
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-532685580
+        - vless-656189585
         - trojan-654556166
         - trojan-654555161
         - trojan-654555163
@@ -211,6 +233,7 @@ proxy-groups:
         - vless-667730895
         - trojan-576259137
         - trojan-667593181
+        - vless-656230603
         - trojan-576259135
         - vless-667730939
         - trojan-513884507
@@ -218,9 +241,8 @@ proxy-groups:
         - vless-664923018
         - vless-664922988
         - vless-667730936
+        - vless-656246779
         - vless-664922994
-        - vless-664923033
-        - hysteria2-387719570
       type: select
 rules:
     - MATCH,select
