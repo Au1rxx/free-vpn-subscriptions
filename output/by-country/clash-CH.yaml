@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: firefox
+      name: vless-647047503
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: ne8wv6o6AYcQoVvz30PiTjSxviGa3_Kw5ClIEDdg-3A
+        short-id: 6ba85179e30d4fc2
+      server: 176.65.144.248
+      servername: 360.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 62a08ea5-0564-47b4-a92c-25be07ad6358
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-647047503
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-647047503
+      type: select
+rules:
+    - MATCH,select
