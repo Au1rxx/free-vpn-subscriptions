@@ -8,7 +8,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-[![GitHub stars](https://img.shields.io/github/stars/Au1rxx/free-vpn-subscriptions?style=flat&color=gold&logo=github)](https://github.com/Au1rxx/free-vpn-subscriptions/stargazers) ![отобрано](https://img.shields.io/badge/отобрано-2000-brightgreen) ![проверено](https://img.shields.io/badge/проверено-11718-blue) ![медиана--rtt](https://img.shields.io/badge/медиана--rtt-660ms-orange) ![обновлено](https://img.shields.io/badge/обновлено-2026-08-17_02:20_UTC-informational) [![License](https://img.shields.io/github/license/Au1rxx/free-vpn-subscriptions?color=blue)](https://github.com/Au1rxx/free-vpn-subscriptions/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/Au1rxx/free-vpn-subscriptions?style=flat&color=gold&logo=github)](https://github.com/Au1rxx/free-vpn-subscriptions/stargazers) ![отобрано](https://img.shields.io/badge/отобрано-2000-brightgreen) ![проверено](https://img.shields.io/badge/проверено-11722-blue) ![медиана--rtt](https://img.shields.io/badge/медиана--rtt-660ms-orange) ![обновлено](https://img.shields.io/badge/обновлено-2026-08-17_02:21_UTC-informational) [![License](https://img.shields.io/github/license/Au1rxx/free-vpn-subscriptions?color=blue)](https://github.com/Au1rxx/free-vpn-subscriptions/blob/main/LICENSE)
 
 > **Самый простой способ получить рабочий бесплатный VPN — скопируйте ссылку подписки, вставьте в клиент, подключитесь.**  
 > Без регистрации. Без оплаты. Без установки каких-либо бинарников. Обновляется каждый час из публичных источников — каждый публикуемый узел несколько минут назад реально пропустил HTTP-трафик через sing-box.
@@ -141,10 +141,10 @@ proxy-groups:
 ## 📊 Статистика в реальном времени
 
 - **Выбрано узлов**: 2000
-- **Живых во всех источниках**: 11718
+- **Живых во всех источниках**: 11722
 - **RTT самого быстрого узла**: 21 ms
 - **Медиана RTT**: 660 ms
-- **Последнее обновление (UTC)**: 2026-08-17 02:20 UTC
+- **Последнее обновление (UTC)**: 2026-08-17 02:21 UTC
 
 **Распределение протоколов:** http × 50 · https × 2 · hysteria2 × 111 · shadowsocks × 12 · socks4 × 1 · trojan × 1004 · tuic × 1 · vless × 789 · vmess × 28 · wireguard × 2
 

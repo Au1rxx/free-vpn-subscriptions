@@ -1,4 +1,35 @@
 proxies:
+    - name: trojan-552617011
+      password: FH72359861
+      port: 443
+      server: 57.180.34.69
+      skip-cert-verify: true
+      sni: magical-airedale.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-552617012
+      password: FH72359861
+      port: 443
+      server: 57.180.38.121
+      skip-cert-verify: false
+      sni: champion-panther.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-552617013
+      password: FH72359861
+      port: 443
+      server: 63.176.171.181
+      skip-cert-verify: true
+      sni: engaging-toucan.rooster465.autos
+      type: trojan
+      udp: true
+    - name: vless-552623949
+      network: ws
+      port: 80
+      server: 57.129.41.216
+      type: vless
+      udp: true
+      uuid: 18535741-e8b3-4b43-9348-785b55936751
     - client-fingerprint: firefox
       name: vless-552625949
       network: grpc
@@ -18135,60 +18166,14 @@ proxies:
       type: vless
       udp: true
       uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-608559171
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
-        short-id: ff776ff77be48b88
-      server: 85.90.197.25
-      servername: grek.helper-internet.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-608559173
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
-        short-id: ff776ff77be48b88
-      server: grek.helper-internet.com
-      servername: grek.helper-internet.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
-    - flow: xtls-rprx-vision
-      name: vless-608559174
-      network: raw
-      port: 52006
-      server: 139.100.197.28
-      servername: search.setlisting.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6b21490b-b180-07d0-86e5-8fb50d38b200
-    - flow: xtls-rprx-vision
-      name: vless-608559181
-      network: tcp
-      port: 8443
-      server: magazinetut.online
-      servername: magazinetut.online
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7d641c2e-6897-4b9f-8a82-3f0cc8980db1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-552617011
+        - trojan-552617012
+        - trojan-552617013
+        - vless-552623949
         - vless-552625949
         - vless-552625950
         - vless-552634947
@@ -20181,15 +20166,15 @@ proxy-groups:
         - vless-608559168
         - vless-608559169
         - vless-608559170
-        - vless-608559171
-        - vless-608559173
-        - vless-608559174
-        - vless-608559181
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-552617011
+        - trojan-552617012
+        - trojan-552617013
+        - vless-552623949
         - vless-552625949
         - vless-552625950
         - vless-552634947
@@ -22182,10 +22167,6 @@ proxy-groups:
         - vless-608559168
         - vless-608559169
         - vless-608559170
-        - vless-608559171
-        - vless-608559173
-        - vless-608559174
-        - vless-608559181
       type: select
 rules:
     - MATCH,select

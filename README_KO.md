@@ -8,7 +8,7 @@
 
 <p align="center"><img src="https://github.com/Au1rxx/free-vpn-subscriptions/raw/main/assets/hero.png" alt="Free VPN Subscriptions — hourly-refreshed free VPN subscriptions for Clash, sing-box, v2ray" width="780"></p>
 
-[![GitHub stars](https://img.shields.io/github/stars/Au1rxx/free-vpn-subscriptions?style=flat&color=gold&logo=github)](https://github.com/Au1rxx/free-vpn-subscriptions/stargazers) ![선별](https://img.shields.io/badge/선별-2000-brightgreen) ![검증됨](https://img.shields.io/badge/검증됨-11718-blue) ![중앙값--rtt](https://img.shields.io/badge/중앙값--rtt-660ms-orange) ![업데이트](https://img.shields.io/badge/업데이트-2026-08-17_02:20_UTC-informational) [![License](https://img.shields.io/github/license/Au1rxx/free-vpn-subscriptions?color=blue)](https://github.com/Au1rxx/free-vpn-subscriptions/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/Au1rxx/free-vpn-subscriptions?style=flat&color=gold&logo=github)](https://github.com/Au1rxx/free-vpn-subscriptions/stargazers) ![선별](https://img.shields.io/badge/선별-2000-brightgreen) ![검증됨](https://img.shields.io/badge/검증됨-11722-blue) ![중앙값--rtt](https://img.shields.io/badge/중앙값--rtt-660ms-orange) ![업데이트](https://img.shields.io/badge/업데이트-2026-08-17_02:21_UTC-informational) [![License](https://img.shields.io/github/license/Au1rxx/free-vpn-subscriptions?color=blue)](https://github.com/Au1rxx/free-vpn-subscriptions/blob/main/LICENSE)
 
 > **작동하는 무료 VPN을 얻는 가장 쉬운 방법 —— 구독 링크를 복사하고 클라이언트에 붙여 넣고 연결하세요.**  
 > 가입 불필요. 결제 불필요. 바이너리 설치 불필요. 공개 소스에서 매시간 자동 갱신 —— 발행되는 모든 노드는 몇 분 전에 sing-box 를 통해 실제 HTTP 트래픽을 전달한 이력이 있습니다.
@@ -141,10 +141,10 @@ proxy-groups:
 ## 📊 실시간 통계
 
 - **선정된 노드**: 2000
-- **전체 소스 생존 수**: 11718
+- **전체 소스 생존 수**: 11722
 - **최고 속도 RTT**: 21 ms
 - **중앙값 RTT**: 660 ms
-- **최종 업데이트 (UTC)**: 2026-08-17 02:20 UTC
+- **최종 업데이트 (UTC)**: 2026-08-17 02:21 UTC
 
 **프로토콜 분포:** http × 50 · https × 2 · hysteria2 × 111 · shadowsocks × 12 · socks4 × 1 · trojan × 1004 · tuic × 1 · vless × 789 · vmess × 28 · wireguard × 2
 

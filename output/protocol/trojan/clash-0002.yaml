@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-483644864
+      password: AE62539071
+      port: 443
+      server: 43.201.56.44
+      skip-cert-verify: false
+      sni: distinct-llama.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-483644865
       password: AE62539071
       port: 443
@@ -15991,18 +15999,11 @@ proxies:
       sni: touching-ostrich.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-598573257
-      password: FH72359861
-      port: 443
-      server: welcome-owl.rooster465.autos
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-483644864
         - trojan-483644865
         - trojan-483644866
         - trojan-483645848
@@ -18002,12 +18003,12 @@ proxy-groups:
         - trojan-598573252
         - trojan-598573253
         - trojan-598573255
-        - trojan-598573257
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-483644864
         - trojan-483644865
         - trojan-483644866
         - trojan-483645848
@@ -20007,7 +20008,6 @@ proxy-groups:
         - trojan-598573252
         - trojan-598573253
         - trojan-598573255
-        - trojan-598573257
       type: select
 rules:
     - MATCH,select
