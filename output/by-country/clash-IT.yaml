@@ -1,32 +1,6 @@
 proxies:
     - client-fingerprint: firefox
-      name: vless-429873172
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
-        short-id: 5b8a942318178e7b
-      server: 57.131.38.163
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
-    - client-fingerprint: firefox
-      name: vless-483686868
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
-        short-id: 5b8a942318178e7b
-      server: 57.131.38.163
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
-    - client-fingerprint: chrome
-      name: vless-654572869
+      name: vless-646385988
       network: grpc
       port: 443
       reality-opts:
@@ -52,32 +26,64 @@ proxies:
       type: vless
       udp: true
       uuid: 601e4ca5-df0a-43a1-97c2-0b1f5c0ae413
-    - name: vless-647066503
-      network: tcp
-      port: 1
-      server: 2.59.223.21
+    - client-fingerprint: chrome
+      name: vless-654572869
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: ne8wv6o6AYcQoVvz30PiTjSxviGa3_Kw5ClIEDdg-3A
+        short-id: 6ba85179e30d4fc2
+      server: 31.77.154.46
+      servername: 360.yandex.ru
+      tls: true
       type: vless
       udp: true
-      uuid: fa4babae-cea3-49b1-9d6f-342495a46ea9
+      uuid: 62a08ea5-0564-47b4-a92c-25be07ad6358
+    - client-fingerprint: firefox
+      name: vless-429873172
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - client-fingerprint: firefox
+      name: vless-483686868
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-646385988
+        - vless-647046516
+        - vless-654572869
         - vless-429873172
         - vless-483686868
-        - vless-654572869
-        - vless-647046516
-        - vless-647066503
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-646385988
+        - vless-647046516
+        - vless-654572869
         - vless-429873172
         - vless-483686868
-        - vless-654572869
-        - vless-647046516
-        - vless-647066503
       type: select
 rules:
     - MATCH,select

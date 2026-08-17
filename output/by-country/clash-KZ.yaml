@@ -1,0 +1,43 @@
+proxies:
+    - client-fingerprint: chrome
+      name: vless-655726677
+      network: tcp
+      port: 35728
+      reality-opts:
+        public-key: vhUFNoFcvtZAVMo8y5K5eU2V43m5q6yjmWIhp5RkFng
+        short-id: 69a2
+      server: 178.236.16.98
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a00d89f6-ab7e-4e30-a5e5-54c701d62c93
+    - client-fingerprint: firefox
+      name: vless-646386007
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: ne8wv6o6AYcQoVvz30PiTjSxviGa3_Kw5ClIEDdg-3A
+        short-id: 6ba85179e30d4fc2
+      server: 109.248.18.63
+      servername: 360.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 62a08ea5-0564-47b4-a92c-25be07ad6358
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-655726677
+        - vless-646386007
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-655726677
+        - vless-646386007
+      type: select
+rules:
+    - MATCH,select

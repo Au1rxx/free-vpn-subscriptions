@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: chrome
+      name: vless-646428847
+      network: grpc
+      port: 2053
+      reality-opts:
+        public-key: XrNOGI1TNjL2rcq65LBsjw8ouZ9PQMOZt466XeJt8XE
+        short-id: dd70b6a4e3e9e7ce
+      server: 85.234.86.105
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 633c112c-11dd-48d3-8595-e151dd589ef4
     - name: vless-639901101
       network: tcp
       port: 26116
@@ -173,6 +186,19 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - client-fingerprint: qq
+      name: vless-646384201
+      network: grpc
+      port: 9898
+      reality-opts:
+        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+        short-id: aabbccdd
+      server: 194.67.119.77
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f4685d27-73e3-4588-9622-add50b84046a
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-649373356
@@ -250,17 +276,11 @@ proxies:
       type: vless
       udp: true
       uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
-    - name: hysteria2-591633780
-      password: j86zyZye-jGMBeXwpvVabGBAAx4Idwyb
-      port: 43327
-      server: 2.27.42.66
-      skip-cert-verify: false
-      sni: gate-v1.not-a-projects.xyz
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-646428847
         - vless-639901101
         - vmess-649002652
         - shadowsocks-336700747
@@ -276,18 +296,19 @@ proxy-groups:
         - vless-335072426
         - vless-453256841
         - vless-591637248
+        - vless-646384201
         - vless-649373356
         - hysteria2-591633774
         - vless-281461528
         - vless-255434893
         - vless-299810625
         - vless-448717657
-        - hysteria2-591633780
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-646428847
         - vless-639901101
         - vmess-649002652
         - shadowsocks-336700747
@@ -303,13 +324,13 @@ proxy-groups:
         - vless-335072426
         - vless-453256841
         - vless-591637248
+        - vless-646384201
         - vless-649373356
         - hysteria2-591633774
         - vless-281461528
         - vless-255434893
         - vless-299810625
         - vless-448717657
-        - hysteria2-591633780
       type: select
 rules:
     - MATCH,select

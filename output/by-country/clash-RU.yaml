@@ -12,6 +12,17 @@ proxies:
       type: vless
       udp: true
       uuid: 8071f3cc-994f-4fe2-bb87-cdc79559cb56
+    - flow: xtls-rprx-vision
+      name: vless-646387184
+      network: raw
+      port: 52006
+      server: 139.100.197.28
+      servername: search.setlisting.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: f6ece3ad-2ddc-07d0-990f-e9a8148cd81e
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-650611975
@@ -27,6 +38,17 @@ proxies:
       udp: true
       uuid: 420acc07-47f5-43c0-a855-3327ada24b00
     - flow: xtls-rprx-vision
+      name: vless-646384048
+      network: tcp
+      port: 52006
+      server: 139.100.197.28
+      servername: search.setlisting.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4f7ba74a-72d1-07d0-b98c-010ed2a2c731
+    - flow: xtls-rprx-vision
       name: vless-474828128
       network: tcp
       port: 443
@@ -37,20 +59,17 @@ proxies:
       type: vless
       udp: true
       uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-654430761
-      network: raw
+    - flow: xtls-rprx-vision
+      name: vless-559144233
+      network: tcp
       port: 443
-      reality-opts:
-        public-key: D0FqzTuVSzCF8IcFo64SFIpMsaGV47LW3el2GCCVoFY
-        short-id: c1a7e9b4711d5f60
-      server: 193.168.46.180
-      servername: rruu.persik.host
+      server: 94.156.181.52
+      servername: ru52.mechvpn.online
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: b871fd2e-512d-45a8-9a7d-ebf75e7e8a0f
+      uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
     - flow: xtls-rprx-vision
       name: vless-650675637
       network: tcp
@@ -90,86 +109,35 @@ proxies:
       type: vless
       udp: true
       uuid: 87f3bc47-ee10-4418-9260-7a4e43f28e00
-    - client-fingerprint: edge
-      name: vless-650648420
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: 7QJA1tXQcNj8gioQVzief5a4KeUTDT7R8FE0jfKU41k
-        short-id: "3180"
-      server: 5.129.215.87
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f0eac976-e4e2-4e24-bc86-cda82ee31442
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-650634909
-      network: raw
-      port: 40443
-      reality-opts:
-        public-key: WRveYv8IuUyvai4jgnQ6nWCL971-wKboe8evES5arlg
-        short-id: 69d4
-      server: 201.51.1.11
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 28d0edc6-93c9-4465-bac9-720274d8b8c4
-    - client-fingerprint: edge
-      name: vless-650648423
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: 7QJA1tXQcNj8gioQVzief5a4KeUTDT7R8FE0jfKU41k
-        short-id: "3180"
-      server: tw05.kinomir.fun
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f0eac976-e4e2-4e24-bc86-cda82ee31442
-    - name: vless-650669477
-      network: ws
-      port: 4100
-      server: 200.165.228.51
-      type: vless
-      udp: true
-      uuid: e3a625d4-5adb-463d-bbff-bbe06b8e2c5c
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-635888403
+        - vless-646387184
         - vless-650611975
+        - vless-646384048
         - vless-474828128
-        - vless-654430761
+        - vless-559144233
         - vless-650675637
         - vless-650673534
         - vless-649377633
         - vless-649375158
-        - vless-650648420
-        - vless-650634909
-        - vless-650648423
-        - vless-650669477
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-635888403
+        - vless-646387184
         - vless-650611975
+        - vless-646384048
         - vless-474828128
-        - vless-654430761
+        - vless-559144233
         - vless-650675637
         - vless-650673534
         - vless-649377633
         - vless-649375158
-        - vless-650648420
-        - vless-650634909
-        - vless-650648423
-        - vless-650669477
       type: select
 rules:
     - MATCH,select

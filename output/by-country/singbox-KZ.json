@@ -1,0 +1,76 @@
+{
+  "outbounds": [
+    {
+      "server": "178.236.16.98",
+      "server_port": 35728,
+      "tag": "vless-655726677",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "vhUFNoFcvtZAVMo8y5K5eU2V43m5q6yjmWIhp5RkFng",
+          "short_id": "69a2"
+        },
+        "server_name": "yahoo.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "a00d89f6-ab7e-4e30-a5e5-54c701d62c93"
+    },
+    {
+      "server": "109.248.18.63",
+      "server_port": 443,
+      "tag": "vless-646386007",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "ne8wv6o6AYcQoVvz30PiTjSxviGa3_Kw5ClIEDdg-3A",
+          "short_id": "6ba85179e30d4fc2"
+        },
+        "server_name": "360.yandex.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "service_name": "grpc",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "62a08ea5-0564-47b4-a92c-25be07ad6358"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-655726677",
+        "vless-646386007"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-655726677",
+        "vless-646386007"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
