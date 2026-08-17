@@ -1,17 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      name: vless-655726677
-      network: tcp
-      port: 35728
-      reality-opts:
-        public-key: vhUFNoFcvtZAVMo8y5K5eU2V43m5q6yjmWIhp5RkFng
-        short-id: 69a2
-      server: 178.236.16.98
-      servername: yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a00d89f6-ab7e-4e30-a5e5-54c701d62c93
     - client-fingerprint: firefox
       name: vless-646384927
       network: grpc
@@ -39,6 +26,20 @@ proxies:
       type: vless
       udp: true
       uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-655711948
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: _-iZt_zsuSnYKNldfwXQlnH6SqbLJILP4qApHbaKax0
+        short-id: 3e70d5cbb01bddfd
+      server: kz.savesafe.kz
+      servername: savesafe.kz
+      tls: true
+      type: vless
+      udp: true
+      uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-661687512
@@ -53,23 +54,47 @@ proxies:
       type: vless
       udp: true
       uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
+    - name: hysteria2-655713361
+      password: 3b8c82ed-fe66-472d-915e-034ccb57103f
+      port: 443
+      server: kz.frkn.org
+      skip-cert-verify: false
+      sni: kz.frkn.org
+      type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-655726677
+      network: tcp
+      port: 35728
+      reality-opts:
+        public-key: vhUFNoFcvtZAVMo8y5K5eU2V43m5q6yjmWIhp5RkFng
+        short-id: 69a2
+      server: 178.236.16.98
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a00d89f6-ab7e-4e30-a5e5-54c701d62c93
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-655726677
         - vless-646384927
         - vless-661687518
+        - vless-655711948
         - vless-661687512
+        - hysteria2-655713361
+        - vless-655726677
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-655726677
         - vless-646384927
         - vless-661687518
+        - vless-655711948
         - vless-661687512
+        - hysteria2-655713361
+        - vless-655726677
       type: select
 rules:
     - MATCH,select

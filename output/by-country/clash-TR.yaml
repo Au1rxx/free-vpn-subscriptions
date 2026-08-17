@@ -19,6 +19,17 @@ proxies:
       type: vless
       udp: true
       uuid: bfd814a8-d377-4324-b23e-10d9dcd0a988
+    - flow: xtls-rprx-vision
+      name: vless-559149719
+      network: tcp
+      port: 8443
+      server: 193.124.46.65
+      servername: 193.124.46.65
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 68bdc1ee-c6ee-4d91-ab52-35ce0d368302
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-654432400
@@ -33,17 +44,6 @@ proxies:
       type: vless
       udp: true
       uuid: 629f88a6-b20b-4489-a22f-4d8b418c0488
-    - flow: xtls-rprx-vision
-      name: vless-559149719
-      network: tcp
-      port: 8443
-      server: 193.124.46.65
-      servername: 193.124.46.65
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 68bdc1ee-c6ee-4d91-ab52-35ce0d368302
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-667730930
@@ -58,23 +58,15 @@ proxies:
       type: vless
       udp: true
       uuid: dc7c01c9-57a6-4c9e-a966-0260a43a7014
-    - name: hysteria2-655713421
-      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
-      port: 8080
-      server: 162.249.124.103
-      skip-cert-verify: true
-      sni: mercedes-grape.yyuyy.com
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-515164913
         - vless-669014513
-        - vless-654432400
         - vless-559149719
+        - vless-654432400
         - vless-667730930
-        - hysteria2-655713421
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -82,10 +74,9 @@ proxy-groups:
         - auto
         - vless-515164913
         - vless-669014513
-        - vless-654432400
         - vless-559149719
+        - vless-654432400
         - vless-667730930
-        - hysteria2-655713421
       type: select
 rules:
     - MATCH,select

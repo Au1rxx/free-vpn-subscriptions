@@ -6,62 +6,33 @@ proxies:
       skip-cert-verify: false
       sni: ""
       type: hysteria2
-    - name: hysteria2-652726882
-      password: 425e9e31-b017-4e32-bbd3-656473466d5e
-      port: 2443
-      server: latvia.koalaexpress.ru
-      skip-cert-verify: false
-      sni: ""
-      type: hysteria2
-    - name: hysteria2-589844065
-      password: 896002a8-3afc-49e6-8fac-5129fb717b49
-      port: 2443
-      server: latvia.koalaexpress.ru
-      skip-cert-verify: false
-      sni: latvia.koalaexpress.ru
-      type: hysteria2
-    - name: hysteria2-591633767
-      password: 137f3b50-a6ba-40e7-b537-e37fab064097
-      port: 2443
-      server: latvia.koalaexpress.ru
-      skip-cert-verify: false
-      sni: latvia.koalaexpress.ru
-      type: hysteria2
-    - name: hysteria2-591633768
-      password: 425e9e31-b017-4e32-bbd3-656473466d5e
-      port: 2443
-      server: latvia.koalaexpress.ru
-      skip-cert-verify: false
-      sni: latvia.koalaexpress.ru
-      type: hysteria2
-    - name: hysteria2-625719949
-      password: 137f3b50-a6ba-40e7-b537-e37fab064097
-      port: 2443
-      server: latvia.koalaexpress.ru
-      skip-cert-verify: true
-      sni: latvia.koalaexpress.ru
-      type: hysteria2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-577276252
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: t_qv0VOfWhKZJV_giGC55-ipgHYWo44Yfvik_B8T8ik
+        short-id: 4a46213c935e2ee4
+      server: 31.76.83.114
+      servername: baltic.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-654428707
-        - hysteria2-652726882
-        - hysteria2-589844065
-        - hysteria2-591633767
-        - hysteria2-591633768
-        - hysteria2-625719949
+        - vless-577276252
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-654428707
-        - hysteria2-652726882
-        - hysteria2-589844065
-        - hysteria2-591633767
-        - hysteria2-591633768
-        - hysteria2-625719949
+        - vless-577276252
       type: select
 rules:
     - MATCH,select
