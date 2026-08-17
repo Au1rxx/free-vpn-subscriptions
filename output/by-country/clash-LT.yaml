@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: firefox
+      name: vless-646385930
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: C6nh6hqFTbtizgSH8vGmw2XUxsQAbAW3jPylpgGvfl4
+        short-id: 8b6f2e4d7c1a5b9f
+      server: 46.166.167.4
+      servername: auth.moktana.app
+      tls: true
+      type: vless
+      udp: true
+      uuid: 27b16a66-95e0-4c20-b00b-5dff91d9c9f5
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-620181988
@@ -13,6 +26,32 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - client-fingerprint: firefox
+      name: vless-646385926
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: C6nh6hqFTbtizgSH8vGmw2XUxsQAbAW3jPylpgGvfl4
+        short-id: 8b6f2e4d7c1a5b9f
+      server: 84.32.151.222
+      servername: auth.moktana.app
+      tls: true
+      type: vless
+      udp: true
+      uuid: 27b16a66-95e0-4c20-b00b-5dff91d9c9f5
+    - client-fingerprint: firefox
+      name: vless-646385990
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: C6nh6hqFTbtizgSH8vGmw2XUxsQAbAW3jPylpgGvfl4
+        short-id: 7c4b9a2e8d5f3c1b
+      server: auth.moktana.app
+      servername: auth.moktana.app
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2642342c-fa52-4f62-b44d-fb77de8f75e3
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-465827615
@@ -31,14 +70,20 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-646385930
         - vless-620181988
+        - vless-646385926
+        - vless-646385990
         - vless-465827615
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-646385930
         - vless-620181988
+        - vless-646385926
+        - vless-646385990
         - vless-465827615
       type: select
 rules:

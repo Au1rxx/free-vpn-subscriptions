@@ -13,17 +13,42 @@ proxies:
       type: vless
       udp: true
       uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
+    - name: hysteria2-645328509
+      password: 896002a8-3afc-49e6-8fac-5129fb717b49
+      port: 2443
+      server: mdt1.pubconverter.com
+      skip-cert-verify: false
+      sni: ""
+      type: hysteria2
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-645918312
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+        short-id: ff776ff77be48b88
+      server: mold.helper-internet.com
+      servername: mold.helper-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-591639651
+        - hysteria2-645328509
+        - vless-645918312
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-591639651
+        - hysteria2-645328509
+        - vless-645918312
       type: select
 rules:
     - MATCH,select

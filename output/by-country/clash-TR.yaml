@@ -7,19 +7,6 @@ proxies:
       sni: 193.124.46.65
       type: trojan
       udp: true
-    - client-fingerprint: chrome
-      name: vless-515164913
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: _jsI5uVVqXkzCZ0OGJ5U7waecxOEiu2lm-8f8ZyW5mc
-        short-id: f5d596282182b440
-      server: 151.241.226.201
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-591639649
@@ -34,21 +21,87 @@ proxies:
       type: vless
       udp: true
       uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-646386001
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: yPaJxrXrUy_a9Yx8-rXT_an-UZim6l9CuSkwcBs1QRs
+        short-id: f28cd969
+      server: 89.23.101.243
+      servername: m.vkvideo.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: dbacac09-9ee8-400c-b53b-745a769c220a
+    - client-fingerprint: chrome
+      name: vless-505411599
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: _jsI5uVVqXkzCZ0OGJ5U7waecxOEiu2lm-8f8ZyW5mc
+        short-id: f5d596282182b440
+      server: 151.241.226.201
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
+    - name: hysteria2-645328527
+      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
+      port: 8080
+      server: 162.249.124.103
+      skip-cert-verify: false
+      sni: mercedes-grape.yyuyy.com
+      type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-639922104
+      network: tcp
+      port: 61555
+      reality-opts:
+        public-key: sQFf0v_2dbbqa6Ey6yz8qeG8wmF2VPD1YyqIkG7NPT4
+        short-id: 71efcf4d101327c1
+      server: tkew.colener.ir
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c00dfa61-737b-4f70-94c3-120bf98d8160
+    - flow: xtls-rprx-vision
+      name: vless-608611365
+      network: tcp
+      port: 8443
+      server: 5.180.52.186
+      servername: magazinetut.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7d641c2e-6897-4b9f-8a82-3f0cc8980db1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-639242007
-        - vless-515164913
         - vless-591639649
+        - vless-646386001
+        - vless-505411599
+        - hysteria2-645328527
+        - vless-639922104
+        - vless-608611365
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-639242007
-        - vless-515164913
         - vless-591639649
+        - vless-646386001
+        - vless-505411599
+        - hysteria2-645328527
+        - vless-639922104
+        - vless-608611365
       type: select
 rules:
     - MATCH,select

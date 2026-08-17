@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-646349324
+      network: tcp
+      port: 10031
+      reality-opts:
+        public-key: XD4QDqCtwoTo5TsoU8Kl2Mj7F-hQNzlyK5z0cg8VZ20
+        short-id: d83b1991a19fb038
+      server: family.bucket.8.kfc-520.com
+      servername: www.hp.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2a88deea-221d-3f06-9846-4067c6f725ee
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-646349324
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-646349324
+      type: select
+rules:
+    - MATCH,select

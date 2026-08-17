@@ -1,0 +1,58 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "family.bucket.8.kfc-520.com",
+      "server_port": 10031,
+      "tag": "vless-646349324",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "XD4QDqCtwoTo5TsoU8Kl2Mj7F-hQNzlyK5z0cg8VZ20",
+          "short_id": "d83b1991a19fb038"
+        },
+        "server_name": "www.hp.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "2a88deea-221d-3f06-9846-4067c6f725ee"
+    },
+    {
+      "server": "175.143.76.177",
+      "server_port": 8181,
+      "tag": "http-229050744",
+      "type": "http"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-646349324",
+        "http-229050744"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-646349324",
+        "http-229050744"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
