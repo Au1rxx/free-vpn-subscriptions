@@ -6,17 +6,33 @@ proxies:
       server: 217.70.14.216
       type: ss
       udp: true
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-642246669
+      network: tcp
+      port: 9894
+      reality-opts:
+        public-key: GVNhQWxHlpnqLnhlOeFpagU1QLVVHBepBQN0YcPjXVg
+        short-id: ""
+      server: 88.218.67.240
+      servername: io.ozone.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: f4685d27-73e3-4588-9622-add50b84046a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-620170822
+        - vless-642246669
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-620170822
+        - vless-642246669
       type: select
 rules:
     - MATCH,select

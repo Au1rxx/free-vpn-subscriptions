@@ -13,13 +13,20 @@ proxies:
       type: vless
       udp: true
       uuid: 9eb9de08-1b4b-4023-ae0d-cd28246b8778
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-487917494
-      password: ytw2awn
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-553326959
+      network: tcp
       port: 443
-      server: 54.36.174.134
-      type: ss
+      reality-opts:
+        public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
+        short-id: 00bca5982f82d083
+      server: 94.183.157.121
+      servername: eu-central.cendora.ru
+      tls: true
+      type: vless
       udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
     - flow: xtls-rprx-vision
       name: vless-468885149
       network: tcp
@@ -47,13 +54,13 @@ proxies:
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
     - client-fingerprint: qq
       flow: xtls-rprx-vision
-      name: vless-569541893
-      network: raw
+      name: vless-622965482
+      network: tcp
       port: 443
       reality-opts:
         public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
         short-id: 00bca5982f82d083
-      server: 94.183.157.121
+      server: 144.31.171.143
       servername: eu-central.cendora.ru
       tls: true
       type: vless
@@ -88,19 +95,6 @@ proxies:
       type: vless
       udp: true
       uuid: 8787dd0a-095a-414e-804f-a7d16a1ae166
-    - client-fingerprint: firefox
-      name: vless-587204638
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: JldKt40jK4uwPfwxy5RNZSvMf11bHIEphKmPNEmlRmg
-        short-id: 6c3d30b55a969136
-      server: 54.37.136.194
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a60bc8c8-1447-4f2c-a09c-c4293b257fd8
     - name: vless-534821535
       network: ws
       port: 443
@@ -119,6 +113,20 @@ proxies:
       type: vless
       udp: true
       uuid: 8787dd0a-095a-414e-804f-a7d16a1ae166
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-642161525
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
+        short-id: 00bca5982f82d083
+      server: 144.31.171.143
+      servername: eu-central.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
     - flow: xtls-rprx-vision
       name: vless-579723745
       network: tcp
@@ -148,25 +156,33 @@ proxies:
       type: vless
       udp: true
       uuid: b9125df6-2a60-4643-bcba-a5f78cb663a7
+    - name: hysteria2-553326960
+      password: 08794874-93d0-4cf2-b9d6-1f2774cdffeb
+      port: 2086
+      server: 144.31.1.28
+      skip-cert-verify: true
+      sni: panel.vlessbotkey.ru
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-487917495
         - vless-591331004
-        - shadowsocks-487917494
+        - vless-553326959
         - vless-468885149
         - vless-620183979
-        - vless-569541893
+        - vless-622965482
         - vless-477044237
         - hysteria2-620179978
         - vless-575672837
-        - vless-587204638
         - vless-534821535
         - vless-591455463
+        - vless-642161525
         - vless-579723745
         - vless-561636506
         - vless-591633400
+        - hysteria2-553326960
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -174,19 +190,20 @@ proxy-groups:
         - auto
         - shadowsocks-487917495
         - vless-591331004
-        - shadowsocks-487917494
+        - vless-553326959
         - vless-468885149
         - vless-620183979
-        - vless-569541893
+        - vless-622965482
         - vless-477044237
         - hysteria2-620179978
         - vless-575672837
-        - vless-587204638
         - vless-534821535
         - vless-591455463
+        - vless-642161525
         - vless-579723745
         - vless-561636506
         - vless-591633400
+        - hysteria2-553326960
       type: select
 rules:
     - MATCH,select

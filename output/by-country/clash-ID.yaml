@@ -8,17 +8,28 @@ proxies:
       type: vmess
       udp: true
       uuid: 3a03613b-bbac-4a22-bee6-2c9a751a2761
+    - alterId: 0
+      cipher: auto
+      name: vmess-483453648
+      network: ws
+      port: 53548
+      server: 202.47.89.133
+      type: vmess
+      udp: true
+      uuid: 3a03613b-bbac-4a22-bee6-2c9a751a2761
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-547321392
+        - vmess-483453648
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-547321392
+        - vmess-483453648
       type: select
 rules:
     - MATCH,select

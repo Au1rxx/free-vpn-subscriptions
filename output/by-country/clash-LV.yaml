@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-552634947
-      network: ws
-      port: 2096
-      server: 89.36.161.222
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - client-fingerprint: chrome
       name: vless-573011737
       network: tcp
@@ -113,11 +106,36 @@ proxies:
       type: vless
       udp: true
       uuid: 2cb6b4d9-0c74-45e2-a4fb-645bb8ac532a
+    - client-fingerprint: random
+      name: vless-505383455
+      network: raw
+      port: 52463
+      reality-opts:
+        public-key: zOv4BhJVbINHdcULln0vQ_6sxKiGjJPj4uyMttX9pWo
+        short-id: cdaed92e1d0c
+      server: 91.197.3.43
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 22696950-587f-42c0-af24-c1ffab17d0cd
+    - client-fingerprint: chrome
+      name: vless-498451478
+      network: raw
+      port: 52463
+      reality-opts:
+        public-key: zOv4BhJVbINHdcULln0vQ_6sxKiGjJPj4uyMttX9pWo
+        short-id: cdaed92e1d0c
+      server: 91.197.3.43
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 22696950-587f-42c0-af24-c1ffab17d0cd
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-552634947
         - vless-573011737
         - vless-468900811
         - vless-501276500
@@ -126,12 +144,13 @@ proxy-groups:
         - vless-503223731
         - vless-539832439
         - vless-503221731
+        - vless-505383455
+        - vless-498451478
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-552634947
         - vless-573011737
         - vless-468900811
         - vless-501276500
@@ -140,6 +159,8 @@ proxy-groups:
         - vless-503223731
         - vless-539832439
         - vless-503221731
+        - vless-505383455
+        - vless-498451478
       type: select
 rules:
     - MATCH,select

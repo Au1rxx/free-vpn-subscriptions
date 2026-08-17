@@ -7,26 +7,48 @@ proxies:
       sni: 193.124.46.65
       type: trojan
       udp: true
-    - name: vless-623155618
+    - client-fingerprint: chrome
+      name: vless-515164913
       network: tcp
-      port: 64584
-      server: custom.zelnora.ir
+      port: 2053
+      reality-opts:
+        public-key: _jsI5uVVqXkzCZ0OGJ5U7waecxOEiu2lm-8f8ZyW5mc
+        short-id: f5d596282182b440
+      server: 151.241.226.201
+      servername: www.apple.com
+      tls: true
       type: vless
       udp: true
-      uuid: a19bdc9c-042f-4ee6-a1a7-3dedd2ef337b
+      uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-591639649
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+        short-id: ff776ff77be48b88
+      server: 103.83.87.238
+      servername: tur4.helper-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-639242007
-        - vless-623155618
+        - vless-515164913
+        - vless-591639649
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-639242007
-        - vless-623155618
+        - vless-515164913
+        - vless-591639649
       type: select
 rules:
     - MATCH,select

@@ -27,6 +27,20 @@ proxies:
       type: vless
       udp: true
       uuid: 4a97788b-5d8a-410c-875c-ba36930e185e
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-642073115
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+        short-id: ff776ff77be48b88
+      server: 185.231.102.223
+      servername: swed1.helper-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-591639618
@@ -57,20 +71,6 @@ proxies:
       uuid: 423b1d79-08c4-0002-9d5e-c541f791b55f
     - client-fingerprint: random
       flow: xtls-rprx-vision
-      name: vless-509711183
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: V2JprbR_aJkS7uX6anyU3nrswGxdvDQT2HpY4WnzuC8
-        short-id: 5629431325884ff0
-      server: swed4.o4ka-internet.com
-      servername: swed4.o4ka-internet.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2cb6b4d9-0c74-45e2-a4fb-645bb8ac532a
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
       name: vless-591344882
       network: tcp
       port: 443
@@ -83,31 +83,16 @@ proxies:
       type: vless
       udp: true
       uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-509711255
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: V2JprbR_aJkS7uX6anyU3nrswGxdvDQT2HpY4WnzuC8
-        short-id: 5629431325884ff0
-      server: 2.26.55.164
-      servername: swed4.o4ka-internet.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2cb6b4d9-0c74-45e2-a4fb-645bb8ac532a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-620183989
         - vless-470976121
+        - vless-642073115
         - vless-591639618
         - vless-561635563
-        - vless-509711183
         - vless-591344882
-        - vless-509711255
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -115,11 +100,10 @@ proxy-groups:
         - auto
         - vless-620183989
         - vless-470976121
+        - vless-642073115
         - vless-591639618
         - vless-561635563
-        - vless-509711183
         - vless-591344882
-        - vless-509711255
       type: select
 rules:
     - MATCH,select

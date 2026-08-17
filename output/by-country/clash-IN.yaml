@@ -1,18 +1,44 @@
 proxies:
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-595785632
+    - client-fingerprint: chrome
+      name: vless-622971655
       network: tcp
-      port: 443
+      port: 2053
       reality-opts:
-        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
-        short-id: ff776ff77be48b88
-      server: ind2.helper-internet.com
-      servername: ind2.helper-internet.com
+        public-key: GAYlNViQ9mkjs0iTjNmijAIXOaK2h0P2opHCYOrCNy0
+        short-id: ae3ba555edc1ba0a
+      server: 194.61.31.126
+      servername: www.apple.com
       tls: true
       type: vless
       udp: true
-      uuid: 670decfe-68cc-499e-8cb1-22b39c20acbb
+      uuid: 7f1f5848-da44-47df-8581-df83e88ee2b3
+    - client-fingerprint: edge
+      name: vless-622957485
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: GAYlNViQ9mkjs0iTjNmijAIXOaK2h0P2opHCYOrCNy0
+        short-id: ae3ba555edc1ba0a
+      server: 194.61.31.126
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7f1f5848-da44-47df-8581-df83e88ee2b3
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-642104965
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: eaRNeC8fccrx0nBNvBpAXZgK4m4FxfnQ-t0W7NOM7mU
+        short-id: e53048e82bb20077
+      server: 5.253.42.79
+      servername: asia.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-532678575
@@ -55,10 +81,10 @@ proxies:
       type: vless
       udp: true
       uuid: 15fd22d1-8931-4d41-af37-8ba6711e93fe
-    - client-fingerprint: chrome
+    - client-fingerprint: qq
       flow: xtls-rprx-vision
-      name: vless-587197637
-      network: raw
+      name: vless-622957505
+      network: tcp
       port: 443
       reality-opts:
         public-key: QLjTpkXRB453R9fXhJzKkc_q_gSm2MZrIOuxW4uW-mI
@@ -69,25 +95,39 @@ proxies:
       type: vless
       udp: true
       uuid: 72ea5a91-ffcc-43d2-9297-5993c3abf186
+    - name: trojan-642138459
+      password: ceea7d8b-0d2b-48cf-af8a-e9a31073e834
+      port: 24407
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-595785632
+        - vless-622971655
+        - vless-622957485
+        - vless-642104965
         - vless-532678575
         - vless-608611366
         - vless-629456321
-        - vless-587197637
+        - vless-622957505
+        - trojan-642138459
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-595785632
+        - vless-622971655
+        - vless-622957485
+        - vless-642104965
         - vless-532678575
         - vless-608611366
         - vless-629456321
-        - vless-587197637
+        - vless-622957505
+        - trojan-642138459
       type: select
 rules:
     - MATCH,select
