@@ -17,6 +17,14 @@ proxies:
       type: vmess
       udp: true
       uuid: aedc66b8-99d7-4a21-8310-61870e7f870d
+    - name: trojan-119253
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20031
+      server: 45.67.201.210
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: trojan-122859
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20031
@@ -136,12 +144,22 @@ proxies:
       type: vless
       udp: true
       uuid: 2a88deea-221d-3f06-9846-4067c6f725ee
+    - alterId: 0
+      cipher: auto
+      name: vmess-650325324
+      network: ws
+      port: 8613
+      server: 47.250.45.234
+      type: vmess
+      udp: true
+      uuid: 80039b4d-bac0-4f89-82c7-54fad3b0a1ea
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-16063
         - vmess-99016
+        - trojan-119253
         - trojan-122859
         - vmess-2387868
         - vmess-2387869
@@ -155,6 +173,7 @@ proxy-groups:
         - hysteria2-591633772
         - vless-646349324
         - vless-647039509
+        - vmess-650325324
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -162,6 +181,7 @@ proxy-groups:
         - auto
         - vmess-16063
         - vmess-99016
+        - trojan-119253
         - trojan-122859
         - vmess-2387868
         - vmess-2387869
@@ -175,6 +195,7 @@ proxy-groups:
         - hysteria2-591633772
         - vless-646349324
         - vless-647039509
+        - vmess-650325324
       type: select
 rules:
     - MATCH,select

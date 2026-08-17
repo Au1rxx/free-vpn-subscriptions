@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-91986752
+      network: tcp
+      port: 12528
+      server: 120.227.1.43
+      type: vless
+      udp: true
+      uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
     - name: vless-95593395
       network: raw
       port: 12528
@@ -10,12 +17,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-91986752
         - vless-95593395
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-91986752
         - vless-95593395
       type: select
 rules:

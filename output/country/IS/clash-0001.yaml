@@ -25,12 +25,20 @@ proxies:
       type: vless
       udp: true
       uuid: fd6011da-5c16-463d-8aaf-ff35c1b95a74
+    - name: hysteria2-650712849
+      password: 3b8c82ed-fe66-472d-915e-034ccb57103f
+      port: 443
+      server: kz.frkn.org
+      skip-cert-verify: false
+      sni: ""
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-646386014
         - vless-649363718
+        - hysteria2-650712849
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -38,6 +46,7 @@ proxy-groups:
         - auto
         - vless-646386014
         - vless-649363718
+        - hysteria2-650712849
       type: select
 rules:
     - MATCH,select

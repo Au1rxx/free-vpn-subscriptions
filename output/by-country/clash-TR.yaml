@@ -1,43 +1,22 @@
 proxies:
-    - client-fingerprint: firefox
-      name: vless-429868175
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: _jsI5uVVqXkzCZ0OGJ5U7waecxOEiu2lm-8f8ZyW5mc
-        short-id: f5d596282182b440
-      server: 151.241.226.201
-      servername: www.apple.com
-      tls: true
+    - name: vless-212135092
+      network: grpc
+      port: 8443
+      server: 185.39.204.155
       type: vless
       udp: true
-      uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
-    - client-fingerprint: chrome
-      name: vless-639922104
-      network: tcp
-      port: 61555
-      reality-opts:
-        public-key: sQFf0v_2dbbqa6Ey6yz8qeG8wmF2VPD1YyqIkG7NPT4
-        short-id: 71efcf4d101327c1
-      server: tkew.colener.ir
-      servername: play.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c00dfa61-737b-4f70-94c3-120bf98d8160
+      uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-429868175
-        - vless-639922104
+        - vless-212135092
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-429868175
-        - vless-639922104
+        - vless-212135092
       type: select
 rules:
     - MATCH,select
