@@ -1,0 +1,22 @@
+proxies:
+    - name: hysteria2-658270690
+      password: belgium_hysteria2_fastlane_a118d9y0r:mbZQuQoMqSphFg1FAhfonbRpduFn69k8
+      port: 1935
+      server: 113.30.152.25
+      skip-cert-verify: false
+      sni: be1.h.fastlanehosting.ru
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-658270690
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-658270690
+      type: select
+rules:
+    - MATCH,select

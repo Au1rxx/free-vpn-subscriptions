@@ -26,20 +26,6 @@ proxies:
       type: vless
       udp: true
       uuid: 72ea5a91-ffcc-43d2-9297-5993c3abf186
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-470357344
-      network: raw
-      port: 40443
-      reality-opts:
-        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
-        short-id: 88b6
-      server: in1.levikogjgfdd.ir
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-436248614
@@ -164,48 +150,6 @@ proxies:
       type: vless
       udp: true
       uuid: 44098455-565c-4c45-9f9a-7aaeb350990c
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-474937711
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
-        short-id: 88b6
-      server: 5.253.30.99
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-470976147
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
-        short-id: 88b6
-      server: 5.253.30.99
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
-    - client-fingerprint: safari
-      flow: xtls-rprx-vision
-      name: vless-474937712
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
-        short-id: 88b6
-      server: 5.253.30.99
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-252867231
@@ -234,13 +178,21 @@ proxies:
       type: vless
       udp: true
       uuid: 72ea5a91-ffcc-43d2-9297-5993c3abf186
+    - alterId: 0
+      cipher: auto
+      name: vmess-2387858
+      network: ws
+      port: 80
+      server: 152.67.8.205
+      type: vmess
+      udp: true
+      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-250761440
         - vless-532678575
-        - vless-470357344
         - vless-436248614
         - vless-234984371
         - vless-622971655
@@ -252,11 +204,9 @@ proxy-groups:
         - vless-648376349
         - vmess-262
         - vless-13062787
-        - vless-474937711
-        - vless-470976147
-        - vless-474937712
         - vless-252867231
         - vless-622957505
+        - vmess-2387858
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -264,7 +214,6 @@ proxy-groups:
         - auto
         - vless-250761440
         - vless-532678575
-        - vless-470357344
         - vless-436248614
         - vless-234984371
         - vless-622971655
@@ -276,11 +225,9 @@ proxy-groups:
         - vless-648376349
         - vmess-262
         - vless-13062787
-        - vless-474937711
-        - vless-470976147
-        - vless-474937712
         - vless-252867231
         - vless-622957505
+        - vmess-2387858
       type: select
 rules:
     - MATCH,select
