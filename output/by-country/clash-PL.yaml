@@ -6,13 +6,6 @@ proxies:
       skip-cert-verify: false
       sni: admin.wwwinternetvideo.click
       type: hysteria2
-    - name: hysteria2-661609281
-      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-      port: 443
-      server: pl10.mechvpn.online
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
     - name: vless-647065505
       network: tcp
       port: 9800
@@ -20,6 +13,20 @@ proxies:
       type: vless
       udp: true
       uuid: f4685d27-73e3-4588-9622-add50b84046a
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-674031497
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: 83.168.108.179
+      servername: pol3.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: fbb74aa8-b89a-4f20-9504-6b25aadf6681
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-561635565
@@ -221,13 +228,62 @@ proxies:
       type: vless
       udp: true
       uuid: 1f113ca6-7b95-4abb-9348-adfb2187e399
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-656230787
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: HKpd1sbrhBds8SJSL0d22MAq_QyTR6EP6y5b5DYol3U
+        short-id: ""
+      server: 95.85.227.142
+      servername: www.wikihow.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a34b5e88-cf0d-4c01-8199-2d1002d3c787
+    - client-fingerprint: firefox
+      name: vless-656230789
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: JldKt40jK4uwPfwxy5RNZSvMf11bHIEphKmPNEmlRmg
+        short-id: 6c3d30b55a969136
+      server: 54.37.136.194
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a60bc8c8-1447-4f2c-a09c-c4293b257fd8
+    - flow: xtls-rprx-vision
+      name: vless-591455463
+      network: tcp
+      port: 8443
+      server: 2.26.255.36
+      servername: po1.hys.braidx.tech
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8787dd0a-095a-414e-804f-a7d16a1ae166
+    - flow: xtls-rprx-vision
+      name: vless-656168740
+      network: tcp
+      port: 8443
+      server: 185.244.163.223
+      servername: id.tutdesignstudio.site
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: b9125df6-2a60-4643-bcba-a5f78cb663a7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-659125577
-        - hysteria2-661609281
         - vless-647065505
+        - vless-674031497
         - vless-561635565
         - vless-656161145
         - vless-656191567
@@ -248,14 +304,18 @@ proxy-groups:
         - vless-667132131
         - vless-656230788
         - vless-656143762
+        - vless-656230787
+        - vless-656230789
+        - vless-591455463
+        - vless-656168740
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-659125577
-        - hysteria2-661609281
         - vless-647065505
+        - vless-674031497
         - vless-561635565
         - vless-656161145
         - vless-656191567
@@ -276,6 +336,10 @@ proxy-groups:
         - vless-667132131
         - vless-656230788
         - vless-656143762
+        - vless-656230787
+        - vless-656230789
+        - vless-591455463
+        - vless-656168740
       type: select
 rules:
     - MATCH,select

@@ -12,17 +12,33 @@ proxies:
       type: vless
       udp: true
       uuid: 2a650f3b-d95b-4bd6-aadf-16ccc0717155
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-655711948
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: _-iZt_zsuSnYKNldfwXQlnH6SqbLJILP4qApHbaKax0
+        short-id: 3e70d5cbb01bddfd
+      server: kz.savesafe.kz
+      servername: savesafe.kz
+      tls: true
+      type: vless
+      udp: true
+      uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-646384927
+        - vless-655711948
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-646384927
+        - vless-655711948
       type: select
 rules:
     - MATCH,select

@@ -1,11 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-662182525
-      password: yThgkAicRWmWI1tuMFjxOA
-      port: 1080
-      server: 80.76.60.120
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       name: vless-656222772
       network: grpc
@@ -19,6 +12,39 @@ proxies:
       type: vless
       udp: true
       uuid: d82a9ad0-80a2-4871-82b6-8e16d1482b42
+    - flow: xtls-rprx-vision
+      name: vless-674332662
+      network: raw
+      port: 52006
+      server: 94.26.249.216
+      servername: clode.fastaichat.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2867c76e-3211-07d0-9b13-c528d06a29af
+    - flow: xtls-rprx-vision
+      name: vless-674351192
+      network: tcp
+      port: 52006
+      server: 94.26.249.216
+      servername: clode.fastaichat.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: f110331a-58f8-07d0-a922-e9c3d59fbb49
+    - flow: xtls-rprx-vision
+      name: vless-674351191
+      network: tcp
+      port: 52006
+      server: 94.26.249.216
+      servername: clode.fastaichat.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2867c76e-3211-07d0-9b13-c528d06a29af
     - client-fingerprint: chrome
       name: vless-669878540
       network: raw
@@ -207,12 +233,41 @@ proxies:
       type: vless
       udp: true
       uuid: 3ab2615c-689d-463b-8990-a95013894348
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-656246140
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: E_hcnZ6IvHDD2IFy8UGRvwWXHSqRrF--Ply0hJXSd30
+        short-id: 849cac6150823b
+      server: 45.84.1.247
+      servername: rbc.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5dea6e44-c407-4eb0-b185-01b709f98357
+    - client-fingerprint: safari
+      name: vless-470986047
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: 7QJA1tXQcNj8gioQVzief5a4KeUTDT7R8FE0jfKU41k
+        short-id: "3180"
+      server: tw05.kinomir.fun
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f0eac976-e4e2-4e24-bc86-cda82ee31442
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-662182525
         - vless-656222772
+        - vless-674332662
+        - vless-674351192
+        - vless-674351191
         - vless-669878540
         - vless-470975981
         - vless-559144233
@@ -228,13 +283,17 @@ proxy-groups:
         - vless-561639561
         - vless-470976058
         - vless-470976057
+        - vless-656246140
+        - vless-470986047
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-662182525
         - vless-656222772
+        - vless-674332662
+        - vless-674351192
+        - vless-674351191
         - vless-669878540
         - vless-470975981
         - vless-559144233
@@ -250,6 +309,8 @@ proxy-groups:
         - vless-561639561
         - vless-470976058
         - vless-470976057
+        - vless-656246140
+        - vless-470986047
       type: select
 rules:
     - MATCH,select
