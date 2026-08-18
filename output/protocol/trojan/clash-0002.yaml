@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-492257038
+      password: AE62539071
+      port: 443
+      server: clear-snail.rooster465.autos
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
     - name: trojan-492357451
       password: AE62539071
       port: 443
@@ -15991,18 +15999,11 @@ proxies:
       sni: dynamic-grubworm.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-615957254
-      password: FH72359861
-      port: 443
-      server: smiling-ray.rooster465.autos
-      skip-cert-verify: false
-      sni: smiling-ray.rooster465.autos
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-492257038
         - trojan-492357451
         - trojan-494463695
         - trojan-494465695
@@ -18002,12 +18003,12 @@ proxy-groups:
         - trojan-615957251
         - trojan-615957252
         - trojan-615957253
-        - trojan-615957254
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-492257038
         - trojan-492357451
         - trojan-494463695
         - trojan-494465695
@@ -20007,7 +20008,6 @@ proxy-groups:
         - trojan-615957251
         - trojan-615957252
         - trojan-615957253
-        - trojan-615957254
       type: select
 rules:
     - MATCH,select

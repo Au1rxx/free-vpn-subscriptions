@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-615957254
+      password: FH72359861
+      port: 443
+      server: smiling-ray.rooster465.autos
+      skip-cert-verify: false
+      sni: smiling-ray.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-615957255
       password: FH72359861
       port: 443
@@ -15991,18 +15999,11 @@ proxies:
       sni: discrete-basilisk.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-655839406
-      password: FH72359861
-      port: 443
-      server: clear-heron.rooster465.autos
-      skip-cert-verify: true
-      sni: clear-heron.rooster465.autos
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-615957254
         - trojan-615957255
         - trojan-615983265
         - trojan-618573332
@@ -18002,12 +18003,12 @@ proxy-groups:
         - trojan-655839400
         - trojan-655839403
         - trojan-655839404
-        - trojan-655839406
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-615957254
         - trojan-615957255
         - trojan-615983265
         - trojan-618573332
@@ -20007,7 +20008,6 @@ proxy-groups:
         - trojan-655839400
         - trojan-655839403
         - trojan-655839404
-        - trojan-655839406
       type: select
 rules:
     - MATCH,select
