@@ -1,17 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      name: vless-682283174
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: D3qByJ6qqJd5phYkfAtJpBqAhSb8VHPax1ZhvI3ZKEE
-        short-id: 96e380212691bba8
-      server: it.morinsq.su
-      servername: it.morinsq.su
-      tls: true
-      type: vless
-      udp: true
-      uuid: 93fab704-cea7-4ca4-a9ac-5bb46aef263c
     - client-fingerprint: qq
       name: vless-690509737
       network: tcp
@@ -46,32 +33,21 @@ proxies:
       type: vless
       udp: true
       uuid: 9102fe32-22c2-46a0-a697-4e9dc1bd7353
-    - cipher: aes-256-gcm
-      name: shadowsocks-591158343
-      password: d1fa2f4b98a38bc8
-      port: 10901
-      server: 194.87.47.204
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-682283174
         - vless-690509737
         - vless-688642853
         - vless-686815640
-        - shadowsocks-591158343
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-682283174
         - vless-690509737
         - vless-688642853
         - vless-686815640
-        - shadowsocks-591158343
       type: select
 rules:
     - MATCH,select

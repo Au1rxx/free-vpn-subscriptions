@@ -1,13 +1,18 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-681682518
-      network: ws
-      port: 80
-      server: 104.21.224.49
-      type: vmess
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-692622870
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
+        short-id: 88b6
+      server: 5.253.30.99
+      servername: deepl.com
+      tls: true
+      type: vless
       udp: true
-      uuid: 7022982f-da4c-48c9-c660-b2315abdcf7e
+      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
     - name: trojan-686431699
       password: 458e9445-6e05-4790-b831-6b6b7ab6424e
       port: 24407
@@ -58,20 +63,6 @@ proxies:
       type: vless
       udp: true
       uuid: afa134c3-6a58-4fac-95a5-4cf0eda31681
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-682971327
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: d1gJntekIStCHyAwgJCuv-N4_BBx5dDQ7K6CeWmpMRo
-        short-id: 84fc
-      server: preview.netraidly.ru
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 15fd22d1-8931-4d41-af37-8ba6711e93fe
     - name: hysteria2-650413302
       password: qQe1z5kU8kN6SlKnDt9Ru3Qp
       port: 443
@@ -93,51 +84,31 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-125111
-      password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
-      port: 31348
-      server: 103.120.178.193
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-27048
-      password: RexnBgU7EV5ADxG
-      port: 7002
-      server: 172.105.39.124
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-681682518
+        - vless-692622870
         - trojan-686431699
         - vless-685047030
         - vless-685046348
         - vless-685046349
-        - vless-682971327
         - hysteria2-650413302
         - hysteria2-591704066
         - hysteria2-565918947
-        - shadowsocks-125111
-        - shadowsocks-27048
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-681682518
+        - vless-692622870
         - trojan-686431699
         - vless-685047030
         - vless-685046348
         - vless-685046349
-        - vless-682971327
         - hysteria2-650413302
         - hysteria2-591704066
         - hysteria2-565918947
-        - shadowsocks-125111
-        - shadowsocks-27048
       type: select
 rules:
     - MATCH,select

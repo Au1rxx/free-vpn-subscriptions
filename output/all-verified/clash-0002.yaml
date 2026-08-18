@@ -1,6 +1,34 @@
 proxies:
     - client-fingerprint: qq
       flow: xtls-rprx-vision
+      name: vless-232879144
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 5Z6PwoPSNBLPIsX8lZtHM7-Y-psMMR1vz5Pit0EVISs
+        short-id: 82f5d3a1e9c0b661
+      server: 85.155.226.156
+      servername: getsavesafe.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 39c42b0a-b823-4c93-bb99-74b4183e518d
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-232947921
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: WRveYv8IuUyvai4jgnQ6nWCL971-wKboe8evES5arlg
+        short-id: 69d4
+      server: status.netraidly.ru
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 28d0edc6-93c9-4465-bac9-720274d8b8c4
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
       name: vless-232949910
       network: tcp
       port: 443
@@ -16682,26 +16710,12 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: trojan-453181865
-      password: AE62539071
-      port: 443
-      server: together-mayfly.rooster465.autos
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
-    - name: trojan-453181866
-      password: AE62539071
-      port: 443
-      server: tolerant-mosquito.rooster465.autos
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-232879144
+        - vless-232947921
         - vless-232949910
         - vless-232949911
         - vless-232965908
@@ -18326,13 +18340,13 @@ proxy-groups:
         - trojan-453181861
         - trojan-453181863
         - trojan-453181864
-        - trojan-453181865
-        - trojan-453181866
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-232879144
+        - vless-232947921
         - vless-232949910
         - vless-232949911
         - vless-232965908
@@ -19957,8 +19971,6 @@ proxy-groups:
         - trojan-453181861
         - trojan-453181863
         - trojan-453181864
-        - trojan-453181865
-        - trojan-453181866
       type: select
 rules:
     - MATCH,select
