@@ -71,16 +71,19 @@ proxies:
       type: vless
       udp: true
       uuid: bb742567-ec51-4956-9d3d-099e1a4d48c4
-    - name: vless-674341262
-      network: ws
+    - client-fingerprint: firefox
+      name: vless-688530353
+      network: grpc
       port: 443
-      server: 213.1.145.50
-      servername: kjgdksgghre466.pages.dev
-      skip-cert-verify: false
+      reality-opts:
+        public-key: BGTwwq2WH2vyjysboV2EksEqACpm_ixBREZvDnhOgBQ
+        short-id: c531f0e4
+      server: 167.104.223.43
+      servername: www.canonical.com
       tls: true
       type: vless
       udp: true
-      uuid: 6705ddbd-04cf-40f6-99b9-36846b08c2a9
+      uuid: f8c5b018-f51a-4137-be8a-50a451630589
     - name: vless-683912795
       network: grpc
       port: 443
@@ -136,13 +139,6 @@ proxies:
       skip-cert-verify: false
       sni: ""
       type: hysteria2
-    - name: hysteria2-474576863
-      password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
-      port: 8080
-      server: 185.79.138.71
-      skip-cert-verify: true
-      sni: hopp-legend-se.roxa.org
-      type: hysteria2
     - name: hysteria2-474576864
       password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
       port: 8080
@@ -150,13 +146,41 @@ proxies:
       skip-cert-verify: false
       sni: hopp-legend-se.roxa.org
       type: hysteria2
-    - name: hysteria2-658428968
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: vpn-uk-002.fastervpn.world
+    - name: hysteria2-474576863
+      password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
+      port: 8080
+      server: 185.79.138.71
       skip-cert-verify: true
-      sni: vpn-uk-002.fastervpn.world
+      sni: hopp-legend-se.roxa.org
       type: hysteria2
+    - cipher: rc4-md5
+      name: shadowsocks-165
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.61.37
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: shadowsocks-271
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.181
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-415241978
+      password: zRZNBszYyWo5
+      port: 8388
+      server: 51.77.225.200
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: shadowsocks-126252
+      password: shadowsocks
+      port: 443
+      server: 158.173.24.73
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -167,7 +191,7 @@ proxy-groups:
         - vless-684942311
         - vless-681910379
         - vless-685581286
-        - vless-674341262
+        - vless-688530353
         - vless-683912795
         - vless-683902801
         - hysteria2-655713429
@@ -175,9 +199,12 @@ proxy-groups:
         - hysteria2-655711983
         - hysteria2-645328529
         - hysteria2-652726844
-        - hysteria2-474576863
         - hysteria2-474576864
-        - hysteria2-658428968
+        - hysteria2-474576863
+        - shadowsocks-165
+        - shadowsocks-271
+        - shadowsocks-415241978
+        - shadowsocks-126252
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -189,7 +216,7 @@ proxy-groups:
         - vless-684942311
         - vless-681910379
         - vless-685581286
-        - vless-674341262
+        - vless-688530353
         - vless-683912795
         - vless-683902801
         - hysteria2-655713429
@@ -197,9 +224,12 @@ proxy-groups:
         - hysteria2-655711983
         - hysteria2-645328529
         - hysteria2-652726844
-        - hysteria2-474576863
         - hysteria2-474576864
-        - hysteria2-658428968
+        - hysteria2-474576863
+        - shadowsocks-165
+        - shadowsocks-271
+        - shadowsocks-415241978
+        - shadowsocks-126252
       type: select
 rules:
     - MATCH,select

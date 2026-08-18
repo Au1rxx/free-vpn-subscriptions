@@ -1,16 +1,5 @@
 proxies:
     - flow: xtls-rprx-vision
-      name: vless-674332662
-      network: raw
-      port: 52006
-      server: 94.26.249.216
-      servername: clode.fastaichat.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2867c76e-3211-07d0-9b13-c528d06a29af
-    - flow: xtls-rprx-vision
       name: vless-680168668
       network: raw
       port: 52006
@@ -21,28 +10,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1a15a707-0c97-07d0-8c2c-c0e71a67e209
-    - flow: xtls-rprx-vision
-      name: vless-674351192
-      network: tcp
-      port: 52006
-      server: 94.26.249.216
-      servername: clode.fastaichat.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: f110331a-58f8-07d0-a922-e9c3d59fbb49
-    - flow: xtls-rprx-vision
-      name: vless-674351191
-      network: tcp
-      port: 52006
-      server: 94.26.249.216
-      servername: clode.fastaichat.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2867c76e-3211-07d0-9b13-c528d06a29af
     - flow: xtls-rprx-vision
       name: vless-680168669
       network: raw
@@ -135,17 +102,6 @@ proxies:
       type: vless
       udp: true
       uuid: 8364e505-9c81-4d72-a66b-fde0182be26b
-    - flow: xtls-rprx-vision
-      name: vless-674381748
-      network: tcp
-      port: 52006
-      server: 94.26.249.216
-      servername: clode.fastaichat.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: f110331a-58f8-07d0-a922-e9c3d59fbb49
     - name: vless-680168664
       network: ws
       port: 8443
@@ -247,6 +203,13 @@ proxies:
       type: vless
       udp: true
       uuid: 8364e505-9c81-4d72-a66b-fde0182be26b
+    - name: hysteria2-591800026
+      password: 2a0099ded5baa93c55823af39229c5b1
+      port: 50160
+      server: 185.22.155.81
+      skip-cert-verify: false
+      sni: 185-22-155-81.liao.kdns.fr
+      type: hysteria2
     - name: hysteria2-655713426
       password: 2a0099ded5baa93c55823af39229c5b1
       port: 50160
@@ -282,13 +245,6 @@ proxies:
       skip-cert-verify: true
       sni: els1.mangshe.xyz
       type: hysteria2
-    - name: hysteria2-591800026
-      password: 2a0099ded5baa93c55823af39229c5b1
-      port: 50160
-      server: 185.22.155.81
-      skip-cert-verify: false
-      sni: 185-22-155-81.liao.kdns.fr
-      type: hysteria2
     - name: hysteria2-553326961
       password: 2a0099ded5baa93c55823af39229c5b1
       port: 50160
@@ -317,14 +273,18 @@ proxies:
       skip-cert-verify: false
       sni: 185-22-155-81.liao.kdns.fr
       type: hysteria2
+    - cipher: aes-256-gcm
+      name: shadowsocks-611712779
+      password: 1eadd4e4a37b6601
+      port: 10801
+      server: 45.8.158.176
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-674332662
         - vless-680168668
-        - vless-674351192
-        - vless-674351191
         - vless-680168669
         - vless-680168680
         - vless-680168670
@@ -333,7 +293,6 @@ proxy-groups:
         - vless-680168665
         - vless-676956332
         - vless-680168666
-        - vless-674381748
         - vless-680168664
         - vless-688016875
         - vless-679570843
@@ -343,25 +302,23 @@ proxy-groups:
         - vless-684320658
         - vless-682283181
         - vless-679569301
+        - hysteria2-591800026
         - hysteria2-655713426
         - hysteria2-656706498
         - hysteria2-655767074
         - hysteria2-655767066
         - hysteria2-387719495
-        - hysteria2-591800026
         - hysteria2-553326961
         - hysteria2-656706493
         - hysteria2-589844049
         - hysteria2-561706675
+        - shadowsocks-611712779
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-674332662
         - vless-680168668
-        - vless-674351192
-        - vless-674351191
         - vless-680168669
         - vless-680168680
         - vless-680168670
@@ -370,7 +327,6 @@ proxy-groups:
         - vless-680168665
         - vless-676956332
         - vless-680168666
-        - vless-674381748
         - vless-680168664
         - vless-688016875
         - vless-679570843
@@ -380,16 +336,17 @@ proxy-groups:
         - vless-684320658
         - vless-682283181
         - vless-679569301
+        - hysteria2-591800026
         - hysteria2-655713426
         - hysteria2-656706498
         - hysteria2-655767074
         - hysteria2-655767066
         - hysteria2-387719495
-        - hysteria2-591800026
         - hysteria2-553326961
         - hysteria2-656706493
         - hysteria2-589844049
         - hysteria2-561706675
+        - shadowsocks-611712779
       type: select
 rules:
     - MATCH,select
