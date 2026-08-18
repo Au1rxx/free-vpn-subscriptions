@@ -7,6 +7,16 @@ proxies:
       sni: fgrsd.southbyte.xyz
       type: trojan
       udp: true
+    - name: vless-656191936
+      network: tcp
+      port: 443
+      server: 85.90.217.42
+      servername: 85.90.217.42
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
     - name: trojan-710506298
       password: fg20mtCFHy
       port: 5575
@@ -28,42 +38,23 @@ proxies:
       type: vless
       udp: true
       uuid: 855d82bc-8cc6-4037-8da5-df0412f3c063
-    - alterId: 0
-      cipher: auto
-      name: vmess-669779356
-      network: tcp
-      port: 22324
-      server: 85.90.217.42
-      type: vmess
-      udp: true
-      uuid: 04621bae-ab36-11ec-b909-0242ac120002
-    - name: trojan-713065741
-      password: fg20mtCFHy
-      port: 5575
-      server: 172.233.107.18
-      skip-cert-verify: false
-      sni: fgrsd.southbyte.xyz
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-696780701
+        - vless-656191936
         - trojan-710506298
         - vless-496559071
-        - vmess-669779356
-        - trojan-713065741
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-696780701
+        - vless-656191936
         - trojan-710506298
         - vless-496559071
-        - vmess-669779356
-        - trojan-713065741
       type: select
 rules:
     - MATCH,select

@@ -9,17 +9,59 @@ proxies:
       type: vless
       udp: true
       uuid: e0454af2-6fe9-4983-a55d-05e1da202602
+    - flow: xtls-rprx-vision
+      name: vless-714278124
+      network: tcp
+      port: 443
+      server: vkdelease.com
+      servername: vkdelease.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: a492e889-3889-48c9-958b-d0f4a857a751
+    - flow: xtls-rprx-vision
+      name: vless-716551560
+      network: tcp
+      port: 443
+      server: 46.243.147.59
+      servername: vkdelease.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: a492e889-3889-48c9-958b-d0f4a857a751
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-716551582
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: awb21BMYndRuIsrKKJVlv22-l4Rs-EvEULcaOf5ERTw
+        short-id: ""
+      server: 85.192.49.236
+      servername: fi.jugploer.icu
+      tls: true
+      type: vless
+      udp: true
+      uuid: ab3606dc-29ef-4980-a708-1b14e11d06fc
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-671683635
+        - vless-714278124
+        - vless-716551560
+        - vless-716551582
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-671683635
+        - vless-714278124
+        - vless-716551560
+        - vless-716551582
       type: select
 rules:
     - MATCH,select
