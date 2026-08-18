@@ -12,26 +12,27 @@ proxies:
       type: vless
       udp: true
       uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
-    - name: hysteria2-696793183
-      password: ffOrA22ZuCrQz3uK
-      port: 26001
-      server: 38.60.255.241
-      skip-cert-verify: true
-      sni: tk4.czzhkractqqakfzdmrgd.cc
-      type: hysteria2
+    - name: trojan-725878119
+      password: tunnel-jdybi
+      port: 8441
+      server: tr-1.stunnel.cc
+      skip-cert-verify: false
+      sni: tr-1.stunnel.cc
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-587204639
-        - hysteria2-696793183
+        - trojan-725878119
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-587204639
-        - hysteria2-696793183
+        - trojan-725878119
       type: select
 rules:
     - MATCH,select

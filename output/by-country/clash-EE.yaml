@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-656222929
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: t_qv0VOfWhKZJV_giGC55-ipgHYWo44Yfvik_B8T8ik
-        short-id: 4a46213c935e2ee4
-      server: 31.76.70.33
-      servername: baltic.cendora.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
     - name: vless-650319315
       network: tcp
       port: 8443
@@ -30,6 +16,13 @@ proxies:
       type: vless
       udp: true
       uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+    - name: hysteria2-700405717
+      password: 74fbbe74-906d-45a8-a27c-a85fc758bc9f
+      port: 8443
+      server: 31.76.70.78
+      skip-cert-verify: true
+      sni: quic.tyr-agentstvo.tech
+      type: hysteria2
     - name: vless-470983995
       network: grpc
       port: 8443
@@ -65,9 +58,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-656222929
         - vless-650319315
         - vless-650319316
+        - hysteria2-700405717
         - vless-470983995
         - vless-645329708
         - vless-696171189
@@ -77,9 +70,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vless-656222929
         - vless-650319315
         - vless-650319316
+        - hysteria2-700405717
         - vless-470983995
         - vless-645329708
         - vless-696171189

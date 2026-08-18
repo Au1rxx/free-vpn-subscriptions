@@ -1,4 +1,11 @@
 proxies:
+    - cipher: rc4-md5
+      name: shadowsocks-166
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 137.184.174.93
+      type: ss
+      udp: true
     - cipher: aes-128-gcm
       name: shadowsocks-208
       password: shadowsocks
@@ -1452,10 +1459,60 @@ proxies:
       type: vless
       udp: true
       uuid: 716426fa-bcb7-4eb9-b460-36399ebf740d
+    - name: vless-725797379
+      network: tcp
+      port: 443
+      server: lizca2.footballfantasyforum.com
+      servername: lizca2.footballfantasyforum.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 716426fa-bcb7-4eb9-b460-36399ebf740d
+    - name: vless-725797419
+      network: raw
+      port: 443
+      server: lizca2.footballfantasyforum.com
+      servername: lizca2.footballfantasyforum.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 716426fa-bcb7-4eb9-b460-36399ebf740d
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-725810843
+      network: tcp
+      port: 41373
+      reality-opts:
+        public-key: m0GsZOAwvAJEaqh9aH6qfOmBKo0KW0jY_tJEC6KaDEU
+        short-id: 0e
+      server: 130.107.73.148
+      servername: google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a71c8954-66a8-4321-bedb-2336230d81ce
+    - name: trojan-726479995
+      password: fg20mtCFHy
+      port: 1921
+      server: 137.184.172.41
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
+    - name: hysteria2-726519187
+      password: pwmxYGNIt20Mlw6B
+      port: 25001
+      server: 172.105.20.71
+      skip-cert-verify: false
+      sni: ca-linode-1-d-free.nebulacloud.win
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-166
         - shadowsocks-208
         - vmess-16065
         - vmess-16103
@@ -1587,11 +1644,17 @@ proxy-groups:
         - vmess-723825766
         - vless-723899087
         - vless-725333451
+        - vless-725797379
+        - vless-725797419
+        - vless-725810843
+        - trojan-726479995
+        - hysteria2-726519187
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-166
         - shadowsocks-208
         - vmess-16065
         - vmess-16103
@@ -1723,6 +1786,11 @@ proxy-groups:
         - vmess-723825766
         - vless-723899087
         - vless-725333451
+        - vless-725797379
+        - vless-725797419
+        - vless-725810843
+        - trojan-726479995
+        - hysteria2-726519187
       type: select
 rules:
     - MATCH,select
