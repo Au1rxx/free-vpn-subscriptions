@@ -7,6 +7,14 @@ proxies:
       sni: sfecv.southbyte.xyz
       type: trojan
       udp: true
+    - name: trojan-713103209
+      password: fg20mtCFHy
+      port: 1921
+      server: 137.184.172.41
+      skip-cert-verify: false
+      sni: sfecv.southbyte.xyz
+      type: trojan
+      udp: true
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-700289034
@@ -110,6 +118,19 @@ proxies:
       type: vmess
       udp: true
       uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+    - client-fingerprint: firefox
+      name: vless-501276503
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 0KeXfLKnfTgIL7U-hSEn284rsECLiru0s0Rd11XzyzQ
+        short-id: d823e50b944daee4
+      server: 66.70.179.198
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 339db138-41ff-44e9-a323-46da89fbf1a7
     - alterId: 0
       cipher: auto
       name: vmess-704660104
@@ -119,25 +140,12 @@ proxies:
       type: vmess
       udp: true
       uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-    - name: hysteria2-696793192
-      password: pwmxYGNIt20Mlw6B
-      port: 25001
-      server: 172.105.20.71
-      skip-cert-verify: true
-      sni: ca-linode-1-d-free.nebulacloud.win
-      type: hysteria2
-    - name: hysteria2-696793172
-      password: QphDgjwenWq9W9sC
-      port: 16001
-      server: 15.223.189.161
-      skip-cert-verify: true
-      sni: ca-ls-a-3.lihmxssuqleitqcxpssa.uk
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-696780689
+        - trojan-713103209
         - vless-700289034
         - vless-703656399
         - vless-701211347
@@ -147,15 +155,15 @@ proxy-groups:
         - vmess-656063482
         - vless-703656407
         - vmess-704660102
+        - vless-501276503
         - vmess-704660104
-        - hysteria2-696793192
-        - hysteria2-696793172
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-696780689
+        - trojan-713103209
         - vless-700289034
         - vless-703656399
         - vless-701211347
@@ -165,9 +173,8 @@ proxy-groups:
         - vmess-656063482
         - vless-703656407
         - vmess-704660102
+        - vless-501276503
         - vmess-704660104
-        - hysteria2-696793192
-        - hysteria2-696793172
       type: select
 rules:
     - MATCH,select
