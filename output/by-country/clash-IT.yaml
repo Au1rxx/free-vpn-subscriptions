@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-696780708
+      password: fg20mtCFHy
+      port: 5444
+      server: 172.238.226.26
+      skip-cert-verify: true
+      sni: xcvge.southbyte.xyz
+      type: trojan
+      udp: true
     - client-fingerprint: qq
       name: vless-690509737
       network: tcp
@@ -19,51 +27,21 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-688642853
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: vnjp7zIK2H3CGdjSis_79KXqS6IG-opmpbETPUD-EC8
-        short-id: 15affa0af66dfc79
-      server: 31.76.113.64
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 33c150b7-c0ca-4133-9a52-6f1207da9b8b
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-694402623
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: LS-zg9fF_5TvNfMCIKngy5AMue1hF-hsk3hShsHGXT4
-        short-id: e5fa48b9363c6a88
-      server: 46.28.68.63
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 44927d9f-1a75-4c03-ab8c-79898adaaece
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-696780708
         - vless-690509737
         - vless-693666637
-        - vless-688642853
-        - vless-694402623
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-696780708
         - vless-690509737
         - vless-693666637
-        - vless-688642853
-        - vless-694402623
       type: select
 rules:
     - MATCH,select

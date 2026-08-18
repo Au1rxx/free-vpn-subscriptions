@@ -1,0 +1,63 @@
+{
+  "outbounds": [
+    {
+      "password": "fg20mtCFHy",
+      "server": "172.233.107.18",
+      "server_port": 5575,
+      "tag": "trojan-696780701",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "fgrsd.southbyte.xyz"
+      },
+      "type": "trojan"
+    },
+    {
+      "server": "212.227.235.66",
+      "server_port": 2053,
+      "tag": "vless-696171211",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "6huZliKELOkP6l-eOIFe7PKP5MCGK2p5KzUeXRiMi00",
+          "short_id": "13e0569248e98a05"
+        },
+        "server_name": "www.apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "type": "vless",
+      "uuid": "855d82bc-8cc6-4037-8da5-df0412f3c063"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-696780701",
+        "vless-696171211"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-696780701",
+        "vless-696171211"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

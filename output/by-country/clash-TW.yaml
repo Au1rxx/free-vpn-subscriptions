@@ -1,4 +1,18 @@
 proxies:
+    - name: hysteria2-696793181
+      password: eKUjiNGWdzBL1ngu
+      port: 36001
+      server: 82.152.90.46
+      skip-cert-verify: true
+      sni: tw-akile-2.apcwjtnmuwembbfzmxqx.cc
+      type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792811
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 120.232.253.94
+      type: ss
+      udp: true
     - name: vless-694445984
       network: tcp
       port: 10000
@@ -31,6 +45,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-696793181
+        - shadowsocks-696792811
         - vless-694445984
         - vless-689400338
         - vless-689279346
@@ -39,6 +55,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - hysteria2-696793181
+        - shadowsocks-696792811
         - vless-694445984
         - vless-689400338
         - vless-689279346

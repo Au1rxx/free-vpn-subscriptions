@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "1icJigVfIH8bEjy5",
+      "server": "38.60.202.43",
+      "server_port": 35001,
+      "tag": "hysteria2-696793149",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "ae-1-d.nebulacloud.win"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-696793149"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-696793149"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

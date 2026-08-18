@@ -15,12 +15,28 @@ proxies:
       sni: id1.nathaya.web.id
       type: trojan
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792809
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 120.232.253.92
+      type: ss
+      udp: true
+    - name: hysteria2-696793179
+      password: Y0K4XmKDUqFvItKV
+      port: 26001
+      server: 108.136.226.214
+      skip-cert-verify: true
+      sni: id-ls-f-7.nebulacloud.win
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-490085150
         - trojan-692972555
+        - shadowsocks-696792809
+        - hysteria2-696793179
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -28,6 +44,8 @@ proxy-groups:
         - auto
         - trojan-490085150
         - trojan-692972555
+        - shadowsocks-696792809
+        - hysteria2-696793179
       type: select
 rules:
     - MATCH,select

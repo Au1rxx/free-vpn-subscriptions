@@ -1,0 +1,22 @@
+proxies:
+    - name: hysteria2-696793183
+      password: ffOrA22ZuCrQz3uK
+      port: 26001
+      server: 38.60.255.241
+      skip-cert-verify: true
+      sni: tk4.czzhkractqqakfzdmrgd.cc
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-696793183
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-696793183
+      type: select
+rules:
+    - MATCH,select

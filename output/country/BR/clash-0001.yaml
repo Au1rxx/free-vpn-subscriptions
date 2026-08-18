@@ -87,6 +87,17 @@ proxies:
       udp: true
       uuid: a78d6a0b-8751-4e8e-bafa-79a86c5a5fc7
     - flow: xtls-rprx-vision
+      name: vless-650673514
+      network: tcp
+      port: 443
+      server: arc.magazinetut.online
+      servername: arc.magazinetut.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: af2691c6-e6f2-49f1-ab60-87b6f766166a
+    - flow: xtls-rprx-vision
       name: vless-656142749
       network: tcp
       port: 443
@@ -217,6 +228,41 @@ proxies:
       type: vless
       udp: true
       uuid: af2691c6-e6f2-49f1-ab60-87b6f766166a
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792825
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 181.41.201.242
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-696792918
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: E6Y9lNizCXo8tJ6EXwLYQIjyIwmxIs4foyRlY2MgkjA
+        short-id: 59ccabb0a1483c4b
+      server: wr28-6njjgu.linenheath.site
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9638a83e-f1f7-4cc8-a602-924965d9534f
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-696792933
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: m89wjPa2LxODyi8U5pRVI4E1fwVawIaftC3fLY0ZLw4
+        short-id: 9ea177c3c147119b
+      server: u234-6njjdk.startora.top
+      servername: www.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c396fa08-e07a-459b-b894-389456fd6a82
 proxy-groups:
     - interval: 300
       name: auto
@@ -230,6 +276,7 @@ proxy-groups:
         - vless-650418364
         - vless-650648377
         - vless-650650313
+        - vless-650673514
         - vless-656142749
         - vless-656156631
         - vless-656162676
@@ -243,6 +290,9 @@ proxy-groups:
         - shadowsocks-674609653
         - vless-689803283
         - vless-694426986
+        - shadowsocks-696792825
+        - vless-696792918
+        - vless-696792933
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -257,6 +307,7 @@ proxy-groups:
         - vless-650418364
         - vless-650648377
         - vless-650650313
+        - vless-650673514
         - vless-656142749
         - vless-656156631
         - vless-656162676
@@ -270,6 +321,9 @@ proxy-groups:
         - shadowsocks-674609653
         - vless-689803283
         - vless-694426986
+        - shadowsocks-696792825
+        - vless-696792918
+        - vless-696792933
       type: select
 rules:
     - MATCH,select

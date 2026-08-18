@@ -1,4 +1,18 @@
 proxies:
+    - name: hysteria2-696616382
+      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+      port: 443
+      server: at164.mechvpn.online
+      skip-cert-verify: false
+      sni: at164.mechvpn.online
+      type: hysteria2
+    - name: hysteria2-696616383
+      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+      port: 443
+      server: at188.mechvpn.online
+      skip-cert-verify: false
+      sni: at188.mechvpn.online
+      type: hysteria2
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-696131686
@@ -23,6 +37,13 @@ proxies:
       type: vless
       udp: true
       uuid: e911c552-3a98-41e0-b5fb-0dd3879887b7
+    - name: hysteria2-696616381
+      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+      port: 443
+      server: at164.mechvpn.online
+      skip-cert-verify: false
+      sni: ""
+      type: hysteria2
     - name: vless-694353438
       network: ws
       port: 443
@@ -37,16 +58,22 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-696616382
+        - hysteria2-696616383
         - vless-696131686
         - vless-696135674
+        - hysteria2-696616381
         - vless-694353438
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-696616382
+        - hysteria2-696616383
         - vless-696131686
         - vless-696135674
+        - hysteria2-696616381
         - vless-694353438
       type: select
 rules:
