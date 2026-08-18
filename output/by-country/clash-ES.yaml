@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-698569637
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: 7IMomzYtfCCiH3ytALMNYEIJxQBXUhvsrdk9u261DSw
+        short-id: 9be860ff7908
+      server: sp.cryptoofarm.com
+      servername: sp.cryptoofarm.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6607d677-f567-4692-af46-52d0e15808a1
     - name: trojan-696780701
       password: fg20mtCFHy
       port: 5575
@@ -24,6 +38,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-698569637
         - trojan-696780701
         - vless-696171211
       type: url-test
@@ -31,6 +46,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-698569637
         - trojan-696780701
         - vless-696171211
       type: select

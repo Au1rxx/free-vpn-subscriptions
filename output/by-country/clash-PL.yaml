@@ -1,4 +1,25 @@
 proxies:
+    - name: hysteria2-698966614
+      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+      port: 443
+      server: 82.22.41.10
+      skip-cert-verify: true
+      sni: 82.22.41.10
+      type: hysteria2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-698977155
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: 83.168.108.179
+      servername: pol3.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: fbb74aa8-b89a-4f20-9504-6b25aadf6681
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-694416979
@@ -26,13 +47,6 @@ proxies:
       type: vless
       udp: true
       uuid: a60bc8c8-1447-4f2c-a09c-c4293b257fd8
-    - name: vless-689800279
-      network: ws
-      port: 8880
-      server: 89.116.161.50
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - flow: xtls-rprx-vision
       name: vless-697232735
       network: raw
@@ -44,23 +58,41 @@ proxies:
       type: vless
       udp: true
       uuid: 38cc34e9-9973-439c-b61b-3d89b798d571
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-698729686
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: 83.168.108.179
+      servername: pol3.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: fbb74aa8-b89a-4f20-9504-6b25aadf6681
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-698966614
+        - vless-698977155
         - vless-694416979
         - vless-696178625
-        - vless-689800279
         - vless-697232735
+        - vless-698729686
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-698966614
+        - vless-698977155
         - vless-694416979
         - vless-696178625
-        - vless-689800279
         - vless-697232735
+        - vless-698729686
       type: select
 rules:
     - MATCH,select

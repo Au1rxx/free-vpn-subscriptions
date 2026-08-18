@@ -13,17 +13,33 @@ proxies:
       type: vless
       udp: true
       uuid: 316dda83-17f1-4f29-a05f-b84b7f991b82
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-698565636
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: Lq1xwc-Qd0Te8sV-NxrJLQO6JbvPkknki6inkKj5_WQ
+        short-id: 22c6f049621c44ec
+      server: tr2.odavpn.online
+      servername: www.sony.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6607d677-f567-4692-af46-52d0e15808a1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-696133684
+        - vless-698565636
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-696133684
+        - vless-698565636
       type: select
 rules:
     - MATCH,select

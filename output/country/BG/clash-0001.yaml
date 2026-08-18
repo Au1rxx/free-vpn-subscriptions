@@ -15,20 +15,6 @@ proxies:
       uuid: 316dda83-17f1-4f29-a05f-b84b7f991b82
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-448878354
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: HDiwGAN66V77CrlCWrDZupEiSQk204dkWRjJok0zYhk
-        short-id: 720148f2fea16d0f
-      server: 82.118.18.202
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 316dda83-17f1-4f29-a05f-b84b7f991b82
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
       name: vless-453073268
       network: raw
       port: 443
@@ -153,13 +139,6 @@ proxies:
       type: vless
       udp: true
       uuid: e75ad2eb-6c1f-45ce-8023-f5f10875df66
-    - name: vless-689794313
-      network: ws
-      port: 8880
-      server: 104.238.68.50
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-696133684
@@ -181,12 +160,25 @@ proxies:
       server: 213.183.63.60
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-698565636
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: Lq1xwc-Qd0Te8sV-NxrJLQO6JbvPkknki6inkKj5_WQ
+        short-id: 22c6f049621c44ec
+      server: tr2.odavpn.online
+      servername: www.sony.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6607d677-f567-4692-af46-52d0e15808a1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-429853174
-        - vless-448878354
         - vless-453073268
         - vless-494488364
         - vless-515164909
@@ -198,16 +190,15 @@ proxy-groups:
         - vless-656230677
         - vless-656230833
         - vless-685581269
-        - vless-689794313
         - vless-696133684
         - shadowsocks-696781308
+        - vless-698565636
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-429853174
-        - vless-448878354
         - vless-453073268
         - vless-494488364
         - vless-515164909
@@ -219,9 +210,9 @@ proxy-groups:
         - vless-656230677
         - vless-656230833
         - vless-685581269
-        - vless-689794313
         - vless-696133684
         - shadowsocks-696781308
+        - vless-698565636
       type: select
 rules:
     - MATCH,select

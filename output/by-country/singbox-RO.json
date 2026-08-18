@@ -1,0 +1,50 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "lp.cryptoofarm.com",
+      "server_port": 8443,
+      "tag": "vless-698569636",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "Ezu-OUgjepmy9XG8khX0Q8xQ_i0fGh6w_H4JO49TG34",
+          "short_id": "964fdf71ea78787f"
+        },
+        "server_name": "lp.cryptoofarm.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "6607d677-f567-4692-af46-52d0e15808a1"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-698569636"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-698569636"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
