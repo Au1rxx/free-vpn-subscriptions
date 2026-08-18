@@ -1,0 +1,100 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "as.tunnelx.space",
+      "server_port": 443,
+      "tag": "vless-696131686",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "UO3EObgU3xUrhIGEE0gfCn5ZOz8YxNcwwW6ZaYzD3SA",
+          "short_id": "4e9b0c2d1a3f5768"
+        },
+        "server_name": "as.tunnelx.space",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "type": "vless",
+      "uuid": "ab7d5ea9-6eca-47c3-b14b-67378fc2d7c2"
+    },
+    {
+      "server": "194.147.173.116",
+      "server_port": 443,
+      "tag": "vless-696135674",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "vod.ensf.top",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "transport": {
+        "headers": {
+          "Host": "vod.ensf.top"
+        },
+        "path": "/api/v1/irc",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "e911c552-3a98-41e0-b5fb-0dd3879887b7"
+    },
+    {
+      "server": "194.147.173.116",
+      "server_port": 443,
+      "tag": "vless-694353438",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "vod.ensf.top",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "transport": {
+        "headers": {
+          "Host": "vod.ensf.top"
+        },
+        "path": "/api/v1/irc",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "e911c552-3a98-41e0-b5fb-0dd3879887b7"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-696131686",
+        "vless-696135674",
+        "vless-694353438"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-696131686",
+        "vless-696135674",
+        "vless-694353438"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

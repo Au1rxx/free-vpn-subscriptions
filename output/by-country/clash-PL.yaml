@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-694416979
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: 83.168.108.179
+      servername: pol3.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: fbb74aa8-b89a-4f20-9504-6b25aadf6681
     - name: hysteria2-688016856
       password: 81378ef7-89a1-43b5-9a9d-a04a8af25b7c
       port: 443
@@ -13,20 +27,6 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-688071201
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: tcBg_sBbiRt9z-JHFYbf_jITjuuiBULB3chmNBuFRh8
-        short-id: ""
-      server: 82.38.65.76
-      servername: pypi.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
     - name: vless-689099492
       network: ws
       port: 443
@@ -38,18 +38,18 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-694416979
         - hysteria2-688016856
         - vless-689800279
-        - vless-688071201
         - vless-689099492
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-694416979
         - hysteria2-688016856
         - vless-689800279
-        - vless-688071201
         - vless-689099492
       type: select
 rules:

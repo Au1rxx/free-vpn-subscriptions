@@ -1,0 +1,50 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "194.32.141.119",
+      "server_port": 443,
+      "tag": "vless-696124782",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "_-iZt_zsuSnYKNldfwXQlnH6SqbLJILP4qApHbaKax0",
+          "short_id": "3e70d5cbb01bddfd"
+        },
+        "server_name": "savesafe.kz",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "type": "vless",
+      "uuid": "b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-696124782"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-696124782"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

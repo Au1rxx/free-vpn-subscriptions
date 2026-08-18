@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-695860168
+      password: d1a3dd20-f33e-4d29-9027-3ebabc5954a0
+      port: 443
+      server: 23.227.38.84
+      skip-cert-verify: false
+      sni: 9l3ysxf7rj3nz549.tkgogocsgo.top
+      type: trojan
+      udp: true
     - name: vless-693950788
       network: ws
       port: 443
@@ -6,17 +14,19 @@ proxies:
       type: vless
       udp: true
       uuid: 897a4bec-26b8-11e8-94be-00505695472c
-    - flow: xtls-rprx-vision
-      name: vless-688016875
-      network: raw
-      port: 52006
-      server: 94.26.249.216
-      servername: clode.fastaichat.ru
-      skip-cert-verify: false
+    - client-fingerprint: qq
+      name: vless-694419980
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: HHbMyxLRgywVoS_G5d35HW0bToENF0ihXHJ20iLAYRM
+        short-id: b6549e
+      server: 81.90.31.81
+      servername: kaos.ubuntuhosting.host
       tls: true
       type: vless
       udp: true
-      uuid: 31670e5d-1271-07d0-b6dd-8ccbea85ecee
+      uuid: d82a9ad0-80a2-4871-82b6-8e16d1482b42
     - flow: xtls-rprx-vision
       name: vless-690131961
       network: tcp
@@ -39,8 +49,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-695860168
         - vless-693950788
-        - vless-688016875
+        - vless-694419980
         - vless-690131961
         - vless-690114906
       type: url-test
@@ -48,8 +59,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-695860168
         - vless-693950788
-        - vless-688016875
+        - vless-694419980
         - vless-690131961
         - vless-690114906
       type: select

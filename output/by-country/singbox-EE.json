@@ -1,0 +1,38 @@
+{
+  "outbounds": [
+    {
+      "server": "estproxy4.lockdwn.com",
+      "server_port": 443,
+      "tag": "vless-694380324",
+      "transport": {
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "06c4e938-2954-478f-a870-ca1b163e30e9"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-694380324"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-694380324"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
