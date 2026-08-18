@@ -1,13 +1,22 @@
-proxies: []
+proxies:
+    - name: vless-672199227
+      network: tcp
+      port: 12528
+      server: 120.227.1.43
+      type: vless
+      udp: true
+      uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - vless-672199227
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-672199227
       type: select
 rules:
     - MATCH,select

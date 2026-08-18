@@ -205,14 +205,6 @@ proxies:
       skip-cert-verify: false
       sni: mercedes-grape.yyuyy.com
       type: hysteria2
-    - name: trojan-635823135
-      password: 8bS8vVC5CQ2GsckhMh8IT1jv
-      port: 443
-      server: 193.124.46.65
-      skip-cert-verify: false
-      sni: 193.124.46.65
-      type: trojan
-      udp: true
     - name: trojan-639242007
       password: 8bS8vVC5CQ2GsckhMh8IT1jv
       port: 443
@@ -337,15 +329,17 @@ proxies:
       type: vless
       udp: true
       uuid: 68bdc1ee-c6ee-4d91-ab52-35ce0d368302
-    - alterId: 0
-      cipher: auto
-      name: vmess-669789131
-      network: ws
-      port: 58304
-      server: 193.111.78.106
-      type: vmess
+    - flow: xtls-rprx-vision
+      name: vless-660179874
+      network: tcp
+      port: 8443
+      server: 193.124.46.65
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
       udp: true
-      uuid: 26b6fd32-04e6-43ff-a065-bea36f748655
+      uuid: 68bdc1ee-c6ee-4d91-ab52-35ce0d368302
     - name: vless-671320115
       network: ws
       port: 80
@@ -451,6 +445,22 @@ proxies:
       type: vless
       udp: true
       uuid: 68bdc1ee-c6ee-4d91-ab52-35ce0d368302
+    - name: trojan-688520567
+      password: 8bS8vVC5CQ2GsckhMh8IT1jv
+      port: 443
+      server: 193.124.46.65
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-688522396
+      password: 8bS8vVC5CQ2GsckhMh8IT1jv
+      port: 443
+      server: 193.124.46.65
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -477,7 +487,6 @@ proxy-groups:
         - trojan-583575821
         - vless-587204639
         - hysteria2-608559118
-        - trojan-635823135
         - trojan-639242007
         - hysteria2-645328527
         - vless-650418406
@@ -491,7 +500,7 @@ proxy-groups:
         - trojan-657018791
         - trojan-658472705
         - vless-659077134
-        - vmess-669789131
+        - vless-660179874
         - vless-671320115
         - vless-674039955
         - trojan-674039968
@@ -502,6 +511,8 @@ proxy-groups:
         - vless-676698420
         - vless-685046378
         - vless-685581305
+        - trojan-688520567
+        - trojan-688522396
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -529,7 +540,6 @@ proxy-groups:
         - trojan-583575821
         - vless-587204639
         - hysteria2-608559118
-        - trojan-635823135
         - trojan-639242007
         - hysteria2-645328527
         - vless-650418406
@@ -543,7 +553,7 @@ proxy-groups:
         - trojan-657018791
         - trojan-658472705
         - vless-659077134
-        - vmess-669789131
+        - vless-660179874
         - vless-671320115
         - vless-674039955
         - trojan-674039968
@@ -554,6 +564,8 @@ proxy-groups:
         - vless-676698420
         - vless-685046378
         - vless-685581305
+        - trojan-688520567
+        - trojan-688522396
       type: select
 rules:
     - MATCH,select

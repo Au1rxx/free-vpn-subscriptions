@@ -25,20 +25,20 @@ proxies:
       type: vless
       udp: true
       uuid: 93fab704-cea7-4ca4-a9ac-5bb46aef263c
-    - name: hysteria2-653885323
-      password: 10f02d23-1d74-4b6e-b830-815be053281d
-      port: 20000
-      server: 2604:a880:4:1d0:0:3:4c9a:5000
-      skip-cert-verify: true
-      sni: localhost
-      type: hysteria2
+    - name: vless-686815640
+      network: ws
+      port: 2082
+      server: xstack.kanganifix.com
+      type: vless
+      udp: true
+      uuid: 9102fe32-22c2-46a0-a697-4e9dc1bd7353
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-682283174
         - vless-677872654
-        - hysteria2-653885323
+        - vless-686815640
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -46,7 +46,7 @@ proxy-groups:
         - auto
         - vless-682283174
         - vless-677872654
-        - hysteria2-653885323
+        - vless-686815640
       type: select
 rules:
     - MATCH,select

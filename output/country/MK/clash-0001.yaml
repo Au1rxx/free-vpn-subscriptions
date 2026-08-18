@@ -13,17 +13,49 @@ proxies:
       type: vless
       udp: true
       uuid: 604c8c22-1524-4a3f-b85f-d3375482dcc4
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-688016884
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Q0351ApYOgCGCOgSEROnacDdm7xp-kLs9mYddSDFwRQ
+        short-id: 360881fdb193758d
+      server: 195.144.24.148
+      servername: www.twitch.tv
+      tls: true
+      type: vless
+      udp: true
+      uuid: 604c8c22-1524-4a3f-b85f-d3375482dcc4
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-688016885
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Q0351ApYOgCGCOgSEROnacDdm7xp-kLs9mYddSDFwRQ
+        short-id: 360881fdb193758d
+      server: 195.144.24.148
+      servername: www.twitch.tv
+      tls: true
+      type: vless
+      udp: true
+      uuid: 604c8c22-1524-4a3f-b85f-d3375482dcc4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-681908374
+        - vless-688016884
+        - vless-688016885
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-681908374
+        - vless-688016884
+        - vless-688016885
       type: select
 rules:
     - MATCH,select
