@@ -19,6 +19,13 @@ proxies:
       type: vless
       udp: true
       uuid: d8409007-ca8d-4d92-8da3-3720a762fa02
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-699151050
+      password: 7CCOp1icO5ZfmmzSweQowSvA5+efeJ3HrKxHDAAJmUc=
+      port: 61312
+      server: 129.151.88.180
+      type: ss
+      udp: true
     - name: vless-698374752
       network: grpc
       port: 443
@@ -56,6 +63,20 @@ proxies:
       type: vless
       udp: true
       uuid: a6f6d9c9-9d43-4d0e-bf95-4b87cc5bbaac
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-701187280
+      network: tcp
+      port: 50039
+      reality-opts:
+        public-key: 0qifn7FGo1Fv6bAhw29gy5SmVHcWarBfIHTUPOwpXVs
+        short-id: 9c6d65829a49c6
+      server: 132.243.207.38
+      servername: www.vk.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6a0a3a97-f063-5599-b5fa-2b5ad599a683
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-693322603
@@ -84,6 +105,26 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - name: vless-700576195
+      network: grpc
+      port: 443
+      server: 213.193.254.131
+      servername: video.she-happ.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ea6db8fa-7e15-4eb2-87f1-22004ac00061
+    - name: vless-700128646
+      network: grpc
+      port: 443
+      server: 213.193.254.131
+      servername: video.she-happ.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ea6db8fa-7e15-4eb2-87f1-22004ac00061
     - client-fingerprint: edge
       name: vless-694381346
       network: grpc
@@ -118,6 +159,16 @@ proxies:
       type: vless
       udp: true
       uuid: 822be4fa-cc6c-441b-b576-3c276141809a
+    - name: vless-699962369
+      network: grpc
+      port: 443
+      server: video.she-happ.com
+      servername: video.she-happ.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ea6db8fa-7e15-4eb2-87f1-22004ac00061
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-692622877
@@ -142,6 +193,20 @@ proxies:
       type: vless
       udp: true
       uuid: d71aecee-ef16-418e-baf5-2b2458122d5a
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-700368587
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
+        short-id: 00bca5982f82d083
+      server: 150.241.73.137
+      servername: eu-central.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
     - name: trojan-696780680
       password: fg20mtCFHy
       port: 5624
@@ -163,32 +228,30 @@ proxies:
       type: vless
       udp: true
       uuid: c8dcbe44-5714-4f99-8d7a-aadebea34abf
-    - name: vless-693669554
-      network: tcp
-      port: 20190
-      server: 169.197.113.179
-      type: vless
-      udp: true
-      uuid: ad4dd89a-2e4b-4f33-bb96-7e9c4eb85d0b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-691769490
         - vless-693251929
+        - shadowsocks-699151050
         - vless-698374752
         - vless-696188125
         - vless-696194653
+        - vless-701187280
         - vless-693322603
         - vless-693320605
+        - vless-700576195
+        - vless-700128646
         - vless-694381346
         - shadowsocks-696792831
         - vless-698117245
+        - vless-699962369
         - vless-692622877
         - vless-692483204
+        - vless-700368587
         - trojan-696780680
         - vless-696171221
-        - vless-693669554
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -196,19 +259,24 @@ proxy-groups:
         - auto
         - shadowsocks-691769490
         - vless-693251929
+        - shadowsocks-699151050
         - vless-698374752
         - vless-696188125
         - vless-696194653
+        - vless-701187280
         - vless-693322603
         - vless-693320605
+        - vless-700576195
+        - vless-700128646
         - vless-694381346
         - shadowsocks-696792831
         - vless-698117245
+        - vless-699962369
         - vless-692622877
         - vless-692483204
+        - vless-700368587
         - trojan-696780680
         - vless-696171221
-        - vless-693669554
       type: select
 rules:
     - MATCH,select

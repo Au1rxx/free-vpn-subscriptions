@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: firefox
+      name: vless-701187261
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: D3qByJ6qqJd5phYkfAtJpBqAhSb8VHPax1ZhvI3ZKEE
+        short-id: 96e380212691bba8
+      server: 31.77.201.205
+      servername: it.morinsq.su
+      tls: true
+      type: vless
+      udp: true
+      uuid: 93fab704-cea7-4ca4-a9ac-5bb46aef263c
     - name: trojan-696780708
       password: fg20mtCFHy
       port: 5444
@@ -7,41 +20,34 @@ proxies:
       sni: xcvge.southbyte.xyz
       type: trojan
       udp: true
-    - client-fingerprint: qq
-      name: vless-690509737
+    - client-fingerprint: random
+      name: vless-700368422
       network: tcp
-      port: 443
+      port: 2053
       reality-opts:
-        public-key: D3qByJ6qqJd5phYkfAtJpBqAhSb8VHPax1ZhvI3ZKEE
-        short-id: 96e380212691bba8
-      server: it.morinsq.su
-      servername: it.morinsq.su
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
       tls: true
       type: vless
       udp: true
-      uuid: 93fab704-cea7-4ca4-a9ac-5bb46aef263c
-    - name: vless-693666637
-      network: tcp
-      port: 10086
-      server: 204.216.216.23
-      type: vless
-      udp: true
-      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-701187261
         - trojan-696780708
-        - vless-690509737
-        - vless-693666637
+        - vless-700368422
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-701187261
         - trojan-696780708
-        - vless-690509737
-        - vless-693666637
+        - vless-700368422
       type: select
 rules:
     - MATCH,select

@@ -35,6 +35,20 @@ proxies:
       sni: sfecv.southbyte.xyz
       type: trojan
       udp: true
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-700289034
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: ECtV4BdcZKXG49uHtDX-71e1YVr7gu54ykbaBms9kh4
+        short-id: c2f3117b3268d0a6
+      server: 209.200.246.86
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f9c6ae5c-a537-4ce1-8ad5-d1e579e0275f
     - cipher: aes-256-cfb
       name: shadowsocks-696792823
       password: 7eadc6dbe2ae
@@ -42,6 +56,27 @@ proxies:
       server: 154.127.56.212
       type: ss
       udp: true
+    - name: vless-701211347
+      network: ws
+      port: 80
+      server: speedtest.net
+      type: vless
+      udp: true
+      uuid: de5eedc7-4292-4b5d-f7ac-851e7236e2c9
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-700285021
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: wo417FrFdjy7ZhccQ-VWGZEKcoCHSEfyWcJT1pIVc1Y
+        short-id: 3d3c1e645f763ee3
+      server: 158.69.112.254
+      servername: www.speedtest.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 661f395d-b153-4199-a04b-693f5fe7f261
 proxy-groups:
     - interval: 300
       name: auto
@@ -49,7 +84,10 @@ proxy-groups:
         - vless-692905137
         - vless-692622873
         - trojan-696780689
+        - vless-700289034
         - shadowsocks-696792823
+        - vless-701211347
+        - vless-700285021
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -58,7 +96,10 @@ proxy-groups:
         - vless-692905137
         - vless-692622873
         - trojan-696780689
+        - vless-700289034
         - shadowsocks-696792823
+        - vless-701211347
+        - vless-700285021
       type: select
 rules:
     - MATCH,select

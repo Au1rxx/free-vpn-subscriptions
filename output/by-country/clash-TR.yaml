@@ -1,22 +1,23 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-691117639
-      password: aV1HeVAHZsjj1GwmX22yOx
-      port: 57925
-      server: 157.22.240.141
-      type: ss
+    - name: trojan-699522467
+      password: tunnel-jdybi
+      port: 8441
+      server: tr-1.stunnel.cc
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
       udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-691117639
+        - trojan-699522467
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-691117639
+        - trojan-699522467
       type: select
 rules:
     - MATCH,select

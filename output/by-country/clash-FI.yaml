@@ -1,11 +1,15 @@
 proxies:
-    - name: hysteria2-690296423
-      password: 81378ef7-89a1-43b5-9a9d-a04a8af25b7c
+    - flow: xtls-rprx-vision
+      name: vless-701066796
+      network: tcp
       port: 443
-      server: fin1.apexvpn.space
-      skip-cert-verify: false
-      sni: fin1.apexvpn.space
-      type: hysteria2
+      server: 194.87.234.219
+      servername: ""
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 28af86fc-34fa-4b4e-b96f-041a1b687823
     - client-fingerprint: qq
       name: vless-694384375
       network: grpc
@@ -66,6 +70,20 @@ proxies:
       type: vless
       udp: true
       uuid: 0fbff144-bbed-44c0-972b-3ecb0d5579d6
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-700897554
+      network: tcp
+      port: 2096
+      reality-opts:
+        public-key: jqDgERbgQ5DVnJvw4p_j8XnM4GXUSXvPEn2t0TOtMms
+        short-id: 50797b67f581e453
+      server: sohasn.rapidmesh.ir
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 16569657-116c-46ed-8920-758ab8abaac4
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-694384369
@@ -161,6 +179,20 @@ proxies:
       type: vless
       udp: true
       uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-700122639
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: YQTixaXzPVImuRc4TUbrFAekjIiaYV-t5S-HTKlH0AU
+        short-id: 2186a755ed67b034
+      server: 150.241.86.150
+      servername: nordic.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
     - client-fingerprint: edge
       name: vless-694382850
       network: tcp
@@ -188,30 +220,31 @@ proxies:
       type: vless
       udp: true
       uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
-    - client-fingerprint: qq
+    - client-fingerprint: random
       flow: xtls-rprx-vision
-      name: vless-694381359
+      name: vless-700283294
       network: tcp
-      port: 2096
+      port: 443
       reality-opts:
-        public-key: jqDgERbgQ5DVnJvw4p_j8XnM4GXUSXvPEn2t0TOtMms
-        short-id: 50797b67f581e453
-      server: 62.238.60.118
-      servername: yahoo.com
+        public-key: TlpXTLz1Y-v8B6q9MX55U6eypjfL0LCSNE5zQP4yRHw
+        short-id: bbc68cec8bb8d2e3
+      server: 144.31.226.177
+      servername: node15.mxvpn.dev
       tls: true
       type: vless
       udp: true
-      uuid: 16569657-116c-46ed-8920-758ab8abaac4
+      uuid: 564082ff-cf3c-48db-9e10-8ad2312847b4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-690296423
+        - vless-701066796
         - vless-694384375
         - vless-698117242
         - vless-696173170
         - vless-696176645
         - vless-696175161
+        - vless-700897554
         - vless-694384369
         - vless-694384356
         - vless-696175162
@@ -219,20 +252,22 @@ proxy-groups:
         - vless-696163181
         - vless-696173175
         - vless-696176647
+        - vless-700122639
         - vless-694382850
         - vless-696176644
-        - vless-694381359
+        - vless-700283294
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-690296423
+        - vless-701066796
         - vless-694384375
         - vless-698117242
         - vless-696173170
         - vless-696176645
         - vless-696175161
+        - vless-700897554
         - vless-694384369
         - vless-694384356
         - vless-696175162
@@ -240,9 +275,10 @@ proxy-groups:
         - vless-696163181
         - vless-696173175
         - vless-696176647
+        - vless-700122639
         - vless-694382850
         - vless-696176644
-        - vless-694381359
+        - vless-700283294
       type: select
 rules:
     - MATCH,select

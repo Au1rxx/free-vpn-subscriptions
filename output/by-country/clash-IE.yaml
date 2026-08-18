@@ -1,0 +1,43 @@
+proxies:
+    - name: trojan-700289086
+      password: AE62539071
+      port: 443
+      server: healthy-panda.rooster465.autos
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-700289087
+      password: AE62539071
+      port: 443
+      server: helped-haddock.rooster465.autos
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-700289090
+      password: AE62539071
+      port: 443
+      server: worthy-labrador.rooster465.autos
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - trojan-700289086
+        - trojan-700289087
+        - trojan-700289090
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - trojan-700289086
+        - trojan-700289087
+        - trojan-700289090
+      type: select
+rules:
+    - MATCH,select
