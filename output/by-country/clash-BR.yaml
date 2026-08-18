@@ -13,12 +13,27 @@ proxies:
       server: 181.41.201.242
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-702186390
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: E6Y9lNizCXo8tJ6EXwLYQIjyIwmxIs4foyRlY2MgkjA
+        short-id: 59ccabb0a1483c4b
+      server: wr28-6njjgu.linenheath.site
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9638a83e-f1f7-4cc8-a602-924965d9534f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-700537678
         - shadowsocks-696792825
+        - vless-702186390
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +41,7 @@ proxy-groups:
         - auto
         - shadowsocks-700537678
         - shadowsocks-696792825
+        - vless-702186390
       type: select
 rules:
     - MATCH,select

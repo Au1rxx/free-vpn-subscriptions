@@ -1,0 +1,58 @@
+proxies:
+    - client-fingerprint: qq
+      name: vless-702397362
+      network: grpc
+      port: 2083
+      reality-opts:
+        public-key: -ljhp6OZ_8KudLYANB-6BD6XaLIS5RqWvFnYRXKrXms
+        short-id: a7c236bb91557d48
+      server: 188.68.218.17
+      servername: ads.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: d8409007-ca8d-4d92-8da3-3720a762fa02
+    - client-fingerprint: edge
+      name: vless-702397361
+      network: grpc
+      port: 2083
+      reality-opts:
+        public-key: -ljhp6OZ_8KudLYANB-6BD6XaLIS5RqWvFnYRXKrXms
+        short-id: a7c236bb91557d48
+      server: 188.68.218.17
+      servername: ads.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: d8409007-ca8d-4d92-8da3-3720a762fa02
+    - client-fingerprint: firefox
+      name: vless-702395361
+      network: grpc
+      port: 2083
+      reality-opts:
+        public-key: -ljhp6OZ_8KudLYANB-6BD6XaLIS5RqWvFnYRXKrXms
+        short-id: a7c236bb91557d48
+      server: 188.68.218.17
+      servername: ads.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: d8409007-ca8d-4d92-8da3-3720a762fa02
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-702397362
+        - vless-702397361
+        - vless-702395361
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-702397362
+        - vless-702397361
+        - vless-702395361
+      type: select
+rules:
+    - MATCH,select

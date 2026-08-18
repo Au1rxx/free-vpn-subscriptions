@@ -7,17 +7,38 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - name: hysteria2-696793183
+      password: ffOrA22ZuCrQz3uK
+      port: 26001
+      server: 38.60.255.241
+      skip-cert-verify: true
+      sni: tk4.czzhkractqqakfzdmrgd.cc
+      type: hysteria2
+    - name: vless-699893657
+      network: ws
+      port: 8443
+      server: cfd.130209.xyz
+      servername: turkey.912461.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 65c56e1f-5c41-40bc-b0b5-9346772476ca
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-699522467
+        - hysteria2-696793183
+        - vless-699893657
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-699522467
+        - hysteria2-696793183
+        - vless-699893657
       type: select
 rules:
     - MATCH,select

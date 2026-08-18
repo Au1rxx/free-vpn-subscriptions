@@ -5,6 +5,19 @@
       "security": "auto",
       "server": "61.245.11.60",
       "server_port": 80,
+      "tag": "vmess-2387870",
+      "transport": {
+        "path": "/vmess/",
+        "type": "ws"
+      },
+      "type": "vmess",
+      "uuid": "a3e3a710-79f8-4ae0-b83c-607aab40d197"
+    },
+    {
+      "alter_id": 0,
+      "security": "auto",
+      "server": "61.245.11.60",
+      "server_port": 80,
       "tag": "vmess-681183101",
       "transport": {
         "headers": {
@@ -39,10 +52,34 @@
       "uuid": "907a940c-bad0-4356-a280-7dec12f1479e"
     },
     {
+      "flow": "xtls-rprx-vision",
+      "server": "sk1i-il4mxi.sparkra.top",
+      "server_port": 443,
+      "tag": "vless-701345477",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "zVJVCkcnyPjMZvx-GMQnnbkEgNiws80sppKB6A0uqBY",
+          "short_id": "83dee8596e65d99e"
+        },
+        "server_name": "www.bing.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "907a940c-bad0-4356-a280-7dec12f1479e"
+    },
+    {
       "interval": "5m",
       "outbounds": [
+        "vmess-2387870",
         "vmess-681183101",
-        "vless-696792916"
+        "vless-696792916",
+        "vless-701345477"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -51,8 +88,10 @@
     {
       "outbounds": [
         "auto",
+        "vmess-2387870",
         "vmess-681183101",
-        "vless-696792916"
+        "vless-696792916",
+        "vless-701345477"
       ],
       "tag": "select",
       "type": "selector"

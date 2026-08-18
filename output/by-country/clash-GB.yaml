@@ -1,11 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-691769490
-      password: dQ328OaMUWViGUHu46nOVoTcSE388B5Q
-      port: 443
-      server: ip3.nfumax.ir
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       name: vless-693251929
       network: grpc
@@ -169,30 +162,41 @@ proxies:
       type: vless
       udp: true
       uuid: ea6db8fa-7e15-4eb2-87f1-22004ac00061
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-692622877
-      network: tcp
+    - flow: xtls-rprx-vision
+      name: vless-702041232
+      network: raw
       port: 443
-      reality-opts:
-        public-key: -nB-tCeZ4Zr72ArHUKnbUphbs4PlBS6iId6PkrPQQTE
-        short-id: 84f9881951050a30
-      server: 164.37.104.234
-      servername: gb1.murhost.network
-      tls: true
-      type: vless
-      udp: true
-      uuid: a6f6d9c9-9d43-4d0e-bf95-4b87cc5bbaac
-    - name: vless-692483204
-      network: tcp
-      port: 8443
-      server: 89.125.124.178
-      servername: gb.wlrus.cfd
+      server: hope.tutdesignstudio.site
+      servername: hope.tutdesignstudio.site
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: d71aecee-ef16-418e-baf5-2b2458122d5a
+      uuid: 493dea8b-0d8d-42bf-b96b-1efee4d5102a
+    - flow: xtls-rprx-vision
+      name: vless-702383206
+      network: tcp
+      port: 443
+      server: hope.tutdesignstudio.site
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 493dea8b-0d8d-42bf-b96b-1efee4d5102a
+    - client-fingerprint: edge
+      name: vless-701758939
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 118rMk41g_0BeoQDR2V_1f8ABzC1WKXdolzE-LxqowM
+        short-id: bff835c98c
+      server: 91.103.140.243
+      servername: www.amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c8dcbe44-5714-4f99-8d7a-aadebea34abf
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-700368587
@@ -228,11 +232,39 @@ proxies:
       type: vless
       udp: true
       uuid: c8dcbe44-5714-4f99-8d7a-aadebea34abf
+    - name: vless-693669554
+      network: tcp
+      port: 20190
+      server: 169.197.113.179
+      type: vless
+      udp: true
+      uuid: ad4dd89a-2e4b-4f33-bb96-7e9c4eb85d0b
+    - name: trojan-702030308
+      password: bd29f019-85a2-43f6-b10a-e91dbdf58ee3
+      port: 443
+      server: yandex.hvumyrpstghekb.top
+      skip-cert-verify: false
+      sni: yandex.hvumyrpstghekb.top
+      type: trojan
+      udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-702041241
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: zecFPSPQrkRM2o4grOw2cvhmq05kyZGTmO0xbFkvZF4
+        short-id: 71fb59bc
+      server: 158.160.4.201
+      servername: ya.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: bd29f019-85a2-43f6-b10a-e91dbdf58ee3
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-691769490
         - vless-693251929
         - shadowsocks-699151050
         - vless-698374752
@@ -247,17 +279,20 @@ proxy-groups:
         - shadowsocks-696792831
         - vless-698117245
         - vless-699962369
-        - vless-692622877
-        - vless-692483204
+        - vless-702041232
+        - vless-702383206
+        - vless-701758939
         - vless-700368587
         - trojan-696780680
         - vless-696171221
+        - vless-693669554
+        - trojan-702030308
+        - vless-702041241
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-691769490
         - vless-693251929
         - shadowsocks-699151050
         - vless-698374752
@@ -272,11 +307,15 @@ proxy-groups:
         - shadowsocks-696792831
         - vless-698117245
         - vless-699962369
-        - vless-692622877
-        - vless-692483204
+        - vless-702041232
+        - vless-702383206
+        - vless-701758939
         - vless-700368587
         - trojan-696780680
         - vless-696171221
+        - vless-693669554
+        - trojan-702030308
+        - vless-702041241
       type: select
 rules:
     - MATCH,select

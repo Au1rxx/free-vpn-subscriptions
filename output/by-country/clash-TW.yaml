@@ -13,6 +13,13 @@ proxies:
       skip-cert-verify: true
       sni: https%3a%2f%2ft.me%2foneclickvpnkeys
       type: hysteria2
+    - name: vless-702879123
+      network: tcp
+      port: 10000
+      server: 220.130.75.248
+      type: vless
+      udp: true
+      uuid: 431fe973-a43a-4fac-bf83-2a772e0d0625
     - cipher: aes-256-cfb
       name: shadowsocks-696792811
       password: 7eadc6dbe2ae
@@ -27,14 +34,60 @@ proxies:
       type: vless
       udp: true
       uuid: 431fe973-a43a-4fac-bf83-2a772e0d0625
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-702736084
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 3nFa_3MSnFQDm9XfVfFHOnMb3FOptREpe1ehXjAbk1c
+        short-id: d369dbc2
+      server: 6aa21c4d-11d4-45bf-ba55-59512593692c.7b63595a-1119-4080-80e1-3f638120be58.smartprivatelink.com
+      servername: www.douyin.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 66d0b230-3b09-421d-be15-ad2e27a90c00
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-702736085
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: e1L9v1a3tkmHMzrdv9q5-lMXKhTtXcjot8pKFHZD8Vo
+        short-id: c7f12faf
+      server: cc56418e-5a4e-428b-904d-d2d8959bbd03.e28fb658-343a-45b2-8be2-1ca1966b048d.smartprivatelink.com
+      servername: mcs.zijieapi.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 66d0b230-3b09-421d-be15-ad2e27a90c00
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-702736086
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: -QgMOwO9HekIbLO5Ptcc0FtuwnDKdg-asGq_aNt-Pm0
+        short-id: 84dd2a2e
+      server: e28fb658-343a-45b2-8be2-1ca1966b048d.d4d89e60-57f2-478b-bafd-936a2c3183af.smartprivatelink.com
+      servername: www.douyin.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 66d0b230-3b09-421d-be15-ad2e27a90c00
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-696793181
         - hysteria2-700290962
+        - vless-702879123
         - shadowsocks-696792811
         - vless-694445984
+        - vless-702736084
+        - vless-702736085
+        - vless-702736086
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -42,8 +95,12 @@ proxy-groups:
         - auto
         - hysteria2-696793181
         - hysteria2-700290962
+        - vless-702879123
         - shadowsocks-696792811
         - vless-694445984
+        - vless-702736084
+        - vless-702736085
+        - vless-702736086
       type: select
 rules:
     - MATCH,select

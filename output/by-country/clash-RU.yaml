@@ -14,6 +14,19 @@ proxies:
       type: vless
       udp: true
       uuid: 897a4bec-26b8-11e8-94be-00505695472c
+    - client-fingerprint: chrome
+      name: vless-702389203
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: HHbMyxLRgywVoS_G5d35HW0bToENF0ihXHJ20iLAYRM
+        short-id: b6549e
+      server: 81.90.31.81
+      servername: kaos.ubuntuhosting.host
+      tls: true
+      type: vless
+      udp: true
+      uuid: d82a9ad0-80a2-4871-82b6-8e16d1482b42
     - client-fingerprint: qq
       name: vless-694419980
       network: grpc
@@ -115,12 +128,24 @@ proxies:
       type: vless
       udp: true
       uuid: 89755337-8050-401c-86d1-c8c34fb88d89
+    - flow: xtls-rprx-vision
+      name: vless-699962368
+      network: tcp
+      port: 18443
+      server: 185.141.227.150
+      servername: disagreedebut.net
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2c634977-584e-4e1f-b501-1b70c77a6743
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-695860168
         - vless-693950788
+        - vless-702389203
         - vless-694419980
         - vless-699377576
         - vless-699448687
@@ -129,6 +154,7 @@ proxy-groups:
         - vless-698968527
         - vless-701187314
         - vless-700894048
+        - vless-699962368
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -136,6 +162,7 @@ proxy-groups:
         - auto
         - trojan-695860168
         - vless-693950788
+        - vless-702389203
         - vless-694419980
         - vless-699377576
         - vless-699448687
@@ -144,6 +171,7 @@ proxy-groups:
         - vless-698968527
         - vless-701187314
         - vless-700894048
+        - vless-699962368
       type: select
 rules:
     - MATCH,select
