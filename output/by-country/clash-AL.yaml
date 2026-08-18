@@ -1,14 +1,7 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-691117639
-      password: aV1HeVAHZsjj1GwmX22yOx
-      port: 57925
-      server: 157.22.240.141
-      type: ss
-      udp: true
-    - client-fingerprint: edge
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-598574222
+      name: vless-650642307
       network: tcp
       port: 443
       reality-opts:
@@ -20,19 +13,26 @@ proxies:
       type: vless
       udp: true
       uuid: d4cae7df-50a1-428c-bd62-881c8f3bbd90
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-691117639
+      password: aV1HeVAHZsjj1GwmX22yOx
+      port: 57925
+      server: 157.22.240.141
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-650642307
         - shadowsocks-691117639
-        - vless-598574222
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-650642307
         - shadowsocks-691117639
-        - vless-598574222
       type: select
 rules:
     - MATCH,select
