@@ -6,6 +6,13 @@ proxies:
       skip-cert-verify: false
       sni: pl1.apexvpn.space
       type: hysteria2
+    - name: vless-689800279
+      network: ws
+      port: 8880
+      server: 89.116.161.50
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-688071201
@@ -95,6 +102,13 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - name: hysteria2-655713425
+      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+      port: 443
+      server: pl10.mechvpn.online
+      skip-cert-verify: true
+      sni: pl10.mechvpn.online
+      type: hysteria2
     - name: hysteria2-661609281
       password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
       port: 443
@@ -129,13 +143,6 @@ proxies:
       server: admin.wwwinternetvideo.click
       skip-cert-verify: false
       sni: ""
-      type: hysteria2
-    - name: hysteria2-655713425
-      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-      port: 443
-      server: pl10.mechvpn.online
-      skip-cert-verify: true
-      sni: pl10.mechvpn.online
       type: hysteria2
     - name: hysteria2-659125577
       password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
@@ -200,18 +207,12 @@ proxies:
       server: 92.118.205.211
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-419356365
-      password: U9YAoqBgg5VyGBc6vQv1sN
-      port: 7538
-      server: 194.61.121.93
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-688016856
+        - vless-689800279
         - vless-688071201
         - vless-685581301
         - vless-685591107
@@ -221,12 +222,12 @@ proxy-groups:
         - hysteria2-648949653
         - hysteria2-660181822
         - hysteria2-674490757
+        - hysteria2-655713425
         - hysteria2-661609281
         - hysteria2-620179978
         - hysteria2-645328514
         - hysteria2-652726906
         - hysteria2-652726817
-        - hysteria2-655713425
         - hysteria2-659125577
         - hysteria2-619899526
         - hysteria2-653887768
@@ -236,13 +237,13 @@ proxy-groups:
         - shadowsocks-487917495
         - shadowsocks-465806703
         - shadowsocks-11081
-        - shadowsocks-419356365
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-688016856
+        - vless-689800279
         - vless-688071201
         - vless-685581301
         - vless-685591107
@@ -252,12 +253,12 @@ proxy-groups:
         - hysteria2-648949653
         - hysteria2-660181822
         - hysteria2-674490757
+        - hysteria2-655713425
         - hysteria2-661609281
         - hysteria2-620179978
         - hysteria2-645328514
         - hysteria2-652726906
         - hysteria2-652726817
-        - hysteria2-655713425
         - hysteria2-659125577
         - hysteria2-619899526
         - hysteria2-653887768
@@ -267,7 +268,6 @@ proxy-groups:
         - shadowsocks-487917495
         - shadowsocks-465806703
         - shadowsocks-11081
-        - shadowsocks-419356365
       type: select
 rules:
     - MATCH,select
