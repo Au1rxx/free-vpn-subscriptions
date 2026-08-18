@@ -1,0 +1,49 @@
+{
+  "outbounds": [
+    {
+      "server": "130.94.80.57",
+      "server_port": 56843,
+      "tag": "vless-718165488",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "JJ0yrk0KDFMcUdt8a3h9bH93z1UDu99UIteIOGKqbCw",
+          "short_id": "8a8a"
+        },
+        "server_name": "www.sony.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "decadffc-d85f-4eb3-9d8f-42e83d56b38d"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-718165488"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-718165488"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

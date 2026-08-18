@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-718040230
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+        short-id: 43dcff53849b81e6
+      server: 31.22.93.5
+      servername: se.quattro-tech.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: edde565e-41f5-000c-84ea-7b87a3e84488
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-718040230
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-718040230
+      type: select
+rules:
+    - MATCH,select

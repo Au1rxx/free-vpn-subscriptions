@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-658270690
+      password: belgium_hysteria2_fastlane_a118d9y0r:mbZQuQoMqSphFg1FAhfonbRpduFn69k8
+      port: 1935
+      server: 113.30.152.25
+      skip-cert-verify: false
+      sni: be1.h.fastlanehosting.ru
+      type: hysteria2
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-696792877
@@ -27,19 +34,53 @@ proxies:
       type: vless
       udp: true
       uuid: 4b7a69d9-74cd-4ab2-bfb3-1d2093e8179f
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-718039191
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+        short-id: 43dcff53849b81e6
+      server: 128.127.181.24
+      servername: be.quattro-tech.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: edde565e-41f5-400e-84ea-7b87a3e84488
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-718039215
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: rwR7H9XhX1w-LjcPCZiDnzV_sUUyJRSJvGYhIYHmS3E
+        short-id: 28bf2d7deea465ff
+      server: 79.127.224.183
+      servername: www.bing.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4b7a69d9-74cd-4ab2-bfb3-1d2093e8179f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-658270690
         - vless-696792877
         - vless-702176389
+        - vless-718039191
+        - vless-718039215
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-658270690
         - vless-696792877
         - vless-702176389
+        - vless-718039191
+        - vless-718039215
       type: select
 rules:
     - MATCH,select
