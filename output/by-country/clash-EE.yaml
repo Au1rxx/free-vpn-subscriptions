@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-571367607
+      network: ws
+      port: 443
+      server: 94.183.170.231
+      type: vless
+      udp: true
+      uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
     - name: vless-661658028
       network: ws
       port: 443
@@ -36,20 +43,48 @@ proxies:
       type: vless
       udp: true
       uuid: 278412f2-ef42-48e2-a4c0-243b173e612b
-    - client-fingerprint: chrome
+    - client-fingerprint: ios
       flow: xtls-rprx-vision
-      name: vless-697100440
+      name: vless-710531440
       network: tcp
-      port: 443
+      port: 20032
       reality-opts:
-        public-key: SJkDT_L0eziQR2afDGrkN7-uRxjYu6bZxIGXlKeCvX4
-        short-id: 15aa18f971da1f81
-      server: 185.155.97.241
-      servername: web.max.ru
+        public-key: HMa1cz_J76Q5wyrwtVaGCZpZtZQkyUhUKisKG6KsRWU
+        short-id: abcd1234
+      server: 212.233.91.170
+      servername: dzen.ru
       tls: true
       type: vless
       udp: true
-      uuid: 0b9bcbc1-b289-4a64-86fa-a5b731b65384
+      uuid: fca74439-d3f4-4247-8be2-d5654bb418a9
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-710531461
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: HMa1cz_J76Q5wyrwtVaGCZpZtZQkyUhUKisKG6KsRWU
+        short-id: abcd1234
+      server: 38.180.164.209
+      servername: dzen.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: fca74439-d3f4-4247-8be2-d5654bb418a9
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-710531467
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: HMa1cz_J76Q5wyrwtVaGCZpZtZQkyUhUKisKG6KsRWU
+        short-id: abcd1234
+      server: 38.180.164.209
+      servername: dzen.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: fca74439-d3f4-4247-8be2-d5654bb418a9
     - name: hysteria2-688016855
       password: 74fbbe74-906d-45a8-a27c-a85fc758bc9f
       port: 8443
@@ -64,13 +99,6 @@ proxies:
       skip-cert-verify: true
       sni: quic.tyr-agentstvo.tech
       type: hysteria2
-    - name: hysteria2-589844096
-      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
-      port: 443
-      server: cabinet.wwwinternetvideo.click
-      skip-cert-verify: false
-      sni: cabinet.wwwinternetvideo.click
-      type: hysteria2
     - name: hysteria2-600117033
       password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
       port: 443
@@ -82,28 +110,32 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-571367607
         - vless-661658028
         - vless-699976363
         - vless-702041231
         - vless-699894979
-        - vless-697100440
+        - vless-710531440
+        - vless-710531461
+        - vless-710531467
         - hysteria2-688016855
         - hysteria2-700405717
-        - hysteria2-589844096
         - hysteria2-600117033
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-571367607
         - vless-661658028
         - vless-699976363
         - vless-702041231
         - vless-699894979
-        - vless-697100440
+        - vless-710531440
+        - vless-710531461
+        - vless-710531467
         - hysteria2-688016855
         - hysteria2-700405717
-        - hysteria2-589844096
         - hysteria2-600117033
       type: select
 rules:

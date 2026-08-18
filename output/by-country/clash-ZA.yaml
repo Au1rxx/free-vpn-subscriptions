@@ -1,22 +1,22 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-696792824
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 160.119.251.53
-      type: ss
-      udp: true
+    - name: hysteria2-696793180
+      password: eFzGbD4gcezLX5io
+      port: 46001
+      server: 38.54.63.125
+      skip-cert-verify: true
+      sni: rsa-1.nebulacloud.win
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-696792824
+        - hysteria2-696793180
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-696792824
+        - hysteria2-696793180
       type: select
 rules:
     - MATCH,select

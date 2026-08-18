@@ -6,13 +6,6 @@ proxies:
       skip-cert-verify: true
       sni: my-ls-c-3.nebulacloud.win
       type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-696792801
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 118.107.222.231
-      type: ss
-      udp: true
     - name: hysteria2-696793170
       password: OcGejxfK0wE39VFI
       port: 16001
@@ -20,21 +13,28 @@ proxies:
       skip-cert-verify: true
       sni: my-ls-i-3.nebulacloud.win
       type: hysteria2
+    - name: hysteria2-696793201
+      password: z3ygn0NiGbdVXdCE
+      port: 56001
+      server: 43.216.73.13
+      skip-cert-verify: true
+      sni: my-ls-d-2.nebulacloud.win
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-696793167
-        - shadowsocks-696792801
         - hysteria2-696793170
+        - hysteria2-696793201
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-696793167
-        - shadowsocks-696792801
         - hysteria2-696793170
+        - hysteria2-696793201
       type: select
 rules:
     - MATCH,select
