@@ -1,4 +1,18 @@
 proxies:
+    - name: vless-91986752
+      network: tcp
+      port: 12528
+      server: 120.227.1.43
+      type: vless
+      udp: true
+      uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
+    - name: vless-95593395
+      network: raw
+      port: 12528
+      server: 120.227.1.43
+      type: vless
+      udp: true
+      uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
     - name: vless-649371370
       network: tcp
       port: 30100
@@ -56,37 +70,31 @@ proxies:
       type: vless
       udp: true
       uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
-    - name: trojan-674048798
-      password: ec0abe0c-4937-41e3-b5fc-c62410d7b1d6
-      port: 42315
-      server: 221.181.169.76
-      skip-cert-verify: true
-      sni: vpn-node.internal
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-91986752
+        - vless-95593395
         - vless-649371370
         - vless-650652333
         - vless-656161036
         - vless-659077470
         - vless-667701938
         - vless-672199227
-        - trojan-674048798
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-91986752
+        - vless-95593395
         - vless-649371370
         - vless-650652333
         - vless-656161036
         - vless-659077470
         - vless-667701938
         - vless-672199227
-        - trojan-674048798
       type: select
 rules:
     - MATCH,select

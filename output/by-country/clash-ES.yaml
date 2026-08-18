@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-676697345
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: VJBZx39OxjCu8XzmAFVsh3AgmVGMnY9toMe40epOzSQ
-        short-id: c94159258d
-      server: 192.142.52.91
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: fd0cb88f-cb45-47a7-adbd-0f44b2424b0f
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-685046360
@@ -35,38 +21,36 @@ proxies:
       sni: xby.mangshe.xyz
       type: hysteria2
     - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-16132
-      password: WSyL4XTwNsdv
-      port: 8388
-      server: 108.181.121.226
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-11052
       password: qItG8SueYQcP
       port: 8388
       server: 140.174.184.5
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-16132
+      password: WSyL4XTwNsdv
+      port: 8388
+      server: 108.181.121.226
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-676697345
         - vless-685046360
         - hysteria2-655713406
-        - shadowsocks-16132
         - shadowsocks-11052
+        - shadowsocks-16132
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-676697345
         - vless-685046360
         - hysteria2-655713406
-        - shadowsocks-16132
         - shadowsocks-11052
+        - shadowsocks-16132
       type: select
 rules:
     - MATCH,select

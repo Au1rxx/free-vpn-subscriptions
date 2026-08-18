@@ -6,20 +6,13 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-26744
-      password: QFWzCw2uX9B9i6qAYeFBIE
+    - name: hysteria2-290666035
+      password: gf1:gfhysteria2024
       port: 443
-      server: 154.46.31.106
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-130484
-      password: QFWzCw2uX9B9i6qAYeFBIE
-      port: 443
-      server: bogging-eyeteeth-fly.freesocks.work
-      type: ss
-      udp: true
+      server: 185.156.44.99
+      skip-cert-verify: true
+      sni: www.amazon.com
+      type: hysteria2
     - name: hysteria2-315405971
       password: gf1:gfhysteria2024
       port: 443
@@ -279,13 +272,29 @@ proxies:
       skip-cert-verify: false
       sni: grape-zet-ro-turbo.bumbleshrimp.com
       type: hysteria2
+    - name: vless-689772933
+      network: ws
+      port: 443
+      server: 104.18.32.47
+      servername: ro-3.ariyuz.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 03707fb7-0990-440f-88f6-b0e0f7242a38
+    - name: vless-689794305
+      network: ws
+      port: 8880
+      server: 199.181.197.40
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-17587
-        - shadowsocks-26744
-        - shadowsocks-130484
+        - hysteria2-290666035
         - hysteria2-315405971
         - vless-408494775
         - vless-412872066
@@ -316,14 +325,15 @@ proxy-groups:
         - vless-656234906
         - hysteria2-656706470
         - hysteria2-656706475
+        - vless-689772933
+        - vless-689794305
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-17587
-        - shadowsocks-26744
-        - shadowsocks-130484
+        - hysteria2-290666035
         - hysteria2-315405971
         - vless-408494775
         - vless-412872066
@@ -354,6 +364,8 @@ proxy-groups:
         - vless-656234906
         - hysteria2-656706470
         - hysteria2-656706475
+        - vless-689772933
+        - vless-689794305
       type: select
 rules:
     - MATCH,select

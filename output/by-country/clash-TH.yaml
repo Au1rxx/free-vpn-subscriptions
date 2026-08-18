@@ -13,20 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: afa134c3-6a58-4fac-95a5-4cf0eda31681
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-676697366
-      network: tcp
-      port: 24295
-      reality-opts:
-        public-key: o2uLRBkgcAPCavo12l6VUzaSnSmxjUvod-NBSiUPdy8
-        short-id: "85"
-      server: beatr-hk3.599789.xyz
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: fd0cb88f-cb45-47a7-adbd-0f44b2424b0f
     - name: vless-679571037
       network: ws
       port: 443
@@ -37,21 +23,28 @@ proxies:
       type: vless
       udp: true
       uuid: 7ce54bb3-d612-4aa7-be08-089d3c461d53
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-125093
+      password: d7zh2lMrXNH5+8+8pKzlxiCU9NN022ih+uAyxj5d4qo=
+      port: 31700
+      server: 102.129.229.85
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-685046381
-        - vless-676697366
         - vless-679571037
+        - shadowsocks-125093
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-685046381
-        - vless-676697366
         - vless-679571037
+        - shadowsocks-125093
       type: select
 rules:
     - MATCH,select
