@@ -1,4 +1,15 @@
 proxies:
+    - flow: xtls-rprx-vision
+      name: vless-696124779
+      network: tcp
+      port: 8443
+      server: 5.180.52.186
+      servername: magazinetut.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7d641c2e-6897-4b9f-8a82-3f0cc8980db1
     - alterId: 0
       cipher: auto
       name: vmess-700052489
@@ -36,20 +47,28 @@ proxies:
       type: vless
       udp: true
       uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-696124782
+    - flow: xtls-rprx-vision
+      name: vless-650167120
       network: tcp
-      port: 443
-      reality-opts:
-        public-key: _-iZt_zsuSnYKNldfwXQlnH6SqbLJILP4qApHbaKax0
-        short-id: 3e70d5cbb01bddfd
-      server: 194.32.141.119
-      servername: savesafe.kz
+      port: 8443
+      server: magazinetut.online
+      servername: magazinetut.online
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
+      uuid: 7d641c2e-6897-4b9f-8a82-3f0cc8980db1
+    - flow: xtls-rprx-vision
+      name: vless-696124780
+      network: tcp
+      port: 8443
+      server: magazinetut.online
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7d641c2e-6897-4b9f-8a82-3f0cc8980db1
     - name: hysteria2-700405723
       password: 3b8c82ed-fe66-472d-915e-034ccb57103f
       port: 443
@@ -71,65 +90,33 @@ proxies:
       skip-cert-verify: false
       sni: borat-hopp.bumbleshrimp.com
       type: hysteria2
-    - name: hysteria2-474576905
-      password: owefv0_92Z540k2F_nx83245_J9130oS_tY
-      port: 8443
-      server: 5.180.27.210
-      skip-cert-verify: true
-      sni: borat-hopp.bumbleshrimp.com
-      type: hysteria2
-    - name: hysteria2-509702269
-      password: owefv0_92Z540k2F_nx83245_J9130oS_tY
-      port: 8443
-      server: 5.180.27.221
-      skip-cert-verify: false
-      sni: borat-hopp.bumbleshrimp.com
-      type: hysteria2
-    - name: hysteria2-650732775
-      password: owefv0_92Z540k2F_nx83245_J9130oS_tY
-      port: 8443
-      server: 5.180.27.221
-      skip-cert-verify: true
-      sni: borat-hopp.bumbleshrimp.com
-      type: hysteria2
-    - name: hysteria2-650712849
-      password: 3b8c82ed-fe66-472d-915e-034ccb57103f
-      port: 443
-      server: kz.frkn.org
-      skip-cert-verify: false
-      sni: ""
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-696124779
         - vmess-700052489
         - vless-699213791
         - vless-700894043
-        - vless-696124782
+        - vless-650167120
+        - vless-696124780
         - hysteria2-700405723
         - hysteria2-655713361
         - hysteria2-468892453
-        - hysteria2-474576905
-        - hysteria2-509702269
-        - hysteria2-650732775
-        - hysteria2-650712849
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-696124779
         - vmess-700052489
         - vless-699213791
         - vless-700894043
-        - vless-696124782
+        - vless-650167120
+        - vless-696124780
         - hysteria2-700405723
         - hysteria2-655713361
         - hysteria2-468892453
-        - hysteria2-474576905
-        - hysteria2-509702269
-        - hysteria2-650732775
-        - hysteria2-650712849
       type: select
 rules:
     - MATCH,select

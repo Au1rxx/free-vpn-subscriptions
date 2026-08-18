@@ -27,6 +27,26 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - client-fingerprint: chrome
+      name: vless-479254291
+      network: tcp
+      port: 52463
+      reality-opts:
+        public-key: zOv4BhJVbINHdcULln0vQ_6sxKiGjJPj4uyMttX9pWo
+        short-id: cdaed92e1d0c
+      server: 91.197.3.43
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 22696950-587f-42c0-af24-c1ffab17d0cd
+    - name: vless-549989446
+      network: ws
+      port: 2096
+      server: laoye.in-gect.fun
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-700894027
@@ -41,6 +61,16 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - name: vless-612170604
+      network: grpc
+      port: 2083
+      server: laoye.in-gect.fun
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-702383213
@@ -55,6 +85,19 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - client-fingerprint: chrome
+      name: vless-496559066
+      network: tcp
+      port: 52463
+      reality-opts:
+        public-key: zOv4BhJVbINHdcULln0vQ_6sxKiGjJPj4uyMttX9pWo
+        short-id: cdaed92e1d0c
+      server: 91.197.3.43
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 22696950-587f-42c0-af24-c1ffab17d0cd
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-700894020
@@ -76,24 +119,20 @@ proxies:
       skip-cert-verify: true
       sni: 185.236.22.119
       type: hysteria2
-    - name: hysteria2-248653949
-      password: vpn-hy2-lv-2026
-      port: 8444
-      server: 185.236.22.119
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-702383203
         - vless-703617448
+        - vless-479254291
+        - vless-549989446
         - vless-700894027
+        - vless-612170604
         - vless-702383213
+        - vless-496559066
         - vless-700894020
         - hysteria2-232798723
-        - hysteria2-248653949
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -101,11 +140,14 @@ proxy-groups:
         - auto
         - vless-702383203
         - vless-703617448
+        - vless-479254291
+        - vless-549989446
         - vless-700894027
+        - vless-612170604
         - vless-702383213
+        - vless-496559066
         - vless-700894020
         - hysteria2-232798723
-        - hysteria2-248653949
       type: select
 rules:
     - MATCH,select
