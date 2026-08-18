@@ -72,6 +72,17 @@ proxies:
       type: vless
       udp: true
       uuid: a7a98347-5fe4-4615-9a89-7f1ba759265e
+    - flow: xtls-rprx-vision
+      name: vless-559149719
+      network: tcp
+      port: 8443
+      server: 193.124.46.65
+      servername: 193.124.46.65
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 68bdc1ee-c6ee-4d91-ab52-35ce0d368302
     - name: trojan-583575821
       password: 8bS8vVC5CQ2GsckhMh8IT1jv
       port: 443
@@ -115,17 +126,14 @@ proxies:
       skip-cert-verify: false
       sni: mercedes-grape.yyuyy.com
       type: hysteria2
-    - flow: xtls-rprx-vision
-      name: vless-650644326
-      network: tcp
-      port: 8443
+    - name: trojan-650671453
+      password: 8bS8vVC5CQ2GsckhMh8IT1jv
+      port: 443
       server: 193.124.46.65
-      servername: 193.124.46.65
       skip-cert-verify: false
-      tls: true
-      type: vless
+      sni: 193.124.46.65
+      type: trojan
       udp: true
-      uuid: 68bdc1ee-c6ee-4d91-ab52-35ce0d368302
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-652321673
       password: tunnel-fbrof
@@ -140,14 +148,6 @@ proxies:
       skip-cert-verify: true
       sni: mercedes-grape.yyuyy.com
       type: hysteria2
-    - name: trojan-655846722
-      password: 8bS8vVC5CQ2GsckhMh8IT1jv
-      port: 443
-      server: 193.124.46.65
-      skip-cert-verify: false
-      sni: 193.124.46.65
-      type: trojan
-      udp: true
     - flow: xtls-rprx-vision
       name: vless-656187930
       network: tcp
@@ -202,17 +202,6 @@ proxies:
       sni: creativecommons.org
       type: trojan
       udp: true
-    - flow: xtls-rprx-vision
-      name: vless-659077134
-      network: tcp
-      port: 8443
-      server: 193.124.46.65
-      servername: 193.124.46.65
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 68bdc1ee-c6ee-4d91-ab52-35ce0d368302
     - flow: xtls-rprx-vision
       name: vless-660179874
       network: tcp
@@ -362,6 +351,27 @@ proxies:
       type: vless
       udp: true
       uuid: 65c56e1f-5c41-40bc-b0b5-9346772476ca
+    - name: hysteria2-730134159
+      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
+      port: 8080
+      server: 162.249.124.105
+      skip-cert-verify: false
+      sni: mercedes-grape.yyuyy.com
+      type: hysteria2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-730134194
+      network: tcp
+      port: 44005
+      reality-opts:
+        public-key: H-Xw09A4ViJT_XKYLQpWnDsh5LNyiusxeAx1hpVrqmc
+        short-id: 255ee6fd
+      server: ru.pool-a.netcenter-cdn.com
+      servername: pool-a.pools.netcenter-cdn.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c7a0e33a-8155-409f-a822-d41da1be426e
 proxy-groups:
     - interval: 300
       name: auto
@@ -373,21 +383,20 @@ proxy-groups:
         - vless-494492362
         - vless-505411599
         - vless-515164913
+        - vless-559149719
         - trojan-583575821
         - vless-587204639
         - hysteria2-608559118
         - trojan-639242007
         - hysteria2-645328527
-        - vless-650644326
+        - trojan-650671453
         - shadowsocks-652321673
         - hysteria2-655713421
-        - trojan-655846722
         - vless-656187930
         - trojan-656194247
         - vless-656245061
         - vless-656246730
         - trojan-657018791
-        - vless-659077134
         - vless-660179874
         - trojan-660181825
         - vless-674039955
@@ -405,6 +414,8 @@ proxy-groups:
         - vless-725831103
         - trojan-725878119
         - vless-725879579
+        - hysteria2-730134159
+        - vless-730134194
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -417,21 +428,20 @@ proxy-groups:
         - vless-494492362
         - vless-505411599
         - vless-515164913
+        - vless-559149719
         - trojan-583575821
         - vless-587204639
         - hysteria2-608559118
         - trojan-639242007
         - hysteria2-645328527
-        - vless-650644326
+        - trojan-650671453
         - shadowsocks-652321673
         - hysteria2-655713421
-        - trojan-655846722
         - vless-656187930
         - trojan-656194247
         - vless-656245061
         - vless-656246730
         - trojan-657018791
-        - vless-659077134
         - vless-660179874
         - trojan-660181825
         - vless-674039955
@@ -449,6 +459,8 @@ proxy-groups:
         - vless-725831103
         - trojan-725878119
         - vless-725879579
+        - hysteria2-730134159
+        - vless-730134194
       type: select
 rules:
     - MATCH,select

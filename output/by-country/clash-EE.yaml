@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-470983995
+      network: grpc
+      port: 8443
+      server: 95.85.224.3
+      type: vless
+      udp: true
+      uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
     - name: vless-650319315
       network: tcp
       port: 8443
@@ -23,13 +30,6 @@ proxies:
       skip-cert-verify: true
       sni: quic.tyr-agentstvo.tech
       type: hysteria2
-    - name: vless-470983995
-      network: grpc
-      port: 8443
-      server: 95.85.224.3
-      type: vless
-      udp: true
-      uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
     - name: vless-645329708
       network: ws
       port: 443
@@ -58,10 +58,10 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-470983995
         - vless-650319315
         - vless-650319316
         - hysteria2-700405717
-        - vless-470983995
         - vless-645329708
         - vless-696171189
         - vless-650319317
@@ -70,10 +70,10 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-470983995
         - vless-650319315
         - vless-650319316
         - hysteria2-700405717
-        - vless-470983995
         - vless-645329708
         - vless-696171189
         - vless-650319317
