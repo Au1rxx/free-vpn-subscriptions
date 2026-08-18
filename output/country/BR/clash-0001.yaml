@@ -6,6 +6,20 @@ proxies:
       type: vless
       udp: true
       uuid: 5383fb97-1178-4709-9a25-b767b743e911
+    - name: vless-561666849
+      network: ws
+      port: 4100
+      server: 200.165.234.62
+      type: vless
+      udp: true
+      uuid: 5383fb97-1178-4709-9a25-b767b743e911
+    - name: vless-584754403
+      network: ws
+      port: 4100
+      server: 200.165.234.62
+      type: vless
+      udp: true
+      uuid: 5383fb97-1178-4709-9a25-b767b743e911
     - flow: xtls-rprx-vision
       name: vless-619565164
       network: tcp
@@ -203,11 +217,24 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - flow: xtls-rprx-vision
+      name: vless-694426986
+      network: tcp
+      port: 443
+      server: arc.magazinetut.online
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: af2691c6-e6f2-49f1-ab60-87b6f766166a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-526968590
+        - vless-561666849
+        - vless-584754403
         - vless-619565164
         - vless-628789713
         - vless-650321788
@@ -227,12 +254,15 @@ proxy-groups:
         - shadowsocks-664995840
         - shadowsocks-674609653
         - vless-689803283
+        - vless-694426986
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-526968590
+        - vless-561666849
+        - vless-584754403
         - vless-619565164
         - vless-628789713
         - vless-650321788
@@ -252,6 +282,7 @@ proxy-groups:
         - shadowsocks-664995840
         - shadowsocks-674609653
         - vless-689803283
+        - vless-694426986
       type: select
 rules:
     - MATCH,select

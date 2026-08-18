@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-693950788
+      network: ws
+      port: 443
+      server: 172.64.155.216
+      type: vless
+      udp: true
+      uuid: 897a4bec-26b8-11e8-94be-00505695472c
     - flow: xtls-rprx-vision
       name: vless-688016875
       network: raw
@@ -28,45 +35,23 @@ proxies:
       type: vless
       udp: true
       uuid: a738eec8-f24f-422c-8eba-3538f93fdab1
-    - client-fingerprint: qq
-      name: vless-684320658
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: 7QJA1tXQcNj8gioQVzief5a4KeUTDT7R8FE0jfKU41k
-        short-id: "3180"
-      server: 5.129.215.87
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f0eac976-e4e2-4e24-bc86-cda82ee31442
-    - name: hysteria2-591800026
-      password: 2a0099ded5baa93c55823af39229c5b1
-      port: 50160
-      server: 185.22.155.81
-      skip-cert-verify: false
-      sni: 185-22-155-81.liao.kdns.fr
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-693950788
         - vless-688016875
         - vless-690131961
         - vless-690114906
-        - vless-684320658
-        - hysteria2-591800026
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-693950788
         - vless-688016875
         - vless-690131961
         - vless-690114906
-        - vless-684320658
-        - hysteria2-591800026
       type: select
 rules:
     - MATCH,select
