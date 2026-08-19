@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-327
-      password: XPtzA9sCug3SPR4c
-      port: 9025
-      server: 5.188.181.201
-      type: ss
-      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-11052
       password: qItG8SueYQcP
@@ -424,11 +417,24 @@ proxies:
       type: vless
       udp: true
       uuid: 5238521b-c5dd-42af-870e-c174a2aaaafe
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-746097320
+      network: tcp
+      port: 6443
+      reality-opts:
+        public-key: aFbCyrLOre-V3ORpBjqenGfDt62Ng_i1sSq-DmZHVgc
+        short-id: 89e0494514ec
+      server: ru.chick-team.ru
+      servername: www.oracle.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f96d03ec-4b79-4310-b25a-a13a69f4cab7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-327
         - shadowsocks-11052
         - shadowsocks-16132
         - vmess-99676
@@ -466,12 +472,12 @@ proxy-groups:
         - trojan-742987384
         - vless-743806747
         - vless-743910327
+        - vless-746097320
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-327
         - shadowsocks-11052
         - shadowsocks-16132
         - vmess-99676
@@ -509,6 +515,7 @@ proxy-groups:
         - trojan-742987384
         - vless-743806747
         - vless-743910327
+        - vless-746097320
       type: select
 rules:
     - MATCH,select

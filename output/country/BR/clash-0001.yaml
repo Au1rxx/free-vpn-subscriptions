@@ -7,22 +7,7 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: trojan-123459
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20114
-      server: hkdcrtc-e.catcat321.com
-      skip-cert-verify: false
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: vless-526968590
-      network: ws
-      port: 4100
-      server: 200.165.234.62
-      type: vless
-      udp: true
-      uuid: 5383fb97-1178-4709-9a25-b767b743e911
-    - name: vless-561666849
       network: ws
       port: 4100
       server: 200.165.234.62
@@ -422,13 +407,6 @@ proxies:
       type: vless
       udp: true
       uuid: 0000e293-996d-4c32-99dc-29a8aba80d06
-    - name: vless-734485931
-      network: ws
-      port: 4100
-      server: 201.24.49.120
-      type: vless
-      udp: true
-      uuid: 714e1212-6707-471e-9f40-2fbd3d8d3b4b
     - flow: xtls-rprx-vision
       name: vless-737199161
       network: tcp
@@ -530,14 +508,40 @@ proxies:
       type: vless
       udp: true
       uuid: af2691c6-e6f2-49f1-ab60-87b6f766166a
+    - name: vless-746058934
+      network: ws
+      port: 4100
+      server: 201.24.49.233
+      type: vless
+      udp: true
+      uuid: 714e1212-6707-471e-9f40-2fbd3d8d3b4b
+    - name: vless-746058940
+      network: ws
+      port: 2200
+      server: 201.24.49.233
+      type: vless
+      udp: true
+      uuid: 714e1212-6707-471e-9f40-2fbd3d8d3b4b
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-746095875
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 6J829WZ6hhEtCmz8CfBBBP69ikMDlYPF2Lumyel6XTI
+        short-id: d484643ca8396614
+      server: yt.chick-team.ru
+      servername: yt.chick-team.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: f96d03ec-4b79-4310-b25a-a13a69f4cab7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-119299
-        - trojan-123459
         - vless-526968590
-        - vless-561666849
         - vless-619565164
         - vless-628789713
         - vless-650321788
@@ -574,7 +578,6 @@ proxy-groups:
         - vless-732157872
         - vless-732161868
         - vless-733881343
-        - vless-734485931
         - vless-737199161
         - vless-738245971
         - vless-738249962
@@ -584,15 +587,16 @@ proxy-groups:
         - vless-743806662
         - vless-743806722
         - vless-743806761
+        - vless-746058934
+        - vless-746058940
+        - vless-746095875
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-119299
-        - trojan-123459
         - vless-526968590
-        - vless-561666849
         - vless-619565164
         - vless-628789713
         - vless-650321788
@@ -629,7 +633,6 @@ proxy-groups:
         - vless-732157872
         - vless-732161868
         - vless-733881343
-        - vless-734485931
         - vless-737199161
         - vless-738245971
         - vless-738249962
@@ -639,6 +642,9 @@ proxy-groups:
         - vless-743806662
         - vless-743806722
         - vless-743806761
+        - vless-746058934
+        - vless-746058940
+        - vless-746095875
       type: select
 rules:
     - MATCH,select

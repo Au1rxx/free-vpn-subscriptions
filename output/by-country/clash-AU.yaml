@@ -1,20 +1,6 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-587204637
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: a2qGjvUPq6Nz5FTbn_MSHp-055q2h8YXqIL5VIJ5zwE
-        short-id: d15c17cef9b2e456
-      server: 51.161.204.242
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-532685580
       network: tcp
       port: 443
@@ -41,53 +27,51 @@ proxies:
       server: 82.23.146.72
       type: ss
       udp: true
-    - name: trojan-656195675
-      password: PQ05174892
+    - name: trojan-468215291
+      password: AE62539071
       port: 443
-      server: wanted-marmoset.rooster465.autos
+      server: together-dingo.rooster465.autos
       skip-cert-verify: true
-      sni: wanted-marmoset.rooster465.autos
+      sni: ""
       type: trojan
       udp: true
-    - name: trojan-656194281
-      password: FH72359861
-      port: 443
-      server: true-pony.rooster465.autos
-      skip-cert-verify: true
-      sni: true-pony.rooster465.autos
-      type: trojan
-      udp: true
-    - name: trojan-656195710
-      password: PQ05174892
+    - name: trojan-468215293
+      password: AE62539071
       port: 443
       server: darling-mutt.rooster465.autos
       skip-cert-verify: true
-      sni: darling-mutt.rooster465.autos
+      sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-498397709
+      password: AE62539071
+      port: 443
+      server: wanted-marmoset.rooster465.autos
+      skip-cert-verify: false
+      sni: wanted-marmoset.rooster465.autos
       type: trojan
       udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-587204637
         - vless-532685580
         - shadowsocks-10992
         - shadowsocks-696792832
-        - trojan-656195675
-        - trojan-656194281
-        - trojan-656195710
+        - trojan-468215291
+        - trojan-468215293
+        - trojan-498397709
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-587204637
         - vless-532685580
         - shadowsocks-10992
         - shadowsocks-696792832
-        - trojan-656195675
-        - trojan-656194281
-        - trojan-656195710
+        - trojan-468215291
+        - trojan-468215293
+        - trojan-498397709
       type: select
 rules:
     - MATCH,select
