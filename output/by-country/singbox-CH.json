@@ -1,0 +1,53 @@
+{
+  "outbounds": [
+    {
+      "server": "132.243.174.112",
+      "server_port": 2054,
+      "tag": "vless-721702043",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "JFzd2AbfzZSnMefyKEXNIae_QEZAo5o239pmuHHZsAY",
+          "short_id": "0c25988a"
+        },
+        "server_name": "www.swisscom.ch",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "service_name": "grpc",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "f6da8274-44be-4599-a8d8-66929c980677"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-721702043"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-721702043"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

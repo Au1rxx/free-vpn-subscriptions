@@ -1,11 +1,41 @@
 {
   "outbounds": [
     {
-      "server": "94.156.114.171",
-      "server_port": 444,
-      "tag": "vless-723592822",
+      "server": "144.31.87.16",
+      "server_port": 2096,
+      "tag": "vless-95556397",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "HdIk7jX58DtK-PGVKoU587O4w1KrDiej1qz8J2SmRA8",
+          "short_id": "a7bf40db1b0e566a"
+        },
+        "server_name": "www.ya.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "service_name": "grpc",
+        "type": "grpc"
+      },
       "type": "vless",
-      "uuid": "354270dc-0903-42d8-a7af-3663ef7e9581"
+      "uuid": "c40f773e-3b96-417e-b22c-e48cb63ca7d9"
+    },
+    {
+      "password": "zhangyang",
+      "server": "130.61.50.75",
+      "server_port": 6443,
+      "tag": "hysteria2-177823913",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "130.61.50.75"
+      },
+      "type": "hysteria2"
     },
     {
       "method": "2022-blake3-chacha20-poly1305",
@@ -16,10 +46,33 @@
       "type": "shadowsocks"
     },
     {
+      "method": "chacha20-ietf-poly1305",
+      "password": "1hhrqrokj3ag",
+      "server": "209.46.102.22",
+      "server_port": 8388,
+      "tag": "shadowsocks-209",
+      "type": "shadowsocks"
+    },
+    {
+      "password": "fg20mtCFHy",
+      "server": "209.38.240.27",
+      "server_port": 5859,
+      "tag": "trojan-736714080",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "209.38.240.27"
+      },
+      "type": "trojan"
+    },
+    {
       "interval": "5m",
       "outbounds": [
-        "vless-723592822",
-        "shadowsocks-736520123"
+        "vless-95556397",
+        "hysteria2-177823913",
+        "shadowsocks-736520123",
+        "shadowsocks-209",
+        "trojan-736714080"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -28,8 +81,11 @@
     {
       "outbounds": [
         "auto",
-        "vless-723592822",
-        "shadowsocks-736520123"
+        "vless-95556397",
+        "hysteria2-177823913",
+        "shadowsocks-736520123",
+        "shadowsocks-209",
+        "trojan-736714080"
       ],
       "tag": "select",
       "type": "selector"

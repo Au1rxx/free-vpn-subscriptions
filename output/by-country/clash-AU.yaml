@@ -1,9 +1,23 @@
 proxies:
+    - name: hysteria2-387719570
+      password: 1427eb10-7529-4d38-a6a2-01b337868b37
+      port: 4433
+      server: au1.xiaoliyu.cyou
+      skip-cert-verify: true
+      sni: au1.xiaoliyu.cyou
+      type: hysteria2
     - cipher: aes-256-cfb
       name: shadowsocks-696792832
       password: 7eadc6dbe2ae
       port: 65443
       server: 82.23.146.72
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-234
+      password: bIOoi5TuImG2KccxV7-jcA7Cez+vun-c_E
+      port: 27116
+      server: 104.156.233.234
       type: ss
       udp: true
     - client-fingerprint: chrome
@@ -57,28 +71,12 @@ proxies:
       sni: humorous-llama.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-498397709
-      password: AE62539071
-      port: 443
-      server: wanted-marmoset.rooster465.autos
-      skip-cert-verify: false
-      sni: wanted-marmoset.rooster465.autos
-      type: trojan
-      udp: true
     - name: trojan-656193929
       password: FH72359861
       port: 443
       server: 87.121.33.104
       skip-cert-verify: true
       sni: fluent-gar.rooster465.autos
-      type: trojan
-      udp: true
-    - name: trojan-667593179
-      password: AE62539071
-      port: 443
-      server: wanted-marmoset.rooster465.autos
-      skip-cert-verify: false
-      sni: ""
       type: trojan
       udp: true
     - name: trojan-737201167
@@ -89,35 +87,55 @@ proxies:
       sni: fleet-hawk.rooster465.autos
       type: trojan
       udp: true
+    - name: trojan-619919555
+      password: FH72359861
+      port: 443
+      server: national-stingray.rooster465.autos
+      skip-cert-verify: false
+      sni: national-stingray.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-548641495
+      password: FH72359861
+      port: 443
+      server: square-pheasant.rooster465.autos
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-387719570
         - shadowsocks-696792832
+        - shadowsocks-234
         - vless-587204637
         - vless-532685580
         - shadowsocks-10992
         - trojan-565918286
         - trojan-565918290
-        - trojan-498397709
         - trojan-656193929
-        - trojan-667593179
         - trojan-737201167
+        - trojan-619919555
+        - trojan-548641495
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-387719570
         - shadowsocks-696792832
+        - shadowsocks-234
         - vless-587204637
         - vless-532685580
         - shadowsocks-10992
         - trojan-565918286
         - trojan-565918290
-        - trojan-498397709
         - trojan-656193929
-        - trojan-667593179
         - trojan-737201167
+        - trojan-619919555
+        - trojan-548641495
       type: select
 rules:
     - MATCH,select

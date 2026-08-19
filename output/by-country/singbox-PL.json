@@ -1,0 +1,81 @@
+{
+  "outbounds": [
+    {
+      "server": "185.241.208.89",
+      "server_port": 2054,
+      "tag": "vless-721702048",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "OyptJTnaUSyaiYY3_iB-Lrst04EoVetdB1ZMoHDViyI",
+          "short_id": "e5fe88d9c232c341"
+        },
+        "server_name": "www.ibm.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "service_name": "grpc",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "f6da8274-44be-4599-a8d8-66929c980677"
+    },
+    {
+      "server": "212.41.26.84",
+      "server_port": 443,
+      "tag": "vless-738495676",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "v1.api2.ttpservers.ru"
+      },
+      "transport": {
+        "service_name": "mygrpc",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "163dc809-7970-4ff8-a7e5-8080ad53e7bb"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "ytw2awn",
+      "server": "pl140.vpnbook.com",
+      "server_port": 443,
+      "tag": "shadowsocks-465806704",
+      "type": "shadowsocks"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-721702048",
+        "vless-738495676",
+        "shadowsocks-465806704"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-721702048",
+        "vless-738495676",
+        "shadowsocks-465806704"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

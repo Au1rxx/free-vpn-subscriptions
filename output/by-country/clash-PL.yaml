@@ -1,0 +1,49 @@
+proxies:
+    - client-fingerprint: firefox
+      name: vless-721702048
+      network: grpc
+      port: 2054
+      reality-opts:
+        public-key: OyptJTnaUSyaiYY3_iB-Lrst04EoVetdB1ZMoHDViyI
+        short-id: e5fe88d9c232c341
+      server: 185.241.208.89
+      servername: www.ibm.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f6da8274-44be-4599-a8d8-66929c980677
+    - name: vless-738495676
+      network: grpc
+      port: 443
+      server: 212.41.26.84
+      servername: v1.api2.ttpservers.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 163dc809-7970-4ff8-a7e5-8080ad53e7bb
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-465806704
+      password: ytw2awn
+      port: 443
+      server: pl140.vpnbook.com
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-721702048
+        - vless-738495676
+        - shadowsocks-465806704
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-721702048
+        - vless-738495676
+        - shadowsocks-465806704
+      type: select
+rules:
+    - MATCH,select

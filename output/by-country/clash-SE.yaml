@@ -1,22 +1,28 @@
 proxies:
-    - name: hysteria2-725094999
-      password: 3b8c82ed-fe66-472d-915e-034ccb57103f
-      port: 8443
-      server: swe.frkn.org
-      skip-cert-verify: true
-      sni: swe.frkn.org
-      type: hysteria2
+    - client-fingerprint: firefox
+      name: vless-721702054
+      network: grpc
+      port: 2054
+      reality-opts:
+        public-key: z8O-5nI4-3eKexufSrkEUvAubPw7a73cQtTGNDp3Uxo
+        short-id: 6ffc74326185d4d6
+      server: 143.246.198.91
+      servername: www.ibm.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f6da8274-44be-4599-a8d8-66929c980677
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-725094999
+        - vless-721702054
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-725094999
+        - vless-721702054
       type: select
 rules:
     - MATCH,select

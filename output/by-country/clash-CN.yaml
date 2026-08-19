@@ -1,22 +1,24 @@
 proxies:
-    - name: vless-274599317
-      network: ws
-      port: 22573
-      server: uae.unixzone.us
-      type: vless
+    - alterId: 0
+      cipher: auto
+      name: vmess-740393683
+      network: raw
+      port: 50002
+      server: 112.132.215.108
+      type: vmess
       udp: true
-      uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+      uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-274599317
+        - vmess-740393683
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-274599317
+        - vmess-740393683
       type: select
 rules:
     - MATCH,select

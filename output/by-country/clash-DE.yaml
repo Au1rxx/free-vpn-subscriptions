@@ -1,11 +1,24 @@
 proxies:
-    - name: vless-723592822
-      network: tcp
-      port: 444
-      server: 94.156.114.171
+    - client-fingerprint: firefox
+      name: vless-95556397
+      network: grpc
+      port: 2096
+      reality-opts:
+        public-key: HdIk7jX58DtK-PGVKoU587O4w1KrDiej1qz8J2SmRA8
+        short-id: a7bf40db1b0e566a
+      server: 144.31.87.16
+      servername: www.ya.ru
+      tls: true
       type: vless
       udp: true
-      uuid: 354270dc-0903-42d8-a7af-3663ef7e9581
+      uuid: c40f773e-3b96-417e-b22c-e48cb63ca7d9
+    - name: hysteria2-177823913
+      password: zhangyang
+      port: 6443
+      server: 130.61.50.75
+      skip-cert-verify: true
+      sni: 130.61.50.75
+      type: hysteria2
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-736520123
       password: NLrckFvmYxeqGAR3dbSZb2ImAvMylV4p8yhCAIrQ+hI=
@@ -13,19 +26,40 @@ proxies:
       server: 130.61.34.182
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-209
+      password: 1hhrqrokj3ag
+      port: 8388
+      server: 209.46.102.22
+      type: ss
+      udp: true
+    - name: trojan-736714080
+      password: fg20mtCFHy
+      port: 5859
+      server: 209.38.240.27
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-723592822
+        - vless-95556397
+        - hysteria2-177823913
         - shadowsocks-736520123
+        - shadowsocks-209
+        - trojan-736714080
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-723592822
+        - vless-95556397
+        - hysteria2-177823913
         - shadowsocks-736520123
+        - shadowsocks-209
+        - trojan-736714080
       type: select
 rules:
     - MATCH,select
