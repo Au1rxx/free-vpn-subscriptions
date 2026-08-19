@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-547757654
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: YQTixaXzPVImuRc4TUbrFAekjIiaYV-t5S-HTKlH0AU
+        short-id: 2186a755ed67b034
+      server: 189.74.124.42
+      servername: nordic.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-700283189
@@ -13,20 +27,6 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-709040531
-      network: tcp
-      port: 50064
-      reality-opts:
-        public-key: SLrTZEGZV42hDpfoCkqPZwwVK2V57Db3y6LxKbxexGU
-        short-id: ffd080f5af167d
-      server: 191.44.32.103
-      servername: www.vk.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ead060e5-21f9-5369-b9f9-175ab7faa20f
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-722686621
@@ -45,16 +45,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-547757654
         - vless-700283189
-        - vless-709040531
         - vless-722686621
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-547757654
         - vless-700283189
-        - vless-709040531
         - vless-722686621
       type: select
 rules:
