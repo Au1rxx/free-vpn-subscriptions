@@ -1,17 +1,4 @@
 proxies:
-    - client-fingerprint: firefox
-      name: vless-95556397
-      network: grpc
-      port: 2096
-      reality-opts:
-        public-key: HdIk7jX58DtK-PGVKoU587O4w1KrDiej1qz8J2SmRA8
-        short-id: a7bf40db1b0e566a
-      server: 144.31.87.16
-      servername: www.ya.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: c40f773e-3b96-417e-b22c-e48cb63ca7d9
     - name: hysteria2-177823913
       password: zhangyang
       port: 6443
@@ -41,25 +28,54 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - client-fingerprint: firefox
+      name: vless-95556397
+      network: grpc
+      port: 2096
+      reality-opts:
+        public-key: HdIk7jX58DtK-PGVKoU587O4w1KrDiej1qz8J2SmRA8
+        short-id: a7bf40db1b0e566a
+      server: 144.31.87.16
+      servername: www.ya.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: c40f773e-3b96-417e-b22c-e48cb63ca7d9
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-763489136
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: gA6-Fj5hl4x-HOtbCcYqD99qsml4ActHRmw-VTkFU14
+        short-id: 7d6b6b7a606c21cf
+      server: dep.opngtr.nl
+      servername: dep.opngtr.nl
+      tls: true
+      type: vless
+      udp: true
+      uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-95556397
         - hysteria2-177823913
         - shadowsocks-736520123
         - shadowsocks-209
         - trojan-736714080
+        - vless-95556397
+        - vless-763489136
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-95556397
         - hysteria2-177823913
         - shadowsocks-736520123
         - shadowsocks-209
         - trojan-736714080
+        - vless-95556397
+        - vless-763489136
       type: select
 rules:
     - MATCH,select
