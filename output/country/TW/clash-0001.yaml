@@ -6,6 +6,15 @@ proxies:
       skip-cert-verify: true
       sni: https://t.me/oneclickvpnkeys
       type: hysteria2
+    - alterId: 0
+      cipher: auto
+      name: vmess-5258766
+      network: raw
+      port: 35034
+      server: 165.154.195.38
+      type: vmess
+      udp: true
+      uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
     - name: hysteria2-137781265
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -775,11 +784,19 @@ proxies:
       type: vless
       udp: true
       uuid: 431fe973-a43a-4fac-bf83-2a772e0d0625
+    - name: vless-788092661
+      network: tcp
+      port: 10000
+      server: 220.130.75.248
+      type: vless
+      udp: true
+      uuid: 431fe973-a43a-4fac-bf83-2a772e0d0625
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-16610
+        - vmess-5258766
         - hysteria2-137781265
         - trojan-176269069
         - hysteria2-200242609
@@ -860,12 +877,14 @@ proxy-groups:
         - hysteria2-774524104
         - vless-779748200
         - vless-781312939
+        - vless-788092661
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-16610
+        - vmess-5258766
         - hysteria2-137781265
         - trojan-176269069
         - hysteria2-200242609
@@ -946,6 +965,7 @@ proxy-groups:
         - hysteria2-774524104
         - vless-779748200
         - vless-781312939
+        - vless-788092661
       type: select
 rules:
     - MATCH,select
