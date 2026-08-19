@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-490133896
+      password: Krab9Hyst2_Rk7pQ2xL
+      port: 36723
+      server: fr.vpn.legendaah.xyz
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: hysteria2
     - name: vless-650669482
       network: grpc
       port: 2083
@@ -9,17 +16,37 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - name: hysteria2-645328506
+      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+      port: 443
+      server: fr194.mechvpn.online
+      skip-cert-verify: false
+      sni: fr194.mechvpn.online
+      type: hysteria2
+    - name: hysteria2-589844073
+      password: Krab9Hyst2_Rk7pQ2xL
+      port: 36723
+      server: 151.247.197.253
+      skip-cert-verify: true
+      sni: 151.247.197.253
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-490133896
         - vless-650669482
+        - hysteria2-645328506
+        - hysteria2-589844073
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-490133896
         - vless-650669482
+        - hysteria2-645328506
+        - hysteria2-589844073
       type: select
 rules:
     - MATCH,select

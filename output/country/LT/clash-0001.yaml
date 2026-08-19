@@ -1,71 +1,7 @@
 proxies:
-    - name: trojan-119261
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20044
-      server: 45.67.201.210
-      skip-cert-verify: true
-      sni: tw.catxstar.com
-      type: trojan
-      udp: true
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-258652508
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 00n9LplaZ0VGvRS57548s7xe0deFC10pw2fkFHFPplM
-        short-id: ""
-      server: 84.32.209.7
-      servername: dartsearch-cn.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-260079409
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 00n9LplaZ0VGvRS57548s7xe0deFC10pw2fkFHFPplM
-        short-id: ""
-      server: 84.32.209.7
-      servername: dartsearch-cn.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-326746250
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 00n9LplaZ0VGvRS57548s7xe0deFC10pw2fkFHFPplM
-        short-id: ""
-      server: 84.32.209.7
-      servername: dartsearch-cn.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-332701841
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 00n9LplaZ0VGvRS57548s7xe0deFC10pw2fkFHFPplM
-        short-id: ""
-      server: 84.32.209.7
-      servername: dartsearch-cn.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-335102643
       network: tcp
       port: 443
       reality-opts:
@@ -465,16 +401,18 @@ proxies:
       type: vless
       udp: true
       uuid: e1f28995-9a63-43de-bd6a-89726eed1de3
+    - cipher: aes-256-cfb
+      name: shadowsocks-779606858
+      password: M3t2ZEQcMGRWBjRa
+      port: 9011
+      server: 195.238.126.20
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-119261
-        - vless-258652508
-        - vless-260079409
-        - vless-326746250
         - vless-332701841
-        - vless-335102643
         - vless-465827615
         - vless-577276252
         - vless-583557308
@@ -506,17 +444,13 @@ proxy-groups:
         - vless-773073465
         - vless-773073484
         - vless-773073491
+        - shadowsocks-779606858
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-119261
-        - vless-258652508
-        - vless-260079409
-        - vless-326746250
         - vless-332701841
-        - vless-335102643
         - vless-465827615
         - vless-577276252
         - vless-583557308
@@ -548,6 +482,7 @@ proxy-groups:
         - vless-773073465
         - vless-773073484
         - vless-773073491
+        - shadowsocks-779606858
       type: select
 rules:
     - MATCH,select

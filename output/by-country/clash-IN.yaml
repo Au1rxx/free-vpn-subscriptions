@@ -15,6 +15,20 @@ proxies:
       uuid: ec31f6d7-c71a-413d-93aa-24296805a594
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-755661307
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: FL9zvOg48NhHk_YWJMcDXNOseisuzeBW7d8KitUaAQM
+        short-id: dc941fb0778384e2
+      server: 128.128.90.72
+      servername: www.bing.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ec31f6d7-c71a-413d-93aa-24296805a594
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-736520135
       network: tcp
       port: 443
@@ -41,14 +55,6 @@ proxies:
       type: vless
       udp: true
       uuid: 15fd22d1-8931-4d41-af37-8ba6711e93fe
-    - name: trojan-713067741
-      password: fg20mtCFHy
-      port: 5750
-      server: 157.245.99.215
-      skip-cert-verify: false
-      sni: inyct.southbyte.xyz
-      type: trojan
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-740393686
@@ -63,41 +69,25 @@ proxies:
       type: vless
       udp: true
       uuid: ec31f6d7-c71a-413d-93aa-24296805a594
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-724531982
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: eaRNeC8fccrx0nBNvBpAXZgK4m4FxfnQ-t0W7NOM7mU
-        short-id: e53048e82bb20077
-      server: 5.253.28.189
-      servername: asia.cendora.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-716551581
+        - vless-755661307
         - vless-736520135
         - vless-656379052
-        - trojan-713067741
         - vless-740393686
-        - vless-724531982
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-716551581
+        - vless-755661307
         - vless-736520135
         - vless-656379052
-        - trojan-713067741
         - vless-740393686
-        - vless-724531982
       type: select
 rules:
     - MATCH,select
