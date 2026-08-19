@@ -1,40 +1,22 @@
 proxies:
-    - name: hysteria2-646349274
-      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
-      port: 8080
-      server: 85.204.107.166
-      skip-cert-verify: true
-      sni: grape-zet-ro-turbo.bumbleshrimp.com
-      type: hysteria2
-    - name: hysteria2-700405719
-      password: dsfa_k0123WFzerrf_kZ3490VNb03J_m30_s
-      port: 8443
-      server: 194.180.188.26
-      skip-cert-verify: true
-      sni: keyhop-offshore.roxa.org
-      type: hysteria2
-    - name: hysteria2-647019508
-      password: dsfa_k0123WFzerrf_kZ3490VNb03J_m30_s
-      port: 8443
-      server: 194.180.188.21
-      skip-cert-verify: true
-      sni: keyhop-offshore.roxa.org
-      type: hysteria2
+    - name: vless-723592822
+      network: tcp
+      port: 444
+      server: 94.156.114.171
+      type: vless
+      udp: true
+      uuid: 354270dc-0903-42d8-a7af-3663ef7e9581
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-646349274
-        - hysteria2-700405719
-        - hysteria2-647019508
+        - vless-723592822
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-646349274
-        - hysteria2-700405719
-        - hysteria2-647019508
+        - vless-723592822
       type: select
 rules:
     - MATCH,select

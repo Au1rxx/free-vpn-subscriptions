@@ -6,13 +6,6 @@ proxies:
       server: 82.38.31.16
       type: ss
       udp: true
-    - name: hysteria2-700405732
-      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-      port: 443
-      server: nl8.mechvpn.online
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-522222549
       password: oZIoA69Q8yhcQV8ka3Pa3A
@@ -139,12 +132,24 @@ proxies:
       server: 82.38.31.46
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      name: vless-470975915
+      network: grpc
+      port: 25565
+      reality-opts:
+        public-key: pBd5IOD_sCDpIDqgi6EtZ6DAAMGns9n2C3qPH0i3Tno
+        short-id: 0e29dc68
+      server: 85.192.41.222
+      servername: yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 086422b2-3347-45f8-b527-d9e1be25dc56
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-170
-        - hysteria2-700405732
         - shadowsocks-522222549
         - shadowsocks-482887639
         - shadowsocks-482887638
@@ -163,13 +168,13 @@ proxy-groups:
         - shadowsocks-40118927
         - shadowsocks-277388491
         - shadowsocks-49012021
+        - vless-470975915
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-170
-        - hysteria2-700405732
         - shadowsocks-522222549
         - shadowsocks-482887639
         - shadowsocks-482887638
@@ -188,6 +193,7 @@ proxy-groups:
         - shadowsocks-40118927
         - shadowsocks-277388491
         - shadowsocks-49012021
+        - vless-470975915
       type: select
 rules:
     - MATCH,select
