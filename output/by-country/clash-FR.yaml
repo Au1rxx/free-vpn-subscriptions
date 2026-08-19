@@ -6,17 +6,6 @@ proxies:
       skip-cert-verify: true
       sni: www.cloudflare.com
       type: hysteria2
-    - flow: xtls-rprx-vision
-      name: vless-650632914
-      network: tcp
-      port: 443
-      server: nasnet-162191099-direct.mbghalibaf.com
-      servername: nasnet-162191099-direct.mbghalibaf.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: nasnet
     - name: hysteria2-645328506
       password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
       port: 443
@@ -24,27 +13,6 @@ proxies:
       skip-cert-verify: false
       sni: fr194.mechvpn.online
       type: hysteria2
-    - name: vless-650669482
-      network: grpc
-      port: 2083
-      server: usejh2.neobo-tooth.ru
-      servername: usejh2.neobo-tooth.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - flow: xtls-rprx-vision
-      name: vless-650648383
-      network: tcp
-      port: 443
-      server: 88.214.24.186
-      servername: fr186.mechvpn.online
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
     - name: hysteria2-696793160
       password: Ed2PeuIZfy1RCjLO
       port: 36001
@@ -66,27 +34,6 @@ proxies:
       type: vless
       udp: true
       uuid: 7e85ed3f-3829-45b1-8b1c-6a2e45ebc967
-    - name: vless-696180628
-      network: tcp
-      port: 24144
-      server: 164.68.127.108
-      type: vless
-      udp: true
-      uuid: 7e85ed3f-3829-45b1-8b1c-6a2e45ebc967
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-696184113
-      network: tcp
-      port: 12228
-      reality-opts:
-        public-key: hvyaRhFtrj3cGv1Ya5uXpE256i2PoUi2fOgU0KlvKmI
-        short-id: 59625eb3275249ca
-      server: 35.180.187.82
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 795d5f5b-318c-49a6-844f-ee2ab63bbe94
     - name: hysteria2-657099768
       password: github.com/Alvin9999-newpac/fanqiang
       port: 60111
@@ -134,47 +81,74 @@ proxies:
       sni: smiling-fowl.rooster465.autos
       type: trojan
       udp: true
+    - name: vless-522259421
+      network: tcp
+      port: 24144
+      server: 164.68.127.108
+      type: vless
+      udp: true
+      uuid: 7e85ed3f-3829-45b1-8b1c-6a2e45ebc967
+    - client-fingerprint: chrome
+      name: vless-725333450
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: 6j7SZO4StX_8QkHX9sATJug5nQ4X4XoTj_6B7bClEw4
+        short-id: e52e7fd8585ac5c1
+      server: 51.77.217.70
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ab00e12c-09f1-41c6-8d60-7c6a83f5ca9d
+    - flow: xtls-rprx-vision
+      name: vless-557179226
+      network: raw
+      port: 443
+      server: fr186.mechvpn.online
+      servername: fr186.mechvpn.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-490133896
-        - vless-650632914
         - hysteria2-645328506
-        - vless-650669482
-        - vless-650648383
         - hysteria2-696793160
         - hysteria2-516077181
         - vless-534824536
-        - vless-696180628
-        - vless-696184113
         - hysteria2-657099768
         - trojan-629508664
         - trojan-629506678
         - trojan-629506679
         - trojan-591317857
         - trojan-591319887
+        - vless-522259421
+        - vless-725333450
+        - vless-557179226
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-490133896
-        - vless-650632914
         - hysteria2-645328506
-        - vless-650669482
-        - vless-650648383
         - hysteria2-696793160
         - hysteria2-516077181
         - vless-534824536
-        - vless-696180628
-        - vless-696184113
         - hysteria2-657099768
         - trojan-629508664
         - trojan-629506678
         - trojan-629506679
         - trojan-591317857
         - trojan-591319887
+        - vless-522259421
+        - vless-725333450
+        - vless-557179226
       type: select
 rules:
     - MATCH,select

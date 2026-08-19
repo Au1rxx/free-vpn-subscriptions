@@ -1,4 +1,30 @@
 proxies:
+    - client-fingerprint: chrome
+      name: vless-622971655
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: GAYlNViQ9mkjs0iTjNmijAIXOaK2h0P2opHCYOrCNy0
+        short-id: ae3ba555edc1ba0a
+      server: 194.61.31.126
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7f1f5848-da44-47df-8581-df83e88ee2b3
+    - client-fingerprint: edge
+      name: vless-622957485
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: GAYlNViQ9mkjs0iTjNmijAIXOaK2h0P2opHCYOrCNy0
+        short-id: ae3ba555edc1ba0a
+      server: 194.61.31.126
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7f1f5848-da44-47df-8581-df83e88ee2b3
     - name: trojan-696780693
       password: fg20mtCFHy
       port: 5750
@@ -35,20 +61,6 @@ proxies:
       type: vless
       udp: true
       uuid: 15fd22d1-8931-4d41-af37-8ba6711e93fe
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-587197637
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: QLjTpkXRB453R9fXhJzKkc_q_gSm2MZrIOuxW4uW-mI
-        short-id: 221873918e0bb74d
-      server: 148.113.5.44
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 72ea5a91-ffcc-43d2-9297-5993c3abf186
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-725089694
@@ -67,20 +79,22 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-622971655
+        - vless-622957485
         - trojan-696780693
         - vless-648967653
         - vless-682971327
-        - vless-587197637
         - vless-725089694
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-622971655
+        - vless-622957485
         - trojan-696780693
         - vless-648967653
         - vless-682971327
-        - vless-587197637
         - vless-725089694
       type: select
 rules:

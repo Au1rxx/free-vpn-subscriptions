@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-561666849
+      network: ws
+      port: 4100
+      server: 200.165.234.62
+      type: vless
+      udp: true
+      uuid: 5383fb97-1178-4709-9a25-b767b743e911
     - flow: xtls-rprx-vision
       name: vless-619565164
       network: tcp
@@ -142,13 +149,6 @@ proxies:
       type: vless
       udp: true
       uuid: a78d6a0b-8751-4e8e-bafa-79a86c5a5fc7
-    - name: vless-659166691
-      network: ws
-      port: 80
-      server: 151.101.59.11
-      type: vless
-      udp: true
-      uuid: 3b940e86-7b0d-40da-acf1-12d334e41023
     - flow: xtls-rprx-vision
       name: vless-660177857
       network: tcp
@@ -391,10 +391,29 @@ proxies:
       type: vless
       udp: true
       uuid: 0000e293-996d-4c32-99dc-29a8aba80d06
+    - flow: xtls-rprx-vision
+      name: vless-733881343
+      network: raw
+      port: 443
+      server: cave.magazinetut.online
+      servername: cave.magazinetut.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0000e293-996d-4c32-99dc-29a8aba80d06
+    - name: vless-734485931
+      network: ws
+      port: 4100
+      server: 201.24.49.120
+      type: vless
+      udp: true
+      uuid: 714e1212-6707-471e-9f40-2fbd3d8d3b4b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-561666849
         - vless-619565164
         - vless-628789713
         - vless-650321788
@@ -408,7 +427,6 @@ proxy-groups:
         - vless-656191654
         - vless-659081171
         - vless-659081174
-        - vless-659166691
         - vless-660177857
         - vless-660179840
         - vless-663941923
@@ -431,11 +449,14 @@ proxy-groups:
         - vless-732157871
         - vless-732157872
         - vless-732161868
+        - vless-733881343
+        - vless-734485931
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-561666849
         - vless-619565164
         - vless-628789713
         - vless-650321788
@@ -449,7 +470,6 @@ proxy-groups:
         - vless-656191654
         - vless-659081171
         - vless-659081174
-        - vless-659166691
         - vless-660177857
         - vless-660179840
         - vless-663941923
@@ -472,6 +492,8 @@ proxy-groups:
         - vless-732157871
         - vless-732157872
         - vless-732161868
+        - vless-733881343
+        - vless-734485931
       type: select
 rules:
     - MATCH,select
