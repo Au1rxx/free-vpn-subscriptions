@@ -69,9 +69,16 @@ proxies:
       type: vless
       udp: true
       uuid: d67af820-f54c-48ab-862c-19086357f276
+    - name: hysteria2-756343303
+      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+      port: 443
+      server: dk86.mechvpn.online
+      skip-cert-verify: false
+      sni: ""
+      type: hysteria2
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-743806772
+      name: vless-768309472
       network: tcp
       port: 443
       reality-opts:
@@ -83,13 +90,20 @@ proxies:
       type: vless
       udp: true
       uuid: d67af820-f54c-48ab-862c-19086357f276
-    - name: hysteria2-756343303
-      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-768537901
+      network: tcp
       port: 443
-      server: dk86.mechvpn.online
-      skip-cert-verify: false
-      sni: ""
-      type: hysteria2
+      reality-opts:
+        public-key: dhLgVSqPBDrdbhyTS2j60LWZDGEZh-smkcjUNSic-WI
+        short-id: a1b2c3d4
+      server: 46.29.235.9
+      servername: telegraf.lv
+      tls: true
+      type: vless
+      udp: true
+      uuid: d67af820-f54c-48ab-862c-19086357f276
 proxy-groups:
     - interval: 300
       name: auto
@@ -101,8 +115,9 @@ proxy-groups:
         - vless-724291955
         - vless-724555783
         - vless-736727923
-        - vless-743806772
         - hysteria2-756343303
+        - vless-768309472
+        - vless-768537901
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -115,8 +130,9 @@ proxy-groups:
         - vless-724291955
         - vless-724555783
         - vless-736727923
-        - vless-743806772
         - hysteria2-756343303
+        - vless-768309472
+        - vless-768537901
       type: select
 rules:
     - MATCH,select

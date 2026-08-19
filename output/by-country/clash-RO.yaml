@@ -6,26 +6,17 @@ proxies:
       skip-cert-verify: true
       sni: grape-zet-ro-turbo.bumbleshrimp.com
       type: hysteria2
-    - name: hysteria2-730134203
-      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
-      port: 8443
-      server: 85.204.107.168
-      skip-cert-verify: false
-      sni: grape-zet-ro-turbo.bumbleshrimp.com
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-646349283
-        - hysteria2-730134203
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-646349283
-        - hysteria2-730134203
       type: select
 rules:
     - MATCH,select

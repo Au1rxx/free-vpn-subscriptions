@@ -13,13 +13,6 @@ proxies:
       skip-cert-verify: true
       sni: mercedes-grape.yyuyy.com
       type: hysteria2
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-768182969
-      password: 0g/TsnuY8fpXjGhv1QMzb/3s3CD00hkrUffPgishOvo=
-      port: 59924
-      server: 130.61.41.25
-      type: ss
-      udp: true
     - flow: xtls-rprx-vision
       name: vless-656161027
       network: tcp
@@ -31,6 +24,13 @@ proxies:
       type: vless
       udp: true
       uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+    - name: hysteria2-766437504
+      password: d9a3a0a2-3bbf-4c04-9ca6-95c7c8390ae7
+      port: 443
+      server: dereserv.just-cloud.org
+      skip-cert-verify: false
+      sni: dereserv.just-cloud.org
+      type: hysteria2
     - name: hysteria2-674635658
       password: dsfa_k0123WFzerrf_kZ3490VNb03J_m30_s
       port: 8443
@@ -38,15 +38,23 @@ proxies:
       skip-cert-verify: false
       sni: keyhop-offshore.roxa.org
       type: hysteria2
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-703569534
+      password: wh/mzP9iT6c54QgTLig1SPpUQ0j2kv9x6Fm8CQF7zFo=
+      port: 59924
+      server: 130.61.102.33
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-736520123
         - hysteria2-646349282
-        - shadowsocks-768182969
         - vless-656161027
+        - hysteria2-766437504
         - hysteria2-674635658
+        - shadowsocks-703569534
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -54,9 +62,10 @@ proxy-groups:
         - auto
         - shadowsocks-736520123
         - hysteria2-646349282
-        - shadowsocks-768182969
         - vless-656161027
+        - hysteria2-766437504
         - hysteria2-674635658
+        - shadowsocks-703569534
       type: select
 rules:
     - MATCH,select
