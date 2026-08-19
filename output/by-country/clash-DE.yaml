@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-700405719
-      password: dsfa_k0123WFzerrf_kZ3490VNb03J_m30_s
-      port: 8443
-      server: 194.180.188.26
-      skip-cert-verify: true
-      sni: keyhop-offshore.roxa.org
-      type: hysteria2
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-736520123
       password: NLrckFvmYxeqGAR3dbSZb2ImAvMylV4p8yhCAIrQ+hI=
@@ -13,6 +6,13 @@ proxies:
       server: 130.61.34.182
       type: ss
       udp: true
+    - name: hysteria2-646349282
+      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
+      port: 8443
+      server: 162.249.124.104
+      skip-cert-verify: true
+      sni: mercedes-grape.yyuyy.com
+      type: hysteria2
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-768182969
       password: 0g/TsnuY8fpXjGhv1QMzb/3s3CD00hkrUffPgishOvo=
@@ -20,6 +20,17 @@ proxies:
       server: 130.61.41.25
       type: ss
       udp: true
+    - flow: xtls-rprx-vision
+      name: vless-656161027
+      network: tcp
+      port: 443
+      server: de151.mechvpn.online
+      servername: de151.mechvpn.online
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
     - name: hysteria2-674635658
       password: dsfa_k0123WFzerrf_kZ3490VNb03J_m30_s
       port: 8443
@@ -38,9 +49,10 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-700405719
         - shadowsocks-736520123
+        - hysteria2-646349282
         - shadowsocks-768182969
+        - vless-656161027
         - hysteria2-674635658
         - hysteria2-657099799
       type: url-test
@@ -48,9 +60,10 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - hysteria2-700405719
         - shadowsocks-736520123
+        - hysteria2-646349282
         - shadowsocks-768182969
+        - vless-656161027
         - hysteria2-674635658
         - hysteria2-657099799
       type: select
