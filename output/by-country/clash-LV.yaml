@@ -1,0 +1,22 @@
+proxies:
+    - name: hysteria2-745560343
+      password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
+      port: 443
+      server: hy2-latvia1.unlimited-access.ru
+      skip-cert-verify: false
+      sni: hy2-latvia1.unlimited-access.ru
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-745560343
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-745560343
+      type: select
+rules:
+    - MATCH,select

@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "3b8c82ed-fe66-472d-915e-034ccb57103f",
+      "server": "swe2.frkn.org",
+      "server_port": 443,
+      "tag": "hysteria2-715092064",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "swe2.frkn.org"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-715092064"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-715092064"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

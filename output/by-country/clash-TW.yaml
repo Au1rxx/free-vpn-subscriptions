@@ -1,11 +1,11 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-696792811
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 120.232.253.94
-      type: ss
+    - name: vless-652388787
+      network: raw
+      port: 10000
+      server: 220.130.75.248
+      type: vless
       udp: true
+      uuid: 431fe973-a43a-4fac-bf83-2a772e0d0625
     - name: hysteria2-16610
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -20,6 +20,13 @@ proxies:
       skip-cert-verify: true
       sni: vpn-tw-002.fastervpn.world
       type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792811
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 120.232.253.94
+      type: ss
+      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-717975174
       password: 7eadc6dbe2ae
@@ -69,6 +76,13 @@ proxies:
       type: vless
       udp: true
       uuid: 431fe973-a43a-4fac-bf83-2a772e0d0625
+    - name: vless-688016882
+      network: tcp
+      port: 10000
+      server: 220.130.75.248
+      type: vless
+      udp: true
+      uuid: 431fe973-a43a-4fac-bf83-2a772e0d0625
     - client-fingerprint: chrome
       name: vless-685581306
       network: raw
@@ -102,13 +116,6 @@ proxies:
       type: vless
       udp: true
       uuid: b8ca2900-3ed7-4b58-970e-060d0a6cbf99
-    - name: hysteria2-721489375
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: 103.115.109.49
-      skip-cert-verify: true
-      sni: t.me
-      type: hysteria2
     - client-fingerprint: chrome
       name: vless-661028003
       network: tcp
@@ -149,13 +156,6 @@ proxies:
       type: vless
       udp: true
       uuid: 431fe973-a43a-4fac-bf83-2a772e0d0625
-    - name: vless-652388787
-      network: raw
-      port: 10000
-      server: 220.130.75.248
-      type: vless
-      udp: true
-      uuid: 431fe973-a43a-4fac-bf83-2a772e0d0625
     - name: vless-647042508
       network: tcp
       port: 10000
@@ -167,9 +167,10 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-696792811
+        - vless-652388787
         - hysteria2-16610
         - hysteria2-137781265
+        - shadowsocks-696792811
         - shadowsocks-717975174
         - vless-562186771
         - vless-669577553
@@ -177,24 +178,24 @@ proxy-groups:
         - vless-661036889
         - vless-661036888
         - vless-461791955
+        - vless-688016882
         - vless-685581306
         - vless-459505008
         - vless-266835581
-        - hysteria2-721489375
         - vless-661028003
         - vless-737947072
         - hysteria2-656706489
         - vless-702879123
-        - vless-652388787
         - vless-647042508
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-696792811
+        - vless-652388787
         - hysteria2-16610
         - hysteria2-137781265
+        - shadowsocks-696792811
         - shadowsocks-717975174
         - vless-562186771
         - vless-669577553
@@ -202,15 +203,14 @@ proxy-groups:
         - vless-661036889
         - vless-661036888
         - vless-461791955
+        - vless-688016882
         - vless-685581306
         - vless-459505008
         - vless-266835581
-        - hysteria2-721489375
         - vless-661028003
         - vless-737947072
         - hysteria2-656706489
         - vless-702879123
-        - vless-652388787
         - vless-647042508
       type: select
 rules:
