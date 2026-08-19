@@ -1,58 +1,31 @@
 proxies:
-    - client-fingerprint: firefox
-      name: vless-721702048
-      network: grpc
-      port: 2054
-      reality-opts:
-        public-key: OyptJTnaUSyaiYY3_iB-Lrst04EoVetdB1ZMoHDViyI
-        short-id: e5fe88d9c232c341
-      server: 185.241.208.89
-      servername: www.ibm.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f6da8274-44be-4599-a8d8-66929c980677
-    - name: vless-764654852
-      network: tcp
-      port: 33651
-      server: 185.70.199.217
-      type: vless
-      udp: true
-      uuid: 31d1f5ce-e5b5-4fdc-af07-4b343a0622b9
-    - name: vless-738495676
-      network: grpc
+    - name: hysteria2-698966614
+      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
       port: 443
-      server: 212.41.26.84
-      servername: v1.api2.ttpservers.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 163dc809-7970-4ff8-a7e5-8080ad53e7bb
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-465806704
-      password: ytw2awn
+      server: 82.22.41.10
+      skip-cert-verify: true
+      sni: 82.22.41.10
+      type: hysteria2
+    - name: hysteria2-655713425
+      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
       port: 443
-      server: pl140.vpnbook.com
-      type: ss
-      udp: true
+      server: pl10.mechvpn.online
+      skip-cert-verify: true
+      sni: pl10.mechvpn.online
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-721702048
-        - vless-764654852
-        - vless-738495676
-        - shadowsocks-465806704
+        - hysteria2-698966614
+        - hysteria2-655713425
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-721702048
-        - vless-764654852
-        - vless-738495676
-        - shadowsocks-465806704
+        - hysteria2-698966614
+        - hysteria2-655713425
       type: select
 rules:
     - MATCH,select

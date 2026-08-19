@@ -1,28 +1,31 @@
 proxies:
-    - client-fingerprint: firefox
-      name: vless-721702043
-      network: grpc
-      port: 2054
-      reality-opts:
-        public-key: JFzd2AbfzZSnMefyKEXNIae_QEZAo5o239pmuHHZsAY
-        short-id: 0c25988a
-      server: 132.243.174.112
-      servername: www.swisscom.ch
-      tls: true
-      type: vless
-      udp: true
-      uuid: f6da8274-44be-4599-a8d8-66929c980677
+    - name: hysteria2-700405728
+      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+      port: 8080
+      server: 46.229.243.133
+      skip-cert-verify: true
+      sni: grape-turbo-fr.roxa.org
+      type: hysteria2
+    - name: hysteria2-628782748
+      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+      port: 8080
+      server: 46.229.243.132
+      skip-cert-verify: false
+      sni: grape-turbo-fr.roxa.org
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-721702043
+        - hysteria2-700405728
+        - hysteria2-628782748
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-721702043
+        - hysteria2-700405728
+        - hysteria2-628782748
       type: select
 rules:
     - MATCH,select

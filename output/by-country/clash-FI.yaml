@@ -1,29 +1,22 @@
 proxies:
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-741531070
-      network: tcp
+    - name: hysteria2-715092064
+      password: 3b8c82ed-fe66-472d-915e-034ccb57103f
       port: 443
-      reality-opts:
-        public-key: nF_kEdHan2dgl2tlQ_dtNaKZ4oORhuiFrXHbtEDcT2Q
-        short-id: 2d6d073dc88f22a8
-      server: 31.207.7.210
-      servername: se1.se-cdn.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: f202c7ca-17b7-416d-b3a2-ac71d35afe9c
+      server: swe2.frkn.org
+      skip-cert-verify: true
+      sni: swe2.frkn.org
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-741531070
+        - hysteria2-715092064
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-741531070
+        - hysteria2-715092064
       type: select
 rules:
     - MATCH,select
