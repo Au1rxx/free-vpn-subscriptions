@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-674490757
-      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-      port: 443
-      server: 82.22.41.10
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
     - name: hysteria2-655713425
       password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
       port: 443
@@ -13,80 +6,17 @@ proxies:
       skip-cert-verify: true
       sni: pl10.mechvpn.online
       type: hysteria2
-    - flow: xtls-rprx-vision
-      name: vless-652481400
-      network: tcp
-      port: 8443
-      server: tutdesignstudio.site
-      servername: tutdesignstudio.site
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 38cc34e9-9973-439c-b61b-3d89b798d571
-    - name: hysteria2-726188049
-      password: 391f093f-85fc-473d-abe2-ea607b9ff567
-      port: 8443
-      server: 37.18.14.156
-      skip-cert-verify: false
-      sni: quic.tyr-agentstvo.tech
-      type: hysteria2
-    - flow: xtls-rprx-vision
-      name: vless-652481399
-      network: tcp
-      port: 8443
-      server: 38.180.50.4
-      servername: tutdesignstudio.site
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 38cc34e9-9973-439c-b61b-3d89b798d571
-    - flow: xtls-rprx-vision
-      name: vless-697232735
-      network: raw
-      port: 8443
-      server: tutdesignstudio.site
-      servername: tutdesignstudio.site
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 38cc34e9-9973-439c-b61b-3d89b798d571
-    - flow: xtls-rprx-vision
-      name: vless-656201031
-      network: tcp
-      port: 8443
-      server: tutdesignstudio.site
-      servername: tutdesignstudio.site
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1f113ca6-7b95-4abb-9348-adfb2187e399
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-674490757
         - hysteria2-655713425
-        - vless-652481400
-        - hysteria2-726188049
-        - vless-652481399
-        - vless-697232735
-        - vless-656201031
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-674490757
         - hysteria2-655713425
-        - vless-652481400
-        - hysteria2-726188049
-        - vless-652481399
-        - vless-697232735
-        - vless-656201031
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-119261
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20044
+      server: 45.67.201.210
+      skip-cert-verify: true
+      sni: tw.catxstar.com
+      type: trojan
+      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-258652508
@@ -251,6 +259,19 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - client-fingerprint: edge
+      name: vless-720929268
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: C6nh6hqFTbtizgSH8vGmw2XUxsQAbAW3jPylpgGvfl4
+        short-id: 8b6f2e4d7c1a5b9f
+      server: 46.166.167.4
+      servername: auth.moktana.app
+      tls: true
+      type: vless
+      udp: true
+      uuid: 27b16a66-95e0-4c20-b00b-5dff91d9c9f5
     - cipher: aes-256-cfb
       name: shadowsocks-723348709
       password: JCJpbRbQZNw9XFZG
@@ -258,6 +279,19 @@ proxies:
       server: 195.238.126.20
       type: ss
       udp: true
+    - client-fingerprint: edge
+      name: vless-724573028
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: C6nh6hqFTbtizgSH8vGmw2XUxsQAbAW3jPylpgGvfl4
+        short-id: 7c4b9a2e8d5f3c1b
+      server: 84.32.151.222
+      servername: auth.moktana.app
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2642342c-fa52-4f62-b44d-fb77de8f75e3
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-724943430
@@ -290,6 +324,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-119261
         - vless-258652508
         - vless-260079409
         - vless-326746250
@@ -309,7 +344,9 @@ proxy-groups:
         - vless-700417550
         - shadowsocks-717968959
         - vless-720888911
+        - vless-720929268
         - shadowsocks-723348709
+        - vless-724573028
         - vless-724943430
         - vless-734929305
       type: url-test
@@ -317,6 +354,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-119261
         - vless-258652508
         - vless-260079409
         - vless-326746250
@@ -336,7 +374,9 @@ proxy-groups:
         - vless-700417550
         - shadowsocks-717968959
         - vless-720888911
+        - vless-720929268
         - shadowsocks-723348709
+        - vless-724573028
         - vless-724943430
         - vless-734929305
       type: select
