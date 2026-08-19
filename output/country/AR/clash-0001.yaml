@@ -6,17 +6,32 @@ proxies:
       skip-cert-verify: true
       sni: ar2.nebulacloud.win
       type: hysteria2
+    - client-fingerprint: qq
+      name: vless-744900448
+      network: tcp
+      port: 38829
+      reality-opts:
+        public-key: Nznj30TKgdig81SCTekuMg8DD8jO_NYTC9bdnTxT_w0
+        short-id: ebc9e72e1940552b
+      server: vless.fresedvpn.site
+      servername: api-maps.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8b581f67-f02c-4373-bd9f-7c7f6328b0ca
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-738059720
+        - vless-744900448
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-738059720
+        - vless-744900448
       type: select
 rules:
     - MATCH,select

@@ -27,6 +27,13 @@ proxies:
       skip-cert-verify: true
       sni: www.microsoft.com
       type: hysteria2
+    - name: vless-522259421
+      network: tcp
+      port: 24144
+      server: 164.68.127.108
+      type: vless
+      udp: true
+      uuid: 7e85ed3f-3829-45b1-8b1c-6a2e45ebc967
     - name: vless-602178043
       network: grpc
       port: 2083
@@ -68,6 +75,13 @@ proxies:
       skip-cert-verify: false
       sni: iq5ny.pleiades.codes
       type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-743190429
+      password: amazonskr05
+      port: 443
+      server: 15.236.226.14
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -76,11 +90,13 @@ proxy-groups:
         - shadowsocks-707169915
         - hysteria2-650667469
         - hysteria2-689011839
+        - vless-522259421
         - vless-602178043
         - vless-212001003
         - vless-650669482
         - hysteria2-550001735
         - hysteria2-736739594
+        - shadowsocks-743190429
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -90,11 +106,13 @@ proxy-groups:
         - shadowsocks-707169915
         - hysteria2-650667469
         - hysteria2-689011839
+        - vless-522259421
         - vless-602178043
         - vless-212001003
         - vless-650669482
         - hysteria2-550001735
         - hysteria2-736739594
+        - shadowsocks-743190429
       type: select
 rules:
     - MATCH,select
