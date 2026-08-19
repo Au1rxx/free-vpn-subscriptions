@@ -9,6 +9,34 @@ proxies:
       type: vless
       udp: true
       uuid: e0454af2-6fe9-4983-a55d-05e1da202602
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-730134149
+      network: tcp
+      port: 13443
+      reality-opts:
+        public-key: gc9oXe37KCCm3J1dJ03wdGsnxPBdeEkRPOvl_t-vfVM
+        short-id: a7f3c91b2e6d84c0
+      server: 212.179.49.187
+      servername: auto.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-730134231
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
+        short-id: 00bca5982f82d083
+      server: 212.179.49.187
+      servername: eu-central.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-732078330
@@ -121,11 +149,41 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-768399359
+      password: 9325a345-c72f-4637-a8f4-34f9effb7ba6
+      port: 21116
+      server: 211.91.158.26
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-768399478
+      password: 9325a345-c72f-4637-a8f4-34f9effb7ba6
+      port: 21116
+      server: 211.91.158.44
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-770416604
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
+        short-id: 00bca5982f82d083
+      server: 212.179.49.187
+      servername: eu-central.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-671683635
+        - vless-730134149
+        - vless-730134231
         - vless-732078330
         - vless-734962301
         - vless-742656270
@@ -134,12 +192,17 @@ proxy-groups:
         - vless-754620396
         - vless-755652302
         - vless-755652303
+        - shadowsocks-768399359
+        - shadowsocks-768399478
+        - vless-770416604
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-671683635
+        - vless-730134149
+        - vless-730134231
         - vless-732078330
         - vless-734962301
         - vless-742656270
@@ -148,6 +211,9 @@ proxy-groups:
         - vless-754620396
         - vless-755652302
         - vless-755652303
+        - shadowsocks-768399359
+        - shadowsocks-768399478
+        - vless-770416604
       type: select
 rules:
     - MATCH,select

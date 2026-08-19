@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-522259421
-      network: tcp
-      port: 24144
-      server: 164.68.127.108
-      type: vless
-      udp: true
-      uuid: 7e85ed3f-3829-45b1-8b1c-6a2e45ebc967
     - name: vless-650669482
       network: grpc
       port: 2083
@@ -26,48 +19,19 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: hysteria2-689011839
-      password: github.com/Alvin9999-newpac/fanqiang
-      port: 43115
-      server: 62.210.147.2
-      skip-cert-verify: true
-      sni: www.microsoft.com
-      type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-696792833
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 95.170.13.47
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-743190429
-      password: amazonskr05
-      port: 443
-      server: 15.236.226.14
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-522259421
         - vless-650669482
         - vless-694391514
-        - hysteria2-689011839
-        - shadowsocks-696792833
-        - shadowsocks-743190429
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-522259421
         - vless-650669482
         - vless-694391514
-        - hysteria2-689011839
-        - shadowsocks-696792833
-        - shadowsocks-743190429
       type: select
 rules:
     - MATCH,select
