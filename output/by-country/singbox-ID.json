@@ -1,0 +1,36 @@
+{
+  "outbounds": [
+    {
+      "method": "aes-256-cfb",
+      "password": "7eadc6dbe2ae",
+      "server": "120.232.253.92",
+      "server_port": 65443,
+      "tag": "shadowsocks-696792809",
+      "type": "shadowsocks"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "shadowsocks-696792809"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "shadowsocks-696792809"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

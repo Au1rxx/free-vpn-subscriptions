@@ -1,4 +1,25 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792832
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 82.23.146.72
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-587204637
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: a2qGjvUPq6Nz5FTbn_MSHp-055q2h8YXqIL5VIJ5zwE
+        short-id: d15c17cef9b2e456
+      server: 51.161.204.242
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-532685580
@@ -20,27 +41,20 @@ proxies:
       server: 45.77.232.213
       type: ss
       udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-696792832
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 82.23.146.72
-      type: ss
-      udp: true
-    - name: trojan-468215291
+    - name: trojan-565918286
       password: AE62539071
       port: 443
       server: together-dingo.rooster465.autos
-      skip-cert-verify: true
-      sni: ""
+      skip-cert-verify: false
+      sni: together-dingo.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-468215293
+    - name: trojan-565918290
       password: AE62539071
       port: 443
-      server: darling-mutt.rooster465.autos
-      skip-cert-verify: true
-      sni: ""
+      server: humorous-llama.rooster465.autos
+      skip-cert-verify: false
+      sni: humorous-llama.rooster465.autos
       type: trojan
       udp: true
     - name: trojan-498397709
@@ -51,27 +65,59 @@ proxies:
       sni: wanted-marmoset.rooster465.autos
       type: trojan
       udp: true
+    - name: trojan-656193929
+      password: FH72359861
+      port: 443
+      server: 87.121.33.104
+      skip-cert-verify: true
+      sni: fluent-gar.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-667593179
+      password: AE62539071
+      port: 443
+      server: wanted-marmoset.rooster465.autos
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-737201167
+      password: EQ30679154
+      port: 443
+      server: fleet-hawk.rooster465.autos
+      skip-cert-verify: false
+      sni: fleet-hawk.rooster465.autos
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-696792832
+        - vless-587204637
         - vless-532685580
         - shadowsocks-10992
-        - shadowsocks-696792832
-        - trojan-468215291
-        - trojan-468215293
+        - trojan-565918286
+        - trojan-565918290
         - trojan-498397709
+        - trojan-656193929
+        - trojan-667593179
+        - trojan-737201167
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-696792832
+        - vless-587204637
         - vless-532685580
         - shadowsocks-10992
-        - shadowsocks-696792832
-        - trojan-468215291
-        - trojan-468215293
+        - trojan-565918286
+        - trojan-565918290
         - trojan-498397709
+        - trojan-656193929
+        - trojan-667593179
+        - trojan-737201167
       type: select
 rules:
     - MATCH,select

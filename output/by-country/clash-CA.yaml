@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792823
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 154.127.56.212
+      type: ss
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-487917493
       password: ytw2awn
@@ -13,6 +20,20 @@ proxies:
       server: 155.138.136.240
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-721702041
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: i00_tpIO0Oe2TV2lxm2BLm6QUzzkncyJtauMa7Rn500
+        short-id: b91a73752053b039
+      server: 184.107.141.174
+      servername: ca.servers.gracevpnbuy.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: bb05f9d7-a3d1-4b81-a790-f6dba0301907
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-685581271
@@ -58,8 +79,10 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-696792823
         - shadowsocks-487917493
         - shadowsocks-723348714
+        - vless-721702041
         - vless-685581271
         - vless-685581270
         - vless-91983783
@@ -68,8 +91,10 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-696792823
         - shadowsocks-487917493
         - shadowsocks-723348714
+        - vless-721702041
         - vless-685581271
         - vless-685581270
         - vless-91983783
