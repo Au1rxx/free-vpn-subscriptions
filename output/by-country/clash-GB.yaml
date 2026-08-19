@@ -1,0 +1,50 @@
+proxies:
+    - name: vless-795243884
+      network: tcp
+      port: 8443
+      server: 89.125.124.178
+      servername: gb.wlrus.cfd
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9f10e044-b1c6-4c4f-b0ef-61c52ff0aa0d
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-749827369
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: B-0g-sPJwmdj1jvFLIdKaGXHHrJIN8RC_32FJS2AvGs
+        short-id: ba424d678fe642a7
+      server: 78.129.190.5
+      servername: strapi.io
+      tls: true
+      type: vless
+      udp: true
+      uuid: e1894fdc-3204-429b-9ac1-fbeee95f7c54
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-513893045
+      password: zRZNBszYyWo5
+      port: 8388
+      server: fr4.levikogjgfdd.ir
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-795243884
+        - vless-749827369
+        - shadowsocks-513893045
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-795243884
+        - vless-749827369
+        - shadowsocks-513893045
+      type: select
+rules:
+    - MATCH,select

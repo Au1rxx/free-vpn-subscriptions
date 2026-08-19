@@ -1,0 +1,95 @@
+{
+  "outbounds": [
+    {
+      "server": "78.17.17.85",
+      "server_port": 2054,
+      "tag": "vless-773284852",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "WckOSneVajAzpH0sZSAFAWPnmwuuEXKZrTICNj5_hHU",
+          "short_id": "423bccc9c13fb509"
+        },
+        "server_name": "www.ibm.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "service_name": "grpc",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "919eef53-e931-4928-83f7-d880ee7b9804"
+    },
+    {
+      "server": "78.17.17.85",
+      "server_port": 2054,
+      "tag": "vless-721269356",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "WckOSneVajAzpH0sZSAFAWPnmwuuEXKZrTICNj5_hHU",
+          "short_id": "423bccc9c13fb509"
+        },
+        "server_name": "www.ibm.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "service_name": "grpc",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "919eef53-e931-4928-83f7-d880ee7b9804"
+    },
+    {
+      "alter_id": 0,
+      "security": "auto",
+      "server": "46.8.237.242",
+      "server_port": 42034,
+      "tag": "vmess-786346243",
+      "transport": {
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "vmess",
+      "uuid": "7d85828a-906b-43c4-8dc9-0785cd4801af"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-773284852",
+        "vless-721269356",
+        "vmess-786346243"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-773284852",
+        "vless-721269356",
+        "vmess-786346243"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

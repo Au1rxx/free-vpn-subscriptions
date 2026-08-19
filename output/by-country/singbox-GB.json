@@ -1,0 +1,78 @@
+{
+  "outbounds": [
+    {
+      "server": "89.125.124.178",
+      "server_port": 8443,
+      "tag": "vless-795243884",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "gb.wlrus.cfd",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "9f10e044-b1c6-4c4f-b0ef-61c52ff0aa0d"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "78.129.190.5",
+      "server_port": 443,
+      "tag": "vless-749827369",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "B-0g-sPJwmdj1jvFLIdKaGXHHrJIN8RC_32FJS2AvGs",
+          "short_id": "ba424d678fe642a7"
+        },
+        "server_name": "strapi.io",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "e1894fdc-3204-429b-9ac1-fbeee95f7c54"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "zRZNBszYyWo5",
+      "server": "fr4.levikogjgfdd.ir",
+      "server_port": 8388,
+      "tag": "shadowsocks-513893045",
+      "type": "shadowsocks"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-795243884",
+        "vless-749827369",
+        "shadowsocks-513893045"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-795243884",
+        "vless-749827369",
+        "shadowsocks-513893045"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

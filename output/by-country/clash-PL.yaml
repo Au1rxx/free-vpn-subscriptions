@@ -6,17 +6,26 @@ proxies:
       server: 217.30.10.44
       type: ss
       udp: true
+    - name: hysteria2-620179978
+      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+      port: 443
+      server: admin.wwwinternetvideo.click
+      skip-cert-verify: true
+      sni: admin.wwwinternetvideo.click
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-743178447
+        - hysteria2-620179978
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-743178447
+        - hysteria2-620179978
       type: select
 rules:
     - MATCH,select
