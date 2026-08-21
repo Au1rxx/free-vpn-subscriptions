@@ -1,4 +1,32 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-785347141
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: zVJVCkcnyPjMZvx-GMQnnbkEgNiws80sppKB6A0uqBY
+        short-id: 83dee8596e65d99e
+      server: sk1i-il4mxi.sparkra.top
+      servername: www.bing.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 907a940c-bad0-4356-a280-7dec12f1479e
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-785274749
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: zVJVCkcnyPjMZvx-GMQnnbkEgNiws80sppKB6A0uqBY
+        short-id: 83dee8596e65d99e
+      server: 66.253.10.22
+      servername: www.bing.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 907a940c-bad0-4356-a280-7dec12f1479e
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-724628322
@@ -17,12 +45,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-785347141
+        - vless-785274749
         - vless-724628322
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-785347141
+        - vless-785274749
         - vless-724628322
       type: select
 rules:

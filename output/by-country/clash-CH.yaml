@@ -1,4 +1,32 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-714278120
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: cFmHbKSQO1BQnCBGd26-EA0CU-zYmduwk0Wqu0fhuT0
+        short-id: 7e8d2954eb836947
+      server: 152.233.31.77
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f04037b7-125e-4666-841f-4b6bdbc9823d
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-714315047
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: cFmHbKSQO1BQnCBGd26-EA0CU-zYmduwk0Wqu0fhuT0
+        short-id: 7e8d2954eb836947
+      server: jhmq-16fdqod.henghesoft.net
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f04037b7-125e-4666-841f-4b6bdbc9823d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-809840195
@@ -53,6 +81,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-714278120
+        - vless-714315047
         - vless-809840195
         - hysteria2-589844094
         - hysteria2-778660084
@@ -63,6 +93,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-714278120
+        - vless-714315047
         - vless-809840195
         - hysteria2-589844094
         - hysteria2-778660084
