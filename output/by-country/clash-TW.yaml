@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-721489375
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: 103.115.109.49
+      skip-cert-verify: true
+      sni: t.me
+      type: hysteria2
     - name: vless-461791955
       network: tcp
       port: 10000
@@ -102,13 +109,6 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-822689258
-      password: b1ae0fce-9340-4f2e-882d-fdb2218e2e2b
-      port: 50099
-      server: 114.25.9.245
-      type: ss
-      udp: true
     - name: vless-669577553
       network: tcp
       port: 10000
@@ -150,6 +150,13 @@ proxies:
       skip-cert-verify: true
       sni: https://t.me/oneclickvpnkeys
       type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-822689258
+      password: b1ae0fce-9340-4f2e-882d-fdb2218e2e2b
+      port: 50099
+      server: 114.25.9.245
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-741434398
@@ -177,6 +184,22 @@ proxies:
       type: vless
       udp: true
       uuid: b8ca2900-3ed7-4b58-970e-060d0a6cbf99
+    - alterId: 0
+      cipher: auto
+      name: vmess-824104189
+      network: tcp
+      port: 35034
+      server: 165.154.195.38
+      type: vmess
+      udp: true
+      uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-822692171
+      password: b1ae0fce-9340-4f2e-882d-fdb2218e2e2b
+      port: 50099
+      server: 114.25.9.70
+      type: ss
+      udp: true
     - name: vless-781312939
       network: tcp
       port: 10000
@@ -184,31 +207,11 @@ proxies:
       type: vless
       udp: true
       uuid: 431fe973-a43a-4fac-bf83-2a772e0d0625
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-591633806
-      network: tcp
-      port: 50159
-      reality-opts:
-        public-key: E9gCs_C_mSDcHmlCZSMk1kSXpmua48DhgsT_aDpZ1WE
-        short-id: 4c3f80051030ba1b
-      server: 45.121.50.241
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 47a97b7f-044d-43d6-86b0-8b256873d1b5
-    - name: hysteria2-307174592
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: vpn-tw-002.fastervpn.world
-      skip-cert-verify: true
-      sni: 127.0.0.1
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-721489375
         - vless-461791955
         - vless-647042508
         - vless-562186771
@@ -221,22 +224,23 @@ proxy-groups:
         - hysteria2-207301017
         - hysteria2-137781265
         - hysteria2-328918461
-        - shadowsocks-822689258
         - vless-669577553
         - vless-669577552
         - vless-646349341
         - vless-470984246
         - hysteria2-16610
+        - shadowsocks-822689258
         - vless-741434398
         - vless-501276502
+        - vmess-824104189
+        - shadowsocks-822692171
         - vless-781312939
-        - vless-591633806
-        - hysteria2-307174592
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-721489375
         - vless-461791955
         - vless-647042508
         - vless-562186771
@@ -249,17 +253,17 @@ proxy-groups:
         - hysteria2-207301017
         - hysteria2-137781265
         - hysteria2-328918461
-        - shadowsocks-822689258
         - vless-669577553
         - vless-669577552
         - vless-646349341
         - vless-470984246
         - hysteria2-16610
+        - shadowsocks-822689258
         - vless-741434398
         - vless-501276502
+        - vmess-824104189
+        - shadowsocks-822692171
         - vless-781312939
-        - vless-591633806
-        - hysteria2-307174592
       type: select
 rules:
     - MATCH,select

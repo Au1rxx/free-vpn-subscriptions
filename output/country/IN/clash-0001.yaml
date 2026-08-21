@@ -17,6 +17,13 @@ proxies:
       type: vmess
       udp: true
       uuid: 9db4c708-aef8-4359-821b-38e47990be0d
+    - cipher: aes-256-gcm
+      name: shadowsocks-27048
+      password: RexnBgU7EV5ADxG
+      port: 7002
+      server: 172.105.39.124
+      type: ss
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-125111
       password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
@@ -215,11 +222,43 @@ proxies:
       type: vless
       udp: true
       uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
+    - name: trojan-277259591
+      password: 41c406e2-12b5-41f2-a329-d0621052d675
+      port: 20034
+      server: oplosgru-c.catcat321.com
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: trojan-277471445
       password: 41c406e2-12b5-41f2-a329-d0621052d675
       port: 20034
       server: oplosgru-c.catcat321.com
       skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-280054238
+      password: 41c406e2-12b5-41f2-a329-d0621052d675
+      port: 20034
+      server: oplosgru-c.catcat321.com
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-283678742
+      password: 41c406e2-12b5-41f2-a329-d0621052d675
+      port: 20034
+      server: 157.254.38.210
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-286081587
+      password: 41c406e2-12b5-41f2-a329-d0621052d675
+      port: 20034
+      server: 157.254.38.210
+      skip-cert-verify: false
       sni: hk.catxstar.com
       type: trojan
       udp: true
@@ -1929,12 +1968,35 @@ proxies:
       type: vless
       udp: true
       uuid: 15fd22d1-8931-4d41-af37-8ba6711e93fe
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-825794344
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: eaRNeC8fccrx0nBNvBpAXZgK4m4FxfnQ-t0W7NOM7mU
+        short-id: e53048e82bb20077
+      server: 5.253.28.213
+      servername: asia.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - name: trojan-826649703
+      password: ed01085a-7657-4ded-85df-9621abd131e4
+      port: 24407
+      server: v1in2.stableq.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-262
         - vmess-25686
+        - shadowsocks-27048
         - shadowsocks-125111
         - vmess-2387858
         - vmess-2387859
@@ -1952,7 +2014,11 @@ proxy-groups:
         - vless-252867231
         - vless-254931446
         - vless-254950445
+        - trojan-277259591
         - trojan-277471445
+        - trojan-280054238
+        - trojan-283678742
+        - trojan-286081587
         - vless-347654097
         - vless-408499769
         - vless-436248614
@@ -2084,6 +2150,8 @@ proxy-groups:
         - vless-821154240
         - vless-821467673
         - vless-821557253
+        - vless-825794344
+        - trojan-826649703
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -2091,6 +2159,7 @@ proxy-groups:
         - auto
         - vmess-262
         - vmess-25686
+        - shadowsocks-27048
         - shadowsocks-125111
         - vmess-2387858
         - vmess-2387859
@@ -2108,7 +2177,11 @@ proxy-groups:
         - vless-252867231
         - vless-254931446
         - vless-254950445
+        - trojan-277259591
         - trojan-277471445
+        - trojan-280054238
+        - trojan-283678742
+        - trojan-286081587
         - vless-347654097
         - vless-408499769
         - vless-436248614
@@ -2240,6 +2313,8 @@ proxy-groups:
         - vless-821154240
         - vless-821467673
         - vless-821557253
+        - vless-825794344
+        - trojan-826649703
       type: select
 rules:
     - MATCH,select

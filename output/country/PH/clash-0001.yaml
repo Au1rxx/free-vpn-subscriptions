@@ -1,4 +1,13 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-99462
+      network: ws
+      port: 80
+      server: 61.245.11.60
+      type: vmess
+      udp: true
+      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
     - name: trojan-119240
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20013
@@ -31,9 +40,26 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - name: trojan-123705
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20013
+      server: kkvlvvq-a.catcat321.com
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-2357840
+      network: ws
+      port: 80
+      server: 61.245.11.60
+      type: vmess
+      udp: true
+      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
+    - alterId: 0
+      cipher: auto
+      name: vmess-2387870
       network: ws
       port: 80
       server: 61.245.11.60
@@ -235,15 +261,6 @@ proxies:
       type: vless
       udp: true
       uuid: 907a940c-bad0-4356-a280-7dec12f1479e
-    - alterId: 0
-      cipher: auto
-      name: vmess-809849313
-      network: ws
-      port: 80
-      server: 61.245.11.60
-      type: vmess
-      udp: true
-      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-816741402
@@ -272,15 +289,32 @@ proxies:
       type: vless
       udp: true
       uuid: 907a940c-bad0-4356-a280-7dec12f1479e
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-824303050
+      network: tcp
+      port: 50567
+      reality-opts:
+        public-key: i0nN_0uLl5ha8pIf6gNNLeLQe7it-nXDFLC5eM1BHV4
+        short-id: bb9b8f5f
+      server: 92yqc126g8qwe6v23n01.haiyucloud.com
+      servername: www.python.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 485717cf-e96c-40db-9bc1-624060b89f20
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-99462
         - trojan-119240
         - trojan-119275
         - trojan-122847
         - trojan-122881
+        - trojan-123705
         - vmess-2357840
+        - vmess-2387870
         - vmess-202892926
         - vless-293233478
         - vmess-661706826
@@ -296,19 +330,22 @@ proxy-groups:
         - vless-785274749
         - vless-785347141
         - vless-799882529
-        - vmess-809849313
         - vless-816741402
         - vless-816741411
+        - vless-824303050
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-99462
         - trojan-119240
         - trojan-119275
         - trojan-122847
         - trojan-122881
+        - trojan-123705
         - vmess-2357840
+        - vmess-2387870
         - vmess-202892926
         - vless-293233478
         - vmess-661706826
@@ -324,9 +361,9 @@ proxy-groups:
         - vless-785274749
         - vless-785347141
         - vless-799882529
-        - vmess-809849313
         - vless-816741402
         - vless-816741411
+        - vless-824303050
       type: select
 rules:
     - MATCH,select

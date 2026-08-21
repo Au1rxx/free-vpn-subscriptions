@@ -27,6 +27,15 @@ proxies:
       server: 154.46.31.106
       type: ss
       udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-99462
+      network: ws
+      port: 80
+      server: 61.245.11.60
+      type: vmess
+      udp: true
+      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
     - name: trojan-112939
       password: tsuchiya
       port: 443
@@ -46,6 +55,15 @@ proxies:
     - alterId: 0
       cipher: auto
       name: vmess-2357840
+      network: ws
+      port: 80
+      server: 61.245.11.60
+      type: vmess
+      udp: true
+      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
+    - alterId: 0
+      cipher: auto
+      name: vmess-2387870
       network: ws
       port: 80
       server: 61.245.11.60
@@ -365,20 +383,6 @@ proxies:
       skip-cert-verify: false
       sni: aa.ccmusic.jp
       type: trojan
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-696792815
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 121.46.230.136
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-696792816
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 121.46.230.137
-      type: ss
       udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-696792817
@@ -800,15 +804,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1cf66df0-10a4-4f1c-bf40-42b6155ad4c7
-    - alterId: 0
-      cipher: auto
-      name: vmess-809849313
-      network: ws
-      port: 80
-      server: 61.245.11.60
-      type: vmess
-      udp: true
-      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-810153429
@@ -1199,6 +1194,33 @@ proxies:
       server: 147.45.211.243
       type: ss
       udp: true
+    - client-fingerprint: random
+      name: vless-824238587
+      network: tcp
+      port: 24949
+      reality-opts:
+        public-key: qjRHJ5qtLh5zJymurmhkrpBHl1yN0EeRByRznftR3Hw
+        short-id: e5cdac
+      server: 158.94.216.61
+      servername: www.yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 13efddd3-1a20-49f3-bbbe-f5b530398bb6
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-825595677
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 1wd_6aAjmtQ3lIbMeNq5zs-5x_z9fL7h9rZwFjBPaG8
+        short-id: 041cf34629de8469
+      server: 38.244.20.113
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 461396cc-2f0a-42cc-b224-d122ba073a2a
 proxy-groups:
     - interval: 300
       name: auto
@@ -1207,9 +1229,11 @@ proxy-groups:
         - shadowsocks-283
         - shadowsocks-287
         - shadowsocks-26744
+        - vmess-99462
         - trojan-112939
         - trojan-145259
         - vmess-2357840
+        - vmess-2387870
         - trojan-2493846
         - trojan-2493847
         - trojan-2493848
@@ -1249,8 +1273,6 @@ proxy-groups:
         - trojan-689642547
         - trojan-691120214
         - trojan-696053264
-        - shadowsocks-696792815
-        - shadowsocks-696792816
         - shadowsocks-696792817
         - shadowsocks-696792818
         - shadowsocks-696792819
@@ -1289,7 +1311,6 @@ proxy-groups:
         - vless-779241722
         - vless-779241744
         - vless-795700335
-        - vmess-809849313
         - vless-810153429
         - vless-810153432
         - vless-810585300
@@ -1322,6 +1343,8 @@ proxy-groups:
         - vless-821154179
         - vmess-821154338
         - shadowsocks-822689252
+        - vless-824238587
+        - vless-825595677
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -1331,9 +1354,11 @@ proxy-groups:
         - shadowsocks-283
         - shadowsocks-287
         - shadowsocks-26744
+        - vmess-99462
         - trojan-112939
         - trojan-145259
         - vmess-2357840
+        - vmess-2387870
         - trojan-2493846
         - trojan-2493847
         - trojan-2493848
@@ -1373,8 +1398,6 @@ proxy-groups:
         - trojan-689642547
         - trojan-691120214
         - trojan-696053264
-        - shadowsocks-696792815
-        - shadowsocks-696792816
         - shadowsocks-696792817
         - shadowsocks-696792818
         - shadowsocks-696792819
@@ -1413,7 +1436,6 @@ proxy-groups:
         - vless-779241722
         - vless-779241744
         - vless-795700335
-        - vmess-809849313
         - vless-810153429
         - vless-810153432
         - vless-810585300
@@ -1446,6 +1468,8 @@ proxy-groups:
         - vless-821154179
         - vmess-821154338
         - shadowsocks-822689252
+        - vless-824238587
+        - vless-825595677
       type: select
 rules:
     - MATCH,select

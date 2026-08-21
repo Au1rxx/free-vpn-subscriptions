@@ -13,6 +13,20 @@ proxies:
       skip-cert-verify: false
       sni: pixelcast.wwwinternetvideo.click
       type: hysteria2
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-825145642
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bg_o5_i-5MSy-t3CB3iyqIeI8Uqyy_wTP2kheJCXngg
+        short-id: f7d0420b8ab26060
+      server: 194.87.24.13
+      servername: de1.de-cdn.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 22419260-5475-49d8-a29c-01905c54d1b8
     - name: vless-819358289
       network: ws
       port: 443
@@ -45,91 +59,17 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: vless-818205956
-      network: tcp
-      port: 443
-      server: 139.28.241.77
-      type: vless
-      udp: true
-      uuid: 5d5c40b1-102c-4343-94cc-d5b794dbd0c6
-    - name: vless-818290078
-      network: tcp
-      port: 22222
-      server: 63.183.163.238
-      type: vless
-      udp: true
-      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-    - client-fingerprint: firefox
-      name: vless-812625881
-      network: grpc
-      port: 4243
-      reality-opts:
-        public-key: vCHucdoD_m-TKVHS7si1akKgP6r4dvTLUX8y1TTZQG4
-        short-id: ""
-      server: 31.76.38.30
-      servername: de4.convert-cloud.guru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 8e85752d-c04f-427d-9d70-b10d144c8492
-    - client-fingerprint: firefox
-      name: vless-629472321
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: VG-FwQBMFzPcemJ_JqtkbO-2WKLmQp2h0CmAj-DfLkA
-        short-id: 5b97
-      server: 93.152.217.41
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 969bcce0-de8a-4b02-8cf8-d00d2d2ca7a5
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-812625871
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: bg_o5_i-5MSy-t3CB3iyqIeI8Uqyy_wTP2kheJCXngg
-        short-id: f7d0420b8ab26060
-      server: 194.87.24.12
-      servername: de1.de-cdn.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 22419260-5475-49d8-a29c-01905c54d1b8
-    - name: hysteria2-818063875
-      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
-      port: 443
-      server: deu0003ntrhy01.tcp-reset-club.net
-      skip-cert-verify: false
-      sni: ""
-      type: hysteria2
-    - cipher: aes-256-gcm
-      name: shadowsocks-717969012
-      password: kKEd0rBrd56Furjz
-      port: 80
-      server: 2.58.81.221
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-768950027
         - hysteria2-730511438
+        - vless-825145642
         - vless-819358289
         - hysteria2-766437504
         - hysteria2-813371804
         - trojan-818047018
-        - vless-818205956
-        - vless-818290078
-        - vless-812625881
-        - vless-629472321
-        - vless-812625871
-        - hysteria2-818063875
-        - shadowsocks-717969012
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -137,17 +77,11 @@ proxy-groups:
         - auto
         - hysteria2-768950027
         - hysteria2-730511438
+        - vless-825145642
         - vless-819358289
         - hysteria2-766437504
         - hysteria2-813371804
         - trojan-818047018
-        - vless-818205956
-        - vless-818290078
-        - vless-812625881
-        - vless-629472321
-        - vless-812625871
-        - hysteria2-818063875
-        - shadowsocks-717969012
       type: select
 rules:
     - MATCH,select
