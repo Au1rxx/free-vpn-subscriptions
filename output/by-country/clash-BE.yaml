@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-838598287
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: rwR7H9XhX1w-LjcPCZiDnzV_sUUyJRSJvGYhIYHmS3E
+        short-id: 28bf2d7deea465ff
+      server: 79.127.224.183
+      servername: www.bing.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4b7a69d9-74cd-4ab2-bfb3-1d2093e8179f
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-838598287
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-838598287
+      type: select
+rules:
+    - MATCH,select

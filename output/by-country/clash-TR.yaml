@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: chrome
+      name: vless-841934547
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: D2SXHZRRYM0WcFChGWd57XB-U73aIsGfMpe2-Gq5XSs
+        short-id: ""
+      server: 170.168.97.8
+      servername: download.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 69db54f1-a8a6-d3d5-3b21-48af845aed08
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-841934547
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-841934547
+      type: select
+rules:
+    - MATCH,select
