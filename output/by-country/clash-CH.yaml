@@ -15,6 +15,20 @@ proxies:
       uuid: f04037b7-125e-4666-841f-4b6bdbc9823d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-702199389
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: cFmHbKSQO1BQnCBGd26-EA0CU-zYmduwk0Wqu0fhuT0
+        short-id: 7e8d2954eb836947
+      server: jhmq-16fdqod.henghesoft.net
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f04037b7-125e-4666-841f-4b6bdbc9823d
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-714315047
       network: raw
       port: 443
@@ -55,51 +69,27 @@ proxies:
       skip-cert-verify: false
       sni: grape-turbo-fr.roxa.org
       type: hysteria2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-810600296
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: cFmHbKSQO1BQnCBGd26-EA0CU-zYmduwk0Wqu0fhuT0
-        short-id: 7e8d2954eb836947
-      server: jhmq-16fdqod.henghesoft.net
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f04037b7-125e-4666-841f-4b6bdbc9823d
-    - name: trojan-779241716
-      password: kxHw-Dk-e9dffgzYszMlEqLJ92AnY3Pi
-      port: 443
-      server: tr-switzerlandgopota.unlimited-access.ru
-      skip-cert-verify: false
-      sni: tr-switzerlandgopota.unlimited-access.ru
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-714278120
+        - vless-702199389
         - vless-714315047
         - vless-809840195
         - hysteria2-589844094
         - hysteria2-778660084
-        - vless-810600296
-        - trojan-779241716
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-714278120
+        - vless-702199389
         - vless-714315047
         - vless-809840195
         - hysteria2-589844094
         - hysteria2-778660084
-        - vless-810600296
-        - trojan-779241716
       type: select
 rules:
     - MATCH,select

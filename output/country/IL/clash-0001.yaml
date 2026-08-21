@@ -13,12 +13,23 @@ proxies:
       server: 211.91.158.44
       type: ss
       udp: true
+    - name: vless-813412050
+      network: ws
+      port: 443
+      server: 198.62.62.171
+      servername: 639222734213747055.forester-homaxe.info
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 60cf6ea2-7a3c-4a97-b7db-92f4de0be0cc
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-768399359
         - shadowsocks-768399478
+        - vless-813412050
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +37,7 @@ proxy-groups:
         - auto
         - shadowsocks-768399359
         - shadowsocks-768399478
+        - vless-813412050
       type: select
 rules:
     - MATCH,select

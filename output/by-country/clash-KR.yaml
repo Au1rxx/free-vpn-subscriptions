@@ -6,6 +6,20 @@ proxies:
       server: 211.178.105.134
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-468901438
+      network: tcp
+      port: 18967
+      reality-opts:
+        public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+        short-id: 48050fab
+      server: 3.39.4.109
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 814bd064-544d-4255-a070-5705c03f6da9
     - name: hysteria2-459503008
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -16,6 +30,42 @@ proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-210050461
+      network: tcp
+      port: 13672
+      reality-opts:
+        public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+        short-id: 48050fab
+      server: 3.39.4.109
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 814bd064-544d-4255-a070-5705c03f6da9
+    - flow: xtls-rprx-vision
+      name: vless-738646916
+      network: tcp
+      port: 443
+      server: s213.sspcccdn.xyz
+      servername: u643766u17cc9b82s180.kukuss.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 41f4cb15-5a3f-3934-89fe-b4177146adf4
+    - flow: xtls-rprx-vision
+      name: vless-738646919
+      network: tcp
+      port: 443
+      server: 158.247.201.96
+      servername: u643766u17cc9b82s180.kukuss.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 41f4cb15-5a3f-3934-89fe-b4177146adf4
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-561641544
       network: tcp
       port: 13672
       reality-opts:
@@ -43,6 +93,17 @@ proxies:
       type: hysteria2
     - flow: xtls-rprx-vision
       name: vless-782730009
+      network: tcp
+      port: 443
+      server: s214.csgfw.top
+      servername: u643766u17cc9b82s180.kukuss.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 41f4cb15-5a3f-3934-89fe-b4177146adf4
+    - flow: xtls-rprx-vision
+      name: vless-738646910
       network: tcp
       port: 443
       server: s214.csgfw.top
@@ -145,6 +206,13 @@ proxies:
       type: vless
       udp: true
       uuid: 814bd064-544d-4255-a070-5705c03f6da9
+    - name: vless-814315658
+      network: ws
+      port: 8880
+      server: 104.21.56.202
+      type: vless
+      udp: true
+      uuid: 91c7ea79-9187-4f07-ab97-68c584186843
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-12945900
@@ -173,44 +241,21 @@ proxies:
       type: vless
       udp: true
       uuid: 814bd064-544d-4255-a070-5705c03f6da9
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-725810878
-      network: tcp
-      port: 13672
-      reality-opts:
-        public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-        short-id: 48050fab
-      server: 3.39.4.109
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 814bd064-544d-4255-a070-5705c03f6da9
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-725810847
-      network: tcp
-      port: 18967
-      reality-opts:
-        public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-        short-id: 48050fab
-      server: 3.39.4.109
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 814bd064-544d-4255-a070-5705c03f6da9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-287
+        - vless-468901438
         - hysteria2-459503008
         - vless-210050461
+        - vless-738646916
+        - vless-738646919
+        - vless-561641544
         - hysteria2-430004856
         - hysteria2-266962492
         - vless-782730009
+        - vless-738646910
         - vmess-5259790
         - hysteria2-294254604
         - hysteria2-272763976
@@ -220,21 +265,25 @@ proxy-groups:
         - shadowsocks-809759637
         - shadowsocks-809759642
         - vless-700888654
+        - vless-814315658
         - vless-12945900
         - vless-48555241
-        - vless-725810878
-        - vless-725810847
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-287
+        - vless-468901438
         - hysteria2-459503008
         - vless-210050461
+        - vless-738646916
+        - vless-738646919
+        - vless-561641544
         - hysteria2-430004856
         - hysteria2-266962492
         - vless-782730009
+        - vless-738646910
         - vmess-5259790
         - hysteria2-294254604
         - hysteria2-272763976
@@ -244,10 +293,9 @@ proxy-groups:
         - shadowsocks-809759637
         - shadowsocks-809759642
         - vless-700888654
+        - vless-814315658
         - vless-12945900
         - vless-48555241
-        - vless-725810878
-        - vless-725810847
       type: select
 rules:
     - MATCH,select

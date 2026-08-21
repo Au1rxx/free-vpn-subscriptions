@@ -1,13 +1,22 @@
-proxies: []
+proxies:
+    - name: hysteria2-812362874
+      password: lHW04yaV8pkFb5fg
+      port: 35001
+      server: 38.54.45.100
+      skip-cert-verify: true
+      sni: ar2.nebulacloud.win
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - hysteria2-812362874
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-812362874
       type: select
 rules:
     - MATCH,select

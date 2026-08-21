@@ -1,22 +1,61 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-465806704
-      password: ytw2awn
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-812654355
+      network: tcp
       port: 443
-      server: pl140.vpnbook.com
-      type: ss
+      reality-opts:
+        public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
+        short-id: 00bca5982f82d083
+      server: 144.31.171.143
+      servername: eu-central.cendora.ru
+      tls: true
+      type: vless
       udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-812625844
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 9kQGK7IuVFWU9xCb4g9ygL1CEv87QmVZJzWLz74pTSc
+        short-id: ""
+      server: 95.85.255.187
+      servername: pl.routeon.pro
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8e85752d-c04f-427d-9d70-b10d144c8492
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-812625861
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: qsoFtbqHR-PEGFF0kUZgj_HAyJOKMLoCvk-_IssWHQI
+        short-id: ""
+      server: pl-modx.bachidze.com
+      servername: pl-modx.bachidze.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f7c25743-140c-4d32-a296-a53bc49682d8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-465806704
+        - vless-812654355
+        - vless-812625844
+        - vless-812625861
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-465806704
+        - vless-812654355
+        - vless-812625844
+        - vless-812625861
       type: select
 rules:
     - MATCH,select
