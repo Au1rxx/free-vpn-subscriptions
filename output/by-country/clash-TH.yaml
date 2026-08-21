@@ -1,0 +1,40 @@
+proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792800
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 103.169.67.34
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-768399440
+      password: 9325a345-c72f-4637-a8f4-34f9effb7ba6
+      port: 21123
+      server: 211.91.158.44
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-125093
+      password: d7zh2lMrXNH5+8+8pKzlxiCU9NN022ih+uAyxj5d4qo=
+      port: 31700
+      server: 102.129.229.85
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-696792800
+        - shadowsocks-768399440
+        - shadowsocks-125093
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-696792800
+        - shadowsocks-768399440
+        - shadowsocks-125093
+      type: select
+rules:
+    - MATCH,select

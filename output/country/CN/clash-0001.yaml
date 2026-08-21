@@ -1,18 +1,4 @@
 proxies:
-    - name: vless-91986752
-      network: tcp
-      port: 12528
-      server: 120.227.1.43
-      type: vless
-      udp: true
-      uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
-    - name: vless-95593395
-      network: raw
-      port: 12528
-      server: 120.227.1.43
-      type: vless
-      udp: true
-      uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
     - name: vless-672199227
       network: tcp
       port: 12528
@@ -22,25 +8,7 @@ proxies:
       uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
     - alterId: 64
       cipher: auto
-      name: vmess-701345461
-      network: tcp
-      port: 50002
-      server: 112.132.215.108
-      type: vmess
-      udp: true
-      uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
-    - alterId: 64
-      cipher: auto
-      name: vmess-701756934
-      network: tcp
-      port: 50002
-      server: 112.132.215.108
-      type: vmess
-      udp: true
-      uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
-    - alterId: 64
-      cipher: none
-      name: vmess-725810868
+      name: vmess-696793009
       network: tcp
       port: 50002
       server: 112.132.215.108
@@ -72,33 +40,54 @@ proxies:
       type: vmess
       udp: true
       uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+    - name: vless-754619404
+      network: tcp
+      port: 12528
+      server: 120.227.1.43
+      type: vless
+      udp: true
+      uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
+    - alterId: 0
+      cipher: auto
+      name: vmess-768853191
+      network: raw
+      port: 50002
+      server: 112.132.215.108
+      type: vmess
+      udp: true
+      uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+    - name: hysteria2-768953025
+      password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
+      port: 443
+      server: streambox.wwwinternetvideo.click
+      skip-cert-verify: true
+      sni: streambox.wwwinternetvideo.click
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-91986752
-        - vless-95593395
         - vless-672199227
-        - vmess-701345461
-        - vmess-701756934
-        - vmess-725810868
+        - vmess-696793009
         - vless-734961305
         - vmess-740393683
         - vmess-742983207
+        - vless-754619404
+        - vmess-768853191
+        - hysteria2-768953025
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-91986752
-        - vless-95593395
         - vless-672199227
-        - vmess-701345461
-        - vmess-701756934
-        - vmess-725810868
+        - vmess-696793009
         - vless-734961305
         - vmess-740393683
         - vmess-742983207
+        - vless-754619404
+        - vmess-768853191
+        - hysteria2-768953025
       type: select
 rules:
     - MATCH,select

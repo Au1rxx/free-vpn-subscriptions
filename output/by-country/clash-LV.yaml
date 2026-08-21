@@ -1,0 +1,103 @@
+proxies:
+    - name: hysteria2-232798723
+      password: vpn-hy2-lv-2026
+      port: 8444
+      server: 185.236.22.119
+      skip-cert-verify: true
+      sni: 185.236.22.119
+      type: hysteria2
+    - name: hysteria2-248653949
+      password: vpn-hy2-lv-2026
+      port: 8444
+      server: 185.236.22.119
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
+    - name: hysteria2-745632718
+      password: vpn-hy2-lv-2026
+      port: 8444
+      server: 185.236.22.119
+      skip-cert-verify: true
+      sni: 185.236.22.119\u0026insecure=1\u0026allowinsecure=1
+      type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-696781305
+      password: 45xgMgm386pjWjTx
+      port: 9082
+      server: 185.135.86.175
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-723348676
+      password: mwgRg9hRq3b4Qnwb
+      port: 9068
+      server: 185.135.86.175
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-717969044
+      password: Yg4MbdXFQ9HFFVY6
+      port: 9034
+      server: 185.135.86.175
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-743178503
+      password: HAVAdE3nXhqA5nHp
+      port: 9017
+      server: 185.135.86.175
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-738053581
+      password: 37Z4TFCYhfxcpc9Q
+      port: 9086
+      server: 185.135.86.175
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-768399460
+      password: kSPmvwdFzGMMW5pY
+      port: 9007
+      server: 185.135.86.175
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-795694248
+      password: hbtvgUz5uNYyB3Rf
+      port: 9036
+      server: 185.135.86.175
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-232798723
+        - hysteria2-248653949
+        - hysteria2-745632718
+        - shadowsocks-696781305
+        - shadowsocks-723348676
+        - shadowsocks-717969044
+        - shadowsocks-743178503
+        - shadowsocks-738053581
+        - shadowsocks-768399460
+        - shadowsocks-795694248
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-232798723
+        - hysteria2-248653949
+        - hysteria2-745632718
+        - shadowsocks-696781305
+        - shadowsocks-723348676
+        - shadowsocks-717969044
+        - shadowsocks-743178503
+        - shadowsocks-738053581
+        - shadowsocks-768399460
+        - shadowsocks-795694248
+      type: select
+rules:
+    - MATCH,select

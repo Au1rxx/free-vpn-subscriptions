@@ -1,0 +1,76 @@
+proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-717968959
+      password: b8KkNDjEd5QqFyRm
+      port: 9002
+      server: 195.238.126.20
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-779606858
+      password: M3t2ZEQcMGRWBjRa
+      port: 9011
+      server: 195.238.126.20
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-696781306
+      password: y9VURyNzJWNRYEGQ
+      port: 9008
+      server: 195.238.126.20
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-768399438
+      password: UkXRsXvR6buDMG2Y
+      port: 9001
+      server: 195.238.126.20
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-738053582
+      password: Lp27rqyJq72bZsqX
+      port: 9045
+      server: 195.238.126.20
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-723348709
+      password: JCJpbRbQZNw9XFZG
+      port: 9078
+      server: 195.238.126.20
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-743178429
+      password: 37Z4TFCYhfxcpc9Q
+      port: 9086
+      server: 195.238.126.20
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-717968959
+        - shadowsocks-779606858
+        - shadowsocks-696781306
+        - shadowsocks-768399438
+        - shadowsocks-738053582
+        - shadowsocks-723348709
+        - shadowsocks-743178429
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-717968959
+        - shadowsocks-779606858
+        - shadowsocks-696781306
+        - shadowsocks-768399438
+        - shadowsocks-738053582
+        - shadowsocks-723348709
+        - shadowsocks-743178429
+      type: select
+rules:
+    - MATCH,select

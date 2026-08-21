@@ -1,0 +1,72 @@
+{
+  "outbounds": [
+    {
+      "server": "66.163.118.99",
+      "server_port": 10006,
+      "tag": "http-296197509",
+      "type": "http"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "WSyL4XTwNsdv",
+      "server": "108.181.121.226",
+      "server_port": 8388,
+      "tag": "shadowsocks-16132",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "qItG8SueYQcP",
+      "server": "140.174.184.5",
+      "server_port": 8388,
+      "tag": "shadowsocks-11052",
+      "type": "shadowsocks"
+    },
+    {
+      "server": "66.163.118.99",
+      "server_port": 10006,
+      "tag": "socks4-296648799",
+      "type": "socks",
+      "version": "4"
+    },
+    {
+      "server": "66.163.118.99",
+      "server_port": 10006,
+      "tag": "socks5-295488142",
+      "type": "socks",
+      "version": "5"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "http-296197509",
+        "shadowsocks-16132",
+        "shadowsocks-11052",
+        "socks4-296648799",
+        "socks5-295488142"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "http-296197509",
+        "shadowsocks-16132",
+        "shadowsocks-11052",
+        "socks4-296648799",
+        "socks5-295488142"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
