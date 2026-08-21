@@ -102,6 +102,13 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-822689258
+      password: b1ae0fce-9340-4f2e-882d-fdb2218e2e2b
+      port: 50099
+      server: 114.25.9.245
+      type: ss
+      udp: true
     - name: vless-669577553
       network: tcp
       port: 10000
@@ -198,19 +205,6 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
-    - client-fingerprint: random
-      name: vless-814105931
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: HsoG0C19O-NY_EcFpK0ybZv9lFol0MjDJLzjDzWAGXs
-        short-id: d79d3dc3816c329d
-      server: 35.187.156.27
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: b8ca2900-3ed7-4b58-970e-060d0a6cbf99
 proxy-groups:
     - interval: 300
       name: auto
@@ -227,6 +221,7 @@ proxy-groups:
         - hysteria2-207301017
         - hysteria2-137781265
         - hysteria2-328918461
+        - shadowsocks-822689258
         - vless-669577553
         - vless-669577552
         - vless-646349341
@@ -237,7 +232,6 @@ proxy-groups:
         - vless-781312939
         - vless-591633806
         - hysteria2-307174592
-        - vless-814105931
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -255,6 +249,7 @@ proxy-groups:
         - hysteria2-207301017
         - hysteria2-137781265
         - hysteria2-328918461
+        - shadowsocks-822689258
         - vless-669577553
         - vless-669577552
         - vless-646349341
@@ -265,7 +260,6 @@ proxy-groups:
         - vless-781312939
         - vless-591633806
         - hysteria2-307174592
-        - vless-814105931
       type: select
 rules:
     - MATCH,select

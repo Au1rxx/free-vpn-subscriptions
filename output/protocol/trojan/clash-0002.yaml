@@ -1,4 +1,20 @@
 proxies:
+    - name: trojan-537790455
+      password: AE62539071
+      port: 443
+      server: bright-baboon.rooster465.autos
+      skip-cert-verify: true
+      sni: bright-baboon.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-538639470
+      password: FH72359861
+      port: 443
+      server: balanced-heron.rooster465.autos
+      skip-cert-verify: false
+      sni: balanced-heron.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-538661111
       password: AE62539071
       port: 443
@@ -15983,26 +15999,12 @@ proxies:
       sni: wise-longhorn.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-650724764
-      password: FH72359861
-      port: 443
-      server: 13.159.22.208
-      skip-cert-verify: false
-      sni: driven-bulldog.rooster465.autos
-      type: trojan
-      udp: true
-    - name: trojan-650724766
-      password: FH72359861
-      port: 443
-      server: 13.230.239.7
-      skip-cert-verify: false
-      sni: alert-redfish.rooster465.autos
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-537790455
+        - trojan-538639470
         - trojan-538661111
         - trojan-538662737
         - trojan-538662738
@@ -18001,13 +18003,13 @@ proxy-groups:
         - trojan-650724761
         - trojan-650724762
         - trojan-650724763
-        - trojan-650724764
-        - trojan-650724766
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-537790455
+        - trojan-538639470
         - trojan-538661111
         - trojan-538662737
         - trojan-538662738
@@ -20006,8 +20008,6 @@ proxy-groups:
         - trojan-650724761
         - trojan-650724762
         - trojan-650724763
-        - trojan-650724764
-        - trojan-650724766
       type: select
 rules:
     - MATCH,select

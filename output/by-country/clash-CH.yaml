@@ -1,0 +1,45 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-822692213
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: cFmHbKSQO1BQnCBGd26-EA0CU-zYmduwk0Wqu0fhuT0
+        short-id: 7e8d2954eb836947
+      server: 152.233.31.77
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f04037b7-125e-4666-841f-4b6bdbc9823d
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-822692170
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: cFmHbKSQO1BQnCBGd26-EA0CU-zYmduwk0Wqu0fhuT0
+        short-id: 7e8d2954eb836947
+      server: 152.233.31.77
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f04037b7-125e-4666-841f-4b6bdbc9823d
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-822692213
+        - vless-822692170
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-822692213
+        - vless-822692170
+      type: select
+rules:
+    - MATCH,select

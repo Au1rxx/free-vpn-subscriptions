@@ -1,0 +1,37 @@
+{
+  "outbounds": [
+    {
+      "alter_id": 64,
+      "security": "auto",
+      "server": "112.132.215.108",
+      "server_port": 50002,
+      "tag": "vmess-818329474",
+      "type": "vmess",
+      "uuid": "418048af-a293-4b99-9b0c-98ca3580dd24"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vmess-818329474"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vmess-818329474"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
