@@ -1,19 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-231
-      password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
-      port: 990
-      server: 185.213.23.63
-      type: ss
-      udp: true
-    - name: trojan-176269131
-      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
-      port: 20085
-      server: hkdcrtc-e.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-183361334
       password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
       port: 20085
@@ -331,6 +316,16 @@ proxies:
       type: vless
       udp: true
       uuid: 57d437b6-d25d-4956-a297-07f066174d62
+    - name: vless-810587712
+      network: ws
+      port: 8443
+      server: 50.7.197.2
+      servername: apkav-6.bosx.net
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d497668e-f152-4f93-9846-9391b9647319
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-810593734
@@ -387,12 +382,52 @@ proxies:
       type: vless
       udp: true
       uuid: 57d437b6-d25d-4956-a297-07f066174d62
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-827658499
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: urD2miGxEfHylELSqqggBKCYIMSNXNTbdPijru7-eAQ
+        short-id: 46babe29a750b634
+      server: 151.242.168.181
+      servername: kibi-institut.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: b2963d78-6a98-4a9e-a20b-fa74dff5fde1
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-827658509
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: urD2miGxEfHylELSqqggBKCYIMSNXNTbdPijru7-eAQ
+        short-id: 46babe29a750b634
+      server: 151.242.168.181
+      servername: kibi-institut.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57d437b6-d25d-4956-a297-07f066174d62
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-827672525
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: urD2miGxEfHylELSqqggBKCYIMSNXNTbdPijru7-eAQ
+        short-id: 46babe29a750b634
+      server: 151.242.168.181
+      servername: kibi-institut.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6c52b79f-fd02-41bc-bf75-4c80fbc6a939
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-231
-        - trojan-176269131
         - trojan-183361334
         - vless-620750820
         - vless-629454321
@@ -417,17 +452,19 @@ proxy-groups:
         - vless-810585326
         - vless-810585333
         - vless-810585342
+        - vless-810587712
         - vless-810593734
         - vless-810593765
         - vless-818039780
         - vless-818039802
+        - vless-827658499
+        - vless-827658509
+        - vless-827672525
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-231
-        - trojan-176269131
         - trojan-183361334
         - vless-620750820
         - vless-629454321
@@ -452,10 +489,14 @@ proxy-groups:
         - vless-810585326
         - vless-810585333
         - vless-810585342
+        - vless-810587712
         - vless-810593734
         - vless-810593765
         - vless-818039780
         - vless-818039802
+        - vless-827658499
+        - vless-827658509
+        - vless-827672525
       type: select
 rules:
     - MATCH,select
