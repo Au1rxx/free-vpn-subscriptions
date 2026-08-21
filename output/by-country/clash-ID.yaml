@@ -1,22 +1,45 @@
 proxies:
-    - name: hysteria2-743190439
-      password: l25nJa8z0D5pT6jl
-      port: 26001
-      server: 16.79.28.237
-      skip-cert-verify: true
-      sni: id-ls-c-4.nebulacloud.win
-      type: hysteria2
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-809712330
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: UdeZc5DrXa8lWOET4wlBp55-nXskqsvoU-2kVvd3zBg
+        short-id: 7a3f9e2b1c8d4f6a
+      server: 202.155.14.176
+      servername: id.cdn-global.pro
+      tls: true
+      type: vless
+      udp: true
+      uuid: 22419260-5475-49d8-a29c-01905c54d1b8
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-810591815
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: UdeZc5DrXa8lWOET4wlBp55-nXskqsvoU-2kVvd3zBg
+        short-id: 7a3f9e2b1c8d4f6a
+      server: 202.155.14.176
+      servername: id.cdn-global.pro
+      tls: true
+      type: vless
+      udp: true
+      uuid: 22419260-5475-49d8-a29c-01905c54d1b8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-743190439
+        - vless-809712330
+        - vless-810591815
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-743190439
+        - vless-809712330
+        - vless-810591815
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,52 @@
 proxies:
+    - name: trojan-119270
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20056
+      server: 45.67.201.210
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-176269070
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20056
+      server: oplosgru-c.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-184964708
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20056
+      server: oplosgru-c.catcat321.com
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-192569864
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20056
+      server: oplosgru-c.catcat321.com
+      skip-cert-verify: true
+      sni: oplosgru-c.catcat321.com
+      type: trojan
+      udp: true
+    - name: trojan-207313013
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20120
+      server: 157.254.38.210
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-216313443
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20120
+      server: oplosgru-c.catcat321.com
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
     - name: trojan-490085150
       password: 018b8e7b-7813-4dcb-84a5-3c98f1521e00
       port: 443
@@ -22,21 +70,65 @@ proxies:
       skip-cert-verify: true
       sni: id-ls-c-4.nebulacloud.win
       type: hysteria2
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-809712330
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: UdeZc5DrXa8lWOET4wlBp55-nXskqsvoU-2kVvd3zBg
+        short-id: 7a3f9e2b1c8d4f6a
+      server: 202.155.14.176
+      servername: id.cdn-global.pro
+      tls: true
+      type: vless
+      udp: true
+      uuid: 22419260-5475-49d8-a29c-01905c54d1b8
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-810591815
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: UdeZc5DrXa8lWOET4wlBp55-nXskqsvoU-2kVvd3zBg
+        short-id: 7a3f9e2b1c8d4f6a
+      server: 202.155.14.176
+      servername: id.cdn-global.pro
+      tls: true
+      type: vless
+      udp: true
+      uuid: 22419260-5475-49d8-a29c-01905c54d1b8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-119270
+        - trojan-176269070
+        - trojan-184964708
+        - trojan-192569864
+        - trojan-207313013
+        - trojan-216313443
         - trojan-490085150
         - trojan-692972555
         - hysteria2-743190439
+        - vless-809712330
+        - vless-810591815
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-119270
+        - trojan-176269070
+        - trojan-184964708
+        - trojan-192569864
+        - trojan-207313013
+        - trojan-216313443
         - trojan-490085150
         - trojan-692972555
         - hysteria2-743190439
+        - vless-809712330
+        - vless-810591815
       type: select
 rules:
     - MATCH,select

@@ -1,76 +1,22 @@
 proxies:
-    - name: hysteria2-656706499
-      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
-      port: 443
-      server: cabinet.wwwinternetvideo.click
-      skip-cert-verify: false
-      sni: cabinet.wwwinternetvideo.click
-      type: hysteria2
-    - name: hysteria2-681910375
-      password: 5ca83936-136d-4314-8453-4ba10a86cf60
+    - name: vless-335073379
+      network: grpc
       port: 8443
-      server: 31.76.70.78
-      skip-cert-verify: false
-      sni: quic.tyr-agentstvo.tech
-      type: hysteria2
-    - name: hysteria2-801849581
-      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
-      port: 443
-      server: cabinet.wwwinternetvideo.click
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
-    - name: hysteria2-732052761
-      password: 5ca83936-136d-4314-8453-4ba10a86cf60
-      port: 8443
-      server: 31.76.70.78
-      skip-cert-verify: true
-      sni: quic.tyr-agentstvo.tech
-      type: hysteria2
-    - name: hysteria2-600117033
-      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
-      port: 443
-      server: cabinet.wwwinternetvideo.click
-      skip-cert-verify: true
-      sni: cabinet.wwwinternetvideo.click
-      type: hysteria2
-    - name: hysteria2-589844096
-      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
-      port: 443
-      server: cabinet.wwwinternetvideo.click
-      skip-cert-verify: false
-      sni: cabinet.wwwinternetvideo.click
-      type: hysteria2
-    - name: hysteria2-652726825
-      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
-      port: 443
-      server: cabinet.wwwinternetvideo.click
-      skip-cert-verify: false
-      sni: ""
-      type: hysteria2
+      server: 95.85.224.3
+      type: vless
+      udp: true
+      uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-656706499
-        - hysteria2-681910375
-        - hysteria2-801849581
-        - hysteria2-732052761
-        - hysteria2-600117033
-        - hysteria2-589844096
-        - hysteria2-652726825
+        - vless-335073379
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-656706499
-        - hysteria2-681910375
-        - hysteria2-801849581
-        - hysteria2-732052761
-        - hysteria2-600117033
-        - hysteria2-589844096
-        - hysteria2-652726825
+        - vless-335073379
       type: select
 rules:
     - MATCH,select

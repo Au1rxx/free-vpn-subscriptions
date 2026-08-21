@@ -6,62 +6,32 @@ proxies:
       type: vless
       udp: true
       uuid: 936b7663-a841-4b42-b639-6e3fab1dbf45
-    - name: hysteria2-387719495
-      password: 22d891f5-ad85-4824-b0b8-e30cf3d37eb5
-      port: 2056
-      server: els1.mangshe.xyz
-      skip-cert-verify: true
-      sni: els1.mangshe.xyz
-      type: hysteria2
-    - name: hysteria2-522222553
-      password: 22d891f5-ad85-4824-b0b8-e30cf3d37eb5
-      port: 2056
-      server: els1.mangshe.xyz
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
-    - name: hysteria2-589844046
-      password: 22d891f5-ad85-4824-b0b8-e30cf3d37eb5
-      port: 2056
-      server: els1.mangshe.xyz
-      skip-cert-verify: true
-      sni: 127.0.0.1
-      type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-696792830
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 194.38.11.86
-      type: ss
+    - client-fingerprint: firefox
+      name: vless-810593699
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: QZz4tjRkxYsgTZBlRALOQU4O5YnAGtSGkXF8OSX11m8
+        short-id: ""
+      server: 31.76.84.62
+      servername: id.pervye.ru
+      tls: true
+      type: vless
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-611712779
-      password: 1eadd4e4a37b6601
-      port: 10801
-      server: 45.8.158.176
-      type: ss
-      udp: true
+      uuid: 791a171e-c0af-4bd7-b8ce-43541c7585db
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-808900215
-        - hysteria2-387719495
-        - hysteria2-522222553
-        - hysteria2-589844046
-        - shadowsocks-696792830
-        - shadowsocks-611712779
+        - vless-810593699
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-808900215
-        - hysteria2-387719495
-        - hysteria2-522222553
-        - hysteria2-589844046
-        - shadowsocks-696792830
-        - shadowsocks-611712779
+        - vless-810593699
       type: select
 rules:
     - MATCH,select

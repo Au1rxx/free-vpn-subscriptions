@@ -1,0 +1,50 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "66.253.10.22",
+      "server_port": 443,
+      "tag": "vless-724628322",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "zVJVCkcnyPjMZvx-GMQnnbkEgNiws80sppKB6A0uqBY",
+          "short_id": "83dee8596e65d99e"
+        },
+        "server_name": "www.bing.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "type": "vless",
+      "uuid": "907a940c-bad0-4356-a280-7dec12f1479e"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-724628322"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-724628322"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
