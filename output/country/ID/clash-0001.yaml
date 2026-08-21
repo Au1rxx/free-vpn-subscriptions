@@ -7,12 +7,28 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - name: trojan-176269070
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20056
+      server: oplosgru-c.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: trojan-184964708
       password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
       port: 20056
       server: oplosgru-c.catcat321.com
       skip-cert-verify: true
       sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-192569864
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20056
+      server: oplosgru-c.catcat321.com
+      skip-cert-verify: true
+      sni: oplosgru-c.catcat321.com
       type: trojan
       udp: true
     - name: trojan-202722757
@@ -29,6 +45,14 @@ proxies:
       server: 157.254.38.210
       skip-cert-verify: true
       sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-216313443
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20120
+      server: oplosgru-c.catcat321.com
+      skip-cert-verify: true
+      sni: ""
       type: trojan
       udp: true
     - name: trojan-490085150
@@ -160,14 +184,31 @@ proxies:
       skip-cert-verify: true
       sni: id-ls-e-3.nebulacloud.win
       type: hysteria2
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-833776077
+      network: tcp
+      port: 10053
+      reality-opts:
+        public-key: o-ud3x7exNVYmknsVseZyUGMyK_680Nub0Cf6W4KiRw
+        short-id: cbbf64
+      server: family.bucket.9.kfc-520.com
+      servername: www.amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3979cfac-7f7b-3dcf-a4e4-513eb8d125a7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-119270
+        - trojan-176269070
         - trojan-184964708
+        - trojan-192569864
         - trojan-202722757
         - trojan-207313013
+        - trojan-216313443
         - trojan-490085150
         - trojan-503199066
         - trojan-692972555
@@ -180,15 +221,19 @@ proxy-groups:
         - vless-814120384
         - vless-817797639
         - hysteria2-819480166
+        - vless-833776077
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-119270
+        - trojan-176269070
         - trojan-184964708
+        - trojan-192569864
         - trojan-202722757
         - trojan-207313013
+        - trojan-216313443
         - trojan-490085150
         - trojan-503199066
         - trojan-692972555
@@ -201,6 +246,7 @@ proxy-groups:
         - vless-814120384
         - vless-817797639
         - hysteria2-819480166
+        - vless-833776077
       type: select
 rules:
     - MATCH,select

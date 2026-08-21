@@ -12,17 +12,26 @@ proxies:
       type: vless
       udp: true
       uuid: 8e85752d-c04f-427d-9d70-b10d144c8492
+    - name: hysteria2-781397525
+      password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
+      port: 8443
+      server: 138.124.0.168
+      skip-cert-verify: true
+      sni: hopp-legend-se.roxa.org
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-825909343
+        - hysteria2-781397525
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-825909343
+        - hysteria2-781397525
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-119251
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20029
+      server: 45.67.201.210
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: trojan-119274
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20062
@@ -305,10 +313,25 @@ proxies:
       type: vless
       udp: true
       uuid: 432ab7a2-6e2b-4f0b-be4a-06bdcc714624
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-834360291
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: mCDHZBY0AYAeY7Aj7COGaegrm7QAwfueYYSC02vqbSY
+        short-id: 0d8ca7e0b3d26321
+      server: bftu-stnbal.servora.top
+      servername: www.bing.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 432ab7a2-6e2b-4f0b-be4a-06bdcc714624
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-119251
         - trojan-119274
         - trojan-119283
         - trojan-122857
@@ -333,11 +356,13 @@ proxy-groups:
         - vless-763734024
         - vless-782826715
         - vless-785314569
+        - vless-834360291
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-119251
         - trojan-119274
         - trojan-119283
         - trojan-122857
@@ -362,6 +387,7 @@ proxy-groups:
         - vless-763734024
         - vless-782826715
         - vless-785314569
+        - vless-834360291
       type: select
 rules:
     - MATCH,select

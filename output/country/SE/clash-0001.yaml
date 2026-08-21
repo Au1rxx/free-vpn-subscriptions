@@ -118,13 +118,6 @@ proxies:
       skip-cert-verify: true
       sni: us65.mechvpn.online
       type: hysteria2
-    - name: hysteria2-620747903
-      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-      port: 443
-      server: us65.mechvpn.online
-      skip-cert-verify: false
-      sni: ""
-      type: hysteria2
     - name: hysteria2-647019505
       password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
       port: 443
@@ -476,14 +469,20 @@ proxies:
       sni: ssl.fastly.com
       type: trojan
       udp: true
-    - name: trojan-781395531
-      password: MiTiVPN
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-779730956
+      network: tcp
       port: 443
-      server: 140.248.185.253
-      skip-cert-verify: true
-      sni: ssl.fastly.com
-      type: trojan
+      reality-opts:
+        public-key: kRwY2AAdT6SH4FKFQb-UhnJbyddqbdluKy1xaYPatD8
+        short-id: b9f8f9772217538f
+      server: 80.66.78.227
+      servername: cdn-se.alohaapp.uk
+      tls: true
+      type: vless
       udp: true
+      uuid: 76f6b7fe-5de8-4637-87a0-6ddd33d67b3e
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-786336853
@@ -886,6 +885,34 @@ proxies:
       type: vless
       udp: true
       uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-834306293
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: ZXi0bwZwOe9e5CMticA2-bU7qamHgs_sN-2kHygbDyk
+        short-id: e91da98020a38be9
+      server: 138.124.255.233
+      servername: russia.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-0002-9d5e-c541f791b55f
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-834306294
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: ZXi0bwZwOe9e5CMticA2-bU7qamHgs_sN-2kHygbDyk
+        short-id: e91da98020a38be9
+      server: 138.124.254.82
+      servername: russia.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-0002-9d5e-c541f791b55f
 proxy-groups:
     - interval: 300
       name: auto
@@ -902,7 +929,6 @@ proxy-groups:
         - hysteria2-577252111
         - vless-590456400
         - hysteria2-591436869
-        - hysteria2-620747903
         - hysteria2-647019505
         - hysteria2-654428717
         - vless-656233878
@@ -930,7 +956,7 @@ proxy-groups:
         - vless-742642271
         - vless-742961441
         - trojan-766420744
-        - trojan-781395531
+        - vless-779730956
         - vless-786336853
         - vless-787341776
         - vless-788536085
@@ -963,6 +989,8 @@ proxy-groups:
         - vless-827516972
         - vless-827673531
         - vless-828077776
+        - vless-834306293
+        - vless-834306294
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -980,7 +1008,6 @@ proxy-groups:
         - hysteria2-577252111
         - vless-590456400
         - hysteria2-591436869
-        - hysteria2-620747903
         - hysteria2-647019505
         - hysteria2-654428717
         - vless-656233878
@@ -1008,7 +1035,7 @@ proxy-groups:
         - vless-742642271
         - vless-742961441
         - trojan-766420744
-        - trojan-781395531
+        - vless-779730956
         - vless-786336853
         - vless-787341776
         - vless-788536085
@@ -1041,6 +1068,8 @@ proxy-groups:
         - vless-827516972
         - vless-827673531
         - vless-828077776
+        - vless-834306293
+        - vless-834306294
       type: select
 rules:
     - MATCH,select
