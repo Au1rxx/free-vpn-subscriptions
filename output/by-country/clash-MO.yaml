@@ -1,4 +1,32 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-825348420
+      network: tcp
+      port: 6897
+      reality-opts:
+        public-key: X2thmYgL8pXZBmFxMOPo3oIYAga5CTMEd-YMcJHk4Es
+        short-id: 54efd54cf3e7
+      server: jpaws.ccwink.photos
+      servername: docs.aws.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a157bb84-dd84-4ad8-86b0-0656bc76e4d1
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-824303046
+      network: tcp
+      port: 23956
+      reality-opts:
+        public-key: i0nN_0uLl5ha8pIf6gNNLeLQe7it-nXDFLC5eM1BHV4
+        short-id: bb9b8f5f
+      server: 92yqc126g8qwe6v23n01.haiyucloud.com
+      servername: www.python.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 485717cf-e96c-40db-9bc1-624060b89f20
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-842891472
@@ -27,35 +55,23 @@ proxies:
       type: vless
       udp: true
       uuid: a157bb84-dd84-4ad8-86b0-0656bc76e4d1
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-825348420
-      network: tcp
-      port: 6897
-      reality-opts:
-        public-key: X2thmYgL8pXZBmFxMOPo3oIYAga5CTMEd-YMcJHk4Es
-        short-id: 54efd54cf3e7
-      server: jpaws.ccwink.photos
-      servername: docs.aws.amazon.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a157bb84-dd84-4ad8-86b0-0656bc76e4d1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-825348420
+        - vless-824303046
         - vless-842891472
         - vless-843168137
-        - vless-825348420
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-825348420
+        - vless-824303046
         - vless-842891472
         - vless-843168137
-        - vless-825348420
       type: select
 rules:
     - MATCH,select
