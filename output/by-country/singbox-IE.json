@@ -1,0 +1,44 @@
+{
+  "outbounds": [
+    {
+      "password": "FH72359861",
+      "server": "cunning-grub.rooster465.autos",
+      "server_port": 443,
+      "tag": "trojan-808325722",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "cunning-grub.rooster465.autos",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-808325722"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-808325722"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

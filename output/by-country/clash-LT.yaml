@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: edge
+      name: vless-808519489
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: C6nh6hqFTbtizgSH8vGmw2XUxsQAbAW3jPylpgGvfl4
+        short-id: 7c4b9a2e8d5f3c1b
+      server: auth.moktana.app
+      servername: auth.moktana.app
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2642342c-fa52-4f62-b44d-fb77de8f75e3
     - cipher: aes-256-cfb
       name: shadowsocks-717968959
       password: b8KkNDjEd5QqFyRm
@@ -52,6 +65,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-808519489
         - shadowsocks-717968959
         - shadowsocks-779606858
         - shadowsocks-696781306
@@ -64,6 +78,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-808519489
         - shadowsocks-717968959
         - shadowsocks-779606858
         - shadowsocks-696781306

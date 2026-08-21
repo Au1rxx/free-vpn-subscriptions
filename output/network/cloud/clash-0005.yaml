@@ -1,4 +1,28 @@
 proxies:
+    - name: trojan-788700594
+      password: EQ30679154
+      port: 443
+      server: 3.113.25.197
+      skip-cert-verify: false
+      sni: wealthy-gobbler.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-793091854
+      password: PQ05174892
+      port: 443
+      server: 63.179.149.234
+      skip-cert-verify: false
+      sni: usable-dogfish.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-793091855
+      password: PQ05174892
+      port: 443
+      server: 54.93.209.134
+      skip-cert-verify: false
+      sni: alert-fish.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-793091856
       password: EQ30679154
       port: 443
@@ -1612,6 +1636,19 @@ proxies:
       sni: humorous-snake.rooster465.autos
       type: trojan
       udp: true
+    - client-fingerprint: chrome
+      name: vless-804333015
+      network: tcp
+      port: 30906
+      reality-opts:
+        public-key: HnQ_s7eu3XUu6upzLoe0jj5ZgsYvM7KXuMG41IwN4R0
+        short-id: 17a94dc584e3
+      server: 204.48.20.223
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 43a13764-23dd-4e01-8b79-cde8a16e13ce
     - name: trojan-807248655
       password: FH72359861
       port: 443
@@ -1640,10 +1677,26 @@ proxies:
       type: vless
       udp: true
       uuid: 83afd88f-200f-4d89-bfc7-66eff160c1d8
+    - client-fingerprint: edge
+      name: vless-808496055
+      network: grpc
+      port: 2087
+      reality-opts:
+        public-key: 92SyLtOmKXvLc6wSMew9sRpmRfVY_BwywV8Mf5r-p2s
+        short-id: 72ce50a0
+      server: 157.180.119.87
+      servername: www.bing.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d01d5a74-09fb-4e9e-b0d9-38b5fd77ad70
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-788700594
+        - trojan-793091854
+        - trojan-793091855
         - trojan-793091856
         - trojan-793095854
         - trojan-793095857
@@ -1834,14 +1887,19 @@ proxy-groups:
         - vless-803637539
         - trojan-804331008
         - trojan-804331025
+        - vless-804333015
         - trojan-807248655
         - vless-807431510
         - vless-808183017
+        - vless-808496055
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-788700594
+        - trojan-793091854
+        - trojan-793091855
         - trojan-793091856
         - trojan-793095854
         - trojan-793095857
@@ -2032,9 +2090,11 @@ proxy-groups:
         - vless-803637539
         - trojan-804331008
         - trojan-804331025
+        - vless-804333015
         - trojan-807248655
         - vless-807431510
         - vless-808183017
+        - vless-808496055
       type: select
 rules:
     - MATCH,select

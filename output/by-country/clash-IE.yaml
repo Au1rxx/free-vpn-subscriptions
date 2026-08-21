@@ -1,0 +1,23 @@
+proxies:
+    - name: trojan-808325722
+      password: FH72359861
+      port: 443
+      server: cunning-grub.rooster465.autos
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - trojan-808325722
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - trojan-808325722
+      type: select
+rules:
+    - MATCH,select

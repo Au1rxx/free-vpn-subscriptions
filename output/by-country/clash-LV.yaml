@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-809089491
+      network: tcp
+      port: 13443
+      reality-opts:
+        public-key: gc9oXe37KCCm3J1dJ03wdGsnxPBdeEkRPOvl_t-vfVM
+        short-id: a7f3c91b2e6d84c0
+      server: 195.123.210.168
+      servername: auto.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
     - name: hysteria2-232798723
       password: vpn-hy2-lv-2026
       port: 8444
@@ -21,16 +35,16 @@ proxies:
       sni: 185.236.22.119\u0026insecure=1\u0026allowinsecure=1
       type: hysteria2
     - cipher: aes-256-cfb
-      name: shadowsocks-696781305
-      password: 45xgMgm386pjWjTx
-      port: 9082
+      name: shadowsocks-723348676
+      password: mwgRg9hRq3b4Qnwb
+      port: 9068
       server: 185.135.86.175
       type: ss
       udp: true
     - cipher: aes-256-cfb
-      name: shadowsocks-723348676
-      password: mwgRg9hRq3b4Qnwb
-      port: 9068
+      name: shadowsocks-696781305
+      password: 45xgMgm386pjWjTx
+      port: 9082
       server: 185.135.86.175
       type: ss
       udp: true
@@ -73,11 +87,12 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-809089491
         - hysteria2-232798723
         - hysteria2-248653949
         - hysteria2-745632718
-        - shadowsocks-696781305
         - shadowsocks-723348676
+        - shadowsocks-696781305
         - shadowsocks-717969044
         - shadowsocks-743178503
         - shadowsocks-738053581
@@ -88,11 +103,12 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-809089491
         - hysteria2-232798723
         - hysteria2-248653949
         - hysteria2-745632718
-        - shadowsocks-696781305
         - shadowsocks-723348676
+        - shadowsocks-696781305
         - shadowsocks-717969044
         - shadowsocks-743178503
         - shadowsocks-738053581
