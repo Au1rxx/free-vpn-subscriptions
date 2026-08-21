@@ -6,26 +6,17 @@ proxies:
       type: vless
       udp: true
       uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
-    - name: vless-335073379
-      network: grpc
-      port: 8443
-      server: 95.85.224.3
-      type: vless
-      udp: true
-      uuid: 7e8f7489-e65f-4be6-93ed-867a74ec6759
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-470983995
-        - vless-335073379
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-470983995
-        - vless-335073379
       type: select
 rules:
     - MATCH,select

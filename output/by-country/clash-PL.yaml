@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-730512436
+      password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
+      port: 443
+      server: streambox.wwwinternetvideo.click
+      skip-cert-verify: false
+      sni: streambox.wwwinternetvideo.click
+      type: hysteria2
     - client-fingerprint: safari
       flow: xtls-rprx-vision
       name: vless-812654355
@@ -13,49 +20,19 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-812625844
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 9kQGK7IuVFWU9xCb4g9ygL1CEv87QmVZJzWLz74pTSc
-        short-id: ""
-      server: 95.85.255.187
-      servername: pl.routeon.pro
-      tls: true
-      type: vless
-      udp: true
-      uuid: 8e85752d-c04f-427d-9d70-b10d144c8492
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-812625861
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: qsoFtbqHR-PEGFF0kUZgj_HAyJOKMLoCvk-_IssWHQI
-        short-id: ""
-      server: pl-modx.bachidze.com
-      servername: pl-modx.bachidze.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f7c25743-140c-4d32-a296-a53bc49682d8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-730512436
         - vless-812654355
-        - vless-812625844
-        - vless-812625861
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-730512436
         - vless-812654355
-        - vless-812625844
-        - vless-812625861
       type: select
 rules:
     - MATCH,select
