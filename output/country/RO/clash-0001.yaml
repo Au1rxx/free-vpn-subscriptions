@@ -7,6 +7,13 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-130484
+      password: QFWzCw2uX9B9i6qAYeFBIE
+      port: 443
+      server: bogging-eyeteeth-fly.freesocks.work
+      type: ss
+      udp: true
     - name: hysteria2-290666035
       password: gf1:gfhysteria2024
       port: 443
@@ -276,20 +283,6 @@ proxies:
       skip-cert-verify: true
       sni: t.me
       type: hysteria2
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-743807674
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: udUh9IEgJXs9oOs1VHQIl2wsIs4ucAKvuOzFcMEelUc
-        short-id: b9f8f9772217538f
-      server: cdn-ru3.alohaapp.uk
-      servername: cdn-ru3.alohaapp.uk
-      tls: true
-      type: vless
-      udp: true
-      uuid: 76f6b7fe-5de8-4637-87a0-6ddd33d67b3e
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-809854783
@@ -409,11 +402,26 @@ proxies:
       skip-cert-verify: false
       sni: hopp-romania-new.roxa.org
       type: hysteria2
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-845429231
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 1xxZM10W-A8nuj6MOXFd1kA9lS7bEy-5SO5j-jrd_Cg
+        short-id: b70076439f4a1340
+      server: 82.117.255.87
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b748a230-b157-4401-8423-f8e44df31b5e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-119243
+        - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
         - vless-408494775
@@ -440,7 +448,6 @@ proxy-groups:
         - vless-700287025
         - vless-720888950
         - hysteria2-722298555
-        - vless-743807674
         - vless-809854783
         - hysteria2-809862282
         - hysteria2-809862307
@@ -453,12 +460,14 @@ proxy-groups:
         - vless-834318293
         - vless-838598260
         - hysteria2-841934438
+        - vless-845429231
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-119243
+        - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
         - vless-408494775
@@ -485,7 +494,6 @@ proxy-groups:
         - vless-700287025
         - vless-720888950
         - hysteria2-722298555
-        - vless-743807674
         - vless-809854783
         - hysteria2-809862282
         - hysteria2-809862307
@@ -498,6 +506,7 @@ proxy-groups:
         - vless-834318293
         - vless-838598260
         - hysteria2-841934438
+        - vless-845429231
       type: select
 rules:
     - MATCH,select

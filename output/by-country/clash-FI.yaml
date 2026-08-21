@@ -1,4 +1,11 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-846829577
+      password: f2FivziSooWMDzE6p2kBx7ri7owdLZyPnuQLPeDhnY8qXKm6zZ4M39pov4w7MfxRN5FjWqC1cCA8gGoLpZQVouPt9cCA9idN
+      port: 42607
+      server: 166.1.129.245
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-838661636
@@ -13,13 +20,6 @@ proxies:
       type: vless
       udp: true
       uuid: d96e05a1-18bb-45da-9e9f-ab7caab6952a
-    - cipher: 2022-blake3-aes-256-gcm
-      name: shadowsocks-841892074
-      password: GG2dQrqRlw0VXo/jFYP+E0vBYD+2ZF2Lps7miGdU6WY=:ttmdnpVjn28mAeo/+yqkwUEDnHM9RRtSmACp2/hUrF8=
-      port: 1001
-      server: tun4.s01-download-main.com
-      type: ss
-      udp: true
     - client-fingerprint: edge
       name: vless-825909343
       network: grpc
@@ -40,53 +40,32 @@ proxies:
       skip-cert-verify: true
       sni: hopp-legend-se.roxa.org
       type: hysteria2
-    - client-fingerprint: chrome
-      name: vless-841934559
-      network: grpc
+    - name: hysteria2-744910368
+      password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
       port: 8443
-      reality-opts:
-        public-key: hwwiWVqYq5b7S0JaXNSxjWSEv_1OUFMaWJGHzeAGyRM
-        short-id: ""
-      server: 104.245.242.9
-      servername: download.nvidia.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 69db54f1-a8a6-d3d5-3b21-48af845aed08
-    - client-fingerprint: chrome
-      name: vless-841934546
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: iVDh09Vm2DqZMNQoUdf-LCZ6TqVGb9mLXnClAK2LRj4
-        short-id: ""
-      server: 89.47.55.6
-      servername: www.canon.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 69db54f1-a8a6-d3d5-3b21-48af845aed08
+      server: 138.124.0.168
+      skip-cert-verify: false
+      sni: hopp-legend-se.roxa.org
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-846829577
         - vless-838661636
-        - shadowsocks-841892074
         - vless-825909343
         - hysteria2-781397525
-        - vless-841934559
-        - vless-841934546
+        - hysteria2-744910368
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-846829577
         - vless-838661636
-        - shadowsocks-841892074
         - vless-825909343
         - hysteria2-781397525
-        - vless-841934559
-        - vless-841934546
+        - hysteria2-744910368
       type: select
 rules:
     - MATCH,select

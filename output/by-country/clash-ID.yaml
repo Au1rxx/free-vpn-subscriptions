@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-743190439
+      password: l25nJa8z0D5pT6jl
+      port: 26001
+      server: 16.79.28.237
+      skip-cert-verify: true
+      sni: id-ls-c-4.nebulacloud.win
+      type: hysteria2
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-836349877
@@ -17,12 +24,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-743190439
         - vless-836349877
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-743190439
         - vless-836349877
       type: select
 rules:
