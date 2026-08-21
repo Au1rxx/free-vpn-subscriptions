@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-838661636
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: nF_kEdHan2dgl2tlQ_dtNaKZ4oORhuiFrXHbtEDcT2Q
+        short-id: 2d6d073dc88f22a8
+      server: 132.243.231.168
+      servername: se1.se-cdn.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: d96e05a1-18bb-45da-9e9f-ab7caab6952a
     - client-fingerprint: edge
       name: vless-825909343
       network: grpc
@@ -19,19 +33,30 @@ proxies:
       skip-cert-verify: true
       sni: hopp-legend-se.roxa.org
       type: hysteria2
+    - name: hysteria2-744910368
+      password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
+      port: 8443
+      server: 138.124.0.168
+      skip-cert-verify: false
+      sni: hopp-legend-se.roxa.org
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-838661636
         - vless-825909343
         - hysteria2-781397525
+        - hysteria2-744910368
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-838661636
         - vless-825909343
         - hysteria2-781397525
+        - hysteria2-744910368
       type: select
 rules:
     - MATCH,select

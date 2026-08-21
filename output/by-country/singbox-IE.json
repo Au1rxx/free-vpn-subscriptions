@@ -1,0 +1,44 @@
+{
+  "outbounds": [
+    {
+      "password": "EQ30679154",
+      "server": "funny-hen.rooster465.autos",
+      "server_port": 443,
+      "tag": "trojan-836000579",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "funny-hen.rooster465.autos",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-836000579"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-836000579"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

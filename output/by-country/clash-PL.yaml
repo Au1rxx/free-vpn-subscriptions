@@ -6,33 +6,58 @@ proxies:
       skip-cert-verify: false
       sni: streambox.wwwinternetvideo.click
       type: hysteria2
-    - client-fingerprint: safari
-      flow: xtls-rprx-vision
-      name: vless-812654355
-      network: tcp
+    - name: hysteria2-837919178
+      password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
       port: 443
+      server: streambox.wwwinternetvideo.click
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-836266921
+      network: tcp
+      port: 13443
       reality-opts:
-        public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
-        short-id: 00bca5982f82d083
+        public-key: gc9oXe37KCCm3J1dJ03wdGsnxPBdeEkRPOvl_t-vfVM
+        short-id: a7f3c91b2e6d84c0
       server: 144.31.171.143
-      servername: eu-central.cendora.ru
+      servername: auto.cendora.ru
       tls: true
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-825851343
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 9kQGK7IuVFWU9xCb4g9ygL1CEv87QmVZJzWLz74pTSc
+        short-id: ""
+      server: 95.85.255.187
+      servername: pl.routeon.pro
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8e85752d-c04f-427d-9d70-b10d144c8492
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-730512436
-        - vless-812654355
+        - hysteria2-837919178
+        - vless-836266921
+        - vless-825851343
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-730512436
-        - vless-812654355
+        - hysteria2-837919178
+        - vless-836266921
+        - vless-825851343
       type: select
 rules:
     - MATCH,select

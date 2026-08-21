@@ -1,11 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-26744
-      password: QFWzCw2uX9B9i6qAYeFBIE
-      port: 443
-      server: 154.46.31.106
-      type: ss
-      udp: true
     - name: trojan-119243
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20017
@@ -402,11 +395,24 @@ proxies:
       type: vless
       udp: true
       uuid: 76f6b7fe-5de8-4637-87a0-6ddd33d67b3e
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-838598260
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: udUh9IEgJXs9oOs1VHQIl2wsIs4ucAKvuOzFcMEelUc
+        short-id: b9f8f9772217538f
+      server: 217.114.14.182
+      servername: cdn-ru3.alohaapp.uk
+      tls: true
+      type: vless
+      udp: true
+      uuid: 76f6b7fe-5de8-4637-87a0-6ddd33d67b3e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-26744
         - trojan-119243
         - shadowsocks-130484
         - hysteria2-290666035
@@ -446,12 +452,12 @@ proxy-groups:
         - vless-822689200
         - vless-827603317
         - vless-834318293
+        - vless-838598260
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-26744
         - trojan-119243
         - shadowsocks-130484
         - hysteria2-290666035
@@ -491,6 +497,7 @@ proxy-groups:
         - vless-822689200
         - vless-827603317
         - vless-834318293
+        - vless-838598260
       type: select
 rules:
     - MATCH,select
