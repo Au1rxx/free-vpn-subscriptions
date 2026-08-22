@@ -1,4 +1,35 @@
 proxies:
+    - name: vless-370772845
+      network: ws
+      port: 443
+      server: 94.183.170.231
+      type: vless
+      udp: true
+      uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
+    - name: vless-429850175
+      network: tcp
+      port: 8443
+      server: 94.183.170.231
+      servername: estproxy2.lockdwn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
+    - name: vless-453071268
+      network: ws
+      port: 443
+      server: 94.183.170.231
+      type: vless
+      udp: true
+      uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
+    - name: hysteria2-656706499
+      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
+      port: 443
+      server: cabinet.wwwinternetvideo.click
+      skip-cert-verify: false
+      sni: cabinet.wwwinternetvideo.click
+      type: hysteria2
     - name: hysteria2-589844096
       password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
       port: 443
@@ -6,17 +37,70 @@ proxies:
       skip-cert-verify: false
       sni: cabinet.wwwinternetvideo.click
       type: hysteria2
+    - name: hysteria2-801849581
+      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
+      port: 443
+      server: cabinet.wwwinternetvideo.click
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
+    - name: hysteria2-810596295
+      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
+      port: 443
+      server: 217.60.182.79
+      skip-cert-verify: true
+      sni: cabinet.wwwinternetvideo.click
+      type: hysteria2
+    - name: hysteria2-818203328
+      password: 3703ccc0-ae74-49bd-b9d7-0897192bf8c4
+      port: 443
+      server: node.embrofree.org
+      skip-cert-verify: false
+      sni: node.embrofree.org
+      type: hysteria2
+    - name: hysteria2-812148987
+      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
+      port: 443
+      server: 217.60.182.79
+      skip-cert-verify: false
+      sni: cabinet.wwwinternetvideo.click
+      type: hysteria2
+    - name: hysteria2-652726825
+      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
+      port: 443
+      server: cabinet.wwwinternetvideo.click
+      skip-cert-verify: false
+      sni: ""
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-370772845
+        - vless-429850175
+        - vless-453071268
+        - hysteria2-656706499
         - hysteria2-589844096
+        - hysteria2-801849581
+        - hysteria2-810596295
+        - hysteria2-818203328
+        - hysteria2-812148987
+        - hysteria2-652726825
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-370772845
+        - vless-429850175
+        - vless-453071268
+        - hysteria2-656706499
         - hysteria2-589844096
+        - hysteria2-801849581
+        - hysteria2-810596295
+        - hysteria2-818203328
+        - hysteria2-812148987
+        - hysteria2-652726825
       type: select
 rules:
     - MATCH,select

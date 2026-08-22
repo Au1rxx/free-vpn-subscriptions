@@ -7,14 +7,6 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: trojan-123459
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20114
-      server: hkdcrtc-e.catcat321.com
-      skip-cert-verify: false
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-696792825
       password: 7eadc6dbe2ae
@@ -274,34 +266,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9638a83e-f1f7-4cc8-a602-924965d9534f
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-809724006
-      password: HWBXhJoxrIyNrENJIipt9FVnzqRABmuXjSW0HtgNGI0=
-      port: 59319
-      server: 129.148.44.181
-      type: ss
-      udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-809724007
-      password: lpYNiPiwJ1rV1HSmT5yzHLcLsv9qVgXIXWSuNw3ohhY=
-      port: 59319
-      server: 163.176.194.118
-      type: ss
-      udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-809862302
-      password: SP1M0IipjvtsuKVyn9U2iK+ZKuuQ0afVhLCicK9pO8Y=
-      port: 59319
-      server: 163.176.6.223
-      type: ss
-      udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-812129140
-      password: Chs0Qn4jilfzYjjcg2EuX/6ZMqqzz1jRPB5yRkSzdbE=
-      port: 59319
-      server: 147.15.93.240
-      type: ss
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-812219855
@@ -372,12 +336,39 @@ proxies:
       type: vless
       udp: true
       uuid: c396fa08-e07a-459b-b894-389456fd6a82
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-855083921
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: E6Y9lNizCXo8tJ6EXwLYQIjyIwmxIs4foyRlY2MgkjA
+        short-id: 59ccabb0a1483c4b
+      server: 23.251.56.78
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9638a83e-f1f7-4cc8-a602-924965d9534f
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-855083923
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: E6Y9lNizCXo8tJ6EXwLYQIjyIwmxIs4foyRlY2MgkjA
+        short-id: 59ccabb0a1483c4b
+      server: 23.251.56.78
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9638a83e-f1f7-4cc8-a602-924965d9534f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-119299
-        - trojan-123459
         - shadowsocks-696792825
         - vless-696792918
         - vless-696792933
@@ -397,22 +388,19 @@ proxy-groups:
         - vless-788158669
         - vless-799117219
         - vless-803648192
-        - shadowsocks-809724006
-        - shadowsocks-809724007
-        - shadowsocks-809862302
-        - shadowsocks-812129140
         - vless-812219855
         - vless-813413046
         - vless-813687309
         - vless-814228083
         - vless-821154219
+        - vless-855083921
+        - vless-855083923
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-119299
-        - trojan-123459
         - shadowsocks-696792825
         - vless-696792918
         - vless-696792933
@@ -432,15 +420,13 @@ proxy-groups:
         - vless-788158669
         - vless-799117219
         - vless-803648192
-        - shadowsocks-809724006
-        - shadowsocks-809724007
-        - shadowsocks-809862302
-        - shadowsocks-812129140
         - vless-812219855
         - vless-813413046
         - vless-813687309
         - vless-814228083
         - vless-821154219
+        - vless-855083921
+        - vless-855083923
       type: select
 rules:
     - MATCH,select
