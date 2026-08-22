@@ -1,9 +1,17 @@
 proxies:
+    - name: trojan-119243
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20017
+      server: 45.67.201.210
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-26744
+      name: shadowsocks-130484
       password: QFWzCw2uX9B9i6qAYeFBIE
       port: 443
-      server: 154.46.31.106
+      server: bogging-eyeteeth-fly.freesocks.work
       type: ss
       udp: true
     - name: hysteria2-290666035
@@ -20,6 +28,48 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-412872066
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 1xxZM10W-A8nuj6MOXFd1kA9lS7bEy-5SO5j-jrd_Cg
+        short-id: b70076439f4a1340
+      server: 82.117.255.87
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b748a230-b157-4401-8423-f8e44df31b5e
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-413070574
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 1xxZM10W-A8nuj6MOXFd1kA9lS7bEy-5SO5j-jrd_Cg
+        short-id: b70076439f4a1340
+      server: 82.117.255.87
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b748a230-b157-4401-8423-f8e44df31b5e
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-419321128
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: 1xxZM10W-A8nuj6MOXFd1kA9lS7bEy-5SO5j-jrd_Cg
+        short-id: b70076439f4a1340
+      server: 82.117.255.87
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b748a230-b157-4401-8423-f8e44df31b5e
     - name: hysteria2-468884148
       password: gf1:gfhysteria2024
       port: 443
@@ -236,9 +286,13 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-26744
+        - trojan-119243
+        - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
+        - vless-412872066
+        - vless-413070574
+        - vless-419321128
         - hysteria2-468884148
         - hysteria2-468884154
         - hysteria2-468884155
@@ -267,9 +321,13 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - shadowsocks-26744
+        - trojan-119243
+        - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
+        - vless-412872066
+        - vless-413070574
+        - vless-419321128
         - hysteria2-468884148
         - hysteria2-468884154
         - hysteria2-468884155

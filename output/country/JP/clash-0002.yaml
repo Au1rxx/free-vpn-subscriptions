@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-683904823
+      password: FH72359861
+      port: 443
+      server: many-pangolin.rooster465.autos
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-685047045
@@ -564,6 +572,13 @@ proxies:
       type: trojan
       udp: true
     - name: vless-712809939
+      network: tcp
+      port: 47878
+      server: 152.69.195.67
+      type: vless
+      udp: true
+      uuid: eb8613e3-8393-4cff-a3ad-6501fd4adc63
+    - name: vless-712810007
       network: tcp
       port: 47878
       server: 152.69.195.67
@@ -3114,10 +3129,89 @@ proxies:
       type: vless
       udp: true
       uuid: fe467f51-b2cc-4b16-b50b-a78865ed3dd9
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-856679275
+      network: tcp
+      port: 445
+      reality-opts:
+        public-key: JfuItzJ81sJehx1PbxyliWSJvuBMKoa9ahNgPO3R7R4
+        short-id: c226283c4de5b1ad
+      server: 31.76.91.138
+      servername: ads.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 309b0ce3-09a8-4883-bfe4-bd56e215be44
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-856679302
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: gcqSfWJ1yR5Aa2fsBYZ3vyaC0yQnil4qqNMZN4weZlE
+        short-id: 674a07ea4d1c4255
+      server: 162.128.181.182
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 048a61f8-b236-4082-b1c3-c22a85693c12
+    - name: trojan-856679737
+      password: tsuchiya
+      port: 443
+      server: aa.ccmusic.jp
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-856713019
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: SPHwYIULnH_KvP5dd6VvZGSb4XXHEeavvQ-F_H_t0Fo
+        short-id: 7509854886b4e484
+      server: 103.137.215.210
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: de8279f8-fed5-4659-b387-faaa6ac0ec69
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-856713027
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: uLhi4XEmyszRHxTWF2-X_rehZdceMD4bdVaBOB64Kmc
+        short-id: 36ff988994b11357
+      server: 103.76.85.82
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ef5e311d-ed25-42d7-98a6-30fa273cf174
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-856713036
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: B8e9hvR12tVzv_E3udrUxQEv8ZcHCF1xmMgBaJSovQs
+        short-id: 73acf1381fcf99fc
+      server: 103.137.215.105
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 88eb0afe-d77c-4dcd-ad30-3c9506a809c3
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-683904823
         - vless-685047045
         - vless-685581291
         - vless-688016869
@@ -3174,6 +3268,7 @@ proxy-groups:
         - vless-706370187
         - trojan-706800523
         - vless-712809939
+        - vless-712810007
         - vless-713138894
         - trojan-713167164
         - trojan-713167220
@@ -3426,11 +3521,18 @@ proxy-groups:
         - vless-856356791
         - vless-856387907
         - vless-856423615
+        - vless-856679275
+        - vless-856679302
+        - trojan-856679737
+        - vless-856713019
+        - vless-856713027
+        - vless-856713036
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-683904823
         - vless-685047045
         - vless-685581291
         - vless-688016869
@@ -3487,6 +3589,7 @@ proxy-groups:
         - vless-706370187
         - trojan-706800523
         - vless-712809939
+        - vless-712810007
         - vless-713138894
         - trojan-713167164
         - trojan-713167220
@@ -3739,6 +3842,12 @@ proxy-groups:
         - vless-856356791
         - vless-856387907
         - vless-856423615
+        - vless-856679275
+        - vless-856679302
+        - trojan-856679737
+        - vless-856713019
+        - vless-856713027
+        - vless-856713036
       type: select
 rules:
     - MATCH,select

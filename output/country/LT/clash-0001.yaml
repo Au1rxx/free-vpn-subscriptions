@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-119261
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20044
+      server: 45.67.201.210
+      skip-cert-verify: true
+      sni: tw.catxstar.com
+      type: trojan
+      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-258652508
@@ -272,10 +280,63 @@ proxies:
       skip-cert-verify: true
       sni: ltu-01.node.lumixnet.com
       type: hysteria2
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-856705640
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: jAJoyWJ4nMGai3H9BOa6QMUr2Vvpgqs8VipbaO5mCVU
+        short-id: 3130197867c23edb
+      server: 62.152.58.117
+      servername: wl-13-1.nodes.ac
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7c664dde-19a2-459f-8847-44469577df81
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-856705642
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: lh3qj3VX335HGH2T3xQ8RHZ4v3zEStbz6ENiPwkILSg
+        short-id: cf43c0c197cd464a
+      server: 62.152.56.73
+      servername: wl-12.nodes.ac
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7c664dde-19a2-459f-8847-44469577df81
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-856705647
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: knrqm393ghxJNYj-4qu2BYpwpG5_zOG5h5-H7yyyR38
+        short-id: 0be28edc1b0278d6
+      server: 37.143.14.212
+      servername: wl-8-1.nodes.ac
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7c664dde-19a2-459f-8847-44469577df81
+    - name: vless-856705648
+      network: ws
+      port: 443
+      server: 95.129.236.216
+      servername: cdnguard.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7c664dde-19a2-459f-8847-44469577df81
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-119261
         - vless-258652508
         - vless-260079409
         - vless-326746250
@@ -300,11 +361,16 @@ proxy-groups:
         - shadowsocks-819466188
         - vless-825835345
         - hysteria2-855763685
+        - vless-856705640
+        - vless-856705642
+        - vless-856705647
+        - vless-856705648
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-119261
         - vless-258652508
         - vless-260079409
         - vless-326746250
@@ -329,6 +395,10 @@ proxy-groups:
         - shadowsocks-819466188
         - vless-825835345
         - hysteria2-855763685
+        - vless-856705640
+        - vless-856705642
+        - vless-856705647
+        - vless-856705648
       type: select
 rules:
     - MATCH,select

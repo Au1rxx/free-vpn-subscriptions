@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-119299
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20114
+      server: 45.67.201.210
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-696792825
       password: 7eadc6dbe2ae
@@ -385,10 +393,39 @@ proxies:
       server: 147.15.48.31
       type: ss
       udp: true
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-856679292
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: m89wjPa2LxODyi8U5pRVI4E1fwVawIaftC3fLY0ZLw4
+        short-id: 9ea177c3c147119b
+      server: 23.251.55.216
+      servername: www.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c396fa08-e07a-459b-b894-389456fd6a82
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-856684700
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: m89wjPa2LxODyi8U5pRVI4E1fwVawIaftC3fLY0ZLw4
+        short-id: 9ea177c3c147119b
+      server: u234-6njjdk.startora.top
+      servername: www.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c396fa08-e07a-459b-b894-389456fd6a82
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-119299
         - shadowsocks-696792825
         - vless-696792918
         - vless-696792933
@@ -418,11 +455,14 @@ proxy-groups:
         - vless-855083923
         - vless-855584713
         - shadowsocks-855875163
+        - vless-856679292
+        - vless-856684700
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-119299
         - shadowsocks-696792825
         - vless-696792918
         - vless-696792933
@@ -452,6 +492,8 @@ proxy-groups:
         - vless-855083923
         - vless-855584713
         - shadowsocks-855875163
+        - vless-856679292
+        - vless-856684700
       type: select
 rules:
     - MATCH,select
