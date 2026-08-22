@@ -20,6 +20,20 @@ proxies:
       skip-cert-verify: false
       sni: hopp-romania-new.roxa.org
       type: hysteria2
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-720888950
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 1xxZM10W-A8nuj6MOXFd1kA9lS7bEy-5SO5j-jrd_Cg
+        short-id: b70076439f4a1340
+      server: 82.117.255.87
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b748a230-b157-4401-8423-f8e44df31b5e
 proxy-groups:
     - interval: 300
       name: auto
@@ -27,6 +41,7 @@ proxy-groups:
         - hysteria2-809862282
         - hysteria2-818203591
         - hysteria2-812150990
+        - vless-720888950
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -35,6 +50,7 @@ proxy-groups:
         - hysteria2-809862282
         - hysteria2-818203591
         - hysteria2-812150990
+        - vless-720888950
       type: select
 rules:
     - MATCH,select

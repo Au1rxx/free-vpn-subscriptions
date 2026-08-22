@@ -1,22 +1,22 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-11052
-      password: qItG8SueYQcP
-      port: 8388
-      server: 140.174.184.5
-      type: ss
+    - name: vless-855658640
+      network: tcp
+      port: 8080
+      server: 81.27.110.79
+      type: vless
       udp: true
+      uuid: cde8e374-bf71-4a1f-9386-db050bc46190
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-11052
+        - vless-855658640
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-11052
+        - vless-855658640
       type: select
 rules:
     - MATCH,select

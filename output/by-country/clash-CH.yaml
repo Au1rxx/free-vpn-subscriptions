@@ -14,12 +14,20 @@ proxies:
       sni: tr-switzerlandgopota.unlimited-access.ru
       type: trojan
       udp: true
+    - name: hysteria2-856356783
+      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
+      port: 443
+      server: che01plrhy01.tcp-reset-club.net
+      skip-cert-verify: true
+      sni: che01plrhy01.tcp-reset-club.net
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-856082917
         - trojan-774424324
+        - hysteria2-856356783
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -27,6 +35,7 @@ proxy-groups:
         - auto
         - hysteria2-856082917
         - trojan-774424324
+        - hysteria2-856356783
       type: select
 rules:
     - MATCH,select
