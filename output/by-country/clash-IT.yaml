@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-855596713
+      network: tcp
+      port: 49475
+      reality-opts:
+        public-key: i0nN_0uLl5ha8pIf6gNNLeLQe7it-nXDFLC5eM1BHV4
+        short-id: bb9b8f5f
+      server: 92yqc126g8qwe6v23n01.haiyucloud.com
+      servername: www.python.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 485717cf-e96c-40db-9bc1-624060b89f20
     - cipher: aes-256-cfb
       name: shadowsocks-779606884
       password: bf7v334KKDV3YDhH
@@ -6,26 +20,19 @@ proxies:
       server: 91.201.65.122
       type: ss
       udp: true
-    - name: vless-2327852
-      network: raw
-      port: 10086
-      server: 204.216.216.23
-      type: vless
-      udp: true
-      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-855596713
         - shadowsocks-779606884
-        - vless-2327852
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-855596713
         - shadowsocks-779606884
-        - vless-2327852
       type: select
 rules:
     - MATCH,select

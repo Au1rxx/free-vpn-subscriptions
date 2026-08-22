@@ -117,6 +117,26 @@ proxies:
       skip-cert-verify: true
       sni: vpn-kr-003.fastervpn.world
       type: hysteria2
+    - client-fingerprint: firefox
+      name: vless-855596710
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Wg07hKwQjSVmOsEHn7X1iLAXR2wkKRSyv8TZmq9ZsRA
+        short-id: 58186df4a95a1504
+      server: 151.245.106.49
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9f7dddc4-6c77-4e2c-bfa4-7e5afdfd48f8
+    - name: hysteria2-266962492
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: 3.36.93.74
+      skip-cert-verify: true
+      sni: vpn-kr-003.fastervpn.world
+      type: hysteria2
     - cipher: aes-256-cfb
       name: shadowsocks-817206649
       password: 1234!@#$
@@ -124,12 +144,12 @@ proxies:
       server: 49.254.204.133
       type: ss
       udp: true
-    - name: hysteria2-266962492
+    - name: hysteria2-459503008
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
       server: 3.36.93.74
       skip-cert-verify: true
-      sni: vpn-kr-003.fastervpn.world
+      sni: css.rbxcdn.com
       type: hysteria2
     - alterId: 0
       cipher: auto
@@ -140,13 +160,15 @@ proxies:
       type: vmess
       udp: true
       uuid: e7c302f3-90d6-42dd-9d7d-94a3683a3707
-    - name: hysteria2-459503008
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+    - alterId: 0
+      cipher: auto
+      name: vmess-145107
+      network: tcp
       port: 443
-      server: 3.36.93.74
-      skip-cert-verify: true
-      sni: css.rbxcdn.com
-      type: hysteria2
+      server: 140.238.2.250
+      type: vmess
+      udp: true
+      uuid: 41a7089a-040b-4538-8b8d-010902405bde
     - alterId: 0
       cipher: auto
       name: vmess-5259790
@@ -163,22 +185,6 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-838633420
-      password: 1234!@#$
-      port: 1774
-      server: 49.254.204.134
-      type: ss
-      udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-145107
-      network: tcp
-      port: 443
-      server: 140.238.2.250
-      type: vmess
-      udp: true
-      uuid: 41a7089a-040b-4538-8b8d-010902405bde
     - name: hysteria2-215228348
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -186,15 +192,13 @@ proxies:
       skip-cert-verify: true
       sni: vpn-kr-003.fastervpn.world
       type: hysteria2
-    - alterId: 0
-      cipher: auto
-      name: vmess-96596
-      network: tcp
-      port: 8888
-      server: 146.56.112.110
-      type: vmess
+    - cipher: aes-256-cfb
+      name: shadowsocks-838633420
+      password: 1234!@#$
+      port: 1774
+      server: 49.254.204.134
+      type: ss
       udp: true
-      uuid: e7c302f3-90d6-42dd-9d7d-94a3683a3707
 proxy-groups:
     - interval: 300
       name: auto
@@ -209,16 +213,16 @@ proxy-groups:
         - vless-210050461
         - vless-48555241
         - hysteria2-272763976
-        - shadowsocks-817206649
+        - vless-855596710
         - hysteria2-266962492
-        - vmess-192463085
+        - shadowsocks-817206649
         - hysteria2-459503008
+        - vmess-192463085
+        - vmess-145107
         - vmess-5259790
         - hysteria2-260690818
-        - shadowsocks-838633420
-        - vmess-145107
         - hysteria2-215228348
-        - vmess-96596
+        - shadowsocks-838633420
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -234,16 +238,16 @@ proxy-groups:
         - vless-210050461
         - vless-48555241
         - hysteria2-272763976
-        - shadowsocks-817206649
+        - vless-855596710
         - hysteria2-266962492
-        - vmess-192463085
+        - shadowsocks-817206649
         - hysteria2-459503008
+        - vmess-192463085
+        - vmess-145107
         - vmess-5259790
         - hysteria2-260690818
-        - shadowsocks-838633420
-        - vmess-145107
         - hysteria2-215228348
-        - vmess-96596
+        - shadowsocks-838633420
       type: select
 rules:
     - MATCH,select

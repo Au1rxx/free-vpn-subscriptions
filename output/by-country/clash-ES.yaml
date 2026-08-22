@@ -13,12 +13,21 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
+    - name: trojan-855279872
+      password: fg20mtCFHy
+      port: 5443
+      server: 172.233.115.40
+      skip-cert-verify: true
+      sni: www.bing.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11052
         - shadowsocks-16132
+        - trojan-855279872
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +35,7 @@ proxy-groups:
         - auto
         - shadowsocks-11052
         - shadowsocks-16132
+        - trojan-855279872
       type: select
 rules:
     - MATCH,select
