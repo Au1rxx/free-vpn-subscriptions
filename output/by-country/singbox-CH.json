@@ -1,0 +1,61 @@
+{
+  "outbounds": [
+    {
+      "password": "kxHw-Dk-e9dffgzYszMlEqLJ92AnY3Pi",
+      "server": "tr-switzerlandgopota.unlimited-access.ru",
+      "server_port": 443,
+      "tag": "trojan-774424324",
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "tr-switzerlandgopota.unlimited-access.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "trojan"
+    },
+    {
+      "password": "kxHw-Dk-e9dffgzYszMlEqLJ92AnY3Pi",
+      "server": "tr-switzerlandgopota.unlimited-access.ru",
+      "server_port": 443,
+      "tag": "trojan-788700578",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "tr-switzerlandgopota.unlimited-access.ru"
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-774424324",
+        "trojan-788700578"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-774424324",
+        "trojan-788700578"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-795700322
+      password: 9K2KPaEcizYz6epz
+      port: 16001
+      server: 56.69.35.177
+      skip-cert-verify: true
+      sni: my-ls-c-6.nebulacloud.win
+      type: hysteria2
     - alterId: 0
       cipher: auto
       name: vmess-143575
@@ -12,12 +19,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-795700322
         - vmess-143575
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-795700322
         - vmess-143575
       type: select
 rules:

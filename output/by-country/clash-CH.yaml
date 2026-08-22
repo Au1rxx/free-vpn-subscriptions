@@ -1,0 +1,33 @@
+proxies:
+    - name: trojan-774424324
+      password: kxHw-Dk-e9dffgzYszMlEqLJ92AnY3Pi
+      port: 443
+      server: tr-switzerlandgopota.unlimited-access.ru
+      skip-cert-verify: false
+      sni: tr-switzerlandgopota.unlimited-access.ru
+      type: trojan
+      udp: true
+    - name: trojan-788700578
+      password: kxHw-Dk-e9dffgzYszMlEqLJ92AnY3Pi
+      port: 443
+      server: tr-switzerlandgopota.unlimited-access.ru
+      skip-cert-verify: true
+      sni: tr-switzerlandgopota.unlimited-access.ru
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - trojan-774424324
+        - trojan-788700578
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - trojan-774424324
+        - trojan-788700578
+      type: select
+rules:
+    - MATCH,select
