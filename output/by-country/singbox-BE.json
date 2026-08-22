@@ -1,0 +1,129 @@
+{
+  "outbounds": [
+    {
+      "server": "113.30.152.6",
+      "server_port": 443,
+      "tag": "vless-738245967",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "be2.wba-pn.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "08f84d53-e262-459c-a15a-26213e7a07c9"
+    },
+    {
+      "server": "be2.wba-pn.ru",
+      "server_port": 443,
+      "tag": "vless-782729008",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "be2.wba-pn.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "08f84d53-e262-459c-a15a-26213e7a07c9"
+    },
+    {
+      "server": "be2.wba-pn.ru",
+      "server_port": 443,
+      "tag": "vless-812220854",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "be2.wba-pn.ru"
+      },
+      "transport": {
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "08f84d53-e262-459c-a15a-26213e7a07c9"
+    },
+    {
+      "server": "113.30.152.6",
+      "server_port": 443,
+      "tag": "vless-741232456",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "be2.wba-pn.ru"
+      },
+      "transport": {
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "08f84d53-e262-459c-a15a-26213e7a07c9"
+    },
+    {
+      "server": "be2.wba-pn.ru",
+      "server_port": 443,
+      "tag": "vless-813396679",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "be2.wba-pn.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "headers": {
+          "Host": "be2.wba-pn.ru"
+        },
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "08f84d53-e262-459c-a15a-26213e7a07c9"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-738245967",
+        "vless-782729008",
+        "vless-812220854",
+        "vless-741232456",
+        "vless-813396679"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-738245967",
+        "vless-782729008",
+        "vless-812220854",
+        "vless-741232456",
+        "vless-813396679"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

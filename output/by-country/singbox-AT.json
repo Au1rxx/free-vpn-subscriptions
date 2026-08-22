@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_",
+      "server": "hy2-wien.unlimited-access.ru",
+      "server_port": 8443,
+      "tag": "hysteria2-855762705",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "hy2-wien.unlimited-access.ru"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-855762705"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-855762705"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

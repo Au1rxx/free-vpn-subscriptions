@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: random
+      name: vless-477044203
+      network: tcp
+      port: 38065
+      reality-opts:
+        public-key: dSSDPTK6AHfAdRAXD9i4rzqcNIY65RxlF25UyCKdiyo
+        short-id: fa
+      server: 83.222.23.81
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4b9063e0-3288-44e9-9aac-80fbfce323a0
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-477044203
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-477044203
+      type: select
+rules:
+    - MATCH,select

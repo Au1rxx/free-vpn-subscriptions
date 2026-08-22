@@ -1,22 +1,43 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-231
-      password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
-      port: 990
-      server: 185.213.23.63
-      type: ss
+    - client-fingerprint: qq
+      name: vless-620750820
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: 7i4Y7v80NVAIi_4_9roDkqcXmexIHli87dfZuFaQMUI
+        short-id: 68da
+      server: 46.29.238.139
+      servername: deepl.com
+      tls: true
+      type: vless
       udp: true
+      uuid: 8384341b-cd89-4a21-a022-cc4bd4e648ca
+    - client-fingerprint: chrome
+      name: vless-699370533
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: 7i4Y7v80NVAIi_4_9roDkqcXmexIHli87dfZuFaQMUI
+        short-id: 68da
+      server: 46.29.238.139
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8384341b-cd89-4a21-a022-cc4bd4e648ca
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-231
+        - vless-620750820
+        - vless-699370533
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-231
+        - vless-620750820
+        - vless-699370533
       type: select
 rules:
     - MATCH,select
