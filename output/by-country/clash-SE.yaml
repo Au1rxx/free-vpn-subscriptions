@@ -7,27 +7,17 @@ proxies:
       sni: 3865895-mitivpn--mitivpn------mitivpn.mitivpn-s.lifestyle
       type: trojan
       udp: true
-    - name: trojan-856237620
-      password: MiTiVPN
-      port: 443
-      server: 140.248.185.253
-      skip-cert-verify: false
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-857702418
-        - trojan-856237620
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-857702418
-        - trojan-856237620
       type: select
 rules:
     - MATCH,select

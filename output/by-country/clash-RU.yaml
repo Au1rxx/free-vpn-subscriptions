@@ -1,11 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-856392007
-      password: _cHgXl6zRL9IXuQpPYITG_LIX76WLNji
-      port: 1080
-      server: 89.23.97.95
-      type: ss
-      udp: true
     - name: hysteria2-855920168
       password: 41edb44c8e
       port: 11592
@@ -24,13 +17,6 @@ proxies:
       type: vless
       udp: true
       uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-    - name: vless-856242622
-      network: ws
-      port: 2200
-      server: 200.165.234.119
-      type: vless
-      udp: true
-      uuid: 936b7663-a841-4b42-b639-6e3fab1dbf45
     - flow: xtls-rprx-vision
       name: vless-656189841
       network: tcp
@@ -42,43 +28,21 @@ proxies:
       type: vless
       udp: true
       uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-    - name: vless-856242619
-      network: ws
-      port: 2200
-      server: 200.165.234.119
-      type: vless
-      udp: true
-      uuid: 936b7663-a841-4b42-b639-6e3fab1dbf45
-    - cipher: aes-256-cfb
-      name: shadowsocks-696792830
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 194.38.11.86
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-856392007
         - hysteria2-855920168
         - vless-522230436
-        - vless-856242622
         - vless-656189841
-        - vless-856242619
-        - shadowsocks-696792830
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-856392007
         - hysteria2-855920168
         - vless-522230436
-        - vless-856242622
         - vless-656189841
-        - vless-856242619
-        - shadowsocks-696792830
       type: select
 rules:
     - MATCH,select

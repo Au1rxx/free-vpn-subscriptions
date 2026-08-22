@@ -19,58 +19,6 @@ proxies:
       type: vless
       udp: true
       uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
-    - client-fingerprint: safari
-      name: vless-856264484
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: eNvO4-6_VFngHHC6D5AhcCpCpOdi5gY7-Srimhh-6Xw
-        short-id: ""
-      server: 185.207.66.243
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4fe19d97-7b1d-4cb2-99ee-4bd8658a4c34
-    - client-fingerprint: ios
-      name: vless-856264492
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: eNvO4-6_VFngHHC6D5AhcCpCpOdi5gY7-Srimhh-6Xw
-        short-id: ""
-      server: 185.207.66.243
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 626c0789-16d1-4815-be8b-bd03959d7d12
-    - client-fingerprint: edge
-      name: vless-856264486
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: eNvO4-6_VFngHHC6D5AhcCpCpOdi5gY7-Srimhh-6Xw
-        short-id: ""
-      server: 185.207.66.243
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 25d18f6f-f701-4da1-93d8-ec712f05963b
-    - client-fingerprint: edge
-      name: vless-856264478
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: eNvO4-6_VFngHHC6D5AhcCpCpOdi5gY7-Srimhh-6Xw
-        short-id: ""
-      server: 185.207.66.243
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0e75f6ee-9a4d-4019-8276-cacf388d2ec6
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-856081333
@@ -85,17 +33,28 @@ proxies:
       type: vless
       udp: true
       uuid: 485717cf-e96c-40db-9bc1-624060b89f20
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-824303048
+      network: tcp
+      port: 49475
+      reality-opts:
+        public-key: i0nN_0uLl5ha8pIf6gNNLeLQe7it-nXDFLC5eM1BHV4
+        short-id: bb9b8f5f
+      server: 92yqc126g8qwe6v23n01.haiyucloud.com
+      servername: www.python.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 485717cf-e96c-40db-9bc1-624060b89f20
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-856081357
         - vless-483686868
-        - vless-856264484
-        - vless-856264492
-        - vless-856264486
-        - vless-856264478
         - vless-856081333
+        - vless-824303048
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -103,11 +62,8 @@ proxy-groups:
         - auto
         - hysteria2-856081357
         - vless-483686868
-        - vless-856264484
-        - vless-856264492
-        - vless-856264486
-        - vless-856264478
         - vless-856081333
+        - vless-824303048
       type: select
 rules:
     - MATCH,select
