@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-696781176
+      password: 493b3d1b5d6a298a32eea1935463dc4d
+      port: 59443
+      server: tyy129.magiclampcloud.com
+      skip-cert-verify: true
+      sni: tyy129.magiclampcloud.com
+      type: trojan
+      udp: true
     - name: vless-813412050
       network: ws
       port: 443
@@ -43,6 +51,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-696781176
         - vless-813412050
         - vless-819569201
         - vless-828161787
@@ -52,6 +61,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-696781176
         - vless-813412050
         - vless-819569201
         - vless-828161787
