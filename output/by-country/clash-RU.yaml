@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-856380986
-      password: 41edb44c8e
-      port: 11592
-      server: srv-17e124.21freedom.net
-      skip-cert-verify: true
-      sni: srv-17e124.21freedom.net
-      type: hysteria2
     - flow: xtls-rprx-vision
       name: vless-656189841
       network: tcp
@@ -39,13 +32,6 @@ proxies:
       type: vless
       udp: true
       uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
-    - name: hysteria2-856354785
-      password: d532115bea
-      port: 11592
-      server: srv-0dc9de.21freedom.net
-      skip-cert-verify: true
-      sni: srv-0dc9de.21freedom.net
-      type: hysteria2
     - name: hysteria2-855659712
       password: 41edb44c8e
       port: 11592
@@ -67,29 +53,67 @@ proxies:
       type: vless
       udp: true
       uuid: 663836b2-f676-43fb-977f-47c495b1b383
+    - flow: xtls-rprx-vision
+      name: vless-505393957
+      network: raw
+      port: 443
+      server: ru52.mechvpn.online
+      servername: ru52.mechvpn.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-812224517
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: uo-U-FDlo7Cqldg7JKUe8jHvYnwP08NanGX0tUFrqEc
+        short-id: bef240e96a8474a3
+      server: 138.124.255.221
+      servername: russia.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - flow: xtls-rprx-vision
+      name: vless-659217162
+      network: tcp
+      port: 443
+      server: 94.156.181.52
+      servername: ru52.mechvpn.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-856380986
         - vless-656189841
         - vless-516101185
         - vless-656161244
-        - hysteria2-856354785
         - hysteria2-855659712
         - vless-859752824
+        - vless-505393957
+        - vless-812224517
+        - vless-659217162
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-856380986
         - vless-656189841
         - vless-516101185
         - vless-656161244
-        - hysteria2-856354785
         - hysteria2-855659712
         - vless-859752824
+        - vless-505393957
+        - vless-812224517
+        - vless-659217162
       type: select
 rules:
     - MATCH,select

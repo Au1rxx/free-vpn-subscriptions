@@ -20,13 +20,6 @@ proxies:
       skip-cert-verify: false
       sni: ""
       type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-696792833
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 95.170.13.47
-      type: ss
-      udp: true
     - name: vless-694391514
       network: grpc
       port: 2083
@@ -69,13 +62,13 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-513893044
-      password: BqnqToih0PbU
-      port: 8388
-      server: fr3.levikogjgfdd.ir
-      type: ss
+    - name: vless-855100544
+      network: raw
+      port: 443
+      server: france.me.pingsf.ir
+      type: vless
       udp: true
+      uuid: d33d2dd1-04c1-4d43-b2e6-77c56297128e
     - name: vless-781312932
       network: tcp
       port: 24144
@@ -651,6 +644,49 @@ proxies:
       type: vless
       udp: true
       uuid: nasnet
+    - flow: xtls-rprx-vision
+      name: vless-332701820
+      network: tcp
+      port: 443
+      server: nasnet-162191099-direct.mbghalibaf.com
+      servername: nasnet-162191099-direct.mbghalibaf.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e8b1500b-e9e8-5492-8312-f4eadf7d0767
+    - flow: xtls-rprx-vision
+      name: vless-510633066
+      network: tcp
+      port: 443
+      server: fr199.mechvpn.online
+      servername: fr199.mechvpn.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+    - name: vless-650322292
+      network: ws
+      port: 443
+      server: 149.202.58.99
+      servername: bab-6.site
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: b585dc5e-55bf-4a8b-913a-27c9ccac05c3
+    - flow: xtls-rprx-vision
+      name: vless-470978231
+      network: tcp
+      port: 443
+      server: 162.19.10.99
+      servername: nasnet-162191099-direct.mbghalibaf.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e8b1500b-e9e8-5492-8312-f4eadf7d0767
 proxy-groups:
     - interval: 300
       name: auto
@@ -658,12 +694,11 @@ proxy-groups:
         - vless-842779160
         - hysteria2-600117027
         - hysteria2-652726852
-        - shadowsocks-696792833
         - vless-694391514
         - vless-700283246
         - vless-650648383
         - vless-655861530
-        - shadowsocks-513893044
+        - vless-855100544
         - vless-781312932
         - vless-713169232
         - vless-656161211
@@ -719,6 +754,10 @@ proxy-groups:
         - vless-470986011
         - vless-557179226
         - vless-650665528
+        - vless-332701820
+        - vless-510633066
+        - vless-650322292
+        - vless-470978231
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -727,12 +766,11 @@ proxy-groups:
         - vless-842779160
         - hysteria2-600117027
         - hysteria2-652726852
-        - shadowsocks-696792833
         - vless-694391514
         - vless-700283246
         - vless-650648383
         - vless-655861530
-        - shadowsocks-513893044
+        - vless-855100544
         - vless-781312932
         - vless-713169232
         - vless-656161211
@@ -788,6 +826,10 @@ proxy-groups:
         - vless-470986011
         - vless-557179226
         - vless-650665528
+        - vless-332701820
+        - vless-510633066
+        - vless-650322292
+        - vless-470978231
       type: select
 rules:
     - MATCH,select
