@@ -1,0 +1,38 @@
+proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-779606858
+      password: M3t2ZEQcMGRWBjRa
+      port: 9011
+      server: 195.238.126.20
+      type: ss
+      udp: true
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-855530593
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: jAJoyWJ4nMGai3H9BOa6QMUr2Vvpgqs8VipbaO5mCVU
+        short-id: 3130197867c23edb
+      server: 62.152.58.117
+      servername: wl-13-1.nodes.ac
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2af2ccec-3e8f-4a82-b5d3-101b72d291d9
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-779606858
+        - vless-855530593
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-779606858
+        - vless-855530593
+      type: select
+rules:
+    - MATCH,select

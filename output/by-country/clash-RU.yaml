@@ -1,0 +1,62 @@
+proxies:
+    - name: vless-335036314
+      network: ws
+      port: 8880
+      server: 45.80.111.175
+      type: vless
+      udp: true
+      uuid: b1cf484e-651f-432b-b086-f148e010669e
+    - cipher: aes-256-gcm
+      name: shadowsocks-812343796
+      password: a2c044fe22258a18
+      port: 12666
+      server: 46.29.163.40
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-412892197
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8bkjYMx4EXdRTHTgQ6wMaeyGl-HfskzixE0Is-kMQXU
+        short-id: e3c60a1b71b462fa
+      server: 45.91.52.125
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3ab2615c-689d-463b-8990-a95013894348
+    - client-fingerprint: ios
+      name: vless-855493963
+      network: grpc
+      port: 9001
+      reality-opts:
+        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+        short-id: ""
+      server: 78.159.245.75
+      servername: api-maps.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2c634977-584e-4e1f-b501-1b70c77a6743
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-335036314
+        - shadowsocks-812343796
+        - vless-412892197
+        - vless-855493963
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-335036314
+        - shadowsocks-812343796
+        - vless-412892197
+        - vless-855493963
+      type: select
+rules:
+    - MATCH,select

@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-459556904
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: cGVu5j95KoeHBkWXveyTKolORbdvZm9g1T6yyo64ZBg
-        short-id: d26f4703cdd30f4e
-      server: 89.36.161.222
-      servername: vk.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-453054129
@@ -27,28 +13,26 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: hysteria2-232798723
-      password: vpn-hy2-lv-2026
-      port: 8444
-      server: 185.236.22.119
-      skip-cert-verify: true
-      sni: 185.236.22.119
-      type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-812343923
+      password: rpgbNnU9rDDU4aWZ
+      port: 9094
+      server: 185.135.86.175
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-459556904
         - vless-453054129
-        - hysteria2-232798723
+        - shadowsocks-812343923
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-459556904
         - vless-453054129
-        - hysteria2-232798723
+        - shadowsocks-812343923
       type: select
 rules:
     - MATCH,select

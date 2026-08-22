@@ -13,24 +13,6 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-99676
-      network: tcp
-      port: 22324
-      server: 85.90.217.42
-      type: vmess
-      udp: true
-      uuid: 04621bae-ab36-11ec-b909-0242ac120002
-    - alterId: 0
-      cipher: auto
-      name: vmess-2386872
-      network: tcp
-      port: 22324
-      server: 85.90.217.42
-      type: vmess
-      udp: true
-      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - name: trojan-812343826
       password: fg20mtCFHy
       port: 5443
@@ -81,20 +63,27 @@ proxies:
       sni: www.bing.com
       type: trojan
       udp: true
+    - name: trojan-855510859
+      password: fg20mtCFHy
+      port: 5443
+      server: 172.233.115.40
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11052
         - shadowsocks-16132
-        - vmess-99676
-        - vmess-2386872
         - trojan-812343826
         - vless-826754153
         - vless-828161780
         - vless-829685229
         - vless-842638788
         - trojan-855279872
+        - trojan-855510859
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -102,14 +91,13 @@ proxy-groups:
         - auto
         - shadowsocks-11052
         - shadowsocks-16132
-        - vmess-99676
-        - vmess-2386872
         - trojan-812343826
         - vless-826754153
         - vless-828161780
         - vless-829685229
         - vless-842638788
         - trojan-855279872
+        - trojan-855510859
       type: select
 rules:
     - MATCH,select

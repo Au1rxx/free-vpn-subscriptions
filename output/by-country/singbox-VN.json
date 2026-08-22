@@ -1,0 +1,35 @@
+{
+  "outbounds": [
+    {
+      "server": "dotc.psdgold.st",
+      "server_port": 51636,
+      "tag": "vless-855511939",
+      "type": "vless",
+      "uuid": "86036bff-c70c-429a-b43e-7ee84764a61e"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-855511939"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-855511939"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

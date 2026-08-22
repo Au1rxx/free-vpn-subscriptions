@@ -1,0 +1,22 @@
+proxies:
+    - name: vless-855511939
+      network: tcp
+      port: 51636
+      server: dotc.psdgold.st
+      type: vless
+      udp: true
+      uuid: 86036bff-c70c-429a-b43e-7ee84764a61e
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-855511939
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-855511939
+      type: select
+rules:
+    - MATCH,select

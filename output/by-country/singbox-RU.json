@@ -1,0 +1,102 @@
+{
+  "outbounds": [
+    {
+      "server": "45.80.111.175",
+      "server_port": 8880,
+      "tag": "vless-335036314",
+      "transport": {
+        "headers": {
+          "Host": "rutube.ummapeople.online"
+        },
+        "path": "/rutube",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "b1cf484e-651f-432b-b086-f148e010669e"
+    },
+    {
+      "method": "aes-256-gcm",
+      "password": "a2c044fe22258a18",
+      "server": "46.29.163.40",
+      "server_port": 12666,
+      "tag": "shadowsocks-812343796",
+      "type": "shadowsocks"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "45.91.52.125",
+      "server_port": 443,
+      "tag": "vless-412892197",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "8bkjYMx4EXdRTHTgQ6wMaeyGl-HfskzixE0Is-kMQXU",
+          "short_id": "e3c60a1b71b462fa"
+        },
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "3ab2615c-689d-463b-8990-a95013894348"
+    },
+    {
+      "server": "78.159.245.75",
+      "server_port": 9001,
+      "tag": "vless-855493963",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc"
+        },
+        "server_name": "api-maps.yandex.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "transport": {
+        "service_name": "grpc-reality",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "2c634977-584e-4e1f-b501-1b70c77a6743"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-335036314",
+        "shadowsocks-812343796",
+        "vless-412892197",
+        "vless-855493963"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-335036314",
+        "shadowsocks-812343796",
+        "vless-412892197",
+        "vless-855493963"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

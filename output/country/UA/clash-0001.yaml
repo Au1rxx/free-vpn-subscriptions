@@ -1,10 +1,26 @@
 proxies:
+    - name: trojan-122884
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20066
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: trojan-176269089
       password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
       port: 20066
       server: oplosgru-c.catcat321.com
       skip-cert-verify: true
       sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-182595890
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20066
+      server: oplosgru-c.catcat321.com
+      skip-cert-verify: true
+      sni: ""
       type: trojan
       udp: true
     - name: trojan-184903441
@@ -45,6 +61,14 @@ proxies:
       server: oplosgru-c.catcat321.com
       skip-cert-verify: true
       sni: oplosgru-c.catcat321.com
+      type: trojan
+      udp: true
+    - name: trojan-257074144
+      password: 41c406e2-12b5-41f2-a329-d0621052d675
+      port: 20066
+      server: hkdcrtc-e.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
       type: trojan
       udp: true
     - name: trojan-264875854
@@ -596,16 +620,29 @@ proxies:
       type: vless
       udp: true
       uuid: 65c56e1f-5c41-40bc-b0b5-9346772476ca
+    - name: vless-855418544
+      network: ws
+      port: 443
+      server: cfd.130209.xyz
+      servername: ukraine.142568.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 65c56e1f-5c41-40bc-b0b5-9346772476ca
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-122884
         - trojan-176269089
+        - trojan-182595890
         - trojan-184903441
         - trojan-184964690
         - trojan-187602946
         - trojan-192569962
         - trojan-194707948
+        - trojan-257074144
         - trojan-264875854
         - trojan-271216292
         - vless-429855172
@@ -647,17 +684,21 @@ proxy-groups:
         - vless-852110535
         - vless-855055385
         - vless-855070380
+        - vless-855418544
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-122884
         - trojan-176269089
+        - trojan-182595890
         - trojan-184903441
         - trojan-184964690
         - trojan-187602946
         - trojan-192569962
         - trojan-194707948
+        - trojan-257074144
         - trojan-264875854
         - trojan-271216292
         - vless-429855172
@@ -699,6 +740,7 @@ proxy-groups:
         - vless-852110535
         - vless-855055385
         - vless-855070380
+        - vless-855418544
       type: select
 rules:
     - MATCH,select
