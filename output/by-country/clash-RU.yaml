@@ -17,6 +17,13 @@ proxies:
       type: vless
       udp: true
       uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+    - name: hysteria2-856380986
+      password: 41edb44c8e
+      port: 11592
+      server: srv-17e124.21freedom.net
+      skip-cert-verify: true
+      sni: srv-17e124.21freedom.net
+      type: hysteria2
     - flow: xtls-rprx-vision
       name: vless-656189841
       network: tcp
@@ -28,13 +35,22 @@ proxies:
       type: vless
       udp: true
       uuid: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+    - name: hysteria2-856354785
+      password: d532115bea
+      port: 11592
+      server: srv-0dc9de.21freedom.net
+      skip-cert-verify: true
+      sni: srv-0dc9de.21freedom.net
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-855920168
         - vless-522230436
+        - hysteria2-856380986
         - vless-656189841
+        - hysteria2-856354785
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -42,7 +58,9 @@ proxy-groups:
         - auto
         - hysteria2-855920168
         - vless-522230436
+        - hysteria2-856380986
         - vless-656189841
+        - hysteria2-856354785
       type: select
 rules:
     - MATCH,select

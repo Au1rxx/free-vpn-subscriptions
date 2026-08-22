@@ -55,20 +55,6 @@ proxies:
       type: vless
       udp: true
       uuid: ec31f6d7-c71a-413d-93aa-24296805a594
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-254950445
-      network: raw
-      port: 40443
-      reality-opts:
-        public-key: g77ZJbm18JEotapmVRjaXi133MzkbhkU2lxhVeXx8zw
-        short-id: 68a8
-      server: 5.253.42.164
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-827658514
@@ -111,13 +97,6 @@ proxies:
       type: vless
       udp: true
       uuid: 15fd22d1-8931-4d41-af37-8ba6711e93fe
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-125111
-      password: EBDRo9THx4CqiFU7h5gfov76oNwzZURAh0ZwbWjBKddtUhvz
-      port: 31348
-      server: 103.120.178.193
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-629456321
@@ -132,20 +111,6 @@ proxies:
       type: vless
       udp: true
       uuid: 15fd22d1-8931-4d41-af37-8ba6711e93fe
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-855580725
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: FL9zvOg48NhHk_YWJMcDXNOseisuzeBW7d8KitUaAQM
-        short-id: dc941fb0778384e2
-      server: nsuc-znkbig.avonex.top
-      servername: www.bing.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ec31f6d7-c71a-413d-93aa-24296805a594
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-696792953
@@ -160,9 +125,9 @@ proxies:
       type: vless
       udp: true
       uuid: ec31f6d7-c71a-413d-93aa-24296805a594
-    - client-fingerprint: edge
+    - client-fingerprint: random
       flow: xtls-rprx-vision
-      name: vless-720974522
+      name: vless-856679303
       network: tcp
       port: 443
       reality-opts:
@@ -174,6 +139,15 @@ proxies:
       type: vless
       udp: true
       uuid: ec31f6d7-c71a-413d-93aa-24296805a594
+    - alterId: 0
+      cipher: auto
+      name: vmess-2387859
+      network: ws
+      port: 80
+      server: 152.67.8.205
+      type: vmess
+      udp: true
+      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
 proxy-groups:
     - interval: 300
       name: auto
@@ -182,15 +156,13 @@ proxy-groups:
         - vless-682971327
         - vless-838598336
         - vless-755661307
-        - vless-254950445
         - vless-827658514
         - vless-720974521
         - vless-682259479
-        - shadowsocks-125111
         - vless-629456321
-        - vless-855580725
         - vless-696792953
-        - vless-720974522
+        - vless-856679303
+        - vmess-2387859
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -200,15 +172,13 @@ proxy-groups:
         - vless-682971327
         - vless-838598336
         - vless-755661307
-        - vless-254950445
         - vless-827658514
         - vless-720974521
         - vless-682259479
-        - shadowsocks-125111
         - vless-629456321
-        - vless-855580725
         - vless-696792953
-        - vless-720974522
+        - vless-856679303
+        - vmess-2387859
       type: select
 rules:
     - MATCH,select
