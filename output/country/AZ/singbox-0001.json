@@ -1,0 +1,55 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "azerbaijan.zulacdn.ir",
+      "server_port": 50581,
+      "tag": "vless-856066408",
+      "tls": {
+        "alpn": [
+          "h2",
+          "h3",
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "rY0p9bslbo1BOCOy-KL3V7sVPyp-eJv0IR6NxysFtW8",
+          "short_id": "70a439e9aa8458cd"
+        },
+        "server_name": "google.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "13474472-ab43-4749-be44-769321b0d683"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-856066408"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-856066408"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

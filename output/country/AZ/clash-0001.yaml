@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-856066408
+      network: tcp
+      port: 50581
+      reality-opts:
+        public-key: rY0p9bslbo1BOCOy-KL3V7sVPyp-eJv0IR6NxysFtW8
+        short-id: 70a439e9aa8458cd
+      server: azerbaijan.zulacdn.ir
+      servername: google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 13474472-ab43-4749-be44-769321b0d683
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-856066408
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-856066408
+      type: select
+rules:
+    - MATCH,select
