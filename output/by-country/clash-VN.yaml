@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-743806855
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Kh1-hdn9zTY5a1-3qP8L_6UTRL2iNZ1pIr_X8U94OQM
+        short-id: 872303cf1e28389f
+      server: 216.133.158.108
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c08c499f-21bd-46ba-9146-5c770204342b
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-763734024
@@ -8,20 +22,6 @@ proxies:
         public-key: mCDHZBY0AYAeY7Aj7COGaegrm7QAwfueYYSC02vqbSY
         short-id: 0d8ca7e0b3d26321
       server: 103.225.197.237
-      servername: www.bing.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 432ab7a2-6e2b-4f0b-be4a-06bdcc714624
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-782826715
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: mCDHZBY0AYAeY7Aj7COGaegrm7QAwfueYYSC02vqbSY
-        short-id: 0d8ca7e0b3d26321
-      server: bftu-stnbal.servora.top
       servername: www.bing.com
       tls: true
       type: vless
@@ -55,6 +55,34 @@ proxies:
       type: vless
       udp: true
       uuid: c08c499f-21bd-46ba-9146-5c770204342b
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-742660276
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Kh1-hdn9zTY5a1-3qP8L_6UTRL2iNZ1pIr_X8U94OQM
+        short-id: 872303cf1e28389f
+      server: wf1y-1o2rzho.rixora.top
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c08c499f-21bd-46ba-9146-5c770204342b
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-782826715
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: mCDHZBY0AYAeY7Aj7COGaegrm7QAwfueYYSC02vqbSY
+        short-id: 0d8ca7e0b3d26321
+      server: bftu-stnbal.servora.top
+      servername: www.bing.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 432ab7a2-6e2b-4f0b-be4a-06bdcc714624
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-855773335
@@ -71,8 +99,8 @@ proxies:
       uuid: 432ab7a2-6e2b-4f0b-be4a-06bdcc714624
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-743806855
-      network: tcp
+      name: vless-855646733
+      network: raw
       port: 443
       reality-opts:
         public-key: Kh1-hdn9zTY5a1-3qP8L_6UTRL2iNZ1pIr_X8U94OQM
@@ -85,41 +113,45 @@ proxies:
       uuid: c08c499f-21bd-46ba-9146-5c770204342b
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-701345483
+      name: vless-702175392
       network: tcp
       port: 443
       reality-opts:
-        public-key: Kh1-hdn9zTY5a1-3qP8L_6UTRL2iNZ1pIr_X8U94OQM
-        short-id: 872303cf1e28389f
-      server: wf1y-1o2rzho.rixora.top
-      servername: www.apple.com
+        public-key: mCDHZBY0AYAeY7Aj7COGaegrm7QAwfueYYSC02vqbSY
+        short-id: 0d8ca7e0b3d26321
+      server: bftu-stnbal.servora.top
+      servername: www.bing.com
       tls: true
       type: vless
       udp: true
-      uuid: c08c499f-21bd-46ba-9146-5c770204342b
+      uuid: 432ab7a2-6e2b-4f0b-be4a-06bdcc714624
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-743806855
         - vless-763734024
-        - vless-782826715
         - vless-696792871
         - vless-721034836
+        - vless-742660276
+        - vless-782826715
         - vless-855773335
-        - vless-743806855
-        - vless-701345483
+        - vless-855646733
+        - vless-702175392
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-743806855
         - vless-763734024
-        - vless-782826715
         - vless-696792871
         - vless-721034836
+        - vless-742660276
+        - vless-782826715
         - vless-855773335
-        - vless-743806855
-        - vless-701345483
+        - vless-855646733
+        - vless-702175392
       type: select
 rules:
     - MATCH,select

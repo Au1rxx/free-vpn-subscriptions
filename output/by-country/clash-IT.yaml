@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: firefox
+      name: vless-483686868
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
     - client-fingerprint: safari
       name: vless-856264484
       network: grpc
@@ -25,29 +38,6 @@ proxies:
       type: vless
       udp: true
       uuid: 626c0789-16d1-4815-be8b-bd03959d7d12
-    - client-fingerprint: firefox
-      name: vless-483686868
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
-        short-id: 5b8a942318178e7b
-      server: 57.131.38.163
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
-    - name: vless-812215851
-      network: ws
-      port: 443
-      server: it2ws.wba-pn.ru
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2b622609-bb92-49e8-9631-4ada00324f47
     - client-fingerprint: edge
       name: vless-856264486
       network: grpc
@@ -84,41 +74,27 @@ proxies:
       type: vless
       udp: true
       uuid: 2b622609-bb92-49e8-9631-4ada00324f47
-    - name: vless-782728009
-      network: ws
-      port: 443
-      server: it2ws.wba-pn.ru
-      servername: it2ws.wba-pn.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2b622609-bb92-49e8-9631-4ada00324f47
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-483686868
         - vless-856264484
         - vless-856264492
-        - vless-483686868
-        - vless-812215851
         - vless-856264486
         - vless-856264478
         - vless-750827215
-        - vless-782728009
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-483686868
         - vless-856264484
         - vless-856264492
-        - vless-483686868
-        - vless-812215851
         - vless-856264486
         - vless-856264478
         - vless-750827215
-        - vless-782728009
       type: select
 rules:
     - MATCH,select

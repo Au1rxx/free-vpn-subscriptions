@@ -1,4 +1,11 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-855646726
+      password: D8fgnR28McTbgxEnSGwZfPAYGPJDYseZvJfTCk8tveo=
+      port: 41911
+      server: 119.59.116.169
+      type: ss
+      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-696792800
       password: 7eadc6dbe2ae
@@ -10,12 +17,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-855646726
         - shadowsocks-696792800
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-855646726
         - shadowsocks-696792800
       type: select
 rules:
