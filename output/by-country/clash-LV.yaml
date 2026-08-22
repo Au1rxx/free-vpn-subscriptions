@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-855772370
-      password: kxHw-Dk-e9dffgzYszMlEqLJ92AnY3Pi
-      port: 443
-      server: tr-latvia1.unlimited-access.ru
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-702383203
@@ -21,13 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
-    - name: vless-552634947
-      network: ws
-      port: 2096
-      server: 89.36.161.222
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - name: vless-656188025
       network: grpc
       port: 2083
@@ -38,10 +23,10 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: vless-718040241
+    - name: vless-583609878
       network: grpc
       port: 2083
-      server: laoye.in-gect.fun
+      server: 89.36.161.222
       servername: laoye.in-gect.fun
       skip-cert-verify: false
       tls: true
@@ -86,6 +71,13 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - name: vless-552634947
+      network: ws
+      port: 2096
+      server: 89.36.161.222
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-702383213
@@ -100,49 +92,31 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-703617448
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: m6RDw1b8R4lCaRUIzhHpy6TtX2Dhk6nyby8dWzeQqA0
-        short-id: dd3ff38418d29d22
-      server: 31.76.62.167
-      servername: eu-west.cendora.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-855772370
         - vless-702383203
-        - vless-552634947
         - vless-656188025
-        - vless-718040241
+        - vless-583609878
         - vless-503223731
         - vless-834288293
         - vless-654431412
+        - vless-552634947
         - vless-702383213
-        - vless-703617448
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-855772370
         - vless-702383203
-        - vless-552634947
         - vless-656188025
-        - vless-718040241
+        - vless-583609878
         - vless-503223731
         - vless-834288293
         - vless-654431412
+        - vless-552634947
         - vless-702383213
-        - vless-703617448
       type: select
 rules:
     - MATCH,select

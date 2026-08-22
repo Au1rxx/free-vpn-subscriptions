@@ -13,6 +13,20 @@ proxies:
       type: vless
       udp: true
       uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-587204637
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: a2qGjvUPq6Nz5FTbn_MSHp-055q2h8YXqIL5VIJ5zwE
+        short-id: d15c17cef9b2e456
+      server: 51.161.204.242
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-659123901
@@ -105,6 +119,14 @@ proxies:
       sni: darling-mutt.rooster465.autos
       type: trojan
       udp: true
+    - name: trojan-855908823
+      password: EQ30679154
+      port: 443
+      server: sharing-chipmunk.rooster465.autos
+      skip-cert-verify: false
+      sni: sharing-chipmunk.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-855239671
       password: FH72359861
       port: 443
@@ -185,30 +207,6 @@ proxies:
       sni: true-pony.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-453181864
-      password: AE62539071
-      port: 443
-      server: together-dingo.rooster465.autos
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
-    - name: trojan-855239676
-      password: PQ05174892
-      port: 443
-      server: wanted-marmoset.rooster465.autos
-      skip-cert-verify: false
-      sni: wanted-marmoset.rooster465.autos
-      type: trojan
-      udp: true
-    - name: trojan-855457833
-      password: EQ30679154
-      port: 443
-      server: 87.121.33.19
-      skip-cert-verify: false
-      sni: chief-antelope.rooster465.autos
-      type: trojan
-      udp: true
     - name: trojan-855762686
       password: EQ30679154
       port: 443
@@ -217,10 +215,10 @@ proxies:
       sni: fleet-hawk.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-455144253
+    - name: trojan-453181864
       password: AE62539071
       port: 443
-      server: darling-mutt.rooster465.autos
+      server: together-dingo.rooster465.autos
       skip-cert-verify: false
       sni: ""
       type: trojan
@@ -230,6 +228,7 @@ proxy-groups:
       name: auto
       proxies:
         - vless-532685580
+        - vless-587204637
         - vless-659123901
         - shadowsocks-234
         - vless-656189585
@@ -241,6 +240,7 @@ proxy-groups:
         - trojan-855239675
         - trojan-855239668
         - trojan-855239661
+        - trojan-855908823
         - trojan-855239671
         - trojan-855239656
         - trojan-855239674
@@ -251,17 +251,15 @@ proxy-groups:
         - trojan-855383775
         - trojan-855763710
         - trojan-855762681
-        - trojan-453181864
-        - trojan-855239676
-        - trojan-855457833
         - trojan-855762686
-        - trojan-455144253
+        - trojan-453181864
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-532685580
+        - vless-587204637
         - vless-659123901
         - shadowsocks-234
         - vless-656189585
@@ -273,6 +271,7 @@ proxy-groups:
         - trojan-855239675
         - trojan-855239668
         - trojan-855239661
+        - trojan-855908823
         - trojan-855239671
         - trojan-855239656
         - trojan-855239674
@@ -283,11 +282,8 @@ proxy-groups:
         - trojan-855383775
         - trojan-855763710
         - trojan-855762681
-        - trojan-453181864
-        - trojan-855239676
-        - trojan-855457833
         - trojan-855762686
-        - trojan-455144253
+        - trojan-453181864
       type: select
 rules:
     - MATCH,select
