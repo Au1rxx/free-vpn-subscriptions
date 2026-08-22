@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-857104265
+      network: grpc
+      port: 2101
+      server: 132.243.223.227
+      servername: 132-243-223-227.sslip.io
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
     - name: hysteria2-810007491
       password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
       port: 8443
@@ -60,6 +70,20 @@ proxies:
       skip-cert-verify: false
       sni: hopp-legend-se.roxa.org
       type: hysteria2
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-696176645
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: YQTixaXzPVImuRc4TUbrFAekjIiaYV-t5S-HTKlH0AU
+        short-id: 2186a755ed67b034
+      server: 150.241.86.150
+      servername: nordic.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
     - client-fingerprint: chrome
       name: vless-813956180
       network: tcp
@@ -73,23 +97,11 @@ proxies:
       type: vless
       udp: true
       uuid: 694eb5d5-794c-4389-af65-e5a4b8489dae
-    - client-fingerprint: edge
-      name: vless-808496055
-      network: grpc
-      port: 2087
-      reality-opts:
-        public-key: 92SyLtOmKXvLc6wSMew9sRpmRfVY_BwywV8Mf5r-p2s
-        short-id: 72ce50a0
-      server: 157.180.119.87
-      servername: www.bing.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d01d5a74-09fb-4e9e-b0d9-38b5fd77ad70
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-857104265
         - hysteria2-810007491
         - hysteria2-813371789
         - vless-812211853
@@ -97,13 +109,14 @@ proxy-groups:
         - vless-856210273
         - hysteria2-818203526
         - hysteria2-812154987
+        - vless-696176645
         - vless-813956180
-        - vless-808496055
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-857104265
         - hysteria2-810007491
         - hysteria2-813371789
         - vless-812211853
@@ -111,8 +124,8 @@ proxy-groups:
         - vless-856210273
         - hysteria2-818203526
         - hysteria2-812154987
+        - vless-696176645
         - vless-813956180
-        - vless-808496055
       type: select
 rules:
     - MATCH,select

@@ -1,22 +1,46 @@
 proxies:
-    - name: hysteria2-855659698
+    - name: hysteria2-855679903
       password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
       port: 8080
       server: 162.249.124.111
-      skip-cert-verify: false
+      skip-cert-verify: true
       sni: hopp-germany-new.ddnsguru.com
       type: hysteria2
+    - name: hysteria2-855679912
+      password: 1ba59989-225e-4f1c-ab62-9bd7366009cb
+      port: 443
+      server: 194.135.34.207
+      skip-cert-verify: true
+      sni: 194.135.34.207
+      type: hysteria2
+    - client-fingerprint: firefox
+      name: vless-810591836
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: dUFJ3jZPMH9WvjtAnUc9wYhO_IX1czIi-CidF_HdFDA
+        short-id: c267be657e1539ea
+      server: 151.241.226.201
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 52b1aca9-a2ba-4249-9e9f-d488f89c1445
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-855659698
+        - hysteria2-855679903
+        - hysteria2-855679912
+        - vless-810591836
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-855659698
+        - hysteria2-855679903
+        - hysteria2-855679912
+        - vless-810591836
       type: select
 rules:
     - MATCH,select

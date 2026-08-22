@@ -1,0 +1,42 @@
+{
+  "outbounds": [
+    {
+      "server": "188.114.97.6",
+      "server_port": 8080,
+      "tag": "vless-855698124",
+      "transport": {
+        "headers": {
+          "Host": "workspace.evan00.dpdns.org"
+        },
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "1078d418-b4e0-4668-9018-dc90c2042d61"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-855698124"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-855698124"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

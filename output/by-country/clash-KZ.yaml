@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-857101272
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 9F7JxyyP-TNLt0dY2xOB0_34I8W0xXIpFY7rZ7-L0Gg
+        short-id: 19aa22f681923dc8
+      server: 92.46.41.247
+      servername: kuzya.api.dznn.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4eb871d0-20b7-42a1-9cd1-2447eca55735
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-857101272
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-857101272
+      type: select
+rules:
+    - MATCH,select
