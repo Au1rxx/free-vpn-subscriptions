@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-857702418
+      password: MiTiVPN
+      port: 443
+      server: 188.114.97.6
+      skip-cert-verify: false
+      sni: 3865895-mitivpn--mitivpn------mitivpn.mitivpn-s.lifestyle
+      type: trojan
+      udp: true
     - name: trojan-856237620
       password: MiTiVPN
       port: 443
@@ -11,12 +19,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-857702418
         - trojan-856237620
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-857702418
         - trojan-856237620
       type: select
 rules:
