@@ -1,0 +1,54 @@
+{
+  "outbounds": [
+    {
+      "password": "9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z",
+      "server": "162.249.124.112",
+      "server_port": 8080,
+      "tag": "hysteria2-859306111",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "hopp-germany-new.ddnsguru.com"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "password": "1ba59989-225e-4f1c-ab62-9bd7366009cb",
+      "server": "194.135.34.207",
+      "server_port": 443,
+      "tag": "hysteria2-855679912",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "194.135.34.207"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-859306111",
+        "hysteria2-855679912"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-859306111",
+        "hysteria2-855679912"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

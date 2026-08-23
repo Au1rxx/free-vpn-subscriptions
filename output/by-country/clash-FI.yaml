@@ -9,6 +9,16 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
+    - name: vless-857104265
+      network: grpc
+      port: 2101
+      server: 132.243.223.227
+      servername: 132-243-223-227.sslip.io
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-858384297
       password: J1InuU6QRT5JOh1mQfkjU2
@@ -33,23 +43,40 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
+    - client-fingerprint: chrome
+      name: vless-812211853
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Qr6_9TMQYMCB2hVSYeONcMvxBqIaT0mzPUy8nIivV1g
+        short-id: b58b
+      server: 89.167.2.67
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 694eb5d5-794c-4389-af65-e5a4b8489dae
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-856210273
+        - vless-857104265
         - shadowsocks-858384297
         - shadowsocks-336700747
         - vless-860755884
+        - vless-812211853
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-856210273
+        - vless-857104265
         - shadowsocks-858384297
         - shadowsocks-336700747
         - vless-860755884
+        - vless-812211853
       type: select
 rules:
     - MATCH,select

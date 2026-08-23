@@ -1,11 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-26744
-      password: QFWzCw2uX9B9i6qAYeFBIE
-      port: 443
-      server: 154.46.31.106
-      type: ss
-      udp: true
     - name: trojan-119243
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20017
@@ -360,11 +353,17 @@ proxies:
       skip-cert-verify: true
       sni: hopp-romania-new.roxa.org
       type: hysteria2
+    - name: hysteria2-860781864
+      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
+      port: 443
+      server: rou0001ntrhy01.tcp-reset-club.net
+      skip-cert-verify: false
+      sni: ""
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-26744
         - trojan-119243
         - hysteria2-290666035
         - hysteria2-315405971
@@ -403,12 +402,12 @@ proxy-groups:
         - hysteria2-859306105
         - hysteria2-859968188
         - hysteria2-860759612
+        - hysteria2-860781864
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-26744
         - trojan-119243
         - hysteria2-290666035
         - hysteria2-315405971
@@ -447,6 +446,7 @@ proxy-groups:
         - hysteria2-859306105
         - hysteria2-859968188
         - hysteria2-860759612
+        - hysteria2-860781864
       type: select
 rules:
     - MATCH,select
