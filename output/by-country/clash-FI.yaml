@@ -9,13 +9,13 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - name: hysteria2-812154987
-      password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
-      port: 8443
-      server: 222.167.212.82
-      skip-cert-verify: false
-      sni: hopp-legend-se.roxa.org
-      type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-859579979
+      password: qDzHgyQ3wFYKE3Uw0r8huBrFSHj_PuUW
+      port: 33
+      server: 62.210.249.24
+      type: ss
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-336700747
       password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
@@ -33,35 +33,41 @@ proxies:
       type: vless
       udp: true
       uuid: 57a9cf7d-bb6c-414e-97be-1985f7123c61
-    - name: vless-857104265
-      network: grpc
-      port: 2101
-      server: 132.243.223.227
-      servername: 132-243-223-227.sslip.io
-      skip-cert-verify: false
-      tls: true
-      type: vless
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-858384297
+      password: J1InuU6QRT5JOh1mQfkjU2
+      port: 16015
+      server: 144.31.243.2
+      type: ss
       udp: true
-      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-376006390
+      password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
+      port: 42982
+      server: 217.28.129.81
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-856210273
-        - hysteria2-812154987
+        - shadowsocks-859579979
         - shadowsocks-336700747
         - vless-858517087
-        - vless-857104265
+        - shadowsocks-858384297
+        - shadowsocks-376006390
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-856210273
-        - hysteria2-812154987
+        - shadowsocks-859579979
         - shadowsocks-336700747
         - vless-858517087
-        - vless-857104265
+        - shadowsocks-858384297
+        - shadowsocks-376006390
       type: select
 rules:
     - MATCH,select

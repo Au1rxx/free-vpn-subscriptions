@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-859419831
+      network: tcp
+      port: 10053
+      reality-opts:
+        public-key: o-ud3x7exNVYmknsVseZyUGMyK_680Nub0Cf6W4KiRw
+        short-id: cbbf64
+      server: family.bucket.9.kfc-520.com
+      servername: www.amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7aecb4a5-f0a4-32a0-aabe-c9d5241e313f
     - name: hysteria2-743190439
       password: l25nJa8z0D5pT6jl
       port: 26001
@@ -24,6 +38,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-859419831
         - hysteria2-743190439
         - vless-858367474
       type: url-test
@@ -31,6 +46,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-859419831
         - hysteria2-743190439
         - vless-858367474
       type: select

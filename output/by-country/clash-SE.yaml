@@ -1,0 +1,43 @@
+proxies:
+    - client-fingerprint: firefox
+      name: vless-857350740
+      network: grpc
+      port: 2054
+      reality-opts:
+        public-key: z8O-5nI4-3eKexufSrkEUvAubPw7a73cQtTGNDp3Uxo
+        short-id: 6ffc74326185d4d6
+      server: 143.246.198.91
+      servername: www.ibm.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 80d02a71-54a5-4c5b-976d-5ee573c502af
+    - client-fingerprint: firefox
+      name: vless-857369684
+      network: grpc
+      port: 2054
+      reality-opts:
+        public-key: z8O-5nI4-3eKexufSrkEUvAubPw7a73cQtTGNDp3Uxo
+        short-id: 6ffc74326185d4d6
+      server: 143.246.198.91
+      servername: www.ibm.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d900a139-8b5f-4758-8a32-389c6f36fc86
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-857350740
+        - vless-857369684
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-857350740
+        - vless-857369684
+      type: select
+rules:
+    - MATCH,select

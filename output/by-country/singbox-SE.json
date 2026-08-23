@@ -1,0 +1,80 @@
+{
+  "outbounds": [
+    {
+      "server": "143.246.198.91",
+      "server_port": 2054,
+      "tag": "vless-857350740",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "z8O-5nI4-3eKexufSrkEUvAubPw7a73cQtTGNDp3Uxo",
+          "short_id": "6ffc74326185d4d6"
+        },
+        "server_name": "www.ibm.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "service_name": "grpc",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "80d02a71-54a5-4c5b-976d-5ee573c502af"
+    },
+    {
+      "server": "143.246.198.91",
+      "server_port": 2054,
+      "tag": "vless-857369684",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "z8O-5nI4-3eKexufSrkEUvAubPw7a73cQtTGNDp3Uxo",
+          "short_id": "6ffc74326185d4d6"
+        },
+        "server_name": "www.ibm.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "service_name": "grpc",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "d900a139-8b5f-4758-8a32-389c6f36fc86"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-857350740",
+        "vless-857369684"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-857350740",
+        "vless-857369684"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
