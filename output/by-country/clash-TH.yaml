@@ -6,17 +6,43 @@ proxies:
       server: 103.169.67.34
       type: ss
       udp: true
+    - name: trojan-862493530
+      password: 6fbda1e2-85e5-48dc-9fa0-21be0651aa47
+      port: 22221
+      server: gfw.cmcuct.com
+      skip-cert-verify: true
+      sni: cos.ap-hongkong.myqcloud.com
+      type: trojan
+      udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-862485563
+      network: tcp
+      port: 10032
+      reality-opts:
+        public-key: yXxDl06l9pXXT4_1kqpdgOyfAhORcsfPgLTxHu50zQM
+        short-id: f9275dbb5a
+      server: 103.231.15.195
+      servername: www.hp.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7aecb4a5-f0a4-32a0-aabe-c9d5241e313f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-696792800
+        - trojan-862493530
+        - vless-862485563
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-696792800
+        - trojan-862493530
+        - vless-862485563
       type: select
 rules:
     - MATCH,select
