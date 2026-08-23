@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-861834523
+      password: 41edb44c8e
+      port: 11592
+      server: srv-17e124.21freedom.net
+      skip-cert-verify: false
+      sni: srv-17e124.21freedom.net
+      type: hysteria2
     - name: hysteria2-855920168
       password: 41edb44c8e
       port: 11592
@@ -6,42 +13,19 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - cipher: aes-256-gcm
-      name: shadowsocks-860024429
-      password: d99c422199e62b6b
-      port: 40119
-      server: 194.87.69.207
-      type: ss
-      udp: true
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-812224517
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: uo-U-FDlo7Cqldg7JKUe8jHvYnwP08NanGX0tUFrqEc
-        short-id: bef240e96a8474a3
-      server: 138.124.255.221
-      servername: russia.cendora.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-861834523
         - hysteria2-855920168
-        - shadowsocks-860024429
-        - vless-812224517
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-861834523
         - hysteria2-855920168
-        - shadowsocks-860024429
-        - vless-812224517
       type: select
 rules:
     - MATCH,select

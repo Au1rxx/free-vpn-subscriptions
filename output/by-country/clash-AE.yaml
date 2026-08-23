@@ -1,0 +1,38 @@
+proxies:
+    - name: vless-81052
+      network: ws
+      port: 22573
+      server: 84.235.244.108
+      type: vless
+      udp: true
+      uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-861938530
+      network: tcp
+      port: 749
+      reality-opts:
+        public-key: ONLHjUWWv77ovNCrMmckWc0N-1Lc5LEZCMoXbqd20SQ
+        short-id: 00c76c51392e7812
+      server: hk03.ccdn3.work
+      servername: i1.hdslb.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d5e77b10-7374-11eb-b739-9160314e12e6
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-81052
+        - vless-861938530
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-81052
+        - vless-861938530
+      type: select
+rules:
+    - MATCH,select
