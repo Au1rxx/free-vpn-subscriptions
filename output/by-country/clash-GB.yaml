@@ -1,12 +1,5 @@
 proxies:
     - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-855875153
-      password: HEZMw3e3ObzQ4hOH3EwEh3RsD3u7zzmSOHpVGDATZRk=
-      port: 61312
-      server: 129.151.85.177
-      type: ss
-      udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-855510873
       password: 5pt3YBp2pgKAqVFsb68mRl6eo8PJr0eTzvZm8Uf58fc=
       port: 61312
@@ -25,6 +18,13 @@ proxies:
       password: jTV9tYxbSy878dX8r4NtBjESWemleBuAeapH54wwIMo=
       port: 61312
       server: 129.151.81.133
+      type: ss
+      udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-855875153
+      password: HEZMw3e3ObzQ4hOH3EwEh3RsD3u7zzmSOHpVGDATZRk=
+      port: 61312
+      server: 129.151.85.177
       type: ss
       udp: true
     - cipher: aes-256-gcm
@@ -90,6 +90,14 @@ proxies:
       server: 149.102.149.207
       type: ss
       udp: true
+    - name: trojan-859579963
+      password: fg20mtCFHy
+      port: 5448
+      server: londhtc.southbyte.xyz
+      skip-cert-verify: false
+      sni: londhtc.southbyte.xyz
+      type: trojan
+      udp: true
     - client-fingerprint: firefox
       name: vless-857369692
       network: grpc
@@ -123,14 +131,6 @@ proxies:
       port: 8080
       server: 146.70.23.32
       type: ss
-      udp: true
-    - name: trojan-859744355
-      password: fg20mtCFHy
-      port: 5448
-      server: londhtc.southbyte.xyz
-      skip-cert-verify: true
-      sni: londhtc.southbyte.xyz
-      type: trojan
       udp: true
     - client-fingerprint: random
       flow: xtls-rprx-vision
@@ -244,13 +244,13 @@ proxies:
       type: vless
       udp: true
       uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-859463421
-      password: RP5c52aLGKJjPmoCdx3WJZ1Wx6nq2noe0a27TmckkyQ=
-      port: 61312
-      server: 144.24.226.33
-      type: ss
-      udp: true
+    - name: hysteria2-859458640
+      password: 53c76647-14d1-4df5-99cb-be99ad2e6bd9
+      port: 443
+      server: uk196.mechvpn.online
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-513893045
       password: zRZNBszYyWo5
@@ -718,28 +718,14 @@ proxies:
       type: vless
       udp: true
       uuid: b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-858615081
-      password: xoO33EQbFdBqVCLv+UpqvucfNJxw8wFk1xr1KhGVWJI=
-      port: 61312
-      server: 129.151.70.159
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-696792831
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 31.57.35.41
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-855875153
         - shadowsocks-855510873
         - shadowsocks-717969025
         - shadowsocks-859463420
+        - shadowsocks-855875153
         - shadowsocks-696780679
         - shadowsocks-858494851
         - shadowsocks-717969008
@@ -749,11 +735,11 @@ proxy-groups:
         - shadowsocks-696780678
         - shadowsocks-717969059
         - shadowsocks-696780670
+        - trojan-859579963
         - vless-857369692
         - shadowsocks-858513663
         - shadowsocks-723348699
         - shadowsocks-468218595
-        - trojan-859744355
         - vless-818038648
         - vless-818038644
         - vless-763204349
@@ -762,7 +748,7 @@ proxy-groups:
         - vless-855163266
         - vless-812211891
         - vless-834218293
-        - shadowsocks-859463421
+        - hysteria2-859458640
         - shadowsocks-513893045
         - vless-474828128
         - vless-856496920
@@ -798,17 +784,15 @@ proxy-groups:
         - vless-809838166
         - vless-809838186
         - vless-763204348
-        - shadowsocks-858615081
-        - shadowsocks-696792831
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-855875153
         - shadowsocks-855510873
         - shadowsocks-717969025
         - shadowsocks-859463420
+        - shadowsocks-855875153
         - shadowsocks-696780679
         - shadowsocks-858494851
         - shadowsocks-717969008
@@ -818,11 +802,11 @@ proxy-groups:
         - shadowsocks-696780678
         - shadowsocks-717969059
         - shadowsocks-696780670
+        - trojan-859579963
         - vless-857369692
         - shadowsocks-858513663
         - shadowsocks-723348699
         - shadowsocks-468218595
-        - trojan-859744355
         - vless-818038648
         - vless-818038644
         - vless-763204349
@@ -831,7 +815,7 @@ proxy-groups:
         - vless-855163266
         - vless-812211891
         - vless-834218293
-        - shadowsocks-859463421
+        - hysteria2-859458640
         - shadowsocks-513893045
         - vless-474828128
         - vless-856496920
@@ -867,8 +851,6 @@ proxy-groups:
         - vless-809838166
         - vless-809838186
         - vless-763204348
-        - shadowsocks-858615081
-        - shadowsocks-696792831
       type: select
 rules:
     - MATCH,select
