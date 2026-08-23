@@ -84,20 +84,6 @@ proxies:
       udp: true
       uuid: 4a97788b-5d8a-410c-875c-ba36930e185e
     - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-656245239
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: YQTixaXzPVImuRc4TUbrFAekjIiaYV-t5S-HTKlH0AU
-        short-id: 2186a755ed67b034
-      server: 2.26.101.64
-      servername: nordic.cendora.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
-    - client-fingerprint: firefox
       name: vless-688530358
       network: grpc
       port: 443
@@ -558,6 +544,20 @@ proxies:
       sni: ssl.fastly.com
       type: trojan
       udp: true
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-856896824
+      network: tcp
+      port: 143
+      reality-opts:
+        public-key: 6LSBBaOUWujvSovACjcP7m-DI9u9R584qdJxNYnu-24
+        short-id: d1d36176bf36387e
+      server: 2.27.57.154
+      servername: ubuntu.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0a11d3b4-682c-4bfb-afb0-820b8285cb4b
     - name: trojan-857282570
       password: MiTiVPN
       port: 443
@@ -710,19 +710,6 @@ proxies:
       type: vless
       udp: true
       uuid: 0a11d3b4-682c-4bfb-afb0-820b8285cb4b
-    - client-fingerprint: chrome
-      name: vless-862227078
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: 6CHUluOn_Tdab7JOfUArmcfQPVEd4PbEQJMPvKWElhw
-        short-id: ""
-      server: 95.85.241.208
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 8d44a812-229a-4c54-a461-8109b29621a7
     - name: vless-862870876
       network: ws
       port: 80
@@ -784,6 +771,20 @@ proxies:
       type: vless
       udp: true
       uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
+    - name: hysteria2-863201235
+      password: 5d36ddf8-dde5-4b2d-8213-d3255f22a0f1
+      port: 8443
+      server: swe-two.letsgodance.site
+      skip-cert-verify: false
+      sni: swe-two.letsgodance.site
+      type: hysteria2
+    - name: hysteria2-863201245
+      password: da98e502-5e93-4fc5-bd61-388c557df29c
+      port: 2083
+      server: 178.236.254.21
+      skip-cert-verify: false
+      sni: swe-one.quiet-rogue.site
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
@@ -794,7 +795,6 @@ proxy-groups:
         - vless-470976121
         - vless-591636262
         - vless-656240639
-        - vless-656245239
         - vless-688530358
         - vless-691937039
         - vless-694438989
@@ -830,6 +830,7 @@ proxy-groups:
         - vless-856081308
         - vless-856081326
         - trojan-856237620
+        - vless-856896824
         - trojan-857282570
         - vless-857350740
         - vless-857366690
@@ -842,12 +843,13 @@ proxy-groups:
         - vless-860743746
         - vless-861401925
         - vless-862080339
-        - vless-862227078
         - vless-862870876
         - vless-862899649
         - vless-862930249
         - vless-862930256
         - vless-863110427
+        - hysteria2-863201235
+        - hysteria2-863201245
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -859,7 +861,6 @@ proxy-groups:
         - vless-470976121
         - vless-591636262
         - vless-656240639
-        - vless-656245239
         - vless-688530358
         - vless-691937039
         - vless-694438989
@@ -895,6 +896,7 @@ proxy-groups:
         - vless-856081308
         - vless-856081326
         - trojan-856237620
+        - vless-856896824
         - trojan-857282570
         - vless-857350740
         - vless-857366690
@@ -907,12 +909,13 @@ proxy-groups:
         - vless-860743746
         - vless-861401925
         - vless-862080339
-        - vless-862227078
         - vless-862870876
         - vless-862899649
         - vless-862930249
         - vless-862930256
         - vless-863110427
+        - hysteria2-863201235
+        - hysteria2-863201245
       type: select
 rules:
     - MATCH,select

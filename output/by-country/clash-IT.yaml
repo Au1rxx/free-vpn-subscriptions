@@ -13,6 +13,19 @@ proxies:
       type: vless
       udp: true
       uuid: 419f25c1-bc35-412e-93fb-258efee859b5
+    - client-fingerprint: random
+      name: vless-703656408
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
     - client-fingerprint: qq
       name: vless-860385804
       network: tcp
@@ -26,9 +39,9 @@ proxies:
       type: vless
       udp: true
       uuid: 2e736ef7-fc59-4161-bc64-e1416c74aae5
-    - client-fingerprint: random
-      name: vless-703656408
-      network: tcp
+    - client-fingerprint: firefox
+      name: vless-483686868
+      network: raw
       port: 2053
       reality-opts:
         public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
@@ -52,47 +65,25 @@ proxies:
       type: vless
       udp: true
       uuid: 2e736ef7-fc59-4161-bc64-e1416c74aae5
-    - client-fingerprint: firefox
-      name: vless-483686868
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
-        short-id: 5b8a942318178e7b
-      server: 57.131.38.163
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
-    - name: vless-860139784
-      network: ws
-      port: 443
-      server: itproxy1.lockdwn.com
-      type: vless
-      udp: true
-      uuid: 26bf8edb-8731-4f06-bc01-2cf7fefc29a6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-859995256
-        - vless-860385804
         - vless-703656408
-        - vless-859775390
+        - vless-860385804
         - vless-483686868
-        - vless-860139784
+        - vless-859775390
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-859995256
-        - vless-860385804
         - vless-703656408
-        - vless-859775390
+        - vless-860385804
         - vless-483686868
-        - vless-860139784
+        - vless-859775390
       type: select
 rules:
     - MATCH,select
