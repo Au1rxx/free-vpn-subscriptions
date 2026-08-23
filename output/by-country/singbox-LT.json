@@ -1,0 +1,107 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "lit3.freeinternat.com",
+      "server_port": 443,
+      "tag": "vless-860761371",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "reality": {
+          "enabled": true,
+          "public_key": "bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk",
+          "short_id": "ff776ff77be48b88"
+        },
+        "server_name": "lit3.freeinternat.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "type": "vless",
+      "uuid": "fbb74aa8-b89a-4f20-9504-6b25aadf6681"
+    },
+    {
+      "server": "31.15.16.37",
+      "server_port": 8880,
+      "tag": "vless-860774161",
+      "type": "vless",
+      "uuid": "0a603d99-a1bc-4a17-8b57-8b3ca887b8e6"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "lit3.freeinternat.com",
+      "server_port": 443,
+      "tag": "vless-860035032",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk",
+          "short_id": "ff776ff77be48b88"
+        },
+        "server_name": "lit3.freeinternat.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "type": "vless",
+      "uuid": "fbb74aa8-b89a-4f20-9504-6b25aadf6681"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "88.119.176.50",
+      "server_port": 443,
+      "tag": "vless-860035014",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk",
+          "short_id": "ff776ff77be48b88"
+        },
+        "server_name": "lit3.freeinternat.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "fbb74aa8-b89a-4f20-9504-6b25aadf6681"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-860761371",
+        "vless-860774161",
+        "vless-860035032",
+        "vless-860035014"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-860761371",
+        "vless-860774161",
+        "vless-860035032",
+        "vless-860035014"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

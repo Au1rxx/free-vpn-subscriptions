@@ -1,0 +1,22 @@
+proxies:
+    - name: hysteria2-858516093
+      password: 99469a62-c9a7-4223-a5ca-6a1ddaa1e7a9
+      port: 8443
+      server: 87.251.19.13
+      skip-cert-verify: true
+      sni: speedtestmark.com
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-858516093
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-858516093
+      type: select
+rules:
+    - MATCH,select

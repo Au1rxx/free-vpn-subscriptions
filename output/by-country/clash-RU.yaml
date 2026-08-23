@@ -6,33 +6,17 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-856683741
-      network: tcp
-      port: 8443
-      reality-opts:
-        public-key: Z3dT5WeVvmrbBtZycHfI3kO6kyoLH3tAqpT_ReaMaxI
-        short-id: 4f676caa93313eab
-      server: 201.24.53.247
-      servername: www.rumedia-cdn.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a237ca49-48d5-466f-aee5-c44f728a99ab
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-855920168
-        - vless-856683741
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-855920168
-        - vless-856683741
       type: select
 rules:
     - MATCH,select
