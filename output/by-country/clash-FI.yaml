@@ -1,4 +1,18 @@
 proxies:
+    - name: hysteria2-818203526
+      password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
+      port: 8443
+      server: 222.167.212.82
+      skip-cert-verify: true
+      sni: hopp-legend-se.roxa.org
+      type: hysteria2
+    - name: hysteria2-812154987
+      password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
+      port: 8443
+      server: 222.167.212.82
+      skip-cert-verify: false
+      sni: hopp-legend-se.roxa.org
+      type: hysteria2
     - name: vless-856210273
       network: grpc
       port: 2101
@@ -43,6 +57,13 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
+    - name: hysteria2-813371789
+      password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
+      port: 8443
+      server: 222.167.212.81
+      skip-cert-verify: true
+      sni: hopp-legend-se.roxa.org
+      type: hysteria2
     - client-fingerprint: chrome
       name: vless-812211853
       network: tcp
@@ -56,27 +77,69 @@ proxies:
       type: vless
       udp: true
       uuid: 694eb5d5-794c-4389-af65-e5a4b8489dae
+    - name: vless-860620803
+      network: grpc
+      port: 2101
+      server: 132.243.223.227
+      servername: 132-243-223-227.sslip.io
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
+    - name: vless-860368084
+      network: grpc
+      port: 443
+      server: 2.26.3.40
+      servername: errorfl.zapret-tg.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57a9cf7d-bb6c-414e-97be-1985f7123c61
+    - name: vless-860620822
+      network: grpc
+      port: 2101
+      server: 132-243-223-227.sslip.io
+      servername: 132-243-223-227.sslip.io
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-818203526
+        - hysteria2-812154987
         - vless-856210273
         - vless-857104265
         - shadowsocks-858384297
         - shadowsocks-336700747
         - vless-860755884
+        - hysteria2-813371789
         - vless-812211853
+        - vless-860620803
+        - vless-860368084
+        - vless-860620822
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-818203526
+        - hysteria2-812154987
         - vless-856210273
         - vless-857104265
         - shadowsocks-858384297
         - shadowsocks-336700747
         - vless-860755884
+        - hysteria2-813371789
         - vless-812211853
+        - vless-860620803
+        - vless-860368084
+        - vless-860620822
       type: select
 rules:
     - MATCH,select
