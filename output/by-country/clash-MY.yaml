@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-696792801
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 118.107.222.231
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-858173655
@@ -20,19 +13,26 @@ proxies:
       type: vless
       udp: true
       uuid: 7aecb4a5-f0a4-32a0-aabe-c9d5241e313f
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792801
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 118.107.222.231
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-696792801
         - vless-858173655
+        - shadowsocks-696792801
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-696792801
         - vless-858173655
+        - shadowsocks-696792801
       type: select
 rules:
     - MATCH,select
