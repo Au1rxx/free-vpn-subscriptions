@@ -1,4 +1,21 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-336700747
+      password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
+      port: 42982
+      server: autodiscover.fuzzyaytor.cyou
+      type: ss
+      udp: true
+    - name: vless-860502209
+      network: grpc
+      port: 2101
+      server: 132.243.223.227
+      servername: 132-243-223-227.sslip.io
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
     - name: vless-856210273
       network: grpc
       port: 2101
@@ -29,15 +46,6 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - alterId: 0
-      cipher: auto
-      name: vmess-862937865
-      network: tcp
-      port: 33120
-      server: 65.109.211.136
-      type: vmess
-      udp: true
-      uuid: e951ae39-2240-40ca-be13-9f862c3de3ce
     - name: hysteria2-812154987
       password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
       port: 8443
@@ -45,16 +53,6 @@ proxies:
       skip-cert-verify: false
       sni: hopp-legend-se.roxa.org
       type: hysteria2
-    - name: vless-860620803
-      network: grpc
-      port: 2101
-      server: 132.243.223.227
-      servername: 132-243-223-227.sslip.io
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
     - name: vless-862043488
       network: grpc
       port: 2101
@@ -75,6 +73,13 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
+    - name: vless-862902213
+      network: tcp
+      port: 30551
+      server: 65.109.211.136
+      type: vless
+      udp: true
+      uuid: e951ae39-2240-40ca-be13-9f862c3de3ce
     - name: vless-860620822
       network: grpc
       port: 2101
@@ -85,63 +90,35 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - client-fingerprint: qq
-      name: vless-834262294
-      network: tcp
-      port: 448
-      reality-opts:
-        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
-        short-id: cd21e552537c7c0b
-      server: 185.79.138.71
-      servername: www.samsung.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
-    - client-fingerprint: random
-      name: vless-652375208
-      network: tcp
-      port: 448
-      reality-opts:
-        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
-        short-id: cd21e552537c7c0b
-      server: 185.79.138.71
-      servername: www.samsung.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-336700747
+        - vless-860502209
         - vless-856210273
         - vless-860755884
         - vless-857104265
-        - vmess-862937865
         - hysteria2-812154987
-        - vless-860620803
         - vless-862043488
         - vless-862043473
+        - vless-862902213
         - vless-860620822
-        - vless-834262294
-        - vless-652375208
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-336700747
+        - vless-860502209
         - vless-856210273
         - vless-860755884
         - vless-857104265
-        - vmess-862937865
         - hysteria2-812154987
-        - vless-860620803
         - vless-862043488
         - vless-862043473
+        - vless-862902213
         - vless-860620822
-        - vless-834262294
-        - vless-652375208
       type: select
 rules:
     - MATCH,select
