@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-119299
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20114
-      server: 45.67.201.210
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-696792825
       password: 7eadc6dbe2ae
@@ -497,11 +489,24 @@ proxies:
       server: 129.159.49.64
       type: ss
       udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-860355588
+      password: VNZU26yCu5J1TaXQ9IdJasKHopBUzc2xt+JUl9ECB+g=
+      port: 59319
+      server: 150.230.229.189
+      type: ss
+      udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-860413076
+      password: qwgHMeK61kEXAQNxNMU7eVNtRJ4gnbrnsrPBr0jZVTY=
+      port: 59319
+      server: 147.15.81.156
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-119299
         - shadowsocks-696792825
         - vless-696792918
         - vless-696792933
@@ -541,12 +546,13 @@ proxy-groups:
         - vless-859635079
         - shadowsocks-859953724
         - shadowsocks-859953725
+        - shadowsocks-860355588
+        - shadowsocks-860413076
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-119299
         - shadowsocks-696792825
         - vless-696792918
         - vless-696792933
@@ -586,6 +592,8 @@ proxy-groups:
         - vless-859635079
         - shadowsocks-859953724
         - shadowsocks-859953725
+        - shadowsocks-860355588
+        - shadowsocks-860413076
       type: select
 rules:
     - MATCH,select

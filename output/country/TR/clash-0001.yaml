@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-119244
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20018
-      server: 45.67.201.210
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-128278
       password: 366aa1ba14af3f1a
@@ -356,6 +348,20 @@ proxies:
       type: vless
       udp: true
       uuid: 13efddd3-1a20-49f3-bbbe-f5b530398bb6
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-859787460
+      network: tcp
+      port: 6448
+      reality-opts:
+        public-key: aFbCyrLOre-V3ORpBjqenGfDt62Ng_i1sSq-DmZHVgc
+        short-id: 89e0494514ec
+      server: ru.chick-team.ru
+      servername: www.oracle.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 663836b2-f676-43fb-977f-47c495b1b383
     - flow: xtls-rprx-vision
       name: vless-860057973
       network: tcp
@@ -685,11 +691,43 @@ proxies:
       type: vless
       udp: true
       uuid: a4812e4c-83da-4be6-9417-becdacb26274
+    - flow: xtls-rprx-vision
+      name: vless-860363588
+      network: tcp
+      port: 443
+      server: 64.49.13.74
+      servername: wok9.api3-max.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ac7fb60f-0b7a-465d-a002-05160ec04ed6
+    - flow: xtls-rprx-vision
+      name: vless-860363595
+      network: tcp
+      port: 443
+      server: wok1.api3-max.ru
+      servername: wok1.api3-max.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ac7fb60f-0b7a-465d-a002-05160ec04ed6
+    - flow: xtls-rprx-vision
+      name: vless-860363598
+      network: tcp
+      port: 443
+      server: 107.181.155.71
+      servername: wok5.api3-max.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ac7fb60f-0b7a-465d-a002-05160ec04ed6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-119244
         - shadowsocks-128278
         - vless-656246730
         - vless-721522953
@@ -723,6 +761,7 @@ proxy-groups:
         - vless-858987947
         - hysteria2-859306111
         - vless-859719836
+        - vless-859787460
         - vless-860057973
         - vless-860057974
         - vless-860057976
@@ -753,12 +792,14 @@ proxy-groups:
         - vless-860271100
         - vless-860271105
         - vless-860344805
+        - vless-860363588
+        - vless-860363595
+        - vless-860363598
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-119244
         - shadowsocks-128278
         - vless-656246730
         - vless-721522953
@@ -792,6 +833,7 @@ proxy-groups:
         - vless-858987947
         - hysteria2-859306111
         - vless-859719836
+        - vless-859787460
         - vless-860057973
         - vless-860057974
         - vless-860057976
@@ -822,6 +864,9 @@ proxy-groups:
         - vless-860271100
         - vless-860271105
         - vless-860344805
+        - vless-860363588
+        - vless-860363595
+        - vless-860363598
       type: select
 rules:
     - MATCH,select

@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-860057981
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8C7evg_SSrJbxMTaUqJoylqB9HSNsmBvmUlgs_c5EiU
+        short-id: 5d08d7c6e0132d2d
+      server: node-05.usp-vpn.store
+      servername: node-05.usp-vpn.store
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8ddbec7-05c3-4669-934f-65df92b7694e
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-860057981
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-860057981
+      type: select
+rules:
+    - MATCH,select

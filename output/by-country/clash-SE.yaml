@@ -1,5 +1,31 @@
 proxies:
     - client-fingerprint: firefox
+      name: vless-856081308
+      network: grpc
+      port: 2054
+      reality-opts:
+        public-key: z8O-5nI4-3eKexufSrkEUvAubPw7a73cQtTGNDp3Uxo
+        short-id: 6ffc74326185d4d6
+      server: 143.246.198.91
+      servername: www.ibm.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 626c0789-16d1-4815-be8b-bd03959d7d12
+    - client-fingerprint: firefox
+      name: vless-856081296
+      network: grpc
+      port: 2054
+      reality-opts:
+        public-key: z8O-5nI4-3eKexufSrkEUvAubPw7a73cQtTGNDp3Uxo
+        short-id: 6ffc74326185d4d6
+      server: 143.246.198.91
+      servername: www.ibm.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 75079a7f-75b5-418b-8a65-f7b2f438cd4a
+    - client-fingerprint: firefox
       name: vless-857350740
       network: grpc
       port: 2054
@@ -13,6 +39,32 @@ proxies:
       udp: true
       uuid: 80d02a71-54a5-4c5b-976d-5ee573c502af
     - client-fingerprint: firefox
+      name: vless-856081326
+      network: grpc
+      port: 2054
+      reality-opts:
+        public-key: z8O-5nI4-3eKexufSrkEUvAubPw7a73cQtTGNDp3Uxo
+        short-id: 6ffc74326185d4d6
+      server: 143.246.198.91
+      servername: www.ibm.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 82d145c1-d691-4eef-9de1-9c316db4859a
+    - client-fingerprint: safari
+      name: vless-860480564
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
+        short-id: abcd
+      server: 5.188.115.241
+      servername: 5post-gate.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: fe19b21d-cf26-42a2-8d26-09e5a9501d4c
+    - client-fingerprint: firefox
       name: vless-857369684
       network: grpc
       port: 2054
@@ -25,19 +77,37 @@ proxies:
       type: vless
       udp: true
       uuid: d900a139-8b5f-4758-8a32-389c6f36fc86
+    - name: trojan-857702418
+      password: MiTiVPN
+      port: 443
+      server: 188.114.97.6
+      skip-cert-verify: false
+      sni: 3865895-mitivpn--mitivpn------mitivpn.mitivpn-s.lifestyle
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-856081308
+        - vless-856081296
         - vless-857350740
+        - vless-856081326
+        - vless-860480564
         - vless-857369684
+        - trojan-857702418
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-856081308
+        - vless-856081296
         - vless-857350740
+        - vless-856081326
+        - vless-860480564
         - vless-857369684
+        - trojan-857702418
       type: select
 rules:
     - MATCH,select

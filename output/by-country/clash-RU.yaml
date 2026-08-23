@@ -1,4 +1,18 @@
 proxies:
+    - name: vless-860404023
+      network: ws
+      port: 4100
+      server: 201.24.51.241
+      type: vless
+      udp: true
+      uuid: 5181e3af-4a0c-47d7-8beb-7e4fa4786cdd
+    - name: vless-860404032
+      network: ws
+      port: 4100
+      server: 201.24.51.241
+      type: vless
+      udp: true
+      uuid: 5181e3af-4a0c-47d7-8beb-7e4fa4786cdd
     - name: hysteria2-855920168
       password: 41edb44c8e
       port: 11592
@@ -6,29 +20,61 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - client-fingerprint: safari
+    - name: vless-860404018
+      network: ws
+      port: 4100
+      server: 201.24.51.241
+      type: vless
+      udp: true
+      uuid: 5181e3af-4a0c-47d7-8beb-7e4fa4786cdd
+    - client-fingerprint: edge
       flow: xtls-rprx-vision
-      name: vless-860340145
+      name: vless-859751808
       network: tcp
       port: 443
       reality-opts:
-        public-key: 6J829WZ6hhEtCmz8CfBBBP69ikMDlYPF2Lumyel6XTI
-        short-id: d484643ca8396614
-      server: 109.73.206.180
-      servername: st.ozone.ru
+        public-key: NBiCX_Tj3BeMAyG-GbLLKpGjW_qacm3A2Mz5mN8v3Xk
+        short-id: ab532d3308daa67b
+      server: 212.233.99.132
+      servername: res.chick-team.ru
       tls: true
       type: vless
       udp: true
       uuid: 663836b2-f676-43fb-977f-47c495b1b383
-    - client-fingerprint: qq
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-860340182
+      name: vless-859754168
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: NBiCX_Tj3BeMAyG-GbLLKpGjW_qacm3A2Mz5mN8v3Xk
+        short-id: ab532d3308daa67b
+      server: 212.233.99.132
+      servername: res.chick-team.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 663836b2-f676-43fb-977f-47c495b1b383
+    - flow: xtls-rprx-vision
+      name: vless-860480575
+      network: raw
+      port: 52006
+      server: 94.26.249.154
+      servername: sliver-vimri-nahui-daun.fastaichat.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 582bb090-a482-07d0-8f41-e87f696a8715
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-859752806
       network: tcp
       port: 443
       reality-opts:
         public-key: 6J829WZ6hhEtCmz8CfBBBP69ikMDlYPF2Lumyel6XTI
         short-id: d484643ca8396614
-      server: 109.73.206.180
+      server: 212.67.17.204
       servername: st.ozone.ru
       tls: true
       type: vless
@@ -38,17 +84,27 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-860404023
+        - vless-860404032
         - hysteria2-855920168
-        - vless-860340145
-        - vless-860340182
+        - vless-860404018
+        - vless-859751808
+        - vless-859754168
+        - vless-860480575
+        - vless-859752806
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-860404023
+        - vless-860404032
         - hysteria2-855920168
-        - vless-860340145
-        - vless-860340182
+        - vless-860404018
+        - vless-859751808
+        - vless-859754168
+        - vless-860480575
+        - vless-859752806
       type: select
 rules:
     - MATCH,select
