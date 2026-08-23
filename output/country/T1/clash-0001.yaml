@@ -7,17 +7,32 @@ proxies:
       sni: borat-hopp.bumbleshrimp.com
       type: trojan
       udp: true
+    - client-fingerprint: chrome
+      name: vless-863490752
+      network: tcp
+      port: 8059
+      reality-opts:
+        public-key: hjJ1VN2xwcl1n7vrwvOspB2NFWrXNySUNPexutOVvAM
+        short-id: d3aea86e1949
+      server: 45.134.38.204
+      servername: www.amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a88e2744-3555-4a0a-9635-0aae23e038f8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-860384059
+        - vless-863490752
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-860384059
+        - vless-863490752
       type: select
 rules:
     - MATCH,select
