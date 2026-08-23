@@ -1,0 +1,45 @@
+proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-860048465
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 0AVsyS7udTbxKRdSyQ2rtFC63icDQOVWq8FvAhhU-WY
+        short-id: cbb0a5c1dc905505
+      server: 185.58.115.232
+      servername: restore.anti-zapret.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1b627e4d-4ea4-4dce-8bd8-fc2d3ffbeaba
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-860048470
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 0AVsyS7udTbxKRdSyQ2rtFC63icDQOVWq8FvAhhU-WY
+        short-id: cbb0a5c1dc905505
+      server: 185.58.115.166
+      servername: restore.anti-zapret.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1b627e4d-4ea4-4dce-8bd8-fc2d3ffbeaba
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-860048465
+        - vless-860048470
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-860048465
+        - vless-860048470
+      type: select
+rules:
+    - MATCH,select

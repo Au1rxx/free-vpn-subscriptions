@@ -1,0 +1,141 @@
+proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-860057981
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8C7evg_SSrJbxMTaUqJoylqB9HSNsmBvmUlgs_c5EiU
+        short-id: 5d08d7c6e0132d2d
+      server: node-05.usp-vpn.store
+      servername: node-05.usp-vpn.store
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8ddbec7-05c3-4669-934f-65df92b7694e
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-860058030
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8C7evg_SSrJbxMTaUqJoylqB9HSNsmBvmUlgs_c5EiU
+        short-id: cb979b63f8325904
+      server: node-06.usp-vpn.store
+      servername: node-06.usp-vpn.store
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8ddbec7-05c3-4669-934f-65df92b7694e
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-860058028
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8C7evg_SSrJbxMTaUqJoylqB9HSNsmBvmUlgs_c5EiU
+        short-id: 88d9dc52ef39c8bd
+      server: node-09.usp-vpn.store
+      servername: node-09.usp-vpn.store
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8ddbec7-05c3-4669-934f-65df92b7694e
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-860058039
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8C7evg_SSrJbxMTaUqJoylqB9HSNsmBvmUlgs_c5EiU
+        short-id: 99dfcb9d097445d0
+      server: node-04.usp-vpn.store
+      servername: node-04.usp-vpn.store
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8ddbec7-05c3-4669-934f-65df92b7694e
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-860058019
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8C7evg_SSrJbxMTaUqJoylqB9HSNsmBvmUlgs_c5EiU
+        short-id: 109c46475430a9c9
+      server: node-08.usp-vpn.store
+      servername: node-08.usp-vpn.store
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8ddbec7-05c3-4669-934f-65df92b7694e
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-860058426
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8C7evg_SSrJbxMTaUqJoylqB9HSNsmBvmUlgs_c5EiU
+        short-id: cb979b63f8325904
+      server: node-07.usp-vpn.store
+      servername: node-07.usp-vpn.store
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8ddbec7-05c3-4669-934f-65df92b7694e
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-860058002
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8C7evg_SSrJbxMTaUqJoylqB9HSNsmBvmUlgs_c5EiU
+        short-id: f5f8e70c4b6ee811
+      server: node-10.usp-vpn.store
+      servername: node-10.usp-vpn.store
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8ddbec7-05c3-4669-934f-65df92b7694e
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-860058005
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8C7evg_SSrJbxMTaUqJoylqB9HSNsmBvmUlgs_c5EiU
+        short-id: 5d08d7c6e0132d2d
+      server: node-01.usp-vpn.store
+      servername: node-01.usp-vpn.store
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8ddbec7-05c3-4669-934f-65df92b7694e
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-860057981
+        - vless-860058030
+        - vless-860058028
+        - vless-860058039
+        - vless-860058019
+        - vless-860058426
+        - vless-860058002
+        - vless-860058005
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-860057981
+        - vless-860058030
+        - vless-860058028
+        - vless-860058039
+        - vless-860058019
+        - vless-860058426
+        - vless-860058002
+        - vless-860058005
+      type: select
+rules:
+    - MATCH,select

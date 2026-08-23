@@ -26,29 +26,6 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - client-fingerprint: chrome
-      name: vless-812211853
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: Qr6_9TMQYMCB2hVSYeONcMvxBqIaT0mzPUy8nIivV1g
-        short-id: b58b
-      server: 89.167.2.67
-      servername: play.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 694eb5d5-794c-4389-af65-e5a4b8489dae
-    - name: vless-858517087
-      network: grpc
-      port: 443
-      server: errorfl.zapret-tg.ru
-      servername: errorfl.zapret-tg.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 57a9cf7d-bb6c-414e-97be-1985f7123c61
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-696176645
@@ -63,19 +40,23 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
-    - client-fingerprint: chrome
-      name: vless-813956180
-      network: tcp
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-336700747
+      password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
+      port: 42982
+      server: autodiscover.fuzzyaytor.cyou
+      type: ss
+      udp: true
+    - name: vless-858517087
+      network: grpc
       port: 443
-      reality-opts:
-        public-key: Qr6_9TMQYMCB2hVSYeONcMvxBqIaT0mzPUy8nIivV1g
-        short-id: b58b
-      server: 89.167.2.67
-      servername: play.google.com
+      server: errorfl.zapret-tg.ru
+      servername: errorfl.zapret-tg.ru
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: 694eb5d5-794c-4389-af65-e5a4b8489dae
+      uuid: 57a9cf7d-bb6c-414e-97be-1985f7123c61
 proxy-groups:
     - interval: 300
       name: auto
@@ -83,10 +64,9 @@ proxy-groups:
         - vless-856210273
         - hysteria2-812154987
         - vless-857104265
-        - vless-812211853
-        - vless-858517087
         - vless-696176645
-        - vless-813956180
+        - shadowsocks-336700747
+        - vless-858517087
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -95,10 +75,9 @@ proxy-groups:
         - vless-856210273
         - hysteria2-812154987
         - vless-857104265
-        - vless-812211853
-        - vless-858517087
         - vless-696176645
-        - vless-813956180
+        - shadowsocks-336700747
+        - vless-858517087
       type: select
 rules:
     - MATCH,select

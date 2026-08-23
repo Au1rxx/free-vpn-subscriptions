@@ -1,0 +1,74 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "185.58.115.232",
+      "server_port": 443,
+      "tag": "vless-860048465",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "0AVsyS7udTbxKRdSyQ2rtFC63icDQOVWq8FvAhhU-WY",
+          "short_id": "cbb0a5c1dc905505"
+        },
+        "server_name": "restore.anti-zapret.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "1b627e4d-4ea4-4dce-8bd8-fc2d3ffbeaba"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "185.58.115.166",
+      "server_port": 443,
+      "tag": "vless-860048470",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "0AVsyS7udTbxKRdSyQ2rtFC63icDQOVWq8FvAhhU-WY",
+          "short_id": "cbb0a5c1dc905505"
+        },
+        "server_name": "restore.anti-zapret.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "1b627e4d-4ea4-4dce-8bd8-fc2d3ffbeaba"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-860048465",
+        "vless-860048470"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-860048465",
+        "vless-860048470"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

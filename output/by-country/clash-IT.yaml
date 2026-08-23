@@ -6,17 +6,32 @@ proxies:
       server: 91.201.65.122
       type: ss
       udp: true
+    - client-fingerprint: qq
+      name: vless-857103276
+      network: tcp
+      port: 6300
+      reality-opts:
+        public-key: lQbgwNDYw6Zbjdim0JtXUarzb-3GSjDvtX6FJYZD9Qo
+        short-id: ""
+      server: it.falzema.ir
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2e736ef7-fc59-4161-bc64-e1416c74aae5
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-779606884
+        - vless-857103276
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-779606884
+        - vless-857103276
       type: select
 rules:
     - MATCH,select
