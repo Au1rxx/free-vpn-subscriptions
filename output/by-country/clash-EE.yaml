@@ -6,10 +6,17 @@ proxies:
       skip-cert-verify: true
       sni: cabinet.wwwinternetvideo.click
       type: hysteria2
-    - name: vless-608559126
+    - name: vless-652751269
       network: ws
       port: 443
-      server: estproxy4.lockdwn.com
+      server: 94.183.170.231
+      type: vless
+      udp: true
+      uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
+    - name: vless-852108509
+      network: ws
+      port: 443
+      server: 94.183.170.135
       type: vless
       udp: true
       uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
@@ -27,21 +34,59 @@ proxies:
       type: vless
       udp: true
       uuid: fbb74aa8-b89a-4f20-9504-6b25aadf6681
+    - name: vless-656162653
+      network: tcp
+      port: 8443
+      server: 94.183.170.231
+      servername: estproxy2.lockdwn.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
+    - name: vless-655780538
+      network: tcp
+      port: 8443
+      server: 94.183.170.135
+      servername: estproxy4.lockdwn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+    - name: vless-856210262
+      network: raw
+      port: 8443
+      server: estproxy4.lockdwn.com
+      servername: estproxy4.lockdwn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-818203558
-        - vless-608559126
+        - vless-652751269
+        - vless-852108509
         - vless-860035044
+        - vless-656162653
+        - vless-655780538
+        - vless-856210262
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-818203558
-        - vless-608559126
+        - vless-652751269
+        - vless-852108509
         - vless-860035044
+        - vless-656162653
+        - vless-655780538
+        - vless-856210262
       type: select
 rules:
     - MATCH,select
