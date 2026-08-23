@@ -1,0 +1,59 @@
+proxies:
+    - client-fingerprint: chrome
+      name: vless-862915837
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: 6CHUluOn_Tdab7JOfUArmcfQPVEd4PbEQJMPvKWElhw
+        short-id: ""
+      server: 111.88.223.82
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a42939a4-c61c-4ecc-886b-3a317bdf4452
+    - client-fingerprint: firefox
+      name: vless-862915842
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: 6CHUluOn_Tdab7JOfUArmcfQPVEd4PbEQJMPvKWElhw
+        short-id: ""
+      server: 111.88.223.82
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a42939a4-c61c-4ecc-886b-3a317bdf4452
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-812224517
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: uo-U-FDlo7Cqldg7JKUe8jHvYnwP08NanGX0tUFrqEc
+        short-id: bef240e96a8474a3
+      server: 138.124.255.221
+      servername: russia.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-862915837
+        - vless-862915842
+        - vless-812224517
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-862915837
+        - vless-862915842
+        - vless-812224517
+      type: select
+rules:
+    - MATCH,select

@@ -27,11 +27,11 @@ proxies:
       type: vless
       udp: true
       uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-335128325
-      password: bIOoi5TuImG2KccxV7-jcA7Cez+vun-c_E
-      port: 27116
-      server: au1.levikogjgfdd.ir
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792832
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 82.23.146.72
       type: ss
       udp: true
     - client-fingerprint: chrome
@@ -48,14 +48,25 @@ proxies:
       type: vless
       udp: true
       uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
+    - name: vless-656189585
+      network: tcp
+      port: 443
+      server: 172.105.169.70
+      servername: 172.105.169.70
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-532685580
         - vless-587204637
-        - shadowsocks-335128325
+        - shadowsocks-696792832
         - vless-656230603
+        - vless-656189585
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -63,8 +74,9 @@ proxy-groups:
         - auto
         - vless-532685580
         - vless-587204637
-        - shadowsocks-335128325
+        - shadowsocks-696792832
         - vless-656230603
+        - vless-656189585
       type: select
 rules:
     - MATCH,select

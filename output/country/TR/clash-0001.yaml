@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-119244
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20018
-      server: 45.67.201.210
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-128278
       password: 366aa1ba14af3f1a
@@ -593,45 +585,6 @@ proxies:
       type: vless
       udp: true
       uuid: ac7fb60f-0b7a-465d-a002-05160ec04ed6
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-861417992
-      password: OykUi46TJz-c-Dee6RDB3_2b7ns30sUm
-      port: 8080
-      server: tr.mamad-imnix.ir
-      type: ss
-      udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-861480171
-      network: tcp
-      port: 5384
-      server: dashboard.aframarket.top
-      type: vmess
-      udp: true
-      uuid: 130b0fbf-4f19-44d0-911f-95355e9632e4
-    - alterId: 0
-      cipher: auto
-      name: vmess-861480176
-      network: tcp
-      port: 5381
-      server: dashboard.afrashop.top
-      type: vmess
-      udp: true
-      uuid: 130b0fbf-4f19-44d0-911f-95355e9632e4
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-861654713
-      network: tcp
-      port: 53765
-      reality-opts:
-        public-key: qPJ4Ihy7aIt05In_B3KcUA55FqQhjmZwGCDklMYdAQE
-        short-id: 59df2373c3e92229
-      server: turkie5.kaliteam.ir
-      servername: play.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 37a80f27-a184-4da7-a320-7d5ff19cdac1
     - flow: xtls-rprx-vision
       name: vless-861995727
       network: tcp
@@ -675,11 +628,26 @@ proxies:
       sni: cos.ap-hongkong.myqcloud.com
       type: trojan
       udp: true
+    - name: vless-862870890
+      network: ws
+      port: 2095
+      server: snapp.ir
+      type: vless
+      udp: true
+      uuid: efa66094-0a78-4755-a245-da7e4e70370c
+    - alterId: 0
+      cipher: auto
+      name: vmess-862895680
+      network: tcp
+      port: 5384
+      server: dashboard.aframarket.top
+      type: vmess
+      udp: true
+      uuid: cfd42ad2-6fc7-443f-994e-10e3d7df24d1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-119244
         - shadowsocks-128278
         - vless-656246730
         - vless-699893657
@@ -733,20 +701,17 @@ proxy-groups:
         - vless-861403923
         - vless-861405940
         - vless-861411923
-        - shadowsocks-861417992
-        - vmess-861480171
-        - vmess-861480176
-        - vless-861654713
         - vless-861995727
         - vless-862041472
         - vless-862251541
         - trojan-862473566
+        - vless-862870890
+        - vmess-862895680
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-119244
         - shadowsocks-128278
         - vless-656246730
         - vless-699893657
@@ -800,14 +765,12 @@ proxy-groups:
         - vless-861403923
         - vless-861405940
         - vless-861411923
-        - shadowsocks-861417992
-        - vmess-861480171
-        - vmess-861480176
-        - vless-861654713
         - vless-861995727
         - vless-862041472
         - vless-862251541
         - trojan-862473566
+        - vless-862870890
+        - vmess-862895680
       type: select
 rules:
     - MATCH,select
