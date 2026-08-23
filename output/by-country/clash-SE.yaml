@@ -26,6 +26,19 @@ proxies:
       udp: true
       uuid: 75079a7f-75b5-418b-8a65-f7b2f438cd4a
     - client-fingerprint: firefox
+      name: vless-858517086
+      network: grpc
+      port: 2054
+      reality-opts:
+        public-key: z8O-5nI4-3eKexufSrkEUvAubPw7a73cQtTGNDp3Uxo
+        short-id: 6ffc74326185d4d6
+      server: 143.246.198.91
+      servername: www.ibm.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0e75f6ee-9a4d-4019-8276-cacf388d2ec6
+    - client-fingerprint: firefox
       name: vless-857350740
       network: grpc
       port: 2054
@@ -51,19 +64,6 @@ proxies:
       type: vless
       udp: true
       uuid: 82d145c1-d691-4eef-9de1-9c316db4859a
-    - client-fingerprint: safari
-      name: vless-860480564
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ
-        short-id: abcd
-      server: 5.188.115.241
-      servername: 5post-gate.x5.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: fe19b21d-cf26-42a2-8d26-09e5a9501d4c
     - client-fingerprint: firefox
       name: vless-857369684
       network: grpc
@@ -77,25 +77,31 @@ proxies:
       type: vless
       udp: true
       uuid: d900a139-8b5f-4758-8a32-389c6f36fc86
-    - name: trojan-857702418
-      password: MiTiVPN
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-202733753
+      network: raw
       port: 443
-      server: 188.114.97.6
-      skip-cert-verify: false
-      sni: 3865895-mitivpn--mitivpn------mitivpn.mitivpn-s.lifestyle
-      type: trojan
+      reality-opts:
+        public-key: 989gq45ogQSZLDoUTcLNSYW5v_3ER7W_6Oi_8swZzXo
+        short-id: cb55f541
+      server: 178.83.31.93
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
       udp: true
+      uuid: 4a97788b-5d8a-410c-875c-ba36930e185e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-856081308
         - vless-856081296
+        - vless-858517086
         - vless-857350740
         - vless-856081326
-        - vless-860480564
         - vless-857369684
-        - trojan-857702418
+        - vless-202733753
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -103,11 +109,11 @@ proxy-groups:
         - auto
         - vless-856081308
         - vless-856081296
+        - vless-858517086
         - vless-857350740
         - vless-856081326
-        - vless-860480564
         - vless-857369684
-        - trojan-857702418
+        - vless-202733753
       type: select
 rules:
     - MATCH,select

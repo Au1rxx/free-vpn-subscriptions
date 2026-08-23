@@ -1,4 +1,18 @@
 proxies:
+    - name: vless-858356556
+      network: tcp
+      port: 62145
+      server: 157.137.232.175
+      type: vless
+      udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+    - name: vless-858356541
+      network: tcp
+      port: 62145
+      server: 157.137.233.98
+      type: vless
+      udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
     - name: vless-859419823
       network: tcp
       port: 62145
@@ -10,20 +24,6 @@ proxies:
       network: tcp
       port: 62145
       server: 157.137.229.126
-      type: vless
-      udp: true
-      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-    - name: vless-856717767
-      network: tcp
-      port: 62145
-      server: 149.130.188.248
-      type: vless
-      udp: true
-      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-    - name: vless-856717703
-      network: tcp
-      port: 62145
-      server: 157.137.208.244
       type: vless
       udp: true
       uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
@@ -48,38 +48,29 @@ proxies:
       type: vless
       udp: true
       uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
-    - name: vless-855679927
-      network: tcp
-      port: 62145
-      server: 158.247.126.227
-      type: vless
-      udp: true
-      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-858356556
+        - vless-858356541
         - vless-859419823
         - vless-855679910
-        - vless-856717767
-        - vless-856717703
         - vless-856725915
         - vless-856725907
         - vless-860287612
-        - vless-855679927
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-858356556
+        - vless-858356541
         - vless-859419823
         - vless-855679910
-        - vless-856717767
-        - vless-856717703
         - vless-856725915
         - vless-856725907
         - vless-860287612
-        - vless-855679927
       type: select
 rules:
     - MATCH,select

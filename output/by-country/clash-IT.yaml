@@ -1,4 +1,46 @@
 proxies:
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-859995256
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: H9-mAKSPlIPGVDI2uBSZqxxOkLGTsfciqL5rAKIwUlg
+        short-id: ad416bcb922d986b
+      server: it1.murhost.network
+      servername: it1.murhost.network
+      tls: true
+      type: vless
+      udp: true
+      uuid: 419f25c1-bc35-412e-93fb-258efee859b5
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-859995269
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: H9-mAKSPlIPGVDI2uBSZqxxOkLGTsfciqL5rAKIwUlg
+        short-id: ad416bcb922d986b
+      server: it1.murhost.network
+      servername: it1.murhost.network
+      tls: true
+      type: vless
+      udp: true
+      uuid: 419f25c1-bc35-412e-93fb-258efee859b5
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-855596713
+      network: tcp
+      port: 49475
+      reality-opts:
+        public-key: i0nN_0uLl5ha8pIf6gNNLeLQe7it-nXDFLC5eM1BHV4
+        short-id: bb9b8f5f
+      server: 92yqc126g8qwe6v23n01.haiyucloud.com
+      servername: www.python.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 485717cf-e96c-40db-9bc1-624060b89f20
     - name: hysteria2-856081357
       password: 628769f2e4
       port: 11592
@@ -6,6 +48,19 @@ proxies:
       skip-cert-verify: false
       sni: ""
       type: hysteria2
+    - client-fingerprint: firefox
+      name: vless-429873172
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-856081333
@@ -34,37 +89,29 @@ proxies:
       type: vless
       udp: true
       uuid: 485717cf-e96c-40db-9bc1-624060b89f20
-    - client-fingerprint: ios
-      flow: xtls-rprx-vision
-      name: vless-860326452
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: H9-mAKSPlIPGVDI2uBSZqxxOkLGTsfciqL5rAKIwUlg
-        short-id: ad416bcb922d986b
-      server: 31.76.113.94
-      servername: it1.murhost.network
-      tls: true
-      type: vless
-      udp: true
-      uuid: 419f25c1-bc35-412e-93fb-258efee859b5
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-859995256
+        - vless-859995269
+        - vless-855596713
         - hysteria2-856081357
+        - vless-429873172
         - vless-856081333
         - vless-824303048
-        - vless-860326452
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-859995256
+        - vless-859995269
+        - vless-855596713
         - hysteria2-856081357
+        - vless-429873172
         - vless-856081333
         - vless-824303048
-        - vless-860326452
       type: select
 rules:
     - MATCH,select
