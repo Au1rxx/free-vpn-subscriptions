@@ -6,21 +6,15 @@ proxies:
       server: 118.107.222.231
       type: ss
       udp: true
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-859737783
-      network: tcp
-      port: 10031
-      reality-opts:
-        public-key: XD4QDqCtwoTo5TsoU8Kl2Mj7F-hQNzlyK5z0cg8VZ20
-        short-id: d83b1991a19fb038
-      server: 103.231.15.195
-      servername: www.hp.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7aecb4a5-f0a4-32a0-aabe-c9d5241e313f
     - name: trojan-860952359
+      password: 5931134d1cde66bf83a54acdfebe7ab2
+      port: 443
+      server: 47.250.84.25
+      skip-cert-verify: true
+      sni: moltbot.doctoroyy.net
+      type: trojan
+      udp: true
+    - name: trojan-860926447
       password: 5931134d1cde66bf83a54acdfebe7ab2
       port: 443
       server: 47.250.84.25
@@ -33,16 +27,16 @@ proxy-groups:
       name: auto
       proxies:
         - shadowsocks-696792801
-        - vless-859737783
         - trojan-860952359
+        - trojan-860926447
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-696792801
-        - vless-859737783
         - trojan-860952359
+        - trojan-860926447
       type: select
 rules:
     - MATCH,select

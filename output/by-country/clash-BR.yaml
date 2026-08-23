@@ -1,12 +1,5 @@
 proxies:
     - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-860355588
-      password: VNZU26yCu5J1TaXQ9IdJasKHopBUzc2xt+JUl9ECB+g=
-      port: 59319
-      server: 150.230.229.189
-      type: ss
-      udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-859953725
       password: MdImM0QejAzcmEd6BKaoy1mr4hVAIqXF7LTY1EqzTL0=
       port: 59319
@@ -48,6 +41,20 @@ proxies:
       server: 144.22.232.252
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-859635079
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: E6Y9lNizCXo8tJ6EXwLYQIjyIwmxIs4foyRlY2MgkjA
+        short-id: 59ccabb0a1483c4b
+      server: 23.251.56.78
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9638a83e-f1f7-4cc8-a602-924965d9534f
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-757466721
@@ -104,35 +111,67 @@ proxies:
       type: vless
       udp: true
       uuid: 9638a83e-f1f7-4cc8-a602-924965d9534f
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-856684700
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: m89wjPa2LxODyi8U5pRVI4E1fwVawIaftC3fLY0ZLw4
+        short-id: 9ea177c3c147119b
+      server: u234-6njjdk.startora.top
+      servername: www.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c396fa08-e07a-459b-b894-389456fd6a82
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-857687064
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: m89wjPa2LxODyi8U5pRVI4E1fwVawIaftC3fLY0ZLw4
+        short-id: 9ea177c3c147119b
+      server: u234-6njjdk.startora.top
+      servername: www.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c396fa08-e07a-459b-b894-389456fd6a82
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-860355588
         - shadowsocks-859953725
         - shadowsocks-696792825
         - vless-855083921
         - shadowsocks-862076849
         - shadowsocks-862076840
+        - vless-859635079
         - vless-757466721
         - vless-859365534
         - vless-855083923
         - vless-702186390
+        - vless-856684700
+        - vless-857687064
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-860355588
         - shadowsocks-859953725
         - shadowsocks-696792825
         - vless-855083921
         - shadowsocks-862076849
         - shadowsocks-862076840
+        - vless-859635079
         - vless-757466721
         - vless-859365534
         - vless-855083923
         - vless-702186390
+        - vless-856684700
+        - vless-857687064
       type: select
 rules:
     - MATCH,select

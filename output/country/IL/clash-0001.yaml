@@ -7,27 +7,17 @@ proxies:
       sni: tyy129.magiclampcloud.com
       type: trojan
       udp: true
-    - name: trojan-862483538
-      password: 6fbda1e2-85e5-48dc-9fa0-21be0651aa47
-      port: 22227
-      server: gfw.cmcuct.com
-      skip-cert-verify: true
-      sni: cos.ap-hongkong.myqcloud.com
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-696781176
-        - trojan-862483538
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-696781176
-        - trojan-862483538
       type: select
 rules:
     - MATCH,select
