@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-856387904
-      network: tcp
-      port: 10000
-      server: 220.130.75.249
-      type: vless
-      udp: true
-      uuid: 431fe973-a43a-4fac-bf83-2a772e0d0625
     - name: vless-647042508
       network: tcp
       port: 10000
@@ -81,13 +74,6 @@ proxies:
       type: vless
       udp: true
       uuid: 431fe973-a43a-4fac-bf83-2a772e0d0625
-    - name: hysteria2-16610
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: 103.115.109.49
-      skip-cert-verify: true
-      sni: https://t.me/oneclickvpnkeys
-      type: hysteria2
     - name: vless-834360296
       network: tcp
       port: 10000
@@ -162,13 +148,6 @@ proxies:
       skip-cert-verify: true
       sni: vpn-tw-002.fastervpn.world
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-822692224
-      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
-      port: 50099
-      server: 61.231.22.178
-      type: ss
-      udp: true
     - name: vless-656187936
       network: ws
       port: 443
@@ -329,11 +308,26 @@ proxies:
       type: vless
       udp: true
       uuid: b8ca2900-3ed7-4b58-970e-060d0a6cbf99
+    - name: vless-669577553
+      network: tcp
+      port: 10000
+      server: 220.130.75.248
+      type: vless
+      udp: true
+      uuid: 431fe973-a43a-4fac-bf83-2a772e0d0625
+    - alterId: 0
+      cipher: auto
+      name: vmess-829610504
+      network: tcp
+      port: 35034
+      server: 165.154.195.38
+      type: vmess
+      udp: true
+      uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-856387904
         - vless-647042508
         - hysteria2-667703181
         - vless-266998489
@@ -343,7 +337,6 @@ proxy-groups:
         - vless-652388787
         - vless-461791955
         - vless-562186771
-        - hysteria2-16610
         - vless-834360296
         - vless-470984246
         - vless-656230591
@@ -351,7 +344,6 @@ proxy-groups:
         - vless-700283230
         - vless-685581306
         - hysteria2-137781265
-        - shadowsocks-822692224
         - vless-656187936
         - vless-661028003
         - hysteria2-200242609
@@ -369,12 +361,13 @@ proxy-groups:
         - hysteria2-650429104
         - vless-742660274
         - vless-737947072
+        - vless-669577553
+        - vmess-829610504
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-856387904
         - vless-647042508
         - hysteria2-667703181
         - vless-266998489
@@ -384,7 +377,6 @@ proxy-groups:
         - vless-652388787
         - vless-461791955
         - vless-562186771
-        - hysteria2-16610
         - vless-834360296
         - vless-470984246
         - vless-656230591
@@ -392,7 +384,6 @@ proxy-groups:
         - vless-700283230
         - vless-685581306
         - hysteria2-137781265
-        - shadowsocks-822692224
         - vless-656187936
         - vless-661028003
         - hysteria2-200242609
@@ -410,6 +401,8 @@ proxy-groups:
         - hysteria2-650429104
         - vless-742660274
         - vless-737947072
+        - vless-669577553
+        - vmess-829610504
       type: select
 rules:
     - MATCH,select

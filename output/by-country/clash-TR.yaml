@@ -13,12 +13,36 @@ proxies:
       skip-cert-verify: true
       sni: 194.135.34.207
       type: hysteria2
+    - flow: xtls-rprx-vision
+      name: vless-860058416
+      network: tcp
+      port: 443
+      server: 64.49.13.232
+      servername: wok2.api3-max.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ac7fb60f-0b7a-465d-a002-05160ec04ed6
+    - flow: xtls-rprx-vision
+      name: vless-860218225
+      network: tcp
+      port: 443
+      server: wok6.api3-max.ru
+      servername: wok6.api3-max.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ac7fb60f-0b7a-465d-a002-05160ec04ed6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-859306111
         - hysteria2-855679912
+        - vless-860058416
+        - vless-860218225
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +50,8 @@ proxy-groups:
         - auto
         - hysteria2-859306111
         - hysteria2-855679912
+        - vless-860058416
+        - vless-860218225
       type: select
 rules:
     - MATCH,select
