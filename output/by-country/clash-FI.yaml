@@ -57,6 +57,16 @@ proxies:
       skip-cert-verify: true
       sni: hopp-legend-se.roxa.org
       type: hysteria2
+    - name: vless-860620803
+      network: grpc
+      port: 2101
+      server: 132.243.223.227
+      servername: 132-243-223-227.sslip.io
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
     - name: vless-862043488
       network: grpc
       port: 2101
@@ -77,46 +87,6 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-376006390
-      password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
-      port: 42982
-      server: 217.28.129.81
-      type: ss
-      udp: true
-    - name: vless-860620803
-      network: grpc
-      port: 2101
-      server: 132.243.223.227
-      servername: 132-243-223-227.sslip.io
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - name: vless-860620822
-      network: grpc
-      port: 2101
-      server: 132-243-223-227.sslip.io
-      servername: 132-243-223-227.sslip.io
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - client-fingerprint: chrome
-      name: vless-615983244
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: Qr6_9TMQYMCB2hVSYeONcMvxBqIaT0mzPUy8nIivV1g
-        short-id: b58b
-      server: 89.167.0.240
-      servername: play.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 694eb5d5-794c-4389-af65-e5a4b8489dae
     - client-fingerprint: random
       name: vless-652375208
       network: tcp
@@ -130,6 +100,23 @@ proxies:
       type: vless
       udp: true
       uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-376006390
+      password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
+      port: 42982
+      server: 217.28.129.81
+      type: ss
+      udp: true
+    - name: vless-860620822
+      network: grpc
+      port: 2101
+      server: 132-243-223-227.sslip.io
+      servername: 132-243-223-227.sslip.io
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
 proxy-groups:
     - interval: 300
       name: auto
@@ -141,13 +128,12 @@ proxy-groups:
         - vless-860755884
         - vless-856210273
         - hysteria2-813371789
+        - vless-860620803
         - vless-862043488
         - vless-862043473
-        - shadowsocks-376006390
-        - vless-860620803
-        - vless-860620822
-        - vless-615983244
         - vless-652375208
+        - shadowsocks-376006390
+        - vless-860620822
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -160,13 +146,12 @@ proxy-groups:
         - vless-860755884
         - vless-856210273
         - hysteria2-813371789
+        - vless-860620803
         - vless-862043488
         - vless-862043473
-        - shadowsocks-376006390
-        - vless-860620803
-        - vless-860620822
-        - vless-615983244
         - vless-652375208
+        - shadowsocks-376006390
+        - vless-860620822
       type: select
 rules:
     - MATCH,select
