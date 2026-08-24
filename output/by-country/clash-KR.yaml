@@ -6,6 +6,13 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - name: hysteria2-862443285
+      password: c86222db9b5784ef6a2c0ab13f6ef658
+      port: 50160
+      server: 168.107.13.220
+      skip-cert-verify: true
+      sni: www.bing.com
+      type: hysteria2
     - name: hysteria2-867103490
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -399,32 +406,12 @@ proxies:
       skip-cert-verify: true
       sni: vpn-kr-003.fastervpn.world
       type: hysteria2
-    - name: hysteria2-722298625
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: 3.36.96.245
-      skip-cert-verify: true
-      sni: whatsapp.com
-      type: hysteria2
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-836349872
-      network: tcp
-      port: 18967
-      reality-opts:
-        public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-        short-id: 48050fab
-      server: 3.39.4.109
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 814bd064-544d-4255-a070-5705c03f6da9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-862085258
+        - hysteria2-862443285
         - hysteria2-867103490
         - vless-622951487
         - vless-622951488
@@ -462,14 +449,13 @@ proxy-groups:
         - vmess-144713
         - vmess-5259790
         - hysteria2-266962492
-        - hysteria2-722298625
-        - vless-836349872
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-862085258
+        - hysteria2-862443285
         - hysteria2-867103490
         - vless-622951487
         - vless-622951488
@@ -507,8 +493,6 @@ proxy-groups:
         - vmess-144713
         - vmess-5259790
         - hysteria2-266962492
-        - hysteria2-722298625
-        - vless-836349872
       type: select
 rules:
     - MATCH,select
