@@ -6,41 +6,28 @@ proxies:
       skip-cert-verify: true
       sni: hopp-germany-new.ddnsguru.com
       type: hysteria2
-    - client-fingerprint: firefox
-      name: vless-810591836
+    - alterId: 0
+      cipher: auto
+      name: vmess-862895680
       network: tcp
-      port: 2053
-      reality-opts:
-        public-key: dUFJ3jZPMH9WvjtAnUc9wYhO_IX1czIi-CidF_HdFDA
-        short-id: c267be657e1539ea
-      server: 151.241.226.201
-      servername: www.apple.com
-      tls: true
-      type: vless
+      port: 5384
+      server: dashboard.aframarket.top
+      type: vmess
       udp: true
-      uuid: 52b1aca9-a2ba-4249-9e9f-d488f89c1445
-    - name: hysteria2-863201242
-      password: ac7fb60f-0b7a-465d-a002-05160ec04ed6
-      port: 443
-      server: gora4.api3-max.ru
-      skip-cert-verify: false
-      sni: gora4.api3-max.ru
-      type: hysteria2
+      uuid: cfd42ad2-6fc7-443f-994e-10e3d7df24d1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-860759604
-        - vless-810591836
-        - hysteria2-863201242
+        - vmess-862895680
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-860759604
-        - vless-810591836
-        - hysteria2-863201242
+        - vmess-862895680
       type: select
 rules:
     - MATCH,select

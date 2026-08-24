@@ -1,0 +1,80 @@
+proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-863659271
+      password: YzYwZ
+      port: 8388
+      server: 193.168.199.192
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-863659272
+      password: MTFlN
+      port: 8388
+      server: 194.147.35.56
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-863659275
+      password: MzcxY
+      port: 8388
+      server: 45.95.2.25
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-863659276
+      password: OTgxZ
+      port: 1443
+      server: 138.124.68.88
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-863665178
+      network: tcp
+      port: 5520
+      reality-opts:
+        public-key: RywMRWtTpztZ-WjLRVlLOdTFi3NpWLx1sglNvLIoYHs
+        short-id: 11b0b21536dc5a39
+      server: snapp-ja.topdigit.ir
+      servername: amp-api-edge.apps.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 728f3492-5b41-43cc-8c62-f1504376a900
+    - client-fingerprint: chrome
+      name: vless-863666176
+      network: tcp
+      port: 8065
+      reality-opts:
+        public-key: hjJ1VN2xwcl1n7vrwvOspB2NFWrXNySUNPexutOVvAM
+        short-id: 8adba28e
+      server: 45.134.38.204
+      servername: www.amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a88e2744-3555-4a0a-9635-0aae23e038f8
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-863659271
+        - shadowsocks-863659272
+        - shadowsocks-863659275
+        - shadowsocks-863659276
+        - vless-863665178
+        - vless-863666176
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-863659271
+        - shadowsocks-863659272
+        - shadowsocks-863659275
+        - shadowsocks-863659276
+        - vless-863665178
+        - vless-863666176
+      type: select
+rules:
+    - MATCH,select

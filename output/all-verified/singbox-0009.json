@@ -1,0 +1,113 @@
+{
+  "outbounds": [
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "YzYwZ",
+      "server": "193.168.199.192",
+      "server_port": 8388,
+      "tag": "shadowsocks-863659271",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "MTFlN",
+      "server": "194.147.35.56",
+      "server_port": 8388,
+      "tag": "shadowsocks-863659272",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "MzcxY",
+      "server": "45.95.2.25",
+      "server_port": 8388,
+      "tag": "shadowsocks-863659275",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "OTgxZ",
+      "server": "138.124.68.88",
+      "server_port": 1443,
+      "tag": "shadowsocks-863659276",
+      "type": "shadowsocks"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "snapp-ja.topdigit.ir",
+      "server_port": 5520,
+      "tag": "vless-863665178",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "RywMRWtTpztZ-WjLRVlLOdTFi3NpWLx1sglNvLIoYHs",
+          "short_id": "11b0b21536dc5a39"
+        },
+        "server_name": "amp-api-edge.apps.apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "728f3492-5b41-43cc-8c62-f1504376a900"
+    },
+    {
+      "server": "45.134.38.204",
+      "server_port": 8065,
+      "tag": "vless-863666176",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "hjJ1VN2xwcl1n7vrwvOspB2NFWrXNySUNPexutOVvAM",
+          "short_id": "8adba28e"
+        },
+        "server_name": "www.amd.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "a88e2744-3555-4a0a-9635-0aae23e038f8"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "shadowsocks-863659271",
+        "shadowsocks-863659272",
+        "shadowsocks-863659275",
+        "shadowsocks-863659276",
+        "vless-863665178",
+        "vless-863666176"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "shadowsocks-863659271",
+        "shadowsocks-863659272",
+        "shadowsocks-863659275",
+        "shadowsocks-863659276",
+        "vless-863665178",
+        "vless-863666176"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

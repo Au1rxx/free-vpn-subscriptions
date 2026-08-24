@@ -1,29 +1,22 @@
 proxies:
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-863082216
-      network: tcp
-      port: 10032
-      reality-opts:
-        public-key: yXxDl06l9pXXT4_1kqpdgOyfAhORcsfPgLTxHu50zQM
-        short-id: f9275dbb5a
-      server: 103.231.15.195
-      servername: www.hp.com
-      tls: true
-      type: vless
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-125093
+      password: d7zh2lMrXNH5+8+8pKzlxiCU9NN022ih+uAyxj5d4qo=
+      port: 31700
+      server: 102.129.229.85
+      type: ss
       udp: true
-      uuid: 7aecb4a5-f0a4-32a0-aabe-c9d5241e313f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-863082216
+        - shadowsocks-125093
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-863082216
+        - shadowsocks-125093
       type: select
 rules:
     - MATCH,select
