@@ -296,20 +296,6 @@ proxies:
       uuid: 9638a83e-f1f7-4cc8-a602-924965d9534f
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-813687309
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: m89wjPa2LxODyi8U5pRVI4E1fwVawIaftC3fLY0ZLw4
-        short-id: 9ea177c3c147119b
-      server: 23.251.55.216
-      servername: www.amazon.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c396fa08-e07a-459b-b894-389456fd6a82
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-814228083
       network: tcp
       port: 443
@@ -560,6 +546,29 @@ proxies:
       server: 159.112.178.179
       type: ss
       udp: true
+    - name: trojan-864163188
+      password: bfc55a0e-6d1b-4010-8bf6-0d9726d151a3
+      port: 28443
+      server: 172.237.62.103
+      skip-cert-verify: true
+      sni: vpn-node.internal
+      type: trojan
+      udp: true
+    - name: trojan-864226393
+      password: 3a383805-40a2-4b6f-a0e5-7f34c1d6152c
+      port: 28443
+      server: 172.237.54.237
+      skip-cert-verify: true
+      sni: vpn-node.internal
+      type: trojan
+      udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-864228380
+      password: SsMG/Y8d12j7lzjxerXFHpQw3YoMOrZ4eOJt2/NnWEM=
+      port: 59319
+      server: 144.22.132.191
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -586,7 +595,6 @@ proxy-groups:
         - vless-803648192
         - vless-812219855
         - vless-813413046
-        - vless-813687309
         - vless-814228083
         - vless-821154219
         - vless-855083921
@@ -610,6 +618,9 @@ proxy-groups:
         - shadowsocks-863508659
         - vless-863696306
         - shadowsocks-863933291
+        - trojan-864163188
+        - trojan-864226393
+        - shadowsocks-864228380
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -637,7 +648,6 @@ proxy-groups:
         - vless-803648192
         - vless-812219855
         - vless-813413046
-        - vless-813687309
         - vless-814228083
         - vless-821154219
         - vless-855083921
@@ -661,6 +671,9 @@ proxy-groups:
         - shadowsocks-863508659
         - vless-863696306
         - shadowsocks-863933291
+        - trojan-864163188
+        - trojan-864226393
+        - shadowsocks-864228380
       type: select
 rules:
     - MATCH,select

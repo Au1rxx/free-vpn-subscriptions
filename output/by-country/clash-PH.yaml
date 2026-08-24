@@ -1,6 +1,20 @@
 proxies:
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-785274749
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: zVJVCkcnyPjMZvx-GMQnnbkEgNiws80sppKB6A0uqBY
+        short-id: 83dee8596e65d99e
+      server: 66.253.10.22
+      servername: www.bing.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 907a940c-bad0-4356-a280-7dec12f1479e
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-720976521
       network: tcp
       port: 443
@@ -22,6 +36,20 @@ proxies:
         public-key: zVJVCkcnyPjMZvx-GMQnnbkEgNiws80sppKB6A0uqBY
         short-id: 83dee8596e65d99e
       server: 66.253.10.22
+      servername: www.bing.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 907a940c-bad0-4356-a280-7dec12f1479e
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-785347141
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: zVJVCkcnyPjMZvx-GMQnnbkEgNiws80sppKB6A0uqBY
+        short-id: 83dee8596e65d99e
+      server: sk1i-il4mxi.sparkra.top
       servername: www.bing.com
       tls: true
       type: vless
@@ -71,7 +99,21 @@ proxies:
       uuid: 907a940c-bad0-4356-a280-7dec12f1479e
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-785347141
+      name: vless-716553550
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: zVJVCkcnyPjMZvx-GMQnnbkEgNiws80sppKB6A0uqBY
+        short-id: 83dee8596e65d99e
+      server: 66.253.10.22
+      servername: www.bing.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 907a940c-bad0-4356-a280-7dec12f1479e
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-816741411
       network: tcp
       port: 443
       reality-opts:
@@ -83,23 +125,9 @@ proxies:
       type: vless
       udp: true
       uuid: 907a940c-bad0-4356-a280-7dec12f1479e
-    - client-fingerprint: firefox
+    - client-fingerprint: edge
       flow: xtls-rprx-vision
-      name: vless-799882529
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: zVJVCkcnyPjMZvx-GMQnnbkEgNiws80sppKB6A0uqBY
-        short-id: 83dee8596e65d99e
-      server: sk1i-il4mxi.sparkra.top
-      servername: www.bing.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 907a940c-bad0-4356-a280-7dec12f1479e
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-716553550
+      name: vless-816741402
       network: tcp
       port: 443
       reality-opts:
@@ -139,51 +167,39 @@ proxies:
       type: vless
       udp: true
       uuid: 907a940c-bad0-4356-a280-7dec12f1479e
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-816741402
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: zVJVCkcnyPjMZvx-GMQnnbkEgNiws80sppKB6A0uqBY
-        short-id: 83dee8596e65d99e
-      server: 66.253.10.22
-      servername: www.bing.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 907a940c-bad0-4356-a280-7dec12f1479e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-785274749
         - vless-720976521
         - vless-720976522
+        - vless-785347141
         - vless-754624396
         - vless-862177977
         - vless-696792916
-        - vless-785347141
-        - vless-799882529
         - vless-716553550
+        - vless-816741411
+        - vless-816741402
         - vless-724628322
         - vless-860816075
-        - vless-816741402
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-785274749
         - vless-720976521
         - vless-720976522
+        - vless-785347141
         - vless-754624396
         - vless-862177977
         - vless-696792916
-        - vless-785347141
-        - vless-799882529
         - vless-716553550
+        - vless-816741411
+        - vless-816741402
         - vless-724628322
         - vless-860816075
-        - vless-816741402
       type: select
 rules:
     - MATCH,select
