@@ -2274,16 +2274,25 @@ proxies:
       type: vmess
       udp: true
       uuid: 9db4c708-aef8-4359-821b-38e47990be0d
-    - name: vless-863262200
-      network: tcp
-      port: 443
-      server: 0.0.0.0
-      type: vless
-      udp: true
-      uuid: 2b44a12a-2a00-48aa-a8db-0d182e34d888
     - alterId: 0
       cipher: auto
       name: vmess-864012916
+      network: ws
+      port: 80
+      server: 152.67.8.205
+      type: vmess
+      udp: true
+      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
+    - name: hysteria2-864736512
+      password: 91283e34-8674-4961-b202-c3491b72eeb9
+      port: 51000
+      server: 144.24.109.215
+      skip-cert-verify: true
+      sni: cn.cremedelamer.com
+      type: hysteria2
+    - alterId: 0
+      cipher: auto
+      name: vmess-864903332
       network: ws
       port: 80
       server: 152.67.8.205
@@ -2470,8 +2479,9 @@ proxy-groups:
         - vless-861034392
         - vmess-863229972
         - vmess-863255351
-        - vless-863262200
         - vmess-864012916
+        - hysteria2-864736512
+        - vmess-864903332
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -2653,8 +2663,9 @@ proxy-groups:
         - vless-861034392
         - vmess-863229972
         - vmess-863255351
-        - vless-863262200
         - vmess-864012916
+        - hysteria2-864736512
+        - vmess-864903332
       type: select
 rules:
     - MATCH,select
