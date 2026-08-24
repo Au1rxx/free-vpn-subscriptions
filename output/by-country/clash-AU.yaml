@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792832
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 82.23.146.72
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-659123901
@@ -72,36 +79,29 @@ proxies:
       type: vless
       udp: true
       uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
-    - name: hysteria2-658428922
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: vpn-au-002.fastervpn.world
-      skip-cert-verify: true
-      sni: vpn-au-002.fastervpn.world
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-696792832
         - vless-659123901
         - vless-532685580
         - shadowsocks-335128325
         - vless-656189585
         - vless-656230603
         - vless-587204637
-        - hysteria2-658428922
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-696792832
         - vless-659123901
         - vless-532685580
         - shadowsocks-335128325
         - vless-656189585
         - vless-656230603
         - vless-587204637
-        - hysteria2-658428922
       type: select
 rules:
     - MATCH,select

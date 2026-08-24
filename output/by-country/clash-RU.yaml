@@ -6,6 +6,20 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-872124438
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: D0FqzTuVSzCF8IcFo64SFIpMsaGV47LW3el2GCCVoFY
+        short-id: c1a7e9b4711d5f60
+      server: 193.168.46.180
+      servername: rruu.persik.host
+      tls: true
+      type: vless
+      udp: true
+      uuid: 462474cd-f3fa-46f8-88b2-cde468b0cd32
     - client-fingerprint: random
       name: vless-862227073
       network: grpc
@@ -19,37 +33,21 @@ proxies:
       type: vless
       udp: true
       uuid: 95e8532b-cc69-42d4-9553-e3c23292b15b
-    - name: hysteria2-855659712
-      password: 41edb44c8e
-      port: 11592
-      server: srv-17e124.21freedom.net
-      skip-cert-verify: false
-      sni: ""
-      type: hysteria2
-    - name: hysteria2-855920168
-      password: 41edb44c8e
-      port: 11592
-      server: srv-17e124.21freedom.net
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-857587363
+        - vless-872124438
         - vless-862227073
-        - hysteria2-855659712
-        - hysteria2-855920168
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-857587363
+        - vless-872124438
         - vless-862227073
-        - hysteria2-855659712
-        - hysteria2-855920168
       type: select
 rules:
     - MATCH,select

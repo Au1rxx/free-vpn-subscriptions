@@ -1,4 +1,11 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-26744
+      password: QFWzCw2uX9B9i6qAYeFBIE
+      port: 443
+      server: 154.46.31.106
+      type: ss
+      udp: true
     - name: trojan-119243
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20017
@@ -213,6 +220,13 @@ proxies:
       skip-cert-verify: false
       sni: hopp-romania-new.roxa.org
       type: hysteria2
+    - name: hysteria2-859968188
+      password: gf1:gfhysteria2024
+      port: 443
+      server: 185.156.44.99
+      skip-cert-verify: true
+      sni: www.bing.com
+      type: hysteria2
     - name: hysteria2-860759612
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
       port: 8443
@@ -231,6 +245,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-26744
         - trojan-119243
         - hysteria2-290666035
         - hysteria2-315405971
@@ -258,6 +273,7 @@ proxy-groups:
         - hysteria2-841934438
         - hysteria2-855762695
         - hysteria2-859306105
+        - hysteria2-859968188
         - hysteria2-860759612
         - hysteria2-860781864
       type: url-test
@@ -265,6 +281,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-26744
         - trojan-119243
         - hysteria2-290666035
         - hysteria2-315405971
@@ -292,6 +309,7 @@ proxy-groups:
         - hysteria2-841934438
         - hysteria2-855762695
         - hysteria2-859306105
+        - hysteria2-859968188
         - hysteria2-860759612
         - hysteria2-860781864
       type: select
