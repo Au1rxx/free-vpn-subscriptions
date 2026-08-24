@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: qq
+      name: vless-883516444
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: aZOpodpnifoxDqTzWgxJRffgsiGnG9-h-EZd4SvOImc
+        short-id: f7b2
+      server: 46.29.238.88
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: db320947-adfb-400d-b60b-383b8324bffe
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-883516444
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-883516444
+      type: select
+rules:
+    - MATCH,select

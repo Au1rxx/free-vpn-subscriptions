@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: chrome
+      name: vless-882197921
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 5W62O3ZPFWoyFtLFG1R0B35coWNmaGt7xcvwQjhpSSI
+        short-id: 157cf9f411a1f491
+      server: azar.relluma.ir
+      servername: biosmod.vendors.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 601f1cf3-3d17-404e-901f-8cf5ab8383c4
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-882197921
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-882197921
+      type: select
+rules:
+    - MATCH,select
