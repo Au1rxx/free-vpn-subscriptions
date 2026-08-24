@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-857104265
+      network: grpc
+      port: 2101
+      server: 132.243.223.227
+      servername: 132-243-223-227.sslip.io
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
     - name: vless-856210273
       network: grpc
       port: 2101
@@ -26,16 +36,6 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - name: vless-857104265
-      network: grpc
-      port: 2101
-      server: 132.243.223.227
-      servername: 132-243-223-227.sslip.io
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
     - name: vless-863413388
       network: raw
       port: 30551
@@ -43,19 +43,6 @@ proxies:
       type: vless
       udp: true
       uuid: e951ae39-2240-40ca-be13-9f862c3de3ce
-    - client-fingerprint: random
-      name: vless-652375208
-      network: tcp
-      port: 448
-      reality-opts:
-        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
-        short-id: cd21e552537c7c0b
-      server: 185.79.138.71
-      servername: www.samsung.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-336700747
       password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
@@ -70,6 +57,16 @@ proxies:
       server: 166.1.129.245
       type: ss
       udp: true
+    - name: vless-855762708
+      network: grpc
+      port: 2101
+      server: 132-243-223-227.sslip.io
+      servername: 132-243-223-227.sslip.io
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
     - name: vless-863451551
       network: grpc
       port: 2101
@@ -104,68 +101,37 @@ proxies:
       type: vless
       udp: true
       uuid: f319a005-6bd0-44b3-910c-a596a2573efe
-    - client-fingerprint: chrome
-      name: vless-615983244
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: Qr6_9TMQYMCB2hVSYeONcMvxBqIaT0mzPUy8nIivV1g
-        short-id: b58b
-      server: 89.167.0.240
-      servername: play.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 694eb5d5-794c-4389-af65-e5a4b8489dae
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-696176645
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: YQTixaXzPVImuRc4TUbrFAekjIiaYV-t5S-HTKlH0AU
-        short-id: 2186a755ed67b034
-      server: 150.241.86.150
-      servername: nordic.cendora.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-857104265
         - vless-856210273
         - hysteria2-812154987
         - vless-862043488
-        - vless-857104265
         - vless-863413388
-        - vless-652375208
         - shadowsocks-336700747
         - shadowsocks-846829577
+        - vless-855762708
         - vless-863451551
         - vless-862043473
         - vless-270715472
-        - vless-615983244
-        - vless-696176645
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-857104265
         - vless-856210273
         - hysteria2-812154987
         - vless-862043488
-        - vless-857104265
         - vless-863413388
-        - vless-652375208
         - shadowsocks-336700747
         - shadowsocks-846829577
+        - vless-855762708
         - vless-863451551
         - vless-862043473
         - vless-270715472
-        - vless-615983244
-        - vless-696176645
       type: select
 rules:
     - MATCH,select
