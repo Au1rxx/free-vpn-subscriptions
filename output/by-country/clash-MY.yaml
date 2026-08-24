@@ -1,10 +1,18 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-696792801
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 118.107.222.231
+    - cipher: aes-256-gcm
+      name: shadowsocks-871514690
+      password: rjV4WyP9ts5eEGsr
+      port: 33308
+      server: general-live-13877.holphappyeveryday.com
       type: ss
+      udp: true
+    - name: trojan-864227381
+      password: 5cc264ad-92a8-46cc-85b0-82dca5b12faf
+      port: 43102
+      server: 172.238.22.232
+      skip-cert-verify: true
+      sni: vpn-node.internal
+      type: trojan
       udp: true
     - name: trojan-864226381
       password: 319182a3-9ca5-456e-9acd-54e0df11b0be
@@ -14,29 +22,30 @@ proxies:
       sni: vpn-node.internal
       type: trojan
       udp: true
-    - name: trojan-865911591
-      password: 5cc264ad-92a8-46cc-85b0-82dca5b12faf
-      port: 43102
-      server: 172.238.22.232
-      skip-cert-verify: true
-      sni: vpn-node.internal
-      type: trojan
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792801
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 118.107.222.231
+      type: ss
       udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-696792801
+        - shadowsocks-871514690
+        - trojan-864227381
         - trojan-864226381
-        - trojan-865911591
+        - shadowsocks-696792801
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-696792801
+        - shadowsocks-871514690
+        - trojan-864227381
         - trojan-864226381
-        - trojan-865911591
+        - shadowsocks-696792801
       type: select
 rules:
     - MATCH,select

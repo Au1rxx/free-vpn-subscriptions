@@ -1,4 +1,30 @@
 proxies:
+    - client-fingerprint: firefox
+      name: vless-864207498
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: VYa7bljR4he29Lt9UPCLZZincmkm5pFhz3XVtHkY5Rw
+        short-id: 71e87186710e710e
+      server: 167.17.40.28
+      servername: stackoverflow.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 590e4e9f-6281-416b-9e07-9b17f47764d1
+    - client-fingerprint: chrome
+      name: vless-864210630
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: VYa7bljR4he29Lt9UPCLZZincmkm5pFhz3XVtHkY5Rw
+        short-id: 71e87186710e710e
+      server: fn4.hirbilon.net
+      servername: stackoverflow.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 590e4e9f-6281-416b-9e07-9b17f47764d1
     - name: hysteria2-818203526
       password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
       port: 8443
@@ -13,28 +39,6 @@ proxies:
       skip-cert-verify: true
       sni: hopp-legend-se.roxa.org
       type: hysteria2
-    - name: trojan-856722853
-      password: MiTiVPN
-      port: 443
-      server: 199.232.237.245
-      skip-cert-verify: true
-      sni: google.com
-      type: trojan
-      udp: true
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-864221358
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 74SXgBukkhFPB8lpegdqaqbOStHLaR3RT24DuvXMZnY
-        short-id: 3f5c0f7f7af1
-      server: 89.125.37.21
-      servername: stackoverflow.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 00506574-3b10-4f7d-9b2f-8afdc5919b93
     - name: hysteria2-863201226
       password: 5d36ddf8-dde5-4b2d-8213-d3255f22a0f1
       port: 443
@@ -42,40 +46,25 @@ proxies:
       skip-cert-verify: false
       sni: fi-one.letsgodance.site
       type: hysteria2
-    - client-fingerprint: random
-      name: vless-652375208
-      network: tcp
-      port: 448
-      reality-opts:
-        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
-        short-id: cd21e552537c7c0b
-      server: 185.79.138.71
-      servername: www.samsung.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-864207498
+        - vless-864210630
         - hysteria2-818203526
         - hysteria2-813371789
-        - trojan-856722853
-        - vless-864221358
         - hysteria2-863201226
-        - vless-652375208
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-864207498
+        - vless-864210630
         - hysteria2-818203526
         - hysteria2-813371789
-        - trojan-856722853
-        - vless-864221358
         - hysteria2-863201226
-        - vless-652375208
       type: select
 rules:
     - MATCH,select

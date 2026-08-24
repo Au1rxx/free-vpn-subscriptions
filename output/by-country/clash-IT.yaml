@@ -13,46 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-864307469
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: K8LxbhrcgxM7bIW8SGKmEvqn-zbAGqyi4G37_u-kbh4
-        short-id: c2b104f3483063c5
-      server: 31.77.154.244
-      servername: it-two.letsgodance.site
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5d36ddf8-dde5-4b2d-8213-d3255f22a0f1
-    - client-fingerprint: random
-      name: vless-703656408
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
-        short-id: 5b8a942318178e7b
-      server: 57.131.38.163
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
-    - client-fingerprint: chrome
-      name: vless-548666342
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
-        short-id: 5b8a942318178e7b
-      server: 57.131.38.163
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
     - client-fingerprint: chrome
       name: vless-650644312
       network: tcp
@@ -73,17 +33,28 @@ proxies:
       server: 91.201.65.122
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      name: vless-656230736
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-863201254
         - vless-864802478
-        - vless-864307469
-        - vless-703656408
-        - vless-548666342
         - vless-650644312
         - shadowsocks-819466008
+        - vless-656230736
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -91,11 +62,9 @@ proxy-groups:
         - auto
         - hysteria2-863201254
         - vless-864802478
-        - vless-864307469
-        - vless-703656408
-        - vless-548666342
         - vless-650644312
         - shadowsocks-819466008
+        - vless-656230736
       type: select
 rules:
     - MATCH,select

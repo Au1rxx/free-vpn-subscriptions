@@ -13,17 +13,33 @@ proxies:
       type: vless
       udp: true
       uuid: 82e209b2-97a6-4d67-a10b-72627b9f6702
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-889324340
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: z-TKWOWgZLfzQ-wNdwXQqVwaUgCmbchM2Xtrk1NGynU
+        short-id: ""
+      server: 37.221.210.188
+      servername: hu888.bearbeer.digital
+      tls: true
+      type: vless
+      udp: true
+      uuid: c6fdfa4b-742c-4225-986b-b0e3bd3146a4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-656245117
+        - vless-889324340
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-656245117
+        - vless-889324340
       type: select
 rules:
     - MATCH,select

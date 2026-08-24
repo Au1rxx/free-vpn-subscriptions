@@ -1,6 +1,14 @@
 {
   "outbounds": [
     {
+      "method": "aes-256-gcm",
+      "password": "rjV4WyP9ts5eEGsr",
+      "server": "general-live-13877.holphappyeveryday.com",
+      "server_port": 43233,
+      "tag": "shadowsocks-871514689",
+      "type": "shadowsocks"
+    },
+    {
       "method": "aes-256-cfb",
       "password": "7eadc6dbe2ae",
       "server": "103.169.67.34",
@@ -31,10 +39,38 @@
       "type": "trojan"
     },
     {
+      "password": "662c065f-0495-4598-9a95-2e2fcb38b7b1",
+      "server": "57.180.10.65",
+      "server_port": 42423,
+      "tag": "trojan-864226383",
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": true,
+        "server_name": "vpn-node.internal",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "headers": {
+          "Host": "vpn-node.internal"
+        },
+        "path": "/xVpnTrojanWsSvc7f3a",
+        "type": "ws"
+      },
+      "type": "trojan"
+    },
+    {
       "interval": "5m",
       "outbounds": [
+        "shadowsocks-871514689",
         "shadowsocks-696792800",
-        "trojan-881408759"
+        "trojan-881408759",
+        "trojan-864226383"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -43,8 +79,10 @@
     {
       "outbounds": [
         "auto",
+        "shadowsocks-871514689",
         "shadowsocks-696792800",
-        "trojan-881408759"
+        "trojan-881408759",
+        "trojan-864226383"
       ],
       "tag": "select",
       "type": "selector"
