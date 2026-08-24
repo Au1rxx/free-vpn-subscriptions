@@ -1,14 +1,4 @@
 proxies:
-    - name: vless-856210273
-      network: grpc
-      port: 2101
-      server: 132-243-223-227.sslip.io
-      servername: 132-243-223-227.sslip.io
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
     - name: vless-860502209
       network: grpc
       port: 2101
@@ -56,6 +46,19 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
+    - client-fingerprint: chrome
+      name: vless-869352094
+      network: grpc
+      port: 2053
+      reality-opts:
+        public-key: DgUCXrcCWCsqfNTI6CQQOTxOtrX7jWrb9XO8IrKoXRc
+        short-id: "6e74"
+      server: sw2.cryptoofarm.com
+      servername: sw2.cryptoofarm.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b98e3ee9-a67f-465a-a8f9-1e59e3cda6a8
     - name: hysteria2-813371789
       password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
       port: 8443
@@ -77,33 +80,98 @@ proxies:
       skip-cert-verify: true
       sni: hopp-legend-se.roxa.org
       type: hysteria2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-863758390
+      network: tcp
+      port: 1234
+      reality-opts:
+        public-key: 4sT8gYkbYI1RUPlO-SFVpJENKfGgMWoYQpflbcfspkI
+        short-id: 4844fb0c077b20b7
+      server: store1.vevluma.ir
+      servername: updates.cdn-apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 22fff84b-dd89-489d-bc4c-794f664b92a2
+    - client-fingerprint: chrome
+      name: vless-812211853
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Qr6_9TMQYMCB2hVSYeONcMvxBqIaT0mzPUy8nIivV1g
+        short-id: b58b
+      server: 89.167.2.67
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 694eb5d5-794c-4389-af65-e5a4b8489dae
+    - client-fingerprint: chrome
+      name: vless-862043460
+      network: tcp
+      port: 448
+      reality-opts:
+        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+        short-id: cd21e552537c7c0b
+      server: 185.79.138.71
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-376006390
+      password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
+      port: 42982
+      server: 217.28.129.81
+      type: ss
+      udp: true
+    - name: trojan-856722853
+      password: MiTiVPN
+      port: 443
+      server: 199.232.237.245
+      skip-cert-verify: true
+      sni: google.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-856210273
         - vless-860502209
         - vless-862043488
         - vless-862043473
         - hysteria2-867219853
         - vless-857104265
+        - vless-869352094
         - hysteria2-813371789
         - vless-866210564
         - hysteria2-818203526
+        - vless-863758390
+        - vless-812211853
+        - vless-862043460
+        - shadowsocks-376006390
+        - trojan-856722853
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-856210273
         - vless-860502209
         - vless-862043488
         - vless-862043473
         - hysteria2-867219853
         - vless-857104265
+        - vless-869352094
         - hysteria2-813371789
         - vless-866210564
         - hysteria2-818203526
+        - vless-863758390
+        - vless-812211853
+        - vless-862043460
+        - shadowsocks-376006390
+        - trojan-856722853
       type: select
 rules:
     - MATCH,select

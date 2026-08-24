@@ -13,12 +13,20 @@ proxies:
       server: 38.60.255.97
       type: ss
       udp: true
+    - name: vless-864949755
+      network: ws
+      port: 8080
+      server: 188.114.97.6
+      type: vless
+      udp: true
+      uuid: a22bff60-a40a-4250-bde2-4c660e363b47
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-813697901
         - shadowsocks-128278
+        - vless-864949755
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +34,7 @@ proxy-groups:
         - auto
         - hysteria2-813697901
         - shadowsocks-128278
+        - vless-864949755
       type: select
 rules:
     - MATCH,select

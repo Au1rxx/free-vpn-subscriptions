@@ -435,20 +435,6 @@ proxies:
       udp: true
       uuid: 9638a83e-f1f7-4cc8-a602-924965d9534f
     - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-859953724
-      password: XVdJDPuYb1x072JrCC2+BfeiCgIMDhDO3q3hl467FZU=
-      port: 59319
-      server: 147.15.34.121
-      type: ss
-      udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-859953725
-      password: MdImM0QejAzcmEd6BKaoy1mr4hVAIqXF7LTY1EqzTL0=
-      port: 59319
-      server: 129.159.49.64
-      type: ss
-      udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-860355588
       password: VNZU26yCu5J1TaXQ9IdJasKHopBUzc2xt+JUl9ECB+g=
       port: 59319
@@ -600,6 +586,28 @@ proxies:
       sni: vpn-node.internal
       type: trojan
       udp: true
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-868570812
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: E6Y9lNizCXo8tJ6EXwLYQIjyIwmxIs4foyRlY2MgkjA
+        short-id: 59ccabb0a1483c4b
+      server: wr28-6njjgu.linenheath.site
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9638a83e-f1f7-4cc8-a602-924965d9534f
+    - name: trojan-868622425
+      password: 3a383805-40a2-4b6f-a0e5-7f34c1d6152c
+      port: 28443
+      server: 172.237.54.237
+      skip-cert-verify: true
+      sni: vpn-node.internal
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -636,8 +644,6 @@ proxy-groups:
         - vless-857687064
         - vless-859365534
         - vless-859635079
-        - shadowsocks-859953724
-        - shadowsocks-859953725
         - shadowsocks-860355588
         - vless-860930400
         - vless-861038359
@@ -655,6 +661,8 @@ proxy-groups:
         - trojan-865909602
         - trojan-865910596
         - trojan-867103536
+        - vless-868570812
+        - trojan-868622425
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -692,8 +700,6 @@ proxy-groups:
         - vless-857687064
         - vless-859365534
         - vless-859635079
-        - shadowsocks-859953724
-        - shadowsocks-859953725
         - shadowsocks-860355588
         - vless-860930400
         - vless-861038359
@@ -711,6 +717,8 @@ proxy-groups:
         - trojan-865909602
         - trojan-865910596
         - trojan-867103536
+        - vless-868570812
+        - trojan-868622425
       type: select
 rules:
     - MATCH,select
