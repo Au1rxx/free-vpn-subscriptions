@@ -1,0 +1,78 @@
+{
+  "outbounds": [
+    {
+      "server": "176.109.111.113",
+      "server_port": 9882,
+      "tag": "vless-866891816",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU"
+        },
+        "server_name": "dl.google.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "transport": {
+        "service_name": "grpc-tunnel",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "14777bd9-56a5-46f6-a94f-826b4800dc05"
+    },
+    {
+      "server": "176.109.111.113",
+      "server_port": 9882,
+      "tag": "vless-866207099",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU"
+        },
+        "server_name": "dl.google.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "service_name": "grpc-tunnel",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "14777bd9-56a5-46f6-a94f-826b4800dc05"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-866891816",
+        "vless-866207099"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-866891816",
+        "vless-866207099"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

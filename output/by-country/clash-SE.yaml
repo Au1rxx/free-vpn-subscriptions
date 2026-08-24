@@ -1,4 +1,24 @@
 proxies:
+    - name: vless-897111606
+      network: grpc
+      port: 443
+      server: swa.mythos-wargame.fun
+      servername: swa.mythos-wargame.fun
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
+    - name: vless-896817966
+      network: grpc
+      port: 443
+      server: swa.mythos-wargame.fun
+      servername: swa.mythos-wargame.fun
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-713157148
@@ -17,12 +37,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-897111606
+        - vless-896817966
         - vless-713157148
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-897111606
+        - vless-896817966
         - vless-713157148
       type: select
 rules:

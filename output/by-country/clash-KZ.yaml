@@ -1,0 +1,43 @@
+proxies:
+    - client-fingerprint: ios
+      name: vless-866891816
+      network: grpc
+      port: 9882
+      reality-opts:
+        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+        short-id: ""
+      server: 176.109.111.113
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 14777bd9-56a5-46f6-a94f-826b4800dc05
+    - client-fingerprint: firefox
+      name: vless-866207099
+      network: grpc
+      port: 9882
+      reality-opts:
+        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+        short-id: ""
+      server: 176.109.111.113
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 14777bd9-56a5-46f6-a94f-826b4800dc05
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-866891816
+        - vless-866207099
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-866891816
+        - vless-866207099
+      type: select
+rules:
+    - MATCH,select

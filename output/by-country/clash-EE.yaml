@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-589844096
-      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
-      port: 443
-      server: cabinet.wwwinternetvideo.click
-      skip-cert-verify: false
-      sni: cabinet.wwwinternetvideo.click
-      type: hysteria2
     - client-fingerprint: firefox
       name: vless-890226867
       network: grpc
@@ -19,14 +12,16 @@ proxies:
       type: vless
       udp: true
       uuid: 20c72888-b83e-4309-82a4-aab4a2dda778
-    - name: trojan-612135910
-      password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
-      port: 449
-      server: 109.206.241.10
-      skip-cert-verify: true
-      sni: russiapower.accesscam.org
-      type: trojan
+    - name: vless-897111624
+      network: grpc
+      port: 443
+      server: eeb.webinarly.fun
+      servername: eeb.webinarly.fun
+      skip-cert-verify: false
+      tls: true
+      type: vless
       udp: true
+      uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
     - client-fingerprint: firefox
       name: vless-890226845
       network: grpc
@@ -53,34 +48,23 @@ proxies:
       type: vless
       udp: true
       uuid: 20c72888-b83e-4309-82a4-aab4a2dda778
-    - name: vless-868400818
-      network: ws
-      port: 443
-      server: 94.183.170.135
-      type: vless
-      udp: true
-      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-589844096
         - vless-890226867
-        - trojan-612135910
+        - vless-897111624
         - vless-890226845
         - vless-890226804
-        - vless-868400818
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-589844096
         - vless-890226867
-        - trojan-612135910
+        - vless-897111624
         - vless-890226845
         - vless-890226804
-        - vless-868400818
       type: select
 rules:
     - MATCH,select
