@@ -9,13 +9,6 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - name: vless-13049700
-      network: ws
-      port: 80
-      server: 185.146.173.54
-      type: vless
-      udp: true
-      uuid: d7b9d64c-1f9d-496d-b12d-e86da0e6eb1c
     - name: vless-860502209
       network: grpc
       port: 2101
@@ -46,6 +39,13 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
+    - name: hysteria2-867219853
+      password: a4130dea-9e33-4032-805d-0392fdf26cbd
+      port: 443
+      server: samurai.h4ck.me
+      skip-cert-verify: false
+      sni: samurai.h4ck.me
+      type: hysteria2
     - name: vless-857104265
       network: grpc
       port: 2101
@@ -63,20 +63,13 @@ proxies:
       skip-cert-verify: true
       sni: hopp-legend-se.roxa.org
       type: hysteria2
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-863433863
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: XIBrs2_87DuLTAOD05LMSfwyPsmUZMJESQCjbRNhwh0
-        short-id: 91a9f9d61fb09d39
-      server: 2.26.7.227
-      servername: fi-one.letsgodance.site
-      tls: true
+    - name: vless-866210564
+      network: raw
+      port: 30551
+      server: 65.109.211.136
       type: vless
       udp: true
-      uuid: 5d36ddf8-dde5-4b2d-8213-d3255f22a0f1
+      uuid: 20575207-142b-42bd-a7de-74fbd4a1c620
     - name: hysteria2-818203526
       password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
       port: 8443
@@ -84,49 +77,33 @@ proxies:
       skip-cert-verify: true
       sni: hopp-legend-se.roxa.org
       type: hysteria2
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-863434832
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 0DU2XI6J-aVzvYzrKQ7XOI9WPRMOADKTyn2V9E71WA8
-        short-id: b4c513c67294b791
-      server: 2.26.7.36
-      servername: swe-one.letsgodance.site
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5d36ddf8-dde5-4b2d-8213-d3255f22a0f1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-856210273
-        - vless-13049700
         - vless-860502209
         - vless-862043488
         - vless-862043473
+        - hysteria2-867219853
         - vless-857104265
         - hysteria2-813371789
-        - vless-863433863
+        - vless-866210564
         - hysteria2-818203526
-        - vless-863434832
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-856210273
-        - vless-13049700
         - vless-860502209
         - vless-862043488
         - vless-862043473
+        - hysteria2-867219853
         - vless-857104265
         - hysteria2-813371789
-        - vless-863433863
+        - vless-866210564
         - hysteria2-818203526
-        - vless-863434832
       type: select
 rules:
     - MATCH,select

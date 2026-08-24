@@ -6,15 +6,6 @@ proxies:
       server: 155.138.136.240
       type: ss
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-685048487
-      network: tcp
-      port: 18000
-      server: 134.195.196.211
-      type: vmess
-      udp: true
-      uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
     - cipher: aes-256-cfb
       name: shadowsocks-859419806
       password: amazonskr05
@@ -63,6 +54,15 @@ proxies:
       network: tcp
       port: 18000
       server: 23.162.200.198
+      type: vmess
+      udp: true
+      uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+    - alterId: 0
+      cipher: auto
+      name: vmess-685048487
+      network: tcp
+      port: 18000
+      server: 134.195.196.211
       type: vmess
       udp: true
       uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
@@ -199,14 +199,6 @@ proxies:
       type: vless
       udp: true
       uuid: 661f395d-b153-4199-a04b-693f5fe7f261
-    - name: trojan-474648027
-      password: lEjtI3pFYfU7O1UYozJcfZV5K6Fwfths
-      port: 58536
-      server: 64.74.163.118
-      skip-cert-verify: true
-      sni: ""
-      type: trojan
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-46267
@@ -277,6 +269,21 @@ proxies:
       type: vless
       udp: true
       uuid: 661f395d-b153-4199-a04b-693f5fe7f261
+    - cipher: aes-256-cfb
+      name: shadowsocks-862477535
+      password: amazonskr05
+      port: 443
+      server: 35.183.121.177
+      type: ss
+      udp: true
+    - name: trojan-474648027
+      password: lEjtI3pFYfU7O1UYozJcfZV5K6Fwfths
+      port: 58536
+      server: 64.74.163.118
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-2331698
@@ -403,13 +410,6 @@ proxies:
       type: vless
       udp: true
       uuid: 661f395d-b153-4199-a04b-693f5fe7f261
-    - name: hysteria2-655838402
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: vpn-ca-001.fastervpn.world
-      skip-cert-verify: true
-      sni: 127.0.0.1
-      type: hysteria2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-863726167
       password: 5d79906d-89ab-430b-acbc-3327568a5be3
@@ -497,13 +497,13 @@ proxies:
       type: vmess
       udp: true
       uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-    - cipher: aes-256-cfb
-      name: shadowsocks-862477535
-      password: amazonskr05
+    - name: hysteria2-655838402
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
-      server: 35.183.121.177
-      type: ss
-      udp: true
+      server: vpn-ca-001.fastervpn.world
+      skip-cert-verify: true
+      sni: 127.0.0.1
+      type: hysteria2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-863726172
       password: e936372a-d976-4e25-8b3b-29c1a5841e06
@@ -518,17 +518,25 @@ proxies:
       server: 155.138.136.240
       type: ss
       udp: true
+    - name: trojan-803380388
+      password: lEjtI3pFYfU7O1UYozJcfZV5K6Fwfths
+      port: 58536
+      server: 64.74.163.118
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-723348714
-        - vmess-685048487
         - shadowsocks-859419806
         - shadowsocks-208
         - vless-692622873
         - vless-720888904
         - vmess-669779349
+        - vmess-685048487
         - shadowsocks-696792823
         - vless-258647517
         - vless-700417546
@@ -539,12 +547,13 @@ proxy-groups:
         - vless-692905137
         - vless-700285021
         - vless-619897530
-        - trojan-474648027
         - vless-46267
         - vless-200282613
         - vless-202736774
         - vless-470978189
         - vless-177993885
+        - shadowsocks-862477535
+        - trojan-474648027
         - vless-2331698
         - vless-202736776
         - vless-202736775
@@ -554,7 +563,6 @@ proxy-groups:
         - vless-2314770
         - vless-23853903
         - vless-51783
-        - hysteria2-655838402
         - shadowsocks-863726167
         - shadowsocks-809724024
         - shadowsocks-465806702
@@ -564,21 +572,22 @@ proxy-groups:
         - vless-92670921
         - vmess-468166890
         - vmess-32178698
-        - shadowsocks-862477535
+        - hysteria2-655838402
         - shadowsocks-863726172
         - shadowsocks-696780677
+        - trojan-803380388
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-723348714
-        - vmess-685048487
         - shadowsocks-859419806
         - shadowsocks-208
         - vless-692622873
         - vless-720888904
         - vmess-669779349
+        - vmess-685048487
         - shadowsocks-696792823
         - vless-258647517
         - vless-700417546
@@ -589,12 +598,13 @@ proxy-groups:
         - vless-692905137
         - vless-700285021
         - vless-619897530
-        - trojan-474648027
         - vless-46267
         - vless-200282613
         - vless-202736774
         - vless-470978189
         - vless-177993885
+        - shadowsocks-862477535
+        - trojan-474648027
         - vless-2331698
         - vless-202736776
         - vless-202736775
@@ -604,7 +614,6 @@ proxy-groups:
         - vless-2314770
         - vless-23853903
         - vless-51783
-        - hysteria2-655838402
         - shadowsocks-863726167
         - shadowsocks-809724024
         - shadowsocks-465806702
@@ -614,9 +623,10 @@ proxy-groups:
         - vless-92670921
         - vmess-468166890
         - vmess-32178698
-        - shadowsocks-862477535
+        - hysteria2-655838402
         - shadowsocks-863726172
         - shadowsocks-696780677
+        - trojan-803380388
       type: select
 rules:
     - MATCH,select

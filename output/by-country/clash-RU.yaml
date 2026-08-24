@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-857587363
+      password: 41edb44c8e
+      port: 11592
+      server: srv-17e124.21freedom.net
+      skip-cert-verify: true
+      sni: 127.0.0.1
+      type: hysteria2
     - client-fingerprint: random
       name: vless-862227073
       network: grpc
@@ -23,6 +30,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-857587363
         - vless-862227073
         - hysteria2-856380986
       type: url-test
@@ -30,6 +38,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - hysteria2-857587363
         - vless-862227073
         - hysteria2-856380986
       type: select
