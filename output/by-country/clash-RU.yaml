@@ -13,12 +13,28 @@ proxies:
       type: vless
       udp: true
       uuid: 47f2ac7a-7bc6-4d4c-b4f2-c4681da7f231
+    - cipher: aes-256-gcm
+      name: shadowsocks-867167164
+      password: d99c422199e62b6b
+      port: 40119
+      server: 195.58.48.97
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792830
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 194.38.11.86
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-855920168
         - vless-881359911
+        - shadowsocks-867167164
+        - shadowsocks-696792830
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +42,8 @@ proxy-groups:
         - auto
         - hysteria2-855920168
         - vless-881359911
+        - shadowsocks-867167164
+        - shadowsocks-696792830
       type: select
 rules:
     - MATCH,select

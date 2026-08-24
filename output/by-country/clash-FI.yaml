@@ -13,13 +13,6 @@ proxies:
       skip-cert-verify: true
       sni: hopp-legend-se.roxa.org
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-336700747
-      password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
-      port: 42982
-      server: autodiscover.fuzzyaytor.cyou
-      type: ss
-      udp: true
     - name: trojan-856722853
       password: MiTiVPN
       port: 443
@@ -28,26 +21,6 @@ proxies:
       sni: google.com
       type: trojan
       udp: true
-    - name: vless-860502209
-      network: grpc
-      port: 2101
-      server: 132.243.223.227
-      servername: 132-243-223-227.sslip.io
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - name: vless-862043473
-      network: grpc
-      port: 2101
-      server: 132.243.223.227
-      servername: 132-243-223-227.sslip.io
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-864221358
@@ -62,17 +35,36 @@ proxies:
       type: vless
       udp: true
       uuid: 00506574-3b10-4f7d-9b2f-8afdc5919b93
+    - name: hysteria2-863201226
+      password: 5d36ddf8-dde5-4b2d-8213-d3255f22a0f1
+      port: 443
+      server: fi-one.letsgodance.site
+      skip-cert-verify: false
+      sni: fi-one.letsgodance.site
+      type: hysteria2
+    - client-fingerprint: random
+      name: vless-652375208
+      network: tcp
+      port: 448
+      reality-opts:
+        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+        short-id: cd21e552537c7c0b
+      server: 185.79.138.71
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-818203526
         - hysteria2-813371789
-        - shadowsocks-336700747
         - trojan-856722853
-        - vless-860502209
-        - vless-862043473
         - vless-864221358
+        - hysteria2-863201226
+        - vless-652375208
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -80,11 +72,10 @@ proxy-groups:
         - auto
         - hysteria2-818203526
         - hysteria2-813371789
-        - shadowsocks-336700747
         - trojan-856722853
-        - vless-860502209
-        - vless-862043473
         - vless-864221358
+        - hysteria2-863201226
+        - vless-652375208
       type: select
 rules:
     - MATCH,select

@@ -1,0 +1,48 @@
+proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-884214273
+      password: rjV4WyP9ts5eEGsr
+      port: 31352
+      server: general-live-13877.holphappyeveryday.com
+      type: ss
+      udp: true
+    - name: trojan-884214278
+      password: a126f35c-e832-4115-8593-b723ade3f7be
+      port: 20068
+      server: kkvlvvq-a.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-876270789
+      network: tcp
+      port: 6897
+      reality-opts:
+        public-key: X2thmYgL8pXZBmFxMOPo3oIYAga5CTMEd-YMcJHk4Es
+        short-id: 54efd54cf3e7
+      server: jpaws.ccwink.photos
+      servername: docs.aws.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a157bb84-dd84-4ad8-86b0-0656bc76e4d1
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-884214273
+        - trojan-884214278
+        - vless-876270789
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-884214273
+        - trojan-884214278
+        - vless-876270789
+      type: select
+rules:
+    - MATCH,select
