@@ -7,6 +7,13 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - name: vless-283723019
+      network: tcp
+      port: 8443
+      server: 138.124.244.77
+      type: vless
+      udp: true
+      uuid: 8787dd0a-095a-414e-804f-a7d16a1ae166
     - cipher: aes-256-cfb
       name: shadowsocks-696792825
       password: 7eadc6dbe2ae
@@ -296,6 +303,20 @@ proxies:
       uuid: 9638a83e-f1f7-4cc8-a602-924965d9534f
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-813687309
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: m89wjPa2LxODyi8U5pRVI4E1fwVawIaftC3fLY0ZLw4
+        short-id: 9ea177c3c147119b
+      server: 23.251.55.216
+      servername: www.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c396fa08-e07a-459b-b894-389456fd6a82
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-814228083
       network: tcp
       port: 443
@@ -477,20 +498,6 @@ proxies:
       type: ss
       udp: true
     - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-862076847
-      password: 55nlrXTkb08jPEwboRS7GOlM3LiBb4sqMGC0wmvKhw0=
-      port: 59319
-      server: 137.131.228.121
-      type: ss
-      udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-862076849
-      password: s6RXknYLMS6vQPV6efRSoLoe45c8/Pp1+dB8CdfNlmY=
-      port: 59319
-      server: 168.75.66.122
-      type: ss
-      udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-863508651
       password: OYAoH+Rfx3SHm6POtoPiRHDXs/hWB8AviM1xxUek39c=
       port: 59319
@@ -540,13 +547,6 @@ proxies:
       skip-cert-verify: true
       sni: vpn-node.internal
       type: trojan
-      udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-864228380
-      password: SsMG/Y8d12j7lzjxerXFHpQw3YoMOrZ4eOJt2/NnWEM=
-      port: 59319
-      server: 144.22.132.191
-      type: ss
       udp: true
     - client-fingerprint: random
       flow: xtls-rprx-vision
@@ -608,11 +608,53 @@ proxies:
       sni: vpn-node.internal
       type: trojan
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-872662649
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: m89wjPa2LxODyi8U5pRVI4E1fwVawIaftC3fLY0ZLw4
+        short-id: 9ea177c3c147119b
+      server: 23.251.55.216
+      servername: www.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c396fa08-e07a-459b-b894-389456fd6a82
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-872662682
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: m89wjPa2LxODyi8U5pRVI4E1fwVawIaftC3fLY0ZLw4
+        short-id: 9ea177c3c147119b
+      server: u234-6njjdk.startora.top
+      servername: www.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c396fa08-e07a-459b-b894-389456fd6a82
+    - client-fingerprint: chrome
+      name: vless-875071075
+      network: grpc
+      port: 9090
+      reality-opts:
+        public-key: MmgN7QjrLmvLBXvizo_j9va2vD_5Q4edahMmXAv6bRI
+        short-id: 2006495ca4229803
+      server: cl.northbookway.shop
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: bba38246-7a7b-4dc9-a421-d29219ff4fa6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-119299
+        - vless-283723019
         - shadowsocks-696792825
         - vless-696792918
         - vless-696792933
@@ -634,6 +676,7 @@ proxy-groups:
         - vless-803648192
         - vless-812219855
         - vless-813413046
+        - vless-813687309
         - vless-814228083
         - vless-821154219
         - vless-855083921
@@ -648,27 +691,28 @@ proxy-groups:
         - vless-860930400
         - vless-861038359
         - shadowsocks-862076840
-        - shadowsocks-862076847
-        - shadowsocks-862076849
         - shadowsocks-863508651
         - shadowsocks-863508656
         - shadowsocks-863508659
         - vless-863696306
         - trojan-864163188
         - trojan-864226393
-        - shadowsocks-864228380
         - vless-865863720
         - trojan-865909602
         - trojan-865910596
         - trojan-867103536
         - vless-868570812
         - trojan-868622425
+        - vless-872662649
+        - vless-872662682
+        - vless-875071075
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-119299
+        - vless-283723019
         - shadowsocks-696792825
         - vless-696792918
         - vless-696792933
@@ -690,6 +734,7 @@ proxy-groups:
         - vless-803648192
         - vless-812219855
         - vless-813413046
+        - vless-813687309
         - vless-814228083
         - vless-821154219
         - vless-855083921
@@ -704,21 +749,21 @@ proxy-groups:
         - vless-860930400
         - vless-861038359
         - shadowsocks-862076840
-        - shadowsocks-862076847
-        - shadowsocks-862076849
         - shadowsocks-863508651
         - shadowsocks-863508656
         - shadowsocks-863508659
         - vless-863696306
         - trojan-864163188
         - trojan-864226393
-        - shadowsocks-864228380
         - vless-865863720
         - trojan-865909602
         - trojan-865910596
         - trojan-867103536
         - vless-868570812
         - trojan-868622425
+        - vless-872662649
+        - vless-872662682
+        - vless-875071075
       type: select
 rules:
     - MATCH,select

@@ -1,24 +1,4 @@
 proxies:
-    - name: vless-862043488
-      network: grpc
-      port: 2101
-      server: 132-243-223-227.sslip.io
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - name: vless-862043473
-      network: grpc
-      port: 2101
-      server: 132.243.223.227
-      servername: 132-243-223-227.sslip.io
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
     - name: hysteria2-867219853
       password: a4130dea-9e33-4032-805d-0392fdf26cbd
       port: 443
@@ -50,6 +30,14 @@ proxies:
       skip-cert-verify: true
       sni: hopp-legend-se.roxa.org
       type: hysteria2
+    - name: trojan-856722853
+      password: MiTiVPN
+      port: 443
+      server: 199.232.237.245
+      skip-cert-verify: true
+      sni: google.com
+      type: trojan
+      udp: true
     - name: vless-866210564
       network: raw
       port: 30551
@@ -74,6 +62,30 @@ proxies:
       skip-cert-verify: true
       sni: hopp-legend-se.roxa.org
       type: hysteria2
+    - name: vless-862043473
+      network: grpc
+      port: 2101
+      server: 132.243.223.227
+      servername: 132-243-223-227.sslip.io
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-864221358
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 74SXgBukkhFPB8lpegdqaqbOStHLaR3RT24DuvXMZnY
+        short-id: 3f5c0f7f7af1
+      server: 89.125.37.21
+      servername: stackoverflow.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 00506574-3b10-4f7d-9b2f-8afdc5919b93
     - name: vless-856210273
       network: grpc
       port: 2101
@@ -88,30 +100,32 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-862043488
-        - vless-862043473
         - hysteria2-867219853
         - shadowsocks-336700747
         - vless-857104265
         - hysteria2-813371789
+        - trojan-856722853
         - vless-866210564
         - vless-860502209
         - hysteria2-818203526
+        - vless-862043473
+        - vless-864221358
         - vless-856210273
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-862043488
-        - vless-862043473
         - hysteria2-867219853
         - shadowsocks-336700747
         - vless-857104265
         - hysteria2-813371789
+        - trojan-856722853
         - vless-866210564
         - vless-860502209
         - hysteria2-818203526
+        - vless-862043473
+        - vless-864221358
         - vless-856210273
       type: select
 rules:
