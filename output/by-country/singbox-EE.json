@@ -1,0 +1,54 @@
+{
+  "outbounds": [
+    {
+      "password": "sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX",
+      "server": "cabinet.wwwinternetvideo.click",
+      "server_port": 443,
+      "tag": "hysteria2-589844096",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "cabinet.wwwinternetvideo.click"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "password": "oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1",
+      "server": "109.206.241.10",
+      "server_port": 449,
+      "tag": "trojan-612135910",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "russiapower.accesscam.org"
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-589844096",
+        "trojan-612135910"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-589844096",
+        "trojan-612135910"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

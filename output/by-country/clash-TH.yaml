@@ -6,6 +6,14 @@ proxies:
       server: 103.169.67.34
       type: ss
       udp: true
+    - name: trojan-881408759
+      password: 662c065f-0495-4598-9a95-2e2fcb38b7b1
+      port: 42423
+      server: 57.180.10.65
+      skip-cert-verify: true
+      sni: vpn-node.internal
+      type: trojan
+      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-871514689
       password: rjV4WyP9ts5eEGsr
@@ -18,6 +26,7 @@ proxy-groups:
       name: auto
       proxies:
         - shadowsocks-696792800
+        - trojan-881408759
         - shadowsocks-871514689
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -25,6 +34,7 @@ proxy-groups:
       proxies:
         - auto
         - shadowsocks-696792800
+        - trojan-881408759
         - shadowsocks-871514689
       type: select
 rules:
