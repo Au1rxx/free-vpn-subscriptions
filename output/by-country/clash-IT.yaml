@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-863384129
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: H9-mAKSPlIPGVDI2uBSZqxxOkLGTsfciqL5rAKIwUlg
-        short-id: ad416bcb922d986b
-      server: it1.murhost.network
-      servername: it1.murhost.network
-      tls: true
-      type: vless
-      udp: true
-      uuid: 419f25c1-bc35-412e-93fb-258efee859b5
     - name: vless-860139784
       network: ws
       port: 443
@@ -47,34 +33,23 @@ proxies:
       skip-cert-verify: true
       sni: it-two.letsgodance.site
       type: hysteria2
-    - name: hysteria2-863201254
-      password: 5d36ddf8-dde5-4b2d-8213-d3255f22a0f1
-      port: 443
-      server: it-two.letsgodance.site
-      skip-cert-verify: false
-      sni: it-two.letsgodance.site
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-863384129
         - vless-860139784
         - vless-703656408
         - vless-862364758
         - hysteria2-863433855
-        - hysteria2-863201254
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-863384129
         - vless-860139784
         - vless-703656408
         - vless-862364758
         - hysteria2-863433855
-        - hysteria2-863201254
       type: select
 rules:
     - MATCH,select

@@ -539,13 +539,6 @@ proxies:
       type: vless
       udp: true
       uuid: c396fa08-e07a-459b-b894-389456fd6a82
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-863933291
-      password: 858E8ArCFX7vumbFzuVpUw5FTQaoj058jNkOFWA58ds=
-      port: 59319
-      server: 159.112.178.179
-      type: ss
-      udp: true
     - name: trojan-864163188
       password: bfc55a0e-6d1b-4010-8bf6-0d9726d151a3
       port: 28443
@@ -568,6 +561,36 @@ proxies:
       port: 59319
       server: 144.22.132.191
       type: ss
+      udp: true
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-865863720
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: E6Y9lNizCXo8tJ6EXwLYQIjyIwmxIs4foyRlY2MgkjA
+        short-id: 59ccabb0a1483c4b
+      server: wr28-6njjgu.linenheath.site
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9638a83e-f1f7-4cc8-a602-924965d9534f
+    - name: trojan-865909602
+      password: 3a383805-40a2-4b6f-a0e5-7f34c1d6152c
+      port: 28443
+      server: 172.237.54.237
+      skip-cert-verify: true
+      sni: vpn-node.internal
+      type: trojan
+      udp: true
+    - name: trojan-865910596
+      password: bfc55a0e-6d1b-4010-8bf6-0d9726d151a3
+      port: 28443
+      server: 172.237.62.103
+      skip-cert-verify: true
+      sni: vpn-node.internal
+      type: trojan
       udp: true
 proxy-groups:
     - interval: 300
@@ -617,10 +640,12 @@ proxy-groups:
         - shadowsocks-863508656
         - shadowsocks-863508659
         - vless-863696306
-        - shadowsocks-863933291
         - trojan-864163188
         - trojan-864226393
         - shadowsocks-864228380
+        - vless-865863720
+        - trojan-865909602
+        - trojan-865910596
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -670,10 +695,12 @@ proxy-groups:
         - shadowsocks-863508656
         - shadowsocks-863508659
         - vless-863696306
-        - shadowsocks-863933291
         - trojan-864163188
         - trojan-864226393
         - shadowsocks-864228380
+        - vless-865863720
+        - trojan-865909602
+        - trojan-865910596
       type: select
 rules:
     - MATCH,select
