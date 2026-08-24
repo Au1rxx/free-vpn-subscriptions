@@ -11,19 +11,13 @@ proxies:
       type: vmess
       udp: true
       uuid: 52CCE191-7FC3-4F6D-856C-BA9C7C205F1C
-    - client-fingerprint: random
-      name: vless-703656408
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
-        short-id: 5b8a942318178e7b
-      server: 57.131.38.163
-      servername: www.apple.com
-      tls: true
-      type: vless
+    - cipher: aes-256-gcm
+      name: shadowsocks-860024431
+      password: d1fa2f4b98a38bc8
+      port: 10901
+      server: 194.87.47.97
+      type: ss
       udp: true
-      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-863384129
@@ -38,6 +32,19 @@ proxies:
       type: vless
       udp: true
       uuid: 419f25c1-bc35-412e-93fb-258efee859b5
+    - client-fingerprint: random
+      name: vless-703656408
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
     - client-fingerprint: firefox
       name: vless-483686868
       network: raw
@@ -51,23 +58,40 @@ proxies:
       type: vless
       udp: true
       uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - client-fingerprint: qq
+      name: vless-860385804
+      network: tcp
+      port: 6300
+      reality-opts:
+        public-key: lQbgwNDYw6Zbjdim0JtXUarzb-3GSjDvtX6FJYZD9Qo
+        short-id: ""
+      server: 57.131.18.86
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2e736ef7-fc59-4161-bc64-e1416c74aae5
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-2394946
-        - vless-703656408
+        - shadowsocks-860024431
         - vless-863384129
+        - vless-703656408
         - vless-483686868
+        - vless-860385804
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-2394946
-        - vless-703656408
+        - shadowsocks-860024431
         - vless-863384129
+        - vless-703656408
         - vless-483686868
+        - vless-860385804
       type: select
 rules:
     - MATCH,select

@@ -1,13 +1,27 @@
 proxies:
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-860035012
+      name: vless-860267388
       network: tcp
       port: 443
       reality-opts:
         public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
         short-id: ff776ff77be48b88
-      server: 91.239.6.19
+      server: alban2.freeinternat.com
+      servername: alban2.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: fbb74aa8-b89a-4f20-9504-6b25aadf6681
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-860035053
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: alban2.freeinternat.com
       servername: alban2.freeinternat.com
       tls: true
       type: vless
@@ -29,13 +43,13 @@ proxies:
       uuid: fbb74aa8-b89a-4f20-9504-6b25aadf6681
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-860267388
+      name: vless-860035012
       network: tcp
       port: 443
       reality-opts:
         public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
         short-id: ff776ff77be48b88
-      server: alban2.freeinternat.com
+      server: 91.239.6.19
       servername: alban2.freeinternat.com
       tls: true
       type: vless
@@ -45,17 +59,19 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-860035012
-        - vless-860735290
         - vless-860267388
+        - vless-860035053
+        - vless-860735290
+        - vless-860035012
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-860035012
-        - vless-860735290
         - vless-860267388
+        - vless-860035053
+        - vless-860735290
+        - vless-860035012
       type: select
 rules:
     - MATCH,select
