@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: qq
+      name: vless-882535904
+      network: grpc
+      port: 9872
+      reality-opts:
+        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+        short-id: aabbccdd
+      server: 176.123.164.9
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 76186f1e-3062-4a2b-98c2-fab3c61a9511
     - name: vless-897111606
       network: grpc
       port: 443
@@ -33,21 +46,47 @@ proxies:
       type: vless
       udp: true
       uuid: 20d7c485-5d24-49b5-a5cc-bb7a7daf9908
+    - name: vless-898311303
+      network: grpc
+      port: 443
+      server: swa.mythos-wargame.fun
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
+    - name: vless-897925538
+      network: grpc
+      port: 443
+      server: swa.mythos-wargame.fun
+      servername: swa.mythos-wargame.fun
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-882535904
         - vless-897111606
         - vless-896817966
         - vless-713157148
+        - vless-898311303
+        - vless-897925538
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-882535904
         - vless-897111606
         - vless-896817966
         - vless-713157148
+        - vless-898311303
+        - vless-897925538
       type: select
 rules:
     - MATCH,select

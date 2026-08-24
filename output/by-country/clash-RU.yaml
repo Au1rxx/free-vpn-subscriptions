@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792830
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 194.38.11.86
+      type: ss
+      udp: true
     - name: vless-897459503
       network: grpc
       port: 27700
@@ -10,12 +17,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-696792830
         - vless-897459503
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-696792830
         - vless-897459503
       type: select
 rules:

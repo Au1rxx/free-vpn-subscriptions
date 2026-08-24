@@ -25,12 +25,34 @@ proxies:
       type: vless
       udp: true
       uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - cipher: aes-256-cfb
+      name: shadowsocks-819466008
+      password: SBM7R883jBmnqe6C
+      port: 9053
+      server: 91.201.65.122
+      type: ss
+      udp: true
+    - client-fingerprint: firefox
+      name: vless-656230736
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-650644312
         - vless-703656408
+        - shadowsocks-819466008
+        - vless-656230736
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -38,6 +60,8 @@ proxy-groups:
         - auto
         - vless-650644312
         - vless-703656408
+        - shadowsocks-819466008
+        - vless-656230736
       type: select
 rules:
     - MATCH,select

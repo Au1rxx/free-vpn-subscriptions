@@ -1,0 +1,50 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "24118acfb3077af9.bmat6.kevmixa.ir",
+      "server_port": 46312,
+      "tag": "vless-897900898",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "LiNmk0DYhmt0yuiyYE183eCsPLWZ6bFEutMBLfqfwGI",
+          "short_id": "0c1fd5602216f902"
+        },
+        "server_name": "amp-api-edge.apps.apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "d325c0aa-17df-4d65-a144-d997e07b2c4e"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-897900898"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-897900898"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
