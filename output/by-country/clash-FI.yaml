@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-856210273
+      network: grpc
+      port: 2101
+      server: 132-243-223-227.sslip.io
+      servername: 132-243-223-227.sslip.io
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
     - name: vless-13049700
       network: ws
       port: 80
@@ -16,16 +26,6 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - name: vless-856210273
-      network: grpc
-      port: 2101
-      server: 132-243-223-227.sslip.io
-      servername: 132-243-223-227.sslip.io
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
     - name: vless-862043488
       network: grpc
       port: 2101
@@ -36,6 +36,13 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-336700747
+      password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
+      port: 42982
+      server: autodiscover.fuzzyaytor.cyou
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-863433863
@@ -64,31 +71,7 @@ proxies:
       type: vless
       udp: true
       uuid: 5d36ddf8-dde5-4b2d-8213-d3255f22a0f1
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-336700747
-      password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
-      port: 42982
-      server: autodiscover.fuzzyaytor.cyou
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-846829577
-      password: f2FivziSooWMDzE6p2kBx7ri7owdLZyPnuQLPeDhnY8qXKm6zZ4M39pov4w7MfxRN5FjWqC1cCA8gGoLpZQVouPt9cCA9idN
-      port: 42607
-      server: 166.1.129.245
-      type: ss
-      udp: true
     - name: vless-855762708
-      network: grpc
-      port: 2101
-      server: 132-243-223-227.sslip.io
-      servername: 132-243-223-227.sslip.io
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - name: vless-863451551
       network: grpc
       port: 2101
       server: 132-243-223-227.sslip.io
@@ -126,16 +109,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-856210273
         - vless-13049700
         - vless-857104265
-        - vless-856210273
         - vless-862043488
+        - shadowsocks-336700747
         - vless-863433863
         - vless-863434832
-        - shadowsocks-336700747
-        - shadowsocks-846829577
         - vless-855762708
-        - vless-863451551
         - vless-862043473
         - vless-270715472
       type: url-test
@@ -143,16 +124,14 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-856210273
         - vless-13049700
         - vless-857104265
-        - vless-856210273
         - vless-862043488
+        - shadowsocks-336700747
         - vless-863433863
         - vless-863434832
-        - shadowsocks-336700747
-        - shadowsocks-846829577
         - vless-855762708
-        - vless-863451551
         - vless-862043473
         - vless-270715472
       type: select
