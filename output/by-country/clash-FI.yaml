@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-13049700
+      network: ws
+      port: 80
+      server: 185.146.173.54
+      type: vless
+      udp: true
+      uuid: d7b9d64c-1f9d-496d-b12d-e86da0e6eb1c
     - name: vless-857104265
       network: grpc
       port: 2101
@@ -19,13 +26,6 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - name: hysteria2-812154987
-      password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
-      port: 8443
-      server: 222.167.212.82
-      skip-cert-verify: false
-      sni: hopp-legend-se.roxa.org
-      type: hysteria2
     - name: vless-862043488
       network: grpc
       port: 2101
@@ -36,6 +36,34 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-863433863
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: XIBrs2_87DuLTAOD05LMSfwyPsmUZMJESQCjbRNhwh0
+        short-id: 91a9f9d61fb09d39
+      server: 2.26.7.227
+      servername: fi-one.letsgodance.site
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5d36ddf8-dde5-4b2d-8213-d3255f22a0f1
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-863434832
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 0DU2XI6J-aVzvYzrKQ7XOI9WPRMOADKTyn2V9E71WA8
+        short-id: b4c513c67294b791
+      server: 2.26.7.36
+      servername: swe-one.letsgodance.site
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5d36ddf8-dde5-4b2d-8213-d3255f22a0f1
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-336700747
       password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
@@ -98,10 +126,12 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-13049700
         - vless-857104265
         - vless-856210273
-        - hysteria2-812154987
         - vless-862043488
+        - vless-863433863
+        - vless-863434832
         - shadowsocks-336700747
         - shadowsocks-846829577
         - vless-855762708
@@ -113,10 +143,12 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-13049700
         - vless-857104265
         - vless-856210273
-        - hysteria2-812154987
         - vless-862043488
+        - vless-863433863
+        - vless-863434832
         - shadowsocks-336700747
         - shadowsocks-846829577
         - vless-855762708
