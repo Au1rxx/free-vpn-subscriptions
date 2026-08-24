@@ -13,12 +13,20 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - name: hysteria2-859306111
+      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
+      port: 8080
+      server: 162.249.124.112
+      skip-cert-verify: false
+      sni: hopp-germany-new.ddnsguru.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-860759604
         - hysteria2-813697901
+        - hysteria2-859306111
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +34,7 @@ proxy-groups:
         - auto
         - hysteria2-860759604
         - hysteria2-813697901
+        - hysteria2-859306111
       type: select
 rules:
     - MATCH,select

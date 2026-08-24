@@ -6,32 +6,17 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
-    - client-fingerprint: random
-      name: vless-862227073
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: jowOwf_cxg_FNpG36QJcyqBWtDItBBYjqj7VGhD2lnw
-        short-id: d3124debabf1456c
-      server: 77.110.104.190
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 95e8532b-cc69-42d4-9553-e3c23292b15b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-857587363
-        - vless-862227073
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-857587363
-        - vless-862227073
       type: select
 rules:
     - MATCH,select
