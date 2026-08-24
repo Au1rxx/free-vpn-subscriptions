@@ -16,6 +16,16 @@ proxies:
       type: vless
       udp: true
       uuid: d7b9d64c-1f9d-496d-b12d-e86da0e6eb1c
+    - name: vless-860502209
+      network: grpc
+      port: 2101
+      server: 132.243.223.227
+      servername: 132-243-223-227.sslip.io
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
     - name: vless-857104265
       network: grpc
       port: 2101
@@ -26,23 +36,6 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - name: vless-862043488
-      network: grpc
-      port: 2101
-      server: 132-243-223-227.sslip.io
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-336700747
-      password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
-      port: 42982
-      server: autodiscover.fuzzyaytor.cyou
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-863433863
@@ -81,44 +74,17 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - name: vless-862043473
-      network: grpc
-      port: 2101
-      server: 132.243.223.227
-      servername: 132-243-223-227.sslip.io
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-270715472
-      network: raw
-      port: 57228
-      reality-opts:
-        public-key: iWiQ0JyYhl_yzWSbIh4L4wOiiXBOhNVMhWmgtDvF1jo
-        short-id: 6e3e0d3abe3e78a4
-      server: 77.91.84.96
-      servername: www.googletagmanager.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f319a005-6bd0-44b3-910c-a596a2573efe
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-856210273
         - vless-13049700
+        - vless-860502209
         - vless-857104265
-        - vless-862043488
-        - shadowsocks-336700747
         - vless-863433863
         - vless-863434832
         - vless-855762708
-        - vless-862043473
-        - vless-270715472
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -126,14 +92,11 @@ proxy-groups:
         - auto
         - vless-856210273
         - vless-13049700
+        - vless-860502209
         - vless-857104265
-        - vless-862043488
-        - shadowsocks-336700747
         - vless-863433863
         - vless-863434832
         - vless-855762708
-        - vless-862043473
-        - vless-270715472
       type: select
 rules:
     - MATCH,select
