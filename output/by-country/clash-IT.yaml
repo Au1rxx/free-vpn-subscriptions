@@ -27,13 +27,6 @@ proxies:
       server: 57.131.48.45
       type: ss
       udp: true
-    - name: vless-917661440
-      network: ws
-      port: 443
-      server: itproxy3.lockdwn.com
-      type: vless
-      udp: true
-      uuid: 699ce9a1-abbb-4525-988e-b940381352e8
     - name: trojan-906676304
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20065
@@ -42,13 +35,21 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: hysteria2-917771380
-      password: d4c41430-082e-4757-b22c-194998baddd2
-      port: 8465
-      server: 91.185.83.48
-      skip-cert-verify: false
-      sni: itit.nimarko.org
-      type: hysteria2
+    - name: trojan-917659500
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20065
+      server: 157.254.38.210
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: vless-917661440
+      network: ws
+      port: 443
+      server: itproxy3.lockdwn.com
+      type: vless
+      udp: true
+      uuid: 699ce9a1-abbb-4525-988e-b940381352e8
 proxy-groups:
     - interval: 300
       name: auto
@@ -57,9 +58,9 @@ proxy-groups:
         - vless-903760100
         - vless-903760094
         - shadowsocks-891518478
-        - vless-917661440
         - trojan-906676304
-        - hysteria2-917771380
+        - trojan-917659500
+        - vless-917661440
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -69,9 +70,9 @@ proxy-groups:
         - vless-903760100
         - vless-903760094
         - shadowsocks-891518478
-        - vless-917661440
         - trojan-906676304
-        - hysteria2-917771380
+        - trojan-917659500
+        - vless-917661440
       type: select
 rules:
     - MATCH,select

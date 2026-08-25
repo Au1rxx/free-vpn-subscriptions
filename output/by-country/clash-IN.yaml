@@ -1,11 +1,18 @@
 proxies:
-    - name: hysteria2-650413302
-      password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-      port: 443
-      server: vpn-in-001.fastervpn.world
-      skip-cert-verify: true
-      sni: vpn-in-001.fastervpn.world
-      type: hysteria2
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-720888847
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
+        short-id: 88b6
+      server: 5.253.30.99
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-661034872
@@ -38,7 +45,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-650413302
+        - vless-720888847
         - vless-661034872
         - vless-703656400
       type: url-test
@@ -46,7 +53,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - hysteria2-650413302
+        - vless-720888847
         - vless-661034872
         - vless-703656400
       type: select

@@ -8,6 +8,23 @@ proxies:
       udp: true
     - alterId: 0
       cipher: auto
+      name: vmess-906676251
+      network: tcp
+      port: 37515
+      server: 119.46.51.45
+      type: vmess
+      udp: true
+      uuid: 9b76bc31-17a5-4454-934a-8d5fb602cd70
+    - name: trojan-917659497
+      password: 662c065f-0495-4598-9a95-2e2fcb38b7b1
+      port: 42423
+      server: 57.180.10.65
+      skip-cert-verify: true
+      sni: vpn-node.internal
+      type: trojan
+      udp: true
+    - alterId: 0
+      cipher: auto
       name: vmess-891928972
       network: none
       port: 37515
@@ -32,23 +49,37 @@ proxies:
       sni: vpn-node.internal
       type: trojan
       udp: true
+    - name: trojan-865910603
+      password: 662c065f-0495-4598-9a95-2e2fcb38b7b1
+      port: 42423
+      server: 57.180.10.65
+      skip-cert-verify: true
+      sni: vpn-node.internal
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-696792800
+        - vmess-906676251
+        - trojan-917659497
         - vmess-891928972
         - vmess-890005344
         - trojan-881408759
+        - trojan-865910603
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-696792800
+        - vmess-906676251
+        - trojan-917659497
         - vmess-891928972
         - vmess-890005344
         - trojan-881408759
+        - trojan-865910603
       type: select
 rules:
     - MATCH,select
