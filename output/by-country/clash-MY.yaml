@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-913805376
-      password: 41f0d6d3-4a45-4635-8225-2abd2284189b
-      port: 2060
-      server: mlxy.mangshe.xyz
-      skip-cert-verify: true
-      sni: mlxy.mangshe.xyz
-      type: hysteria2
     - cipher: aes-256-cfb
       name: shadowsocks-696792801
       password: 7eadc6dbe2ae
@@ -22,21 +15,28 @@ proxies:
       type: vmess
       udp: true
       uuid: 80039b4d-bac0-4f89-82c7-54fad3b0a1ea
+    - name: hysteria2-913805376
+      password: 41f0d6d3-4a45-4635-8225-2abd2284189b
+      port: 2060
+      server: mlxy.mangshe.xyz
+      skip-cert-verify: true
+      sni: mlxy.mangshe.xyz
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-913805376
         - shadowsocks-696792801
         - vmess-2387869
+        - hysteria2-913805376
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-913805376
         - shadowsocks-696792801
         - vmess-2387869
+        - hysteria2-913805376
       type: select
 rules:
     - MATCH,select

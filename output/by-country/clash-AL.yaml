@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-863925992
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+        short-id: 43dcff53849b81e6
+      server: 45.89.60.105
+      servername: auto.quattro-tech.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2a6a619b-3a18-0017-b40f-d028ea60465d
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-912621517
@@ -13,48 +27,19 @@ proxies:
       type: vless
       udp: true
       uuid: 85cc845e-644c-0017-8288-f0c03c83c1ec
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-912621531
-      network: tcp
-      port: 8443
-      reality-opts:
-        public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
-        short-id: 43dcff53849b81e6
-      server: 45.89.60.105
-      servername: auto.quattro-tech.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2a6a619b-3a18-0017-b40f-d028ea60465d
-    - client-fingerprint: chrome
-      name: vless-909015910
-      network: tcp
-      port: 46312
-      reality-opts:
-        public-key: LiNmk0DYhmt0yuiyYE183eCsPLWZ6bFEutMBLfqfwGI
-        short-id: 0c1fd5602216f902
-      server: 1bf900f9cad6c4eb.palenters.kevmixa.ir
-      servername: amp-api-edge.apps.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d325c0aa-17df-4d65-a144-d997e07b2c4e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-863925992
         - vless-912621517
-        - vless-912621531
-        - vless-909015910
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-863925992
         - vless-912621517
-        - vless-912621531
-        - vless-909015910
       type: select
 rules:
     - MATCH,select

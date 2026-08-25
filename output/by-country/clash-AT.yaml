@@ -1,0 +1,22 @@
+proxies:
+    - name: vless-890058988
+      network: ws
+      port: 10444
+      server: 45.86.245.225
+      type: vless
+      udp: true
+      uuid: 4005ddae-29bb-431e-a212-7737316d08ea
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-890058988
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-890058988
+      type: select
+rules:
+    - MATCH,select

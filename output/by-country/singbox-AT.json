@@ -1,0 +1,42 @@
+{
+  "outbounds": [
+    {
+      "server": "45.86.245.225",
+      "server_port": 10444,
+      "tag": "vless-890058988",
+      "transport": {
+        "headers": {
+          "Host": "vpnpolar.online"
+        },
+        "path": "/beeline",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "4005ddae-29bb-431e-a212-7737316d08ea"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-890058988"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-890058988"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
