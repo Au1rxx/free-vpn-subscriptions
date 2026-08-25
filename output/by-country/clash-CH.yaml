@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-901861130
+      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
+      port: 443
+      server: 185.191.238.202
+      skip-cert-verify: true
+      sni: 185.191.238.202
+      type: hysteria2
     - name: hysteria2-859744350
       password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
       port: 443
@@ -48,23 +55,6 @@ proxies:
       skip-cert-verify: false
       sni: grape-turbo-fr.roxa.org
       type: hysteria2
-    - name: hysteria2-901861130
-      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
-      port: 443
-      server: 185.191.238.202
-      skip-cert-verify: true
-      sni: 185.191.238.202
-      type: hysteria2
-    - name: vless-914032317
-      network: ws
-      port: 443
-      server: netlivpn5505.ffffdsaaa.workers.dev
-      servername: netlivpn5505.ffffdsaaa.workers.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: f6b5a6a3-f3e1-63ca-bb68-bdc400000000
     - name: hysteria2-674635659
       password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
       port: 8080
@@ -115,10 +105,18 @@ proxies:
       skip-cert-verify: true
       sni: grape-turbo-fr.roxa.org
       type: hysteria2
+    - name: hysteria2-819784938
+      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+      port: 8080
+      server: 46.229.243.138
+      skip-cert-verify: true
+      sni: grape-turbo-fr.roxa.org
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-901861130
         - hysteria2-859744350
         - hysteria2-896855648
         - hysteria2-860349775
@@ -126,8 +124,6 @@ proxy-groups:
         - hysteria2-868400798
         - hysteria2-858384296
         - hysteria2-798045477
-        - hysteria2-901861130
-        - vless-914032317
         - hysteria2-674635659
         - hysteria2-600117032
         - hysteria2-744910413
@@ -135,11 +131,13 @@ proxy-groups:
         - hysteria2-856081300
         - hysteria2-860262403
         - hysteria2-817954108
+        - hysteria2-819784938
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-901861130
         - hysteria2-859744350
         - hysteria2-896855648
         - hysteria2-860349775
@@ -147,8 +145,6 @@ proxy-groups:
         - hysteria2-868400798
         - hysteria2-858384296
         - hysteria2-798045477
-        - hysteria2-901861130
-        - vless-914032317
         - hysteria2-674635659
         - hysteria2-600117032
         - hysteria2-744910413
@@ -156,6 +152,7 @@ proxy-groups:
         - hysteria2-856081300
         - hysteria2-860262403
         - hysteria2-817954108
+        - hysteria2-819784938
       type: select
 rules:
     - MATCH,select

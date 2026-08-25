@@ -1,22 +1,29 @@
 proxies:
-    - name: vless-890058988
-      network: ws
-      port: 10444
-      server: 45.86.245.225
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-918613542
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: UO3EObgU3xUrhIGEE0gfCn5ZOz8YxNcwwW6ZaYzD3SA
+        short-id: 4e9b0c2d1a3f5768
+      server: 152.53.114.186
+      servername: as.tunnelx.space
+      tls: true
       type: vless
       udp: true
-      uuid: 4005ddae-29bb-431e-a212-7737316d08ea
+      uuid: ab7d5ea9-6eca-47c3-b14b-67378fc2d7c2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-890058988
+        - vless-918613542
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-890058988
+        - vless-918613542
       type: select
 rules:
     - MATCH,select

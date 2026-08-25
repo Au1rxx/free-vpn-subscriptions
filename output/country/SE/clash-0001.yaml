@@ -255,6 +255,19 @@ proxies:
       sni: ssl.fastly.com
       type: trojan
       udp: true
+    - client-fingerprint: chrome
+      name: vless-863110427
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: ECYE8G81FW1V__Y9yBYxIU0TWWcConhXoJncZG1D_0U
+        short-id: 7a08844f
+      server: 103.110.66.43
+      servername: www.amazon.se
+      tls: true
+      type: vless
+      udp: true
+      uuid: 218fd696-e3a2-4c33-b397-a5f13a82969e
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-872770205
@@ -291,33 +304,6 @@ proxies:
       type: vless
       udp: true
       uuid: ae8e0f7d-b661-41ca-b55d-d8c383adb2f8
-    - client-fingerprint: firefox
-      name: vless-889940303
-      network: grpc
-      port: 9872
-      reality-opts:
-        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
-        short-id: aabbccdd
-      server: 176.123.164.9
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 76186f1e-3062-4a2b-98c2-fab3c61a9511
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-889943678
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: YQTixaXzPVImuRc4TUbrFAekjIiaYV-t5S-HTKlH0AU
-        short-id: 2186a755ed67b034
-      server: 177.3.215.111
-      servername: nordic.cendora.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-890289723
@@ -346,19 +332,6 @@ proxies:
       type: vless
       udp: true
       uuid: ae8e0f7d-b661-41ca-b55d-d8c383adb2f8
-    - client-fingerprint: edge
-      name: vless-890426316
-      network: grpc
-      port: 9872
-      reality-opts:
-        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
-        short-id: aabbccdd
-      server: 176.123.164.9
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 76186f1e-3062-4a2b-98c2-fab3c61a9511
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-891839706
@@ -760,6 +733,16 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-0002-9d5e-c541f791b55f
+    - name: vless-923258537
+      network: grpc
+      port: 443
+      server: swa.mythos-wargame.fun
+      servername: swa.mythos-wargame.fun
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
 proxy-groups:
     - interval: 300
       name: auto
@@ -784,14 +767,12 @@ proxy-groups:
         - trojan-855402077
         - trojan-856237620
         - trojan-857282570
+        - vless-863110427
         - vless-872770205
         - trojan-875067887
         - vless-881565850
-        - vless-889940303
-        - vless-889943678
         - vless-890289723
         - vless-890426312
-        - vless-890426316
         - vless-891839706
         - vless-892012189
         - vless-896817966
@@ -825,6 +806,7 @@ proxy-groups:
         - vless-920421848
         - vless-920451226
         - vless-922427211
+        - vless-923258537
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -850,14 +832,12 @@ proxy-groups:
         - trojan-855402077
         - trojan-856237620
         - trojan-857282570
+        - vless-863110427
         - vless-872770205
         - trojan-875067887
         - vless-881565850
-        - vless-889940303
-        - vless-889943678
         - vless-890289723
         - vless-890426312
-        - vless-890426316
         - vless-891839706
         - vless-892012189
         - vless-896817966
@@ -891,6 +871,7 @@ proxy-groups:
         - vless-920421848
         - vless-920451226
         - vless-922427211
+        - vless-923258537
       type: select
 rules:
     - MATCH,select

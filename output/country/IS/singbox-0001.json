@@ -20,13 +20,58 @@
       "private_key": "cIq+3tcHVT7gRMl4kIv0WE68ERiTmDtA7rhyHhLJ/mg=",
       "tag": "wireguard-657721520",
       "type": "wireguard"
+    },
+    {
+      "address": [
+        "100.80.234.177/32"
+      ],
+      "peers": [
+        {
+          "address": "185.165.170.3",
+          "allowed_ips": [
+            "0.0.0.0/0",
+            "::/0"
+          ],
+          "port": 80,
+          "pre_shared_key": "N/gfMZSjvP8mbXfVP2hnD5CX8BkGvOyheJ67mCpD+QQ=",
+          "public_key": "ua7TUXkcSiiHeTyCok5b3PX9DkJ4l5yVvGlSmJ34WU8=",
+          "reserved": "AAAA"
+        }
+      ],
+      "private_key": "cIq+3tcHVT7gRMl4kIv0WE68ERiTmDtA7rhyHhLJ/mg=",
+      "tag": "wireguard-657721521",
+      "type": "wireguard"
     }
   ],
   "outbounds": [
     {
+      "flow": "xtls-rprx-vision",
+      "server": "151.236.24.67",
+      "server_port": 8443,
+      "tag": "vless-923391421",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "reality": {
+          "enabled": true,
+          "public_key": "10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc",
+          "short_id": "43dcff53849b81e6"
+        },
+        "server_name": "auto.quattro-tech.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "85cc845e-644c-0045-8288-f0c03c83c1ec"
+    },
+    {
       "interval": "5m",
       "outbounds": [
-        "wireguard-657721520"
+        "wireguard-657721520",
+        "wireguard-657721521",
+        "vless-923391421"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -35,7 +80,9 @@
     {
       "outbounds": [
         "auto",
-        "wireguard-657721520"
+        "wireguard-657721520",
+        "wireguard-657721521",
+        "vless-923391421"
       ],
       "tag": "select",
       "type": "selector"

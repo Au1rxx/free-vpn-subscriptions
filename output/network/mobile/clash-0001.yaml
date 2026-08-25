@@ -1,18 +1,4 @@
 proxies:
-    - name: vless-672199227
-      network: tcp
-      port: 12528
-      server: 120.227.1.43
-      type: vless
-      udp: true
-      uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
-    - name: vless-754619404
-      network: tcp
-      port: 12528
-      server: 120.227.1.43
-      type: vless
-      udp: true
-      uuid: f0169b08-43fd-4dc3-8195-18f6ad2fe39d
     - name: vless-858615085
       network: tcp
       port: 12528
@@ -74,12 +60,20 @@ proxies:
       type: vless
       udp: true
       uuid: 19bb341c-ee57-4899-b1e7-e9d3ebdf23df
+    - name: vless-924942248
+      network: tcp
+      port: 30100
+      server: 161.81.30.254
+      servername: xiweini.dpdns.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 19bb341c-ee57-4899-b1e7-e9d3ebdf23df
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-672199227
-        - vless-754619404
         - vless-858615085
         - trojan-864160704
         - trojan-865910595
@@ -87,13 +81,12 @@ proxy-groups:
         - vless-881562956
         - vless-890005329
         - vless-898068455
+        - vless-924942248
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-672199227
-        - vless-754619404
         - vless-858615085
         - trojan-864160704
         - trojan-865910595
@@ -101,6 +94,7 @@ proxy-groups:
         - vless-881562956
         - vless-890005329
         - vless-898068455
+        - vless-924942248
       type: select
 rules:
     - MATCH,select
