@@ -6,14 +6,6 @@ proxies:
       server: 118.107.222.231
       type: ss
       udp: true
-    - name: trojan-925335632
-      password: 5cc264ad-92a8-46cc-85b0-82dca5b12faf
-      port: 43102
-      server: 172.238.22.232
-      skip-cert-verify: true
-      sni: vpn-node.internal
-      type: trojan
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-922186075
@@ -35,23 +27,41 @@ proxies:
       skip-cert-verify: true
       sni: mlxy.mangshe.xyz
       type: hysteria2
+    - name: trojan-925335632
+      password: 5cc264ad-92a8-46cc-85b0-82dca5b12faf
+      port: 43102
+      server: 172.238.22.232
+      skip-cert-verify: true
+      sni: vpn-node.internal
+      type: trojan
+      udp: true
+    - name: trojan-925335631
+      password: 319182a3-9ca5-456e-9acd-54e0df11b0be
+      port: 46262
+      server: 172.237.81.74
+      skip-cert-verify: true
+      sni: vpn-node.internal
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-696792801
-        - trojan-925335632
         - vless-922186075
         - hysteria2-913805376
+        - trojan-925335632
+        - trojan-925335631
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-696792801
-        - trojan-925335632
         - vless-922186075
         - hysteria2-913805376
+        - trojan-925335632
+        - trojan-925335631
       type: select
 rules:
     - MATCH,select
