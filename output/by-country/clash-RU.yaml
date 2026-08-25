@@ -1,17 +1,4 @@
 proxies:
-    - client-fingerprint: random
-      name: vless-881565854
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: jowOwf_cxg_FNpG36QJcyqBWtDItBBYjqj7VGhD2lnw
-        short-id: d3124debabf1456c
-      server: 77.110.104.190
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: bf907c2e-39aa-40e5-8898-6f75f8eca4df
     - cipher: aes-256-cfb
       name: shadowsocks-696792830
       password: 7eadc6dbe2ae
@@ -19,34 +6,6 @@ proxies:
       server: 194.38.11.86
       type: ss
       udp: true
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-906973768
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: D0FqzTuVSzCF8IcFo64SFIpMsaGV47LW3el2GCCVoFY
-        short-id: c1a7e9b4711d5f60
-      server: 193.168.46.180
-      servername: rruu.persik.host
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6e60eaf8-0d7f-4d07-8391-236d2ea0de5a
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-907488250
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: D0FqzTuVSzCF8IcFo64SFIpMsaGV47LW3el2GCCVoFY
-        short-id: c1a7e9b4711d5f60
-      server: 193.168.46.180
-      servername: rruu.persik.host
-      tls: true
-      type: vless
-      udp: true
-      uuid: ce74db10-9cb6-48c8-81c0-e8496b3a5a6e
     - flow: xtls-rprx-vision
       name: vless-909630657
       network: tcp
@@ -58,6 +17,20 @@ proxies:
       type: vless
       udp: true
       uuid: f230254f-d4cd-4d83-8a2d-e83927ef98ac
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-906642511
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: 0AVsyS7udTbxKRdSyQ2rtFC63icDQOVWq8FvAhhU-WY
+        short-id: 17faf32cb516c9cb
+      server: 185.147.26.216
+      servername: ru.srv.anti-zapret.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d11613a1-2e1f-4209-a275-aabd986b7ad1
     - name: vless-902882749
       network: ws
       port: 2200
@@ -65,54 +38,23 @@ proxies:
       type: vless
       udp: true
       uuid: d46b4fca-2352-4557-a6d5-e8c45b27618c
-    - name: vless-901911127
-      network: ws
-      port: 4100
-      server: 201.24.124.99
-      type: vless
-      udp: true
-      uuid: d46b4fca-2352-4557-a6d5-e8c45b27618c
-    - name: vless-901911126
-      network: ws
-      port: 4100
-      server: 201.24.124.99
-      type: vless
-      udp: true
-      uuid: d46b4fca-2352-4557-a6d5-e8c45b27618c
-    - name: vless-901368819
-      network: grpc
-      port: 27700
-      server: 46.149.66.9
-      type: vless
-      udp: true
-      uuid: 9e09f1ce-45d4-466d-b077-81b0dae00db2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-881565854
         - shadowsocks-696792830
-        - vless-906973768
-        - vless-907488250
         - vless-909630657
+        - vless-906642511
         - vless-902882749
-        - vless-901911127
-        - vless-901911126
-        - vless-901368819
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-881565854
         - shadowsocks-696792830
-        - vless-906973768
-        - vless-907488250
         - vless-909630657
+        - vless-906642511
         - vless-902882749
-        - vless-901911127
-        - vless-901911126
-        - vless-901368819
       type: select
 rules:
     - MATCH,select

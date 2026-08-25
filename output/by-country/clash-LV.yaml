@@ -30,16 +30,6 @@ proxies:
       server: 185.135.86.175
       type: ss
       udp: true
-    - name: vless-897111603
-      network: grpc
-      port: 443
-      server: lta.mythos-wargame.fun
-      servername: lta.mythos-wargame.fun
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
     - name: vless-909009846
       network: grpc
       port: 443
@@ -50,6 +40,20 @@ proxies:
       type: vless
       udp: true
       uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
+    - name: vless-906828149
+      network: ws
+      port: 2096
+      server: 89.36.161.222
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - name: hysteria2-917771375
+      password: d4c41430-082e-4757-b22c-194998baddd2
+      port: 8589
+      server: 91.185.83.48
+      skip-cert-verify: false
+      sni: rgrg.nimarko.org
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
@@ -58,8 +62,9 @@ proxy-groups:
         - shadowsocks-819466279
         - shadowsocks-738053581
         - shadowsocks-723348676
-        - vless-897111603
         - vless-909009846
+        - vless-906828149
+        - hysteria2-917771375
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -69,8 +74,9 @@ proxy-groups:
         - shadowsocks-819466279
         - shadowsocks-738053581
         - shadowsocks-723348676
-        - vless-897111603
         - vless-909009846
+        - vless-906828149
+        - hysteria2-917771375
       type: select
 rules:
     - MATCH,select

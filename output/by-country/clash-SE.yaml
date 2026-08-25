@@ -1,17 +1,14 @@
 proxies:
-    - client-fingerprint: chrome
-      name: vless-907100895
+    - name: vless-896817966
       network: grpc
-      port: 9872
-      reality-opts:
-        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
-        short-id: ""
-      server: 82.202.136.213
-      servername: dl.google.com
+      port: 443
+      server: swa.mythos-wargame.fun
+      servername: swa.mythos-wargame.fun
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: 14777bd9-56a5-46f6-a94f-826b4800dc05
+      uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-696780839
@@ -31,6 +28,16 @@ proxies:
       port: 443
       server: swa.mythos-wargame.fun
       servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
+    - name: vless-897111606
+      network: grpc
+      port: 443
+      server: swa.mythos-wargame.fun
+      servername: swa.mythos-wargame.fun
       skip-cert-verify: false
       tls: true
       type: vless
@@ -60,41 +67,27 @@ proxies:
       type: vless
       udp: true
       uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-902791352
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: YQTixaXzPVImuRc4TUbrFAekjIiaYV-t5S-HTKlH0AU
-        short-id: 2186a755ed67b034
-      server: 177.3.215.111
-      servername: nordic.cendora.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-907100895
+        - vless-896817966
         - vless-696780839
         - vless-898311303
+        - vless-897111606
         - vless-713157148
         - vless-902791374
-        - vless-902791352
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-907100895
+        - vless-896817966
         - vless-696780839
         - vless-898311303
+        - vless-897111606
         - vless-713157148
         - vless-902791374
-        - vless-902791352
       type: select
 rules:
     - MATCH,select
