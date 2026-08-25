@@ -1,4 +1,24 @@
 proxies:
+    - client-fingerprint: random
+      name: vless-881565854
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: jowOwf_cxg_FNpG36QJcyqBWtDItBBYjqj7VGhD2lnw
+        short-id: d3124debabf1456c
+      server: 77.110.104.190
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: bf907c2e-39aa-40e5-8898-6f75f8eca4df
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792830
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 194.38.11.86
+      type: ss
+      udp: true
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-906973768
@@ -27,13 +47,17 @@ proxies:
       type: vless
       udp: true
       uuid: ce74db10-9cb6-48c8-81c0-e8496b3a5a6e
-    - name: vless-897459503
-      network: grpc
-      port: 27700
-      server: 46.149.66.9
+    - flow: xtls-rprx-vision
+      name: vless-909630657
+      network: tcp
+      port: 8443
+      server: 66.90.90.13
+      servername: ai-6a8c51f9.noooo.win
+      skip-cert-verify: false
+      tls: true
       type: vless
       udp: true
-      uuid: 9e09f1ce-45d4-466d-b077-81b0dae00db2
+      uuid: f230254f-d4cd-4d83-8a2d-e83927ef98ac
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-906642511
@@ -61,25 +85,51 @@ proxies:
       type: vless
       udp: true
       uuid: 2b15627c-f62b-465f-81d1-0b5f7d4277ba
+    - name: vless-901911127
+      network: ws
+      port: 4100
+      server: 201.24.124.99
+      type: vless
+      udp: true
+      uuid: d46b4fca-2352-4557-a6d5-e8c45b27618c
+    - flow: xtls-rprx-vision
+      name: vless-889995984
+      network: tcp
+      port: 8443
+      server: 66.90.90.13
+      servername: ai-6a8c51f9.noooo.win
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: f230254f-d4cd-4d83-8a2d-e83927ef98ac
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-881565854
+        - shadowsocks-696792830
         - vless-906973768
         - vless-907488250
-        - vless-897459503
+        - vless-909630657
         - vless-906642511
         - vless-899891074
+        - vless-901911127
+        - vless-889995984
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-881565854
+        - shadowsocks-696792830
         - vless-906973768
         - vless-907488250
-        - vless-897459503
+        - vless-909630657
         - vless-906642511
         - vless-899891074
+        - vless-901911127
+        - vless-889995984
       type: select
 rules:
     - MATCH,select

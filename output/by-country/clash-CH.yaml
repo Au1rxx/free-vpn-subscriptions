@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-856356783
+      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
+      port: 443
+      server: che01plrhy01.tcp-reset-club.net
+      skip-cert-verify: true
+      sni: che01plrhy01.tcp-reset-club.net
+      type: hysteria2
     - name: hysteria2-889576784
       password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
       port: 443
@@ -13,6 +20,20 @@ proxies:
       skip-cert-verify: true
       sni: grape-turbo-fr.roxa.org
       type: hysteria2
+    - name: hysteria2-856354781
+      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+      port: 8080
+      server: 46.229.243.140
+      skip-cert-verify: true
+      sni: grape-turbo-fr.roxa.org
+      type: hysteria2
+    - name: hysteria2-883516458
+      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+      port: 8080
+      server: 46.229.243.143
+      skip-cert-verify: false
+      sni: grape-turbo-fr.roxa.org
+      type: hysteria2
     - name: hysteria2-896855648
       password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
       port: 443
@@ -20,11 +41,11 @@ proxies:
       skip-cert-verify: true
       sni: hy2-switzerlandgopota.unlimited-access.ru
       type: hysteria2
-    - name: hysteria2-868400798
+    - name: hysteria2-860349775
       password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
       port: 443
       server: 185.191.238.202
-      skip-cert-verify: false
+      skip-cert-verify: true
       sni: che01plrhy01.tcp-reset-club.net
       type: hysteria2
     - name: hysteria2-901861130
@@ -33,13 +54,6 @@ proxies:
       server: 185.191.238.202
       skip-cert-verify: true
       sni: 185.191.238.202
-      type: hysteria2
-    - name: hysteria2-858384296
-      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
-      port: 8080
-      server: 46.229.243.141
-      skip-cert-verify: false
-      sni: grape-turbo-fr.roxa.org
       type: hysteria2
     - name: hysteria2-885355669
       password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
@@ -63,42 +77,46 @@ proxies:
       skip-cert-verify: true
       sni: grape-turbo-fr.roxa.org
       type: hysteria2
-    - name: hysteria2-856082917
-      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
-      port: 443
-      server: che01plrhy01.tcp-reset-club.net
-      skip-cert-verify: false
-      sni: che01plrhy01.tcp-reset-club.net
-      type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-863726181
+      password: be6cbb46-ebb0-4726-9202-6a3bac1d0afb
+      port: 33345
+      server: 140.238.175.124
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-856356783
         - hysteria2-889576784
         - hysteria2-860262403
+        - hysteria2-856354781
+        - hysteria2-883516458
         - hysteria2-896855648
-        - hysteria2-868400798
+        - hysteria2-860349775
         - hysteria2-901861130
-        - hysteria2-858384296
         - hysteria2-885355669
         - trojan-876538876
         - hysteria2-885356655
-        - hysteria2-856082917
+        - shadowsocks-863726181
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-856356783
         - hysteria2-889576784
         - hysteria2-860262403
+        - hysteria2-856354781
+        - hysteria2-883516458
         - hysteria2-896855648
-        - hysteria2-868400798
+        - hysteria2-860349775
         - hysteria2-901861130
-        - hysteria2-858384296
         - hysteria2-885355669
         - trojan-876538876
         - hysteria2-885356655
-        - hysteria2-856082917
+        - shadowsocks-863726181
       type: select
 rules:
     - MATCH,select
