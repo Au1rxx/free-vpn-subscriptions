@@ -1,11 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-336700747
-      password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
-      port: 42982
-      server: autodiscover.fuzzyaytor.cyou
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       name: vless-922852062
       network: grpc
@@ -19,21 +12,18 @@ proxies:
       type: vless
       udp: true
       uuid: 2f14c4d7-5d16-4914-918c-3a6a54576ccb
-    - client-fingerprint: firefox
-      name: vless-921590726
-      network: grpc
-      port: 2053
-      reality-opts:
-        public-key: 7zv-3bWzr0wwe4vy1Z_35V-cLXjH07cSRuOw8tcX4wk
-        short-id: 9c
-      server: node16.fastdatastream.com
-      servername: www.intel.com
+    - name: vless-930537706
+      network: ws
+      port: 443
+      server: 199.232.78.159
+      servername: ssl.fastly.com
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: 203c2146-6620-4a5e-836c-7af5c75c9325
-    - client-fingerprint: edge
-      name: vless-919971108
+      uuid: a26a79cb-a1f1-4097-bc61-a02a64c69ebe
+    - client-fingerprint: firefox
+      name: vless-921590726
       network: grpc
       port: 2053
       reality-opts:
@@ -63,13 +53,6 @@ proxies:
       type: vmess
       udp: true
       uuid: b2c6844f-d31f-411a-8ef1-7580718b9ec6
-    - name: hysteria2-622971569
-      password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
-      port: 443
-      server: fast.wwwinternetvideo.click
-      skip-cert-verify: false
-      sni: fast.wwwinternetvideo.click
-      type: hysteria2
     - name: hysteria2-812154987
       password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
       port: 8443
@@ -84,16 +67,6 @@ proxies:
       skip-cert-verify: true
       sni: fast.wwwinternetvideo.click
       type: hysteria2
-    - name: vless-860620803
-      network: grpc
-      port: 2101
-      server: 132.243.223.227
-      servername: 132-243-223-227.sslip.io
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
     - client-fingerprint: random
       name: vless-652375208
       network: tcp
@@ -140,43 +113,53 @@ proxies:
       type: vless
       udp: true
       uuid: bbde90cd-b6a9-49ba-cab0-71ae12738502
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-930426263
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: 196.244.191.178
+      servername: fin5.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-336700747
         - vless-922852062
+        - vless-930537706
         - vless-921590726
-        - vless-919971108
         - vmess-925702700
         - vmess-925346987
-        - hysteria2-622971569
         - hysteria2-812154987
         - hysteria2-647019506
-        - vless-860620803
         - vless-652375208
         - vless-809723992
         - vless-615983244
         - vless-922173776
+        - vless-930426263
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-336700747
         - vless-922852062
+        - vless-930537706
         - vless-921590726
-        - vless-919971108
         - vmess-925702700
         - vmess-925346987
-        - hysteria2-622971569
         - hysteria2-812154987
         - hysteria2-647019506
-        - vless-860620803
         - vless-652375208
         - vless-809723992
         - vless-615983244
         - vless-922173776
+        - vless-930426263
       type: select
 rules:
     - MATCH,select

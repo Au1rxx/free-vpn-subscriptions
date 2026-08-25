@@ -1,18 +1,4 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-738053581
-      password: 37Z4TFCYhfxcpc9Q
-      port: 9086
-      server: 185.135.86.175
-      type: ss
-      udp: true
-    - name: vless-920171992
-      network: tcp
-      port: 2040
-      server: 5.101.78.12
-      type: vless
-      udp: true
-      uuid: 334386d6-0bc3-4962-8aaa-383d803f98fe
     - alterId: 0
       cipher: auto
       name: vmess-925466716
@@ -23,9 +9,9 @@ proxies:
       udp: true
       uuid: 803cd116-56f6-4680-9ef7-82e2ded5810b
     - cipher: aes-256-cfb
-      name: shadowsocks-819466279
-      password: UTJA57ypk2XKQpnm
-      port: 9033
+      name: shadowsocks-738053581
+      password: 37Z4TFCYhfxcpc9Q
+      port: 9086
       server: 185.135.86.175
       type: ss
       udp: true
@@ -38,33 +24,45 @@ proxies:
       type: trojan
       udp: true
     - cipher: aes-256-cfb
-      name: shadowsocks-723348676
-      password: mwgRg9hRq3b4Qnwb
-      port: 9068
+      name: shadowsocks-819466279
+      password: UTJA57ypk2XKQpnm
+      port: 9033
       server: 185.135.86.175
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-930426281
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: 31.76.62.223
+      servername: lat2.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-738053581
-        - vless-920171992
         - vmess-925466716
-        - shadowsocks-819466279
+        - shadowsocks-738053581
         - trojan-918371846
-        - shadowsocks-723348676
+        - shadowsocks-819466279
+        - vless-930426281
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-738053581
-        - vless-920171992
         - vmess-925466716
-        - shadowsocks-819466279
+        - shadowsocks-738053581
         - trojan-918371846
-        - shadowsocks-723348676
+        - shadowsocks-819466279
+        - vless-930426281
       type: select
 rules:
     - MATCH,select
