@@ -24,15 +24,14 @@ proxies:
       server: 103.169.67.34
       type: ss
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-890005344
-      network: tcp
-      port: 37515
-      server: 119.46.51.45
-      type: vmess
+    - name: trojan-881408759
+      password: 662c065f-0495-4598-9a95-2e2fcb38b7b1
+      port: 42423
+      server: 57.180.10.65
+      skip-cert-verify: true
+      sni: vpn-node.internal
+      type: trojan
       udp: true
-      uuid: 9b76bc31-17a5-4454-934a-8d5fb602cd70
 proxy-groups:
     - interval: 300
       name: auto
@@ -40,7 +39,7 @@ proxy-groups:
         - vmess-906676251
         - vmess-884214269
         - shadowsocks-696792800
-        - vmess-890005344
+        - trojan-881408759
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -49,7 +48,7 @@ proxy-groups:
         - vmess-906676251
         - vmess-884214269
         - shadowsocks-696792800
-        - vmess-890005344
+        - trojan-881408759
       type: select
 rules:
     - MATCH,select

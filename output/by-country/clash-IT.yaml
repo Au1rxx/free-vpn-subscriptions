@@ -28,16 +28,6 @@ proxies:
       server: 91.201.65.122
       type: ss
       udp: true
-    - name: vless-810589773
-      network: ws
-      port: 443
-      server: 45.155.68.9
-      servername: it2ws.wba-pn.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2b622609-bb92-49e8-9631-4ada00324f47
     - client-fingerprint: edge
       name: vless-900114769
       network: grpc
@@ -78,19 +68,34 @@ proxies:
       server: 91.201.65.122
       type: ss
       udp: true
-    - client-fingerprint: edge
-      name: vless-696199631
+    - name: vless-2327855
       network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
-        short-id: 5b8a942318178e7b
-      server: 57.131.38.163
-      servername: www.apple.com
-      tls: true
+      port: 10086
+      server: 204.216.216.23
       type: vless
       udp: true
-      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
+    - name: vless-903760100
+      network: ws
+      port: 443
+      server: itproxy3.lockdwn.com
+      type: vless
+      udp: true
+      uuid: 699ce9a1-abbb-4525-988e-b940381352e8
+    - cipher: aes-256-cfb
+      name: shadowsocks-812343736
+      password: p5wSkb2uM3pKSS3j
+      port: 9074
+      server: 91.201.65.122
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-717969043
+      password: b8KkNDjEd5QqFyRm
+      port: 9002
+      server: 91.201.65.122
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -99,12 +104,14 @@ proxy-groups:
         - vless-909630627
         - vless-913805389
         - shadowsocks-723348725
-        - vless-810589773
         - vless-900114769
         - vless-429873172
         - shadowsocks-795694323
         - shadowsocks-738053605
-        - vless-696199631
+        - vless-2327855
+        - vless-903760100
+        - shadowsocks-812343736
+        - shadowsocks-717969043
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -114,12 +121,14 @@ proxy-groups:
         - vless-909630627
         - vless-913805389
         - shadowsocks-723348725
-        - vless-810589773
         - vless-900114769
         - vless-429873172
         - shadowsocks-795694323
         - shadowsocks-738053605
-        - vless-696199631
+        - vless-2327855
+        - vless-903760100
+        - shadowsocks-812343736
+        - shadowsocks-717969043
       type: select
 rules:
     - MATCH,select

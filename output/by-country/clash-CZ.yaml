@@ -13,37 +13,9 @@ proxies:
       type: vless
       udp: true
       uuid: ae8e0f7d-b661-41ca-b55d-d8c383adb2f8
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-901422967
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
-        short-id: ff776ff77be48b88
-      server: 5.39.202.111
-      servername: cz.helper-internet.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ae8e0f7d-b661-41ca-b55d-d8c383adb2f8
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-913805383
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
-        short-id: ff776ff77be48b88
-      server: cz.helper-internet.com
-      servername: cz.helper-internet.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ae8e0f7d-b661-41ca-b55d-d8c383adb2f8
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-901422955
       network: tcp
       port: 443
       reality-opts:
@@ -69,25 +41,37 @@ proxies:
       type: vless
       udp: true
       uuid: ae8e0f7d-b661-41ca-b55d-d8c383adb2f8
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-912621507
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+        short-id: ff776ff77be48b88
+      server: cz.helper-internet.com
+      servername: cz.helper-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ae8e0f7d-b661-41ca-b55d-d8c383adb2f8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-881553352
-        - vless-901422967
         - vless-913805383
-        - vless-901422955
         - vless-913472697
+        - vless-912621507
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-881553352
-        - vless-901422967
         - vless-913805383
-        - vless-901422955
         - vless-913472697
+        - vless-912621507
       type: select
 rules:
     - MATCH,select
