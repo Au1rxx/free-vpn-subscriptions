@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-123453
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20062
+      server: hkdcrtc-e.catcat321.com
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: trojan-513948368
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20029
@@ -15,22 +23,19 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - flow: xtls-rprx-vision
-      name: vless-723419499
-      network: tcp
-      port: 443
-      server: s592.okgg.top
-      servername: u643766u71da6ad5s591.csgfw.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 41f4cb15-5a3f-3934-89fe-b4177146adf4
     - name: trojan-791286974
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20081
       server: krhtybay.catcat321.com
       skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-856462037
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20062
+      server: krhtybay.catcat321.com
+      skip-cert-verify: true
       sni: hk.catxstar.com
       type: trojan
       udp: true
@@ -50,27 +55,39 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - name: trojan-871344754
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20081
+      server: krhtybay.catcat321.com
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-123453
         - trojan-513948368
         - trojan-700168610
-        - vless-723419499
         - trojan-791286974
+        - trojan-856462037
         - trojan-860413077
         - trojan-871344732
+        - trojan-871344754
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-123453
         - trojan-513948368
         - trojan-700168610
-        - vless-723419499
         - trojan-791286974
+        - trojan-856462037
         - trojan-860413077
         - trojan-871344732
+        - trojan-871344754
       type: select
 rules:
     - MATCH,select

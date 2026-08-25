@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-912900286
+      network: grpc
+      port: 443
+      server: lta.mythos-wargame.fun
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
     - cipher: aes-256-cfb
       name: shadowsocks-819466279
       password: UTJA57ypk2XKQpnm
@@ -50,27 +60,41 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - name: vless-650671462
+      network: grpc
+      port: 2083
+      server: 89.36.161.222
+      servername: laoye.in-gect.fun
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-912900286
         - shadowsocks-819466279
         - shadowsocks-738053581
         - shadowsocks-723348676
         - vless-897111603
         - vless-909009846
         - vless-583609878
+        - vless-650671462
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-912900286
         - shadowsocks-819466279
         - shadowsocks-738053581
         - shadowsocks-723348676
         - vless-897111603
         - vless-909009846
         - vless-583609878
+        - vless-650671462
       type: select
 rules:
     - MATCH,select
