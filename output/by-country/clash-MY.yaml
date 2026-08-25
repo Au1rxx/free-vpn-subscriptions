@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-925335632
+      password: 5cc264ad-92a8-46cc-85b0-82dca5b12faf
+      port: 43102
+      server: 172.238.22.232
+      skip-cert-verify: true
+      sni: vpn-node.internal
+      type: trojan
+      udp: true
     - name: trojan-865911591
       password: 5cc264ad-92a8-46cc-85b0-82dca5b12faf
       port: 43102
@@ -27,6 +35,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-925335632
         - trojan-865911591
         - trojan-868622384
         - trojan-865910602
@@ -35,6 +44,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-925335632
         - trojan-865911591
         - trojan-868622384
         - trojan-865910602

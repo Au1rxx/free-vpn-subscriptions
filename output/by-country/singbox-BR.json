@@ -1,0 +1,36 @@
+{
+  "outbounds": [
+    {
+      "method": "2022-blake3-chacha20-poly1305",
+      "password": "BFQyHWB20qvH0asuixcidL1wLU6XLdmFzANF3GjLFQw=",
+      "server": "147.15.47.5",
+      "server_port": 59319,
+      "tag": "shadowsocks-925637529",
+      "type": "shadowsocks"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "shadowsocks-925637529"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "shadowsocks-925637529"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
