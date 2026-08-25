@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-939955487
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 00n9LplaZ0VGvRS57548s7xe0deFC10pw2fkFHFPplM
+        short-id: ""
+      server: 84.32.209.7
+      servername: ai.android
+      tls: true
+      type: vless
+      udp: true
+      uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
     - cipher: aes-256-cfb
       name: shadowsocks-743178429
       password: 37Z4TFCYhfxcpc9Q
@@ -13,19 +27,62 @@ proxies:
       server: 195.238.126.20
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-717968959
+      password: b8KkNDjEd5QqFyRm
+      port: 9002
+      server: 195.238.126.20
+      type: ss
+      udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-930426290
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: pgG2grngQEtOFJImLfz0AEm-O2IodM2jCY4aMCYQI1U
+        short-id: 6aa2d2e950441a9a
+      server: lit4.freeinternat.com
+      servername: lit4.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-930426275
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+        short-id: ff776ff77be48b88
+      server: lit9.helper-internet.com
+      servername: lit9.helper-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ae8e0f7d-b661-41ca-b55d-d8c383adb2f8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-939955487
         - shadowsocks-743178429
         - shadowsocks-779606858
+        - shadowsocks-717968959
+        - vless-930426290
+        - vless-930426275
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-939955487
         - shadowsocks-743178429
         - shadowsocks-779606858
+        - shadowsocks-717968959
+        - vless-930426290
+        - vless-930426275
       type: select
 rules:
     - MATCH,select
