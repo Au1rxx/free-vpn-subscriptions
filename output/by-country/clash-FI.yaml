@@ -19,13 +19,6 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - name: hysteria2-812154987
-      password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
-      port: 8443
-      server: 222.167.212.82
-      skip-cert-verify: false
-      sni: hopp-legend-se.roxa.org
-      type: hysteria2
     - name: vless-860620803
       network: grpc
       port: 2101
@@ -63,17 +56,30 @@ proxies:
       server: autodiscover.fuzzyaytor.cyou
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      name: vless-862043460
+      network: tcp
+      port: 448
+      reality-opts:
+        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+        short-id: cd21e552537c7c0b
+      server: 185.79.138.71
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-862043488
         - vless-862043473
-        - hysteria2-812154987
         - vless-860620803
         - vless-860502209
         - vless-856210273
         - shadowsocks-336700747
+        - vless-862043460
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -81,11 +87,11 @@ proxy-groups:
         - auto
         - vless-862043488
         - vless-862043473
-        - hysteria2-812154987
         - vless-860620803
         - vless-860502209
         - vless-856210273
         - shadowsocks-336700747
+        - vless-862043460
       type: select
 rules:
     - MATCH,select

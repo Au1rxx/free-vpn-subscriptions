@@ -1,6 +1,18 @@
 {
   "outbounds": [
     {
+      "password": "7e70223b-f331-41d5-9313-02b8d2df2885",
+      "server": "157.254.38.210",
+      "server_port": 20065,
+      "tag": "trojan-906676304",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "hk.catxstar.com"
+      },
+      "type": "trojan"
+    },
+    {
       "server": "57.131.38.163",
       "server_port": 2053,
       "tag": "vless-703656408",
@@ -49,11 +61,37 @@
       "uuid": "2b622609-bb92-49e8-9631-4ada00324f47"
     },
     {
+      "server": "104.171.128.225",
+      "server_port": 443,
+      "tag": "vless-900114769",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "eNvO4-6_VFngHHC6D5AhcCpCpOdi5gY7-Srimhh-6Xw"
+        },
+        "server_name": "dl.google.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "transport": {
+        "service_name": "grpc-tunnel",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "82d145c1-d691-4eef-9de1-9c316db4859a"
+    },
+    {
       "interval": "5m",
       "outbounds": [
+        "trojan-906676304",
         "vless-703656408",
         "shadowsocks-819466008",
-        "vless-810589773"
+        "vless-810589773",
+        "vless-900114769"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -62,9 +100,11 @@
     {
       "outbounds": [
         "auto",
+        "trojan-906676304",
         "vless-703656408",
         "shadowsocks-819466008",
-        "vless-810589773"
+        "vless-810589773",
+        "vless-900114769"
       ],
       "tag": "select",
       "type": "selector"

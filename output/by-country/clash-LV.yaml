@@ -6,6 +6,16 @@ proxies:
       server: 185.135.86.175
       type: ss
       udp: true
+    - name: vless-897111603
+      network: grpc
+      port: 443
+      server: lta.mythos-wargame.fun
+      servername: lta.mythos-wargame.fun
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
     - name: vless-856210279
       network: grpc
       port: 2083
@@ -21,6 +31,7 @@ proxy-groups:
       name: auto
       proxies:
         - shadowsocks-819466279
+        - vless-897111603
         - vless-856210279
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -28,6 +39,7 @@ proxy-groups:
       proxies:
         - auto
         - shadowsocks-819466279
+        - vless-897111603
         - vless-856210279
       type: select
 rules:

@@ -14,21 +14,12 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: trojan-865911591
-      password: 5cc264ad-92a8-46cc-85b0-82dca5b12faf
-      port: 43102
-      server: 172.238.22.232
-      skip-cert-verify: true
-      sni: vpn-node.internal
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-696792801
         - trojan-897442828
-        - trojan-865911591
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -36,7 +27,6 @@ proxy-groups:
         - auto
         - shadowsocks-696792801
         - trojan-897442828
-        - trojan-865911591
       type: select
 rules:
     - MATCH,select

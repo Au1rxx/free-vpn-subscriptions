@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-906676304
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20065
+      server: 157.254.38.210
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - client-fingerprint: random
       name: vless-703656408
       network: tcp
@@ -29,21 +37,38 @@ proxies:
       type: vless
       udp: true
       uuid: 2b622609-bb92-49e8-9631-4ada00324f47
+    - client-fingerprint: edge
+      name: vless-900114769
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: eNvO4-6_VFngHHC6D5AhcCpCpOdi5gY7-Srimhh-6Xw
+        short-id: ""
+      server: 104.171.128.225
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 82d145c1-d691-4eef-9de1-9c316db4859a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-906676304
         - vless-703656408
         - shadowsocks-819466008
         - vless-810589773
+        - vless-900114769
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-906676304
         - vless-703656408
         - shadowsocks-819466008
         - vless-810589773
+        - vless-900114769
       type: select
 rules:
     - MATCH,select

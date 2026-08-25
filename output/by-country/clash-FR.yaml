@@ -1,29 +1,8 @@
 proxies:
-    - name: vless-866241130
-      network: tcp
-      port: 24144
-      server: 164.68.127.108
-      type: vless
-      udp: true
-      uuid: 7e85ed3f-3829-45b1-8b1c-6a2e45ebc967
     - name: hysteria2-881852118
       password: 95e8532b-cc69-42d4-9553-e3c23292b15b
       port: 8443
       server: 81.168.62.17
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
-    - name: hysteria2-561634417
-      password: Krab9Hyst2_Rk7pQ2xL
-      port: 36723
-      server: fr.vpn.legendaah.xyz
-      skip-cert-verify: true
-      sni: 127.0.0.1
-      type: hysteria2
-    - name: hysteria2-550001735
-      password: Krab9Hyst2_Rk7pQ2xL
-      port: 36723
-      server: 151.247.197.253
       skip-cert-verify: true
       sni: ""
       type: hysteria2
@@ -266,14 +245,53 @@ proxies:
       server: 51.255.13.232
       type: ss
       udp: true
+    - flow: xtls-rprx-vision
+      name: vless-332701821
+      network: tcp
+      port: 443
+      server: nasnet-162191099-direct.mbghalibaf.com
+      servername: nasnet-162191099-direct.mbghalibaf.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: nasnet
+    - flow: xtls-rprx-vision
+      name: vless-279525860
+      network: tcp
+      port: 443
+      server: nasnet-162191099-direct.mbghalibaf.com
+      servername: nasnet-162191099-direct.mbghalibaf.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e8b1500b-e9e8-5492-8312-f4eadf7d0767
+    - client-fingerprint: chrome
+      name: vless-897900895
+      network: tcp
+      port: 22216
+      reality-opts:
+        public-key: sTE0YXI6Pv6OQUNbM-hNpNOhzon0_m2YUd7B1_g-JAU
+        short-id: 0f4412d42129f080
+      server: frannoad.whooisthebest.ir
+      servername: amp-api-edge.apps.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5c5619e4-0577-48d4-8d0c-6ad9c5cc0ecf
+    - name: vless-661029025
+      network: tcp
+      port: 443
+      server: 89.208.113.16
+      type: vless
+      udp: true
+      uuid: adce7c2a-3191-49ae-b61c-9b8258ea1b0e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-866241130
         - hysteria2-881852118
-        - hysteria2-561634417
-        - hysteria2-550001735
         - shadowsocks-863726173
         - vless-696180628
         - hysteria2-868400813
@@ -301,15 +319,16 @@ proxy-groups:
         - vless-816769039
         - vless-860816017
         - shadowsocks-415242972
+        - vless-332701821
+        - vless-279525860
+        - vless-897900895
+        - vless-661029025
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-866241130
         - hysteria2-881852118
-        - hysteria2-561634417
-        - hysteria2-550001735
         - shadowsocks-863726173
         - vless-696180628
         - hysteria2-868400813
@@ -337,6 +356,10 @@ proxy-groups:
         - vless-816769039
         - vless-860816017
         - shadowsocks-415242972
+        - vless-332701821
+        - vless-279525860
+        - vless-897900895
+        - vless-661029025
       type: select
 rules:
     - MATCH,select
