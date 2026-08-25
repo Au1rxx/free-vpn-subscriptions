@@ -1,17 +1,4 @@
 proxies:
-    - client-fingerprint: firefox
-      name: vless-890226867
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: sgFFdQvfeujBKh6g7N7klU_u0mKYlr800MFbko5FzUg
-        short-id: e67fb918ed6b9ffb
-      server: 185.155.222.75
-      servername: jobs.vkimages.io
-      tls: true
-      type: vless
-      udp: true
-      uuid: 20c72888-b83e-4309-82a4-aab4a2dda778
     - name: vless-897111624
       network: grpc
       port: 443
@@ -22,32 +9,16 @@ proxies:
       type: vless
       udp: true
       uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
-    - client-fingerprint: firefox
-      name: vless-890226845
-      network: grpc
+    - name: vless-650675449
+      network: tcp
       port: 8443
-      reality-opts:
-        public-key: sgFFdQvfeujBKh6g7N7klU_u0mKYlr800MFbko5FzUg
-        short-id: e67fb918ed6b9ffb
-      server: 185.155.222.71
-      servername: jobs.vkimages.io
+      server: estproxy4.lockdwn.com
+      servername: estproxy4.lockdwn.com
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: 20c72888-b83e-4309-82a4-aab4a2dda778
-    - client-fingerprint: qq
-      name: vless-890226804
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: sgFFdQvfeujBKh6g7N7klU_u0mKYlr800MFbko5FzUg
-        short-id: e67fb918ed6b9ffb
-      server: est.riotvpn.eu
-      servername: jobs.vkimages.io
-      tls: true
-      type: vless
-      udp: true
-      uuid: 20c72888-b83e-4309-82a4-aab4a2dda778
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
     - client-fingerprint: firefox
       name: vless-898068448
       network: grpc
@@ -61,25 +32,57 @@ proxies:
       type: vless
       udp: true
       uuid: 026ee970-e645-4062-899a-383d75767b48
+    - name: vless-650650495
+      network: tcp
+      port: 8443
+      server: estproxy4.lockdwn.com
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+    - name: vless-856210262
+      network: raw
+      port: 8443
+      server: estproxy4.lockdwn.com
+      servername: estproxy4.lockdwn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+    - name: vless-654431402
+      network: tcp
+      port: 8443
+      server: estproxy4.lockdwn.com
+      servername: estproxy4.lockdwn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-890226867
         - vless-897111624
-        - vless-890226845
-        - vless-890226804
+        - vless-650675449
         - vless-898068448
+        - vless-650650495
+        - vless-856210262
+        - vless-654431402
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-890226867
         - vless-897111624
-        - vless-890226845
-        - vless-890226804
+        - vless-650675449
         - vless-898068448
+        - vless-650650495
+        - vless-856210262
+        - vless-654431402
       type: select
 rules:
     - MATCH,select

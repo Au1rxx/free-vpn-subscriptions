@@ -12,6 +12,19 @@ proxies:
       type: vless
       udp: true
       uuid: 76186f1e-3062-4a2b-98c2-fab3c61a9511
+    - client-fingerprint: firefox
+      name: vless-875090994
+      network: grpc
+      port: 9872
+      reality-opts:
+        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+        short-id: ""
+      server: 82.202.136.213
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 14777bd9-56a5-46f6-a94f-826b4800dc05
     - name: vless-897111606
       network: grpc
       port: 443
@@ -79,29 +92,63 @@ proxies:
       type: vless
       udp: true
       uuid: 14777bd9-56a5-46f6-a94f-826b4800dc05
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-696780839
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: -GMpCber8qtrKzJbwvpLcwlIhOy-5zS66u_x9lLvIjE
+        short-id: e3daad69
+      server: 193.148.59.178
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 20d7c485-5d24-49b5-a5cc-bb7a7daf9908
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-889943678
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: YQTixaXzPVImuRc4TUbrFAekjIiaYV-t5S-HTKlH0AU
+        short-id: 2186a755ed67b034
+      server: 177.3.215.111
+      servername: nordic.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-882535904
+        - vless-875090994
         - vless-897111606
         - vless-896817966
         - vless-713157148
         - vless-898311303
         - vless-897925538
         - vless-871765302
+        - vless-696780839
+        - vless-889943678
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-882535904
+        - vless-875090994
         - vless-897111606
         - vless-896817966
         - vless-713157148
         - vless-898311303
         - vless-897925538
         - vless-871765302
+        - vless-696780839
+        - vless-889943678
       type: select
 rules:
     - MATCH,select
