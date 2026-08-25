@@ -1,20 +1,6 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-547757655
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: YQTixaXzPVImuRc4TUbrFAekjIiaYV-t5S-HTKlH0AU
-        short-id: 2186a755ed67b034
-      server: 189.74.124.42
-      servername: nordic.cendora.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-632602515
       network: raw
       port: 443
@@ -83,27 +69,41 @@ proxies:
       type: vless
       udp: true
       uuid: b8006e78-0f7e-4216-9fa3-f1e5c3d93e4f
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-911102780
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 0Z6f6RFk_mPgcqXi1pryuTLMz_phlAgBu1hWmVXIkVA
+        short-id: 5cdef06e2f
+      server: 78.140.252.20
+      servername: static.beeline.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: b8006e78-0f7e-4216-9fa3-f1e5c3d93e4f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-547757655
         - vless-632602515
         - vless-812654360
         - vless-814668652
         - vless-836381876
         - vless-900729361
+        - vless-911102780
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-547757655
         - vless-632602515
         - vless-812654360
         - vless-814668652
         - vless-836381876
         - vless-900729361
+        - vless-911102780
       type: select
 rules:
     - MATCH,select
