@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-cfb
+      name: shadowsocks-278
+      password: qwerREWQ@@
+      port: 4652
+      server: 218.237.185.230
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-283
       password: qwerREWQ@@
       port: 13979
@@ -118,6 +125,13 @@ proxies:
       sni: aa.ccmusic.jp
       type: trojan
       udp: true
+    - name: vless-83773748
+      network: tcp
+      port: 49853
+      server: 193.124.204.145
+      type: vless
+      udp: true
+      uuid: 5ed7b151-b781-4dba-800d-e3f824f1416f
     - name: trojan-106541849
       password: BxceQaOe
       port: 443
@@ -156,15 +170,6 @@ proxies:
       sni: aa.ccmusic.jp
       type: trojan
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-202892926
-      network: ws
-      port: 80
-      server: 61.245.11.60
-      type: vmess
-      udp: true
-      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
     - name: trojan-210032272
       password: tsuchiya
       port: 443
@@ -386,17 +391,6 @@ proxies:
       sni: aa.ccmusic.jp
       type: trojan
       udp: true
-    - flow: xtls-rprx-vision
-      name: vless-723419463
-      network: tcp
-      port: 443
-      server: 103.173.155.212
-      servername: u643766u71da6ad5s591.csgfw.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 41f4cb15-5a3f-3934-89fe-b4177146adf4
     - alterId: 0
       cipher: none
       name: vmess-725810906
@@ -423,15 +417,6 @@ proxies:
       sni: 161.34.39.108
       type: trojan
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-809849313
-      network: ws
-      port: 80
-      server: 61.245.11.60
-      type: vmess
-      udp: true
-      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
     - name: vless-813396662
       network: tcp
       port: 49853
@@ -508,19 +493,6 @@ proxies:
       sni: vpn-node.internal
       type: trojan
       udp: true
-    - client-fingerprint: firefox
-      name: vless-864230091
-      network: tcp
-      port: 46142
-      reality-opts:
-        public-key: l-OE7EwER1Z_jAifGE_UZ3FqHDMGzaR0jQHFYj5RNAk
-        short-id: 39feeba3085c
-      server: 144.225.65.111
-      servername: www.yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 255386a8-aec5-4425-bfe7-ca49b7448deb
     - name: trojan-865910599
       password: ac9521a8-1cc5-495c-981c-3a61a2f25ca1
       port: 28443
@@ -544,20 +516,6 @@ proxies:
       type: vless
       udp: true
       uuid: 5ed7b151-b781-4dba-800d-e3f824f1416f
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-889324340
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: z-TKWOWgZLfzQ-wNdwXQqVwaUgCmbchM2Xtrk1NGynU
-        short-id: ""
-      server: 37.221.210.188
-      servername: hu888.bearbeer.digital
-      tls: true
-      type: vless
-      udp: true
-      uuid: c6fdfa4b-742c-4225-986b-b0e3bd3146a4
     - client-fingerprint: qq
       name: vless-889940305
       network: grpc
@@ -589,6 +547,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-278
         - shadowsocks-283
         - shadowsocks-287
         - vmess-99462
@@ -604,12 +563,12 @@ proxy-groups:
         - trojan-70506696
         - vless-76190122
         - trojan-79476398
+        - vless-83773748
         - trojan-106541849
         - trojan-133769367
         - vless-198824233
         - vless-198824234
         - trojan-201299290
-        - vmess-202892926
         - trojan-210032272
         - trojan-240793185
         - vmess-252807568
@@ -638,11 +597,9 @@ proxy-groups:
         - vmess-701191748
         - trojan-702030317
         - trojan-706800523
-        - vless-723419463
         - vmess-725810906
         - vmess-765699587
         - trojan-770684396
-        - vmess-809849313
         - vless-813396662
         - trojan-813920947
         - trojan-814391135
@@ -653,11 +610,9 @@ proxy-groups:
         - trojan-856679830
         - trojan-862364764
         - trojan-864209056
-        - vless-864230091
         - trojan-865910599
         - trojan-868622517
         - vless-868642633
-        - vless-889324340
         - vless-889940305
         - vless-900729101
       type: url-test
@@ -665,6 +620,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-278
         - shadowsocks-283
         - shadowsocks-287
         - vmess-99462
@@ -680,12 +636,12 @@ proxy-groups:
         - trojan-70506696
         - vless-76190122
         - trojan-79476398
+        - vless-83773748
         - trojan-106541849
         - trojan-133769367
         - vless-198824233
         - vless-198824234
         - trojan-201299290
-        - vmess-202892926
         - trojan-210032272
         - trojan-240793185
         - vmess-252807568
@@ -714,11 +670,9 @@ proxy-groups:
         - vmess-701191748
         - trojan-702030317
         - trojan-706800523
-        - vless-723419463
         - vmess-725810906
         - vmess-765699587
         - trojan-770684396
-        - vmess-809849313
         - vless-813396662
         - trojan-813920947
         - trojan-814391135
@@ -729,11 +683,9 @@ proxy-groups:
         - trojan-856679830
         - trojan-862364764
         - trojan-864209056
-        - vless-864230091
         - trojan-865910599
         - trojan-868622517
         - vless-868642633
-        - vless-889324340
         - vless-889940305
         - vless-900729101
       type: select
