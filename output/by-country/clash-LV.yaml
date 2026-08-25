@@ -9,37 +9,27 @@ proxies:
       type: vless
       udp: true
       uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
-    - cipher: aes-256-cfb
-      name: shadowsocks-819466279
-      password: UTJA57ypk2XKQpnm
-      port: 9033
-      server: 185.135.86.175
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-738053581
-      password: 37Z4TFCYhfxcpc9Q
-      port: 9086
-      server: 185.135.86.175
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-723348676
-      password: mwgRg9hRq3b4Qnwb
-      port: 9068
-      server: 185.135.86.175
-      type: ss
-      udp: true
-    - name: vless-909009846
-      network: grpc
+    - name: hysteria2-918634107
+      password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
       port: 443
-      server: 195.135.254.138
-      servername: lta.mythos-wargame.fun
-      skip-cert-verify: false
-      tls: true
-      type: vless
+      server: hy2-latvia1.unlimited-access.ru
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
+    - name: hysteria2-918692344
+      password: 5eaf179b-ff25-4887-903f-3682c6d8f47f
+      port: 8452
+      server: lvhy2.metricpipe.space
+      skip-cert-verify: true
+      sni: lvhy2.metricpipe.space
+      type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-696781305
+      password: 45xgMgm386pjWjTx
+      port: 9082
+      server: 185.135.86.175
+      type: ss
       udp: true
-      uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
     - name: vless-906828149
       network: ws
       port: 2096
@@ -47,36 +37,25 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: hysteria2-917771375
-      password: d4c41430-082e-4757-b22c-194998baddd2
-      port: 8589
-      server: 91.185.83.48
-      skip-cert-verify: false
-      sni: rgrg.nimarko.org
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-912900286
-        - shadowsocks-819466279
-        - shadowsocks-738053581
-        - shadowsocks-723348676
-        - vless-909009846
+        - hysteria2-918634107
+        - hysteria2-918692344
+        - shadowsocks-696781305
         - vless-906828149
-        - hysteria2-917771375
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-912900286
-        - shadowsocks-819466279
-        - shadowsocks-738053581
-        - shadowsocks-723348676
-        - vless-909009846
+        - hysteria2-918634107
+        - hysteria2-918692344
+        - shadowsocks-696781305
         - vless-906828149
-        - hysteria2-917771375
       type: select
 rules:
     - MATCH,select
