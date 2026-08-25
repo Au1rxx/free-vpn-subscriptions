@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-931767870
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+        short-id: ff776ff77be48b88
+      server: 5.39.202.111
+      servername: cz.helper-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ae8e0f7d-b661-41ca-b55d-d8c383adb2f8
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-915099831
@@ -69,41 +83,27 @@ proxies:
       type: vless
       udp: true
       uuid: ae8e0f7d-b661-41ca-b55d-d8c383adb2f8
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-901422955
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
-        short-id: ff776ff77be48b88
-      server: cz.helper-internet.com
-      servername: cz.helper-internet.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ae8e0f7d-b661-41ca-b55d-d8c383adb2f8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-931767870
         - vless-915099831
         - vless-890226806
         - vless-881553352
         - vless-897685130
         - vless-917460774
-        - vless-901422955
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-931767870
         - vless-915099831
         - vless-890226806
         - vless-881553352
         - vless-897685130
         - vless-917460774
-        - vless-901422955
       type: select
 rules:
     - MATCH,select

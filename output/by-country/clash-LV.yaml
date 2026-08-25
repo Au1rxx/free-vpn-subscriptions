@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-931621498
+      password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
+      port: 443
+      server: hy2-latvia1.unlimited-access.ru
+      skip-cert-verify: true
+      sni: 127.0.0.1
+      type: hysteria2
     - alterId: 0
       cipher: auto
       name: vmess-925466716
@@ -23,46 +30,23 @@ proxies:
       sni: tr-latvia1.unlimited-access.ru
       type: trojan
       udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-819466279
-      password: UTJA57ypk2XKQpnm
-      port: 9033
-      server: 185.135.86.175
-      type: ss
-      udp: true
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-930426281
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
-        short-id: ff776ff77be48b88
-      server: 31.76.62.223
-      servername: lat2.freeinternat.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-931621498
         - vmess-925466716
         - shadowsocks-738053581
         - trojan-918371846
-        - shadowsocks-819466279
-        - vless-930426281
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-931621498
         - vmess-925466716
         - shadowsocks-738053581
         - trojan-918371846
-        - shadowsocks-819466279
-        - vless-930426281
       type: select
 rules:
     - MATCH,select

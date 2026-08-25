@@ -1,5 +1,12 @@
 proxies:
     - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-932444293
+      password: ZxIQSuhi48PC6452e1GKuTGd2+zgR7so5ucyS+KveAc=
+      port: 59319
+      server: 159.112.176.198
+      type: ss
+      udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-925637529
       password: BFQyHWB20qvH0asuixcidL1wLU6XLdmFzANF3GjLFQw=
       port: 59319
@@ -13,19 +20,31 @@ proxies:
       server: 136.248.91.217
       type: ss
       udp: true
+    - name: trojan-864163188
+      password: bfc55a0e-6d1b-4010-8bf6-0d9726d151a3
+      port: 28443
+      server: 172.237.62.103
+      skip-cert-verify: true
+      sni: vpn-node.internal
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-932444293
         - shadowsocks-925637529
         - shadowsocks-919282422
+        - trojan-864163188
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-932444293
         - shadowsocks-925637529
         - shadowsocks-919282422
+        - trojan-864163188
       type: select
 rules:
     - MATCH,select

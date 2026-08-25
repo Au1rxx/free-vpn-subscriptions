@@ -14,21 +14,27 @@ proxies:
       sni: vpn-node.internal
       type: trojan
       udp: true
-    - name: trojan-865910602
-      password: 319182a3-9ca5-456e-9acd-54e0df11b0be
-      port: 46262
-      server: 172.237.81.74
-      skip-cert-verify: true
-      sni: vpn-node.internal
-      type: trojan
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-922186075
+      network: tcp
+      port: 54327
+      reality-opts:
+        public-key: zCNI8OUsvp6NKt52Z_93OoqegAjbVjzP2tHGXd3cQjM
+        short-id: 0888830f7006f1
+      server: hkshun.hgcfvgu.online
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
       udp: true
+      uuid: 8d05cda5-c9ba-43cf-846e-b9521b872c71
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-696792801
         - trojan-925335632
-        - trojan-865910602
+        - vless-922186075
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -36,7 +42,7 @@ proxy-groups:
         - auto
         - shadowsocks-696792801
         - trojan-925335632
-        - trojan-865910602
+        - vless-922186075
       type: select
 rules:
     - MATCH,select

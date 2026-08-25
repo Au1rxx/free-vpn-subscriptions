@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-932433137
+      password: MiTiVPN
+      port: 443
+      server: 140.248.185.253
+      skip-cert-verify: false
+      sni: ssl.fastly.com
+      type: trojan
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-897978973
@@ -61,85 +69,27 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-0002-9d5e-c541f791b55f
-    - name: vless-896817966
-      network: grpc
-      port: 443
-      server: swa.mythos-wargame.fun
-      servername: swa.mythos-wargame.fun
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-928616751
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: pgG2grngQEtOFJImLfz0AEm-O2IodM2jCY4aMCYQI1U
-        short-id: 6aa2d2e950441a9a
-      server: 84.238.133.104
-      servername: swed2.helper-internet.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ae8e0f7d-b661-41ca-b55d-d8c383adb2f8
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-810585309
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: ZXi0bwZwOe9e5CMticA2-bU7qamHgs_sN-2kHygbDyk
-        short-id: e91da98020a38be9
-      server: 138.124.255.233
-      servername: russia.cendora.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 423b1d79-08c4-0002-9d5e-c541f791b55f
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-920451226
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: ZXi0bwZwOe9e5CMticA2-bU7qamHgs_sN-2kHygbDyk
-        short-id: e91da98020a38be9
-      server: 31.76.34.102
-      servername: russia.cendora.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 423b1d79-08c4-0002-9d5e-c541f791b55f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-932433137
         - vless-897978973
         - vless-923258537
         - vless-902791374
         - vless-909015239
         - vless-909015244
-        - vless-896817966
-        - vless-928616751
-        - vless-810585309
-        - vless-920451226
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-932433137
         - vless-897978973
         - vless-923258537
         - vless-902791374
         - vless-909015239
         - vless-909015244
-        - vless-896817966
-        - vless-928616751
-        - vless-810585309
-        - vless-920451226
       type: select
 rules:
     - MATCH,select

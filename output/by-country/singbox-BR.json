@@ -2,6 +2,14 @@
   "outbounds": [
     {
       "method": "2022-blake3-chacha20-poly1305",
+      "password": "ZxIQSuhi48PC6452e1GKuTGd2+zgR7so5ucyS+KveAc=",
+      "server": "159.112.176.198",
+      "server_port": 59319,
+      "tag": "shadowsocks-932444293",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "2022-blake3-chacha20-poly1305",
       "password": "BFQyHWB20qvH0asuixcidL1wLU6XLdmFzANF3GjLFQw=",
       "server": "147.15.47.5",
       "server_port": 59319,
@@ -17,10 +25,38 @@
       "type": "shadowsocks"
     },
     {
+      "password": "bfc55a0e-6d1b-4010-8bf6-0d9726d151a3",
+      "server": "172.237.62.103",
+      "server_port": 28443,
+      "tag": "trojan-864163188",
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": true,
+        "server_name": "vpn-node.internal",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "headers": {
+          "Host": "vpn-node.internal"
+        },
+        "path": "/xVpnTrojanWsSvc7f3a",
+        "type": "ws"
+      },
+      "type": "trojan"
+    },
+    {
       "interval": "5m",
       "outbounds": [
+        "shadowsocks-932444293",
         "shadowsocks-925637529",
-        "shadowsocks-919282422"
+        "shadowsocks-919282422",
+        "trojan-864163188"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -29,8 +65,10 @@
     {
       "outbounds": [
         "auto",
+        "shadowsocks-932444293",
         "shadowsocks-925637529",
-        "shadowsocks-919282422"
+        "shadowsocks-919282422",
+        "trojan-864163188"
       ],
       "tag": "select",
       "type": "selector"

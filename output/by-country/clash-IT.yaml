@@ -27,14 +27,19 @@ proxies:
       server: 57.131.48.45
       type: ss
       udp: true
-    - name: trojan-906676304
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20065
-      server: 157.254.38.210
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
+    - client-fingerprint: firefox
+      name: vless-483686868
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
       udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
 proxy-groups:
     - interval: 300
       name: auto
@@ -43,7 +48,7 @@ proxy-groups:
         - vless-903760100
         - vless-903760094
         - shadowsocks-891518478
-        - trojan-906676304
+        - vless-483686868
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -53,7 +58,7 @@ proxy-groups:
         - vless-903760100
         - vless-903760094
         - shadowsocks-891518478
-        - trojan-906676304
+        - vless-483686868
       type: select
 rules:
     - MATCH,select

@@ -1,18 +1,11 @@
 proxies:
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-922700545
-      network: tcp
+    - name: hysteria2-860759723
+      password: eb0e3aec-f67f-4fa2-8577-b0bff0484e77
       port: 443
-      reality-opts:
-        public-key: 06GvG7PU5F3Hgq-vUH24tU0tpsbGMCCt26BSvlaBNUE
-        short-id: dfbfa87e9f37f1f0
-      server: 5.180.42.85
-      servername: cloud.mail.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5e19b3c8-c1dc-4163-95e2-895319c15d6c
+      server: kaz0001hy01.packet-drop-society.net
+      skip-cert-verify: true
+      sni: kaz0001hy01.packet-drop-society.net
+      type: hysteria2
     - name: hysteria2-861940528
       password: eb0e3aec-f67f-4fa2-8577-b0bff0484e77
       port: 443
@@ -27,53 +20,21 @@ proxies:
       skip-cert-verify: true
       sni: borat-hopp.bumbleshrimp.com
       type: hysteria2
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-930426254
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
-        short-id: ff776ff77be48b88
-      server: kz2.freeinternat.com
-      servername: kz2.freeinternat.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-930426230
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
-        short-id: ff776ff77be48b88
-      server: 195.49.215.98
-      servername: kz2.freeinternat.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-922700545
+        - hysteria2-860759723
         - hysteria2-861940528
         - hysteria2-650732775
-        - vless-930426254
-        - vless-930426230
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-922700545
+        - hysteria2-860759723
         - hysteria2-861940528
         - hysteria2-650732775
-        - vless-930426254
-        - vless-930426230
       type: select
 rules:
     - MATCH,select

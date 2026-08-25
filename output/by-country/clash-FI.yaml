@@ -22,19 +22,6 @@ proxies:
       type: vless
       udp: true
       uuid: a26a79cb-a1f1-4097-bc61-a02a64c69ebe
-    - client-fingerprint: firefox
-      name: vless-921590726
-      network: grpc
-      port: 2053
-      reality-opts:
-        public-key: 7zv-3bWzr0wwe4vy1Z_35V-cLXjH07cSRuOw8tcX4wk
-        short-id: 9c
-      server: node16.fastdatastream.com
-      servername: www.intel.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 203c2146-6620-4a5e-836c-7af5c75c9325
     - alterId: 0
       cipher: auto
       name: vmess-925702700
@@ -53,6 +40,15 @@ proxies:
       type: vmess
       udp: true
       uuid: b2c6844f-d31f-411a-8ef1-7580718b9ec6
+    - alterId: 0
+      cipher: auto
+      name: vmess-932954449
+      network: tcp
+      port: 33120
+      server: 65.109.211.136
+      type: vmess
+      udp: true
+      uuid: d9c919c2-872e-429d-a680-1e6c6bfe681b
     - name: hysteria2-812154987
       password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
       port: 8443
@@ -90,59 +86,19 @@ proxies:
       type: vless
       udp: true
       uuid: 20595050-84c7-40e6-b9e3-cf90c99f8a4c
-    - client-fingerprint: chrome
-      name: vless-615983244
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: Qr6_9TMQYMCB2hVSYeONcMvxBqIaT0mzPUy8nIivV1g
-        short-id: b58b
-      server: 89.167.0.240
-      servername: play.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 694eb5d5-794c-4389-af65-e5a4b8489dae
-    - name: vless-922173776
-      network: ws
-      port: 443
-      server: a2.arshia-nova.ir
-      servername: ssl.fastly.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: bbde90cd-b6a9-49ba-cab0-71ae12738502
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-930426263
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
-        short-id: ff776ff77be48b88
-      server: 196.244.191.178
-      servername: fin5.freeinternat.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-922852062
         - vless-930537706
-        - vless-921590726
         - vmess-925702700
         - vmess-925346987
+        - vmess-932954449
         - hysteria2-812154987
         - hysteria2-647019506
         - vless-652375208
         - vless-809723992
-        - vless-615983244
-        - vless-922173776
-        - vless-930426263
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -150,16 +106,13 @@ proxy-groups:
         - auto
         - vless-922852062
         - vless-930537706
-        - vless-921590726
         - vmess-925702700
         - vmess-925346987
+        - vmess-932954449
         - hysteria2-812154987
         - hysteria2-647019506
         - vless-652375208
         - vless-809723992
-        - vless-615983244
-        - vless-922173776
-        - vless-930426263
       type: select
 rules:
     - MATCH,select
