@@ -1,24 +1,4 @@
 proxies:
-    - name: vless-902791363
-      network: grpc
-      port: 443
-      server: eeb.webinarly.fun
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
-    - name: vless-902791356
-      network: grpc
-      port: 443
-      server: eeb.mythos-wargame.fun
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2dd48980-5c2a-4f3b-bc8f-e20a8ae24ab1
     - name: vless-868400818
       network: ws
       port: 443
@@ -26,48 +6,65 @@ proxies:
       type: vless
       udp: true
       uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-    - name: vless-852108509
-      network: ws
-      port: 443
-      server: 94.183.170.135
+    - name: vless-650650495
+      network: tcp
+      port: 8443
+      server: estproxy4.lockdwn.com
+      servername: ""
+      skip-cert-verify: false
+      tls: true
       type: vless
       udp: true
       uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-    - name: hysteria2-837777279
-      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
-      port: 443
-      server: faq.wwwinternetvideo.click
-      skip-cert-verify: false
-      sni: cabinet.wwwinternetvideo.click
-      type: hysteria2
-    - name: hysteria2-932129969
-      password: 523486c6-c0b5-4e5b-8896-4af2375b41cc
+    - name: vless-650439142
+      network: tcp
       port: 8443
-      server: 31.76.70.107
-      skip-cert-verify: true
-      sni: quic.tyr-agentstvo.tech
-      type: hysteria2
+      server: estproxy4.lockdwn.com
+      servername: estproxy4.lockdwn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+    - name: vless-650319315
+      network: tcp
+      port: 8443
+      server: 94.183.170.135
+      servername: estproxy4.lockdwn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+    - name: vless-650732767
+      network: tcp
+      port: 8443
+      server: estproxy4.lockdwn.com
+      servername: estproxy4.lockdwn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-902791363
-        - vless-902791356
         - vless-868400818
-        - vless-852108509
-        - hysteria2-837777279
-        - hysteria2-932129969
+        - vless-650650495
+        - vless-650439142
+        - vless-650319315
+        - vless-650732767
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-902791363
-        - vless-902791356
         - vless-868400818
-        - vless-852108509
-        - hysteria2-837777279
-        - hysteria2-932129969
+        - vless-650650495
+        - vless-650439142
+        - vless-650319315
+        - vless-650732767
       type: select
 rules:
     - MATCH,select
