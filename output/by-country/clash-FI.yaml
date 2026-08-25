@@ -7,19 +7,6 @@ proxies:
       type: ss
       udp: true
     - client-fingerprint: firefox
-      name: vless-908097609
-      network: grpc
-      port: 2053
-      reality-opts:
-        public-key: 7zv-3bWzr0wwe4vy1Z_35V-cLXjH07cSRuOw8tcX4wk
-        short-id: 9c
-      server: 185.246.191.135
-      servername: www.intel.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 203c2146-6620-4a5e-836c-7af5c75c9325
-    - client-fingerprint: firefox
       name: vless-922852062
       network: grpc
       port: 2053
@@ -76,12 +63,26 @@ proxies:
       type: vmess
       udp: true
       uuid: b2c6844f-d31f-411a-8ef1-7580718b9ec6
+    - name: hysteria2-622971569
+      password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
+      port: 443
+      server: fast.wwwinternetvideo.click
+      skip-cert-verify: false
+      sni: fast.wwwinternetvideo.click
+      type: hysteria2
     - name: hysteria2-812154987
       password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
       port: 8443
       server: 222.167.212.82
       skip-cert-verify: false
       sni: hopp-legend-se.roxa.org
+      type: hysteria2
+    - name: hysteria2-647019506
+      password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
+      port: 443
+      server: fast.wwwinternetvideo.click
+      skip-cert-verify: true
+      sni: fast.wwwinternetvideo.click
       type: hysteria2
     - name: vless-860620803
       network: grpc
@@ -139,68 +140,43 @@ proxies:
       type: vless
       udp: true
       uuid: bbde90cd-b6a9-49ba-cab0-71ae12738502
-    - name: hysteria2-700405738
-      password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
-      port: 443
-      server: fast.wwwinternetvideo.click
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
-    - name: hysteria2-622971569
-      password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
-      port: 443
-      server: fast.wwwinternetvideo.click
-      skip-cert-verify: false
-      sni: fast.wwwinternetvideo.click
-      type: hysteria2
-    - name: hysteria2-647019506
-      password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
-      port: 443
-      server: fast.wwwinternetvideo.click
-      skip-cert-verify: true
-      sni: fast.wwwinternetvideo.click
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-336700747
-        - vless-908097609
         - vless-922852062
         - vless-921590726
         - vless-919971108
         - vmess-925702700
         - vmess-925346987
+        - hysteria2-622971569
         - hysteria2-812154987
+        - hysteria2-647019506
         - vless-860620803
         - vless-652375208
         - vless-809723992
         - vless-615983244
         - vless-922173776
-        - hysteria2-700405738
-        - hysteria2-622971569
-        - hysteria2-647019506
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-336700747
-        - vless-908097609
         - vless-922852062
         - vless-921590726
         - vless-919971108
         - vmess-925702700
         - vmess-925346987
+        - hysteria2-622971569
         - hysteria2-812154987
+        - hysteria2-647019506
         - vless-860620803
         - vless-652375208
         - vless-809723992
         - vless-615983244
         - vless-922173776
-        - hysteria2-700405738
-        - hysteria2-622971569
-        - hysteria2-647019506
       type: select
 rules:
     - MATCH,select

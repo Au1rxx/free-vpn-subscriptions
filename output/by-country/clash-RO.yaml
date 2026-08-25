@@ -1,9 +1,23 @@
 proxies:
+    - name: hysteria2-896857447
+      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+      port: 8443
+      server: 85.204.107.173
+      skip-cert-verify: true
+      sni: hopp-romania-new.roxa.org
+      type: hysteria2
     - name: hysteria2-812150990
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
       port: 8443
       server: 85.204.107.170
       skip-cert-verify: false
+      sni: hopp-romania-new.roxa.org
+      type: hysteria2
+    - name: hysteria2-896855661
+      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+      port: 8443
+      server: 85.204.107.174
+      skip-cert-verify: true
       sni: hopp-romania-new.roxa.org
       type: hysteria2
     - name: hysteria2-813990701
@@ -13,28 +27,23 @@ proxies:
       skip-cert-verify: false
       sni: rou0001ntrhy01.tcp-reset-club.net
       type: hysteria2
-    - name: hysteria2-918634036
-      password: 35415e5e-3666-4454-8c45-903af0fcddf4
-      port: 47257
-      server: 85.120.228.208
-      skip-cert-verify: true
-      sni: www.bing.com%5cu0026alpn%3dh3%5cu0026insecure%3d1
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-896857447
         - hysteria2-812150990
+        - hysteria2-896855661
         - hysteria2-813990701
-        - hysteria2-918634036
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-896857447
         - hysteria2-812150990
+        - hysteria2-896855661
         - hysteria2-813990701
-        - hysteria2-918634036
       type: select
 rules:
     - MATCH,select

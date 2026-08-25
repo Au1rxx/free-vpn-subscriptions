@@ -13,17 +13,26 @@ proxies:
       type: vless
       udp: true
       uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792832
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 82.23.146.72
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-587204637
+        - shadowsocks-696792832
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-587204637
+        - shadowsocks-696792832
       type: select
 rules:
     - MATCH,select

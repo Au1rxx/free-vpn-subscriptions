@@ -1,11 +1,11 @@
 proxies:
-    - name: hysteria2-918634107
-      password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
-      port: 443
-      server: hy2-latvia1.unlimited-access.ru
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-738053581
+      password: 37Z4TFCYhfxcpc9Q
+      port: 9086
+      server: 185.135.86.175
+      type: ss
+      udp: true
     - name: vless-920171992
       network: tcp
       port: 2040
@@ -22,17 +22,25 @@ proxies:
       type: vmess
       udp: true
       uuid: 803cd116-56f6-4680-9ef7-82e2ded5810b
-    - name: hysteria2-918692344
-      password: 5eaf179b-ff25-4887-903f-3682c6d8f47f
-      port: 8452
-      server: lvhy2.metricpipe.space
-      skip-cert-verify: true
-      sni: lvhy2.metricpipe.space
-      type: hysteria2
     - cipher: aes-256-cfb
-      name: shadowsocks-696781305
-      password: 45xgMgm386pjWjTx
-      port: 9082
+      name: shadowsocks-819466279
+      password: UTJA57ypk2XKQpnm
+      port: 9033
+      server: 185.135.86.175
+      type: ss
+      udp: true
+    - name: trojan-918371846
+      password: kxHw-Dk-e9dffgzYszMlEqLJ92AnY3Pi
+      port: 443
+      server: 85.159.228.28
+      skip-cert-verify: true
+      sni: tr-latvia1.unlimited-access.ru
+      type: trojan
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-723348676
+      password: mwgRg9hRq3b4Qnwb
+      port: 9068
       server: 185.135.86.175
       type: ss
       udp: true
@@ -40,21 +48,23 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-918634107
+        - shadowsocks-738053581
         - vless-920171992
         - vmess-925466716
-        - hysteria2-918692344
-        - shadowsocks-696781305
+        - shadowsocks-819466279
+        - trojan-918371846
+        - shadowsocks-723348676
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-918634107
+        - shadowsocks-738053581
         - vless-920171992
         - vmess-925466716
-        - hysteria2-918692344
-        - shadowsocks-696781305
+        - shadowsocks-819466279
+        - trojan-918371846
+        - shadowsocks-723348676
       type: select
 rules:
     - MATCH,select
