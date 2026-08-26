@@ -7,14 +7,6 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: trojan-119244
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20018
-      server: 45.67.201.210
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-122850
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20017
@@ -39,21 +31,6 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: trojan-479026176
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20017
-      server: 157.254.38.210
-      skip-cert-verify: false
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
-    - name: vless-669547351
-      network: ws
-      port: 8080
-      server: 172.67.81.238
-      type: vless
-      udp: true
-      uuid: a646b695-f10c-42ef-8288-9021ded98927
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-721523161
@@ -82,14 +59,6 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
-    - name: trojan-739165522
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20017
-      server: 157.254.38.210
-      skip-cert-verify: false
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: hysteria2-810007483
       password: 1ba59989-225e-4f1c-ab62-9bd7366009cb
       port: 443
@@ -192,14 +161,6 @@ proxies:
       skip-cert-verify: true
       sni: 194.135.34.207
       type: hysteria2
-    - name: trojan-856461940
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20018
-      server: krhtybay.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-856461981
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20017
@@ -467,13 +428,6 @@ proxies:
       type: vless
       udp: true
       uuid: afbceea5-b771-4997-9c57-cd33ca370d93
-    - name: vless-940612406
-      network: tcp
-      port: 8443
-      server: u.mrgang.shop
-      type: vless
-      udp: true
-      uuid: afbceea5-b771-4997-9c57-cd33ca370d93
     - name: vless-942499758
       network: tcp
       port: 8443
@@ -481,20 +435,30 @@ proxies:
       type: vless
       udp: true
       uuid: afbceea5-b771-4997-9c57-cd33ca370d93
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-944504310
+      network: tcp
+      port: 13443
+      reality-opts:
+        public-key: gc9oXe37KCCm3J1dJ03wdGsnxPBdeEkRPOvl_t-vfVM
+        short-id: a7f3c91b2e6d84c0
+      server: 193.124.45.154
+      servername: auto.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-112587
-        - trojan-119244
         - trojan-122850
         - trojan-122851
         - trojan-123706
-        - trojan-479026176
-        - vless-669547351
         - vless-721523161
         - vless-734897289
-        - trojan-739165522
         - hysteria2-810007483
         - vless-810591836
         - hysteria2-813697901
@@ -506,7 +470,6 @@ proxy-groups:
         - hysteria2-855659698
         - hysteria2-855679903
         - hysteria2-855679912
-        - trojan-856461940
         - trojan-856461981
         - hysteria2-856679769
         - hysteria2-857366684
@@ -535,23 +498,19 @@ proxy-groups:
         - vless-939524957
         - vless-939524973
         - vless-939662740
-        - vless-940612406
         - vless-942499758
+        - vless-944504310
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-112587
-        - trojan-119244
         - trojan-122850
         - trojan-122851
         - trojan-123706
-        - trojan-479026176
-        - vless-669547351
         - vless-721523161
         - vless-734897289
-        - trojan-739165522
         - hysteria2-810007483
         - vless-810591836
         - hysteria2-813697901
@@ -563,7 +522,6 @@ proxy-groups:
         - hysteria2-855659698
         - hysteria2-855679903
         - hysteria2-855679912
-        - trojan-856461940
         - trojan-856461981
         - hysteria2-856679769
         - hysteria2-857366684
@@ -592,8 +550,8 @@ proxy-groups:
         - vless-939524957
         - vless-939524973
         - vless-939662740
-        - vless-940612406
         - vless-942499758
+        - vless-944504310
       type: select
 rules:
     - MATCH,select

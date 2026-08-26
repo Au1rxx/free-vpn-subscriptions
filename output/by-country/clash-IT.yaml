@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-944401082
+      network: ws
+      port: 443
+      server: itproxy3.lockdwn.com
+      type: vless
+      udp: true
+      uuid: 699ce9a1-abbb-4525-988e-b940381352e8
     - name: vless-917661440
       network: ws
       port: 443
@@ -6,14 +13,13 @@ proxies:
       type: vless
       udp: true
       uuid: 699ce9a1-abbb-4525-988e-b940381352e8
-    - name: trojan-930244475
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20065
-      server: kkvlvvq-a.catcat321.com
-      skip-cert-verify: false
-      sni: hk.catxstar.com
-      type: trojan
+    - name: vless-945792730
+      network: ws
+      port: 443
+      server: 151.241.215.109
+      type: vless
       udp: true
+      uuid: 699ce9a1-abbb-4525-988e-b940381352e8
     - client-fingerprint: edge
       name: vless-696199631
       network: tcp
@@ -53,25 +59,45 @@ proxies:
       type: vless
       udp: true
       uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - name: vless-864231055
+      network: ws
+      port: 443
+      server: itproxy3.lockdwn.com
+      type: vless
+      udp: true
+      uuid: 699ce9a1-abbb-4525-988e-b940381352e8
+    - name: vless-903760094
+      network: ws
+      port: 443
+      server: itproxy3.lockdwn.com
+      type: vless
+      udp: true
+      uuid: 699ce9a1-abbb-4525-988e-b940381352e8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-944401082
         - vless-917661440
-        - trojan-930244475
+        - vless-945792730
         - vless-696199631
         - vless-650644312
         - vless-548666342
+        - vless-864231055
+        - vless-903760094
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-944401082
         - vless-917661440
-        - trojan-930244475
+        - vless-945792730
         - vless-696199631
         - vless-650644312
         - vless-548666342
+        - vless-864231055
+        - vless-903760094
       type: select
 rules:
     - MATCH,select
