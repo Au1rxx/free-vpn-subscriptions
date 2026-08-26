@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-864226383
+      password: 662c065f-0495-4598-9a95-2e2fcb38b7b1
+      port: 42423
+      server: 57.180.10.65
+      skip-cert-verify: true
+      sni: vpn-node.internal
+      type: trojan
+      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-890005344
@@ -8,14 +16,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 9b76bc31-17a5-4454-934a-8d5fb602cd70
-    - name: trojan-864226383
-      password: 662c065f-0495-4598-9a95-2e2fcb38b7b1
-      port: 42423
-      server: 57.180.10.65
-      skip-cert-verify: true
-      sni: vpn-node.internal
-      type: trojan
-      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-906676251
@@ -44,8 +44,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-890005344
         - trojan-864226383
+        - vmess-890005344
         - vmess-906676251
         - trojan-865910603
         - vless-522223675
@@ -54,8 +54,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vmess-890005344
         - trojan-864226383
+        - vmess-890005344
         - vmess-906676251
         - trojan-865910603
         - vless-522223675

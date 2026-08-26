@@ -1,17 +1,4 @@
 proxies:
-    - client-fingerprint: random
-      name: vless-652375208
-      network: tcp
-      port: 448
-      reality-opts:
-        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
-        short-id: cd21e552537c7c0b
-      server: 185.79.138.71
-      servername: www.samsung.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
     - alterId: 0
       cipher: auto
       name: vmess-936861285
@@ -37,19 +24,6 @@ proxies:
       skip-cert-verify: false
       sni: hopp-legend-se.roxa.org
       type: hysteria2
-    - client-fingerprint: chrome
-      name: vless-615983244
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: Qr6_9TMQYMCB2hVSYeONcMvxBqIaT0mzPUy8nIivV1g
-        short-id: b58b
-      server: 89.167.0.240
-      servername: play.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 694eb5d5-794c-4389-af65-e5a4b8489dae
     - name: hysteria2-652726847
       password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
       port: 443
@@ -57,42 +31,23 @@ proxies:
       skip-cert-verify: false
       sni: ""
       type: hysteria2
-    - client-fingerprint: chrome
-      name: vless-457577632
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: Qr6_9TMQYMCB2hVSYeONcMvxBqIaT0mzPUy8nIivV1g
-        short-id: b58b
-      server: 89.167.0.240
-      servername: play.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 694eb5d5-794c-4389-af65-e5a4b8489dae
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-652375208
         - vmess-936861285
         - vmess-940261365
         - hysteria2-812154987
-        - vless-615983244
         - hysteria2-652726847
-        - vless-457577632
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-652375208
         - vmess-936861285
         - vmess-940261365
         - hysteria2-812154987
-        - vless-615983244
         - hysteria2-652726847
-        - vless-457577632
       type: select
 rules:
     - MATCH,select

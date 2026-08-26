@@ -741,14 +741,6 @@ proxies:
       sni: tw.catxstar.com
       type: trojan
       udp: true
-    - name: trojan-856462040
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20045
-      server: krhtybay.catcat321.com
-      skip-cert-verify: true
-      sni: tw.catxstar.com
-      type: trojan
-      udp: true
     - name: hysteria2-856679747
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -756,13 +748,15 @@ proxies:
       skip-cert-verify: true
       sni: vpn-tw-002.fastervpn.world%5cu0026insecure%3d1%5cu0026allowinsecure%3d1
       type: hysteria2
-    - cipher: 2022-blake3-aes-128-gcm
-      name: shadowsocks-864722577
-      password: MWM4MmJmYzdiNTZjNTUzMA==:MjA3ZmY5MWEtOWE3MC00Mg==
-      port: 16481
-      server: m99cygua.4ya21vwd0lw6ngzk.awstrack.vip
-      type: ss
+    - alterId: 0
+      cipher: auto
+      name: vmess-858999828
+      network: raw
+      port: 35034
+      server: 165.154.195.38
+      type: vmess
       udp: true
+      uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
     - name: trojan-865888896
       password: a126f35c-e832-4115-8593-b723ade3f7be
       port: 20025
@@ -847,11 +841,32 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-912237767
+      network: tcp
+      port: 32178
+      reality-opts:
+        public-key: MrBX-OPkFMp19rzgSbungdUFdoUSXAg7phFfeowkvxo
+        short-id: 9c01c7e98b93e683
+      server: wwhgbmxaycrqwzxhfa.cfooov.xyz
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8d05cda5-c9ba-43cf-846e-b9521b872c71
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-912445279
       password: b1ae0fce-9340-4f2e-882d-fdb2218e2e2b
       port: 50099
       server: 61.231.8.64
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-912445295
+      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
+      port: 50099
+      server: 36.224.174.236
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
@@ -917,6 +932,20 @@ proxies:
       sni: vpn-node.internal
       type: trojan
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-934929312
+      network: tcp
+      port: 32178
+      reality-opts:
+        public-key: MrBX-OPkFMp19rzgSbungdUFdoUSXAg7phFfeowkvxo
+        short-id: 9c01c7e98b93e683
+      server: 1.165.55.27
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8d05cda5-c9ba-43cf-846e-b9521b872c71
     - name: trojan-940093593
       password: 58d1a580a3fc4a87
       port: 99
@@ -1005,9 +1034,8 @@ proxy-groups:
         - trojan-856462007
         - trojan-856462023
         - trojan-856462031
-        - trojan-856462040
         - hysteria2-856679747
-        - shadowsocks-864722577
+        - vmess-858999828
         - trojan-865888896
         - vless-868054338
         - vless-889301767
@@ -1019,7 +1047,9 @@ proxy-groups:
         - trojan-908512914
         - trojan-908512917
         - trojan-909630576
+        - vless-912237767
         - shadowsocks-912445279
+        - shadowsocks-912445295
         - shadowsocks-912445338
         - trojan-912552547
         - trojan-915304534
@@ -1028,6 +1058,7 @@ proxy-groups:
         - trojan-920331293
         - trojan-922529412
         - trojan-933883301
+        - vless-934929312
         - trojan-940093593
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -1110,9 +1141,8 @@ proxy-groups:
         - trojan-856462007
         - trojan-856462023
         - trojan-856462031
-        - trojan-856462040
         - hysteria2-856679747
-        - shadowsocks-864722577
+        - vmess-858999828
         - trojan-865888896
         - vless-868054338
         - vless-889301767
@@ -1124,7 +1154,9 @@ proxy-groups:
         - trojan-908512914
         - trojan-908512917
         - trojan-909630576
+        - vless-912237767
         - shadowsocks-912445279
+        - shadowsocks-912445295
         - shadowsocks-912445338
         - trojan-912552547
         - trojan-915304534
@@ -1133,6 +1165,7 @@ proxy-groups:
         - trojan-920331293
         - trojan-922529412
         - trojan-933883301
+        - vless-934929312
         - trojan-940093593
       type: select
 rules:

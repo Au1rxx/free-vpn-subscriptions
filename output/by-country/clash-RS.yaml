@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: firefox
+      name: vless-923988969
+      network: grpc
+      port: 9889
+      reality-opts:
+        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+        short-id: ""
+      server: 212.41.9.137
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 064a967e-0862-4cea-bdbd-9458cb7b6070
     - client-fingerprint: edge
       name: vless-929924979
       network: grpc
@@ -16,12 +29,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-923988969
         - vless-929924979
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-923988969
         - vless-929924979
       type: select
 rules:

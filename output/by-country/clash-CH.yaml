@@ -1,4 +1,18 @@
 proxies:
+    - name: hysteria2-901861130
+      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
+      port: 443
+      server: 185.191.238.202
+      skip-cert-verify: true
+      sni: 185.191.238.202
+      type: hysteria2
+    - name: hysteria2-889576784
+      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
+      port: 443
+      server: 185.191.238.202
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
     - name: hysteria2-860349775
       password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
       port: 443
@@ -62,6 +76,13 @@ proxies:
       skip-cert-verify: true
       sni: hy2-switzerlandgopota.unlimited-access.ru
       type: hysteria2
+    - name: hysteria2-862083246
+      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
+      port: 443
+      server: che01plrhy01.tcp-reset-club.net
+      skip-cert-verify: true
+      sni: che01plrhy01.tcp-reset-club.net
+      type: hysteria2
     - name: hysteria2-858964478
       password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
       port: 443
@@ -90,13 +111,14 @@ proxies:
       skip-cert-verify: false
       sni: che01plrhy01.tcp-reset-club.net
       type: hysteria2
-    - name: hysteria2-862083246
-      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
+    - name: trojan-876538876
+      password: kxHw-Dk-e9dffgzYszMlEqLJ92AnY3Pi
       port: 443
-      server: che01plrhy01.tcp-reset-club.net
-      skip-cert-verify: true
-      sni: che01plrhy01.tcp-reset-club.net
-      type: hysteria2
+      server: tr-switzerlandgopota.unlimited-access.ru
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - name: hysteria2-700405728
       password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
       port: 8080
@@ -104,17 +126,12 @@ proxies:
       skip-cert-verify: true
       sni: grape-turbo-fr.roxa.org
       type: hysteria2
-    - name: hysteria2-901861130
-      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
-      port: 443
-      server: 185.191.238.202
-      skip-cert-verify: true
-      sni: 185.191.238.202
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-901861130
+        - hysteria2-889576784
         - hysteria2-860349775
         - hysteria2-859744350
         - hysteria2-860262403
@@ -124,18 +141,20 @@ proxy-groups:
         - hysteria2-881553354
         - hysteria2-798045477
         - hysteria2-896855648
+        - hysteria2-862083246
         - hysteria2-858964478
         - hysteria2-600117032
         - hysteria2-655767081
         - hysteria2-868400798
-        - hysteria2-862083246
+        - trojan-876538876
         - hysteria2-700405728
-        - hysteria2-901861130
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-901861130
+        - hysteria2-889576784
         - hysteria2-860349775
         - hysteria2-859744350
         - hysteria2-860262403
@@ -145,13 +164,13 @@ proxy-groups:
         - hysteria2-881553354
         - hysteria2-798045477
         - hysteria2-896855648
+        - hysteria2-862083246
         - hysteria2-858964478
         - hysteria2-600117032
         - hysteria2-655767081
         - hysteria2-868400798
-        - hysteria2-862083246
+        - trojan-876538876
         - hysteria2-700405728
-        - hysteria2-901861130
       type: select
 rules:
     - MATCH,select
