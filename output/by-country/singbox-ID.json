@@ -1,0 +1,54 @@
+{
+  "outbounds": [
+    {
+      "password": "e0019b1b-ecbc-4b5f-80c7-0940a8568d65",
+      "server": "172.232.249.14",
+      "server_port": 28443,
+      "tag": "trojan-864209060",
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": true,
+        "server_name": "vpn-node.internal",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "headers": {
+          "Host": "vpn-node.internal"
+        },
+        "path": "/xVpnTrojanWsSvc7f3a",
+        "type": "ws"
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-864209060"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-864209060"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

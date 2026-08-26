@@ -1,7 +1,7 @@
 proxies:
-    - client-fingerprint: qq
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-788158676
+      name: vless-532685580
       network: tcp
       port: 443
       reality-opts:
@@ -13,33 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-659123901
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: a2qGjvUPq6Nz5FTbn_MSHp-055q2h8YXqIL5VIJ5zwE
-        short-id: d15c17cef9b2e456
-      server: 51.161.204.242
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
-    - client-fingerprint: firefox
-      name: vless-855596777
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: bRDaP068YgdwwdQgenUvKTNfPjIB_Dy-lJDFC9ZZEXU
-        short-id: 632a146bd581641a
-      server: 46.250.240.80
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f2816a01-3555-4e79-9e26-770f050ea55a
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-656230603
@@ -54,23 +27,46 @@ proxies:
       type: vless
       udp: true
       uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
+    - name: vless-656189585
+      network: tcp
+      port: 443
+      server: 172.105.169.70
+      servername: 172.105.169.70
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    - client-fingerprint: firefox
+      name: vless-855596777
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: bRDaP068YgdwwdQgenUvKTNfPjIB_Dy-lJDFC9ZZEXU
+        short-id: 632a146bd581641a
+      server: 46.250.240.80
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f2816a01-3555-4e79-9e26-770f050ea55a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-788158676
-        - vless-659123901
-        - vless-855596777
+        - vless-532685580
         - vless-656230603
+        - vless-656189585
+        - vless-855596777
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-788158676
-        - vless-659123901
-        - vless-855596777
+        - vless-532685580
         - vless-656230603
+        - vless-656189585
+        - vless-855596777
       type: select
 rules:
     - MATCH,select
