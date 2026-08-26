@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-896855672
+      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
+      port: 8080
+      server: 162.249.124.114
+      skip-cert-verify: true
+      sni: hopp-germany-new.ddnsguru.com
+      type: hysteria2
     - client-fingerprint: chrome
       name: vless-955302612
       network: tcp
@@ -33,6 +40,13 @@ proxies:
       skip-cert-verify: true
       sni: hopp-germany-new.ddnsguru.com
       type: hysteria2
+    - name: hysteria2-896855646
+      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
+      port: 8080
+      server: 162.249.124.113
+      skip-cert-verify: true
+      sni: hopp-germany-new.ddnsguru.com
+      type: hysteria2
     - name: hysteria2-855659698
       password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
       port: 8080
@@ -54,29 +68,48 @@ proxies:
       skip-cert-verify: false
       sni: hopp-germany-new.ddnsguru.com
       type: hysteria2
+    - client-fingerprint: random
+      name: vless-950648572
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: dUFJ3jZPMH9WvjtAnUc9wYhO_IX1czIi-CidF_HdFDA
+        short-id: c267be657e1539ea
+      server: 151.241.226.201
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 52b1aca9-a2ba-4249-9e9f-d488f89c1445
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-896855672
         - vless-955302612
         - hysteria2-923321816
         - hysteria2-855679903
         - hysteria2-860759604
+        - hysteria2-896855646
         - hysteria2-855659698
         - hysteria2-855679912
         - hysteria2-892012272
+        - vless-950648572
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-896855672
         - vless-955302612
         - hysteria2-923321816
         - hysteria2-855679903
         - hysteria2-860759604
+        - hysteria2-896855646
         - hysteria2-855659698
         - hysteria2-855679912
         - hysteria2-892012272
+        - vless-950648572
       type: select
 rules:
     - MATCH,select
