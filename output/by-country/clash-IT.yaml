@@ -6,13 +6,6 @@ proxies:
       type: vless
       udp: true
       uuid: 699ce9a1-abbb-4525-988e-b940381352e8
-    - name: vless-945792730
-      network: ws
-      port: 443
-      server: 151.241.215.109
-      type: vless
-      udp: true
-      uuid: 699ce9a1-abbb-4525-988e-b940381352e8
     - client-fingerprint: edge
       name: vless-696199631
       network: tcp
@@ -40,8 +33,8 @@ proxies:
       udp: true
       uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
     - client-fingerprint: firefox
-      name: vless-429873172
-      network: tcp
+      name: vless-483686868
+      network: raw
       port: 2053
       reality-opts:
         public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
@@ -52,9 +45,16 @@ proxies:
       type: vless
       udp: true
       uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - name: vless-945792730
+      network: ws
+      port: 443
+      server: 151.241.215.109
+      type: vless
+      udp: true
+      uuid: 699ce9a1-abbb-4525-988e-b940381352e8
     - client-fingerprint: firefox
-      name: vless-483686868
-      network: raw
+      name: vless-429873172
+      network: tcp
       port: 2053
       reality-opts:
         public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
@@ -70,22 +70,22 @@ proxy-groups:
       name: auto
       proxies:
         - vless-952348251
-        - vless-945792730
         - vless-696199631
         - vless-548666342
-        - vless-429873172
         - vless-483686868
+        - vless-945792730
+        - vless-429873172
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-952348251
-        - vless-945792730
         - vless-696199631
         - vless-548666342
-        - vless-429873172
         - vless-483686868
+        - vless-945792730
+        - vless-429873172
       type: select
 rules:
     - MATCH,select

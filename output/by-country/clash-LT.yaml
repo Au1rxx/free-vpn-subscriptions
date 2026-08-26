@@ -1,6 +1,20 @@
 proxies:
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-930426290
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: pgG2grngQEtOFJImLfz0AEm-O2IodM2jCY4aMCYQI1U
+        short-id: 6aa2d2e950441a9a
+      server: lit4.freeinternat.com
+      servername: lit4.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-930426228
       network: tcp
       port: 443
@@ -17,12 +31,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-930426290
         - vless-930426228
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-930426290
         - vless-930426228
       type: select
 rules:
