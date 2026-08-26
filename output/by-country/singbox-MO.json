@@ -1,0 +1,44 @@
+{
+  "outbounds": [
+    {
+      "password": "a126f35c-e832-4115-8593-b723ade3f7be",
+      "server": "kkvlvvq-a.catcat321.com",
+      "server_port": 20068,
+      "tag": "trojan-899438103",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "hk.catxstar.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-899438103"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-899438103"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

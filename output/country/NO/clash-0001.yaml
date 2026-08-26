@@ -6,6 +6,22 @@ proxies:
       server: 185.213.23.63
       type: ss
       udp: true
+    - name: trojan-176269131
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20085
+      server: hkdcrtc-e.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-183361334
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20085
+      server: oplosgru-c.catcat321.com
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
     - client-fingerprint: qq
       name: vless-620750820
       network: tcp
@@ -975,20 +991,6 @@ proxies:
       uuid: 6c52b79f-fd02-41bc-bf75-4c80fbc6a939
     - client-fingerprint: random
       flow: xtls-rprx-vision
-      name: vless-867516972
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: SiSky02wHz-S0TDHKFTdYhnrlT8Y3CfRsekZlcdLXDY
-        short-id: fd55b698ee8c3629
-      server: 194.110.207.48
-      servername: kibi-institut.de
-      tls: true
-      type: vless
-      udp: true
-      uuid: 14eb2c19-89ba-4a10-bd52-cbf6a5f5cae0
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
       name: vless-868570754
       network: tcp
       port: 443
@@ -1627,11 +1629,40 @@ proxies:
       type: vless
       udp: true
       uuid: 10000025-9365-7547-f000-30f4f61aa020
+    - client-fingerprint: qq
+      name: vless-940261350
+      network: raw
+      port: 40443
+      reality-opts:
+        public-key: aZOpodpnifoxDqTzWgxJRffgsiGnG9-h-EZd4SvOImc
+        short-id: f7b2
+      server: 46.29.238.88
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: db320947-adfb-400d-b60b-383b8324bffe
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-940742318
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: oXYB-DXrI08UVBRFq8MERP36betSSd7Yb6MLN88F2R4
+        short-id: f6b5862c1f73ab80
+      server: 151.242.169.44
+      servername: frantax.my3cx.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3e5cc22b-a471-412d-bf84-6da9c929a0d9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-231
+        - trojan-176269131
+        - trojan-183361334
         - vless-620750820
         - vless-629454321
         - vless-656245270
@@ -1703,7 +1734,6 @@ proxy-groups:
         - vless-864769118
         - vless-865875901
         - vless-867153136
-        - vless-867516972
         - vless-868570754
         - trojan-871184438
         - vless-872879545
@@ -1752,12 +1782,16 @@ proxy-groups:
         - vless-933941195
         - vless-939524966
         - vless-939886421
+        - vless-940261350
+        - vless-940742318
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-231
+        - trojan-176269131
+        - trojan-183361334
         - vless-620750820
         - vless-629454321
         - vless-656245270
@@ -1829,7 +1863,6 @@ proxy-groups:
         - vless-864769118
         - vless-865875901
         - vless-867153136
-        - vless-867516972
         - vless-868570754
         - trojan-871184438
         - vless-872879545
@@ -1878,6 +1911,8 @@ proxy-groups:
         - vless-933941195
         - vless-939524966
         - vless-939886421
+        - vless-940261350
+        - vless-940742318
       type: select
 rules:
     - MATCH,select

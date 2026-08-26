@@ -7,6 +7,13 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-cfb
+      name: shadowsocks-283
+      password: qwerREWQ@@
+      port: 13979
+      server: 221.139.79.57
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-287
       password: qwerREWQ@@
       port: 6123
@@ -176,6 +183,15 @@ proxies:
       sni: www.calmlunch.com
       type: trojan
       udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-661706826
+      network: ws
+      port: 80
+      server: 61.245.11.60
+      type: vmess
+      udp: true
+      uuid: a3e3a710-79f8-4ae0-b83c-607aab40d197
     - alterId: 0
       cipher: auto
       name: vmess-683000579
@@ -381,20 +397,6 @@ proxies:
       sni: vpn-node.internal
       type: trojan
       udp: true
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-919390222
-      network: raw
-      port: 49005
-      reality-opts:
-        public-key: dzjhpiDcvFBRzIODtrUVADf24qFE-636IVIdEof0XFQ
-        short-id: 512acc0133720b9e
-      server: 185.229.9.236
-      servername: max.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 18d683f3-73bb-42ce-b654-a0466ca0938d
     - name: vless-925637505
       network: ws
       port: 443
@@ -405,6 +407,17 @@ proxies:
       type: vless
       udp: true
       uuid: 9ce4c9e2-1dcc-abe8-9abf-9bf8bc1269f6
+    - flow: xtls-rprx-vision
+      name: vless-930340543
+      network: tcp
+      port: 443
+      server: 185.229.9.74
+      servername: api.ok.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bc32daa2-f447-47e4-bfb3-0c771195ab1d
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-930426230
@@ -445,11 +458,22 @@ proxies:
       type: vless
       udp: true
       uuid: 9a972dcb-47ad-4728-9e8b-b627697d2eda
+    - name: vless-940764280
+      network: ws
+      port: 443
+      server: 188.214.35.66
+      servername: 8.o.8.e.t.g.7.w.8.n.e.1.l.e.us.art-us.kdns.fr
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9ce4c9e2-1dcc-abe8-9abf-9bf8bc1269f6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-278
+        - shadowsocks-283
         - shadowsocks-287
         - vmess-99462
         - trojan-112939
@@ -471,6 +495,7 @@ proxy-groups:
         - trojan-240793185
         - trojan-474860662
         - trojan-657667551
+        - vmess-661706826
         - vmess-683000579
         - trojan-689004677
         - trojan-689642547
@@ -497,17 +522,19 @@ proxy-groups:
         - trojan-856679830
         - trojan-862364764
         - trojan-864209056
-        - vless-919390222
         - vless-925637505
+        - vless-930340543
         - vless-930426230
         - vless-932936638
         - vless-934922191
+        - vless-940764280
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-278
+        - shadowsocks-283
         - shadowsocks-287
         - vmess-99462
         - trojan-112939
@@ -529,6 +556,7 @@ proxy-groups:
         - trojan-240793185
         - trojan-474860662
         - trojan-657667551
+        - vmess-661706826
         - vmess-683000579
         - trojan-689004677
         - trojan-689642547
@@ -555,11 +583,12 @@ proxy-groups:
         - trojan-856679830
         - trojan-862364764
         - trojan-864209056
-        - vless-919390222
         - vless-925637505
+        - vless-930340543
         - vless-930426230
         - vless-932936638
         - vless-934922191
+        - vless-940764280
       type: select
 rules:
     - MATCH,select

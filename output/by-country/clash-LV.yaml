@@ -6,17 +6,24 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-929778392
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: lat2.freeinternat.com
+      servername: lat2.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
     - cipher: aes-256-cfb
       name: shadowsocks-723348676
       password: mwgRg9hRq3b4Qnwb
       port: 9068
-      server: 185.135.86.175
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-812343923
-      password: rpgbNnU9rDDU4aWZ
-      port: 9094
       server: 185.135.86.175
       type: ss
       udp: true
@@ -25,16 +32,16 @@ proxy-groups:
       name: auto
       proxies:
         - hysteria2-931621498
+        - vless-929778392
         - shadowsocks-723348676
-        - shadowsocks-812343923
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-931621498
+        - vless-929778392
         - shadowsocks-723348676
-        - shadowsocks-812343923
       type: select
 rules:
     - MATCH,select
