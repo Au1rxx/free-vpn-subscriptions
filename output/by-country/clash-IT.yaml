@@ -6,14 +6,13 @@ proxies:
       type: vless
       udp: true
       uuid: 699ce9a1-abbb-4525-988e-b940381352e8
-    - name: trojan-955853119
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20065
-      server: kkvlvvq-a.catcat321.com
-      skip-cert-verify: true
-      sni: ""
-      type: trojan
+    - name: vless-945792730
+      network: ws
+      port: 443
+      server: 151.241.215.109
+      type: vless
       udp: true
+      uuid: 699ce9a1-abbb-4525-988e-b940381352e8
     - name: vless-917661440
       network: ws
       port: 443
@@ -21,6 +20,19 @@ proxies:
       type: vless
       udp: true
       uuid: 699ce9a1-abbb-4525-988e-b940381352e8
+    - client-fingerprint: firefox
+      name: vless-429873172
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
     - client-fingerprint: chrome
       name: vless-548666342
       network: tcp
@@ -34,13 +46,13 @@ proxies:
       type: vless
       udp: true
       uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
-    - name: vless-864231055
+    - name: vless-960367769
       network: ws
       port: 443
-      server: itproxy3.lockdwn.com
+      server: itproxy4.lockdwn.com
       type: vless
       udp: true
-      uuid: 699ce9a1-abbb-4525-988e-b940381352e8
+      uuid: e4737ce4-c646-44cc-9067-390e13c2a5f6
     - name: vless-948774060
       network: ws
       port: 443
@@ -50,19 +62,6 @@ proxies:
       uuid: 699ce9a1-abbb-4525-988e-b940381352e8
     - client-fingerprint: qq
       name: vless-734928297
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
-        short-id: 5b8a942318178e7b
-      server: 57.131.38.163
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
-    - client-fingerprint: firefox
-      name: vless-656230736
       network: tcp
       port: 2053
       reality-opts:
@@ -94,44 +93,35 @@ proxies:
       type: vless
       udp: true
       uuid: 699ce9a1-abbb-4525-988e-b940381352e8
-    - name: vless-952348251
-      network: ws
-      port: 443
-      server: 151.241.215.109
-      type: vless
-      udp: true
-      uuid: 699ce9a1-abbb-4525-988e-b940381352e8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-903760100
-        - trojan-955853119
+        - vless-945792730
         - vless-917661440
+        - vless-429873172
         - vless-548666342
-        - vless-864231055
+        - vless-960367769
         - vless-948774060
         - vless-734928297
-        - vless-656230736
         - vless-696199631
         - vless-903760094
-        - vless-952348251
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-903760100
-        - trojan-955853119
+        - vless-945792730
         - vless-917661440
+        - vless-429873172
         - vless-548666342
-        - vless-864231055
+        - vless-960367769
         - vless-948774060
         - vless-734928297
-        - vless-656230736
         - vless-696199631
         - vless-903760094
-        - vless-952348251
       type: select
 rules:
     - MATCH,select
