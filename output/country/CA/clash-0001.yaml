@@ -75,14 +75,6 @@ proxies:
       sni: ca.catxstar.com
       type: trojan
       udp: true
-    - name: trojan-122904
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20112
-      server: d3.catcat321.com
-      skip-cert-verify: true
-      sni: ca.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-122905
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20113
@@ -959,13 +951,6 @@ proxies:
       type: vless
       udp: true
       uuid: 661f395d-b153-4199-a04b-693f5fe7f261
-    - cipher: aes-256-gcm
-      name: shadowsocks-696780677
-      password: sZSZi7tGs9wodT7k
-      port: 443
-      server: 155.138.136.240
-      type: ss
-      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-696792823
       password: 7eadc6dbe2ae
@@ -1100,13 +1085,16 @@ proxies:
       skip-cert-verify: true
       sni: vk.com
       type: hysteria2
-    - cipher: aes-256-gcm
-      name: shadowsocks-723348714
-      password: sZSZi7tGs9wodT7k
-      port: 80
-      server: 155.138.136.240
-      type: ss
+    - name: vless-725760860
+      network: ws
+      port: 8443
+      server: ov-canada1.09vpn.com
+      servername: ov-canada1.09vpn.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
       udp: true
+      uuid: 66265232-e176-4c29-b133-8260c9dcb0a3
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-725810843
@@ -1828,6 +1816,34 @@ proxies:
       type: vless
       udp: true
       uuid: 8ff82100-8aad-4281-bf41-f318519d7182
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-942893248
+      network: tcp
+      port: 8039
+      reality-opts:
+        public-key: ZrdPHtBvi7yMRj17SohKaGQEXuDptmCJWCi8gk5HlD8
+        short-id: 35938c4e546cd459
+      server: 147.182.156.111
+      servername: amp-api-edge.apps.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 74ff0176-748a-5c5c-163a-d525fc659e59
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-944037365
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: uTmb-ytXsx8p0fkBz7A76SHpWk7_oVutIA4LGTE8BQk
+        short-id: f98843107912e782
+      server: 209.200.246.148
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ca52e2b6-fb9f-4dac-b6dc-49da9923f251
 proxy-groups:
     - interval: 300
       name: auto
@@ -1840,7 +1856,6 @@ proxy-groups:
         - vless-51783
         - trojan-119297
         - trojan-119298
-        - trojan-122904
         - trojan-122905
         - vmess-143584
         - vless-2314770
@@ -1922,7 +1937,6 @@ proxy-groups:
         - trojan-688532392
         - vless-692622873
         - vless-692905137
-        - shadowsocks-696780677
         - shadowsocks-696792823
         - vless-700285021
         - vless-700417546
@@ -1936,7 +1950,7 @@ proxy-groups:
         - hysteria2-722298542
         - hysteria2-722298619
         - hysteria2-722298659
-        - shadowsocks-723348714
+        - vless-725760860
         - vless-725810843
         - vless-732295741
         - vless-734969288
@@ -2003,6 +2017,8 @@ proxy-groups:
         - vless-937615778
         - vless-937624228
         - vless-939524968
+        - vless-942893248
+        - vless-944037365
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -2016,7 +2032,6 @@ proxy-groups:
         - vless-51783
         - trojan-119297
         - trojan-119298
-        - trojan-122904
         - trojan-122905
         - vmess-143584
         - vless-2314770
@@ -2098,7 +2113,6 @@ proxy-groups:
         - trojan-688532392
         - vless-692622873
         - vless-692905137
-        - shadowsocks-696780677
         - shadowsocks-696792823
         - vless-700285021
         - vless-700417546
@@ -2112,7 +2126,7 @@ proxy-groups:
         - hysteria2-722298542
         - hysteria2-722298619
         - hysteria2-722298659
-        - shadowsocks-723348714
+        - vless-725760860
         - vless-725810843
         - vless-732295741
         - vless-734969288
@@ -2179,6 +2193,8 @@ proxy-groups:
         - vless-937615778
         - vless-937624228
         - vless-939524968
+        - vless-942893248
+        - vless-944037365
       type: select
 rules:
     - MATCH,select

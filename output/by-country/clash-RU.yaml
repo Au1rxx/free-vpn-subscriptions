@@ -1,4 +1,18 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-943490292
+      password: 895b4b796a357570
+      port: 10889
+      server: 176.32.35.51
+      type: ss
+      udp: true
+    - name: vless-943344745
+      network: ws
+      port: 4100
+      server: 201.24.49.240
+      type: vless
+      udp: true
+      uuid: aa7d939b-feaa-4ad3-9615-74216f490807
     - name: vless-940261357
       network: raw
       port: 445
@@ -17,6 +31,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-943490292
+        - vless-943344745
         - vless-940261357
         - shadowsocks-938786448
       type: url-test
@@ -24,6 +40,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-943490292
+        - vless-943344745
         - vless-940261357
         - shadowsocks-938786448
       type: select

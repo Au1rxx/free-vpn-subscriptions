@@ -1,4 +1,32 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-448867352
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: KrFnWxAwVGL6tuj1JE0qpykLzY4aOFjyK3OaymF_hT0
+        short-id: e2e66f4537770cef
+      server: 45.90.56.231
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e2b8f727-c5ee-47e1-8f1b-7c5c61479ce0
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-453095268
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: KrFnWxAwVGL6tuj1JE0qpykLzY4aOFjyK3OaymF_hT0
+        short-id: e2e66f4537770cef
+      server: 45.90.56.231
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e2b8f727-c5ee-47e1-8f1b-7c5c61479ce0
     - name: hysteria2-589844094
       password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
       port: 8080
@@ -689,10 +717,26 @@ proxies:
       type: vless
       udp: true
       uuid: 19b64e79-73b4-4478-bbfc-fb57737b94f8
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-944040951
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: IdqrygjwHBEMCOamBl7a504TVk6uMAtTRj0xLWcFcxY
+        short-id: 40ce08cf20c67003
+      server: 45.196.193.100
+      servername: storage.yandex.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 219762a7-b918-4e2b-8a3d-d309ef98bb61
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-448867352
+        - vless-453095268
         - hysteria2-589844094
         - hysteria2-600117032
         - hysteria2-628782748
@@ -773,11 +817,14 @@ proxy-groups:
         - vless-933860341
         - vless-933894372
         - vless-933896333
+        - vless-944040951
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-448867352
+        - vless-453095268
         - hysteria2-589844094
         - hysteria2-600117032
         - hysteria2-628782748
@@ -858,6 +905,7 @@ proxy-groups:
         - vless-933860341
         - vless-933894372
         - vless-933896333
+        - vless-944040951
       type: select
 rules:
     - MATCH,select
