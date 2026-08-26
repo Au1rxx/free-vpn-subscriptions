@@ -1,0 +1,74 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "lit4.freeinternat.com",
+      "server_port": 443,
+      "tag": "vless-930426290",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "pgG2grngQEtOFJImLfz0AEm-O2IodM2jCY4aMCYQI1U",
+          "short_id": "6aa2d2e950441a9a"
+        },
+        "server_name": "lit4.freeinternat.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "dabb9a19-03ab-4cdf-8963-d3c45eb0f80d"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "88.119.176.133",
+      "server_port": 443,
+      "tag": "vless-930426228",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "pgG2grngQEtOFJImLfz0AEm-O2IodM2jCY4aMCYQI1U",
+          "short_id": "6aa2d2e950441a9a"
+        },
+        "server_name": "lit4.freeinternat.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "dabb9a19-03ab-4cdf-8963-d3c45eb0f80d"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-930426290",
+        "vless-930426228"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-930426290",
+        "vless-930426228"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

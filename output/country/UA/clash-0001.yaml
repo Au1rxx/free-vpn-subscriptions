@@ -1,4 +1,20 @@
 proxies:
+    - name: trojan-184903441
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20066
+      server: hkdcrtc-e.catcat321.com
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-271216292
+      password: 41c406e2-12b5-41f2-a329-d0621052d675
+      port: 20066
+      server: hkdcrtc-e.catcat321.com
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-429855172
@@ -332,10 +348,20 @@ proxies:
       type: vless
       udp: true
       uuid: 41f4cb15-5a3f-3934-89fe-b4177146adf4
+    - name: trojan-948376079
+      password: a126f35c-e832-4115-8593-b723ade3f7be
+      port: 20066
+      server: 157.254.38.210
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-184903441
+        - trojan-271216292
         - vless-429855172
         - vless-583557307
         - vless-591822026
@@ -363,11 +389,14 @@ proxy-groups:
         - vless-944105699
         - vless-944105721
         - vless-944105729
+        - trojan-948376079
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-184903441
+        - trojan-271216292
         - vless-429855172
         - vless-583557307
         - vless-591822026
@@ -395,6 +424,7 @@ proxy-groups:
         - vless-944105699
         - vless-944105721
         - vless-944105729
+        - trojan-948376079
       type: select
 rules:
     - MATCH,select

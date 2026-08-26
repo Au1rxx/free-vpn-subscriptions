@@ -12,6 +12,16 @@ proxies:
       type: vless
       udp: true
       uuid: c99e2eeb-8af9-46c1-8972-d207e9fd1b11
+    - name: vless-860620803
+      network: grpc
+      port: 2101
+      server: 132.243.223.227
+      servername: 132-243-223-227.sslip.io
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
     - name: hysteria2-652726847
       password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
       port: 443
@@ -19,20 +29,34 @@ proxies:
       skip-cert-verify: false
       sni: ""
       type: hysteria2
-    - client-fingerprint: chrome
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-685052939
-      network: raw
+      name: vless-930426227
+      network: tcp
       port: 443
       reality-opts:
-        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
-        short-id: a696de84963656de
-      server: 95.85.224.51
-      servername: max.ru
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: fin5.freeinternat.com
+      servername: fin5.freeinternat.com
       tls: true
       type: vless
       udp: true
-      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-930426263
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: 196.244.191.178
+      servername: fin5.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
     - name: hysteria2-878416411
       password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
       port: 443
@@ -45,8 +69,10 @@ proxy-groups:
       name: auto
       proxies:
         - vless-937267763
+        - vless-860620803
         - hysteria2-652726847
-        - vless-685052939
+        - vless-930426227
+        - vless-930426263
         - hysteria2-878416411
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -54,8 +80,10 @@ proxy-groups:
       proxies:
         - auto
         - vless-937267763
+        - vless-860620803
         - hysteria2-652726847
-        - vless-685052939
+        - vless-930426227
+        - vless-930426263
         - hysteria2-878416411
       type: select
 rules:
