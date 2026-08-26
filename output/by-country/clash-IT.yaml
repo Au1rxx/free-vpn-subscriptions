@@ -6,6 +6,14 @@ proxies:
       type: vless
       udp: true
       uuid: 699ce9a1-abbb-4525-988e-b940381352e8
+    - name: trojan-955853119
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20065
+      server: kkvlvvq-a.catcat321.com
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
     - name: vless-917661440
       network: ws
       port: 443
@@ -86,11 +94,19 @@ proxies:
       type: vless
       udp: true
       uuid: 699ce9a1-abbb-4525-988e-b940381352e8
+    - name: vless-952348251
+      network: ws
+      port: 443
+      server: 151.241.215.109
+      type: vless
+      udp: true
+      uuid: 699ce9a1-abbb-4525-988e-b940381352e8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-903760100
+        - trojan-955853119
         - vless-917661440
         - vless-548666342
         - vless-864231055
@@ -99,12 +115,14 @@ proxy-groups:
         - vless-656230736
         - vless-696199631
         - vless-903760094
+        - vless-952348251
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-903760100
+        - trojan-955853119
         - vless-917661440
         - vless-548666342
         - vless-864231055
@@ -113,6 +131,7 @@ proxy-groups:
         - vless-656230736
         - vless-696199631
         - vless-903760094
+        - vless-952348251
       type: select
 rules:
     - MATCH,select

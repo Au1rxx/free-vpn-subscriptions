@@ -27,12 +27,26 @@ proxies:
       type: vless
       udp: true
       uuid: 20d7c485-5d24-49b5-a5cc-bb7a7daf9908
+    - client-fingerprint: ios
+      name: vless-953120778
+      network: grpc
+      port: 9871
+      reality-opts:
+        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+        short-id: aa
+      server: 194.58.95.183
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f4685d27-73e3-4588-9622-add50b84046a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-897978973
         - vless-713157148
+        - vless-953120778
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -40,6 +54,7 @@ proxy-groups:
         - auto
         - vless-897978973
         - vless-713157148
+        - vless-953120778
       type: select
 rules:
     - MATCH,select

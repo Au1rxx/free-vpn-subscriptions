@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-956121370
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: D0FqzTuVSzCF8IcFo64SFIpMsaGV47LW3el2GCCVoFY
+        short-id: c1a7e9b4711d5f60
+      server: 193.168.46.180
+      servername: rruu.persik.host
+      tls: true
+      type: vless
+      udp: true
+      uuid: a0775bfa-fb64-428e-bb8f-22ccd6fea217
     - cipher: aes-256-gcm
       name: shadowsocks-932685618
       password: 6b39ae3234dfd68b
@@ -17,13 +31,6 @@ proxies:
       type: vless
       udp: true
       uuid: 3a90bf69-1ffe-4ebb-b9a7-ad9ba8e9f66f
-    - name: vless-945211095
-      network: ws
-      port: 4100
-      server: 201.24.49.240
-      type: vless
-      udp: true
-      uuid: aa7d939b-feaa-4ad3-9615-74216f490807
     - name: vless-953815392
       network: ws
       port: 4100
@@ -35,18 +42,18 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-956121370
         - shadowsocks-932685618
         - vless-937260928
-        - vless-945211095
         - vless-953815392
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-956121370
         - shadowsocks-932685618
         - vless-937260928
-        - vless-945211095
         - vless-953815392
       type: select
 rules:

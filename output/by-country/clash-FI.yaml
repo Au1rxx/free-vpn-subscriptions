@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-956905288
+      network: ws
+      port: 443
+      server: 199.232.78.159
+      servername: ssl.fastly.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: a35bf6ee-9ace-40a0-a7c2-bd488d61f9f9
     - name: hysteria2-935393199
       password: becd3b04-62a8-4b74-be67-be746008b4c2
       port: 443
@@ -20,33 +30,32 @@ proxies:
       skip-cert-verify: false
       sni: hopp-legend-se.roxa.org
       type: hysteria2
-    - name: vless-860620803
-      network: grpc
-      port: 2101
-      server: 132.243.223.227
-      servername: 132-243-223-227.sslip.io
-      skip-cert-verify: true
-      tls: true
+    - name: vless-951530442
+      network: tcp
+      port: 1079
+      server: 5.181.21.9
       type: vless
       udp: true
-      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
+      uuid: c14cad69-10c2-41bc-b116-d865ad2c52c6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-956905288
         - hysteria2-935393199
         - hysteria2-652726847
         - hysteria2-810007491
-        - vless-860620803
+        - vless-951530442
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-956905288
         - hysteria2-935393199
         - hysteria2-652726847
         - hysteria2-810007491
-        - vless-860620803
+        - vless-951530442
       type: select
 rules:
     - MATCH,select
