@@ -29,6 +29,20 @@ proxies:
       uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-864116069
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 00n9LplaZ0VGvRS57548s7xe0deFC10pw2fkFHFPplM
+        short-id: ""
+      server: 84.32.209.7
+      servername: ai.android
+      tls: true
+      type: vless
+      udp: true
+      uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-810585345
       network: tcp
       port: 443
@@ -41,13 +55,37 @@ proxies:
       type: vless
       udp: true
       uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-930426228
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: pgG2grngQEtOFJImLfz0AEm-O2IodM2jCY4aMCYQI1U
+        short-id: 6aa2d2e950441a9a
+      server: 88.119.176.133
+      servername: lit4.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
+    - cipher: aes-256-cfb
+      name: shadowsocks-779606858
+      password: M3t2ZEQcMGRWBjRa
+      port: 9011
+      server: 195.238.126.20
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-930426290
         - vless-258652508
+        - vless-864116069
         - vless-810585345
+        - vless-930426228
+        - shadowsocks-779606858
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -55,7 +93,10 @@ proxy-groups:
         - auto
         - vless-930426290
         - vless-258652508
+        - vless-864116069
         - vless-810585345
+        - vless-930426228
+        - shadowsocks-779606858
       type: select
 rules:
     - MATCH,select
