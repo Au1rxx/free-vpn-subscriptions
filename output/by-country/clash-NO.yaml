@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-923468266
-      password: a126f35c-e832-4115-8593-b723ade3f7be
-      port: 20085
-      server: hkdcrtc-e.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-871184438
       password: a126f35c-e832-4115-8593-b723ade3f7be
       port: 20085
@@ -29,6 +21,20 @@ proxies:
       udp: true
       uuid: db320947-adfb-400d-b60b-383b8324bffe
     - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-810585333
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: urD2miGxEfHylELSqqggBKCYIMSNXNTbdPijru7-eAQ
+        short-id: 46babe29a750b634
+      server: 151.242.168.181
+      servername: kibi-institut.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: b2963d78-6a98-4a9e-a20b-fa74dff5fde1
+    - client-fingerprint: firefox
       name: vless-892084521
       network: tcp
       port: 40443
@@ -41,39 +47,33 @@ proxies:
       type: vless
       udp: true
       uuid: 374181b9-44bf-44f1-a227-1184f3e9e47b
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-891747057
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: oXYB-DXrI08UVBRFq8MERP36betSSd7Yb6MLN88F2R4
-        short-id: f6b5862c1f73ab80
-      server: 151.242.169.44
-      servername: frantax.my3cx.de
-      tls: true
-      type: vless
+    - name: trojan-923468266
+      password: a126f35c-e832-4115-8593-b723ade3f7be
+      port: 20085
+      server: hkdcrtc-e.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
       udp: true
-      uuid: 3e5cc22b-a471-412d-bf84-6da9c929a0d9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-923468266
         - trojan-871184438
         - vless-940261350
+        - vless-810585333
         - vless-892084521
-        - vless-891747057
+        - trojan-923468266
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-923468266
         - trojan-871184438
         - vless-940261350
+        - vless-810585333
         - vless-892084521
-        - vless-891747057
+        - trojan-923468266
       type: select
 rules:
     - MATCH,select
