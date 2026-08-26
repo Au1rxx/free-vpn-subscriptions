@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-gcm
-      name: shadowsocks-210
-      password: TEzjfAYq2IjtuoS
-      port: 6679
-      server: 141.164.45.187
-      type: ss
-      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-260
       password: qwerREWQ@@
@@ -202,13 +195,6 @@ proxies:
       name: shadowsocks-4892328
       password: faBAoD54k87UJG7
       port: 2376
-      server: 141.164.45.187
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-4892330
-      password: TEzjfAYq2IjtuoS
-      port: 6697
       server: 141.164.45.187
       type: ss
       udp: true
@@ -1240,11 +1226,30 @@ proxies:
       type: vless
       udp: true
       uuid: 0787cfdb-9930-4abb-8419-c1b96c3ef628
+    - client-fingerprint: firefox
+      name: vless-950486711
+      network: tcp
+      port: 8686
+      reality-opts:
+        public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
+        short-id: 628b3c90c98ead4f
+      server: 52.78.94.93
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
+    - name: hysteria2-951929323
+      password: 7302ad33229de166d393cd56143a1e4c
+      port: 50160
+      server: 131.186.19.174
+      skip-cert-verify: true
+      sni: www.bing.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-210
         - shadowsocks-260
         - shadowsocks-278
         - shadowsocks-283
@@ -1271,7 +1276,6 @@ proxy-groups:
         - vmess-145109
         - vless-2334704
         - shadowsocks-4892328
-        - shadowsocks-4892330
         - vless-12945899
         - vless-12945900
         - vmess-23958910
@@ -1376,12 +1380,13 @@ proxy-groups:
         - vless-948380695
         - vless-949758121
         - vless-949916904
+        - vless-950486711
+        - hysteria2-951929323
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-210
         - shadowsocks-260
         - shadowsocks-278
         - shadowsocks-283
@@ -1408,7 +1413,6 @@ proxy-groups:
         - vmess-145109
         - vless-2334704
         - shadowsocks-4892328
-        - shadowsocks-4892330
         - vless-12945899
         - vless-12945900
         - vmess-23958910
@@ -1513,6 +1517,8 @@ proxy-groups:
         - vless-948380695
         - vless-949758121
         - vless-949916904
+        - vless-950486711
+        - hysteria2-951929323
       type: select
 rules:
     - MATCH,select

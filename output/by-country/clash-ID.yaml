@@ -7,27 +7,17 @@ proxies:
       sni: vpn-node.internal
       type: trojan
       udp: true
-    - name: trojan-490085150
-      password: 018b8e7b-7813-4dcb-84a5-3c98f1521e00
-      port: 443
-      server: edu.ruangguru.com
-      skip-cert-verify: true
-      sni: id1.nathaya.web.id
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-864209060
-        - trojan-490085150
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-864209060
-        - trojan-490085150
       type: select
 rules:
     - MATCH,select
