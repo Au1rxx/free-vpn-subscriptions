@@ -31,6 +31,13 @@ proxies:
       type: vless
       udp: true
       uuid: 3a90bf69-1ffe-4ebb-b9a7-ad9ba8e9f66f
+    - cipher: aes-256-gcm
+      name: shadowsocks-932685618
+      password: 6b39ae3234dfd68b
+      port: 10889
+      server: 45.140.169.123
+      type: ss
+      udp: true
     - name: vless-945211095
       network: ws
       port: 4100
@@ -49,20 +56,17 @@ proxies:
       type: vless
       udp: true
       uuid: 3a90bf69-1ffe-4ebb-b9a7-ad9ba8e9f66f
-    - client-fingerprint: ios
-      flow: xtls-rprx-vision
-      name: vless-487274692
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: 8bkjYMx4EXdRTHTgQ6wMaeyGl-HfskzixE0Is-kMQXU
-        short-id: e3c60a1b71b462fa
-      server: 45.91.52.125
-      servername: www.cloudflare.com
+    - flow: xtls-rprx-vision
+      name: vless-945211102
+      network: tcp
+      port: 8443
+      server: 185.147.27.183
+      servername: user-6a8d949a.noooo.win
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: 3ab2615c-689d-463b-8990-a95013894348
+      uuid: 3a90bf69-1ffe-4ebb-b9a7-ad9ba8e9f66f
 proxy-groups:
     - interval: 300
       name: auto
@@ -71,9 +75,10 @@ proxy-groups:
         - vless-943344745
         - shadowsocks-938786448
         - vless-944503305
+        - shadowsocks-932685618
         - vless-945211095
         - vless-944503309
-        - vless-487274692
+        - vless-945211102
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -83,9 +88,10 @@ proxy-groups:
         - vless-943344745
         - shadowsocks-938786448
         - vless-944503305
+        - shadowsocks-932685618
         - vless-945211095
         - vless-944503309
-        - vless-487274692
+        - vless-945211102
       type: select
 rules:
     - MATCH,select
