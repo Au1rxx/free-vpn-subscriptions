@@ -1,93 +1,22 @@
 proxies:
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-930426290
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: pgG2grngQEtOFJImLfz0AEm-O2IodM2jCY4aMCYQI1U
-        short-id: 6aa2d2e950441a9a
-      server: lit4.freeinternat.com
-      servername: lit4.freeinternat.com
-      tls: true
-      type: vless
+    - cipher: aes-256-cfb
+      name: shadowsocks-696781306
+      password: y9VURyNzJWNRYEGQ
+      port: 9008
+      server: 195.238.126.20
+      type: ss
       udp: true
-      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-258652508
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 00n9LplaZ0VGvRS57548s7xe0deFC10pw2fkFHFPplM
-        short-id: ""
-      server: 84.32.209.7
-      servername: dartsearch-cn.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-864116069
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 00n9LplaZ0VGvRS57548s7xe0deFC10pw2fkFHFPplM
-        short-id: ""
-      server: 84.32.209.7
-      servername: ai.android
-      tls: true
-      type: vless
-      udp: true
-      uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-810585345
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 00n9LplaZ0VGvRS57548s7xe0deFC10pw2fkFHFPplM
-        short-id: ""
-      server: 84.32.209.7
-      servername: doubleclick-cn.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: f1c496bf-d2ab-45be-bc13-051d60d227b7
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-930426228
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: pgG2grngQEtOFJImLfz0AEm-O2IodM2jCY4aMCYQI1U
-        short-id: 6aa2d2e950441a9a
-      server: 88.119.176.133
-      servername: lit4.freeinternat.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-930426290
-        - vless-258652508
-        - vless-864116069
-        - vless-810585345
-        - vless-930426228
+        - shadowsocks-696781306
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-930426290
-        - vless-258652508
-        - vless-864116069
-        - vless-810585345
-        - vless-930426228
+        - shadowsocks-696781306
       type: select
 rules:
     - MATCH,select

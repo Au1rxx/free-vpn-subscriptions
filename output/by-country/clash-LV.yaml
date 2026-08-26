@@ -13,61 +13,17 @@ proxies:
       type: vless
       udp: true
       uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-810587841
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: GBdkyDLfr0LIZo_94Xv8ycAKOmkjArYzwJAEMhuXX2c
-        short-id: 33acba1b
-      server: 138.124.180.137
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-930426281
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
-        short-id: ff776ff77be48b88
-      server: 31.76.62.223
-      servername: lat2.freeinternat.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
-    - name: vless-583609879
-      network: grpc
-      port: 2083
-      server: 89.36.161.222
-      servername: laoye.in-gect.fun
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-713159145
-        - vless-810587841
-        - vless-930426281
-        - vless-583609879
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-713159145
-        - vless-810587841
-        - vless-930426281
-        - vless-583609879
       type: select
 rules:
     - MATCH,select
