@@ -1,0 +1,51 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-951752519
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 5f7Qx1uealNy3mUg8kV9R_npeYTogZwOsA-9bZtEfD0
+        short-id: b2ba734eff38baa9
+      server: 109.69.17.228
+      servername: bzzru.hat.apruxdomain.space
+      tls: true
+      type: vless
+      udp: true
+      uuid: dbb5075f-2ff4-4aad-a952-bcc82e4a6355
+    - flow: xtls-rprx-vision
+      name: vless-937260928
+      network: tcp
+      port: 8443
+      server: 185.147.27.164
+      servername: user-6a8d949a.noooo.win
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3a90bf69-1ffe-4ebb-b9a7-ad9ba8e9f66f
+    - name: vless-964981911
+      network: tcp
+      port: 1301
+      server: 9.235.13.171
+      type: vless
+      udp: true
+      uuid: 26014d3c-9dca-488a-b84e-027c03a4165d
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-951752519
+        - vless-937260928
+        - vless-964981911
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-951752519
+        - vless-937260928
+        - vless-964981911
+      type: select
+rules:
+    - MATCH,select
