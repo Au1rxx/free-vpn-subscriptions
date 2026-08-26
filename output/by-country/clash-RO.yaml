@@ -13,13 +13,6 @@ proxies:
       skip-cert-verify: true
       sni: hopp-romania-new.roxa.org
       type: hysteria2
-    - name: hysteria2-896855661
-      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
-      port: 8443
-      server: 85.204.107.174
-      skip-cert-verify: true
-      sni: hopp-romania-new.roxa.org
-      type: hysteria2
     - name: hysteria2-860759612
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
       port: 8443
@@ -27,10 +20,10 @@ proxies:
       skip-cert-verify: true
       sni: hopp-romania-new.roxa.org
       type: hysteria2
-    - name: hysteria2-855762695
+    - name: hysteria2-896855661
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
       port: 8443
-      server: 85.204.107.171
+      server: 85.204.107.174
       skip-cert-verify: true
       sni: hopp-romania-new.roxa.org
       type: hysteria2
@@ -62,19 +55,41 @@ proxies:
       skip-cert-verify: false
       sni: hopp-romania-new.roxa.org
       type: hysteria2
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-972155392
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: a_v5l6R-rpVGlENLeONW4sz-GdRwIoDqISOWXGov8nw
+        short-id: 87709fed663228e5
+      server: 109.104.106.149
+      servername: d3-ro.cloud-cdn.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 85a70137-8af5-43e7-a1e3-f4dd6b146985
+    - name: hysteria2-816611186
+      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
+      port: 443
+      server: rou0001ntrhy01.tcp-reset-club.net
+      skip-cert-verify: true
+      sni: rou0001ntrhy01.tcp-reset-club.net
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-923321803
         - hysteria2-896857447
-        - hysteria2-896855661
         - hysteria2-860759612
-        - hysteria2-855762695
+        - hysteria2-896855661
         - hysteria2-892012263
         - hysteria2-813990701
         - hysteria2-930179315
         - hysteria2-841934438
+        - vless-972155392
+        - hysteria2-816611186
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -82,13 +97,14 @@ proxy-groups:
         - auto
         - hysteria2-923321803
         - hysteria2-896857447
-        - hysteria2-896855661
         - hysteria2-860759612
-        - hysteria2-855762695
+        - hysteria2-896855661
         - hysteria2-892012263
         - hysteria2-813990701
         - hysteria2-930179315
         - hysteria2-841934438
+        - vless-972155392
+        - hysteria2-816611186
       type: select
 rules:
     - MATCH,select

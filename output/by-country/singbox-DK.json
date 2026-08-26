@@ -1,0 +1,51 @@
+{
+  "outbounds": [
+    {
+      "server": "ipw.ygdfw.com",
+      "server_port": 443,
+      "tag": "vless-959639417",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "p2bm6l1.freelanceriran98.ir",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "headers": {
+          "Host": "p2bm6l1.freelanceriran98.ir"
+        },
+        "path": "/ws-dk",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "9f2f3e55-a8a6-40f3-aeb2-1061e9207d4d"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-959639417"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-959639417"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
