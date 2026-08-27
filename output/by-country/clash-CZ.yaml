@@ -1,14 +1,4 @@
 proxies:
-    - name: vless-983998909
-      network: grpc
-      port: 443
-      server: 150.241.121.61
-      servername: 1pgt5wjq9slq.bosfiles.net
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 755baa25-99ad-4b5c-8e24-fb30e79cd3dc
     - name: vless-986428458
       network: grpc
       port: 443
@@ -139,16 +129,6 @@ proxies:
       type: vless
       udp: true
       uuid: 09540055-5106-43da-b6b2-ef26fa9eb129
-    - name: vless-992542508
-      network: grpc
-      port: 443
-      server: 150.241.121.61
-      servername: 1pgt5wjq9slq.bosfiles.net
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c159b5b6-0bce-41e6-a34b-95beb4b6bc68
     - name: vless-992542518
       network: grpc
       port: 443
@@ -169,11 +149,24 @@ proxies:
       type: vless
       udp: true
       uuid: 8e2d40f9-86a3-4108-b527-bd8a62e5af73
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-612168591
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
+        short-id: 00bca5982f82d083
+      server: 103.119.19.208
+      servername: eu-central.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-983998909
         - vless-986428458
         - vless-986421435
         - vless-996898180
@@ -187,15 +180,14 @@ proxy-groups:
         - vless-986497005
         - vless-986496996
         - vless-997000937
-        - vless-992542508
         - vless-992542518
         - vless-992542512
+        - vless-612168591
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-983998909
         - vless-986428458
         - vless-986421435
         - vless-996898180
@@ -209,9 +201,9 @@ proxy-groups:
         - vless-986497005
         - vless-986496996
         - vless-997000937
-        - vless-992542508
         - vless-992542518
         - vless-992542512
+        - vless-612168591
       type: select
 rules:
     - MATCH,select
