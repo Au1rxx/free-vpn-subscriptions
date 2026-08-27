@@ -7,6 +7,13 @@ proxies:
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-857109262
+      password: vDwGqUupXso4i90jdZL0sR
+      port: 57925
+      server: 157.22.240.141
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-897267153
       password: eGlH93Ix8FwKI0s0Fhebwf
       port: 57925
@@ -20,21 +27,38 @@ proxies:
       server: 130.49.189.158
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      name: vless-987718064
+      network: tcp
+      port: 10000
+      reality-opts:
+        public-key: Du5pk4KuMNA1sRcSpmuoLuC0HmxDBmFljFNfUzqxKiM
+        short-id: cd0a1986719e44c8
+      server: albania-sgood.wopd.butnorwa.butter.silicore.ir
+      servername: amp-api-edge.apps.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8ad85ca5-7572-4ee7-8a42-a2e5c9a0e479
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-728834460
+        - shadowsocks-857109262
         - shadowsocks-897267153
         - shadowsocks-897267154
+        - vless-987718064
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-728834460
+        - shadowsocks-857109262
         - shadowsocks-897267153
         - shadowsocks-897267154
+        - vless-987718064
       type: select
 rules:
     - MATCH,select
