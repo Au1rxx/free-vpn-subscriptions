@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-983998909
+      network: grpc
+      port: 443
+      server: 150.241.121.61
+      servername: 1pgt5wjq9slq.bosfiles.net
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 755baa25-99ad-4b5c-8e24-fb30e79cd3dc
     - name: vless-996108953
       network: grpc
       port: 443
@@ -49,7 +59,7 @@ proxies:
       type: vless
       udp: true
       uuid: a502cb46-cf08-487a-a9bc-7a84076bb1a7
-    - name: vless-992542518
+    - name: vless-992542508
       network: grpc
       port: 443
       server: 150.241.121.61
@@ -58,7 +68,7 @@ proxies:
       tls: true
       type: vless
       udp: true
-      uuid: 4fe760bb-4cb1-448e-bd71-8168cf3c4e3c
+      uuid: c159b5b6-0bce-41e6-a34b-95beb4b6bc68
     - name: vless-996908172
       network: grpc
       port: 443
@@ -89,6 +99,16 @@ proxies:
       type: vless
       udp: true
       uuid: 41af5ecc-9d3e-43c1-84bf-22b8d29de237
+    - name: vless-992542518
+      network: grpc
+      port: 443
+      server: 150.241.121.61
+      servername: 1pgt5wjq9slq.bosfiles.net
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4fe760bb-4cb1-448e-bd71-8168cf3c4e3c
     - name: vless-996903284
       network: grpc
       port: 443
@@ -99,35 +119,67 @@ proxies:
       type: vless
       udp: true
       uuid: 599630a5-a1da-403b-b39d-52b756b464c2
+    - name: vless-992542512
+      network: grpc
+      port: 443
+      server: 150.241.121.61
+      servername: 1pgt5wjq9slq.bosfiles.net
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8e2d40f9-86a3-4108-b527-bd8a62e5af73
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-700417542
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
+        short-id: 00bca5982f82d083
+      server: 103.119.19.208
+      servername: eu-central.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-983998909
         - vless-996108953
         - vless-981108262
         - vless-982472854
         - vless-996108945
         - vless-996908165
-        - vless-992542518
+        - vless-992542508
         - vless-996908172
         - vless-997000937
         - vless-997000945
+        - vless-992542518
         - vless-996903284
+        - vless-992542512
+        - vless-700417542
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-983998909
         - vless-996108953
         - vless-981108262
         - vless-982472854
         - vless-996108945
         - vless-996908165
-        - vless-992542518
+        - vless-992542508
         - vless-996908172
         - vless-997000937
         - vless-997000945
+        - vless-992542518
         - vless-996903284
+        - vless-992542512
+        - vless-700417542
       type: select
 rules:
     - MATCH,select
