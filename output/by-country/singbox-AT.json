@@ -1,0 +1,51 @@
+{
+  "outbounds": [
+    {
+      "server": "188.137.158.144",
+      "server_port": 443,
+      "tag": "vless-976178334",
+      "tls": {
+        "alpn": [
+          "h2"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "ezjb4e6x5ug0.bosfiles.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "service_name": "grpc",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "e8652acb-1f75-4762-95eb-51d6bc44907f"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-976178334"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-976178334"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

@@ -9,6 +9,13 @@ proxies:
       type: vless
       udp: true
       uuid: 9f2f3e55-a8a6-40f3-aeb2-1061e9207d4d
+    - cipher: aes-256-gcm
+      name: shadowsocks-979788942
+      password: Ci7tPzAor1C0FLGK
+      port: 27112
+      server: iran-kala.xyz
+      type: ss
+      udp: true
     - name: vless-959639417
       network: ws
       port: 443
@@ -19,19 +26,45 @@ proxies:
       type: vless
       udp: true
       uuid: 9f2f3e55-a8a6-40f3-aeb2-1061e9207d4d
+    - name: vless-949961288
+      network: ws
+      port: 443
+      server: p2bm6l1.freelanceriran98.ir
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9f2f3e55-a8a6-40f3-aeb2-1061e9207d4d
+    - name: vless-966373784
+      network: ws
+      port: 443
+      server: p2bm6l1.freelanceriran98.ir
+      servername: p2bm6l1.freelanceriran98.ir
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9f2f3e55-a8a6-40f3-aeb2-1061e9207d4d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-962487262
+        - shadowsocks-979788942
         - vless-959639417
+        - vless-949961288
+        - vless-966373784
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-962487262
+        - shadowsocks-979788942
         - vless-959639417
+        - vless-949961288
+        - vless-966373784
       type: select
 rules:
     - MATCH,select

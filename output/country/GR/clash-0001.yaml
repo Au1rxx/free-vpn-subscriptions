@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-550083843
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
+        short-id: 00bca5982f82d083
+      server: 217.12.194.249
+      servername: eu-central.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: fc1b3bda-b226-452a-8c5c-b0e36a1f8f88
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-953732977
@@ -55,23 +69,57 @@ proxies:
       type: vless
       udp: true
       uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-978542094
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: gr.freeinternat.com
+      servername: gr.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-980153398
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: gr.freeinternat.com
+      servername: gr.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-550083843
         - vless-953732977
         - vless-953732997
         - vless-956121373
         - vless-976477098
+        - vless-978542094
+        - vless-980153398
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-550083843
         - vless-953732977
         - vless-953732997
         - vless-956121373
         - vless-976477098
+        - vless-978542094
+        - vless-980153398
       type: select
 rules:
     - MATCH,select
