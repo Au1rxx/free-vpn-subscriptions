@@ -6,17 +6,32 @@ proxies:
       skip-cert-verify: true
       sni: fast.wwwinternetvideo.click
       type: hysteria2
+    - client-fingerprint: firefox
+      name: vless-882531311
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: JmAuytyIXW4klA7zqeSYi3EtWR0d4fNJCq4nR0LMQE8
+        short-id: 07316dd7d0e11c90
+      server: 95.216.27.15
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ea48c5b6-7a19-4fea-9902-17004a424452
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-878416411
+        - vless-882531311
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-878416411
+        - vless-882531311
       type: select
 rules:
     - MATCH,select
