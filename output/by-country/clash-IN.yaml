@@ -12,17 +12,26 @@ proxies:
       type: vless
       udp: true
       uuid: 0bf89828-484f-4710-9581-12aa961e3bf1
+    - name: hysteria2-650413302
+      password: qQe1z5kU8kN6SlKnDt9Ru3Qp
+      port: 443
+      server: vpn-in-001.fastervpn.world
+      skip-cert-verify: true
+      sni: vpn-in-001.fastervpn.world
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-860013122
+        - hysteria2-650413302
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-860013122
+        - hysteria2-650413302
       type: select
 rules:
     - MATCH,select
