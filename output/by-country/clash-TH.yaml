@@ -15,12 +15,22 @@ proxies:
       type: vmess
       udp: true
       uuid: 9b76bc31-17a5-4454-934a-8d5fb602cd70
+    - alterId: 0
+      cipher: auto
+      name: vmess-884214269
+      network: none
+      port: 37515
+      server: 119.46.51.45
+      type: vmess
+      udp: true
+      uuid: 9b76bc31-17a5-4454-934a-8d5fb602cd70
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-696792800
         - vmess-971093565
+        - vmess-884214269
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -28,6 +38,7 @@ proxy-groups:
         - auto
         - shadowsocks-696792800
         - vmess-971093565
+        - vmess-884214269
       type: select
 rules:
     - MATCH,select
