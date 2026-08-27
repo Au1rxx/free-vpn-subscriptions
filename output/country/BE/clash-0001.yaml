@@ -1,0 +1,49 @@
+proxies:
+    - name: vless-1002083055
+      network: ws
+      port: 2086
+      server: vqrlof-pwa5a7-onfjlv.zedbazi061.workers.dev
+      type: vless
+      udp: true
+      uuid: 73796e63-0000-4000-8000-000000000007
+    - name: vless-1002083061
+      network: ws
+      port: 2095
+      server: vqrlof-pwa5a7-onfjlv.zedbazi061.workers.dev
+      type: vless
+      udp: true
+      uuid: 73796e63-0000-4000-8000-000000000008
+    - name: vless-1002083062
+      network: ws
+      port: 2086
+      server: vqrlof-pwa5a7-onfjlv.zedbazi061.workers.dev
+      type: vless
+      udp: true
+      uuid: 73796e63-0000-4000-8000-000000000007
+    - name: vless-1002083063
+      network: ws
+      port: 2095
+      server: vqrlof-pwa5a7-onfjlv.zedbazi061.workers.dev
+      type: vless
+      udp: true
+      uuid: 73796e63-0000-4000-8000-000000000008
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1002083055
+        - vless-1002083061
+        - vless-1002083062
+        - vless-1002083063
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1002083055
+        - vless-1002083061
+        - vless-1002083062
+        - vless-1002083063
+      type: select
+rules:
+    - MATCH,select
