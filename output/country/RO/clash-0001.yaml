@@ -1,5 +1,12 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-26744
+      password: QFWzCw2uX9B9i6qAYeFBIE
+      port: 443
+      server: 154.46.31.106
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-130484
       password: QFWzCw2uX9B9i6qAYeFBIE
       port: 443
@@ -118,13 +125,6 @@ proxies:
       skip-cert-verify: true
       sni: hopp-romania-new.roxa.org
       type: hysteria2
-    - name: hysteria2-859306105
-      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
-      port: 8443
-      server: 85.204.107.172
-      skip-cert-verify: false
-      sni: hopp-romania-new.roxa.org
-      type: hysteria2
     - name: hysteria2-859968188
       password: gf1:gfhysteria2024
       port: 443
@@ -190,20 +190,6 @@ proxies:
       type: hysteria2
     - client-fingerprint: edge
       flow: xtls-rprx-vision
-      name: vless-972155392
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: a_v5l6R-rpVGlENLeONW4sz-GdRwIoDqISOWXGov8nw
-        short-id: 87709fed663228e5
-      server: 109.104.106.149
-      servername: d3-ro.cloud-cdn.xyz
-      tls: true
-      type: vless
-      udp: true
-      uuid: 85a70137-8af5-43e7-a1e3-f4dd6b146985
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
       name: vless-973941667
       network: tcp
       port: 443
@@ -220,6 +206,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-26744
         - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
@@ -237,7 +224,6 @@ proxy-groups:
         - hysteria2-818203591
         - hysteria2-841934438
         - hysteria2-855762695
-        - hysteria2-859306105
         - hysteria2-859968188
         - hysteria2-860759612
         - hysteria2-860781864
@@ -247,13 +233,13 @@ proxy-groups:
         - hysteria2-896857447
         - hysteria2-923321803
         - hysteria2-930179315
-        - vless-972155392
         - vless-973941667
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-26744
         - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
@@ -271,7 +257,6 @@ proxy-groups:
         - hysteria2-818203591
         - hysteria2-841934438
         - hysteria2-855762695
-        - hysteria2-859306105
         - hysteria2-859968188
         - hysteria2-860759612
         - hysteria2-860781864
@@ -281,7 +266,6 @@ proxy-groups:
         - hysteria2-896857447
         - hysteria2-923321803
         - hysteria2-930179315
-        - vless-972155392
         - vless-973941667
       type: select
 rules:

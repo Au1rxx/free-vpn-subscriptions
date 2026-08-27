@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: firefox
+      name: vless-734913298
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Qr6_9TMQYMCB2hVSYeONcMvxBqIaT0mzPUy8nIivV1g
+        short-id: b58b
+      server: 89.167.0.240
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 694eb5d5-794c-4389-af65-e5a4b8489dae
     - name: hysteria2-878416411
       password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
       port: 443
@@ -6,32 +19,19 @@ proxies:
       skip-cert-verify: true
       sni: fast.wwwinternetvideo.click
       type: hysteria2
-    - client-fingerprint: firefox
-      name: vless-882531311
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: JmAuytyIXW4klA7zqeSYi3EtWR0d4fNJCq4nR0LMQE8
-        short-id: 07316dd7d0e11c90
-      server: 95.216.27.15
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ea48c5b6-7a19-4fea-9902-17004a424452
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-734913298
         - hysteria2-878416411
-        - vless-882531311
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-734913298
         - hysteria2-878416411
-        - vless-882531311
       type: select
 rules:
     - MATCH,select
