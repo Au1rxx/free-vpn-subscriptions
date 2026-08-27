@@ -1,14 +1,4 @@
 proxies:
-    - name: vless-927965222
-      network: tcp
-      port: 30100
-      server: 161.81.30.254
-      servername: xiweini.dpdns.org
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 19bb341c-ee57-4899-b1e7-e9d3ebdf23df
     - name: vless-944037290
       network: tcp
       port: 30100
@@ -19,31 +9,17 @@ proxies:
       type: vless
       udp: true
       uuid: 19bb341c-ee57-4899-b1e7-e9d3ebdf23df
-    - name: vless-983361572
-      network: raw
-      port: 30100
-      server: 161.81.30.254
-      servername: xiweini.dpdns.org
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 19bb341c-ee57-4899-b1e7-e9d3ebdf23df
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-927965222
         - vless-944037290
-        - vless-983361572
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-927965222
         - vless-944037290
-        - vless-983361572
       type: select
 rules:
     - MATCH,select
