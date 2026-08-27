@@ -1,0 +1,22 @@
+proxies:
+    - name: hysteria2-810007491
+      password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
+      port: 8443
+      server: 222.167.212.81
+      skip-cert-verify: false
+      sni: hopp-legend-se.roxa.org
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-810007491
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-810007491
+      type: select
+rules:
+    - MATCH,select
