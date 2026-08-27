@@ -12,26 +12,49 @@ proxies:
       type: vless
       udp: true
       uuid: 694eb5d5-794c-4389-af65-e5a4b8489dae
-    - name: hysteria2-878416411
-      password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-661038937
+      network: tcp
       port: 443
-      server: start.wwwinternetvideo.click
-      skip-cert-verify: true
-      sni: fast.wwwinternetvideo.click
-      type: hysteria2
+      reality-opts:
+        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
+        short-id: a696de84963656de
+      server: 95.85.224.51
+      servername: max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-468886226
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
+        short-id: a696de84963656de
+      server: 95.85.224.51
+      servername: max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-734913298
-        - hysteria2-878416411
+        - vless-661038937
+        - vless-468886226
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-734913298
-        - hysteria2-878416411
+        - vless-661038937
+        - vless-468886226
       type: select
 rules:
     - MATCH,select
