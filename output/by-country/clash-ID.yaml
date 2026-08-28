@@ -6,17 +6,28 @@ proxies:
       server: 103.160.63.199
       type: ss
       udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-1005580212
+      network: tcp
+      port: 16298
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-860328950
+        - vmess-1005580212
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-860328950
+        - vmess-1005580212
       type: select
 rules:
     - MATCH,select

@@ -1,0 +1,50 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "84.32.106.178",
+      "server_port": 443,
+      "tag": "vless-1002405193",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "pU7ElcbPMVObHoWqGThioVD4i5ux_phWFwElN97aDSQ",
+          "short_id": "0f4dacf89993e21f"
+        },
+        "server_name": "sw.api-yandex.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "4928c901-be72-4f81-8d59-091ce9e01692"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1002405193"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1002405193"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

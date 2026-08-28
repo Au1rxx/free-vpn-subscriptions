@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1002405193
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: pU7ElcbPMVObHoWqGThioVD4i5ux_phWFwElN97aDSQ
+        short-id: 0f4dacf89993e21f
+      server: 84.32.106.178
+      servername: sw.api-yandex.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4928c901-be72-4f81-8d59-091ce9e01692
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1002405193
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1002405193
+      type: select
+rules:
+    - MATCH,select
