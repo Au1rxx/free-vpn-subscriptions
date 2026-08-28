@@ -1,0 +1,53 @@
+{
+  "outbounds": [
+    {
+      "password": "523486c6-c0b5-4e5b-8896-4af2375b41cc",
+      "server": "31.76.70.107",
+      "server_port": 8443,
+      "tag": "hysteria2-932129969",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "quic.tyr-agentstvo.tech"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "server": "94.183.170.135",
+      "server_port": 443,
+      "tag": "vless-898033982",
+      "transport": {
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "06c4e938-2954-478f-a870-ca1b163e30e9"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-932129969",
+        "vless-898033982"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-932129969",
+        "vless-898033982"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

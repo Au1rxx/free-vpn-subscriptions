@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-453095268
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: KrFnWxAwVGL6tuj1JE0qpykLzY4aOFjyK3OaymF_hT0
+        short-id: e2e66f4537770cef
+      server: 45.90.56.231
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e2b8f727-c5ee-47e1-8f1b-7c5c61479ce0
     - name: hysteria2-589844094
       password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
       port: 8080
@@ -421,13 +435,6 @@ proxies:
       skip-cert-verify: false
       sni: ""
       type: hysteria2
-    - name: hysteria2-921772523
-      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
-      port: 8080
-      server: 46.229.243.144
-      skip-cert-verify: false
-      sni: grape-turbo-fr.roxa.org
-      type: hysteria2
     - name: trojan-932073697
       password: kxHw-Dk-e9dffgzYszMlEqLJ92AnY3Pi
       port: 443
@@ -436,13 +443,6 @@ proxies:
       sni: tr-switzerlandgopota.unlimited-access.ru
       type: trojan
       udp: true
-    - name: hysteria2-932129968
-      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
-      port: 8080
-      server: 46.229.243.144
-      skip-cert-verify: true
-      sni: grape-turbo-fr.roxa.org
-      type: hysteria2
     - name: trojan-949637577
       password: kxHw-Dk-e9dffgzYszMlEqLJ92AnY3Pi
       port: 443
@@ -457,13 +457,6 @@ proxies:
       server: 140.238.213.114
       skip-cert-verify: true
       sni: www.bing.com
-      type: hysteria2
-    - name: hysteria2-984954075
-      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
-      port: 8080
-      server: 46.229.243.145
-      skip-cert-verify: true
-      sni: grape-turbo-fr.roxa.org
       type: hysteria2
     - name: hysteria2-985269729
       password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
@@ -566,10 +559,24 @@ proxies:
       type: vless
       udp: true
       uuid: 064a967e-0862-4cea-bdbd-9458cb7b6070
+    - client-fingerprint: qq
+      name: vless-1003217905
+      network: grpc
+      port: 9882
+      reality-opts:
+        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+        short-id: aabbccdd
+      server: 45.152.113.177
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 064a967e-0862-4cea-bdbd-9458cb7b6070
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-453095268
         - hysteria2-589844094
         - hysteria2-600117032
         - hysteria2-628782748
@@ -626,12 +633,9 @@ proxy-groups:
         - trojan-912252376
         - trojan-913894324
         - hysteria2-915978641
-        - hysteria2-921772523
         - trojan-932073697
-        - hysteria2-932129968
         - trojan-949637577
         - hysteria2-956723757
-        - hysteria2-984954075
         - hysteria2-985269729
         - hysteria2-996886200
         - hysteria2-1001444039
@@ -642,11 +646,13 @@ proxy-groups:
         - vless-1003173228
         - vless-1003173230
         - vless-1003173234
+        - vless-1003217905
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-453095268
         - hysteria2-589844094
         - hysteria2-600117032
         - hysteria2-628782748
@@ -703,12 +709,9 @@ proxy-groups:
         - trojan-912252376
         - trojan-913894324
         - hysteria2-915978641
-        - hysteria2-921772523
         - trojan-932073697
-        - hysteria2-932129968
         - trojan-949637577
         - hysteria2-956723757
-        - hysteria2-984954075
         - hysteria2-985269729
         - hysteria2-996886200
         - hysteria2-1001444039
@@ -719,6 +722,7 @@ proxy-groups:
         - vless-1003173228
         - vless-1003173230
         - vless-1003173234
+        - vless-1003217905
       type: select
 rules:
     - MATCH,select
