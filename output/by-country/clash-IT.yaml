@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-976057664
-      network: ws
-      port: 443
-      server: 151.241.215.109
-      type: vless
-      udp: true
-      uuid: 699ce9a1-abbb-4525-988e-b940381352e8
     - name: vless-952348251
       network: ws
       port: 443
@@ -13,7 +6,7 @@ proxies:
       type: vless
       udp: true
       uuid: 699ce9a1-abbb-4525-988e-b940381352e8
-    - name: vless-951692742
+    - name: vless-976057664
       network: ws
       port: 443
       server: 151.241.215.109
@@ -46,25 +39,65 @@ proxies:
       type: vless
       udp: true
       uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - name: vless-1010748524
+      network: ws
+      port: 8443
+      server: milan.adaspoloandco.com
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 69ac162b-1643-4acb-9f49-09d8b0fad609
+    - client-fingerprint: firefox
+      name: vless-483686868
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - client-fingerprint: chrome
+      name: vless-548666342
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-976057664
         - vless-952348251
-        - vless-951692742
+        - vless-976057664
         - vless-650644312
         - vless-696199631
+        - vless-1010748524
+        - vless-483686868
+        - vless-548666342
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-976057664
         - vless-952348251
-        - vless-951692742
+        - vless-976057664
         - vless-650644312
         - vless-696199631
+        - vless-1010748524
+        - vless-483686868
+        - vless-548666342
       type: select
 rules:
     - MATCH,select

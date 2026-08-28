@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-85751
+      network: ws
+      port: 80
+      server: anten.ir
+      type: vless
+      udp: true
+      uuid: 45165c2e-f97e-437a-8b40-d94a61a3f400
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-448867352
@@ -559,6 +566,15 @@ proxies:
       type: vless
       udp: true
       uuid: 618acefa-2ff1-41b0-a295-f8a08858a897
+    - alterId: 0
+      cipher: auto
+      name: vmess-1005580209
+      network: tcp
+      port: 16284
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-1005957037
@@ -610,6 +626,33 @@ proxies:
       uuid: 618acefa-2ff1-41b0-a295-f8a08858a897
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-1010747566
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: PMYLdOtnvW-ca8Zf6u7CFgGXoGXCvmCMPerPjGY3AAc
+        short-id: 77d7abe2c55892f1
+      server: 45.90.58.216
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2e8077d9-7bd9-444b-b2e3-de940d2eb35e
+    - client-fingerprint: random
+      name: vless-1010890231
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: 9LyZjKAQkh2_FwDS21QVW05gfBRR77KjatFS8EtRyU4
+        short-id: 3bfaadd82d8e
+      server: download.mehdi-cpp.ir
+      servername: www.github.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 55857733-b2dd-4261-ba89-c1083f030ac6
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-1011063123
       network: raw
       port: 443
@@ -648,10 +691,39 @@ proxies:
       type: vless
       udp: true
       uuid: 0b0f1f7b-d005-4765-939f-9a2f6a2f3d85
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1013913159
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: IAdOYYmEMPFAhpVUhqfML58AVtYPdAb71R_HAPf0N0k
+        short-id: ""
+      server: 93.123.85.225
+      servername: d.tranzit-net.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: be3c103d-2c93-4f8e-adb9-2631537f80eb
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1013913161
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: IAdOYYmEMPFAhpVUhqfML58AVtYPdAb71R_HAPf0N0k
+        short-id: ""
+      server: 89.124.251.172
+      servername: d.tranzit-net.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: be3c103d-2c93-4f8e-adb9-2631537f80eb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-85751
         - vless-448867352
         - vless-453095268
         - vless-700417545
@@ -712,18 +784,24 @@ proxy-groups:
         - vmess-1005126061
         - vless-1005126074
         - vless-1005545162
+        - vmess-1005580209
         - vless-1005957037
         - hysteria2-1008557009
         - vless-1008567949
         - vless-1010629722
+        - vless-1010747566
+        - vless-1010890231
         - vless-1011063123
         - vless-1013775871
         - vless-1013775876
+        - vless-1013913159
+        - vless-1013913161
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-85751
         - vless-448867352
         - vless-453095268
         - vless-700417545
@@ -784,13 +862,18 @@ proxy-groups:
         - vmess-1005126061
         - vless-1005126074
         - vless-1005545162
+        - vmess-1005580209
         - vless-1005957037
         - hysteria2-1008557009
         - vless-1008567949
         - vless-1010629722
+        - vless-1010747566
+        - vless-1010890231
         - vless-1011063123
         - vless-1013775871
         - vless-1013775876
+        - vless-1013913159
+        - vless-1013913161
       type: select
 rules:
     - MATCH,select
