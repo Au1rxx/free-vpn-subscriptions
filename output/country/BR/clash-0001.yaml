@@ -1,8 +1,24 @@
 proxies:
+    - name: trojan-119254
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20032
+      server: 45.67.201.210
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: trojan-119299
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20114
       server: 45.67.201.210
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-122860
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20032
+      server: d3.catcat321.com
       skip-cert-verify: true
       sni: hk.catxstar.com
       type: trojan
@@ -30,14 +46,6 @@ proxies:
       server: 181.41.201.242
       type: ss
       udp: true
-    - name: trojan-856461985
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20032
-      server: krhtybay.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-871344761
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20114
@@ -45,13 +53,6 @@ proxies:
       skip-cert-verify: false
       sni: hk.catxstar.com
       type: trojan
-      udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-985518748
-      password: syoHUErIIXqk/xwYXjB/fHaW3puNw529eq5eIqtjpq0=
-      port: 59319
-      server: 137.131.187.253
-      type: ss
       udp: true
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1001406473
@@ -102,17 +103,24 @@ proxies:
       server: 147.15.43.161
       type: ss
       udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1009300994
+      password: jjM4FOyAZQX4X8rnAfI+W79Uo9a5BUkmRHKutGpy9Z8=
+      port: 59319
+      server: 163.176.252.25
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-119254
         - trojan-119299
+        - trojan-122860
         - trojan-122906
         - trojan-513948371
         - shadowsocks-696792825
-        - trojan-856461985
         - trojan-871344761
-        - shadowsocks-985518748
         - shadowsocks-1001406473
         - shadowsocks-1002374892
         - shadowsocks-1002780103
@@ -120,18 +128,19 @@ proxy-groups:
         - shadowsocks-1004146156
         - shadowsocks-1005125983
         - shadowsocks-1005125988
+        - shadowsocks-1009300994
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-119254
         - trojan-119299
+        - trojan-122860
         - trojan-122906
         - trojan-513948371
         - shadowsocks-696792825
-        - trojan-856461985
         - trojan-871344761
-        - shadowsocks-985518748
         - shadowsocks-1001406473
         - shadowsocks-1002374892
         - shadowsocks-1002780103
@@ -139,6 +148,7 @@ proxy-groups:
         - shadowsocks-1004146156
         - shadowsocks-1005125983
         - shadowsocks-1005125988
+        - shadowsocks-1009300994
       type: select
 rules:
     - MATCH,select
