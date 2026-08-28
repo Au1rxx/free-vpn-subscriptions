@@ -6,17 +6,26 @@ proxies:
       server: 217.28.129.81
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-336700747
+      password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
+      port: 42982
+      server: autodiscover.fuzzyaytor.cyou
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-376006390
+        - shadowsocks-336700747
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-376006390
+        - shadowsocks-336700747
       type: select
 rules:
     - MATCH,select

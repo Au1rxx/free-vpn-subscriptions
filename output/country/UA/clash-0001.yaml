@@ -7,6 +7,48 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-639908099
+      network: tcp
+      port: 13443
+      reality-opts:
+        public-key: gc9oXe37KCCm3J1dJ03wdGsnxPBdeEkRPOvl_t-vfVM
+        short-id: a7f3c91b2e6d84c0
+      server: 5.34.182.23
+      servername: auto.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5238521b-c5dd-42af-870e-c174a2aaaafe
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-650418383
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
+        short-id: 00bca5982f82d083
+      server: 5.34.182.23
+      servername: eu-central.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-721530971
+      network: tcp
+      port: 13443
+      reality-opts:
+        public-key: gc9oXe37KCCm3J1dJ03wdGsnxPBdeEkRPOvl_t-vfVM
+        short-id: a7f3c91b2e6d84c0
+      server: 5.34.182.23
+      servername: auto.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5238521b-c5dd-42af-870e-c174a2aaaafe
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-733845521
@@ -38,6 +80,20 @@ proxies:
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-765514235
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: b-Cm9hX-3UHsS1L_lnUB6AMjuKhlN1IDdBbZ506itjI
+        short-id: 00bca5982f82d083
+      server: 5.34.182.23
+      servername: eu-central.cendora.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-827256095
       network: tcp
       port: 443
       reality-opts:
@@ -137,14 +193,29 @@ proxies:
       type: vless
       udp: true
       uuid: 41f4cb15-5a3f-3934-89fe-b4177146adf4
+    - flow: xtls-rprx-vision
+      name: vless-970879985
+      network: tcp
+      port: 18153
+      server: 88.151.195.241
+      servername: u643766ub6f3132bs274.kukuss.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 41f4cb15-5a3f-3934-89fe-b4177146adf4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-184964690
+        - vless-639908099
+        - vless-650418383
+        - vless-721530971
         - vless-733845521
         - vless-757473207
         - vless-765514235
+        - vless-827256095
         - vless-855055385
         - vless-944105699
         - vless-944105721
@@ -153,15 +224,20 @@ proxy-groups:
         - vless-952348247
         - vless-952348254
         - vless-952348257
+        - vless-970879985
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-184964690
+        - vless-639908099
+        - vless-650418383
+        - vless-721530971
         - vless-733845521
         - vless-757473207
         - vless-765514235
+        - vless-827256095
         - vless-855055385
         - vless-944105699
         - vless-944105721
@@ -170,6 +246,7 @@ proxy-groups:
         - vless-952348247
         - vless-952348254
         - vless-952348257
+        - vless-970879985
       type: select
 rules:
     - MATCH,select
