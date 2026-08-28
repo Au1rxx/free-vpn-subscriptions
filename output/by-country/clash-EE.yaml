@@ -6,17 +6,41 @@ proxies:
       skip-cert-verify: true
       sni: cabinet.wwwinternetvideo.click
       type: hysteria2
+    - name: vless-477040439
+      network: tcp
+      port: 8443
+      server: 94.183.170.231
+      servername: estproxy2.lockdwn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
+    - name: vless-559132750
+      network: tcp
+      port: 8443
+      server: 94.183.170.231
+      servername: estproxy2.lockdwn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 19f54e37-5fae-47f6-bc10-e71ccbc58389
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1004090303
+        - vless-477040439
+        - vless-559132750
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1004090303
+        - vless-477040439
+        - vless-559132750
       type: select
 rules:
     - MATCH,select

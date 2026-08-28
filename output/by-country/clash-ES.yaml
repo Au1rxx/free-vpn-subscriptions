@@ -1,28 +1,25 @@
 proxies:
-    - client-fingerprint: firefox
-      name: vless-842638788
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: XrPOJwmpnq8NeCXu6K68Mp59gQ56Dr4YYboxI70kqzA
-        short-id: 866af6e56606f2bc
-      server: 212.227.235.66
-      servername: www.cloudflare.com
+    - name: vless-50172
+      network: ws
+      port: 2087
+      server: 152.42.140.20
+      servername: gavorbhj.chinam.indevs.in
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: 6fbdbd3c-7696-4b9a-9a10-bcecc26e0f6f
+      uuid: 26524cce-d514-4014-a426-365fb266a14d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-842638788
+        - vless-50172
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-842638788
+        - vless-50172
       type: select
 rules:
     - MATCH,select

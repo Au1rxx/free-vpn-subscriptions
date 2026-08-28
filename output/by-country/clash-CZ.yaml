@@ -13,29 +13,17 @@ proxies:
       type: vless
       udp: true
       uuid: b34a52cb-cd52-49a8-9362-b8e97c151d49
-    - name: vless-1005379246
-      network: grpc
-      port: 443
-      server: 150.241.121.61
-      servername: 1pgt5wjq9slq.bosfiles.net
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 41af5ecc-9d3e-43c1-84bf-22b8d29de237
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1003488399
-        - vless-1005379246
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1003488399
-        - vless-1005379246
       type: select
 rules:
     - MATCH,select
