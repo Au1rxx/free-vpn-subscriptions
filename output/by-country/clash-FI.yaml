@@ -1,4 +1,11 @@
 proxies:
+    - cipher: 2022-blake3-aes-256-gcm
+      name: shadowsocks-1007188971
+      password: v2z2G/40UbT5CnaWsBp0/iAYjAwTDdk7u7bb1/q39KY=:tiUPm/WJQqnP6Skk1SQlxAX8MM1FuYqxsPAS2VQz6zI=
+      port: 32485
+      server: 65.109.211.136
+      type: ss
+      udp: true
     - name: hysteria2-1001444174
       password: BPvdjudCGodsF67hRP3xgBYvcKp48coTsh6ANydLhQs=
       port: 443
@@ -6,17 +13,52 @@ proxies:
       skip-cert-verify: false
       sni: fin14qr.wwwinternetvideo.click
       type: hysteria2
+    - name: vless-1006228191
+      network: tcp
+      port: 26241
+      server: 65.109.211.136
+      type: vless
+      udp: true
+      uuid: 145370f0-c4b0-4369-adbc-fa46cbc33703
+    - name: vless-860620822
+      network: grpc
+      port: 2101
+      server: 132-243-223-227.sslip.io
+      servername: 132-243-223-227.sslip.io
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
+    - name: vless-860620803
+      network: grpc
+      port: 2101
+      server: 132.243.223.227
+      servername: 132-243-223-227.sslip.io
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1007188971
         - hysteria2-1001444174
+        - vless-1006228191
+        - vless-860620822
+        - vless-860620803
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1007188971
         - hysteria2-1001444174
+        - vless-1006228191
+        - vless-860620822
+        - vless-860620803
       type: select
 rules:
     - MATCH,select

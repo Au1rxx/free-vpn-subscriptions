@@ -6,26 +6,17 @@ proxies:
       type: vless
       udp: true
       uuid: 6d60c73d-5915-4cf8-b155-e522dfd863bb
-    - name: vless-994068009
-      network: tcp
-      port: 16560
-      server: 31.128.37.67
-      type: vless
-      udp: true
-      uuid: 6d60c73d-5915-4cf8-b155-e522dfd863bb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-979609297
-        - vless-994068009
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-979609297
-        - vless-994068009
       type: select
 rules:
     - MATCH,select
