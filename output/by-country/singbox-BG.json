@@ -1,0 +1,60 @@
+{
+  "outbounds": [
+    {
+      "method": "aes-256-cfb",
+      "password": "GeregetR8cvQHzYr",
+      "server": "213.183.63.60",
+      "server_port": 9030,
+      "tag": "shadowsocks-738053649",
+      "type": "shadowsocks"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "131.123.42.150",
+      "server_port": 443,
+      "tag": "vless-1002929362",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE",
+          "short_id": "ff776ff77be48b88"
+        },
+        "server_name": "bul2.helper-internet.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "ae8e0f7d-b661-41ca-b55d-d8c383adb2f8"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "shadowsocks-738053649",
+        "vless-1002929362"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "shadowsocks-738053649",
+        "vless-1002929362"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

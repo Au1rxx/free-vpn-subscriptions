@@ -1,11 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-376006390
-      password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
-      port: 42982
-      server: 217.28.129.81
-      type: ss
-      udp: true
     - name: hysteria2-647019506
       password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
       port: 443
@@ -13,28 +6,38 @@ proxies:
       skip-cert-verify: true
       sni: fast.wwwinternetvideo.click
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-336700747
-      password: yTEXWB6XBHyv9SfQJzCSRWCnRYutFdUXg1wbcbutxPwZE6Uxcurka3GkoatgEdX483XZSHeJp3jXcTShLCRM8rPgMF3vYNfS
-      port: 42982
-      server: autodiscover.fuzzyaytor.cyou
-      type: ss
+    - name: hysteria2-622971569
+      password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
+      port: 443
+      server: fast.wwwinternetvideo.click
+      skip-cert-verify: false
+      sni: fast.wwwinternetvideo.click
+      type: hysteria2
+    - name: vless-860620803
+      network: grpc
+      port: 2101
+      server: 132.243.223.227
+      servername: 132-243-223-227.sslip.io
+      skip-cert-verify: true
+      tls: true
+      type: vless
       udp: true
+      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-376006390
         - hysteria2-647019506
-        - shadowsocks-336700747
+        - hysteria2-622971569
+        - vless-860620803
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-376006390
         - hysteria2-647019506
-        - shadowsocks-336700747
+        - hysteria2-622971569
+        - vless-860620803
       type: select
 rules:
     - MATCH,select

@@ -6,13 +6,6 @@ proxies:
       server: 137.131.187.253
       type: ss
       udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1001799993
-      password: iS6cGpZwWPQtLvPHo6Q5gMAn7zZdJpD9YoYGn6m9mFw=
-      port: 59319
-      server: 64.181.177.112
-      type: ss
-      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-696792825
       password: 7eadc6dbe2ae
@@ -20,21 +13,46 @@ proxies:
       server: 181.41.201.242
       type: ss
       udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1001799993
+      password: iS6cGpZwWPQtLvPHo6Q5gMAn7zZdJpD9YoYGn6m9mFw=
+      port: 59319
+      server: 64.181.177.112
+      type: ss
+      udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1002780103
+      password: 3CoIkS9kkeoyGQsy7tQD19IGQJdvwu76tTKyalr7mKs=
+      port: 59319
+      server: 163.176.246.48
+      type: ss
+      udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1004146120
+      password: GpR2lRnHziihfZak1z1Vcma+zi01kBqnd86vJ0wdfJA=
+      port: 59319
+      server: 163.176.109.96
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-985518748
-        - shadowsocks-1001799993
         - shadowsocks-696792825
+        - shadowsocks-1001799993
+        - shadowsocks-1002780103
+        - shadowsocks-1004146120
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-985518748
-        - shadowsocks-1001799993
         - shadowsocks-696792825
+        - shadowsocks-1001799993
+        - shadowsocks-1002780103
+        - shadowsocks-1004146120
       type: select
 rules:
     - MATCH,select

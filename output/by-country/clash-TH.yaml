@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-696792800
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 103.169.67.34
-      type: ss
-      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-971093565
@@ -15,19 +8,26 @@ proxies:
       type: vmess
       udp: true
       uuid: 9b76bc31-17a5-4454-934a-8d5fb602cd70
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792800
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 103.169.67.34
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-696792800
         - vmess-971093565
+        - shadowsocks-696792800
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-696792800
         - vmess-971093565
+        - shadowsocks-696792800
       type: select
 rules:
     - MATCH,select
