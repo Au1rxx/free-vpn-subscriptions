@@ -1,0 +1,31 @@
+proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-1013628718
+      password: d99c422199e62b6b
+      port: 10501
+      server: 195.58.48.97
+      type: ss
+      udp: true
+    - name: hysteria2-913805374
+      password: 41f0d6d3-4a45-4635-8225-2abd2284189b
+      port: 2056
+      server: els.mangshe.xyz
+      skip-cert-verify: true
+      sni: els.mangshe.xyz
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-1013628718
+        - hysteria2-913805374
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-1013628718
+        - hysteria2-913805374
+      type: select
+rules:
+    - MATCH,select

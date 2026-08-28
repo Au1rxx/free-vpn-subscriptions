@@ -1,10 +1,24 @@
 proxies:
+    - name: hysteria2-1009480030
+      password: 901113fb-2ddd-4472-84bf-307de471f32f
+      port: 443
+      server: jp.katanalink.net
+      skip-cert-verify: true
+      sni: jp.katanalink.net
+      type: hysteria2
     - name: hysteria2-622971569
       password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
       port: 443
       server: fast.wwwinternetvideo.click
       skip-cert-verify: false
       sni: fast.wwwinternetvideo.click
+      type: hysteria2
+    - name: hysteria2-1009479971
+      password: 901113fb-2ddd-4472-84bf-307de471f32f
+      port: 443
+      server: us-nyc.katanalink.net
+      skip-cert-verify: true
+      sni: us-nyc.katanalink.net
       type: hysteria2
     - cipher: 2022-blake3-aes-256-gcm
       name: shadowsocks-1010579867
@@ -20,39 +34,25 @@ proxies:
       skip-cert-verify: false
       sni: fin14qr.wwwinternetvideo.click
       type: hysteria2
-    - name: hysteria2-1009480030
-      password: 901113fb-2ddd-4472-84bf-307de471f32f
-      port: 443
-      server: jp.katanalink.net
-      skip-cert-verify: true
-      sni: jp.katanalink.net
-      type: hysteria2
-    - name: hysteria2-700405738
-      password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
-      port: 443
-      server: fast.wwwinternetvideo.click
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1009480030
         - hysteria2-622971569
+        - hysteria2-1009479971
         - shadowsocks-1010579867
         - hysteria2-1001444174
-        - hysteria2-1009480030
-        - hysteria2-700405738
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1009480030
         - hysteria2-622971569
+        - hysteria2-1009479971
         - shadowsocks-1010579867
         - hysteria2-1001444174
-        - hysteria2-1009480030
-        - hysteria2-700405738
       type: select
 rules:
     - MATCH,select

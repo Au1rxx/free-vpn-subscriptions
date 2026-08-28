@@ -1,0 +1,50 @@
+{
+  "outbounds": [
+    {
+      "method": "aes-256-gcm",
+      "password": "d99c422199e62b6b",
+      "server": "195.58.48.97",
+      "server_port": 10501,
+      "tag": "shadowsocks-1013628718",
+      "type": "shadowsocks"
+    },
+    {
+      "password": "41f0d6d3-4a45-4635-8225-2abd2284189b",
+      "server": "els.mangshe.xyz",
+      "server_port": 2056,
+      "tag": "hysteria2-913805374",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "els.mangshe.xyz"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "shadowsocks-1013628718",
+        "hysteria2-913805374"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "shadowsocks-1013628718",
+        "hysteria2-913805374"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
