@@ -13,13 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: ae8e0f7d-b661-41ca-b55d-d8c383adb2f8
-    - cipher: aes-256-cfb
-      name: shadowsocks-812343868
-      password: 4R3hUfZ2FHhDmNcP
-      port: 9061
-      server: 213.183.63.60
-      type: ss
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1003461031
@@ -34,21 +27,51 @@ proxies:
       type: vless
       udp: true
       uuid: 316dda83-17f1-4f29-a05f-b84b7f991b82
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1003295640
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+        short-id: ff776ff77be48b88
+      server: 131.123.42.150
+      servername: bul2.helper-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ae8e0f7d-b661-41ca-b55d-d8c383adb2f8
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1003078370
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+        short-id: ff776ff77be48b88
+      server: bul2.helper-internet.com
+      servername: bul2.helper-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ae8e0f7d-b661-41ca-b55d-d8c383adb2f8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1002929362
-        - shadowsocks-812343868
         - vless-1003461031
+        - vless-1003295640
+        - vless-1003078370
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1002929362
-        - shadowsocks-812343868
         - vless-1003461031
+        - vless-1003295640
+        - vless-1003078370
       type: select
 rules:
     - MATCH,select

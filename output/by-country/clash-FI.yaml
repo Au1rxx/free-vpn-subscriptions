@@ -13,13 +13,6 @@ proxies:
       skip-cert-verify: true
       sni: jp.katanalink.net
       type: hysteria2
-    - name: hysteria2-1001444174
-      password: BPvdjudCGodsF67hRP3xgBYvcKp48coTsh6ANydLhQs=
-      port: 443
-      server: fin14qr.wwwinternetvideo.click
-      skip-cert-verify: false
-      sni: fin14qr.wwwinternetvideo.click
-      type: hysteria2
     - name: vless-1006228191
       network: tcp
       port: 26241
@@ -47,16 +40,30 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-423595740
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
+        short-id: a696de84963656de
+      server: 95.85.224.51
+      servername: max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1010579867
         - hysteria2-1009480030
-        - hysteria2-1001444174
         - vless-1006228191
         - vless-860620822
         - vless-860620803
+        - vless-423595740
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -64,10 +71,10 @@ proxy-groups:
         - auto
         - shadowsocks-1010579867
         - hysteria2-1009480030
-        - hysteria2-1001444174
         - vless-1006228191
         - vless-860620822
         - vless-860620803
+        - vless-423595740
       type: select
 rules:
     - MATCH,select
