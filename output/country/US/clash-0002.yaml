@@ -1,4 +1,31 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-875268569
+      network: tcp
+      port: 50159
+      reality-opts:
+        public-key: SX1vaYIIZcbcfO3RrAPhYQ1FAeA7bkcDZJtEDN9pbxw
+        short-id: 94c8a1b378da7250
+      server: 34.222.2.182
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8c235628-4c27-44b5-9559-7ab1d53b7ff3
+    - client-fingerprint: chrome
+      name: vless-881502382
+      network: raw
+      port: 32866
+      reality-opts:
+        public-key: _i7HLtmv04hzaUP64qqUuBnsRuwQM7zPz3Dz5Lxn_lI
+        short-id: a9a4ca225bca8dfe
+      server: 107.175.93.213
+      servername: intel.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a0942d92-28c9-4ff2-bc9f-0d79577b858f
     - client-fingerprint: ios
       name: vless-881562958
       network: tcp
@@ -1834,6 +1861,13 @@ proxies:
       type: vless
       udp: true
       uuid: 20c72888-b83e-4309-82a4-aab4a2dda778
+    - name: vless-951490496
+      network: ws
+      port: 8880
+      server: 172.64.158.146
+      type: vless
+      udp: true
+      uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-951589980
@@ -1883,6 +1917,13 @@ proxies:
       type: vless
       udp: true
       uuid: 0a2dde28-70da-4863-a06f-35d007d94d35
+    - name: vless-951696918
+      network: ws
+      port: 2086
+      server: 162.159.24.131
+      type: vless
+      udp: true
+      uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
     - name: vless-951783757
       network: ws
       port: 2095
@@ -3085,16 +3126,6 @@ proxies:
       type: vless
       udp: true
       uuid: b8fca50e-e3bb-4ae2-a44e-bde0e0495b2e
-    - name: vless-990647906
-      network: ws
-      port: 2053
-      server: 104.26.7.195
-      servername: wzknb.pages.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 73bcd72f-9545-4cb8-8daf-7d004501880d
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-990699633
@@ -4633,10 +4664,22 @@ proxies:
       type: vless
       udp: true
       uuid: fda82db3-3c0f-4122-87d9-1ed08059bc92
+    - name: vless-1010884671
+      network: ws
+      port: 443
+      server: 69.46.46.49
+      servername: azure-atlas-eba6-production.up.railway.app
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 15a8fe5f-d2f0-8be0-8c28-49a17ad3f6f1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-875268569
+        - vless-881502382
         - vless-881562958
         - vless-881565858
         - vless-882523160
@@ -4816,10 +4859,12 @@ proxy-groups:
         - vless-950648546
         - vless-950651928
         - vless-951481134
+        - vless-951490496
         - vless-951589980
         - vless-951619025
         - vless-951685695
         - vless-951685698
+        - vless-951696918
         - vless-951783757
         - shadowsocks-951795693
         - vmess-952348261
@@ -4932,7 +4977,6 @@ proxy-groups:
         - vless-988399110
         - vless-988399114
         - vless-988399118
-        - vless-990647906
         - vless-990699633
         - vless-992542535
         - vmess-996063401
@@ -5072,11 +5116,14 @@ proxy-groups:
         - vless-1010765236
         - vless-1010794803
         - vless-1010794858
+        - vless-1010884671
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-875268569
+        - vless-881502382
         - vless-881562958
         - vless-881565858
         - vless-882523160
@@ -5256,10 +5303,12 @@ proxy-groups:
         - vless-950648546
         - vless-950651928
         - vless-951481134
+        - vless-951490496
         - vless-951589980
         - vless-951619025
         - vless-951685695
         - vless-951685698
+        - vless-951696918
         - vless-951783757
         - shadowsocks-951795693
         - vmess-952348261
@@ -5372,7 +5421,6 @@ proxy-groups:
         - vless-988399110
         - vless-988399114
         - vless-988399118
-        - vless-990647906
         - vless-990699633
         - vless-992542535
         - vmess-996063401
@@ -5512,6 +5560,7 @@ proxy-groups:
         - vless-1010765236
         - vless-1010794803
         - vless-1010794858
+        - vless-1010884671
       type: select
 rules:
     - MATCH,select
