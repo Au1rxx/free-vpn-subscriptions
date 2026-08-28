@@ -1,0 +1,22 @@
+proxies:
+    - name: hysteria2-1001444174
+      password: BPvdjudCGodsF67hRP3xgBYvcKp48coTsh6ANydLhQs=
+      port: 443
+      server: fin14qr.wwwinternetvideo.click
+      skip-cert-verify: false
+      sni: fin14qr.wwwinternetvideo.click
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-1001444174
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-1001444174
+      type: select
+rules:
+    - MATCH,select
