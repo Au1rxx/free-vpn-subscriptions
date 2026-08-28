@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-622971569
+      password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
+      port: 443
+      server: fast.wwwinternetvideo.click
+      skip-cert-verify: false
+      sni: fast.wwwinternetvideo.click
+      type: hysteria2
     - cipher: 2022-blake3-aes-256-gcm
       name: shadowsocks-1010579867
       password: rrR97O6JIRzSRG8uHimVCgLEssjipthiC4Hlieq/4/w=:B+gmrP1txQliTTw0NNVoHZ+wjNAL3nKHZopLtqlEAnI=
@@ -6,6 +13,13 @@ proxies:
       server: 65.109.215.50
       type: ss
       udp: true
+    - name: hysteria2-1001444174
+      password: BPvdjudCGodsF67hRP3xgBYvcKp48coTsh6ANydLhQs=
+      port: 443
+      server: fin14qr.wwwinternetvideo.click
+      skip-cert-verify: false
+      sni: fin14qr.wwwinternetvideo.click
+      type: hysteria2
     - name: hysteria2-1009480030
       password: 901113fb-2ddd-4472-84bf-307de471f32f
       port: 443
@@ -13,13 +27,13 @@ proxies:
       skip-cert-verify: true
       sni: jp.katanalink.net
       type: hysteria2
-    - name: vless-1006228191
-      network: tcp
-      port: 26241
-      server: 65.109.211.136
-      type: vless
-      udp: true
-      uuid: 145370f0-c4b0-4369-adbc-fa46cbc33703
+    - name: hysteria2-700405738
+      password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
+      port: 443
+      server: fast.wwwinternetvideo.click
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
     - name: vless-860620822
       network: grpc
       port: 2101
@@ -30,51 +44,27 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - name: vless-860620803
-      network: grpc
-      port: 2101
-      server: 132.243.223.227
-      servername: 132-243-223-227.sslip.io
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-423595740
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
-        short-id: a696de84963656de
-      server: 95.85.224.51
-      servername: max.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-622971569
         - shadowsocks-1010579867
+        - hysteria2-1001444174
         - hysteria2-1009480030
-        - vless-1006228191
+        - hysteria2-700405738
         - vless-860620822
-        - vless-860620803
-        - vless-423595740
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-622971569
         - shadowsocks-1010579867
+        - hysteria2-1001444174
         - hysteria2-1009480030
-        - vless-1006228191
+        - hysteria2-700405738
         - vless-860620822
-        - vless-860620803
-        - vless-423595740
       type: select
 rules:
     - MATCH,select

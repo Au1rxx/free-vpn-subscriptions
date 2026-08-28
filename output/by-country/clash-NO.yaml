@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-976057673
+      network: tcp
+      port: 335
+      reality-opts:
+        public-key: XJhq5Vpqo6j5Xsd56EMAK8--8EWBZWc3tjf-WFnInio
+        short-id: ec2213ae33d5b43f
+      server: 151.242.168.69
+      servername: onlineraceentry.co.uk
+      tls: true
+      type: vless
+      udp: true
+      uuid: 10000026-0216-6626-f000-da35b731a020
     - client-fingerprint: chrome
       name: vless-893922637
       network: tcp
@@ -13,31 +27,33 @@ proxies:
       udp: true
       uuid: 374181b9-44bf-44f1-a227-1184f3e9e47b
     - client-fingerprint: qq
-      name: vless-940261350
-      network: raw
+      name: vless-882532228
+      network: tcp
       port: 40443
       reality-opts:
-        public-key: aZOpodpnifoxDqTzWgxJRffgsiGnG9-h-EZd4SvOImc
-        short-id: f7b2
-      server: 46.29.238.88
+        public-key: Ic-S89gGVGw1RnKJHOi3CzAmdU8fIdlMZOd4DBV7A3M
+        short-id: bbb1
+      server: 46.29.238.136
       servername: deepl.com
       tls: true
       type: vless
       udp: true
-      uuid: db320947-adfb-400d-b60b-383b8324bffe
+      uuid: 374181b9-44bf-44f1-a227-1184f3e9e47b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-976057673
         - vless-893922637
-        - vless-940261350
+        - vless-882532228
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-976057673
         - vless-893922637
-        - vless-940261350
+        - vless-882532228
       type: select
 rules:
     - MATCH,select

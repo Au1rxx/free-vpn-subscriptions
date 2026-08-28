@@ -1,4 +1,25 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792801
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 118.107.222.231
+      type: ss
+      udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1011511846
+      network: tcp
+      port: 22012
+      reality-opts:
+        public-key: uSrE0JjmM3fOdPaVIqOdttSJXVHwgVOD0WbyeN1RCBQ
+        short-id: 6d62b7e1ed6f2aed
+      server: 43.217.83.128
+      servername: www.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a292d697-5249-417f-aa8a-b853fa6ff35c
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1010709862
@@ -17,12 +38,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-696792801
+        - vless-1011511846
         - vless-1010709862
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-696792801
+        - vless-1011511846
         - vless-1010709862
       type: select
 rules:

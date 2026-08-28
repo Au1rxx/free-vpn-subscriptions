@@ -1,0 +1,26 @@
+proxies:
+    - flow: xtls-rprx-vision
+      name: vless-1011374783
+      network: tcp
+      port: 18153
+      server: 88.151.195.241
+      servername: u643766ub6f3132bs274.kukuss.top
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 41f4cb15-5a3f-3934-89fe-b4177146adf4
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1011374783
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1011374783
+      type: select
+rules:
+    - MATCH,select
