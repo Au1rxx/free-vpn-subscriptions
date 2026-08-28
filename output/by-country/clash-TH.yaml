@@ -1,13 +1,11 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-971093565
-      network: raw
-      port: 37515
-      server: 119.46.51.45
-      type: vmess
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792800
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 103.169.67.34
+      type: ss
       udp: true
-      uuid: 9b76bc31-17a5-4454-934a-8d5fb602cd70
     - alterId: 0
       cipher: auto
       name: vmess-906676251
@@ -17,30 +15,19 @@ proxies:
       type: vmess
       udp: true
       uuid: 9b76bc31-17a5-4454-934a-8d5fb602cd70
-    - alterId: 0
-      cipher: auto
-      name: vmess-884214269
-      network: none
-      port: 37515
-      server: 119.46.51.45
-      type: vmess
-      udp: true
-      uuid: 9b76bc31-17a5-4454-934a-8d5fb602cd70
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-971093565
+        - shadowsocks-696792800
         - vmess-906676251
-        - vmess-884214269
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-971093565
+        - shadowsocks-696792800
         - vmess-906676251
-        - vmess-884214269
       type: select
 rules:
     - MATCH,select
