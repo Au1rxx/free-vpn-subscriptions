@@ -1,0 +1,44 @@
+{
+  "outbounds": [
+    {
+      "server": "150.241.121.61",
+      "server_port": 443,
+      "tag": "vless-1005379246",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "1pgt5wjq9slq.bosfiles.net"
+      },
+      "transport": {
+        "service_name": "grpc",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "41af5ecc-9d3e-43c1-84bf-22b8d29de237"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1005379246"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1005379246"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

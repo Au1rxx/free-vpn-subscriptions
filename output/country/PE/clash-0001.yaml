@@ -1,6 +1,20 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-468154211
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: AERbWB2uslqIzm1hSlOZZEH3Y9qg_zlWRRyLfh97kXc
+        short-id: ""
+      server: 31.58.181.88
+      servername: tradingview.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: febfeec2-9a21-4afc-9edb-0833466672cd
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-696792879
       network: tcp
       port: 443
@@ -265,19 +279,11 @@ proxies:
       type: vless
       udp: true
       uuid: 4caaaae0-516b-4026-b2b2-69fea69df19a
-    - alterId: 0
-      cipher: auto
-      name: vmess-1005128087
-      network: tcp
-      port: 16322
-      server: zfd-boardv2.kunlun01dns.com
-      type: vmess
-      udp: true
-      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-468154211
         - vless-696792879
         - vless-702177389
         - vless-714280126
@@ -297,12 +303,12 @@ proxy-groups:
         - vless-859719833
         - vless-875268571
         - vless-907014035
-        - vmess-1005128087
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-468154211
         - vless-696792879
         - vless-702177389
         - vless-714280126
@@ -322,7 +328,6 @@ proxy-groups:
         - vless-859719833
         - vless-875268571
         - vless-907014035
-        - vmess-1005128087
       type: select
 rules:
     - MATCH,select

@@ -6,17 +6,33 @@ proxies:
       server: 118.107.222.231
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1010709862
+      network: tcp
+      port: 22732
+      reality-opts:
+        public-key: vHWs24ZHKIvNpToXCwB68TK0mybgKe1Yfq1Jdnas5TU
+        short-id: 2a2aa1d1366cef
+      server: 56.69.197.40
+      servername: www.amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: cb3c9f84-903b-4701-9107-701b6347b0aa
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-696792801
+        - vless-1010709862
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-696792801
+        - vless-1010709862
       type: select
 rules:
     - MATCH,select
