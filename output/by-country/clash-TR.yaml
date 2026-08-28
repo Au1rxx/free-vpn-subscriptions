@@ -6,17 +6,26 @@ proxies:
       server: 176.53.17.241
       type: ss
       udp: true
+    - name: hysteria2-896855672
+      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
+      port: 8080
+      server: 162.249.124.114
+      skip-cert-verify: true
+      sni: hopp-germany-new.ddnsguru.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1002038481
+        - hysteria2-896855672
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1002038481
+        - hysteria2-896855672
       type: select
 rules:
     - MATCH,select
