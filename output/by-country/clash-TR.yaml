@@ -1,0 +1,22 @@
+proxies:
+    - cipher: 2022-blake3-aes-256-gcm
+      name: shadowsocks-1002038481
+      password: f2Nq5YLnyclPaWR8my7/Vdd3ZX8URncXZNly5+HcUSs=:aE6MxBTe+MXHd9HoF2FF/BzKFqGTReMpMevlQhvsu0s=
+      port: 1943
+      server: 176.53.17.241
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-1002038481
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-1002038481
+      type: select
+rules:
+    - MATCH,select
