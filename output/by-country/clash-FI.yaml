@@ -1,11 +1,4 @@
 proxies:
-    - cipher: 2022-blake3-aes-256-gcm
-      name: shadowsocks-1028203344
-      password: rrR97O6JIRzSRG8uHimVCgLEssjipthiC4Hlieq/4/w=:Htb6AwARYBt+193LFyDnfe1fS+QDu9JHsiSw1waN0uc=
-      port: 13049
-      server: 65.109.215.50
-      type: ss
-      udp: true
     - name: hysteria2-1027317458
       password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
       port: 443
@@ -13,20 +6,6 @@ proxies:
       skip-cert-verify: true
       sni: fast.wwwinternetvideo.click
       type: hysteria2
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1010615621
-      network: tcp
-      port: 20532
-      reality-opts:
-        public-key: MQYuCxmU1rN6IvUr7NWirfQB6-TM3KUUJvs-4AssHg4
-        short-id: 3b2921eebc134aa6
-      server: 31.77.202.252
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: b72fbee7-5ca7-4fb6-9d91-e92d803149dd
     - name: hysteria2-1001444174
       password: BPvdjudCGodsF67hRP3xgBYvcKp48coTsh6ANydLhQs=
       port: 443
@@ -38,18 +17,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1028203344
         - hysteria2-1027317458
-        - vless-1010615621
         - hysteria2-1001444174
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1028203344
         - hysteria2-1027317458
-        - vless-1010615621
         - hysteria2-1001444174
       type: select
 rules:
