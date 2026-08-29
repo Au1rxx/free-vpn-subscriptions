@@ -94,13 +94,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1e280316-0408-47c4-b058-05b8f1f17f02
-    - name: vless-2297537
-      network: ws
-      port: 80
-      server: ov-italy1.09vpn.com
-      type: vless
-      udp: true
-      uuid: 1e280316-0408-47c4-b058-05b8f1f17f02
     - name: vless-2327852
       network: raw
       port: 10086
@@ -165,13 +158,6 @@ proxies:
       type: vless
       udp: true
       uuid: b3051b10-716d-455b-9811-aefcce3d633e
-    - name: vless-328932460
-      network: ws
-      port: 80
-      server: ov-italy1.09vpn.com
-      type: vless
-      udp: true
-      uuid: 049e56d8-0ba0-49e3-b764-ee04122b9f00
     - name: vless-343396637
       network: ws
       port: 80
@@ -776,20 +762,18 @@ proxies:
       type: vless
       udp: true
       uuid: e4737ce4-c646-44cc-9067-390e13c2a5f6
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1010679997
-      network: tcp
-      port: 32833
-      reality-opts:
-        public-key: PaTDdYBrlh1xBixdI0igvRRkf0vnUwMRzi-4oDyfS20
-        short-id: a0a305ccc8e94aa8
-      server: 172.238.232.239
-      servername: www.intel.com
+    - alterId: 0
+      cipher: auto
+      name: vmess-1008532968
+      network: ws
+      port: 8443
+      server: 57.131.32.191
+      servername: ov-italy1.09vpn.com
+      skip-cert-verify: true
       tls: true
-      type: vless
+      type: vmess
       udp: true
-      uuid: 167ed405-7de9-4bff-b1ea-6e3d49c76b0b
+      uuid: 848af33c-81f2-40c9-93b2-4681d056936b
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1010707960
@@ -1016,6 +1000,27 @@ proxies:
       type: vless
       udp: true
       uuid: 167ed405-7de9-4bff-b1ea-6e3d49c76b0b
+    - name: vless-1023592203
+      network: ws
+      port: 443
+      server: 151.243.198.104
+      type: vless
+      udp: true
+      uuid: e4737ce4-c646-44cc-9067-390e13c2a5f6
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1023674377
+      network: tcp
+      port: 32833
+      reality-opts:
+        public-key: PaTDdYBrlh1xBixdI0igvRRkf0vnUwMRzi-4oDyfS20
+        short-id: a0a305ccc8e94aa8
+      server: 172.238.232.239
+      servername: www.intel.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 167ed405-7de9-4bff-b1ea-6e3d49c76b0b
 proxy-groups:
     - interval: 300
       name: auto
@@ -1033,7 +1038,6 @@ proxy-groups:
         - vless-2291714
         - vless-2297535
         - vless-2297536
-        - vless-2297537
         - vless-2327852
         - vless-2327856
         - trojan-18355421
@@ -1043,7 +1047,6 @@ proxy-groups:
         - vless-232946909
         - vless-262807489
         - vless-270707479
-        - vless-328932460
         - vless-343396637
         - vless-429873172
         - vless-468076784
@@ -1116,7 +1119,7 @@ proxy-groups:
         - trojan-985533664
         - vless-1004253278
         - vless-1005570988
-        - vless-1010679997
+        - vmess-1008532968
         - vless-1010707960
         - vless-1010748524
         - vless-1010844468
@@ -1138,6 +1141,8 @@ proxy-groups:
         - vless-1019500275
         - vless-1019819732
         - vless-1020070622
+        - vless-1023592203
+        - vless-1023674377
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -1156,7 +1161,6 @@ proxy-groups:
         - vless-2291714
         - vless-2297535
         - vless-2297536
-        - vless-2297537
         - vless-2327852
         - vless-2327856
         - trojan-18355421
@@ -1166,7 +1170,6 @@ proxy-groups:
         - vless-232946909
         - vless-262807489
         - vless-270707479
-        - vless-328932460
         - vless-343396637
         - vless-429873172
         - vless-468076784
@@ -1239,7 +1242,7 @@ proxy-groups:
         - trojan-985533664
         - vless-1004253278
         - vless-1005570988
-        - vless-1010679997
+        - vmess-1008532968
         - vless-1010707960
         - vless-1010748524
         - vless-1010844468
@@ -1261,6 +1264,8 @@ proxy-groups:
         - vless-1019500275
         - vless-1019819732
         - vless-1020070622
+        - vless-1023592203
+        - vless-1023674377
       type: select
 rules:
     - MATCH,select
