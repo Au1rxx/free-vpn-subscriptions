@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "493b3d1b5d6a298a32eea1935463dc4d",
+      "server": "tyy129.magiclampcloud.com",
+      "server_port": 59443,
+      "tag": "trojan-696781176",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "tyy129.magiclampcloud.com"
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-696781176"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-696781176"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
