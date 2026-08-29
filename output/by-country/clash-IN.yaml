@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-656143746
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: g77ZJbm18JEotapmVRjaXi133MzkbhkU2lxhVeXx8zw
+        short-id: 68a8
+      server: 5.253.42.164
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1015051101
@@ -41,6 +55,34 @@ proxies:
       type: vless
       udp: true
       uuid: 0faaa1ee-f3d2-49ec-92af-3228329f3000
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1019437422
+      network: raw
+      port: 19567
+      reality-opts:
+        public-key: tzm4xWHOerooioq4QQkI7VCvIapECgody_vJGDzX3UI
+        short-id: 87714fc3c52a
+      server: 172.237.44.80
+      servername: www.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0faaa1ee-f3d2-49ec-92af-3228329f3000
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-234984371
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
+        short-id: 88b6
+      server: 5.253.30.99
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-474937711
@@ -55,16 +97,13 @@ proxies:
       type: vless
       udp: true
       uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
-    - name: vless-1013886509
-      network: ws
+    - name: hysteria2-650413302
+      password: qQe1z5kU8kN6SlKnDt9Ru3Qp
       port: 443
-      server: 104.18.3.67
-      servername: in.520782.xyz
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 65c56e1f-5c41-40bc-b0b5-9346772476ca
+      server: vpn-in-001.fastervpn.world
+      skip-cert-verify: true
+      sni: vpn-in-001.fastervpn.world
+      type: hysteria2
     - client-fingerprint: firefox
       name: vless-821467673
       network: tcp
@@ -78,36 +117,33 @@ proxies:
       type: vless
       udp: true
       uuid: 0bf89828-484f-4710-9581-12aa961e3bf1
-    - name: hysteria2-650413302
-      password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-      port: 443
-      server: vpn-in-001.fastervpn.world
-      skip-cert-verify: true
-      sni: vpn-in-001.fastervpn.world
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-656143746
         - vless-1015051101
         - vless-474937712
         - vless-1011119233
+        - vless-1019437422
+        - vless-234984371
         - vless-474937711
-        - vless-1013886509
-        - vless-821467673
         - hysteria2-650413302
+        - vless-821467673
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-656143746
         - vless-1015051101
         - vless-474937712
         - vless-1011119233
+        - vless-1019437422
+        - vless-234984371
         - vless-474937711
-        - vless-1013886509
-        - vless-821467673
         - hysteria2-650413302
+        - vless-821467673
       type: select
 rules:
     - MATCH,select

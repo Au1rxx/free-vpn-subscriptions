@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-1013906494
-      network: tcp
-      port: 37185
-      server: 173.199.70.108
-      type: vless
-      udp: true
-      uuid: a8bc03e1-8e80-4a40-863b-6032f3ab7ca8
     - name: vless-1014131057
       network: raw
       port: 13903
@@ -27,6 +20,13 @@ proxies:
       type: vless
       udp: true
       uuid: 8c52f7db-9f22-49c0-b4be-c957b57b393a
+    - name: vless-1024506331
+      network: tcp
+      port: 39769
+      server: 95.179.219.244
+      type: vless
+      udp: true
+      uuid: 683cc41a-2654-4fdb-b4d8-515d356defcb
     - name: vless-1014131038
       network: raw
       port: 13903
@@ -130,13 +130,6 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - name: vless-1024506331
-      network: tcp
-      port: 39769
-      server: 95.179.219.244
-      type: vless
-      udp: true
-      uuid: 683cc41a-2654-4fdb-b4d8-515d356defcb
     - name: vless-860004424
       network: grpc
       port: 2083
@@ -189,28 +182,28 @@ proxies:
       type: vless
       udp: true
       uuid: df880bf8-2635-4a83-a6bf-91bb36df284b
-    - name: hysteria2-1013826623
-      password: 41f0d6d3-4a45-4635-8225-2abd2284189b
-      port: 2056
-      server: 166.88.228.161
-      skip-cert-verify: true
-      sni: mg3.mangshe.xyz
-      type: hysteria2
-    - name: hysteria2-1005580211
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-859627091
+      network: tcp
       port: 443
-      server: 35.181.166.40
-      skip-cert-verify: true
-      sni: 35.181.166.40
-      type: hysteria2
+      reality-opts:
+        public-key: 33zaT3jHXjtynSQ0Ucw9bK92-XH2zolJmuIeZ1XyZB0
+        short-id: e6
+      server: 161.97.160.224
+      servername: passport.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: b81b4d1b-7f20-48f1-82dc-d24bef898cab
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1013906494
         - vless-1014131057
         - shadowsocks-415242972
         - vless-1008643128
+        - vless-1024506331
         - vless-1014131038
         - vless-1014131035
         - hysteria2-1004725118
@@ -222,22 +215,20 @@ proxy-groups:
         - vless-1017362741
         - hysteria2-1026820217
         - hysteria2-1004725125
-        - vless-1024506331
         - vless-860004424
         - vless-1014979807
         - vless-1014266575
         - vless-1014131055
-        - hysteria2-1013826623
-        - hysteria2-1005580211
+        - vless-859627091
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1013906494
         - vless-1014131057
         - shadowsocks-415242972
         - vless-1008643128
+        - vless-1024506331
         - vless-1014131038
         - vless-1014131035
         - hysteria2-1004725118
@@ -249,13 +240,11 @@ proxy-groups:
         - vless-1017362741
         - hysteria2-1026820217
         - hysteria2-1004725125
-        - vless-1024506331
         - vless-860004424
         - vless-1014979807
         - vless-1014266575
         - vless-1014131055
-        - hysteria2-1013826623
-        - hysteria2-1005580211
+        - vless-859627091
       type: select
 rules:
     - MATCH,select

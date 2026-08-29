@@ -1,6 +1,20 @@
 proxies:
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-1019459806
+      network: raw
+      port: 22732
+      reality-opts:
+        public-key: vHWs24ZHKIvNpToXCwB68TK0mybgKe1Yfq1Jdnas5TU
+        short-id: 2a2aa1d1366cef
+      server: 56.69.197.40
+      servername: www.amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: cb3c9f84-903b-4701-9107-701b6347b0aa
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-1014337241
       network: raw
       port: 21874
@@ -45,6 +59,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1019459806
         - vless-1014337241
         - vless-1014132988
         - vless-1014132993
@@ -53,6 +68,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1019459806
         - vless-1014337241
         - vless-1014132988
         - vless-1014132993

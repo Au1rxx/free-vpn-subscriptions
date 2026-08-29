@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-819466279
-      password: UTJA57ypk2XKQpnm
-      port: 9033
-      server: 185.135.86.175
-      type: ss
-      udp: true
     - name: vless-650667509
       network: grpc
       port: 2083
@@ -16,6 +9,13 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - cipher: aes-256-cfb
+      name: shadowsocks-819466279
+      password: UTJA57ypk2XKQpnm
+      port: 9033
+      server: 185.135.86.175
+      type: ss
+      udp: true
     - name: vless-539832439
       network: grpc
       port: 2083
@@ -46,34 +46,25 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - cipher: aes-256-cfb
-      name: shadowsocks-696781305
-      password: 45xgMgm386pjWjTx
-      port: 9082
-      server: 185.135.86.175
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-819466279
         - vless-650667509
+        - shadowsocks-819466279
         - vless-539832439
         - vless-718040241
         - vless-561641518
-        - shadowsocks-696781305
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-819466279
         - vless-650667509
+        - shadowsocks-819466279
         - vless-539832439
         - vless-718040241
         - vless-561641518
-        - shadowsocks-696781305
       type: select
 rules:
     - MATCH,select
