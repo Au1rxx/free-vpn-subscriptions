@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-207
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 141.164.45.187
+      type: ss
+      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-249
       password: qwerREWQ@@
@@ -194,6 +201,13 @@ proxies:
       name: shadowsocks-4892328
       password: faBAoD54k87UJG7
       port: 2376
+      server: 141.164.45.187
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-4892330
+      password: TEzjfAYq2IjtuoS
+      port: 6697
       server: 141.164.45.187
       type: ss
       udp: true
@@ -450,15 +464,6 @@ proxies:
       skip-cert-verify: true
       sni: css.rbxcdn.com
       type: hysteria2
-    - alterId: 0
-      cipher: auto
-      name: vmess-468071504
-      network: ws
-      port: 80
-      server: 132.145.80.230
-      type: vmess
-      udp: true
-      uuid: 5155860e-d07d-46c3-9128-3afbd84626c7
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-468901438
@@ -1276,6 +1281,19 @@ proxies:
       type: vmess
       udp: true
       uuid: 9464ca40-dd75-3742-a628-d931a9f413b2
+    - client-fingerprint: chrome
+      name: vless-1007755587
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: pR7MPTAA4cZsW9AO-twMzuogiWGMKPiheTg70fcWWWs
+        short-id: 0a427bc3
+      server: 119.28.161.143
+      servername: apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1ebb0858-218a-4dee-8746-36a67bc64462
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1010678088
@@ -1353,27 +1371,6 @@ proxies:
       type: vless
       udp: true
       uuid: 78990f64-7bc8-48b9-a127-0d5545593a38
-    - name: vless-1015474506
-      network: ws
-      port: 8880
-      server: 104.17.101.139
-      type: vless
-      udp: true
-      uuid: 00ff7e5f-9b6f-4401-aab9-4d044660411f
-    - name: vless-1015474550
-      network: ws
-      port: 8880
-      server: 104.18.31.170
-      type: vless
-      udp: true
-      uuid: 85e14d59-02ea-4642-a317-50f1e1691660
-    - name: vless-1015474557
-      network: ws
-      port: 8880
-      server: 104.18.30.170
-      type: vless
-      udp: true
-      uuid: 85e14d59-02ea-4642-a317-50f1e1691660
     - name: vless-1016108336
       network: ws
       port: 8080
@@ -1657,10 +1654,24 @@ proxies:
       type: vless
       udp: true
       uuid: 55c97a9c-7de4-412d-8122-633adf5c7cb7
+    - client-fingerprint: chrome
+      name: vless-1027686302
+      network: tcp
+      port: 8686
+      reality-opts:
+        public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
+        short-id: 628b3c90c98ead4f
+      server: 52.79.82.144
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-207
         - shadowsocks-249
         - shadowsocks-260
         - shadowsocks-278
@@ -1687,6 +1698,7 @@ proxy-groups:
         - vmess-145107
         - vmess-145109
         - shadowsocks-4892328
+        - shadowsocks-4892330
         - vmess-5259790
         - vless-12945899
         - vless-12945900
@@ -1713,7 +1725,6 @@ proxy-groups:
         - trojan-292617716
         - trojan-428711848
         - hysteria2-459503008
-        - vmess-468071504
         - vless-468901438
         - hysteria2-474576634
         - trojan-474637038
@@ -1797,15 +1808,13 @@ proxy-groups:
         - vless-960490511
         - vless-975629419
         - vmess-1005124005
+        - vless-1007755587
         - vless-1010678088
         - vless-1010772968
         - vless-1010785879
         - vless-1010793871
         - vless-1014131048
         - vless-1014378913
-        - vless-1015474506
-        - vless-1015474550
-        - vless-1015474557
         - vless-1016108336
         - vless-1016108342
         - vless-1016108343
@@ -1835,11 +1844,13 @@ proxy-groups:
         - vless-1027296832
         - vless-1027296894
         - vless-1027296950
+        - vless-1027686302
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-207
         - shadowsocks-249
         - shadowsocks-260
         - shadowsocks-278
@@ -1866,6 +1877,7 @@ proxy-groups:
         - vmess-145107
         - vmess-145109
         - shadowsocks-4892328
+        - shadowsocks-4892330
         - vmess-5259790
         - vless-12945899
         - vless-12945900
@@ -1892,7 +1904,6 @@ proxy-groups:
         - trojan-292617716
         - trojan-428711848
         - hysteria2-459503008
-        - vmess-468071504
         - vless-468901438
         - hysteria2-474576634
         - trojan-474637038
@@ -1976,15 +1987,13 @@ proxy-groups:
         - vless-960490511
         - vless-975629419
         - vmess-1005124005
+        - vless-1007755587
         - vless-1010678088
         - vless-1010772968
         - vless-1010785879
         - vless-1010793871
         - vless-1014131048
         - vless-1014378913
-        - vless-1015474506
-        - vless-1015474550
-        - vless-1015474557
         - vless-1016108336
         - vless-1016108342
         - vless-1016108343
@@ -2014,6 +2023,7 @@ proxy-groups:
         - vless-1027296832
         - vless-1027296894
         - vless-1027296950
+        - vless-1027686302
       type: select
 rules:
     - MATCH,select

@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: chrome
+      name: vless-1027793157
+      network: tcp
+      port: 2095
+      reality-opts:
+        public-key: ODHRr6cqYEtv3OMvjokQe-8EMd5sIQG8Ymx-FZLjWmM
+        short-id: a6
+      server: download.mehdi-cpp.ir
+      servername: www.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: bbff0604-8fdb-43fc-a3ab-bcb46c4e4807
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1027793157
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1027793157
+      type: select
+rules:
+    - MATCH,select
