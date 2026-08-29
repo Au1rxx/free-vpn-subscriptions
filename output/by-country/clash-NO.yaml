@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-976057673
+      network: tcp
+      port: 335
+      reality-opts:
+        public-key: XJhq5Vpqo6j5Xsd56EMAK8--8EWBZWc3tjf-WFnInio
+        short-id: ec2213ae33d5b43f
+      server: 151.242.168.69
+      servername: onlineraceentry.co.uk
+      tls: true
+      type: vless
+      udp: true
+      uuid: 10000026-0216-6626-f000-da35b731a020
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-976057673
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-976057673
+      type: select
+rules:
+    - MATCH,select

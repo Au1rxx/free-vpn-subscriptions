@@ -6,13 +6,6 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - name: hysteria2-1001444174
-      password: BPvdjudCGodsF67hRP3xgBYvcKp48coTsh6ANydLhQs=
-      port: 443
-      server: fin14qr.wwwinternetvideo.click
-      skip-cert-verify: false
-      sni: fin14qr.wwwinternetvideo.click
-      type: hysteria2
     - cipher: 2022-blake3-aes-256-gcm
       name: shadowsocks-1028203344
       password: rrR97O6JIRzSRG8uHimVCgLEssjipthiC4Hlieq/4/w=:Htb6AwARYBt+193LFyDnfe1fS+QDu9JHsiSw1waN0uc=
@@ -44,25 +37,32 @@ proxies:
       type: vless
       udp: true
       uuid: b72fbee7-5ca7-4fb6-9d91-e92d803149dd
+    - name: hysteria2-1001444174
+      password: BPvdjudCGodsF67hRP3xgBYvcKp48coTsh6ANydLhQs=
+      port: 443
+      server: fin14qr.wwwinternetvideo.click
+      skip-cert-verify: false
+      sni: fin14qr.wwwinternetvideo.click
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-700405738
-        - hysteria2-1001444174
         - shadowsocks-1028203344
         - vless-860620822
         - vless-1010615621
+        - hysteria2-1001444174
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-700405738
-        - hysteria2-1001444174
         - shadowsocks-1028203344
         - vless-860620822
         - vless-1010615621
+        - hysteria2-1001444174
       type: select
 rules:
     - MATCH,select
