@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: firefox
+      name: vless-1024134861
+      network: tcp
+      port: 10694
+      reality-opts:
+        public-key: CHNEnURyZzZ1OQwb5SD2Ze8K9eIY2oggyrV5FOIsU28
+        short-id: a0fbc54d937aaccb
+      server: spt2.milkabebar.ir
+      servername: amp-api-edge.apps.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0ee1200e-049d-4eb4-9356-3bc3530f58ef
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-11052
       password: qItG8SueYQcP
@@ -24,6 +37,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1024134861
         - shadowsocks-11052
         - vless-1019921582
       type: url-test
@@ -31,6 +45,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1024134861
         - shadowsocks-11052
         - vless-1019921582
       type: select

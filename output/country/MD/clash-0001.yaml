@@ -20,12 +20,42 @@ proxies:
       type: vless
       udp: true
       uuid: 1206bad5-dcc9-410e-9595-d9fe9ee54085
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1028235591
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: 85.120.252.15
+      servername: mold.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1028235626
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: mold.freeinternat.com
+      servername: mold.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1018141268
         - vless-1027249541
+        - vless-1028235591
+        - vless-1028235626
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -33,6 +63,8 @@ proxy-groups:
         - auto
         - hysteria2-1018141268
         - vless-1027249541
+        - vless-1028235591
+        - vless-1028235626
       type: select
 rules:
     - MATCH,select

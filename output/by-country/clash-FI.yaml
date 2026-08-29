@@ -13,6 +13,13 @@ proxies:
       skip-cert-verify: false
       sni: fin14qr.wwwinternetvideo.click
       type: hysteria2
+    - cipher: 2022-blake3-aes-256-gcm
+      name: shadowsocks-1028203344
+      password: rrR97O6JIRzSRG8uHimVCgLEssjipthiC4Hlieq/4/w=:Htb6AwARYBt+193LFyDnfe1fS+QDu9JHsiSw1waN0uc=
+      port: 13049
+      server: 65.109.215.50
+      type: ss
+      udp: true
     - name: vless-860620822
       network: grpc
       port: 2101
@@ -23,13 +30,29 @@ proxies:
       type: vless
       udp: true
       uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1010615621
+      network: tcp
+      port: 20532
+      reality-opts:
+        public-key: MQYuCxmU1rN6IvUr7NWirfQB6-TM3KUUJvs-4AssHg4
+        short-id: 3b2921eebc134aa6
+      server: 31.77.202.252
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b72fbee7-5ca7-4fb6-9d91-e92d803149dd
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-700405738
         - hysteria2-1001444174
+        - shadowsocks-1028203344
         - vless-860620822
+        - vless-1010615621
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -37,7 +60,9 @@ proxy-groups:
         - auto
         - hysteria2-700405738
         - hysteria2-1001444174
+        - shadowsocks-1028203344
         - vless-860620822
+        - vless-1010615621
       type: select
 rules:
     - MATCH,select
