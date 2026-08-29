@@ -8,17 +8,28 @@ proxies:
       type: vmess
       udp: true
       uuid: a8bcce43-abda-315b-8e81-e3e65bcb3d07
+    - alterId: 0
+      cipher: auto
+      name: vmess-717833185
+      network: tcp
+      port: 11885
+      server: board-02.ddnskunlun.com
+      type: vmess
+      udp: true
+      uuid: a8bcce43-abda-315b-8e81-e3e65bcb3d07
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-256496753
+        - vmess-717833185
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-256496753
+        - vmess-717833185
       type: select
 rules:
     - MATCH,select
