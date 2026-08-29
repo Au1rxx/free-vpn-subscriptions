@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: firefox
+      name: vless-1015409633
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: tzOeyllk2VtPXZ_BJ2lOZcGtsnn41ZHBa9dE6s9sFiQ
+        short-id: c8c75aaf699259b4
+      server: 159.195.242.180
+      servername: at2.tsumshop.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 82d145c1-d691-4eef-9de1-9c316db4859a
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1015409633
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1015409633
+      type: select
+rules:
+    - MATCH,select

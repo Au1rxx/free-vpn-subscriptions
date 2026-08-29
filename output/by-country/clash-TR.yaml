@@ -6,6 +6,13 @@ proxies:
       skip-cert-verify: true
       sni: hopp-germany-new.ddnsguru.com
       type: hysteria2
+    - name: vless-985368143
+      network: grpc
+      port: 2053
+      server: 212.87.199.76
+      type: vless
+      udp: true
+      uuid: e2c6905e-46ec-434b-8400-0bc5bf0363e6
     - client-fingerprint: chrome
       name: vless-1002318857
       network: tcp
@@ -24,6 +31,7 @@ proxy-groups:
       name: auto
       proxies:
         - hysteria2-1009480038
+        - vless-985368143
         - vless-1002318857
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -31,6 +39,7 @@ proxy-groups:
       proxies:
         - auto
         - hysteria2-1009480038
+        - vless-985368143
         - vless-1002318857
       type: select
 rules:

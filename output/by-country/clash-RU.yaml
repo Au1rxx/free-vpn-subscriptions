@@ -13,12 +13,26 @@ proxies:
       skip-cert-verify: true
       sni: els.mangshe.xyz
       type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-1015138604
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: bj4GN5p31ILpE4DZL7FLPHUbB0rzcgWKYzdQ3SKhtVM
+        short-id: ""
+      server: 93.93.207.105
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 82d145c1-d691-4eef-9de1-9c316db4859a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1013628718
         - hysteria2-913805374
+        - vless-1015138604
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +40,7 @@ proxy-groups:
         - auto
         - shadowsocks-1013628718
         - hysteria2-913805374
+        - vless-1015138604
       type: select
 rules:
     - MATCH,select
