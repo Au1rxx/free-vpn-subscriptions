@@ -13,12 +13,28 @@ proxies:
       server: 217.30.10.44
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-717969033
+      password: jt2ekBNc9HuVtm2a
+      port: 9052
+      server: 217.30.10.44
+      type: ss
+      udp: true
+    - name: hysteria2-929778389
+      password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
+      port: 8443
+      server: 103.246.248.231
+      skip-cert-verify: false
+      sni: hopp-legend-se.roxa.org
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-923321804
         - shadowsocks-812343744
+        - shadowsocks-717969033
+        - hysteria2-929778389
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +42,8 @@ proxy-groups:
         - auto
         - hysteria2-923321804
         - shadowsocks-812343744
+        - shadowsocks-717969033
+        - hysteria2-929778389
       type: select
 rules:
     - MATCH,select

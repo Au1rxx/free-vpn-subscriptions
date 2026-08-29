@@ -43,20 +43,6 @@ proxies:
       uuid: 85dd8227-0f12-4826-a712-6313211774b5
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-1014337241
-      network: raw
-      port: 21874
-      reality-opts:
-        public-key: 75sTDYJk8ylA97-aBhAlF1tU4OaCfdOaOSIBshPW7Bs
-        short-id: 42e853a5559e1032
-      server: 43.217.16.8
-      servername: www.amd.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 85dd8227-0f12-4826-a712-6313211774b5
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
       name: vless-1014348496
       network: raw
       port: 59463
@@ -69,6 +55,27 @@ proxies:
       type: vless
       udp: true
       uuid: cb51e964-70a5-4522-9d04-d97b58fe509a
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1014337241
+      network: raw
+      port: 21874
+      reality-opts:
+        public-key: 75sTDYJk8ylA97-aBhAlF1tU4OaCfdOaOSIBshPW7Bs
+        short-id: 42e853a5559e1032
+      server: 43.217.16.8
+      servername: www.amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 85dd8227-0f12-4826-a712-6313211774b5
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792801
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 118.107.222.231
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -76,8 +83,9 @@ proxy-groups:
         - vless-1014132988
         - vless-1014132995
         - vless-1014132993
-        - vless-1014337241
         - vless-1014348496
+        - vless-1014337241
+        - shadowsocks-696792801
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -86,8 +94,9 @@ proxy-groups:
         - vless-1014132988
         - vless-1014132995
         - vless-1014132993
-        - vless-1014337241
         - vless-1014348496
+        - vless-1014337241
+        - shadowsocks-696792801
       type: select
 rules:
     - MATCH,select
