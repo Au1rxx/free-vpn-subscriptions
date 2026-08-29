@@ -1,6 +1,33 @@
 proxies:
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-1015051101
+      network: tcp
+      port: 19567
+      reality-opts:
+        public-key: tzm4xWHOerooioq4QQkI7VCvIapECgody_vJGDzX3UI
+        short-id: 87714fc3c52a
+      server: 172.237.44.80
+      servername: www.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0faaa1ee-f3d2-49ec-92af-3228329f3000
+    - client-fingerprint: firefox
+      name: vless-821467673
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Gy6W0bXf2bpxoG1k3szp8X0ekzoyXlEtzT8V4mYQ3EE
+        short-id: 29fe4205ddc971a8
+      server: 194.61.31.126
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0bf89828-484f-4710-9581-12aa961e3bf1
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-1011119233
       network: tcp
       port: 19567
@@ -98,33 +125,6 @@ proxies:
       udp: true
       uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
     - client-fingerprint: firefox
-      name: vless-821467673
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Gy6W0bXf2bpxoG1k3szp8X0ekzoyXlEtzT8V4mYQ3EE
-        short-id: 29fe4205ddc971a8
-      server: 194.61.31.126
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0bf89828-484f-4710-9581-12aa961e3bf1
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-202734758
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
-        short-id: 88b6
-      server: 5.253.30.99
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
-    - client-fingerprint: firefox
       name: vless-860013122
       network: raw
       port: 2053
@@ -148,6 +148,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1015051101
+        - vless-821467673
         - vless-1011119233
         - vless-234984371
         - vless-703656405
@@ -155,8 +157,6 @@ proxy-groups:
         - vless-211485818
         - vless-436248614
         - vless-1014378477
-        - vless-821467673
-        - vless-202734758
         - vless-860013122
         - hysteria2-650413302
       type: url-test
@@ -164,6 +164,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1015051101
+        - vless-821467673
         - vless-1011119233
         - vless-234984371
         - vless-703656405
@@ -171,8 +173,6 @@ proxy-groups:
         - vless-211485818
         - vless-436248614
         - vless-1014378477
-        - vless-821467673
-        - vless-202734758
         - vless-860013122
         - hysteria2-650413302
       type: select

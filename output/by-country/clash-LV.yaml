@@ -9,26 +9,29 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: hysteria2-1015341962
-      password: 901113fb-2ddd-4472-84bf-307de471f32f
-      port: 443
-      server: lv.katanalink.net
+    - name: vless-718040241
+      network: grpc
+      port: 2083
+      server: laoye.in-gect.fun
+      servername: laoye.in-gect.fun
       skip-cert-verify: false
-      sni: lv.katanalink.net
-      type: hysteria2
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-561641518
-        - hysteria2-1015341962
+        - vless-718040241
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-561641518
-        - hysteria2-1015341962
+        - vless-718040241
       type: select
 rules:
     - MATCH,select
