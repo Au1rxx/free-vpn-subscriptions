@@ -15,20 +15,6 @@ proxies:
       uuid: cb3c9f84-903b-4701-9107-701b6347b0aa
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-1014337241
-      network: raw
-      port: 21874
-      reality-opts:
-        public-key: 75sTDYJk8ylA97-aBhAlF1tU4OaCfdOaOSIBshPW7Bs
-        short-id: 42e853a5559e1032
-      server: 43.217.16.8
-      servername: www.amd.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 85dd8227-0f12-4826-a712-6313211774b5
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
       name: vless-1014132988
       network: tcp
       port: 53271
@@ -55,23 +41,46 @@ proxies:
       type: vless
       udp: true
       uuid: cb51e964-70a5-4522-9d04-d97b58fe509a
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792801
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 118.107.222.231
+      type: ss
+      udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1014348496
+      network: raw
+      port: 59463
+      reality-opts:
+        public-key: GNLuMPdi52lBbZ_9tz3nWOcKdQYVr4lzE4RX0tKQAEo
+        short-id: 2f92a5b7373b593c
+      server: 56.68.93.171
+      servername: www.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: cb51e964-70a5-4522-9d04-d97b58fe509a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1019459806
-        - vless-1014337241
         - vless-1014132988
         - vless-1014132995
+        - shadowsocks-696792801
+        - vless-1014348496
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1019459806
-        - vless-1014337241
         - vless-1014132988
         - vless-1014132995
+        - shadowsocks-696792801
+        - vless-1014348496
       type: select
 rules:
     - MATCH,select
