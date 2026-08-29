@@ -20,6 +20,16 @@ proxies:
       skip-cert-verify: false
       sni: jp.katanalink.net
       type: hysteria2
+    - name: vless-860620822
+      network: grpc
+      port: 2101
+      server: 132-243-223-227.sslip.io
+      servername: 132-243-223-227.sslip.io
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2edfd299-fd54-4056-9d79-3c99f19bdae1
 proxy-groups:
     - interval: 300
       name: auto
@@ -27,6 +37,7 @@ proxy-groups:
         - hysteria2-700405738
         - hysteria2-1001444174
         - hysteria2-1015341959
+        - vless-860620822
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -35,6 +46,7 @@ proxy-groups:
         - hysteria2-700405738
         - hysteria2-1001444174
         - hysteria2-1015341959
+        - vless-860620822
       type: select
 rules:
     - MATCH,select
