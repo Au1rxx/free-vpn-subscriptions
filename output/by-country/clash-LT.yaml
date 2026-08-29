@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-768399438
+      password: UkXRsXvR6buDMG2Y
+      port: 9001
+      server: 195.238.126.20
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1002318842
@@ -17,12 +24,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-768399438
         - vless-1002318842
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-768399438
         - vless-1002318842
       type: select
 rules:

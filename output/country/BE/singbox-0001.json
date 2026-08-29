@@ -1,0 +1,58 @@
+{
+  "outbounds": [
+    {
+      "server": "vqrlof-pwa5a7-onfjlv.zedbazi061.workers.dev",
+      "server_port": 2086,
+      "tag": "vless-1014498006",
+      "transport": {
+        "headers": {
+          "Host": "vqrlof-pwa5a7-onfjlv.zedbazi061.workers.dev"
+        },
+        "path": "/sync",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "73796e63-0000-4000-8000-000000000007"
+    },
+    {
+      "server": "vqrlof-pwa5a7-onfjlv.zedbazi061.workers.dev",
+      "server_port": 2095,
+      "tag": "vless-1014498036",
+      "transport": {
+        "headers": {
+          "Host": "vqrlof-pwa5a7-onfjlv.zedbazi061.workers.dev"
+        },
+        "path": "/sync",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "73796e63-0000-4000-8000-000000000008"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1014498006",
+        "vless-1014498036"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1014498006",
+        "vless-1014498036"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
