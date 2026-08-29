@@ -1,4 +1,32 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1005389992
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 23cb4W9THzBKsrECsLh-A_FcKZfkAtUONoDze8-GnQE
+        short-id: e90360ec7cc61b20
+      server: 212.102.38.25
+      servername: udemy.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b34a52cb-cd52-49a8-9362-b8e97c151d49
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1005389986
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 23cb4W9THzBKsrECsLh-A_FcKZfkAtUONoDze8-GnQE
+        short-id: e90360ec7cc61b20
+      server: 212.102.38.25
+      servername: udemy.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b34a52cb-cd52-49a8-9362-b8e97c151d49
     - client-fingerprint: ios
       flow: xtls-rprx-vision
       name: vless-1003488399
@@ -31,6 +59,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1005389992
+        - vless-1005389986
         - vless-1003488399
         - vless-1004809880
       type: url-test
@@ -38,6 +68,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1005389992
+        - vless-1005389986
         - vless-1003488399
         - vless-1004809880
       type: select

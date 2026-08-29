@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1013906494
+      network: tcp
+      port: 37185
+      server: 173.199.70.108
+      type: vless
+      udp: true
+      uuid: a8bc03e1-8e80-4a40-863b-6032f3ab7ca8
     - name: hysteria2-911275128
       password: 41f0d6d3-4a45-4635-8225-2abd2284189b
       port: 2056
@@ -146,13 +153,13 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - name: hysteria2-1013826623
-      password: 41f0d6d3-4a45-4635-8225-2abd2284189b
-      port: 2056
-      server: 166.88.228.161
-      skip-cert-verify: true
-      sni: mg3.mangshe.xyz
-      type: hysteria2
+    - name: vless-1024506331
+      network: tcp
+      port: 39769
+      server: 95.179.219.244
+      type: vless
+      udp: true
+      uuid: 683cc41a-2654-4fdb-b4d8-515d356defcb
     - name: vless-694391514
       network: grpc
       port: 2083
@@ -226,6 +233,13 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
+    - name: hysteria2-1013826623
+      password: 41f0d6d3-4a45-4635-8225-2abd2284189b
+      port: 2056
+      server: 166.88.228.161
+      skip-cert-verify: true
+      sni: mg3.mangshe.xyz
+      type: hysteria2
     - name: hysteria2-984679229
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -240,17 +254,11 @@ proxies:
       skip-cert-verify: true
       sni: vpn-fr-001.fastervpn.world
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-415242972
-      password: BqnqToih0PbU
-      port: 8388
-      server: 51.255.13.232
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1013906494
         - hysteria2-911275128
         - hysteria2-1004725118
         - hysteria2-985315640
@@ -269,21 +277,22 @@ proxy-groups:
         - vless-561641520
         - vless-742974932
         - hysteria2-1001586635
-        - hysteria2-1013826623
+        - vless-1024506331
         - vless-694391514
         - vless-1014131056
         - vless-1014179229
         - vless-1015169526
         - vless-1015169564
         - hysteria2-1005574713
+        - hysteria2-1013826623
         - hysteria2-984679229
         - hysteria2-984679241
-        - shadowsocks-415242972
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1013906494
         - hysteria2-911275128
         - hysteria2-1004725118
         - hysteria2-985315640
@@ -302,16 +311,16 @@ proxy-groups:
         - vless-561641520
         - vless-742974932
         - hysteria2-1001586635
-        - hysteria2-1013826623
+        - vless-1024506331
         - vless-694391514
         - vless-1014131056
         - vless-1014179229
         - vless-1015169526
         - vless-1015169564
         - hysteria2-1005574713
+        - hysteria2-1013826623
         - hysteria2-984679229
         - hysteria2-984679241
-        - shadowsocks-415242972
       type: select
 rules:
     - MATCH,select
