@@ -8,20 +8,6 @@ proxies:
       udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-1011511846
-      network: tcp
-      port: 22012
-      reality-opts:
-        public-key: uSrE0JjmM3fOdPaVIqOdttSJXVHwgVOD0WbyeN1RCBQ
-        short-id: 6d62b7e1ed6f2aed
-      server: 43.217.83.128
-      servername: www.nvidia.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a292d697-5249-417f-aa8a-b853fa6ff35c
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
       name: vless-1014132988
       network: tcp
       port: 53271
@@ -62,25 +48,55 @@ proxies:
       type: vless
       udp: true
       uuid: cb51e964-70a5-4522-9d04-d97b58fe509a
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1014337241
+      network: raw
+      port: 21874
+      reality-opts:
+        public-key: 75sTDYJk8ylA97-aBhAlF1tU4OaCfdOaOSIBshPW7Bs
+        short-id: 42e853a5559e1032
+      server: 43.217.16.8
+      servername: www.amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 85dd8227-0f12-4826-a712-6313211774b5
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1014348496
+      network: raw
+      port: 59463
+      reality-opts:
+        public-key: GNLuMPdi52lBbZ_9tz3nWOcKdQYVr4lzE4RX0tKQAEo
+        short-id: 2f92a5b7373b593c
+      server: 56.68.93.171
+      servername: www.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: cb51e964-70a5-4522-9d04-d97b58fe509a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-696792801
-        - vless-1011511846
         - vless-1014132988
         - vless-1014132993
         - vless-1014132995
+        - vless-1014337241
+        - vless-1014348496
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-696792801
-        - vless-1011511846
         - vless-1014132988
         - vless-1014132993
         - vless-1014132995
+        - vless-1014337241
+        - vless-1014348496
       type: select
 rules:
     - MATCH,select
