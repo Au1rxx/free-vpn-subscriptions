@@ -13,12 +13,56 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1009669806
+      network: tcp
+      port: 19842
+      reality-opts:
+        public-key: sfOfuQeJBlKfDnPL_EMWUxMIiFAN8BNKjtWDUvlsjzM
+        short-id: 25ebc9e0a912
+      server: 185.254.205.79
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 43c23116-1115-4af4-a0f0-56f02841a605
+    - client-fingerprint: firefox
+      name: vless-842638788
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: XrPOJwmpnq8NeCXu6K68Mp59gQ56Dr4YYboxI70kqzA
+        short-id: 866af6e56606f2bc
+      server: 212.227.235.66
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6fbdbd3c-7696-4b9a-9a10-bcecc26e0f6f
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1014380464
+      network: tcp
+      port: 48296
+      reality-opts:
+        public-key: ga1wUMMknP4pwJfUNOOvD9I35XV4q3c73byXPYbRxBE
+        short-id: 109657bb2dbe99
+      server: 93.189.94.67
+      servername: www.sony.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 898537d9-ce3a-4937-bbef-c0fa61c07791
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11052
         - shadowsocks-16132
+        - vless-1009669806
+        - vless-842638788
+        - vless-1014380464
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +70,9 @@ proxy-groups:
         - auto
         - shadowsocks-11052
         - shadowsocks-16132
+        - vless-1009669806
+        - vless-842638788
+        - vless-1014380464
       type: select
 rules:
     - MATCH,select
