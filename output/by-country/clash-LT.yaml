@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1025006038
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: lh3qj3VX335HGH2T3xQ8RHZ4v3zEStbz6ENiPwkILSg
+        short-id: cf43c0c197cd464a
+      server: 62.152.56.73
+      servername: wl-12.nodes.ac
+      tls: true
+      type: vless
+      udp: true
+      uuid: e9756541-a835-4a12-9331-69b0d95ee6c2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1025006038
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1025006038
+      type: select
+rules:
+    - MATCH,select

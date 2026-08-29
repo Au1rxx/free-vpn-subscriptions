@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-696792832
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 82.23.146.72
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-996922156
@@ -20,6 +13,13 @@ proxies:
       type: vless
       udp: true
       uuid: ff3bb912-0fac-40ce-8d67-084f26826aac
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792832
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 82.23.146.72
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1007755577
@@ -76,6 +76,20 @@ proxies:
       type: vless
       udp: true
       uuid: 57e8207e-f080-4ad9-adf9-e9996b3b00b9
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-983638801
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: qM0uZ1Gp_Ve59S_iKPyFqQXjfjkUqf6iSHH_fxFt7w0
+        short-id: 0f4d3210977f51a5
+      server: 51.161.199.124
+      servername: suetinklerartglass.co.uk
+      tls: true
+      type: vless
+      udp: true
+      uuid: 643cdd4d-8731-440b-9e46-9496f593aa27
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-659123901
@@ -218,20 +232,6 @@ proxies:
       uuid: f4ae4cd4-7e7b-47a0-9817-e81ffa826b53
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-983638801
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: qM0uZ1Gp_Ve59S_iKPyFqQXjfjkUqf6iSHH_fxFt7w0
-        short-id: 0f4d3210977f51a5
-      server: 51.161.199.124
-      servername: suetinklerartglass.co.uk
-      tls: true
-      type: vless
-      udp: true
-      uuid: 643cdd4d-8731-440b-9e46-9496f593aa27
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-532685580
       network: tcp
       port: 443
@@ -248,12 +248,13 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-696792832
         - vless-996922156
+        - shadowsocks-696792832
         - vless-1007755577
         - vless-960752693
         - vless-960752739
         - vless-982065620
+        - vless-983638801
         - vless-659123901
         - vless-788158676
         - vless-1007755559
@@ -264,19 +265,19 @@ proxy-groups:
         - vless-1007755564
         - vless-1007755582
         - vless-1018151548
-        - vless-983638801
         - vless-532685580
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-696792832
         - vless-996922156
+        - shadowsocks-696792832
         - vless-1007755577
         - vless-960752693
         - vless-960752739
         - vless-982065620
+        - vless-983638801
         - vless-659123901
         - vless-788158676
         - vless-1007755559
@@ -287,7 +288,6 @@ proxy-groups:
         - vless-1007755564
         - vless-1007755582
         - vless-1018151548
-        - vless-983638801
         - vless-532685580
       type: select
 rules:
