@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1015475575
+      network: ws
+      port: 2052
+      server: 162.159.0.53
+      type: vless
+      udp: true
+      uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
     - name: vless-1015475584
       network: ws
       port: 8880
@@ -2382,14 +2389,6 @@ proxies:
       type: vless
       udp: true
       uuid: fe113f0b-43fa-4662-9403-9f91b53fed1f
-    - name: trojan-1027255226
-      password: d9ac7c6d-9ca8-4e1b-af9f-d268f69249b5
-      port: 50000
-      server: 43.165.185.191
-      skip-cert-verify: true
-      sni: jp200m.jiasu.asia
-      type: trojan
-      udp: true
     - name: trojan-1027255247
       password: fd3f82cc-bf25-4d3a-a379-09834800ade9
       port: 50000
@@ -3663,10 +3662,21 @@ proxies:
       type: vless
       udp: true
       uuid: c2a08e4d-da8f-435e-90e8-65600ee185be
+    - name: vless-1039975704
+      network: ws
+      port: 443
+      server: jp.mkdir.kdns.fr
+      servername: python-test123.pages.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2cf94f4d-9d5b-49ca-81a3-ddc0529a2dac
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1015475575
         - vless-1015475584
         - vless-1015475593
         - vless-1015475594
@@ -3885,7 +3895,6 @@ proxy-groups:
         - vless-1027121714
         - vless-1027147797
         - vless-1027244788
-        - trojan-1027255226
         - trojan-1027255247
         - trojan-1027255317
         - vless-1027296833
@@ -4014,11 +4023,13 @@ proxy-groups:
         - vless-1037317679
         - vless-1038685483
         - vless-1039013762
+        - vless-1039975704
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1015475575
         - vless-1015475584
         - vless-1015475593
         - vless-1015475594
@@ -4237,7 +4248,6 @@ proxy-groups:
         - vless-1027121714
         - vless-1027147797
         - vless-1027244788
-        - trojan-1027255226
         - trojan-1027255247
         - trojan-1027255317
         - vless-1027296833
@@ -4366,6 +4376,7 @@ proxy-groups:
         - vless-1037317679
         - vless-1038685483
         - vless-1039013762
+        - vless-1039975704
       type: select
 rules:
     - MATCH,select
