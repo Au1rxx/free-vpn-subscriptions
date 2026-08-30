@@ -1,4 +1,28 @@
 proxies:
+    - name: trojan-661704880
+      password: humanity
+      port: 443
+      server: 104.17.121.43
+      skip-cert-verify: false
+      sni: www.calmlunch.com
+      type: trojan
+      udp: true
+    - name: trojan-661704881
+      password: humanity
+      port: 443
+      server: 104.16.72.41
+      skip-cert-verify: false
+      sni: www.calmlunch.com
+      type: trojan
+      udp: true
+    - name: trojan-661704887
+      password: humanity
+      port: 443
+      server: 104.17.121.9
+      skip-cert-verify: true
+      sni: www.calmlunch.com
+      type: trojan
+      udp: true
     - name: trojan-661704912
       password: humanity
       port: 443
@@ -1640,13 +1664,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 9db4c708-aef8-4359-821b-38e47990be0d
-    - name: vless-720797630
-      network: ws
-      port: 8880
-      server: 172.67.204.84
-      type: vless
-      udp: true
-      uuid: ed4a42eb-f301-41fa-a546-3849cf3fc75a
     - name: trojan-720834129
       password: pvZE3UfT0ziK1omVLlsjINBqeqqwab1M
       port: 50573
@@ -1757,20 +1774,6 @@ proxies:
       uuid: b8f3a337-ad39-4064-95f1-33a725a65877
     - client-fingerprint: random
       flow: xtls-rprx-vision
-      name: vless-721523155
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: JtA0d5K6Jnmg35oWP9SDOsc1ceuqaxOsNg33fiPHJQs
-        short-id: e915
-      server: 204.168.148.225
-      servername: play.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 19791a56-54a5-47bf-a7c7-5cb3d3dce904
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
       name: vless-721524026
       network: tcp
       port: 17623
@@ -1796,37 +1799,6 @@ proxies:
       type: vless
       udp: true
       uuid: 96563f88-f743-4395-a3b2-27ec462ae45e
-    - name: vless-721535843
-      network: ws
-      port: 80
-      server: 104.17.221.98
-      type: vless
-      udp: true
-      uuid: 435bda4c-fe5e-42c9-a3ad-15334943b38a
-    - name: vless-721565269
-      network: ws
-      port: 80
-      server: 104.17.50.38
-      type: vless
-      udp: true
-      uuid: 781a8eb4-c4f7-4f99-9dee-e80369dbf1ec
-    - name: vless-721566499
-      network: ws
-      port: 8080
-      server: 198.41.193.90
-      type: vless
-      udp: true
-      uuid: 0f3137a5-ce08-499c-ad63-a0de19ae06b4
-    - name: vless-721744518
-      network: ws
-      port: 443
-      server: 172.64.80.1
-      servername: yellow-disk-0edf.diyenec996.workers.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: e73d4e2a-ac73-4948-960a-2c2dd57b7ea8
     - name: hysteria2-722298524
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -2753,10 +2725,43 @@ proxies:
       type: vless
       udp: true
       uuid: 77777777-8a3e-6666-b6d1-a9c5f0e8b3a2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-745632761
+      network: tcp
+      port: 28190
+      reality-opts:
+        public-key: ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno
+        short-id: ""
+      server: 159.89.87.21
+      servername: aws.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 14c80e0e-f7ce-4991-94fc-99a1db4a9b1e
+    - name: vless-754621403
+      network: tcp
+      port: 47878
+      server: 152.69.195.67
+      type: vless
+      udp: true
+      uuid: eb8613e3-8393-4cff-a3ad-6501fd4adc63
+    - alterId: 0
+      cipher: auto
+      name: vmess-755751409
+      network: tcp
+      port: 10000
+      server: 47.250.135.244
+      type: vmess
+      udp: true
+      uuid: aedc66b8-99d7-4a21-8310-61870e7f870d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-661704880
+        - trojan-661704881
+        - trojan-661704887
         - trojan-661704912
         - trojan-661704919
         - vless-661704949
@@ -2913,7 +2918,6 @@ proxy-groups:
         - vless-718263250
         - vless-718263270
         - vmess-720644394
-        - vless-720797630
         - trojan-720834129
         - vless-720888873
         - vless-720888904
@@ -2923,13 +2927,8 @@ proxy-groups:
         - vless-721523038
         - vless-721523114
         - vless-721523139
-        - vless-721523155
         - vless-721524026
         - vless-721528352
-        - vless-721535843
-        - vless-721565269
-        - vless-721566499
-        - vless-721744518
         - hysteria2-722298524
         - hysteria2-722298531
         - hysteria2-722298606
@@ -3014,11 +3013,17 @@ proxy-groups:
         - vless-742959031
         - hysteria2-742970030
         - vless-742974893
+        - vless-745632761
+        - vless-754621403
+        - vmess-755751409
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-661704880
+        - trojan-661704881
+        - trojan-661704887
         - trojan-661704912
         - trojan-661704919
         - vless-661704949
@@ -3175,7 +3180,6 @@ proxy-groups:
         - vless-718263250
         - vless-718263270
         - vmess-720644394
-        - vless-720797630
         - trojan-720834129
         - vless-720888873
         - vless-720888904
@@ -3185,13 +3189,8 @@ proxy-groups:
         - vless-721523038
         - vless-721523114
         - vless-721523139
-        - vless-721523155
         - vless-721524026
         - vless-721528352
-        - vless-721535843
-        - vless-721565269
-        - vless-721566499
-        - vless-721744518
         - hysteria2-722298524
         - hysteria2-722298531
         - hysteria2-722298606
@@ -3276,6 +3275,9 @@ proxy-groups:
         - vless-742959031
         - hysteria2-742970030
         - vless-742974893
+        - vless-745632761
+        - vless-754621403
+        - vmess-755751409
       type: select
 rules:
     - MATCH,select
