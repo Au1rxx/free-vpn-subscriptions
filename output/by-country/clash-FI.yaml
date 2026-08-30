@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1033185656
+      network: raw
+      port: 39633
+      server: 65.109.215.50
+      type: vless
+      udp: true
+      uuid: de5b01f7-0697-49ec-aeb1-6ef0361344fb
     - name: vless-1027868055
       network: tcp
       port: 39633
@@ -17,6 +24,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1033185656
         - vless-1027868055
         - vless-1031020577
       type: url-test
@@ -24,6 +32,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1033185656
         - vless-1027868055
         - vless-1031020577
       type: select

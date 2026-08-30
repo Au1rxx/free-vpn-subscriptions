@@ -1,0 +1,46 @@
+{
+  "outbounds": [
+    {
+      "method": "2022-blake3-chacha20-poly1305",
+      "password": "bJqLdTAJymgdGwNASsjxuR4N7THATrNjW/6mZv77qRw=",
+      "server": "144.22.210.207",
+      "server_port": 59319,
+      "tag": "shadowsocks-1027530195",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "2022-blake3-chacha20-poly1305",
+      "password": "viIh4ZhymCsvjIfhXYuFGQkeJEWkCHrqf3oNjsT0z00=",
+      "server": "164.152.62.150",
+      "server_port": 59319,
+      "tag": "shadowsocks-1036659228",
+      "type": "shadowsocks"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "shadowsocks-1027530195",
+        "shadowsocks-1036659228"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "shadowsocks-1027530195",
+        "shadowsocks-1036659228"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
