@@ -1,0 +1,31 @@
+proxies:
+    - name: vless-1027973459
+      network: tcp
+      port: 62145
+      server: 158.247.126.244
+      type: vless
+      udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+    - name: vless-1027973497
+      network: tcp
+      port: 62145
+      server: 157.137.239.113
+      type: vless
+      udp: true
+      uuid: 8fb65472-5957-4f64-ba2d-b5812b2f155a
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1027973459
+        - vless-1027973497
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1027973459
+        - vless-1027973497
+      type: select
+rules:
+    - MATCH,select

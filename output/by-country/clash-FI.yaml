@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-1027317458
-      password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
-      port: 443
-      server: 31.76.30.97
-      skip-cert-verify: true
-      sni: fast.wwwinternetvideo.click
-      type: hysteria2
     - name: vless-1027868055
       network: tcp
       port: 39633
@@ -13,19 +6,26 @@ proxies:
       type: vless
       udp: true
       uuid: 845a492d-21e6-4cc0-abbb-b66813a163c0
+    - name: hysteria2-1027317458
+      password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
+      port: 443
+      server: 31.76.30.97
+      skip-cert-verify: true
+      sni: fast.wwwinternetvideo.click
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1027317458
         - vless-1027868055
+        - hysteria2-1027317458
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1027317458
         - vless-1027868055
+        - hysteria2-1027317458
       type: select
 rules:
     - MATCH,select
