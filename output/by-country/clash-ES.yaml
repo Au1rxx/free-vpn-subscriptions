@@ -1,18 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-11052
-      password: qItG8SueYQcP
-      port: 8388
-      server: 140.174.184.5
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-16132
-      password: WSyL4XTwNsdv
-      port: 8388
-      server: 108.181.121.226
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1009669806
@@ -40,39 +26,19 @@ proxies:
       type: vless
       udp: true
       uuid: 6fbdbd3c-7696-4b9a-9a10-bcecc26e0f6f
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1014380464
-      network: tcp
-      port: 48296
-      reality-opts:
-        public-key: ga1wUMMknP4pwJfUNOOvD9I35XV4q3c73byXPYbRxBE
-        short-id: 109657bb2dbe99
-      server: 93.189.94.67
-      servername: www.sony.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 898537d9-ce3a-4937-bbef-c0fa61c07791
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-11052
-        - shadowsocks-16132
         - vless-1009669806
         - vless-842638788
-        - vless-1014380464
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-11052
-        - shadowsocks-16132
         - vless-1009669806
         - vless-842638788
-        - vless-1014380464
       type: select
 rules:
     - MATCH,select
