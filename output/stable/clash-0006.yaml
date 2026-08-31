@@ -1,4 +1,37 @@
 proxies:
+    - name: hysteria2-956723757
+      password: 84a506ca5aca505696a454d828420b3f
+      port: 50160
+      server: 140.238.213.114
+      skip-cert-verify: true
+      sni: www.bing.com
+      type: hysteria2
+    - name: trojan-956996559
+      password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+      port: 43022
+      server: us01.duotg.top
+      skip-cert-verify: true
+      sni: www.microsoft.com
+      type: trojan
+      udp: true
+    - name: vless-956996560
+      network: ws
+      port: 8443
+      server: 147.45.226.155
+      servername: wsnl24.wba-pn.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9ffaf9f7-a2ad-47ef-9256-f607b3b3c6cc
+    - name: trojan-956999535
+      password: 02cd3bac-2a78-4dbb-82b9-6b64084ddd8e
+      port: 46292
+      server: us01.duotg.top
+      skip-cert-verify: true
+      sni: us01.duotg.top
+      type: trojan
+      udp: true
     - name: vless-957013236
       network: ws
       port: 443
@@ -22743,38 +22776,14 @@ proxies:
       type: vless
       udp: true
       uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-    - name: vless-1016647074
-      network: ws
-      port: 80
-      server: 185.143.233.5
-      type: vless
-      udp: true
-      uuid: 38dd06a1-e1cb-492b-bb87-218ce05d0d67
-    - name: vless-1016647097
-      network: ws
-      port: 8880
-      server: 172.64.154.8
-      type: vless
-      udp: true
-      uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-    - name: vless-1016647108
-      network: ws
-      port: 2052
-      server: 104.18.47.113
-      type: vless
-      udp: true
-      uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
-    - name: vless-1016647109
-      network: ws
-      port: 4100
-      server: 201.24.49.240
-      type: vless
-      udp: true
-      uuid: aa7d939b-feaa-4ad3-9615-74216f490807
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-956723757
+        - trojan-956996559
+        - vless-956996560
+        - trojan-956999535
         - vless-957013236
         - vless-957016042
         - vless-957016043
@@ -24750,15 +24759,15 @@ proxy-groups:
         - vless-1016647054
         - vless-1016647055
         - vless-1016647062
-        - vless-1016647074
-        - vless-1016647097
-        - vless-1016647108
-        - vless-1016647109
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-956723757
+        - trojan-956996559
+        - vless-956996560
+        - trojan-956999535
         - vless-957013236
         - vless-957016042
         - vless-957016043
@@ -26734,10 +26743,6 @@ proxy-groups:
         - vless-1016647054
         - vless-1016647055
         - vless-1016647062
-        - vless-1016647074
-        - vless-1016647097
-        - vless-1016647108
-        - vless-1016647109
       type: select
 rules:
     - MATCH,select

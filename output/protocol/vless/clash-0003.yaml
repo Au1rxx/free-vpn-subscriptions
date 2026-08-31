@@ -1,4 +1,56 @@
 proxies:
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-918249620
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: vvpu_ljhBuTWmM9w5Hl6jj8ZTiE_JYq29S77zNDeCjQ
+        short-id: ff6975658b6cefce
+      server: 109.169.84.146
+      servername: strapi.io
+      tls: true
+      type: vless
+      udp: true
+      uuid: 88212d38-f112-4a35-8ac2-eb3a1923e413
+    - name: vless-918282469
+      network: ws
+      port: 8443
+      server: 167.104.104.138
+      servername: n.tmkkarss.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: a5194487-9b9a-462f-a047-ac7580d80201
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-918284386
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SiSky02wHz-S0TDHKFTdYhnrlT8Y3CfRsekZlcdLXDY
+        short-id: fd55b698ee8c3629
+      server: 95.154.237.50
+      servername: lanacion.com.ar
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8d44bf97-d58e-42f1-9065-588d8d29b954
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-918284397
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SiSky02wHz-S0TDHKFTdYhnrlT8Y3CfRsekZlcdLXDY
+        short-id: fd55b698ee8c3629
+      server: 95.154.237.50
+      servername: lanacion.com.ar
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9c0d8a49-4c47-4210-8f01-d251028d88d1
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-918284424
@@ -23712,58 +23764,14 @@ proxies:
       type: vless
       udp: true
       uuid: 30610baf-4645-4c7b-9a22-0d0a0a79eab5
-    - name: vless-1014493060
-      network: ws
-      port: 443
-      server: 104.21.94.161
-      servername: mao.kipfel.kdns.fr
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 30610baf-4645-4c7b-9a22-0d0a0a79eab5
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1014534668
-      network: tcp
-      port: 53734
-      reality-opts:
-        public-key: JAG5rl6KEt7KAV0y8Z2x6orWHymCXRSX49SkEnEftWU
-        short-id: a56d7d8da977f860
-      server: 172.233.139.46
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 56a1b253-cde4-490f-9c5e-09a523882bdd
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1014614924
-      network: tcp
-      port: 11256
-      reality-opts:
-        public-key: TgKDlrMB3_LCRs_WBX4OMnt87rPc4XVqaPhEAtoXhDc
-        short-id: 352a7bbcc1ceeb
-      server: 192.81.131.225
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4817e138-8370-4fdd-aa59-36a6ec0247e2
-    - name: vless-1014635437
-      network: ws
-      port: 443
-      server: 5.45.117.125
-      servername: freeuse.firta.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c7e9c591-2764-423a-afca-efbd010fd396
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-918249620
+        - vless-918282469
+        - vless-918284386
+        - vless-918284397
         - vless-918284424
         - vless-918284444
         - vless-918284464
@@ -25760,15 +25768,15 @@ proxy-groups:
         - vless-1014493004
         - vless-1014493029
         - vless-1014493051
-        - vless-1014493060
-        - vless-1014534668
-        - vless-1014614924
-        - vless-1014635437
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-918249620
+        - vless-918282469
+        - vless-918284386
+        - vless-918284397
         - vless-918284424
         - vless-918284444
         - vless-918284464
@@ -27765,10 +27773,6 @@ proxy-groups:
         - vless-1014493004
         - vless-1014493029
         - vless-1014493051
-        - vless-1014493060
-        - vless-1014534668
-        - vless-1014614924
-        - vless-1014635437
       type: select
 rules:
     - MATCH,select
