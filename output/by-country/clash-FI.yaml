@@ -1,18 +1,4 @@
 proxies:
-    - name: vless-1033185656
-      network: raw
-      port: 39633
-      server: 65.109.215.50
-      type: vless
-      udp: true
-      uuid: de5b01f7-0697-49ec-aeb1-6ef0361344fb
-    - name: vless-1027868055
-      network: tcp
-      port: 39633
-      server: 65.109.215.50
-      type: vless
-      udp: true
-      uuid: 845a492d-21e6-4cc0-abbb-b66813a163c0
     - cipher: 2022-blake3-aes-256-gcm
       name: shadowsocks-1028203344
       password: rrR97O6JIRzSRG8uHimVCgLEssjipthiC4Hlieq/4/w=:Htb6AwARYBt+193LFyDnfe1fS+QDu9JHsiSw1waN0uc=
@@ -34,9 +20,23 @@ proxies:
       skip-cert-verify: false
       sni: fast.wwwinternetvideo.click
       type: hysteria2
-    - client-fingerprint: firefox
-      name: vless-1003499303
-      network: raw
+    - name: hysteria2-647019506
+      password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
+      port: 443
+      server: fast.wwwinternetvideo.click
+      skip-cert-verify: true
+      sni: fast.wwwinternetvideo.click
+      type: hysteria2
+    - name: hysteria2-700405738
+      password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
+      port: 443
+      server: fast.wwwinternetvideo.click
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-1024880389
+      network: tcp
       port: 2053
       reality-opts:
         public-key: JmAuytyIXW4klA7zqeSYi3EtWR0d4fNJCq4nR0LMQE8
@@ -47,27 +47,63 @@ proxies:
       type: vless
       udp: true
       uuid: ea48c5b6-7a19-4fea-9902-17004a424452
+    - alterId: 0
+      cipher: auto
+      name: vmess-1030493371
+      network: tcp
+      port: 26980
+      server: 65.109.215.50
+      type: vmess
+      udp: true
+      uuid: 845a492d-21e6-4cc0-abbb-b66813a163c0
+    - name: hysteria2-1044822803
+      password: 036c648f927d4d86a82dcf629db8cbe1
+      port: 17538
+      server: jackvpn23.mooo.com
+      skip-cert-verify: false
+      sni: jackvpn23.mooo.com
+      type: hysteria2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-423595740
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
+        short-id: a696de84963656de
+      server: 95.85.224.51
+      servername: max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1033185656
-        - vless-1027868055
         - shadowsocks-1028203344
         - hysteria2-1005229661
         - hysteria2-622971569
-        - vless-1003499303
+        - hysteria2-647019506
+        - hysteria2-700405738
+        - vless-1024880389
+        - vmess-1030493371
+        - hysteria2-1044822803
+        - vless-423595740
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1033185656
-        - vless-1027868055
         - shadowsocks-1028203344
         - hysteria2-1005229661
         - hysteria2-622971569
-        - vless-1003499303
+        - hysteria2-647019506
+        - hysteria2-700405738
+        - vless-1024880389
+        - vmess-1030493371
+        - hysteria2-1044822803
+        - vless-423595740
       type: select
 rules:
     - MATCH,select

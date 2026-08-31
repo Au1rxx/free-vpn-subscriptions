@@ -1,61 +1,23 @@
 proxies:
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1015169563
-      network: tcp
-      port: 53271
-      reality-opts:
-        public-key: 1P58ZYmo81kPDnL4U7SnEUA-aT2R86l-o6dbFXoeDjc
-        short-id: 0a9bd9db19578964
-      server: 56.69.159.191
-      servername: www.tesla.com
-      tls: true
-      type: vless
+    - name: trojan-897442828
+      password: 5931134d1cde66bf83a54acdfebe7ab2
+      port: 443
+      server: 47.250.84.25
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
       udp: true
-      uuid: e8358eb5-7210-4cf8-982f-68af141b7694
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1028079226
-      network: tcp
-      port: 59463
-      reality-opts:
-        public-key: GNLuMPdi52lBbZ_9tz3nWOcKdQYVr4lzE4RX0tKQAEo
-        short-id: 2f92a5b7373b593c
-      server: 56.68.93.171
-      servername: www.nvidia.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: cb51e964-70a5-4522-9d04-d97b58fe509a
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1015169527
-      network: tcp
-      port: 21874
-      reality-opts:
-        public-key: 75sTDYJk8ylA97-aBhAlF1tU4OaCfdOaOSIBshPW7Bs
-        short-id: 42e853a5559e1032
-      server: 43.217.16.8
-      servername: www.amd.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 85dd8227-0f12-4826-a712-6313211774b5
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1015169563
-        - vless-1028079226
-        - vless-1015169527
+        - trojan-897442828
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1015169563
-        - vless-1028079226
-        - vless-1015169527
+        - trojan-897442828
       type: select
 rules:
     - MATCH,select

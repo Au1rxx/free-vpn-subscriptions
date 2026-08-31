@@ -13,12 +13,20 @@ proxies:
       server: 164.152.62.150
       type: ss
       udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1039975700
+      password: OypUCimyRA/h+xVgPeQNIoSZMb2+169fOJKlPApgaes=
+      port: 59319
+      server: 167.234.236.121
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1027530195
         - shadowsocks-1036659228
+        - shadowsocks-1039975700
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +34,7 @@ proxy-groups:
         - auto
         - shadowsocks-1027530195
         - shadowsocks-1036659228
+        - shadowsocks-1039975700
       type: select
 rules:
     - MATCH,select

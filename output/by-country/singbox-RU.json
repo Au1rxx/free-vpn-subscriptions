@@ -1,0 +1,42 @@
+{
+  "outbounds": [
+    {
+      "server": "200.165.234.119",
+      "server_port": 4100,
+      "tag": "vless-1044828997",
+      "transport": {
+        "headers": {
+          "Host": "live.ok.ru"
+        },
+        "path": "/v1",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "099f0859-cb81-4a57-b6d8-2c8e18030627"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1044828997"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1044828997"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

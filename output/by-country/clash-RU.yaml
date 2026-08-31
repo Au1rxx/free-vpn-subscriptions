@@ -1,0 +1,22 @@
+proxies:
+    - name: vless-1044828997
+      network: ws
+      port: 4100
+      server: 200.165.234.119
+      type: vless
+      udp: true
+      uuid: 099f0859-cb81-4a57-b6d8-2c8e18030627
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1044828997
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1044828997
+      type: select
+rules:
+    - MATCH,select
