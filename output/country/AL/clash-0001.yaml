@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-122860
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20032
-      server: d3.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-953732984
@@ -420,11 +412,38 @@ proxies:
       type: vless
       udp: true
       uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1048865177
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: wTITbZ7gXSeLOTMLOVC4ePziVIyELIgQeaPihXrbqAk
+        short-id: 946b7ff3ebdd350c
+      server: 45.89.60.235
+      servername: alblack.vodniki.monster
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1048865179
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: 193.108.112.245
+      servername: alban.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-122860
         - vless-953732984
         - vless-953732996
         - vless-955231589
@@ -456,12 +475,13 @@ proxy-groups:
         - vless-1048747505
         - vless-1048747565
         - vless-1048789456
+        - vless-1048865177
+        - vless-1048865179
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-122860
         - vless-953732984
         - vless-953732996
         - vless-955231589
@@ -493,6 +513,8 @@ proxy-groups:
         - vless-1048747505
         - vless-1048747565
         - vless-1048789456
+        - vless-1048865177
+        - vless-1048865179
       type: select
 rules:
     - MATCH,select

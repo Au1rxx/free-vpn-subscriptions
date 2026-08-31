@@ -1,47 +1,40 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-738053605
-      password: qYEN5HX4JKeVCdEC
-      port: 9039
-      server: 91.201.65.122
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-819466008
-      password: SBM7R883jBmnqe6C
-      port: 9053
-      server: 91.201.65.122
-      type: ss
-      udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1044671847
-      network: tcp
-      port: 32833
-      reality-opts:
-        public-key: PaTDdYBrlh1xBixdI0igvRRkf0vnUwMRzi-4oDyfS20
-        short-id: a0a305ccc8e94aa8
-      server: 172.238.232.239
-      servername: www.intel.com
-      tls: true
+    - name: vless-1049131738
+      network: ws
+      port: 443
+      server: 151.241.215.109
       type: vless
       udp: true
-      uuid: 167ed405-7de9-4bff-b1ea-6e3d49c76b0b
+      uuid: 699ce9a1-abbb-4525-988e-b940381352e8
+    - name: vless-1049131679
+      network: ws
+      port: 443
+      server: itproxy4.lockdwn.com
+      type: vless
+      udp: true
+      uuid: e4737ce4-c646-44cc-9067-390e13c2a5f6
+    - cipher: aes-256-gcm
+      name: shadowsocks-591158343
+      password: d1fa2f4b98a38bc8
+      port: 10901
+      server: 194.87.47.204
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-738053605
-        - shadowsocks-819466008
-        - vless-1044671847
+        - vless-1049131738
+        - vless-1049131679
+        - shadowsocks-591158343
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-738053605
-        - shadowsocks-819466008
-        - vless-1044671847
+        - vless-1049131738
+        - vless-1049131679
+        - shadowsocks-591158343
       type: select
 rules:
     - MATCH,select

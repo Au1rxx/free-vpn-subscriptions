@@ -1,0 +1,74 @@
+{
+  "outbounds": [
+    {
+      "password": "GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_",
+      "server": "hy2-latvia2.unlimited-access.ru",
+      "server_port": 443,
+      "tag": "hysteria2-745560342",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "hy2-latvia2.unlimited-access.ru"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "password": "GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_",
+      "server": "hy2-latvia2.unlimited-access.ru",
+      "server_port": 443,
+      "tag": "hysteria2-781397530",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "hy2-latvia2.unlimited-access.ru"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "UTJA57ypk2XKQpnm",
+      "server": "185.135.86.175",
+      "server_port": 9033,
+      "tag": "shadowsocks-819466279",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-cfb",
+      "password": "kSPmvwdFzGMMW5pY",
+      "server": "185.135.86.175",
+      "server_port": 9007,
+      "tag": "shadowsocks-768399460",
+      "type": "shadowsocks"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-745560342",
+        "hysteria2-781397530",
+        "shadowsocks-819466279",
+        "shadowsocks-768399460"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-745560342",
+        "hysteria2-781397530",
+        "shadowsocks-819466279",
+        "shadowsocks-768399460"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

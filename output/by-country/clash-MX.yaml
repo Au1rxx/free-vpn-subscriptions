@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1049095380
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: LiSrIOq9pojF5iZc2c660LUAESwEWbxzt1YR96xz4k4
+        short-id: ""
+      server: 139.177.103.135
+      servername: tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 28775f0a-8027-4b33-9962-15634199b3a3
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1049095380
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1049095380
+      type: select
+rules:
+    - MATCH,select
