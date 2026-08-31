@@ -13,13 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: 845a492d-21e6-4cc0-abbb-b66813a163c0
-    - name: vless-1031020577
-      network: tcp
-      port: 39633
-      server: 65.109.215.50
-      type: vless
-      udp: true
-      uuid: de5b01f7-0697-49ec-aeb1-6ef0361344fb
     - cipher: 2022-blake3-aes-256-gcm
       name: shadowsocks-1028203344
       password: rrR97O6JIRzSRG8uHimVCgLEssjipthiC4Hlieq/4/w=:Htb6AwARYBt+193LFyDnfe1fS+QDu9JHsiSw1waN0uc=
@@ -34,15 +27,36 @@ proxies:
       skip-cert-verify: false
       sni: fin14qr.wwwinternetvideo.click
       type: hysteria2
+    - name: hysteria2-622971569
+      password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
+      port: 443
+      server: fast.wwwinternetvideo.click
+      skip-cert-verify: false
+      sni: fast.wwwinternetvideo.click
+      type: hysteria2
+    - client-fingerprint: firefox
+      name: vless-1003499303
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: JmAuytyIXW4klA7zqeSYi3EtWR0d4fNJCq4nR0LMQE8
+        short-id: 07316dd7d0e11c90
+      server: 95.216.27.15
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ea48c5b6-7a19-4fea-9902-17004a424452
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1033185656
         - vless-1027868055
-        - vless-1031020577
         - shadowsocks-1028203344
         - hysteria2-1005229661
+        - hysteria2-622971569
+        - vless-1003499303
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -50,9 +64,10 @@ proxy-groups:
         - auto
         - vless-1033185656
         - vless-1027868055
-        - vless-1031020577
         - shadowsocks-1028203344
         - hysteria2-1005229661
+        - hysteria2-622971569
+        - vless-1003499303
       type: select
 rules:
     - MATCH,select
