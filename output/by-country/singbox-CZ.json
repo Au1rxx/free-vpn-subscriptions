@@ -1,0 +1,50 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "5.39.202.130",
+      "server_port": 443,
+      "tag": "vless-1033574907",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "crRdG3Hd_QtGCJi9fd1rtHpDIB7vnCx1Yexfu6XkIzU",
+          "short_id": "2cec07a8614696e5"
+        },
+        "server_name": "cz1.kovsh.lol",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "type": "vless",
+      "uuid": "dabb9a19-03ab-4cdf-8963-d3c45eb0f80d"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1033574907"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1033574907"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
