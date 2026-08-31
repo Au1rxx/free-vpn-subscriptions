@@ -1,0 +1,47 @@
+proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-738053605
+      password: qYEN5HX4JKeVCdEC
+      port: 9039
+      server: 91.201.65.122
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-819466008
+      password: SBM7R883jBmnqe6C
+      port: 9053
+      server: 91.201.65.122
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1044671847
+      network: tcp
+      port: 32833
+      reality-opts:
+        public-key: PaTDdYBrlh1xBixdI0igvRRkf0vnUwMRzi-4oDyfS20
+        short-id: a0a305ccc8e94aa8
+      server: 172.238.232.239
+      servername: www.intel.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 167ed405-7de9-4bff-b1ea-6e3d49c76b0b
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-738053605
+        - shadowsocks-819466008
+        - vless-1044671847
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-738053605
+        - shadowsocks-819466008
+        - vless-1044671847
+      type: select
+rules:
+    - MATCH,select
