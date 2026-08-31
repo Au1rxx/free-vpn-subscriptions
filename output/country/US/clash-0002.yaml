@@ -1,4 +1,53 @@
 proxies:
+    - name: vless-897227665
+      network: ws
+      port: 8080
+      server: 172.64.229.2
+      type: vless
+      udp: true
+      uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+    - name: vless-897227667
+      network: ws
+      port: 2082
+      server: 172.64.32.108
+      type: vless
+      udp: true
+      uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+    - name: vless-897227709
+      network: ws
+      port: 2082
+      server: 162.159.43.187
+      type: vless
+      udp: true
+      uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+    - name: vless-897227716
+      network: ws
+      port: 2052
+      server: 172.64.32.108
+      type: vless
+      udp: true
+      uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+    - name: vless-897227754
+      network: ws
+      port: 2082
+      server: 162.159.38.127
+      type: vless
+      udp: true
+      uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+    - name: vless-897227760
+      network: ws
+      port: 80
+      server: 162.159.43.187
+      type: vless
+      udp: true
+      uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+    - name: vless-897227780
+      network: ws
+      port: 8880
+      server: 172.64.32.103
+      type: vless
+      udp: true
+      uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
     - name: vless-897227799
       network: ws
       port: 2086
@@ -103,6 +152,15 @@ proxies:
       type: vmess
       udp: true
       uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
+    - alterId: 0
+      cipher: auto
+      name: vmess-900413037
+      network: tcp
+      port: 15311
+      server: 107.173.254.27
+      type: vmess
+      udp: true
+      uuid: ad78d02b-873f-4cff-8d4a-673f53d6ce0f
     - cipher: 2022-blake3-aes-256-gcm
       name: shadowsocks-900729365
       password: Zjc0N2QyYTkyNzc2NGRiZDhjY2NjYTU5Mzk2N2NkOTk=:YmNhN2UyNzdlNTg3NGFkMjkxNGY4ZjEzYWM2MzQ2NGQ=
@@ -7243,10 +7301,31 @@ proxies:
       type: vless
       udp: true
       uuid: 3f054fce-df15-4f7c-8616-56a8b17e84b4
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1049589634
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: 0i_xAxYgSNx5NMpK2lOaWGS-CvAiD_LneYPO0MF0owo
+        short-id: 1a
+      server: t17.qifei.app
+      servername: www.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b98d4c6e-6770-4a31-8256-a4750cdea0e7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-897227665
+        - vless-897227667
+        - vless-897227709
+        - vless-897227716
+        - vless-897227754
+        - vless-897227760
+        - vless-897227780
         - vless-897227799
         - vless-897227817
         - vless-897227856
@@ -7261,6 +7340,7 @@ proxy-groups:
         - vless-897906549
         - vless-897906552
         - vmess-899086754
+        - vmess-900413037
         - shadowsocks-900729365
         - vless-902791371
         - vless-902843768
@@ -7892,11 +7972,19 @@ proxy-groups:
         - vless-1049175008
         - vless-1049175010
         - vless-1049362546
+        - vless-1049589634
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-897227665
+        - vless-897227667
+        - vless-897227709
+        - vless-897227716
+        - vless-897227754
+        - vless-897227760
+        - vless-897227780
         - vless-897227799
         - vless-897227817
         - vless-897227856
@@ -7911,6 +7999,7 @@ proxy-groups:
         - vless-897906549
         - vless-897906552
         - vmess-899086754
+        - vmess-900413037
         - shadowsocks-900729365
         - vless-902791371
         - vless-902843768
@@ -8542,6 +8631,7 @@ proxy-groups:
         - vless-1049175008
         - vless-1049175010
         - vless-1049362546
+        - vless-1049589634
       type: select
 rules:
     - MATCH,select

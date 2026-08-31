@@ -20,6 +20,20 @@ proxies:
       skip-cert-verify: true
       sni: vpn-in-001.fastervpn.world
       type: hysteria2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-436248614
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
+        short-id: 88b6
+      server: 5.253.30.99
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1048866235
@@ -48,29 +62,15 @@ proxies:
       type: vless
       udp: true
       uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-436248614
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
-        short-id: 88b6
-      server: 5.253.30.99
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1019437422
         - hysteria2-650413302
+        - vless-436248614
         - vless-1048866235
         - vless-234984371
-        - vless-436248614
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -78,9 +78,9 @@ proxy-groups:
         - auto
         - vless-1019437422
         - hysteria2-650413302
+        - vless-436248614
         - vless-1048866235
         - vless-234984371
-        - vless-436248614
       type: select
 rules:
     - MATCH,select
