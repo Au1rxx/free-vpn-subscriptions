@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-676178265
+      network: ws
+      port: 443
+      server: 188.114.98.207
+      servername: bpb-worker-panel1-e4p.pages.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4045e84e-5e3c-4f70-8ff5-c1097882a55a
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-953732984
@@ -440,10 +450,25 @@ proxies:
       type: vless
       udp: true
       uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1051696552
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: 193.108.112.245
+      servername: alban.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-676178265
         - vless-953732984
         - vless-953732996
         - vless-955231589
@@ -477,11 +502,13 @@ proxy-groups:
         - vless-1048789456
         - vless-1048865177
         - vless-1048865179
+        - vless-1051696552
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-676178265
         - vless-953732984
         - vless-953732996
         - vless-955231589
@@ -515,6 +542,7 @@ proxy-groups:
         - vless-1048789456
         - vless-1048865177
         - vless-1048865179
+        - vless-1051696552
       type: select
 rules:
     - MATCH,select
