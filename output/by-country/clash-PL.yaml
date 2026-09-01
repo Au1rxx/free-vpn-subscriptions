@@ -1,4 +1,11 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-465806704
+      password: ytw2awn
+      port: 443
+      server: pl140.vpnbook.com
+      type: ss
+      udp: true
     - name: hysteria2-1060104846
       password: 26d052de5a6ae1c046e494637492fbc3
       port: 55443
@@ -13,19 +20,39 @@ proxies:
       type: vless
       udp: true
       uuid: d23cb516-40db-4aa4-8142-6b45ff882f90
+    - name: hysteria2-659125577
+      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+      port: 443
+      server: 45.192.12.93
+      skip-cert-verify: false
+      sni: admin.wwwinternetvideo.click
+      type: hysteria2
+    - name: hysteria2-929778389
+      password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
+      port: 8443
+      server: 103.246.248.231
+      skip-cert-verify: false
+      sni: hopp-legend-se.roxa.org
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-465806704
         - hysteria2-1060104846
         - vless-864926695
+        - hysteria2-659125577
+        - hysteria2-929778389
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-465806704
         - hysteria2-1060104846
         - vless-864926695
+        - hysteria2-659125577
+        - hysteria2-929778389
       type: select
 rules:
     - MATCH,select
