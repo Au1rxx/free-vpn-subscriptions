@@ -1,4 +1,20 @@
 proxies:
+    - name: trojan-119270
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20056
+      server: 45.67.201.210
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-192032511
+      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
+      port: 20056
+      server: 157.254.38.210
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: trojan-490085150
       password: 018b8e7b-7813-4dcb-84a5-3c98f1521e00
       port: 443
@@ -95,6 +111,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-119270
+        - trojan-192032511
         - trojan-490085150
         - trojan-503199066
         - trojan-692972555
@@ -111,6 +129,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-119270
+        - trojan-192032511
         - trojan-490085150
         - trojan-503199066
         - trojan-692972555
