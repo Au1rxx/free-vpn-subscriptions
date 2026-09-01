@@ -6,6 +6,20 @@ proxies:
       server: 82.23.146.72
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1048775501
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: qM0uZ1Gp_Ve59S_iKPyFqQXjfjkUqf6iSHH_fxFt7w0
+        short-id: 0f4d3210977f51a5
+      server: 51.161.199.124
+      servername: suetinklerartglass.co.uk
+      tls: true
+      type: vless
+      udp: true
+      uuid: da222922-fbd5-4a7f-9c8a-9ba0cc49b527
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-788158676
@@ -307,18 +321,12 @@ proxies:
       type: vless
       udp: true
       uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
-    - name: hysteria2-1059313714
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: vpn-au-002.fastervpn.world
-      skip-cert-verify: true
-      sni: speedtest.tinkoff.ru
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-696792832
+        - vless-1048775501
         - vless-788158676
         - hysteria2-1059313757
         - vless-1030988577
@@ -342,13 +350,13 @@ proxy-groups:
         - vless-970879989
         - vless-970874400
         - vless-659123901
-        - hysteria2-1059313714
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-696792832
+        - vless-1048775501
         - vless-788158676
         - hysteria2-1059313757
         - vless-1030988577
@@ -372,7 +380,6 @@ proxy-groups:
         - vless-970879989
         - vless-970874400
         - vless-659123901
-        - hysteria2-1059313714
       type: select
 rules:
     - MATCH,select

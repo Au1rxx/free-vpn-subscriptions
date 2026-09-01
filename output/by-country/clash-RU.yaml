@@ -1,5 +1,16 @@
 proxies:
     - flow: xtls-rprx-vision
+      name: vless-1058533052
+      network: "tcp#\U0001FA8686@oneclickvpnkeysvless://d46b4fca-2352-4557-a6d5-e8c45b27618c@201.24.124.99:4100?encryption=none"
+      port: 8443
+      server: 185.147.27.164
+      servername: user-6a8d949a.noooo.win
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3a90bf69-1ffe-4ebb-b9a7-ad9ba8e9f66f
+    - flow: xtls-rprx-vision
       name: vless-1058964259
       network: "tcp#\U0001FA8686@oneclickvpnkeys"
       port: 8443
@@ -21,6 +32,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1058533052
         - vless-1058964259
         - vless-1046976430
       type: url-test
@@ -28,6 +40,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1058533052
         - vless-1058964259
         - vless-1046976430
       type: select
