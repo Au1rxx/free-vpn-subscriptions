@@ -1,20 +1,4 @@
 proxies:
-    - name: trojan-689004677
-      password: tsuchiya
-      port: 443
-      server: 161.34.39.108
-      skip-cert-verify: true
-      sni: ""
-      type: trojan
-      udp: true
-    - name: trojan-689642547
-      password: tsuchiya
-      port: 443
-      server: 161.34.39.108
-      skip-cert-verify: false
-      sni: aa.ccmusic.jp
-      type: trojan
-      udp: true
     - name: trojan-691120214
       password: tsuchiya
       port: 443
@@ -234,6 +218,13 @@ proxies:
       sni: aa.ccmusic.jp
       type: trojan
       udp: true
+    - name: vless-712809939
+      network: tcp
+      port: 47878
+      server: 152.69.195.67
+      type: vless
+      udp: true
+      uuid: eb8613e3-8393-4cff-a3ad-6501fd4adc63
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-714300162
@@ -7559,12 +7550,60 @@ proxies:
       type: vless
       udp: true
       uuid: 3298044a-024f-4b48-a598-ba56c75e99f3
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1018932960
+      network: raw
+      port: 55596
+      reality-opts:
+        public-key: QQUHUyF5Wb3XeRRrky-WOaRTxBtHokNaMec02HURWSI
+        short-id: 6ac09686189038
+      server: 206.251.54.34
+      servername: www.amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9fc6444b-987a-41d5-9bf5-195d147e0a05
+    - name: trojan-1019431612
+      password: 0964f6b7-6aab-4b84-9e80-dd078ed1f269
+      port: 50000
+      server: 43.165.185.191
+      skip-cert-verify: true
+      sni: jp200m.jiasu.asia
+      type: trojan
+      udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1019438375
+      network: raw
+      port: 32913
+      reality-opts:
+        public-key: iJhoNzfiPiua04PL88iAAyZz2u39su4ChSCiGVoekRQ
+        short-id: a8f0a95931a52732
+      server: 43.207.162.145
+      servername: www.intel.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 15836880-212b-4690-b29c-1889a749bf72
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1019440249
+      network: raw
+      port: 18538
+      reality-opts:
+        public-key: zBZDFZ2P54fpr1-tl51jN4ZyBCrEJ0syOna-KJXZ3h4
+        short-id: d5cd4778d2da33
+      server: 54.250.13.242
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3317270c-c577-4803-9c28-011152223f79
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-689004677
-        - trojan-689642547
         - trojan-691120214
         - vless-693636174
         - trojan-696053264
@@ -7588,6 +7627,7 @@ proxy-groups:
         - vless-702719097
         - vless-705683101
         - trojan-706800523
+        - vless-712809939
         - vless-714300162
         - vless-714300185
         - vless-720975521
@@ -8443,13 +8483,15 @@ proxy-groups:
         - vless-1016932704
         - vless-1016932706
         - vless-1016932717
+        - vless-1018932960
+        - trojan-1019431612
+        - vless-1019438375
+        - vless-1019440249
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-689004677
-        - trojan-689642547
         - trojan-691120214
         - vless-693636174
         - trojan-696053264
@@ -8473,6 +8515,7 @@ proxy-groups:
         - vless-702719097
         - vless-705683101
         - trojan-706800523
+        - vless-712809939
         - vless-714300162
         - vless-714300185
         - vless-720975521
@@ -9328,6 +9371,10 @@ proxy-groups:
         - vless-1016932704
         - vless-1016932706
         - vless-1016932717
+        - vless-1018932960
+        - trojan-1019431612
+        - vless-1019438375
+        - vless-1019440249
       type: select
 rules:
     - MATCH,select
