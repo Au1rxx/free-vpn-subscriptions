@@ -6,17 +6,71 @@ proxies:
       skip-cert-verify: false
       sni: cabinet.wwwinternetvideo.click
       type: hysteria2
+    - name: hysteria2-589844096
+      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
+      port: 443
+      server: cabinet.wwwinternetvideo.click
+      skip-cert-verify: false
+      sni: cabinet.wwwinternetvideo.click
+      type: hysteria2
+    - name: hysteria2-600117033
+      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
+      port: 443
+      server: cabinet.wwwinternetvideo.click
+      skip-cert-verify: true
+      sni: cabinet.wwwinternetvideo.click
+      type: hysteria2
+    - name: hysteria2-652726825
+      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
+      port: 443
+      server: cabinet.wwwinternetvideo.click
+      skip-cert-verify: false
+      sni: ""
+      type: hysteria2
+    - client-fingerprint: edge
+      name: vless-1058607875
+      network: grpc
+      port: 24443
+      reality-opts:
+        public-key: s2uiu3GQA2SlZzsr86Z5Dav97eAFTPf7Nvr-zqzzRgg
+        short-id: 72ccd4a7563c2953
+      server: 201.24.54.210
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7ab9fe4f-6699-427f-a828-9fcf2496d714
+    - name: vless-781312931
+      network: tcp
+      port: 8443
+      server: 94.183.170.135
+      servername: estproxy4.lockdwn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1063368947
+        - hysteria2-589844096
+        - hysteria2-600117033
+        - hysteria2-652726825
+        - vless-1058607875
+        - vless-781312931
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1063368947
+        - hysteria2-589844096
+        - hysteria2-600117033
+        - hysteria2-652726825
+        - vless-1058607875
+        - vless-781312931
       type: select
 rules:
     - MATCH,select

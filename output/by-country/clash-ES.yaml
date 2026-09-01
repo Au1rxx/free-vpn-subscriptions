@@ -13,17 +13,47 @@ proxies:
       type: vless
       udp: true
       uuid: 2297ea1f-2415-4a2c-be20-4a3a978283a2
+    - client-fingerprint: chrome
+      name: vless-1013337162
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: XrPOJwmpnq8NeCXu6K68Mp59gQ56Dr4YYboxI70kqzA
+        short-id: 866af6e56606f2bc
+      server: 212.227.235.66
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6fbdbd3c-7696-4b9a-9a10-bcecc26e0f6f
+    - client-fingerprint: firefox
+      name: vless-842638788
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: XrPOJwmpnq8NeCXu6K68Mp59gQ56Dr4YYboxI70kqzA
+        short-id: 866af6e56606f2bc
+      server: 212.227.235.66
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6fbdbd3c-7696-4b9a-9a10-bcecc26e0f6f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1045021070
+        - vless-1013337162
+        - vless-842638788
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1045021070
+        - vless-1013337162
+        - vless-842638788
       type: select
 rules:
     - MATCH,select

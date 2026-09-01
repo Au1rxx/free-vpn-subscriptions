@@ -1,0 +1,84 @@
+{
+  "outbounds": [
+    {
+      "method": "2022-blake3-aes-256-gcm",
+      "password": "MGM1NGM2NmQ2NTg5NDg3Y2EyNTZjNGJiNmU4YjA0Mzc=:YmQxYjRiZDJhMzEyNDMzZGFlN2JkNWQyOGY1MGFmMmE=",
+      "server": "84.32.99.238",
+      "server_port": 20146,
+      "tag": "shadowsocks-1064588353",
+      "type": "shadowsocks"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "193.148.59.178",
+      "server_port": 443,
+      "tag": "vless-897978973",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "-GMpCber8qtrKzJbwvpLcwlIhOy-5zS66u_x9lLvIjE",
+          "short_id": "e3daad69"
+        },
+        "server_name": "www.apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "20d7c485-5d24-49b5-a5cc-bb7a7daf9908"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "193.148.59.178",
+      "server_port": 443,
+      "tag": "vless-909854534",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "-GMpCber8qtrKzJbwvpLcwlIhOy-5zS66u_x9lLvIjE",
+          "short_id": "e3daad69"
+        },
+        "server_name": "www.apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "20d7c485-5d24-49b5-a5cc-bb7a7daf9908"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "shadowsocks-1064588353",
+        "vless-897978973",
+        "vless-909854534"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "shadowsocks-1064588353",
+        "vless-897978973",
+        "vless-909854534"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
