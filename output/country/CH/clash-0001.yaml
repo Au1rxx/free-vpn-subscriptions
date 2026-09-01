@@ -1,6 +1,20 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-429874173
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: KrFnWxAwVGL6tuj1JE0qpykLzY4aOFjyK3OaymF_hT0
+        short-id: e2e66f4537770cef
+      server: 45.90.56.231
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e2b8f727-c5ee-47e1-8f1b-7c5c61479ce0
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-448867352
       network: tcp
       port: 443
@@ -382,10 +396,25 @@ proxies:
       type: vless
       udp: true
       uuid: 78eb4455-0d07-28a0-93e3-7c8654f11d74
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1058977353
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: EltWI8AOqkN8lMjRycweRRoFRah5hu6xiKtgBmQOdE8
+        short-id: 1ed136481e0ede74
+      server: brdg.geodema.network
+      servername: cdn.geodema.network
+      tls: true
+      type: vless
+      udp: true
+      uuid: 78eb4455-0d07-28a0-93e3-7c8654f11d74
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-429874173
         - vless-448867352
         - vless-453095268
         - vless-813976511
@@ -417,11 +446,13 @@ proxy-groups:
         - vless-1058785776
         - vless-1058785777
         - vless-1058785795
+        - vless-1058977353
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-429874173
         - vless-448867352
         - vless-453095268
         - vless-813976511
@@ -453,6 +484,7 @@ proxy-groups:
         - vless-1058785776
         - vless-1058785777
         - vless-1058785795
+        - vless-1058977353
       type: select
 rules:
     - MATCH,select
