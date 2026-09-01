@@ -12,17 +12,32 @@ proxies:
       type: vless
       udp: true
       uuid: 8384341b-cd89-4a21-a022-cc4bd4e648ca
+    - client-fingerprint: firefox
+      name: vless-892084521
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: Ic-S89gGVGw1RnKJHOi3CzAmdU8fIdlMZOd4DBV7A3M
+        short-id: bbb1
+      server: 46.29.238.136
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 374181b9-44bf-44f1-a227-1184f3e9e47b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-620750820
+        - vless-892084521
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-620750820
+        - vless-892084521
       type: select
 rules:
     - MATCH,select

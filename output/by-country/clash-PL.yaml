@@ -6,17 +6,26 @@ proxies:
       skip-cert-verify: false
       sni: ishostpo-pl.kvnfreetest.uk
       type: hysteria2
+    - name: vless-864926695
+      network: ws
+      port: 443
+      server: 94.183.209.59
+      type: vless
+      udp: true
+      uuid: d23cb516-40db-4aa4-8142-6b45ff882f90
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1060104846
+        - vless-864926695
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1060104846
+        - vless-864926695
       type: select
 rules:
     - MATCH,select
