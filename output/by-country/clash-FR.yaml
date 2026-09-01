@@ -1,24 +1,10 @@
 proxies:
-    - name: hysteria2-1004725118
+    - name: hysteria2-650412204
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
-      server: 35.181.166.40
+      server: vpn-fr-002.fastervpn.world
       skip-cert-verify: true
-      sni: ""
-      type: hysteria2
-    - name: hysteria2-984679229
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: 35.181.166.40
-      skip-cert-verify: true
-      sni: vpn-fr-002.fastervpn.world
-      type: hysteria2
-    - name: hysteria2-985315640
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: 35.181.169.140
-      skip-cert-verify: true
-      sni: vpn-fr-002.fastervpn.world
+      sni: 127.0.0.1
       type: hysteria2
     - name: vless-1052375931
       network: tcp
@@ -87,20 +73,6 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-639238892
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: gPTBA-gVUWAK9yziB_v_sGSncm0LwBQvEAsTQZK4jEE
-        short-id: 5a8e1a04f3d92b67
-      server: 2.26.129.245
-      servername: ukrop.mycdn-me.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 015b83b4-53a3-4719-8553-3a7c03c4128d
     - name: vless-2264527
       network: ws
       port: 80
@@ -108,13 +80,6 @@ proxies:
       type: vless
       udp: true
       uuid: f5c47e9c-914a-4a91-a81e-a5a77bc10fc1
-    - name: hysteria2-468210255
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: vpn-fr-001.fastervpn.world
-      skip-cert-verify: true
-      sni: vpn-fr-001.fastervpn.world
-      type: hysteria2
     - name: vless-1058789313
       network: raw
       port: 37710
@@ -122,7 +87,7 @@ proxies:
       type: vless
       udp: true
       uuid: 4283865b-7145-44d3-9855-96298c47424d
-    - name: vless-976057672
+    - name: vless-650669482
       network: grpc
       port: 2083
       server: usejh2.neobo-tooth.ru
@@ -132,13 +97,18 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - name: vless-16449
+      network: ws
+      port: 80
+      server: 152.228.162.19
+      type: vless
+      udp: true
+      uuid: 25f86cb1-2140-4085-abcb-c3a0ea7a4be0
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1004725118
-        - hysteria2-984679229
-        - hysteria2-985315640
+        - hysteria2-650412204
         - vless-1052375931
         - vless-827055229
         - vless-742974932
@@ -146,19 +116,16 @@ proxy-groups:
         - vless-816611169
         - vless-694391514
         - vless-602178043
-        - vless-639238892
         - vless-2264527
-        - hysteria2-468210255
         - vless-1058789313
-        - vless-976057672
+        - vless-650669482
+        - vless-16449
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1004725118
-        - hysteria2-984679229
-        - hysteria2-985315640
+        - hysteria2-650412204
         - vless-1052375931
         - vless-827055229
         - vless-742974932
@@ -166,11 +133,10 @@ proxy-groups:
         - vless-816611169
         - vless-694391514
         - vless-602178043
-        - vless-639238892
         - vless-2264527
-        - hysteria2-468210255
         - vless-1058789313
-        - vless-976057672
+        - vless-650669482
+        - vless-16449
       type: select
 rules:
     - MATCH,select

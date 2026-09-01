@@ -1,0 +1,37 @@
+proxies:
+    - name: vless-650667509
+      network: grpc
+      port: 2083
+      server: laoye.in-gect.fun
+      servername: laoye.in-gect.fun
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - name: vless-743923330
+      network: grpc
+      port: 2083
+      server: laoye.in-gect.fun
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-650667509
+        - vless-743923330
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-650667509
+        - vless-743923330
+      type: select
+rules:
+    - MATCH,select

@@ -1,0 +1,24 @@
+proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-1058206602
+      network: tcp
+      port: 20005
+      server: asia.ednovas.cloud
+      type: vmess
+      udp: true
+      uuid: e6aa118f-167a-4ab0-a6a0-d9c75b7a9c10
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vmess-1058206602
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vmess-1058206602
+      type: select
+rules:
+    - MATCH,select
