@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-16363336
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: EtKRG8sxUJsdy-KwUOtYUNJnSn5VMx2sfKvvdpzg2X0
+        short-id: f0eb800bd980b00b
+      server: sof.edgeptr.org
+      servername: www.lovelive-anime.jp
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7be52d6e-d933-4ed9-8e62-a3aa644536b1
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-429853174
@@ -267,34 +281,6 @@ proxies:
       uuid: 880c9f58-0607-4a11-8c40-1b4e08718c1b
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1048787417
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: EtKRG8sxUJsdy-KwUOtYUNJnSn5VMx2sfKvvdpzg2X0
-        short-id: f0eb800bd980b00b
-      server: sof.edgeptr.org
-      servername: www.lovelive-anime.jp
-      tls: true
-      type: vless
-      udp: true
-      uuid: 331e1d4d-21c7-4458-89c1-2e009690f9d9
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1048787495
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: EtKRG8sxUJsdy-KwUOtYUNJnSn5VMx2sfKvvdpzg2X0
-        short-id: f0eb800bd980b00b
-      server: sof.edgeptr.org
-      servername: www.lovelive-anime.jp
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5f388864-412d-4a9d-9b3b-802bd3a03511
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-1048787533
       network: tcp
       port: 443
@@ -335,20 +321,6 @@ proxies:
       type: vless
       udp: true
       uuid: bfb66910-f920-42c6-b52a-5f56e1dabcb4
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1048918708
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: EtKRG8sxUJsdy-KwUOtYUNJnSn5VMx2sfKvvdpzg2X0
-        short-id: f0eb800bd980b00b
-      server: 194.110.87.8
-      servername: www.lovelive-anime.jp
-      tls: true
-      type: vless
-      udp: true
-      uuid: 03ab04d1-3dcf-41dd-9b38-fd2875047549
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1051519956
@@ -419,10 +391,32 @@ proxies:
       type: vless
       udp: true
       uuid: 5f388864-412d-4a9d-9b3b-802bd3a03511
+    - name: vless-1058378889
+      network: ws
+      port: 80
+      server: helixgaming.ir
+      type: vless
+      udp: true
+      uuid: cae8fae3-6866-487c-8a71-75ea32884097
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1058449264
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: EtKRG8sxUJsdy-KwUOtYUNJnSn5VMx2sfKvvdpzg2X0
+        short-id: f0eb800bd980b00b
+      server: sof.edgeptr.org
+      servername: www.lovelive-anime.jp
+      tls: true
+      type: vless
+      udp: true
+      uuid: f16ff15f-61db-4e37-ba2c-2f8620998e8b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-16363336
         - vless-429853174
         - vless-448878354
         - vless-494488364
@@ -446,22 +440,22 @@ proxy-groups:
         - vless-1047427964
         - vless-1048300611
         - vless-1048787414
-        - vless-1048787417
-        - vless-1048787495
         - vless-1048787533
         - vless-1048789431
         - vless-1048864599
-        - vless-1048918708
         - vless-1051519956
         - vless-1051519997
         - vless-1057642955
         - vless-1057642957
         - vless-1057642975
+        - vless-1058378889
+        - vless-1058449264
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-16363336
         - vless-429853174
         - vless-448878354
         - vless-494488364
@@ -485,17 +479,16 @@ proxy-groups:
         - vless-1047427964
         - vless-1048300611
         - vless-1048787414
-        - vless-1048787417
-        - vless-1048787495
         - vless-1048787533
         - vless-1048789431
         - vless-1048864599
-        - vless-1048918708
         - vless-1051519956
         - vless-1051519997
         - vless-1057642955
         - vless-1057642957
         - vless-1057642975
+        - vless-1058378889
+        - vless-1058449264
       type: select
 rules:
     - MATCH,select

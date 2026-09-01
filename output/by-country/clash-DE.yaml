@@ -1,9 +1,30 @@
 proxies:
     - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1058401794
+      password: 6F+3jwawToOgQmPxWIG7YQ/7cCagnmEmgwrXfIkK3qE=
+      port: 59924
+      server: 130.162.59.150
+      type: ss
+      udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1044132093
+      password: 1XTdzbvLts9QsSGsu6VgI1Vu65EFYaQurcuu3vlt/ak=
+      port: 59924
+      server: 138.2.161.254
+      type: ss
+      udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1044535578
       password: QQfPCPbWyDitKWvJRdhzMO+GtpPhjej8V9dMuLs8iAs=
       port: 59924
       server: 79.76.113.182
+      type: ss
+      udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1044496585
+      password: EItZd/Xd+cmdmMJ9FLqMrlkRD6D/u/iVR0p1qJZMblQ=
+      port: 59924
+      server: 130.61.83.100
       type: ss
       udp: true
     - name: vless-1057090730
@@ -30,13 +51,6 @@ proxies:
       skip-cert-verify: true
       sni: de2.vpn.legendaah.xyz
       type: hysteria2
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1044496585
-      password: EItZd/Xd+cmdmMJ9FLqMrlkRD6D/u/iVR0p1qJZMblQ=
-      port: 59924
-      server: 130.61.83.100
-      type: ss
-      udp: true
     - name: vless-1046909533
       network: grpc
       port: 2083
@@ -103,6 +117,19 @@ proxies:
       type: vless
       udp: true
       uuid: f2616bce-337a-4d13-8c58-1b5e71986569
+    - client-fingerprint: firefox
+      name: vless-898066725
+      network: grpc
+      port: 9830
+      reality-opts:
+        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+        short-id: aabbccdd
+      server: 91.224.86.107
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 76186f1e-3062-4a2b-98c2-fab3c61a9511
     - name: vless-1044822723
       network: ws
       port: 2087
@@ -135,22 +162,26 @@ proxies:
       type: vmess
       udp: true
       uuid: 8e9687fc-a3a7-414a-8676-8e2136797cfe
-    - name: hysteria2-1003519421
-      password: d9a3a0a2-3bbf-4c04-9ca6-95c7c8390ae7
-      port: 443
-      server: dereserv.just-cloud.org
-      skip-cert-verify: true
-      sni: 127.0.0.1
-      type: hysteria2
+    - alterId: 0
+      cipher: auto
+      name: vmess-1058457937
+      network: ws
+      port: 16644
+      server: planb.mojcn.com.linuxlh.xin
+      type: vmess
+      udp: true
+      uuid: 75d8194d-cd07-4690-bb8c-4fdb509eb8ca
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1058401794
+        - shadowsocks-1044132093
         - shadowsocks-1044535578
+        - shadowsocks-1044496585
         - vless-1057090730
         - hysteria2-721489370
         - hysteria2-984679237
-        - shadowsocks-1044496585
         - vless-1046909533
         - vless-1046909554
         - vless-1046890871
@@ -160,21 +191,24 @@ proxy-groups:
         - hysteria2-819784927
         - vless-1033323501
         - vless-1046909486
+        - vless-898066725
         - vless-1044822723
         - vless-1044822733
         - vmess-1044580140
         - vmess-1052036526
-        - hysteria2-1003519421
+        - vmess-1058457937
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1058401794
+        - shadowsocks-1044132093
         - shadowsocks-1044535578
+        - shadowsocks-1044496585
         - vless-1057090730
         - hysteria2-721489370
         - hysteria2-984679237
-        - shadowsocks-1044496585
         - vless-1046909533
         - vless-1046909554
         - vless-1046890871
@@ -184,11 +218,12 @@ proxy-groups:
         - hysteria2-819784927
         - vless-1033323501
         - vless-1046909486
+        - vless-898066725
         - vless-1044822723
         - vless-1044822733
         - vmess-1044580140
         - vmess-1052036526
-        - hysteria2-1003519421
+        - vmess-1058457937
       type: select
 rules:
     - MATCH,select
