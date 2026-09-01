@@ -1,17 +1,17 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1060059388
-      password: ZWM1Y
-      port: 8388
-      server: 138.124.15.120
-      type: ss
-      udp: true
     - name: hysteria2-1065167932
       password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
       port: 443
       server: 31.76.30.97
       skip-cert-verify: false
       sni: fast.wwwinternetvideo.click
+      type: hysteria2
+    - name: hysteria2-1059437564
+      password: 5a92a9d2-3067-49cd-bfc5-989bbdfc5d52
+      port: 7443
+      server: 31.77.220.185
+      skip-cert-verify: true
+      sni: fi.aeternavpn.space
       type: hysteria2
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
@@ -27,34 +27,6 @@ proxies:
       type: vless
       udp: true
       uuid: 91eb52ec-e3f5-4ab9-90da-43104995aef7
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-457582632
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: y3EIsxDGDJrBGk3j4YmjI5R_8jiCsEDRDMeL4bv5TTI
-        short-id: 6ba85179e30d4fc2
-      server: 144.31.129.2
-      servername: by1.un1.pro
-      tls: true
-      type: vless
-      udp: true
-      uuid: 91eb52ec-e3f5-4ab9-90da-43104995aef7
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-477044293
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: TSOm7XIZvGzYoCbh_lFFA9PTQJqI-JU5kKIAffGmUWg
-        short-id: 5e39e518bfac6392
-      server: nele.neobo-tooth.ru
-      servername: vk.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: b6c29ae7-4748-4049-b642-b695c0d2c776
     - name: hysteria2-1027317458
       password: C91FbOXGY9XRymrcEebtax9R1Nj62UizoT8S6kCb7xwey8IE
       port: 443
@@ -76,45 +48,25 @@ proxies:
       type: vless
       udp: true
       uuid: 30dab345-4de9-4b70-ad9f-8ebd5c66686f
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-474980680
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: TSOm7XIZvGzYoCbh_lFFA9PTQJqI-JU5kKIAffGmUWg
-        short-id: 5e39e518bfac6392
-      server: nele.neobo-tooth.ru
-      servername: vk.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: b6c29ae7-4748-4049-b642-b695c0d2c776
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1060059388
         - hysteria2-1065167932
+        - hysteria2-1059437564
         - vless-453166862
-        - vless-457582632
-        - vless-477044293
         - hysteria2-1027317458
         - vless-659165665
-        - vless-474980680
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1060059388
         - hysteria2-1065167932
+        - hysteria2-1059437564
         - vless-453166862
-        - vless-457582632
-        - vless-477044293
         - hysteria2-1027317458
         - vless-659165665
-        - vless-474980680
       type: select
 rules:
     - MATCH,select
