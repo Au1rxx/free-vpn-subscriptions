@@ -1,18 +1,11 @@
 proxies:
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1010844641
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
-        short-id: ff776ff77be48b88
-      server: alban.freeinternat.com
-      servername: alban.freeinternat.com
-      tls: true
-      type: vless
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1014983477
+      password: frcYfFRuQRks932EpCWvX7
+      port: 57925
+      server: 157.22.240.141
+      type: ss
       udp: true
-      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1028235585
@@ -384,20 +377,6 @@ proxies:
       type: vless
       udp: true
       uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1061498280
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
-        short-id: ff776ff77be48b88
-      server: alban.freeinternat.com
-      servername: alban.freeinternat.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1063937099
@@ -416,7 +395,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1010844641
+        - shadowsocks-1014983477
         - vless-1028235585
         - vless-1031183830
         - vless-1034350896
@@ -444,14 +423,13 @@ proxy-groups:
         - vless-1059274343
         - vless-1059617751
         - vless-1059617781
-        - vless-1061498280
         - vless-1063937099
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1010844641
+        - shadowsocks-1014983477
         - vless-1028235585
         - vless-1031183830
         - vless-1034350896
@@ -479,7 +457,6 @@ proxy-groups:
         - vless-1059274343
         - vless-1059617751
         - vless-1059617781
-        - vless-1061498280
         - vless-1063937099
       type: select
 rules:

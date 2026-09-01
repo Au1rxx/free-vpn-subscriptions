@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "aa6f8aaf-d7ff-46f8-a9a0-d143d7e71f71",
+      "server": "kz03hy01.tcp-reset-club.net",
+      "server_port": 443,
+      "tag": "hysteria2-1058023684",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "kz03hy01.tcp-reset-club.net"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-1058023684"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-1058023684"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

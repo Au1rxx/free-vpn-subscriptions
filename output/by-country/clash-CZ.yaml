@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-656196130
+      password: 6e1b9a65-884f-3aa9-9469-bf6ec0f08610
+      port: 3462
+      server: 60.250.152.234
+      skip-cert-verify: true
+      sni: a03.taipeicitygovernment.cn.ua
+      type: trojan
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1044631433
@@ -17,12 +25,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-656196130
         - vless-1044631433
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-656196130
         - vless-1044631433
       type: select
 rules:
