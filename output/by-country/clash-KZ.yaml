@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-1058023684
-      password: aa6f8aaf-d7ff-46f8-a9a0-d143d7e71f71
-      port: 443
-      server: kz03hy01.tcp-reset-club.net
-      skip-cert-verify: false
-      sni: ""
-      type: hysteria2
     - name: hysteria2-1030510056
       password: eb0e3aec-f67f-4fa2-8577-b0bff0484e77
       port: 443
@@ -13,19 +6,35 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - name: hysteria2-1058023684
+      password: aa6f8aaf-d7ff-46f8-a9a0-d143d7e71f71
+      port: 443
+      server: kz03hy01.tcp-reset-club.net
+      skip-cert-verify: false
+      sni: ""
+      type: hysteria2
+    - name: hysteria2-1030309575
+      password: eb0e3aec-f67f-4fa2-8577-b0bff0484e77
+      port: 443
+      server: 194.238.40.185
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1058023684
         - hysteria2-1030510056
+        - hysteria2-1058023684
+        - hysteria2-1030309575
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1058023684
         - hysteria2-1030510056
+        - hysteria2-1058023684
+        - hysteria2-1030309575
       type: select
 rules:
     - MATCH,select

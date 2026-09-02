@@ -1,4 +1,21 @@
 proxies:
+    - name: hysteria2-781397530
+      password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
+      port: 443
+      server: hy2-latvia2.unlimited-access.ru
+      skip-cert-verify: true
+      sni: hy2-latvia2.unlimited-access.ru
+      type: hysteria2
+    - name: vless-539832439
+      network: grpc
+      port: 2083
+      server: laoye.in-gect.fun
+      servername: laoye.in-gect.fun
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - name: vless-561641518
       network: grpc
       port: 2083
@@ -9,10 +26,17 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: vless-583609879
+    - name: hysteria2-745560342
+      password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
+      port: 443
+      server: hy2-latvia2.unlimited-access.ru
+      skip-cert-verify: false
+      sni: hy2-latvia2.unlimited-access.ru
+      type: hysteria2
+    - name: vless-718040241
       network: grpc
       port: 2083
-      server: 89.36.161.222
+      server: laoye.in-gect.fun
       servername: laoye.in-gect.fun
       skip-cert-verify: false
       tls: true
@@ -29,54 +53,27 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: hysteria2-781397530
-      password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
-      port: 443
-      server: hy2-latvia2.unlimited-access.ru
-      skip-cert-verify: true
-      sni: hy2-latvia2.unlimited-access.ru
-      type: hysteria2
-    - name: vless-718040241
-      network: grpc
-      port: 2083
-      server: laoye.in-gect.fun
-      servername: laoye.in-gect.fun
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: vless-856210279
-      network: grpc
-      port: 2083
-      server: 89.36.161.222
-      servername: laoye.in-gect.fun
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-561641518
-        - vless-583609879
-        - vless-583609878
         - hysteria2-781397530
+        - vless-539832439
+        - vless-561641518
+        - hysteria2-745560342
         - vless-718040241
-        - vless-856210279
+        - vless-583609878
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-561641518
-        - vless-583609879
-        - vless-583609878
         - hysteria2-781397530
+        - vless-539832439
+        - vless-561641518
+        - hysteria2-745560342
         - vless-718040241
-        - vless-856210279
+        - vless-583609878
       type: select
 rules:
     - MATCH,select
