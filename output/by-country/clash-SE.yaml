@@ -6,17 +6,26 @@ proxies:
       server: 84.32.99.238
       type: ss
       udp: true
+    - name: hysteria2-1048740442
+      password: 0db4a6c709ca4a46153af8a401b7138a
+      port: 8443
+      server: se.allgoodvpn.su
+      skip-cert-verify: true
+      sni: se.allgoodvpn.su
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1064588353
+        - hysteria2-1048740442
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1064588353
+        - hysteria2-1048740442
       type: select
 rules:
     - MATCH,select
