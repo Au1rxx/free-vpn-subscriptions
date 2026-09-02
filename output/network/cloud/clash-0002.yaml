@@ -1,4 +1,26 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-661704684
+      network: tcp
+      port: 41373
+      reality-opts:
+        public-key: m0GsZOAwvAJEaqh9aH6qfOmBKo0KW0jY_tJEC6KaDEU
+        short-id: 0e
+      server: 130.107.73.148
+      servername: google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a71c8954-66a8-4321-bedb-2336230d81ce
+    - name: trojan-661704801
+      password: humanity
+      port: 443
+      server: 188.114.96.3
+      skip-cert-verify: false
+      sni: www.calmlunch.com
+      type: trojan
+      udp: true
     - name: trojan-661704836
       password: humanity
       port: 443
@@ -318,15 +340,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 11c3627f-31e8-4695-dfbd-34076e2f1f5d
-    - alterId: 0
-      cipher: auto
-      name: vmess-681183126
-      network: ws
-      port: 80
-      server: 168.138.43.75
-      type: vmess
-      udp: true
-      uuid: 11c3627f-31e8-4695-dfbd-34076e2f1f5d
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-682292033
@@ -409,6 +422,14 @@ proxies:
       password: humanity
       port: 443
       server: 172.64.150.28
+      skip-cert-verify: false
+      sni: www.calmlunch.com
+      type: trojan
+      udp: true
+    - name: trojan-689741192
+      password: humanity
+      port: 443
+      server: 104.18.37.228
       skip-cert-verify: false
       sni: www.calmlunch.com
       type: trojan
@@ -906,20 +927,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9206ae06-88ee-49b1-a558-531ade80fcaa
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-702763259
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: H56cOJhw0xw76lDEpt7IuJJmVGemK6_CK34KtHwDMX8
-        short-id: ""
-      server: 47.251.25.74
-      servername: www.amazon.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 18805ff3-b420-45de-af18-93be14024ae8
     - client-fingerprint: random
       name: vless-703656397
       network: tcp
@@ -2445,15 +2452,6 @@ proxies:
       type: vless
       udp: true
       uuid: dc8eccdb-ecfa-435f-9ac1-5dc4882e7b51
-    - alterId: 0
-      cipher: auto
-      name: vmess-755751409
-      network: tcp
-      port: 10000
-      server: 47.250.135.244
-      type: vmess
-      udp: true
-      uuid: aedc66b8-99d7-4a21-8310-61870e7f870d
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-757486814
@@ -2593,24 +2591,12 @@ proxies:
       type: vless
       udp: true
       uuid: 8892e34a-339b-4526-b88d-cf68c516231c
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-801842684
-      network: tcp
-      port: 10574
-      reality-opts:
-        public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-        short-id: 48050fab
-      server: 3.0.111.82
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 814bd064-544d-4255-a070-5705c03f6da9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-661704684
+        - trojan-661704801
         - trojan-661704836
         - trojan-661704839
         - trojan-661704860
@@ -2644,7 +2630,6 @@ proxy-groups:
         - vmess-681183110
         - vmess-681183123
         - vmess-681183125
-        - vmess-681183126
         - vless-682292033
         - vless-683855140
         - vless-683910809
@@ -2652,6 +2637,7 @@ proxy-groups:
         - vless-688016903
         - vless-688016904
         - trojan-689741186
+        - trojan-689741192
         - trojan-690625315
         - vmess-691901007
         - vless-692622873
@@ -2695,7 +2681,6 @@ proxy-groups:
         - vless-701259234
         - trojan-701298547
         - vless-701756937
-        - vless-702763259
         - vless-703656397
         - vless-703656411
         - vless-705682003
@@ -2837,7 +2822,6 @@ proxy-groups:
         - vless-742974893
         - vless-745632761
         - vless-754628408
-        - vmess-755751409
         - vless-757486814
         - vmess-759631202
         - vmess-759635237
@@ -2852,12 +2836,13 @@ proxy-groups:
         - vless-799119231
         - vless-799129217
         - vless-801839580
-        - vless-801842684
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-661704684
+        - trojan-661704801
         - trojan-661704836
         - trojan-661704839
         - trojan-661704860
@@ -2891,7 +2876,6 @@ proxy-groups:
         - vmess-681183110
         - vmess-681183123
         - vmess-681183125
-        - vmess-681183126
         - vless-682292033
         - vless-683855140
         - vless-683910809
@@ -2899,6 +2883,7 @@ proxy-groups:
         - vless-688016903
         - vless-688016904
         - trojan-689741186
+        - trojan-689741192
         - trojan-690625315
         - vmess-691901007
         - vless-692622873
@@ -2942,7 +2927,6 @@ proxy-groups:
         - vless-701259234
         - trojan-701298547
         - vless-701756937
-        - vless-702763259
         - vless-703656397
         - vless-703656411
         - vless-705682003
@@ -3084,7 +3068,6 @@ proxy-groups:
         - vless-742974893
         - vless-745632761
         - vless-754628408
-        - vmess-755751409
         - vless-757486814
         - vmess-759631202
         - vmess-759635237
@@ -3099,7 +3082,6 @@ proxy-groups:
         - vless-799119231
         - vless-799129217
         - vless-801839580
-        - vless-801842684
       type: select
 rules:
     - MATCH,select
