@@ -1,16 +1,16 @@
 proxies:
-    - name: hysteria2-1058041898
-      password: switzerland_hysteria2_fastlane_8r4fgh8f1:TRVdyaK5S0DUjC46peYVgtw2Ci4GwiCF
-      port: 1935
-      server: 45.140.205.58
-      skip-cert-verify: false
-      sni: ch3.h.fastlanehosting.ru
-      type: hysteria2
     - name: hysteria2-1071846013
       password: switzerland_hysteria2_fastlane_8r4fgh8f1:TRVdyaK5S0DUjC46peYVgtw2Ci4GwiCF
       port: 1935
       server: 45.140.205.58
       skip-cert-verify: true
+      sni: ch3.h.fastlanehosting.ru
+      type: hysteria2
+    - name: hysteria2-1058041898
+      password: switzerland_hysteria2_fastlane_8r4fgh8f1:TRVdyaK5S0DUjC46peYVgtw2Ci4GwiCF
+      port: 1935
+      server: 45.140.205.58
+      skip-cert-verify: false
       sni: ch3.h.fastlanehosting.ru
       type: hysteria2
     - name: vless-1060064391
@@ -41,41 +41,25 @@ proxies:
       type: vless
       udp: true
       uuid: 2e8077d9-7bd9-444b-b2e3-de940d2eb35e
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-429874173
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: KrFnWxAwVGL6tuj1JE0qpykLzY4aOFjyK3OaymF_hT0
-        short-id: e2e66f4537770cef
-      server: 45.90.56.231
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e2b8f727-c5ee-47e1-8f1b-7c5c61479ce0
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1058041898
         - hysteria2-1071846013
+        - hysteria2-1058041898
         - vless-1060064391
         - vless-1060064396
         - vless-1058029037
-        - vless-429874173
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1058041898
         - hysteria2-1071846013
+        - hysteria2-1058041898
         - vless-1060064391
         - vless-1060064396
         - vless-1058029037
-        - vless-429874173
       type: select
 rules:
     - MATCH,select
