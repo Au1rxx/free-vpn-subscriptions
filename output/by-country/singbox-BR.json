@@ -1,0 +1,47 @@
+{
+  "outbounds": [
+    {
+      "server": "172.64.145.202",
+      "server_port": 443,
+      "tag": "vless-1049494406",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "mao.kipfel.kdns.fr"
+      },
+      "transport": {
+        "headers": {
+          "Host": "mao.kipfel.kdns.fr"
+        },
+        "path": "/glasspanel/guest000_0_5de14443985f/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "30610baf-4645-4c7b-9a22-0d0a0a79eab5"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1049494406"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1049494406"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
