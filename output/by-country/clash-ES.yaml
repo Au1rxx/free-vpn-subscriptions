@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1059334377
+      network: raw
+      port: 19842
+      reality-opts:
+        public-key: sfOfuQeJBlKfDnPL_EMWUxMIiFAN8BNKjtWDUvlsjzM
+        short-id: 25ebc9e0a912
+      server: 185.254.205.79
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 43c23116-1115-4af4-a0f0-56f02841a605
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1008643123
@@ -31,6 +45,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1059334377
         - vless-1008643123
         - vless-1015080086
       type: url-test
@@ -38,6 +53,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1059334377
         - vless-1008643123
         - vless-1015080086
       type: select
