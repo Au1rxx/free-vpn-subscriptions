@@ -1,0 +1,44 @@
+{
+  "outbounds": [
+    {
+      "server": "91.228.227.172",
+      "server_port": 443,
+      "tag": "vless-1060066394",
+      "type": "vless",
+      "uuid": "f0064871-07f6-42d1-a159-81213a52a5c3"
+    },
+    {
+      "server": "91.228.227.172",
+      "server_port": 8080,
+      "tag": "vless-1060066399",
+      "type": "vless",
+      "uuid": "f0064871-07f6-42d1-a159-81213a52a5c3"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1060066394",
+        "vless-1060066399"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1060066394",
+        "vless-1060066399"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

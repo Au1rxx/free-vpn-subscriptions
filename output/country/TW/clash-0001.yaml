@@ -1,12 +1,5 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-241
-      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
-      port: 50099
-      server: r3mrcg001287h3p.cybervena.com
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-298
       password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
       port: 50099
@@ -27,15 +20,6 @@ proxies:
       skip-cert-verify: true
       sni: https://t.me/oneclickvpnkeys
       type: hysteria2
-    - alterId: 0
-      cipher: auto
-      name: vmess-25247
-      network: tcp
-      port: 35034
-      server: 165.154.195.38
-      type: vmess
-      udp: true
-      uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
     - name: trojan-119250
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20025
@@ -116,24 +100,6 @@ proxies:
       sni: tw.catxstar.com
       type: trojan
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-145255
-      network: tcp
-      port: 35034
-      server: 165.154.195.38
-      type: vmess
-      udp: true
-      uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
-    - alterId: 0
-      cipher: auto
-      name: vmess-5258766
-      network: raw
-      port: 35034
-      server: 165.154.195.38
-      type: vmess
-      udp: true
-      uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-42869377
       password: b1ae0fce-9340-4f2e-882d-fdb2218e2e2b
@@ -148,15 +114,6 @@ proxies:
       skip-cert-verify: true
       sni: vpn-tw-002.fastervpn.world
       type: hysteria2
-    - alterId: 0
-      cipher: auto
-      name: vmess-197954839
-      network: raw
-      port: 35034
-      server: 165.154.195.38
-      type: vmess
-      udp: true
-      uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
     - name: hysteria2-200242609
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -1181,20 +1138,6 @@ proxies:
       type: vless
       udp: true
       uuid: b0399730-1618-4727-8ddd-2baf94ab90d6
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1019747843
-      network: tcp
-      port: 34376
-      reality-opts:
-        public-key: Atq4Fo_Mg48QtKXagBW9jnhaQSDUCiKgnATB2EU6OHU
-        short-id: 8dbafb690450d8a9
-      server: 34.81.129.171
-      servername: www.sony.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: bf8cc771-51a0-4395-810f-1f135325cfc1
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1027296844
@@ -2470,16 +2413,6 @@ proxies:
       type: vless
       udp: true
       uuid: b0342e8a-a25e-4e30-b598-d9391b0df4c9
-    - name: vless-1068196494
-      network: grpc
-      port: 443
-      server: tw1.github.surf
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 91c3fcdf-d85b-46f8-ad85-5c5adadf661b
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1071893210
@@ -2549,15 +2482,26 @@ proxies:
       type: vless
       udp: true
       uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
+    - client-fingerprint: chrome
+      name: vless-1073102369
+      network: tcp
+      port: 24215
+      reality-opts:
+        public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
+        short-id: ""
+      server: 118.167.230.216
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-241
         - shadowsocks-298
         - shadowsocks-303
         - hysteria2-16610
-        - vmess-25247
         - trojan-119250
         - trojan-119261
         - trojan-119262
@@ -2568,11 +2512,8 @@ proxy-groups:
         - trojan-122868
         - trojan-122898
         - trojan-122903
-        - vmess-145255
-        - vmess-5258766
         - shadowsocks-42869377
         - hysteria2-137781265
-        - vmess-197954839
         - hysteria2-200242609
         - hysteria2-207301017
         - hysteria2-307174592
@@ -2672,7 +2613,6 @@ proxy-groups:
         - vless-1019527274
         - vless-1019745846
         - vless-1019746851
-        - vless-1019747843
         - vless-1027296844
         - vless-1027296851
         - vless-1027296863
@@ -2766,22 +2706,20 @@ proxy-groups:
         - vless-1063798468
         - vless-1063799406
         - vless-1065909333
-        - vless-1068196494
         - vless-1071893210
         - vless-1071893222
         - vless-1071893249
         - vless-1071893256
         - vless-1071893257
+        - vless-1073102369
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-241
         - shadowsocks-298
         - shadowsocks-303
         - hysteria2-16610
-        - vmess-25247
         - trojan-119250
         - trojan-119261
         - trojan-119262
@@ -2792,11 +2730,8 @@ proxy-groups:
         - trojan-122868
         - trojan-122898
         - trojan-122903
-        - vmess-145255
-        - vmess-5258766
         - shadowsocks-42869377
         - hysteria2-137781265
-        - vmess-197954839
         - hysteria2-200242609
         - hysteria2-207301017
         - hysteria2-307174592
@@ -2896,7 +2831,6 @@ proxy-groups:
         - vless-1019527274
         - vless-1019745846
         - vless-1019746851
-        - vless-1019747843
         - vless-1027296844
         - vless-1027296851
         - vless-1027296863
@@ -2990,12 +2924,12 @@ proxy-groups:
         - vless-1063798468
         - vless-1063799406
         - vless-1065909333
-        - vless-1068196494
         - vless-1071893210
         - vless-1071893222
         - vless-1071893249
         - vless-1071893256
         - vless-1071893257
+        - vless-1073102369
       type: select
 rules:
     - MATCH,select
