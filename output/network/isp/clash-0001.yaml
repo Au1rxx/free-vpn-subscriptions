@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-cfb
+      name: shadowsocks-278
+      password: qwerREWQ@@
+      port: 4652
+      server: 218.237.185.230
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-283
       password: qwerREWQ@@
       port: 13979
@@ -581,20 +588,6 @@ proxies:
       udp: true
       uuid: 3ab5119a-d0e9-4feb-c748-2b42b7367d21
     - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1078208501
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: UXuPOHhPEL-Fd7wcNYSqEhKG-7d7LKEZr2QqTYy1rFc
-        short-id: e7988d
-      server: 59.188.184.133
-      servername: travelinluxe.discoverhongkong.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 58c14e54-6db0-46fb-a1fb-8f3184197d94
-    - client-fingerprint: firefox
       name: vless-1078468688
       network: tcp
       port: 53856
@@ -607,10 +600,18 @@ proxies:
       type: vless
       udp: true
       uuid: 3ab5119a-d0e9-4feb-c748-2b42b7367d21
+    - name: vless-1083567993
+      network: tcp
+      port: 8082
+      server: 206.1.96.52
+      type: vless
+      udp: true
+      uuid: bfb3f06c-e33f-41ac-b101-012c8325a689
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-278
         - shadowsocks-283
         - shadowsocks-287
         - shadowsocks-26744
@@ -675,13 +676,14 @@ proxy-groups:
         - vless-1058378865
         - vless-1071896221
         - vless-1072080370
-        - vless-1078208501
         - vless-1078468688
+        - vless-1083567993
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-278
         - shadowsocks-283
         - shadowsocks-287
         - shadowsocks-26744
@@ -746,8 +748,8 @@ proxy-groups:
         - vless-1058378865
         - vless-1071896221
         - vless-1072080370
-        - vless-1078208501
         - vless-1078468688
+        - vless-1083567993
       type: select
 rules:
     - MATCH,select
