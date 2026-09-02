@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1061862194
+      network: tcp
+      port: 32396
+      reality-opts:
+        public-key: Pj1XWo01sxdH8jKJ_8DoJiZDFANHFKRAqOncP8RNkwU
+        short-id: dd6ce6af95001a
+      server: 172.232.196.241
+      servername: www.sony.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: bd6ebd72-25cd-4209-a418-a8c72946da90
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1058839322
@@ -80,6 +94,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1061862194
         - vless-1058839322
         - vless-1058912758
         - vless-952348251
@@ -93,6 +108,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1061862194
         - vless-1058839322
         - vless-1058912758
         - vless-952348251
