@@ -1,0 +1,37 @@
+{
+  "outbounds": [
+    {
+      "alter_id": 0,
+      "security": "auto",
+      "server": "eur.ednovas.cloud",
+      "server_port": 21432,
+      "tag": "vmess-1106474050",
+      "type": "vmess",
+      "uuid": "d8f0f56a-20ba-4406-9d4d-890d5c7582e5"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vmess-1106474050"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vmess-1106474050"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
