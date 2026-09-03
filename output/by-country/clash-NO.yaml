@@ -1,22 +1,29 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-231
-      password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
-      port: 990
-      server: 185.213.23.63
-      type: ss
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1077704017
+      network: tcp
+      port: 335
+      reality-opts:
+        public-key: XJhq5Vpqo6j5Xsd56EMAK8--8EWBZWc3tjf-WFnInio
+        short-id: ec2213ae33d5b43f
+      server: 151.242.168.69
+      servername: onlineraceentry.co.uk
+      tls: true
+      type: vless
       udp: true
+      uuid: 10000025-9365-7547-f000-30f4f61aa020
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-231
+        - vless-1077704017
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-231
+        - vless-1077704017
       type: select
 rules:
     - MATCH,select

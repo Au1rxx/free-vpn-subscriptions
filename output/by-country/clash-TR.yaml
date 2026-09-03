@@ -1,0 +1,22 @@
+proxies:
+    - name: vless-1087784935
+      network: tcp
+      port: 8082
+      server: 206.1.96.52
+      type: vless
+      udp: true
+      uuid: bfb3f06c-e33f-41ac-b101-012c8325a689
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1087784935
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1087784935
+      type: select
+rules:
+    - MATCH,select

@@ -41,13 +41,6 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - name: hysteria2-48396262
-      password: zhangyang
-      port: 6443
-      server: 130.61.50.75
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
     - name: hysteria2-721489370
       password: zhangyang
       port: 6443
@@ -111,32 +104,6 @@ proxies:
       type: vless
       udp: true
       uuid: 6cbc63c1-97de-4460-847c-7fd7bdda3fa6
-    - client-fingerprint: firefox
-      name: vless-95556397
-      network: grpc
-      port: 2096
-      reality-opts:
-        public-key: HdIk7jX58DtK-PGVKoU587O4w1KrDiej1qz8J2SmRA8
-        short-id: a7bf40db1b0e566a
-      server: 144.31.87.16
-      servername: www.ya.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: c40f773e-3b96-417e-b22c-e48cb63ca7d9
-    - client-fingerprint: chrome
-      name: vless-2337600
-      network: grpc
-      port: 2096
-      reality-opts:
-        public-key: HdIk7jX58DtK-PGVKoU587O4w1KrDiej1qz8J2SmRA8
-        short-id: a7bf40db1b0e566a
-      server: 144.31.87.16
-      servername: www.ya.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: c40f773e-3b96-417e-b22c-e48cb63ca7d9
     - alterId: 0
       cipher: auto
       name: vmess-1078515777
@@ -149,13 +116,13 @@ proxies:
       type: vmess
       udp: true
       uuid: 9a1a05d9-69be-45d3-e326-c6621edf7b31
-    - name: hysteria2-131172
-      password: zhangyang
-      port: 6443
-      server: 130.61.50.75
-      skip-cert-verify: true
-      sni: https://www.calmloud.com
-      type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-209
+      password: 1hhrqrokj3ag
+      port: 8388
+      server: 209.46.102.22
+      type: ss
+      udp: true
     - name: vless-1046909533
       network: grpc
       port: 2083
@@ -191,6 +158,13 @@ proxies:
       type: vless
       udp: true
       uuid: bbfd1f68-ec64-452f-8404-9e2bcf1df951
+    - name: hysteria2-48396262
+      password: zhangyang
+      port: 6443
+      server: 130.61.50.75
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
     - name: hysteria2-1045025787
       password: dffb4c3d-1e84-4938-8881-cad917e8efb2
       port: 443
@@ -247,19 +221,6 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - client-fingerprint: edge
-      name: vless-1089873417
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: HFTFARa1OS53m4HWnjwtZ0J3lu7aoKkE7OujIyM62QI
-        short-id: 2a236a7fcbe0ce61
-      server: 94.26.83.7
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0dd9cfaa-cebd-4444-8778-70cb22737944
 proxy-groups:
     - interval: 300
       name: auto
@@ -270,7 +231,6 @@ proxy-groups:
         - hysteria2-768950027
         - hysteria2-730511437
         - hysteria2-1048867132
-        - hysteria2-48396262
         - hysteria2-721489370
         - hysteria2-918692266
         - shadowsocks-1084784086
@@ -280,14 +240,13 @@ proxy-groups:
         - vless-1086677495
         - vless-1081149908
         - vless-1071431912
-        - vless-95556397
-        - vless-2337600
         - vmess-1078515777
-        - hysteria2-131172
+        - shadowsocks-209
         - vless-1046909533
         - vless-1046909554
         - vless-1071153591
         - vless-1086372306
+        - hysteria2-48396262
         - hysteria2-1045025787
         - hysteria2-1062827729
         - hysteria2-1071459952
@@ -296,7 +255,6 @@ proxy-groups:
         - hysteria2-827675484
         - hysteria2-818063943
         - hysteria2-1060659636
-        - vless-1089873417
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -308,7 +266,6 @@ proxy-groups:
         - hysteria2-768950027
         - hysteria2-730511437
         - hysteria2-1048867132
-        - hysteria2-48396262
         - hysteria2-721489370
         - hysteria2-918692266
         - shadowsocks-1084784086
@@ -318,14 +275,13 @@ proxy-groups:
         - vless-1086677495
         - vless-1081149908
         - vless-1071431912
-        - vless-95556397
-        - vless-2337600
         - vmess-1078515777
-        - hysteria2-131172
+        - shadowsocks-209
         - vless-1046909533
         - vless-1046909554
         - vless-1071153591
         - vless-1086372306
+        - hysteria2-48396262
         - hysteria2-1045025787
         - hysteria2-1062827729
         - hysteria2-1071459952
@@ -334,7 +290,6 @@ proxy-groups:
         - hysteria2-827675484
         - hysteria2-818063943
         - hysteria2-1060659636
-        - vless-1089873417
       type: select
 rules:
     - MATCH,select
