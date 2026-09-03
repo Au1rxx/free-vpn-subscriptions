@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1093670535
+      password: 52e3dd44-ed23-4030-b0cc-5b5a953f2d4d
+      port: 8443
+      server: 104.165.205.42
+      skip-cert-verify: false
+      sni: speedtestmark.com
+      type: hysteria2
     - name: hysteria2-781397530
       password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
       port: 443
@@ -16,19 +23,30 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - cipher: aes-256-cfb
+      name: shadowsocks-768399460
+      password: kSPmvwdFzGMMW5pY
+      port: 9007
+      server: 185.135.86.175
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1093670535
         - hysteria2-781397530
         - vless-539832439
+        - shadowsocks-768399460
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1093670535
         - hysteria2-781397530
         - vless-539832439
+        - shadowsocks-768399460
       type: select
 rules:
     - MATCH,select

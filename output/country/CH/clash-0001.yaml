@@ -1,32 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-448867352
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: KrFnWxAwVGL6tuj1JE0qpykLzY4aOFjyK3OaymF_hT0
-        short-id: e2e66f4537770cef
-      server: 45.90.56.231
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e2b8f727-c5ee-47e1-8f1b-7c5c61479ce0
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-453095268
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: KrFnWxAwVGL6tuj1JE0qpykLzY4aOFjyK3OaymF_hT0
-        short-id: e2e66f4537770cef
-      server: 45.90.56.231
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e2b8f727-c5ee-47e1-8f1b-7c5c61479ce0
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-700417545
@@ -230,20 +202,10 @@ proxies:
       skip-cert-verify: true
       sni: ch3.h.fastlanehosting.ru
       type: hysteria2
-    - name: trojan-1093249075
-      password: DQMH0rnu-nQ2FL7fddCA306ApdzGuvFA
-      port: 2223
-      server: 90.156.218.126
-      skip-cert-verify: true
-      sni: vkc7.secured-by-tenzo.sbs
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-448867352
-        - vless-453095268
         - vless-700417545
         - vless-813976511
         - vless-827023235
@@ -261,14 +223,11 @@ proxy-groups:
         - hysteria2-1058041898
         - vless-1064588357
         - hysteria2-1071846013
-        - trojan-1093249075
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-448867352
-        - vless-453095268
         - vless-700417545
         - vless-813976511
         - vless-827023235
@@ -286,7 +245,6 @@ proxy-groups:
         - hysteria2-1058041898
         - vless-1064588357
         - hysteria2-1071846013
-        - trojan-1093249075
       type: select
 rules:
     - MATCH,select
