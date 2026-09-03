@@ -1,0 +1,49 @@
+{
+  "outbounds": [
+    {
+      "server": "46.29.238.139",
+      "server_port": 40443,
+      "tag": "vless-629454321",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "7i4Y7v80NVAIi_4_9roDkqcXmexIHli87dfZuFaQMUI",
+          "short_id": "68da"
+        },
+        "server_name": "deepl.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "8384341b-cd89-4a21-a022-cc4bd4e648ca"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-629454321"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-629454321"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
