@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1108861479
+      network: tcp
+      port: 14135
+      reality-opts:
+        public-key: 4kg-LfTstNTAHOmGtT6cuvz0-7689qUkmTrXOOQtZQI
+        short-id: ae04
+      server: 123.31.24.135
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f264d7e2-e804-4269-8dc0-dd2c847e4066
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1108861479
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1108861479
+      type: select
+rules:
+    - MATCH,select
