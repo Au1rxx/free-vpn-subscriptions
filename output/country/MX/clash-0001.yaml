@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-656192041
+      network: ws
+      port: 8443
+      server: 45.134.9.133
+      servername: ul-mexico1.09vpn.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: a6d20e79-d326-42c1-bc20-f4cecc6dc42d
     - name: vless-860333092
       network: tcp
       port: 8443
@@ -9,28 +19,8 @@ proxies:
       type: vless
       udp: true
       uuid: 2808bf00-f7af-4b8b-85cb-6bb5cfa4cba6
-    - name: vless-861935526
-      network: tcp
-      port: 8443
-      server: 158.23.49.45
-      servername: mexicotrash.duckdns.org
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2808bf00-f7af-4b8b-85cb-6bb5cfa4cba6
     - name: vless-862873597
       network: tcp
-      port: 8443
-      server: 158.23.49.45
-      servername: mexicotrash.duckdns.org
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2808bf00-f7af-4b8b-85cb-6bb5cfa4cba6
-    - name: vless-1003459169
-      network: raw
       port: 8443
       server: 158.23.49.45
       servername: mexicotrash.duckdns.org
@@ -76,43 +66,29 @@ proxies:
       type: vmess
       udp: true
       uuid: 5cf1f470-3f70-4589-a2a4-4657ea3a1edf
-    - name: vless-1048311846
-      network: tcp
-      port: 8443
-      server: 158.23.49.45
-      servername: mexicotrash.duckdns.org
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2808bf00-f7af-4b8b-85cb-6bb5cfa4cba6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-656192041
         - vless-860333092
-        - vless-861935526
         - vless-862873597
-        - vless-1003459169
         - vless-1004051060
         - vmess-1005125048
         - vmess-1005580185
         - vmess-1005879953
-        - vless-1048311846
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-656192041
         - vless-860333092
-        - vless-861935526
         - vless-862873597
-        - vless-1003459169
         - vless-1004051060
         - vmess-1005125048
         - vmess-1005580185
         - vmess-1005879953
-        - vless-1048311846
       type: select
 rules:
     - MATCH,select
