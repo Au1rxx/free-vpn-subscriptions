@@ -6,17 +6,32 @@ proxies:
       skip-cert-verify: false
       sni: ch3.h.fastlanehosting.ru
       type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-1107713081
+      network: tcp
+      port: 10000
+      reality-opts:
+        public-key: Du5pk4KuMNA1sRcSpmuoLuC0HmxDBmFljFNfUzqxKiM
+        short-id: cd0a1986719e44c8
+      server: switzerland-sgood.wopd.butnorwa.butter.whooisthebest.ir
+      servername: amp-api-edge.apps.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: abe41e21-13bf-49ef-bb3e-df0aa3ae7814
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1058041898
+        - vless-1107713081
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1058041898
+        - vless-1107713081
       type: select
 rules:
     - MATCH,select

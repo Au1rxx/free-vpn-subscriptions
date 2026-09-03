@@ -1,4 +1,32 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1101701018
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: urD2miGxEfHylELSqqggBKCYIMSNXNTbdPijru7-eAQ
+        short-id: 46babe29a750b634
+      server: 151.242.168.180
+      servername: kibi-institut.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: 05020afd-d476-406b-8950-ee7dd63a6e64
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1101701011
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: mWzXDVWUhjGcuizZHA-rEnRpxv2wgeSZUIuHmQdteiA
+        short-id: f576da5e05a1d4d2
+      server: 151.242.168.155
+      servername: kibi-institut.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: 43ca296b-321f-4b61-a12c-ddf8370b9761
     - client-fingerprint: firefox
       name: vless-629454321
       network: tcp
@@ -16,12 +44,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1101701018
+        - vless-1101701011
         - vless-629454321
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1101701018
+        - vless-1101701011
         - vless-629454321
       type: select
 rules:
