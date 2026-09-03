@@ -1,0 +1,31 @@
+proxies:
+    - name: vless-1027600147
+      network: ws
+      port: 443
+      server: 151.243.198.104
+      type: vless
+      udp: true
+      uuid: e4737ce4-c646-44cc-9067-390e13c2a5f6
+    - name: vless-1016662823
+      network: ws
+      port: 443
+      server: itproxy4.lockdwn.com
+      type: vless
+      udp: true
+      uuid: e4737ce4-c646-44cc-9067-390e13c2a5f6
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1027600147
+        - vless-1016662823
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1027600147
+        - vless-1016662823
+      type: select
+rules:
+    - MATCH,select

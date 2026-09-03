@@ -1,0 +1,54 @@
+{
+  "outbounds": [
+    {
+      "server": "151.243.198.104",
+      "server_port": 443,
+      "tag": "vless-1027600147",
+      "transport": {
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "e4737ce4-c646-44cc-9067-390e13c2a5f6"
+    },
+    {
+      "server": "itproxy4.lockdwn.com",
+      "server_port": 443,
+      "tag": "vless-1016662823",
+      "transport": {
+        "headers": {
+          "Host": "itproxy4.lockdwn.com"
+        },
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "e4737ce4-c646-44cc-9067-390e13c2a5f6"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1027600147",
+        "vless-1016662823"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1027600147",
+        "vless-1016662823"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
