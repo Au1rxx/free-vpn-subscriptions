@@ -1,0 +1,58 @@
+proxies:
+    - name: vless-1096029254
+      network: tcp
+      port: 8080
+      server: 91.228.227.172
+      type: vless
+      udp: true
+      uuid: 1b0a74e1-3c69-4386-ae77-9db408d0687f
+    - name: vless-1096029239
+      network: tcp
+      port: 110
+      server: 91.228.227.172
+      type: vless
+      udp: true
+      uuid: 1b0a74e1-3c69-4386-ae77-9db408d0687f
+    - name: vless-1096029248
+      network: tcp
+      port: 110
+      server: 91.228.227.172
+      type: vless
+      udp: true
+      uuid: b877fa69-2d1c-48da-a1e8-2ac8a40f1227
+    - name: vless-1096029250
+      network: tcp
+      port: 443
+      server: 91.228.227.172
+      type: vless
+      udp: true
+      uuid: 1b0a74e1-3c69-4386-ae77-9db408d0687f
+    - name: vless-1096029249
+      network: tcp
+      port: 8080
+      server: 91.228.227.172
+      type: vless
+      udp: true
+      uuid: b877fa69-2d1c-48da-a1e8-2ac8a40f1227
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1096029254
+        - vless-1096029239
+        - vless-1096029248
+        - vless-1096029250
+        - vless-1096029249
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1096029254
+        - vless-1096029239
+        - vless-1096029248
+        - vless-1096029250
+        - vless-1096029249
+      type: select
+rules:
+    - MATCH,select

@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1095761854
+      password: d8d69a2d-dbc3-4d8d-a896-0425dcd04895
+      port: 8443
+      server: fr.cloudgamings.org
+      skip-cert-verify: false
+      sni: fr.cloudgamings.org
+      type: hysteria2
     - name: hysteria2-1065910775
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -11,16 +18,6 @@ proxies:
       port: 2083
       server: usejh2.neobo-tooth.ru
       servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: vless-602178043
-      network: grpc
-      port: 2083
-      server: usejh2.neobo-tooth.ru
-      servername: usejh2.neobo-tooth.ru
       skip-cert-verify: false
       tls: true
       type: vless
@@ -50,6 +47,16 @@ proxies:
       network: grpc
       port: 2083
       server: 45.144.28.39
+      servername: usejh2.neobo-tooth.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - name: vless-602178043
+      network: grpc
+      port: 2083
+      server: usejh2.neobo-tooth.ru
       servername: usejh2.neobo-tooth.ru
       skip-cert-verify: false
       tls: true
@@ -93,17 +100,6 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - flow: xtls-rprx-vision
-      name: vless-1090323314
-      network: tcp
-      port: 443
-      server: momo3.api3-max.ru
-      servername: momo3.api3-max.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: ac7fb60f-0b7a-465d-a002-05160ec04ed6
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1061705356
@@ -139,45 +135,54 @@ proxies:
       skip-cert-verify: true
       sni: vpn-fr-002.fastervpn.world
       type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792833
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 95.170.13.47
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1095761854
         - hysteria2-1065910775
         - vless-561641520
-        - vless-602178043
         - vless-816611169
         - vless-742974932
         - vless-827055229
+        - vless-602178043
         - vless-787495215
         - hysteria2-650412204
         - vless-845414231
         - vless-650669482
-        - vless-1090323314
         - vless-1061705356
         - vless-757549244
         - hysteria2-1004725118
         - hysteria2-984679229
+        - shadowsocks-696792833
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1095761854
         - hysteria2-1065910775
         - vless-561641520
-        - vless-602178043
         - vless-816611169
         - vless-742974932
         - vless-827055229
+        - vless-602178043
         - vless-787495215
         - hysteria2-650412204
         - vless-845414231
         - vless-650669482
-        - vless-1090323314
         - vless-1061705356
         - vless-757549244
         - hysteria2-1004725118
         - hysteria2-984679229
+        - shadowsocks-696792833
       type: select
 rules:
     - MATCH,select
