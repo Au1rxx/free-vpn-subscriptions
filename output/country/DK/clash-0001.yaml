@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-201274614
+      network: ws
+      port: 8880
+      server: divine-rice-3224.464.workers.dev
+      type: vless
+      udp: true
+      uuid: 77d68177-7331-4816-b5e9-23ec39a2ae3b
     - alterId: 0
       cipher: auto
       name: vmess-1005125062
@@ -17,19 +24,30 @@ proxies:
       type: vmess
       udp: true
       uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+    - name: vless-1015476612
+      network: ws
+      port: 8080
+      server: 172.64.42.85
+      type: vless
+      udp: true
+      uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-201274614
         - vmess-1005125062
         - vmess-1013860885
+        - vless-1015476612
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-201274614
         - vmess-1005125062
         - vmess-1013860885
+        - vless-1015476612
       type: select
 rules:
     - MATCH,select
