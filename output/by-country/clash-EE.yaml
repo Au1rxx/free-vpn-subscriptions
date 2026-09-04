@@ -1,11 +1,11 @@
 proxies:
-    - name: vless-1101239274
-      network: ws
+    - name: hysteria2-818203558
+      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
       port: 443
-      server: 94.183.170.248
-      type: vless
-      udp: true
-      uuid: 9d9e3421-5652-4804-85ba-238355b948ab
+      server: faq.wwwinternetvideo.click
+      skip-cert-verify: true
+      sni: cabinet.wwwinternetvideo.click
+      type: hysteria2
     - name: hysteria2-812148987
       password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
       port: 443
@@ -13,19 +13,28 @@ proxies:
       skip-cert-verify: false
       sni: cabinet.wwwinternetvideo.click
       type: hysteria2
+    - name: vless-1101239274
+      network: ws
+      port: 443
+      server: 94.183.170.248
+      type: vless
+      udp: true
+      uuid: 9d9e3421-5652-4804-85ba-238355b948ab
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1101239274
+        - hysteria2-818203558
         - hysteria2-812148987
+        - vless-1101239274
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1101239274
+        - hysteria2-818203558
         - hysteria2-812148987
+        - vless-1101239274
       type: select
 rules:
     - MATCH,select

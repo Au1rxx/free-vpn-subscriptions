@@ -1,0 +1,31 @@
+proxies:
+    - name: hysteria2-860759723
+      password: eb0e3aec-f67f-4fa2-8577-b0bff0484e77
+      port: 443
+      server: kaz0001hy01.packet-drop-society.net
+      skip-cert-verify: true
+      sni: kaz0001hy01.packet-drop-society.net
+      type: hysteria2
+    - name: hysteria2-1033323481
+      password: eb0e3aec-f67f-4fa2-8577-b0bff0484e77
+      port: 443
+      server: 194.238.40.185
+      skip-cert-verify: true
+      sni: 194.238.40.185
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-860759723
+        - hysteria2-1033323481
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-860759723
+        - hysteria2-1033323481
+      type: select
+rules:
+    - MATCH,select
