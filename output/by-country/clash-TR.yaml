@@ -1,24 +1,22 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-1005879953
-      network: tcp
-      port: 32153
-      server: 38.60.224.173
-      type: vmess
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1122093251
+      password: WZCZJPkbhEDeACD0_g91JA
+      port: 1080
+      server: 109.230.196.66
+      type: ss
       udp: true
-      uuid: 5cf1f470-3f70-4589-a2a4-4657ea3a1edf
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-1005879953
+        - shadowsocks-1122093251
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-1005879953
+        - shadowsocks-1122093251
       type: select
 rules:
     - MATCH,select

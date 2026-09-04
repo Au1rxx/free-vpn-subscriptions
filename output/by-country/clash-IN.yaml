@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-474937712
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
+        short-id: 88b6
+      server: 5.253.30.99
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1090192617
@@ -55,20 +69,6 @@ proxies:
       udp: true
       uuid: 0faaa1ee-f3d2-49ec-92af-3228329f3000
     - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1019437422
-      network: raw
-      port: 19567
-      reality-opts:
-        public-key: tzm4xWHOerooioq4QQkI7VCvIapECgody_vJGDzX3UI
-        short-id: 87714fc3c52a
-      server: 172.237.44.80
-      servername: www.nvidia.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0faaa1ee-f3d2-49ec-92af-3228329f3000
-    - client-fingerprint: firefox
       name: vless-1107805220
       network: tcp
       port: 2053
@@ -81,37 +81,37 @@ proxies:
       type: vless
       udp: true
       uuid: 50ddfd92-dc79-4777-a256-41e34d56836e
-    - client-fingerprint: firefox
+    - client-fingerprint: random
       flow: xtls-rprx-vision
-      name: vless-1015051101
+      name: vless-700283023
       network: tcp
-      port: 19567
+      port: 40443
       reality-opts:
-        public-key: tzm4xWHOerooioq4QQkI7VCvIapECgody_vJGDzX3UI
-        short-id: 87714fc3c52a
-      server: 172.237.44.80
-      servername: www.nvidia.com
+        public-key: d1gJntekIStCHyAwgJCuv-N4_BBx5dDQ7K6CeWmpMRo
+        short-id: 84fc
+      server: preview.netraidly.ru
+      servername: deepl.com
       tls: true
       type: vless
       udp: true
-      uuid: 0faaa1ee-f3d2-49ec-92af-3228329f3000
+      uuid: 15fd22d1-8931-4d41-af37-8ba6711e93fe
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-1011119233
+      name: vless-629456321
       network: tcp
-      port: 19567
+      port: 40443
       reality-opts:
-        public-key: tzm4xWHOerooioq4QQkI7VCvIapECgody_vJGDzX3UI
-        short-id: 87714fc3c52a
-      server: 172.237.44.80
-      servername: www.nvidia.com
+        public-key: d1gJntekIStCHyAwgJCuv-N4_BBx5dDQ7K6CeWmpMRo
+        short-id: 84fc
+      server: 5.253.42.163
+      servername: deepl.com
       tls: true
       type: vless
       udp: true
-      uuid: 0faaa1ee-f3d2-49ec-92af-3228329f3000
-    - client-fingerprint: firefox
+      uuid: 15fd22d1-8931-4d41-af37-8ba6711e93fe
+    - client-fingerprint: random
       flow: xtls-rprx-vision
-      name: vless-1046640326
+      name: vless-856679281
       network: tcp
       port: 40443
       reality-opts:
@@ -127,29 +127,29 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-474937712
         - vless-1090192617
         - vless-1084626260
         - vless-1095634781
         - vless-1106281754
-        - vless-1019437422
         - vless-1107805220
-        - vless-1015051101
-        - vless-1011119233
-        - vless-1046640326
+        - vless-700283023
+        - vless-629456321
+        - vless-856679281
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-474937712
         - vless-1090192617
         - vless-1084626260
         - vless-1095634781
         - vless-1106281754
-        - vless-1019437422
         - vless-1107805220
-        - vless-1015051101
-        - vless-1011119233
-        - vless-1046640326
+        - vless-700283023
+        - vless-629456321
+        - vless-856679281
       type: select
 rules:
     - MATCH,select
