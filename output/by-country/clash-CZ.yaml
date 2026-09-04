@@ -1,0 +1,38 @@
+proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1115437594
+      password: lIoNSMeYLX8QGHnOp0DTBR0W91/CHVDEjPqjMDuYcdQ=
+      port: 47425
+      server: 45.129.142.41
+      type: ss
+      udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1101243913
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: crRdG3Hd_QtGCJi9fd1rtHpDIB7vnCx1Yexfu6XkIzU
+        short-id: 2cec07a8614696e5
+      server: 5.39.202.127
+      servername: czek1.kovsh.lol
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-1115437594
+        - vless-1101243913
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-1115437594
+        - vless-1101243913
+      type: select
+rules:
+    - MATCH,select
