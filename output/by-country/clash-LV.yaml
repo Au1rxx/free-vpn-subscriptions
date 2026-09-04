@@ -27,6 +27,16 @@ proxies:
       skip-cert-verify: false
       sni: speedtestmark.com
       type: hysteria2
+    - name: vless-539832439
+      network: grpc
+      port: 2083
+      server: laoye.in-gect.fun
+      servername: laoye.in-gect.fun
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
 proxy-groups:
     - interval: 300
       name: auto
@@ -35,6 +45,7 @@ proxy-groups:
         - hysteria2-1093664536
         - hysteria2-1098338330
         - hysteria2-857107263
+        - vless-539832439
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -44,6 +55,7 @@ proxy-groups:
         - hysteria2-1093664536
         - hysteria2-1098338330
         - hysteria2-857107263
+        - vless-539832439
       type: select
 rules:
     - MATCH,select
