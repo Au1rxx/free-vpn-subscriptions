@@ -1,22 +1,22 @@
 proxies:
-    - name: vless-1104470819
-      network: ws
-      port: 12914
-      server: 2.56.172.31
-      type: vless
+    - cipher: aes-256-cfb
+      name: shadowsocks-1063665779
+      password: amazonskr05
+      port: 443
+      server: 3.252.205.48
+      type: ss
       udp: true
-      uuid: 2e4f3fef-bd5e-4719-938a-d6c28d77f8a4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1104470819
+        - shadowsocks-1063665779
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1104470819
+        - shadowsocks-1063665779
       type: select
 rules:
     - MATCH,select
