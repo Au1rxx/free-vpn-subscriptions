@@ -351,13 +351,6 @@ proxies:
       server: 91.201.65.122
       type: ss
       udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-723348725
-      password: 9XwYyZsK8SNzQDtY
-      port: 9059
-      server: 91.201.65.122
-      type: ss
-      udp: true
     - name: vless-725760858
       network: ws
       port: 8443
@@ -658,6 +651,18 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-1008532968
+      network: ws
+      port: 8443
+      server: 57.131.32.191
+      servername: ov-italy1.09vpn.com
+      skip-cert-verify: true
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 848af33c-81f2-40c9-93b2-4681d056936b
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1010679997
@@ -956,26 +961,6 @@ proxies:
       type: vless
       udp: true
       uuid: 167ed405-7de9-4bff-b1ea-6e3d49c76b0b
-    - name: vless-1116641404
-      network: ws
-      port: 443
-      server: tehran.sorixset.ir
-      servername: global.fastly.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 469bc714-57c1-4091-8913-ff804b38bd3a
-    - name: vless-1116885930
-      network: ws
-      port: 443
-      server: tehran.sorixset.ir
-      servername: global.fastly.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 469bc714-57c1-4091-8913-ff804b38bd3a
     - name: vless-1117280430
       network: ws
       port: 443
@@ -1003,6 +988,20 @@ proxies:
       type: vless
       udp: true
       uuid: bc7a2074-9be4-4108-9631-872ff4fd69eb
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1123846713
+      network: tcp
+      port: 32833
+      reality-opts:
+        public-key: PaTDdYBrlh1xBixdI0igvRRkf0vnUwMRzi-4oDyfS20
+        short-id: a0a305ccc8e94aa8
+      server: 172.238.232.239
+      servername: www.intel.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 167ed405-7de9-4bff-b1ea-6e3d49c76b0b
 proxy-groups:
     - interval: 300
       name: auto
@@ -1049,7 +1048,6 @@ proxy-groups:
         - vless-702052623
         - vless-703656408
         - shadowsocks-717969043
-        - shadowsocks-723348725
         - vless-725760858
         - vless-734928297
         - vless-734928300
@@ -1087,6 +1085,7 @@ proxy-groups:
         - vless-976057664
         - trojan-985269092
         - trojan-985533664
+        - vmess-1008532968
         - vless-1010679997
         - vless-1010748524
         - vless-1010844468
@@ -1114,11 +1113,10 @@ proxy-groups:
         - vless-1062311530
         - vless-1066137046
         - vless-1102473538
-        - vless-1116641404
-        - vless-1116885930
         - vless-1117280430
         - vless-1117280431
         - vless-1117397123
+        - vless-1123846713
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -1166,7 +1164,6 @@ proxy-groups:
         - vless-702052623
         - vless-703656408
         - shadowsocks-717969043
-        - shadowsocks-723348725
         - vless-725760858
         - vless-734928297
         - vless-734928300
@@ -1204,6 +1201,7 @@ proxy-groups:
         - vless-976057664
         - trojan-985269092
         - trojan-985533664
+        - vmess-1008532968
         - vless-1010679997
         - vless-1010748524
         - vless-1010844468
@@ -1231,11 +1229,10 @@ proxy-groups:
         - vless-1062311530
         - vless-1066137046
         - vless-1102473538
-        - vless-1116641404
-        - vless-1116885930
         - vless-1117280430
         - vless-1117280431
         - vless-1117397123
+        - vless-1123846713
       type: select
 rules:
     - MATCH,select

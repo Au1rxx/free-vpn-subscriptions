@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1097438605
+      password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
+      port: 443
+      server: 85.159.228.22
+      skip-cert-verify: false
+      sni: hy2-latvia2.unlimited-access.ru
+      type: hysteria2
     - name: hysteria2-855659706
       password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
       port: 8443
@@ -6,6 +13,13 @@ proxies:
       skip-cert-verify: false
       sni: speedtestmark.com
       type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-696781305
+      password: 45xgMgm386pjWjTx
+      port: 9082
+      server: 185.135.86.175
+      type: ss
+      udp: true
     - name: hysteria2-1093664536
       password: 990c8eb6-4c4e-4277-8602-79af8402cdd0
       port: 8443
@@ -41,7 +55,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1097438605
         - hysteria2-855659706
+        - shadowsocks-696781305
         - hysteria2-1093664536
         - hysteria2-1098338330
         - hysteria2-857107263
@@ -51,7 +67,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - hysteria2-1097438605
         - hysteria2-855659706
+        - shadowsocks-696781305
         - hysteria2-1093664536
         - hysteria2-1098338330
         - hysteria2-857107263
