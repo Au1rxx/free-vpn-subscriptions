@@ -13,13 +13,6 @@ proxies:
       skip-cert-verify: true
       sni: se.allgoodvpn.su
       type: hysteria2
-    - name: hysteria2-1058393292
-      password: 5a92a9d2-3067-49cd-bfc5-989bbdfc5d52
-      port: 7443
-      server: 31.77.220.185
-      skip-cert-verify: false
-      sni: fi.aeternavpn.space
-      type: hysteria2
     - name: hysteria2-818203526
       password: h_B9x3942fJ9x_Kpx3914KQ_nZ934HFg_rT
       port: 8443
@@ -54,17 +47,45 @@ proxies:
       type: vless
       udp: true
       uuid: cec9a167-6381-4752-9828-a92ab6e6ebdd
+    - client-fingerprint: firefox
+      name: vless-315420975
+      network: tcp
+      port: 448
+      reality-opts:
+        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+        short-id: cd21e552537c7c0b
+      server: 185.79.138.71
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-256467532
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
+        short-id: a696de84963656de
+      server: 95.85.224.51
+      servername: max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1058919328
         - hysteria2-1048740442
-        - hysteria2-1058393292
         - hysteria2-818203526
         - hysteria2-1047744691
         - hysteria2-813371789
         - vless-1108747704
+        - vless-315420975
+        - vless-256467532
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -72,11 +93,12 @@ proxy-groups:
         - auto
         - hysteria2-1058919328
         - hysteria2-1048740442
-        - hysteria2-1058393292
         - hysteria2-818203526
         - hysteria2-1047744691
         - hysteria2-813371789
         - vless-1108747704
+        - vless-315420975
+        - vless-256467532
       type: select
 rules:
     - MATCH,select
