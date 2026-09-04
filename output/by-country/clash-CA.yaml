@@ -1,11 +1,4 @@
 proxies:
-    - cipher: 2022-blake3-aes-256-gcm
-      name: shadowsocks-1111017946
-      password: cOiC+3JhAXMwdGV5exnrMSorJU0Rl5qlLCbCAuDlWY4=:HWFFJN19JkvbTKo/79AfnbRBK9uHUUaFNZJyLjEoJGs=
-      port: 2083
-      server: 51.222.107.43
-      type: ss
-      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-468166890
@@ -162,6 +155,13 @@ proxies:
       password: 7eadc6dbe2ae
       port: 65443
       server: 154.127.56.212
+      type: ss
+      udp: true
+    - cipher: 2022-blake3-aes-256-gcm
+      name: shadowsocks-1111017946
+      password: cOiC+3JhAXMwdGV5exnrMSorJU0Rl5qlLCbCAuDlWY4=:HWFFJN19JkvbTKo/79AfnbRBK9uHUUaFNZJyLjEoJGs=
+      port: 2083
+      server: 51.222.107.43
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
@@ -342,6 +342,19 @@ proxies:
       udp: true
       uuid: a71c8954-66a8-4321-bedb-2336230d81ce
     - client-fingerprint: firefox
+      name: vless-1107806205
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: wA5Vklw2gN0kMwC7JEmudiPbsKyTeSfbZNvpLiDUBEU
+        short-id: bb437dca4f03116e
+      server: 66.70.179.198
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d165fa7e-fa7a-414f-8c75-15f18bce5105
+    - client-fingerprint: firefox
       name: vless-1095635779
       network: tcp
       port: 2053
@@ -396,21 +409,21 @@ proxies:
       type: vless
       udp: true
       uuid: d9e4721d-cdac-44c7-bc91-117367eac194
-    - name: vless-1010747546
-      network: ws
-      port: 8443
-      server: maple.adaspoloandco.com
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: db3f09ae-23f2-42b8-abee-7b89fb392c5e
     - name: vless-1059023014
       network: ws
       port: 8443
       server: maple.adaspoloandco.com
       servername: maple.adaspoloandco.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: db3f09ae-23f2-42b8-abee-7b89fb392c5e
+    - name: vless-1010747546
+      network: ws
+      port: 8443
+      server: maple.adaspoloandco.com
+      servername: ""
       skip-cert-verify: false
       tls: true
       type: vless
@@ -427,7 +440,6 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1111017946
         - vmess-468166890
         - hysteria2-1030361951
         - shadowsocks-208
@@ -443,6 +455,7 @@ proxy-groups:
         - vless-92670921
         - vmess-324641036
         - shadowsocks-696792823
+        - shadowsocks-1111017946
         - shadowsocks-487917493
         - shadowsocks-1061764007
         - shadowsocks-1061764008
@@ -458,19 +471,19 @@ proxy-groups:
         - hysteria2-1064225965
         - vless-912621527
         - vless-46267
+        - vless-1107806205
         - vless-1095635779
         - vless-904861930
         - vless-202736774
         - vless-734969290
-        - vless-1010747546
         - vless-1059023014
+        - vless-1010747546
         - hysteria2-1026820218
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1111017946
         - vmess-468166890
         - hysteria2-1030361951
         - shadowsocks-208
@@ -486,6 +499,7 @@ proxy-groups:
         - vless-92670921
         - vmess-324641036
         - shadowsocks-696792823
+        - shadowsocks-1111017946
         - shadowsocks-487917493
         - shadowsocks-1061764007
         - shadowsocks-1061764008
@@ -501,12 +515,13 @@ proxy-groups:
         - hysteria2-1064225965
         - vless-912621527
         - vless-46267
+        - vless-1107806205
         - vless-1095635779
         - vless-904861930
         - vless-202736774
         - vless-734969290
-        - vless-1010747546
         - vless-1059023014
+        - vless-1010747546
         - hysteria2-1026820218
       type: select
 rules:

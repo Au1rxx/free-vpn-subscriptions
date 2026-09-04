@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-1097484106
-      password: zhangyang
-      port: 6443
-      server: 130.61.50.75
-      skip-cert-verify: true
-      sni: https%253a%252f%252fwww.calmloud.com
-      type: hysteria2
     - name: hysteria2-918692266
       password: 76186f1e-3062-4a2b-98c2-fab3c61a9511
       port: 443
@@ -113,13 +106,6 @@ proxies:
       type: vless
       udp: true
       uuid: bf645ffe-a3cc-4480-8e4c-9bcd1af41052
-    - name: vless-1080833052
-      network: ws
-      port: 2087
-      server: 188.220.67.161
-      type: vless
-      udp: true
-      uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
     - alterId: 0
       cipher: auto
       name: vmess-1044580140
@@ -139,40 +125,13 @@ proxies:
       type: vless
       udp: true
       uuid: 0f0b7f69-78e1-4e9e-8b35-0986444613e4
-    - name: vless-1071153591
+    - name: vless-1062176085
       network: ws
       port: 2087
-      server: 188.220.67.224
+      server: 82.24.203.37
       type: vless
       udp: true
-      uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
-    - name: vless-1071152788
-      network: ws
-      port: 2087
-      server: 82.24.203.10
-      type: vless
-      udp: true
-      uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
-    - name: vless-1062310607
-      network: ws
-      port: 2087
-      server: 188.220.67.198
-      type: vless
-      udp: true
-      uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
-    - client-fingerprint: ios
-      name: vless-1107663343
-      network: grpc
-      port: 9891
-      reality-opts:
-        public-key: Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0
-        short-id: aa
-      server: 212.41.11.31
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 86221972-81a1-41f4-a48c-c512af05777c
+      uuid: 44573770-963a-41f5-a080-3cc11e4957a2
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-244967249
@@ -215,11 +174,18 @@ proxies:
       skip-cert-verify: true
       sni: https%3a%2f%2fwww.calmloud.com
       type: hysteria2
+    - name: trojan-1116902834
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.7
+      skip-cert-verify: false
+      sni: ssl.fastly.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1097484106
         - hysteria2-918692266
         - vless-1107712078
         - shadowsocks-415241977
@@ -233,24 +199,20 @@ proxy-groups:
         - hysteria2-730511437
         - hysteria2-818063860
         - vless-202747774
-        - vless-1080833052
         - vmess-1044580140
         - vless-1096316529
-        - vless-1071153591
-        - vless-1071152788
-        - vless-1062310607
-        - vless-1107663343
+        - vless-1062176085
         - vless-244967249
         - hysteria2-1098338334
         - hysteria2-851087338
         - hysteria2-1048867132
         - hysteria2-742970030
+        - trojan-1116902834
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1097484106
         - hysteria2-918692266
         - vless-1107712078
         - shadowsocks-415241977
@@ -264,18 +226,15 @@ proxy-groups:
         - hysteria2-730511437
         - hysteria2-818063860
         - vless-202747774
-        - vless-1080833052
         - vmess-1044580140
         - vless-1096316529
-        - vless-1071153591
-        - vless-1071152788
-        - vless-1062310607
-        - vless-1107663343
+        - vless-1062176085
         - vless-244967249
         - hysteria2-1098338334
         - hysteria2-851087338
         - hysteria2-1048867132
         - hysteria2-742970030
+        - trojan-1116902834
       type: select
 rules:
     - MATCH,select
