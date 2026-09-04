@@ -71,13 +71,6 @@ proxies:
       skip-cert-verify: true
       sni: de1.apexvpn.space
       type: hysteria2
-    - name: hysteria2-200242612
-      password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
-      port: 443
-      server: 91.196.32.163
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
     - name: hysteria2-730511437
       password: V1UQuwa-4PRIDW2paxrPe58RcxXHPGyFIGS-5QojaM8
       port: 443
@@ -101,6 +94,21 @@ proxies:
       type: vmess
       udp: true
       uuid: 8e9687fc-a3a7-414a-8676-8e2136797cfe
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1117696093
+      password: 2mxqAF/zUMO7cA1UPUooCBMFBrAytdk7GDqF19ArcmY=
+      port: 59924
+      server: 130.61.43.101
+      type: ss
+      udp: true
+    - name: trojan-1112875547
+      password: MiTiVPN
+      port: 443
+      server: 199.232.78.160
+      skip-cert-verify: false
+      sni: ssl.fastly.com
+      type: trojan
+      udp: true
     - name: vless-1096316529
       network: ws
       port: 443
@@ -111,6 +119,16 @@ proxies:
       type: vless
       udp: true
       uuid: 0f0b7f69-78e1-4e9e-8b35-0986444613e4
+    - name: vless-1113474488
+      network: grpc
+      port: 2087
+      server: srv-21bac9.vless.monster
+      servername: srv-21bac9.vless.monster
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: df9f5aca-eda0-428f-a752-e53866153d12
     - name: vless-1062176085
       network: ws
       port: 2087
@@ -118,6 +136,13 @@ proxies:
       type: vless
       udp: true
       uuid: 44573770-963a-41f5-a080-3cc11e4957a2
+    - name: vless-1109236432
+      network: ws
+      port: 2087
+      server: 188.220.67.245
+      type: vless
+      udp: true
+      uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
     - name: hysteria2-1098338334
       password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
       port: 8443
@@ -161,6 +186,14 @@ proxies:
       sni: ssl.fastly.com
       type: trojan
       udp: true
+    - name: trojan-1112875530
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.7
+      skip-cert-verify: false
+      sni: ssl.fastly.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -174,18 +207,22 @@ proxy-groups:
         - vless-1107074241
         - hysteria2-24902
         - hysteria2-1045025787
-        - hysteria2-200242612
         - hysteria2-730511437
         - hysteria2-818063860
         - vmess-1044580140
+        - shadowsocks-1117696093
+        - trojan-1112875547
         - vless-1096316529
+        - vless-1113474488
         - vless-1062176085
+        - vless-1109236432
         - hysteria2-1098338334
         - hysteria2-851087338
         - hysteria2-1048867132
         - hysteria2-742970030
         - shadowsocks-209
         - trojan-1116902834
+        - trojan-1112875530
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -200,18 +237,22 @@ proxy-groups:
         - vless-1107074241
         - hysteria2-24902
         - hysteria2-1045025787
-        - hysteria2-200242612
         - hysteria2-730511437
         - hysteria2-818063860
         - vmess-1044580140
+        - shadowsocks-1117696093
+        - trojan-1112875547
         - vless-1096316529
+        - vless-1113474488
         - vless-1062176085
+        - vless-1109236432
         - hysteria2-1098338334
         - hysteria2-851087338
         - hysteria2-1048867132
         - hysteria2-742970030
         - shadowsocks-209
         - trojan-1116902834
+        - trojan-1112875530
       type: select
 rules:
     - MATCH,select
