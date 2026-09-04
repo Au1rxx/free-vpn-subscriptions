@@ -1,0 +1,36 @@
+{
+  "outbounds": [
+    {
+      "method": "2022-blake3-aes-256-gcm",
+      "password": "MGM1NGM2NmQ2NTg5NDg3Y2EyNTZjNGJiNmU4YjA0Mzc=:YmQxYjRiZDJhMzEyNDMzZGFlN2JkNWQyOGY1MGFmMmE=",
+      "server": "84.32.99.238",
+      "server_port": 20146,
+      "tag": "shadowsocks-1064588353",
+      "type": "shadowsocks"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "shadowsocks-1064588353"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "shadowsocks-1064588353"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
