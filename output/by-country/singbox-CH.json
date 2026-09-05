@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "1e1c72f4-325b-4db0-b2d4-dc9c7cddc46a",
+      "server": "dump.whit3.net",
+      "server_port": 443,
+      "tag": "hysteria2-1126785883",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "dump.whit3.net"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-1126785883"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-1126785883"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

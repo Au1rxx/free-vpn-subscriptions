@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-cfb
+      name: shadowsocks-249
+      password: qwerREWQ@@
+      port: 2078
+      server: 27.255.82.134
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-260
       password: qwerREWQ@@
       port: 4652
@@ -146,13 +153,6 @@ proxies:
       name: shadowsocks-125600
       password: Y6R9pAtvxxzmGC
       port: 8888
-      server: 141.164.45.187
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-125601
-      password: Y6R9pAtvxxzmGC
-      port: 9090
       server: 141.164.45.187
       type: ss
       udp: true
@@ -342,6 +342,14 @@ proxies:
       type: vless
       udp: true
       uuid: 814bd064-544d-4255-a070-5705c03f6da9
+    - name: trojan-246566051
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20085
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: hysteria2-260690818
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -1302,6 +1310,13 @@ proxies:
       type: vless
       udp: true
       uuid: 83973343-90db-423d-a5f7-2e3b56aeb8f4
+    - name: vless-1093208215
+      network: ws
+      port: 8880
+      server: 172.64.88.168
+      type: vless
+      udp: true
+      uuid: b4883d27-3151-4adf-92b1-841c0dccd1ea
     - name: vless-1093208262
       network: ws
       port: 8880
@@ -1698,10 +1713,24 @@ proxies:
       type: vless
       udp: true
       uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
+    - client-fingerprint: chrome
+      name: vless-1127067869
+      network: tcp
+      port: 8686
+      reality-opts:
+        public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
+        short-id: 628b3c90c98ead4f
+      server: 13.209.68.68
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-249
         - shadowsocks-260
         - shadowsocks-278
         - shadowsocks-283
@@ -1722,7 +1751,6 @@ proxy-groups:
         - shadowsocks-125598
         - shadowsocks-125599
         - shadowsocks-125600
-        - shadowsocks-125601
         - shadowsocks-125602
         - vmess-144713
         - vmess-145107
@@ -1741,6 +1769,7 @@ proxy-groups:
         - vless-210050461
         - hysteria2-215228348
         - vless-233010793
+        - trojan-246566051
         - hysteria2-260690818
         - hysteria2-266962492
         - vless-270700471
@@ -1832,6 +1861,7 @@ proxy-groups:
         - vmess-1068447098
         - hysteria2-1073910128
         - vless-1084911432
+        - vless-1093208215
         - vless-1093208262
         - vless-1093208327
         - vless-1093209217
@@ -1881,11 +1911,13 @@ proxy-groups:
         - vless-1122170342
         - vless-1123846722
         - vless-1124752436
+        - vless-1127067869
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-249
         - shadowsocks-260
         - shadowsocks-278
         - shadowsocks-283
@@ -1906,7 +1938,6 @@ proxy-groups:
         - shadowsocks-125598
         - shadowsocks-125599
         - shadowsocks-125600
-        - shadowsocks-125601
         - shadowsocks-125602
         - vmess-144713
         - vmess-145107
@@ -1925,6 +1956,7 @@ proxy-groups:
         - vless-210050461
         - hysteria2-215228348
         - vless-233010793
+        - trojan-246566051
         - hysteria2-260690818
         - hysteria2-266962492
         - vless-270700471
@@ -2016,6 +2048,7 @@ proxy-groups:
         - vmess-1068447098
         - hysteria2-1073910128
         - vless-1084911432
+        - vless-1093208215
         - vless-1093208262
         - vless-1093208327
         - vless-1093209217
@@ -2065,6 +2098,7 @@ proxy-groups:
         - vless-1122170342
         - vless-1123846722
         - vless-1124752436
+        - vless-1127067869
       type: select
 rules:
     - MATCH,select
