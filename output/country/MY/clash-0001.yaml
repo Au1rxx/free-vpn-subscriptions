@@ -8,6 +8,15 @@ proxies:
       type: vmess
       udp: true
       uuid: c77f48f5-4be3-4461-b52b-49998e7b897b
+    - alterId: 0
+      cipher: auto
+      name: vmess-99016
+      network: tcp
+      port: 10000
+      server: 47.250.135.244
+      type: vmess
+      udp: true
+      uuid: aedc66b8-99d7-4a21-8310-61870e7f870d
     - name: trojan-119253
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20031
@@ -396,25 +405,12 @@ proxies:
       type: vless
       udp: true
       uuid: 8a346b7c-5b95-4845-affa-0e5d9929e9ae
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1115014021
-      network: tcp
-      port: 22803
-      reality-opts:
-        public-key: zCNI8OUsvp6NKt52Z_93OoqegAjbVjzP2tHGXd3cQjM
-        short-id: 0888830f7006f1
-      server: clrpbqwolexxn.cfooov.xyz
-      servername: addons.mozilla.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: f8738084-d3e4-457b-a15e-10d85709681f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-16063
+        - vmess-99016
         - trojan-119253
         - trojan-122859
         - trojan-122870
@@ -453,13 +449,13 @@ proxy-groups:
         - hysteria2-1103572880
         - vless-1108744337
         - vless-1111890339
-        - vless-1115014021
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-16063
+        - vmess-99016
         - trojan-119253
         - trojan-122859
         - trojan-122870
@@ -498,7 +494,6 @@ proxy-groups:
         - hysteria2-1103572880
         - vless-1108744337
         - vless-1111890339
-        - vless-1115014021
       type: select
 rules:
     - MATCH,select

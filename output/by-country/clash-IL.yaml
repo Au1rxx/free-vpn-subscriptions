@@ -13,17 +13,26 @@ proxies:
       type: vless
       udp: true
       uuid: a28a90ab-9b5d-4c61-861d-3ea3f92fc0a2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1101226769
+      password: 3hSrBrmKmrgNGsD97RSGOS5p+XIFqEVk6Zo4AHbsRhg=
+      port: 29367
+      server: 85.209.157.209
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1113418538
+        - shadowsocks-1101226769
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1113418538
+        - shadowsocks-1101226769
       type: select
 rules:
     - MATCH,select
