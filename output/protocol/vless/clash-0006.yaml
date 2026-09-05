@@ -1,0 +1,102 @@
+proxies:
+    - client-fingerprint: chrome
+      name: vless-1125501985
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: sCUawARn6hM1zSnIC1thltBvCnbebQoG2P2UFO5xdgo
+        short-id: 4b4850
+      server: api.xavino-shop.ir
+      servername: amp-api-edge.apps.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f81d9693-3345-4027-b55d-68b3e0f80579
+    - flow: xtls-rprx-vision
+      name: vless-1125509423
+      network: tcp
+      port: 443
+      server: kamaz4.api3-max.ru
+      servername: kamaz4.api3-max.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5999a497-a2da-41d0-92cb-5b758082f83c
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1125715386
+      network: tcp
+      port: 49325
+      reality-opts:
+        public-key: T0RmoxSgAtx71kYW_ENHcU1cMHXpz0IzFJYHOn9WZm8
+        short-id: 886921b120b2
+      server: 45.129.142.41
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 68f7465d-6edb-4317-a1a9-ffe87e3a7c38
+    - client-fingerprint: chrome
+      name: vless-1125771171
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+        short-id: ""
+      server: 219.77.167.19
+      servername: updates.cdn-apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2e42c1ee-aaaa-11ec-bb74-f23c9164ca5d
+    - client-fingerprint: chrome
+      name: vless-1125771172
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+        short-id: ""
+      server: 219.77.167.19
+      servername: updates.cdn-apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8e0f8ef2-5fe3-11ec-a8bf-f23c91cfbbc9
+    - client-fingerprint: chrome
+      name: vless-1125771953
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bE6ws6dFPflj8WVJMGwtso0WOaiSmBOHM2muQO2Uul4
+        short-id: ""
+      server: 219.77.167.19
+      servername: updates.cdn-apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0da8651e-e1f6-11ec-bd7c-f23c913c8d2b
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1125501985
+        - vless-1125509423
+        - vless-1125715386
+        - vless-1125771171
+        - vless-1125771172
+        - vless-1125771953
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1125501985
+        - vless-1125509423
+        - vless-1125715386
+        - vless-1125771171
+        - vless-1125771172
+        - vless-1125771953
+      type: select
+rules:
+    - MATCH,select
