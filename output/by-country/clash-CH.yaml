@@ -13,17 +13,49 @@ proxies:
       type: vless
       udp: true
       uuid: 78eb4455-0d07-28a0-93e3-7c8654f11d74
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1123815963
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bnUUlOHnKSj_dwJQP-zMTTVjJ9IierDOleYNKA_kpn4
+        short-id: ""
+      server: 194.154.29.149
+      servername: ch-1.kihsuyhf8jkiugsxb.cfd
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0dc1fc26-b8e9-4296-9870-0996de3c2333
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1137007708
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: EltWI8AOqkN8lMjRycweRRoFRah5hu6xiKtgBmQOdE8
+        short-id: 1ed136481e0ede74
+      server: 45.151.182.234
+      servername: cdn.geodema.network
+      tls: true
+      type: vless
+      udp: true
+      uuid: 78eb4455-0d07-28a0-93e3-7c8654f11d74
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1137007721
+        - vless-1123815963
+        - vless-1137007708
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1137007721
+        - vless-1123815963
+        - vless-1137007708
       type: select
 rules:
     - MATCH,select
