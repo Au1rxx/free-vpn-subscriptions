@@ -1,4 +1,16 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-1134295929
+      network: tcp
+      port: 62984
+      server: 91.228.227.175
+      servername: f.mjbot.ir
+      skip-cert-verify: false
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 62d79906-0850-4a95-aa23-6c827211fe6e
     - flow: xtls-rprx-vision
       name: vless-1118841632
       network: tcp
@@ -14,12 +26,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-1134295929
         - vless-1118841632
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-1134295929
         - vless-1118841632
       type: select
 rules:

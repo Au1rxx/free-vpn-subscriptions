@@ -1,0 +1,22 @@
+proxies:
+    - name: vless-1133740639
+      network: tcp
+      port: 2083
+      server: 185.7.172.174
+      type: vless
+      udp: true
+      uuid: c3f84246-8733-48a0-972f-cb08b3bb4efd
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1133740639
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1133740639
+      type: select
+rules:
+    - MATCH,select
