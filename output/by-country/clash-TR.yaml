@@ -1,4 +1,20 @@
 proxies:
+    - name: trojan-1136766534
+      password: v2whz6ahmyy2f84j
+      port: 2087
+      server: 45.74.158.25
+      skip-cert-verify: false
+      sni: pus.mmdaqaorg2.ir
+      type: trojan
+      udp: true
+    - name: trojan-1137381247
+      password: v2whz6ahmyy2f84j
+      port: 2087
+      server: subtu.charsoulink3.ir
+      skip-cert-verify: false
+      sni: pus.mmdaqaorg2.ir
+      type: trojan
+      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-1134295929
@@ -22,19 +38,49 @@ proxies:
       type: vless
       udp: true
       uuid: 5999a497-a2da-41d0-92cb-5b758082f83c
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1081168386
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: PTqeBbbr2xJ1L3V1PyYjKjxanMKKqJHU-wtnpYmFQCI
+        short-id: 5606d4a25c99e7af
+      server: 156.67.63.231
+      servername: sync-bridge.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: b052df40-d51c-456c-9bd6-57af01a87e4e
+    - name: trojan-1136125305
+      password: v2whz6ahmyy2f84j
+      port: 2087
+      server: subtu.charsoulink3.ir
+      skip-cert-verify: false
+      sni: pus.mmdaqaorg2.ir
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-1136766534
+        - trojan-1137381247
         - vmess-1134295929
         - vless-1118841632
+        - vless-1081168386
+        - trojan-1136125305
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-1136766534
+        - trojan-1137381247
         - vmess-1134295929
         - vless-1118841632
+        - vless-1081168386
+        - trojan-1136125305
       type: select
 rules:
     - MATCH,select
