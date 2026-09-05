@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-119254
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20032
+      server: 45.67.201.210
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: trojan-119299
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20114
@@ -46,42 +54,29 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - client-fingerprint: firefox
-      name: vless-1122067380
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: aUdvs6o4PHN6jmdkIKBA2rHsN_7l8W2SaDfNgzn-BwU
-        short-id: ""
-      server: 109.104.155.119
-      servername: br.monkora.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: cf80b5fc-c445-4373-87e6-f8a22ad10d81
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-119254
         - trojan-119299
         - trojan-122906
         - trojan-513948371
         - shadowsocks-696792825
         - trojan-856461985
         - trojan-871344761
-        - vless-1122067380
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-119254
         - trojan-119299
         - trojan-122906
         - trojan-513948371
         - shadowsocks-696792825
         - trojan-856461985
         - trojan-871344761
-        - vless-1122067380
       type: select
 rules:
     - MATCH,select
