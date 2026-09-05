@@ -1,13 +1,25 @@
-proxies: []
+proxies:
+    - name: vless-656192041
+      network: ws
+      port: 8443
+      server: 45.134.9.133
+      servername: ul-mexico1.09vpn.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: a6d20e79-d326-42c1-bc20-f4cecc6dc42d
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - vless-656192041
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-656192041
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-698726724
+      network: ws
+      port: 2087
+      server: 172.64.52.68
+      servername: faxf32gkfzoxqv.fx6hsv0.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 77777777-8a3e-6666-b6d1-a9c5f0e8b3a2
     - name: trojan-700553833
       password: 2c366360-0333-4738-9423-6d5b378e3594
       port: 443
@@ -290,13 +300,6 @@ proxies:
       udp: true
       uuid: 379998c5-2a71-4202-9c74-522e0c3c5404
     - cipher: aes-256-gcm
-      name: shadowsocks-1137350311
-      password: 81a20429165df87e
-      port: 50119
-      server: 195.133.23.200
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
       name: shadowsocks-1141381825
       password: bdb313adf74c2ede
       port: 50102
@@ -310,10 +313,19 @@ proxies:
       skip-cert-verify: false
       sni: cdncache.pleiades.codes
       type: hysteria2
+    - name: trojan-1142808934
+      password: 2c366360-0333-4738-9423-6d5b378e3594
+      port: 443
+      server: aeryy5gfrp630ww1.lovebaipiao.net
+      skip-cert-verify: false
+      sni: aeryy5gfrp630ww1.lovebaipiao.net
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-698726724
         - trojan-700553833
         - trojan-703571919
         - vless-734956293
@@ -344,14 +356,15 @@ proxy-groups:
         - vless-1090192616
         - vless-1091570640
         - vless-1092080369
-        - shadowsocks-1137350311
         - shadowsocks-1141381825
         - hysteria2-1141551207
+        - trojan-1142808934
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-698726724
         - trojan-700553833
         - trojan-703571919
         - vless-734956293
@@ -382,9 +395,9 @@ proxy-groups:
         - vless-1090192616
         - vless-1091570640
         - vless-1092080369
-        - shadowsocks-1137350311
         - shadowsocks-1141381825
         - hysteria2-1141551207
+        - trojan-1142808934
       type: select
 rules:
     - MATCH,select

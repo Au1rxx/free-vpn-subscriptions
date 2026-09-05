@@ -6,38 +6,17 @@ proxies:
       skip-cert-verify: false
       sni: onecloudstream.com
       type: hysteria2
-    - name: vless-1089189256
-      network: tcp
-      port: 8443
-      server: estproxy3.lockdwn.com
-      servername: estproxy3.lockdwn.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9d9e3421-5652-4804-85ba-238355b948ab
-    - name: vless-689803241
-      network: ws
-      port: 443
-      server: 94.183.170.135
-      type: vless
-      udp: true
-      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1131169946
-        - vless-1089189256
-        - vless-689803241
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1131169946
-        - vless-1089189256
-        - vless-689803241
       type: select
 rules:
     - MATCH,select
