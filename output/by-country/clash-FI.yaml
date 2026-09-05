@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1047744691
+      password: 0db4a6c709ca4a46153af8a401b7138a
+      port: 8443
+      server: se.allgoodvpn.su
+      skip-cert-verify: false
+      sni: ""
+      type: hysteria2
     - name: hysteria2-1048740442
       password: 0db4a6c709ca4a46153af8a401b7138a
       port: 8443
@@ -41,27 +48,45 @@ proxies:
       type: vless
       udp: true
       uuid: 9fd994ad-d36c-476d-96c7-25f10bbdf2cb
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1122588878
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: QWWpyBLxKBNBvBHMDDr-bt38fh_mD3xjMqlJ5jY-6hQ
+        short-id: ""
+      server: fi-8.kihsuyhf8jkiugsxb.cfd
+      servername: fi-8.kihsuyhf8jkiugsxb.cfd
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0dc1fc26-b8e9-4296-9870-0996de3c2333
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1047744691
         - hysteria2-1048740442
         - hysteria2-700405738
         - hysteria2-1131170291
         - hysteria2-652726847
         - hysteria2-812154987
         - vless-1125213249
+        - vless-1122588878
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1047744691
         - hysteria2-1048740442
         - hysteria2-700405738
         - hysteria2-1131170291
         - hysteria2-652726847
         - hysteria2-812154987
         - vless-1125213249
+        - vless-1122588878
       type: select
 rules:
     - MATCH,select

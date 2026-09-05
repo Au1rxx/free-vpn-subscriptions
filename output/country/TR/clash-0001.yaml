@@ -95,6 +95,15 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-1005126003
+      network: tcp
+      port: 16272
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1044631486
@@ -626,13 +635,33 @@ proxies:
       type: vless
       udp: true
       uuid: 5999a497-a2da-41d0-92cb-5b758082f83c
-    - name: hysteria2-1126787626
-      password: 1e1c72f4-325b-4db0-b2d4-dc9c7cddc46a
+    - name: vless-1132523426
+      network: tcp
       port: 443
-      server: mywebsite.whit3.net
-      skip-cert-verify: false
-      sni: mywebsite.whit3.net
-      type: hysteria2
+      server: 91.228.227.172
+      type: vless
+      udp: true
+      uuid: d6faa463-2d36-4229-853f-47f0a1305ef9
+    - client-fingerprint: chrome
+      name: vless-1132523427
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: k5COjpopVNGzEuMb457zCrrZegSdBX-d8bg0G6HDsE4
+        short-id: 9bd613c48251f0db
+      server: 151.241.226.201
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e691b034-dfc9-4f22-80aa-6d4f6404a4df
+    - name: vless-1132523435
+      network: tcp
+      port: 110
+      server: 91.228.227.172
+      type: vless
+      udp: true
+      uuid: d6faa463-2d36-4229-853f-47f0a1305ef9
 proxy-groups:
     - interval: 300
       name: auto
@@ -649,6 +678,7 @@ proxy-groups:
         - trojan-856461940
         - trojan-856461981
         - trojan-885355670
+        - vmess-1005126003
         - vless-1044631486
         - vless-1047427979
         - vless-1048560131
@@ -696,7 +726,9 @@ proxy-groups:
         - vless-1125467416
         - vless-1125467431
         - vless-1126202017
-        - hysteria2-1126787626
+        - vless-1132523426
+        - vless-1132523427
+        - vless-1132523435
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -714,6 +746,7 @@ proxy-groups:
         - trojan-856461940
         - trojan-856461981
         - trojan-885355670
+        - vmess-1005126003
         - vless-1044631486
         - vless-1047427979
         - vless-1048560131
@@ -761,7 +794,9 @@ proxy-groups:
         - vless-1125467416
         - vless-1125467431
         - vless-1126202017
-        - hysteria2-1126787626
+        - vless-1132523426
+        - vless-1132523427
+        - vless-1132523435
       type: select
 rules:
     - MATCH,select

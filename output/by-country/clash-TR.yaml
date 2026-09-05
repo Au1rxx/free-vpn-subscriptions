@@ -1,0 +1,26 @@
+proxies:
+    - flow: xtls-rprx-vision
+      name: vless-1118841632
+      network: tcp
+      port: 443
+      server: parta3.api3-max.ru
+      servername: parta3.api3-max.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5999a497-a2da-41d0-92cb-5b758082f83c
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1118841632
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1118841632
+      type: select
+rules:
+    - MATCH,select

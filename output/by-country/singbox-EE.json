@@ -25,9 +25,41 @@
       "uuid": "b3a11068-1a7e-4643-85de-7c82cce46943"
     },
     {
+      "server": "94.183.170.248",
+      "server_port": 8443,
+      "tag": "vless-1096306027",
+      "tls": {
+        "alpn": [
+          "h2",
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "estproxy3.lockdwn.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "9d9e3421-5652-4804-85ba-238355b948ab"
+    },
+    {
+      "server": "estproxy3.lockdwn.com",
+      "server_port": 443,
+      "tag": "vless-1096306032",
+      "transport": {
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "9d9e3421-5652-4804-85ba-238355b948ab"
+    },
+    {
       "interval": "5m",
       "outbounds": [
-        "vless-1115239549"
+        "vless-1115239549",
+        "vless-1096306027",
+        "vless-1096306032"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -36,7 +68,9 @@
     {
       "outbounds": [
         "auto",
-        "vless-1115239549"
+        "vless-1115239549",
+        "vless-1096306027",
+        "vless-1096306032"
       ],
       "tag": "select",
       "type": "selector"
