@@ -1,20 +1,6 @@
 proxies:
     - client-fingerprint: edge
       flow: xtls-rprx-vision
-      name: vless-453054129
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: cGVu5j95KoeHBkWXveyTKolORbdvZm9g1T6yyo64ZBg
-        short-id: d26f4703cdd30f4e
-      server: laoye.in-gect.fun
-      servername: vk.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
       name: vless-453273842
       network: tcp
       port: 2053
@@ -725,6 +711,13 @@ proxies:
       type: vless
       udp: true
       uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
+    - cipher: aes-256-cfb
+      name: shadowsocks-819466279
+      password: UTJA57ypk2XKQpnm
+      port: 9033
+      server: 185.135.86.175
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-827069230
@@ -1012,20 +1005,6 @@ proxies:
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1066172048
-      network: "tcp#\U0001FA8695@oneclickvpnkeyshysteria2://h_b9x3942fj9x_kpx3914kq_nz934hfg_rt@103.246.248.234:8080/?insecure=1"
-      port: 2053
-      reality-opts:
-        public-key: cGVu5j95KoeHBkWXveyTKolORbdvZm9g1T6yyo64ZBg
-        short-id: d26f4703cdd30f4e
-      server: 89.36.161.222
-      servername: vk.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-1069097621
       network: tcp
       port: 2053
@@ -1227,11 +1206,31 @@ proxies:
       type: vless
       udp: true
       uuid: 78eb4455-0d07-23f0-93e3-7c8654f11d74
+    - name: hysteria2-1131169944
+      password: e3c3b722-1264-4cdc-a97c-b0a1bb73cd67
+      port: 9443
+      server: 104.165.205.250
+      skip-cert-verify: false
+      sni: onecloudstream.com
+      type: hysteria2
+    - name: hysteria2-1131169945
+      password: e3c3b722-1264-4cdc-a97c-b0a1bb73cd67
+      port: 9443
+      server: 104.165.205.219
+      skip-cert-verify: false
+      sni: onecloudstream.com
+      type: hysteria2
+    - name: hysteria2-1131170290
+      password: e3c3b722-1264-4cdc-a97c-b0a1bb73cd67
+      port: 9443
+      server: 104.165.205.142
+      skip-cert-verify: false
+      sni: onecloudstream.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-453054129
         - vless-453273842
         - vless-457578632
         - vless-459556904
@@ -1302,6 +1301,7 @@ proxy-groups:
         - shadowsocks-812343923
         - vless-813407632
         - vless-818039794
+        - shadowsocks-819466279
         - vless-827069230
         - vless-827658513
         - vless-828015773
@@ -1328,7 +1328,6 @@ proxy-groups:
         - vless-1010631588
         - vless-1014913479
         - vless-1064641192
-        - vless-1066172048
         - vless-1069097621
         - vless-1076275377
         - vless-1078471669
@@ -1351,12 +1350,14 @@ proxy-groups:
         - hysteria2-1128356683
         - hysteria2-1128356685
         - vless-1128933898
+        - hysteria2-1131169944
+        - hysteria2-1131169945
+        - hysteria2-1131170290
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-453054129
         - vless-453273842
         - vless-457578632
         - vless-459556904
@@ -1427,6 +1428,7 @@ proxy-groups:
         - shadowsocks-812343923
         - vless-813407632
         - vless-818039794
+        - shadowsocks-819466279
         - vless-827069230
         - vless-827658513
         - vless-828015773
@@ -1453,7 +1455,6 @@ proxy-groups:
         - vless-1010631588
         - vless-1014913479
         - vless-1064641192
-        - vless-1066172048
         - vless-1069097621
         - vless-1076275377
         - vless-1078471669
@@ -1476,6 +1477,9 @@ proxy-groups:
         - hysteria2-1128356683
         - hysteria2-1128356685
         - vless-1128933898
+        - hysteria2-1131169944
+        - hysteria2-1131169945
+        - hysteria2-1131170290
       type: select
 rules:
     - MATCH,select
