@@ -1,0 +1,22 @@
+proxies:
+    - name: hysteria2-1045025825
+      password: 19f72087-4591-4d72-930b-2697078ec2be
+      port: 4433
+      server: ru1.xiaoliyu.cyou
+      skip-cert-verify: true
+      sni: ru1.xiaoliyu.cyou
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-1045025825
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-1045025825
+      type: select
+rules:
+    - MATCH,select
