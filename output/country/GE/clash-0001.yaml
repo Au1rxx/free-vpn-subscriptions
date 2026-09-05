@@ -1,13 +1,29 @@
-proxies: []
+proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-743806887
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: ivgTfLR13A6xBsicIA28OPoav2tXlsstTTmGuETfnSk
+        short-id: 6d6f13013d3e1d0c
+      server: 89.105.208.121
+      servername: n1.cloudgaming.one
+      tls: true
+      type: vless
+      udp: true
+      uuid: 91d0fa43-e557-43e7-a731-f0c3d1fb306a
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - vless-743806887
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-743806887
       type: select
 rules:
     - MATCH,select
