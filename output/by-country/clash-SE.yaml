@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1101701007
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 4HizFUAIvYp3wzM4p1_VcbhLWsRVHzG53XZG4f7oWiY
+        short-id: b21f41e79ecbac55
+      server: 185.189.47.107
+      servername: edge-se.mystatic-cdn.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 252f7811-d86f-4dc2-97e0-83d3172ef4b8
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1119495839
@@ -17,12 +31,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1101701007
         - vless-1119495839
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1101701007
         - vless-1119495839
       type: select
 rules:
