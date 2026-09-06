@@ -1,0 +1,49 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "46.8.158.17",
+      "server_port": 30045,
+      "tag": "vless-1155657309",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "kAEICRYinsD6ypo3aR950HLemR5D715_8FYbO58Whgs"
+        },
+        "server_name": "www.google.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "type": "vless",
+      "uuid": "721df957-3c91-439d-b937-0c620d8d56bd"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1155657309"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1155657309"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
