@@ -19,15 +19,8 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
-    - cipher: aes-256-cfb
-      name: shadowsocks-812343744
-      password: S2zDyyPcmZN2h8EC
-      port: 9076
-      server: 217.30.10.44
-      type: ss
-      udp: true
-    - client-fingerprint: safari
-      name: vless-1126122379
+    - client-fingerprint: chrome
+      name: vless-1141367427
       network: grpc
       port: 33743
       reality-opts:
@@ -39,8 +32,15 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
-    - client-fingerprint: chrome
-      name: vless-1141367427
+    - cipher: aes-256-cfb
+      name: shadowsocks-812343744
+      password: S2zDyyPcmZN2h8EC
+      port: 9076
+      server: 217.30.10.44
+      type: ss
+      udp: true
+    - client-fingerprint: safari
+      name: vless-1126122379
       network: grpc
       port: 33743
       reality-opts:
@@ -85,6 +85,13 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
+    - name: vless-1121491053
+      network: ws
+      port: 443
+      server: pl3.lckdwn.ru
+      type: vless
+      udp: true
+      uuid: 84c898c4-6990-4121-ae51-27d989f5ce39
     - name: hysteria2-768953025
       password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
       port: 443
@@ -99,48 +106,21 @@ proxies:
       server: 217.30.10.44
       type: ss
       udp: true
-    - client-fingerprint: firefox
-      name: vless-1105975118
-      network: grpc
-      port: 33743
-      reality-opts:
-        public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
-        short-id: ""
-      server: 185.223.57.10
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: b3a11068-1a7e-4643-85de-7c82cce46943
-    - client-fingerprint: ios
-      name: vless-1126122358
-      network: grpc
-      port: 33743
-      reality-opts:
-        public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
-        short-id: ""
-      server: 185.223.57.16
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: b3a11068-1a7e-4643-85de-7c82cce46943
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-779606815
         - vless-1126122351
+        - vless-1141367427
         - shadowsocks-812343744
         - vless-1126122379
-        - vless-1141367427
         - hysteria2-855833185
         - vless-1126122373
         - vless-1126122350
+        - vless-1121491053
         - hysteria2-768953025
         - shadowsocks-696781307
-        - vless-1105975118
-        - vless-1126122358
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -148,16 +128,15 @@ proxy-groups:
         - auto
         - shadowsocks-779606815
         - vless-1126122351
+        - vless-1141367427
         - shadowsocks-812343744
         - vless-1126122379
-        - vless-1141367427
         - hysteria2-855833185
         - vless-1126122373
         - vless-1126122350
+        - vless-1121491053
         - hysteria2-768953025
         - shadowsocks-696781307
-        - vless-1105975118
-        - vless-1126122358
       type: select
 rules:
     - MATCH,select
