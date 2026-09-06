@@ -23,6 +23,13 @@ proxies:
       type: vless
       udp: true
       uuid: df9f5aca-eda0-428f-a752-e53866153d12
+    - name: hysteria2-1097484106
+      password: zhangyang
+      port: 6443
+      server: 130.61.50.75
+      skip-cert-verify: true
+      sni: https%253a%252f%252fwww.calmloud.com
+      type: hysteria2
     - name: hysteria2-855659704
       password: V1UQuwa-4PRIDW2paxrPe58RcxXHPGyFIGS-5QojaM8
       port: 443
@@ -58,16 +65,6 @@ proxies:
       skip-cert-verify: false
       sni: ""
       type: hysteria2
-    - name: vless-1107712078
-      network: grpc
-      port: 2087
-      server: srv-21bac9.vless.monster
-      servername: srv-21bac9.vless.monster
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: df9f5aca-eda0-428f-a752-e53866153d12
     - name: vless-1141368039
       network: grpc
       port: 2087
@@ -79,6 +76,16 @@ proxies:
       udp: true
       uuid: df9f5aca-eda0-428f-a752-e53866153d12
     - name: vless-1141368041
+      network: grpc
+      port: 2087
+      server: srv-21bac9.vless.monster
+      servername: srv-21bac9.vless.monster
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: df9f5aca-eda0-428f-a752-e53866153d12
+    - name: vless-1107712078
       network: grpc
       port: 2087
       server: srv-21bac9.vless.monster
@@ -138,6 +145,16 @@ proxies:
       sni: ssl.fastly.com
       type: trojan
       udp: true
+    - name: vless-1123871927
+      network: grpc
+      port: 2087
+      server: srv-21bac9.vless.monster
+      servername: srv-21bac9.vless.monster
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: df9f5aca-eda0-428f-a752-e53866153d12
     - name: vless-1113474488
       network: grpc
       port: 2087
@@ -237,20 +254,6 @@ proxies:
       type: vless
       udp: true
       uuid: 44573770-963a-41f5-a080-3cc11e4957a2
-    - name: vless-1071152788
-      network: ws
-      port: 2087
-      server: 82.24.203.10
-      type: vless
-      udp: true
-      uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
-    - name: vless-1062311549
-      network: ws
-      port: 2087
-      server: 82.24.203.9
-      type: vless
-      udp: true
-      uuid: 3165b4d0-40f7-4df0-9f59-4c89ccdac92d
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-470978140
@@ -292,25 +295,20 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
-    - alterId: 0
-      cipher: auto
-      name: vmess-1062038835
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1120308353
       network: tcp
-      port: 1234
-      server: 162.19.204.71
-      servername: 162.19.204.71
-      skip-cert-verify: true
+      port: 443
+      reality-opts:
+        public-key: Uaq2YojNeUXGkaCPKxcR_IF9iaatuc3srHfFuwwG7FA
+        short-id: a19516e2d20b09e9
+      server: 2.27.202.112
+      servername: github.com
       tls: true
-      type: vmess
+      type: vless
       udp: true
-      uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-    - name: hysteria2-1097484106
-      password: zhangyang
-      port: 6443
-      server: 130.61.50.75
-      skip-cert-verify: true
-      sni: https%253a%252f%252fwww.calmloud.com
-      type: hysteria2
+      uuid: bfde1878-f157-4ec7-a5ad-38e8835c6e36
     - name: hysteria2-757486810
       password: 2691cbe7c20cced8b0aeb12c812d09077e5b3eec7669fb8f
       port: 443
@@ -318,14 +316,6 @@ proxies:
       skip-cert-verify: true
       sni: replay.wwwinternetvideo.click
       type: hysteria2
-    - name: trojan-1145320024
-      password: MiTiVPN
-      port: 443
-      server: 199.232.78.160
-      skip-cert-verify: false
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -333,14 +323,15 @@ proxy-groups:
         - shadowsocks-1145531556
         - hysteria2-658428989
         - vless-1109561737
+        - hysteria2-1097484106
         - hysteria2-855659704
         - hysteria2-851087338
         - hysteria2-1048867132
         - hysteria2-818063860
         - hysteria2-818063943
-        - vless-1107712078
         - vless-1141368039
         - vless-1141368041
+        - vless-1107712078
         - vless-1046909533
         - vless-1046909486
         - vless-1046909554
@@ -348,6 +339,7 @@ proxy-groups:
         - hysteria2-862083260
         - hysteria2-738907388
         - trojan-1155657299
+        - vless-1123871927
         - vless-1113474488
         - vless-1122091246
         - vless-1107074241
@@ -359,15 +351,11 @@ proxy-groups:
         - shadowsocks-209
         - vless-1124738275
         - vless-1062176085
-        - vless-1071152788
-        - vless-1062311549
         - vless-470978140
         - vless-685581276
         - vless-1141365831
-        - vmess-1062038835
-        - hysteria2-1097484106
+        - vless-1120308353
         - hysteria2-757486810
-        - trojan-1145320024
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -376,14 +364,15 @@ proxy-groups:
         - shadowsocks-1145531556
         - hysteria2-658428989
         - vless-1109561737
+        - hysteria2-1097484106
         - hysteria2-855659704
         - hysteria2-851087338
         - hysteria2-1048867132
         - hysteria2-818063860
         - hysteria2-818063943
-        - vless-1107712078
         - vless-1141368039
         - vless-1141368041
+        - vless-1107712078
         - vless-1046909533
         - vless-1046909486
         - vless-1046909554
@@ -391,6 +380,7 @@ proxy-groups:
         - hysteria2-862083260
         - hysteria2-738907388
         - trojan-1155657299
+        - vless-1123871927
         - vless-1113474488
         - vless-1122091246
         - vless-1107074241
@@ -402,15 +392,11 @@ proxy-groups:
         - shadowsocks-209
         - vless-1124738275
         - vless-1062176085
-        - vless-1071152788
-        - vless-1062311549
         - vless-470978140
         - vless-685581276
         - vless-1141365831
-        - vmess-1062038835
-        - hysteria2-1097484106
+        - vless-1120308353
         - hysteria2-757486810
-        - trojan-1145320024
       type: select
 rules:
     - MATCH,select

@@ -6,17 +6,33 @@ proxies:
       server: 103.169.67.34
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1156448627
+      network: tcp
+      port: 10032
+      reality-opts:
+        public-key: yXxDl06l9pXXT4_1kqpdgOyfAhORcsfPgLTxHu50zQM
+        short-id: f9275dbb5a
+      server: family.bucket.z.j.s.e1.kfc-520.com
+      servername: www.hp.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 901a305a-1102-3cd2-ac03-db2fcc247c0e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-696792800
+        - vless-1156448627
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-696792800
+        - vless-1156448627
       type: select
 rules:
     - MATCH,select
