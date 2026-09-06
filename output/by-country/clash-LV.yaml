@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-696781305
+      password: 45xgMgm386pjWjTx
+      port: 9082
+      server: 185.135.86.175
+      type: ss
+      udp: true
     - name: vless-650667509
       network: grpc
       port: 2083
@@ -20,6 +27,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-696781305
         - vless-650667509
         - hysteria2-1084181395
       type: url-test
@@ -27,6 +35,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-696781305
         - vless-650667509
         - hysteria2-1084181395
       type: select
