@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1141551207
+      password: e0b9fb0f-1bbd-478b-9580-c2294778338b
+      port: 8443
+      server: cdncache.pleiades.codes
+      skip-cert-verify: false
+      sni: cdncache.pleiades.codes
+      type: hysteria2
     - flow: xtls-rprx-vision
       name: vless-1090192616
       network: "tcp#\U0001F45D97@oneclickvpnkeys"
@@ -14,12 +21,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1141551207
         - vless-1090192616
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1141551207
         - vless-1090192616
       type: select
 rules:

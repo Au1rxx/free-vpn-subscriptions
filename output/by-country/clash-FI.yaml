@@ -13,12 +13,26 @@ proxies:
       skip-cert-verify: true
       sni: se.allgoodvpn.su
       type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-1145064773
+      network: tcp
+      port: 15617
+      reality-opts:
+        public-key: zAjmD7mwpdYpvo5W5iZvSJAJ1xnuXnFNEZAQ-NoSXwg
+        short-id: 8cf95f839e46a5c3
+      server: brg.cloudmixsc.ir
+      servername: amp-api-edge.apps.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c9c64c4b-c12a-4673-be52-21c080ac07a1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1058919328
         - hysteria2-1048740442
+        - vless-1145064773
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +40,7 @@ proxy-groups:
         - auto
         - hysteria2-1058919328
         - hysteria2-1048740442
+        - vless-1145064773
       type: select
 rules:
     - MATCH,select
