@@ -6,6 +6,26 @@ proxies:
       skip-cert-verify: true
       sni: 35.181.169.140
       type: hysteria2
+    - name: vless-650669482
+      network: grpc
+      port: 2083
+      server: usejh2.neobo-tooth.ru
+      servername: usejh2.neobo-tooth.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - name: vless-816611169
+      network: grpc
+      port: 2083
+      server: 45.144.28.39
+      servername: usejh2.neobo-tooth.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - name: hysteria2-985315640
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -27,6 +47,16 @@ proxies:
       skip-cert-verify: true
       sni: whatsapp.com
       type: hysteria2
+    - name: vless-845414231
+      network: grpc
+      port: 2083
+      server: usejh2.neobo-tooth.ru
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - client-fingerprint: chrome
       name: vless-1124066999
       network: tcp
@@ -103,8 +133,8 @@ proxies:
       type: hysteria2
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1061705356
-      network: tcp
+      name: vless-1124736830
+      network: raw
       port: 443
       reality-opts:
         public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
@@ -117,8 +147,8 @@ proxies:
       uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1124736830
-      network: raw
+      name: vless-1061705356
+      network: tcp
       port: 443
       reality-opts:
         public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
@@ -157,21 +187,17 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - name: vless-1159546207
-      network: tcp
-      port: 22224
-      server: 13.36.121.241
-      type: vless
-      udp: true
-      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1065910775
+        - vless-650669482
+        - vless-816611169
         - hysteria2-985315640
         - hysteria2-722298646
         - hysteria2-722298603
+        - vless-845414231
         - vless-1124066999
         - vless-1124736840
         - vless-1118870666
@@ -179,22 +205,24 @@ proxy-groups:
         - hysteria2-1004725118
         - hysteria2-722298688
         - hysteria2-197583436
-        - vless-1061705356
         - vless-1124736830
+        - vless-1061705356
         - hysteria2-722298473
         - hysteria2-722298544
         - hysteria2-650659597
         - hysteria2-335125336
-        - vless-1159546207
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1065910775
+        - vless-650669482
+        - vless-816611169
         - hysteria2-985315640
         - hysteria2-722298646
         - hysteria2-722298603
+        - vless-845414231
         - vless-1124066999
         - vless-1124736840
         - vless-1118870666
@@ -202,13 +230,12 @@ proxy-groups:
         - hysteria2-1004725118
         - hysteria2-722298688
         - hysteria2-197583436
-        - vless-1061705356
         - vless-1124736830
+        - vless-1061705356
         - hysteria2-722298473
         - hysteria2-722298544
         - hysteria2-650659597
         - hysteria2-335125336
-        - vless-1159546207
       type: select
 rules:
     - MATCH,select
