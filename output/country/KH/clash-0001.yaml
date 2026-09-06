@@ -1,13 +1,29 @@
-proxies: []
+proxies:
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1166864048
+      network: tcp
+      port: 19350
+      reality-opts:
+        public-key: rlv4tZSKrdgfV2vwCdspLThdjOhNGvuUMMARHbxNnHs
+        short-id: 9195fcf93a
+      server: 38.54.93.50
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6a7a1cd7-8fb0-42f6-9783-c6347f52983d
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - vless-1166864048
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1166864048
       type: select
 rules:
     - MATCH,select
