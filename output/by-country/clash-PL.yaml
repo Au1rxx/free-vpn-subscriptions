@@ -12,6 +12,13 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
+    - cipher: aes-256-cfb
+      name: shadowsocks-717969033
+      password: jt2ekBNc9HuVtm2a
+      port: 9052
+      server: 217.30.10.44
+      type: ss
+      udp: true
     - client-fingerprint: ios
       name: vless-1126122358
       network: grpc
@@ -58,34 +65,27 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-419356365
-      password: U9YAoqBgg5VyGBc6vQv1sN
-      port: 7538
-      server: 194.61.121.93
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1141367427
+        - shadowsocks-717969033
         - vless-1126122358
         - vless-1105975128
         - vless-1126122350
         - hysteria2-619899526
-        - shadowsocks-419356365
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1141367427
+        - shadowsocks-717969033
         - vless-1126122358
         - vless-1105975128
         - vless-1126122350
         - hysteria2-619899526
-        - shadowsocks-419356365
       type: select
 rules:
     - MATCH,select
