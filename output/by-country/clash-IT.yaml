@@ -1,102 +1,22 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-738053605
-      password: qYEN5HX4JKeVCdEC
-      port: 9039
-      server: 91.201.65.122
-      type: ss
-      udp: true
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-1146891327
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: G2U8_BvRAgcOw0sX8u_0yYdVAlD8CWLSi-uYjvH07hw
-        short-id: 4fa44664f6a566d3
-      server: 31.76.113.231
-      servername: it.superbuba.top
-      tls: true
-      type: vless
-      udp: true
-      uuid: d4cae7df-50a1-428c-bd62-881c8f3bbd90
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1146982433
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: G2U8_BvRAgcOw0sX8u_0yYdVAlD8CWLSi-uYjvH07hw
-        short-id: 4fa44664f6a566d3
-      server: 31.76.113.231
-      servername: it.superbuba.top
-      tls: true
-      type: vless
-      udp: true
-      uuid: d4cae7df-50a1-428c-bd62-881c8f3bbd90
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-1146891316
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: G2U8_BvRAgcOw0sX8u_0yYdVAlD8CWLSi-uYjvH07hw
-        short-id: 4fa44664f6a566d3
-      server: 31.76.113.231
-      servername: it.superbuba.top
-      tls: true
-      type: vless
-      udp: true
-      uuid: d4cae7df-50a1-428c-bd62-881c8f3bbd90
-    - client-fingerprint: safari
-      flow: xtls-rprx-vision
-      name: vless-1146891354
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: G2U8_BvRAgcOw0sX8u_0yYdVAlD8CWLSi-uYjvH07hw
-        short-id: 4fa44664f6a566d3
-      server: 31.76.113.231
-      servername: it.superbuba.top
-      tls: true
-      type: vless
-      udp: true
-      uuid: d4cae7df-50a1-428c-bd62-881c8f3bbd90
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1146891331
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: G2U8_BvRAgcOw0sX8u_0yYdVAlD8CWLSi-uYjvH07hw
-        short-id: 4fa44664f6a566d3
-      server: it.superbuba.top
-      servername: it.superbuba.top
-      tls: true
-      type: vless
-      udp: true
-      uuid: d4cae7df-50a1-428c-bd62-881c8f3bbd90
+    - name: hysteria2-1152703554
+      password: 501d6346-0b0d-44a7-8847-32464045cdf3
+      port: 8465
+      server: 78.159.246.200
+      skip-cert-verify: true
+      sni: itit.nimarko.org
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-738053605
-        - vless-1146891327
-        - vless-1146982433
-        - vless-1146891316
-        - vless-1146891354
-        - vless-1146891331
+        - hysteria2-1152703554
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-738053605
-        - vless-1146891327
-        - vless-1146982433
-        - vless-1146891316
-        - vless-1146891354
-        - vless-1146891331
+        - hysteria2-1152703554
       type: select
 rules:
     - MATCH,select
