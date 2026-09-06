@@ -1,0 +1,23 @@
+proxies:
+    - name: trojan-1154630153
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10044
+      server: z-sg1.251313.xyz
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - trojan-1154630153
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - trojan-1154630153
+      type: select
+rules:
+    - MATCH,select
