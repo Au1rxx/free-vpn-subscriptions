@@ -1,9 +1,9 @@
 proxies:
     - cipher: aes-256-cfb
-      name: shadowsocks-1121644453
+      name: shadowsocks-1140657216
       password: amazonskr05
       port: 443
-      server: 52.210.185.41
+      server: 34.247.86.118
       type: ss
       udp: true
     - flow: xtls-rprx-vision
@@ -17,19 +17,41 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
+      name: vless-1152187454
+      network: tcp
+      port: 443
+      server: 50.7.5.163
+      servername: ir-viper.failspace.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - cipher: aes-256-cfb
+      name: shadowsocks-1121644453
+      password: amazonskr05
+      port: 443
+      server: 52.210.185.41
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1121644453
+        - shadowsocks-1140657216
         - vless-1151222980
+        - vless-1152187454
+        - shadowsocks-1121644453
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1121644453
+        - shadowsocks-1140657216
         - vless-1151222980
+        - vless-1152187454
+        - shadowsocks-1121644453
       type: select
 rules:
     - MATCH,select

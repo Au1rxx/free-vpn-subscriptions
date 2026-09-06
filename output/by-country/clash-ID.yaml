@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-692972555
+      password: 018b8e7b-7813-4dcb-84a5-3c98f1521e00
+      port: 443
+      server: edu.ruangguru.com
+      skip-cert-verify: false
+      sni: id1.nathaya.web.id
+      type: trojan
+      udp: true
     - name: trojan-1046997182
       password: 018b8e7b-7813-4dcb-84a5-3c98f1521e00
       port: 443
@@ -7,17 +15,45 @@ proxies:
       sni: id1.nathaya.web.id
       type: trojan
       udp: true
+    - name: trojan-490085150
+      password: 018b8e7b-7813-4dcb-84a5-3c98f1521e00
+      port: 443
+      server: edu.ruangguru.com
+      skip-cert-verify: true
+      sni: id1.nathaya.web.id
+      type: trojan
+      udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1156448629
+      network: tcp
+      port: 10053
+      reality-opts:
+        public-key: o-ud3x7exNVYmknsVseZyUGMyK_680Nub0Cf6W4KiRw
+        short-id: cbbf64
+      server: family.bucket.z.j.s.e1.kfc-520.com
+      servername: www.amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 901a305a-1102-3cd2-ac03-db2fcc247c0e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-692972555
         - trojan-1046997182
+        - trojan-490085150
+        - vless-1156448629
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-692972555
         - trojan-1046997182
+        - trojan-490085150
+        - vless-1156448629
       type: select
 rules:
     - MATCH,select
