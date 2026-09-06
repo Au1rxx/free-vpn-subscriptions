@@ -13,26 +13,6 @@ proxies:
       server: 51.255.13.232
       type: ss
       udp: true
-    - name: vless-816611169
-      network: grpc
-      port: 2083
-      server: 45.144.28.39
-      servername: usejh2.neobo-tooth.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: vless-845414231
-      network: grpc
-      port: 2083
-      server: usejh2.neobo-tooth.ru
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1063029579
@@ -75,16 +55,6 @@ proxies:
       skip-cert-verify: true
       sni: www.microsoft.com
       type: hysteria2
-    - name: vless-650669482
-      network: grpc
-      port: 2083
-      server: usejh2.neobo-tooth.ru
-      servername: usejh2.neobo-tooth.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - client-fingerprint: chrome
       name: vless-1124066999
       network: tcp
@@ -111,6 +81,20 @@ proxies:
       type: vless
       udp: true
       uuid: c543f005-59f7-40c1-9ae6-37505691d5be
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1061705356
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: 45.154.96.35
+      servername: fra3.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
     - client-fingerprint: chrome
       name: vless-220310387
       network: tcp
@@ -164,27 +148,33 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
+    - name: vless-1159546207
+      network: tcp
+      port: 22224
+      server: 13.36.121.241
+      type: vless
+      udp: true
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1065910775
         - shadowsocks-415242972
-        - vless-816611169
-        - vless-845414231
         - vless-1063029579
         - hysteria2-985315640
         - hysteria2-1004725118
         - hysteria2-984679229
         - hysteria2-24391
-        - vless-650669482
         - vless-1124066999
         - vless-1118870666
+        - vless-1061705356
         - vless-220310387
         - vless-116202577
         - vless-220483550
         - hysteria2-200242608
         - hysteria2-650412204
+        - vless-1159546207
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -192,21 +182,20 @@ proxy-groups:
         - auto
         - hysteria2-1065910775
         - shadowsocks-415242972
-        - vless-816611169
-        - vless-845414231
         - vless-1063029579
         - hysteria2-985315640
         - hysteria2-1004725118
         - hysteria2-984679229
         - hysteria2-24391
-        - vless-650669482
         - vless-1124066999
         - vless-1118870666
+        - vless-1061705356
         - vless-220310387
         - vless-116202577
         - vless-220483550
         - hysteria2-200242608
         - hysteria2-650412204
+        - vless-1159546207
       type: select
 rules:
     - MATCH,select
