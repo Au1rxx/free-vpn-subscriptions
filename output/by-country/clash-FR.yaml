@@ -86,6 +86,16 @@ proxies:
       skip-cert-verify: true
       sni: vpn-fr-002.fastervpn.world
       type: hysteria2
+    - name: vless-602178043
+      network: grpc
+      port: 2083
+      server: usejh2.neobo-tooth.ru
+      servername: usejh2.neobo-tooth.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - client-fingerprint: chrome
       name: vless-660181835
       network: tcp
@@ -151,6 +161,20 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1048865215
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: 45.154.96.35
+      servername: fra3.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
     - name: hysteria2-985315640
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -165,16 +189,6 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - name: vless-816834132
-      network: grpc
-      port: 2083
-      server: 45.144.28.39
-      servername: usejh2.neobo-tooth.ru
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
 proxy-groups:
     - interval: 300
       name: auto
@@ -189,14 +203,15 @@ proxy-groups:
         - vless-650669482
         - vless-845414231
         - hysteria2-984679229
+        - vless-602178043
         - vless-660181835
         - vless-810163421
         - vless-479071160
         - vless-809969132
         - vless-720888926
+        - vless-1048865215
         - hysteria2-985315640
         - hysteria2-1004725118
-        - vless-816834132
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -212,14 +227,15 @@ proxy-groups:
         - vless-650669482
         - vless-845414231
         - hysteria2-984679229
+        - vless-602178043
         - vless-660181835
         - vless-810163421
         - vless-479071160
         - vless-809969132
         - vless-720888926
+        - vless-1048865215
         - hysteria2-985315640
         - hysteria2-1004725118
-        - vless-816834132
       type: select
 rules:
     - MATCH,select
