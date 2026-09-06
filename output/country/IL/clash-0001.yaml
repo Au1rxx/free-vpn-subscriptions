@@ -1,11 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1101226769
-      password: 3hSrBrmKmrgNGsD97RSGOS5p+XIFqEVk6Zo4AHbsRhg=
-      port: 29367
-      server: 85.209.157.209
-      type: ss
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1113418538
@@ -20,51 +13,17 @@ proxies:
       type: vless
       udp: true
       uuid: a28a90ab-9b5d-4c61-861d-3ea3f92fc0a2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1116081690
-      network: tcp
-      port: 18832
-      reality-opts:
-        public-key: JEJp-oUH9EvcdX0FMUTBzjUn3yZc83i_HFstK2uNwmQ
-        short-id: "3467"
-      server: 85.209.157.209
-      servername: addons.mozilla.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: a28a90ab-9b5d-4c61-861d-3ea3f92fc0a2
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1120245610
-      network: tcp
-      port: 18832
-      reality-opts:
-        public-key: JEJp-oUH9EvcdX0FMUTBzjUn3yZc83i_HFstK2uNwmQ
-        short-id: ""
-      server: 85.209.157.209
-      servername: addons.mozilla.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: a28a90ab-9b5d-4c61-861d-3ea3f92fc0a2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1101226769
         - vless-1113418538
-        - vless-1116081690
-        - vless-1120245610
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1101226769
         - vless-1113418538
-        - vless-1116081690
-        - vless-1120245610
       type: select
 rules:
     - MATCH,select

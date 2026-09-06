@@ -1,13 +1,28 @@
-proxies: []
+proxies:
+    - client-fingerprint: chrome
+      name: vless-1161762190
+      network: tcp
+      port: 10000
+      reality-opts:
+        public-key: Du5pk4KuMNA1sRcSpmuoLuC0HmxDBmFljFNfUzqxKiM
+        short-id: cd0a1986719e44c8
+      server: switzerland-sgood.wopd.butnorwa.butter.whooisthebest.ir
+      servername: amp-api-edge.apps.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 518f1466-5683-42c5-b11a-a6694a608ae2
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - vless-1161762190
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1161762190
       type: select
 rules:
     - MATCH,select
