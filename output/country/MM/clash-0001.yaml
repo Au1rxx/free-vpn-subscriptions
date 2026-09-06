@@ -6,17 +6,27 @@ proxies:
       server: 38.60.244.120
       type: ss
       udp: true
+    - name: trojan-1147717309
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10046
+      server: z-sg2.251313.xyz
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1014483004
+        - trojan-1147717309
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1014483004
+        - trojan-1147717309
       type: select
 rules:
     - MATCH,select
