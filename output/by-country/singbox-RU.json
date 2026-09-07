@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "b081bce0-aa8f-11f1-8bc0-6204817a15bb",
+      "server": "apkaz-3.bosx.net",
+      "server_port": 8444,
+      "tag": "hysteria2-1179468793",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "apkaz-3.bosx.net"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-1179468793"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-1179468793"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
