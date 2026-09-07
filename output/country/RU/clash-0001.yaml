@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-62331905
+      network: ws
+      port: 2200
+      server: 212.67.9.113
+      type: vless
+      udp: true
+      uuid: 2aa7f4b1-e859-46d0-b8ac-8587811ab7b1
     - name: vless-698726724
       network: ws
       port: 2087
@@ -395,6 +402,20 @@ proxies:
       uuid: ecf728d9-1555-4e12-b178-1d8bd98465e4
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-1162972076
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: 0UUWi4Ds_Rp889_u0YNOX9PAiP10MLzetKrxS_Nhejc
+        short-id: ""
+      server: 217.19.122.47
+      servername: rulte.horizonless.pro
+      tls: true
+      type: vless
+      udp: true
+      uuid: ecf728d9-1555-4e12-b178-1d8bd98465e4
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-1163296157
       network: tcp
       port: 443
@@ -425,6 +446,13 @@ proxies:
       skip-cert-verify: false
       sni: ""
       type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1166782405
+      password: Y2ZlN
+      port: 8388
+      server: 138.124.68.88
+      type: ss
+      udp: true
     - flow: xtls-rprx-vision
       name: vless-1166868782
       network: tcp
@@ -440,6 +468,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-62331905
         - vless-698726724
         - vless-734956293
         - vless-834340292
@@ -478,15 +507,18 @@ proxy-groups:
         - vless-1159807511
         - vless-1162229894
         - vless-1162241585
+        - vless-1162972076
         - vless-1163296157
         - vless-1165595244
         - hysteria2-1166711919
+        - shadowsocks-1166782405
         - vless-1166868782
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-62331905
         - vless-698726724
         - vless-734956293
         - vless-834340292
@@ -525,9 +557,11 @@ proxy-groups:
         - vless-1159807511
         - vless-1162229894
         - vless-1162241585
+        - vless-1162972076
         - vless-1163296157
         - vless-1165595244
         - hysteria2-1166711919
+        - shadowsocks-1166782405
         - vless-1166868782
       type: select
 rules:

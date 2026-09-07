@@ -1,12 +1,5 @@
 proxies:
     - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1167462467
-      password: fTZaFndeRbupljNHo/nvfMpVErTaltAoUW8DR4Kj+Z8=
-      port: 59924
-      server: 130.61.151.195
-      type: ss
-      udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1160568958
       password: e0sT7dql6hUZTTWLOtz89tI2+PxjtSCqzAhkwhVVz9U=
       port: 59924
@@ -20,6 +13,16 @@ proxies:
       skip-cert-verify: false
       sni: player.wwwinternetvideo.click
       type: hysteria2
+    - name: vless-1109561737
+      network: grpc
+      port: 2087
+      server: srv-21bac9.vless.monster
+      servername: srv-21bac9.vless.monster
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: df9f5aca-eda0-428f-a752-e53866153d12
     - name: vless-1107712078
       network: grpc
       port: 2087
@@ -40,7 +43,17 @@ proxies:
       type: vless
       udp: true
       uuid: df9f5aca-eda0-428f-a752-e53866153d12
-    - name: vless-1109561737
+    - name: vless-1141368039
+      network: grpc
+      port: 2087
+      server: 31.56.189.27
+      servername: srv-21bac9.vless.monster
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: df9f5aca-eda0-428f-a752-e53866153d12
+    - name: vless-1141368041
       network: grpc
       port: 2087
       server: srv-21bac9.vless.monster
@@ -64,13 +77,6 @@ proxies:
       skip-cert-verify: true
       sni: germany1.h2corp.local
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-415241977
-      password: 2YdE4lFOid5a
-      port: 8388
-      server: 51.195.126.38
-      type: ss
-      udp: true
     - name: vless-1046909554
       network: grpc
       port: 2083
@@ -102,26 +108,6 @@ proxies:
       type: vless
       udp: true
       uuid: df9f5aca-eda0-428f-a752-e53866153d12
-    - name: vless-1141368041
-      network: grpc
-      port: 2087
-      server: srv-21bac9.vless.monster
-      servername: srv-21bac9.vless.monster
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: df9f5aca-eda0-428f-a752-e53866153d12
-    - name: vless-1141368039
-      network: grpc
-      port: 2087
-      server: 31.56.189.27
-      servername: srv-21bac9.vless.monster
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: df9f5aca-eda0-428f-a752-e53866153d12
     - client-fingerprint: chrome
       name: vless-1107074241
       network: grpc
@@ -135,6 +121,19 @@ proxies:
       type: vless
       udp: true
       uuid: eb85f61f-acb3-4689-8b7c-d8ad2a6aa43f
+    - client-fingerprint: chrome
+      name: vless-685581276
+      network: raw
+      port: 40443
+      reality-opts:
+        public-key: VG-FwQBMFzPcemJ_JqtkbO-2WKLmQp2h0CmAj-DfLkA
+        short-id: 5b97
+      server: 93.152.217.41
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 969bcce0-de8a-4b02-8cf8-d00d2d2ca7a5
     - name: vless-1062176085
       network: ws
       port: 2087
@@ -206,6 +205,19 @@ proxies:
       type: vless
       udp: true
       uuid: df9f5aca-eda0-428f-a752-e53866153d12
+    - client-fingerprint: qq
+      name: vless-620750824
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: VG-FwQBMFzPcemJ_JqtkbO-2WKLmQp2h0CmAj-DfLkA
+        short-id: 5b97
+      server: 93.152.217.41
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 969bcce0-de8a-4b02-8cf8-d00d2d2ca7a5
     - name: vless-1109236432
       network: ws
       port: 2087
@@ -254,22 +266,21 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1167462467
         - shadowsocks-1160568958
         - hysteria2-868400792
+        - vless-1109561737
         - vless-1107712078
         - vless-1113474488
-        - vless-1109561737
+        - vless-1141368039
+        - vless-1141368041
         - hysteria2-855659704
         - hysteria2-648949655
-        - shadowsocks-415241977
         - vless-1046909554
         - vless-1046909533
         - vless-1046909486
         - vless-1124738275
-        - vless-1141368041
-        - vless-1141368039
         - vless-1107074241
+        - vless-685581276
         - vless-1062176085
         - vless-1162334394
         - vmess-1169703232
@@ -278,6 +289,7 @@ proxy-groups:
         - hysteria2-730511436
         - vless-1143496046
         - vless-1123871927
+        - vless-620750824
         - vless-1109236432
         - hysteria2-1091146986
         - hysteria2-862083260
@@ -289,22 +301,21 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - shadowsocks-1167462467
         - shadowsocks-1160568958
         - hysteria2-868400792
+        - vless-1109561737
         - vless-1107712078
         - vless-1113474488
-        - vless-1109561737
+        - vless-1141368039
+        - vless-1141368041
         - hysteria2-855659704
         - hysteria2-648949655
-        - shadowsocks-415241977
         - vless-1046909554
         - vless-1046909533
         - vless-1046909486
         - vless-1124738275
-        - vless-1141368041
-        - vless-1141368039
         - vless-1107074241
+        - vless-685581276
         - vless-1062176085
         - vless-1162334394
         - vmess-1169703232
@@ -313,6 +324,7 @@ proxy-groups:
         - hysteria2-730511436
         - vless-1143496046
         - vless-1123871927
+        - vless-620750824
         - vless-1109236432
         - hysteria2-1091146986
         - hysteria2-862083260
