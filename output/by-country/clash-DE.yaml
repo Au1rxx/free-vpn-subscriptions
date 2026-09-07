@@ -1,11 +1,4 @@
 proxies:
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1160568958
-      password: e0sT7dql6hUZTTWLOtz89tI2+PxjtSCqzAhkwhVVz9U=
-      port: 59924
-      server: 130.61.237.108
-      type: ss
-      udp: true
     - name: hysteria2-851087338
       password: V1UQuwa-4PRIDW2paxrPe58RcxXHPGyFIGS-5QojaM8
       port: 443
@@ -172,13 +165,6 @@ proxies:
       type: vless
       udp: true
       uuid: 969bcce0-de8a-4b02-8cf8-d00d2d2ca7a5
-    - name: vless-1062176085
-      network: ws
-      port: 2087
-      server: 82.24.203.37
-      type: vless
-      udp: true
-      uuid: 44573770-963a-41f5-a080-3cc11e4957a2
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1162334394
@@ -193,15 +179,6 @@ proxies:
       type: vless
       udp: true
       uuid: 20230bb6-e0da-464d-9290-392208ad14d8
-    - alterId: 0
-      cipher: auto
-      name: vmess-1169703232
-      network: ws
-      port: 55136
-      server: 193.168.200.207
-      type: vmess
-      udp: true
-      uuid: fe0f6ae2-85e4-4815-9206-4209bc118e94
     - name: hysteria2-1172959005
       password: 395fbe10db53714e6128c77c3de39694
       port: 443
@@ -223,6 +200,16 @@ proxies:
       skip-cert-verify: true
       sni: www.calmloud.com
       type: hysteria2
+    - name: vless-1155246847
+      network: grpc
+      port: 2087
+      server: 31.56.189.27
+      servername: srv-21bac9.vless.monster
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: df9f5aca-eda0-428f-a752-e53866153d12
     - name: vless-1123871927
       network: grpc
       port: 2087
@@ -274,14 +261,6 @@ proxies:
       skip-cert-verify: true
       sni: germany3.h2corp.local
       type: hysteria2
-    - name: trojan-1155657299
-      password: MiTiVPN
-      port: 443
-      server: 151.101.56.7
-      skip-cert-verify: true
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
     - name: trojan-1146302837
       password: MiTiVPN
       port: 443
@@ -300,21 +279,10 @@ proxies:
       type: vless
       udp: true
       uuid: df9f5aca-eda0-428f-a752-e53866153d12
-    - name: vless-1155246847
-      network: grpc
-      port: 2087
-      server: 31.56.189.27
-      servername: srv-21bac9.vless.monster
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: df9f5aca-eda0-428f-a752-e53866153d12
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1160568958
         - hysteria2-851087338
         - hysteria2-868400792
         - hysteria2-730511437
@@ -334,28 +302,24 @@ proxy-groups:
         - vless-1124738275
         - vless-1107074241
         - vless-685581276
-        - vless-1062176085
         - vless-1162334394
-        - vmess-1169703232
         - hysteria2-1172959005
         - hysteria2-855659704
         - hysteria2-721489370
+        - vless-1155246847
         - vless-1123871927
         - vless-620750824
         - vless-1109236432
         - hysteria2-650314301
         - hysteria2-1091146986
         - hysteria2-589844090
-        - trojan-1155657299
         - trojan-1146302837
         - vless-1122091246
-        - vless-1155246847
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1160568958
         - hysteria2-851087338
         - hysteria2-868400792
         - hysteria2-730511437
@@ -375,22 +339,19 @@ proxy-groups:
         - vless-1124738275
         - vless-1107074241
         - vless-685581276
-        - vless-1062176085
         - vless-1162334394
-        - vmess-1169703232
         - hysteria2-1172959005
         - hysteria2-855659704
         - hysteria2-721489370
+        - vless-1155246847
         - vless-1123871927
         - vless-620750824
         - vless-1109236432
         - hysteria2-650314301
         - hysteria2-1091146986
         - hysteria2-589844090
-        - trojan-1155657299
         - trojan-1146302837
         - vless-1122091246
-        - vless-1155246847
       type: select
 rules:
     - MATCH,select
