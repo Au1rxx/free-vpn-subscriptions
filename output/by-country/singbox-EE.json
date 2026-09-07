@@ -1,6 +1,26 @@
 {
   "outbounds": [
     {
+      "server": "ee2x.cdn-global.pro",
+      "server_port": 443,
+      "tag": "vless-1172074110",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "ee2x.cdn-global.pro",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "transport": {
+        "service_name": "content.v1.Feed",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "3fc35b21-0530-4fa8-9937-f8b83ab93958"
+    },
+    {
       "password": "sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX",
       "server": "news.gazette.help",
       "server_port": 443,
@@ -13,9 +33,23 @@
       "type": "hysteria2"
     },
     {
+      "server": "estproxy3.lockdwn.com",
+      "server_port": 8443,
+      "tag": "vless-1168713138",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "estproxy3.lockdwn.com"
+      },
+      "type": "vless",
+      "uuid": "9d9e3421-5652-4804-85ba-238355b948ab"
+    },
+    {
       "interval": "5m",
       "outbounds": [
-        "hysteria2-1059437561"
+        "vless-1172074110",
+        "hysteria2-1059437561",
+        "vless-1168713138"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -24,7 +58,9 @@
     {
       "outbounds": [
         "auto",
-        "hysteria2-1059437561"
+        "vless-1172074110",
+        "hysteria2-1059437561",
+        "vless-1168713138"
       ],
       "tag": "select",
       "type": "selector"

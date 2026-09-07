@@ -1,0 +1,22 @@
+proxies:
+    - name: hysteria2-1179524508
+      password: f25f19f29ce3fb53a35bf1b35b452a43
+      port: 50160
+      server: 129.159.156.109
+      skip-cert-verify: true
+      sni: www.bing.com
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-1179524508
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-1179524508
+      type: select
+rules:
+    - MATCH,select
