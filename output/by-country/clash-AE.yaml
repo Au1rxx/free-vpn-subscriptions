@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-923321814
+      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+      port: 8080
+      server: 85.204.107.175
+      skip-cert-verify: true
+      sni: hopp-romania-new.roxa.org
+      type: hysteria2
     - name: hysteria2-1095634773
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
       port: 8080
@@ -15,6 +22,13 @@ proxies:
       type: vmess
       udp: true
       uuid: c1122444-af45-4b6b-bc27-ef8de60ba7e2
+    - name: hysteria2-860759685
+      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+      port: 8080
+      server: 85.204.107.172
+      skip-cert-verify: true
+      sni: hopp-romania-new.roxa.org
+      type: hysteria2
     - name: vless-864923376
       network: ws
       port: 22573
@@ -22,10 +36,10 @@ proxies:
       type: vless
       udp: true
       uuid: 39947382-3212-41c9-bc3a-589574ac8b23
-    - name: hysteria2-1048913655
+    - name: hysteria2-856081283
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
       port: 8080
-      server: 85.204.107.183
+      server: 85.204.107.171
       skip-cert-verify: false
       sni: hopp-romania-new.roxa.org
       type: hysteria2
@@ -33,19 +47,23 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-923321814
         - hysteria2-1095634773
         - vmess-1169709414
+        - hysteria2-860759685
         - vless-864923376
-        - hysteria2-1048913655
+        - hysteria2-856081283
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-923321814
         - hysteria2-1095634773
         - vmess-1169709414
+        - hysteria2-860759685
         - vless-864923376
-        - hysteria2-1048913655
+        - hysteria2-856081283
       type: select
 rules:
     - MATCH,select
