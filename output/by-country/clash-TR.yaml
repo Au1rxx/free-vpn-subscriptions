@@ -1,0 +1,22 @@
+proxies:
+    - name: vless-1173152304
+      network: tcp
+      port: 1
+      server: 91.228.227.112
+      type: vless
+      udp: true
+      uuid: 1e4a8e7d-4876-4f88-b45a-091caff4a1b2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1173152304
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1173152304
+      type: select
+rules:
+    - MATCH,select
