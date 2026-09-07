@@ -1,6 +1,20 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-1162334924
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SiSky02wHz-S0TDHKFTdYhnrlT8Y3CfRsekZlcdLXDY
+        short-id: fd55b698ee8c3629
+      server: 194.110.207.146
+      servername: kibi-institut.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9c3d8e77-82ca-48d5-9981-dfce97b20ab1
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-1178266068
       network: tcp
       port: 443
@@ -27,6 +41,20 @@ proxies:
       type: vless
       udp: true
       uuid: 43ca296b-321f-4b61-a12c-ddf8370b9761
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1058452281
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: mWzXDVWUhjGcuizZHA-rEnRpxv2wgeSZUIuHmQdteiA
+        short-id: f576da5e05a1d4d2
+      server: 151.242.168.155
+      servername: kibi-institut.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: b292cccd-4af8-46f6-adf0-38a355447e1f
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1162334915
@@ -41,21 +69,41 @@ proxies:
       type: vless
       udp: true
       uuid: 65ca8fd3-5b79-4f9a-b881-ffeb23b899a2
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1147417757
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SiSky02wHz-S0TDHKFTdYhnrlT8Y3CfRsekZlcdLXDY
+        short-id: fd55b698ee8c3629
+      server: 151.242.168.237
+      servername: frantax.my3cx.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: 19a368d5-41bf-4821-986c-ed84901f4f30
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1162334924
         - vless-1178266068
         - vless-1058438246
+        - vless-1058452281
         - vless-1162334915
+        - vless-1147417757
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1162334924
         - vless-1178266068
         - vless-1058438246
+        - vless-1058452281
         - vless-1162334915
+        - vless-1147417757
       type: select
 rules:
     - MATCH,select

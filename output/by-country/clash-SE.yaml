@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: chrome
+      name: vless-1182498048
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: R8Mogel1wypEIpcUXnGmG1cuzT9POghNhqJcw4-CLx0
+        short-id: ""
+      server: 170.168.99.6
+      servername: cdn.steamstatic.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f71957f3-29e0-d077-9b51-83da5cf31480
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1182498048
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1182498048
+      type: select
+rules:
+    - MATCH,select
