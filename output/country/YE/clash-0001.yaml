@@ -7,27 +7,17 @@ proxies:
       sni: www.cloudflare.com
       type: trojan
       udp: true
-    - name: trojan-1167759151
-      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
-      port: 10010
-      server: z-jp1.251313.xyz
-      skip-cert-verify: false
-      sni: z-jp1.251313.xyz
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-1147717308
-        - trojan-1167759151
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-1147717308
-        - trojan-1167759151
       type: select
 rules:
     - MATCH,select

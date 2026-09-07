@@ -1,4 +1,11 @@
 proxies:
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1167462467
+      password: fTZaFndeRbupljNHo/nvfMpVErTaltAoUW8DR4Kj+Z8=
+      port: 59924
+      server: 130.61.151.195
+      type: ss
+      udp: true
     - name: hysteria2-1097484106
       password: zhangyang
       port: 6443
@@ -37,6 +44,14 @@ proxies:
       server: 209.46.102.22
       type: ss
       udp: true
+    - name: trojan-1153336777
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.7
+      skip-cert-verify: false
+      sni: ssl.fastly.com
+      type: trojan
+      udp: true
     - name: vless-1124738275
       network: grpc
       port: 2087
@@ -47,13 +62,6 @@ proxies:
       type: vless
       udp: true
       uuid: df9f5aca-eda0-428f-a752-e53866153d12
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1168021097
-      password: T6IcUpcVx0Y85DxSTgXe4A
-      port: 112
-      server: 86.38.182.226
-      type: ss
-      udp: true
     - name: vless-1109561737
       network: grpc
       port: 2087
@@ -64,6 +72,13 @@ proxies:
       type: vless
       udp: true
       uuid: df9f5aca-eda0-428f-a752-e53866153d12
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-415241977
+      password: 2YdE4lFOid5a
+      port: 8388
+      server: 51.195.126.38
+      type: ss
+      udp: true
     - name: vless-1141368041
       network: grpc
       port: 2087
@@ -132,13 +147,6 @@ proxies:
       sni: www.calmloud.com
       type: hysteria2
     - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1167462467
-      password: fTZaFndeRbupljNHo/nvfMpVErTaltAoUW8DR4Kj+Z8=
-      port: 59924
-      server: 130.61.151.195
-      type: ss
-      udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1160568974
       password: Ysvv0xxTrCg+FjlIar+M9OXA+rHCF4uKzNEYfIUpWV4=
       port: 59924
@@ -199,13 +207,6 @@ proxies:
       type: vless
       udp: true
       uuid: eb85f61f-acb3-4689-8b7c-d8ad2a6aa43f
-    - name: vless-1121732913
-      network: ws
-      port: 2087
-      server: 188.220.67.245
-      type: vless
-      udp: true
-      uuid: 90da514d-8888-4a53-912e-ac2981c8c6ee
     - client-fingerprint: qq
       name: vless-1154629165
       network: grpc
@@ -219,20 +220,6 @@ proxies:
       type: vless
       udp: true
       uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
-    - client-fingerprint: safari
-      flow: xtls-rprx-vision
-      name: vless-1152699452
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: lHCkAu_DOVFtE-iL2JGrPt44QeTCFijXuRfuGaSni3Q
-        short-id: 9e4eced6e98ed4d4
-      server: 31.76.119.117
-      servername: de.orpheous.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 55ed97fc-77d1-4802-baf3-acef70776331
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1166145116
@@ -355,26 +342,20 @@ proxies:
       server: 2.58.81.221
       type: ss
       udp: true
-    - name: trojan-1153075050
-      password: MiTiVPN
-      port: 443
-      server: 151.101.56.7
-      skip-cert-verify: true
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1167462467
         - hysteria2-1097484106
         - vless-1107712078
         - hysteria2-1090323312
         - shadowsocks-1160568958
         - shadowsocks-209
+        - trojan-1153336777
         - vless-1124738275
-        - shadowsocks-1168021097
         - vless-1109561737
+        - shadowsocks-415241977
         - vless-1141368041
         - vless-1141368039
         - vless-1113474488
@@ -383,7 +364,6 @@ proxy-groups:
         - vmess-1168811161
         - hysteria2-851087338
         - hysteria2-721489370
-        - shadowsocks-1167462467
         - shadowsocks-1160568974
         - vless-1046909533
         - vless-1046909554
@@ -391,9 +371,7 @@ proxy-groups:
         - vless-1155246847
         - vless-1123871927
         - vless-1107074241
-        - vless-1121732913
         - vless-1154629165
-        - vless-1152699452
         - vless-1166145116
         - vless-202747774
         - vless-1159546240
@@ -406,20 +384,21 @@ proxy-groups:
         - hysteria2-742970030
         - shadowsocks-717969012
         - shadowsocks-696780676
-        - trojan-1153075050
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1167462467
         - hysteria2-1097484106
         - vless-1107712078
         - hysteria2-1090323312
         - shadowsocks-1160568958
         - shadowsocks-209
+        - trojan-1153336777
         - vless-1124738275
-        - shadowsocks-1168021097
         - vless-1109561737
+        - shadowsocks-415241977
         - vless-1141368041
         - vless-1141368039
         - vless-1113474488
@@ -428,7 +407,6 @@ proxy-groups:
         - vmess-1168811161
         - hysteria2-851087338
         - hysteria2-721489370
-        - shadowsocks-1167462467
         - shadowsocks-1160568974
         - vless-1046909533
         - vless-1046909554
@@ -436,9 +414,7 @@ proxy-groups:
         - vless-1155246847
         - vless-1123871927
         - vless-1107074241
-        - vless-1121732913
         - vless-1154629165
-        - vless-1152699452
         - vless-1166145116
         - vless-202747774
         - vless-1159546240
@@ -451,7 +427,6 @@ proxy-groups:
         - hysteria2-742970030
         - shadowsocks-717969012
         - shadowsocks-696780676
-        - trojan-1153075050
       type: select
 rules:
     - MATCH,select
