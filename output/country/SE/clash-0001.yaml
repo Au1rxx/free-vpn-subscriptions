@@ -1,6 +1,20 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-200265609
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 989gq45ogQSZLDoUTcLNSYW5v_3ER7W_6Oi_8swZzXo
+        short-id: cb55f541
+      server: 178.83.31.93
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4a97788b-5d8a-410c-875c-ba36930e185e
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-696780839
       network: tcp
       port: 443
@@ -439,19 +453,6 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
-    - client-fingerprint: chrome
-      name: vless-1174703464
-      network: tcp
-      port: 6554
-      reality-opts:
-        public-key: MCbCfirjMTCtksvou7ZMaNaxbL2cqy16RxNHaLtx3Ak
-        short-id: bea97c53dd7e2fe2
-      server: connect.lezzattimel.ir
-      servername: play.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 358d4a72-63d7-499f-8d79-dbbca0e6800d
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1177509871
@@ -470,6 +471,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-200265609
         - vless-696780839
         - vless-713157148
         - vless-872770205
@@ -505,13 +507,13 @@ proxy-groups:
         - vless-1166980064
         - vless-1167148578
         - vless-1173154542
-        - vless-1174703464
         - vless-1177509871
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-200265609
         - vless-696780839
         - vless-713157148
         - vless-872770205
@@ -547,7 +549,6 @@ proxy-groups:
         - vless-1166980064
         - vless-1167148578
         - vless-1173154542
-        - vless-1174703464
         - vless-1177509871
       type: select
 rules:
