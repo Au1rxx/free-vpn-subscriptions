@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-1153237186
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10012
+      server: z-jp2.251313.xyz
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
     - name: trojan-1163137338
       password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
       port: 10012
@@ -11,12 +19,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-1153237186
         - trojan-1163137338
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-1153237186
         - trojan-1163137338
       type: select
 rules:
