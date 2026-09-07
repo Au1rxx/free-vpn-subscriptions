@@ -13,13 +13,6 @@ proxies:
       skip-cert-verify: true
       sni: https%253a%252f%252fwww.calmloud.com
       type: hysteria2
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1160568974
-      password: Ysvv0xxTrCg+FjlIar+M9OXA+rHCF4uKzNEYfIUpWV4=
-      port: 59924
-      server: 130.61.44.247
-      type: ss
-      udp: true
     - name: vless-1107712078
       network: grpc
       port: 2087
@@ -30,6 +23,13 @@ proxies:
       type: vless
       udp: true
       uuid: df9f5aca-eda0-428f-a752-e53866153d12
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1160568958
+      password: e0sT7dql6hUZTTWLOtz89tI2+PxjtSCqzAhkwhVVz9U=
+      port: 59924
+      server: 130.61.237.108
+      type: ss
+      udp: true
     - name: vless-1124738275
       network: grpc
       port: 2087
@@ -111,6 +111,13 @@ proxies:
       skip-cert-verify: true
       sni: 130.61.50.75
       type: hysteria2
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1160568974
+      password: Ysvv0xxTrCg+FjlIar+M9OXA+rHCF4uKzNEYfIUpWV4=
+      port: 59924
+      server: 130.61.44.247
+      type: ss
+      udp: true
     - name: vless-1046909533
       network: grpc
       port: 2083
@@ -132,6 +139,16 @@ proxies:
       type: vless
       udp: true
       uuid: f2616bce-337a-4d13-8c58-1b5e71986569
+    - name: vless-1155246847
+      network: grpc
+      port: 2087
+      server: 31.56.189.27
+      servername: srv-21bac9.vless.monster
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: df9f5aca-eda0-428f-a752-e53866153d12
     - name: vless-1141368039
       network: grpc
       port: 2087
@@ -276,14 +293,6 @@ proxies:
       sni: ssl.fastly.com
       type: trojan
       udp: true
-    - name: trojan-1155657299
-      password: MiTiVPN
-      port: 443
-      server: 151.101.56.7
-      skip-cert-verify: true
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
     - name: trojan-1146302837
       password: MiTiVPN
       port: 443
@@ -292,16 +301,6 @@ proxies:
       sni: ssl.fastly.com
       type: trojan
       udp: true
-    - name: vless-1155246847
-      network: grpc
-      port: 2087
-      server: 31.56.189.27
-      servername: srv-21bac9.vless.monster
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: df9f5aca-eda0-428f-a752-e53866153d12
     - name: vless-1143496046
       network: grpc
       port: 2087
@@ -312,14 +311,24 @@ proxies:
       type: vless
       udp: true
       uuid: df9f5aca-eda0-428f-a752-e53866153d12
+    - name: vless-1122091246
+      network: grpc
+      port: 2087
+      server: 31.56.189.27
+      servername: srv-21bac9.vless.monster
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: df9f5aca-eda0-428f-a752-e53866153d12
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1145531556
         - hysteria2-1097484106
-        - shadowsocks-1160568974
         - vless-1107712078
+        - shadowsocks-1160568958
         - vless-1124738275
         - hysteria2-648949655
         - shadowsocks-1168021097
@@ -330,9 +339,11 @@ proxy-groups:
         - hysteria2-851087338
         - hysteria2-721489370
         - hysteria2-177823913
+        - shadowsocks-1160568974
         - vless-1046909533
         - vless-1046909554
         - vless-1046909486
+        - vless-1155246847
         - vless-1141368039
         - vless-1141368041
         - vless-1123871927
@@ -348,10 +359,9 @@ proxy-groups:
         - hysteria2-742970030
         - shadowsocks-1167462467
         - trojan-1153075050
-        - trojan-1155657299
         - trojan-1146302837
-        - vless-1155246847
         - vless-1143496046
+        - vless-1122091246
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -359,8 +369,8 @@ proxy-groups:
         - auto
         - shadowsocks-1145531556
         - hysteria2-1097484106
-        - shadowsocks-1160568974
         - vless-1107712078
+        - shadowsocks-1160568958
         - vless-1124738275
         - hysteria2-648949655
         - shadowsocks-1168021097
@@ -371,9 +381,11 @@ proxy-groups:
         - hysteria2-851087338
         - hysteria2-721489370
         - hysteria2-177823913
+        - shadowsocks-1160568974
         - vless-1046909533
         - vless-1046909554
         - vless-1046909486
+        - vless-1155246847
         - vless-1141368039
         - vless-1141368041
         - vless-1123871927
@@ -389,10 +401,9 @@ proxy-groups:
         - hysteria2-742970030
         - shadowsocks-1167462467
         - trojan-1153075050
-        - trojan-1155657299
         - trojan-1146302837
-        - vless-1155246847
         - vless-1143496046
+        - vless-1122091246
       type: select
 rules:
     - MATCH,select
