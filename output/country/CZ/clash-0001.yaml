@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1088824844
+      network: tcp
+      port: 7444
+      reality-opts:
+        public-key: -P8DgKISSG4jnLuj6ihZDqZs1_zt-juBrhVhTylHiAo
+        short-id: ""
+      server: 78.159.247.166
+      servername: akamai.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0764541b-3e57-4b47-954b-51e996fae5fc
     - flow: xtls-rprx-vision
       name: vless-1187523218
       network: tcp
@@ -91,6 +105,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1088824844
         - vless-1187523218
         - vless-1188698479
         - vless-1188698484
@@ -104,6 +119,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1088824844
         - vless-1187523218
         - vless-1188698479
         - vless-1188698484

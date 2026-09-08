@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-323
+      password: KnJGad3FqTvjqbaX
+      port: 9014
+      server: 5.188.181.201
+      type: ss
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-11052
       password: qItG8SueYQcP
@@ -790,10 +797,38 @@ proxies:
       type: vless
       udp: true
       uuid: 813a385c-f26f-48b5-9bbb-53204a9c5bcc
+    - client-fingerprint: chrome
+      name: vless-1192980334
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 7Y6Xb5Ql_03K25x8yKUSOKI2JTOMyv2nyCcFza90uxk
+        short-id: 29e8dcd2b37aaa7f
+      server: 212.227.235.66
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1193015738
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Sgocj9v63XdHU04TV3-Pk141YPIT_E-UgLr9u4OkE0E
+        short-id: d27201f7bf5874f9
+      server: 107.189.19.27
+      servername: cdn.dodostatic.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 813a385c-f26f-48b5-9bbb-53204a9c5bcc
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-323
         - shadowsocks-11052
         - shadowsocks-16132
         - vless-947846141
@@ -852,11 +887,14 @@ proxy-groups:
         - vless-1171231990
         - vless-1173254115
         - vless-1186767700
+        - vless-1192980334
+        - vless-1193015738
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-323
         - shadowsocks-11052
         - shadowsocks-16132
         - vless-947846141
@@ -915,6 +953,8 @@ proxy-groups:
         - vless-1171231990
         - vless-1173254115
         - vless-1186767700
+        - vless-1192980334
+        - vless-1193015738
       type: select
 rules:
     - MATCH,select
