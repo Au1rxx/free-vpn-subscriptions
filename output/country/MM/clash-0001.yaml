@@ -1,0 +1,23 @@
+proxies:
+    - name: trojan-1197769204
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10046
+      server: z-sg1.6send.com
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - trojan-1197769204
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - trojan-1197769204
+      type: select
+rules:
+    - MATCH,select
