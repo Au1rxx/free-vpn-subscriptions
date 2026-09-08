@@ -1,0 +1,61 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1187523180
+      network: tcp
+      port: 10032
+      reality-opts:
+        public-key: yXxDl06l9pXXT4_1kqpdgOyfAhORcsfPgLTxHu50zQM
+        short-id: f9275dbb5a
+      server: family.bucket.8.kfc-520.com
+      servername: www.hp.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2a88deea-221d-3f06-9846-4067c6f725ee
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1187523186
+      network: tcp
+      port: 10032
+      reality-opts:
+        public-key: yXxDl06l9pXXT4_1kqpdgOyfAhORcsfPgLTxHu50zQM
+        short-id: f9275dbb5a
+      server: family.bucket.8.kfc-520.com
+      servername: www.hp.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2a88deea-221d-3f06-9846-4067c6f725ee
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1187523222
+      network: tcp
+      port: 10032
+      reality-opts:
+        public-key: yXxDl06l9pXXT4_1kqpdgOyfAhORcsfPgLTxHu50zQM
+        short-id: f9275dbb5a
+      server: family.bucket.8.kfc-520.com
+      servername: www.hp.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2a88deea-221d-3f06-9846-4067c6f725ee
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1187523180
+        - vless-1187523186
+        - vless-1187523222
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1187523180
+        - vless-1187523186
+        - vless-1187523222
+      type: select
+rules:
+    - MATCH,select

@@ -1,0 +1,98 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "family.bucket.8.kfc-520.com",
+      "server_port": 10033,
+      "tag": "vless-1187523249",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "mQvQHrpr_4068cLt-AOl44mQN6YccQv7yLfCP5Kp9HU",
+          "short_id": "667925235980"
+        },
+        "server_name": "www.hp.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "type": "vless",
+      "uuid": "2a88deea-221d-3f06-9846-4067c6f725ee"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "family.bucket.8.kfc-520.com",
+      "server_port": 10033,
+      "tag": "vless-1187523246",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "mQvQHrpr_4068cLt-AOl44mQN6YccQv7yLfCP5Kp9HU",
+          "short_id": "667925235980"
+        },
+        "server_name": "www.hp.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "2a88deea-221d-3f06-9846-4067c6f725ee"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "family.bucket.8.kfc-520.com",
+      "server_port": 10033,
+      "tag": "vless-1187523209",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "mQvQHrpr_4068cLt-AOl44mQN6YccQv7yLfCP5Kp9HU",
+          "short_id": "667925235980"
+        },
+        "server_name": "www.hp.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "type": "vless",
+      "uuid": "2a88deea-221d-3f06-9846-4067c6f725ee"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1187523249",
+        "vless-1187523246",
+        "vless-1187523209"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1187523249",
+        "vless-1187523246",
+        "vless-1187523209"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
