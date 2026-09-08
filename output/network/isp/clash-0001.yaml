@@ -1,12 +1,5 @@
 proxies:
     - cipher: aes-256-cfb
-      name: shadowsocks-278
-      password: qwerREWQ@@
-      port: 4652
-      server: 218.237.185.230
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
       name: shadowsocks-283
       password: qwerREWQ@@
       port: 13979
@@ -613,20 +606,6 @@ proxies:
       type: vless
       udp: true
       uuid: 461396cc-2f0a-42cc-b224-d122ba073a2a
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1172076116
-      network: tcp
-      port: 4443
-      reality-opts:
-        public-key: 321Ii2xbCoyll6WJ0Qm1Sh8qcC0kxXvUaZhe3kyasD8
-        short-id: a1b2c3d4e5f6a7b8
-      server: 45.159.79.71
-      servername: sentry.io
-      tls: true
-      type: vless
-      udp: true
-      uuid: 20dd9433-389e-4573-ba7b-689619cf13da
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1172590426
@@ -873,11 +852,21 @@ proxies:
       type: vless
       udp: true
       uuid: cec9a167-6381-4752-9828-a92ab6e6ebdd
+    - flow: xtls-rprx-vision
+      name: vless-1188859800
+      network: tcp
+      port: 443
+      server: 195.133.35.197
+      servername: node.cz.teleserch.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: cec9a167-6381-4752-9828-a92ab6e6ebdd
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-278
         - shadowsocks-283
         - shadowsocks-287
         - trojan-112939
@@ -939,7 +928,6 @@ proxy-groups:
         - vless-1167706765
         - vless-1168160267
         - vless-1168885953
-        - vless-1172076116
         - vless-1172590426
         - vless-1172590438
         - vless-1172590452
@@ -960,12 +948,12 @@ proxy-groups:
         - vless-1186765700
         - vless-1186772754
         - vless-1187523218
+        - vless-1188859800
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-278
         - shadowsocks-283
         - shadowsocks-287
         - trojan-112939
@@ -1027,7 +1015,6 @@ proxy-groups:
         - vless-1167706765
         - vless-1168160267
         - vless-1168885953
-        - vless-1172076116
         - vless-1172590426
         - vless-1172590438
         - vless-1172590452
@@ -1048,6 +1035,7 @@ proxy-groups:
         - vless-1186765700
         - vless-1186772754
         - vless-1187523218
+        - vless-1188859800
       type: select
 rules:
     - MATCH,select

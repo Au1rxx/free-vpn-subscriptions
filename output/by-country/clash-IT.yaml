@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-1182908716
+      password: 78235e7dc55e9ad1
+      port: 10661
+      server: 132.243.255.3
+      type: ss
+      udp: true
     - client-fingerprint: edge
       name: vless-696199631
       network: tcp
@@ -16,12 +23,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1182908716
         - vless-696199631
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1182908716
         - vless-696199631
       type: select
 rules:
