@@ -1,0 +1,23 @@
+proxies:
+    - name: trojan-1096552103
+      password: C0ldyfh-vpnjantit.com
+      port: 4443
+      server: 46.29.142.57
+      skip-cert-verify: true
+      sni: hu2.vpnjantit.com
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - trojan-1096552103
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - trojan-1096552103
+      type: select
+rules:
+    - MATCH,select
