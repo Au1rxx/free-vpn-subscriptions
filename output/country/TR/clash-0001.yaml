@@ -15,22 +15,6 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: trojan-122850
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20017
-      server: d3.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-122851
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20018
-      server: d3.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-513948363
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20018
@@ -40,6 +24,16 @@ proxies:
       type: trojan
       udp: true
     - name: vless-721555187
+      network: tcp
+      port: 8443
+      server: 195.162.69.203
+      servername: 195-162-69-203.sslip.io
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 953358cb-82ba-4296-960d-6d2ec3468f4c
+    - name: vless-743890322
       network: tcp
       port: 8443
       server: 195.162.69.203
@@ -419,32 +413,6 @@ proxies:
       type: vless
       udp: true
       uuid: 953358cb-82ba-4296-960d-6d2ec3468f4c
-    - client-fingerprint: qq
-      name: vless-1178938371
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: MgyA2FY0p2q_VOwoL9T1Z3rzpKEcGjfN61QliGcyHA8
-        short-id: ca41ef1263c02279
-      server: 158.94.216.175
-      servername: amp-api-edge.apps.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a27c7e29-9120-40c1-9cd5-3e6ac4d60577
-    - client-fingerprint: firefox
-      name: vless-1179076704
-      network: tcp
-      port: 8735
-      reality-opts:
-        public-key: NpgXDQ6jl_HGPdHAHFeiBl5Ym7bywxmw_EYovmFjVQs
-        short-id: c077229044b68285
-      server: tus1.milkabebar.ir
-      servername: www.vercel.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c2ab29fc-1f53-4505-96a9-e3f3888dd0ac
     - name: vless-1179468309
       network: tcp
       port: 8082
@@ -542,16 +510,24 @@ proxies:
       type: vless
       udp: true
       uuid: 953358cb-82ba-4296-960d-6d2ec3468f4c
+    - alterId: 0
+      cipher: auto
+      name: vmess-1183433952
+      network: tcp
+      port: 5384
+      server: dashboard.afrastore.top
+      type: vmess
+      udp: true
+      uuid: 63a01857-93c1-490b-95f5-991bd79116c5
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-112587
         - trojan-119244
-        - trojan-122850
-        - trojan-122851
         - trojan-513948363
         - vless-721555187
+        - vless-743890322
         - trojan-856461981
         - vless-1044631486
         - vless-1047427979
@@ -583,8 +559,6 @@ proxy-groups:
         - vless-1154933760
         - vless-1154943135
         - vless-1156240361
-        - vless-1178938371
-        - vless-1179076704
         - vless-1179468309
         - vless-1179482260
         - vless-1180055002
@@ -594,6 +568,7 @@ proxy-groups:
         - vless-1182535452
         - vless-1182721091
         - vless-1182726093
+        - vmess-1183433952
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -601,10 +576,9 @@ proxy-groups:
         - auto
         - trojan-112587
         - trojan-119244
-        - trojan-122850
-        - trojan-122851
         - trojan-513948363
         - vless-721555187
+        - vless-743890322
         - trojan-856461981
         - vless-1044631486
         - vless-1047427979
@@ -636,8 +610,6 @@ proxy-groups:
         - vless-1154933760
         - vless-1154943135
         - vless-1156240361
-        - vless-1178938371
-        - vless-1179076704
         - vless-1179468309
         - vless-1179482260
         - vless-1180055002
@@ -647,6 +619,7 @@ proxy-groups:
         - vless-1182535452
         - vless-1182721091
         - vless-1182726093
+        - vmess-1183433952
       type: select
 rules:
     - MATCH,select
