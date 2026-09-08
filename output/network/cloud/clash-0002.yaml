@@ -1,4 +1,13 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-669728819
+      network: tcp
+      port: 80
+      server: 128.140.121.223
+      type: vmess
+      udp: true
+      uuid: 1faa94ca-a5cc-4aea-a4ac-cf517a33b302
     - name: hysteria2-669755179
       password: 3d7634af8cb2c6cb4bac1c0efad8b43d
       port: 50160
@@ -33,6 +42,16 @@ proxies:
       type: vmess
       udp: true
       uuid: d4603cc2-e0ee-4651-83f5-1db5b7168177
+    - name: vless-677918877
+      network: ws
+      port: 443
+      server: 104.16.102.172
+      servername: vmx23.leon4rdo78.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 85ceb245-40ee-433b-9e51-4c7a3167a70b
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-678561110
@@ -3013,30 +3032,16 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
-    - alterId: 0
-      cipher: auto
-      name: vmess-891916996
-      network: ws
-      port: 80
-      server: 152.67.8.205
-      type: vmess
-      udp: true
-      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
-    - name: hysteria2-892012196
-      password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-      port: 443
-      server: 13.250.120.9
-      skip-cert-verify: true
-      sni: speedtest.tinkoff.ru
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-669728819
         - hysteria2-669755179
         - vmess-669779735
         - vmess-674365210
         - vmess-676886738
+        - vless-677918877
         - vless-678561110
         - vmess-681183100
         - vmess-681183123
@@ -3302,17 +3307,17 @@ proxy-groups:
         - vmess-882205918
         - vless-882226717
         - vless-891419745
-        - vmess-891916996
-        - hysteria2-892012196
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-669728819
         - hysteria2-669755179
         - vmess-669779735
         - vmess-674365210
         - vmess-676886738
+        - vless-677918877
         - vless-678561110
         - vmess-681183100
         - vmess-681183123
@@ -3578,8 +3583,6 @@ proxy-groups:
         - vmess-882205918
         - vless-882226717
         - vless-891419745
-        - vmess-891916996
-        - hysteria2-892012196
       type: select
 rules:
     - MATCH,select
