@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1197405647
+      network: tcp
+      port: 10053
+      reality-opts:
+        public-key: o-ud3x7exNVYmknsVseZyUGMyK_680Nub0Cf6W4KiRw
+        short-id: cbbf64
+      server: family.bucket.9.kfc-520.com
+      servername: www.amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3979cfac-7f7b-3dcf-a4e4-513eb8d125a7
     - name: trojan-1169639660
       password: 018b8e7b-7813-4dcb-84a5-3c98f1521e00
       port: 443
@@ -11,12 +25,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1197405647
         - trojan-1169639660
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1197405647
         - trojan-1169639660
       type: select
 rules:
