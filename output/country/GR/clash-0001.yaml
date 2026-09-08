@@ -1,6 +1,20 @@
 proxies:
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-953732977
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: gr.freeinternat.com
+      servername: gr.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-953732997
       network: tcp
       port: 443
@@ -44,6 +58,20 @@ proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-980153398
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: gr.freeinternat.com
+      servername: gr.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-982710422
       network: tcp
       port: 443
       reality-opts:
@@ -174,6 +202,20 @@ proxies:
       type: vless
       udp: true
       uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1051520125
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: 85.90.197.91
+      servername: gr.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1057284135
@@ -212,6 +254,20 @@ proxies:
         short-id: ff776ff77be48b88
       server: gr.freeinternat.com
       servername: gr.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1060021688
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: gr.freeinternat.com
+      servername: ""
       tls: true
       type: vless
       udp: true
@@ -272,14 +328,30 @@ proxies:
       type: vless
       udp: true
       uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1137014723
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: 85.90.197.91
+      servername: gr.freeinternat.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dabb9a19-03ab-4cdf-8963-d3c45eb0f80d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-953732977
         - vless-953732997
         - vless-956121373
         - vless-976477098
         - vless-980153398
+        - vless-982710422
         - vless-985518745
         - vless-996068378
         - vless-1004706264
@@ -289,22 +361,27 @@ proxy-groups:
         - vless-1046909488
         - vless-1047813886
         - vless-1048478136
+        - vless-1051520125
         - vless-1057284135
         - vless-1058912753
         - vless-1060021684
+        - vless-1060021688
         - vless-1071893240
         - vless-1071897251
         - vless-1102948344
         - vless-1124400830
+        - vless-1137014723
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-953732977
         - vless-953732997
         - vless-956121373
         - vless-976477098
         - vless-980153398
+        - vless-982710422
         - vless-985518745
         - vless-996068378
         - vless-1004706264
@@ -314,13 +391,16 @@ proxy-groups:
         - vless-1046909488
         - vless-1047813886
         - vless-1048478136
+        - vless-1051520125
         - vless-1057284135
         - vless-1058912753
         - vless-1060021684
+        - vless-1060021688
         - vless-1071893240
         - vless-1071897251
         - vless-1102948344
         - vless-1124400830
+        - vless-1137014723
       type: select
 rules:
     - MATCH,select
