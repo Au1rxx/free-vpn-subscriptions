@@ -13,27 +13,17 @@ proxies:
       type: vless
       udp: true
       uuid: 3979cfac-7f7b-3dcf-a4e4-513eb8d125a7
-    - name: trojan-1169639660
-      password: 018b8e7b-7813-4dcb-84a5-3c98f1521e00
-      port: 443
-      server: 104.21.70.21
-      skip-cert-verify: false
-      sni: id1.nathaya.web.id
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1197405647
-        - trojan-1169639660
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1197405647
-        - trojan-1169639660
       type: select
 rules:
     - MATCH,select
