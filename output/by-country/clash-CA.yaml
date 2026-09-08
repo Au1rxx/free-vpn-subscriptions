@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1109241417
-      network: tcp#1⛑️@oneclickvpnkeys
-      port: 41373
-      reality-opts:
-        public-key: m0GsZOAwvAJEaqh9aH6qfOmBKo0KW0jY_tJEC6KaDEU
-        short-id: 0e
-      server: 130.107.73.148
-      servername: google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a71c8954-66a8-4321-bedb-2336230d81ce
     - name: hysteria2-1013826622
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -577,11 +563,17 @@ proxies:
       type: vless
       udp: true
       uuid: a71c8954-66a8-4321-bedb-2336230d81ce
+    - name: hysteria2-1120266223
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: 15.223.122.197
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1109241417
         - hysteria2-1013826622
         - hysteria2-1030361951
         - vless-1120245639
@@ -634,12 +626,12 @@ proxy-groups:
         - vless-177993885
         - vless-2314770
         - vless-1109835478
+        - hysteria2-1120266223
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1109241417
         - hysteria2-1013826622
         - hysteria2-1030361951
         - vless-1120245639
@@ -692,6 +684,7 @@ proxy-groups:
         - vless-177993885
         - vless-2314770
         - vless-1109835478
+        - hysteria2-1120266223
       type: select
 rules:
     - MATCH,select
