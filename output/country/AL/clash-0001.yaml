@@ -1,22 +1,23 @@
 proxies:
-    - name: vless-81052
-      network: ws
-      port: 22573
-      server: 84.235.244.108
-      type: vless
+    - name: trojan-122860
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20032
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
       udp: true
-      uuid: 39947382-3212-41c9-bc3a-589574ac8b23
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-81052
+        - trojan-122860
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-81052
+        - trojan-122860
       type: select
 rules:
     - MATCH,select

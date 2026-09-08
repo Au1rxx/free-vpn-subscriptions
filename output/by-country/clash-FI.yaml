@@ -6,6 +6,13 @@ proxies:
       skip-cert-verify: false
       sni: se.allgoodvpn.su
       type: hysteria2
+    - name: vless-1194320481
+      network: tcp
+      port: 443
+      server: 65.109.176.5
+      type: vless
+      udp: true
+      uuid: 1d2e5805-69c0-4948-861c-57e4f778624e
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1191999746
@@ -20,115 +27,21 @@ proxies:
       type: vless
       udp: true
       uuid: 4d191b82-ac44-493c-ab0c-e3e6b01c40c6
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1166756947
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: F2VfBr2UmjDTErB_oruvW5aIvzH_xGfM2AW5_w-DF0I
-        short-id: ""
-      server: brightharbor.download
-      servername: ""
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6429d27e-a7d4-4e04-ae57-e88243fbbfe3
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1153336789
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: nnkPnz6R86-6xG92s8k-1DUQPXAJIVMoMWDLPghh4x4
-        short-id: 0173b2681806bc97
-      server: eu-north-fi-1.hanvpn.biz
-      servername: eu-north-fi-1.hanvpn.biz
-      tls: true
-      type: vless
-      udp: true
-      uuid: d9d0f208-d582-41d5-bb7b-742671402810
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1139114155
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: nnkPnz6R86-6xG92s8k-1DUQPXAJIVMoMWDLPghh4x4
-        short-id: 0173b2681806bc97
-      server: eu-north-fi-1.hanvpn.biz
-      servername: eu-north-fi-1.hanvpn.biz
-      tls: true
-      type: vless
-      udp: true
-      uuid: d9d0f208-d582-41d5-bb7b-742671402810
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1144854948
-      network: tcp
-      port: 8443
-      reality-opts:
-        public-key: HNjZe5pYUhcuE8sASYVVrVSMW_jFfekgLnrnO4xXIyQ
-        short-id: a1b2c3d4
-      server: 217.60.33.44
-      servername: fi.aeternavpn.space
-      tls: true
-      type: vless
-      udp: true
-      uuid: 92089155-6602-4122-86d4-fe6de20e8c4d
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1182533374
-      network: tcp
-      port: 4443
-      reality-opts:
-        public-key: GvkQwcZWiXQBLzEhTVfQkyPpdgo6Opc3RtLsED9sA0A
-        short-id: 7da2eae792187ab9
-      server: 31.77.199.147
-      servername: images.unsplash.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 20dd9433-389e-4573-ba7b-689619cf13da
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-1189060097
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: niL0fb-4IaVHr5VCg2yN_5wDTNYEq9W8wi7pDWLPcVg
-        short-id: 7505bfa3b6b933e6
-      server: 200.169.182.57
-      servername: defaultenginedimly.rivetpress.me
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7a97f64d-5fc7-4011-9028-58d2ba751595
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1044608293
+        - vless-1194320481
         - vless-1191999746
-        - vless-1166756947
-        - vless-1153336789
-        - vless-1139114155
-        - vless-1144854948
-        - vless-1182533374
-        - vless-1189060097
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1044608293
+        - vless-1194320481
         - vless-1191999746
-        - vless-1166756947
-        - vless-1153336789
-        - vless-1139114155
-        - vless-1144854948
-        - vless-1182533374
-        - vless-1189060097
       type: select
 rules:
     - MATCH,select

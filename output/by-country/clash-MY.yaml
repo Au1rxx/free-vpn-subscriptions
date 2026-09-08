@@ -1,11 +1,18 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-696792801
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 118.107.222.231
-      type: ss
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1027296856
+      network: tcp
+      port: 21874
+      reality-opts:
+        public-key: 75sTDYJk8ylA97-aBhAlF1tU4OaCfdOaOSIBshPW7Bs
+        short-id: 42e853a5559e1032
+      server: 43.217.16.8
+      servername: www.amd.com
+      tls: true
+      type: vless
       udp: true
+      uuid: 85dd8227-0f12-4826-a712-6313211774b5
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1083570751
@@ -48,71 +55,23 @@ proxies:
       type: vless
       udp: true
       uuid: e8358eb5-7210-4cf8-982f-68af141b7694
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1048867155
-      network: tcp
-      port: 21874
-      reality-opts:
-        public-key: 75sTDYJk8ylA97-aBhAlF1tU4OaCfdOaOSIBshPW7Bs
-        short-id: 42e853a5559e1032
-      server: 43.217.16.8
-      servername: www.amd.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 85dd8227-0f12-4826-a712-6313211774b5
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1191190074
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: R6q8qhMxgq3ynJPUgudaRkcDXj0qgoc_UU1N0SWGLwM
-        short-id: ed77ac35a310
-      server: my2.miyazono-kaori.com
-      servername: www.setel.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 35b76d46-1861-4641-a37b-9bfda190cce1
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1191190046
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: t3HU7p5iYjE9Lcq2-QHTXZFhpAvoXljTNDgmFkFN-Tc
-        short-id: 99f8972e3dd5ed
-      server: my1.miyazono-kaori.com
-      servername: www.setel.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 35b76d46-1861-4641-a37b-9bfda190cce1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-696792801
+        - vless-1027296856
         - vless-1083570751
         - vless-1048866238
         - vless-1057833380
-        - vless-1048867155
-        - vless-1191190074
-        - vless-1191190046
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-696792801
+        - vless-1027296856
         - vless-1083570751
         - vless-1048866238
         - vless-1057833380
-        - vless-1048867155
-        - vless-1191190074
-        - vless-1191190046
       type: select
 rules:
     - MATCH,select

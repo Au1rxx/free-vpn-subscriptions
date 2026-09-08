@@ -20,20 +20,13 @@ proxies:
       server: 5.188.181.201
       type: ss
       udp: true
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1020072105
-      network: tcp
-      port: 19842
-      reality-opts:
-        public-key: sfOfuQeJBlKfDnPL_EMWUxMIiFAN8BNKjtWDUvlsjzM
-        short-id: 25ebc9e0a912
-      server: 185.254.205.79
-      servername: www.tesla.com
-      tls: true
-      type: vless
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-16132
+      password: WSyL4XTwNsdv
+      port: 8388
+      server: 108.181.121.226
+      type: ss
       udp: true
-      uuid: 43c23116-1115-4af4-a0f0-56f02841a605
     - client-fingerprint: random
       name: vless-1135244188
       network: tcp
@@ -47,43 +40,14 @@ proxies:
       type: vless
       udp: true
       uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
-    - client-fingerprint: chrome
-      name: vless-1130438769
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: 7Y6Xb5Ql_03K25x8yKUSOKI2JTOMyv2nyCcFza90uxk
-        short-id: 29e8dcd2b37aaa7f
-      server: 212.227.235.66
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1044613922
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: V3uMWEfDQAPFP6o5ED8Jtk0rJBPs7IlOLf_Wh8w_jXc
-        short-id: 76132b3b39704c44
-      server: 193.238.154.18
-      servername: es1.hat.onl
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2297ea1f-2415-4a2c-be20-4a3a978283a2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1059334377
         - shadowsocks-323
-        - vless-1020072105
+        - shadowsocks-16132
         - vless-1135244188
-        - vless-1130438769
-        - vless-1044613922
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -91,10 +55,8 @@ proxy-groups:
         - auto
         - vless-1059334377
         - shadowsocks-323
-        - vless-1020072105
+        - shadowsocks-16132
         - vless-1135244188
-        - vless-1130438769
-        - vless-1044613922
       type: select
 rules:
     - MATCH,select
