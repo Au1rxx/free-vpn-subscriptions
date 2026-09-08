@@ -1,0 +1,26 @@
+proxies:
+    - flow: xtls-rprx-vision
+      name: vless-1192070273
+      network: tcp
+      port: 10829
+      server: 103.173.155.212
+      servername: u643766u4d99b056s591.csgfw.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 41f4cb15-5a3f-3934-89fe-b4177146adf4
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1192070273
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1192070273
+      type: select
+rules:
+    - MATCH,select
