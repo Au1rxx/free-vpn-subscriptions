@@ -1,14 +1,4 @@
 proxies:
-    - name: vless-539832439
-      network: grpc
-      port: 2083
-      server: laoye.in-gect.fun
-      servername: laoye.in-gect.fun
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - name: vless-561641518
       network: grpc
       port: 2083
@@ -29,7 +19,7 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: vless-775810632
+    - name: vless-583609879
       network: grpc
       port: 2083
       server: 89.36.161.222
@@ -39,6 +29,13 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - name: hysteria2-1104857512
+      password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
+      port: 443
+      server: 85.159.228.22
+      skip-cert-verify: true
+      sni: hy2-latvia2.unlimited-access.ru
+      type: hysteria2
     - name: hysteria2-1098338335
       password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
       port: 8443
@@ -53,39 +50,48 @@ proxies:
       skip-cert-verify: true
       sni: speedtestmark.com
       type: hysteria2
-    - name: vless-787511220
+    - name: vless-650667509
       network: grpc
       port: 2083
-      server: 89.36.161.222
+      server: laoye.in-gect.fun
       servername: laoye.in-gect.fun
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - name: hysteria2-1108719512
+      password: 52e3dd44-ed23-4030-b0cc-5b5a953f2d4d
+      port: 8443
+      server: 104.165.205.42
+      skip-cert-verify: true
+      sni: speedtestmark.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-539832439
         - vless-561641518
         - vless-718040241
-        - vless-775810632
+        - vless-583609879
+        - hysteria2-1104857512
         - hysteria2-1098338335
         - hysteria2-1098338330
-        - vless-787511220
+        - vless-650667509
+        - hysteria2-1108719512
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-539832439
         - vless-561641518
         - vless-718040241
-        - vless-775810632
+        - vless-583609879
+        - hysteria2-1104857512
         - hysteria2-1098338335
         - hysteria2-1098338330
-        - vless-787511220
+        - vless-650667509
+        - hysteria2-1108719512
       type: select
 rules:
     - MATCH,select
