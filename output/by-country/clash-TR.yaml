@@ -1,13 +1,4 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-1204110393
-      network: tcp
-      port: 110
-      server: pori.cjlife.ir
-      type: vmess
-      udp: true
-      uuid: 0accd97e-a16c-4d4f-b19a-883f7ea0f484
     - client-fingerprint: chrome
       name: vless-1132523427
       network: tcp
@@ -21,28 +12,17 @@ proxies:
       type: vless
       udp: true
       uuid: e691b034-dfc9-4f22-80aa-6d4f6404a4df
-    - name: vless-1209606736
-      network: raw
-      port: 443
-      server: 185.71.219.188
-      type: vless
-      udp: true
-      uuid: 2107ea1e-26fb-4831-8c3f-fb190bea79f7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-1204110393
         - vless-1132523427
-        - vless-1209606736
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-1204110393
         - vless-1132523427
-        - vless-1209606736
       type: select
 rules:
     - MATCH,select
