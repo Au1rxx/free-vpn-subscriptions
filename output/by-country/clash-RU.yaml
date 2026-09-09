@@ -1,22 +1,29 @@
 proxies:
-    - name: hysteria2-1207101689
-      password: 5beff945-adaa-492f-85c6-8aaf5df6cfa5
-      port: 22443
-      server: 91.240.86.70
-      skip-cert-verify: false
-      sni: hy.quattro-tech.ru
-      type: hysteria2
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1222643061
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: tKeNSn-vGnt7dCdQLyvk_PhQpMpaW7l4zgB5M5rt6HE
+        short-id: 20346ea6cce4f16a
+      server: 185.229.9.135
+      servername: cdn.dodostatic.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 47dcc1e6-9223-4633-9f38-2766171be938
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1207101689
+        - vless-1222643061
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1207101689
+        - vless-1222643061
       type: select
 rules:
     - MATCH,select
