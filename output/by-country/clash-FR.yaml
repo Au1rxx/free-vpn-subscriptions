@@ -6,6 +6,26 @@ proxies:
       server: 83.171.225.55
       type: ss
       udp: true
+    - name: vless-650669482
+      network: grpc
+      port: 2083
+      server: usejh2.neobo-tooth.ru
+      servername: usejh2.neobo-tooth.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - name: vless-816611169
+      network: grpc
+      port: 2083
+      server: 45.144.28.39
+      servername: usejh2.neobo-tooth.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - name: hysteria2-1051658044
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -31,26 +51,6 @@ proxies:
       sni: www.calmlunch.com
       type: trojan
       udp: true
-    - name: vless-650669482
-      network: grpc
-      port: 2083
-      server: usejh2.neobo-tooth.ru
-      servername: usejh2.neobo-tooth.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: vless-816611169
-      network: grpc
-      port: 2083
-      server: 45.144.28.39
-      servername: usejh2.neobo-tooth.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - client-fingerprint: chrome
       name: vless-1124066999
       network: tcp
@@ -84,12 +84,39 @@ proxies:
       server: 51.255.13.232
       type: ss
       udp: true
+    - client-fingerprint: random
+      name: vless-700285151
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: KCbW84C8h2Ja01LS0Ro8EpLLfzMTjs11t1ldDWLd5zo
+        short-id: aae8
+      server: 194.55.189.249
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8212a50b-25bf-4739-bba1-aaffb5ffc84c
     - name: hysteria2-650412204
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
       server: vpn-fr-002.fastervpn.world
       skip-cert-verify: true
       sni: 127.0.0.1
+      type: hysteria2
+    - name: hysteria2-1004725118
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: 35.181.166.40
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
+    - name: hysteria2-985315640
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: 35.181.169.140
+      skip-cert-verify: true
+      sni: vpn-fr-002.fastervpn.world
       type: hysteria2
     - name: vless-1207624292
       network: tcp
@@ -135,19 +162,6 @@ proxies:
       type: vless
       udp: true
       uuid: c543f005-59f7-40c1-9ae6-37505691d5be
-    - client-fingerprint: random
-      name: vless-700285151
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: KCbW84C8h2Ja01LS0Ro8EpLLfzMTjs11t1ldDWLd5zo
-        short-id: aae8
-      server: 194.55.189.249
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 8212a50b-25bf-4739-bba1-aaffb5ffc84c
     - client-fingerprint: chrome
       name: vless-220483550
       network: tcp
@@ -252,40 +266,28 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
-    - name: hysteria2-862083240
-      password: Krab9Hyst2_Rk7pQ2xL
-      port: 36723
-      server: 151.247.197.253
-      skip-cert-verify: true
-      sni: www.cloudflare.com
-      type: hysteria2
-    - name: hysteria2-589844073
-      password: Krab9Hyst2_Rk7pQ2xL
-      port: 36723
-      server: 151.247.197.253
-      skip-cert-verify: true
-      sni: 151.247.197.253
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1202230158
+        - vless-650669482
+        - vless-816611169
         - hysteria2-1051658044
         - vless-845414231
         - trojan-1209988444
-        - vless-650669482
-        - vless-816611169
         - vless-1124066999
         - vless-1124067005
         - shadowsocks-415242972
+        - vless-700285151
         - hysteria2-650412204
+        - hysteria2-1004725118
+        - hysteria2-985315640
         - vless-1207624292
         - vless-1207624302
         - vless-816834132
         - vless-1197832078
         - vless-1118870666
-        - vless-700285151
         - vless-220483550
         - vless-150966820
         - vless-117155702
@@ -294,29 +296,29 @@ proxy-groups:
         - vless-116202577
         - vless-220310387
         - vless-115073952
-        - hysteria2-862083240
-        - hysteria2-589844073
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1202230158
+        - vless-650669482
+        - vless-816611169
         - hysteria2-1051658044
         - vless-845414231
         - trojan-1209988444
-        - vless-650669482
-        - vless-816611169
         - vless-1124066999
         - vless-1124067005
         - shadowsocks-415242972
+        - vless-700285151
         - hysteria2-650412204
+        - hysteria2-1004725118
+        - hysteria2-985315640
         - vless-1207624292
         - vless-1207624302
         - vless-816834132
         - vless-1197832078
         - vless-1118870666
-        - vless-700285151
         - vless-220483550
         - vless-150966820
         - vless-117155702
@@ -325,8 +327,6 @@ proxy-groups:
         - vless-116202577
         - vless-220310387
         - vless-115073952
-        - hysteria2-862083240
-        - hysteria2-589844073
       type: select
 rules:
     - MATCH,select
