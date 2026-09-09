@@ -6,20 +6,6 @@ proxies:
       skip-cert-verify: false
       sni: speedtestmark.com
       type: hysteria2
-    - name: hysteria2-745560342
-      password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
-      port: 443
-      server: hy2-latvia2.unlimited-access.ru
-      skip-cert-verify: false
-      sni: hy2-latvia2.unlimited-access.ru
-      type: hysteria2
-    - name: hysteria2-781397530
-      password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
-      port: 443
-      server: hy2-latvia2.unlimited-access.ru
-      skip-cert-verify: true
-      sni: hy2-latvia2.unlimited-access.ru
-      type: hysteria2
     - name: hysteria2-1093670535
       password: 52e3dd44-ed23-4030-b0cc-5b5a953f2d4d
       port: 8443
@@ -37,20 +23,6 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1208270657
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: NMgy1XgCSXExOg6Tg8xG9lCWttMF6sjdpB41lZy6FWo
-        short-id: 5c256336e3b673fa
-      server: 195.123.213.28
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 02fcc1a4-ee90-4970-8bbb-4ffaa8109d24
     - name: vless-539832439
       network: grpc
       port: 2083
@@ -68,31 +40,76 @@ proxies:
       skip-cert-verify: false
       sni: speedtestmark.com
       type: hysteria2
+    - name: hysteria2-781397530
+      password: GSPOBvG-ZwYcBFMr0ekFGO_Zga3wK6v_
+      port: 443
+      server: hy2-latvia2.unlimited-access.ru
+      skip-cert-verify: true
+      sni: hy2-latvia2.unlimited-access.ru
+      type: hysteria2
+    - name: hysteria2-855659706
+      password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
+      port: 8443
+      server: 104.165.205.40
+      skip-cert-verify: false
+      sni: speedtestmark.com
+      type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-795694248
+      password: hbtvgUz5uNYyB3Rf
+      port: 9036
+      server: 185.135.86.175
+      type: ss
+      udp: true
+    - name: vless-583609878
+      network: grpc
+      port: 2083
+      server: 89.36.161.222
+      servername: laoye.in-gect.fun
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - name: vless-856210279
+      network: grpc
+      port: 2083
+      server: 89.36.161.222
+      servername: laoye.in-gect.fun
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-857107263
-        - hysteria2-745560342
-        - hysteria2-781397530
         - hysteria2-1093670535
         - vless-583609879
-        - vless-1208270657
         - vless-539832439
         - hysteria2-1093664536
+        - hysteria2-781397530
+        - hysteria2-855659706
+        - shadowsocks-795694248
+        - vless-583609878
+        - vless-856210279
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-857107263
-        - hysteria2-745560342
-        - hysteria2-781397530
         - hysteria2-1093670535
         - vless-583609879
-        - vless-1208270657
         - vless-539832439
         - hysteria2-1093664536
+        - hysteria2-781397530
+        - hysteria2-855659706
+        - shadowsocks-795694248
+        - vless-583609878
+        - vless-856210279
       type: select
 rules:
     - MATCH,select

@@ -1,0 +1,93 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1178266068
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: mWzXDVWUhjGcuizZHA-rEnRpxv2wgeSZUIuHmQdteiA
+        short-id: f576da5e05a1d4d2
+      server: 151.242.168.155
+      servername: kibi-institut.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: 15c79f0f-b964-4b41-9270-de2b99865ab7
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1187523182
+      network: tcp
+      port: 390
+      reality-opts:
+        public-key: 5RCgAVjaT7hwdVIKAEULswXGqR127ZOZV6X17nEhYk8
+        short-id: b545fe8c5e22f92d
+      server: 151.242.168.125
+      servername: bowandbead.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7b363f9c-3df9-4b60-a789-9cd36be0bdfe
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1183233331
+      network: tcp
+      port: 390
+      reality-opts:
+        public-key: 5RCgAVjaT7hwdVIKAEULswXGqR127ZOZV6X17nEhYk8
+        short-id: b545fe8c5e22f92d
+      server: 151.242.168.125
+      servername: bowandbead.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7b363f9c-3df9-4b60-a789-9cd36be0bdfe
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1214964042
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: oXYB-DXrI08UVBRFq8MERP36betSSd7Yb6MLN88F2R4
+        short-id: f6b5862c1f73ab80
+      server: 151.242.169.44
+      servername: frantax.my3cx.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: bb736369-b88e-4f18-9453-258364819ca7
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1194291091
+      network: tcp
+      port: 390
+      reality-opts:
+        public-key: 5RCgAVjaT7hwdVIKAEULswXGqR127ZOZV6X17nEhYk8
+        short-id: b545fe8c5e22f92d
+      server: 151.242.168.125
+      servername: bowandbead.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7b363f9c-3df9-4b60-a789-9cd36be0bdfe
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1178266068
+        - vless-1187523182
+        - vless-1183233331
+        - vless-1214964042
+        - vless-1194291091
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1178266068
+        - vless-1187523182
+        - vless-1183233331
+        - vless-1214964042
+        - vless-1194291091
+      type: select
+rules:
+    - MATCH,select
