@@ -1,29 +1,24 @@
 proxies:
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1104470805
+    - alterId: 0
+      cipher: auto
+      name: vmess-1204649485
       network: tcp
-      port: 443
-      reality-opts:
-        public-key: PTqeBbbr2xJ1L3V1PyYjKjxanMKKqJHU-wtnpYmFQCI
-        short-id: 5606d4a25c99e7af
-      server: 156.67.63.231
-      servername: sync-bridge.org
-      tls: true
-      type: vless
+      port: 110
+      server: pori.cjlife.ir
+      type: vmess
       udp: true
-      uuid: b052df40-d51c-456c-9bd6-57af01a87e4e
+      uuid: 0accd97e-a16c-4d4f-b19a-883f7ea0f484
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1104470805
+        - vmess-1204649485
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1104470805
+        - vmess-1204649485
       type: select
 rules:
     - MATCH,select
