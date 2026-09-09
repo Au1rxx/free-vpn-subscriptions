@@ -1,4 +1,11 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-16132
+      password: WSyL4XTwNsdv
+      port: 8388
+      server: 108.181.121.226
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1059334377
@@ -13,6 +20,13 @@ proxies:
       type: vless
       udp: true
       uuid: 43c23116-1115-4af4-a0f0-56f02841a605
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-11052
+      password: qItG8SueYQcP
+      port: 8388
+      server: 140.174.184.5
+      type: ss
+      udp: true
     - client-fingerprint: random
       name: vless-1135244188
       network: tcp
@@ -26,19 +40,39 @@ proxies:
       type: vless
       udp: true
       uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1019442076
+      network: raw
+      port: 19842
+      reality-opts:
+        public-key: sfOfuQeJBlKfDnPL_EMWUxMIiFAN8BNKjtWDUvlsjzM
+        short-id: 25ebc9e0a912
+      server: 185.254.205.79
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 43c23116-1115-4af4-a0f0-56f02841a605
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-16132
         - vless-1059334377
+        - shadowsocks-11052
         - vless-1135244188
+        - vless-1019442076
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-16132
         - vless-1059334377
+        - shadowsocks-11052
         - vless-1135244188
+        - vless-1019442076
       type: select
 rules:
     - MATCH,select

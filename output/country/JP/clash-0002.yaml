@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-688041977
+      password: 0400697c-b581-4575-9d2f-0bbd4659312d
+      port: 20230
+      server: jp005.421421.xyz
+      skip-cert-verify: true
+      sni: www.alibaba.com
+      type: trojan
+      udp: true
     - name: trojan-689004677
       password: tsuchiya
       port: 443
@@ -44,6 +52,13 @@ proxies:
       password: 3eOFeNssde7PYYMv
       port: 80
       server: 84.247.155.196
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-696780670
+      password: LXchLsIwtCeUAUgu
+      port: 80
+      server: 149.102.149.207
       type: ss
       udp: true
     - cipher: aes-256-cfb
@@ -266,13 +281,6 @@ proxies:
       type: vless
       udp: true
       uuid: 814bd064-544d-4255-a070-5705c03f6da9
-    - cipher: aes-256-gcm
-      name: shadowsocks-717969008
-      password: g5h5jleTRSyO3Rk4
-      port: 80
-      server: 149.102.132.184
-      type: ss
-      udp: true
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-720975521
@@ -824,6 +832,16 @@ proxies:
       sni: d.jpj1.cat.bilibili.com
       type: trojan
       udp: true
+    - name: vless-897229342
+      network: ws
+      port: 443
+      server: 104.18.38.47
+      servername: faxf32gkfzoxqv.fx6hsv0.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 77777777-8a3e-6666-b6d1-a9c5f0e8b3a2
     - name: trojan-899872165
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 18867
@@ -4115,6 +4133,16 @@ proxies:
       type: vless
       udp: true
       uuid: 27c60527-eb73-45fb-b354-d419c980b48d
+    - name: vless-1126120928
+      network: ws
+      port: 443
+      server: 151.101.56.6
+      servername: ssl.fastly.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 607f4f6c-2a71-43aa-e047-1ff5b5c23f67
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1128940745
@@ -4936,13 +4964,6 @@ proxies:
       type: vmess
       udp: true
       uuid: ad45f8f6-0f0a-4cc4-b907-c4582407dc94
-    - name: vless-1187976976
-      network: ws
-      port: 8880
-      server: 104.21.89.181
-      type: vless
-      udp: true
-      uuid: ba746959-18e7-471c-b00f-fa5cdd930abf
     - name: vless-1190551764
       network: ws
       port: 8880
@@ -5222,16 +5243,38 @@ proxies:
       type: vless
       udp: true
       uuid: b01cadb4-428b-42d2-8c56-d6c13e582ede
+    - name: vless-1209678590
+      network: ws
+      port: 443
+      server: cf10.466688.xyz
+      servername: mia3.pages.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
+    - name: vless-1209678591
+      network: ws
+      port: 443
+      server: cf4.466688.xyz
+      servername: mia1.pages.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-688041977
         - trojan-689004677
         - trojan-689642547
         - trojan-691120214
         - trojan-696053264
         - trojan-696053265
         - shadowsocks-696780669
+        - shadowsocks-696780670
         - shadowsocks-696792816
         - vless-698153462
         - vless-698153465
@@ -5254,7 +5297,6 @@ proxy-groups:
         - vless-712810007
         - vless-714300162
         - vless-714300185
-        - shadowsocks-717969008
         - vless-720975521
         - vless-721508228
         - vless-721522923
@@ -5305,6 +5347,7 @@ proxy-groups:
         - vless-876360781
         - trojan-891939496
         - trojan-891939499
+        - vless-897229342
         - trojan-899872165
         - trojan-899872171
         - trojan-908253998
@@ -5572,6 +5615,7 @@ proxy-groups:
         - vless-1124370671
         - vless-1124744820
         - vless-1125574844
+        - vless-1126120928
         - vless-1128940745
         - vless-1130262811
         - vless-1130299404
@@ -5644,7 +5688,6 @@ proxy-groups:
         - vless-1186766704
         - vless-1187590495
         - vmess-1187768773
-        - vless-1187976976
         - vless-1190551764
         - vless-1191092438
         - vless-1193015731
@@ -5675,17 +5718,21 @@ proxy-groups:
         - vless-1204622280
         - vless-1205876725
         - vless-1206807584
+        - vless-1209678590
+        - vless-1209678591
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-688041977
         - trojan-689004677
         - trojan-689642547
         - trojan-691120214
         - trojan-696053264
         - trojan-696053265
         - shadowsocks-696780669
+        - shadowsocks-696780670
         - shadowsocks-696792816
         - vless-698153462
         - vless-698153465
@@ -5708,7 +5755,6 @@ proxy-groups:
         - vless-712810007
         - vless-714300162
         - vless-714300185
-        - shadowsocks-717969008
         - vless-720975521
         - vless-721508228
         - vless-721522923
@@ -5759,6 +5805,7 @@ proxy-groups:
         - vless-876360781
         - trojan-891939496
         - trojan-891939499
+        - vless-897229342
         - trojan-899872165
         - trojan-899872171
         - trojan-908253998
@@ -6026,6 +6073,7 @@ proxy-groups:
         - vless-1124370671
         - vless-1124744820
         - vless-1125574844
+        - vless-1126120928
         - vless-1128940745
         - vless-1130262811
         - vless-1130299404
@@ -6098,7 +6146,6 @@ proxy-groups:
         - vless-1186766704
         - vless-1187590495
         - vmess-1187768773
-        - vless-1187976976
         - vless-1190551764
         - vless-1191092438
         - vless-1193015731
@@ -6129,6 +6176,8 @@ proxy-groups:
         - vless-1204622280
         - vless-1205876725
         - vless-1206807584
+        - vless-1209678590
+        - vless-1209678591
       type: select
 rules:
     - MATCH,select
