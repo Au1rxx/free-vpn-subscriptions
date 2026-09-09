@@ -10,35 +10,17 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - cipher: aes-256-cfb
-      name: shadowsocks-1110270326
-      password: amazonskr05
-      port: 443
-      server: 3.254.74.220
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-1061764009
-      password: amazonskr05
-      port: 443
-      server: 34.244.71.63
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1157879800
-        - shadowsocks-1110270326
-        - shadowsocks-1061764009
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1157879800
-        - shadowsocks-1110270326
-        - shadowsocks-1061764009
       type: select
 rules:
     - MATCH,select

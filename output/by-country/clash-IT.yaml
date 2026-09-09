@@ -13,13 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: 167ed405-7de9-4bff-b1ea-6e3d49c76b0b
-    - cipher: aes-256-gcm
-      name: shadowsocks-891518478
-      password: itzvpn@321
-      port: 8388
-      server: 57.131.48.45
-      type: ss
-      udp: true
     - client-fingerprint: chrome
       name: vless-650644312
       network: tcp
@@ -33,21 +26,52 @@ proxies:
       type: vless
       udp: true
       uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - cipher: aes-256-gcm
+      name: shadowsocks-891518478
+      password: itzvpn@321
+      port: 8388
+      server: 57.131.48.45
+      type: ss
+      udp: true
+    - client-fingerprint: firefox
+      name: vless-429873172
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - cipher: aes-256-cfb
+      name: shadowsocks-743178418
+      password: Sn5B7jTqr76aCJT8
+      port: 9097
+      server: 91.201.65.122
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1189121684
-        - shadowsocks-891518478
         - vless-650644312
+        - shadowsocks-891518478
+        - vless-429873172
+        - shadowsocks-743178418
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1189121684
-        - shadowsocks-891518478
         - vless-650644312
+        - shadowsocks-891518478
+        - vless-429873172
+        - shadowsocks-743178418
       type: select
 rules:
     - MATCH,select
