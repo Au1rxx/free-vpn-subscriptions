@@ -1,4 +1,25 @@
 proxies:
+    - name: hysteria2-857107263
+      password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
+      port: 8443
+      server: 104.165.205.42
+      skip-cert-verify: false
+      sni: speedtestmark.com
+      type: hysteria2
+    - name: hysteria2-1093670535
+      password: 52e3dd44-ed23-4030-b0cc-5b5a953f2d4d
+      port: 8443
+      server: 104.165.205.42
+      skip-cert-verify: false
+      sni: speedtestmark.com
+      type: hysteria2
+    - name: hysteria2-1093664536
+      password: 990c8eb6-4c4e-4277-8602-79af8402cdd0
+      port: 8443
+      server: 104.165.205.42
+      skip-cert-verify: false
+      sni: speedtestmark.com
+      type: hysteria2
     - name: vless-612170604
       network: grpc
       port: 2083
@@ -19,13 +40,6 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: hysteria2-1093664536
-      password: 990c8eb6-4c4e-4277-8602-79af8402cdd0
-      port: 8443
-      server: 104.165.205.42
-      skip-cert-verify: false
-      sni: speedtestmark.com
-      type: hysteria2
     - name: vless-650667509
       network: grpc
       port: 2083
@@ -40,18 +54,22 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-857107263
+        - hysteria2-1093670535
+        - hysteria2-1093664536
         - vless-612170604
         - vless-718040241
-        - hysteria2-1093664536
         - vless-650667509
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-857107263
+        - hysteria2-1093670535
+        - hysteria2-1093664536
         - vless-612170604
         - vless-718040241
-        - hysteria2-1093664536
         - vless-650667509
       type: select
 rules:

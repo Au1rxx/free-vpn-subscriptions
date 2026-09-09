@@ -1,0 +1,22 @@
+proxies:
+    - name: hysteria2-600117033
+      password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
+      port: 443
+      server: cabinet.wwwinternetvideo.click
+      skip-cert-verify: true
+      sni: cabinet.wwwinternetvideo.click
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-600117033
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-600117033
+      type: select
+rules:
+    - MATCH,select
