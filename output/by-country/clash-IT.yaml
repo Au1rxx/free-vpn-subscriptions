@@ -13,17 +13,26 @@ proxies:
       type: vless
       udp: true
       uuid: 167ed405-7de9-4bff-b1ea-6e3d49c76b0b
+    - cipher: aes-256-gcm
+      name: shadowsocks-891518478
+      password: itzvpn@321
+      port: 8388
+      server: 57.131.48.45
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1189121684
+        - shadowsocks-891518478
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1189121684
+        - shadowsocks-891518478
       type: select
 rules:
     - MATCH,select

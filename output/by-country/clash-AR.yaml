@@ -1,0 +1,45 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-982637013
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SiSky02wHz-S0TDHKFTdYhnrlT8Y3CfRsekZlcdLXDY
+        short-id: fd55b698ee8c3629
+      server: 38.180.186.202
+      servername: zvukipro.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ddc16e82-b242-43c3-9c9c-96c0f1cce41b
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-983633069
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SiSky02wHz-S0TDHKFTdYhnrlT8Y3CfRsekZlcdLXDY
+        short-id: fd55b698ee8c3629
+      server: 149.33.19.143
+      servername: zvukipro.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 049b5a3c-3331-4a16-a12a-1f79c5b52d17
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-982637013
+        - vless-983633069
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-982637013
+        - vless-983633069
+      type: select
+rules:
+    - MATCH,select
