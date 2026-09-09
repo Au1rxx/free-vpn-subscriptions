@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1202813748
+      network: tcp
+      port: 443
+      server: 185.71.219.188
+      type: vless
+      udp: true
+      uuid: 2107ea1e-26fb-4831-8c3f-fb190bea79f7
     - alterId: 0
       cipher: auto
       name: vmess-1204649485
@@ -12,12 +19,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1202813748
         - vmess-1204649485
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1202813748
         - vmess-1204649485
       type: select
 rules:
