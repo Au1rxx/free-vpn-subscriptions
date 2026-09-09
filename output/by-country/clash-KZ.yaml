@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1219061973
+      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
+      port: 443
+      server: 46.247.41.120
+      skip-cert-verify: true
+      sni: kz03hy01.tcp-reset-club.net
+      type: hysteria2
     - client-fingerprint: chrome
       name: vless-1215613940
       network: tcp
@@ -16,12 +23,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1219061973
         - vless-1215613940
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1219061973
         - vless-1215613940
       type: select
 rules:
