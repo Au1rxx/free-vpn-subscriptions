@@ -7,7 +7,23 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - name: trojan-1198924883
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10045
+      server: z-sg2.6send.com
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
     - name: trojan-1202774664
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10045
+      server: z-sg1.6send.com
+      skip-cert-verify: true
+      sni: z-sg1.6send.com
+      type: trojan
+      udp: true
+    - name: trojan-1203669722
       password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
       port: 10045
       server: z-sg1.6send.com
@@ -20,14 +36,18 @@ proxy-groups:
       name: auto
       proxies:
         - trojan-1197769198
+        - trojan-1198924883
         - trojan-1202774664
+        - trojan-1203669722
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-1197769198
+        - trojan-1198924883
         - trojan-1202774664
+        - trojan-1203669722
       type: select
 rules:
     - MATCH,select

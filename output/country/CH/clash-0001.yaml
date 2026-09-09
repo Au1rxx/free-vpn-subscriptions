@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-133185
+      network: ws
+      port: 2053
+      server: 104.21.200.243
+      servername: netlivpn2584.vjvdgbc.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7074b9d7-2183-8919-fc11-ca5e00000000
     - name: hysteria2-956723757
       password: 84a506ca5aca505696a454d828420b3f
       port: 50160
@@ -38,6 +48,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-133185
         - hysteria2-956723757
         - hysteria2-1001586620
         - hysteria2-1001848837
@@ -48,6 +59,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-133185
         - hysteria2-956723757
         - hysteria2-1001586620
         - hysteria2-1001848837
