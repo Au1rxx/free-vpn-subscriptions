@@ -1,4 +1,15 @@
 proxies:
+    - flow: xtls-rprx-vision
+      name: vless-1157879800
+      network: tcp
+      port: 443
+      server: 50.7.5.163
+      servername: ir-viper.failspace.top
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - cipher: aes-256-cfb
       name: shadowsocks-1110270326
       password: amazonskr05
@@ -17,6 +28,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1157879800
         - shadowsocks-1110270326
         - shadowsocks-1061764009
       type: url-test
@@ -24,6 +36,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1157879800
         - shadowsocks-1110270326
         - shadowsocks-1061764009
       type: select

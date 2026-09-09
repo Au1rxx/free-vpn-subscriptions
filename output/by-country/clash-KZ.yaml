@@ -1,18 +1,4 @@
 proxies:
-    - name: hysteria2-1045025796
-      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
-      port: 443
-      server: kz03hy01.tcp-reset-club.net
-      skip-cert-verify: true
-      sni: kz03hy01.tcp-reset-club.net
-      type: hysteria2
-    - name: hysteria2-1046909483
-      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
-      port: 443
-      server: kz03hy01.tcp-reset-club.net
-      skip-cert-verify: false
-      sni: kz03hy01.tcp-reset-club.net
-      type: hysteria2
     - client-fingerprint: chrome
       name: vless-1215613940
       network: tcp
@@ -26,39 +12,32 @@ proxies:
       type: vless
       udp: true
       uuid: 2a9ed01e-5455-44b4-a66a-76ee8165f0ac
-    - name: hysteria2-1046909481
-      password: aa6f8aaf-d7ff-46f8-a9a0-d143d7e71f71
-      port: 443
-      server: kz03hy01.tcp-reset-club.net
-      skip-cert-verify: false
-      sni: kz03hy01.tcp-reset-club.net
-      type: hysteria2
-    - name: hysteria2-1045026811
-      password: aa6f8aaf-d7ff-46f8-a9a0-d143d7e71f71
-      port: 443
-      server: kz03hy01.tcp-reset-club.net
-      skip-cert-verify: true
-      sni: kz03hy01.tcp-reset-club.net
-      type: hysteria2
+    - client-fingerprint: qq
+      name: vless-1212487486
+      network: grpc
+      port: 9882
+      reality-opts:
+        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+        short-id: aa
+      server: 91.224.87.22
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1045025796
-        - hysteria2-1046909483
         - vless-1215613940
-        - hysteria2-1046909481
-        - hysteria2-1045026811
+        - vless-1212487486
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1045025796
-        - hysteria2-1046909483
         - vless-1215613940
-        - hysteria2-1046909481
-        - hysteria2-1045026811
+        - vless-1212487486
       type: select
 rules:
     - MATCH,select
