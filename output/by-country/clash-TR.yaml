@@ -8,17 +8,33 @@ proxies:
       type: vmess
       udp: true
       uuid: f6361af8-bb8f-4609-bf5d-3fc0f688f47b
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1044631486
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: PTqeBbbr2xJ1L3V1PyYjKjxanMKKqJHU-wtnpYmFQCI
+        short-id: 5606d4a25c99e7af
+      server: 156.67.63.231
+      servername: sync-bridge.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: b052df40-d51c-456c-9bd6-57af01a87e4e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-1226423816
+        - vless-1044631486
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-1226423816
+        - vless-1044631486
       type: select
 rules:
     - MATCH,select
