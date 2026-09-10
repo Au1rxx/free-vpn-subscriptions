@@ -1,4 +1,18 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-738053629
+      password: N7j3pdTYkKmsy8CR
+      port: 9095
+      server: 217.30.10.44
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-779606815
+      password: U6qnYRhfyDmn8sgn
+      port: 9041
+      server: 217.30.10.44
+      type: ss
+      udp: true
     - name: hysteria2-652726817
       password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
       port: 443
@@ -20,6 +34,13 @@ proxies:
       skip-cert-verify: true
       sni: admin.wwwinternetvideo.click
       type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-812343744
+      password: S2zDyyPcmZN2h8EC
+      port: 9076
+      server: 217.30.10.44
+      type: ss
+      udp: true
     - name: hysteria2-589844075
       password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
       port: 443
@@ -27,13 +48,6 @@ proxies:
       skip-cert-verify: false
       sni: admin.wwwinternetvideo.click
       type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-779606815
-      password: U6qnYRhfyDmn8sgn
-      port: 9041
-      server: 217.30.10.44
-      type: ss
-      udp: true
     - client-fingerprint: random
       name: vless-1182533363
       network: tcp
@@ -61,13 +75,6 @@ proxies:
       skip-cert-verify: true
       sni: admin.wwwinternetvideo.click
       type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-743178447
-      password: tkhHVxxfM2QErBWe
-      port: 9062
-      server: 217.30.10.44
-      type: ss
-      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-696781307
       password: mENfxTFQpRKKh4As
@@ -154,6 +161,13 @@ proxies:
       type: vless
       udp: true
       uuid: 2211972b-a45a-4951-a640-6173d573e637
+    - name: vless-868570730
+      network: ws
+      port: 443
+      server: 94.183.209.58
+      type: vless
+      udp: true
+      uuid: 78791f9e-fe09-4d4f-88ec-895764bae0d6
     - name: vless-689099492
       network: ws
       port: 443
@@ -175,19 +189,34 @@ proxies:
       type: vless
       udp: true
       uuid: 78791f9e-fe09-4d4f-88ec-895764bae0d6
+    - name: hysteria2-837919178
+      password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
+      port: 443
+      server: streambox.wwwinternetvideo.click
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-819466521
+      password: aQqJbtwFGcCCaeL3
+      port: 9063
+      server: 217.30.10.44
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-738053629
+        - shadowsocks-779606815
         - hysteria2-652726817
         - hysteria2-768953025
         - hysteria2-860759649
+        - shadowsocks-812343744
         - hysteria2-589844075
-        - shadowsocks-779606815
         - vless-1182533363
         - vless-534821535
         - hysteria2-1027317456
-        - shadowsocks-743178447
         - shadowsocks-696781307
         - vless-1230573711
         - vless-1226841017
@@ -196,23 +225,27 @@ proxy-groups:
         - vless-1166936357
         - vless-1230998993
         - vless-1175310397
+        - vless-868570730
         - vless-689099492
         - vless-855407343
         - vless-864828498
+        - hysteria2-837919178
+        - shadowsocks-819466521
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-738053629
+        - shadowsocks-779606815
         - hysteria2-652726817
         - hysteria2-768953025
         - hysteria2-860759649
+        - shadowsocks-812343744
         - hysteria2-589844075
-        - shadowsocks-779606815
         - vless-1182533363
         - vless-534821535
         - hysteria2-1027317456
-        - shadowsocks-743178447
         - shadowsocks-696781307
         - vless-1230573711
         - vless-1226841017
@@ -221,9 +254,12 @@ proxy-groups:
         - vless-1166936357
         - vless-1230998993
         - vless-1175310397
+        - vless-868570730
         - vless-689099492
         - vless-855407343
         - vless-864828498
+        - hysteria2-837919178
+        - shadowsocks-819466521
       type: select
 rules:
     - MATCH,select

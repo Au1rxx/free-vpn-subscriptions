@@ -1,20 +1,4 @@
 proxies:
-    - name: trojan-1204715729
-      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
-      port: 10010
-      server: z-jp1.1card.cc
-      skip-cert-verify: true
-      sni: www.cloudflare.com
-      type: trojan
-      udp: true
-    - name: trojan-1228250886
-      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
-      port: 10010
-      server: z-jp1.1card.cc
-      skip-cert-verify: true
-      sni: ""
-      type: trojan
-      udp: true
     - name: trojan-1197768190
       password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
       port: 10010
@@ -31,23 +15,29 @@ proxies:
       sni: www.cloudflare.com
       type: trojan
       udp: true
+    - name: trojan-1234238852
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10010
+      server: z-jp1.1card.cc
+      skip-cert-verify: true
+      sni: z-jp1.1card.cc
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-1204715729
-        - trojan-1228250886
         - trojan-1197768190
         - trojan-1196882005
+        - trojan-1234238852
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-1204715729
-        - trojan-1228250886
         - trojan-1197768190
         - trojan-1196882005
+        - trojan-1234238852
       type: select
 rules:
     - MATCH,select
