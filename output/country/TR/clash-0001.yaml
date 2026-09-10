@@ -55,6 +55,16 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - name: vless-532683580
+      network: tcp
+      port: 8443
+      server: 195.162.69.203
+      servername: 195-162-69-203.sslip.io
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 953358cb-82ba-4296-960d-6d2ec3468f4c
     - name: vless-561641576
       network: tcp
       port: 8443
@@ -658,6 +668,20 @@ proxies:
       type: vless
       udp: true
       uuid: 74a755ed-3276-4894-b010-8eea73feb267
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1216759320
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: _IBXb9NfhsnS21XbU9PIl73ExvrjXGXVLO0Za1ui5Fo
+        short-id: f93c9d5127e622e4
+      server: 212.64.193.85
+      servername: cz.cloudtechone.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2b2ea9d8-501e-4b79-8fd9-19bff6ed5cf5
     - name: vless-1217078278
       network: tcp
       port: 8443
@@ -682,15 +706,19 @@ proxies:
       type: vless
       udp: true
       uuid: 2b2ea9d8-501e-4b79-8fd9-19bff6ed5cf5
-    - alterId: 0
-      cipher: auto
-      name: vmess-1221160291
-      network: tcp
-      port: 2086
-      server: 188.132.232.85
-      type: vmess
+    - client-fingerprint: chrome
+      name: vless-1221516017
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: MgyA2FY0p2q_VOwoL9T1Z3rzpKEcGjfN61QliGcyHA8
+        short-id: ca41ef1263c02279
+      server: 45.74.158.180
+      servername: refersion.com
+      tls: true
+      type: vless
       udp: true
-      uuid: f6361af8-bb8f-4609-bf5d-3fc0f688f47b
+      uuid: 42994234-1689-48bc-8d01-cfb16e7b017a
     - name: vless-1221538982
       network: ws
       port: 8060
@@ -726,19 +754,6 @@ proxies:
       type: vless
       udp: true
       uuid: 2b2ea9d8-501e-4b79-8fd9-19bff6ed5cf5
-    - client-fingerprint: random
-      name: vless-1221825772
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: MgyA2FY0p2q_VOwoL9T1Z3rzpKEcGjfN61QliGcyHA8
-        short-id: ca41ef1263c02279
-      server: 45.74.158.180
-      servername: refersion.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 42994234-1689-48bc-8d01-cfb16e7b017a
     - name: vless-1223050983
       network: ws
       port: 8060
@@ -758,15 +773,6 @@ proxies:
     - alterId: 0
       cipher: auto
       name: vmess-1223752272
-      network: raw
-      port: 2086
-      server: 188.132.232.85
-      type: vmess
-      udp: true
-      uuid: f6361af8-bb8f-4609-bf5d-3fc0f688f47b
-    - alterId: 0
-      cipher: auto
-      name: vmess-1225165208
       network: raw
       port: 2086
       server: 188.132.232.85
@@ -905,6 +911,24 @@ proxies:
       type: vless
       udp: true
       uuid: f2900749-7cff-42b7-9566-dfb03840d374
+    - name: vless-1237186418
+      network: ws
+      port: 2053
+      server: key.zavqeron.ir
+      servername: zavqeron.ir
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: f2900749-7cff-42b7-9566-dfb03840d374
+    - name: trojan-1237189956
+      password: 4e7c56ed-68dc-358d-8b4b-fe5c2e74632d
+      port: 44055
+      server: 62.234.223.235
+      skip-cert-verify: true
+      sni: baidu.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -916,6 +940,7 @@ proxy-groups:
         - trojan-474637039
         - trojan-479026176
         - trojan-513948362
+        - vless-532683580
         - vless-561641576
         - vless-721555187
         - trojan-739165522
@@ -969,17 +994,16 @@ proxy-groups:
         - vless-1202800806
         - vless-1204622299
         - vless-1211835457
+        - vless-1216759320
         - vless-1217078278
         - vless-1217088091
-        - vmess-1221160291
+        - vless-1221516017
         - vless-1221538982
         - vless-1221788941
         - vless-1221825252
-        - vless-1221825772
         - vless-1223050983
         - vmess-1223053799
         - vmess-1223752272
-        - vmess-1225165208
         - vmess-1226423816
         - vless-1227398395
         - vless-1227680377
@@ -993,6 +1017,8 @@ proxy-groups:
         - vmess-1231823573
         - vless-1233283918
         - vless-1236502969
+        - vless-1237186418
+        - trojan-1237189956
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -1005,6 +1031,7 @@ proxy-groups:
         - trojan-474637039
         - trojan-479026176
         - trojan-513948362
+        - vless-532683580
         - vless-561641576
         - vless-721555187
         - trojan-739165522
@@ -1058,17 +1085,16 @@ proxy-groups:
         - vless-1202800806
         - vless-1204622299
         - vless-1211835457
+        - vless-1216759320
         - vless-1217078278
         - vless-1217088091
-        - vmess-1221160291
+        - vless-1221516017
         - vless-1221538982
         - vless-1221788941
         - vless-1221825252
-        - vless-1221825772
         - vless-1223050983
         - vmess-1223053799
         - vmess-1223752272
-        - vmess-1225165208
         - vmess-1226423816
         - vless-1227398395
         - vless-1227680377
@@ -1082,6 +1108,8 @@ proxy-groups:
         - vmess-1231823573
         - vless-1233283918
         - vless-1236502969
+        - vless-1237186418
+        - trojan-1237189956
       type: select
 rules:
     - MATCH,select

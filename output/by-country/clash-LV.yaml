@@ -13,6 +13,23 @@ proxies:
       skip-cert-verify: true
       sni: speedtestmark.com
       type: hysteria2
+    - name: hysteria2-857107263
+      password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
+      port: 8443
+      server: 104.165.205.42
+      skip-cert-verify: false
+      sni: speedtestmark.com
+      type: hysteria2
+    - name: vless-612170604
+      network: grpc
+      port: 2083
+      server: laoye.in-gect.fun
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - name: vless-561641518
       network: grpc
       port: 2083
@@ -23,7 +40,17 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: vless-539832439
+    - name: vless-650671462
+      network: grpc
+      port: 2083
+      server: 89.36.161.222
+      servername: laoye.in-gect.fun
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - name: vless-718040241
       network: grpc
       port: 2083
       server: laoye.in-gect.fun
@@ -33,9 +60,19 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - client-fingerprint: chrome
+    - name: vless-650667509
+      network: grpc
+      port: 2083
+      server: laoye.in-gect.fun
+      servername: laoye.in-gect.fun
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - client-fingerprint: random
       flow: xtls-rprx-vision
-      name: vless-1215775509
+      name: vless-1223729842
       network: tcp
       port: 443
       reality-opts:
@@ -47,34 +84,34 @@ proxies:
       type: vless
       udp: true
       uuid: 02fcc1a4-ee90-4970-8bbb-4ffaa8109d24
-    - name: hysteria2-857107263
-      password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
-      port: 8443
-      server: 104.165.205.42
-      skip-cert-verify: false
-      sni: speedtestmark.com
-      type: hysteria2
-    - name: vless-650671462
-      network: grpc
-      port: 2083
-      server: 89.36.161.222
-      servername: laoye.in-gect.fun
-      skip-cert-verify: false
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1003079532
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: GBdkyDLfr0LIZo_94Xv8ycAKOmkjArYzwJAEMhuXX2c
+        short-id: 33acba1b
+      server: 138.124.180.137
+      servername: www.apple.com
       tls: true
       type: vless
       udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+      uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-858183556
         - hysteria2-1108719512
-        - vless-561641518
-        - vless-539832439
-        - vless-1215775509
         - hysteria2-857107263
+        - vless-612170604
+        - vless-561641518
         - vless-650671462
+        - vless-718040241
+        - vless-650667509
+        - vless-1223729842
+        - vless-1003079532
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -82,11 +119,14 @@ proxy-groups:
         - auto
         - hysteria2-858183556
         - hysteria2-1108719512
-        - vless-561641518
-        - vless-539832439
-        - vless-1215775509
         - hysteria2-857107263
+        - vless-612170604
+        - vless-561641518
         - vless-650671462
+        - vless-718040241
+        - vless-650667509
+        - vless-1223729842
+        - vless-1003079532
       type: select
 rules:
     - MATCH,select
