@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-1236516203
+      network: tcp
+      port: 8444
+      server: connect3.nyxserver.ir
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b39a009-2a2a-4035-ba87-cc82894f8e21
     - cipher: aes-256-cfb
       name: shadowsocks-779606885
       password: 9eeJ2fwnZA5Fxgz8
@@ -10,12 +20,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1236516203
         - shadowsocks-779606885
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1236516203
         - shadowsocks-779606885
       type: select
 rules:

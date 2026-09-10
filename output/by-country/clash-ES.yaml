@@ -15,6 +15,20 @@ proxies:
       uuid: 43c23116-1115-4af4-a0f0-56f02841a605
     - client-fingerprint: random
       flow: xtls-rprx-vision
+      name: vless-1020073523
+      network: tcp
+      port: 48296
+      reality-opts:
+        public-key: ga1wUMMknP4pwJfUNOOvD9I35XV4q3c73byXPYbRxBE
+        short-id: 109657bb2dbe99
+      server: 93.189.94.67
+      servername: www.sony.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 898537d9-ce3a-4937-bbef-c0fa61c07791
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
       name: vless-1023674373
       network: tcp
       port: 48296
@@ -41,6 +55,20 @@ proxies:
       type: vless
       udp: true
       uuid: 898537d9-ce3a-4937-bbef-c0fa61c07791
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1010845438
+      network: tcp
+      port: 19842
+      reality-opts:
+        public-key: sfOfuQeJBlKfDnPL_EMWUxMIiFAN8BNKjtWDUvlsjzM
+        short-id: 25ebc9e0a912
+      server: 185.254.205.79
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 43c23116-1115-4af4-a0f0-56f02841a605
     - client-fingerprint: chrome
       name: vless-1192980334
       network: tcp
@@ -96,45 +124,33 @@ proxies:
       type: vless
       udp: true
       uuid: 43c23116-1115-4af4-a0f0-56f02841a605
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1010845438
-      network: tcp
-      port: 19842
-      reality-opts:
-        public-key: sfOfuQeJBlKfDnPL_EMWUxMIiFAN8BNKjtWDUvlsjzM
-        short-id: 25ebc9e0a912
-      server: 185.254.205.79
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 43c23116-1115-4af4-a0f0-56f02841a605
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1059334377
+        - vless-1020073523
         - vless-1023674373
         - vless-1014380464
+        - vless-1010845438
         - vless-1192980334
         - vless-1014987691
         - vless-1008643123
         - vless-1009669806
-        - vless-1010845438
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1059334377
+        - vless-1020073523
         - vless-1023674373
         - vless-1014380464
+        - vless-1010845438
         - vless-1192980334
         - vless-1014987691
         - vless-1008643123
         - vless-1009669806
-        - vless-1010845438
       type: select
 rules:
     - MATCH,select
