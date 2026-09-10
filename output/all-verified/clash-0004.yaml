@@ -1,4 +1,20 @@
 proxies:
+    - name: trojan-689642546
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20039
+      server: krhtybay.catcat321.com
+      skip-cert-verify: false
+      sni: sg.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-689642547
+      password: tsuchiya
+      port: 443
+      server: 161.34.39.108
+      skip-cert-verify: false
+      sni: aa.ccmusic.jp
+      type: trojan
+      udp: true
     - name: trojan-689644563
       password: 63872b0d-87dd-4474-b690-92773af2922e
       port: 20092
@@ -11062,38 +11078,12 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-734931292
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: PryGoq51ilG0eLUPl9i0xCvmk1xpwkyFSr_tG4GNLlU
-        short-id: 1d86d17709852910
-      server: 86.54.28.75
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 44ae52b9-76fc-444d-8e43-186b4384b80a
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-734931295
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: PryGoq51ilG0eLUPl9i0xCvmk1xpwkyFSr_tG4GNLlU
-        short-id: 1d86d17709852910
-      server: free-amsterdam-node-1.cloudwidecdn.com
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 44ae52b9-76fc-444d-8e43-186b4384b80a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-689642546
+        - trojan-689642547
         - trojan-689644563
         - trojan-689644574
         - trojan-689644580
@@ -12114,13 +12104,13 @@ proxy-groups:
         - vless-734928300
         - vless-734928307
         - vless-734930307
-        - vless-734931292
-        - vless-734931295
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-689642546
+        - trojan-689642547
         - trojan-689644563
         - trojan-689644574
         - trojan-689644580
@@ -13141,8 +13131,6 @@ proxy-groups:
         - vless-734928300
         - vless-734928307
         - vless-734930307
-        - vless-734931292
-        - vless-734931295
       type: select
 rules:
     - MATCH,select

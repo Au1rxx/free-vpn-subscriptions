@@ -13,14 +13,6 @@ proxies:
       skip-cert-verify: false
       sni: de1.xiaoliyu.cyou
       type: hysteria2
-    - name: trojan-1225209083
-      password: MiTiVPN
-      port: 443
-      server: 167.82.76.27
-      skip-cert-verify: false
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
     - name: vless-1155246847
       network: grpc
       port: 2087
@@ -37,6 +29,14 @@ proxies:
       port: 3
       server: 217.25.90.102
       type: ss
+      udp: true
+    - name: trojan-1225209083
+      password: MiTiVPN
+      port: 443
+      server: 167.82.76.27
+      skip-cert-verify: false
+      sni: ssl.fastly.com
+      type: trojan
       udp: true
     - name: vless-1107712078
       network: grpc
@@ -186,6 +186,16 @@ proxies:
       type: vless
       udp: true
       uuid: df9f5aca-eda0-428f-a752-e53866153d12
+    - name: vless-1109561737
+      network: grpc
+      port: 2087
+      server: srv-21bac9.vless.monster
+      servername: srv-21bac9.vless.monster
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: df9f5aca-eda0-428f-a752-e53866153d12
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1166170444
@@ -261,16 +271,6 @@ proxies:
       server: 2.58.81.221
       type: ss
       udp: true
-    - name: vless-1109561737
-      network: grpc
-      port: 2087
-      server: srv-21bac9.vless.monster
-      servername: srv-21bac9.vless.monster
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: df9f5aca-eda0-428f-a752-e53866153d12
     - name: vless-1202261997
       network: raw
       port: 15003
@@ -443,6 +443,13 @@ proxies:
       type: vless
       udp: true
       uuid: 56ba5d34-ef22-4ba6-8090-4188b807df54
+    - name: vless-1044822794
+      network: ws
+      port: 2087
+      server: 82.24.203.20
+      type: vless
+      udp: true
+      uuid: 5fcdc9b7-e70f-4a5c-85c3-e018ad818326
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1141365831
@@ -511,15 +518,29 @@ proxies:
       type: vless
       udp: true
       uuid: bf645ffe-a3cc-4480-8e4c-9bcd1af41052
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1201852784
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: w0J3H-DEyHEK-Nj7bst_5sQqzcPl700ybHpqq5mFz0U
+        short-id: 12a3b7681806bc97
+      server: eu-central-de2.hanvpn.biz
+      servername: eu-central-de2.hanvpn.biz
+      tls: true
+      type: vless
+      udp: true
+      uuid: d9d0f208-d582-41d5-bb7b-742671402810
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-813371804
         - hysteria2-1216217063
-        - trojan-1225209083
         - vless-1155246847
         - shadowsocks-1230160357
+        - trojan-1225209083
         - vless-1107712078
         - vless-1115899893
         - vless-1197072508
@@ -536,6 +557,7 @@ proxy-groups:
         - vmess-1229830845
         - shadowsocks-717969012
         - vless-1157879756
+        - vless-1109561737
         - vless-1166170444
         - vless-1166145116
         - vless-1183916743
@@ -543,7 +565,6 @@ proxy-groups:
         - hysteria2-1098338334
         - hysteria2-1090323312
         - shadowsocks-696780676
-        - vless-1109561737
         - vless-1202261997
         - vless-1209052984
         - vless-1181503756
@@ -561,11 +582,13 @@ proxy-groups:
         - hysteria2-757486810
         - hysteria2-1095634773
         - vless-1156743175
+        - vless-1044822794
         - vless-1141365831
         - vless-1167706767
         - vless-685581276
         - vless-731819985
         - vless-827975777
+        - vless-1201852784
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -573,9 +596,9 @@ proxy-groups:
         - auto
         - hysteria2-813371804
         - hysteria2-1216217063
-        - trojan-1225209083
         - vless-1155246847
         - shadowsocks-1230160357
+        - trojan-1225209083
         - vless-1107712078
         - vless-1115899893
         - vless-1197072508
@@ -592,6 +615,7 @@ proxy-groups:
         - vmess-1229830845
         - shadowsocks-717969012
         - vless-1157879756
+        - vless-1109561737
         - vless-1166170444
         - vless-1166145116
         - vless-1183916743
@@ -599,7 +623,6 @@ proxy-groups:
         - hysteria2-1098338334
         - hysteria2-1090323312
         - shadowsocks-696780676
-        - vless-1109561737
         - vless-1202261997
         - vless-1209052984
         - vless-1181503756
@@ -617,11 +640,13 @@ proxy-groups:
         - hysteria2-757486810
         - hysteria2-1095634773
         - vless-1156743175
+        - vless-1044822794
         - vless-1141365831
         - vless-1167706767
         - vless-685581276
         - vless-731819985
         - vless-827975777
+        - vless-1201852784
       type: select
 rules:
     - MATCH,select
