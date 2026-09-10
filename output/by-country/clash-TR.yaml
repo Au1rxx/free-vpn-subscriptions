@@ -1,44 +1,7 @@
 proxies:
-    - client-fingerprint: random
-      name: vless-1135230007
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: k5COjpopVNGzEuMb457zCrrZegSdBX-d8bg0G6HDsE4
-        short-id: 9bd613c48251f0db
-      server: 151.241.226.201
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e691b034-dfc9-4f22-80aa-6d4f6404a4df
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1044631486
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: PTqeBbbr2xJ1L3V1PyYjKjxanMKKqJHU-wtnpYmFQCI
-        short-id: 5606d4a25c99e7af
-      server: 156.67.63.231
-      servername: sync-bridge.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: b052df40-d51c-456c-9bd6-57af01a87e4e
-    - name: vless-1182721091
-      network: tcp
-      port: 8443
-      server: 195.162.69.203
-      servername: 195-162-69-203.sslip.io
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 953358cb-82ba-4296-960d-6d2ec3468f4c
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1104470805
       network: tcp
       port: 443
       reality-opts:
@@ -54,19 +17,13 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1135230007
         - vless-1044631486
-        - vless-1182721091
-        - vless-1104470805
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1135230007
         - vless-1044631486
-        - vless-1182721091
-        - vless-1104470805
       type: select
 rules:
     - MATCH,select
