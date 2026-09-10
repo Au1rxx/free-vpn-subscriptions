@@ -9,26 +9,17 @@ proxies:
       type: vless
       udp: true
       uuid: 0b39a009-2a2a-4035-ba87-cc82894f8e21
-    - cipher: aes-256-cfb
-      name: shadowsocks-779606885
-      password: 9eeJ2fwnZA5Fxgz8
-      port: 9028
-      server: 213.183.63.60
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1236516203
-        - shadowsocks-779606885
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1236516203
-        - shadowsocks-779606885
       type: select
 rules:
     - MATCH,select

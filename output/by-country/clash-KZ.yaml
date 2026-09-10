@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1219061973
+      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
+      port: 443
+      server: 46.247.41.120
+      skip-cert-verify: true
+      sni: kz03hy01.tcp-reset-club.net
+      type: hysteria2
     - name: hysteria2-1219899542
       password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
       port: 443
@@ -6,13 +13,19 @@ proxies:
       skip-cert-verify: false
       sni: kz03hy01.tcp-reset-club.net
       type: hysteria2
-    - name: hysteria2-1149856383
-      password: aa6f8aaf-d7ff-46f8-a9a0-d143d7e71f71
-      port: 443
-      server: kz03hy01.tcp-reset-club.net
-      skip-cert-verify: true
-      sni: 127.0.0.1
-      type: hysteria2
+    - client-fingerprint: edge
+      name: vless-694348853
+      network: tcp
+      port: 13447
+      reality-opts:
+        public-key: _0wM2ep44eAcrgf5PflKaBivknCWT6kMvQBQUoScCkE
+        short-id: "83"
+      server: 109.248.170.119
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b573cefb-7bc7-4a42-b407-b8b534e66773
     - name: hysteria2-1058023684
       password: aa6f8aaf-d7ff-46f8-a9a0-d143d7e71f71
       port: 443
@@ -20,21 +33,41 @@ proxies:
       skip-cert-verify: false
       sni: ""
       type: hysteria2
+    - name: hysteria2-1045025796
+      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
+      port: 443
+      server: kz03hy01.tcp-reset-club.net
+      skip-cert-verify: true
+      sni: kz03hy01.tcp-reset-club.net
+      type: hysteria2
+    - name: hysteria2-1046909483
+      password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
+      port: 443
+      server: kz03hy01.tcp-reset-club.net
+      skip-cert-verify: false
+      sni: kz03hy01.tcp-reset-club.net
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1219061973
         - hysteria2-1219899542
-        - hysteria2-1149856383
+        - vless-694348853
         - hysteria2-1058023684
+        - hysteria2-1045025796
+        - hysteria2-1046909483
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1219061973
         - hysteria2-1219899542
-        - hysteria2-1149856383
+        - vless-694348853
         - hysteria2-1058023684
+        - hysteria2-1045025796
+        - hysteria2-1046909483
       type: select
 rules:
     - MATCH,select
