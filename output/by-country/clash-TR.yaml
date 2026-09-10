@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: random
+      name: vless-1135230007
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: k5COjpopVNGzEuMb457zCrrZegSdBX-d8bg0G6HDsE4
+        short-id: 9bd613c48251f0db
+      server: 151.241.226.201
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e691b034-dfc9-4f22-80aa-6d4f6404a4df
     - name: vless-1182721091
       network: tcp
       port: 8443
@@ -27,6 +40,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1135230007
         - vless-1182721091
         - vless-1104470805
       type: url-test
@@ -34,6 +48,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1135230007
         - vless-1182721091
         - vless-1104470805
       type: select

@@ -1,0 +1,160 @@
+proxies:
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1223729872
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
+        short-id: d06d78e974491b6e
+      server: 46.28.67.55
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
+    - alterId: 0
+      cipher: auto
+      name: vmess-1223736682
+      network: ws
+      port: 443
+      server: 95.182.94.210
+      servername: renderer-stream-2-62.mirra.now
+      skip-cert-verify: false
+      tls: true
+      type: vmess
+      udp: true
+      uuid: db50a20e-7ff5-4e70-948f-17cc9ca7c154
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1223752266
+      network: raw
+      port: 4777
+      reality-opts:
+        public-key: 8ZL2JgDP9gHkgGTbGF-uK8omfWkFplZnCH0N2_U18Uo
+        short-id: 01115788253bc845
+      server: 207.241.172.98
+      servername: amp-api-edge.apps.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 008678b8-5e27-49fa-b95a-1fff4c61a849
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1223752267
+      network: raw
+      port: 4777
+      reality-opts:
+        public-key: 8ZL2JgDP9gHkgGTbGF-uK8omfWkFplZnCH0N2_U18Uo
+        short-id: 01115788253bc845
+      server: 207.241.172.98
+      servername: amp-api-edge.apps.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3d168677-10a1-43c1-90f3-18eaac90baff
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1223752268
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: JdElVMz3G6PwHg9ve2KhRJrxxlxKqJCE5rRBCovIUzU
+        short-id: 7b94b8365e124d83
+      server: 163.128.99.45
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c478762b-ed3c-4d56-8280-840dad0d0fde
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1223752269
+      network: raw
+      port: 390
+      reality-opts:
+        public-key: 5RCgAVjaT7hwdVIKAEULswXGqR127ZOZV6X17nEhYk8
+        short-id: b545fe8c5e22f92d
+      server: 151.242.168.125
+      servername: bowandbead.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b02ff150-ee30-46e0-9ea1-adbfd7762a06
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1223752270
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: EVhq2BxKuw2Cody1DmF_HPvUYKwzdXbHP47blUv-eRM
+        short-id: 55ab5559e3a6d10a
+      server: 5.34.178.120
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9063f9fb-e88a-4ee0-b4a4-a92ca7316a9f
+    - alterId: 0
+      cipher: auto
+      name: vmess-1223752272
+      network: raw
+      port: 2086
+      server: 188.132.232.85
+      type: vmess
+      udp: true
+      uuid: f6361af8-bb8f-4609-bf5d-3fc0f688f47b
+    - alterId: 0
+      cipher: auto
+      name: vmess-1223754061
+      network: tcp
+      port: 443
+      server: 165.140.217.2
+      type: vmess
+      udp: true
+      uuid: b65a2d69-5634-42a2-e4be-54e8a6176900
+    - client-fingerprint: qq
+      name: vless-1223958669
+      network: grpc
+      port: 9873
+      reality-opts:
+        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+        short-id: ""
+      server: 91.224.87.22
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1223729872
+        - vmess-1223736682
+        - vless-1223752266
+        - vless-1223752267
+        - vless-1223752268
+        - vless-1223752269
+        - vless-1223752270
+        - vmess-1223752272
+        - vmess-1223754061
+        - vless-1223958669
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1223729872
+        - vmess-1223736682
+        - vless-1223752266
+        - vless-1223752267
+        - vless-1223752268
+        - vless-1223752269
+        - vless-1223752270
+        - vmess-1223752272
+        - vmess-1223754061
+        - vless-1223958669
+      type: select
+rules:
+    - MATCH,select

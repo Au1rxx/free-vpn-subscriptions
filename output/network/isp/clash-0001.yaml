@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-cfb
+      name: shadowsocks-278
+      password: qwerREWQ@@
+      port: 4652
+      server: 218.237.185.230
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-283
       password: qwerREWQ@@
       port: 13979
@@ -592,34 +599,6 @@ proxies:
       type: vless
       udp: true
       uuid: 4856478b-95a8-4417-83e4-3fd51bc6238a
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-1172590438
-      network: tcp
-      port: 4443
-      reality-opts:
-        public-key: 321Ii2xbCoyll6WJ0Qm1Sh8qcC0kxXvUaZhe3kyasD8
-        short-id: a1b2c3d4e5f6a7b8
-      server: 45.159.79.71
-      servername: sentry.io
-      tls: true
-      type: vless
-      udp: true
-      uuid: 20dd9433-389e-4573-ba7b-689619cf13da
-    - client-fingerprint: safari
-      flow: xtls-rprx-vision
-      name: vless-1172590452
-      network: tcp
-      port: 4443
-      reality-opts:
-        public-key: 321Ii2xbCoyll6WJ0Qm1Sh8qcC0kxXvUaZhe3kyasD8
-        short-id: a1b2c3d4e5f6a7b8
-      server: 45.159.79.71
-      servername: sentry.io
-      tls: true
-      type: vless
-      udp: true
-      uuid: 20dd9433-389e-4573-ba7b-689619cf13da
     - client-fingerprint: random
       name: vless-1179614302
       network: tcp
@@ -992,10 +971,41 @@ proxies:
       type: vless
       udp: true
       uuid: 394101ef-7a56-4407-bb85-f46f37b08ef4
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1223603775
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 5_MloClTTO79-bqfkRbi0RYZ_16euPypEN8NQ4-XaD0
+        short-id: 9c904d85ab262d50
+      server: 38.244.20.152
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5e79d74e-cca9-4605-860e-a984de0fccf0
+    - name: trojan-1223729836
+      password: yFwnzCzkmPufAWyvooQ
+      port: 443
+      server: 217.218.130.26
+      skip-cert-verify: false
+      sni: www.cbi.ir
+      type: trojan
+      udp: true
+    - name: trojan-1223729856
+      password: WPzViXlylSWxZHDj
+      port: 443
+      server: 217.218.130.26
+      skip-cert-verify: false
+      sni: www.cbi.ir
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-278
         - shadowsocks-283
         - shadowsocks-287
         - trojan-112939
@@ -1057,8 +1067,6 @@ proxy-groups:
         - vless-1163131648
         - vless-1166175379
         - vless-1167706765
-        - vless-1172590438
-        - vless-1172590452
         - vless-1179614302
         - trojan-1181506772
         - vless-1182535441
@@ -1090,11 +1098,15 @@ proxy-groups:
         - vless-1222643082
         - vless-1222688125
         - vless-1223231864
+        - vless-1223603775
+        - trojan-1223729836
+        - trojan-1223729856
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-278
         - shadowsocks-283
         - shadowsocks-287
         - trojan-112939
@@ -1156,8 +1168,6 @@ proxy-groups:
         - vless-1163131648
         - vless-1166175379
         - vless-1167706765
-        - vless-1172590438
-        - vless-1172590452
         - vless-1179614302
         - trojan-1181506772
         - vless-1182535441
@@ -1189,6 +1199,9 @@ proxy-groups:
         - vless-1222643082
         - vless-1222688125
         - vless-1223231864
+        - vless-1223603775
+        - trojan-1223729836
+        - trojan-1223729856
       type: select
 rules:
     - MATCH,select
