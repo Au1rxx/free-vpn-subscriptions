@@ -19,20 +19,12 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: hysteria2-857107263
-      password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
-      port: 8443
-      server: 104.165.205.42
-      skip-cert-verify: false
-      sni: speedtestmark.com
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-650667509
         - vless-539832439
-        - hysteria2-857107263
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -40,7 +32,6 @@ proxy-groups:
         - auto
         - vless-650667509
         - vless-539832439
-        - hysteria2-857107263
       type: select
 rules:
     - MATCH,select
