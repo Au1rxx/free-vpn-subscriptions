@@ -9,30 +9,6 @@ proxies:
       type: vless
       udp: true
       uuid: 83fd52e3-c8d4-4ba6-abf4-445b99fec0f0
-    - client-fingerprint: ios
-      flow: xtls-rprx-vision
-      name: vless-1205358051
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: -qLezG1nUEtvOJi-Ra7WRYv-aHkv3PSefEuXpWV2G04
-        short-id: abcd1234
-      server: 31.77.199.182
-      servername: fi2.yservice.help
-      tls: true
-      type: vless
-      udp: true
-      uuid: c09cfd91-b234-4998-9bed-a0211b7f5c3c
-    - name: vless-1204109587
-      network: grpc
-      port: 2087
-      server: italic.dearhossein-taktaz.ir
-      servername: italic.dearhossein-taktaz.ir
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 83fd52e3-c8d4-4ba6-abf4-445b99fec0f0
     - name: vless-1211402633
       network: grpc
       port: 2087
@@ -43,9 +19,19 @@ proxies:
       type: vless
       udp: true
       uuid: 83fd52e3-c8d4-4ba6-abf4-445b99fec0f0
-    - client-fingerprint: edge
+    - name: vless-1204109587
+      network: grpc
+      port: 2087
+      server: italic.dearhossein-taktaz.ir
+      servername: italic.dearhossein-taktaz.ir
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 83fd52e3-c8d4-4ba6-abf4-445b99fec0f0
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1205358049
+      name: vless-1205358057
       network: tcp
       port: 443
       reality-opts:
@@ -67,9 +53,37 @@ proxies:
       type: vless
       udp: true
       uuid: 83fd52e3-c8d4-4ba6-abf4-445b99fec0f0
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1205358051
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: -qLezG1nUEtvOJi-Ra7WRYv-aHkv3PSefEuXpWV2G04
+        short-id: abcd1234
+      server: 31.77.199.182
+      servername: fi2.yservice.help
+      tls: true
+      type: vless
+      udp: true
+      uuid: c09cfd91-b234-4998-9bed-a0211b7f5c3c
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-1205358055
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: -qLezG1nUEtvOJi-Ra7WRYv-aHkv3PSefEuXpWV2G04
+        short-id: abcd1234
+      server: 31.77.199.182
+      servername: fi2.yservice.help
+      tls: true
+      type: vless
+      udp: true
+      uuid: c09cfd91-b234-4998-9bed-a0211b7f5c3c
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1205358049
       network: tcp
       port: 443
       reality-opts:
@@ -95,47 +109,33 @@ proxies:
       type: vless
       udp: true
       uuid: c09cfd91-b234-4998-9bed-a0211b7f5c3c
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1205358057
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: -qLezG1nUEtvOJi-Ra7WRYv-aHkv3PSefEuXpWV2G04
-        short-id: abcd1234
-      server: 31.77.199.182
-      servername: fi2.yservice.help
-      tls: true
-      type: vless
-      udp: true
-      uuid: c09cfd91-b234-4998-9bed-a0211b7f5c3c
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1224490809
-        - vless-1205358051
-        - vless-1204109587
         - vless-1211402633
-        - vless-1205358049
-        - vless-1219577444
-        - vless-1205358055
-        - vless-1205358045
+        - vless-1204109587
         - vless-1205358057
+        - vless-1219577444
+        - vless-1205358051
+        - vless-1205358055
+        - vless-1205358049
+        - vless-1205358045
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1224490809
-        - vless-1205358051
-        - vless-1204109587
         - vless-1211402633
-        - vless-1205358049
-        - vless-1219577444
-        - vless-1205358055
-        - vless-1205358045
+        - vless-1204109587
         - vless-1205358057
+        - vless-1219577444
+        - vless-1205358051
+        - vless-1205358055
+        - vless-1205358049
+        - vless-1205358045
       type: select
 rules:
     - MATCH,select
