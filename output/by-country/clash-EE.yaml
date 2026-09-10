@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1207101690
+      password: 5beff945-adaa-492f-85c6-8aaf5df6cfa5
+      port: 59448
+      server: 91.240.87.46
+      skip-cert-verify: false
+      sni: hy.quattro-tech.ru
+      type: hysteria2
     - name: vless-659664531
       network: tcp
       port: 8443
@@ -73,20 +80,11 @@ proxies:
       type: vless
       udp: true
       uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-    - name: vless-650677459
-      network: tcp
-      port: 8443
-      server: 94.183.170.135
-      servername: estproxy4.lockdwn.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1207101690
         - vless-659664531
         - vless-648965652
         - vless-650319315
@@ -94,12 +92,12 @@ proxy-groups:
         - vless-646385929
         - vless-1196045986
         - vless-970024036
-        - vless-650677459
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1207101690
         - vless-659664531
         - vless-648965652
         - vless-650319315
@@ -107,7 +105,6 @@ proxy-groups:
         - vless-646385929
         - vless-1196045986
         - vless-970024036
-        - vless-650677459
       type: select
 rules:
     - MATCH,select

@@ -20,6 +20,13 @@ proxies:
       type: vless
       udp: true
       uuid: d9d0f208-d582-41d5-bb7b-742671402810
+    - name: hysteria2-652726817
+      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+      port: 443
+      server: admin.wwwinternetvideo.click
+      skip-cert-verify: false
+      sni: ""
+      type: hysteria2
     - cipher: aes-256-cfb
       name: shadowsocks-812343744
       password: S2zDyyPcmZN2h8EC
@@ -27,6 +34,26 @@ proxies:
       server: 217.30.10.44
       type: ss
       udp: true
+    - name: hysteria2-855833185
+      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+      port: 443
+      server: go.wwwinternetvideo.click
+      skip-cert-verify: true
+      sni: admin.wwwinternetvideo.click
+      type: hysteria2
+    - client-fingerprint: random
+      name: vless-1182533363
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 3nFTPdoFnfcwN1xnLwegJmBycLqRH6TRsrbD2XnQbjM
+        short-id: bfc5464d84de3b3b
+      server: 54.37.136.194
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2211972b-a45a-4951-a640-6173d573e637
     - flow: xtls-rprx-vision
       name: vless-1166936357
       network: tcp
@@ -58,52 +85,19 @@ proxies:
       type: vless
       udp: true
       uuid: 2211972b-a45a-4951-a640-6173d573e637
-    - flow: xtls-rprx-vision
-      name: vless-1163924768
-      network: tcp
-      port: 443
-      server: 50.7.249.170
-      servername: pl1-ded.moritech.net
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - name: hysteria2-768953025
-      password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
-      port: 443
-      server: streambox.wwwinternetvideo.click
-      skip-cert-verify: true
-      sni: streambox.wwwinternetvideo.click
-      type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-795694264
-      password: FAdUvMJUq5vDgKEq
-      port: 9006
-      server: 217.30.10.44
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-738053629
-      password: N7j3pdTYkKmsy8CR
-      port: 9095
-      server: 217.30.10.44
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-717969033
         - vless-1201061230
+        - hysteria2-652726817
         - shadowsocks-812343744
+        - hysteria2-855833185
+        - vless-1182533363
         - vless-1166936357
         - shadowsocks-819466521
         - vless-1175310397
-        - vless-1163924768
-        - hysteria2-768953025
-        - shadowsocks-795694264
-        - shadowsocks-738053629
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -111,14 +105,13 @@ proxy-groups:
         - auto
         - shadowsocks-717969033
         - vless-1201061230
+        - hysteria2-652726817
         - shadowsocks-812343744
+        - hysteria2-855833185
+        - vless-1182533363
         - vless-1166936357
         - shadowsocks-819466521
         - vless-1175310397
-        - vless-1163924768
-        - hysteria2-768953025
-        - shadowsocks-795694264
-        - shadowsocks-738053629
       type: select
 rules:
     - MATCH,select

@@ -1,0 +1,76 @@
+{
+  "outbounds": [
+    {
+      "password": "ultra@kWZdAzt_IH593eGLRjdxnBZ0",
+      "server": "z-jp2.1card.cc",
+      "server_port": 10008,
+      "tag": "trojan-1205204408",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "trojan"
+    },
+    {
+      "password": "ultra@kWZdAzt_IH593eGLRjdxnBZ0",
+      "server": "z-jp2.1card.cc",
+      "server_port": 10008,
+      "tag": "trojan-1196882006",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.cloudflare.com"
+      },
+      "type": "trojan"
+    },
+    {
+      "password": "ultra@kWZdAzt_IH593eGLRjdxnBZ0",
+      "server": "z-jp1.1card.cc",
+      "server_port": 10008,
+      "tag": "trojan-1207475820",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-1205204408",
+        "trojan-1196882006",
+        "trojan-1207475820"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-1205204408",
+        "trojan-1196882006",
+        "trojan-1207475820"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
