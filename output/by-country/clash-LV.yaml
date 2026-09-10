@@ -1,14 +1,4 @@
 proxies:
-    - name: vless-539832439
-      network: grpc
-      port: 2083
-      server: laoye.in-gect.fun
-      servername: laoye.in-gect.fun
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
     - name: hysteria2-858183556
       password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
       port: 8443
@@ -54,16 +44,30 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: vless-612170604
+    - name: vless-539832439
       network: grpc
       port: 2083
       server: laoye.in-gect.fun
-      servername: ""
+      servername: laoye.in-gect.fun
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1215775509
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: NMgy1XgCSXExOg6Tg8xG9lCWttMF6sjdpB41lZy6FWo
+        short-id: 5c256336e3b673fa
+      server: 195.123.213.28
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 02fcc1a4-ee90-4970-8bbb-4ffaa8109d24
     - name: vless-718040241
       network: grpc
       port: 2083
@@ -74,57 +78,33 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: vless-650667509
-      network: grpc
-      port: 2083
-      server: laoye.in-gect.fun
-      servername: laoye.in-gect.fun
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - name: vless-775810632
-      network: grpc
-      port: 2083
-      server: 89.36.161.222
-      servername: laoye.in-gect.fun
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-539832439
         - hysteria2-858183556
         - hysteria2-1093670535
         - hysteria2-1084181395
         - hysteria2-1108719512
         - shadowsocks-795694248
         - vless-561641518
-        - vless-612170604
+        - vless-539832439
+        - vless-1215775509
         - vless-718040241
-        - vless-650667509
-        - vless-775810632
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-539832439
         - hysteria2-858183556
         - hysteria2-1093670535
         - hysteria2-1084181395
         - hysteria2-1108719512
         - shadowsocks-795694248
         - vless-561641518
-        - vless-612170604
+        - vless-539832439
+        - vless-1215775509
         - vless-718040241
-        - vless-650667509
-        - vless-775810632
       type: select
 rules:
     - MATCH,select
