@@ -34,6 +34,20 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1251303372
+      password: WMoIim+7xARGUvBh+6A5ats5a3AgV3TaCZTq6Icb7dg=
+      port: 61312
+      server: 129.151.67.14
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1251465971
+      password: c58d16e593d44f42
+      port: 11001
+      server: 158.173.221.214
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       name: vless-1182529202
       network: raw
@@ -170,20 +184,6 @@ proxies:
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1246696963
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: UzVp3x9LEOVeF_j_X2XzJrumdyfLEiFS0d6qDGVB_3M
-        short-id: 6252784c3b8de71a
-      server: 31.76.39.163
-      servername: uk1.kramiliantha.sbs
-      tls: true
-      type: vless
-      udp: true
-      uuid: b691d443-3d5b-47d3-9c6f-9b84beda2b13
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-1221516018
       network: raw
       port: 421
@@ -224,20 +224,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1996007c-e7bc-464b-999b-cac28cec6c3e
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-813407630
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: RVj8E6YuWeOq9XzIVLQCKM39qa-Cknp-GYvVAA1UPFo
-        short-id: 72cceb78
-      server: 138.124.125.211
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1996007c-e7bc-464b-999b-cac28cec6c3e
 proxy-groups:
     - interval: 300
       name: auto
@@ -247,6 +233,8 @@ proxy-groups:
         - vless-1230280245
         - vless-1230573705
         - hysteria2-1005126986
+        - shadowsocks-1251303372
+        - shadowsocks-1251465971
         - vless-1182529202
         - shadowsocks-1168585798
         - vless-1157522828
@@ -258,11 +246,9 @@ proxy-groups:
         - vless-1178240904
         - vless-1048867173
         - vless-1195645282
-        - vless-1246696963
         - vless-1221516018
         - vless-951538932
         - vless-856679272
-        - vless-813407630
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -273,6 +259,8 @@ proxy-groups:
         - vless-1230280245
         - vless-1230573705
         - hysteria2-1005126986
+        - shadowsocks-1251303372
+        - shadowsocks-1251465971
         - vless-1182529202
         - shadowsocks-1168585798
         - vless-1157522828
@@ -284,11 +272,9 @@ proxy-groups:
         - vless-1178240904
         - vless-1048867173
         - vless-1195645282
-        - vless-1246696963
         - vless-1221516018
         - vless-951538932
         - vless-856679272
-        - vless-813407630
       type: select
 rules:
     - MATCH,select
