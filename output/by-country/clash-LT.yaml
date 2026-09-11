@@ -1,0 +1,31 @@
+proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-812343760
+      password: xaupMUvhptwxdDUg
+      port: 9012
+      server: 195.238.126.20
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-819466188
+      password: mwgRg9hRq3b4Qnwb
+      port: 9068
+      server: 195.238.126.20
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-812343760
+        - shadowsocks-819466188
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-812343760
+        - shadowsocks-819466188
+      type: select
+rules:
+    - MATCH,select
