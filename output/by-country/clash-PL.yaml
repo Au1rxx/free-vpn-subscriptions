@@ -13,24 +13,12 @@ proxies:
       server: 217.30.10.44
       type: ss
       udp: true
-    - flow: xtls-rprx-vision
-      name: vless-1151222974
-      network: tcp
-      port: 443
-      server: 50.7.248.234
-      servername: viper-22.moriarty-web.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-738053629
         - shadowsocks-812343744
-        - vless-1151222974
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -38,7 +26,6 @@ proxy-groups:
         - auto
         - shadowsocks-738053629
         - shadowsocks-812343744
-        - vless-1151222974
       type: select
 rules:
     - MATCH,select

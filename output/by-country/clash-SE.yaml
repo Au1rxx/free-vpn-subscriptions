@@ -12,19 +12,13 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
-    - client-fingerprint: chrome
-      name: vless-1173154542
-      network: grpc
-      port: 33743
-      reality-opts:
-        public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
-        short-id: ""
-      server: 79.141.174.147
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: b3a11068-1a7e-4643-85de-7c82cce46943
+    - name: hysteria2-1230577883
+      password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
+      port: 25443
+      server: se-node.rumedia-cdn.com
+      skip-cert-verify: false
+      sni: cf2.rumedia-cdn.com
+      type: hysteria2
     - client-fingerprint: firefox
       name: vless-1235435931
       network: grpc
@@ -38,8 +32,8 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
-    - client-fingerprint: firefox
-      name: vless-1115021181
+    - client-fingerprint: chrome
+      name: vless-1173154542
       network: grpc
       port: 33743
       reality-opts:
@@ -51,39 +45,23 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
-    - client-fingerprint: randomized
-      flow: xtls-rprx-vision
-      name: vless-1239766678
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: wSjV1yR_rhDUdoNbM9zIXNGLASLp9RorComnyoayo2c
-        short-id: ""
-      server: 143.246.193.215
-      servername: www.blocket.se
-      tls: true
-      type: vless
-      udp: true
-      uuid: 77da6e30-ad4e-11f1-94d5-525400d1d4f7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1136945983
-        - vless-1173154542
+        - hysteria2-1230577883
         - vless-1235435931
-        - vless-1115021181
-        - vless-1239766678
+        - vless-1173154542
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1136945983
-        - vless-1173154542
+        - hysteria2-1230577883
         - vless-1235435931
-        - vless-1115021181
-        - vless-1239766678
+        - vless-1173154542
       type: select
 rules:
     - MATCH,select
