@@ -1,4 +1,11 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-11052
+      password: qItG8SueYQcP
+      port: 8388
+      server: 140.174.184.5
+      type: ss
+      udp: true
     - client-fingerprint: random
       name: vless-1128935013
       network: tcp
@@ -12,13 +19,6 @@ proxies:
       type: vless
       udp: true
       uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-16132
-      password: WSyL4XTwNsdv
-      port: 8388
-      server: 108.181.121.226
-      type: ss
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1014378472
@@ -46,6 +46,13 @@ proxies:
       type: vless
       udp: true
       uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-16132
+      password: WSyL4XTwNsdv
+      port: 8388
+      server: 108.181.121.226
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       name: vless-1192980334
       network: tcp
@@ -99,40 +106,33 @@ proxies:
       type: vless
       udp: true
       uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-11052
-      password: qItG8SueYQcP
-      port: 8388
-      server: 140.174.184.5
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-11052
         - vless-1128935013
-        - shadowsocks-16132
         - vless-1014378472
         - vless-1135244188
+        - shadowsocks-16132
         - vless-1192980334
         - vless-1020073523
         - vless-1095633772
         - vless-1201186311
-        - shadowsocks-11052
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-11052
         - vless-1128935013
-        - shadowsocks-16132
         - vless-1014378472
         - vless-1135244188
+        - shadowsocks-16132
         - vless-1192980334
         - vless-1020073523
         - vless-1095633772
         - vless-1201186311
-        - shadowsocks-11052
       type: select
 rules:
     - MATCH,select

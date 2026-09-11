@@ -1,0 +1,50 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "141.133.172.23",
+      "server_port": 443,
+      "tag": "vless-1254306226",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "R7NfFaabgh-0a2KR0Bfmn3a-O6mDT550OgXUDygDKBs",
+          "short_id": "c603efb3ddaf633d"
+        },
+        "server_name": "w-mebel.pro",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "3c48b5f5-7766-4896-874e-b3ba1860e83a"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1254306226"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1254306226"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

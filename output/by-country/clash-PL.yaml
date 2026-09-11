@@ -27,20 +27,6 @@ proxies:
       skip-cert-verify: true
       sni: admin.wwwinternetvideo.click
       type: hysteria2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1227912203
-      network: tcp
-      port: 47005
-      reality-opts:
-        public-key: -P8DgKISSG4jnLuj6ihZDqZs1_zt-juBrhVhTylHiAo
-        short-id: ""
-      server: 45.144.50.231
-      servername: akamai.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0764541b-3e57-4b47-954b-51e996fae5fc
     - name: hysteria2-856081351
       password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
       port: 443
@@ -62,6 +48,13 @@ proxies:
       skip-cert-verify: true
       sni: admin.wwwinternetvideo.click
       type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-779606815
+      password: U6qnYRhfyDmn8sgn
+      port: 9041
+      server: 217.30.10.44
+      type: ss
+      udp: true
     - flow: xtls-rprx-vision
       name: vless-1231429203
       network: tcp
@@ -86,27 +79,6 @@ proxies:
       type: vless
       udp: true
       uuid: 2211972b-a45a-4951-a640-6173d573e637
-    - name: hysteria2-837919178
-      password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
-      port: 443
-      server: streambox.wwwinternetvideo.click
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-779606815
-      password: U6qnYRhfyDmn8sgn
-      port: 9041
-      server: 217.30.10.44
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-696781307
-      password: mENfxTFQpRKKh4As
-      port: 9071
-      server: 217.30.10.44
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -115,15 +87,12 @@ proxy-groups:
         - hysteria2-619899526
         - hysteria2-589844075
         - hysteria2-620179978
-        - vless-1227912203
         - hysteria2-856081351
         - hysteria2-855833185
         - hysteria2-860759649
+        - shadowsocks-779606815
         - vless-1231429203
         - vless-1175310397
-        - hysteria2-837919178
-        - shadowsocks-779606815
-        - shadowsocks-696781307
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -133,15 +102,12 @@ proxy-groups:
         - hysteria2-619899526
         - hysteria2-589844075
         - hysteria2-620179978
-        - vless-1227912203
         - hysteria2-856081351
         - hysteria2-855833185
         - hysteria2-860759649
+        - shadowsocks-779606815
         - vless-1231429203
         - vless-1175310397
-        - hysteria2-837919178
-        - shadowsocks-779606815
-        - shadowsocks-696781307
       type: select
 rules:
     - MATCH,select
