@@ -1,19 +1,19 @@
 proxies:
-    - client-fingerprint: chrome
-      name: vless-1216487832
+    - client-fingerprint: edge
+      name: vless-1136945983
       network: grpc
-      port: 33743
+      port: 9458
       reality-opts:
         public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
         short-id: ""
-      server: 193.42.39.10
+      server: 91.193.17.156
       servername: www.google.com
       tls: true
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
     - client-fingerprint: chrome
-      name: vless-1125467414
+      name: vless-1216487832
       network: grpc
       port: 33743
       reality-opts:
@@ -38,21 +38,36 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
+    - client-fingerprint: chrome
+      name: vless-1125467414
+      network: grpc
+      port: 33743
+      reality-opts:
+        public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
+        short-id: ""
+      server: 193.42.39.10
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b3a11068-1a7e-4643-85de-7c82cce46943
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1136945983
         - vless-1216487832
-        - vless-1125467414
         - vless-1235435931
+        - vless-1125467414
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1136945983
         - vless-1216487832
-        - vless-1125467414
         - vless-1235435931
+        - vless-1125467414
       type: select
 rules:
     - MATCH,select

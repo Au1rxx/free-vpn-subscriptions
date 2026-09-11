@@ -13,6 +13,13 @@ proxies:
       type: vless
       udp: true
       uuid: 167ed405-7de9-4bff-b1ea-6e3d49c76b0b
+    - cipher: aes-256-gcm
+      name: shadowsocks-1235384031
+      password: 78235e7dc55e9ad1
+      port: 30111
+      server: 132.243.255.3
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1189121684
@@ -27,51 +34,21 @@ proxies:
       type: vless
       udp: true
       uuid: 167ed405-7de9-4bff-b1ea-6e3d49c76b0b
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-1235494144
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: fyPNvBWWSFxusSjiPQTRXpq_QTShbtdhWI2eqX6iuxM
-        short-id: a414b79c6be7
-      server: 31.76.113.167
-      servername: start.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 64c3ae71-4874-4a05-8d52-73b2fbb8a207
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-1235494179
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: fyPNvBWWSFxusSjiPQTRXpq_QTShbtdhWI2eqX6iuxM
-        short-id: a414b79c6be7
-      server: 31.76.113.167
-      servername: start.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 64c3ae71-4874-4a05-8d52-73b2fbb8a207
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1221516009
+        - shadowsocks-1235384031
         - vless-1189121684
-        - vless-1235494144
-        - vless-1235494179
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1221516009
+        - shadowsocks-1235384031
         - vless-1189121684
-        - vless-1235494144
-        - vless-1235494179
       type: select
 rules:
     - MATCH,select

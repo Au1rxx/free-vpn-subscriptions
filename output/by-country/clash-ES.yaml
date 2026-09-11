@@ -1,4 +1,11 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-11052
+      password: qItG8SueYQcP
+      port: 8388
+      server: 140.174.184.5
+      type: ss
+      udp: true
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1020073523
@@ -68,50 +75,27 @@ proxies:
       type: vless
       udp: true
       uuid: 898537d9-ce3a-4937-bbef-c0fa61c07791
-    - cipher: aes-256-cfb
-      name: shadowsocks-321
-      password: GA9KzeEgvfxNrgmM
-      port: 9019
-      server: 5.188.181.201
-      type: ss
-      udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1027299842
-      network: tcp
-      port: 48296
-      reality-opts:
-        public-key: ga1wUMMknP4pwJfUNOOvD9I35XV4q3c73byXPYbRxBE
-        short-id: 109657bb2dbe99
-      server: 93.189.94.67
-      servername: www.sony.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 898537d9-ce3a-4937-bbef-c0fa61c07791
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-11052
         - vless-1020073523
         - vless-1010845438
         - vless-1059334377
         - vless-1128935013
         - vless-1023674373
-        - shadowsocks-321
-        - vless-1027299842
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-11052
         - vless-1020073523
         - vless-1010845438
         - vless-1059334377
         - vless-1128935013
         - vless-1023674373
-        - shadowsocks-321
-        - vless-1027299842
       type: select
 rules:
     - MATCH,select
