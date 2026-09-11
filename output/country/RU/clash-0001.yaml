@@ -1,4 +1,11 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-130253
+      password: VVlAff77CnAU43Aoc5j15Y
+      port: 5112
+      server: 90.156.203.62
+      type: ss
+      udp: true
     - name: vless-62331905
       network: ws
       port: 2200
@@ -90,10 +97,39 @@ proxies:
       type: vless
       udp: true
       uuid: 633f424e-2b11-48da-a6b3-a849dd71456f
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1257508590
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: uXB85uKJnbmWaeA6H5BW1A3w-1oU1lRb_xSec4CqjhU
+        short-id: 3b02e1fbf1f34ff2
+      server: hamal.yokkastars.com
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3c4591f4-769c-4408-9e12-c04fc4edf06c
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1257508595
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: uXB85uKJnbmWaeA6H5BW1A3w-1oU1lRb_xSec4CqjhU
+        short-id: 3b02e1fbf1f34ff2
+      server: hamal.yokkastars.com
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3c4591f4-769c-4408-9e12-c04fc4edf06c
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-130253
         - vless-62331905
         - vless-92749922
         - vless-391665890
@@ -103,11 +139,14 @@ proxy-groups:
         - vless-734956293
         - vless-834340292
         - vless-966415513
+        - vless-1257508590
+        - vless-1257508595
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-130253
         - vless-62331905
         - vless-92749922
         - vless-391665890
@@ -117,6 +156,8 @@ proxy-groups:
         - vless-734956293
         - vless-834340292
         - vless-966415513
+        - vless-1257508590
+        - vless-1257508595
       type: select
 rules:
     - MATCH,select

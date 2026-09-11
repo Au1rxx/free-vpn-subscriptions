@@ -64,6 +64,13 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
+    - name: hysteria2-1230196608
+      password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
+      port: 25443
+      server: se-node.rumedia-cdn.com
+      skip-cert-verify: true
+      sni: cf2.rumedia-cdn.com
+      type: hysteria2
     - name: hysteria2-1230577883
       password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
       port: 25443
@@ -71,19 +78,6 @@ proxies:
       skip-cert-verify: false
       sni: cf2.rumedia-cdn.com
       type: hysteria2
-    - client-fingerprint: firefox
-      name: vless-1115021181
-      network: grpc
-      port: 33743
-      reality-opts:
-        public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
-        short-id: ""
-      server: 79.141.174.147
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: b3a11068-1a7e-4643-85de-7c82cce46943
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-696780839
@@ -112,13 +106,6 @@ proxies:
       type: vless
       udp: true
       uuid: fb67fd37-8d41-43a9-a093-c0b807fc5299
-    - name: hysteria2-1230196608
-      password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
-      port: 25443
-      server: se-node.rumedia-cdn.com
-      skip-cert-verify: true
-      sni: cf2.rumedia-cdn.com
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
@@ -128,11 +115,10 @@ proxy-groups:
         - vless-1136945983
         - vless-1173154542
         - vless-1125467414
+        - hysteria2-1230196608
         - hysteria2-1230577883
-        - vless-1115021181
         - vless-696780839
         - vless-1255954001
-        - hysteria2-1230196608
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -143,11 +129,10 @@ proxy-groups:
         - vless-1136945983
         - vless-1173154542
         - vless-1125467414
+        - hysteria2-1230196608
         - hysteria2-1230577883
-        - vless-1115021181
         - vless-696780839
         - vless-1255954001
-        - hysteria2-1230196608
       type: select
 rules:
     - MATCH,select
