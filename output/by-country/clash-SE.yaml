@@ -1,6 +1,6 @@
 proxies:
-    - client-fingerprint: edge
-      name: vless-1136945983
+    - client-fingerprint: firefox
+      name: vless-1235435931
       network: grpc
       port: 9458
       reality-opts:
@@ -19,14 +19,14 @@ proxies:
       skip-cert-verify: false
       sni: cf2.rumedia-cdn.com
       type: hysteria2
-    - client-fingerprint: firefox
-      name: vless-1235435931
+    - client-fingerprint: chrome
+      name: vless-1125467414
       network: grpc
-      port: 9458
+      port: 33743
       reality-opts:
         public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
         short-id: ""
-      server: 91.193.17.156
+      server: 193.42.39.10
       servername: www.google.com
       tls: true
       type: vless
@@ -45,23 +45,39 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
+    - client-fingerprint: randomized
+      flow: xtls-rprx-vision
+      name: vless-1239766678
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: wSjV1yR_rhDUdoNbM9zIXNGLASLp9RorComnyoayo2c
+        short-id: ""
+      server: 143.246.193.215
+      servername: www.blocket.se
+      tls: true
+      type: vless
+      udp: true
+      uuid: 77da6e30-ad4e-11f1-94d5-525400d1d4f7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1136945983
-        - hysteria2-1230577883
         - vless-1235435931
+        - hysteria2-1230577883
+        - vless-1125467414
         - vless-1173154542
+        - vless-1239766678
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1136945983
-        - hysteria2-1230577883
         - vless-1235435931
+        - hysteria2-1230577883
+        - vless-1125467414
         - vless-1173154542
+        - vless-1239766678
       type: select
 rules:
     - MATCH,select

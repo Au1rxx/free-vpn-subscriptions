@@ -8,17 +8,28 @@ proxies:
       type: vmess
       udp: true
       uuid: 7034f274-c53a-4d73-9f0c-b28bac0d9e7a
+    - alterId: 0
+      cipher: auto
+      name: vmess-1238795982
+      network: tcp
+      port: 110
+      server: ninja.monak2.ir
+      type: vmess
+      udp: true
+      uuid: 7034f274-c53a-4d73-9f0c-b28bac0d9e7a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-1238344733
+        - vmess-1238795982
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-1238344733
+        - vmess-1238795982
       type: select
 rules:
     - MATCH,select

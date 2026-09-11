@@ -6,17 +6,26 @@ proxies:
       server: 132.243.255.3
       type: ss
       udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-891518478
+      password: itzvpn@321
+      port: 8388
+      server: 57.131.48.45
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1235384031
+        - shadowsocks-891518478
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1235384031
+        - shadowsocks-891518478
       type: select
 rules:
     - MATCH,select
