@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1046909550
+      network: ws
+      port: 2087
+      server: 38.60.168.98
+      type: vless
+      udp: true
+      uuid: 8a346b7c-5b95-4845-affa-0e5d9929e9ae
     - name: vless-1062311594
       network: ws
       port: 2087
@@ -62,20 +69,6 @@ proxies:
       type: vless
       udp: true
       uuid: e8358eb5-7210-4cf8-982f-68af141b7694
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1083570751
-      network: raw
-      port: 53271
-      reality-opts:
-        public-key: 1P58ZYmo81kPDnL4U7SnEUA-aT2R86l-o6dbFXoeDjc
-        short-id: 0a9bd9db19578964
-      server: 56.69.159.191
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e8358eb5-7210-4cf8-982f-68af141b7694
     - name: trojan-1002861369
       password: 5931134d1cde66bf83a54acdfebe7ab2
       port: 443
@@ -112,20 +105,6 @@ proxies:
       type: vless
       udp: true
       uuid: e8358eb5-7210-4cf8-982f-68af141b7694
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1014132988
-      network: tcp
-      port: 53271
-      reality-opts:
-        public-key: 1P58ZYmo81kPDnL4U7SnEUA-aT2R86l-o6dbFXoeDjc
-        short-id: 0a9bd9db19578964
-      server: 56.69.159.191
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e8358eb5-7210-4cf8-982f-68af141b7694
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1076876228
@@ -140,10 +119,10 @@ proxies:
       type: vless
       udp: true
       uuid: e8358eb5-7210-4cf8-982f-68af141b7694
-    - client-fingerprint: random
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1057833380
-      network: tcp
+      name: vless-1083570751
+      network: raw
       port: 53271
       reality-opts:
         public-key: 1P58ZYmo81kPDnL4U7SnEUA-aT2R86l-o6dbFXoeDjc
@@ -154,51 +133,39 @@ proxies:
       type: vless
       udp: true
       uuid: e8358eb5-7210-4cf8-982f-68af141b7694
-    - name: trojan-908476865
-      password: 5931134d1cde66bf83a54acdfebe7ab2
-      port: 443
-      server: 47.250.84.25
-      skip-cert-verify: true
-      sni: 47.250.84.25
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1046909550
         - vless-1062311594
         - vless-1111890339
         - shadowsocks-696792801
         - vless-1221796959
         - vless-1048866238
         - vless-1225234746
-        - vless-1083570751
         - trojan-1002861369
         - vless-1108744337
         - vless-1237786033
-        - vless-1014132988
         - vless-1076876228
-        - vless-1057833380
-        - trojan-908476865
+        - vless-1083570751
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1046909550
         - vless-1062311594
         - vless-1111890339
         - shadowsocks-696792801
         - vless-1221796959
         - vless-1048866238
         - vless-1225234746
-        - vless-1083570751
         - trojan-1002861369
         - vless-1108744337
         - vless-1237786033
-        - vless-1014132988
         - vless-1076876228
-        - vless-1057833380
-        - trojan-908476865
+        - vless-1083570751
       type: select
 rules:
     - MATCH,select
