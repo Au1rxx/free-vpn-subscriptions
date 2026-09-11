@@ -15,12 +15,21 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - name: trojan-813956195
+      password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
+      port: 449
+      server: 109.206.241.10
+      skip-cert-verify: true
+      sni: russiapower.accesscam.org
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-699916731
         - trojan-1191741375
+        - trojan-813956195
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -28,6 +37,7 @@ proxy-groups:
         - auto
         - trojan-699916731
         - trojan-1191741375
+        - trojan-813956195
       type: select
 rules:
     - MATCH,select
