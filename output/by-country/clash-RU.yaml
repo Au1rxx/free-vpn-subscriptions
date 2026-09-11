@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1235904785
+      password: 5beff945-adaa-492f-85c6-8aaf5df6cfa5
+      port: 22443
+      server: 91.240.86.70
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
     - name: hysteria2-1207101689
       password: 5beff945-adaa-492f-85c6-8aaf5df6cfa5
       port: 22443
@@ -10,12 +17,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1235904785
         - hysteria2-1207101689
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1235904785
         - hysteria2-1207101689
       type: select
 rules:
