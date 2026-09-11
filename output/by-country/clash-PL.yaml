@@ -75,6 +75,30 @@ proxies:
       skip-cert-verify: true
       sni: admin.wwwinternetvideo.click
       type: hysteria2
+    - flow: xtls-rprx-vision
+      name: vless-1231429203
+      network: tcp
+      port: 443
+      server: pl-new-ded2.moritech.net
+      servername: pl-new-ded2.moritech.net
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - client-fingerprint: random
+      name: vless-1184826132
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 3nFTPdoFnfcwN1xnLwegJmBycLqRH6TRsrbD2XnQbjM
+        short-id: bfc5464d84de3b3b
+      server: 54.37.136.194
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2211972b-a45a-4951-a640-6173d573e637
 proxy-groups:
     - interval: 300
       name: auto
@@ -88,6 +112,8 @@ proxy-groups:
         - vless-1182533363
         - hysteria2-855659702
         - hysteria2-855833185
+        - vless-1231429203
+        - vless-1184826132
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -102,6 +128,8 @@ proxy-groups:
         - vless-1182533363
         - hysteria2-855659702
         - hysteria2-855833185
+        - vless-1231429203
+        - vless-1184826132
       type: select
 rules:
     - MATCH,select
