@@ -1,27 +1,6 @@
 proxies:
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1059334377
-      network: raw
-      port: 19842
-      reality-opts:
-        public-key: sfOfuQeJBlKfDnPL_EMWUxMIiFAN8BNKjtWDUvlsjzM
-        short-id: 25ebc9e0a912
-      server: 185.254.205.79
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 43c23116-1115-4af4-a0f0-56f02841a605
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-16132
-      password: WSyL4XTwNsdv
-      port: 8388
-      server: 108.181.121.226
-      type: ss
-      udp: true
-    - client-fingerprint: chrome
-      name: vless-1192980334
+    - client-fingerprint: random
+      name: vless-1128935013
       network: tcp
       port: 2053
       reality-opts:
@@ -33,6 +12,13 @@ proxies:
       type: vless
       udp: true
       uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-16132
+      password: WSyL4XTwNsdv
+      port: 8388
+      server: 108.181.121.226
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1014378472
@@ -47,6 +33,19 @@ proxies:
       type: vless
       udp: true
       uuid: 43c23116-1115-4af4-a0f0-56f02841a605
+    - client-fingerprint: chrome
+      name: vless-1192980334
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 7Y6Xb5Ql_03K25x8yKUSOKI2JTOMyv2nyCcFza90uxk
+        short-id: 29e8dcd2b37aaa7f
+      server: 212.227.235.66
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1020073523
@@ -74,27 +73,51 @@ proxies:
       type: vless
       udp: true
       uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
+    - client-fingerprint: chrome
+      name: vless-1201186311
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: 7Y6Xb5Ql_03K25x8yKUSOKI2JTOMyv2nyCcFza90uxk
+        short-id: 29e8dcd2b37aaa7f
+      server: 212.227.235.66
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-11052
+      password: qItG8SueYQcP
+      port: 8388
+      server: 140.174.184.5
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1059334377
+        - vless-1128935013
         - shadowsocks-16132
-        - vless-1192980334
         - vless-1014378472
+        - vless-1192980334
         - vless-1020073523
         - vless-1095633772
+        - vless-1201186311
+        - shadowsocks-11052
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1059334377
+        - vless-1128935013
         - shadowsocks-16132
-        - vless-1192980334
         - vless-1014378472
+        - vless-1192980334
         - vless-1020073523
         - vless-1095633772
+        - vless-1201186311
+        - shadowsocks-11052
       type: select
 rules:
     - MATCH,select
