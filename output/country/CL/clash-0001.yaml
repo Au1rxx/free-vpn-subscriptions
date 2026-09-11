@@ -1,24 +1,22 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-1238795982
-      network: tcp
-      port: 110
-      server: ninja.monak2.ir
-      type: vmess
+    - cipher: aes-256-gcm
+      name: shadowsocks-1209863314
+      password: xBStBEVqvGwHPocc
+      port: 8388
+      server: 64.176.2.21
+      type: ss
       udp: true
-      uuid: 7034f274-c53a-4d73-9f0c-b28bac0d9e7a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-1238795982
+        - shadowsocks-1209863314
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-1238795982
+        - shadowsocks-1209863314
       type: select
 rules:
     - MATCH,select

@@ -15,6 +15,22 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - name: trojan-122847
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20013
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-122881
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20063
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: vless-1044822786
       network: ws
       port: 2087
@@ -22,22 +38,15 @@ proxies:
       type: vless
       udp: true
       uuid: 9ed3dcb3-b71a-4ae1-8210-95e33615d7e6
-    - name: trojan-1244170195
-      password: 4e7c56ed-68dc-358d-8b4b-fe5c2e74632d
-      port: 44056
-      server: 62.234.223.235
-      skip-cert-verify: true
-      sni: baidu.com
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-119240
         - trojan-119275
+        - trojan-122847
+        - trojan-122881
         - vless-1044822786
-        - trojan-1244170195
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -45,8 +54,9 @@ proxy-groups:
         - auto
         - trojan-119240
         - trojan-119275
+        - trojan-122847
+        - trojan-122881
         - vless-1044822786
-        - trojan-1244170195
       type: select
 rules:
     - MATCH,select
