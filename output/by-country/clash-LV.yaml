@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-858183556
-      password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
-      port: 8443
-      server: 104.165.205.40
-      skip-cert-verify: true
-      sni: speedtestmark.com
-      type: hysteria2
     - name: hysteria2-1108719512
       password: 52e3dd44-ed23-4030-b0cc-5b5a953f2d4d
       port: 8443
@@ -13,11 +6,18 @@ proxies:
       skip-cert-verify: true
       sni: speedtestmark.com
       type: hysteria2
-    - name: hysteria2-857107263
+    - name: hysteria2-858183556
+      password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
+      port: 8443
+      server: 104.165.205.40
+      skip-cert-verify: true
+      sni: speedtestmark.com
+      type: hysteria2
+    - name: hysteria2-1098338335
       password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
       port: 8443
       server: 104.165.205.42
-      skip-cert-verify: false
+      skip-cert-verify: true
       sni: speedtestmark.com
       type: hysteria2
     - name: vless-612170604
@@ -40,6 +40,13 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
+    - name: hysteria2-857107263
+      password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
+      port: 8443
+      server: 104.165.205.42
+      skip-cert-verify: false
+      sni: speedtestmark.com
+      type: hysteria2
     - name: vless-718040241
       network: grpc
       port: 2083
@@ -60,20 +67,6 @@ proxies:
       type: vless
       udp: true
       uuid: 70e20b2e-3b1f-4c25-9a3d-9240570391bb
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1223729842
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: NMgy1XgCSXExOg6Tg8xG9lCWttMF6sjdpB41lZy6FWo
-        short-id: 5c256336e3b673fa
-      server: 195.123.213.28
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 02fcc1a4-ee90-4970-8bbb-4ffaa8109d24
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1003079532
@@ -119,14 +112,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-858183556
         - hysteria2-1108719512
-        - hysteria2-857107263
+        - hysteria2-858183556
+        - hysteria2-1098338335
         - vless-612170604
         - vless-561641518
+        - hysteria2-857107263
         - vless-718040241
         - vless-650667509
-        - vless-1223729842
         - vless-1003079532
         - hysteria2-1093670535
         - vless-583609879
@@ -136,14 +129,14 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - hysteria2-858183556
         - hysteria2-1108719512
-        - hysteria2-857107263
+        - hysteria2-858183556
+        - hysteria2-1098338335
         - vless-612170604
         - vless-561641518
+        - hysteria2-857107263
         - vless-718040241
         - vless-650667509
-        - vless-1223729842
         - vless-1003079532
         - hysteria2-1093670535
         - vless-583609879

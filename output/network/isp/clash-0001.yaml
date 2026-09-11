@@ -688,6 +688,14 @@ proxies:
       type: vless
       udp: true
       uuid: fc60d2f9-e3b5-449f-80d8-385c08e93c94
+    - name: trojan-1190087806
+      password: UQfj7bdfjibTjpUHfg72aew51S7fB32g
+      port: 443
+      server: 64.20.209.125
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
     - name: trojan-1192978766
       password: UQfj7bdfjibTjpUHfg72aew51S7fB32g
       port: 443
@@ -841,20 +849,6 @@ proxies:
       type: vless
       udp: true
       uuid: bfb3f06c-e33f-41ac-b101-012c8325a689
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1235188684
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: lIgF8B3ICGAQ6ExbRe9YDu8ZD1Ozzqu7-YO7hfuXfRw
-        short-id: cc8069f6c2cbcb32
-      server: 185.229.9.74
-      servername: api.ok.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: b4f185a6-4541-4626-87c6-93da3c10a231
     - name: hysteria2-1235904797
       password: 8fb328f0-d8e0-4b11-a6db-3dadfc4f02a3
       port: 443
@@ -862,6 +856,20 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1238547401
+      network: tcp
+      port: 29513
+      reality-opts:
+        public-key: rSI9mgtOco9D39xdbX64nv2J2BRBGQpgCOi4opw8mCo
+        short-id: 6ba85179e30d4fc2
+      server: 216.36.124.176
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: f618d6e9-c6af-40b8-bc7a-bbf450586784
 proxy-groups:
     - interval: 300
       name: auto
@@ -936,6 +944,7 @@ proxy-groups:
         - vmess-1183229678
         - vless-1186755720
         - vless-1186772754
+        - trojan-1190087806
         - trojan-1192978766
         - vless-1193020737
         - vless-1204622299
@@ -951,8 +960,8 @@ proxy-groups:
         - vless-1228286215
         - vless-1230052879
         - vless-1230280240
-        - vless-1235188684
         - hysteria2-1235904797
+        - vless-1238547401
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -1028,6 +1037,7 @@ proxy-groups:
         - vmess-1183229678
         - vless-1186755720
         - vless-1186772754
+        - trojan-1190087806
         - trojan-1192978766
         - vless-1193020737
         - vless-1204622299
@@ -1043,8 +1053,8 @@ proxy-groups:
         - vless-1228286215
         - vless-1230052879
         - vless-1230280240
-        - vless-1235188684
         - hysteria2-1235904797
+        - vless-1238547401
       type: select
 rules:
     - MATCH,select
