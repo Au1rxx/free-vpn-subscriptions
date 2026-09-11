@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-cfb
+      name: shadowsocks-1223448949
+      password: amazonskr05
+      port: 443
+      server: 108.129.176.139
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-1110270326
       password: amazonskr05
       port: 443
@@ -10,12 +17,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1223448949
         - shadowsocks-1110270326
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1223448949
         - shadowsocks-1110270326
       type: select
 rules:

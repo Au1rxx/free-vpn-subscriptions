@@ -1,4 +1,22 @@
 proxies:
+    - flow: xtls-rprx-vision
+      name: vless-1231429203
+      network: tcp
+      port: 443
+      server: pl-new-ded2.moritech.net
+      servername: pl-new-ded2.moritech.net
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - name: hysteria2-768953025
+      password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
+      port: 443
+      server: streambox.wwwinternetvideo.click
+      skip-cert-verify: true
+      sni: streambox.wwwinternetvideo.click
+      type: hysteria2
     - cipher: aes-256-cfb
       name: shadowsocks-738053629
       password: N7j3pdTYkKmsy8CR
@@ -17,6 +35,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1231429203
+        - hysteria2-768953025
         - shadowsocks-738053629
         - shadowsocks-812343744
       type: url-test
@@ -24,6 +44,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1231429203
+        - hysteria2-768953025
         - shadowsocks-738053629
         - shadowsocks-812343744
       type: select
