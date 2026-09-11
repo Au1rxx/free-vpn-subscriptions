@@ -1,0 +1,63 @@
+proxies:
+    - name: trojan-1249800497
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10011
+      server: 150.230.98.177
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
+    - name: trojan-1249800503
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10011
+      server: 3.112.12.134
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
+    - name: trojan-1249800524
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10011
+      server: 168.110.57.31
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
+    - name: trojan-1249800554
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10011
+      server: 57.180.39.25
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
+    - name: trojan-1249800557
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10011
+      server: 168.110.29.219
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - trojan-1249800497
+        - trojan-1249800503
+        - trojan-1249800524
+        - trojan-1249800554
+        - trojan-1249800557
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - trojan-1249800497
+        - trojan-1249800503
+        - trojan-1249800524
+        - trojan-1249800554
+        - trojan-1249800557
+      type: select
+rules:
+    - MATCH,select

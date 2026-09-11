@@ -23,13 +23,6 @@ proxies:
       type: vless
       udp: true
       uuid: 878fb7f7-fc65-465e-a352-17c7216c6f3d
-    - name: vless-1172500541
-      network: ws
-      port: 8880
-      server: 104.21.23.72
-      type: vless
-      udp: true
-      uuid: 12cebf33-2f96-48a3-af37-c2231e5cef75
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1172523121
@@ -128,13 +121,26 @@ proxies:
       type: vless
       udp: true
       uuid: 878fb7f7-fc65-465e-a352-17c7216c6f3d
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1254903200
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 6-_ZidygR8PRt4gtHlGCAW-PPmjEIm7Wn7MZqJU1z1Q
+        short-id: 6c059ecfddf9b179
+      server: 185.47.254.251
+      servername: gateway.icloud.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 878fb7f7-fc65-465e-a352-17c7216c6f3d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-656192041
         - vless-1161746898
-        - vless-1172500541
         - vless-1172523121
         - vless-1179614326
         - vless-1192915788
@@ -142,6 +148,7 @@ proxy-groups:
         - vless-1217070071
         - vless-1223625041
         - vless-1227918440
+        - vless-1254903200
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -149,7 +156,6 @@ proxy-groups:
         - auto
         - vless-656192041
         - vless-1161746898
-        - vless-1172500541
         - vless-1172523121
         - vless-1179614326
         - vless-1192915788
@@ -157,6 +163,7 @@ proxy-groups:
         - vless-1217070071
         - vless-1223625041
         - vless-1227918440
+        - vless-1254903200
       type: select
 rules:
     - MATCH,select
