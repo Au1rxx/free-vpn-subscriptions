@@ -8,41 +8,17 @@ proxies:
       type: vmess
       udp: true
       uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
-    - name: vless-1242348485
-      network: ws
-      port: 443
-      server: 172.67.134.136
-      servername: xo3ubk-c97eql-n2d4a9.shoameni17.workers.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: fa45096d-bed0-ad80-c773-23c300000003
-    - name: vless-1242348501
-      network: ws
-      port: 443
-      server: 172.67.209.13
-      servername: xo3ubk-c97eql-n2d4a9.shoameni17.workers.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: fa45096d-bed0-ad80-c773-23c30000001b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-1005124999
-        - vless-1242348485
-        - vless-1242348501
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-1005124999
-        - vless-1242348485
-        - vless-1242348501
       type: select
 rules:
     - MATCH,select
