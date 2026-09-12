@@ -1,0 +1,58 @@
+{
+  "outbounds": [
+    {
+      "password": "ultra@kWZdAzt_IH593eGLRjdxnBZ0",
+      "server": "z-sg2.6send.com",
+      "server_port": 10044,
+      "tag": "trojan-1198924886",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.cloudflare.com"
+      },
+      "type": "trojan"
+    },
+    {
+      "password": "ultra@kWZdAzt_IH593eGLRjdxnBZ0",
+      "server": "z-sg2.6send.com",
+      "server_port": 10044,
+      "tag": "trojan-1202774663",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-1198924886",
+        "trojan-1202774663"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-1198924886",
+        "trojan-1202774663"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
