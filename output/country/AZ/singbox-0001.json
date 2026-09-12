@@ -1,0 +1,35 @@
+{
+  "outbounds": [
+    {
+      "server": "basalam.horqen.ir",
+      "server_port": 21289,
+      "tag": "vless-1051405350",
+      "type": "vless",
+      "uuid": "c12db015-a63c-43e5-a744-6398a90373b5"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1051405350"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1051405350"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
