@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "ultra@kWZdAzt_IH593eGLRjdxnBZ0",
+      "server": "z-sg2.6send.com",
+      "server_port": 10046,
+      "tag": "trojan-1274607105",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "z-sg2.6send.com"
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-1274607105"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-1274607105"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

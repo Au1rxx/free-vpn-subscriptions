@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-1163061815
-      network: ws
-      port: 2087
-      server: 103.75.119.126
-      type: vless
-      udp: true
-      uuid: 731f177e-00aa-480c-b935-661456139a32
     - name: vless-1151376484
       network: ws
       port: 2087
@@ -34,6 +27,13 @@ proxies:
       type: vless
       udp: true
       uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
+    - name: vless-1163061815
+      network: ws
+      port: 2087
+      server: 103.75.119.126
+      type: vless
+      udp: true
+      uuid: 731f177e-00aa-480c-b935-661456139a32
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1245733513
@@ -55,42 +55,27 @@ proxies:
       skip-cert-verify: true
       sni: vpn-au-002.fastervpn.world
       type: hysteria2
-    - client-fingerprint: firefox
-      name: vless-1258929861
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
-        short-id: 4cc9dc65f7770115
-      server: 46.250.240.80
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1163061815
         - vless-1151376484
         - vless-1122309336
         - vless-1272779527
+        - vless-1163061815
         - vless-1245733513
         - hysteria2-658428922
-        - vless-1258929861
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1163061815
         - vless-1151376484
         - vless-1122309336
         - vless-1272779527
+        - vless-1163061815
         - vless-1245733513
         - hysteria2-658428922
-        - vless-1258929861
       type: select
 rules:
     - MATCH,select

@@ -14,6 +14,20 @@ proxies:
       type: ss
       udp: true
     - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1273980268
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SjGkzJQ9I6ZZjC3V73atcPMczhMm0oiTrB8mUQXz1HY
+        short-id: 37fbf155c7a9f3ff
+      server: 82.118.16.189
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d5e5f5a1-0f23-4c49-af9f-4be445bf9d8e
+    - client-fingerprint: chrome
       name: vless-1047808927
       network: tcp
       port: 2053
@@ -26,6 +40,20 @@ proxies:
       type: vless
       udp: true
       uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1189121684
+      network: raw
+      port: 32833
+      reality-opts:
+        public-key: PaTDdYBrlh1xBixdI0igvRRkf0vnUwMRzi-4oDyfS20
+        short-id: a0a305ccc8e94aa8
+      server: 172.238.232.239
+      servername: www.intel.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 167ed405-7de9-4bff-b1ea-6e3d49c76b0b
     - cipher: aes-256-gcm
       name: shadowsocks-891518478
       password: itzvpn@321
@@ -33,28 +61,16 @@ proxies:
       server: 57.131.48.45
       type: ss
       udp: true
-    - client-fingerprint: random
-      name: vless-703656408
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
-        short-id: 5b8a942318178e7b
-      server: 57.131.38.163
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-812343736
         - shadowsocks-1267690222
+        - vless-1273980268
         - vless-1047808927
+        - vless-1189121684
         - shadowsocks-891518478
-        - vless-703656408
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -62,9 +78,10 @@ proxy-groups:
         - auto
         - shadowsocks-812343736
         - shadowsocks-1267690222
+        - vless-1273980268
         - vless-1047808927
+        - vless-1189121684
         - shadowsocks-891518478
-        - vless-703656408
       type: select
 rules:
     - MATCH,select

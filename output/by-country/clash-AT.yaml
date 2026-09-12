@@ -1,5 +1,16 @@
 proxies:
     - flow: xtls-rprx-vision
+      name: vless-1157879774
+      network: tcp
+      port: 443
+      server: 50.7.36.26
+      servername: at2.moritech.net
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
       name: vless-1253302291
       network: tcp
       port: 443
@@ -33,6 +44,28 @@ proxies:
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - flow: xtls-rprx-vision
+      name: vless-1157879743
+      network: tcp
+      port: 443
+      server: 50.7.184.122
+      servername: at3.moritech.net
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
+      name: vless-1157879715
+      network: tcp
+      port: 443
+      server: 50.7.37.154
+      servername: at1.moritech.net
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
       name: vless-1263115844
       network: tcp
       port: 443
@@ -47,18 +80,24 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1157879774
         - vless-1253302291
         - vless-1258487954
         - vless-1263114885
+        - vless-1157879743
+        - vless-1157879715
         - vless-1263115844
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1157879774
         - vless-1253302291
         - vless-1258487954
         - vless-1263114885
+        - vless-1157879743
+        - vless-1157879715
         - vless-1263115844
       type: select
 rules:
