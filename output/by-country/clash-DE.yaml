@@ -33,6 +33,13 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - cipher: aes-256-gcm
+      name: shadowsocks-717969012
+      password: kKEd0rBrd56Furjz
+      port: 80
+      server: 2.58.81.221
+      type: ss
+      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-1048363126
@@ -78,6 +85,13 @@ proxies:
       password: hcPtVDnxZHumuyqGtiOGtA
       port: 2
       server: 171.22.128.72
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-415241977
+      password: 2YdE4lFOid5a
+      port: 8388
+      server: 51.195.126.38
       type: ss
       udp: true
     - name: vless-1109561737
@@ -180,6 +194,20 @@ proxies:
       sni: hopp-romania-new.roxa.org
       type: hysteria2
     - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1244347192
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: NYG48Fv1MF3SqOpHwoa4GqJH5IJrocSrwWzrffY-tCk
+        short-id: c6dc8abb0235dc05
+      server: 162.248.166.35
+      servername: www.caradisiac.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d92b6509-8b63-4505-b3a2-1dc5b1c014ac
+    - client-fingerprint: chrome
       name: vless-698117241
       network: raw
       port: 40443
@@ -234,48 +262,6 @@ proxies:
       type: vless
       udp: true
       uuid: bf645ffe-a3cc-4480-8e4c-9bcd1af41052
-    - name: hysteria2-213095942
-      password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
-      port: 443
-      server: 91.196.32.163
-      skip-cert-verify: true
-      sni: 91.196.32.163
-      type: hysteria2
-    - name: hysteria2-923321814
-      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
-      port: 8080
-      server: 85.204.107.175
-      skip-cert-verify: true
-      sni: hopp-romania-new.roxa.org
-      type: hysteria2
-    - name: hysteria2-1030734942
-      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
-      port: 8080
-      server: 85.204.107.181
-      skip-cert-verify: false
-      sni: hopp-romania-new.roxa.org
-      type: hysteria2
-    - name: hysteria2-1033569060
-      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
-      port: 8080
-      server: 85.204.107.181
-      skip-cert-verify: true
-      sni: hopp-romania-new.roxa.org
-      type: hysteria2
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1255028044
-      password: riuphiZv7XJGZLctglc5r9tHJZltCleOIgHTS5K8Y4s=
-      port: 59924
-      server: 130.61.150.207
-      type: ss
-      udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1257998660
-      password: 1D5+fWL6Bynt2MLbAlqPTXf3W7ozLYJO2XnAG59l1Ws=
-      port: 59924
-      server: 130.61.177.125
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -284,12 +270,14 @@ proxy-groups:
         - vless-1258041068
         - hysteria2-907349609
         - hysteria2-851087338
+        - shadowsocks-717969012
         - vmess-1048363126
         - hysteria2-818063943
         - hysteria2-1059437573
         - hysteria2-721489370
         - hysteria2-757486810
         - shadowsocks-1260805284
+        - shadowsocks-415241977
         - vless-1109561737
         - vless-731819985
         - vless-679541115
@@ -301,16 +289,11 @@ proxy-groups:
         - hysteria2-896855667
         - hysteria2-818063860
         - hysteria2-1095634773
+        - vless-1244347192
         - vless-698117241
         - vless-1227398404
         - vless-1223752267
         - vless-912621519
-        - hysteria2-213095942
-        - hysteria2-923321814
-        - hysteria2-1030734942
-        - hysteria2-1033569060
-        - shadowsocks-1255028044
-        - shadowsocks-1257998660
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -320,12 +303,14 @@ proxy-groups:
         - vless-1258041068
         - hysteria2-907349609
         - hysteria2-851087338
+        - shadowsocks-717969012
         - vmess-1048363126
         - hysteria2-818063943
         - hysteria2-1059437573
         - hysteria2-721489370
         - hysteria2-757486810
         - shadowsocks-1260805284
+        - shadowsocks-415241977
         - vless-1109561737
         - vless-731819985
         - vless-679541115
@@ -337,16 +322,11 @@ proxy-groups:
         - hysteria2-896855667
         - hysteria2-818063860
         - hysteria2-1095634773
+        - vless-1244347192
         - vless-698117241
         - vless-1227398404
         - vless-1223752267
         - vless-912621519
-        - hysteria2-213095942
-        - hysteria2-923321814
-        - hysteria2-1030734942
-        - hysteria2-1033569060
-        - shadowsocks-1255028044
-        - shadowsocks-1257998660
       type: select
 rules:
     - MATCH,select
