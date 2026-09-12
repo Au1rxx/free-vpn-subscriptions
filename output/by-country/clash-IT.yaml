@@ -1,0 +1,85 @@
+proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-812343736
+      password: p5wSkb2uM3pKSS3j
+      port: 9074
+      server: 91.201.65.122
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-1267690222
+      password: 78235e7dc55e9ad1
+      port: 50111
+      server: 132.243.255.3
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      name: vless-1047808927
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - cipher: aes-256-gcm
+      name: shadowsocks-891518478
+      password: itzvpn@321
+      port: 8388
+      server: 57.131.48.45
+      type: ss
+      udp: true
+    - client-fingerprint: random
+      name: vless-703656408
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - client-fingerprint: chrome
+      name: vless-548666342
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-812343736
+        - shadowsocks-1267690222
+        - vless-1047808927
+        - shadowsocks-891518478
+        - vless-703656408
+        - vless-548666342
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-812343736
+        - shadowsocks-1267690222
+        - vless-1047808927
+        - shadowsocks-891518478
+        - vless-703656408
+        - vless-548666342
+      type: select
+rules:
+    - MATCH,select

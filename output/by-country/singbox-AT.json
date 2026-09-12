@@ -1,0 +1,41 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "50.7.36.27",
+      "server_port": 443,
+      "tag": "vless-1253302291",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "at-new-ded2.moritech.net"
+      },
+      "type": "vless",
+      "uuid": "cd3bb7d9-7df3-4644-ac05-c260990ac277"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1253302291"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1253302291"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

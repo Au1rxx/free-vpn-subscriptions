@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-122860
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20032
-      server: d3.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1256735543
       password: jIlQi9jGPJd7KHMx6Y4+JbaNoWSWfe2A73U4J4o0Qrs=
@@ -14,35 +6,17 @@ proxies:
       server: 130.49.189.158
       type: ss
       udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1267370134
-      network: tcp
-      port: 20411
-      reality-opts:
-        public-key: m_AGb3cF9l3FztNvZVAHlUu-mGB_hhUFxOWJ_PeTcSQ
-        short-id: 7063a76e8a8ab275
-      server: avx.parsianclonc.ir
-      servername: www.beyondwords.io
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5ad5d8fb-d0d2-4a79-a130-1e1e20e6a780
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-122860
         - shadowsocks-1256735543
-        - vless-1267370134
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-122860
         - shadowsocks-1256735543
-        - vless-1267370134
       type: select
 rules:
     - MATCH,select

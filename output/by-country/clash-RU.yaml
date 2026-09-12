@@ -1,0 +1,22 @@
+proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-1267690224
+      password: 4938e975724d0ed1
+      port: 50111
+      server: 194.87.196.13
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-1267690224
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-1267690224
+      type: select
+rules:
+    - MATCH,select
