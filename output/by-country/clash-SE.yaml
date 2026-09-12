@@ -25,19 +25,6 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
-    - client-fingerprint: chrome
-      name: vless-1173154542
-      network: grpc
-      port: 33743
-      reality-opts:
-        public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
-        short-id: ""
-      server: 79.141.174.147
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: b3a11068-1a7e-4643-85de-7c82cce46943
     - name: hysteria2-1230196608
       password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
       port: 25443
@@ -52,44 +39,14 @@ proxies:
       skip-cert-verify: false
       sni: cf2.rumedia-cdn.com
       type: hysteria2
-    - client-fingerprint: edge
-      name: vless-1136945983
-      network: grpc
-      port: 9458
-      reality-opts:
-        public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
-        short-id: ""
-      server: 91.193.17.156
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: b3a11068-1a7e-4643-85de-7c82cce46943
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-696780839
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: -GMpCber8qtrKzJbwvpLcwlIhOy-5zS66u_x9lLvIjE
-        short-id: e3daad69
-      server: 193.148.59.178
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 20d7c485-5d24-49b5-a5cc-bb7a7daf9908
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1235435931
         - vless-1250669971
-        - vless-1173154542
         - hysteria2-1230196608
         - hysteria2-1230577883
-        - vless-1136945983
-        - vless-696780839
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -97,11 +54,8 @@ proxy-groups:
         - auto
         - vless-1235435931
         - vless-1250669971
-        - vless-1173154542
         - hysteria2-1230196608
         - hysteria2-1230577883
-        - vless-1136945983
-        - vless-696780839
       type: select
 rules:
     - MATCH,select
