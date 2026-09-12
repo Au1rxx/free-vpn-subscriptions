@@ -1,26 +1,23 @@
 proxies:
-    - flow: xtls-rprx-vision
-      name: vless-1157879800
-      network: tcp
+    - name: trojan-490085150
+      password: 018b8e7b-7813-4dcb-84a5-3c98f1521e00
       port: 443
-      server: 50.7.5.163
-      servername: ir-viper.failspace.top
+      server: edu.ruangguru.com
       skip-cert-verify: true
-      tls: true
-      type: vless
+      sni: id1.nathaya.web.id
+      type: trojan
       udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1157879800
+        - trojan-490085150
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1157879800
+        - trojan-490085150
       type: select
 rules:
     - MATCH,select

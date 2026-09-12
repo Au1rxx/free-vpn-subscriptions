@@ -39,6 +39,19 @@ proxies:
       skip-cert-verify: false
       sni: cf2.rumedia-cdn.com
       type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-1263671800
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: R8Mogel1wypEIpcUXnGmG1cuzT9POghNhqJcw4-CLx0
+        short-id: ""
+      server: 170.168.99.8
+      servername: cdn.steamstatic.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3f9f2bda-0b9c-8469-7381-a73de2255619
 proxy-groups:
     - interval: 300
       name: auto
@@ -47,6 +60,7 @@ proxy-groups:
         - vless-1250669971
         - hysteria2-1230196608
         - hysteria2-1230577883
+        - vless-1263671800
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -56,6 +70,7 @@ proxy-groups:
         - vless-1250669971
         - hysteria2-1230196608
         - hysteria2-1230577883
+        - vless-1263671800
       type: select
 rules:
     - MATCH,select

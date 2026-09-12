@@ -1,0 +1,78 @@
+{
+  "outbounds": [
+    {
+      "server": "170.168.99.8",
+      "server_port": 8443,
+      "tag": "vless-1263671796",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "skXBkyphBIt0TWVM0R5U3U-8UG0cuW00ONkaQpJ-OxU"
+        },
+        "server_name": "download.nvidia.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "service_name": "TunService",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "3f9f2bda-0b9c-8469-7381-a73de2255619"
+    },
+    {
+      "server": "89.47.55.9",
+      "server_port": 8443,
+      "tag": "vless-1263671797",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "wcOBPSgoOKptWa9ZHpFpmbrPfLqobBNpCgLH88Ptjhk"
+        },
+        "server_name": "download.nvidia.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "service_name": "TunService",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "3f9f2bda-0b9c-8469-7381-a73de2255619"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1263671796",
+        "vless-1263671797"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1263671796",
+        "vless-1263671797"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

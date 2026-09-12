@@ -1,12 +1,12 @@
 proxies:
-    - name: vless-1163061815
+    - name: vless-1122309336
       network: ws
       port: 2087
       server: 103.75.119.126
       type: vless
       udp: true
       uuid: 731f177e-00aa-480c-b935-661456139a32
-    - name: vless-1122309336
+    - name: vless-1163061815
       network: ws
       port: 2087
       server: 103.75.119.126
@@ -37,25 +37,43 @@ proxies:
       skip-cert-verify: true
       sni: google.com
       type: hysteria2
+    - name: hysteria2-1059313757
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: vpn-au-002.fastervpn.world
+      skip-cert-verify: true
+      sni: css.rbxcdn.com
+      type: hysteria2
+    - name: hysteria2-1060573987
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: vpn-au-002.fastervpn.world
+      skip-cert-verify: true
+      sni: whatsapp.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1163061815
         - vless-1122309336
+        - vless-1163061815
         - vless-656189585
         - hysteria2-1060573975
         - hysteria2-1060574022
+        - hysteria2-1059313757
+        - hysteria2-1060573987
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1163061815
         - vless-1122309336
+        - vless-1163061815
         - vless-656189585
         - hysteria2-1060573975
         - hysteria2-1060574022
+        - hysteria2-1059313757
+        - hysteria2-1060573987
       type: select
 rules:
     - MATCH,select
