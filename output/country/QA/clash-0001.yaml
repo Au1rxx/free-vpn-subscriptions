@@ -1,10 +1,26 @@
 proxies:
+    - name: trojan-1196882006
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10008
+      server: z-jp2.1card.cc
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
     - name: trojan-1197768207
       password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
       port: 10008
       server: z-jp2.1card.cc
       skip-cert-verify: true
       sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-1204715724
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10008
+      server: z-jp1.1card.cc
+      skip-cert-verify: true
+      sni: www.cloudflare.com
       type: trojan
       udp: true
     - name: trojan-1205204408
@@ -15,19 +31,53 @@ proxies:
       sni: www.cloudflare.com
       type: trojan
       udp: true
+    - name: trojan-1207475820
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10008
+      server: z-jp1.1card.cc
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
+    - name: trojan-1211402634
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10008
+      server: z-jp2.1card.cc
+      skip-cert-verify: true
+      sni: z-jp2.1card.cc
+      type: trojan
+      udp: true
+    - name: trojan-1211404351
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10008
+      server: z-jp2.1card.cc
+      skip-cert-verify: true
+      sni: z-jp2.1card.cc
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-1196882006
         - trojan-1197768207
+        - trojan-1204715724
         - trojan-1205204408
+        - trojan-1207475820
+        - trojan-1211402634
+        - trojan-1211404351
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-1196882006
         - trojan-1197768207
+        - trojan-1204715724
         - trojan-1205204408
+        - trojan-1207475820
+        - trojan-1211402634
+        - trojan-1211404351
       type: select
 rules:
     - MATCH,select

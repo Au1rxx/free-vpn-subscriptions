@@ -1,5 +1,59 @@
 proxies:
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1132553350
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: iTCQz0n0AolvGxU2ZASJIsSVoKOR9PAFbnZVQDnSnF8
+        short-id: c481d750
+      server: 72.56.75.54
+      servername: app2.jarvesitw.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5d8cf280-e0f4-4539-b35c-7ff90659c0d0
+    - name: trojan-1196882004
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10045
+      server: z-sg1.6send.com
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
+    - name: trojan-1197769198
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10045
+      server: z-sg1.6send.com
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
     - name: trojan-1198924883
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10045
+      server: z-sg2.6send.com
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
+    - name: trojan-1202774664
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10045
+      server: z-sg1.6send.com
+      skip-cert-verify: true
+      sni: z-sg1.6send.com
+      type: trojan
+      udp: true
+    - name: trojan-1203669722
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10045
+      server: z-sg1.6send.com
+      skip-cert-verify: true
+      sni: z-sg1.6send.com
+      type: trojan
+      udp: true
+    - name: trojan-1205202546
       password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
       port: 10045
       server: z-sg2.6send.com
@@ -19,14 +73,26 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1132553350
+        - trojan-1196882004
+        - trojan-1197769198
         - trojan-1198924883
+        - trojan-1202774664
+        - trojan-1203669722
+        - trojan-1205202546
         - trojan-1209928836
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1132553350
+        - trojan-1196882004
+        - trojan-1197769198
         - trojan-1198924883
+        - trojan-1202774664
+        - trojan-1203669722
+        - trojan-1205202546
         - trojan-1209928836
       type: select
 rules:
