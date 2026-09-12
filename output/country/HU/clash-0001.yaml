@@ -1,0 +1,45 @@
+proxies:
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1275202439
+      network: tcp
+      port: 19442
+      reality-opts:
+        public-key: fG_NPk1sUs4iJFrTR7L-fnizUOWJrzRALu_kSc3Utnw
+        short-id: 1783c40ebfc7a483
+      server: gcore2026.high-net.ir
+      servername: status.play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f751c2fe-0772-4613-a5df-12155d170b10
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1275295826
+      network: tcp
+      port: 19442
+      reality-opts:
+        public-key: fG_NPk1sUs4iJFrTR7L-fnizUOWJrzRALu_kSc3Utnw
+        short-id: 1783c40ebfc7a483
+      server: gcore2026.high-net.ir
+      servername: status.play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f751c2fe-0772-4613-a5df-12155d170b10
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1275202439
+        - vless-1275295826
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1275202439
+        - vless-1275295826
+      type: select
+rules:
+    - MATCH,select

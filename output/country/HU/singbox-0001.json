@@ -1,0 +1,74 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "gcore2026.high-net.ir",
+      "server_port": 19442,
+      "tag": "vless-1275202439",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "reality": {
+          "enabled": true,
+          "public_key": "fG_NPk1sUs4iJFrTR7L-fnizUOWJrzRALu_kSc3Utnw",
+          "short_id": "1783c40ebfc7a483"
+        },
+        "server_name": "status.play.google.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "type": "vless",
+      "uuid": "f751c2fe-0772-4613-a5df-12155d170b10"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "gcore2026.high-net.ir",
+      "server_port": 19442,
+      "tag": "vless-1275295826",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "fG_NPk1sUs4iJFrTR7L-fnizUOWJrzRALu_kSc3Utnw",
+          "short_id": "1783c40ebfc7a483"
+        },
+        "server_name": "status.play.google.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "f751c2fe-0772-4613-a5df-12155d170b10"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1275202439",
+        "vless-1275295826"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1275202439",
+        "vless-1275295826"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
