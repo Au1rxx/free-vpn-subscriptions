@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-1194291097
+      password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
+      port: 10011
+      server: z-jp2.1card.cc
+      skip-cert-verify: true
+      sni: www.cloudflare.com
+      type: trojan
+      udp: true
     - name: trojan-1196882002
       password: ultra@kWZdAzt_IH593eGLRjdxnBZ0
       port: 10011
@@ -19,6 +27,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-1194291097
         - trojan-1196882002
         - trojan-1212566981
       type: url-test
@@ -26,6 +35,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-1194291097
         - trojan-1196882002
         - trojan-1212566981
       type: select

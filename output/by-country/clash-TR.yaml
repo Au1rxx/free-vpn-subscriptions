@@ -13,17 +13,26 @@ proxies:
       type: vless
       udp: true
       uuid: b052df40-d51c-456c-9bd6-57af01a87e4e
+    - name: vless-1267361222
+      network: tcp
+      port: 50152
+      server: 185.71.219.173
+      type: vless
+      udp: true
+      uuid: My-chanel-Telegram-ATOVPN
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1104470805
+        - vless-1267361222
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1104470805
+        - vless-1267361222
       type: select
 rules:
     - MATCH,select

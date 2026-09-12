@@ -6,17 +6,74 @@ proxies:
       server: 185.213.23.63
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      name: vless-1266360266
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: dvx6zPztKbgHpYaW6J4OZQC74Uy0JS6HUVdDfbjG5V4
+        short-id: "7606"
+      server: aldebaran.yokkastars.com
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ed91e79c-f6bf-4fba-8cc0-6d45acaec22b
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1178938407
+      network: tcp
+      port: 390
+      reality-opts:
+        public-key: 5RCgAVjaT7hwdVIKAEULswXGqR127ZOZV6X17nEhYk8
+        short-id: b545fe8c5e22f92d
+      server: 151.242.168.125
+      servername: bowandbead.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b02ff150-ee30-46e0-9ea1-adbfd7762a06
+    - flow: xtls-rprx-vision
+      name: vless-1259488938
+      network: tcp
+      port: 443
+      server: norway-4.moritech.net
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
+      name: vless-1260060022
+      network: tcp
+      port: 443
+      server: norway-2.moritech.net
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-231
+        - vless-1266360266
+        - vless-1178938407
+        - vless-1259488938
+        - vless-1260060022
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-231
+        - vless-1266360266
+        - vless-1178938407
+        - vless-1259488938
+        - vless-1260060022
       type: select
 rules:
     - MATCH,select
