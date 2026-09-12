@@ -1,22 +1,4 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-1005127037
-      network: tcp
-      port: 16280
-      server: zfd-boardv2.kunlun01dns.com
-      type: vmess
-      udp: true
-      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
-    - alterId: 0
-      cipher: auto
-      name: vmess-1005580221
-      network: tcp
-      port: 16280
-      server: zfd-boardv2.kunlun01dns.com
-      type: vmess
-      udp: true
-      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1254306226
@@ -31,6 +13,20 @@ proxies:
       type: vless
       udp: true
       uuid: 3c48b5f5-7766-4896-874e-b3ba1860e83a
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1261278155
+      network: tcp
+      port: 10050
+      reality-opts:
+        public-key: U1eMEZpYrlL2SvcFw0efhudE0SSBJ9q5QKCWWEXA53w
+        short-id: 8def87fb30886534
+      server: 123.253.227.238
+      servername: www.hp.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: fad78708-a2a3-37a9-8ce7-6bc83526af0d
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1269472240
@@ -49,18 +45,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-1005127037
-        - vmess-1005580221
         - vless-1254306226
+        - vless-1261278155
         - vless-1269472240
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-1005127037
-        - vmess-1005580221
         - vless-1254306226
+        - vless-1261278155
         - vless-1269472240
       type: select
 rules:
