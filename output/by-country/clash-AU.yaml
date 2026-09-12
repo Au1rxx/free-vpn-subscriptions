@@ -6,6 +6,13 @@ proxies:
       type: vless
       udp: true
       uuid: 731f177e-00aa-480c-b935-661456139a32
+    - name: vless-1151376484
+      network: ws
+      port: 2087
+      server: 103.75.119.126
+      type: vless
+      udp: true
+      uuid: 731f177e-00aa-480c-b935-661456139a32
     - name: hysteria2-1158363236
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -13,12 +20,12 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
-    - name: hysteria2-1060573975
+    - name: hysteria2-658428922
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
       server: vpn-au-002.fastervpn.world
       skip-cert-verify: true
-      sni: vk.com
+      sni: vpn-au-002.fastervpn.world
       type: hysteria2
     - name: hysteria2-101779684
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
@@ -27,13 +34,6 @@ proxies:
       skip-cert-verify: true
       sni: vpn-us-003.fastervpn.world
       type: hysteria2
-    - name: hysteria2-1060574022
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: vpn-au-002.fastervpn.world
-      skip-cert-verify: true
-      sni: google.com
-      type: hysteria2
     - name: hysteria2-1059313757
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -41,36 +41,48 @@ proxies:
       skip-cert-verify: true
       sni: css.rbxcdn.com
       type: hysteria2
-    - name: hysteria2-1060573987
+    - name: vless-656189585
+      network: tcp
+      port: 443
+      server: 172.105.169.70
+      servername: 172.105.169.70
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    - name: hysteria2-1059313714
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
       server: vpn-au-002.fastervpn.world
       skip-cert-verify: true
-      sni: whatsapp.com
+      sni: speedtest.tinkoff.ru
       type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1163061815
+        - vless-1151376484
         - hysteria2-1158363236
-        - hysteria2-1060573975
+        - hysteria2-658428922
         - hysteria2-101779684
-        - hysteria2-1060574022
         - hysteria2-1059313757
-        - hysteria2-1060573987
+        - vless-656189585
+        - hysteria2-1059313714
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1163061815
+        - vless-1151376484
         - hysteria2-1158363236
-        - hysteria2-1060573975
+        - hysteria2-658428922
         - hysteria2-101779684
-        - hysteria2-1060574022
         - hysteria2-1059313757
-        - hysteria2-1060573987
+        - vless-656189585
+        - hysteria2-1059313714
       type: select
 rules:
     - MATCH,select
