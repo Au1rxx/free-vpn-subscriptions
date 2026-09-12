@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-cfb
+      name: shadowsocks-717969028
+      password: cp8pRSUAyLhTfVWH
+      port: 9064
+      server: 213.183.63.60
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-738053649
       password: GeregetR8cvQHzYr
       port: 9030
@@ -73,6 +80,26 @@ proxies:
       server: connect3.nyxserver.ir
       servername: ""
       skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b39a009-2a2a-4035-ba87-cc82894f8e21
+    - name: vless-1238784191
+      network: tcp
+      port: 8444
+      server: connect3.nyxserver.ir
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b39a009-2a2a-4035-ba87-cc82894f8e21
+    - name: vless-1238784195
+      network: tcp
+      port: 8444
+      server: connect3.nyxserver.ir
+      servername: connect3.nyxserver.ir
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
@@ -197,11 +224,11 @@ proxies:
       type: vless
       udp: true
       uuid: 0b39a009-2a2a-4035-ba87-cc82894f8e21
-    - name: vless-1255483512
-      network: tcp
+    - name: vless-1260074825
+      network: raw
       port: 8444
-      server: 202.133.90.93
-      servername: connect3.nyxserver.ir
+      server: connect3.nyxserver.ir
+      servername: ""
       skip-cert-verify: false
       tls: true
       type: vless
@@ -211,6 +238,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-717969028
         - shadowsocks-738053649
         - shadowsocks-743178480
         - shadowsocks-779606885
@@ -220,6 +248,8 @@ proxy-groups:
         - vless-1236055671
         - vless-1236498102
         - vless-1236880275
+        - vless-1238784191
+        - vless-1238784195
         - vless-1240382579
         - vless-1240382593
         - vless-1242552511
@@ -232,12 +262,13 @@ proxy-groups:
         - vless-1251491552
         - vless-1253303328
         - vless-1254305194
-        - vless-1255483512
+        - vless-1260074825
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-717969028
         - shadowsocks-738053649
         - shadowsocks-743178480
         - shadowsocks-779606885
@@ -247,6 +278,8 @@ proxy-groups:
         - vless-1236055671
         - vless-1236498102
         - vless-1236880275
+        - vless-1238784191
+        - vless-1238784195
         - vless-1240382579
         - vless-1240382593
         - vless-1242552511
@@ -259,7 +292,7 @@ proxy-groups:
         - vless-1251491552
         - vless-1253303328
         - vless-1254305194
-        - vless-1255483512
+        - vless-1260074825
       type: select
 rules:
     - MATCH,select

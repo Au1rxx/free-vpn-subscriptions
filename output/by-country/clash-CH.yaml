@@ -1,0 +1,23 @@
+proxies:
+    - name: trojan-1250091793
+      password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
+      port: 443
+      server: 104.21.23.136
+      skip-cert-verify: false
+      sni: mfyousheng.nl.eu.org
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - trojan-1250091793
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - trojan-1250091793
+      type: select
+rules:
+    - MATCH,select
