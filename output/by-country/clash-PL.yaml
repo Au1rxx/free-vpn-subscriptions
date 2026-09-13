@@ -13,6 +13,20 @@ proxies:
       skip-cert-verify: false
       sni: streambox.wwwinternetvideo.click
       type: hysteria2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1250669978
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: xY1KpNxaIGmi6jfeudYQ_aaLGQqWK_uHStnwUFd2_2E
+        short-id: fa3ea655619a3e78
+      server: 82.118.22.161
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 05488656-d4bf-4634-8b2e-e4ff5a56c7e2
     - name: vless-829563788
       network: ws
       port: 443
@@ -120,19 +134,13 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - name: hysteria2-648949653
-      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-      port: 443
-      server: 45.192.12.93
-      skip-cert-verify: true
-      sni: admin.wwwinternetvideo.click
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-620179978
         - hysteria2-730512436
+        - vless-1250669978
         - vless-829563788
         - vless-864926695
         - vless-981424209
@@ -145,7 +153,6 @@ proxy-groups:
         - vless-1263115824
         - vless-1263115860
         - vless-1263115892
-        - hysteria2-648949653
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -153,6 +160,7 @@ proxy-groups:
         - auto
         - hysteria2-620179978
         - hysteria2-730512436
+        - vless-1250669978
         - vless-829563788
         - vless-864926695
         - vless-981424209
@@ -165,7 +173,6 @@ proxy-groups:
         - vless-1263115824
         - vless-1263115860
         - vless-1263115892
-        - hysteria2-648949653
       type: select
 rules:
     - MATCH,select

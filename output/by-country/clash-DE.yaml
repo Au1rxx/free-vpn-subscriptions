@@ -91,6 +91,16 @@ proxies:
       sni: ssl.fastly.com
       type: trojan
       udp: true
+    - name: vless-1109561737
+      network: grpc
+      port: 2087
+      server: srv-21bac9.vless.monster
+      servername: srv-21bac9.vless.monster
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: df9f5aca-eda0-428f-a752-e53866153d12
     - name: hysteria2-1090323312
       password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
       port: 8443
@@ -181,6 +191,13 @@ proxies:
       skip-cert-verify: false
       sni: cz.h2.cleanersaz.help
       type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-1279542055
+      password: amazonskr05
+      port: 443
+      server: 63.180.204.141
+      type: ss
+      udp: true
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1167706767
@@ -216,6 +233,13 @@ proxies:
       type: vless
       udp: true
       uuid: bb0f1ed0-0298-40a1-adb1-1f5d6ab33d54
+    - name: vless-1044822794
+      network: ws
+      port: 2087
+      server: 82.24.203.20
+      type: vless
+      udp: true
+      uuid: 5fcdc9b7-e70f-4a5c-85c3-e018ad818326
     - flow: xtls-rprx-vision
       name: vless-1263115811
       network: tcp
@@ -445,14 +469,6 @@ proxies:
       skip-cert-verify: true
       sni: replay.wwwinternetvideo.click
       type: hysteria2
-    - name: trojan-1277522551
-      password: MiTiVPN
-      port: 443
-      server: 167.82.76.7
-      skip-cert-verify: false
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -469,6 +485,7 @@ proxy-groups:
         - hysteria2-1147415558
         - hysteria2-1230196607
         - trojan-1279774272
+        - vless-1109561737
         - hysteria2-1090323312
         - shadowsocks-858384295
         - vless-1267371431
@@ -478,9 +495,11 @@ proxy-groups:
         - hysteria2-1210298803
         - hysteria2-1058977354
         - hysteria2-1058393290
+        - shadowsocks-1279542055
         - vless-1167706767
         - vless-1156743175
         - vless-1267371428
+        - vless-1044822794
         - vless-1263115811
         - vless-1258487958
         - vless-1263114845
@@ -501,7 +520,6 @@ proxy-groups:
         - hysteria2-896857448
         - hysteria2-851087338
         - hysteria2-907349609
-        - trojan-1277522551
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -519,6 +537,7 @@ proxy-groups:
         - hysteria2-1147415558
         - hysteria2-1230196607
         - trojan-1279774272
+        - vless-1109561737
         - hysteria2-1090323312
         - shadowsocks-858384295
         - vless-1267371431
@@ -528,9 +547,11 @@ proxy-groups:
         - hysteria2-1210298803
         - hysteria2-1058977354
         - hysteria2-1058393290
+        - shadowsocks-1279542055
         - vless-1167706767
         - vless-1156743175
         - vless-1267371428
+        - vless-1044822794
         - vless-1263115811
         - vless-1258487958
         - vless-1263114845
@@ -551,7 +572,6 @@ proxy-groups:
         - hysteria2-896857448
         - hysteria2-851087338
         - hysteria2-907349609
-        - trojan-1277522551
       type: select
 rules:
     - MATCH,select
