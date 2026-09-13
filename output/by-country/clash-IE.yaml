@@ -1,5 +1,16 @@
 proxies:
     - flow: xtls-rprx-vision
+      name: vless-1250125358
+      network: tcp
+      port: 443
+      server: 50.7.5.164
+      servername: ir.failspace.top
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
       name: vless-1263114800
       network: tcp
       port: 443
@@ -11,12 +22,12 @@ proxies:
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - flow: xtls-rprx-vision
-      name: vless-1250125358
+      name: vless-1275247077
       network: tcp
       port: 443
-      server: 50.7.5.164
-      servername: ir.failspace.top
-      skip-cert-verify: true
+      server: ir-new1.failspace.top
+      servername: ""
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
@@ -25,15 +36,17 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1263114800
         - vless-1250125358
+        - vless-1263114800
+        - vless-1275247077
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1263114800
         - vless-1250125358
+        - vless-1263114800
+        - vless-1275247077
       type: select
 rules:
     - MATCH,select
