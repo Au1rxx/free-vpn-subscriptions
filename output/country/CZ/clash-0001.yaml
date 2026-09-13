@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1261278155
+      network: tcp
+      port: 10050
+      reality-opts:
+        public-key: U1eMEZpYrlL2SvcFw0efhudE0SSBJ9q5QKCWWEXA53w
+        short-id: 8def87fb30886534
+      server: 123.253.227.238
+      servername: www.hp.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: fad78708-a2a3-37a9-8ce7-6bc83526af0d
     - name: vless-1277527206
       network: ws
       port: 443
@@ -19,13 +33,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1852b02c-1828-40eb-81ff-4de3d097cb35
-    - name: vless-1281263088
-      network: grpc
-      port: 2085
-      server: 194.87.59.6
-      type: vless
-      udp: true
-      uuid: c9373ff0-c263-4949-885f-366671f3c6a1
     - name: vless-1281461637
       network: ws
       port: 443
@@ -40,18 +47,18 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1261278155
         - vless-1277527206
         - vless-1279774274
-        - vless-1281263088
         - vless-1281461637
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1261278155
         - vless-1277527206
         - vless-1279774274
-        - vless-1281263088
         - vless-1281461637
       type: select
 rules:
