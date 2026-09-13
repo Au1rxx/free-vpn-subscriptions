@@ -63,6 +63,20 @@ proxies:
       skip-cert-verify: true
       sni: hopp-romania-new.roxa.org
       type: hysteria2
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1221826880
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
+        short-id: d06d78e974491b6e
+      server: 46.28.67.55
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
     - name: hysteria2-468884157
       password: gf1:gfhysteria2024
       port: 443
@@ -91,28 +105,6 @@ proxies:
       skip-cert-verify: true
       sni: hopp-romania-new.roxa.org
       type: hysteria2
-    - flow: xtls-rprx-vision
-      name: vless-1275300279
-      network: tcp
-      port: 443
-      server: roma2.moritech.net
-      servername: ""
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - flow: xtls-rprx-vision
-      name: vless-1275319753
-      network: tcp
-      port: 443
-      server: roma1.moritech.net
-      servername: ""
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
@@ -125,12 +117,11 @@ proxy-groups:
         - hysteria2-468884155
         - hysteria2-1058393303
         - hysteria2-1027255279
+        - vless-1221826880
         - hysteria2-468884157
         - hysteria2-468884154
         - hysteria2-896855661
         - hysteria2-1209963836
-        - vless-1275300279
-        - vless-1275319753
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -144,12 +135,11 @@ proxy-groups:
         - hysteria2-468884155
         - hysteria2-1058393303
         - hysteria2-1027255279
+        - vless-1221826880
         - hysteria2-468884157
         - hysteria2-468884154
         - hysteria2-896855661
         - hysteria2-1209963836
-        - vless-1275300279
-        - vless-1275319753
       type: select
 rules:
     - MATCH,select

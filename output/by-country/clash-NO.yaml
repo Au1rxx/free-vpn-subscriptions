@@ -6,17 +6,6 @@ proxies:
       server: 185.213.23.63
       type: ss
       udp: true
-    - flow: xtls-rprx-vision
-      name: vless-1265981857
-      network: tcp
-      port: 443
-      server: norway.moritech.net
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - client-fingerprint: chrome
       name: vless-1272976720
       network: raw
@@ -43,51 +32,21 @@ proxies:
       type: vless
       udp: true
       uuid: ed91e79c-f6bf-4fba-8cc0-6d45acaec22b
-    - client-fingerprint: firefox
-      name: vless-1259728048
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: dvx6zPztKbgHpYaW6J4OZQC74Uy0JS6HUVdDfbjG5V4
-        short-id: "7606"
-      server: 89.185.81.65
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ed91e79c-f6bf-4fba-8cc0-6d45acaec22b
-    - flow: xtls-rprx-vision
-      name: vless-1232291834
-      network: tcp
-      port: 443
-      server: 31.76.5.3
-      servername: viper-26.moriarty-web.com
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-231
-        - vless-1265981857
         - vless-1272976720
         - vless-1258043493
-        - vless-1259728048
-        - vless-1232291834
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-231
-        - vless-1265981857
         - vless-1272976720
         - vless-1258043493
-        - vless-1259728048
-        - vless-1232291834
       type: select
 rules:
     - MATCH,select
