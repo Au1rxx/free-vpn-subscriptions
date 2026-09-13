@@ -6,33 +6,17 @@ proxies:
       skip-cert-verify: false
       sni: speedtestmark.com
       type: hysteria2
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-856679283
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: GBdkyDLfr0LIZo_94Xv8ycAKOmkjArYzwJAEMhuXX2c
-        short-id: 33acba1b
-      server: 138.124.180.137
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-855659706
-        - vless-856679283
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-855659706
-        - vless-856679283
       type: select
 rules:
     - MATCH,select
