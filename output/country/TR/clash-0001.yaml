@@ -1,4 +1,36 @@
 proxies:
+    - name: trojan-112587
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20017
+      server: 157.254.38.210
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-119244
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20018
+      server: 45.67.201.210
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-122850
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20017
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-122851
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20018
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: vless-70576696
       network: ws
       port: 80
@@ -6,6 +38,16 @@ proxies:
       type: vless
       udp: true
       uuid: 234c52f2-0d7b-dc4a-0d6b-b0b30000002e
+    - name: vless-391803700
+      network: ws
+      port: 2053
+      server: 104.17.169.13
+      servername: index.harmonica01.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: a22bff60-a40a-4250-bde2-4c660e363b47
     - name: trojan-479026176
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20017
@@ -359,6 +401,16 @@ proxies:
       type: vless
       udp: true
       uuid: 6be01e14-b937-4ed5-9d2c-074a0da22ffc
+    - name: vless-1274690736
+      network: ws
+      port: 8443
+      server: shop.neexbyte.ir
+      servername: shop.neexbyte.ir
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 464bc502-f963-45b6-81e3-e33d18427506
     - name: vless-1275202463
       network: ws
       port: 8443
@@ -478,15 +530,6 @@ proxies:
       type: vless
       udp: true
       uuid: 97ecaad4-452c-45ec-b591-d68d3308aad4
-    - alterId: 0
-      cipher: auto
-      name: vmess-1278687067
-      network: tcp
-      port: 443
-      server: 206.1.96.187
-      type: vmess
-      udp: true
-      uuid: 32c017e7-2fa6-4a43-98ef-b21bb63d92e6
     - flow: xtls-rprx-vision
       name: vless-1278752075
       network: tcp
@@ -640,11 +683,26 @@ proxies:
       type: vless
       udp: true
       uuid: 953358cb-82ba-4296-960d-6d2ec3468f4c
+    - name: vless-1283133070
+      network: ws
+      port: 8443
+      server: shop.neexbyte.ir
+      servername: shop.neexbyte.ir
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 464bc502-f963-45b6-81e3-e33d18427506
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-112587
+        - trojan-119244
+        - trojan-122850
+        - trojan-122851
         - vless-70576696
+        - vless-391803700
         - trojan-479026176
         - trojan-513948362
         - trojan-513948363
@@ -678,6 +736,7 @@ proxy-groups:
         - vless-1267353768
         - vless-1270188042
         - vless-1270357345
+        - vless-1274690736
         - vless-1275202463
         - vless-1275624780
         - vless-1275725463
@@ -689,7 +748,6 @@ proxy-groups:
         - vless-1277428379
         - vless-1277954361
         - vless-1278020019
-        - vmess-1278687067
         - vless-1278752075
         - vless-1278915830
         - vmess-1278939561
@@ -704,12 +762,18 @@ proxy-groups:
         - vless-1279639611
         - vless-1279664535
         - vless-1279753699
+        - vless-1283133070
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-112587
+        - trojan-119244
+        - trojan-122850
+        - trojan-122851
         - vless-70576696
+        - vless-391803700
         - trojan-479026176
         - trojan-513948362
         - trojan-513948363
@@ -743,6 +807,7 @@ proxy-groups:
         - vless-1267353768
         - vless-1270188042
         - vless-1270357345
+        - vless-1274690736
         - vless-1275202463
         - vless-1275624780
         - vless-1275725463
@@ -754,7 +819,6 @@ proxy-groups:
         - vless-1277428379
         - vless-1277954361
         - vless-1278020019
-        - vmess-1278687067
         - vless-1278752075
         - vless-1278915830
         - vmess-1278939561
@@ -769,6 +833,7 @@ proxy-groups:
         - vless-1279639611
         - vless-1279664535
         - vless-1279753699
+        - vless-1283133070
       type: select
 rules:
     - MATCH,select
