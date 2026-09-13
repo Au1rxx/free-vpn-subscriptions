@@ -6,6 +6,13 @@ proxies:
       skip-cert-verify: true
       sni: hopp-romania-new.roxa.org
       type: hysteria2
+    - name: hysteria2-1045025820
+      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+      port: 8443
+      server: 85.204.107.181
+      skip-cert-verify: true
+      sni: hopp-romania-new.roxa.org
+      type: hysteria2
     - name: hysteria2-1051283241
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
       port: 8443
@@ -24,20 +31,6 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - name: hysteria2-1209963836
-      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
-      port: 8443
-      server: 85.204.107.186
-      skip-cert-verify: true
-      sni: hopp-romania-new.roxa.org
-      type: hysteria2
-    - name: hysteria2-1059436567
-      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
-      port: 8443
-      server: 85.204.107.185
-      skip-cert-verify: true
-      sni: hopp-romania-new.roxa.org
-      type: hysteria2
     - flow: xtls-rprx-vision
       name: vless-1262329625
       network: tcp
@@ -55,13 +48,6 @@ proxies:
       server: 185.156.44.99
       skip-cert-verify: true
       sni: vk.com
-      type: hysteria2
-    - name: hysteria2-1045025820
-      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
-      port: 8443
-      server: 85.204.107.181
-      skip-cert-verify: true
-      sni: hopp-romania-new.roxa.org
       type: hysteria2
     - name: hysteria2-1058393303
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
@@ -98,57 +84,72 @@ proxies:
       skip-cert-verify: true
       sni: hopp-romania-new.roxa.org
       type: hysteria2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1249800502
+    - name: hysteria2-1209963836
+      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+      port: 8443
+      server: 85.204.107.186
+      skip-cert-verify: true
+      sni: hopp-romania-new.roxa.org
+      type: hysteria2
+    - flow: xtls-rprx-vision
+      name: vless-1275300279
       network: tcp
       port: 443
-      reality-opts:
-        public-key: gE8LUmGFXik94SoDXNiAG5KprGyhjoRwDuhGebgAVWk
-        short-id: 5ee019e02e6ed99a
-      server: 193.163.203.253
-      servername: yandex.ru
+      server: roma2.moritech.net
+      servername: ""
+      skip-cert-verify: true
       tls: true
       type: vless
       udp: true
-      uuid: 441afe11-a180-4516-bb80-80a8a6b38705
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
+      name: vless-1275319753
+      network: tcp
+      port: 443
+      server: roma1.moritech.net
+      servername: ""
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1045025821
+        - hysteria2-1045025820
         - hysteria2-1051283241
         - vless-1262329628
-        - hysteria2-1209963836
-        - hysteria2-1059436567
         - vless-1262329625
         - hysteria2-468884155
-        - hysteria2-1045025820
         - hysteria2-1058393303
         - hysteria2-1027255279
         - hysteria2-468884157
         - hysteria2-468884154
         - hysteria2-896855661
-        - vless-1249800502
+        - hysteria2-1209963836
+        - vless-1275300279
+        - vless-1275319753
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1045025821
+        - hysteria2-1045025820
         - hysteria2-1051283241
         - vless-1262329628
-        - hysteria2-1209963836
-        - hysteria2-1059436567
         - vless-1262329625
         - hysteria2-468884155
-        - hysteria2-1045025820
         - hysteria2-1058393303
         - hysteria2-1027255279
         - hysteria2-468884157
         - hysteria2-468884154
         - hysteria2-896855661
-        - vless-1249800502
+        - hysteria2-1209963836
+        - vless-1275300279
+        - vless-1275319753
       type: select
 rules:
     - MATCH,select
