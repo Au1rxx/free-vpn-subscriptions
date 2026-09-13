@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: edge
+      name: vless-1286977054
+      network: tcp
+      port: 32306
+      reality-opts:
+        public-key: 5iqitmx5fd71pubTxlrX0sd-ei7palcgVL7vtKToJGA
+        short-id: 61614f026070554f
+      server: 158.94.216.50
+      servername: play-apps-features.googleusercontent.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f1505323-ecb6-4152-9a5b-d37b3ae1cacf
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1286977054
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1286977054
+      type: select
+rules:
+    - MATCH,select

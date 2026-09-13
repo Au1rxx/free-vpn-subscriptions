@@ -34,6 +34,17 @@ proxies:
       skip-cert-verify: true
       sni: hopp-romania-new.roxa.org
       type: hysteria2
+    - flow: xtls-rprx-vision
+      name: vless-1274373871
+      network: tcp
+      port: 443
+      server: roma3.moritech.net
+      servername: roma3.moritech.net
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
@@ -43,6 +54,7 @@ proxy-groups:
         - hysteria2-468884155
         - hysteria2-860759612
         - hysteria2-896857447
+        - vless-1274373871
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -53,6 +65,7 @@ proxy-groups:
         - hysteria2-468884155
         - hysteria2-860759612
         - hysteria2-896857447
+        - vless-1274373871
       type: select
 rules:
     - MATCH,select

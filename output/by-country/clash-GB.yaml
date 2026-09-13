@@ -6,20 +6,6 @@ proxies:
       server: 149.102.149.207
       type: ss
       udp: true
-    - name: vless-1230280245
-      network: grpc
-      port: 2083
-      server: 66.90.104.42
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - name: vless-1230279293
-      network: grpc
-      port: 2083
-      server: 66.90.105.210
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-976474882
@@ -55,13 +41,13 @@ proxies:
       server: 129.151.95.27
       type: ss
       udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1287757702
-      password: Qye4JK+lHU/8aJtTB5om+IMoxG4r3luE4ogzVo1+Oxk=
-      port: 61312
-      server: 129.151.87.146
-      type: ss
+    - name: vless-1230573696
+      network: grpc
+      port: 2083
+      server: 66.90.105.210
+      type: vless
       udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - name: vless-1245422997
       network: grpc
       port: 2083
@@ -172,17 +158,54 @@ proxies:
       type: vless
       udp: true
       uuid: 9343f183-7a16-4bdd-9c65-b0c21feca40b
+    - flow: xtls-rprx-vision
+      name: vless-1157879699
+      network: tcp
+      port: 443
+      server: 50.7.226.171
+      servername: viper-21.moriarty-web.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-951538932
+      network: raw
+      port: 446
+      reality-opts:
+        public-key: 9LFDlpt6d56wFwxchaKvyLQHGj3lw3ku1g3X8H9JjEI
+        short-id: 91e6c6797f49ed84
+      server: 78.129.221.66
+      servername: louisvuitton.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 10000025-9365-7424-f000-93edfcf6a020
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1209548109
+      network: tcp
+      port: 421
+      reality-opts:
+        public-key: zUdAvpr07q1Yd0Om-jc4-Vu4Un5tVird8FGoN-7W9Tg
+        short-id: a1facbc8575701ae
+      server: 78.129.208.44
+      servername: chistomat.dry.care
+      tls: true
+      type: vless
+      udp: true
+      uuid: a3c861cb-e1e7-4ad6-8be2-7c2314ec6f18
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-717969059
-        - vless-1230280245
-        - vless-1230279293
         - vless-976474882
         - vless-838598249
         - shadowsocks-1290815181
-        - shadowsocks-1287757702
+        - vless-1230573696
         - vless-1245422997
         - hysteria2-744910428
         - shadowsocks-717969008
@@ -195,18 +218,19 @@ proxy-groups:
         - vless-810585267
         - vless-863998056
         - vless-1051397816
+        - vless-1157879699
+        - vless-951538932
+        - vless-1209548109
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-717969059
-        - vless-1230280245
-        - vless-1230279293
         - vless-976474882
         - vless-838598249
         - shadowsocks-1290815181
-        - shadowsocks-1287757702
+        - vless-1230573696
         - vless-1245422997
         - hysteria2-744910428
         - shadowsocks-717969008
@@ -219,6 +243,9 @@ proxy-groups:
         - vless-810585267
         - vless-863998056
         - vless-1051397816
+        - vless-1157879699
+        - vless-951538932
+        - vless-1209548109
       type: select
 rules:
     - MATCH,select
