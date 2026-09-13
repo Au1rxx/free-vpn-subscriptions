@@ -1,0 +1,63 @@
+{
+  "outbounds": [
+    {
+      "server": "114.129.43.30",
+      "server_port": 8880,
+      "tag": "vless-45800",
+      "transport": {
+        "headers": {
+          "Host": "vms.lifetime04.workers.dev"
+        },
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "6202b230-417c-4d8e-b624-0f71afa9c75d"
+    },
+    {
+      "server": "104.24.3.153",
+      "server_port": 443,
+      "tag": "vless-1273136551",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "user-svc-ca3845-edg.platform-37528a.workers.dev"
+      },
+      "transport": {
+        "headers": {
+          "Host": "user-svc-ca3845-edg.platform-37528a.workers.dev"
+        },
+        "path": "/?proxyip=185.239.48.237\u0026ed=2560",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "887f0c24-8b2e-40ce-8df5-27b4cb06ce81"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-45800",
+        "vless-1273136551"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-45800",
+        "vless-1273136551"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

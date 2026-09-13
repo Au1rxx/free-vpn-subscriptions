@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-70576696
+      network: ws
+      port: 80
+      server: 172.67.250.163
+      type: vless
+      udp: true
+      uuid: 234c52f2-0d7b-dc4a-0d6b-b0b30000002e
     - name: trojan-479026176
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20017
@@ -15,16 +22,6 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: vless-561641576
-      network: tcp
-      port: 8443
-      server: 195-162-69-203.sslip.io
-      servername: 195-162-69-203.sslip.io
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 953358cb-82ba-4296-960d-6d2ec3468f4c
     - name: trojan-739165522
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20017
@@ -227,36 +224,6 @@ proxies:
       type: vless
       udp: true
       uuid: b052df40-d51c-456c-9bd6-57af01a87e4e
-    - name: vless-1182721091
-      network: tcp
-      port: 8443
-      server: 195.162.69.203
-      servername: 195-162-69-203.sslip.io
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 953358cb-82ba-4296-960d-6d2ec3468f4c
-    - name: vless-1182726093
-      network: tcp
-      port: 8443
-      server: 195-162-69-203.sslip.io
-      servername: 195-162-69-203.sslip.io
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 953358cb-82ba-4296-960d-6d2ec3468f4c
-    - name: vless-1183916736
-      network: raw
-      port: 8443
-      server: 195.162.69.203
-      servername: 195-162-69-203.sslip.io
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 953358cb-82ba-4296-960d-6d2ec3468f4c
     - name: vless-1227680377
       network: tcp
       port: 8443
@@ -279,23 +246,6 @@ proxies:
       uuid: 953358cb-82ba-4296-960d-6d2ec3468f4c
     - name: vless-1238421052
       network: raw
-      port: 8082
-      server: app.life-pro.ir
-      type: vless
-      udp: true
-      uuid: 79f98593-6a21-4783-a425-3d5609a79df1
-    - name: vless-1242179354
-      network: tcp
-      port: 8443
-      server: 195.162.69.203
-      servername: 195-162-69-203.sslip.io
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 953358cb-82ba-4296-960d-6d2ec3468f4c
-    - name: vless-1249006582
-      network: tcp
       port: 8082
       server: app.life-pro.ir
       type: vless
@@ -469,13 +419,22 @@ proxies:
       type: vless
       udp: true
       uuid: 97ecaad4-452c-45ec-b591-d68d3308aad4
+    - alterId: 0
+      cipher: auto
+      name: vmess-1278687067
+      network: tcp
+      port: 443
+      server: 206.1.96.187
+      type: vmess
+      udp: true
+      uuid: 32c017e7-2fa6-4a43-98ef-b21bb63d92e6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-70576696
         - trojan-479026176
         - trojan-513948362
-        - vless-561641576
         - trojan-739165522
         - vless-743890322
         - trojan-856461940
@@ -492,14 +451,9 @@ proxy-groups:
         - vless-1104470805
         - vless-1149855408
         - vless-1181146340
-        - vless-1182721091
-        - vless-1182726093
-        - vless-1183916736
         - vless-1227680377
         - vless-1227681370
         - vless-1238421052
-        - vless-1242179354
-        - vless-1249006582
         - vless-1250111375
         - vless-1270357345
         - vless-1275201420
@@ -513,14 +467,15 @@ proxy-groups:
         - vless-1277428379
         - vless-1277954361
         - vless-1278020019
+        - vmess-1278687067
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-70576696
         - trojan-479026176
         - trojan-513948362
-        - vless-561641576
         - trojan-739165522
         - vless-743890322
         - trojan-856461940
@@ -537,14 +492,9 @@ proxy-groups:
         - vless-1104470805
         - vless-1149855408
         - vless-1181146340
-        - vless-1182721091
-        - vless-1182726093
-        - vless-1183916736
         - vless-1227680377
         - vless-1227681370
         - vless-1238421052
-        - vless-1242179354
-        - vless-1249006582
         - vless-1250111375
         - vless-1270357345
         - vless-1275201420
@@ -558,6 +508,7 @@ proxy-groups:
         - vless-1277428379
         - vless-1277954361
         - vless-1278020019
+        - vmess-1278687067
       type: select
 rules:
     - MATCH,select

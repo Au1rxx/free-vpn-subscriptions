@@ -1,0 +1,34 @@
+proxies:
+    - name: vless-45800
+      network: ws
+      port: 8880
+      server: 114.129.43.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-1273136551
+      network: ws
+      port: 443
+      server: 104.24.3.153
+      servername: user-svc-ca3845-edg.platform-37528a.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 887f0c24-8b2e-40ce-8df5-27b4cb06ce81
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-45800
+        - vless-1273136551
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-45800
+        - vless-1273136551
+      type: select
+rules:
+    - MATCH,select
