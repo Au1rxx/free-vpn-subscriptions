@@ -9,13 +9,6 @@ proxies:
       type: vless
       udp: true
       uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-    - name: vless-852108509
-      network: ws
-      port: 443
-      server: 94.183.170.135
-      type: vless
-      udp: true
-      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
     - name: vless-957016089
       network: ws
       port: 443
@@ -30,8 +23,18 @@ proxies:
       type: vless
       udp: true
       uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-    - name: vless-970024036
-      network: raw
+    - name: vless-659664531
+      network: tcp
+      port: 8443
+      server: 94.183.170.135
+      servername: estproxy4.lockdwn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+    - name: vless-648965652
+      network: tcp
       port: 8443
       server: 94.183.170.135
       servername: estproxy4.lockdwn.com
@@ -45,20 +48,20 @@ proxy-groups:
       name: auto
       proxies:
         - vless-656161252
-        - vless-852108509
         - vless-957016089
         - vless-957016053
-        - vless-970024036
+        - vless-659664531
+        - vless-648965652
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-656161252
-        - vless-852108509
         - vless-957016089
         - vless-957016053
-        - vless-970024036
+        - vless-659664531
+        - vless-648965652
       type: select
 rules:
     - MATCH,select
