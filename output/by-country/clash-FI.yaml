@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: firefox
+      name: vless-1281392582
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: FOQzn10eHqu4F5xOxiXW2bTDG8lH4TdOXP6A5rDqKFk
+        short-id: ""
+      server: 104.245.242.8
+      servername: download.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4350213a-b4e7-262a-0bd7-bd16957cf71a
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-669848765
@@ -45,6 +58,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1281392582
         - vless-669848765
         - vless-661038937
         - vless-1200269341
@@ -53,6 +67,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1281392582
         - vless-669848765
         - vless-661038937
         - vless-1200269341
