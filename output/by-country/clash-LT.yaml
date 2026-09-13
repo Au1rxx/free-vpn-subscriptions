@@ -1,11 +1,25 @@
 proxies:
     - cipher: aes-256-cfb
-      name: shadowsocks-717968959
-      password: b8KkNDjEd5QqFyRm
-      port: 9002
+      name: shadowsocks-768399438
+      password: UkXRsXvR6buDMG2Y
+      port: 9001
       server: 195.238.126.20
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-930426249
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: W-zf_ncm9sYALF5EqvUsxqTkYGdAw-tQczT2SqwVMGE
+        short-id: ff776ff77be48b88
+      server: 88.119.176.24
+      servername: lit9.helper-internet.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ae8e0f7d-b661-41ca-b55d-d8c383adb2f8
     - cipher: aes-256-cfb
       name: shadowsocks-812343760
       password: xaupMUvhptwxdDUg
@@ -17,14 +31,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-717968959
+        - shadowsocks-768399438
+        - vless-930426249
         - shadowsocks-812343760
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-717968959
+        - shadowsocks-768399438
+        - vless-930426249
         - shadowsocks-812343760
       type: select
 rules:

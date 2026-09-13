@@ -13,13 +13,6 @@ proxies:
       skip-cert-verify: true
       sni: css.rbxcdn.com
       type: hysteria2
-    - name: vless-1163061815
-      network: ws
-      port: 2087
-      server: 103.75.119.126
-      type: vless
-      udp: true
-      uuid: 731f177e-00aa-480c-b935-661456139a32
     - name: hysteria2-1059313714
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -48,24 +41,30 @@ proxies:
       skip-cert-verify: true
       sni: t.me
       type: hysteria2
-    - name: hysteria2-658428922
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-532685580
+      network: tcp
       port: 443
-      server: vpn-au-002.fastervpn.world
-      skip-cert-verify: true
-      sni: vpn-au-002.fastervpn.world
-      type: hysteria2
+      reality-opts:
+        public-key: a2qGjvUPq6Nz5FTbn_MSHp-055q2h8YXqIL5VIJ5zwE
+        short-id: d15c17cef9b2e456
+      server: 51.161.204.242
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1151376484
         - hysteria2-1059313757
-        - vless-1163061815
         - hysteria2-1059313714
         - vless-1272779527
         - hysteria2-1059313769
-        - hysteria2-658428922
+        - vless-532685580
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -73,11 +72,10 @@ proxy-groups:
         - auto
         - vless-1151376484
         - hysteria2-1059313757
-        - vless-1163061815
         - hysteria2-1059313714
         - vless-1272779527
         - hysteria2-1059313769
-        - hysteria2-658428922
+        - vless-532685580
       type: select
 rules:
     - MATCH,select
