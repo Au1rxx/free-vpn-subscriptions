@@ -1,0 +1,22 @@
+proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1256735543
+      password: jIlQi9jGPJd7KHMx6Y4+JbaNoWSWfe2A73U4J4o0Qrs=
+      port: 43558
+      server: 130.49.189.158
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-1256735543
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-1256735543
+      type: select
+rules:
+    - MATCH,select
