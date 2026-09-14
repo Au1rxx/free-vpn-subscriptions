@@ -1,4 +1,21 @@
 proxies:
+    - name: vless-38511
+      network: ws
+      port: 443
+      server: 104.17.247.68
+      servername: khoda.ak-khoda.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e6cc4788-3c45-4df1-94f3-8303504a65bf
+    - name: vless-23849902
+      network: ws
+      port: 8880
+      server: 154.197.75.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-419356365
       password: U9YAoqBgg5VyGBc6vQv1sN
@@ -2293,6 +2310,20 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1235435921
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Q7-sRiaAcmlJ_iwqiA46kDKso_r2kJ7X1mrVjL2illo
+        short-id: fcb8b7c846dbb431
+      server: pl.monkeyvillage.pro
+      servername: pl.monkeyvillage.pro
+      tls: true
+      type: vless
+      udp: true
+      uuid: 88370d48-f668-47b2-9494-bc92c11cc602
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1235617148
@@ -2812,34 +2843,6 @@ proxies:
       uuid: 827a0eb0-21bf-4bce-96ef-0a7bac5d68f5
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1290427880
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: Bj9X3UJ2D5Q14wfBOwTz3s09SkFRVgMKTcn93s6kNHo
-        short-id: 7a9fc61469bab24c
-      server: oichweiupfn4weuirfyewuicu90834y57y98v7r87489t4.mexicoguard.ir
-      servername: amp-api-edge.apps.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1a67126c-b9c4-4e78-b96e-eabd4002ab0c
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1290427883
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: Bj9X3UJ2D5Q14wfBOwTz3s09SkFRVgMKTcn93s6kNHo
-        short-id: 03290875973f3e16
-      server: vvvrexnl4c4fo0n90i45.gorvexo.ir
-      servername: amp-api-edge.apps.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1a67126c-b9c4-4e78-b96e-eabd4002ab0c
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-1291229327
       network: tcp
       port: 443
@@ -2991,10 +2994,26 @@ proxies:
       type: vless
       udp: true
       uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1294430244
+      network: tcp
+      port: 2063
+      reality-opts:
+        public-key: MMpt_jWc4J3oySBdf5sPDVRkiWlZmOObth6A1scM9BM
+        short-id: ""
+      server: 5.252.102.64
+      servername: rusbid.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: b18d5990-96eb-4587-a386-7f8ef7591e6a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-38511
+        - vless-23849902
         - shadowsocks-419356365
         - vless-468895883
         - vless-483687853
@@ -3218,6 +3237,7 @@ proxy-groups:
         - vless-1229810757
         - vless-1230667265
         - vless-1231429203
+        - vless-1235435921
         - vless-1235617148
         - vless-1236842395
         - vless-1237091932
@@ -3262,8 +3282,6 @@ proxy-groups:
         - vless-1289576405
         - vless-1290258428
         - vless-1290388155
-        - vless-1290427880
-        - vless-1290427883
         - vless-1291229327
         - vless-1291646821
         - vless-1291850908
@@ -3275,11 +3293,14 @@ proxy-groups:
         - vless-1293520038
         - vless-1293637711
         - vless-1293658710
+        - vless-1294430244
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-38511
+        - vless-23849902
         - shadowsocks-419356365
         - vless-468895883
         - vless-483687853
@@ -3503,6 +3524,7 @@ proxy-groups:
         - vless-1229810757
         - vless-1230667265
         - vless-1231429203
+        - vless-1235435921
         - vless-1235617148
         - vless-1236842395
         - vless-1237091932
@@ -3547,8 +3569,6 @@ proxy-groups:
         - vless-1289576405
         - vless-1290258428
         - vless-1290388155
-        - vless-1290427880
-        - vless-1290427883
         - vless-1291229327
         - vless-1291646821
         - vless-1291850908
@@ -3560,6 +3580,7 @@ proxy-groups:
         - vless-1293520038
         - vless-1293637711
         - vless-1293658710
+        - vless-1294430244
       type: select
 rules:
     - MATCH,select

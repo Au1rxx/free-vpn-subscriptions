@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-44275
+      network: ws
+      port: 443
+      server: 104.26.3.138
+      servername: vltj.qzz.io
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 506e4a91-1d05-5683-b84c-2113f673cb19
     - name: trojan-192032511
       password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
       port: 20056
@@ -37,6 +47,14 @@ proxies:
       server: edu.ruangguru.com
       skip-cert-verify: false
       sni: id1.nathaya.web.id
+      type: trojan
+      udp: true
+    - name: trojan-696781134
+      password: 08340a533092e321470fbe21b3407694
+      port: 59443
+      server: ja262.magiclampcloud.cn
+      skip-cert-verify: true
+      sni: ja262.magiclampcloud.cn
       type: trojan
       udp: true
     - cipher: chacha20-ietf-poly1305
@@ -164,11 +182,13 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-44275
         - trojan-192032511
         - trojan-207313013
         - trojan-490085150
         - trojan-503199066
         - trojan-692972555
+        - trojan-696781134
         - shadowsocks-860328950
         - trojan-912445306
         - trojan-918093317
@@ -189,11 +209,13 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-44275
         - trojan-192032511
         - trojan-207313013
         - trojan-490085150
         - trojan-503199066
         - trojan-692972555
+        - trojan-696781134
         - shadowsocks-860328950
         - trojan-912445306
         - trojan-918093317

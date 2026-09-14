@@ -1,4 +1,24 @@
 proxies:
+    - name: vless-45435
+      network: ws
+      port: 443
+      server: 108.165.233.223
+      servername: netlivpn4813.ddhshhshs.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2388e166-3890-33ae-f77e-efac00000003
+    - name: vless-34790904
+      network: ws
+      port: 443
+      server: 172.67.208.181
+      servername: biyapain.biyapainbache.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5a5fba4d-6ae8-4975-936d-bb643fb15957
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-696780839
@@ -812,10 +832,54 @@ proxies:
       type: vless
       udp: true
       uuid: dca76b88-b038-e82b-45e1-1d76b476d7ca
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1294595398
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: -GMpCber8qtrKzJbwvpLcwlIhOy-5zS66u_x9lLvIjE
+        short-id: e3daad69
+      server: 193.148.59.178
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 20d7c485-5d24-49b5-a5cc-bb7a7daf9908
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1294613410
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: CetY_ReGID1LBH275yWlxxOctI82PtgxR-fjYSRTKzM
+        short-id: 8a2b3c4d5e6f7012
+      server: 31.76.3.34
+      servername: tradingview.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0d628b17-8ac4-49b9-a422-6b99077bfdf6
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1294613477
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: CetY_ReGID1LBH275yWlxxOctI82PtgxR-fjYSRTKzM
+        short-id: 8a2b3c4d5e6f7012
+      server: no.cnd.sweden.myfilecdn.com
+      servername: tradingview.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0d628b17-8ac4-49b9-a422-6b99077bfdf6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-45435
+        - vless-34790904
         - vless-696780839
         - vless-713157148
         - vless-872770205
@@ -877,11 +941,16 @@ proxy-groups:
         - vless-1293617648
         - vless-1293658704
         - vless-1293946433
+        - vless-1294595398
+        - vless-1294613410
+        - vless-1294613477
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-45435
+        - vless-34790904
         - vless-696780839
         - vless-713157148
         - vless-872770205
@@ -943,6 +1012,9 @@ proxy-groups:
         - vless-1293617648
         - vless-1293658704
         - vless-1293946433
+        - vless-1294595398
+        - vless-1294613410
+        - vless-1294613477
       type: select
 rules:
     - MATCH,select
