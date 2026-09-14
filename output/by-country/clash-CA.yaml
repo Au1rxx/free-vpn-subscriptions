@@ -1,9 +1,26 @@
 proxies:
+    - name: vless-1220630118
+      network: tcp
+      port: 443
+      server: 184.107.106.68
+      servername: 184.107.106.68
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 716426fa-bcb7-4eb9-b460-36399ebf740d
     - cipher: aes-128-gcm
       name: shadowsocks-208
       password: shadowsocks
       port: 443
       server: 149.22.95.183
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-1118951746
+      password: Y6R9pAtvxxzmGC
+      port: 5000
+      server: 51.222.200.165
       type: ss
       udp: true
     - cipher: aes-256-gcm
@@ -47,16 +64,6 @@ proxies:
       skip-cert-verify: true
       sni: whatsapp.com
       type: hysteria2
-    - name: vless-1224465524
-      network: tcp
-      port: 443
-      server: 184.107.106.68
-      servername: ""
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 716426fa-bcb7-4eb9-b460-36399ebf740d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-200282613
@@ -99,19 +106,6 @@ proxies:
       type: vless
       udp: true
       uuid: a71c8954-66a8-4321-bedb-2336230d81ce
-    - client-fingerprint: random
-      name: vless-1275300277
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: k4l6TxwkBbx9DhZAFpByq5rfCWFSgyOex3f_eFe9CWU
-        short-id: 83f8317a948bb769
-      server: 66.70.179.198
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: dc620cd6-a9d8-4a0f-8f18-006b895db77e
     - name: hysteria2-1163840406
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -119,16 +113,6 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
-    - name: vless-1220630118
-      network: tcp
-      port: 443
-      server: 184.107.106.68
-      servername: 184.107.106.68
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 716426fa-bcb7-4eb9-b460-36399ebf740d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-692622873
@@ -199,19 +183,6 @@ proxies:
       type: vless
       udp: true
       uuid: a71c8954-66a8-4321-bedb-2336230d81ce
-    - client-fingerprint: firefox
-      name: vless-1260285703
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: k4l6TxwkBbx9DhZAFpByq5rfCWFSgyOex3f_eFe9CWU
-        short-id: 83f8317a948bb769
-      server: 66.70.179.198
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: dc620cd6-a9d8-4a0f-8f18-006b895db77e
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-91983783
@@ -310,20 +281,6 @@ proxies:
       type: vless
       udp: true
       uuid: a71c8954-66a8-4321-bedb-2336230d81ce
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1254903197
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: feWlxnxySxB9B9HiuC4NwoTe_6slRqaW-EULPN0yxjY
-        short-id: af7e79b5
-      server: 66.70.179.124
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c8f9e08d-7d07-4059-9f71-0b014b9e0ec7
     - client-fingerprint: random
       name: vless-1274186383
       network: tcp
@@ -368,20 +325,6 @@ proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-51783
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: wo417FrFdjy7ZhccQ-VWGZEKcoCHSEfyWcJT1pIVc1Y
-        short-id: 3d3c1e645f763ee3
-      server: 158.69.112.254
-      servername: www.speedtest.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: 661f395d-b153-4199-a04b-693f5fe7f261
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1270653457
       network: tcp
       port: 443
       reality-opts:
@@ -549,6 +492,13 @@ proxies:
       skip-cert-verify: true
       sni: css.rbxcdn.com
       type: hysteria2
+    - name: hysteria2-200394189
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: vpn-ca-001.fastervpn.world
+      skip-cert-verify: true
+      sni: vpn-ca-001.fastervpn.world
+      type: hysteria2
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-470978189
@@ -712,25 +662,23 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1220630118
         - shadowsocks-208
+        - shadowsocks-1118951746
         - shadowsocks-496614106
         - shadowsocks-468218613
         - vless-725797379
         - vless-829563781
         - hysteria2-722298619
-        - vless-1224465524
         - vless-200282613
         - vless-1109241417
         - vless-720888904
-        - vless-1275300277
         - hysteria2-1163840406
-        - vless-1220630118
         - vless-692622873
         - vless-2331698
         - vless-46267
         - vless-258647517
         - vless-827281118
-        - vless-1260285703
         - vless-91983783
         - vless-23853903
         - vless-202736774
@@ -738,12 +686,10 @@ proxy-groups:
         - vless-909039620
         - vless-734969288
         - vless-1109835478
-        - vless-1254903197
         - vless-1274186383
         - vless-656230710
         - vless-293233478
         - vless-51783
-        - vless-1270653457
         - vless-92670921
         - vless-2314770
         - vless-1257526766
@@ -757,6 +703,7 @@ proxy-groups:
         - vless-1274668699
         - vless-1230974273
         - hysteria2-468892439
+        - hysteria2-200394189
         - vless-470978189
         - vless-685581271
         - vless-734969290
@@ -774,25 +721,23 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1220630118
         - shadowsocks-208
+        - shadowsocks-1118951746
         - shadowsocks-496614106
         - shadowsocks-468218613
         - vless-725797379
         - vless-829563781
         - hysteria2-722298619
-        - vless-1224465524
         - vless-200282613
         - vless-1109241417
         - vless-720888904
-        - vless-1275300277
         - hysteria2-1163840406
-        - vless-1220630118
         - vless-692622873
         - vless-2331698
         - vless-46267
         - vless-258647517
         - vless-827281118
-        - vless-1260285703
         - vless-91983783
         - vless-23853903
         - vless-202736774
@@ -800,12 +745,10 @@ proxy-groups:
         - vless-909039620
         - vless-734969288
         - vless-1109835478
-        - vless-1254903197
         - vless-1274186383
         - vless-656230710
         - vless-293233478
         - vless-51783
-        - vless-1270653457
         - vless-92670921
         - vless-2314770
         - vless-1257526766
@@ -819,6 +762,7 @@ proxy-groups:
         - vless-1274668699
         - vless-1230974273
         - hysteria2-468892439
+        - hysteria2-200394189
         - vless-470978189
         - vless-685581271
         - vless-734969290

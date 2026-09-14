@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: chrome
+      name: vless-1290388122
+      network: grpc
+      port: 10048
+      reality-opts:
+        public-key: wOu-BMrXvk9KX23JZrlpUlF4SMjDcejm0vNECdhy5xE
+        short-id: 686c0ef0
+      server: kr3-r.link-t7.com
+      servername: s0.awsstatic.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7134DB35-F254-4468-BA00-D9C099CF5AF7
     - name: hysteria2-591454513
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -104,19 +117,6 @@ proxies:
       type: vless
       udp: true
       uuid: 814bd064-544d-4255-a070-5705c03f6da9
-    - client-fingerprint: chrome
-      name: vless-1290388122
-      network: grpc
-      port: 10048
-      reality-opts:
-        public-key: wOu-BMrXvk9KX23JZrlpUlF4SMjDcejm0vNECdhy5xE
-        short-id: 686c0ef0
-      server: kr3-r.link-t7.com
-      servername: s0.awsstatic.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7134DB35-F254-4468-BA00-D9C099CF5AF7
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-468901438
@@ -244,13 +244,19 @@ proxies:
       type: vless
       udp: true
       uuid: 814bd064-544d-4255-a070-5705c03f6da9
-    - name: hysteria2-1149856388
-      password: 9cfc9458e48c028ec03ff86ebc71c744
-      port: 50160
-      server: 150-230-252-217.liao.kdns.fr
-      skip-cert-verify: true
-      sni: 127.0.0.1
-      type: hysteria2
+    - client-fingerprint: firefox
+      name: vless-1260284733
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: F6C33iIbfmt1mUsuLTarIC8ygdHKMqsaGvrSQltyxUo
+        short-id: 429499c03d4cc8a0
+      server: 151.245.106.49
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a2de9567-9646-45a9-a410-7303a43bdb6c
     - name: hysteria2-920250296
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -280,26 +286,6 @@ proxies:
       type: vless
       udp: true
       uuid: 814bd064-544d-4255-a070-5705c03f6da9
-    - client-fingerprint: firefox
-      name: vless-1260284733
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: F6C33iIbfmt1mUsuLTarIC8ygdHKMqsaGvrSQltyxUo
-        short-id: 429499c03d4cc8a0
-      server: 151.245.106.49
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a2de9567-9646-45a9-a410-7303a43bdb6c
-    - name: hysteria2-1093669534
-      password: 3d7634af8cb2c6cb4bac1c0efad8b43d
-      port: 50160
-      server: 152.67.200.82
-      skip-cert-verify: true
-      sni: vk.com
-      type: hysteria2
     - name: hysteria2-774524113
       password: 3d7634af8cb2c6cb4bac1c0efad8b43d
       port: 50160
@@ -330,6 +316,13 @@ proxies:
       server: 3.36.93.74
       skip-cert-verify: true
       sni: 3.36.93.74
+      type: hysteria2
+    - name: hysteria2-1093669534
+      password: 3d7634af8cb2c6cb4bac1c0efad8b43d
+      port: 50160
+      server: 152.67.200.82
+      skip-cert-verify: true
+      sni: vk.com
       type: hysteria2
     - cipher: aes-256-cfb
       name: shadowsocks-817206649
@@ -449,6 +442,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1290388122
         - hysteria2-591454513
         - vless-1104491030
         - vless-721523038
@@ -458,7 +452,6 @@ proxy-groups:
         - hysteria2-547757560
         - hysteria2-266962492
         - vless-700888654
-        - vless-1290388122
         - vless-468901438
         - vless-561641544
         - vless-622951487
@@ -470,16 +463,15 @@ proxy-groups:
         - hysteria2-722298531
         - trojan-84489892
         - vless-656230613
-        - hysteria2-1149856388
+        - vless-1260284733
         - hysteria2-920250296
         - trojan-279496851
         - vless-656230724
-        - vless-1260284733
-        - hysteria2-1093669534
         - hysteria2-774524113
         - trojan-98121908
         - vmess-23958910
         - hysteria2-650671509
+        - hysteria2-1093669534
         - shadowsocks-817206649
         - shadowsocks-287
         - vless-803630116
@@ -496,6 +488,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1290388122
         - hysteria2-591454513
         - vless-1104491030
         - vless-721523038
@@ -505,7 +498,6 @@ proxy-groups:
         - hysteria2-547757560
         - hysteria2-266962492
         - vless-700888654
-        - vless-1290388122
         - vless-468901438
         - vless-561641544
         - vless-622951487
@@ -517,16 +509,15 @@ proxy-groups:
         - hysteria2-722298531
         - trojan-84489892
         - vless-656230613
-        - hysteria2-1149856388
+        - vless-1260284733
         - hysteria2-920250296
         - trojan-279496851
         - vless-656230724
-        - vless-1260284733
-        - hysteria2-1093669534
         - hysteria2-774524113
         - trojan-98121908
         - vmess-23958910
         - hysteria2-650671509
+        - hysteria2-1093669534
         - shadowsocks-817206649
         - shadowsocks-287
         - vless-803630116
