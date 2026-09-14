@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-62331905
-      network: ws
-      port: 2200
-      server: 212.67.9.113
-      type: vless
-      udp: true
-      uuid: 2aa7f4b1-e859-46d0-b8ac-8587811ab7b1
     - client-fingerprint: chrome
       name: vless-656240777
       network: tcp
@@ -42,13 +35,6 @@ proxies:
       type: vless
       udp: true
       uuid: 633f424e-2b11-48da-a6b3-a849dd71456f
-    - name: vless-734956293
-      network: ws
-      port: 2200
-      server: 212.67.9.113
-      type: vless
-      udp: true
-      uuid: 2aa7f4b1-e859-46d0-b8ac-8587811ab7b1
     - client-fingerprint: qq
       name: vless-966415513
       network: tcp
@@ -209,15 +195,27 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - cipher: aes-256-gcm
+      name: shadowsocks-1307940135
+      password: d3N1ZE5GQUtJS0Rpdmh5RFhTS0ZOSVNkSlJ0dENqQjl4eVFLMVJoczZ6U2NuenVNaENDT29qeGp4M2xRenZQVQ==
+      port: 23254
+      server: 201.34.151.230
+      type: ss
+      udp: true
+    - name: hysteria2-1308046309
+      password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
+      port: 2056
+      server: els1.mangshe.xyz
+      skip-cert-verify: true
+      sni: els1.mangshe.xyz
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-62331905
         - vless-656240777
         - vless-698726724
         - vless-700375881
-        - vless-734956293
         - vless-966415513
         - vless-1270189046
         - vless-1270214709
@@ -232,16 +230,16 @@ proxy-groups:
         - hysteria2-1289897528
         - vless-1290452139
         - hysteria2-1292880788
+        - shadowsocks-1307940135
+        - hysteria2-1308046309
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-62331905
         - vless-656240777
         - vless-698726724
         - vless-700375881
-        - vless-734956293
         - vless-966415513
         - vless-1270189046
         - vless-1270214709
@@ -256,6 +254,8 @@ proxy-groups:
         - hysteria2-1289897528
         - vless-1290452139
         - hysteria2-1292880788
+        - shadowsocks-1307940135
+        - hysteria2-1308046309
       type: select
 rules:
     - MATCH,select
