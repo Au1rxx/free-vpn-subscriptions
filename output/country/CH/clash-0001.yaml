@@ -7,6 +7,14 @@ proxies:
       sni: mfyousheng.nl.eu.org
       type: trojan
       udp: true
+    - name: trojan-2501852
+      password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
+      port: 443
+      server: 188.114.97.3
+      skip-cert-verify: false
+      sni: mfyousheng.nl.eu.org
+      type: trojan
+      udp: true
     - name: hysteria2-956723757
       password: 84a506ca5aca505696a454d828420b3f
       port: 50160
@@ -284,11 +292,40 @@ proxies:
       type: vless
       udp: true
       uuid: 0fec175e-0a1a-41f7-a2c8-478edb9764cb
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1311529345
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8ZYjmjb0b2QJKCGMrcdhQNV28jZZPCKgIQbIdqChQ0w
+        short-id: 00a61d55a07de885
+      server: 131.123.25.4
+      servername: fr.convert-flow.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4360f941-b541-02f4-8507-2de3763e0cfd
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1311529350
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8ZYjmjb0b2QJKCGMrcdhQNV28jZZPCKgIQbIdqChQ0w
+        short-id: 00a61d55a07de885
+      server: 89.105.206.124
+      servername: nl.convert-flow.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4360f941-b541-02f4-8507-2de3763e0cfd
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-123833
+        - trojan-2501852
         - hysteria2-956723757
         - hysteria2-1001586620
         - hysteria2-1001848837
@@ -311,12 +348,15 @@ proxy-groups:
         - vless-1307735067
         - vless-1307741629
         - vless-1307826084
+        - vless-1311529345
+        - vless-1311529350
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-123833
+        - trojan-2501852
         - hysteria2-956723757
         - hysteria2-1001586620
         - hysteria2-1001848837
@@ -339,6 +379,8 @@ proxy-groups:
         - vless-1307735067
         - vless-1307741629
         - vless-1307826084
+        - vless-1311529345
+        - vless-1311529350
       type: select
 rules:
     - MATCH,select

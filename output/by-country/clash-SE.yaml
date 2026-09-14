@@ -13,20 +13,20 @@ proxies:
       type: vless
       udp: true
       uuid: 20d7c485-5d24-49b5-a5cc-bb7a7daf9908
-    - client-fingerprint: chrome
+    - client-fingerprint: qq
       flow: xtls-rprx-vision
-      name: vless-1272899310
+      name: vless-1311529344
       network: tcp
       port: 443
       reality-opts:
-        public-key: wSjV1yR_rhDUdoNbM9zIXNGLASLp9RorComnyoayo2c
-        short-id: ""
-      server: 143.246.193.215
-      servername: www.blocket.se
+        public-key: 8ZYjmjb0b2QJKCGMrcdhQNV28jZZPCKgIQbIdqChQ0w
+        short-id: 00a61d55a07de885
+      server: 131.123.25.4
+      servername: fr.convert-flow.net
       tls: true
       type: vless
       udp: true
-      uuid: 77da6e30-ad4e-11f1-94d5-525400d1d4f7
+      uuid: 4360f941-b541-02f0-8507-2de3763e0cfd
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-1309809037
@@ -55,23 +55,32 @@ proxies:
       type: vless
       udp: true
       uuid: 20d7c485-5d24-49b5-a5cc-bb7a7daf9908
+    - name: hysteria2-1230196608
+      password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
+      port: 25443
+      server: se-node.rumedia-cdn.com
+      skip-cert-verify: true
+      sni: cf2.rumedia-cdn.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-950679547
-        - vless-1272899310
+        - vless-1311529344
         - vless-1309809037
         - vless-897978973
+        - hysteria2-1230196608
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-950679547
-        - vless-1272899310
+        - vless-1311529344
         - vless-1309809037
         - vless-897978973
+        - hysteria2-1230196608
       type: select
 rules:
     - MATCH,select
