@@ -6,6 +6,13 @@ proxies:
       type: vless
       udp: true
       uuid: 731f177e-00aa-480c-b935-661456139a32
+    - name: vless-1163061815
+      network: ws
+      port: 2087
+      server: 103.75.119.126
+      type: vless
+      udp: true
+      uuid: 731f177e-00aa-480c-b935-661456139a32
     - name: hysteria2-1059313769
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -13,20 +20,6 @@ proxies:
       skip-cert-verify: true
       sni: t.me
       type: hysteria2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1245733513
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: a2qGjvUPq6Nz5FTbn_MSHp-055q2h8YXqIL5VIJ5zwE
-        short-id: d15c17cef9b2e456
-      server: 51.161.204.242
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1272779527
@@ -41,23 +34,54 @@ proxies:
       type: vless
       udp: true
       uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1245733513
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: a2qGjvUPq6Nz5FTbn_MSHp-055q2h8YXqIL5VIJ5zwE
+        short-id: d15c17cef9b2e456
+      server: 51.161.204.242
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
+    - client-fingerprint: firefox
+      name: vless-1258929861
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
+        short-id: 4cc9dc65f7770115
+      server: 46.250.240.80
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1151376484
+        - vless-1163061815
         - hysteria2-1059313769
-        - vless-1245733513
         - vless-1272779527
+        - vless-1245733513
+        - vless-1258929861
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1151376484
+        - vless-1163061815
         - hysteria2-1059313769
-        - vless-1245733513
         - vless-1272779527
+        - vless-1245733513
+        - vless-1258929861
       type: select
 rules:
     - MATCH,select

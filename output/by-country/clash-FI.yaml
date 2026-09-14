@@ -1,58 +1,5 @@
 proxies:
     - client-fingerprint: firefox
-      name: vless-1289200239
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: WtLZK1KyhSpI3K-R4M3sLAHWPOgGPMgkL6RneL0OfCY
-        short-id: ""
-      server: 89.47.55.8
-      servername: download.nvidia.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4350213a-b4e7-262a-0bd7-bd16957cf71a
-    - client-fingerprint: firefox
-      name: vless-1281392582
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: FOQzn10eHqu4F5xOxiXW2bTDG8lH4TdOXP6A5rDqKFk
-        short-id: ""
-      server: 104.245.242.8
-      servername: download.nvidia.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4350213a-b4e7-262a-0bd7-bd16957cf71a
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1292944080
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 8ZYjmjb0b2QJKCGMrcdhQNV28jZZPCKgIQbIdqChQ0w
-        short-id: 00a61d55a07de885
-      server: 144.31.90.65
-      servername: fl.convert-flow.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3a22ca95-bd99-4c6b-a799-f8f73930ea05
-    - client-fingerprint: chrome
-      name: vless-1289058317
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: iVDh09Vm2DqZMNQoUdf-LCZ6TqVGb9mLXnClAK2LRj4
-        short-id: ""
-      server: 89.47.55.8
-      servername: www.canon.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: dca76b88-b038-e82b-45e1-1d76b476d7ca
-    - client-fingerprint: firefox
       name: vless-1279478362
       network: grpc
       port: 8443
@@ -61,42 +8,6 @@ proxies:
         short-id: ""
       server: 62.233.39.9
       servername: download.nvidia.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4350213a-b4e7-262a-0bd7-bd16957cf71a
-    - client-fingerprint: chrome
-      name: vless-1289199236
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: -GbQJg3bnEGEVFjVaRRu01cgF1f0K_maI4d5MWtMb28
-        short-id: ""
-      server: 170.168.99.8
-      servername: www.epson.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: dca76b88-b038-e82b-45e1-1d76b476d7ca
-    - name: vless-1297639933
-      network: grpc
-      port: 443
-      server: 144.31.7.182
-      servername: cdn-582.spliceflowtech.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1251856f-1e0a-4c5f-99d3-c2d123edc755
-    - client-fingerprint: firefox
-      name: vless-1285911385
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: TWaatavWGcWV-E7c4AXmBXypLKJzm6eR3FGG61spayQ
-        short-id: ""
-      server: 89.47.55.9
-      servername: www.sony.com
       tls: true
       type: vless
       udp: true
@@ -127,35 +38,37 @@ proxies:
       type: vless
       udp: true
       uuid: 4350213a-b4e7-262a-0bd7-bd16957cf71a
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1292944080
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8ZYjmjb0b2QJKCGMrcdhQNV28jZZPCKgIQbIdqChQ0w
+        short-id: 00a61d55a07de885
+      server: 144.31.90.65
+      servername: fl.convert-flow.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3a22ca95-bd99-4c6b-a799-f8f73930ea05
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1289200239
-        - vless-1281392582
-        - vless-1292944080
-        - vless-1289058317
         - vless-1279478362
-        - vless-1289199236
-        - vless-1297639933
-        - vless-1285911385
         - vless-1294275796
         - vless-1291036914
+        - vless-1292944080
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1289200239
-        - vless-1281392582
-        - vless-1292944080
-        - vless-1289058317
         - vless-1279478362
-        - vless-1289199236
-        - vless-1297639933
-        - vless-1285911385
         - vless-1294275796
         - vless-1291036914
+        - vless-1292944080
       type: select
 rules:
     - MATCH,select

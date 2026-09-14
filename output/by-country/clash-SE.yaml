@@ -1,44 +1,4 @@
 proxies:
-    - name: hysteria2-1230196608
-      password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
-      port: 25443
-      server: se-node.rumedia-cdn.com
-      skip-cert-verify: true
-      sni: cf2.rumedia-cdn.com
-      type: hysteria2
-    - name: hysteria2-1230577883
-      password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
-      port: 25443
-      server: se-node.rumedia-cdn.com
-      skip-cert-verify: false
-      sni: cf2.rumedia-cdn.com
-      type: hysteria2
-    - client-fingerprint: chrome
-      name: vless-1289058325
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: tl7xSwczBM--oN16cxdLnAD8GMf8tA0f-FXE9ilCCjA
-        short-id: ""
-      server: 89.47.55.9
-      servername: download.intel.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: dca76b88-b038-e82b-45e1-1d76b476d7ca
-    - client-fingerprint: chrome
-      name: vless-1289058319
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: R8Mogel1wypEIpcUXnGmG1cuzT9POghNhqJcw4-CLx0
-        short-id: ""
-      server: 170.168.99.8
-      servername: cdn.steamstatic.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: dca76b88-b038-e82b-45e1-1d76b476d7ca
     - client-fingerprint: firefox
       name: vless-1293946433
       network: grpc
@@ -65,27 +25,35 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1272899310
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: wSjV1yR_rhDUdoNbM9zIXNGLASLp9RorComnyoayo2c
+        short-id: ""
+      server: 143.246.193.215
+      servername: www.blocket.se
+      tls: true
+      type: vless
+      udp: true
+      uuid: 77da6e30-ad4e-11f1-94d5-525400d1d4f7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1230196608
-        - hysteria2-1230577883
-        - vless-1289058325
-        - vless-1289058319
         - vless-1293946433
         - vless-1257315595
+        - vless-1272899310
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1230196608
-        - hysteria2-1230577883
-        - vless-1289058325
-        - vless-1289058319
         - vless-1293946433
         - vless-1257315595
+        - vless-1272899310
       type: select
 rules:
     - MATCH,select
