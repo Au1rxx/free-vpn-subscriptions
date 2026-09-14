@@ -20,6 +20,16 @@ proxies:
       type: vless
       udp: true
       uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
+    - name: vless-656189585
+      network: tcp
+      port: 443
+      server: 172.105.169.70
+      servername: 172.105.169.70
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
     - name: vless-1163061815
       network: ws
       port: 2087
@@ -41,26 +51,16 @@ proxies:
       skip-cert-verify: true
       sni: css.rbxcdn.com
       type: hysteria2
-    - name: vless-656189585
-      network: tcp
-      port: 443
-      server: 172.105.169.70
-      servername: 172.105.169.70
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1281959369
         - vless-1245733513
+        - vless-656189585
         - vless-1163061815
         - hysteria2-1060573975
         - hysteria2-1059313757
-        - vless-656189585
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -68,10 +68,10 @@ proxy-groups:
         - auto
         - hysteria2-1281959369
         - vless-1245733513
+        - vless-656189585
         - vless-1163061815
         - hysteria2-1060573975
         - hysteria2-1059313757
-        - vless-656189585
       type: select
 rules:
     - MATCH,select
