@@ -1,5 +1,19 @@
 proxies:
     - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1292944080
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8ZYjmjb0b2QJKCGMrcdhQNV28jZZPCKgIQbIdqChQ0w
+        short-id: 00a61d55a07de885
+      server: 144.31.90.65
+      servername: fl.convert-flow.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3a22ca95-bd99-4c6b-a799-f8f73930ea05
+    - client-fingerprint: firefox
       name: vless-1291036914
       network: grpc
       port: 8443
@@ -12,6 +26,29 @@ proxies:
       type: vless
       udp: true
       uuid: 4350213a-b4e7-262a-0bd7-bd16957cf71a
+    - client-fingerprint: firefox
+      name: vless-1285911385
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: TWaatavWGcWV-E7c4AXmBXypLKJzm6eR3FGG61spayQ
+        short-id: ""
+      server: 89.47.55.9
+      servername: www.sony.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4350213a-b4e7-262a-0bd7-bd16957cf71a
+    - name: vless-1297639933
+      network: grpc
+      port: 443
+      server: 144.31.7.182
+      servername: cdn-582.spliceflowtech.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1251856f-1e0a-4c5f-99d3-c2d123edc755
     - client-fingerprint: ios
       name: vless-1290360268
       network: grpc
@@ -81,7 +118,10 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1292944080
         - vless-1291036914
+        - vless-1285911385
+        - vless-1297639933
         - vless-1290360268
         - vless-1274589319
         - vless-1290360269
@@ -92,7 +132,10 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1292944080
         - vless-1291036914
+        - vless-1285911385
+        - vless-1297639933
         - vless-1290360268
         - vless-1274589319
         - vless-1290360269

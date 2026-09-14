@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1292947029
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8ZYjmjb0b2QJKCGMrcdhQNV28jZZPCKgIQbIdqChQ0w
+        short-id: 00a61d55a07de885
+      server: 131.123.25.3
+      servername: fr.convert-flow.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3a22ca95-bd99-0028-a799-f8f73930ea05
     - cipher: aes-256-gcm
       name: shadowsocks-1251465987
       password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
@@ -10,12 +24,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1292947029
         - shadowsocks-1251465987
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1292947029
         - shadowsocks-1251465987
       type: select
 rules:
