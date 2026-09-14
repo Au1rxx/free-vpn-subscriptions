@@ -1,5 +1,31 @@
 proxies:
     - client-fingerprint: firefox
+      name: vless-1289200239
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: WtLZK1KyhSpI3K-R4M3sLAHWPOgGPMgkL6RneL0OfCY
+        short-id: ""
+      server: 89.47.55.8
+      servername: download.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4350213a-b4e7-262a-0bd7-bd16957cf71a
+    - client-fingerprint: firefox
+      name: vless-1281392582
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: FOQzn10eHqu4F5xOxiXW2bTDG8lH4TdOXP6A5rDqKFk
+        short-id: ""
+      server: 104.245.242.8
+      servername: download.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4350213a-b4e7-262a-0bd7-bd16957cf71a
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1292944080
       network: tcp
@@ -26,19 +52,32 @@ proxies:
       type: vless
       udp: true
       uuid: 4350213a-b4e7-262a-0bd7-bd16957cf71a
-    - client-fingerprint: firefox
-      name: vless-1285911385
+    - client-fingerprint: chrome
+      name: vless-1289058317
       network: grpc
       port: 8443
       reality-opts:
-        public-key: TWaatavWGcWV-E7c4AXmBXypLKJzm6eR3FGG61spayQ
+        public-key: iVDh09Vm2DqZMNQoUdf-LCZ6TqVGb9mLXnClAK2LRj4
         short-id: ""
-      server: 89.47.55.9
-      servername: www.sony.com
+      server: 89.47.55.8
+      servername: www.canon.com
       tls: true
       type: vless
       udp: true
-      uuid: 4350213a-b4e7-262a-0bd7-bd16957cf71a
+      uuid: dca76b88-b038-e82b-45e1-1d76b476d7ca
+    - client-fingerprint: chrome
+      name: vless-1289199236
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: -GbQJg3bnEGEVFjVaRRu01cgF1f0K_maI4d5MWtMb28
+        short-id: ""
+      server: 170.168.99.8
+      servername: www.epson.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dca76b88-b038-e82b-45e1-1d76b476d7ca
     - name: vless-1297639933
       network: grpc
       port: 443
@@ -114,33 +153,54 @@ proxies:
       type: vless
       udp: true
       uuid: 4350213a-b4e7-262a-0bd7-bd16957cf71a
+    - client-fingerprint: firefox
+      name: vless-1285911385
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: TWaatavWGcWV-E7c4AXmBXypLKJzm6eR3FGG61spayQ
+        short-id: ""
+      server: 89.47.55.9
+      servername: www.sony.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4350213a-b4e7-262a-0bd7-bd16957cf71a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1289200239
+        - vless-1281392582
         - vless-1292944080
         - vless-1291036914
-        - vless-1285911385
+        - vless-1289058317
+        - vless-1289199236
         - vless-1297639933
         - vless-1290360268
         - vless-1274589319
         - vless-1290360269
         - vless-1290360264
         - vless-1279478362
+        - vless-1285911385
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1289200239
+        - vless-1281392582
         - vless-1292944080
         - vless-1291036914
-        - vless-1285911385
+        - vless-1289058317
+        - vless-1289199236
         - vless-1297639933
         - vless-1290360268
         - vless-1274589319
         - vless-1290360269
         - vless-1290360264
         - vless-1279478362
+        - vless-1285911385
       type: select
 rules:
     - MATCH,select

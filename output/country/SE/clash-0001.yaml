@@ -19,6 +19,14 @@ proxies:
       type: vless
       udp: true
       uuid: 5a5fba4d-6ae8-4975-936d-bb643fb15957
+    - name: trojan-513948357
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20123
+      server: 45.67.201.210
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-696780839
@@ -341,20 +349,6 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1190501923
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: vnUSQFujh6K08KR6FHYWoBkZCAEZNWSKji0PPw9eMWM
-        short-id: 86229a5e3b1e6ef4
-      server: 2.56.121.43
-      servername: www.ikea.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: eec2f6a7-c10f-43b0-b133-61f9bf9bbc27
     - client-fingerprint: chrome
       name: vless-1216487832
       network: grpc
@@ -419,6 +413,13 @@ proxies:
       type: vless
       udp: true
       uuid: 77da6e30-ad4e-11f1-94d5-525400d1d4f7
+    - name: vless-1239296209
+      network: ws
+      port: 8080
+      server: 188.114.97.6
+      type: vless
+      udp: true
+      uuid: 50414e45-4c5f-5a45-5553-4eef5adc237a
     - client-fingerprint: randomized
       flow: xtls-rprx-vision
       name: vless-1239766678
@@ -933,12 +934,27 @@ proxies:
       type: vless
       udp: true
       uuid: 3a22ca95-bd99-02f0-a799-f8f73930ea05
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1298274279
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8ZYjmjb0b2QJKCGMrcdhQNV28jZZPCKgIQbIdqChQ0w
+        short-id: 00a61d55a07de885
+      server: 131.123.25.3
+      servername: fr.convert-flow.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3a22ca95-bd99-02f0-a799-f8f73930ea05
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-45435
         - vless-34790904
+        - trojan-513948357
         - vless-696780839
         - vless-713157148
         - vless-872770205
@@ -963,13 +979,13 @@ proxy-groups:
         - vless-1126122367
         - vless-1136945983
         - vless-1173154542
-        - vless-1190501923
         - vless-1216487832
         - hysteria2-1230196608
         - hysteria2-1230577883
         - vless-1235435931
         - vless-1237100933
         - vless-1239177995
+        - vless-1239296209
         - vless-1239766678
         - vless-1244189719
         - vless-1245444837
@@ -1008,6 +1024,7 @@ proxy-groups:
         - vless-1294613410
         - vless-1294613477
         - vless-1297280587
+        - vless-1298274279
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -1015,6 +1032,7 @@ proxy-groups:
         - auto
         - vless-45435
         - vless-34790904
+        - trojan-513948357
         - vless-696780839
         - vless-713157148
         - vless-872770205
@@ -1039,13 +1057,13 @@ proxy-groups:
         - vless-1126122367
         - vless-1136945983
         - vless-1173154542
-        - vless-1190501923
         - vless-1216487832
         - hysteria2-1230196608
         - hysteria2-1230577883
         - vless-1235435931
         - vless-1237100933
         - vless-1239177995
+        - vless-1239296209
         - vless-1239766678
         - vless-1244189719
         - vless-1245444837
@@ -1084,6 +1102,7 @@ proxy-groups:
         - vless-1294613410
         - vless-1294613477
         - vless-1297280587
+        - vless-1298274279
       type: select
 rules:
     - MATCH,select
