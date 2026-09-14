@@ -1,0 +1,54 @@
+{
+  "outbounds": [
+    {
+      "server": "216.24.57.1",
+      "server_port": 443,
+      "tag": "vless-1290816338",
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "f.tmkkarss.online",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "headers": {
+          "Host": "f.tmkkarss.online"
+        },
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "efc8337e-27ce-4ab4-9ef9-c7f9e5eef575"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1290816338"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1290816338"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
