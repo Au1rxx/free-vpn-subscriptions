@@ -20,12 +20,24 @@ proxies:
       type: vless
       udp: true
       uuid: 3a22ca95-bd99-0028-a799-f8f73930ea05
+    - flow: xtls-rprx-vision
+      name: vless-1157879774
+      network: tcp
+      port: 443
+      server: 50.7.36.26
+      servername: at2.moritech.net
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1251465987
         - vless-1292946053
+        - vless-1157879774
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -33,6 +45,7 @@ proxy-groups:
         - auto
         - shadowsocks-1251465987
         - vless-1292946053
+        - vless-1157879774
       type: select
 rules:
     - MATCH,select
