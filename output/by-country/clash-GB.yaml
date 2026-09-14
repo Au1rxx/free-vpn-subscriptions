@@ -1,22 +1,15 @@
 proxies:
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1287757702
-      password: Qye4JK+lHU/8aJtTB5om+IMoxG4r3luE4ogzVo1+Oxk=
-      port: 61312
-      server: 129.151.87.146
-      type: ss
+    - name: vless-1230573696
+      network: grpc
+      port: 2083
+      server: 66.90.105.210
+      type: vless
       udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - name: vless-1230280245
       network: grpc
       port: 2083
       server: 66.90.104.42
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - name: vless-1230279293
-      network: grpc
-      port: 2083
-      server: 66.90.105.210
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
@@ -151,20 +144,12 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
-    - name: hysteria2-1005126986
-      password: 3b8c82ed-fe66-472d-915e-034ccb57103f
-      port: 443
-      server: labs.frkn.org
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1287757702
+        - vless-1230573696
         - vless-1230280245
-        - vless-1230279293
         - vless-1245422997
         - vless-1294275790
         - vless-1245369769
@@ -178,15 +163,13 @@ proxy-groups:
         - vless-1051397816
         - vless-823997543
         - vmess-692622878
-        - hysteria2-1005126986
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1287757702
+        - vless-1230573696
         - vless-1230280245
-        - vless-1230279293
         - vless-1245422997
         - vless-1294275790
         - vless-1245369769
@@ -200,7 +183,6 @@ proxy-groups:
         - vless-1051397816
         - vless-823997543
         - vmess-692622878
-        - hysteria2-1005126986
       type: select
 rules:
     - MATCH,select
