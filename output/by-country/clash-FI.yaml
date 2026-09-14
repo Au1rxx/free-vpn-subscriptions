@@ -1,17 +1,4 @@
 proxies:
-    - client-fingerprint: firefox
-      name: vless-1281392582
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: FOQzn10eHqu4F5xOxiXW2bTDG8lH4TdOXP6A5rDqKFk
-        short-id: ""
-      server: 104.245.242.8
-      servername: download.nvidia.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4350213a-b4e7-262a-0bd7-bd16957cf71a
     - client-fingerprint: chrome
       name: vless-1274589319
       network: grpc
@@ -51,23 +38,36 @@ proxies:
       type: vless
       udp: true
       uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
+    - client-fingerprint: random
+      name: vless-656143744
+      network: tcp
+      port: 448
+      reality-opts:
+        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+        short-id: cd21e552537c7c0b
+      server: 185.79.138.71
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1281392582
         - vless-1274589319
         - vless-695938923
         - vless-343437429
+        - vless-656143744
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1281392582
         - vless-1274589319
         - vless-695938923
         - vless-343437429
+        - vless-656143744
       type: select
 rules:
     - MATCH,select

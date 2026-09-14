@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1289210449
+      network: tcp
+      port: 8082
+      server: add.life-pro.ir
+      type: vless
+      udp: true
+      uuid: 79f98593-6a21-4783-a425-3d5609a79df1
     - client-fingerprint: edge
       name: vless-1286977054
       network: tcp
@@ -12,17 +19,28 @@ proxies:
       type: vless
       udp: true
       uuid: f1505323-ecb6-4152-9a5b-d37b3ae1cacf
+    - name: vless-1293315118
+      network: raw
+      port: 8082
+      server: add.life-pro.ir
+      type: vless
+      udp: true
+      uuid: 79f98593-6a21-4783-a425-3d5609a79df1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1289210449
         - vless-1286977054
+        - vless-1293315118
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1289210449
         - vless-1286977054
+        - vless-1293315118
       type: select
 rules:
     - MATCH,select
