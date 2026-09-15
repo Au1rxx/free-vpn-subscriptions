@@ -6,6 +6,16 @@ proxies:
       type: vless
       udp: true
       uuid: 731f177e-00aa-480c-b935-661456139a32
+    - name: vless-656189585
+      network: tcp
+      port: 443
+      server: 172.105.169.70
+      servername: 172.105.169.70
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1317699666
@@ -20,6 +30,13 @@ proxies:
       type: vless
       udp: true
       uuid: 5416ef6f-b8e5-48e9-87e4-3d5649b2e3e0
+    - name: hysteria2-1158363236
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: vpn-au-002.fastervpn.world
+      skip-cert-verify: true
+      sni: www.bing.com
+      type: hysteria2
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1321403204
@@ -69,91 +86,31 @@ proxies:
       skip-cert-verify: true
       sni: vk.com
       type: hysteria2
-    - client-fingerprint: ios
-      flow: xtls-rprx-vision
-      name: vless-1323867176
-      network: tcp
-      port: 20270
-      reality-opts:
-        public-key: RHLiKldLu3DONcQoX4Kjs7Xmd2K25ndVbw4pwxe45XE
-        short-id: e6a5a4a9115456de
-      server: au1.gsafevpnapi.com
-      servername: www.yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5416ef6f-b8e5-48e9-87e4-3d5649b2e3e0
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-1323867178
-      network: tcp
-      port: 20270
-      reality-opts:
-        public-key: RHLiKldLu3DONcQoX4Kjs7Xmd2K25ndVbw4pwxe45XE
-        short-id: e6a5a4a9115456de
-      server: au1.gsafevpnapi.com
-      servername: www.yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5416ef6f-b8e5-48e9-87e4-3d5649b2e3e0
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1323884601
-      network: tcp
-      port: 20270
-      reality-opts:
-        public-key: RHLiKldLu3DONcQoX4Kjs7Xmd2K25ndVbw4pwxe45XE
-        short-id: e6a5a4a9115456de
-      server: au1.gsafevpnapi.com
-      servername: www.yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e016d072-ed97-40d4-a83f-04c00f8df2a5
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1319143175
-      network: tcp
-      port: 20270
-      reality-opts:
-        public-key: RHLiKldLu3DONcQoX4Kjs7Xmd2K25ndVbw4pwxe45XE
-        short-id: e6a5a4a9115456de
-      server: au1.gsafevpnapi.com
-      servername: www.yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5416ef6f-b8e5-48e9-87e4-3d5649b2e3e0
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1151376484
+        - vless-656189585
         - vless-1317699666
+        - hysteria2-1158363236
         - vless-1321403204
         - vless-1323867185
         - vless-1323867184
         - hysteria2-1060573975
-        - vless-1323867176
-        - vless-1323867178
-        - vless-1323884601
-        - vless-1319143175
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1151376484
+        - vless-656189585
         - vless-1317699666
+        - hysteria2-1158363236
         - vless-1321403204
         - vless-1323867185
         - vless-1323867184
         - hysteria2-1060573975
-        - vless-1323867176
-        - vless-1323867178
-        - vless-1323884601
-        - vless-1319143175
       type: select
 rules:
     - MATCH,select
