@@ -13,6 +13,15 @@ proxies:
       skip-cert-verify: true
       sni: admin.wwwinternetvideo.click
       type: hysteria2
+    - alterId: 0
+      cipher: auto
+      name: vmess-1320788157
+      network: tcp
+      port: 5385
+      server: dashboard.afrapay.top
+      type: vmess
+      udp: true
+      uuid: b2bc2ff5-e36e-453b-84e9-d93a33203ac3
     - name: hysteria2-730512436
       password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
       port: 443
@@ -124,19 +133,35 @@ proxies:
       server: 217.30.10.44
       type: ss
       udp: true
-    - name: hysteria2-619899526
-      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+    - flow: xtls-rprx-vision
+      name: vless-1320435013
+      network: tcp
       port: 443
-      server: admin.wwwinternetvideo.click
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
+      server: 50.7.249.181
+      servername: pl-dedic-2.failspace.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
+      name: vless-1320434991
+      network: tcp
+      port: 443
+      server: 50.7.248.237
+      servername: pl-new-dedic.failspace.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-659125577
         - hysteria2-1045025824
+        - vmess-1320788157
         - hysteria2-730512436
         - shadowsocks-743178447
         - hysteria2-652726817
@@ -149,7 +174,8 @@ proxy-groups:
         - vless-1300687307
         - vless-1231429203
         - shadowsocks-723348712
-        - hysteria2-619899526
+        - vless-1320435013
+        - vless-1320434991
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -157,6 +183,7 @@ proxy-groups:
         - auto
         - hysteria2-659125577
         - hysteria2-1045025824
+        - vmess-1320788157
         - hysteria2-730512436
         - shadowsocks-743178447
         - hysteria2-652726817
@@ -169,7 +196,8 @@ proxy-groups:
         - vless-1300687307
         - vless-1231429203
         - shadowsocks-723348712
-        - hysteria2-619899526
+        - vless-1320435013
+        - vless-1320434991
       type: select
 rules:
     - MATCH,select

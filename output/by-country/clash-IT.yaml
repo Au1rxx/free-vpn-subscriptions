@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1305711237
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SjGkzJQ9I6ZZjC3V73atcPMczhMm0oiTrB8mUQXz1HY
+        short-id: 37fbf155c7a9f3ff
+      server: 82.118.16.189
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d5e5f5a1-0f23-4c49-af9f-4be445bf9d8e
     - cipher: aes-256-gcm
       name: shadowsocks-1319046164
       password: 78235e7dc55e9ad1
@@ -38,6 +52,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1305711237
         - shadowsocks-1319046164
         - vless-1255015609
         - vless-1279646583
@@ -46,6 +61,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1305711237
         - shadowsocks-1319046164
         - vless-1255015609
         - vless-1279646583
