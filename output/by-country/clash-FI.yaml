@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-1314197172
+      network: grpc
+      port: 9443
+      server: 185.255.179.11
+      servername: hub-se-02.hanvpn.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d9d0f208-d582-41d5-bb7b-742671402810
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1205358057
@@ -54,19 +64,20 @@ proxies:
       type: vless
       udp: true
       uuid: 4360f941-b541-43d4-8507-2de3763e0cfd
-    - client-fingerprint: qq
-      name: vless-834262294
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-270691474
       network: tcp
-      port: 448
+      port: 443
       reality-opts:
-        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
-        short-id: cd21e552537c7c0b
-      server: 185.79.138.71
-      servername: www.samsung.com
+        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
+        short-id: a696de84963656de
+      server: 95.85.224.51
+      servername: max.ru
       tls: true
       type: vless
       udp: true
-      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
+      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-332701899
@@ -81,6 +92,47 @@ proxies:
       type: vless
       udp: true
       uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-256467532
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
+        short-id: a696de84963656de
+      server: 95.85.224.51
+      servername: max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-258626507
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
+        short-id: a696de84963656de
+      server: 95.85.224.51
+      servername: max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
+    - client-fingerprint: qq
+      name: vless-834262294
+      network: tcp
+      port: 448
+      reality-opts:
+        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+        short-id: cd21e552537c7c0b
+      server: 185.79.138.71
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-661038937
@@ -99,24 +151,32 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1314197172
         - vless-1205358057
         - vless-1255270175
         - vless-695938923
         - vless-1311531396
-        - vless-834262294
+        - vless-270691474
         - vless-332701899
+        - vless-256467532
+        - vless-258626507
+        - vless-834262294
         - vless-661038937
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1314197172
         - vless-1205358057
         - vless-1255270175
         - vless-695938923
         - vless-1311531396
-        - vless-834262294
+        - vless-270691474
         - vless-332701899
+        - vless-256467532
+        - vless-258626507
+        - vless-834262294
         - vless-661038937
       type: select
 rules:

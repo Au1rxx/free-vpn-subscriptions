@@ -13,26 +13,12 @@ proxies:
       skip-cert-verify: true
       sni: admin.wwwinternetvideo.click
       type: hysteria2
-    - name: hysteria2-768953025
-      password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
-      port: 443
-      server: streambox.wwwinternetvideo.click
-      skip-cert-verify: true
-      sni: streambox.wwwinternetvideo.click
-      type: hysteria2
     - name: hysteria2-730512436
       password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
       port: 443
       server: streambox.wwwinternetvideo.click
       skip-cert-verify: false
       sni: streambox.wwwinternetvideo.click
-      type: hysteria2
-    - name: hysteria2-1314196172
-      password: 6941df7a-6401-4b24-9fe1-88dca1cdfd30
-      port: 443
-      server: 2.26.148.125
-      skip-cert-verify: true
-      sni: mol.ultimagamest.com
       type: hysteria2
     - cipher: aes-256-cfb
       name: shadowsocks-743178447
@@ -107,6 +93,19 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - client-fingerprint: random
+      name: vless-1300687307
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
+        short-id: 50ba05992b05c1c3
+      server: 54.37.136.194
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
     - flow: xtls-rprx-vision
       name: vless-1231429203
       network: tcp
@@ -125,15 +124,20 @@ proxies:
       server: 217.30.10.44
       type: ss
       udp: true
+    - name: hysteria2-619899526
+      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+      port: 443
+      server: admin.wwwinternetvideo.click
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-659125577
         - hysteria2-1045025824
-        - hysteria2-768953025
         - hysteria2-730512436
-        - hysteria2-1314196172
         - shadowsocks-743178447
         - hysteria2-652726817
         - vless-483687853
@@ -142,8 +146,10 @@ proxy-groups:
         - hysteria2-855833185
         - vless-1141367415
         - vless-1157879666
+        - vless-1300687307
         - vless-1231429203
         - shadowsocks-723348712
+        - hysteria2-619899526
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -151,9 +157,7 @@ proxy-groups:
         - auto
         - hysteria2-659125577
         - hysteria2-1045025824
-        - hysteria2-768953025
         - hysteria2-730512436
-        - hysteria2-1314196172
         - shadowsocks-743178447
         - hysteria2-652726817
         - vless-483687853
@@ -162,8 +166,10 @@ proxy-groups:
         - hysteria2-855833185
         - vless-1141367415
         - vless-1157879666
+        - vless-1300687307
         - vless-1231429203
         - shadowsocks-723348712
+        - hysteria2-619899526
       type: select
 rules:
     - MATCH,select

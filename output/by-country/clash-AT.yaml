@@ -24,12 +24,27 @@ proxies:
       type: vless
       udp: true
       uuid: 4360f941-b541-0028-8507-2de3763e0cfd
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-984269666
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+        short-id: 43dcff53849b81e6
+      server: 152.53.1.40
+      servername: at.quattro-tech.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: edde565e-41f5-400e-84ea-7b87a3e84488
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1157879774
         - vless-1308187590
+        - vless-984269666
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -37,6 +52,7 @@ proxy-groups:
         - auto
         - vless-1157879774
         - vless-1308187590
+        - vless-984269666
       type: select
 rules:
     - MATCH,select
