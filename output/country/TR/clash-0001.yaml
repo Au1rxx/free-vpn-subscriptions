@@ -1,4 +1,20 @@
 proxies:
+    - name: trojan-112587
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20017
+      server: 157.254.38.210
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-122850
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20017
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: trojan-122851
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20018
@@ -296,26 +312,6 @@ proxies:
       type: vless
       udp: true
       uuid: 464bc502-f963-45b6-81e3-e33d18427506
-    - name: vless-1274690736
-      network: ws
-      port: 8443
-      server: shop.neexbyte.ir
-      servername: shop.neexbyte.ir
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 464bc502-f963-45b6-81e3-e33d18427506
-    - name: vless-1275202463
-      network: ws
-      port: 8443
-      server: shop.neexbyte.ir
-      servername: ""
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 464bc502-f963-45b6-81e3-e33d18427506
     - name: vless-1275624780
       network: ws
       port: 8443
@@ -384,16 +380,6 @@ proxies:
       type: vless
       udp: true
       uuid: 953358cb-82ba-4296-960d-6d2ec3468f4c
-    - name: vless-1283133070
-      network: ws
-      port: 8443
-      server: shop.neexbyte.ir
-      servername: shop.neexbyte.ir
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 464bc502-f963-45b6-81e3-e33d18427506
     - name: vless-1285770009
       network: ws
       port: 8443
@@ -708,10 +694,29 @@ proxies:
       type: vless
       udp: true
       uuid: 069ba4cf-e8af-4561-b11e-18bd07b0dbd3
+    - name: vless-1324490173
+      network: tcp
+      port: 33138
+      server: turkyea.vanguardia.ir
+      servername: turkyea.vanguardia.ir
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 960e6852-9d2b-48bb-b1cf-5cb27ec27473
+    - name: vless-1324490179
+      network: tcp
+      port: 443
+      server: 144.225.65.173
+      type: vless
+      udp: true
+      uuid: 35f8b8f4-b64d-4807-85f2-cc9a88d2ab8d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-112587
+        - trojan-122850
         - trojan-122851
         - trojan-479026176
         - trojan-700420641
@@ -738,15 +743,12 @@ proxy-groups:
         - vless-1181146340
         - vless-1250111375
         - vless-1267353768
-        - vless-1274690736
-        - vless-1275202463
         - vless-1275624780
         - vless-1276384150
         - vless-1276563415
         - vless-1279396524
         - vless-1279405487
         - vless-1279753699
-        - vless-1283133070
         - vless-1285770009
         - vless-1285803654
         - vless-1287003188
@@ -772,11 +774,15 @@ proxy-groups:
         - vmess-1323502124
         - vmess-1323892600
         - vless-1324225733
+        - vless-1324490173
+        - vless-1324490179
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-112587
+        - trojan-122850
         - trojan-122851
         - trojan-479026176
         - trojan-700420641
@@ -803,15 +809,12 @@ proxy-groups:
         - vless-1181146340
         - vless-1250111375
         - vless-1267353768
-        - vless-1274690736
-        - vless-1275202463
         - vless-1275624780
         - vless-1276384150
         - vless-1276563415
         - vless-1279396524
         - vless-1279405487
         - vless-1279753699
-        - vless-1283133070
         - vless-1285770009
         - vless-1285803654
         - vless-1287003188
@@ -837,6 +840,8 @@ proxy-groups:
         - vmess-1323502124
         - vmess-1323892600
         - vless-1324225733
+        - vless-1324490173
+        - vless-1324490179
       type: select
 rules:
     - MATCH,select
