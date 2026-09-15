@@ -1,5 +1,18 @@
 proxies:
     - client-fingerprint: chrome
+      name: vless-1318510084
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: GFREEsH4rFLnXKDLKXk0iTZNP5_d1zfKTj8DUE0L6RE
+        short-id: d7397feef49deef9
+      server: trexnet1.trexnet.cfd
+      servername: www.upwork.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 12726f0b-ff88-4082-85c2-a18e5356f41c
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1293519068
       network: tcp
@@ -17,12 +30,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1318510084
         - vless-1293519068
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1318510084
         - vless-1293519068
       type: select
 rules:

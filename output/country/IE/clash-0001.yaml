@@ -21,13 +21,6 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - name: vless-1239316992
-      network: ws
-      port: 8880
-      server: 23.227.60.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - flow: xtls-rprx-vision
       name: vless-1250125358
       network: tcp
@@ -50,15 +43,29 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1317696658
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: R_ax16JLUFGtv5quE08v6l35O7B_-3j5C31ejUBElRU
+        short-id: 6bcd199b
+      server: 82c0f.tornadonext.com
+      servername: 82c0f.tornadonext.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: aea9e420-de22-4dcb-93b8-af1f71a3c264
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1154637471
         - vless-1157879800
-        - vless-1239316992
         - vless-1250125358
         - vless-1298905344
+        - vless-1317696658
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -66,9 +73,9 @@ proxy-groups:
         - auto
         - vless-1154637471
         - vless-1157879800
-        - vless-1239316992
         - vless-1250125358
         - vless-1298905344
+        - vless-1317696658
       type: select
 rules:
     - MATCH,select
