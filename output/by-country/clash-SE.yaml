@@ -1,29 +1,43 @@
 proxies:
     - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1272899310
-      network: tcp
-      port: 443
+      name: vless-1216487832
+      network: grpc
+      port: 33743
       reality-opts:
-        public-key: wSjV1yR_rhDUdoNbM9zIXNGLASLp9RorComnyoayo2c
+        public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
         short-id: ""
-      server: 143.246.193.215
-      servername: www.blocket.se
+      server: 193.42.39.10
+      servername: www.google.com
       tls: true
       type: vless
       udp: true
-      uuid: 77da6e30-ad4e-11f1-94d5-525400d1d4f7
+      uuid: b3a11068-1a7e-4643-85de-7c82cce46943
+    - client-fingerprint: firefox
+      name: vless-1115021181
+      network: grpc
+      port: 33743
+      reality-opts:
+        public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
+        short-id: ""
+      server: 79.141.174.147
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b3a11068-1a7e-4643-85de-7c82cce46943
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1272899310
+        - vless-1216487832
+        - vless-1115021181
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1272899310
+        - vless-1216487832
+        - vless-1115021181
       type: select
 rules:
     - MATCH,select
