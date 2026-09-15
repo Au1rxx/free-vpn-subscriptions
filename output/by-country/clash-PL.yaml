@@ -1,11 +1,11 @@
 proxies:
-    - name: hysteria2-1045025824
-      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-      port: 443
-      server: 144.31.93.126
-      skip-cert-verify: true
-      sni: admin.wwwinternetvideo.click
-      type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-768399401
+      password: 7heRqkPG3hg4UnRm
+      port: 9099
+      server: 217.30.10.44
+      type: ss
+      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-1320788157
@@ -22,20 +22,28 @@ proxies:
       skip-cert-verify: true
       sni: admin.wwwinternetvideo.click
       type: hysteria2
-    - name: hysteria2-730512436
-      password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
+    - flow: xtls-rprx-vision
+      name: vless-1308930013
+      network: tcp
       port: 443
-      server: streambox.wwwinternetvideo.click
+      server: 50.7.249.172
+      servername: pl-dedic-3.failspace.top
       skip-cert-verify: false
-      sni: streambox.wwwinternetvideo.click
-      type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-743178447
-      password: tkhHVxxfM2QErBWe
-      port: 9062
-      server: 217.30.10.44
-      type: ss
+      tls: true
+      type: vless
       udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
+      name: vless-1308931019
+      network: tcp
+      port: 443
+      server: 50.7.249.181
+      servername: pl-dedic-2.failspace.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - flow: xtls-rprx-vision
       name: vless-1231429203
       network: tcp
@@ -160,36 +168,28 @@ proxies:
       type: vless
       udp: true
       uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
-    - name: hysteria2-856081351
-      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-      port: 443
-      server: go.wwwinternetvideo.click
-      skip-cert-verify: false
-      sni: admin.wwwinternetvideo.click
-      type: hysteria2
-    - name: hysteria2-620179978
-      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-      port: 443
-      server: admin.wwwinternetvideo.click
-      skip-cert-verify: true
-      sni: admin.wwwinternetvideo.click
-      type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-723348712
-      password: S7KwUu7yBy58S3Ga
-      port: 9042
-      server: 217.30.10.44
-      type: ss
+    - client-fingerprint: firefox
+      name: vless-1260285707
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
+        short-id: 50ba05992b05c1c3
+      server: 54.37.136.194
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
       udp: true
+      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1045025824
+        - shadowsocks-768399401
         - vmess-1320788157
         - hysteria2-648949653
-        - hysteria2-730512436
-        - shadowsocks-743178447
+        - vless-1308930013
+        - vless-1308931019
         - vless-1231429203
         - hysteria2-619899526
         - hysteria2-652726817
@@ -203,19 +203,17 @@ proxy-groups:
         - vless-1323486788
         - vless-1323486786
         - vless-1293658710
-        - hysteria2-856081351
-        - hysteria2-620179978
-        - shadowsocks-723348712
+        - vless-1260285707
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1045025824
+        - shadowsocks-768399401
         - vmess-1320788157
         - hysteria2-648949653
-        - hysteria2-730512436
-        - shadowsocks-743178447
+        - vless-1308930013
+        - vless-1308931019
         - vless-1231429203
         - hysteria2-619899526
         - hysteria2-652726817
@@ -229,9 +227,7 @@ proxy-groups:
         - vless-1323486788
         - vless-1323486786
         - vless-1293658710
-        - hysteria2-856081351
-        - hysteria2-620179978
-        - shadowsocks-723348712
+        - vless-1260285707
       type: select
 rules:
     - MATCH,select
