@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-45800
+      network: ws
+      port: 8880
+      server: 114.129.43.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: trojan-119254
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20032
@@ -35,6 +42,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-45800
         - trojan-119254
         - trojan-119299
         - trojan-122906
@@ -44,6 +52,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-45800
         - trojan-119254
         - trojan-119299
         - trojan-122906

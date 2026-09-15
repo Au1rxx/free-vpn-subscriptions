@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-cfb
+      name: shadowsocks-27309
+      password: qYEN5HX4JKeVCdEC
+      port: 9039
+      server: 195.238.126.84
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-696781306
       password: y9VURyNzJWNRYEGQ
       port: 9008
@@ -73,6 +80,20 @@ proxies:
       uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-1310388360
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 66DIn_CbsE4-fWeWpy3vrRLP-XN8D-axun3jbZzuPmk
+        short-id: ""
+      server: lith.2clash.ru
+      servername: lith.2clash.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8e403675-d020-4801-9520-9cba4bbfda0e
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-1312950812
       network: tcp
       port: 443
@@ -99,6 +120,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-27309
         - shadowsocks-696781306
         - shadowsocks-717968959
         - shadowsocks-723348709
@@ -109,6 +131,7 @@ proxy-groups:
         - shadowsocks-812343760
         - shadowsocks-819466188
         - vmess-1005127040
+        - vless-1310388360
         - vless-1312950812
         - vless-1312961368
       type: url-test
@@ -116,6 +139,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-27309
         - shadowsocks-696781306
         - shadowsocks-717968959
         - shadowsocks-723348709
@@ -126,6 +150,7 @@ proxy-groups:
         - shadowsocks-812343760
         - shadowsocks-819466188
         - vmess-1005127040
+        - vless-1310388360
         - vless-1312950812
         - vless-1312961368
       type: select

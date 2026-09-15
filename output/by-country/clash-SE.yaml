@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-950679547
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: -GMpCber8qtrKzJbwvpLcwlIhOy-5zS66u_x9lLvIjE
-        short-id: e3daad69
-      server: 193.148.59.178
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 20d7c485-5d24-49b5-a5cc-bb7a7daf9908
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-1311529344
@@ -40,21 +26,51 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-890289723
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: -GMpCber8qtrKzJbwvpLcwlIhOy-5zS66u_x9lLvIjE
+        short-id: e3daad69
+      server: 193.148.59.178
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 20d7c485-5d24-49b5-a5cc-bb7a7daf9908
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1014911546
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: -GMpCber8qtrKzJbwvpLcwlIhOy-5zS66u_x9lLvIjE
+        short-id: e3daad69
+      server: 193.148.59.178
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 20d7c485-5d24-49b5-a5cc-bb7a7daf9908
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-950679547
         - vless-1311529344
         - vless-1115021181
+        - vless-890289723
+        - vless-1014911546
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-950679547
         - vless-1311529344
         - vless-1115021181
+        - vless-890289723
+        - vless-1014911546
       type: select
 rules:
     - MATCH,select
