@@ -1,7 +1,7 @@
 proxies:
-    - client-fingerprint: firefox
+    - client-fingerprint: random
       flow: xtls-rprx-vision
-      name: vless-1230998998
+      name: vless-1257519697
       network: tcp
       port: 443
       reality-opts:
@@ -13,9 +13,9 @@ proxies:
       type: vless
       udp: true
       uuid: 3950b45e-740d-4dca-ac95-505ec8534592
-    - client-fingerprint: random
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-1254745144
+      name: vless-1230998998
       network: tcp
       port: 443
       reality-opts:
@@ -31,15 +31,15 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1257519697
         - vless-1230998998
-        - vless-1254745144
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1257519697
         - vless-1230998998
-        - vless-1254745144
       type: select
 rules:
     - MATCH,select
