@@ -25,20 +25,6 @@ proxies:
       type: vless
       udp: true
       uuid: 633f424e-2b11-48da-a6b3-a849dd71456f
-    - client-fingerprint: randomized
-      flow: xtls-rprx-vision
-      name: vless-1270189046
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: ie82DDS-JoUrtvRfEWWOdcp2cEqs6v0-t2QFw3v7qiE
-        short-id: e3f7fec3cfb3a806
-      server: app-ss-97.deep-aispb-analytics.com
-      servername: assets-ss-97.deep-aispb-analytics.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a71ad164-3b29-4dbe-aa66-24d095ca7b6d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1270214709
@@ -214,13 +200,58 @@ proxies:
       skip-cert-verify: true
       sni: 91.240.86.70
       type: hysteria2
+    - client-fingerprint: firefox
+      name: vless-1312951046
+      network: tcp
+      port: 13443
+      reality-opts:
+        public-key: blwPVUA8yK21XP6g_Z400DbRNmur8o18srBKpEFHYHg
+        short-id: 5a96d8dc0dc12ab5
+      server: 45.151.182.218
+      servername: api-maps.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: dd8ecb64-ab2d-46a4-ab1e-3b033f7accf1
+    - client-fingerprint: firefox
+      name: vless-1313151986
+      network: grpc
+      port: 20443
+      reality-opts:
+        public-key: XSYZ-2sVUcxX9plaTOF81gwY07XlBLWfMIOhwQG84zs
+        short-id: 9f5cbd6ec3e85ab7
+      server: 45.151.182.218
+      servername: m.vk.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: dd8ecb64-ab2d-46a4-ab1e-3b033f7accf1
+    - client-fingerprint: firefox
+      name: vless-1313473311
+      network: grpc
+      port: 20443
+      reality-opts:
+        public-key: XSYZ-2sVUcxX9plaTOF81gwY07XlBLWfMIOhwQG84zs
+        short-id: 72ce2232aaabd8ee
+      server: 45.151.182.218
+      servername: m.vk.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: dd8ecb64-ab2d-46a4-ab1e-3b033f7accf1
+    - name: hysteria2-1313520436
+      password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
+      port: 2056
+      server: els1.mangshe.xyz
+      skip-cert-verify: true
+      sni: 127.0.0.1
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-656240777
         - vless-966415513
-        - vless-1270189046
         - vless-1270214709
         - vless-1272565245
         - vless-1272943356
@@ -238,6 +269,10 @@ proxy-groups:
         - vless-1308812740
         - hysteria2-1308868748
         - hysteria2-1310560310
+        - vless-1312951046
+        - vless-1313151986
+        - vless-1313473311
+        - hysteria2-1313520436
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -245,7 +280,6 @@ proxy-groups:
         - auto
         - vless-656240777
         - vless-966415513
-        - vless-1270189046
         - vless-1270214709
         - vless-1272565245
         - vless-1272943356
@@ -263,6 +297,10 @@ proxy-groups:
         - vless-1308812740
         - hysteria2-1308868748
         - hysteria2-1310560310
+        - vless-1312951046
+        - vless-1313151986
+        - vless-1313473311
+        - hysteria2-1313520436
       type: select
 rules:
     - MATCH,select
