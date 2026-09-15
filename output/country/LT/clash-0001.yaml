@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-27309
-      password: qYEN5HX4JKeVCdEC
-      port: 9039
-      server: 195.238.126.84
-      type: ss
-      udp: true
     - name: trojan-122909
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20123
@@ -112,11 +105,38 @@ proxies:
       type: vless
       udp: true
       uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1321403202
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: vrcsm8L_tY7sNbnCEdLCEjOthh_w9bdWS3wFPgsIomk
+        short-id: 4fa44664f6a566d3
+      server: lt.aether-runet.top
+      servername: lt.aether-runet.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1321403206
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: vrcsm8L_tY7sNbnCEdLCEjOthh_w9bdWS3wFPgsIomk
+        short-id: 4fa44664f6a566d3
+      server: 84.32.215.117
+      servername: lt.aether-runet.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-27309
         - trojan-122909
         - hysteria2-579284233
         - shadowsocks-696781306
@@ -130,12 +150,13 @@ proxy-groups:
         - shadowsocks-819466188
         - vless-1317697664
         - vless-1319832044
+        - vless-1321403202
+        - vless-1321403206
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-27309
         - trojan-122909
         - hysteria2-579284233
         - shadowsocks-696781306
@@ -149,6 +170,8 @@ proxy-groups:
         - shadowsocks-819466188
         - vless-1317697664
         - vless-1319832044
+        - vless-1321403202
+        - vless-1321403206
       type: select
 rules:
     - MATCH,select
