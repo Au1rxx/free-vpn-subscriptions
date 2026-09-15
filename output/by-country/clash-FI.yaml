@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-1314197172
+      network: grpc
+      port: 9443
+      server: 185.255.179.11
+      servername: hub-se-02.hanvpn.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d9d0f208-d582-41d5-bb7b-742671402810
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1230573700
@@ -13,17 +23,50 @@ proxies:
       type: vless
       udp: true
       uuid: c09cfd91-b234-4998-9bed-a0211b7f5c3c
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1255270175
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 40Tmrw44FhOyoqCQiOfR2kCgxEPXrBLLv6oYFvjbGUI
+        short-id: 3c6ec7b2d73a28b6
+      server: fl.windconnect.pro
+      servername: fl.windconnect.pro
+      tls: true
+      type: vless
+      udp: true
+      uuid: af00e0c4-decf-48f2-9013-56abe9c9efcd
+    - client-fingerprint: chrome
+      name: vless-695938923
+      network: tcp
+      port: 448
+      reality-opts:
+        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+        short-id: cd21e552537c7c0b
+      server: 185.79.138.71
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1314197172
         - vless-1230573700
+        - vless-1255270175
+        - vless-695938923
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1314197172
         - vless-1230573700
+        - vless-1255270175
+        - vless-695938923
       type: select
 rules:
     - MATCH,select
