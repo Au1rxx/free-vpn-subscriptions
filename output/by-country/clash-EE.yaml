@@ -12,6 +12,14 @@ proxies:
       type: vless
       udp: true
       uuid: 5edbcb44-8d04-4fa7-a587-bc5d60c24ca1
+    - name: trojan-699916731
+      password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
+      port: 449
+      server: 109.206.241.10
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
     - name: vless-656161252
       network: tcp
       port: 8443
@@ -22,14 +30,6 @@ proxies:
       type: vless
       udp: true
       uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-    - name: trojan-612135910
-      password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
-      port: 449
-      server: 109.206.241.10
-      skip-cert-verify: true
-      sni: russiapower.accesscam.org
-      type: trojan
-      udp: true
     - client-fingerprint: firefox
       name: vless-1310597567
       network: grpc
@@ -71,27 +71,87 @@ proxies:
       type: vless
       udp: true
       uuid: 47d9b534-8a0a-4bd2-90f1-1d6ade14427e
+    - name: vless-970024036
+      network: raw
+      port: 8443
+      server: 94.183.170.135
+      servername: estproxy4.lockdwn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1311529346
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8ZYjmjb0b2QJKCGMrcdhQNV28jZZPCKgIQbIdqChQ0w
+        short-id: 00a61d55a07de885
+      server: 131.123.25.4
+      servername: fr.convert-flow.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4360f941-b541-00e9-8507-2de3763e0cfd
+    - name: vless-781288406
+      network: tcp
+      port: 8443
+      server: 94.183.170.135
+      servername: estproxy4.lockdwn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+    - name: trojan-813920950
+      password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
+      port: 449
+      server: 109.206.241.10
+      skip-cert-verify: true
+      sni: 109.206.241.10
+      type: trojan
+      udp: true
+    - name: trojan-1191741375
+      password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
+      port: 449
+      server: 109.206.241.10
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1297639936
+        - trojan-699916731
         - vless-656161252
-        - trojan-612135910
         - vless-1310597567
         - vless-1311529354
         - vless-1199096238
+        - vless-970024036
+        - vless-1311529346
+        - vless-781288406
+        - trojan-813920950
+        - trojan-1191741375
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1297639936
+        - trojan-699916731
         - vless-656161252
-        - trojan-612135910
         - vless-1310597567
         - vless-1311529354
         - vless-1199096238
+        - vless-970024036
+        - vless-1311529346
+        - vless-781288406
+        - trojan-813920950
+        - trojan-1191741375
       type: select
 rules:
     - MATCH,select

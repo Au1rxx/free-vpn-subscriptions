@@ -13,14 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
-    - name: trojan-696781161
-      password: 3252f608e796316fbbac3359542f70d9
-      port: 59443
-      server: tyy129.magiclampcloud.com
-      skip-cert-verify: true
-      sni: tyy129.magiclampcloud.com
-      type: trojan
-      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-696781305
       password: 45xgMgm386pjWjTx
@@ -532,12 +524,25 @@ proxies:
       type: vless
       udp: true
       uuid: 4360f941-b541-01ac-8507-2de3763e0cfd
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1312294818
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8ZYjmjb0b2QJKCGMrcdhQNV28jZZPCKgIQbIdqChQ0w
+        short-id: 00a61d55a07de885
+      server: 89.105.206.124
+      servername: nl.convert-flow.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4360f941-b541-01ac-8507-2de3763e0cfd
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-696780838
-        - trojan-696781161
         - shadowsocks-696781305
         - vless-713159145
         - shadowsocks-723348676
@@ -582,13 +587,13 @@ proxy-groups:
         - hysteria2-1279657610
         - vless-1311529348
         - vless-1311529353
+        - vless-1312294818
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-696780838
-        - trojan-696781161
         - shadowsocks-696781305
         - vless-713159145
         - shadowsocks-723348676
@@ -633,6 +638,7 @@ proxy-groups:
         - hysteria2-1279657610
         - vless-1311529348
         - vless-1311529353
+        - vless-1312294818
       type: select
 rules:
     - MATCH,select
