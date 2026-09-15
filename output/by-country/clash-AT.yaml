@@ -1,10 +1,32 @@
 proxies:
     - flow: xtls-rprx-vision
+      name: vless-1157879743
+      network: tcp
+      port: 443
+      server: 50.7.184.122
+      servername: at3.moritech.net
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
       name: vless-1157879774
       network: tcp
       port: 443
       server: 50.7.36.26
       servername: at2.moritech.net
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
+      name: vless-1157879715
+      network: tcp
+      port: 443
+      server: 50.7.37.154
+      servername: at1.moritech.net
       skip-cert-verify: true
       tls: true
       type: vless
@@ -21,64 +43,23 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-1308187590
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 8ZYjmjb0b2QJKCGMrcdhQNV28jZZPCKgIQbIdqChQ0w
-        short-id: 00a61d55a07de885
-      server: 131.123.25.4
-      servername: fr.convert-flow.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4360f941-b541-0028-8507-2de3763e0cfd
-    - flow: xtls-rprx-vision
-      name: vless-1320785370
-      network: tcp
-      port: 443
-      server: austria-dedic.failspace.top
-      servername: austria-dedic.failspace.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-984269666
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
-        short-id: 43dcff53849b81e6
-      server: 152.53.1.40
-      servername: at.quattro-tech.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: edde565e-41f5-400e-84ea-7b87a3e84488
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1157879743
         - vless-1157879774
+        - vless-1157879715
         - vless-1320435016
-        - vless-1308187590
-        - vless-1320785370
-        - vless-984269666
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1157879743
         - vless-1157879774
+        - vless-1157879715
         - vless-1320435016
-        - vless-1308187590
-        - vless-1320785370
-        - vless-984269666
       type: select
 rules:
     - MATCH,select

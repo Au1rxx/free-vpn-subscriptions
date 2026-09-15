@@ -1,4 +1,13 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-1323502124
+      network: ws
+      port: 2296
+      server: config-turkey.zelnora.ir
+      type: vmess
+      udp: true
+      uuid: e4bbe685-a287-4a59-8dbc-02c18b1265df
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1104470805
@@ -28,64 +37,36 @@ proxies:
       udp: true
       uuid: 953358cb-82ba-4296-960d-6d2ec3468f4c
     - client-fingerprint: chrome
-      name: vless-1318510084
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: GFREEsH4rFLnXKDLKXk0iTZNP5_d1zfKTj8DUE0L6RE
-        short-id: d7397feef49deef9
-      server: trexnet1.trexnet.cfd
-      servername: www.upwork.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 12726f0b-ff88-4082-85c2-a18e5356f41c
-    - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-1250111375
-      network: tcp
+      name: vless-1298540186
+      network: raw
       port: 443
       reality-opts:
-        public-key: PTqeBbbr2xJ1L3V1PyYjKjxanMKKqJHU-wtnpYmFQCI
-        short-id: 5606d4a25c99e7af
-      server: 156.67.63.231
-      servername: sync-bridge.org
+        public-key: N8tPKh6gTyc6L5GOmBn_3wIy707a-5QYB0FrF2HigUc
+        short-id: ""
+      server: 107.161.174.26
+      servername: books.blackbigdog.com
       tls: true
       type: vless
       udp: true
-      uuid: b052df40-d51c-456c-9bd6-57af01a87e4e
-    - client-fingerprint: firefox
-      name: vless-1285803654
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
-        short-id: 9e419c0759b54d6f
-      server: 151.241.226.201
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
+      uuid: 069ba4cf-e8af-4561-b11e-18bd07b0dbd3
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-1323502124
         - vless-1104470805
         - vless-1305745524
-        - vless-1318510084
-        - vless-1250111375
-        - vless-1285803654
+        - vless-1298540186
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-1323502124
         - vless-1104470805
         - vless-1305745524
-        - vless-1318510084
-        - vless-1250111375
-        - vless-1285803654
+        - vless-1298540186
       type: select
 rules:
     - MATCH,select
