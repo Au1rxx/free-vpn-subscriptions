@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: safari
+      name: vless-1327863827
+      network: tcp
+      port: 44811
+      reality-opts:
+        public-key: 5V9UBM3WxVbCvEwW-FOxiBKlQTdMR9aScIfy53zefzM
+        short-id: b53a4597ec327aec
+      server: alz.chainmark.ir
+      servername: app.stiga.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dc6d7b88-a771-434f-a43a-ac1b50cf0102
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1327863827
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1327863827
+      type: select
+rules:
+    - MATCH,select
