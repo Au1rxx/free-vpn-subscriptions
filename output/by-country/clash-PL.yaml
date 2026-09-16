@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-779606815
+      password: U6qnYRhfyDmn8sgn
+      port: 9041
+      server: 217.30.10.44
+      type: ss
+      udp: true
     - name: hysteria2-652726817
       password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
       port: 443
@@ -138,23 +145,22 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - client-fingerprint: random
-      name: vless-1300687307
+    - flow: xtls-rprx-vision
+      name: vless-1336365681
       network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
-        short-id: 50ba05992b05c1c3
-      server: 54.37.136.194
-      servername: www.cloudflare.com
+      port: 443
+      server: 50.7.249.187
+      servername: poland-new-dedic-2.failspace.top
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-779606815
         - hysteria2-652726817
         - hysteria2-619899526
         - shadowsocks-819466521
@@ -170,12 +176,13 @@ proxy-groups:
         - vless-1141367415
         - vless-1126122373
         - vless-1253303277
-        - vless-1300687307
+        - vless-1336365681
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-779606815
         - hysteria2-652726817
         - hysteria2-619899526
         - shadowsocks-819466521
@@ -191,7 +198,7 @@ proxy-groups:
         - vless-1141367415
         - vless-1126122373
         - vless-1253303277
-        - vless-1300687307
+        - vless-1336365681
       type: select
 rules:
     - MATCH,select
