@@ -1,4 +1,11 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-231
+      password: ARgvGZywA+gacgGV26Bvmu05+wZmRW/j+AdU+Z8Bt44=
+      port: 990
+      server: 185.213.23.63
+      type: ss
+      udp: true
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-1187523182
@@ -58,6 +65,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-231
         - vless-1187523182
         - vless-1201732170
         - vless-890078624
@@ -67,6 +75,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-231
         - vless-1187523182
         - vless-1201732170
         - vless-890078624

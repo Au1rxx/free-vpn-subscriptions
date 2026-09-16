@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-1314197172
+      network: grpc
+      port: 9443
+      server: 185.255.179.11
+      servername: hub-se-02.hanvpn.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d9d0f208-d582-41d5-bb7b-742671402810
     - cipher: 2022-blake3-aes-256-gcm
       name: shadowsocks-1334107993
       password: f2Nq5YLnyclPaWR8my7/Vdd3ZX8URncXZNly5+HcUSs=:K1+Qy47XX9NQjaXwZrCq0/Wq9GNcN0lAxrUBvMIdBpM=
@@ -10,12 +20,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1314197172
         - shadowsocks-1334107993
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1314197172
         - shadowsocks-1334107993
       type: select
 rules:

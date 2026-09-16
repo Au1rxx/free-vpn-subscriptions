@@ -84,13 +84,6 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - name: hysteria2-730512436
-      password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
-      port: 443
-      server: streambox.wwwinternetvideo.click
-      skip-cert-verify: false
-      sni: streambox.wwwinternetvideo.click
-      type: hysteria2
     - name: hysteria2-768953025
       password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
       port: 443
@@ -98,6 +91,20 @@ proxies:
       skip-cert-verify: true
       sni: streambox.wwwinternetvideo.click
       type: hysteria2
+    - name: hysteria2-730512436
+      password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
+      port: 443
+      server: streambox.wwwinternetvideo.click
+      skip-cert-verify: false
+      sni: streambox.wwwinternetvideo.click
+      type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-812343744
+      password: S2zDyyPcmZN2h8EC
+      port: 9076
+      server: 217.30.10.44
+      type: ss
+      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-819466521
       password: aQqJbtwFGcCCaeL3
@@ -118,6 +125,19 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
+    - client-fingerprint: random
+      name: vless-1300687307
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
+        short-id: 50ba05992b05c1c3
+      server: 54.37.136.194
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
 proxy-groups:
     - interval: 300
       name: auto
@@ -131,10 +151,12 @@ proxy-groups:
         - vless-1126122351
         - vless-1260285707
         - vless-1157879666
-        - hysteria2-730512436
         - hysteria2-768953025
+        - hysteria2-730512436
+        - shadowsocks-812343744
         - shadowsocks-819466521
         - vless-1126122350
+        - vless-1300687307
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -149,10 +171,12 @@ proxy-groups:
         - vless-1126122351
         - vless-1260285707
         - vless-1157879666
-        - hysteria2-730512436
         - hysteria2-768953025
+        - hysteria2-730512436
+        - shadowsocks-812343744
         - shadowsocks-819466521
         - vless-1126122350
+        - vless-1300687307
       type: select
 rules:
     - MATCH,select
