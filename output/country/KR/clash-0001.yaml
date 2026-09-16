@@ -6,6 +6,13 @@ proxies:
       server: 141.164.45.187
       type: ss
       udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-210
+      password: TEzjfAYq2IjtuoS
+      port: 6679
+      server: 141.164.45.187
+      type: ss
+      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-260
       password: qwerREWQ@@
@@ -142,6 +149,15 @@ proxies:
       udp: true
     - alterId: 0
       cipher: auto
+      name: vmess-144713
+      network: ws
+      port: 80
+      server: 132.145.80.230
+      type: vmess
+      udp: true
+      uuid: 5155860e-d07d-46c3-9128-3afbd84626c7
+    - alterId: 0
+      cipher: auto
       name: vmess-145107
       network: tcp
       port: 443
@@ -149,6 +165,15 @@ proxies:
       type: vmess
       udp: true
       uuid: 41a7089a-040b-4538-8b8d-010902405bde
+    - alterId: 0
+      cipher: auto
+      name: vmess-145108
+      network: ws
+      port: 80
+      server: 132.145.80.230
+      type: vmess
+      udp: true
+      uuid: 5155860e-d07d-46c3-9128-3afbd84626c7
     - alterId: 0
       cipher: auto
       name: vmess-145109
@@ -1374,20 +1399,6 @@ proxies:
       type: vless
       udp: true
       uuid: a2de9567-9646-45a9-a410-7303a43bdb6c
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1286993955
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: Qe5e0FBZwuwYMRYikx8sH5iaowPQwdkn6kgIN8xrQHE
-        short-id: bd0040df20a53b36
-      server: 47.80.62.191
-      servername: www.logitech.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 43e60b75-9920-450a-94ee-8762758ca49c
     - client-fingerprint: random
       name: vless-1291870373
       network: tcp
@@ -1414,13 +1425,6 @@ proxies:
       type: vless
       udp: true
       uuid: a2de9567-9646-45a9-a410-7303a43bdb6c
-    - name: vless-1295544830
-      network: ws
-      port: 8880
-      server: 172.67.207.26
-      type: vless
-      udp: true
-      uuid: 65aed3c1-1999-46a1-a3f3-2e5eb119ec64
     - name: vless-1336606975
       network: ws
       port: 443
@@ -1431,29 +1435,12 @@ proxies:
       type: vless
       udp: true
       uuid: 3db635e4-f9ec-42d6-8aba-e23df8b0e6da
-    - alterId: 0
-      cipher: auto
-      name: vmess-1338307759
-      network: tcp
-      port: 50016
-      server: 36.133.78.37
-      type: vmess
-      udp: true
-      uuid: 1235431b-b6b8-4add-bff4-a6d71bcc4d71
-    - alterId: 0
-      cipher: auto
-      name: vmess-1339156664
-      network: tcp
-      port: 50016
-      server: 36.133.78.37
-      type: vmess
-      udp: true
-      uuid: 9195e0f1-f466-4e69-838f-a95519b5d45e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-207
+        - shadowsocks-210
         - shadowsocks-260
         - shadowsocks-283
         - shadowsocks-287
@@ -1472,7 +1459,9 @@ proxy-groups:
         - shadowsocks-125600
         - shadowsocks-125601
         - shadowsocks-125602
+        - vmess-144713
         - vmess-145107
+        - vmess-145108
         - vmess-145109
         - vless-2300707
         - vless-2323729
@@ -1598,19 +1587,16 @@ proxy-groups:
         - hysteria2-1276641967
         - vless-1278564089
         - vless-1279636582
-        - vless-1286993955
         - vless-1291870373
         - vless-1293637742
-        - vless-1295544830
         - vless-1336606975
-        - vmess-1338307759
-        - vmess-1339156664
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-207
+        - shadowsocks-210
         - shadowsocks-260
         - shadowsocks-283
         - shadowsocks-287
@@ -1629,7 +1615,9 @@ proxy-groups:
         - shadowsocks-125600
         - shadowsocks-125601
         - shadowsocks-125602
+        - vmess-144713
         - vmess-145107
+        - vmess-145108
         - vmess-145109
         - vless-2300707
         - vless-2323729
@@ -1755,13 +1743,9 @@ proxy-groups:
         - hysteria2-1276641967
         - vless-1278564089
         - vless-1279636582
-        - vless-1286993955
         - vless-1291870373
         - vless-1293637742
-        - vless-1295544830
         - vless-1336606975
-        - vmess-1338307759
-        - vmess-1339156664
       type: select
 rules:
     - MATCH,select
