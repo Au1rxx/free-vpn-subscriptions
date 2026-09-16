@@ -6,13 +6,16 @@ proxies:
       type: vless
       udp: true
       uuid: 731f177e-00aa-480c-b935-661456139a32
-    - name: vless-1122309336
-      network: ws
-      port: 2087
-      server: 103.75.119.126
+    - name: vless-656189585
+      network: tcp
+      port: 443
+      server: 172.105.169.70
+      servername: 172.105.169.70
+      skip-cert-verify: true
+      tls: true
       type: vless
       udp: true
-      uuid: 731f177e-00aa-480c-b935-661456139a32
+      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
     - name: hysteria2-1158363236
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -48,37 +51,25 @@ proxies:
       type: vless
       udp: true
       uuid: 5f215d6c-7235-4a6e-a626-4d29a7afcebd
-    - name: vless-656189585
-      network: tcp
-      port: 443
-      server: 172.105.169.70
-      servername: 172.105.169.70
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1151376484
-        - vless-1122309336
+        - vless-656189585
         - hysteria2-1158363236
         - vless-1331498629
         - vless-1331498653
-        - vless-656189585
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1151376484
-        - vless-1122309336
+        - vless-656189585
         - hysteria2-1158363236
         - vless-1331498629
         - vless-1331498653
-        - vless-656189585
       type: select
 rules:
     - MATCH,select
