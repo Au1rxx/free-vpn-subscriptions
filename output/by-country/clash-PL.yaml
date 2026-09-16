@@ -6,20 +6,6 @@ proxies:
       skip-cert-verify: false
       sni: admin.wwwinternetvideo.click
       type: hysteria2
-    - name: hysteria2-1045025824
-      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-      port: 443
-      server: 144.31.93.126
-      skip-cert-verify: true
-      sni: admin.wwwinternetvideo.click
-      type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-768399401
-      password: 7heRqkPG3hg4UnRm
-      port: 9099
-      server: 217.30.10.44
-      type: ss
-      udp: true
     - name: hysteria2-768953025
       password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
       port: 443
@@ -41,42 +27,23 @@ proxies:
       server: 217.30.10.44
       type: ss
       udp: true
-    - client-fingerprint: chrome
-      name: vless-1141367415
-      network: grpc
-      port: 33743
-      reality-opts:
-        public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
-        short-id: ""
-      server: 185.223.57.10
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: b3a11068-1a7e-4643-85de-7c82cce46943
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-659125577
-        - hysteria2-1045025824
-        - shadowsocks-768399401
         - hysteria2-768953025
         - hysteria2-856081351
         - shadowsocks-779606815
-        - vless-1141367415
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-659125577
-        - hysteria2-1045025824
-        - shadowsocks-768399401
         - hysteria2-768953025
         - hysteria2-856081351
         - shadowsocks-779606815
-        - vless-1141367415
       type: select
 rules:
     - MATCH,select
