@@ -71,6 +71,22 @@ proxies:
       server: 178.104.246.215
       type: ss
       udp: true
+    - name: trojan-1331369866
+      password: MITIVPN
+      port: 443
+      server: 167.82.76.7
+      skip-cert-verify: true
+      sni: ssl.fastly.com
+      type: trojan
+      udp: true
+    - name: trojan-1331434783
+      password: MITIVPN
+      port: 443
+      server: 199.232.78.101
+      skip-cert-verify: false
+      sni: ssl.fastly.com
+      type: trojan
+      udp: true
     - client-fingerprint: qq
       name: vless-1329055403
       network: tcp
@@ -322,6 +338,16 @@ proxies:
       sni: ssl.fastly.com
       type: trojan
       udp: true
+    - name: vless-1155246847
+      network: grpc
+      port: 2087
+      server: 31.56.189.27
+      servername: srv-21bac9.vless.monster
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: df9f5aca-eda0-428f-a752-e53866153d12
     - name: vless-1330083601
       network: tcp
       port: 56834
@@ -329,10 +355,10 @@ proxies:
       type: vless
       udp: true
       uuid: daf65e17-1ed5-42be-a34d-20a156ddedbc
-    - name: vless-1155246847
+    - name: vless-1115899893
       network: grpc
       port: 2087
-      server: 31.56.189.27
+      server: srv-21bac9.vless.monster
       servername: srv-21bac9.vless.monster
       skip-cert-verify: false
       tls: true
@@ -414,32 +440,6 @@ proxies:
       type: vless
       udp: true
       uuid: 969bcce0-de8a-4b02-8cf8-d00d2d2ca7a5
-    - name: trojan-1311528613
-      password: MITIVPN
-      port: 443
-      server: 199.232.78.101
-      skip-cert-verify: false
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
-    - name: trojan-1311528610
-      password: MITIVPN
-      port: 443
-      server: 167.82.76.7
-      skip-cert-verify: false
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
-    - name: vless-1124738275
-      network: grpc
-      port: 2087
-      server: 31.56.189.27
-      servername: srv-21bac9.vless.monster
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: df9f5aca-eda0-428f-a752-e53866153d12
 proxy-groups:
     - interval: 300
       name: auto
@@ -453,6 +453,8 @@ proxy-groups:
         - vmess-1326073124
         - hysteria2-721489370
         - shadowsocks-1329053402
+        - trojan-1331369866
+        - trojan-1331434783
         - vless-1329055403
         - hysteria2-1090323312
         - trojan-1311528609
@@ -478,8 +480,9 @@ proxy-groups:
         - hysteria2-856679829
         - shadowsocks-229
         - trojan-1315622518
-        - vless-1330083601
         - vless-1155246847
+        - vless-1330083601
+        - vless-1115899893
         - vless-1150072930
         - vless-1238811298
         - vless-1156743175
@@ -487,9 +490,6 @@ proxy-groups:
         - vless-731819985
         - vless-1063029564
         - vless-673696613
-        - trojan-1311528613
-        - trojan-1311528610
-        - vless-1124738275
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -504,6 +504,8 @@ proxy-groups:
         - vmess-1326073124
         - hysteria2-721489370
         - shadowsocks-1329053402
+        - trojan-1331369866
+        - trojan-1331434783
         - vless-1329055403
         - hysteria2-1090323312
         - trojan-1311528609
@@ -529,8 +531,9 @@ proxy-groups:
         - hysteria2-856679829
         - shadowsocks-229
         - trojan-1315622518
-        - vless-1330083601
         - vless-1155246847
+        - vless-1330083601
+        - vless-1115899893
         - vless-1150072930
         - vless-1238811298
         - vless-1156743175
@@ -538,9 +541,6 @@ proxy-groups:
         - vless-731819985
         - vless-1063029564
         - vless-673696613
-        - trojan-1311528613
-        - trojan-1311528610
-        - vless-1124738275
       type: select
 rules:
     - MATCH,select

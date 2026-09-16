@@ -1,0 +1,45 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1331498607
+      network: tcp
+      port: 11344
+      reality-opts:
+        public-key: HIYCtNfDfR8DCroReH-6FRipAVO9XQI2TS_r4lKyNX0
+        short-id: d61bc31d737250
+      server: 154.205.134.4
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5f215d6c-7235-4a6e-a626-4d29a7afcebd
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1331498659
+      network: tcp
+      port: 11344
+      reality-opts:
+        public-key: HIYCtNfDfR8DCroReH-6FRipAVO9XQI2TS_r4lKyNX0
+        short-id: d61bc31d737250
+      server: www.aisearch66.com
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5f215d6c-7235-4a6e-a626-4d29a7afcebd
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1331498607
+        - vless-1331498659
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1331498607
+        - vless-1331498659
+      type: select
+rules:
+    - MATCH,select
