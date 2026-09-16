@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-81748
-      network: ws
-      port: 8880
-      server: 88.216.66.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: aes-256-cfb
       name: shadowsocks-696781308
       password: aLpQtfEZe445QyHk
@@ -62,11 +55,31 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-1255692238
+      network: ws
+      port: 8880
+      server: 166.62.114.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1331654720
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: nilJ07r1KZ0-KhmRNYeICXGhM9HeG9uxnRaqjYz3fWg
+        short-id: ac0af01c33bf2f9b
+      server: bg.responsiblecare.uk
+      servername: bg.responsiblecare.uk
+      tls: true
+      type: vless
+      udp: true
+      uuid: 51d15658-3596-435f-a54f-d791c59dfdb6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-81748
         - shadowsocks-696781308
         - shadowsocks-743178480
         - shadowsocks-812343868
@@ -75,12 +88,13 @@ proxy-groups:
         - vless-1239308075
         - vless-1239327829
         - vless-1239358493
+        - vless-1255692238
+        - vless-1331654720
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-81748
         - shadowsocks-696781308
         - shadowsocks-743178480
         - shadowsocks-812343868
@@ -89,6 +103,8 @@ proxy-groups:
         - vless-1239308075
         - vless-1239327829
         - vless-1239358493
+        - vless-1255692238
+        - vless-1331654720
       type: select
 rules:
     - MATCH,select

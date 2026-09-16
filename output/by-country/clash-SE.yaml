@@ -1,18 +1,4 @@
 proxies:
-    - name: hysteria2-1230196608
-      password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
-      port: 25443
-      server: se-node.rumedia-cdn.com
-      skip-cert-verify: true
-      sni: cf2.rumedia-cdn.com
-      type: hysteria2
-    - name: hysteria2-1230577883
-      password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
-      port: 25443
-      server: se-node.rumedia-cdn.com
-      skip-cert-verify: false
-      sni: cf2.rumedia-cdn.com
-      type: hysteria2
     - client-fingerprint: chrome
       name: vless-1216487832
       network: grpc
@@ -30,16 +16,12 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1230196608
-        - hysteria2-1230577883
         - vless-1216487832
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1230196608
-        - hysteria2-1230577883
         - vless-1216487832
       type: select
 rules:

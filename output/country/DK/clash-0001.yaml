@@ -6,17 +6,33 @@ proxies:
       server: 38.180.214.110
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1331654732
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: nilJ07r1KZ0-KhmRNYeICXGhM9HeG9uxnRaqjYz3fWg
+        short-id: a08f46e4b03d9dd3
+      server: dk.responsiblecare.uk
+      servername: dk.responsiblecare.uk
+      tls: true
+      type: vless
+      udp: true
+      uuid: 51d15658-3596-435f-a54f-d791c59dfdb6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1108598219
+        - vless-1331654732
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1108598219
+        - vless-1331654732
       type: select
 rules:
     - MATCH,select
