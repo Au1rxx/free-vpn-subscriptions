@@ -7,6 +7,15 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - alterId: 0
+      cipher: none
+      name: vmess-1048772408
+      network: tcp
+      port: 16314
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - cipher: aes-256-gcm
       name: shadowsocks-1193406317
       password: owVdNnQcdPgthSyX
@@ -21,30 +30,23 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1239152527
-      network: ws
-      port: 8880
-      server: 185.193.30.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-122906
+        - vmess-1048772408
         - shadowsocks-1193406317
         - vless-1239075226
-        - vless-1239152527
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-122906
+        - vmess-1048772408
         - shadowsocks-1193406317
         - vless-1239075226
-        - vless-1239152527
       type: select
 rules:
     - MATCH,select
