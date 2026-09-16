@@ -1,0 +1,40 @@
+proxies:
+    - name: vless-1321154839
+      network: grpc
+      port: 9443
+      server: 185.255.179.11
+      servername: hub-ee-01.hanvpn.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d9d0f208-d582-41d5-bb7b-742671402810
+    - client-fingerprint: firefox
+      name: vless-1297639936
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: s2uiu3GQA2SlZzsr86Z5Dav97eAFTPf7Nvr-zqzzRgg
+        short-id: 72ccd4a7563c2953
+      server: 94.183.170.147
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5edbcb44-8d04-4fa7-a587-bc5d60c24ca1
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1321154839
+        - vless-1297639936
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1321154839
+        - vless-1297639936
+      type: select
+rules:
+    - MATCH,select

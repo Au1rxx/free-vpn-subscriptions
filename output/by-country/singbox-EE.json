@@ -1,0 +1,75 @@
+{
+  "outbounds": [
+    {
+      "server": "185.255.179.11",
+      "server_port": 9443,
+      "tag": "vless-1321154839",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "hub-ee-01.hanvpn.cc",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "service_name": "ee01-grpc-8e47a",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "d9d0f208-d582-41d5-bb7b-742671402810"
+    },
+    {
+      "server": "94.183.170.147",
+      "server_port": 8443,
+      "tag": "vless-1297639936",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "s2uiu3GQA2SlZzsr86Z5Dav97eAFTPf7Nvr-zqzzRgg",
+          "short_id": "72ccd4a7563c2953"
+        },
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "service_name": "9d30d49278",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "5edbcb44-8d04-4fa7-a587-bc5d60c24ca1"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1321154839",
+        "vless-1297639936"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1321154839",
+        "vless-1297639936"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
