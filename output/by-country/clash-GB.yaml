@@ -6,13 +6,6 @@ proxies:
       skip-cert-verify: true
       sni: vpn-uk-002.fastervpn.world
       type: hysteria2
-    - name: vless-1230573696
-      network: grpc
-      port: 2083
-      server: 66.90.105.210
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1331758447
       password: UEqDxBEsBesl/wZ+1FGwANk2Ot7HFGRgrn3T0+lf6fg=
@@ -27,14 +20,7 @@ proxies:
       server: 149.102.149.207
       type: ss
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-717969059
-      password: LXchLsIwtCeUAUgu
-      port: 443
-      server: 149.102.149.207
-      type: ss
-      udp: true
-    - name: vless-1254790076
+    - name: vless-1230280245
       network: grpc
       port: 2083
       server: 66.90.104.42
@@ -48,7 +34,21 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - name: vless-1230280245
+    - name: vless-1230573696
+      network: grpc
+      port: 2083
+      server: 66.90.105.210
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - cipher: aes-256-gcm
+      name: shadowsocks-717969059
+      password: LXchLsIwtCeUAUgu
+      port: 443
+      server: 149.102.149.207
+      type: ss
+      udp: true
+    - name: vless-1254790076
       network: grpc
       port: 2083
       server: 66.90.104.42
@@ -172,6 +172,17 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
+      name: vless-1195645282
+      network: tcp
+      port: 443
+      server: 50.7.226.173
+      servername: viper-21.moriarty-web.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1100563191
@@ -186,17 +197,20 @@ proxies:
       type: vless
       udp: true
       uuid: 4d583b2c-2f5a-47d0-8181-e95217fe8cd9
-    - flow: xtls-rprx-vision
-      name: vless-1195645282
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1100562242
       network: tcp
       port: 443
-      server: 50.7.226.173
-      servername: viper-21.moriarty-web.com
-      skip-cert-verify: true
+      reality-opts:
+        public-key: SiSky02wHz-S0TDHKFTdYhnrlT8Y3CfRsekZlcdLXDY
+        short-id: fd55b698ee8c3629
+      server: 87.117.234.19
+      servername: strapi.io
       tls: true
       type: vless
       udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+      uuid: 4d583b2c-2f5a-47d0-8181-e95217fe8cd9
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-810585257
@@ -286,13 +300,13 @@ proxy-groups:
       name: auto
       proxies:
         - hysteria2-1296090376
-        - vless-1230573696
         - shadowsocks-1331758447
         - shadowsocks-696780670
+        - vless-1230280245
+        - vless-1230279293
+        - vless-1230573696
         - shadowsocks-717969059
         - vless-1254790076
-        - vless-1230279293
-        - vless-1230280245
         - vless-1230573705
         - vless-1307982448
         - vless-1328833835
@@ -305,8 +319,9 @@ proxy-groups:
         - vless-1250111368
         - hysteria2-658428968
         - vless-1195645285
-        - vless-1100563191
         - vless-1195645282
+        - vless-1100563191
+        - vless-1100562242
         - vless-810585257
         - vless-810585267
         - vless-810585348
@@ -319,13 +334,13 @@ proxy-groups:
       proxies:
         - auto
         - hysteria2-1296090376
-        - vless-1230573696
         - shadowsocks-1331758447
         - shadowsocks-696780670
+        - vless-1230280245
+        - vless-1230279293
+        - vless-1230573696
         - shadowsocks-717969059
         - vless-1254790076
-        - vless-1230279293
-        - vless-1230280245
         - vless-1230573705
         - vless-1307982448
         - vless-1328833835
@@ -338,8 +353,9 @@ proxy-groups:
         - vless-1250111368
         - hysteria2-658428968
         - vless-1195645285
-        - vless-1100563191
         - vless-1195645282
+        - vless-1100563191
+        - vless-1100562242
         - vless-810585257
         - vless-810585267
         - vless-810585348
