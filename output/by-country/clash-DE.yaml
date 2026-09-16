@@ -55,14 +55,6 @@ proxies:
       server: 2.58.81.221
       type: ss
       udp: true
-    - name: trojan-1320830093
-      password: MITIVPN
-      port: 443
-      server: 151.101.56.7
-      skip-cert-verify: false
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
     - name: vless-1109561737
       network: grpc
       port: 2087
@@ -175,9 +167,9 @@ proxies:
       skip-cert-verify: true
       sni: hopp-romania-new.roxa.org
       type: hysteria2
-    - client-fingerprint: firefox
-      name: vless-731819985
-      network: raw
+    - client-fingerprint: chrome
+      name: vless-673696613
+      network: tcp
       port: 40443
       reality-opts:
         public-key: VG-FwQBMFzPcemJ_JqtkbO-2WKLmQp2h0CmAj-DfLkA
@@ -249,6 +241,20 @@ proxies:
       skip-cert-verify: true
       sni: hopp-germany-new.ddnsguru.com
       type: hysteria2
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1343061876
+      password: 5JNk2evEdGotB0kdhAqzX+jaGYs6e+yTw0Pgkt+MEMU=
+      port: 59924
+      server: 130.61.148.174
+      type: ss
+      udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1344243210
+      password: BKhCEwmAD2//ZNQ9Ej8GshMBc3/L4nGZ0SODkR77HLo=
+      port: 59924
+      server: 130.61.181.238
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -261,7 +267,6 @@ proxy-groups:
         - hysteria2-896855667
         - shadowsocks-1343061877
         - shadowsocks-717969012
-        - trojan-1320830093
         - vless-1109561737
         - hysteria2-1090323312
         - shadowsocks-1342739003
@@ -275,12 +280,14 @@ proxy-groups:
         - shadowsocks-696780676
         - vmess-1342789914
         - hysteria2-896857448
-        - vless-731819985
+        - vless-673696613
         - vless-1331308277
         - vless-1235448662
         - vless-1254189516
         - vless-1275125549
         - hysteria2-1098338334
+        - shadowsocks-1343061876
+        - shadowsocks-1344243210
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -294,7 +301,6 @@ proxy-groups:
         - hysteria2-896855667
         - shadowsocks-1343061877
         - shadowsocks-717969012
-        - trojan-1320830093
         - vless-1109561737
         - hysteria2-1090323312
         - shadowsocks-1342739003
@@ -308,12 +314,14 @@ proxy-groups:
         - shadowsocks-696780676
         - vmess-1342789914
         - hysteria2-896857448
-        - vless-731819985
+        - vless-673696613
         - vless-1331308277
         - vless-1235448662
         - vless-1254189516
         - vless-1275125549
         - hysteria2-1098338334
+        - shadowsocks-1343061876
+        - shadowsocks-1344243210
       type: select
 rules:
     - MATCH,select
