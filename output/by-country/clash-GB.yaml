@@ -6,13 +6,6 @@ proxies:
       skip-cert-verify: true
       sni: vpn-uk-002.fastervpn.world
       type: hysteria2
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1331758447
-      password: UEqDxBEsBesl/wZ+1FGwANk2Ot7HFGRgrn3T0+lf6fg=
-      port: 61312
-      server: 144.24.228.46
-      type: ss
-      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-696780670
       password: LXchLsIwtCeUAUgu
@@ -20,6 +13,13 @@ proxies:
       server: 149.102.149.207
       type: ss
       udp: true
+    - name: vless-1307982448
+      network: grpc
+      port: 2083
+      server: 66.90.104.42
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - name: vless-1230280245
       network: grpc
       port: 2083
@@ -62,13 +62,6 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - name: vless-1307982448
-      network: grpc
-      port: 2083
-      server: 66.90.104.42
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - flow: xtls-rprx-vision
       name: vless-1328833835
       network: tcp
@@ -101,13 +94,6 @@ proxies:
       skip-cert-verify: true
       sni: labs.frkn.org
       type: hysteria2
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1331758445
-      password: L7JatIxNiZclnhe7tnBN4aTKGBuQbZwnBF7cjyB1XhE=
-      port: 61312
-      server: 129.151.95.162
-      type: ss
-      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-717969008
       password: g5h5jleTRSyO3Rk4
@@ -126,20 +112,6 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1209548109
-      network: tcp
-      port: 421
-      reality-opts:
-        public-key: zUdAvpr07q1Yd0Om-jc4-Vu4Un5tVird8FGoN-7W9Tg
-        short-id: a1facbc8575701ae
-      server: 78.129.208.44
-      servername: chistomat.dry.care
-      tls: true
-      type: vless
-      udp: true
-      uuid: a3c861cb-e1e7-4ad6-8be2-7c2314ec6f18
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1001496418
@@ -264,6 +236,34 @@ proxies:
       type: vless
       udp: true
       uuid: be5b6ad6-8184-4b63-82ac-3bc00c09c98c
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-810591827
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: IFEZmwpGK7VCuDj3kmVdyMn7vUIG8Sntc6TG4eIS3xs
+        short-id: 1aa9f3c9021280c0
+      server: 5.152.223.97
+      servername: strapi.io
+      tls: true
+      type: vless
+      udp: true
+      uuid: be5b6ad6-8184-4b63-82ac-3bc00c09c98c
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-951538932
+      network: raw
+      port: 446
+      reality-opts:
+        public-key: 9LFDlpt6d56wFwxchaKvyLQHGj3lw3ku1g3X8H9JjEI
+        short-id: 91e6c6797f49ed84
+      server: 78.129.221.66
+      servername: louisvuitton.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 10000025-9365-7424-f000-93edfcf6a020
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-930609263
@@ -311,22 +311,19 @@ proxy-groups:
       name: auto
       proxies:
         - hysteria2-1296090376
-        - shadowsocks-1331758447
         - shadowsocks-696780670
+        - vless-1307982448
         - vless-1230280245
         - vless-1230279293
         - vless-1230573696
         - shadowsocks-717969059
         - vless-1254790076
         - vless-1230573705
-        - vless-1307982448
         - vless-1328833835
         - vless-856684694
         - hysteria2-1005580180
-        - shadowsocks-1331758445
         - shadowsocks-717969008
         - vless-1331308276
-        - vless-1209548109
         - vless-1001496418
         - vless-1250111368
         - hysteria2-658428968
@@ -337,6 +334,8 @@ proxy-groups:
         - vless-810585257
         - vless-810585267
         - vless-810585348
+        - vless-810591827
+        - vless-951538932
         - vless-930609263
         - vless-823997543
         - vless-809712299
@@ -346,22 +345,19 @@ proxy-groups:
       proxies:
         - auto
         - hysteria2-1296090376
-        - shadowsocks-1331758447
         - shadowsocks-696780670
+        - vless-1307982448
         - vless-1230280245
         - vless-1230279293
         - vless-1230573696
         - shadowsocks-717969059
         - vless-1254790076
         - vless-1230573705
-        - vless-1307982448
         - vless-1328833835
         - vless-856684694
         - hysteria2-1005580180
-        - shadowsocks-1331758445
         - shadowsocks-717969008
         - vless-1331308276
-        - vless-1209548109
         - vless-1001496418
         - vless-1250111368
         - hysteria2-658428968
@@ -372,6 +368,8 @@ proxy-groups:
         - vless-810585257
         - vless-810585267
         - vless-810585348
+        - vless-810591827
+        - vless-951538932
         - vless-930609263
         - vless-823997543
         - vless-809712299
