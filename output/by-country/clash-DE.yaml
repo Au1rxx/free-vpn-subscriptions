@@ -13,6 +13,13 @@ proxies:
       skip-cert-verify: true
       sni: germany3.h2corp.local
       type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-229
+      password: PWpjPo3tqhPN4yRZ
+      port: 20001
+      server: 8.209.74.72
+      type: ss
+      udp: true
     - name: hysteria2-1147415558
       password: zhangyang
       port: 6443
@@ -41,13 +48,6 @@ proxies:
       server: 130.61.114.207
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-229
-      password: PWpjPo3tqhPN4yRZ
-      port: 20001
-      server: 8.209.74.72
-      type: ss
-      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-717969012
       password: kKEd0rBrd56Furjz
@@ -63,6 +63,16 @@ proxies:
       sni: ssl.fastly.com
       type: trojan
       udp: true
+    - name: vless-1109561737
+      network: grpc
+      port: 2087
+      server: srv-21bac9.vless.monster
+      servername: srv-21bac9.vless.monster
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: df9f5aca-eda0-428f-a752-e53866153d12
     - name: hysteria2-1090323312
       password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
       port: 8443
@@ -90,19 +100,22 @@ proxies:
       type: vless
       udp: true
       uuid: 60a361f9-3c45-4954-9e4c-92a85bda243d
+    - name: vless-1324366387
+      network: grpc
+      port: 9443
+      server: 185.255.179.11
+      servername: hub-de-04.hanvpn.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d9d0f208-d582-41d5-bb7b-742671402810
     - name: hysteria2-721489370
       password: zhangyang
       port: 6443
       server: 130.61.50.75
       skip-cert-verify: true
       sni: www.calmloud.com
-      type: hysteria2
-    - name: hysteria2-48396262
-      password: zhangyang
-      port: 6443
-      server: 130.61.50.75
-      skip-cert-verify: true
-      sni: ""
       type: hysteria2
     - name: hysteria2-650314301
       password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
@@ -111,13 +124,6 @@ proxies:
       skip-cert-verify: true
       sni: germany3.h2corp.local
       type: hysteria2
-    - cipher: aes-256-gcm
-      name: shadowsocks-11078
-      password: XKFKl2rULjIp74
-      port: 8008
-      server: 185.226.172.8
-      type: ss
-      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-1338088303
       password: amazonskr05
@@ -139,6 +145,13 @@ proxies:
       type: vless
       udp: true
       uuid: d92b6509-8b63-4505-b3a2-1dc5b1c014ac
+    - cipher: aes-256-cfb
+      name: shadowsocks-1340916509
+      password: amazonskr05
+      port: 443
+      server: 63.180.252.123
+      type: ss
+      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-696780676
       password: kKEd0rBrd56Furjz
@@ -155,13 +168,6 @@ proxies:
       type: vmess
       udp: true
       uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
-    - name: hysteria2-1210298803
-      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
-      port: 8443
-      server: 162.249.126.7
-      skip-cert-verify: false
-      sni: hopp-germany-new.ddnsguru.com
-      type: hysteria2
     - name: hysteria2-896857448
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
       port: 8080
@@ -169,24 +175,6 @@ proxies:
       skip-cert-verify: true
       sni: hopp-romania-new.roxa.org
       type: hysteria2
-    - name: trojan-1324558250
-      password: MITIVPN
-      port: 443
-      server: 167.82.76.7
-      skip-cert-verify: false
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
-    - name: vless-1109561737
-      network: grpc
-      port: 2087
-      server: srv-21bac9.vless.monster
-      servername: srv-21bac9.vless.monster
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: df9f5aca-eda0-428f-a752-e53866153d12
     - client-fingerprint: firefox
       name: vless-731819985
       network: raw
@@ -254,39 +242,45 @@ proxies:
       type: vless
       udp: true
       uuid: cabd9303-ae32-4d25-86b9-26b312d0f044
+    - name: hysteria2-1098338334
+      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
+      port: 8443
+      server: 162.249.126.6
+      skip-cert-verify: true
+      sni: hopp-germany-new.ddnsguru.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1328057127
         - hysteria2-648949654
+        - shadowsocks-229
         - hysteria2-1147415558
         - shadowsocks-1341685006
         - hysteria2-896855667
         - shadowsocks-1343061877
-        - shadowsocks-229
         - shadowsocks-717969012
         - trojan-1320830093
+        - vless-1109561737
         - hysteria2-1090323312
         - shadowsocks-1342739003
         - vless-1340136606
+        - vless-1324366387
         - hysteria2-721489370
-        - hysteria2-48396262
         - hysteria2-650314301
-        - shadowsocks-11078
         - shadowsocks-1338088303
         - vless-1238811298
+        - shadowsocks-1340916509
         - shadowsocks-696780676
         - vmess-1342789914
-        - hysteria2-1210298803
         - hysteria2-896857448
-        - trojan-1324558250
-        - vless-1109561737
         - vless-731819985
         - vless-1331308277
         - vless-1235448662
         - vless-1254189516
         - vless-1275125549
+        - hysteria2-1098338334
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -294,33 +288,32 @@ proxy-groups:
         - auto
         - hysteria2-1328057127
         - hysteria2-648949654
+        - shadowsocks-229
         - hysteria2-1147415558
         - shadowsocks-1341685006
         - hysteria2-896855667
         - shadowsocks-1343061877
-        - shadowsocks-229
         - shadowsocks-717969012
         - trojan-1320830093
+        - vless-1109561737
         - hysteria2-1090323312
         - shadowsocks-1342739003
         - vless-1340136606
+        - vless-1324366387
         - hysteria2-721489370
-        - hysteria2-48396262
         - hysteria2-650314301
-        - shadowsocks-11078
         - shadowsocks-1338088303
         - vless-1238811298
+        - shadowsocks-1340916509
         - shadowsocks-696780676
         - vmess-1342789914
-        - hysteria2-1210298803
         - hysteria2-896857448
-        - trojan-1324558250
-        - vless-1109561737
         - vless-731819985
         - vless-1331308277
         - vless-1235448662
         - vless-1254189516
         - vless-1275125549
+        - hysteria2-1098338334
       type: select
 rules:
     - MATCH,select

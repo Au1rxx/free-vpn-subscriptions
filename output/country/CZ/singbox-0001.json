@@ -1,6 +1,15 @@
 {
   "outbounds": [
     {
+      "alter_id": 0,
+      "security": "auto",
+      "server": "zfd-boardv2.kunlun01dns.com",
+      "server_port": 16280,
+      "tag": "vmess-1005127037",
+      "type": "vmess",
+      "uuid": "0802ac03-7973-39ef-a019-ba02de6c01e1"
+    },
+    {
       "flow": "xtls-rprx-vision",
       "server": "123.253.227.238",
       "server_port": 10050,
@@ -23,9 +32,22 @@
       "uuid": "fad78708-a2a3-37a9-8ce7-6bc83526af0d"
     },
     {
+      "server": "153.76.185.186",
+      "server_port": 3090,
+      "tag": "vless-1343434886",
+      "transport": {
+        "service_name": "vless",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "1e8565d3-d5fe-4ade-aaf3-30c186b4538c"
+    },
+    {
       "interval": "5m",
       "outbounds": [
-        "vless-1261278155"
+        "vmess-1005127037",
+        "vless-1261278155",
+        "vless-1343434886"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -34,7 +56,9 @@
     {
       "outbounds": [
         "auto",
-        "vless-1261278155"
+        "vmess-1005127037",
+        "vless-1261278155",
+        "vless-1343434886"
       ],
       "tag": "select",
       "type": "selector"
