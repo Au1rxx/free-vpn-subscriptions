@@ -6,6 +6,13 @@ proxies:
       type: vless
       udp: true
       uuid: 731f177e-00aa-480c-b935-661456139a32
+    - name: vless-1163061815
+      network: ws
+      port: 2087
+      server: 103.75.119.126
+      type: vless
+      udp: true
+      uuid: 731f177e-00aa-480c-b935-661456139a32
     - name: vless-656189585
       network: tcp
       port: 443
@@ -23,53 +30,23 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
-    - client-fingerprint: safari
-      flow: xtls-rprx-vision
-      name: vless-1331498629
-      network: tcp
-      port: 8443
-      reality-opts:
-        public-key: o2uLRBkgcAPCavo12l6VUzaSnSmxjUvod-NBSiUPdy8
-        short-id: "85"
-      server: 212.81.47.242
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5f215d6c-7235-4a6e-a626-4d29a7afcebd
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1331498653
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: o2uLRBkgcAPCavo12l6VUzaSnSmxjUvod-NBSiUPdy8
-        short-id: "85"
-      server: 82.23.146.98
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5f215d6c-7235-4a6e-a626-4d29a7afcebd
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1151376484
+        - vless-1163061815
         - vless-656189585
         - hysteria2-1158363236
-        - vless-1331498629
-        - vless-1331498653
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1151376484
+        - vless-1163061815
         - vless-656189585
         - hysteria2-1158363236
-        - vless-1331498629
-        - vless-1331498653
       type: select
 rules:
     - MATCH,select

@@ -7,13 +7,6 @@ proxies:
       sni: tyy129.magiclampcloud.com
       type: trojan
       udp: true
-    - name: hysteria2-1179524508
-      password: f25f19f29ce3fb53a35bf1b35b452a43
-      port: 50160
-      server: 129.159.156.109
-      skip-cert-verify: true
-      sni: www.bing.com
-      type: hysteria2
     - name: vless-1255726662
       network: ws
       port: 8880
@@ -41,25 +34,35 @@ proxies:
       type: vless
       udp: true
       uuid: 887f0c24-8b2e-40ce-8df5-27b4cb06ce81
+    - name: vless-1334815473
+      network: ws
+      port: 443
+      server: 104.24.3.153
+      servername: user-svc-ca3845-edg.platform-37528a.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 887f0c24-8b2e-40ce-8df5-27b4cb06ce81
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-696781176
-        - hysteria2-1179524508
         - vless-1255726662
         - vless-1273136551
         - vless-1330752963
+        - vless-1334815473
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-696781176
-        - hysteria2-1179524508
         - vless-1255726662
         - vless-1273136551
         - vless-1330752963
+        - vless-1334815473
       type: select
 rules:
     - MATCH,select
