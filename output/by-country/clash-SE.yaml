@@ -13,8 +13,8 @@ proxies:
       skip-cert-verify: true
       sni: cf2.rumedia-cdn.com
       type: hysteria2
-    - client-fingerprint: firefox
-      name: vless-1115021181
+    - client-fingerprint: chrome
+      name: vless-1173154542
       network: grpc
       port: 33743
       reality-opts:
@@ -26,13 +26,27 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
+    - client-fingerprint: edge
+      name: vless-1105975123
+      network: grpc
+      port: 9458
+      reality-opts:
+        public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
+        short-id: ""
+      server: 91.193.17.156
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b3a11068-1a7e-4643-85de-7c82cce46943
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1342739000
         - hysteria2-1230196608
-        - vless-1115021181
+        - vless-1173154542
+        - vless-1105975123
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -40,7 +54,8 @@ proxy-groups:
         - auto
         - hysteria2-1342739000
         - hysteria2-1230196608
-        - vless-1115021181
+        - vless-1173154542
+        - vless-1105975123
       type: select
 rules:
     - MATCH,select
