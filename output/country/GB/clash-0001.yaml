@@ -75,6 +75,13 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - cipher: aes-128-gcm
+      name: shadowsocks-126252
+      password: shadowsocks
+      port: 443
+      server: 158.173.24.73
+      type: ss
+      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-143572
@@ -93,6 +100,22 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
+    - name: vless-2327788
+      network: ws
+      port: 80
+      server: 57.129.132.223
+      type: vless
+      udp: true
+      uuid: 9e20b04d-5a81-4e16-b421-01e502f0aac6
+    - alterId: 0
+      cipher: auto
+      name: vmess-2376186
+      network: ws
+      port: 80
+      server: 57.129.132.223
+      type: vmess
+      udp: true
+      uuid: a25cbf11-2908-4a1b-a3a8-9a571777dca3
     - alterId: 0
       cipher: auto
       name: vmess-2380869
@@ -1647,13 +1670,6 @@ proxies:
       type: vless
       udp: true
       uuid: be5b6ad6-8184-4b63-82ac-3bc00c09c98c
-    - name: hysteria2-971987237
-      password: qQe1z5kU8kN6SlKnDt9Ru3Qp
-      port: 443
-      server: vpn-uk-001.fastervpn.world
-      skip-cert-verify: true
-      sni: vpn-uk-001.fastervpn.world
-      type: hysteria2
     - alterId: 0
       cipher: auto
       name: vmess-975539954
@@ -2167,20 +2183,6 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1167148578
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: vnUSQFujh6K08KR6FHYWoBkZCAEZNWSKji0PPw9eMWM
-        short-id: 86229a5e3b1e6ef4
-      server: 2.56.121.43
-      servername: www.ikea.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: eec2f6a7-c10f-43b0-b133-61f9bf9bbc27
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1168886503
@@ -2917,15 +2919,6 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - alterId: 2
-      cipher: auto
-      name: vmess-1339156652
-      network: tcp
-      port: 30836
-      server: 219.79.206.137
-      type: vmess
-      udp: true
-      uuid: cbb3f877-d1fb-344c-87a9-d153bffd5484
     - flow: xtls-rprx-vision
       name: vless-1340137995
       network: tcp
@@ -3232,16 +3225,6 @@ proxies:
       type: vless
       udp: true
       uuid: fe64e0af-e39b-4335-874e-5bb6993e465a
-    - name: vless-1351433378
-      network: ws
-      port: 443
-      server: 57.128.177.198
-      servername: vp58.cc.cd
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7b102311-43fd-4e8f-877e-8090623c101d
     - flow: xtls-rprx-vision
       name: vless-1351789137
       network: tcp
@@ -3302,6 +3285,20 @@ proxies:
       type: vless
       udp: true
       uuid: 66fd9d08-6279-42bd-904d-3227ad527a0c
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1355517616
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: U_E3xSI6QY_Mj-3zjkB4esvMj0aVvYH6W6oHOR50XBs
+        short-id: 10debbdf94767541
+      server: 46.33.8.21
+      servername: filesconvert.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: fe64e0af-e39b-4335-874e-5bb6993e465a
 proxy-groups:
     - interval: 300
       name: auto
@@ -3316,8 +3313,11 @@ proxy-groups:
         - trojan-112595
         - trojan-122852
         - trojan-122853
+        - shadowsocks-126252
         - vmess-143572
         - vmess-145264
+        - vless-2327788
+        - vmess-2376186
         - vmess-2380869
         - vmess-2380876
         - vmess-2386864
@@ -3452,7 +3452,6 @@ proxy-groups:
         - vless-962527027
         - vless-966404490
         - vless-966404568
-        - hysteria2-971987237
         - vmess-975539954
         - vmess-975706977
         - vless-976474882
@@ -3495,7 +3494,6 @@ proxy-groups:
         - vmess-1145034207
         - vless-1154636558
         - vless-1157879699
-        - vless-1167148578
         - vless-1168886503
         - vless-1175743190
         - vless-1176827190
@@ -3561,7 +3559,6 @@ proxy-groups:
         - vless-1331308276
         - hysteria2-1331877098
         - vless-1332995275
-        - vmess-1339156652
         - vless-1340137995
         - vless-1341273291
         - vless-1341273298
@@ -3592,12 +3589,12 @@ proxy-groups:
         - vless-1349523981
         - vless-1349839573
         - vless-1349842644
-        - vless-1351433378
         - vless-1351789137
         - shadowsocks-1352040312
         - vless-1352248424
         - vless-1353177906
         - vless-1353236382
+        - vless-1355517616
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -3613,8 +3610,11 @@ proxy-groups:
         - trojan-112595
         - trojan-122852
         - trojan-122853
+        - shadowsocks-126252
         - vmess-143572
         - vmess-145264
+        - vless-2327788
+        - vmess-2376186
         - vmess-2380869
         - vmess-2380876
         - vmess-2386864
@@ -3749,7 +3749,6 @@ proxy-groups:
         - vless-962527027
         - vless-966404490
         - vless-966404568
-        - hysteria2-971987237
         - vmess-975539954
         - vmess-975706977
         - vless-976474882
@@ -3792,7 +3791,6 @@ proxy-groups:
         - vmess-1145034207
         - vless-1154636558
         - vless-1157879699
-        - vless-1167148578
         - vless-1168886503
         - vless-1175743190
         - vless-1176827190
@@ -3858,7 +3856,6 @@ proxy-groups:
         - vless-1331308276
         - hysteria2-1331877098
         - vless-1332995275
-        - vmess-1339156652
         - vless-1340137995
         - vless-1341273291
         - vless-1341273298
@@ -3889,12 +3886,12 @@ proxy-groups:
         - vless-1349523981
         - vless-1349839573
         - vless-1349842644
-        - vless-1351433378
         - vless-1351789137
         - shadowsocks-1352040312
         - vless-1352248424
         - vless-1353177906
         - vless-1353236382
+        - vless-1355517616
       type: select
 rules:
     - MATCH,select
