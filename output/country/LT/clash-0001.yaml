@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-27309
+      password: qYEN5HX4JKeVCdEC
+      port: 9039
+      server: 195.238.126.84
+      type: ss
+      udp: true
     - name: trojan-122909
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20123
@@ -424,10 +431,39 @@ proxies:
       type: vless
       udp: true
       uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1352518396
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: vrcsm8L_tY7sNbnCEdLCEjOthh_w9bdWS3wFPgsIomk
+        short-id: 4fa44664f6a566d3
+      server: lt.aether-runet.top
+      servername: lt.aether-runet.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1352518399
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: vrcsm8L_tY7sNbnCEdLCEjOthh_w9bdWS3wFPgsIomk
+        short-id: 4fa44664f6a566d3
+      server: 84.32.215.117
+      servername: lt.aether-runet.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-27309
         - trojan-122909
         - shadowsocks-696781306
         - shadowsocks-717968959
@@ -463,11 +499,14 @@ proxy-groups:
         - vless-1340615726
         - vless-1343024311
         - vless-1344120800
+        - vless-1352518396
+        - vless-1352518399
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-27309
         - trojan-122909
         - shadowsocks-696781306
         - shadowsocks-717968959
@@ -503,6 +542,8 @@ proxy-groups:
         - vless-1340615726
         - vless-1343024311
         - vless-1344120800
+        - vless-1352518396
+        - vless-1352518399
       type: select
 rules:
     - MATCH,select
