@@ -7,6 +7,13 @@ proxies:
       sni: vpn-uk-002.fastervpn.world
       type: hysteria2
     - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1358464147
+      password: 4YIk2BAV2AExvYDsQrw4ELlQJP/b4poEXjzFbSXwMao=
+      port: 61312
+      server: 129.151.92.18
+      type: ss
+      udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1356758536
       password: xtHPuZw32Ek7q4odOVXoMn+UY9C/IdokDkolQjvdxrk=
       port: 61312
@@ -45,6 +52,17 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
+      name: vless-1357999807
+      network: tcp
+      port: 443
+      server: 50.7.227.251
+      servername: uk-dedic-new-1.failspace.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - client-fingerprint: ios
       flow: xtls-rprx-vision
       name: vless-810585323
@@ -59,13 +77,6 @@ proxies:
       type: vless
       udp: true
       uuid: be5b6ad6-8184-4b63-82ac-3bc00c09c98c
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1358464135
-      password: F0hfVWxhzOH0litAYyVAGxOQ7YUtyNdxp5F0PWBLyoQ=
-      port: 61312
-      server: 144.24.231.162
-      type: ss
-      udp: true
     - cipher: aes-128-gcm
       name: shadowsocks-271
       password: shadowsocks
@@ -73,17 +84,6 @@ proxies:
       server: 141.98.101.181
       type: ss
       udp: true
-    - flow: xtls-rprx-vision
-      name: vless-1357999807
-      network: tcp
-      port: 443
-      server: 50.7.227.251
-      servername: uk-dedic-new-1.failspace.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - cipher: aes-256-gcm
       name: shadowsocks-696780678
       password: g5h5jleTRSyO3Rk4
@@ -218,13 +218,6 @@ proxies:
       server: 129.151.91.115
       type: ss
       udp: true
-    - cipher: rc4-md5
-      name: shadowsocks-27285
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 146.70.61.18
-      type: ss
-      udp: true
     - flow: xtls-rprx-vision
       name: vless-1331308276
       network: tcp
@@ -286,6 +279,20 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-824220258
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 2ATxqiR22wlo3yXOHc43LFHM5NzWCdSGZLdBay_vJgM
+        short-id: e4a1b53b03eff60d
+      server: 95.154.196.61
+      servername: strapi.io
+      tls: true
+      type: vless
+      udp: true
+      uuid: e5d917f5-fc78-455e-bbb5-81d08715f3d6
     - flow: xtls-rprx-vision
       name: vless-1341273291
       network: tcp
@@ -349,20 +356,6 @@ proxies:
       uuid: 1996007c-e7bc-464b-999b-cac28cec6c3e
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-824220258
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 2ATxqiR22wlo3yXOHc43LFHM5NzWCdSGZLdBay_vJgM
-        short-id: e4a1b53b03eff60d
-      server: 95.154.196.61
-      servername: strapi.io
-      tls: true
-      type: vless
-      udp: true
-      uuid: e5d917f5-fc78-455e-bbb5-81d08715f3d6
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-809759640
       network: tcp
       port: 443
@@ -403,6 +396,13 @@ proxies:
       type: vless
       udp: true
       uuid: e5d917f5-fc78-455e-bbb5-81d08715f3d6
+    - name: vless-1245422997
+      network: grpc
+      port: 2083
+      server: 66.90.104.42
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-951538932
@@ -422,15 +422,15 @@ proxy-groups:
       name: auto
       proxies:
         - hysteria2-1296090376
+        - shadowsocks-1358464147
         - shadowsocks-1356758536
         - vless-1245369769
         - hysteria2-1005580180
         - vless-1307982448
         - vless-1328833835
-        - vless-810585323
-        - shadowsocks-1358464135
-        - shadowsocks-271
         - vless-1357999807
+        - vless-810585323
+        - shadowsocks-271
         - shadowsocks-696780678
         - vless-1230573696
         - vless-1250111368
@@ -444,21 +444,21 @@ proxy-groups:
         - vless-1346184668
         - hysteria2-1315993021
         - shadowsocks-1347133270
-        - shadowsocks-27285
         - vless-1331308276
         - vless-958796650
         - vless-872833477
         - vless-1340137995
         - vless-1341763614
+        - vless-824220258
         - vless-1341273291
         - vless-1330159511
         - vless-1341273298
         - vless-958799281
         - vless-813407630
-        - vless-824220258
         - vless-809759640
         - vless-860815991
         - vless-810023482
+        - vless-1245422997
         - vless-951538932
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -466,15 +466,15 @@ proxy-groups:
       proxies:
         - auto
         - hysteria2-1296090376
+        - shadowsocks-1358464147
         - shadowsocks-1356758536
         - vless-1245369769
         - hysteria2-1005580180
         - vless-1307982448
         - vless-1328833835
-        - vless-810585323
-        - shadowsocks-1358464135
-        - shadowsocks-271
         - vless-1357999807
+        - vless-810585323
+        - shadowsocks-271
         - shadowsocks-696780678
         - vless-1230573696
         - vless-1250111368
@@ -488,21 +488,21 @@ proxy-groups:
         - vless-1346184668
         - hysteria2-1315993021
         - shadowsocks-1347133270
-        - shadowsocks-27285
         - vless-1331308276
         - vless-958796650
         - vless-872833477
         - vless-1340137995
         - vless-1341763614
+        - vless-824220258
         - vless-1341273291
         - vless-1330159511
         - vless-1341273298
         - vless-958799281
         - vless-813407630
-        - vless-824220258
         - vless-809759640
         - vless-860815991
         - vless-810023482
+        - vless-1245422997
         - vless-951538932
       type: select
 rules:
