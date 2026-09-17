@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-579284234
+      password: 56ae4ec4-6705-43d0-bf3a-bc36ab3b3545
+      port: 443
+      server: lva-02.node.lumixnet.com
+      skip-cert-verify: false
+      sni: lva-02.node.lumixnet.com
+      type: hysteria2
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-696780838
@@ -573,10 +580,25 @@ proxies:
       type: vless
       udp: true
       uuid: f7c74a35-1da0-5097-9fa7-a20735610ac1
+    - name: vless-1357689453
+      network: ws
+      port: 8088
+      server: atomic-prase23893.my-vm.work
+      type: vless
+      udp: true
+      uuid: f7c74a35-1da0-5097-9fa7-a20735610ac1
+    - name: vless-1358004832
+      network: ws
+      port: 8088
+      server: 188.220.205.16
+      type: vless
+      udp: true
+      uuid: f7c74a35-1da0-5097-9fa7-a20735610ac1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-579284234
         - vless-696780838
         - trojan-696781161
         - shadowsocks-696781305
@@ -629,11 +651,14 @@ proxy-groups:
         - vless-1343464757
         - vless-1348802436
         - vless-1354014231
+        - vless-1357689453
+        - vless-1358004832
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-579284234
         - vless-696780838
         - trojan-696781161
         - shadowsocks-696781305
@@ -686,6 +711,8 @@ proxy-groups:
         - vless-1343464757
         - vless-1348802436
         - vless-1354014231
+        - vless-1357689453
+        - vless-1358004832
       type: select
 rules:
     - MATCH,select
