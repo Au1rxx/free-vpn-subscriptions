@@ -6,6 +6,20 @@ proxies:
       server: 194.87.196.13
       type: ss
       udp: true
+    - name: hysteria2-1281959383
+      password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
+      port: 22443
+      server: 91.240.86.70
+      skip-cert-verify: true
+      sni: hy.quattro-tech.ru
+      type: hysteria2
+    - name: hysteria2-1278300104
+      password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
+      port: 22443
+      server: 91.240.86.70
+      skip-cert-verify: false
+      sni: hy.quattro-tech.ru
+      type: hysteria2
     - cipher: aes-256-gcm
       name: shadowsocks-1337574408
       password: 895b4b796a357570
@@ -13,19 +27,32 @@ proxies:
       server: 195.133.5.102
       type: ss
       udp: true
+    - name: hysteria2-1308046309
+      password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
+      port: 2056
+      server: els1.mangshe.xyz
+      skip-cert-verify: true
+      sni: els1.mangshe.xyz
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1337575349
+        - hysteria2-1281959383
+        - hysteria2-1278300104
         - shadowsocks-1337574408
+        - hysteria2-1308046309
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1337575349
+        - hysteria2-1281959383
+        - hysteria2-1278300104
         - shadowsocks-1337574408
+        - hysteria2-1308046309
       type: select
 rules:
     - MATCH,select
