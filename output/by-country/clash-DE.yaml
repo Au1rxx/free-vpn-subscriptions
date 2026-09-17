@@ -1,4 +1,11 @@
 proxies:
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1344243210
+      password: BKhCEwmAD2//ZNQ9Ej8GshMBc3/L4nGZ0SODkR77HLo=
+      port: 59924
+      server: 130.61.181.238
+      type: ss
+      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-1326464051
       password: amazonskr05
@@ -201,6 +208,13 @@ proxies:
       skip-cert-verify: true
       sni: https%253a%252f%252fwww.calmloud.com
       type: hysteria2
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1348701463
+      password: j5S8Gy8YIo1nHTTXefT8oMPeuxlsJDqAU+8r1jRAXm0=
+      port: 59924
+      server: 130.61.231.252
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       name: vless-1340136606
       network: grpc
@@ -303,19 +317,6 @@ proxies:
       udp: true
       uuid: d92b6509-8b63-4505-b3a2-1dc5b1c014ac
     - client-fingerprint: chrome
-      name: vless-673696613
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: VG-FwQBMFzPcemJ_JqtkbO-2WKLmQp2h0CmAj-DfLkA
-        short-id: 5b97
-      server: 93.152.217.41
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 969bcce0-de8a-4b02-8cf8-d00d2d2ca7a5
-    - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1141365831
       network: tcp
@@ -329,6 +330,15 @@ proxies:
       type: vless
       udp: true
       uuid: 423b1d79-08c4-403f-9d5e-c541f791b55f
+    - alterId: 0
+      cipher: auto
+      name: vmess-1349236716
+      network: tcp
+      port: 2086
+      server: 91.107.146.97
+      type: vmess
+      udp: true
+      uuid: f6361af8-bb8f-4609-bf5d-3fc0f688f47b
     - alterId: 0
       cipher: auto
       name: vmess-1101734855
@@ -355,10 +365,18 @@ proxies:
       skip-cert-verify: true
       sni: hopp-germany-new.ddnsguru.com
       type: hysteria2
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1348701454
+      password: 206p+8yXIkZTh4Sz62OJgcjrqeEAYasCvyOudfq+pMI=
+      port: 59924
+      server: 130.61.233.195
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1344243210
         - shadowsocks-1326464051
         - shadowsocks-1341685006
         - hysteria2-1210298803
@@ -387,6 +405,7 @@ proxy-groups:
         - hysteria2-923321814
         - hysteria2-1003211447
         - hysteria2-1097484106
+        - shadowsocks-1348701463
         - vless-1340136606
         - vless-1343024307
         - vless-1342997720
@@ -396,16 +415,18 @@ proxy-groups:
         - vless-1340820605
         - vless-1156743175
         - vless-1238811298
-        - vless-673696613
         - vless-1141365831
+        - vmess-1349236716
         - vmess-1101734855
         - hysteria2-1058977354
         - hysteria2-1059437573
+        - shadowsocks-1348701454
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1344243210
         - shadowsocks-1326464051
         - shadowsocks-1341685006
         - hysteria2-1210298803
@@ -434,6 +455,7 @@ proxy-groups:
         - hysteria2-923321814
         - hysteria2-1003211447
         - hysteria2-1097484106
+        - shadowsocks-1348701463
         - vless-1340136606
         - vless-1343024307
         - vless-1342997720
@@ -443,11 +465,12 @@ proxy-groups:
         - vless-1340820605
         - vless-1156743175
         - vless-1238811298
-        - vless-673696613
         - vless-1141365831
+        - vmess-1349236716
         - vmess-1101734855
         - hysteria2-1058977354
         - hysteria2-1059437573
+        - shadowsocks-1348701454
       type: select
 rules:
     - MATCH,select
