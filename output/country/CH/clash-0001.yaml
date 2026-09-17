@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-670015323
+      password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
+      port: 443
+      server: mfyousheng.nl.eu.org
+      skip-cert-verify: true
+      sni: mfyousheng.nl.eu.org
+      type: trojan
+      udp: true
     - name: hysteria2-956723757
       password: 84a506ca5aca505696a454d828420b3f
       port: 50160
@@ -327,10 +335,38 @@ proxies:
       type: vless
       udp: true
       uuid: be83425f-74c5-4b03-9c4b-20aa16322698
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1365054931
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 6V_LHB1yblp9RDyo5GOXL-V_V9MFa-mBRO0epwSQP3U
+        short-id: a1ab5a56bca2b1d3
+      server: 179.43.178.18
+      servername: captaingold.app
+      tls: true
+      type: vless
+      udp: true
+      uuid: c40ed630-4c4f-49d0-9ef3-362e802d47fc
+    - client-fingerprint: random
+      name: vless-1365374149
+      network: tcp
+      port: 25720
+      reality-opts:
+        public-key: OueudVX2rTpyeEb2bNW3Jx3WtgSX4zFERs6yt8Szv0E
+        short-id: fddf99d4a4f55a48
+      server: 94.26.35.139
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: be83425f-74c5-4b03-9c4b-20aa16322698
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-670015323
         - hysteria2-956723757
         - hysteria2-1001586620
         - hysteria2-1001848837
@@ -357,11 +393,14 @@ proxy-groups:
         - shadowsocks-1364026099
         - vless-1364549633
         - vless-1364589272
+        - vless-1365054931
+        - vless-1365374149
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-670015323
         - hysteria2-956723757
         - hysteria2-1001586620
         - hysteria2-1001848837
@@ -388,6 +427,8 @@ proxy-groups:
         - shadowsocks-1364026099
         - vless-1364549633
         - vless-1364589272
+        - vless-1365054931
+        - vless-1365374149
       type: select
 rules:
     - MATCH,select

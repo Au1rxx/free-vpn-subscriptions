@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-29287109
+      password: tg-dns68
+      port: 443
+      server: 162.159.152.209
+      skip-cert-verify: false
+      sni: vip.putata.eu.org
+      type: trojan
+      udp: true
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-255434893
@@ -1142,20 +1150,6 @@ proxies:
       type: vless
       udp: true
       uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-856081370
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: diw5L3O4EkRQGWDSfdpQooPUc3zBTItooeOQ_fIDFWI
-        short-id: 7f2e9c4b1a8d6e53
-      server: se.belka.network
-      servername: yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c47b421f-65f1-4190-b7ba-bd2045086fe4
     - name: trojan-856462020
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20068
@@ -2727,10 +2721,37 @@ proxies:
       type: vless
       udp: true
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+    - client-fingerprint: chrome
+      name: vless-1365238764
+      network: tcp
+      port: 448
+      reality-opts:
+        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+        short-id: cd21e552537c7c0b
+      server: 185.79.138.71
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
+    - client-fingerprint: random
+      name: vless-1365372585
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-29287109
         - vless-255434893
         - vless-256467532
         - vless-258626507
@@ -2815,7 +2836,6 @@ proxy-groups:
         - vless-757475198
         - vless-827589770
         - vless-834262294
-        - vless-856081370
         - trojan-856462020
         - trojan-856746225
         - vless-861832566
@@ -2944,11 +2964,14 @@ proxy-groups:
         - vless-1364323391
         - vless-1364323392
         - vless-1364549628
+        - vless-1365238764
+        - vless-1365372585
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-29287109
         - vless-255434893
         - vless-256467532
         - vless-258626507
@@ -3033,7 +3056,6 @@ proxy-groups:
         - vless-757475198
         - vless-827589770
         - vless-834262294
-        - vless-856081370
         - trojan-856462020
         - trojan-856746225
         - vless-861832566
@@ -3162,6 +3184,8 @@ proxy-groups:
         - vless-1364323391
         - vless-1364323392
         - vless-1364549628
+        - vless-1365238764
+        - vless-1365372585
       type: select
 rules:
     - MATCH,select
