@@ -6,6 +6,20 @@ proxies:
       server: 154.46.31.106
       type: ss
       udp: true
+    - name: vless-61041
+      network: ws
+      port: 8880
+      server: 185.158.133.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-73836
+      network: ws
+      port: 8880
+      server: 45.80.110.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-130484
       password: QFWzCw2uX9B9i6qAYeFBIE
@@ -69,6 +83,15 @@ proxies:
       skip-cert-verify: true
       sni: whatsapp.com
       type: hysteria2
+    - alterId: 0
+      cipher: auto
+      name: vmess-718427871
+      network: tcp
+      port: 180
+      server: 82.198.246.250
+      type: vmess
+      udp: true
+      uuid: d13fc2f5-3e05-4795-81eb-44143a09e552
     - name: hysteria2-722298555
       password: gf1:gfhysteria2024
       port: 443
@@ -819,11 +842,27 @@ proxies:
       type: vless
       udp: true
       uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1346451125
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: byzvlw97wjAAAfHs5AZRV0P0H6_JKBEZ4yfLS0HNewE
+        short-id: fe24f8a0a560056e
+      server: 146.70.124.85
+      servername: www.datadoghq.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-26744
+        - vless-61041
+        - vless-73836
         - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
@@ -833,6 +872,7 @@ proxy-groups:
         - hysteria2-468884157
         - hysteria2-474576856
         - hysteria2-655841404
+        - vmess-718427871
         - hysteria2-722298555
         - hysteria2-812150990
         - hysteria2-818203591
@@ -902,12 +942,15 @@ proxy-groups:
         - vless-1266887529
         - vless-1327377578
         - vless-1345543551
+        - vless-1346451125
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-26744
+        - vless-61041
+        - vless-73836
         - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
@@ -917,6 +960,7 @@ proxy-groups:
         - hysteria2-468884157
         - hysteria2-474576856
         - hysteria2-655841404
+        - vmess-718427871
         - hysteria2-722298555
         - hysteria2-812150990
         - hysteria2-818203591
@@ -986,6 +1030,7 @@ proxy-groups:
         - vless-1266887529
         - vless-1327377578
         - vless-1345543551
+        - vless-1346451125
       type: select
 rules:
     - MATCH,select

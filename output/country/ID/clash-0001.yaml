@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-44275
+      network: ws
+      port: 443
+      server: 104.26.3.138
+      servername: vltj.qzz.io
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 506e4a91-1d05-5683-b84c-2113f673cb19
     - name: trojan-192032511
       password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
       port: 20056
@@ -70,6 +80,15 @@ proxies:
       sni: id1.nathaya.web.id
       type: trojan
       udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-1005580212
+      network: tcp
+      port: 16298
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - alterId: 0
       cipher: none
       name: vmess-1008564945
@@ -168,10 +187,18 @@ proxies:
       type: vmess
       udp: true
       uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+    - name: vless-1239351585
+      network: ws
+      port: 8880
+      server: 8.34.70.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-44275
         - trojan-192032511
         - trojan-207313013
         - trojan-490085150
@@ -181,6 +208,7 @@ proxy-groups:
         - shadowsocks-860328950
         - trojan-912445306
         - trojan-918093317
+        - vmess-1005580212
         - vmess-1008564945
         - trojan-1040050345
         - trojan-1046997182
@@ -193,11 +221,13 @@ proxy-groups:
         - trojan-1175195901
         - trojan-1175195904
         - vmess-1180088545
+        - vless-1239351585
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-44275
         - trojan-192032511
         - trojan-207313013
         - trojan-490085150
@@ -207,6 +237,7 @@ proxy-groups:
         - shadowsocks-860328950
         - trojan-912445306
         - trojan-918093317
+        - vmess-1005580212
         - vmess-1008564945
         - trojan-1040050345
         - trojan-1046997182
@@ -219,6 +250,7 @@ proxy-groups:
         - trojan-1175195901
         - trojan-1175195904
         - vmess-1180088545
+        - vless-1239351585
       type: select
 rules:
     - MATCH,select
