@@ -1,0 +1,45 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "ir-new.failspace.top",
+      "server_port": 443,
+      "tag": "vless-1341763616",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "ir-new.failspace.top",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "cd3bb7d9-7df3-4644-ac05-c260990ac277"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1341763616"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1341763616"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
