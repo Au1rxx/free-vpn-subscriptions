@@ -25,12 +25,21 @@ proxies:
       type: vless
       udp: true
       uuid: 5edbcb44-8d04-4fa7-a587-bc5d60c24ca1
+    - name: trojan-1191741375
+      password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
+      port: 449
+      server: 109.206.241.10
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1351430597
         - vless-1297639936
+        - trojan-1191741375
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -38,6 +47,7 @@ proxy-groups:
         - auto
         - vless-1351430597
         - vless-1297639936
+        - trojan-1191741375
       type: select
 rules:
     - MATCH,select

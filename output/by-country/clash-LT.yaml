@@ -1,24 +1,22 @@
 proxies:
-    - alterId: 64
-      cipher: auto
-      name: vmess-1353557511
-      network: tcp
-      port: 50002
-      server: 112.132.215.108
-      type: vmess
+    - cipher: aes-256-cfb
+      name: shadowsocks-768399438
+      password: UkXRsXvR6buDMG2Y
+      port: 9001
+      server: 195.238.126.20
+      type: ss
       udp: true
-      uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-1353557511
+        - shadowsocks-768399438
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-1353557511
+        - shadowsocks-768399438
       type: select
 rules:
     - MATCH,select
