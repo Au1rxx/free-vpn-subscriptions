@@ -12,29 +12,17 @@ proxies:
       type: vless
       udp: true
       uuid: 5edbcb44-8d04-4fa7-a587-bc5d60c24ca1
-    - name: vless-1321154839
-      network: grpc
-      port: 9443
-      server: 185.255.179.11
-      servername: hub-ee-01.hanvpn.cc
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: d9d0f208-d582-41d5-bb7b-742671402810
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1297639936
-        - vless-1321154839
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1297639936
-        - vless-1321154839
       type: select
 rules:
     - MATCH,select
