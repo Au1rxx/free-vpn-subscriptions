@@ -1,20 +1,4 @@
 proxies:
-    - name: trojan-184964690
-      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
-      port: 20066
-      server: 157.254.38.210
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-188185693
-      password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
-      port: 20066
-      server: 157.254.38.210
-      skip-cert-verify: false
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-275268502
       password: 41c406e2-12b5-41f2-a329-d0621052d675
       port: 20066
@@ -31,23 +15,35 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1384490330
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SqYAVrG01Mk0KXzlkmckO6lxvv6iZBJJvxE6PvD2vD0
+        short-id: db26
+      server: md-kiv-2.blook.network
+      servername: md-kiv-2.blook.network
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4715152e-d226-4d14-8cfd-f3f0463dff3a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-184964690
-        - trojan-188185693
         - trojan-275268502
         - trojan-948376079
+        - vless-1384490330
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-184964690
-        - trojan-188185693
         - trojan-275268502
         - trojan-948376079
+        - vless-1384490330
       type: select
 rules:
     - MATCH,select

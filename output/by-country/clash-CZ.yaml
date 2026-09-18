@@ -1,0 +1,31 @@
+proxies:
+    - name: vless-1380088759
+      network: grpc
+      port: 3090
+      server: 153.76.185.182
+      type: vless
+      udp: true
+      uuid: 36801b97-1e11-489c-baca-5fcb6653a047
+    - name: vless-1380088760
+      network: grpc
+      port: 3090
+      server: 153.76.185.89
+      type: vless
+      udp: true
+      uuid: 4172c2af-6f65-46d0-a3fc-9e5d539c9c76
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1380088759
+        - vless-1380088760
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1380088759
+        - vless-1380088760
+      type: select
+rules:
+    - MATCH,select
