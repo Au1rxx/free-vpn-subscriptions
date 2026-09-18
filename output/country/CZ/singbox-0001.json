@@ -1,0 +1,61 @@
+{
+  "outbounds": [
+    {
+      "alter_id": 0,
+      "security": "auto",
+      "server": "zfd-boardv2.kunlun01dns.com",
+      "server_port": 16280,
+      "tag": "vmess-1005580221",
+      "type": "vmess",
+      "uuid": "0802ac03-7973-39ef-a019-ba02de6c01e1"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "123.253.227.238",
+      "server_port": 10050,
+      "tag": "vless-1261278155",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "U1eMEZpYrlL2SvcFw0efhudE0SSBJ9q5QKCWWEXA53w",
+          "short_id": "8def87fb30886534"
+        },
+        "server_name": "www.hp.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "fad78708-a2a3-37a9-8ce7-6bc83526af0d"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vmess-1005580221",
+        "vless-1261278155"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vmess-1005580221",
+        "vless-1261278155"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

@@ -6,17 +6,26 @@ proxies:
       server: 176.32.35.44
       type: ss
       udp: true
+    - name: hysteria2-1343748783
+      password: 19f72087-4591-4d72-930b-2697078ec2be
+      port: 4433
+      server: ru.xiaoliyu.cyou
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1342808895
+        - hysteria2-1343748783
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1342808895
+        - hysteria2-1343748783
       type: select
 rules:
     - MATCH,select

@@ -1,9 +1,16 @@
 proxies:
+    - name: hysteria2-1296090376
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: 13.40.130.216
+      skip-cert-verify: true
+      sni: vpn-uk-002.fastervpn.world
+      type: hysteria2
     - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1358464147
-      password: 4YIk2BAV2AExvYDsQrw4ELlQJP/b4poEXjzFbSXwMao=
+      name: shadowsocks-1364514012
+      password: 6b5USMvmAQHf9E0ZTvGyFGglLcCnmSW/LgLufsmrROE=
       port: 61312
-      server: 129.151.92.18
+      server: 134.65.59.59
       type: ss
       udp: true
     - cipher: 2022-blake3-chacha20-poly1305
@@ -69,6 +76,13 @@ proxies:
       server: 158.173.221.214
       type: ss
       udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1364324406
+      password: XXq8087l/F/17nlKDoxF5yHMha+CZIJKCj0UwWf0wRA=
+      port: 61312
+      server: 129.151.73.188
+      type: ss
+      udp: true
     - name: vless-1230573696
       network: grpc
       port: 2083
@@ -122,6 +136,13 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1358464147
+      password: 4YIk2BAV2AExvYDsQrw4ELlQJP/b4poEXjzFbSXwMao=
+      port: 61312
+      server: 129.151.92.18
+      type: ss
+      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-696780670
       password: LXchLsIwtCeUAUgu
@@ -161,39 +182,12 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-721488603
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: RVj8E6YuWeOq9XzIVLQCKM39qa-Cknp-GYvVAA1UPFo
-        short-id: 72cceb78
-      server: 138.124.125.211
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1996007c-e7bc-464b-999b-cac28cec6c3e
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-838598249
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: RVj8E6YuWeOq9XzIVLQCKM39qa-Cknp-GYvVAA1UPFo
-        short-id: 72cceb78
-      server: 138.124.125.211
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1996007c-e7bc-464b-999b-cac28cec6c3e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1358464147
+        - hysteria2-1296090376
+        - shadowsocks-1364514012
         - shadowsocks-1356758536
         - vless-1230279293
         - shadowsocks-717969059
@@ -203,6 +197,7 @@ proxy-groups:
         - vless-1230280245
         - shadowsocks-1203537773
         - shadowsocks-1251465971
+        - shadowsocks-1364324406
         - vless-1230573696
         - hysteria2-1005126986
         - shadowsocks-717969008
@@ -210,18 +205,18 @@ proxy-groups:
         - shadowsocks-1347133270
         - vless-1307982448
         - vless-1195645282
+        - shadowsocks-1358464147
         - shadowsocks-696780670
         - vless-1245422997
         - vless-951538932
         - vless-1195645285
-        - vless-721488603
-        - vless-838598249
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1358464147
+        - hysteria2-1296090376
+        - shadowsocks-1364514012
         - shadowsocks-1356758536
         - vless-1230279293
         - shadowsocks-717969059
@@ -231,6 +226,7 @@ proxy-groups:
         - vless-1230280245
         - shadowsocks-1203537773
         - shadowsocks-1251465971
+        - shadowsocks-1364324406
         - vless-1230573696
         - hysteria2-1005126986
         - shadowsocks-717969008
@@ -238,12 +234,11 @@ proxy-groups:
         - shadowsocks-1347133270
         - vless-1307982448
         - vless-1195645282
+        - shadowsocks-1358464147
         - shadowsocks-696780670
         - vless-1245422997
         - vless-951538932
         - vless-1195645285
-        - vless-721488603
-        - vless-838598249
       type: select
 rules:
     - MATCH,select
