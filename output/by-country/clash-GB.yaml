@@ -27,6 +27,13 @@ proxies:
       server: 149.102.149.207
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1251465971
+      password: c58d16e593d44f42
+      port: 11001
+      server: 158.173.221.214
+      type: ss
+      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-696780678
       password: g5h5jleTRSyO3Rk4
@@ -55,18 +62,18 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - cipher: 2022-blake3-aes-256-gcm
-      name: shadowsocks-1203537773
-      password: cOiC+3JhAXMwdGV5exnrMSorJU0Rl5qlLCbCAuDlWY4=:2tFqykGqZ101XW11f6iRiERnPycFAjjYq0y2zUYhKho=
-      port: 2083
-      server: 51.38.71.51
+    - cipher: aes-256-gcm
+      name: shadowsocks-717969008
+      password: g5h5jleTRSyO3Rk4
+      port: 80
+      server: 149.102.132.184
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1251465971
-      password: c58d16e593d44f42
-      port: 11001
-      server: 158.173.221.214
+    - cipher: aes-256-gcm
+      name: shadowsocks-696780670
+      password: LXchLsIwtCeUAUgu
+      port: 80
+      server: 149.102.149.207
       type: ss
       udp: true
     - cipher: 2022-blake3-chacha20-poly1305
@@ -76,7 +83,21 @@ proxies:
       server: 129.151.73.188
       type: ss
       udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1362769026
+      password: 4HcH2eAbURZ4IN8H4EAgnOWL2suzf7iTJTogK+3MB1o=
+      port: 61312
+      server: 129.151.83.15
+      type: ss
+      udp: true
     - name: vless-1307982448
+      network: grpc
+      port: 2083
+      server: 66.90.104.42
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - name: vless-1254790076
       network: grpc
       port: 2083
       server: 66.90.104.42
@@ -90,39 +111,22 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - cipher: aes-256-gcm
-      name: shadowsocks-717969008
-      password: g5h5jleTRSyO3Rk4
-      port: 80
-      server: 149.102.132.184
-      type: ss
+    - flow: xtls-rprx-vision
+      name: vless-1250111368
+      network: tcp
+      port: 443
+      server: 50.7.226.174
+      servername: en-new.moriarty-web.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
       udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1362768999
-      password: my66u+JIEnQPAHXgaWDetuCsLnXPfyJPGAfDVMfKUtY=
-      port: 61312
-      server: 129.151.75.102
-      type: ss
-      udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1347133270
-      password: ktsunSg4AnlcqH3JiVv7JWSHpbDjDfTvldDgDpApNHw=
-      port: 61312
-      server: 129.151.91.115
-      type: ss
-      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1358464147
       password: 4YIk2BAV2AExvYDsQrw4ELlQJP/b4poEXjzFbSXwMao=
       port: 61312
       server: 129.151.92.18
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-696780670
-      password: LXchLsIwtCeUAUgu
-      port: 80
-      server: 149.102.149.207
       type: ss
       udp: true
     - cipher: 2022-blake3-chacha20-poly1305
@@ -175,6 +179,20 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-810585348
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: IFEZmwpGK7VCuDj3kmVdyMn7vUIG8Sntc6TG4eIS3xs
+        short-id: 1aa9f3c9021280c0
+      server: 5.152.223.97
+      servername: strapi.io
+      tls: true
+      type: vless
+      udp: true
+      uuid: be5b6ad6-8184-4b63-82ac-3bc00c09c98c
     - alterId: 0
       cipher: auto
       name: vmess-692622878
@@ -184,6 +202,13 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
+    - cipher: rc4-md5
+      name: shadowsocks-468218595
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.23.32
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -192,27 +217,29 @@ proxy-groups:
         - shadowsocks-1364514012
         - shadowsocks-1356758536
         - shadowsocks-717969059
+        - shadowsocks-1251465971
         - shadowsocks-696780678
         - shadowsocks-271
         - vless-1230279293
         - vless-1230280245
-        - shadowsocks-1203537773
-        - shadowsocks-1251465971
-        - shadowsocks-1364324406
-        - vless-1307982448
-        - hysteria2-1005126986
         - shadowsocks-717969008
-        - shadowsocks-1362768999
-        - shadowsocks-1347133270
-        - shadowsocks-1358464147
         - shadowsocks-696780670
+        - shadowsocks-1364324406
+        - shadowsocks-1362769026
+        - vless-1307982448
+        - vless-1254790076
+        - hysteria2-1005126986
+        - vless-1250111368
+        - shadowsocks-1358464147
         - shadowsocks-1365418327
         - vless-1230573705
         - vless-1245422997
         - vless-1230573696
         - vless-1195645282
         - vless-1195645285
+        - vless-810585348
         - vmess-692622878
+        - shadowsocks-468218595
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -222,27 +249,29 @@ proxy-groups:
         - shadowsocks-1364514012
         - shadowsocks-1356758536
         - shadowsocks-717969059
+        - shadowsocks-1251465971
         - shadowsocks-696780678
         - shadowsocks-271
         - vless-1230279293
         - vless-1230280245
-        - shadowsocks-1203537773
-        - shadowsocks-1251465971
-        - shadowsocks-1364324406
-        - vless-1307982448
-        - hysteria2-1005126986
         - shadowsocks-717969008
-        - shadowsocks-1362768999
-        - shadowsocks-1347133270
-        - shadowsocks-1358464147
         - shadowsocks-696780670
+        - shadowsocks-1364324406
+        - shadowsocks-1362769026
+        - vless-1307982448
+        - vless-1254790076
+        - hysteria2-1005126986
+        - vless-1250111368
+        - shadowsocks-1358464147
         - shadowsocks-1365418327
         - vless-1230573705
         - vless-1245422997
         - vless-1230573696
         - vless-1195645282
         - vless-1195645285
+        - vless-810585348
         - vmess-692622878
+        - shadowsocks-468218595
       type: select
 rules:
     - MATCH,select
