@@ -1,0 +1,167 @@
+proxies:
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1383435358
+      network: tcp
+      port: 24146
+      reality-opts:
+        public-key: VeluC9A7XDurAWQNgXKShS2SJSgoK79QHFgiAMYrvGo
+        short-id: 7205d9079521832c
+      server: 54.251.9.130
+      servername: www.intel.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9d9a048b-3aea-4b3e-b106-1106bf301feb
+    - flow: xtls-rprx-vision
+      name: vless-1383435359
+      network: tcp
+      port: 443
+      server: 50.7.248.237
+      servername: pl-new-dedic.failspace.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - name: vless-1383435360
+      network: ws
+      port: 8080
+      server: www.wto.org
+      type: vless
+      udp: true
+      uuid: 6235cc5e-d944-4ad2-9dc4-b85e5fd1bb40
+    - client-fingerprint: safari
+      name: vless-1383435361
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: L1S0DpFtHPBeyENZUvJPcrFZIct6kcHUPxuzNaGXIFY
+        short-id: 4c69c4b51c580d60
+      server: 8.234.247.219
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d6d58f01-b5ce-4d47-bce0-b8a806155852
+    - client-fingerprint: firefox
+      name: vless-1383435362
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: l4tGdE5Zn8ABfBQns3pRBcxy6CckHTLSIsw5JaBumTk
+        short-id: c9d4bf8d94ec8dab
+      server: 34.95.28.161
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 448b76ac-c636-4303-bec1-0b2c22afee0c
+    - client-fingerprint: ios
+      name: vless-1383435363
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SVT2WeXMIrumlh5VG1lbHN6YbqL7-u2iRkv1js8XEU4
+        short-id: 3f95392a418ec8fd
+      server: 34.155.54.237
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 069a2bbd-3fc9-470f-a251-c836a96ed04a
+    - name: vless-1383481090
+      network: tcp
+      port: 3
+      server: 212.87.190.124
+      type: vless
+      udp: true
+      uuid: 6049e972-419e-43bc-932c-4032be6d1b5b
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1383481115
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: TqIFzUEEI1pIOR8BEpkNKEXcJ6cPfE5EzHb5joIivig
+        short-id: 9930177816ab09da
+      server: 206.206.76.75
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1e3d3634-36ac-43ac-a439-9665d885238f
+    - name: vless-1383481123
+      network: tcp
+      port: 8443
+      server: 31.76.76.28
+      servername: neth4.lckdwn.ru
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: de5906f3-df38-4463-aa9d-2b01320cc6ea
+    - name: trojan-1383502741
+      password: BxceQaOe
+      port: 443
+      server: 100.42.228.109
+      skip-cert-verify: true
+      sni: t.me%2fripaojiedian
+      type: trojan
+      udp: true
+    - name: vless-1383519471
+      network: ws
+      port: 443
+      server: 104.24.204.221
+      servername: yellow-king-ecd7.nsyrayyly2.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 307ff98e-041b-2a08-235a-4ff61316b090
+    - name: vless-1383519472
+      network: ws
+      port: 443
+      server: 199.232.78.159
+      servername: ssl.fastly.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: a80cf066-cabc-4c6c-802b-b887f4dc7d1a
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1383435358
+        - vless-1383435359
+        - vless-1383435360
+        - vless-1383435361
+        - vless-1383435362
+        - vless-1383435363
+        - vless-1383481090
+        - vless-1383481115
+        - vless-1383481123
+        - trojan-1383502741
+        - vless-1383519471
+        - vless-1383519472
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1383435358
+        - vless-1383435359
+        - vless-1383435360
+        - vless-1383435361
+        - vless-1383435362
+        - vless-1383435363
+        - vless-1383481090
+        - vless-1383481115
+        - vless-1383481123
+        - trojan-1383502741
+        - vless-1383519471
+        - vless-1383519472
+      type: select
+rules:
+    - MATCH,select
