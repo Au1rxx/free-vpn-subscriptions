@@ -1,25 +1,11 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-11028
-      password: k1dBOmOB4oqi7Ump37a1bQ
-      port: 8080
-      server: 82.38.31.207
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-26744
       password: QFWzCw2uX9B9i6qAYeFBIE
       port: 443
       server: 154.46.31.106
       type: ss
       udp: true
-    - name: vless-73836
-      network: ws
-      port: 8880
-      server: 45.80.110.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-130484
       password: QFWzCw2uX9B9i6qAYeFBIE
@@ -704,13 +690,25 @@ proxies:
       type: vless
       udp: true
       uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1373032220
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: byzvlw97wjAAAfHs5AZRV0P0H6_JKBEZ4yfLS0HNewE
+        short-id: fe24f8a0a560056e
+      server: 146.70.124.85
+      servername: www.datadoghq.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-11028
         - shadowsocks-26744
-        - vless-73836
         - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
@@ -781,14 +779,13 @@ proxy-groups:
         - vless-1364589284
         - vless-1365373023
         - vless-1368636525
+        - vless-1373032220
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-11028
         - shadowsocks-26744
-        - vless-73836
         - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
@@ -859,6 +856,7 @@ proxy-groups:
         - vless-1364589284
         - vless-1365373023
         - vless-1368636525
+        - vless-1373032220
       type: select
 rules:
     - MATCH,select

@@ -6,44 +6,17 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - name: hysteria2-1353801407
-      password: 19f72087-4591-4d72-930b-2697078ec2be
-      port: 4433
-      server: es1.xiaoliyu.cyou
-      skip-cert-verify: true
-      sni: es1.xiaoliyu.cyou
-      type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-11052
-      password: qItG8SueYQcP
-      port: 8388
-      server: 140.174.184.5
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-16132
-      password: WSyL4XTwNsdv
-      port: 8388
-      server: 108.181.121.226
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1359854998
-        - hysteria2-1353801407
-        - shadowsocks-11052
-        - shadowsocks-16132
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1359854998
-        - hysteria2-1353801407
-        - shadowsocks-11052
-        - shadowsocks-16132
       type: select
 rules:
     - MATCH,select
