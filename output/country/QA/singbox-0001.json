@@ -1,0 +1,49 @@
+{
+  "outbounds": [
+    {
+      "server": "34.18.212.19",
+      "server_port": 443,
+      "tag": "vless-1378473556",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "tT6wEOh8ASizQYNRb51QdDlxAksSJbEaBnbQBajc6SQ",
+          "short_id": "c5426331173ca15c"
+        },
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "b6f775c2-70fd-4247-8d12-82cac46fdd50"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1378473556"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1378473556"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
