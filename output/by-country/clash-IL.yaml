@@ -6,17 +6,33 @@ proxies:
       server: 85.209.157.184
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1343449019
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: YDYWOKQpoOkOPQ64PosSfJHAaLPuAZJ_jiB6Qj_iYnQ
+        short-id: ""
+      server: 85.209.157.184
+      servername: www.microsoft.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 21710d7d-5e87-4655-bac2-36e9b655e3ee
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1340135119
+        - vless-1343449019
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1340135119
+        - vless-1343449019
       type: select
 rules:
     - MATCH,select

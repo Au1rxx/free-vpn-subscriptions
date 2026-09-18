@@ -1,22 +1,28 @@
 proxies:
-    - name: hysteria2-1377423375
-      password: 192776da-1743-4724-b342-96dafa2eb54e
-      port: 443
-      server: se2.belka.network
-      skip-cert-verify: false
-      sni: se2.belka.network
-      type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-294269613
+      network: raw
+      port: 448
+      reality-opts:
+        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+        short-id: cd21e552537c7c0b
+      server: 185.79.138.71
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1377423375
+        - vless-294269613
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1377423375
+        - vless-294269613
       type: select
 rules:
     - MATCH,select
