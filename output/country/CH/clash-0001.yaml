@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-2501852
+      password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
+      port: 443
+      server: 188.114.97.3
+      skip-cert-verify: false
+      sni: mfyousheng.nl.eu.org
+      type: trojan
+      udp: true
     - name: trojan-670015323
       password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
       port: 443
@@ -157,6 +165,20 @@ proxies:
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1242333394
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
+        short-id: 19253fae84102271
+      server: 45.90.59.15
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3950b45e-740d-4dca-ac95-505ec8534592
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1254745144
       network: tcp
       port: 443
       reality-opts:
@@ -389,6 +411,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-2501852
         - trojan-670015323
         - hysteria2-956723757
         - hysteria2-1001586620
@@ -403,6 +426,7 @@ proxy-groups:
         - vless-1230998998
         - vless-1235448657
         - vless-1242333394
+        - vless-1254745144
         - vless-1257519697
         - vless-1265429398
         - vless-1307741629
@@ -425,6 +449,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-2501852
         - trojan-670015323
         - hysteria2-956723757
         - hysteria2-1001586620
@@ -439,6 +464,7 @@ proxy-groups:
         - vless-1230998998
         - vless-1235448657
         - vless-1242333394
+        - vless-1254745144
         - vless-1257519697
         - vless-1265429398
         - vless-1307741629
