@@ -87,6 +87,20 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-856684694
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: IFEZmwpGK7VCuDj3kmVdyMn7vUIG8Sntc6TG4eIS3xs
+        short-id: 1aa9f3c9021280c0
+      server: 5.152.223.97
+      servername: strapi.io
+      tls: true
+      type: vless
+      udp: true
+      uuid: be5b6ad6-8184-4b63-82ac-3bc00c09c98c
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-951538932
@@ -151,6 +165,27 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - name: hysteria2-1005580180
+      password: 3b8c82ed-fe66-472d-915e-034ccb57103f
+      port: 443
+      server: labs.frkn.org
+      skip-cert-verify: true
+      sni: labs.frkn.org
+      type: hysteria2
+    - cipher: aes-256-gcm
+      name: shadowsocks-240
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 94.156.250.148
+      type: ss
+      udp: true
+    - cipher: 2022-blake3-aes-256-gcm
+      name: shadowsocks-1203537773
+      password: cOiC+3JhAXMwdGV5exnrMSorJU0Rl5qlLCbCAuDlWY4=:2tFqykGqZ101XW11f6iRiERnPycFAjjYq0y2zUYhKho=
+      port: 2083
+      server: 51.38.71.51
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -167,11 +202,15 @@ proxy-groups:
         - shadowsocks-717969059
         - vless-1381201090
         - vless-1157879699
+        - vless-856684694
         - vless-951538932
         - vless-810585348
         - vless-1209548109
         - vless-1381191002
         - vless-1250111368
+        - hysteria2-1005580180
+        - shadowsocks-240
+        - shadowsocks-1203537773
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -189,11 +228,15 @@ proxy-groups:
         - shadowsocks-717969059
         - vless-1381201090
         - vless-1157879699
+        - vless-856684694
         - vless-951538932
         - vless-810585348
         - vless-1209548109
         - vless-1381191002
         - vless-1250111368
+        - hysteria2-1005580180
+        - shadowsocks-240
+        - shadowsocks-1203537773
       type: select
 rules:
     - MATCH,select

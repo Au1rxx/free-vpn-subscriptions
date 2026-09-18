@@ -1,0 +1,81 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "87.120.196.212",
+      "server_port": 443,
+      "tag": "vless-1380057628",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "holo-stream.videocactus.xyz",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "5561acfb-0adc-4c76-bfbf-767a76c7cbf0"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "Y231pCKoY0HN-Z-NHDFCfg",
+      "server": "212.43.158.218",
+      "server_port": 6,
+      "tag": "shadowsocks-1384975352",
+      "type": "shadowsocks"
+    },
+    {
+      "server": "62.233.39.9",
+      "server_port": 8443,
+      "tag": "vless-1385286838",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "sbBzEDf7UllUslF6LTfsM1qiOW322QKM343zhJD0Lng"
+        },
+        "server_name": "cdn.steamstatic.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "transport": {
+        "service_name": "TunService",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "b2141c97-76af-ff6f-839b-70a53e23aad9"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1380057628",
+        "shadowsocks-1384975352",
+        "vless-1385286838"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1380057628",
+        "shadowsocks-1384975352",
+        "vless-1385286838"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
