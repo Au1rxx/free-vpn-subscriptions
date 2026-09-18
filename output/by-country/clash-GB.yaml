@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-1230280245
-      network: grpc
-      port: 2083
-      server: 66.90.104.42
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - cipher: aes-256-gcm
       name: shadowsocks-696780678
       password: g5h5jleTRSyO3Rk4
@@ -20,14 +13,7 @@ proxies:
       server: 158.173.221.214
       type: ss
       udp: true
-    - name: vless-1230573705
-      network: grpc
-      port: 2083
-      server: 66.90.104.42
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - name: vless-1230279293
+    - name: vless-1230573696
       network: grpc
       port: 2083
       server: 66.90.105.210
@@ -48,10 +34,24 @@ proxies:
       server: 141.98.101.181
       type: ss
       udp: true
+    - name: vless-1230573705
+      network: grpc
+      port: 2083
+      server: 66.90.104.42
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - name: vless-1307982448
       network: grpc
       port: 2083
       server: 66.90.104.42
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - name: vless-1230279293
+      network: grpc
+      port: 2083
+      server: 66.90.105.210
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
@@ -69,18 +69,33 @@ proxies:
       server: 149.102.149.207
       type: ss
       udp: true
-    - name: vless-1381201090
-      network: tcp
-      port: 22223
-      server: 35.176.34.52
-      type: vless
-      udp: true
-      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
     - flow: xtls-rprx-vision
       name: vless-1157879699
       network: tcp
       port: 443
       server: 50.7.226.171
+      servername: viper-21.moriarty-web.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
+      name: vless-1195645285
+      network: tcp
+      port: 443
+      server: 50.7.226.172
+      servername: viper-21.moriarty-web.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
+      name: vless-1195645282
+      network: tcp
+      port: 443
+      server: 50.7.226.173
       servername: viper-21.moriarty-web.com
       skip-cert-verify: true
       tls: true
@@ -190,18 +205,19 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1230280245
         - shadowsocks-696780678
         - shadowsocks-1251465971
-        - vless-1230573705
-        - vless-1230279293
+        - vless-1230573696
         - shadowsocks-717969008
         - shadowsocks-271
+        - vless-1230573705
         - vless-1307982448
+        - vless-1230279293
         - shadowsocks-696780670
         - shadowsocks-717969059
-        - vless-1381201090
         - vless-1157879699
+        - vless-1195645285
+        - vless-1195645282
         - vless-856684694
         - vless-951538932
         - vless-810585348
@@ -216,18 +232,19 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vless-1230280245
         - shadowsocks-696780678
         - shadowsocks-1251465971
-        - vless-1230573705
-        - vless-1230279293
+        - vless-1230573696
         - shadowsocks-717969008
         - shadowsocks-271
+        - vless-1230573705
         - vless-1307982448
+        - vless-1230279293
         - shadowsocks-696780670
         - shadowsocks-717969059
-        - vless-1381201090
         - vless-1157879699
+        - vless-1195645285
+        - vless-1195645282
         - vless-856684694
         - vless-951538932
         - vless-810585348

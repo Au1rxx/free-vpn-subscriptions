@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1232696196
+      password: maintell
+      port: 2053
+      server: 152.70.237.123
+      skip-cert-verify: true
+      sni: bing.com
+      type: hysteria2
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1366982201
@@ -382,6 +389,13 @@ proxies:
       type: vless
       udp: true
       uuid: 814bd064-544d-4255-a070-5705c03f6da9
+    - cipher: aes-256-cfb
+      name: shadowsocks-817206649
+      password: 1234!@#$
+      port: 1774
+      server: 49.254.204.133
+      type: ss
+      udp: true
     - name: trojan-279496851
       password: p5jTPcffLgi4gaNOJd2KUTb9YEPBBD5B
       port: 56127
@@ -466,17 +480,11 @@ proxies:
       skip-cert-verify: true
       sni: css.rbxcdn.com
       type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-817206649
-      password: 1234!@#$
-      port: 1774
-      server: 49.254.204.133
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1232696196
         - vless-1366982201
         - hysteria2-722298606
         - hysteria2-266962492
@@ -515,6 +523,7 @@ proxy-groups:
         - hysteria2-1111846211
         - vless-803630116
         - vless-656230613
+        - shadowsocks-817206649
         - trojan-279496851
         - vless-1291870373
         - vless-725810878
@@ -523,12 +532,12 @@ proxy-groups:
         - hysteria2-1111846126
         - hysteria2-547757560
         - hysteria2-459503008
-        - shadowsocks-817206649
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1232696196
         - vless-1366982201
         - hysteria2-722298606
         - hysteria2-266962492
@@ -567,6 +576,7 @@ proxy-groups:
         - hysteria2-1111846211
         - vless-803630116
         - vless-656230613
+        - shadowsocks-817206649
         - trojan-279496851
         - vless-1291870373
         - vless-725810878
@@ -575,7 +585,6 @@ proxy-groups:
         - hysteria2-1111846126
         - hysteria2-547757560
         - hysteria2-459503008
-        - shadowsocks-817206649
       type: select
 rules:
     - MATCH,select
