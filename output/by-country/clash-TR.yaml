@@ -1,23 +1,22 @@
 proxies:
-    - name: trojan-1002861369
-      password: 5931134d1cde66bf83a54acdfebe7ab2
-      port: 443
-      server: 47.250.84.25
-      skip-cert-verify: true
-      sni: 47.250.84.25
-      type: trojan
+    - name: vless-1381199104
+      network: grpc
+      port: 3090
+      server: 93.190.9.14
+      type: vless
       udp: true
+      uuid: 34fc6d57-0fd6-42f8-af83-21c9d4d87b3f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-1002861369
+        - vless-1381199104
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-1002861369
+        - vless-1381199104
       type: select
 rules:
     - MATCH,select

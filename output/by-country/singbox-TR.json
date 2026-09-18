@@ -1,0 +1,39 @@
+{
+  "outbounds": [
+    {
+      "server": "93.190.9.14",
+      "server_port": 3090,
+      "tag": "vless-1381199104",
+      "transport": {
+        "service_name": "vless",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "34fc6d57-0fd6-42f8-af83-21c9d4d87b3f"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1381199104"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1381199104"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

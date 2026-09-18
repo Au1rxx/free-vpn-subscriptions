@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-1232696196
-      password: maintell
-      port: 2053
-      server: 152.70.237.123
-      skip-cert-verify: true
-      sni: bing.com
-      type: hysteria2
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-12945900
@@ -241,6 +234,19 @@ proxies:
       sni: speedtest.tinkoff.ru
       type: hysteria2
     - client-fingerprint: chrome
+      name: vless-1381756783
+      network: tcp
+      port: 8686
+      reality-opts:
+        public-key: A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw
+        short-id: 628b3c90c98ead4f
+      server: 54.180.155.210
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-656230613
       network: tcp
@@ -429,18 +435,10 @@ proxies:
       type: vmess
       udp: true
       uuid: 41a7089a-040b-4538-8b8d-010902405bde
-    - name: hysteria2-722298606
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: 3.36.93.74
-      skip-cert-verify: true
-      sni: whatsapp.com
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1232696196
         - vless-12945900
         - hysteria2-591454513
         - vless-561641544
@@ -463,6 +461,7 @@ proxy-groups:
         - vless-270700471
         - hysteria2-655819436
         - hysteria2-547757559
+        - vless-1381756783
         - vless-656230613
         - vless-1293637742
         - vless-667136237
@@ -479,13 +478,11 @@ proxy-groups:
         - vless-1279636582
         - vless-12945899
         - vmess-650631549
-        - hysteria2-722298606
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1232696196
         - vless-12945900
         - hysteria2-591454513
         - vless-561641544
@@ -508,6 +505,7 @@ proxy-groups:
         - vless-270700471
         - hysteria2-655819436
         - hysteria2-547757559
+        - vless-1381756783
         - vless-656230613
         - vless-1293637742
         - vless-667136237
@@ -524,7 +522,6 @@ proxy-groups:
         - vless-1279636582
         - vless-12945899
         - vmess-650631549
-        - hysteria2-722298606
       type: select
 rules:
     - MATCH,select
