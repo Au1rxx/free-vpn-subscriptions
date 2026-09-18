@@ -12,17 +12,26 @@ proxies:
       type: vless
       udp: true
       uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
+    - name: hysteria2-1377423375
+      password: 192776da-1743-4724-b342-96dafa2eb54e
+      port: 443
+      server: se2.belka.network
+      skip-cert-verify: false
+      sni: se2.belka.network
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-294269613
+        - hysteria2-1377423375
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-294269613
+        - hysteria2-1377423375
       type: select
 rules:
     - MATCH,select

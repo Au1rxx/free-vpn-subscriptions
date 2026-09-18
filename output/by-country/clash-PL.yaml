@@ -6,13 +6,6 @@ proxies:
       skip-cert-verify: true
       sni: admin.wwwinternetvideo.click
       type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-812343744
-      password: S2zDyyPcmZN2h8EC
-      port: 9076
-      server: 217.30.10.44
-      type: ss
-      udp: true
     - name: hysteria2-589844075
       password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
       port: 443
@@ -96,11 +89,11 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
-    - name: hysteria2-768953025
+    - name: hysteria2-860422992
       password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
       port: 443
-      server: streambox.wwwinternetvideo.click
-      skip-cert-verify: true
+      server: 217.60.33.215
+      skip-cert-verify: false
       sni: streambox.wwwinternetvideo.click
       type: hysteria2
     - name: hysteria2-652726817
@@ -136,12 +129,25 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
+    - cipher: aes-256-cfb
+      name: shadowsocks-819466521
+      password: aQqJbtwFGcCCaeL3
+      port: 9063
+      server: 217.30.10.44
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-779606815
+      password: U6qnYRhfyDmn8sgn
+      port: 9041
+      server: 217.30.10.44
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1027317456
-        - shadowsocks-812343744
         - hysteria2-589844075
         - hysteria2-659125577
         - shadowsocks-717969033
@@ -153,17 +159,18 @@ proxy-groups:
         - hysteria2-648949653
         - shadowsocks-795694264
         - vless-1126122373
-        - hysteria2-768953025
+        - hysteria2-860422992
         - hysteria2-652726817
         - vless-1141367415
         - vless-1105975118
+        - shadowsocks-819466521
+        - shadowsocks-779606815
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1027317456
-        - shadowsocks-812343744
         - hysteria2-589844075
         - hysteria2-659125577
         - shadowsocks-717969033
@@ -175,10 +182,12 @@ proxy-groups:
         - hysteria2-648949653
         - shadowsocks-795694264
         - vless-1126122373
-        - hysteria2-768953025
+        - hysteria2-860422992
         - hysteria2-652726817
         - vless-1141367415
         - vless-1105975118
+        - shadowsocks-819466521
+        - shadowsocks-779606815
       type: select
 rules:
     - MATCH,select
