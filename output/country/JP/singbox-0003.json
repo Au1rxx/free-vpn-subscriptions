@@ -1,0 +1,126 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "tic-7.serbia-maki.stream",
+      "server_port": 443,
+      "tag": "vless-1366457594",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "el-V-GCKOca5NayG-NZ9BzIpi73UlbggLlwGkNvEQ2A",
+          "short_id": "1d8e067a2fc2c587"
+        },
+        "server_name": "is1-ssl.mzstatic.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "e78c9b0e-2e52-3ca8-bae2-ed04d8894f61"
+    },
+    {
+      "server": "peekconfigg.vipserver1-39d.workers.dev",
+      "server_port": 443,
+      "tag": "vless-1366586600",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "peekconfigg.vipserver1-39d.workers.dev"
+      },
+      "transport": {
+        "path": "/syncfp=chrome",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "7c6a566b-4c4a-b8f2-1719-a3096b424141"
+    },
+    {
+      "server": "45.142.166.211",
+      "server_port": 443,
+      "tag": "vless-1366858502",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "cdn8848.776676.xyz"
+      },
+      "transport": {
+        "headers": {
+          "Host": "cdn8848.776676.xyz"
+        },
+        "path": "/knowledge?ed=2560",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4"
+    },
+    {
+      "server": "162.159.39.218",
+      "server_port": 80,
+      "tag": "vless-1367303213",
+      "transport": {
+        "headers": {
+          "Host": "8nj2r.2k8t.f88.hh.vavava.kdns.fr"
+        },
+        "path": "/?ed=2560security=tls ",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "47fcef29-ab4e-4aa6-932b-d95a18f28a4e"
+    },
+    {
+      "server": "108.160.136.71",
+      "server_port": 443,
+      "tag": "vless-1367895552",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "cdn8848.776676.xyz"
+      },
+      "transport": {
+        "headers": {
+          "Host": "cdn8848.776676.xyz"
+        },
+        "path": "/doc/products/view?ed=2560",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "d342d11e-d424-4583-b36e-524ab1f0afa4"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1366457594",
+        "vless-1366586600",
+        "vless-1366858502",
+        "vless-1367303213",
+        "vless-1367895552"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1366457594",
+        "vless-1366586600",
+        "vless-1366858502",
+        "vless-1367303213",
+        "vless-1367895552"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1357999825
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: fJnm6-PhJGSwHaAdJOzXkYOfCPPCWSlaZrtfm1XsqhA
-        short-id: ""
-      server: 188.208.110.238
-      servername: baeb.edge-static.space
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0c597b0d-99d7-4c27-befe-6c5d339d7dbe
     - name: vless-864923376
       network: ws
       port: 22573
@@ -21,6 +7,13 @@ proxies:
       udp: true
       uuid: 39947382-3212-41c9-bc3a-589574ac8b23
     - name: vless-474914684
+      network: ws
+      port: 22573
+      server: uae.unixzone.us
+      type: vless
+      udp: true
+      uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+    - name: vless-274599317
       network: ws
       port: 22573
       server: uae.unixzone.us
@@ -41,34 +34,25 @@ proxies:
       type: vless
       udp: true
       uuid: 39947382-3212-41c9-bc3a-589574ac8b23
-    - name: vless-222580702
-      network: ws
-      port: 22573
-      server: uae.unixzone.us
-      type: vless
-      udp: true
-      uuid: 39947382-3212-41c9-bc3a-589574ac8b23
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1357999825
         - vless-864923376
         - vless-474914684
+        - vless-274599317
         - vless-1206806603
         - vless-661705919
-        - vless-222580702
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1357999825
         - vless-864923376
         - vless-474914684
+        - vless-274599317
         - vless-1206806603
         - vless-661705919
-        - vless-222580702
       type: select
 rules:
     - MATCH,select

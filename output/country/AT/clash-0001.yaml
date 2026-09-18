@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-121776
+      password: 8r<[9'l6hAO#8ZQi
+      port: 8443
+      server: 91.132.224.171
+      skip-cert-verify: false
+      sni: koma-yt.pages.dev
+      type: trojan
+      udp: true
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-984269666
@@ -161,21 +169,11 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - flow: xtls-rprx-vision
-      name: vless-1357999824
-      network: tcp
-      port: 443
-      server: 50.7.37.157
-      servername: at-dedic.failspace.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-121776
         - vless-984269666
         - vless-984954074
         - vless-996068384
@@ -190,12 +188,12 @@ proxy-groups:
         - vless-1253302291
         - vless-1298906357
         - vless-1349523995
-        - vless-1357999824
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-121776
         - vless-984269666
         - vless-984954074
         - vless-996068384
@@ -210,7 +208,6 @@ proxy-groups:
         - vless-1253302291
         - vless-1298906357
         - vless-1349523995
-        - vless-1357999824
       type: select
 rules:
     - MATCH,select
