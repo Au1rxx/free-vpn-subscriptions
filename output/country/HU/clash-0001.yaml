@@ -13,17 +13,33 @@ proxies:
       type: vless
       udp: true
       uuid: a8b746e4-e096-4cd7-b4c9-214096f1dc53
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1400953937
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 2C6MqBdf1XxEKmVe_hHfYhov31tM_eEuq_c5ZFMfPAI
+        short-id: ""
+      server: 217.13.105.43
+      servername: avito.st
+      tls: true
+      type: vless
+      udp: true
+      uuid: a8b746e4-e096-4cd7-b4c9-214096f1dc53
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1400476979
+        - vless-1400953937
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1400476979
+        - vless-1400953937
       type: select
 rules:
     - MATCH,select

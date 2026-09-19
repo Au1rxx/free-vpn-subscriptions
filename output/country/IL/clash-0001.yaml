@@ -7,47 +7,26 @@ proxies:
       sni: tyy129.magiclampcloud.com
       type: trojan
       udp: true
-    - client-fingerprint: chrome
-      name: vless-1396763831
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: AeQDUAVCESyA1hFkw6lENmgWAY3sBH9CFPpPAddPwVc
-        short-id: fffff8acddadcac3
-      server: 34.165.251.165
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0c40bce9-8710-4820-8f22-0742b61df999
-    - client-fingerprint: chrome
-      name: vless-1396763838
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: Tzhjg1MwcjzzVWFZiRrVwlT-TCl6HNJSTxBOUn0sdDE
-        short-id: 52019048e849a702
-      server: 34.165.244.172
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 74a011a6-433f-49fa-822e-f768205e4b90
+    - name: hysteria2-1179524508
+      password: f25f19f29ce3fb53a35bf1b35b452a43
+      port: 50160
+      server: 129.159.156.109
+      skip-cert-verify: true
+      sni: www.bing.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-696781176
-        - vless-1396763831
-        - vless-1396763838
+        - hysteria2-1179524508
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-696781176
-        - vless-1396763831
-        - vless-1396763838
+        - hysteria2-1179524508
       type: select
 rules:
     - MATCH,select

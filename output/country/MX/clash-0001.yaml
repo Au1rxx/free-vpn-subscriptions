@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-656192041
+      network: ws
+      port: 8443
+      server: 45.134.9.133
+      servername: ul-mexico1.09vpn.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: a6d20e79-d326-42c1-bc20-f4cecc6dc42d
     - name: vless-725766067
       network: ws
       port: 8443
@@ -184,49 +194,11 @@ proxies:
       type: vless
       udp: true
       uuid: 878fb7f7-fc65-465e-a352-17c7216c6f3d
-    - client-fingerprint: chrome
-      name: vless-1396688542
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: 8vHditYTXXNZ37iNTraU4w129svOplF0QUhZwX2n3FA
-        short-id: dcabbf24adf88abc
-      server: 34.51.29.171
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9ad81959-02c6-4679-a419-2af6a16ca07a
-    - client-fingerprint: chrome
-      name: vless-1396763818
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 8vHditYTXXNZ37iNTraU4w129svOplF0QUhZwX2n3FA
-        short-id: dcabbf24adf88abc
-      server: 34.51.29.171
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9ad81959-02c6-4679-a419-2af6a16ca07a
-    - client-fingerprint: chrome
-      name: vless-1396763827
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: vFcM44RcbcO5jcrSWHLd_0exXAnnJLhpCNnMrWCwlzI
-        short-id: 65f01b4b99e52015
-      server: 34.51.23.2
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 79bc7b01-6e4e-4365-a120-fefac8182bd9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-656192041
         - vless-725766067
         - vless-1161746898
         - vless-1179614326
@@ -241,14 +213,12 @@ proxy-groups:
         - vless-1258935830
         - vless-1359855050
         - vless-1393064823
-        - vless-1396688542
-        - vless-1396763818
-        - vless-1396763827
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-656192041
         - vless-725766067
         - vless-1161746898
         - vless-1179614326
@@ -263,9 +233,6 @@ proxy-groups:
         - vless-1258935830
         - vless-1359855050
         - vless-1393064823
-        - vless-1396688542
-        - vless-1396763818
-        - vless-1396763827
       type: select
 rules:
     - MATCH,select
