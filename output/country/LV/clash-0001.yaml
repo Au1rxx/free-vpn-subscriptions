@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-579284234
-      password: 56ae4ec4-6705-43d0-bf3a-bc36ab3b3545
-      port: 443
-      server: lva-02.node.lumixnet.com
-      skip-cert-verify: false
-      sni: lva-02.node.lumixnet.com
-      type: hysteria2
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-696780838
@@ -343,6 +336,20 @@ proxies:
       type: vless
       udp: true
       uuid: tmp_user
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1328056086
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Y0noOXC8qHmbM0GmDpj-9BBwKSOtHs-uMbNfKU050GQ
+        short-id: b558b9305a0b
+      server: sql.popmintxo.cc
+      servername: www.microsoft.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d806a58b-33aa-42e0-b170-395e49c16b37
     - name: vless-1335485128
       network: grpc
       port: 9443
@@ -450,11 +457,24 @@ proxies:
       type: vless
       udp: true
       uuid: 1fa3ded2-4946-45ac-9f39-2a0e501e3d1f
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1388491259
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 0wF4BXZs_sxNpjopV6A7SeXksJ1brk6F-3-cUirb624
+        short-id: 924ffc672d8ddf1a
+      server: lv.ghostnode.lol
+      servername: lv.ghostnode.lol
+      tls: true
+      type: vless
+      udp: true
+      uuid: e27d2295-9fba-4a70-9a66-c45d724355a9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-579284234
         - vless-696780838
         - trojan-696781161
         - shadowsocks-696781305
@@ -488,6 +508,7 @@ proxy-groups:
         - hysteria2-1279657610
         - hysteria2-1281960369
         - vless-1328047336
+        - vless-1328056086
         - vless-1335485128
         - vless-1336238473
         - vless-1343464757
@@ -499,12 +520,12 @@ proxy-groups:
         - vless-1386946489
         - vless-1386946520
         - vless-1386946522
+        - vless-1388491259
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-579284234
         - vless-696780838
         - trojan-696781161
         - shadowsocks-696781305
@@ -538,6 +559,7 @@ proxy-groups:
         - hysteria2-1279657610
         - hysteria2-1281960369
         - vless-1328047336
+        - vless-1328056086
         - vless-1335485128
         - vless-1336238473
         - vless-1343464757
@@ -549,6 +571,7 @@ proxy-groups:
         - vless-1386946489
         - vless-1386946520
         - vless-1386946522
+        - vless-1388491259
       type: select
 rules:
     - MATCH,select
