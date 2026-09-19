@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-696781176
-      password: 493b3d1b5d6a298a32eea1935463dc4d
-      port: 59443
-      server: tyy129.magiclampcloud.com
-      skip-cert-verify: true
-      sni: tyy129.magiclampcloud.com
-      type: trojan
-      udp: true
     - name: hysteria2-1179524508
       password: f25f19f29ce3fb53a35bf1b35b452a43
       port: 50160
@@ -14,27 +6,6 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
-    - cipher: 2022-blake3-aes-128-gcm
-      name: shadowsocks-1340135119
-      password: EIIwJPg8YqgnjLLd58zoTg==:698E7Tp3B1m3rCkOdgUVEw==
-      port: 8388
-      server: 85.209.157.184
-      type: ss
-      udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1367094846
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: YDYWOKQpoOkOPQ64PosSfJHAaLPuAZJ_jiB6Qj_iYnQ
-        short-id: ""
-      server: 85.209.157.184
-      servername: www.microsoft.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 21710d7d-5e87-4655-bac2-36e9b655e3ee
     - client-fingerprint: chrome
       name: vless-1389119252
       network: tcp
@@ -113,35 +84,59 @@ proxies:
       type: vless
       udp: true
       uuid: 0c40bce9-8710-4820-8f22-0742b61df999
+    - client-fingerprint: chrome
+      name: vless-1396287041
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: AeQDUAVCESyA1hFkw6lENmgWAY3sBH9CFPpPAddPwVc
+        short-id: fffff8acddadcac3
+      server: 34.165.251.165
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0c40bce9-8710-4820-8f22-0742b61df999
+    - client-fingerprint: chrome
+      name: vless-1396294431
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: Tzhjg1MwcjzzVWFZiRrVwlT-TCl6HNJSTxBOUn0sdDE
+        short-id: 52019048e849a702
+      server: 34.165.244.172
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 74a011a6-433f-49fa-822e-f768205e4b90
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-696781176
         - hysteria2-1179524508
-        - shadowsocks-1340135119
-        - vless-1367094846
         - vless-1389119252
         - vless-1389119295
         - vless-1393318251
         - vless-1393318314
         - vless-1394257022
         - vless-1395434368
+        - vless-1396287041
+        - vless-1396294431
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-696781176
         - hysteria2-1179524508
-        - shadowsocks-1340135119
-        - vless-1367094846
         - vless-1389119252
         - vless-1389119295
         - vless-1393318251
         - vless-1393318314
         - vless-1394257022
         - vless-1395434368
+        - vless-1396287041
+        - vless-1396294431
       type: select
 rules:
     - MATCH,select

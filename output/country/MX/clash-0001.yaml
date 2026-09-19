@@ -1,14 +1,4 @@
 proxies:
-    - name: vless-656192041
-      network: ws
-      port: 8443
-      server: 45.134.9.133
-      servername: ul-mexico1.09vpn.com
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: a6d20e79-d326-42c1-bc20-f4cecc6dc42d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1161746898
@@ -255,11 +245,23 @@ proxies:
       type: vless
       udp: true
       uuid: 9ad81959-02c6-4679-a419-2af6a16ca07a
+    - client-fingerprint: chrome
+      name: vless-1396294433
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: vFcM44RcbcO5jcrSWHLd_0exXAnnJLhpCNnMrWCwlzI
+        short-id: 65f01b4b99e52015
+      server: 34.51.23.2
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 79bc7b01-6e4e-4365-a120-fefac8182bd9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-656192041
         - vless-1161746898
         - vless-1179614326
         - vless-1192915788
@@ -278,12 +280,12 @@ proxy-groups:
         - vless-1393318263
         - vless-1394257040
         - vless-1395434364
+        - vless-1396294433
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-656192041
         - vless-1161746898
         - vless-1179614326
         - vless-1192915788
@@ -302,6 +304,7 @@ proxy-groups:
         - vless-1393318263
         - vless-1394257040
         - vless-1395434364
+        - vless-1396294433
       type: select
 rules:
     - MATCH,select

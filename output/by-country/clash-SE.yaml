@@ -1,4 +1,45 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1391139102
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: H5CXI4RvEWW0TFPvFrnF1iX-05Y57ZYMMngjmkMfv24
+        short-id: 711ad7f475c35e5e
+      server: 103.139.51.51
+      servername: cloud.figmafound.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 71b91642-93ed-4923-8cab-877e19bfc2d6
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1391139095
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: H5CXI4RvEWW0TFPvFrnF1iX-05Y57ZYMMngjmkMfv24
+        short-id: 711ad7f475c35e5e
+      server: 103.139.51.41
+      servername: mail.figmafound.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 71b91642-93ed-4923-8cab-877e19bfc2d6
+    - client-fingerprint: firefox
+      name: vless-1383435338
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: fV003yDr_sb_Wkgz6MxnIUJMgD15osWhzU-HZ5fLPFg
+        short-id: 79ff7d51e3c56323
+      server: 34.51.231.250
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e4be912f-68e8-4d51-80a4-1342b646f8e0
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1386945551
@@ -45,6 +86,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1391139102
+        - vless-1391139095
+        - vless-1383435338
         - vless-1386945551
         - vless-1386946490
         - vless-713157148
@@ -53,6 +97,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1391139102
+        - vless-1391139095
+        - vless-1383435338
         - vless-1386945551
         - vless-1386946490
         - vless-713157148

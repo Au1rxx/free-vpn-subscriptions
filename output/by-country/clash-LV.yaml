@@ -1,18 +1,4 @@
 proxies:
-    - name: hysteria2-1098338335
-      password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
-      port: 8443
-      server: 104.165.205.42
-      skip-cert-verify: true
-      sni: speedtestmark.com
-      type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-819466279
-      password: UTJA57ypk2XKQpnm
-      port: 9033
-      server: 185.135.86.175
-      type: ss
-      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-795694248
       password: hbtvgUz5uNYyB3Rf
@@ -20,21 +6,33 @@ proxies:
       server: 185.135.86.175
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1391139108
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: mk-fkkWvUHz2ubIOkr8kfDeglXowdCI3Z4OssjWIIwg
+        short-id: 2b145d99dc39e2cc
+      server: 46.183.223.138
+      servername: filetransver-pro.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1fa3ded2-4946-45ac-9f39-2a0e501e3d1f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1098338335
-        - shadowsocks-819466279
         - shadowsocks-795694248
+        - vless-1391139108
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1098338335
-        - shadowsocks-819466279
         - shadowsocks-795694248
+        - vless-1391139108
       type: select
 rules:
     - MATCH,select
