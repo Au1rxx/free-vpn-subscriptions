@@ -6,16 +6,6 @@ proxies:
       type: vless
       udp: true
       uuid: 731f177e-00aa-480c-b935-661456139a32
-    - name: vless-656189585
-      network: tcp
-      port: 443
-      server: 172.105.169.70
-      servername: 172.105.169.70
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1395522411
@@ -32,6 +22,19 @@ proxies:
       uuid: 36e89875-9c53-482b-bc41-d3890e9da176
     - client-fingerprint: chrome
       name: vless-1378473549
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: fsdIMU2apN1C_NbkL7mHTsBKEfhwbDhgCRcB8ICf03E
+        short-id: d725f0dd8cce210f
+      server: 34.87.244.111
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 325bc1be-0cb7-4cf7-bd35-a79ded91bbbd
+    - client-fingerprint: random
+      name: vless-1388432636
       network: tcp
       port: 443
       reality-opts:
@@ -77,44 +80,29 @@ proxies:
       type: vless
       udp: true
       uuid: 36e89875-9c53-482b-bc41-d3890e9da176
-    - client-fingerprint: random
-      name: vless-1388432636
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: fsdIMU2apN1C_NbkL7mHTsBKEfhwbDhgCRcB8ICf03E
-        short-id: d725f0dd8cce210f
-      server: 34.87.244.111
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 325bc1be-0cb7-4cf7-bd35-a79ded91bbbd
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1163061815
-        - vless-656189585
         - vless-1395522411
         - vless-1378473549
+        - vless-1388432636
         - vless-1151376484
         - vless-1383435316
         - vless-1390814481
-        - vless-1388432636
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1163061815
-        - vless-656189585
         - vless-1395522411
         - vless-1378473549
+        - vless-1388432636
         - vless-1151376484
         - vless-1383435316
         - vless-1390814481
-        - vless-1388432636
       type: select
 rules:
     - MATCH,select
