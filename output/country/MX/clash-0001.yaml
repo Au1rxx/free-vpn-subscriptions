@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-725766067
+      network: ws
+      port: 8443
+      server: ul-mexico1.09vpn.com
+      servername: ul-mexico1.09vpn.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: a6d20e79-d326-42c1-bc20-f4cecc6dc42d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1161746898
@@ -30,6 +40,20 @@ proxies:
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1192915788
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 6-_ZidygR8PRt4gtHlGCAW-PPmjEIm7Wn7MZqJU1z1Q
+        short-id: 6c059ecfddf9b179
+      server: 185.47.254.251
+      servername: gateway.icloud.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 878fb7f7-fc65-465e-a352-17c7216c6f3d
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1211278478
       network: tcp
       port: 443
       reality-opts:
@@ -161,19 +185,6 @@ proxies:
       udp: true
       uuid: 878fb7f7-fc65-465e-a352-17c7216c6f3d
     - client-fingerprint: chrome
-      name: vless-1396294433
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: vFcM44RcbcO5jcrSWHLd_0exXAnnJLhpCNnMrWCwlzI
-        short-id: 65f01b4b99e52015
-      server: 34.51.23.2
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 79bc7b01-6e4e-4365-a120-fefac8182bd9
-    - client-fingerprint: chrome
       name: vless-1396688542
       network: raw
       port: 443
@@ -216,9 +227,11 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-725766067
         - vless-1161746898
         - vless-1179614326
         - vless-1192915788
+        - vless-1211278478
         - shadowsocks-1214975974
         - vless-1217070071
         - vless-1223625041
@@ -228,7 +241,6 @@ proxy-groups:
         - vless-1258935830
         - vless-1359855050
         - vless-1393064823
-        - vless-1396294433
         - vless-1396688542
         - vless-1396763818
         - vless-1396763827
@@ -237,9 +249,11 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-725766067
         - vless-1161746898
         - vless-1179614326
         - vless-1192915788
+        - vless-1211278478
         - shadowsocks-1214975974
         - vless-1217070071
         - vless-1223625041
@@ -249,7 +263,6 @@ proxy-groups:
         - vless-1258935830
         - vless-1359855050
         - vless-1393064823
-        - vless-1396294433
         - vless-1396688542
         - vless-1396763818
         - vless-1396763827

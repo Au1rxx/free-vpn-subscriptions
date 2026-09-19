@@ -1,0 +1,49 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "217.13.105.43",
+      "server_port": 443,
+      "tag": "vless-1400476979",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "2C6MqBdf1XxEKmVe_hHfYhov31tM_eEuq_c5ZFMfPAI"
+        },
+        "server_name": "avito.st",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "type": "vless",
+      "uuid": "a8b746e4-e096-4cd7-b4c9-214096f1dc53"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1400476979"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1400476979"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
