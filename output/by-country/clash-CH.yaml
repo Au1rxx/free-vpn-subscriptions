@@ -6,17 +6,26 @@ proxies:
       server: 132.243.175.144
       type: ss
       udp: true
+    - name: hysteria2-1391610043
+      password: we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH
+      port: 8443
+      server: 82.38.64.229
+      skip-cert-verify: false
+      sni: hopp-swizland-new.mysynology.net
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1364026099
+        - hysteria2-1391610043
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1364026099
+        - hysteria2-1391610043
       type: select
 rules:
     - MATCH,select
