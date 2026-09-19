@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-cfb
+      name: shadowsocks-819466279
+      password: UTJA57ypk2XKQpnm
+      port: 9033
+      server: 185.135.86.175
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-795694248
       password: hbtvgUz5uNYyB3Rf
       port: 9036
@@ -20,19 +27,30 @@ proxies:
       type: vless
       udp: true
       uuid: 1fa3ded2-4946-45ac-9f39-2a0e501e3d1f
+    - name: vless-1343464757
+      network: ws
+      port: 8088
+      server: atomic-prase23893.my-vm.work
+      type: vless
+      udp: true
+      uuid: f7c74a35-1da0-5097-9fa7-a20735610ac1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-819466279
         - shadowsocks-795694248
         - vless-1391139108
+        - vless-1343464757
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-819466279
         - shadowsocks-795694248
         - vless-1391139108
+        - vless-1343464757
       type: select
 rules:
     - MATCH,select

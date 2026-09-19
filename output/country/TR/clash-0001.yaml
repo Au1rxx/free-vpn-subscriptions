@@ -1,20 +1,4 @@
 proxies:
-    - name: trojan-112587
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20017
-      server: 157.254.38.210
-      skip-cert-verify: false
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-122850
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20017
-      server: d3.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-122851
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20018
@@ -429,12 +413,17 @@ proxies:
       type: vless
       udp: true
       uuid: d10191ad-1671-496e-b0cb-be5a28d0739a
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1396641171
+      password: ept2V6yarWzazZStMu0CqM-jx3NN2wG0
+      port: 5052
+      server: jgzt1997.qivfelo.ir
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-112587
-        - trojan-122850
         - trojan-122851
         - trojan-474637039
         - trojan-479026176
@@ -470,13 +459,12 @@ proxy-groups:
         - vless-1377487068
         - vless-1385865673
         - vless-1393187473
+        - shadowsocks-1396641171
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-112587
-        - trojan-122850
         - trojan-122851
         - trojan-474637039
         - trojan-479026176
@@ -512,6 +500,7 @@ proxy-groups:
         - vless-1377487068
         - vless-1385865673
         - vless-1393187473
+        - shadowsocks-1396641171
       type: select
 rules:
     - MATCH,select

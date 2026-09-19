@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-122906
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20114
-      server: d3.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-856461985
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20032
@@ -65,11 +57,20 @@ proxies:
       type: vless
       udp: true
       uuid: 894fe9f0-b998-49c0-8003-a5007de921e1
+    - name: vless-1396516749
+      network: ws
+      port: 443
+      server: www.visa.com.hk
+      servername: br-gru.xhs152.shop
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ff7cb8d1-b912-46e8-9686-a209c613c614
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-122906
         - trojan-856461985
         - trojan-871344761
         - vless-1044822812
@@ -78,12 +79,12 @@ proxy-groups:
         - vless-1062311654
         - vless-1279405485
         - vless-1304781566
+        - vless-1396516749
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-122906
         - trojan-856461985
         - trojan-871344761
         - vless-1044822812
@@ -92,6 +93,7 @@ proxy-groups:
         - vless-1062311654
         - vless-1279405485
         - vless-1304781566
+        - vless-1396516749
       type: select
 rules:
     - MATCH,select
