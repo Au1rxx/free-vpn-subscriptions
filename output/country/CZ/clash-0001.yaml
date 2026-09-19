@@ -1,13 +1,4 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-1005580221
-      network: tcp
-      port: 16280
-      server: zfd-boardv2.kunlun01dns.com
-      type: vmess
-      udp: true
-      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1261278155
@@ -22,19 +13,29 @@ proxies:
       type: vless
       udp: true
       uuid: fad78708-a2a3-37a9-8ce7-6bc83526af0d
+    - name: vless-1386207748
+      network: ws
+      port: 443
+      server: cz-1.bnc-gt.co.uk
+      servername: b.cz-1.bnc-gt.co.uk
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 33e5de7c-8233-44b1-9254-f3036e800a5e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-1005580221
         - vless-1261278155
+        - vless-1386207748
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-1005580221
         - vless-1261278155
+        - vless-1386207748
       type: select
 rules:
     - MATCH,select
