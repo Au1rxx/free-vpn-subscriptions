@@ -1,4 +1,25 @@
 proxies:
+    - name: hysteria2-1391091858
+      password: 2a3b101d-d8f9-40e7-9373-b0ef487c0035
+      port: 22443
+      server: 46.8.210.129
+      skip-cert-verify: false
+      sni: disk.api-yandex.net
+      type: hysteria2
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1194291091
+      network: tcp
+      port: 390
+      reality-opts:
+        public-key: 5RCgAVjaT7hwdVIKAEULswXGqR127ZOZV6X17nEhYk8
+        short-id: b545fe8c5e22f92d
+      server: 151.242.168.125
+      servername: bowandbead.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7b363f9c-3df9-4b60-a789-9cd36be0bdfe
     - client-fingerprint: chrome
       name: vless-1343463819
       network: tcp
@@ -29,6 +50,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1391091858
+        - vless-1194291091
         - vless-1343463819
         - vless-957554244
       type: url-test
@@ -36,6 +59,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - hysteria2-1391091858
+        - vless-1194291091
         - vless-1343463819
         - vless-957554244
       type: select

@@ -1,4 +1,32 @@
 proxies:
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1386945551
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: H5CXI4RvEWW0TFPvFrnF1iX-05Y57ZYMMngjmkMfv24
+        short-id: 711ad7f475c35e5e
+      server: mail.figmafound.org
+      servername: mail.figmafound.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 71b91642-93ed-4923-8cab-877e19bfc2d6
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1386946490
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: H5CXI4RvEWW0TFPvFrnF1iX-05Y57ZYMMngjmkMfv24
+        short-id: 711ad7f475c35e5e
+      server: auth.figmafound.org
+      servername: auth.figmafound.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 71b91642-93ed-4923-8cab-877e19bfc2d6
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-713157148
@@ -13,26 +41,21 @@ proxies:
       type: vless
       udp: true
       uuid: 20d7c485-5d24-49b5-a5cc-bb7a7daf9908
-    - name: hysteria2-1230196608
-      password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
-      port: 25443
-      server: se-node.rumedia-cdn.com
-      skip-cert-verify: true
-      sni: cf2.rumedia-cdn.com
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1386945551
+        - vless-1386946490
         - vless-713157148
-        - hysteria2-1230196608
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1386945551
+        - vless-1386946490
         - vless-713157148
-        - hysteria2-1230196608
       type: select
 rules:
     - MATCH,select

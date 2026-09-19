@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-321
-      password: GA9KzeEgvfxNrgmM
-      port: 9019
-      server: 5.188.181.201
-      type: ss
-      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-11052
       password: qItG8SueYQcP
@@ -660,11 +653,23 @@ proxies:
       type: vless
       udp: true
       uuid: 0b4b1548-c7ca-45a5-9096-6c3cc4b1c43b
+    - client-fingerprint: chrome
+      name: vless-1395434412
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: lM9EQ1rZH9inQjrZesuqgldsXYN_yfT5-tqhPfbyen4
+        short-id: 1c9e101e99bf86bb
+      server: 34.175.90.91
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c55c9880-2f9c-4ad6-bfc2-5054516bf613
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-321
         - shadowsocks-11052
         - shadowsocks-16132
         - vmess-99676
@@ -717,12 +722,12 @@ proxy-groups:
         - vless-1390549646
         - vless-1393318233
         - vless-1393318297
+        - vless-1395434412
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-321
         - shadowsocks-11052
         - shadowsocks-16132
         - vmess-99676
@@ -775,6 +780,7 @@ proxy-groups:
         - vless-1390549646
         - vless-1393318233
         - vless-1393318297
+        - vless-1395434412
       type: select
 rules:
     - MATCH,select
