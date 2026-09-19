@@ -13,12 +13,20 @@ proxies:
       server: 185.135.86.175
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-795694248
+      password: hbtvgUz5uNYyB3Rf
+      port: 9036
+      server: 185.135.86.175
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1098338335
         - shadowsocks-819466279
+        - shadowsocks-795694248
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +34,7 @@ proxy-groups:
         - auto
         - hysteria2-1098338335
         - shadowsocks-819466279
+        - shadowsocks-795694248
       type: select
 rules:
     - MATCH,select
