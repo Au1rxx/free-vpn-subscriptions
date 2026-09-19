@@ -1,4 +1,11 @@
 proxies:
+    - cipher: 2022-blake3-aes-128-gcm
+      name: shadowsocks-1340135119
+      password: EIIwJPg8YqgnjLLd58zoTg==:698E7Tp3B1m3rCkOdgUVEw==
+      port: 8388
+      server: 85.209.157.184
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1343449019
@@ -17,12 +24,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1340135119
         - vless-1343449019
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1340135119
         - vless-1343449019
       type: select
 rules:
