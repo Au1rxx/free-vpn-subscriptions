@@ -1,0 +1,74 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "www.aisearch66.com",
+      "server_port": 11344,
+      "tag": "vless-1386685074",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "HIYCtNfDfR8DCroReH-6FRipAVO9XQI2TS_r4lKyNX0",
+          "short_id": "d61bc31d737250"
+        },
+        "server_name": "www.tesla.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "type": "vless",
+      "uuid": "c5ec268b-67aa-4738-af4d-e0313b36f584"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "154.205.134.4",
+      "server_port": 11344,
+      "tag": "vless-1386685092",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "HIYCtNfDfR8DCroReH-6FRipAVO9XQI2TS_r4lKyNX0",
+          "short_id": "d61bc31d737250"
+        },
+        "server_name": "www.tesla.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "type": "vless",
+      "uuid": "c5ec268b-67aa-4738-af4d-e0313b36f584"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1386685074",
+        "vless-1386685092"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1386685074",
+        "vless-1386685092"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

@@ -1,0 +1,43 @@
+proxies:
+    - client-fingerprint: safari
+      name: vless-1383076343
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: f8aV8naD8NKt_mLKaOou0qUrIM1Ge25kJNxywpF3OB0
+        short-id: d016c76007f78038
+      server: 34.158.23.115
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a18f08dc-76ae-453a-98f5-d41eab7e649b
+    - client-fingerprint: qq
+      name: vless-1383076337
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: f8aV8naD8NKt_mLKaOou0qUrIM1Ge25kJNxywpF3OB0
+        short-id: d016c76007f78038
+      server: 34.158.23.115
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a18f08dc-76ae-453a-98f5-d41eab7e649b
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1383076343
+        - vless-1383076337
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1383076343
+        - vless-1383076337
+      type: select
+rules:
+    - MATCH,select

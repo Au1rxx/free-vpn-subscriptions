@@ -1,13 +1,23 @@
-proxies: []
+proxies:
+    - name: trojan-1386947480
+      password: s0_sdK93x9wer_D02Lz9cvK3_Sa014Oakl_C2z
+      port: 4443
+      server: 46.229.243.154
+      skip-cert-verify: false
+      sni: grape-turbo-fr.roxa.org
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - trojan-1386947480
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-1386947480
       type: select
 rules:
     - MATCH,select

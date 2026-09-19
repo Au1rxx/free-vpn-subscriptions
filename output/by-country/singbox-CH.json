@@ -1,0 +1,97 @@
+{
+  "endpoints": [
+    {
+      "address": [
+        "100.80.234.177/32"
+      ],
+      "peers": [
+        {
+          "address": "89.187.165.99",
+          "allowed_ips": [
+            "0.0.0.0/0",
+            "::/0"
+          ],
+          "port": 80,
+          "pre_shared_key": "N/gfMZSjvP8mbXfVP2hnD5CX8BkGvOyheJ67mCpD+QQ=",
+          "public_key": "G7LkwWk08Ase/Wi9mnOW77brNBC0vTCemvy1IW1nlV4=",
+          "reserved": "AAAA"
+        }
+      ],
+      "private_key": "cIq+3tcHVT7gRMl4kIv0WE68ERiTmDtA7rhyHhLJ/mg=",
+      "tag": "wireguard-657721519",
+      "type": "wireguard"
+    }
+  ],
+  "outbounds": [
+    {
+      "server": "34.158.23.115",
+      "server_port": 443,
+      "tag": "vless-1383076343",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "f8aV8naD8NKt_mLKaOou0qUrIM1Ge25kJNxywpF3OB0",
+          "short_id": "d016c76007f78038"
+        },
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "type": "vless",
+      "uuid": "a18f08dc-76ae-453a-98f5-d41eab7e649b"
+    },
+    {
+      "server": "34.158.23.115",
+      "server_port": 443,
+      "tag": "vless-1383076337",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "f8aV8naD8NKt_mLKaOou0qUrIM1Ge25kJNxywpF3OB0",
+          "short_id": "d016c76007f78038"
+        },
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "type": "vless",
+      "uuid": "a18f08dc-76ae-453a-98f5-d41eab7e649b"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "wireguard-657721519",
+        "vless-1383076343",
+        "vless-1383076337"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "wireguard-657721519",
+        "vless-1383076343",
+        "vless-1383076337"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1386685111
+      network: tcp
+      port: 14135
+      reality-opts:
+        public-key: 4kg-LfTstNTAHOmGtT6cuvz0-7689qUkmTrXOOQtZQI
+        short-id: ae04
+      server: www.aisearch66.com
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c5ec268b-67aa-4738-af4d-e0313b36f584
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1386685111
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1386685111
+      type: select
+rules:
+    - MATCH,select

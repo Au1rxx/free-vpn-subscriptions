@@ -6,6 +6,20 @@ proxies:
       server: 195.133.5.102
       type: ss
       udp: true
+    - name: hysteria2-1281959383
+      password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
+      port: 22443
+      server: 91.240.86.70
+      skip-cert-verify: true
+      sni: hy.quattro-tech.ru
+      type: hysteria2
+    - cipher: aes-256-gcm
+      name: shadowsocks-1382716714
+      password: 64Kms+G+nD6FlGJjZJfeUNJIGbX/EKrk2o/MH04zApw=
+      port: 17517
+      server: 134.0.112.71
+      type: ss
+      udp: true
     - name: vless-1385919212
       network: grpc
       port: 443
@@ -16,28 +30,23 @@ proxies:
       type: vless
       udp: true
       uuid: c90395e6-2140-47ad-a54d-9b166729d3ef
-    - name: hysteria2-1281959383
-      password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
-      port: 22443
-      server: 91.240.86.70
-      skip-cert-verify: true
-      sni: hy.quattro-tech.ru
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1375192887
-        - vless-1385919212
         - hysteria2-1281959383
+        - shadowsocks-1382716714
+        - vless-1385919212
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1375192887
-        - vless-1385919212
         - hysteria2-1281959383
+        - shadowsocks-1382716714
+        - vless-1385919212
       type: select
 rules:
     - MATCH,select

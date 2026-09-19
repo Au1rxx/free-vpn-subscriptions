@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-2478804
+      password: 74480619-b6a8-4ab8-94e1-1132fc18b2fa
+      port: 443
+      server: 185.18.250.252
+      skip-cert-verify: false
+      sni: unnes.ac.id.r3xxe.eu.cc
+      type: trojan
+      udp: true
     - name: vless-656189585
       network: tcp
       port: 443
@@ -44,6 +52,13 @@ proxies:
       type: vless
       udp: true
       uuid: 731f177e-00aa-480c-b935-661456139a32
+    - name: hysteria2-1158363236
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: vpn-au-002.fastervpn.world
+      skip-cert-verify: true
+      sni: www.bing.com
+      type: hysteria2
     - name: vless-1163061815
       network: ws
       port: 2087
@@ -51,6 +66,20 @@ proxies:
       type: vless
       udp: true
       uuid: 731f177e-00aa-480c-b935-661456139a32
+    - name: vless-1239097038
+      network: ws
+      port: 8880
+      server: 104.254.140.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-1239151540
+      network: ws
+      port: 8880
+      server: 185.148.106.50
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: firefox
       name: vless-1258929861
       network: tcp
@@ -209,17 +238,63 @@ proxies:
       type: vless
       udp: true
       uuid: 325bc1be-0cb7-4cf7-bd35-a79ded91bbbd
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1386685067
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: o2uLRBkgcAPCavo12l6VUzaSnSmxjUvod-NBSiUPdy8
+        short-id: "85"
+      server: 212.81.47.242
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c5ec268b-67aa-4738-af4d-e0313b36f584
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1386685072
+      network: tcp
+      port: 19748
+      reality-opts:
+        public-key: o2uLRBkgcAPCavo12l6VUzaSnSmxjUvod-NBSiUPdy8
+        short-id: "85"
+      server: www.aisearch66.com
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c5ec268b-67aa-4738-af4d-e0313b36f584
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1386685130
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: o2uLRBkgcAPCavo12l6VUzaSnSmxjUvod-NBSiUPdy8
+        short-id: "85"
+      server: 82.23.146.98
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c5ec268b-67aa-4738-af4d-e0313b36f584
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-2478804
         - vless-656189585
         - hysteria2-658428922
         - hysteria2-1060573987
         - hysteria2-1060574022
         - vless-1122309336
         - vless-1151376484
+        - hysteria2-1158363236
         - vless-1163061815
+        - vless-1239097038
+        - vless-1239151540
         - vless-1258929861
         - vless-1279651618
         - vless-1300687308
@@ -232,18 +307,25 @@ proxy-groups:
         - vless-1383076334
         - vless-1383435316
         - vless-1383435340
+        - vless-1386685067
+        - vless-1386685072
+        - vless-1386685130
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-2478804
         - vless-656189585
         - hysteria2-658428922
         - hysteria2-1060573987
         - hysteria2-1060574022
         - vless-1122309336
         - vless-1151376484
+        - hysteria2-1158363236
         - vless-1163061815
+        - vless-1239097038
+        - vless-1239151540
         - vless-1258929861
         - vless-1279651618
         - vless-1300687308
@@ -256,6 +338,9 @@ proxy-groups:
         - vless-1383076334
         - vless-1383435316
         - vless-1383435340
+        - vless-1386685067
+        - vless-1386685072
+        - vless-1386685130
       type: select
 rules:
     - MATCH,select
