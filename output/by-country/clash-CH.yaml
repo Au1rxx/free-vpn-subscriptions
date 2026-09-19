@@ -13,17 +13,32 @@ proxies:
       type: vless
       udp: true
       uuid: 3950b45e-740d-4dca-ac95-505ec8534592
+    - client-fingerprint: chrome
+      name: vless-1396763822
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: f8aV8naD8NKt_mLKaOou0qUrIM1Ge25kJNxywpF3OB0
+        short-id: d016c76007f78038
+      server: 34.158.23.115
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a18f08dc-76ae-453a-98f5-d41eab7e649b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1242333394
+        - vless-1396763822
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1242333394
+        - vless-1396763822
       type: select
 rules:
     - MATCH,select

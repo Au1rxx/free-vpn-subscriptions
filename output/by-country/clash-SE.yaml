@@ -1,32 +1,4 @@
 proxies:
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1391139102
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: H5CXI4RvEWW0TFPvFrnF1iX-05Y57ZYMMngjmkMfv24
-        short-id: 711ad7f475c35e5e
-      server: 103.139.51.51
-      servername: cloud.figmafound.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 71b91642-93ed-4923-8cab-877e19bfc2d6
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1391139095
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: H5CXI4RvEWW0TFPvFrnF1iX-05Y57ZYMMngjmkMfv24
-        short-id: 711ad7f475c35e5e
-      server: 103.139.51.41
-      servername: mail.figmafound.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 71b91642-93ed-4923-8cab-877e19bfc2d6
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-1398066852
@@ -67,6 +39,20 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1386946539
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: H5CXI4RvEWW0TFPvFrnF1iX-05Y57ZYMMngjmkMfv24
+        short-id: 711ad7f475c35e5e
+      server: cloud.figmafound.org
+      servername: cloud.figmafound.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 71b91642-93ed-4923-8cab-877e19bfc2d6
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-1398066851
@@ -76,34 +62,6 @@ proxies:
         public-key: H5CXI4RvEWW0TFPvFrnF1iX-05Y57ZYMMngjmkMfv24
         short-id: 711ad7f475c35e5e
       server: 103.139.51.21
-      servername: auth.figmafound.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 71b91642-93ed-4923-8cab-877e19bfc2d6
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1386945551
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: H5CXI4RvEWW0TFPvFrnF1iX-05Y57ZYMMngjmkMfv24
-        short-id: 711ad7f475c35e5e
-      server: mail.figmafound.org
-      servername: mail.figmafound.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 71b91642-93ed-4923-8cab-877e19bfc2d6
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1386946490
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: H5CXI4RvEWW0TFPvFrnF1iX-05Y57ZYMMngjmkMfv24
-        short-id: 711ad7f475c35e5e
-      server: auth.figmafound.org
       servername: auth.figmafound.org
       tls: true
       type: vless
@@ -137,35 +95,38 @@ proxies:
       type: vless
       udp: true
       uuid: 4bdeee92-97e8-414d-bef6-ec1d5e2ab73b
+    - name: hysteria2-1230577883
+      password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
+      port: 25443
+      server: se-node.rumedia-cdn.com
+      skip-cert-verify: false
+      sni: cf2.rumedia-cdn.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1391139102
-        - vless-1391139095
         - vless-1398066852
         - vless-1383435338
         - vless-1125213250
+        - vless-1386946539
         - vless-1398066851
-        - vless-1386945551
-        - vless-1386946490
         - vless-1398066841
         - vless-1398066845
+        - hysteria2-1230577883
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1391139102
-        - vless-1391139095
         - vless-1398066852
         - vless-1383435338
         - vless-1125213250
+        - vless-1386946539
         - vless-1398066851
-        - vless-1386945551
-        - vless-1386946490
         - vless-1398066841
         - vless-1398066845
+        - hysteria2-1230577883
       type: select
 rules:
     - MATCH,select
