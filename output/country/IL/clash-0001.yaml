@@ -14,6 +14,13 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
+    - name: vless-1255726662
+      network: ws
+      port: 8880
+      server: 198.71.232.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1337514754
@@ -105,12 +112,39 @@ proxies:
       type: vless
       udp: true
       uuid: 21710d7d-5e87-4655-bac2-36e9b655e3ee
+    - client-fingerprint: chrome
+      name: vless-1389119252
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: AeQDUAVCESyA1hFkw6lENmgWAY3sBH9CFPpPAddPwVc
+        short-id: fffff8acddadcac3
+      server: 34.165.251.165
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0c40bce9-8710-4820-8f22-0742b61df999
+    - client-fingerprint: chrome
+      name: vless-1389119295
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Tzhjg1MwcjzzVWFZiRrVwlT-TCl6HNJSTxBOUn0sdDE
+        short-id: 52019048e849a702
+      server: 34.165.244.172
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 74a011a6-433f-49fa-822e-f768205e4b90
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-696781176
         - hysteria2-1179524508
+        - vless-1255726662
         - vless-1337514754
         - shadowsocks-1340135119
         - vless-1343449019
@@ -118,6 +152,8 @@ proxy-groups:
         - vless-1360586650
         - vless-1367094846
         - vless-1373031216
+        - vless-1389119252
+        - vless-1389119295
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -125,6 +161,7 @@ proxy-groups:
         - auto
         - trojan-696781176
         - hysteria2-1179524508
+        - vless-1255726662
         - vless-1337514754
         - shadowsocks-1340135119
         - vless-1343449019
@@ -132,6 +169,8 @@ proxy-groups:
         - vless-1360586650
         - vless-1367094846
         - vless-1373031216
+        - vless-1389119252
+        - vless-1389119295
       type: select
 rules:
     - MATCH,select

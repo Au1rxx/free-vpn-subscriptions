@@ -6,6 +6,13 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
+    - name: vless-46713
+      network: ws
+      port: 8880
+      server: 135.84.75.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-66990
@@ -544,20 +551,6 @@ proxies:
       uuid: 167ed405-7de9-4bff-b1ea-6e3d49c76b0b
     - client-fingerprint: random
       flow: xtls-rprx-vision
-      name: vless-1020070622
-      network: tcp
-      port: 32833
-      reality-opts:
-        public-key: PaTDdYBrlh1xBixdI0igvRRkf0vnUwMRzi-4oDyfS20
-        short-id: a0a305ccc8e94aa8
-      server: 172.238.232.239
-      servername: www.intel.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 167ed405-7de9-4bff-b1ea-6e3d49c76b0b
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
       name: vless-1023674377
       network: tcp
       port: 32833
@@ -652,13 +645,6 @@ proxies:
       type: vless
       udp: true
       uuid: 167ed405-7de9-4bff-b1ea-6e3d49c76b0b
-    - cipher: aes-256-gcm
-      name: shadowsocks-1136872688
-      password: qMvJmCbMduKUoeHq
-      port: 8388
-      server: 66.245.207.70
-      type: ss
-      udp: true
     - name: vless-1139792745
       network: tcp
       port: 10086
@@ -1120,11 +1106,38 @@ proxies:
       type: vless
       udp: true
       uuid: c5ec268b-67aa-4738-af4d-e0313b36f584
+    - client-fingerprint: chrome
+      name: vless-1389119320
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: -Tb9KKp870JxcZ3Ka7Rx5ez3QBYryX4e8_jdyNZu2wE
+        short-id: ed278463058a6dc9
+      server: 34.154.92.210
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: fffe33b6-5735-4a71-adb1-1c154def9024
+    - client-fingerprint: chrome
+      name: vless-1389119330
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: jGfJxbIyf2aLRFQyT9NsJBu1CzJmrAa2sF19GNw46z8
+        short-id: 29615707650b941d
+      server: 34.154.47.33
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4d4bfd21-88fc-4de7-87bd-c2ddaedc4078
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-27030
+        - vless-46713
         - vless-66990
         - trojan-122907
         - vless-2315831
@@ -1181,7 +1194,6 @@ proxy-groups:
         - vless-1010679997
         - vless-1014377961
         - vless-1015169606
-        - vless-1020070622
         - vless-1023674377
         - vless-1027305829
         - vless-1044671847
@@ -1189,7 +1201,6 @@ proxy-groups:
         - vless-1047808927
         - vless-1102473538
         - vless-1123846713
-        - shadowsocks-1136872688
         - vless-1139792745
         - vless-1142151486
         - vless-1146972072
@@ -1229,12 +1240,15 @@ proxy-groups:
         - vless-1381198116
         - vless-1386685079
         - vless-1386685126
+        - vless-1389119320
+        - vless-1389119330
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-27030
+        - vless-46713
         - vless-66990
         - trojan-122907
         - vless-2315831
@@ -1291,7 +1305,6 @@ proxy-groups:
         - vless-1010679997
         - vless-1014377961
         - vless-1015169606
-        - vless-1020070622
         - vless-1023674377
         - vless-1027305829
         - vless-1044671847
@@ -1299,7 +1312,6 @@ proxy-groups:
         - vless-1047808927
         - vless-1102473538
         - vless-1123846713
-        - shadowsocks-1136872688
         - vless-1139792745
         - vless-1142151486
         - vless-1146972072
@@ -1339,6 +1351,8 @@ proxy-groups:
         - vless-1381198116
         - vless-1386685079
         - vless-1386685126
+        - vless-1389119320
+        - vless-1389119330
       type: select
 rules:
     - MATCH,select
