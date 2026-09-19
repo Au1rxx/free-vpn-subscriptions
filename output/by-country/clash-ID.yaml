@@ -7,17 +7,32 @@ proxies:
       sni: id1.nathaya.web.id
       type: trojan
       udp: true
+    - client-fingerprint: chrome
+      name: vless-1394257030
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: -9nhbWBjFTNIE5q0kg76hjyzCS2giPfZ-fbd8xvmRX0
+        short-id: 409192cee72716d7
+      server: 34.128.66.66
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e440fa81-fe9d-4ca1-b711-f7b72c3d79ed
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-490085150
+        - vless-1394257030
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-490085150
+        - vless-1394257030
       type: select
 rules:
     - MATCH,select

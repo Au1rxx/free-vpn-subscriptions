@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-45385
-      network: ws
-      port: 8880
-      server: 108.165.152.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       name: vless-656240777
       network: tcp
@@ -49,6 +42,13 @@ proxies:
       type: vless
       udp: true
       uuid: 7ee53e03-96ed-4121-9da2-62f3d3374506
+    - name: vless-855560857
+      network: ws
+      port: 2200
+      server: 185.185.69.26
+      type: vless
+      udp: true
+      uuid: 7ee53e03-96ed-4121-9da2-62f3d3374506
     - client-fingerprint: qq
       name: vless-966415513
       network: tcp
@@ -66,13 +66,6 @@ proxies:
       network: ws
       port: 8880
       server: 166.62.109.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1265429419
-      network: ws
-      port: 8880
-      server: 198.71.191.30
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
@@ -104,13 +97,6 @@ proxies:
       skip-cert-verify: true
       sni: 91.240.86.70
       type: hysteria2
-    - name: vless-1327473090
-      network: ws
-      port: 8880
-      server: 135.84.72.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       name: vless-1352517441
       network: tcp
@@ -179,53 +165,28 @@ proxies:
       skip-cert-verify: false
       sni: itsallproxy.quattro-tech.ru
       type: hysteria2
-    - name: vless-1389053057
-      network: ws
-      port: 443
-      server: 147.45.175.81
-      servername: xsru2.freeddns.org
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c90395e6-2140-47ad-a54d-9b166729d3ef
-    - name: vless-1389543003
-      network: grpc
-      port: 443
-      server: 147.45.175.81
-      servername: xssite.webredirect.org
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c90395e6-2140-47ad-a54d-9b166729d3ef
-    - name: vless-1389543007
-      network: ws
-      port: 443
-      server: 147.45.175.81
-      servername: xsru2.freeddns.org
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c90395e6-2140-47ad-a54d-9b166729d3ef
+    - name: hysteria2-1393931802
+      password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
+      port: 22443
+      server: 91.240.86.70
+      skip-cert-verify: true
+      sni: itsallproxy.quattro-tech.ru
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-45385
         - vless-656240777
         - vless-698726724
         - vless-700375881
         - vless-827666706
+        - vless-855560857
         - vless-966415513
         - vless-1239130731
-        - vless-1265429419
         - hysteria2-1278300104
         - hysteria2-1281959383
         - hysteria2-1308868748
         - hysteria2-1310560310
-        - vless-1327473090
         - vless-1352517441
         - hysteria2-1358188034
         - shadowsocks-1375192887
@@ -233,27 +194,23 @@ proxy-groups:
         - vless-1386654227
         - vless-1387349318
         - hysteria2-1388429358
-        - vless-1389053057
-        - vless-1389543003
-        - vless-1389543007
+        - hysteria2-1393931802
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-45385
         - vless-656240777
         - vless-698726724
         - vless-700375881
         - vless-827666706
+        - vless-855560857
         - vless-966415513
         - vless-1239130731
-        - vless-1265429419
         - hysteria2-1278300104
         - hysteria2-1281959383
         - hysteria2-1308868748
         - hysteria2-1310560310
-        - vless-1327473090
         - vless-1352517441
         - hysteria2-1358188034
         - shadowsocks-1375192887
@@ -261,9 +218,7 @@ proxy-groups:
         - vless-1386654227
         - vless-1387349318
         - hysteria2-1388429358
-        - vless-1389053057
-        - vless-1389543003
-        - vless-1389543007
+        - hysteria2-1393931802
       type: select
 rules:
     - MATCH,select
