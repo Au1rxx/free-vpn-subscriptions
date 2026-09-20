@@ -1,0 +1,51 @@
+{
+  "outbounds": [
+    {
+      "server": "mybb.com",
+      "server_port": 443,
+      "tag": "vless-10812831",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "rayan-007.nastaran.dpdns.org",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "headers": {
+          "Host": "rayan-007.nastaran.dpdns.org"
+        },
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "aebe5a70-0ca3-46ce-8208-8b5bab1346ce"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-10812831"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-10812831"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

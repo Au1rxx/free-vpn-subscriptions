@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-189872220
+      network: ws
+      port: 443
+      server: 104.17.148.22
+      servername: netlivpn5002.whwbbb.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: a88e61a0-2b38-f6df-c5c7-d20600000000
     - name: trojan-612135910
       password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
       port: 449
@@ -1545,10 +1555,25 @@ proxies:
       type: vless
       udp: true
       uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1408491420
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: r1MW0o1DsC6EEWN-KPKnoXszb1trxlKShRIgOpxqHBk
+        short-id: d98e7afec9c0c359
+      server: 5.181.201.36
+      servername: estomin1.vodniki.monster
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4bdeee92-97e8-414d-bef6-ec1d5e2ab73b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-189872220
         - trojan-612135910
         - vless-646385929
         - vless-648965652
@@ -1687,11 +1712,13 @@ proxy-groups:
         - vless-1404772656
         - vless-1405869853
         - vless-1407415061
+        - vless-1408491420
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-189872220
         - trojan-612135910
         - vless-646385929
         - vless-648965652
@@ -1830,6 +1857,7 @@ proxy-groups:
         - vless-1404772656
         - vless-1405869853
         - vless-1407415061
+        - vless-1408491420
       type: select
 rules:
     - MATCH,select
