@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1386945547
+      network: ws
+      port: 8081
+      server: 143.246.195.98
+      type: vless
+      udp: true
+      uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1396642060
@@ -13,17 +20,28 @@ proxies:
       type: vless
       udp: true
       uuid: 71b91642-93ed-4923-8cab-877e19bfc2d6
+    - name: hysteria2-1230196608
+      password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
+      port: 25443
+      server: se-node.rumedia-cdn.com
+      skip-cert-verify: true
+      sni: cf2.rumedia-cdn.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1386945547
         - vless-1396642060
+        - hysteria2-1230196608
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1386945547
         - vless-1396642060
+        - hysteria2-1230196608
       type: select
 rules:
     - MATCH,select
