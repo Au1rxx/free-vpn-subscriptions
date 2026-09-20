@@ -6,17 +6,32 @@ proxies:
       skip-cert-verify: false
       sni: disk.api-yandex.net
       type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-1343463819
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: dvx6zPztKbgHpYaW6J4OZQC74Uy0JS6HUVdDfbjG5V4
+        short-id: "7606"
+      server: 46.29.238.32
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ed91e79c-f6bf-4fba-8cc0-6d45acaec22b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1391091858
+        - vless-1343463819
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1391091858
+        - vless-1343463819
       type: select
 rules:
     - MATCH,select
