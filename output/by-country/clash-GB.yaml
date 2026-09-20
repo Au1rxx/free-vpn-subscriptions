@@ -1,5 +1,19 @@
 proxies:
     - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1405224011
+      password: JXVCv3N78Ulr/V2Rsk0UN8DJEzD+yC0cbtWo9zjGTkg=
+      port: 61312
+      server: 144.24.225.39
+      type: ss
+      udp: true
+    - cipher: rc4-md5
+      name: shadowsocks-27285
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.61.18
+      type: ss
+      udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1402419059
       password: rqzhd6WZ9TbYEozhRmDCezccPKZBpFV5MrF1l6sxiIw=
       port: 61312
@@ -13,6 +27,13 @@ proxies:
       server: 158.173.221.214
       type: ss
       udp: true
+    - name: vless-1245422997
+      network: grpc
+      port: 2083
+      server: 66.90.104.42
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - client-fingerprint: firefox
       name: vless-1403698674
       network: grpc
@@ -152,13 +173,6 @@ proxies:
       server: 144.24.227.48
       type: ss
       udp: true
-    - cipher: rc4-md5
-      name: shadowsocks-27285
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 146.70.61.18
-      type: ss
-      udp: true
     - name: vless-1406391450
       network: grpc
       port: 2083
@@ -194,13 +208,6 @@ proxies:
       type: vless
       udp: true
       uuid: 4bdeee92-97e8-414d-bef6-ec1d5e2ab73b
-    - name: vless-1245422997
-      network: grpc
-      port: 2083
-      server: 66.90.104.42
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-810591827
@@ -227,6 +234,13 @@ proxies:
       password: r5ic6K6vlgFjNKuR9W7uPVRtSuzCYAjM78oW3RYK0bA=
       port: 61312
       server: 134.65.59.15
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: shadowsocks-271
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.181
       type: ss
       udp: true
     - client-fingerprint: ios
@@ -397,20 +411,6 @@ proxies:
       type: vless
       udp: true
       uuid: 4d583b2c-2f5a-47d0-8181-e95217fe8cd9
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1396763849
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: s0ypPx0AL3k2KOk74tbm-aE-i7eIR_MYVzfLHZeLaUk
-        short-id: 2e124af254a65e7c
-      server: 14ang88.snusoed.baby
-      servername: 14ang88.snusoed.baby
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4bdeee92-97e8-414d-bef6-ec1d5e2ab73b
     - client-fingerprint: ios
       flow: xtls-rprx-vision
       name: vless-810585323
@@ -457,8 +457,11 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1405224011
+        - shadowsocks-27285
         - shadowsocks-1402419059
         - shadowsocks-1251465971
+        - vless-1245422997
         - vless-1403698674
         - shadowsocks-1402419044
         - vless-1230279293
@@ -473,14 +476,13 @@ proxy-groups:
         - vless-860815991
         - vless-809759640
         - shadowsocks-1402419050
-        - shadowsocks-27285
         - vless-1406391450
         - vless-1394257021
         - vless-1396291660
-        - vless-1245422997
         - vless-810591827
         - hysteria2-1005580180
         - shadowsocks-1402419061
+        - shadowsocks-271
         - vless-1398066837
         - vless-1409967447
         - vless-810585348
@@ -495,7 +497,6 @@ proxy-groups:
         - vless-1183916735
         - vless-813687306
         - vless-855059375
-        - vless-1396763849
         - vless-810585323
         - vless-817361595
         - vless-855717562
@@ -504,8 +505,11 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-1405224011
+        - shadowsocks-27285
         - shadowsocks-1402419059
         - shadowsocks-1251465971
+        - vless-1245422997
         - vless-1403698674
         - shadowsocks-1402419044
         - vless-1230279293
@@ -520,14 +524,13 @@ proxy-groups:
         - vless-860815991
         - vless-809759640
         - shadowsocks-1402419050
-        - shadowsocks-27285
         - vless-1406391450
         - vless-1394257021
         - vless-1396291660
-        - vless-1245422997
         - vless-810591827
         - hysteria2-1005580180
         - shadowsocks-1402419061
+        - shadowsocks-271
         - vless-1398066837
         - vless-1409967447
         - vless-810585348
@@ -542,7 +545,6 @@ proxy-groups:
         - vless-1183916735
         - vless-813687306
         - vless-855059375
-        - vless-1396763849
         - vless-810585323
         - vless-817361595
         - vless-855717562

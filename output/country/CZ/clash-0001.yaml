@@ -6,13 +6,6 @@ proxies:
       type: vless
       udp: true
       uuid: 995b4d19-8c0d-4f81-a199-35a4f1d7744e
-    - name: vless-1411583605
-      network: grpc
-      port: 3090
-      server: 153.76.185.84
-      type: vless
-      udp: true
-      uuid: 995b4d19-8c0d-4f81-a199-35a4f1d7744e
     - name: vless-1413474898
       network: grpc
       port: 3090
@@ -27,23 +20,37 @@ proxies:
       type: vless
       udp: true
       uuid: a536ca9e-53b2-459b-ba25-654e62b3b326
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1416361867
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: yAKr8aau2vLIfpVODUEzLYE1unNmWlulIIJt5QPSth0
+        short-id: d0fc05a1
+      server: 109.248.43.30
+      servername: jerry.savex.space
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c6ccb4c-0cdb-4986-8758-23b55b6b0982
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1407179641
-        - vless-1411583605
         - vless-1413474898
         - vless-1415196957
+        - vless-1416361867
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1407179641
-        - vless-1411583605
         - vless-1413474898
         - vless-1415196957
+        - vless-1416361867
       type: select
 rules:
     - MATCH,select
