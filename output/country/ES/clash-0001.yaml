@@ -13,13 +13,6 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-27380
-      password: VcFuyXvND2yQWSFY
-      port: 9054
-      server: 5.188.181.201
-      type: ss
-      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-99676
@@ -263,6 +256,13 @@ proxies:
       skip-cert-verify: true
       sni: es1.xiaoliyu.cyou
       type: hysteria2
+    - name: hysteria2-1359854998
+      password: 19f72087-4591-4d72-930b-2697078ec2be
+      port: 4433
+      server: es1.xiaoliyu.cyou
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-1400881609
@@ -290,13 +290,25 @@ proxies:
       type: vless
       udp: true
       uuid: ddf09ad0-02dc-485b-9048-1038de5bebf0
+    - client-fingerprint: edge
+      name: vless-1413496986
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: ASmPIMB25D2LpasCAfuMuNDN3Kv-Dj3bX8THE7YpknE
+        short-id: 0f8938e71c53a6cd
+      server: upes2.plasmoon.ir
+      servername: amp-api-edge.apps.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 485b37ba-110f-4062-8b6c-2e4bf9a31fb3
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11052
         - shadowsocks-16132
-        - shadowsocks-27380
         - vmess-99676
         - vmess-2386872
         - vmess-5259765
@@ -319,8 +331,10 @@ proxy-groups:
         - vless-1247220676
         - vless-1256126727
         - hysteria2-1353801407
+        - hysteria2-1359854998
         - vless-1400881609
         - vless-1402406086
+        - vless-1413496986
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -328,7 +342,6 @@ proxy-groups:
         - auto
         - shadowsocks-11052
         - shadowsocks-16132
-        - shadowsocks-27380
         - vmess-99676
         - vmess-2386872
         - vmess-5259765
@@ -351,8 +364,10 @@ proxy-groups:
         - vless-1247220676
         - vless-1256126727
         - hysteria2-1353801407
+        - hysteria2-1359854998
         - vless-1400881609
         - vless-1402406086
+        - vless-1413496986
       type: select
 rules:
     - MATCH,select

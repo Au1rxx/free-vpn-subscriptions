@@ -1,7 +1,27 @@
 proxies:
+    - name: vless-1151376484
+      network: ws
+      port: 2087
+      server: 103.75.119.126
+      type: vless
+      udp: true
+      uuid: 731f177e-00aa-480c-b935-661456139a32
     - client-fingerprint: chrome
       name: vless-1397144294
       network: tcp
+      port: 443
+      reality-opts:
+        public-key: fsdIMU2apN1C_NbkL7mHTsBKEfhwbDhgCRcB8ICf03E
+        short-id: d725f0dd8cce210f
+      server: 34.87.244.111
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 325bc1be-0cb7-4cf7-bd35-a79ded91bbbd
+    - client-fingerprint: chrome
+      name: vless-1403449627
+      network: raw
       port: 443
       reality-opts:
         public-key: fsdIMU2apN1C_NbkL7mHTsBKEfhwbDhgCRcB8ICf03E
@@ -166,20 +186,7 @@ proxies:
       udp: true
       uuid: 325bc1be-0cb7-4cf7-bd35-a79ded91bbbd
     - client-fingerprint: chrome
-      name: vless-1403449627
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: fsdIMU2apN1C_NbkL7mHTsBKEfhwbDhgCRcB8ICf03E
-        short-id: d725f0dd8cce210f
-      server: 34.87.244.111
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 325bc1be-0cb7-4cf7-bd35-a79ded91bbbd
-    - client-fingerprint: chrome
-      name: vless-1398762703
+      name: vless-1398257819
       network: tcp
       port: 443
       reality-opts:
@@ -202,7 +209,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1151376484
         - vless-1397144294
+        - vless-1403449627
         - vless-1407588761
         - vless-1390814481
         - vless-1383076316
@@ -215,15 +224,16 @@ proxy-groups:
         - vless-1372417838
         - vless-1163061815
         - vless-1383076334
-        - vless-1403449627
-        - vless-1398762703
+        - vless-1398257819
         - vless-1122309336
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1151376484
         - vless-1397144294
+        - vless-1403449627
         - vless-1407588761
         - vless-1390814481
         - vless-1383076316
@@ -236,8 +246,7 @@ proxy-groups:
         - vless-1372417838
         - vless-1163061815
         - vless-1383076334
-        - vless-1403449627
-        - vless-1398762703
+        - vless-1398257819
         - vless-1122309336
       type: select
 rules:
