@@ -1,11 +1,18 @@
 proxies:
-    - name: vless-1386945547
-      network: ws
-      port: 8081
-      server: 143.246.195.98
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-951589944
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: -GMpCber8qtrKzJbwvpLcwlIhOy-5zS66u_x9lLvIjE
+        short-id: e3daad69
+      server: 193.148.59.178
+      servername: www.apple.com
+      tls: true
       type: vless
       udp: true
-      uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
+      uuid: 20d7c485-5d24-49b5-a5cc-bb7a7daf9908
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1396642060
@@ -20,28 +27,43 @@ proxies:
       type: vless
       udp: true
       uuid: 71b91642-93ed-4923-8cab-877e19bfc2d6
-    - name: hysteria2-1230196608
-      password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
-      port: 25443
-      server: se-node.rumedia-cdn.com
-      skip-cert-verify: true
-      sni: cf2.rumedia-cdn.com
-      type: hysteria2
+    - client-fingerprint: firefox
+      name: vless-1125213250
+      network: grpc
+      port: 33743
+      reality-opts:
+        public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
+        short-id: ""
+      server: 193.42.39.10
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b3a11068-1a7e-4643-85de-7c82cce46943
+    - name: vless-1386945547
+      network: ws
+      port: 8081
+      server: 143.246.195.98
+      type: vless
+      udp: true
+      uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1386945547
+        - vless-951589944
         - vless-1396642060
-        - hysteria2-1230196608
+        - vless-1125213250
+        - vless-1386945547
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1386945547
+        - vless-951589944
         - vless-1396642060
-        - hysteria2-1230196608
+        - vless-1125213250
+        - vless-1386945547
       type: select
 rules:
     - MATCH,select
