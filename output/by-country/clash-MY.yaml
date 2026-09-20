@@ -1,4 +1,32 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1411140971
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: t3HU7p5iYjE9Lcq2-QHTXZFhpAvoXljTNDgmFkFN-Tc
+        short-id: 99f8972e3dd5ed
+      server: my1.miyazono-kaori.com
+      servername: www.setel.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 355337bc-90f9-4469-8d9a-1e2be6a7a055
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1411140946
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: R6q8qhMxgq3ynJPUgudaRkcDXj0qgoc_UU1N0SWGLwM
+        short-id: ed77ac35a310
+      server: my2.miyazono-kaori.com
+      servername: www.setel.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 355337bc-90f9-4469-8d9a-1e2be6a7a055
     - name: trojan-860952359
       password: 5931134d1cde66bf83a54acdfebe7ab2
       port: 443
@@ -27,6 +55,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1411140971
+        - vless-1411140946
         - trojan-860952359
         - trojan-897442828
         - trojan-860926447
@@ -35,6 +65,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1411140971
+        - vless-1411140946
         - trojan-860952359
         - trojan-897442828
         - trojan-860926447
