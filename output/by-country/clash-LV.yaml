@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-795694248
+      password: hbtvgUz5uNYyB3Rf
+      port: 9036
+      server: 185.135.86.175
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1398066847
@@ -62,25 +69,36 @@ proxies:
       skip-cert-verify: true
       sni: hy.quattro-tech.ru
       type: hysteria2
+    - name: vless-1343464757
+      network: ws
+      port: 8088
+      server: atomic-prase23893.my-vm.work
+      type: vless
+      udp: true
+      uuid: f7c74a35-1da0-5097-9fa7-a20735610ac1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-795694248
         - vless-1398066847
         - vless-1398066848
         - vless-1398066832
         - vless-1398066858
         - hysteria2-1281960369
+        - vless-1343464757
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-795694248
         - vless-1398066847
         - vless-1398066848
         - vless-1398066832
         - vless-1398066858
         - hysteria2-1281960369
+        - vless-1343464757
       type: select
 rules:
     - MATCH,select
