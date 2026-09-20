@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-27309
-      password: qYEN5HX4JKeVCdEC
-      port: 9039
-      server: 195.238.126.84
-      type: ss
-      udp: true
     - name: trojan-122909
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20123
@@ -322,13 +315,6 @@ proxies:
       type: vless
       udp: true
       uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
-    - name: hysteria2-1402406102
-      password: f959a3fc-2e55-4bde-8ed4-4fab249f8733
-      port: 31273
-      server: att-b-04.388898.xyz
-      skip-cert-verify: true
-      sni: www.bing.com
-      type: hysteria2
     - client-fingerprint: ios
       name: vless-1404275564
       network: tcp
@@ -369,11 +355,24 @@ proxies:
       type: vless
       udp: true
       uuid: 05e54129-c3c6-4735-a66a-bebefa96ee38
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1412445042
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: vrcsm8L_tY7sNbnCEdLCEjOthh_w9bdWS3wFPgsIomk
+        short-id: 4fa44664f6a566d3
+      server: 84.32.215.94
+      servername: lt.aether-runet.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-27309
         - trojan-122909
         - shadowsocks-717968959
         - shadowsocks-723348709
@@ -400,16 +399,15 @@ proxy-groups:
         - vless-1394179333
         - vless-1400004629
         - vless-1401125307
-        - hysteria2-1402406102
         - vless-1404275564
         - vless-1404275567
         - vless-1408356003
+        - vless-1412445042
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-27309
         - trojan-122909
         - shadowsocks-717968959
         - shadowsocks-723348709
@@ -436,10 +434,10 @@ proxy-groups:
         - vless-1394179333
         - vless-1400004629
         - vless-1401125307
-        - hysteria2-1402406102
         - vless-1404275564
         - vless-1404275567
         - vless-1408356003
+        - vless-1412445042
       type: select
 rules:
     - MATCH,select
