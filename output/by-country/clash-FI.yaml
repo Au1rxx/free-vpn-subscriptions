@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-128-gcm
+      name: shadowsocks-1350535259
+      password: o2rw2hICwu1blrr_gZAl2Q
+      port: 19290
+      server: 82.47.186.18
+      type: ss
+      udp: true
     - name: hysteria2-669913980
       password: Krab9Hyst2_Rk7pQ2xL
       port: 36723
@@ -6,20 +13,16 @@ proxies:
       skip-cert-verify: true
       sni: "off"
       type: hysteria2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1398066824
-      network: tcp
+    - name: vless-1398066856
+      network: grpc
       port: 443
-      reality-opts:
-        public-key: j7_ysAZxK5vBkMqvu0r8_UUuR3Qp7Yml3fXFDGR5x3w
-        short-id: 573703f224b75e8c
-      server: 31.76.80.238
-      servername: jujujuj.mervi.icu
+      server: assets-fi.pleiades.codes
+      servername: assets-fi.pleiades.codes
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: 9bbd487f-8f84-4ad7-b897-681c3f7d95dc
+      uuid: c797b9ad-6f9e-4eee-befd-eef119ec3637
     - client-fingerprint: firefox
       name: vless-1367307670
       network: grpc
@@ -77,8 +80,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1350535259
         - hysteria2-669913980
-        - vless-1398066824
+        - vless-1398066856
         - vless-1367307670
         - vless-1400002988
         - vless-1381769951
@@ -88,8 +92,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-1350535259
         - hysteria2-669913980
-        - vless-1398066824
+        - vless-1398066856
         - vless-1367307670
         - vless-1400002988
         - vless-1381769951
