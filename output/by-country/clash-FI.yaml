@@ -1,0 +1,90 @@
+proxies:
+    - client-fingerprint: chrome
+      name: vless-1419323885
+      network: grpc
+      port: 2055
+      reality-opts:
+        public-key: 2C-oK3mN8pZ8jeTAVhgt6ubT-xqL7cklq9QmwtBY9mE
+        short-id: 7b86a01d952e8df4
+      server: tt.sonyabibboop.com
+      servername: tt.sonyabibboop.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 884b5fb5-13b5-433a-92cc-0ff4e5773375
+    - client-fingerprint: random
+      name: vless-1354534668
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1381752782
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
+        short-id: ""
+      server: est1313.ggisopi.su
+      servername: ""
+      tls: true
+      type: vless
+      udp: true
+      uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
+    - client-fingerprint: chrome
+      name: vless-1381769951
+      network: grpc
+      port: 9872
+      reality-opts:
+        public-key: sm3E3hjmT6_Gmg_O9rBz4nfXYrHpnl6-LvcCp6T6_xc
+        short-id: ""
+      server: 85.208.86.91
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1423303582
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: X3U2Y1fzAORyXdy_awWirvlCjOV_Qsj6SEOPd4hFHgE
+        short-id: 091faecd7e0808ed
+      server: 5.42.116.118
+      servername: stablequenchcone.heatherneedle.info
+      tls: true
+      type: vless
+      udp: true
+      uuid: f07d9192-9d39-49fc-ba70-610fcb7fb176
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1419323885
+        - vless-1354534668
+        - vless-1381752782
+        - vless-1381769951
+        - vless-1423303582
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1419323885
+        - vless-1354534668
+        - vless-1381752782
+        - vless-1381769951
+        - vless-1423303582
+      type: select
+rules:
+    - MATCH,select
