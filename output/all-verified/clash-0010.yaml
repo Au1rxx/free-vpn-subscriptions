@@ -1,0 +1,128 @@
+proxies:
+    - name: vless-1404121876
+      network: ws
+      port: 443
+      server: 103.115.18.54
+      servername: cdn8848.776676.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d342d11e-d424-4583-b36e-524ab1f0afa4
+    - name: vless-1404121877
+      network: ws
+      port: 443
+      server: 66.235.200.203
+      servername: xi.tbv.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: b2593749-691c-428c-9481-14979cba3446
+    - name: trojan-1404275560
+      password: MiTIVPN
+      port: 443
+      server: 199.232.78.101
+      skip-cert-verify: false
+      sni: ssl.fastly.com
+      type: trojan
+      udp: true
+    - client-fingerprint: ios
+      name: vless-1404275562
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: TqsHQWg0oFULyLiaXe9vuwYXmLR6mRLiL376GJbX2Cs
+        short-id: 407f4d9be75efc56
+      server: 31.77.7.122
+      servername: www.nokia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 36cd557b-2b3d-46d3-8071-c77dd9cf7623
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1404275563
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: qoAuuFJ0eK1lAMHIqTt6LniY6qu1GIobrGthBcRHUXM
+        short-id: 9d84de9d9f7b85e9
+      server: de1.edge-9d7c.com
+      servername: ""
+      tls: true
+      type: vless
+      udp: true
+      uuid: ddf09ad0-02dc-485b-9048-1038de5bebf0
+    - client-fingerprint: ios
+      name: vless-1404275564
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: Snqizwey11Sp7A3JOzYATE-bcWTOPz1uFblMUiZToVY
+        short-id: f3836ba5541bdc9e
+      server: 31.76.83.118
+      servername: www.philips.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 36cd557b-2b3d-46d3-8071-c77dd9cf7623
+    - name: trojan-1404275565
+      password: MiTIVPN
+      port: 443
+      server: 199.232.78.160
+      skip-cert-verify: false
+      sni: ssl.fastly.com
+      type: trojan
+      udp: true
+    - name: trojan-1404275566
+      password: MiTIVPN
+      port: 443
+      server: 199.232.78.160
+      skip-cert-verify: false
+      sni: ssl.fastly.com
+      type: trojan
+      udp: true
+    - client-fingerprint: ios
+      name: vless-1404275567
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Snqizwey11Sp7A3JOzYATE-bcWTOPz1uFblMUiZToVY
+        short-id: f3836ba5541bdc9e
+      server: 31.76.83.118
+      servername: www.philips.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 36cd557b-2b3d-46d3-8071-c77dd9cf7623
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1404121876
+        - vless-1404121877
+        - trojan-1404275560
+        - vless-1404275562
+        - vless-1404275563
+        - vless-1404275564
+        - trojan-1404275565
+        - trojan-1404275566
+        - vless-1404275567
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1404121876
+        - vless-1404121877
+        - trojan-1404275560
+        - vless-1404275562
+        - vless-1404275563
+        - vless-1404275564
+        - trojan-1404275565
+        - trojan-1404275566
+        - vless-1404275567
+      type: select
+rules:
+    - MATCH,select
