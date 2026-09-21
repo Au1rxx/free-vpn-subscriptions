@@ -78,6 +78,13 @@ proxies:
       skip-cert-verify: true
       sni: speedtest.tinkoff.ru
       type: hysteria2
+    - name: vless-1439489186
+      network: tcp
+      port: 22224
+      server: 13.39.139.162
+      type: vless
+      udp: true
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
     - client-fingerprint: firefox
       name: vless-1403698678
       network: grpc
@@ -91,6 +98,20 @@ proxies:
       type: vless
       udp: true
       uuid: 81dc0b61-f9fe-4ad6-8b4e-b8c067b73712
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1429037202
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: ZPdVCztKOeffv0v4TpdQ8X5LMGmVNxZe1ZC7BFC8118
+        short-id: 940dbf5b
+      server: 62.60.157.56
+      servername: www.uva.nl
+      tls: true
+      type: vless
+      udp: true
+      uuid: 78b898d6-fa2c-47af-a342-dcde483301b0
     - name: hysteria2-722298603
       password: github.com/Alvin9999-newpac/fanqiang
       port: 60111
@@ -121,20 +142,6 @@ proxies:
       type: vless
       udp: true
       uuid: d619964d-26d6-452d-9860-6f058f03ba8e
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1434357182
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 6Je7M9xACRBOjpdsN3NUkcYkyIuIQHVoSN1H4Dlj4Ac
-        short-id: f6f0cbe8e50b71da
-      server: 107.161.160.104
-      servername: paris.nemefisto.online
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3b0bd6df-4d11-4418-9543-e4bab64cf9a5
 proxy-groups:
     - interval: 300
       name: auto
@@ -149,11 +156,12 @@ proxy-groups:
         - vless-1429598888
         - vless-1403698672
         - hysteria2-722298688
+        - vless-1439489186
         - vless-1403698678
+        - vless-1429037202
         - hysteria2-722298603
         - vless-1435524781
         - vless-1387242610
-        - vless-1434357182
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -169,11 +177,12 @@ proxy-groups:
         - vless-1429598888
         - vless-1403698672
         - hysteria2-722298688
+        - vless-1439489186
         - vless-1403698678
+        - vless-1429037202
         - hysteria2-722298603
         - vless-1435524781
         - vless-1387242610
-        - vless-1434357182
       type: select
 rules:
     - MATCH,select
