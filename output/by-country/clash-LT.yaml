@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: safari
+      name: vless-1441304480
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: C6nh6hqFTbtizgSH8vGmw2XUxsQAbAW3jPylpgGvfl4
+        short-id: 7c4b9a2e8d5f3c1b
+      server: 84.32.151.226
+      servername: preview-instance.cloudnativecontrol.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 10394279-283c-4ab8-8529-f1e0a4c61bc8
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1424436793
@@ -17,12 +30,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1441304480
         - vless-1424436793
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1441304480
         - vless-1424436793
       type: select
 rules:

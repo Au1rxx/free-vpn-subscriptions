@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "1e6fed5b-5edc-4ddb-a268-79d7fae4365c",
+      "server": "67.159.17.39",
+      "server_port": 30443,
+      "tag": "hysteria2-1420460913",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "filesconvert.org"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-1420460913"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-1420460913"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
