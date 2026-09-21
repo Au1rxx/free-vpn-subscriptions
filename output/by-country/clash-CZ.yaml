@@ -1,0 +1,22 @@
+proxies:
+    - name: vless-1442575456
+      network: grpc
+      port: 3090
+      server: 153.76.185.86
+      type: vless
+      udp: true
+      uuid: 5bcba788-5e2d-457b-8bd2-67fa99e49e0f
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1442575456
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1442575456
+      type: select
+rules:
+    - MATCH,select

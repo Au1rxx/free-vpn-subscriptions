@@ -1,9 +1,16 @@
 proxies:
-    - name: hysteria2-1209963836
+    - name: hysteria2-1059436567
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
       port: 8443
-      server: 85.204.107.186
+      server: 85.204.107.185
       skip-cert-verify: true
+      sni: hopp-romania-new.roxa.org
+      type: hysteria2
+    - name: hysteria2-1058393303
+      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+      port: 8443
+      server: 85.204.107.185
+      skip-cert-verify: false
       sni: hopp-romania-new.roxa.org
       type: hysteria2
     - name: hysteria2-1005907717
@@ -69,11 +76,33 @@ proxies:
       skip-cert-verify: true
       sni: hopp-romania-new.roxa.org
       type: hysteria2
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1223729872
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
+        short-id: d06d78e974491b6e
+      server: 46.28.67.55
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
+    - name: hysteria2-1045025816
+      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+      port: 8443
+      server: 85.204.107.183
+      skip-cert-verify: true
+      sni: hopp-romania-new.roxa.org
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1209963836
+        - hysteria2-1059436567
+        - hysteria2-1058393303
         - hysteria2-1005907717
         - hysteria2-1208885900
         - hysteria2-818203591
@@ -83,12 +112,15 @@ proxy-groups:
         - hysteria2-1393931804
         - hysteria2-930179315
         - hysteria2-860759612
+        - vless-1223729872
+        - hysteria2-1045025816
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1209963836
+        - hysteria2-1059436567
+        - hysteria2-1058393303
         - hysteria2-1005907717
         - hysteria2-1208885900
         - hysteria2-818203591
@@ -98,6 +130,8 @@ proxy-groups:
         - hysteria2-1393931804
         - hysteria2-930179315
         - hysteria2-860759612
+        - vless-1223729872
+        - hysteria2-1045025816
       type: select
 rules:
     - MATCH,select

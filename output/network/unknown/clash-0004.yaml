@@ -1,0 +1,125 @@
+proxies:
+    - name: vless-1443128193
+      network: ws
+      port: 53416
+      server: 66.33.22.227
+      type: vless
+      udp: true
+      uuid: 8fa41411-b8c4-42d8-a1b5-94c72c1a23ab
+    - name: vless-1443131959
+      network: ws
+      port: 443
+      server: 213.111.148.137
+      servername: shuma.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
+    - name: vless-1443131962
+      network: ws
+      port: 443
+      server: 194.32.107.150
+      servername: shuma.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
+    - name: vless-1443131963
+      network: ws
+      port: 443
+      server: 45.202.254.133
+      servername: shuma.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
+    - name: vless-1443131964
+      network: ws
+      port: 443
+      server: 172.232.236.252
+      servername: shuma.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
+    - name: vless-1443132893
+      network: ws
+      port: 443
+      server: 92.113.124.253
+      servername: cdn8848.776676.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d342d11e-d424-4583-b36e-524ab1f0afa4
+    - name: vless-1443132896
+      network: ws
+      port: 443
+      server: 130.94.36.232
+      servername: cdn8848.776676.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d342d11e-d424-4583-b36e-524ab1f0afa4
+    - client-fingerprint: chrome
+      name: vless-1443133812
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: aZOpodpnifoxDqTzWgxJRffgsiGnG9-h-EZd4SvOImc
+        short-id: f7b2
+      server: 46.29.238.88
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: db320947-adfb-400d-b60b-383b8324bffe
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1443143567
+      network: raw
+      port: 51135
+      reality-opts:
+        public-key: k41ba-Wiolay7UfP9gId9WXfOKcFkwS2Vwh5je7NWko
+        short-id: ""
+      server: 207.57.133.53
+      servername: www.ebay.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 87f0cd64-02c8-49e7-b07a-349afed26693
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1443128193
+        - vless-1443131959
+        - vless-1443131962
+        - vless-1443131963
+        - vless-1443131964
+        - vless-1443132893
+        - vless-1443132896
+        - vless-1443133812
+        - vless-1443143567
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1443128193
+        - vless-1443131959
+        - vless-1443131962
+        - vless-1443131963
+        - vless-1443131964
+        - vless-1443132893
+        - vless-1443132896
+        - vless-1443133812
+        - vless-1443143567
+      type: select
+rules:
+    - MATCH,select

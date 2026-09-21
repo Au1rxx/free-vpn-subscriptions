@@ -8,6 +8,16 @@ proxies:
       type: vmess
       udp: true
       uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+    - name: vless-1426281638
+      network: ws
+      port: 8443
+      server: 103.200.28.113
+      servername: shuma.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
     - name: vless-1431896356
       network: ws
       port: 8443
@@ -32,21 +42,32 @@ proxies:
       type: vless
       udp: true
       uuid: 8df7343e-2427-41fb-aad1-6c563296faf6
+    - name: vless-1442575456
+      network: grpc
+      port: 3090
+      server: 153.76.185.86
+      type: vless
+      udp: true
+      uuid: 5bcba788-5e2d-457b-8bd2-67fa99e49e0f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-1005127037
+        - vless-1426281638
         - vless-1431896356
         - vless-1441304432
+        - vless-1442575456
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-1005127037
+        - vless-1426281638
         - vless-1431896356
         - vless-1441304432
+        - vless-1442575456
       type: select
 rules:
     - MATCH,select
