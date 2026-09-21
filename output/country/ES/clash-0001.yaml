@@ -13,13 +13,6 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-27380
-      password: VcFuyXvND2yQWSFY
-      port: 9054
-      server: 5.188.181.201
-      type: ss
-      udp: true
     - name: vless-45800
       network: ws
       port: 8880
@@ -315,13 +308,6 @@ proxies:
       type: vless
       udp: true
       uuid: 12c53e32-e589-47d6-b857-e4132294f767
-    - name: vless-1256126727
-      network: ws
-      port: 8880
-      server: 162.120.94.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: ios
       flow: xtls-rprx-vision
       name: vless-1256645749
@@ -636,13 +622,23 @@ proxies:
       type: vless
       udp: true
       uuid: c18b978e-1c4e-415c-8bea-07942b563a64
+    - flow: xtls-rprx-vision
+      name: vless-1430827310
+      network: tcp
+      port: 443
+      server: sp.applepie-recipe.ru
+      servername: sp.applepie-recipe.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: cbccee46-e5ee-4df1-8e54-a1de44d57403
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11052
         - shadowsocks-16132
-        - shadowsocks-27380
         - vless-45800
         - vless-81748
         - vmess-99676
@@ -670,7 +666,6 @@ proxy-groups:
         - vless-1255951532
         - vless-1255951545
         - vless-1255951555
-        - vless-1256126727
         - vless-1256645749
         - vless-1256645753
         - vless-1265429419
@@ -696,6 +691,7 @@ proxy-groups:
         - vless-1421505544
         - vless-1426285631
         - vless-1426285635
+        - vless-1430827310
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -703,7 +699,6 @@ proxy-groups:
         - auto
         - shadowsocks-11052
         - shadowsocks-16132
-        - shadowsocks-27380
         - vless-45800
         - vless-81748
         - vmess-99676
@@ -731,7 +726,6 @@ proxy-groups:
         - vless-1255951532
         - vless-1255951545
         - vless-1255951555
-        - vless-1256126727
         - vless-1256645749
         - vless-1256645753
         - vless-1265429419
@@ -757,6 +751,7 @@ proxy-groups:
         - vless-1421505544
         - vless-1426285631
         - vless-1426285635
+        - vless-1430827310
       type: select
 rules:
     - MATCH,select
