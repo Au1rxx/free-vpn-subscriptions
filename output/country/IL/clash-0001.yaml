@@ -14,12 +14,20 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
+    - cipher: 2022-blake3-aes-128-gcm
+      name: shadowsocks-1443611418
+      password: EIIwJPg8YqgnjLLd58zoTg==:21BUzSjKTJPkPdIhxHlXdg==
+      port: 8388
+      server: 85.209.157.184
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-696781176
         - hysteria2-1179524508
+        - shadowsocks-1443611418
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -27,6 +35,7 @@ proxy-groups:
         - auto
         - trojan-696781176
         - hysteria2-1179524508
+        - shadowsocks-1443611418
       type: select
 rules:
     - MATCH,select
