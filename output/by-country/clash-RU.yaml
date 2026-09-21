@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-1281959383
-      password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
-      port: 22443
-      server: 91.240.86.70
-      skip-cert-verify: true
-      sni: hy.quattro-tech.ru
-      type: hysteria2
     - name: hysteria2-1393931802
       password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
       port: 22443
@@ -26,30 +19,19 @@ proxies:
       type: vless
       udp: true
       uuid: e42ba0b1-39a0-48fd-a80f-f3fca3bb4c6d
-    - name: hysteria2-1278300104
-      password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
-      port: 22443
-      server: 91.240.86.70
-      skip-cert-verify: false
-      sni: hy.quattro-tech.ru
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1281959383
         - hysteria2-1393931802
         - vless-1431994047
-        - hysteria2-1278300104
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1281959383
         - hysteria2-1393931802
         - vless-1431994047
-        - hysteria2-1278300104
       type: select
 rules:
     - MATCH,select

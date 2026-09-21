@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-45385
-      network: ws
-      port: 8880
-      server: 108.165.152.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       name: vless-656240777
       network: tcp
@@ -137,11 +130,36 @@ proxies:
       type: vless
       udp: true
       uuid: e48e4377-1f29-485b-80d4-85fd4fa27bfa
+    - client-fingerprint: firefox
+      name: vless-1440416505
+      network: grpc
+      port: 46446
+      reality-opts:
+        public-key: 4CTDvoTom2CNJqszbKlQApLSQJ8ZLNoQrQ5yH7j242I
+        short-id: 039204f18c9c90a0
+      server: 5.129.251.213
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e42ba0b1-39a0-48fd-a80f-f3fca3bb4c6d
+    - client-fingerprint: chrome
+      name: vless-1440423604
+      network: grpc
+      port: 46446
+      reality-opts:
+        public-key: 4CTDvoTom2CNJqszbKlQApLSQJ8ZLNoQrQ5yH7j242I
+        short-id: 039204f18c9c90a0
+      server: 5.129.251.213
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e42ba0b1-39a0-48fd-a80f-f3fca3bb4c6d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-45385
         - vless-656240777
         - vless-698726724
         - vless-700375881
@@ -155,12 +173,13 @@ proxy-groups:
         - hysteria2-1393931802
         - vless-1431994047
         - vless-1438354953
+        - vless-1440416505
+        - vless-1440423604
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-45385
         - vless-656240777
         - vless-698726724
         - vless-700375881
@@ -174,6 +193,8 @@ proxy-groups:
         - hysteria2-1393931802
         - vless-1431994047
         - vless-1438354953
+        - vless-1440416505
+        - vless-1440423604
       type: select
 rules:
     - MATCH,select
