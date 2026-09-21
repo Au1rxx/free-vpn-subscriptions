@@ -1,17 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      name: vless-1381769955
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: s2uiu3GQA2SlZzsr86Z5Dav97eAFTPf7Nvr-zqzzRgg
-        short-id: 72ccd4a7563c2953
-      server: 94.183.170.147
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5edbcb44-8d04-4fa7-a587-bc5d60c24ca1
     - client-fingerprint: firefox
       name: vless-1297639936
       network: grpc
@@ -32,6 +19,19 @@ proxies:
       skip-cert-verify: false
       sni: ""
       type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-1381769955
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: s2uiu3GQA2SlZzsr86Z5Dav97eAFTPf7Nvr-zqzzRgg
+        short-id: 72ccd4a7563c2953
+      server: 94.183.170.147
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5edbcb44-8d04-4fa7-a587-bc5d60c24ca1
     - client-fingerprint: firefox
       name: vless-1351430597
       network: grpc
@@ -62,9 +62,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1381769955
         - vless-1297639936
         - hysteria2-1404029492
+        - vless-1381769955
         - vless-1351430597
         - vless-1364518788
       type: url-test
@@ -72,9 +72,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vless-1381769955
         - vless-1297639936
         - hysteria2-1404029492
+        - vless-1381769955
         - vless-1351430597
         - vless-1364518788
       type: select
