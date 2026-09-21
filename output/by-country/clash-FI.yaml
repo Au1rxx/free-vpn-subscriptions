@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-1386942499
+      password: rg0g3xp9rk9nk9o0
+      port: 443
+      server: 87.58.148.70
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       name: vless-1419539564
       network: grpc
@@ -12,33 +19,6 @@ proxies:
       type: vless
       udp: true
       uuid: ddf09ad0-02dc-485b-9048-1038de5bebf0
-    - client-fingerprint: firefox
-      name: vless-1419648987
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: V4SeM4OMxXoSKBmmyC5C0kZEhgL33a5vVZBe7ysJ42U
-        short-id: 0a30e2aee95a7571
-      server: 152.233.54.104
-      servername: fi1.cache-4d8a.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ddf09ad0-02dc-485b-9048-1038de5bebf0
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1204159332
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: -qLezG1nUEtvOJi-Ra7WRYv-aHkv3PSefEuXpWV2G04
-        short-id: abcd1234
-      server: 31.77.199.182
-      servername: fi2.yservice.help
-      tls: true
-      type: vless
-      udp: true
-      uuid: c09cfd91-b234-4998-9bed-a0211b7f5c3c
     - client-fingerprint: chrome
       name: vless-1415978288
       network: grpc
@@ -133,6 +113,20 @@ proxies:
       type: vless
       udp: true
       uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1204159332
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: -qLezG1nUEtvOJi-Ra7WRYv-aHkv3PSefEuXpWV2G04
+        short-id: abcd1234
+      server: 31.77.199.182
+      servername: fi2.yservice.help
+      tls: true
+      type: vless
+      udp: true
+      uuid: c09cfd91-b234-4998-9bed-a0211b7f5c3c
     - client-fingerprint: random
       name: vless-1354534668
       network: tcp
@@ -174,9 +168,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1386942499
         - vless-1419539564
-        - vless-1419648987
-        - vless-1204159332
         - vless-1415978288
         - vless-1434358186
         - vless-1429037205
@@ -184,6 +177,7 @@ proxy-groups:
         - vless-1073102365
         - vless-1420231295
         - vless-1381769945
+        - vless-1204159332
         - vless-1354534668
         - vless-1434369141
         - vless-1049362587
@@ -192,9 +186,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-1386942499
         - vless-1419539564
-        - vless-1419648987
-        - vless-1204159332
         - vless-1415978288
         - vless-1434358186
         - vless-1429037205
@@ -202,6 +195,7 @@ proxy-groups:
         - vless-1073102365
         - vless-1420231295
         - vless-1381769945
+        - vless-1204159332
         - vless-1354534668
         - vless-1434369141
         - vless-1049362587
