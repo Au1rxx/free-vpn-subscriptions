@@ -27,12 +27,27 @@ proxies:
       type: vless
       udp: true
       uuid: d7c94b82-657a-4bb7-9b24-2ae566669835
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1438365217
+      network: raw
+      port: 4443
+      reality-opts:
+        public-key: cYwrRCz_hKgT_JE8WywuLE3XOkAEqCTuBiUvXAaEjn8
+        short-id: 694ee64512cfcbef
+      server: moldova.cdn-europe.org
+      servername: moldova.cdn-europe.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: d7c94b82-657a-4bb7-9b24-2ae566669835
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1386946544
         - vless-1397731718
+        - vless-1438365217
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -40,6 +55,7 @@ proxy-groups:
         - auto
         - vless-1386946544
         - vless-1397731718
+        - vless-1438365217
       type: select
 rules:
     - MATCH,select
