@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-50527
+      network: ws
+      port: 8880
+      server: 154.197.64.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: aes-256-cfb
       name: shadowsocks-696781308
       password: aLpQtfEZe445QyHk
@@ -38,6 +45,13 @@ proxies:
       name: shadowsocks-779606885
       password: 9eeJ2fwnZA5Fxgz8
       port: 9028
+      server: 213.183.63.60
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-795694347
+      password: dU3DSNS8wYPXzEKw
+      port: 9029
       server: 213.183.63.60
       type: ss
       udp: true
@@ -265,20 +279,6 @@ proxies:
       type: vless
       udp: true
       uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1413432501
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: SARDrN_d46PsugT2k5ILoQAJqaA1eCOZhe1BjKMonj8
-        short-id: ""
-      server: 45.9.156.103
-      servername: mzone.bg.3cloudhost.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e633de28-bfc0-4aca-aa67-e2e12e2c9e58
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1421482410
@@ -311,12 +311,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-50527
         - shadowsocks-696781308
         - shadowsocks-717969028
         - shadowsocks-723348677
         - shadowsocks-738053649
         - shadowsocks-768399484
         - shadowsocks-779606885
+        - shadowsocks-795694347
         - shadowsocks-819466430
         - vless-1378306232
         - vless-1382717149
@@ -336,7 +338,6 @@ proxy-groups:
         - vless-1401227870
         - vless-1403698676
         - vless-1412445055
-        - vless-1413432501
         - vless-1421482410
         - vless-1423317994
       type: url-test
@@ -344,12 +345,14 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-50527
         - shadowsocks-696781308
         - shadowsocks-717969028
         - shadowsocks-723348677
         - shadowsocks-738053649
         - shadowsocks-768399484
         - shadowsocks-779606885
+        - shadowsocks-795694347
         - shadowsocks-819466430
         - vless-1378306232
         - vless-1382717149
@@ -369,7 +372,6 @@ proxy-groups:
         - vless-1401227870
         - vless-1403698676
         - vless-1412445055
-        - vless-1413432501
         - vless-1421482410
         - vless-1423317994
       type: select

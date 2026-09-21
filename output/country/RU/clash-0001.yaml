@@ -1,4 +1,18 @@
 proxies:
+    - name: vless-45385
+      network: ws
+      port: 8880
+      server: 108.165.152.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-70767
+      network: ws
+      port: 8880
+      server: 45.130.125.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       name: vless-656240777
       network: tcp
@@ -170,10 +184,68 @@ proxies:
       type: vless
       udp: true
       uuid: a19b1a22-878e-4664-b550-09176b551bb6
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1423602777
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: X3U2Y1fzAORyXdy_awWirvlCjOV_Qsj6SEOPd4hFHgE
+        short-id: 091faecd7e0808ed
+      server: 5.42.116.118
+      servername: stablequenchcone.heatherneedle.info
+      tls: true
+      type: vless
+      udp: true
+      uuid: f07d9192-9d39-49fc-ba70-610fcb7fb176
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1423655687
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: X3U2Y1fzAORyXdy_awWirvlCjOV_Qsj6SEOPd4hFHgE
+        short-id: 091faecd7e0808ed
+      server: stablequenchcone.heatherneedle.info
+      servername: stablequenchcone.heatherneedle.info
+      tls: true
+      type: vless
+      udp: true
+      uuid: f07d9192-9d39-49fc-ba70-610fcb7fb176
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1423655688
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: X3U2Y1fzAORyXdy_awWirvlCjOV_Qsj6SEOPd4hFHgE
+        short-id: 091faecd7e0808ed
+      server: stablequenchcone.heatherneedle.info
+      servername: stablequenchcone.heatherneedle.info
+      tls: true
+      type: vless
+      udp: true
+      uuid: f07d9192-9d39-49fc-ba70-610fcb7fb176
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1423655692
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: X3U2Y1fzAORyXdy_awWirvlCjOV_Qsj6SEOPd4hFHgE
+        short-id: 091faecd7e0808ed
+      server: stablequenchcone.heatherneedle.info
+      servername: stablequenchcone.heatherneedle.info
+      tls: true
+      type: vless
+      udp: true
+      uuid: f07d9192-9d39-49fc-ba70-610fcb7fb176
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-45385
+        - vless-70767
         - vless-656240777
         - vless-700375881
         - vless-966415513
@@ -194,11 +266,17 @@ proxy-groups:
         - shadowsocks-1419497952
         - shadowsocks-1422202982
         - vless-1423317973
+        - vless-1423602777
+        - vless-1423655687
+        - vless-1423655688
+        - vless-1423655692
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-45385
+        - vless-70767
         - vless-656240777
         - vless-700375881
         - vless-966415513
@@ -219,6 +297,10 @@ proxy-groups:
         - shadowsocks-1419497952
         - shadowsocks-1422202982
         - vless-1423317973
+        - vless-1423602777
+        - vless-1423655687
+        - vless-1423655688
+        - vless-1423655692
       type: select
 rules:
     - MATCH,select
