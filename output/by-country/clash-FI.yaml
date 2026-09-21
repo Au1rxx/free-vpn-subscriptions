@@ -1,4 +1,38 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-1386942499
+      password: rg0g3xp9rk9nk9o0
+      port: 443
+      server: 87.58.148.70
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1403804696
+      network: tcp
+      port: 2083
+      reality-opts:
+        public-key: tADYkZWWksM_mCqqwlRHCciSCXnP3JMYrPi5eoRHh2s
+        short-id: d059fb98048c5318
+      server: 62.238.103.54
+      servername: www.yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d78de562-872e-43dd-be48-e9d7b06c87a3
+    - client-fingerprint: chrome
+      name: vless-1419539564
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: V4SeM4OMxXoSKBmmyC5C0kZEhgL33a5vVZBe7ysJ42U
+        short-id: 0a30e2aee95a7571
+      server: 152.233.54.104
+      servername: fi1.cache-4d8a.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ddf09ad0-02dc-485b-9048-1038de5bebf0
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-1418846662
@@ -67,6 +101,19 @@ proxies:
       type: vless
       udp: true
       uuid: f07d9192-9d39-49fc-ba70-610fcb7fb176
+    - client-fingerprint: firefox
+      name: vless-1419648987
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: V4SeM4OMxXoSKBmmyC5C0kZEhgL33a5vVZBe7ysJ42U
+        short-id: 0a30e2aee95a7571
+      server: 152.233.54.104
+      servername: fi1.cache-4d8a.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ddf09ad0-02dc-485b-9048-1038de5bebf0
     - client-fingerprint: chrome
       name: vless-1421500746
       network: grpc
@@ -93,6 +140,19 @@ proxies:
       type: vless
       udp: true
       uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
+    - client-fingerprint: firefox
+      name: vless-1317697670
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1397731717
@@ -111,26 +171,36 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1386942499
+        - vless-1403804696
+        - vless-1419539564
         - vless-1418846662
         - vless-1419323885
         - vless-1354534668
         - vless-1381769945
         - vless-1423303582
+        - vless-1419648987
         - vless-1421500746
         - vless-1422671165
+        - vless-1317697670
         - vless-1397731717
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1386942499
+        - vless-1403804696
+        - vless-1419539564
         - vless-1418846662
         - vless-1419323885
         - vless-1354534668
         - vless-1381769945
         - vless-1423303582
+        - vless-1419648987
         - vless-1421500746
         - vless-1422671165
+        - vless-1317697670
         - vless-1397731717
       type: select
 rules:
