@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-cfb
+      name: shadowsocks-278
+      password: qwerREWQ@@
+      port: 4652
+      server: 218.237.185.230
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-287
       password: qwerREWQ@@
       port: 6123
@@ -1558,10 +1565,35 @@ proxies:
       type: vless
       udp: true
       uuid: 8486730d-3e91-4807-9e34-edb9a1c696f6
+    - name: vless-1424664597
+      network: ws
+      port: 443
+      server: 110.10.178.240
+      servername: thus-k.netnode.cc.cd
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c92e12ca-ea66-4785-8675-652b35134117
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1424833949
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: 7o36V1H4H_34kTMpwCfJmDB1bbd21Rgbk2dM_dAonyM
+        short-id: 0bb3fbdc6cb178d4
+      server: 185.229.9.74
+      servername: www.vk.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b5a79dec-1bbe-431b-a144-d6660bf4d106
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-278
         - shadowsocks-287
         - shadowsocks-26744
         - trojan-112939
@@ -1717,11 +1749,14 @@ proxy-groups:
         - vless-1423273110
         - vless-1423824480
         - vless-1424398796
+        - vless-1424664597
+        - vless-1424833949
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-278
         - shadowsocks-287
         - shadowsocks-26744
         - trojan-112939
@@ -1877,6 +1912,8 @@ proxy-groups:
         - vless-1423273110
         - vless-1423824480
         - vless-1424398796
+        - vless-1424664597
+        - vless-1424833949
       type: select
 rules:
     - MATCH,select
