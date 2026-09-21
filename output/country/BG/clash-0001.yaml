@@ -1,18 +1,4 @@
 proxies:
-    - name: vless-50527
-      network: ws
-      port: 8880
-      server: 154.197.64.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-70582
-      network: ws
-      port: 8880
-      server: 45.12.30.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-81918
       network: ws
       port: 8880
@@ -20,6 +6,13 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - cipher: aes-256-cfb
+      name: shadowsocks-717969028
+      password: cp8pRSUAyLhTfVWH
+      port: 9064
+      server: 213.183.63.60
+      type: ss
+      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-738053649
       password: GeregetR8cvQHzYr
@@ -45,6 +38,13 @@ proxies:
       network: ws
       port: 8880
       server: 185.148.106.50
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-1239152527
+      network: ws
+      port: 8880
+      server: 185.193.30.30
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
@@ -104,16 +104,6 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1293163124
-      network: grpc
-      port: 443
-      server: friendlynode.site
-      servername: friendlynode.site
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 27c887a7-c373-4576-bbc9-520ac475fc7e
     - name: vless-1345031341
       network: ws
       port: 8880
@@ -396,17 +386,31 @@ proxies:
       type: vless
       udp: true
       uuid: c18b978e-1c4e-415c-8bea-07942b563a64
+    - name: vless-1429822857
+      network: ws
+      port: 8081
+      server: 131.123.41.31
+      type: vless
+      udp: true
+      uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
+    - name: vless-1429822931
+      network: ws
+      port: 8081
+      server: 131.123.39.29
+      type: vless
+      udp: true
+      uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-50527
-        - vless-70582
         - vless-81918
+        - shadowsocks-717969028
         - shadowsocks-738053649
         - shadowsocks-768399484
         - shadowsocks-779606885
         - vless-1239151540
+        - vless-1239152527
         - vless-1239327829
         - vless-1239348617
         - vless-1239358493
@@ -415,7 +419,6 @@ proxy-groups:
         - vless-1255704233
         - vless-1255718221
         - vless-1256200960
-        - vless-1293163124
         - vless-1345031341
         - vless-1378306232
         - vless-1382717149
@@ -440,18 +443,20 @@ proxy-groups:
         - vless-1425285708
         - vless-1425487302
         - vless-1426284649
+        - vless-1429822857
+        - vless-1429822931
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-50527
-        - vless-70582
         - vless-81918
+        - shadowsocks-717969028
         - shadowsocks-738053649
         - shadowsocks-768399484
         - shadowsocks-779606885
         - vless-1239151540
+        - vless-1239152527
         - vless-1239327829
         - vless-1239348617
         - vless-1239358493
@@ -460,7 +465,6 @@ proxy-groups:
         - vless-1255704233
         - vless-1255718221
         - vless-1256200960
-        - vless-1293163124
         - vless-1345031341
         - vless-1378306232
         - vless-1382717149
@@ -485,6 +489,8 @@ proxy-groups:
         - vless-1425285708
         - vless-1425487302
         - vless-1426284649
+        - vless-1429822857
+        - vless-1429822931
       type: select
 rules:
     - MATCH,select
