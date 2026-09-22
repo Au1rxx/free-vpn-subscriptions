@@ -1,11 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-303
-      password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
-      port: 50099
-      server: r3mrcg001286ek2.cybervena.com
-      type: ss
-      udp: true
     - name: hysteria2-16610
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -25,6 +18,14 @@ proxies:
     - name: trojan-122868
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20045
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: tw.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-122893
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20087
       server: d3.catcat321.com
       skip-cert-verify: true
       sni: tw.catxstar.com
@@ -352,38 +353,6 @@ proxies:
       sni: tw.catxstar.com
       type: trojan
       udp: true
-    - name: trojan-856462007
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20087
-      server: krhtybay.catcat321.com
-      skip-cert-verify: true
-      sni: tw.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-856462023
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20096
-      server: krhtybay.catcat321.com
-      skip-cert-verify: true
-      sni: tw.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-856462024
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20013
-      server: krhtybay.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-856462031
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20109
-      server: krhtybay.catcat321.com
-      skip-cert-verify: true
-      sni: tw.catxstar.com
-      type: trojan
-      udp: true
     - name: hysteria2-856679747
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -426,6 +395,15 @@ proxies:
     - alterId: 0
       cipher: auto
       name: vmess-1005125051
+      network: tcp
+      port: 21036
+      server: dog-tw.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 9464ca40-dd75-3742-a628-d931a9f413b2
+    - alterId: 0
+      cipher: auto
+      name: vmess-1011374809
       network: tcp
       port: 21036
       server: dog-tw.kunlun01dns.com
@@ -1507,18 +1485,19 @@ proxies:
       type: vless
       udp: true
       uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
-    - alterId: 0
-      cipher: auto
-      name: vmess-1447852308
-      network: ws
-      port: 443
-      server: 654168416355441.oylfmxz.cn
-      servername: 654168416355441.oylfmxz.cn
-      skip-cert-verify: false
+    - client-fingerprint: edge
+      name: vless-1447775040
+      network: tcp
+      port: 24215
+      reality-opts:
+        public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
+        short-id: ""
+      server: 118.167.206.152
+      servername: addons.mozilla.org
       tls: true
-      type: vmess
+      type: vless
       udp: true
-      uuid: d90e4077-bc7e-414d-a650-70bf1baae4d6
+      uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
     - alterId: 0
       cipher: auto
       name: vmess-1448768748
@@ -1607,30 +1586,6 @@ proxies:
       type: vless
       udp: true
       uuid: c18b978e-1c4e-415c-8bea-07942b563a64
-    - alterId: 0
-      cipher: auto
-      name: vmess-1453363201
-      network: ws
-      port: 443
-      server: 654168416355441.oylfmxz.cn
-      servername: 654168416355441.oylfmxz.cn
-      skip-cert-verify: false
-      tls: true
-      type: vmess
-      udp: true
-      uuid: d90e4077-bc7e-414d-a650-70bf1baae4d6
-    - alterId: 0
-      cipher: auto
-      name: vmess-1453363794
-      network: ws
-      port: 443
-      server: 654168416355441.oylfmxz.cn
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vmess
-      udp: true
-      uuid: d90e4077-bc7e-414d-a650-70bf1baae4d6
     - client-fingerprint: chrome
       name: vless-1454418328
       network: tcp
@@ -1657,14 +1612,27 @@ proxies:
       type: vless
       udp: true
       uuid: 31a40f42-4ad6-4a32-a760-71102b459584
+    - client-fingerprint: chrome
+      name: vless-1456440108
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: qvekI7tKB1NDnZA6JcS_24aV4n8mlCbI3SFvkRr22wg
+        short-id: d74a6321deec9f31
+      server: 34.81.223.1
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 31a40f42-4ad6-4a32-a760-71102b459584
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-303
         - hysteria2-16610
         - vmess-25247
         - trojan-122868
+        - trojan-122893
         - trojan-122903
         - vmess-145255
         - vmess-5258766
@@ -1707,16 +1675,13 @@ proxy-groups:
         - hysteria2-848874255
         - trojan-856461950
         - trojan-856461974
-        - trojan-856462007
-        - trojan-856462023
-        - trojan-856462024
-        - trojan-856462031
         - hysteria2-856679747
         - vmess-858999828
         - vmess-865863240
         - hysteria2-892566577
         - hysteria2-892566578
         - vmess-1005125051
+        - vmess-1011374809
         - vless-1014144002
         - vless-1014144004
         - vless-1014145882
@@ -1799,7 +1764,7 @@ proxy-groups:
         - vless-1444008924
         - vless-1444201014
         - vless-1446029809
-        - vmess-1447852308
+        - vless-1447775040
         - vmess-1448768748
         - vmess-1448775024
         - vless-1449472328
@@ -1807,19 +1772,18 @@ proxy-groups:
         - vless-1450519416
         - vless-1450519432
         - vless-1451447722
-        - vmess-1453363201
-        - vmess-1453363794
         - vless-1454418328
         - vless-1454515146
+        - vless-1456440108
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-303
         - hysteria2-16610
         - vmess-25247
         - trojan-122868
+        - trojan-122893
         - trojan-122903
         - vmess-145255
         - vmess-5258766
@@ -1862,16 +1826,13 @@ proxy-groups:
         - hysteria2-848874255
         - trojan-856461950
         - trojan-856461974
-        - trojan-856462007
-        - trojan-856462023
-        - trojan-856462024
-        - trojan-856462031
         - hysteria2-856679747
         - vmess-858999828
         - vmess-865863240
         - hysteria2-892566577
         - hysteria2-892566578
         - vmess-1005125051
+        - vmess-1011374809
         - vless-1014144002
         - vless-1014144004
         - vless-1014145882
@@ -1954,7 +1915,7 @@ proxy-groups:
         - vless-1444008924
         - vless-1444201014
         - vless-1446029809
-        - vmess-1447852308
+        - vless-1447775040
         - vmess-1448768748
         - vmess-1448775024
         - vless-1449472328
@@ -1962,10 +1923,9 @@ proxy-groups:
         - vless-1450519416
         - vless-1450519432
         - vless-1451447722
-        - vmess-1453363201
-        - vmess-1453363794
         - vless-1454418328
         - vless-1454515146
+        - vless-1456440108
       type: select
 rules:
     - MATCH,select

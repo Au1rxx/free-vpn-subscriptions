@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-2327855
-      network: tcp
-      port: 10086
-      server: 204.216.216.23
-      type: vless
-      udp: true
-      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - cipher: aes-256-gcm
       name: shadowsocks-1251465982
       password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
@@ -13,6 +6,20 @@ proxies:
       server: 185.164.175.81
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1269466481
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: R5ycsjJ-v024902dMSqTsSdqxUwCFEXMebdBEWFt9VU
+        short-id: cd6065902eea7a02
+      server: 82.118.16.187
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dc2259c4-388e-4285-ba18-df619b6672b6
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1446234806
       password: DfokaAndibyl-wXjoVex_zDT78r-kwmX
@@ -33,8 +40,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-2327855
         - shadowsocks-1251465982
+        - vless-1269466481
         - shadowsocks-1446234806
         - vmess-1455404172
       type: url-test
@@ -42,8 +49,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vless-2327855
         - shadowsocks-1251465982
+        - vless-1269466481
         - shadowsocks-1446234806
         - vmess-1455404172
       type: select

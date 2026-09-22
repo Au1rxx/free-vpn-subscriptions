@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-122851
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20018
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: trojan-474637039
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20018
@@ -279,20 +287,6 @@ proxies:
       type: vless
       udp: true
       uuid: a76f6959-7d88-40c5-8984-4d888aa42389
-    - client-fingerprint: safari
-      flow: xtls-rprx-vision
-      name: vless-1448297872
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: nilJ07r1KZ0-KhmRNYeICXGhM9HeG9uxnRaqjYz3fWg
-        short-id: da69ccae3f9f367f
-      server: 212.64.210.109
-      servername: tr.responsiblecare.uk
-      tls: true
-      type: vless
-      udp: true
-      uuid: cb4259d5-9c7e-4b7d-b766-5deae8044b45
     - name: vless-1454576245
       network: grpc
       port: 9443
@@ -307,6 +301,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-122851
         - trojan-474637039
         - trojan-856461940
         - trojan-856461981
@@ -329,13 +324,13 @@ proxy-groups:
         - vless-1421036477
         - vless-1438537625
         - vless-1448297865
-        - vless-1448297872
         - vless-1454576245
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-122851
         - trojan-474637039
         - trojan-856461940
         - trojan-856461981
@@ -358,7 +353,6 @@ proxy-groups:
         - vless-1421036477
         - vless-1438537625
         - vless-1448297865
-        - vless-1448297872
         - vless-1454576245
       type: select
 rules:
