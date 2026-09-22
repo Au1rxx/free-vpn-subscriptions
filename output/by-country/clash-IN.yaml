@@ -6,6 +6,32 @@ proxies:
       skip-cert-verify: true
       sni: vpn-in-001.fastervpn.world
       type: hysteria2
+    - client-fingerprint: qq
+      name: vless-1343080799
+      network: grpc
+      port: 2443
+      reality-opts:
+        public-key: h85e28MxBgNyT9d9cNeOLVtWfHq6cT_1_oxZOTajtTg
+        short-id: 92c32de179e5d908
+      server: hydra.yokkastars.com
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5e679ccd-1586-4d5f-b87b-48251046cad8
+    - client-fingerprint: chrome
+      name: vless-1343261564
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
+        short-id: 9980e0609b0d3891
+      server: 194.61.31.126
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
     - name: hysteria2-1196471676
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -13,6 +39,32 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-1400625857
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: dB68n-Vyph0_KBtBIe45b5GCB4F1IqpBF_ohlN-KpkY
+        short-id: 50440423703c945f
+      server: 34.47.245.203
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3fed34dc-2fe6-4fe0-86e7-a80213f9b7cc
+    - client-fingerprint: chrome
+      name: vless-1415204613
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: dB68n-Vyph0_KBtBIe45b5GCB4F1IqpBF_ohlN-KpkY
+        short-id: 50440423703c945f
+      server: 34.47.245.203
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3fed34dc-2fe6-4fe0-86e7-a80213f9b7cc
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1310954686
@@ -40,20 +92,6 @@ proxies:
       type: vless
       udp: true
       uuid: 5e679ccd-1586-4d5f-b87b-48251046cad8
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1313516180
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: g77ZJbm18JEotapmVRjaXi133MzkbhkU2lxhVeXx8zw
-        short-id: 68a8
-      server: 5.253.28.242
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: af5eac96-e478-488a-bc8c-45269d7e8847
     - name: hysteria2-1111846219
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -75,44 +113,35 @@ proxies:
       type: vless
       udp: true
       uuid: 405b964e-a2d2-454f-aaaa-711cc218897c
-    - client-fingerprint: chrome
-      name: vless-1415204613
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: dB68n-Vyph0_KBtBIe45b5GCB4F1IqpBF_ohlN-KpkY
-        short-id: 50440423703c945f
-      server: 34.47.245.203
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3fed34dc-2fe6-4fe0-86e7-a80213f9b7cc
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1334814474
+        - vless-1343080799
+        - vless-1343261564
         - hysteria2-1196471676
+        - vless-1400625857
+        - vless-1415204613
         - vless-1310954686
         - vless-1423633686
-        - vless-1313516180
         - hysteria2-1111846219
         - vless-1295577447
-        - vless-1415204613
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1334814474
+        - vless-1343080799
+        - vless-1343261564
         - hysteria2-1196471676
+        - vless-1400625857
+        - vless-1415204613
         - vless-1310954686
         - vless-1423633686
-        - vless-1313516180
         - hysteria2-1111846219
         - vless-1295577447
-        - vless-1415204613
       type: select
 rules:
     - MATCH,select

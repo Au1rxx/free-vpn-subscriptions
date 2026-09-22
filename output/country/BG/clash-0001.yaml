@@ -1,32 +1,4 @@
 proxies:
-    - name: vless-45385
-      network: ws
-      port: 8880
-      server: 108.165.152.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-45800
-      network: ws
-      port: 8880
-      server: 114.129.43.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-46713
-      network: ws
-      port: 8880
-      server: 135.84.75.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-50527
-      network: ws
-      port: 8880
-      server: 154.197.64.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: aes-256-cfb
       name: shadowsocks-696781308
       password: aLpQtfEZe445QyHk
@@ -216,6 +188,16 @@ proxies:
       type: vless
       udp: true
       uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
+    - name: vless-1436196723
+      network: ws
+      port: 443
+      server: 2.56.207.67
+      servername: shuma.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
     - name: vless-1442724459
       network: ws
       port: 8081
@@ -247,28 +229,10 @@ proxies:
       type: vless
       udp: true
       uuid: 38eb3e71-4349-4bd6-9baf-9740e1896495
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-1449562706
-      network: tcp
-      port: 2443
-      reality-opts:
-        public-key: c_42sYo1oPuFy6MmGKVkFxnNmDOZ0WoIiFGg8UJ12Aw
-        short-id: b0d8c9a285c70f6f
-      server: bgr.accessgate.link
-      servername: unpkg.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 38eb3e71-4349-4bd6-9baf-9740e1896495
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-45385
-        - vless-45800
-        - vless-46713
-        - vless-50527
         - shadowsocks-696781308
         - shadowsocks-717969028
         - shadowsocks-723348677
@@ -291,19 +255,15 @@ proxy-groups:
         - vless-1401227870
         - vless-1412445055
         - vless-1429822857
+        - vless-1436196723
         - vless-1442724459
         - vless-1444200994
         - vless-1445611659
-        - vless-1449562706
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-45385
-        - vless-45800
-        - vless-46713
-        - vless-50527
         - shadowsocks-696781308
         - shadowsocks-717969028
         - shadowsocks-723348677
@@ -326,10 +286,10 @@ proxy-groups:
         - vless-1401227870
         - vless-1412445055
         - vless-1429822857
+        - vless-1436196723
         - vless-1442724459
         - vless-1444200994
         - vless-1445611659
-        - vless-1449562706
       type: select
 rules:
     - MATCH,select
