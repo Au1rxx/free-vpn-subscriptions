@@ -1,4 +1,18 @@
 proxies:
+    - name: vless-54332
+      network: ws
+      port: 8880
+      server: 166.62.108.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-60867
+      network: ws
+      port: 8880
+      server: 185.148.104.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: trojan-122906
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20114
@@ -309,10 +323,21 @@ proxies:
       type: vless
       udp: true
       uuid: cfc45ab5-0f8d-4704-a11f-d29fd3f35135
+    - alterId: 0
+      cipher: auto
+      name: vmess-1444974383
+      network: raw
+      port: 22324
+      server: 172.233.14.17
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-54332
+        - vless-60867
         - trojan-122906
         - trojan-856461985
         - trojan-871344761
@@ -340,11 +365,14 @@ proxy-groups:
         - vmess-1443335431
         - vless-1444133660
         - vless-1444466504
+        - vmess-1444974383
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-54332
+        - vless-60867
         - trojan-122906
         - trojan-856461985
         - trojan-871344761
@@ -372,6 +400,7 @@ proxy-groups:
         - vmess-1443335431
         - vless-1444133660
         - vless-1444466504
+        - vmess-1444974383
       type: select
 rules:
     - MATCH,select

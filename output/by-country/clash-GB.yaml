@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-1430664532
-      password: 1e6fed5b-5edc-4ddb-a268-79d7fae4365c
-      port: 30443
-      server: 95.133.242.213
-      skip-cert-verify: true
-      sni: filesconvert.org
-      type: hysteria2
     - name: vless-1254790076
       network: grpc
       port: 2083
@@ -67,13 +60,6 @@ proxies:
       type: vless
       udp: true
       uuid: aabcb69e-9f17-44bd-aaac-552dd23e9691
-    - name: vless-1400651158
-      network: ws
-      port: 8081
-      server: 143.246.219.51
-      type: vless
-      udp: true
-      uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
     - name: vless-1307982448
       network: grpc
       port: 2083
@@ -106,6 +92,30 @@ proxies:
       server: 144.24.229.97
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      name: vless-1440572113
+      network: grpc
+      port: 30963
+      reality-opts:
+        public-key: XxNAqnYJDizM_4_ycJxyaa9xbx29hpDfwAtCv1Wga1M
+        short-id: c776352067
+      server: 57.128.177.218
+      servername: us.vrzn.download.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: aabcb69e-9f17-44bd-aaac-552dd23e9691
+    - flow: xtls-rprx-vision
+      name: vless-1250111368
+      network: tcp
+      port: 443
+      server: 50.7.226.174
+      servername: en-new.moriarty-web.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - alterId: 0
       cipher: auto
       name: vmess-186345561
@@ -118,21 +128,24 @@ proxies:
       type: vmess
       udp: true
       uuid: 9227afcd-026e-781f-1abc-c06efabd2338
-    - flow: xtls-rprx-vision
-      name: vless-1441575229
-      network: tcp
-      port: 443
-      server: 50.7.227.253
-      servername: uk-mori-new.failspace.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1014982339
       network: raw
+      port: 446
+      reality-opts:
+        public-key: 9LFDlpt6d56wFwxchaKvyLQHGj3lw3ku1g3X8H9JjEI
+        short-id: 91e6c6797f49ed84
+      server: 78.129.221.66
+      servername: louisvuitton.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 10000025-9365-7424-f000-93edfcf6a020
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-976474882
+      network: tcp
       port: 446
       reality-opts:
         public-key: 9LFDlpt6d56wFwxchaKvyLQHGj3lw3ku1g3X8H9JjEI
@@ -157,6 +170,15 @@ proxies:
       type: vless
       udp: true
       uuid: 10000025-9365-7424-f000-93edfcf6a020
+    - alterId: 0
+      cipher: auto
+      name: vmess-717752703
+      network: tcp
+      port: 22324
+      server: 66.163.117.58
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1001496418
@@ -193,78 +215,55 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1183916735
-      network: raw
-      port: 421
-      reality-opts:
-        public-key: zUdAvpr07q1Yd0Om-jc4-Vu4Un5tVird8FGoN-7W9Tg
-        short-id: a1facbc8575701ae
-      server: 78.129.208.44
-      servername: chistomat.dry.care
-      tls: true
-      type: vless
-      udp: true
-      uuid: a9900333-444b-4a36-a2f0-0567946c47cd
-    - cipher: aes-128-gcm
-      name: shadowsocks-271
-      password: shadowsocks
-      port: 443
-      server: 141.98.101.181
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1430664532
         - vless-1254790076
         - vmess-1443554335
         - vmess-1443877973
         - vless-1406391450
         - vless-1421505531
         - vless-1418846660
-        - vless-1400651158
         - vless-1307982448
         - vless-1157879699
         - shadowsocks-240
         - shadowsocks-1437805144
+        - vless-1440572113
+        - vless-1250111368
         - vmess-186345561
-        - vless-1441575229
         - vless-1014982339
+        - vless-976474882
         - vless-930609263
+        - vmess-717752703
         - vless-1001496418
         - vless-1440431826
         - vless-1440438949
-        - vless-1183916735
-        - shadowsocks-271
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1430664532
         - vless-1254790076
         - vmess-1443554335
         - vmess-1443877973
         - vless-1406391450
         - vless-1421505531
         - vless-1418846660
-        - vless-1400651158
         - vless-1307982448
         - vless-1157879699
         - shadowsocks-240
         - shadowsocks-1437805144
+        - vless-1440572113
+        - vless-1250111368
         - vmess-186345561
-        - vless-1441575229
         - vless-1014982339
+        - vless-976474882
         - vless-930609263
+        - vmess-717752703
         - vless-1001496418
         - vless-1440431826
         - vless-1440438949
-        - vless-1183916735
-        - shadowsocks-271
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,25 @@
 proxies:
+    - name: vless-1295544809
+      network: ws
+      port: 2095
+      server: 172.67.155.136
+      type: vless
+      udp: true
+      uuid: 73796e63-0000-4000-8000-000000000008
+    - name: vless-1295544817
+      network: ws
+      port: 2086
+      server: 172.67.155.136
+      type: vless
+      udp: true
+      uuid: 73796e63-0000-4000-8000-000000000007
+    - name: vless-1311641506
+      network: ws
+      port: 2086
+      server: 172.67.155.136
+      type: vless
+      udp: true
+      uuid: 73796e63-0000-4000-8000-000000000007
     - name: vless-1327473063
       network: ws
       port: 2095
@@ -76,10 +97,23 @@ proxies:
       type: vless
       udp: true
       uuid: c18b978e-1c4e-415c-8bea-07942b563a64
+    - name: vless-1445070379
+      network: ws
+      port: 2053
+      server: 141.227.137.177
+      servername: shuma.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1295544809
+        - vless-1295544817
+        - vless-1311641506
         - vless-1327473063
         - vless-1426282631
         - vless-1426282633
@@ -88,11 +122,15 @@ proxy-groups:
         - vless-1435051427
         - vless-1440461321
         - vless-1443088985
+        - vless-1445070379
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1295544809
+        - vless-1295544817
+        - vless-1311641506
         - vless-1327473063
         - vless-1426282631
         - vless-1426282633
@@ -101,6 +139,7 @@ proxy-groups:
         - vless-1435051427
         - vless-1440461321
         - vless-1443088985
+        - vless-1445070379
       type: select
 rules:
     - MATCH,select
