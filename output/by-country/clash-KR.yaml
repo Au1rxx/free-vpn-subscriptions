@@ -13,13 +13,6 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
-    - name: hysteria2-827675485
-      password: 1beb216e3f60aea9555dae60d219a5ca
-      port: 50160
-      server: 152-69-231-175.liao.kdns.fr
-      skip-cert-verify: false
-      sni: ""
-      type: hysteria2
     - name: hysteria2-722298531
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -32,6 +25,13 @@ proxies:
       port: 443
       server: 3.36.93.74
       skip-cert-verify: true
+      sni: ""
+      type: hysteria2
+    - name: hysteria2-827675485
+      password: 1beb216e3f60aea9555dae60d219a5ca
+      port: 50160
+      server: 152-69-231-175.liao.kdns.fr
+      skip-cert-verify: false
       sni: ""
       type: hysteria2
     - client-fingerprint: chrome
@@ -94,6 +94,20 @@ proxies:
       flow: xtls-rprx-vision
       name: vless-210050461
       network: tcp
+      port: 13672
+      reality-opts:
+        public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
+        short-id: 48050fab
+      server: 3.39.4.109
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 814bd064-544d-4255-a070-5705c03f6da9
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1104491030
+      network: raw
       port: 13672
       reality-opts:
         public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
@@ -173,6 +187,13 @@ proxies:
       type: vless
       udp: true
       uuid: 814bd064-544d-4255-a070-5705c03f6da9
+    - name: hysteria2-1276641967
+      password: 3d7634af8cb2c6cb4bac1c0efad8b43d
+      port: 50160
+      server: 152.67.200.82
+      skip-cert-verify: true
+      sni: www.bing.com
+      type: hysteria2
     - name: trojan-98121908
       password: p5jTPcffLgi4gaNOJd2KUTb9YEPBBD5B
       port: 56127
@@ -236,20 +257,6 @@ proxies:
       type: vless
       udp: true
       uuid: a2de9567-9646-45a9-a410-7303a43bdb6c
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1104491030
-      network: raw
-      port: 13672
-      reality-opts:
-        public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-        short-id: 48050fab
-      server: 3.39.4.109
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 814bd064-544d-4255-a070-5705c03f6da9
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-468901438
@@ -456,16 +463,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1a17b19d-4896-4531-af79-6e91d8ef8228
-    - name: vless-1444008936
-      network: ws
-      port: 2083
-      server: 123.111.169.70
-      servername: shuma.ccwu.cc
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-923366349
@@ -494,29 +491,15 @@ proxies:
       type: vless
       udp: true
       uuid: 814bd064-544d-4255-a070-5705c03f6da9
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-703656411
-      network: tcp
-      port: 13672
-      reality-opts:
-        public-key: k2hPp0tTW0Da-HK94wYpSCLbuK44LfGqC2MSJIM1Ti0
-        short-id: 48050fab
-      server: 3.39.4.109
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 814bd064-544d-4255-a070-5705c03f6da9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1232696196
         - hysteria2-1149856388
-        - hysteria2-827675485
         - hysteria2-722298531
         - hysteria2-591454513
+        - hysteria2-827675485
         - vless-1396293493
         - hysteria2-553326949
         - hysteria2-459503008
@@ -524,18 +507,19 @@ proxy-groups:
         - trojan-84489892
         - vless-12945899
         - vless-210050461
+        - vless-1104491030
         - vless-59621877
         - vless-270700471
         - vless-48555241
         - vless-1389119331
         - vless-622951488
+        - hysteria2-1276641967
         - trojan-98121908
         - vless-667136237
         - hysteria2-756343223
         - hysteria2-547757560
         - vless-1449423597
         - vless-1279636582
-        - vless-1104491030
         - vless-468901438
         - vless-1293637742
         - hysteria2-669755179
@@ -555,10 +539,8 @@ proxy-groups:
         - vless-656230613
         - shadowsocks-817206649
         - vless-1450554337
-        - vless-1444008936
         - vless-923366349
         - vless-561641544
-        - vless-703656411
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -566,9 +548,9 @@ proxy-groups:
         - auto
         - hysteria2-1232696196
         - hysteria2-1149856388
-        - hysteria2-827675485
         - hysteria2-722298531
         - hysteria2-591454513
+        - hysteria2-827675485
         - vless-1396293493
         - hysteria2-553326949
         - hysteria2-459503008
@@ -576,18 +558,19 @@ proxy-groups:
         - trojan-84489892
         - vless-12945899
         - vless-210050461
+        - vless-1104491030
         - vless-59621877
         - vless-270700471
         - vless-48555241
         - vless-1389119331
         - vless-622951488
+        - hysteria2-1276641967
         - trojan-98121908
         - vless-667136237
         - hysteria2-756343223
         - hysteria2-547757560
         - vless-1449423597
         - vless-1279636582
-        - vless-1104491030
         - vless-468901438
         - vless-1293637742
         - hysteria2-669755179
@@ -607,10 +590,8 @@ proxy-groups:
         - vless-656230613
         - shadowsocks-817206649
         - vless-1450554337
-        - vless-1444008936
         - vless-923366349
         - vless-561641544
-        - vless-703656411
       type: select
 rules:
     - MATCH,select
