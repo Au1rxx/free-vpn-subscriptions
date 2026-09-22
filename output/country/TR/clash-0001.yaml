@@ -1,7 +1,15 @@
 proxies:
-    - name: trojan-122851
+    - name: trojan-112587
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20018
+      port: 20017
+      server: 157.254.38.210
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-122850
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20017
       server: d3.catcat321.com
       skip-cert-verify: true
       sni: hk.catxstar.com
@@ -20,14 +28,6 @@ proxies:
       port: 20017
       server: 157.254.38.210
       skip-cert-verify: false
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-700420641
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20098
-      server: iepl1.catcat321.com
-      skip-cert-verify: true
       sni: hk.catxstar.com
       type: trojan
       udp: true
@@ -325,19 +325,20 @@ proxies:
       type: vless
       udp: true
       uuid: 72f8e59f-7a0d-44f2-a8db-b4c3e1e36716
-    - client-fingerprint: firefox
-      name: vless-1434369134
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1434358180
       network: tcp
       port: 443
       reality-opts:
-        public-key: -Nw4pIuzq_vnQiII34vwq-_Hot3THgvXB6teTaX1jiQ
-        short-id: 56c0d432cdf36f66
-      server: 188.132.174.19
-      servername: play.google.com
+        public-key: Fbxmh8lfqihiGCBMZH8REImrxM0eqW-57Zw7YA9-ZDI
+        short-id: caa051f01bcfe547
+      server: 167.104.219.38
+      servername: www.bybit.com
       tls: true
       type: vless
       udp: true
-      uuid: b5172efe-cf5e-4484-971d-2860bdb95ab1
+      uuid: 72f8e59f-7a0d-44f2-a8db-b4c3e1e36716
     - client-fingerprint: chrome
       name: vless-1438537625
       network: tcp
@@ -389,14 +390,21 @@ proxies:
       type: vless
       udp: true
       uuid: '2My-chanel-Telegram-ATOVPN '
+    - name: vless-1444396177
+      network: tcp
+      port: 443
+      server: 144.225.65.177
+      type: vless
+      udp: true
+      uuid: 443b2e33-8e9c-4f7b-a48a-383a93895d1e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-122851
+        - trojan-112587
+        - trojan-122850
         - trojan-474637039
         - trojan-479026176
-        - trojan-700420641
         - trojan-739165522
         - trojan-856461940
         - trojan-856461981
@@ -421,21 +429,22 @@ proxy-groups:
         - vless-1418803147
         - vless-1421036477
         - vless-1431994056
-        - vless-1434369134
+        - vless-1434358180
         - vless-1438537625
         - vless-1439926675
         - vless-1441303863
         - vless-1441304470
         - vless-1442575451
+        - vless-1444396177
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-122851
+        - trojan-112587
+        - trojan-122850
         - trojan-474637039
         - trojan-479026176
-        - trojan-700420641
         - trojan-739165522
         - trojan-856461940
         - trojan-856461981
@@ -460,12 +469,13 @@ proxy-groups:
         - vless-1418803147
         - vless-1421036477
         - vless-1431994056
-        - vless-1434369134
+        - vless-1434358180
         - vless-1438537625
         - vless-1439926675
         - vless-1441303863
         - vless-1441304470
         - vless-1442575451
+        - vless-1444396177
       type: select
 rules:
     - MATCH,select

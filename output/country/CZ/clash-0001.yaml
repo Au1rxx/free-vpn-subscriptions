@@ -1,13 +1,4 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-1005127037
-      network: tcp
-      port: 16280
-      server: zfd-boardv2.kunlun01dns.com
-      type: vmess
-      udp: true
-      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - name: vless-1426281638
       network: ws
       port: 8443
@@ -59,27 +50,61 @@ proxies:
       type: vless
       udp: true
       uuid: 5bcba788-5e2d-457b-8bd2-67fa99e49e0f
+    - name: vless-1444024948
+      network: ws
+      port: 2053
+      server: 89.46.42.92
+      servername: shuma.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
+    - name: vless-1444200999
+      network: ws
+      port: 2053
+      server: 89.46.42.141
+      servername: shuma.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
+    - name: vless-1444201018
+      network: ws
+      port: 8443
+      server: 5.35.103.185
+      servername: shuma.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-1005127037
         - vless-1426281638
         - vless-1431896356
         - vless-1433582556
         - vless-1441304432
         - vless-1442575456
+        - vless-1444024948
+        - vless-1444200999
+        - vless-1444201018
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-1005127037
         - vless-1426281638
         - vless-1431896356
         - vless-1433582556
         - vless-1441304432
         - vless-1442575456
+        - vless-1444024948
+        - vless-1444200999
+        - vless-1444201018
       type: select
 rules:
     - MATCH,select

@@ -7,17 +7,27 @@ proxies:
       sni: ng.catxstar.com
       type: trojan
       udp: true
+    - name: trojan-1439489190
+      password: 600421cf-11d7-429f-a65b-c30397f1bc03
+      port: 443
+      server: 103.97.91.17
+      skip-cert-verify: false
+      sni: la.freeguard.org
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-856461970
+        - trojan-1439489190
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-856461970
+        - trojan-1439489190
       type: select
 rules:
     - MATCH,select

@@ -6,17 +6,29 @@ proxies:
       type: vless
       udp: true
       uuid: 5bcba788-5e2d-457b-8bd2-67fa99e49e0f
+    - name: vless-1444200999
+      network: ws
+      port: 2053
+      server: 89.46.42.141
+      servername: shuma.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1442575456
+        - vless-1444200999
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1442575456
+        - vless-1444200999
       type: select
 rules:
     - MATCH,select
