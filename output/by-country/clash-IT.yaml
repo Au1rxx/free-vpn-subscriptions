@@ -6,6 +6,13 @@ proxies:
       server: 57.131.48.45
       type: ss
       udp: true
+    - name: vless-2327855
+      network: tcp
+      port: 10086
+      server: 204.216.216.23
+      type: vless
+      udp: true
+      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1425944370
@@ -29,13 +36,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
-    - name: vless-2327855
-      network: tcp
-      port: 10086
-      server: 204.216.216.23
-      type: vless
-      udp: true
-      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1272976717
@@ -50,20 +50,6 @@ proxies:
       type: vless
       udp: true
       uuid: dc2259c4-388e-4285-ba18-df619b6672b6
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1409670639
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: G2U8_BvRAgcOw0sX8u_0yYdVAlD8CWLSi-uYjvH07hw
-        short-id: 4fa44664f6a566d3
-      server: 31.77.201.33
-      servername: italia.superbuba.top
-      tls: true
-      type: vless
-      udp: true
-      uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
     - alterId: 0
       cipher: auto
       name: vmess-1440772913
@@ -73,29 +59,36 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
+    - name: vless-693666637
+      network: tcp
+      port: 10086
+      server: 204.216.216.23
+      type: vless
+      udp: true
+      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-891518478
+        - vless-2327855
         - vless-1425944370
         - vmess-1440772910
-        - vless-2327855
         - vless-1272976717
-        - vless-1409670639
         - vmess-1440772913
+        - vless-693666637
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-891518478
+        - vless-2327855
         - vless-1425944370
         - vmess-1440772910
-        - vless-2327855
         - vless-1272976717
-        - vless-1409670639
         - vmess-1440772913
+        - vless-693666637
       type: select
 rules:
     - MATCH,select
