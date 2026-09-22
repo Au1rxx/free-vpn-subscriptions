@@ -1,31 +1,30 @@
 {
   "outbounds": [
     {
-      "flow": "xtls-rprx-vision",
-      "server": "92.118.127.16",
+      "alter_id": 0,
+      "security": "auto",
+      "server": "mygptagent.org",
       "server_port": 443,
-      "tag": "vless-1444193771",
+      "tag": "vmess-1444201253",
       "tls": {
         "enabled": true,
-        "insecure": true,
-        "reality": {
-          "enabled": true,
-          "public_key": "Rz8XjYinCcpE7NLktJzNFL7eVSUxaFGuV2Zz82p7IRg",
-          "short_id": "908563a721d9bdcd"
-        },
-        "server_name": "sp1.extremumnews.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "safari"
-        }
+        "insecure": false,
+        "server_name": "mygptagent.org"
       },
-      "type": "vless",
-      "uuid": "72f8e59f-7a0d-44f2-a8db-b4c3e1e36716"
+      "transport": {
+        "headers": {
+          "Host": "mygptagent.org"
+        },
+        "path": "/linkvws",
+        "type": "ws"
+      },
+      "type": "vmess",
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581"
     },
     {
       "interval": "5m",
       "outbounds": [
-        "vless-1444193771"
+        "vmess-1444201253"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -34,7 +33,7 @@
     {
       "outbounds": [
         "auto",
-        "vless-1444193771"
+        "vmess-1444201253"
       ],
       "tag": "select",
       "type": "selector"
