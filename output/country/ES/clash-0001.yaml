@@ -13,6 +13,25 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
+    - name: vless-656191936
+      network: tcp
+      port: 443
+      server: 85.90.217.42
+      servername: 85.90.217.42
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    - alterId: 0
+      cipher: none
+      name: vmess-725810890
+      network: tcp
+      port: 22324
+      server: 85.90.217.42
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - client-fingerprint: firefox
       name: vless-1095633772
       network: tcp
@@ -156,13 +175,6 @@ proxies:
       type: vless
       udp: true
       uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
-    - name: vless-1239124782
-      network: ws
-      port: 8880
-      server: 160.153.1.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       name: vless-1247220676
       network: tcp
@@ -442,20 +454,6 @@ proxies:
       type: vless
       udp: true
       uuid: cb15d1b0-e48b-4c4c-b98a-fa1103aa3723
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-1400881609
-      network: tcp
-      port: 7443
-      reality-opts:
-        public-key: 1MLoHw7RVkGefh7XUyuGg4ndxwv4vDU9en-f9JxpXRQ
-        short-id: d2061bb1
-      server: 87.76.179.117
-      servername: www.samsung.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: cb15d1b0-e48b-4c4c-b98a-fa1103aa3723
     - client-fingerprint: firefox
       name: vless-1415204696
       network: tcp
@@ -575,6 +573,20 @@ proxies:
       type: vless
       udp: true
       uuid: cb15d1b0-e48b-4c4c-b98a-fa1103aa3723
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1441304488
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Rz8XjYinCcpE7NLktJzNFL7eVSUxaFGuV2Zz82p7IRg
+        short-id: 908563a721d9bdcd
+      server: 92.118.127.16
+      servername: sp1.extremumnews.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 72f8e59f-7a0d-44f2-a8db-b4c3e1e36716
     - name: vless-1444022916
       network: ws
       port: 8443
@@ -646,12 +658,23 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
+    - alterId: 0
+      cipher: auto
+      name: vmess-1454557799
+      network: tcp
+      port: 22324
+      server: 66.163.118.73
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11052
         - shadowsocks-16132
+        - vless-656191936
+        - vmess-725810890
         - vless-1095633772
         - vless-1107806244
         - vless-1112875543
@@ -663,7 +686,6 @@ proxy-groups:
         - vless-1200143645
         - vless-1200738873
         - vless-1201186311
-        - vless-1239124782
         - vless-1247220676
         - vless-1255951532
         - vless-1255951545
@@ -685,7 +707,6 @@ proxy-groups:
         - hysteria2-1359854998
         - vless-1386277457
         - vless-1397731722
-        - vless-1400881609
         - vless-1415204696
         - vless-1418799365
         - vless-1420356381
@@ -696,6 +717,7 @@ proxy-groups:
         - vless-1433582474
         - vless-1433582523
         - vless-1440228084
+        - vless-1441304488
         - vless-1444022916
         - vless-1444024925
         - vless-1444193771
@@ -703,6 +725,7 @@ proxy-groups:
         - vless-1450073265
         - vmess-1451310230
         - vmess-1454111448
+        - vmess-1454557799
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -710,6 +733,8 @@ proxy-groups:
         - auto
         - shadowsocks-11052
         - shadowsocks-16132
+        - vless-656191936
+        - vmess-725810890
         - vless-1095633772
         - vless-1107806244
         - vless-1112875543
@@ -721,7 +746,6 @@ proxy-groups:
         - vless-1200143645
         - vless-1200738873
         - vless-1201186311
-        - vless-1239124782
         - vless-1247220676
         - vless-1255951532
         - vless-1255951545
@@ -743,7 +767,6 @@ proxy-groups:
         - hysteria2-1359854998
         - vless-1386277457
         - vless-1397731722
-        - vless-1400881609
         - vless-1415204696
         - vless-1418799365
         - vless-1420356381
@@ -754,6 +777,7 @@ proxy-groups:
         - vless-1433582474
         - vless-1433582523
         - vless-1440228084
+        - vless-1441304488
         - vless-1444022916
         - vless-1444024925
         - vless-1444193771
@@ -761,6 +785,7 @@ proxy-groups:
         - vless-1450073265
         - vmess-1451310230
         - vmess-1454111448
+        - vmess-1454557799
       type: select
 rules:
     - MATCH,select

@@ -14,13 +14,6 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
-    - name: vless-1255417622
-      network: ws
-      port: 8880
-      server: 103.133.1.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: 2022-blake3-aes-128-gcm
       name: shadowsocks-1443611418
       password: EIIwJPg8YqgnjLLd58zoTg==:21BUzSjKTJPkPdIhxHlXdg==
@@ -28,29 +21,13 @@ proxies:
       server: 85.209.157.184
       type: ss
       udp: true
-    - client-fingerprint: safari
-      flow: xtls-rprx-vision
-      name: vless-1450980911
-      network: tcp
-      port: 8080
-      reality-opts:
-        public-key: CQBmePak1QN5SsSmK_KTOSLjsCTaiaM4Jtxt7jLheko
-        short-id: b0d8c9a285c70f6f
-      server: isr.accessgate.link
-      servername: unpkg.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 38eb3e71-4349-4bd6-9baf-9740e1896495
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-696781176
         - hysteria2-1179524508
-        - vless-1255417622
         - shadowsocks-1443611418
-        - vless-1450980911
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -58,9 +35,7 @@ proxy-groups:
         - auto
         - trojan-696781176
         - hysteria2-1179524508
-        - vless-1255417622
         - shadowsocks-1443611418
-        - vless-1450980911
       type: select
 rules:
     - MATCH,select
