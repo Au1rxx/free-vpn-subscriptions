@@ -7,17 +7,49 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1444466501
+      network: tcp
+      port: 16218
+      reality-opts:
+        public-key: UOm0J3F4jQCKZUJXU0roM9yhl7YwTcibxYgXnfY6kF8
+        short-id: 8bce
+      server: 149.104.76.218
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: cfc45ab5-0f8d-4704-a11f-d29fd3f35135
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1444466545
+      network: tcp
+      port: 16218
+      reality-opts:
+        public-key: UOm0J3F4jQCKZUJXU0roM9yhl7YwTcibxYgXnfY6kF8
+        short-id: 8bce
+      server: www.aisearch66.com
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: cfc45ab5-0f8d-4704-a11f-d29fd3f35135
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-746080520
+        - vless-1444466501
+        - vless-1444466545
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-746080520
+        - vless-1444466501
+        - vless-1444466545
       type: select
 rules:
     - MATCH,select
