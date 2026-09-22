@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-1438373141
+      password: amazonskr05
+      port: 443
+      server: 16.170.163.124
+      type: ss
+      udp: true
     - name: hysteria2-1230577883
       password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
       port: 25443
@@ -6,6 +13,13 @@ proxies:
       skip-cert-verify: false
       sni: cf2.rumedia-cdn.com
       type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-1438373117
+      password: amazonskr05
+      port: 443
+      server: 16.171.55.2
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-713157148
@@ -38,7 +52,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1438373141
         - hysteria2-1230577883
+        - shadowsocks-1438373117
         - vless-713157148
         - vless-897978973
       type: url-test
@@ -46,7 +62,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-1438373141
         - hysteria2-1230577883
+        - shadowsocks-1438373117
         - vless-713157148
         - vless-897978973
       type: select
