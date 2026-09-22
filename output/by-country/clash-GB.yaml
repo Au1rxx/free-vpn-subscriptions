@@ -7,13 +7,6 @@ proxies:
       type: ss
       udp: true
     - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1451359577
-      password: +v9GwPXdDOfF7rNuBwUv2zztIa8B8jTGzbthZepuyLM=
-      port: 61312
-      server: 134.65.56.231
-      type: ss
-      udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1446915553
       password: iatP8Xbrj1Y+RMIjyNKLSOSX1eYy8+1mID60hnWVjqg=
       port: 61312
@@ -108,23 +101,6 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - name: vless-1450913507
-      network: grpc
-      port: 7443
-      server: greatbritain.lavivas.org
-      servername: greatbritain.lavivas.org
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 44e1105d-b46e-402f-933b-eaa136fcbb24
-    - name: hysteria2-1005580180
-      password: 3b8c82ed-fe66-472d-915e-034ccb57103f
-      port: 443
-      server: labs.frkn.org
-      skip-cert-verify: true
-      sni: labs.frkn.org
-      type: hysteria2
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1454077990
       password: RkR6BpEgmuhup6mR/JstADZSQYyzl+44orT0gXZorYA=
@@ -139,17 +115,6 @@ proxies:
       server: 144.24.231.149
       type: ss
       udp: true
-    - flow: xtls-rprx-vision
-      name: vless-1349523981
-      network: tcp
-      port: 443
-      server: 50.7.227.251
-      servername: uk-dedic-new-1.failspace.top
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - name: vless-1400651158
       network: ws
       port: 8081
@@ -157,6 +122,13 @@ proxies:
       type: vless
       udp: true
       uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
+    - name: hysteria2-1005580180
+      password: 3b8c82ed-fe66-472d-915e-034ccb57103f
+      port: 443
+      server: labs.frkn.org
+      skip-cert-verify: true
+      sni: labs.frkn.org
+      type: hysteria2
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1454077981
       password: EG7gd6f1FSkm+x/OoWRHzsRT1Jl/tSx0EWxkprEGZSo=
@@ -164,12 +136,21 @@ proxies:
       server: 129.151.73.227
       type: ss
       udp: true
+    - name: vless-1450913507
+      network: grpc
+      port: 7443
+      server: greatbritain.lavivas.org
+      servername: greatbritain.lavivas.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 44e1105d-b46e-402f-933b-eaa136fcbb24
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1438728911
-        - shadowsocks-1451359577
         - shadowsocks-1446915553
         - vless-1245369769
         - shadowsocks-696780678
@@ -183,20 +164,18 @@ proxy-groups:
         - shadowsocks-1454077966
         - shadowsocks-717969008
         - vless-1406391450
-        - vless-1450913507
-        - hysteria2-1005580180
         - shadowsocks-1454077990
         - shadowsocks-1454077979
-        - vless-1349523981
         - vless-1400651158
+        - hysteria2-1005580180
         - shadowsocks-1454077981
+        - vless-1450913507
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1438728911
-        - shadowsocks-1451359577
         - shadowsocks-1446915553
         - vless-1245369769
         - shadowsocks-696780678
@@ -210,13 +189,12 @@ proxy-groups:
         - shadowsocks-1454077966
         - shadowsocks-717969008
         - vless-1406391450
-        - vless-1450913507
-        - hysteria2-1005580180
         - shadowsocks-1454077990
         - shadowsocks-1454077979
-        - vless-1349523981
         - vless-1400651158
+        - hysteria2-1005580180
         - shadowsocks-1454077981
+        - vless-1450913507
       type: select
 rules:
     - MATCH,select
