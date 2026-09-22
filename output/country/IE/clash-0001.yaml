@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-81918
+      network: ws
+      port: 8880
+      server: 89.116.180.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: trojan-724280439
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20083
@@ -172,17 +179,6 @@ proxies:
       type: vless
       udp: true
       uuid: c18b978e-1c4e-415c-8bea-07942b563a64
-    - flow: xtls-rprx-vision
-      name: vless-1442012866
-      network: tcp
-      port: 443
-      server: ireland-new.failspace.top
-      servername: ireland-new.failspace.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - name: vless-1443009191
       network: ws
       port: 8443
@@ -325,6 +321,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-81918
         - trojan-724280439
         - vless-1154637471
         - vless-1157879800
@@ -342,7 +339,6 @@ proxy-groups:
         - vless-1433582504
         - vless-1433582522
         - vless-1433582551
-        - vless-1442012866
         - vless-1443009191
         - vless-1444023925
         - vless-1444024926
@@ -360,6 +356,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-81918
         - trojan-724280439
         - vless-1154637471
         - vless-1157879800
@@ -377,7 +374,6 @@ proxy-groups:
         - vless-1433582504
         - vless-1433582522
         - vless-1433582551
-        - vless-1442012866
         - vless-1443009191
         - vless-1444023925
         - vless-1444024926

@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1445611659
+      network: tcp
+      port: 2443
+      reality-opts:
+        public-key: c_42sYo1oPuFy6MmGKVkFxnNmDOZ0WoIiFGg8UJ12Aw
+        short-id: b0d8c9a285c70f6f
+      server: bgr.accessgate.link
+      servername: unpkg.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 38eb3e71-4349-4bd6-9baf-9740e1896495
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1445611659
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1445611659
+      type: select
+rules:
+    - MATCH,select

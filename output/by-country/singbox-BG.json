@@ -1,0 +1,50 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "bgr.accessgate.link",
+      "server_port": 2443,
+      "tag": "vless-1445611659",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "c_42sYo1oPuFy6MmGKVkFxnNmDOZ0WoIiFGg8UJ12Aw",
+          "short_id": "b0d8c9a285c70f6f"
+        },
+        "server_name": "unpkg.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "type": "vless",
+      "uuid": "38eb3e71-4349-4bd6-9baf-9740e1896495"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1445611659"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1445611659"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
