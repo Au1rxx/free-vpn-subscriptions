@@ -8,6 +8,20 @@ proxies:
       type: trojan
       udp: true
     - cipher: aes-256-cfb
+      name: shadowsocks-696781306
+      password: y9VURyNzJWNRYEGQ
+      port: 9008
+      server: 195.238.126.20
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-738053582
+      password: Lp27rqyJq72bZsqX
+      port: 9045
+      server: 195.238.126.20
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-743178429
       password: 37Z4TFCYhfxcpc9Q
       port: 9086
@@ -378,19 +392,6 @@ proxies:
       type: vless
       udp: true
       uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
-    - client-fingerprint: firefox
-      name: vless-1419453513
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: C6nh6hqFTbtizgSH8vGmw2XUxsQAbAW3jPylpgGvfl4
-        short-id: 8b6f2e4d7c1a5b9f
-      server: 84.32.151.226
-      servername: webmetrics.cloudnativecontrol.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 8c40bb2c-157a-4830-a2c3-0b35ef50c660
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1421470273
@@ -453,30 +454,6 @@ proxies:
       type: vless
       udp: true
       uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-1444924526
-      network: tcp
-      port: 2096
-      reality-opts:
-        public-key: CQBmePak1QN5SsSmK_KTOSLjsCTaiaM4Jtxt7jLheko
-        short-id: b0d8c9a285c70f6f
-      server: ltu.accessgate.link
-      servername: unpkg.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 38eb3e71-4349-4bd6-9baf-9740e1896495
-    - name: vless-1445019648
-      network: ws
-      port: 443
-      server: 95.129.236.216
-      servername: crm.hourtley.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7f7cb974-af9b-4ae7-901c-b62f6da07e8d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1447775038
@@ -491,11 +468,23 @@ proxies:
       type: vless
       udp: true
       uuid: 38eb3e71-4349-4bd6-9baf-9740e1896495
+    - name: vless-1449530082
+      network: ws
+      port: 443
+      server: 95.129.236.216
+      servername: crm.hourtley.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ded386db-0264-4af7-9a14-f3ffb5523de7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-122909
+        - shadowsocks-696781306
+        - shadowsocks-738053582
         - shadowsocks-743178429
         - shadowsocks-768399438
         - shadowsocks-779606858
@@ -525,21 +514,21 @@ proxy-groups:
         - vless-1415204691
         - vless-1415925721
         - vless-1418799392
-        - vless-1419453513
         - vless-1421470273
         - vless-1424218275
         - vless-1424436793
         - vless-1425490309
         - vless-1438535611
-        - vless-1444924526
-        - vless-1445019648
         - vless-1447775038
+        - vless-1449530082
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-122909
+        - shadowsocks-696781306
+        - shadowsocks-738053582
         - shadowsocks-743178429
         - shadowsocks-768399438
         - shadowsocks-779606858
@@ -569,15 +558,13 @@ proxy-groups:
         - vless-1415204691
         - vless-1415925721
         - vless-1418799392
-        - vless-1419453513
         - vless-1421470273
         - vless-1424218275
         - vless-1424436793
         - vless-1425490309
         - vless-1438535611
-        - vless-1444924526
-        - vless-1445019648
         - vless-1447775038
+        - vless-1449530082
       type: select
 rules:
     - MATCH,select

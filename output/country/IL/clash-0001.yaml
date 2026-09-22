@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-59796
+      network: ws
+      port: 8880
+      server: 176.124.223.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-76097
       network: ws
       port: 8880
@@ -63,10 +70,25 @@ proxies:
       type: vless
       udp: true
       uuid: 38eb3e71-4349-4bd6-9baf-9740e1896495
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1449562729
+      network: tcp
+      port: 8080
+      reality-opts:
+        public-key: CQBmePak1QN5SsSmK_KTOSLjsCTaiaM4Jtxt7jLheko
+        short-id: b0d8c9a285c70f6f
+      server: isr.accessgate.link
+      servername: unpkg.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 38eb3e71-4349-4bd6-9baf-9740e1896495
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-59796
         - vless-76097
         - trojan-696781176
         - vless-1255417622
@@ -74,11 +96,13 @@ proxy-groups:
         - shadowsocks-1443611418
         - vless-1444924527
         - vless-1448297858
+        - vless-1449562729
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-59796
         - vless-76097
         - trojan-696781176
         - vless-1255417622
@@ -86,6 +110,7 @@ proxy-groups:
         - shadowsocks-1443611418
         - vless-1444924527
         - vless-1448297858
+        - vless-1449562729
       type: select
 rules:
     - MATCH,select

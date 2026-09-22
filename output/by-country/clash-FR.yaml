@@ -1,14 +1,21 @@
 proxies:
-    - name: vless-1435524781
+    - name: vless-1440838009
       network: grpc
       port: 443
-      server: assets-fra.pleiades.codes
+      server: 151.247.193.190
       servername: assets-fra.pleiades.codes
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
       uuid: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
+    - name: vless-1444683907
+      network: raw
+      port: 22222
+      server: 13.36.86.247
+      type: vless
+      udp: true
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
     - name: vless-1429598888
       network: grpc
       port: 443
@@ -33,6 +40,13 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
+    - name: vless-1440492477
+      network: tcp
+      port: 22224
+      server: 13.36.86.247
+      type: vless
+      udp: true
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1446234803
       password: DfokaAndibyl-wXjoVex_zDT78r-kwmX
@@ -47,19 +61,6 @@ proxies:
       type: vless
       udp: true
       uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-    - client-fingerprint: chrome
-      name: vless-1387242610
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 6tH_NDFcxWn60B3s-MgrkBTU2yUUBY42ZG1av50Ywhk
-        short-id: ae682368818bd6c5
-      server: 34.155.10.226
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d619964d-26d6-452d-9860-6f058f03ba8e
     - name: hysteria2-1004725118
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -84,16 +85,6 @@ proxies:
       type: vless
       udp: true
       uuid: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
-    - name: vless-1440838009
-      network: grpc
-      port: 443
-      server: 151.247.193.190
-      servername: assets-fra.pleiades.codes
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
     - client-fingerprint: chrome
       name: vless-814233101
       network: tcp
@@ -111,34 +102,34 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1435524781
+        - vless-1440838009
+        - vless-1444683907
         - vless-1429598888
         - hysteria2-984679229
         - hysteria2-650412204
+        - vless-1440492477
         - shadowsocks-1446234803
         - vless-1445399712
-        - vless-1387242610
         - hysteria2-1004725118
         - vless-1445399723
         - vless-1439772975
-        - vless-1440838009
         - vless-814233101
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1435524781
+        - vless-1440838009
+        - vless-1444683907
         - vless-1429598888
         - hysteria2-984679229
         - hysteria2-650412204
+        - vless-1440492477
         - shadowsocks-1446234803
         - vless-1445399712
-        - vless-1387242610
         - hysteria2-1004725118
         - vless-1445399723
         - vless-1439772975
-        - vless-1440838009
         - vless-814233101
       type: select
 rules:
