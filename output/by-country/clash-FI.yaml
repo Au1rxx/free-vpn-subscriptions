@@ -6,6 +6,29 @@ proxies:
       server: 87.58.148.70
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      name: vless-1421500746
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: V4SeM4OMxXoSKBmmyC5C0kZEhgL33a5vVZBe7ysJ42U
+        short-id: 0a30e2aee95a7571
+      server: 152.233.54.104
+      servername: fi1.cache-4d8a.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ddf09ad0-02dc-485b-9048-1038de5bebf0
+    - name: vless-1411885620
+      network: grpc
+      port: 9443
+      server: 77.110.117.199
+      servername: hub-fi-01.hanvpn.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d9d0f208-d582-41d5-bb7b-742671402810
     - client-fingerprint: firefox
       name: vless-1420231295
       network: grpc
@@ -45,6 +68,19 @@ proxies:
       type: vless
       udp: true
       uuid: ddf09ad0-02dc-485b-9048-1038de5bebf0
+    - client-fingerprint: random
+      name: vless-1354534668
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
     - client-fingerprint: edge
       name: vless-1444683908
       network: grpc
@@ -71,27 +107,48 @@ proxies:
       type: vless
       udp: true
       uuid: ddf09ad0-02dc-485b-9048-1038de5bebf0
+    - client-fingerprint: chrome
+      name: vless-695938923
+      network: tcp
+      port: 448
+      reality-opts:
+        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+        short-id: cd21e552537c7c0b
+      server: 185.79.138.71
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1386942499
+        - vless-1421500746
+        - vless-1411885620
         - vless-1420231295
         - vless-1417655716
         - vless-1419539564
+        - vless-1354534668
         - vless-1444683908
         - vless-1424830217
+        - vless-695938923
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1386942499
+        - vless-1421500746
+        - vless-1411885620
         - vless-1420231295
         - vless-1417655716
         - vless-1419539564
+        - vless-1354534668
         - vless-1444683908
         - vless-1424830217
+        - vless-695938923
       type: select
 rules:
     - MATCH,select

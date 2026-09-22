@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: safari
+      name: vless-1448296858
+      network: grpc
+      port: 8445
+      reality-opts:
+        public-key: _UazRMiBq9RqMaVrHeLsvUuoBkGFo9Gm-A4ivuZ6ZS8
+        short-id: 6ba85179e30d4fc2
+      server: 82.38.139.24
+      servername: hetzner.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e5d73666-1ac5-49fc-8e4d-5c8cad769588
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1448296858
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1448296858
+      type: select
+rules:
+    - MATCH,select

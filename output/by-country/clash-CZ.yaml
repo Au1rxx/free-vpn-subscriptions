@@ -1,24 +1,22 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-1445878108
-      network: tcp
-      port: 22324
-      server: 103.215.218.158
-      type: vmess
+    - name: vless-1447774041
+      network: grpc
+      port: 3090
+      server: 153.76.185.80
+      type: vless
       udp: true
-      uuid: 04621bae-ab36-11ec-b909-0242ac120002
+      uuid: cc555869-9da6-4bfd-afa4-ba138ceccf60
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-1445878108
+        - vless-1447774041
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-1445878108
+        - vless-1447774041
       type: select
 rules:
     - MATCH,select

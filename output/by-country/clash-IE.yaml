@@ -1,0 +1,45 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1449423581
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: _dsOu_vxEU7pY3sIeGJxIpR0Ac2KoqIyBor2Bx0CwGA
+        short-id: d923
+      server: uk1.miyazono-kaori.com
+      servername: www.bp.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e125bbfe-1307-471d-b21c-c1afe0c1de98
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1449423574
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: QdYs12kmf0mAXNOEPgMpLN5dbZUlgvRK2zCqynOmqBk
+        short-id: "20"
+      server: uk2.miyazono-kaori.com
+      servername: www.bp.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e125bbfe-1307-471d-b21c-c1afe0c1de98
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1449423581
+        - vless-1449423574
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1449423581
+        - vless-1449423574
+      type: select
+rules:
+    - MATCH,select
