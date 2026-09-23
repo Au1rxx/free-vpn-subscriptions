@@ -6,6 +6,13 @@ proxies:
       server: 143.110.161.156
       type: ss
       udp: true
+    - name: vless-1254790076
+      network: grpc
+      port: 2083
+      server: 66.90.104.42
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - cipher: aes-128-gcm
       name: shadowsocks-271
       password: shadowsocks
@@ -27,13 +34,6 @@ proxies:
       server: 146.70.23.32
       type: ss
       udp: true
-    - name: vless-1254790076
-      network: grpc
-      port: 2083
-      server: 66.90.104.42
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - name: vless-1457398095
       network: grpc
       port: 7443
@@ -44,6 +44,19 @@ proxies:
       type: vless
       udp: true
       uuid: 44e1105d-b46e-402f-933b-eaa136fcbb24
+    - client-fingerprint: chrome
+      name: vless-1460908237
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: matDwR2fEV41IhLs23SkP9dS6d6qiaRKS4ndb3uR1lk
+        short-id: 89ea42ae375d4933
+      server: 35.189.111.134
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ed492b33-c6b4-463f-8359-3634b0d44251
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1251465971
       password: c58d16e593d44f42
@@ -72,6 +85,15 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - alterId: 0
+      cipher: auto
+      name: vmess-485686941
+      network: tcp
+      port: 22324
+      server: 66.163.117.58
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - name: vless-1245369769
       network: grpc
       port: 2083
@@ -86,6 +108,15 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - alterId: 0
+      cipher: auto
+      name: vmess-692622878
+      network: tcp
+      port: 22324
+      server: 66.163.117.58
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1454077990
       password: RkR6BpEgmuhup6mR/JstADZSQYyzl+44orT0gXZorYA=
@@ -98,17 +129,20 @@ proxy-groups:
       name: auto
       proxies:
         - shadowsocks-1458933295
+        - vless-1254790076
         - shadowsocks-271
         - shadowsocks-1454077966
         - shadowsocks-468218595
-        - vless-1254790076
         - vless-1457398095
+        - vless-1460908237
         - shadowsocks-1251465971
         - vless-1307982448
         - vless-1230573705
         - vless-1245422997
+        - vmess-485686941
         - vless-1245369769
         - vless-1429723997
+        - vmess-692622878
         - shadowsocks-1454077990
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -116,17 +150,20 @@ proxy-groups:
       proxies:
         - auto
         - shadowsocks-1458933295
+        - vless-1254790076
         - shadowsocks-271
         - shadowsocks-1454077966
         - shadowsocks-468218595
-        - vless-1254790076
         - vless-1457398095
+        - vless-1460908237
         - shadowsocks-1251465971
         - vless-1307982448
         - vless-1230573705
         - vless-1245422997
+        - vmess-485686941
         - vless-1245369769
         - vless-1429723997
+        - vmess-692622878
         - shadowsocks-1454077990
       type: select
 rules:

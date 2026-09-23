@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-868400818
+      network: ws
+      port: 443
+      server: 94.183.170.135
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
     - client-fingerprint: firefox
       name: vless-1297639936
       network: grpc
@@ -42,6 +49,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-868400818
         - vless-1297639936
         - vless-1351430597
         - vless-1381769955
@@ -50,6 +58,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-868400818
         - vless-1297639936
         - vless-1351430597
         - vless-1381769955

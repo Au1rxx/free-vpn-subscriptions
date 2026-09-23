@@ -1,22 +1,29 @@
 proxies:
-    - cipher: aes-256-gcm
-      name: shadowsocks-1456399025
-      password: 78235e7dc55e9ad1
-      port: 10090
-      server: 132.243.255.3
-      type: ss
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1415204612
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: G2U8_BvRAgcOw0sX8u_0yYdVAlD8CWLSi-uYjvH07hw
+        short-id: 4fa44664f6a566d3
+      server: 31.77.201.33
+      servername: italia.superbuba.top
+      tls: true
+      type: vless
       udp: true
+      uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1456399025
+        - vless-1415204612
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1456399025
+        - vless-1415204612
       type: select
 rules:
     - MATCH,select
