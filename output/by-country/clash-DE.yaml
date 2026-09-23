@@ -49,6 +49,19 @@ proxies:
       server: 209.46.102.22
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      name: vless-1436225960
+      network: grpc
+      port: 46341
+      reality-opts:
+        public-key: AzPeaqr_BqAdCSN2X9stYwa2iPr5hXvmAcKXpDMK8T4
+        short-id: 2b819e
+      server: 2.27.17.229
+      servername: www.sony-europe.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: cfe85028-dde5-4a3d-890e-f43696a2b5f3
     - name: vless-1462583571
       network: grpc
       port: 9443
@@ -217,6 +230,16 @@ proxies:
       type: vless
       udp: true
       uuid: df9f5aca-eda0-428f-a752-e53866153d12
+    - name: vless-1441615333
+      network: grpc
+      port: 6215
+      server: 212.80.7.129
+      servername: cdn.astranet.ignorelist.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2f2ae482-5a3e-455e-aad6-4ac28a82f64f
     - name: vless-1212586784
       network: grpc
       port: 2087
@@ -227,26 +250,6 @@ proxies:
       type: vless
       udp: true
       uuid: df9f5aca-eda0-428f-a752-e53866153d12
-    - name: vless-1461216369
-      network: grpc
-      port: 9443
-      server: 193.8.215.96
-      servername: hub-de-03.hanvpn.cc
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: d9d0f208-d582-41d5-bb7b-742671402810
-    - name: vless-1461216379
-      network: grpc
-      port: 9443
-      server: 193.8.215.96
-      servername: hub-de-03.hanvpn.cc
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: d9d0f208-d582-41d5-bb7b-742671402810
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1236880268
@@ -312,20 +315,6 @@ proxies:
       type: vless
       udp: true
       uuid: adc11f30-e4cb-4985-bf5e-f9ded69c019f
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1410556173
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: rCkSHJ7goy7ZvSlau4LfXF-QLloOJMNeMxpeeQtwtVs
-        short-id: 4fa44664f6a566d3
-      server: gesmankos.sadiepinki.com
-      servername: gesmankos.sadiepinki.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1001419717
@@ -469,33 +458,17 @@ proxies:
       type: vless
       udp: true
       uuid: d9d0f208-d582-41d5-bb7b-742671402810
-    - client-fingerprint: chrome
-      name: vless-1456440107
+    - flow: xtls-rprx-vision
+      name: vless-1461170745
       network: tcp
-      port: 443
-      reality-opts:
-        public-key: -XH2d9x4wRi--KvR6XTcZW9HXbikI2_262zfYDr1uFw
-        short-id: 690ec9207866c84e
-      server: 34.185.172.52
-      servername: www.cloudflare.com
+      port: 7443
+      server: dedicated.pivo.lol
+      servername: dedicated.pivo.lol
+      skip-cert-verify: true
       tls: true
       type: vless
       udp: true
-      uuid: 3255d065-119c-4103-a422-ea9d301b0707
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1444123634
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI
-        short-id: db04ce8bdb8900f1
-      server: 31.77.161.15
-      servername: nvidia.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: adc11f30-e4cb-4985-bf5e-f9ded69c019f
+      uuid: 44e1105d-b46e-402f-933b-eaa136fcbb24
 proxy-groups:
     - interval: 300
       name: auto
@@ -506,6 +479,7 @@ proxy-groups:
         - shadowsocks-1468402005
         - vmess-665279543
         - shadowsocks-209
+        - vless-1436225960
         - vless-1462583571
         - vmess-681962134
         - shadowsocks-1470889470
@@ -522,15 +496,13 @@ proxy-groups:
         - vless-1115899893
         - vless-1109561737
         - vless-1155246847
+        - vless-1441615333
         - vless-1212586784
-        - vless-1461216369
-        - vless-1461216379
         - vless-1236880268
         - vless-1463870939
         - vless-1455404218
         - vless-1468026360
         - vless-1439899360
-        - vless-1410556173
         - vless-1001419717
         - vless-1180075054
         - vless-1136125309
@@ -543,8 +515,7 @@ proxy-groups:
         - vless-1143496046
         - vless-1437288331
         - vless-1411879660
-        - vless-1456440107
-        - vless-1444123634
+        - vless-1461170745
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -556,6 +527,7 @@ proxy-groups:
         - shadowsocks-1468402005
         - vmess-665279543
         - shadowsocks-209
+        - vless-1436225960
         - vless-1462583571
         - vmess-681962134
         - shadowsocks-1470889470
@@ -572,15 +544,13 @@ proxy-groups:
         - vless-1115899893
         - vless-1109561737
         - vless-1155246847
+        - vless-1441615333
         - vless-1212586784
-        - vless-1461216369
-        - vless-1461216379
         - vless-1236880268
         - vless-1463870939
         - vless-1455404218
         - vless-1468026360
         - vless-1439899360
-        - vless-1410556173
         - vless-1001419717
         - vless-1180075054
         - vless-1136125309
@@ -593,8 +563,7 @@ proxy-groups:
         - vless-1143496046
         - vless-1437288331
         - vless-1411879660
-        - vless-1456440107
-        - vless-1444123634
+        - vless-1461170745
       type: select
 rules:
     - MATCH,select
