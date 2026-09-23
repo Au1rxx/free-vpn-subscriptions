@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-1139792745
-      network: tcp
-      port: 10086
-      server: 204.216.216.23
-      type: vless
-      udp: true
-      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1415204612
@@ -20,6 +13,13 @@ proxies:
       type: vless
       udp: true
       uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
+    - name: vless-1139792745
+      network: tcp
+      port: 10086
+      server: 204.216.216.23
+      type: vless
+      udp: true
+      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - name: vless-27030
       network: tcp
       port: 10086
@@ -31,16 +31,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1139792745
         - vless-1415204612
+        - vless-1139792745
         - vless-27030
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1139792745
         - vless-1415204612
+        - vless-1139792745
         - vless-27030
       type: select
 rules:

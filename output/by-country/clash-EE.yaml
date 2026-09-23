@@ -25,13 +25,6 @@ proxies:
       type: vless
       udp: true
       uuid: 5edbcb44-8d04-4fa7-a587-bc5d60c24ca1
-    - name: vless-868400818
-      network: ws
-      port: 443
-      server: 94.183.170.135
-      type: vless
-      udp: true
-      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
     - client-fingerprint: firefox
       name: vless-1364518788
       network: grpc
@@ -45,14 +38,21 @@ proxies:
       type: vless
       udp: true
       uuid: 66ac188b-bd8d-4218-b9ba-0bad0e152cd0
+    - name: vless-868400818
+      network: ws
+      port: 443
+      server: 94.183.170.135
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1351430597
         - vless-1381769955
-        - vless-868400818
         - vless-1364518788
+        - vless-868400818
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -60,8 +60,8 @@ proxy-groups:
         - auto
         - vless-1351430597
         - vless-1381769955
-        - vless-868400818
         - vless-1364518788
+        - vless-868400818
       type: select
 rules:
     - MATCH,select
