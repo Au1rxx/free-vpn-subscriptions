@@ -8,17 +8,28 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
+    - alterId: 0
+      cipher: auto
+      name: vmess-1445350520
+      network: raw
+      port: 22324
+      server: 172.233.14.17
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-1443335431
+        - vmess-1445350520
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-1443335431
+        - vmess-1445350520
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,32 @@
 proxies:
+    - name: vless-45385
+      network: ws
+      port: 8880
+      server: 108.165.152.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-45800
+      network: ws
+      port: 8880
+      server: 114.129.43.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-46713
+      network: ws
+      port: 8880
+      server: 135.84.75.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-50527
+      network: ws
+      port: 8880
+      server: 154.197.64.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: aes-256-cfb
       name: shadowsocks-696781308
       password: aLpQtfEZe445QyHk
@@ -69,6 +97,13 @@ proxies:
       server: 213.183.63.60
       type: ss
       udp: true
+    - name: vless-1255692238
+      network: ws
+      port: 8880
+      server: 166.62.114.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1345031341
       network: ws
       port: 8880
@@ -332,24 +367,14 @@ proxies:
       type: vless
       udp: true
       uuid: 9ae5940b-0278-403d-a1e1-9dddc47bdcf6
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1457380970
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: EtKRG8sxUJsdy-KwUOtYUNJnSn5VMx2sfKvvdpzg2X0
-        short-id: f0eb800bd980b00b
-      server: sof.edgeptr.org
-      servername: www.lovelive-anime.jp
-      tls: true
-      type: vless
-      udp: true
-      uuid: 848ba9ec-4233-4407-b95d-3f423d3ce0ff
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-45385
+        - vless-45800
+        - vless-46713
+        - vless-50527
         - shadowsocks-696781308
         - shadowsocks-717969028
         - shadowsocks-723348677
@@ -360,6 +385,7 @@ proxy-groups:
         - shadowsocks-795694347
         - shadowsocks-812343868
         - shadowsocks-819466430
+        - vless-1255692238
         - vless-1345031341
         - vless-1384967945
         - vless-1384967947
@@ -384,12 +410,15 @@ proxy-groups:
         - vless-1454875120
         - vless-1454875122
         - vless-1454875131
-        - vless-1457380970
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-45385
+        - vless-45800
+        - vless-46713
+        - vless-50527
         - shadowsocks-696781308
         - shadowsocks-717969028
         - shadowsocks-723348677
@@ -400,6 +429,7 @@ proxy-groups:
         - shadowsocks-795694347
         - shadowsocks-812343868
         - shadowsocks-819466430
+        - vless-1255692238
         - vless-1345031341
         - vless-1384967945
         - vless-1384967947
@@ -424,7 +454,6 @@ proxy-groups:
         - vless-1454875120
         - vless-1454875122
         - vless-1454875131
-        - vless-1457380970
       type: select
 rules:
     - MATCH,select
