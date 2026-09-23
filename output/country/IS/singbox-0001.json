@@ -45,10 +45,32 @@
   ],
   "outbounds": [
     {
+      "flow": "xtls-rprx-vision",
+      "server": "31.58.50.200",
+      "server_port": 8443,
+      "tag": "vless-693419765",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "mr5AF0LFyDzYDRoYAwH6QNcHXL77-LoiwRx50ZzU8QU"
+        },
+        "server_name": "tradingview.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "b555fe25-c488-4758-8574-7f70b357c175"
+    },
+    {
       "interval": "5m",
       "outbounds": [
         "wireguard-657721520",
-        "wireguard-657721521"
+        "wireguard-657721521",
+        "vless-693419765"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -58,7 +80,8 @@
       "outbounds": [
         "auto",
         "wireguard-657721520",
-        "wireguard-657721521"
+        "wireguard-657721521",
+        "vless-693419765"
       ],
       "tag": "select",
       "type": "selector"
