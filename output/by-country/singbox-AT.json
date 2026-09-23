@@ -1,0 +1,51 @@
+{
+  "outbounds": [
+    {
+      "server": "193.8.215.96",
+      "server_port": 9443,
+      "tag": "vless-1468026367",
+      "tls": {
+        "alpn": [
+          "h2"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "hub-vie-02.hanvpn.cc",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "service_name": "vie02-grpc-8e47a",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "d9d0f208-d582-41d5-bb7b-742671402810"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1468026367"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1468026367"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

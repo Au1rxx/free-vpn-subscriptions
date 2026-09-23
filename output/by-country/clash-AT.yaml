@@ -1,0 +1,25 @@
+proxies:
+    - name: vless-1468026367
+      network: grpc
+      port: 9443
+      server: 193.8.215.96
+      servername: hub-vie-02.hanvpn.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d9d0f208-d582-41d5-bb7b-742671402810
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1468026367
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1468026367
+      type: select
+rules:
+    - MATCH,select
