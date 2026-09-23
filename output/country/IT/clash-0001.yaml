@@ -13,13 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
-    - name: vless-60867
-      network: ws
-      port: 8880
-      server: 185.148.104.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-66990
@@ -358,6 +351,13 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-743178418
+      password: Sn5B7jTqr76aCJT8
+      port: 9097
+      server: 91.201.65.122
+      type: ss
+      udp: true
     - name: vless-743922321
       network: tcp
       port: 10086
@@ -394,9 +394,9 @@ proxies:
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - cipher: aes-256-cfb
-      name: shadowsocks-795694323
-      password: TyNkGmp9hs6eGpDK
-      port: 9092
+      name: shadowsocks-812343736
+      password: p5wSkb2uM3pKSS3j
+      port: 9074
       server: 91.201.65.122
       type: ss
       udp: true
@@ -581,13 +581,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
-    - name: vless-1239152527
-      network: ws
-      port: 8880
-      server: 185.193.30.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: aes-256-gcm
       name: shadowsocks-1251465982
       password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
@@ -1273,20 +1266,6 @@ proxies:
       type: vless
       udp: true
       uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1437804921
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: G2U8_BvRAgcOw0sX8u_0yYdVAlD8CWLSi-uYjvH07hw
-        short-id: 4fa44664f6a566d3
-      server: 31.76.113.212
-      servername: italia.superbuba.top
-      tls: true
-      type: vless
-      udp: true
-      uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
     - alterId: 0
       cipher: auto
       name: vmess-1440772910
@@ -1410,6 +1389,15 @@ proxies:
       type: vless
       udp: true
       uuid: c18b978e-1c4e-415c-8bea-07942b563a64
+    - alterId: 0
+      cipher: none
+      name: vmess-1453597022
+      network: tcp
+      port: 22324
+      server: 89.41.172.85
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1453597053
@@ -1530,13 +1518,26 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1471662607
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 41vd1YgLU_ZNBBKjjeoH7_0hvgFHzJUAySnIOrY_PlM
+        short-id: 42223b402fc5d62d
+      server: sikol.mervi.icu
+      servername: sikol.mervi.icu
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9bbd487f-8f84-4ad7-b897-681c3f7d95dc
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-16521
         - vless-27030
-        - vless-60867
         - vless-66990
         - trojan-122907
         - vless-2315830
@@ -1571,12 +1572,13 @@ proxy-groups:
         - vless-734929301
         - shadowsocks-738053605
         - trojan-740413860
+        - shadowsocks-743178418
         - vless-743922321
         - shadowsocks-779606884
         - vless-781284395
         - vless-781284399
         - vless-781284400
-        - shadowsocks-795694323
+        - shadowsocks-812343736
         - vless-859775391
         - vless-864802478
         - trojan-885355666
@@ -1598,7 +1600,6 @@ proxy-groups:
         - vless-1173526877
         - vless-1197831032
         - vless-1217077332
-        - vless-1239152527
         - shadowsocks-1251465982
         - vless-1254189536
         - vless-1255015609
@@ -1650,7 +1651,6 @@ proxy-groups:
         - vless-1434472949
         - vless-1437802410
         - vless-1437802419
-        - vless-1437804921
         - vmess-1440772910
         - vmess-1442008670
         - vless-1442011667
@@ -1662,6 +1662,7 @@ proxy-groups:
         - vless-1446966473
         - vmess-1451344585
         - vless-1451449796
+        - vmess-1453597022
         - vless-1453597053
         - vless-1453899765
         - vmess-1454572794
@@ -1672,6 +1673,7 @@ proxy-groups:
         - vmess-1459593692
         - vless-1459678988
         - vmess-1464415769
+        - vless-1471662607
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -1679,7 +1681,6 @@ proxy-groups:
         - auto
         - vless-16521
         - vless-27030
-        - vless-60867
         - vless-66990
         - trojan-122907
         - vless-2315830
@@ -1714,12 +1715,13 @@ proxy-groups:
         - vless-734929301
         - shadowsocks-738053605
         - trojan-740413860
+        - shadowsocks-743178418
         - vless-743922321
         - shadowsocks-779606884
         - vless-781284395
         - vless-781284399
         - vless-781284400
-        - shadowsocks-795694323
+        - shadowsocks-812343736
         - vless-859775391
         - vless-864802478
         - trojan-885355666
@@ -1741,7 +1743,6 @@ proxy-groups:
         - vless-1173526877
         - vless-1197831032
         - vless-1217077332
-        - vless-1239152527
         - shadowsocks-1251465982
         - vless-1254189536
         - vless-1255015609
@@ -1793,7 +1794,6 @@ proxy-groups:
         - vless-1434472949
         - vless-1437802410
         - vless-1437802419
-        - vless-1437804921
         - vmess-1440772910
         - vmess-1442008670
         - vless-1442011667
@@ -1805,6 +1805,7 @@ proxy-groups:
         - vless-1446966473
         - vmess-1451344585
         - vless-1451449796
+        - vmess-1453597022
         - vless-1453597053
         - vless-1453899765
         - vmess-1454572794
@@ -1815,6 +1816,7 @@ proxy-groups:
         - vmess-1459593692
         - vless-1459678988
         - vmess-1464415769
+        - vless-1471662607
       type: select
 rules:
     - MATCH,select

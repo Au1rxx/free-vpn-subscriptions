@@ -1,6 +1,20 @@
 proxies:
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-1416419630
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: G2U8_BvRAgcOw0sX8u_0yYdVAlD8CWLSi-uYjvH07hw
+        short-id: 4fa44664f6a566d3
+      server: 31.77.201.33
+      servername: italia.superbuba.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-1415204612
       network: tcp
       port: 443
@@ -31,6 +45,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1416419630
         - vless-1415204612
         - vless-1139792745
         - vless-27030
@@ -39,6 +54,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1416419630
         - vless-1415204612
         - vless-1139792745
         - vless-27030

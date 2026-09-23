@@ -9,13 +9,6 @@ proxies:
       type: vless
       udp: true
       uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    - name: vless-656223758
-      network: ws
-      port: 8880
-      server: 184.168.47.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: hysteria2-658428922
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -44,6 +37,13 @@ proxies:
       skip-cert-verify: true
       sni: t.me
       type: hysteria2
+    - name: hysteria2-1060573987
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: vpn-au-002.fastervpn.world
+      skip-cert-verify: true
+      sni: whatsapp.com
+      type: hysteria2
     - name: hysteria2-1060574022
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -62,20 +62,6 @@ proxies:
       network: ws
       port: 8880
       server: 108.165.152.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1239151536
-      network: ws
-      port: 8880
-      server: 185.162.229.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1239329823
-      network: ws
-      port: 8880
-      server: 45.192.224.30
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
@@ -936,21 +922,33 @@ proxies:
       type: vless
       udp: true
       uuid: 4f865f35-cf47-4e7f-a7e6-8882511a1b36
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1471363162
+      network: tcp
+      port: 20270
+      reality-opts:
+        public-key: RHLiKldLu3DONcQoX4Kjs7Xmd2K25ndVbw4pwxe45XE
+        short-id: e6a5a4a9115456de
+      server: au1.gsafevpnapi.com
+      servername: www.yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8f2774ba-73fe-404d-a01b-7c01812ff75b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-656189585
-        - vless-656223758
         - hysteria2-658428922
         - hysteria2-1059313714
         - hysteria2-1059313757
         - hysteria2-1059313769
+        - hysteria2-1060573987
         - hysteria2-1060574022
         - hysteria2-1158363236
         - vless-1239101014
-        - vless-1239151536
-        - vless-1239329823
         - vless-1258929861
         - vless-1279651618
         - vless-1300687308
@@ -1014,22 +1012,21 @@ proxy-groups:
         - vless-1469494432
         - vless-1469494433
         - vless-1469501722
+        - vless-1471363162
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-656189585
-        - vless-656223758
         - hysteria2-658428922
         - hysteria2-1059313714
         - hysteria2-1059313757
         - hysteria2-1059313769
+        - hysteria2-1060573987
         - hysteria2-1060574022
         - hysteria2-1158363236
         - vless-1239101014
-        - vless-1239151536
-        - vless-1239329823
         - vless-1258929861
         - vless-1279651618
         - vless-1300687308
@@ -1093,6 +1090,7 @@ proxy-groups:
         - vless-1469494432
         - vless-1469494433
         - vless-1469501722
+        - vless-1471363162
       type: select
 rules:
     - MATCH,select

@@ -6,29 +6,17 @@ proxies:
       server: 38.180.214.110
       type: ss
       udp: true
-    - name: vless-1426279635
-      network: ws
-      port: 8443
-      server: 193.180.208.169
-      servername: shuma.ccwu.cc
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1108598219
-        - vless-1426279635
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1108598219
-        - vless-1426279635
       type: select
 rules:
     - MATCH,select

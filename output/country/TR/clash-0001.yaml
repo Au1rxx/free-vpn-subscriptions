@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-54117
-      network: ws
-      port: 8880
-      server: 162.251.82.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: trojan-112587
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20017
@@ -330,6 +323,15 @@ proxies:
       uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
     - alterId: 0
       cipher: auto
+      name: vmess-1445373808
+      network: tcp
+      port: 22324
+      server: 103.215.218.158
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
+    - alterId: 0
+      cipher: auto
       name: vmess-1445878108
       network: tcp
       port: 22324
@@ -379,11 +381,19 @@ proxies:
       type: vless
       udp: true
       uuid: 8e826a69-63f6-0001-a67d-4a1958e8b2d2
+    - alterId: 0
+      cipher: auto
+      name: vmess-1471299054
+      network: raw
+      port: 22324
+      server: 103.215.218.158
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-54117
         - trojan-112587
         - trojan-122850
         - trojan-122851
@@ -412,18 +422,19 @@ proxy-groups:
         - vless-1418803147
         - vless-1421036477
         - vless-1438537625
+        - vmess-1445373808
         - vmess-1445878108
         - vless-1461786622
         - vless-1468027497
         - vless-1468027504
         - vless-1468027511
         - vless-1468081043
+        - vmess-1471299054
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-54117
         - trojan-112587
         - trojan-122850
         - trojan-122851
@@ -452,12 +463,14 @@ proxy-groups:
         - vless-1418803147
         - vless-1421036477
         - vless-1438537625
+        - vmess-1445373808
         - vmess-1445878108
         - vless-1461786622
         - vless-1468027497
         - vless-1468027504
         - vless-1468027511
         - vless-1468081043
+        - vmess-1471299054
       type: select
 rules:
     - MATCH,select
