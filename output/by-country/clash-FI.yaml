@@ -6,16 +6,13 @@ proxies:
       skip-cert-verify: false
       sni: se1.chromevpn.cc
       type: hysteria2
-    - name: vless-1103840341
-      network: ws
-      port: 443
-      server: 31.76.88.10
-      servername: cf5.rumedia-cdn.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1472289542
+      password: LMnotcv4RdaEOBXT-LdtfA
+      port: 2070
+      server: p1tun3.greewebservices.ir
+      type: ss
       udp: true
-      uuid: 03c48eca-e0aa-4e18-998c-1f53f1de293c
     - name: hysteria2-1447830944
       password: a6cf39b3-0424-42a2-abf7-b426da69b1a4
       port: 443
@@ -114,12 +111,26 @@ proxies:
       type: vless
       udp: true
       uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1381752782
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
+        short-id: ""
+      server: est1313.ggisopi.su
+      servername: ""
+      tls: true
+      type: vless
+      udp: true
+      uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1457125378
-        - vless-1103840341
+        - shadowsocks-1472289542
         - hysteria2-1447830944
         - vless-1444683908
         - vless-272678138
@@ -128,13 +139,14 @@ proxy-groups:
         - vless-315420975
         - vless-1436581066
         - vless-335070407
+        - vless-1381752782
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1457125378
-        - vless-1103840341
+        - shadowsocks-1472289542
         - hysteria2-1447830944
         - vless-1444683908
         - vless-272678138
@@ -143,6 +155,7 @@ proxy-groups:
         - vless-315420975
         - vless-1436581066
         - vless-335070407
+        - vless-1381752782
       type: select
 rules:
     - MATCH,select
