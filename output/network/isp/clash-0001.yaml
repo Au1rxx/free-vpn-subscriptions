@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-cfb
+      name: shadowsocks-278
+      password: qwerREWQ@@
+      port: 4652
+      server: 218.237.185.230
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-287
       password: qwerREWQ@@
       port: 6123
@@ -926,10 +933,25 @@ proxies:
       type: vless
       udp: true
       uuid: d9d88ad8-f008-4d65-80e2-9fba21e9d783
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1462984547
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: 1ea_kTf2MvXh9PtpzQdjQWb5ls5BjyUtSbn-qiR8ZXk
+        short-id: cb0e256070ac91c7
+      server: 185.229.9.175
+      servername: yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 873531be-959c-46de-bb98-b4dead3cbcf4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-278
         - shadowsocks-287
         - shadowsocks-26744
         - trojan-112939
@@ -1021,11 +1043,13 @@ proxy-groups:
         - vmess-1459674437
         - vless-1459952077
         - vless-1460455110
+        - vless-1462984547
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-278
         - shadowsocks-287
         - shadowsocks-26744
         - trojan-112939
@@ -1117,6 +1141,7 @@ proxy-groups:
         - vmess-1459674437
         - vless-1459952077
         - vless-1460455110
+        - vless-1462984547
       type: select
 rules:
     - MATCH,select
