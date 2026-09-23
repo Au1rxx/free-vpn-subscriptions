@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1455765709
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: wSjV1yR_rhDUdoNbM9zIXNGLASLp9RorComnyoayo2c
+        short-id: ""
+      server: 143.246.194.213
+      servername: www.ikea.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dc9e93bc-b53a-11f1-91d3-52540030ba36
     - name: vless-1330514849
       network: ws
       port: 8081
@@ -24,6 +38,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1455765709
         - vless-1330514849
         - vless-897978973
       type: url-test
@@ -31,6 +46,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1455765709
         - vless-1330514849
         - vless-897978973
       type: select

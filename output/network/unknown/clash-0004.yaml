@@ -1,0 +1,108 @@
+proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-1459678989
+      network: raw
+      port: 443
+      server: 45.32.120.173
+      type: vmess
+      udp: true
+      uuid: XEXEVIL
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1459678993
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE
+        short-id: 0dfc23fe80778c00
+      server: 46.28.71.247
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 12c53e32-e589-47d6-b857-e4132294f767
+    - name: vless-1459952098
+      network: ws
+      port: 443
+      server: 37.139.42.138
+      servername: dostavitos.stroymatdv.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5254e414-d718-4d49-843c-2ca632e10772
+    - name: vless-1459952103
+      network: ws
+      port: 443
+      server: 95.129.236.216
+      servername: crm.hourtley.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 166da8d7-9880-4af8-b528-0b4f56dedcb2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1459952105
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: 9DYcPSOhAWfV2SZxQyhp8jm02__C03hL5q0UeXLnc2w
+        short-id: b145ac957cd68094
+      server: 185.134.200.180
+      servername: www.vk.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5254e414-d718-4d49-843c-2ca632e10772
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1459952108
+      network: raw
+      port: 7445
+      reality-opts:
+        public-key: wBB_aSYGm86IhxUcO8jccIsaBJZdNGlo3hTQlJFftkE
+        short-id: f7d9e9a2e78e9a17
+      server: 81.94.148.178
+      servername: s1.cdnguard.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 166da8d7-9880-4af8-b528-0b4f56dedcb2
+    - name: vless-1459958664
+      network: grpc
+      port: 9443
+      server: 193.8.215.96
+      servername: hub-de-03.hanvpn.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d9d0f208-d582-41d5-bb7b-742671402810
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vmess-1459678989
+        - vless-1459678993
+        - vless-1459952098
+        - vless-1459952103
+        - vless-1459952105
+        - vless-1459952108
+        - vless-1459958664
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vmess-1459678989
+        - vless-1459678993
+        - vless-1459952098
+        - vless-1459952103
+        - vless-1459952105
+        - vless-1459952108
+        - vless-1459958664
+      type: select
+rules:
+    - MATCH,select

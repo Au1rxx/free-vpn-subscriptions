@@ -1,0 +1,184 @@
+{
+  "outbounds": [
+    {
+      "alter_id": 0,
+      "security": "auto",
+      "server": "45.32.120.173",
+      "server_port": 443,
+      "tag": "vmess-1459678989",
+      "type": "vmess",
+      "uuid": "XEXEVIL"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "46.28.71.247",
+      "server_port": 443,
+      "tag": "vless-1459678993",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE",
+          "short_id": "0dfc23fe80778c00"
+        },
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "12c53e32-e589-47d6-b857-e4132294f767"
+    },
+    {
+      "server": "37.139.42.138",
+      "server_port": 443,
+      "tag": "vless-1459952098",
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "dostavitos.stroymatdv.cc",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "transport": {
+        "path": "/e7ws",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "5254e414-d718-4d49-843c-2ca632e10772"
+    },
+    {
+      "server": "95.129.236.216",
+      "server_port": 443,
+      "tag": "vless-1459952103",
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "crm.hourtley.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "headers": {
+          "Host": "crm.hourtley.com"
+        },
+        "path": "/origin/190546791/fetch",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "166da8d7-9880-4af8-b528-0b4f56dedcb2"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "185.134.200.180",
+      "server_port": 443,
+      "tag": "vless-1459952105",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "9DYcPSOhAWfV2SZxQyhp8jm02__C03hL5q0UeXLnc2w",
+          "short_id": "b145ac957cd68094"
+        },
+        "server_name": "www.vk.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "5254e414-d718-4d49-843c-2ca632e10772"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "81.94.148.178",
+      "server_port": 7445,
+      "tag": "vless-1459952108",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "wBB_aSYGm86IhxUcO8jccIsaBJZdNGlo3hTQlJFftkE",
+          "short_id": "f7d9e9a2e78e9a17"
+        },
+        "server_name": "s1.cdnguard.org",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "166da8d7-9880-4af8-b528-0b4f56dedcb2"
+    },
+    {
+      "server": "193.8.215.96",
+      "server_port": 9443,
+      "tag": "vless-1459958664",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "hub-de-03.hanvpn.cc",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "service_name": "de03-grpc-8e47a",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "d9d0f208-d582-41d5-bb7b-742671402810"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vmess-1459678989",
+        "vless-1459678993",
+        "vless-1459952098",
+        "vless-1459952103",
+        "vless-1459952105",
+        "vless-1459952108",
+        "vless-1459958664"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vmess-1459678989",
+        "vless-1459678993",
+        "vless-1459952098",
+        "vless-1459952103",
+        "vless-1459952105",
+        "vless-1459952108",
+        "vless-1459958664"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
