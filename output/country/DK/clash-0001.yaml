@@ -15,12 +15,20 @@ proxies:
       server: 38.180.214.110
       type: ss
       udp: true
+    - name: vless-1475454080
+      network: tcp
+      port: 40610
+      server: 31.56.222.61
+      type: vless
+      udp: true
+      uuid: ef6a9d5d-d50c-4d14-abda-e9178b9965ba
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-1005125062
         - shadowsocks-1108598219
+        - vless-1475454080
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -28,6 +36,7 @@ proxy-groups:
         - auto
         - vmess-1005125062
         - shadowsocks-1108598219
+        - vless-1475454080
       type: select
 rules:
     - MATCH,select

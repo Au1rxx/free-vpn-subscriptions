@@ -7,17 +7,35 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - name: vless-1475505536
+      network: tcp
+      port: 34739
+      server: 31.56.222.61
+      type: vless
+      udp: true
+      uuid: ef6a9d5d-d50c-4d14-abda-e9178b9965ba
+    - name: vless-1475505539
+      network: tcp
+      port: 50521
+      server: 31.56.222.61
+      type: vless
+      udp: true
+      uuid: ef6a9d5d-d50c-4d14-abda-e9178b9965ba
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-122860
+        - vless-1475505536
+        - vless-1475505539
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-122860
+        - vless-1475505536
+        - vless-1475505539
       type: select
 rules:
     - MATCH,select

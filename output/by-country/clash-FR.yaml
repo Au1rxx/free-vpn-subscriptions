@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1458251610
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: vpn-fr-002.fastervpn.world
+      skip-cert-verify: true
+      sni: "off"
+      type: hysteria2
     - client-fingerprint: chrome
       name: vless-1413435162
       network: grpc
@@ -25,33 +32,12 @@ proxies:
       type: vless
       udp: true
       uuid: d619964d-26d6-452d-9860-6f058f03ba8e
-    - name: hysteria2-1458251610
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: vpn-fr-002.fastervpn.world
-      skip-cert-verify: true
-      sni: "off"
-      type: hysteria2
     - name: hysteria2-24391
       password: dongtaiwang.com
       port: 22000
       server: 62.210.124.146
       skip-cert-verify: true
       sni: www.microsoft.com
-      type: hysteria2
-    - name: hysteria2-534776087
-      password: Krab9Hyst2_Rk7pQ2xL
-      port: 36723
-      server: 151.247.197.253
-      skip-cert-verify: true
-      sni: www.cloudflare.com
-      type: hysteria2
-    - name: hysteria2-589844073
-      password: Krab9Hyst2_Rk7pQ2xL
-      port: 36723
-      server: 151.247.197.253
-      skip-cert-verify: true
-      sni: 151.247.197.253
       type: hysteria2
     - name: hysteria2-197583436
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
@@ -127,16 +113,40 @@ proxies:
       type: vless
       udp: true
       uuid: d619964d-26d6-452d-9860-6f058f03ba8e
+    - client-fingerprint: chrome
+      name: vless-1305630326
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: g63cT3uI0Y5iUtj3m__RYz7nmR1eIK4AYikdnZCl63w
+        short-id: bfe58beb41f1d09f
+      server: 51.77.217.70
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: bf16ee0c-8b3c-41e4-ab3a-8b48033c404e
+    - client-fingerprint: firefox
+      name: vless-113404806
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ
+        short-id: a8ae
+      server: 194.76.154.31
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1458251610
         - vless-1413435162
         - vless-1387242610
-        - hysteria2-1458251610
         - hysteria2-24391
-        - hysteria2-534776087
-        - hysteria2-589844073
         - hysteria2-197583436
         - hysteria2-862083237
         - vless-1472495161
@@ -145,17 +155,17 @@ proxy-groups:
         - vless-1390604547
         - vless-1400224381
         - vless-1413431610
+        - vless-1305630326
+        - vless-113404806
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1458251610
         - vless-1413435162
         - vless-1387242610
-        - hysteria2-1458251610
         - hysteria2-24391
-        - hysteria2-534776087
-        - hysteria2-589844073
         - hysteria2-197583436
         - hysteria2-862083237
         - vless-1472495161
@@ -164,6 +174,8 @@ proxy-groups:
         - vless-1390604547
         - vless-1400224381
         - vless-1413431610
+        - vless-1305630326
+        - vless-113404806
       type: select
 rules:
     - MATCH,select

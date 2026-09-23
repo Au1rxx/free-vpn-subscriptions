@@ -23,14 +23,6 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: trojan-479026176
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20017
-      server: 157.254.38.210
-      skip-cert-verify: false
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-700420641
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20098
@@ -59,14 +51,6 @@ proxies:
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20017
       server: krhtybay.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-885355670
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20017
-      server: 157.254.38.210
       skip-cert-verify: true
       sni: hk.catxstar.com
       type: trojan
@@ -370,15 +354,23 @@ proxies:
       type: vless
       udp: true
       uuid: 8e826a69-63f6-0001-a67d-4a1958e8b2d2
-    - alterId: 0
-      cipher: auto
-      name: vmess-1471299054
-      network: raw
-      port: 22324
-      server: 103.215.218.158
-      type: vmess
+    - name: vless-1471113749
+      network: ws
+      port: 443
+      server: 185.71.219.128
+      type: vless
       udp: true
-      uuid: 04621bae-ab36-11ec-b909-0242ac120002
+      uuid: f4ade6db-3c64-4939-9f32-788b87a9392f
+    - name: vless-1471113750
+      network: tcp
+      port: 2052
+      server: 185.71.219.128
+      servername: 185.71.219.128
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: f4ade6db-3c64-4939-9f32-788b87a9392f
     - name: vless-1472504839
       network: tcp
       port: 8080
@@ -413,6 +405,23 @@ proxies:
       type: vless
       udp: true
       uuid: 8a0757d9-b317-47df-b506-5c7b8798982e
+    - name: vless-1475605529
+      network: tcp
+      port: 2052
+      server: 185.71.219.128
+      servername: 185.71.219.128
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: f4ade6db-3c64-4939-9f32-788b87a9392f
+    - name: vless-1475985887
+      network: ws
+      port: 25156
+      server: iriguchi.proxy.rlwy.net
+      type: vless
+      udp: true
+      uuid: 8a0757d9-b317-47df-b506-5c7b8798982e
 proxy-groups:
     - interval: 300
       name: auto
@@ -420,12 +429,10 @@ proxy-groups:
         - trojan-112587
         - trojan-122850
         - trojan-474637039
-        - trojan-479026176
         - trojan-700420641
         - trojan-739165522
         - trojan-856461940
         - trojan-856461981
-        - trojan-885355670
         - vmess-1005580231
         - vless-1285803654
         - vless-1301607910
@@ -450,11 +457,14 @@ proxy-groups:
         - vless-1461786622
         - vmess-1464415771
         - vless-1468081043
-        - vmess-1471299054
+        - vless-1471113749
+        - vless-1471113750
         - vless-1472504839
         - vless-1472504840
         - vless-1472517979
         - vless-1474534336
+        - vless-1475605529
+        - vless-1475985887
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -463,12 +473,10 @@ proxy-groups:
         - trojan-112587
         - trojan-122850
         - trojan-474637039
-        - trojan-479026176
         - trojan-700420641
         - trojan-739165522
         - trojan-856461940
         - trojan-856461981
-        - trojan-885355670
         - vmess-1005580231
         - vless-1285803654
         - vless-1301607910
@@ -493,11 +501,14 @@ proxy-groups:
         - vless-1461786622
         - vmess-1464415771
         - vless-1468081043
-        - vmess-1471299054
+        - vless-1471113749
+        - vless-1471113750
         - vless-1472504839
         - vless-1472504840
         - vless-1472517979
         - vless-1474534336
+        - vless-1475605529
+        - vless-1475985887
       type: select
 rules:
     - MATCH,select
