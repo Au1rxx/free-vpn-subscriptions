@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-gcm
-      name: shadowsocks-1251465982
-      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-      port: 19999
-      server: 185.164.175.81
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1415204612
@@ -34,6 +27,20 @@ proxies:
       type: vless
       udp: true
       uuid: dc2259c4-388e-4285-ba18-df619b6672b6
+    - cipher: aes-256-gcm
+      name: shadowsocks-891518478
+      password: itzvpn@321
+      port: 8388
+      server: 57.131.48.45
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-1251465982
+      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+      port: 19999
+      server: 185.164.175.81
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1416419630
@@ -48,34 +55,25 @@ proxies:
       type: vless
       udp: true
       uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
-    - alterId: 0
-      cipher: auto
-      name: vmess-1455404172
-      network: raw
-      port: 22324
-      server: 89.41.172.85
-      type: vmess
-      udp: true
-      uuid: 04621bae-ab36-11ec-b909-0242ac120002
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1251465982
         - vless-1415204612
         - vless-1269466481
+        - shadowsocks-891518478
+        - shadowsocks-1251465982
         - vless-1416419630
-        - vmess-1455404172
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1251465982
         - vless-1415204612
         - vless-1269466481
+        - shadowsocks-891518478
+        - shadowsocks-1251465982
         - vless-1416419630
-        - vmess-1455404172
       type: select
 rules:
     - MATCH,select
