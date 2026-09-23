@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-1239125771
-      network: ws
-      port: 8880
-      server: 162.159.130.234
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1239327829
       network: ws
       port: 8880
@@ -91,11 +84,23 @@ proxies:
       type: vless
       udp: true
       uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
+    - client-fingerprint: chrome
+      name: vless-1468081038
+      network: grpc
+      port: 9889
+      reality-opts:
+        public-key: ycPIUcY6ci2yi7YA_OHc20e4gzxEdJTqpmeShxSuHRU
+        short-id: aabb
+      server: 213.171.25.29
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1239125771
         - vless-1239327829
         - vless-1449420592
         - vless-1449420593
@@ -103,12 +108,12 @@ proxy-groups:
         - vless-1457080030
         - vless-1457270522
         - vless-1457270526
+        - vless-1468081038
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1239125771
         - vless-1239327829
         - vless-1449420592
         - vless-1449420593
@@ -116,6 +121,7 @@ proxy-groups:
         - vless-1457080030
         - vless-1457270522
         - vless-1457270526
+        - vless-1468081038
       type: select
 rules:
     - MATCH,select

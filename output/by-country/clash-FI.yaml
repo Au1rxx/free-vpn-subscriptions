@@ -6,6 +6,16 @@ proxies:
       skip-cert-verify: false
       sni: se1.chromevpn.cc
       type: hysteria2
+    - name: vless-1103840341
+      network: ws
+      port: 443
+      server: 31.76.88.10
+      servername: cf5.rumedia-cdn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 03c48eca-e0aa-4e18-998c-1f53f1de293c
     - name: hysteria2-1447830944
       password: a6cf39b3-0424-42a2-abf7-b426da69b1a4
       port: 443
@@ -18,6 +28,7 @@ proxy-groups:
       name: auto
       proxies:
         - hysteria2-1457125378
+        - vless-1103840341
         - hysteria2-1447830944
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -25,6 +36,7 @@ proxy-groups:
       proxies:
         - auto
         - hysteria2-1457125378
+        - vless-1103840341
         - hysteria2-1447830944
       type: select
 rules:

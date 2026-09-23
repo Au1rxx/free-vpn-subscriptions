@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1458893236
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: wSjV1yR_rhDUdoNbM9zIXNGLASLp9RorComnyoayo2c
+        short-id: ""
+      server: 143.246.194.213
+      servername: www.ikea.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dc9e93bc-b53a-11f1-91d3-52540030ba36
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1458893236
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1458893236
+      type: select
+rules:
+    - MATCH,select

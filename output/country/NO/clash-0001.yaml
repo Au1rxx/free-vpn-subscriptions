@@ -6,16 +6,6 @@ proxies:
       server: 185.213.23.63
       type: ss
       udp: true
-    - name: vless-665286203
-      network: ws
-      port: 443
-      server: 104.17.3.81
-      servername: nautica-cff.kloningstrife002.workers.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: fc60147e-76b8-4bc5-b691-90b2da79e3d2
     - client-fingerprint: qq
       name: vless-883516444
       network: tcp
@@ -410,17 +400,6 @@ proxies:
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - flow: xtls-rprx-vision
-      name: vless-1330380846
-      network: tcp
-      port: 443
-      server: 31.76.5.42
-      servername: norw-2.failspace.top
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - flow: xtls-rprx-vision
       name: vless-1333272666
       network: tcp
       port: 443
@@ -603,16 +582,6 @@ proxies:
       type: vless
       udp: true
       uuid: c18b978e-1c4e-415c-8bea-07942b563a64
-    - name: vless-1433582552
-      network: ws
-      port: 443
-      server: 194.32.107.150
-      servername: shuma.ccwu.cc
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
     - name: vless-1443131962
       network: ws
       port: 443
@@ -668,12 +637,32 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1468081022
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: jKFbWwHKtfPZqqZUU9ZqjckbtV9rsHGcRylVhZRPfUI
+        short-id: ""
+      server: nospl.vihodest.net
+      servername: nospl.vihodest.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 88956de8-38db-449c-8410-4b70a4fb5c9b
+    - name: hysteria2-1468081023
+      password: 88956de8-38db-449c-8410-4b70a4fb5c9b
+      port: 443
+      server: nospl.vihodest.net
+      skip-cert-verify: false
+      sni: nospl.vihodest.net
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-231
-        - vless-665286203
         - vless-883516444
         - vless-890078624
         - vless-898071844
@@ -707,7 +696,6 @@ proxy-groups:
         - vless-1294613422
         - vless-1298905317
         - vless-1298906328
-        - vless-1330380846
         - vless-1333272666
         - vless-1333316327
         - vless-1333316364
@@ -724,19 +712,19 @@ proxy-groups:
         - vless-1418804461
         - vless-1419330228
         - vless-1426280644
-        - vless-1433582552
         - vless-1443131962
         - vless-1443133812
         - vless-1444023950
         - vless-1464104862
         - vless-1466679125
+        - vless-1468081022
+        - hysteria2-1468081023
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-231
-        - vless-665286203
         - vless-883516444
         - vless-890078624
         - vless-898071844
@@ -770,7 +758,6 @@ proxy-groups:
         - vless-1294613422
         - vless-1298905317
         - vless-1298906328
-        - vless-1330380846
         - vless-1333272666
         - vless-1333316327
         - vless-1333316364
@@ -787,12 +774,13 @@ proxy-groups:
         - vless-1418804461
         - vless-1419330228
         - vless-1426280644
-        - vless-1433582552
         - vless-1443131962
         - vless-1443133812
         - vless-1444023950
         - vless-1464104862
         - vless-1466679125
+        - vless-1468081022
+        - hysteria2-1468081023
       type: select
 rules:
     - MATCH,select
