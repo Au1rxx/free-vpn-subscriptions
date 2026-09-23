@@ -89,6 +89,13 @@ proxies:
       server: 82.38.31.215
       type: ss
       udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1473972173
+      password: OBLEHLEO7gz50MY5w15pldd9sLDdtEWkpabDDc6KnKM=
+      port: 45819
+      server: 141.148.238.85
+      type: ss
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-254910437
       password: oZIoA69Q8yhcQV8ka3Pa3A
@@ -110,6 +117,19 @@ proxies:
       server: 193.29.139.147
       type: ss
       udp: true
+    - client-fingerprint: random
+      name: vless-1347369094
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: bzbe7QdD633ew_Er1_YWEhuCEHWurmDpxpz3fRzXr0A
+        short-id: b4e3b0b55b8dc75b
+      server: 31.56.184.132
+      servername: cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 11f21602-47aa-42e2-9149-69120f2e6df6
     - name: vless-1387904062
       network: grpc
       port: 9443
@@ -308,19 +328,6 @@ proxies:
       server: 82.38.31.184
       type: ss
       udp: true
-    - client-fingerprint: random
-      name: vless-1347369094
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: bzbe7QdD633ew_Er1_YWEhuCEHWurmDpxpz3fRzXr0A
-        short-id: b4e3b0b55b8dc75b
-      server: 31.56.184.132
-      servername: cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 11f21602-47aa-42e2-9149-69120f2e6df6
     - flow: xtls-rprx-vision
       name: vless-1373029239
       network: tcp
@@ -369,20 +376,6 @@ proxies:
       type: vless
       udp: true
       uuid: ceaf462e-a9fa-4c4b-94be-f192570465a7
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-700283240
-      network: tcp
-      port: 23576
-      reality-opts:
-        public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
-        short-id: ""
-      server: 51.158.206.29
-      servername: fuck.rkn
-      tls: true
-      type: vless
-      udp: true
-      uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1382441829
@@ -558,6 +551,17 @@ proxies:
       type: vless
       udp: true
       uuid: de5906f3-df38-4463-aa9d-2b01320cc6ea
+    - flow: xtls-rprx-vision
+      name: vless-1456823556
+      network: tcp
+      port: 8443
+      server: 194.93.61.139
+      servername: nl1.hys.braidx.tech
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 61da8f4b-6ab1-4ca7-bae0-1cec4f9be2f8
     - name: vless-1449423589
       network: grpc
       port: 9443
@@ -665,6 +669,34 @@ proxies:
       type: vless
       udp: true
       uuid: 44ae52b9-76fc-444d-8e43-186b4384b80a
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-743806816
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: AERbWB2uslqIzm1hSlOZZEH3Y9qg_zlWRRyLfh97kXc
+        short-id: ""
+      server: 31.58.181.88
+      servername: tradingview.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4b2fbd30-1a64-4b27-aea9-713d62c9e69b
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1023901718
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: AERbWB2uslqIzm1hSlOZZEH3Y9qg_zlWRRyLfh97kXc
+        short-id: ""
+      server: 31.58.181.88
+      servername: tradingview.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ba90d4f6-de5c-466e-9b05-975f49ef528c
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-413001561
@@ -748,17 +780,6 @@ proxies:
       type: vless
       udp: true
       uuid: 246b101b-4e4a-451f-8e9c-5e8d3b64b4ef
-    - flow: xtls-rprx-vision
-      name: vless-1457080792
-      network: tcp
-      port: 8443
-      server: 194.93.61.139
-      servername: nl1.hys.braidx.tech
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 61da8f4b-6ab1-4ca7-bae0-1cec4f9be2f8
 proxy-groups:
     - interval: 300
       name: auto
@@ -775,9 +796,11 @@ proxy-groups:
         - shadowsocks-266
         - shadowsocks-11023
         - shadowsocks-11033
+        - shadowsocks-1473972173
         - shadowsocks-254910437
         - shadowsocks-16136
         - shadowsocks-158885953
+        - vless-1347369094
         - vless-1387904062
         - vless-1468026368
         - vless-1333157727
@@ -801,12 +824,10 @@ proxy-groups:
         - shadowsocks-91981760
         - shadowsocks-130087
         - shadowsocks-189
-        - vless-1347369094
         - vless-1373029239
         - vless-1445432119
         - vless-1317297744
         - vless-1438371009
-        - vless-700283240
         - vless-1382441829
         - vmess-663902654
         - hysteria2-928823637
@@ -825,6 +846,7 @@ proxy-groups:
         - vless-775812635
         - vless-1266638222
         - vless-1048661707
+        - vless-1456823556
         - vless-1449423589
         - vless-656232040
         - vless-656232004
@@ -835,6 +857,8 @@ proxy-groups:
         - shadowsocks-182
         - vless-1381771375
         - vless-377163832
+        - vless-743806816
+        - vless-1023901718
         - vless-413001561
         - vless-1454143137
         - vless-1222260557
@@ -842,7 +866,6 @@ proxy-groups:
         - vless-1048006246
         - vless-737848898
         - vless-1345595579
-        - vless-1457080792
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -860,9 +883,11 @@ proxy-groups:
         - shadowsocks-266
         - shadowsocks-11023
         - shadowsocks-11033
+        - shadowsocks-1473972173
         - shadowsocks-254910437
         - shadowsocks-16136
         - shadowsocks-158885953
+        - vless-1347369094
         - vless-1387904062
         - vless-1468026368
         - vless-1333157727
@@ -886,12 +911,10 @@ proxy-groups:
         - shadowsocks-91981760
         - shadowsocks-130087
         - shadowsocks-189
-        - vless-1347369094
         - vless-1373029239
         - vless-1445432119
         - vless-1317297744
         - vless-1438371009
-        - vless-700283240
         - vless-1382441829
         - vmess-663902654
         - hysteria2-928823637
@@ -910,6 +933,7 @@ proxy-groups:
         - vless-775812635
         - vless-1266638222
         - vless-1048661707
+        - vless-1456823556
         - vless-1449423589
         - vless-656232040
         - vless-656232004
@@ -920,6 +944,8 @@ proxy-groups:
         - shadowsocks-182
         - vless-1381771375
         - vless-377163832
+        - vless-743806816
+        - vless-1023901718
         - vless-413001561
         - vless-1454143137
         - vless-1222260557
@@ -927,7 +953,6 @@ proxy-groups:
         - vless-1048006246
         - vless-737848898
         - vless-1345595579
-        - vless-1457080792
       type: select
 rules:
     - MATCH,select
