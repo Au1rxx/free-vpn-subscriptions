@@ -8,36 +8,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
-    - name: vless-1444024948
-      network: ws
-      port: 2053
-      server: 89.46.42.92
-      servername: shuma.ccwu.cc
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
-    - name: vless-1444200999
-      network: ws
-      port: 2053
-      server: 89.46.42.141
-      servername: shuma.ccwu.cc
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
-    - name: vless-1444201018
-      network: ws
-      port: 8443
-      server: 5.35.103.185
-      servername: shuma.ccwu.cc
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
     - cipher: aes-256-gcm
       name: shadowsocks-1458933296
       password: pX0uhU3ZjUcLWYs0Vez55BO3JoQrRlL
@@ -45,23 +15,6 @@ proxies:
       server: 141.227.134.63
       type: ss
       udp: true
-    - name: vless-1464007818
-      network: ws
-      port: 443
-      server: 167.233.120.184
-      servername: shuma.ccwu.cc
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c18b978e-1c4e-415c-8bea-07942b563a64
-    - name: vless-1464426224
-      network: grpc
-      port: 3090
-      server: 153.76.185.79
-      type: vless
-      udp: true
-      uuid: 4aec4a84-3d5b-42c4-954e-484888b4e0dc
     - name: vless-1465320888
       network: grpc
       port: 3090
@@ -104,37 +57,45 @@ proxies:
       type: vless
       udp: true
       uuid: 4bdeee92-97e8-414d-bef6-ec1d5e2ab73b
+    - name: vless-1468438406
+      network: grpc
+      port: 3090
+      server: 153.76.185.181
+      type: vless
+      udp: true
+      uuid: 06779a66-5acf-47eb-bf5f-097bd3f557c7
+    - name: vless-1468438414
+      network: grpc
+      port: 3090
+      server: 153.76.185.90
+      type: vless
+      udp: true
+      uuid: 06779a66-5acf-47eb-bf5f-097bd3f557c7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-1005127037
-        - vless-1444024948
-        - vless-1444200999
-        - vless-1444201018
         - shadowsocks-1458933296
-        - vless-1464007818
-        - vless-1464426224
         - vless-1465320888
         - vless-1465778660
         - vless-1467698022
         - vless-1468175812
+        - vless-1468438406
+        - vless-1468438414
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-1005127037
-        - vless-1444024948
-        - vless-1444200999
-        - vless-1444201018
         - shadowsocks-1458933296
-        - vless-1464007818
-        - vless-1464426224
         - vless-1465320888
         - vless-1465778660
         - vless-1467698022
         - vless-1468175812
+        - vless-1468438406
+        - vless-1468438414
       type: select
 rules:
     - MATCH,select
