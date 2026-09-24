@@ -1,0 +1,36 @@
+{
+  "outbounds": [
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "6B-X_OuMsGxWj0AhJ9aMdpht_hQfYeNz",
+      "server": "192.209.62.92",
+      "server_port": 211,
+      "tag": "shadowsocks-1493080650",
+      "type": "shadowsocks"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "shadowsocks-1493080650"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "shadowsocks-1493080650"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

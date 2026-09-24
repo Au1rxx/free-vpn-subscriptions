@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1469451401
+      network: tcp
+      port: 18775
+      reality-opts:
+        public-key: oR75S6pg_RDAKIuzv_WrCiwaUqqFoek2iuo5N22llQQ
+        short-id: 6ba85179e30d4fc2
+      server: 136.175.82.85
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9ae5940b-0278-403d-a1e1-9dddc47bdcf6
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1412445055
@@ -31,6 +45,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1469451401
         - vless-1412445055
         - vless-1473449962
       type: url-test
@@ -38,6 +53,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1469451401
         - vless-1412445055
         - vless-1473449962
       type: select

@@ -1,5 +1,12 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-178
+      password: k1dBOmOB4oqi7Ump37a1bQ
+      port: 8080
+      server: 82.38.31.219
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-303
       password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
       port: 50099
@@ -30,25 +37,9 @@ proxies:
       sni: tw.catxstar.com
       type: trojan
       udp: true
-    - name: trojan-122871
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20048
-      server: d3.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-122893
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20087
-      server: d3.catcat321.com
-      skip-cert-verify: true
-      sni: tw.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-122903
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20109
       server: d3.catcat321.com
       skip-cert-verify: true
       sni: tw.catxstar.com
@@ -176,15 +167,6 @@ proxies:
       cipher: auto
       name: vmess-650449640
       network: tcp
-      port: 35034
-      server: 165.154.195.38
-      type: vmess
-      udp: true
-      uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
-    - alterId: 0
-      cipher: auto
-      name: vmess-650629576
-      network: raw
       port: 35034
       server: 165.154.195.38
       type: vmess
@@ -986,14 +968,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
-    - name: trojan-1181506772
-      password: tsuchiya
-      port: 443
-      server: 161.34.39.108
-      skip-cert-verify: true
-      sni: aa.ccmusic.jp
-      type: trojan
-      udp: true
     - client-fingerprint: safari
       flow: xtls-rprx-vision
       name: vless-1186755709
@@ -1265,19 +1239,6 @@ proxies:
       type: vless
       udp: true
       uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
-    - client-fingerprint: edge
-      name: vless-1447775040
-      network: tcp
-      port: 24215
-      reality-opts:
-        public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
-        short-id: ""
-      server: 118.167.206.152
-      servername: addons.mozilla.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
     - client-fingerprint: chrome
       name: vless-1449472328
       network: tcp
@@ -1396,13 +1357,12 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-178
         - shadowsocks-303
         - hysteria2-16610
         - vmess-25247
         - trojan-122868
-        - trojan-122871
         - trojan-122893
-        - trojan-122903
         - vmess-145255
         - vmess-5258766
         - hysteria2-137781265
@@ -1420,7 +1380,6 @@ proxy-groups:
         - hysteria2-650314288
         - hysteria2-650429104
         - vmess-650449640
-        - vmess-650629576
         - vmess-655628140
         - hysteria2-655713431
         - hysteria2-655837404
@@ -1494,7 +1453,6 @@ proxy-groups:
         - hysteria2-1163840992
         - vless-1173311749
         - vmess-1176391287
-        - trojan-1181506772
         - vless-1186755709
         - vless-1193015748
         - vless-1197967019
@@ -1516,7 +1474,6 @@ proxy-groups:
         - vless-1444919263
         - vless-1444941090
         - vless-1446029809
-        - vless-1447775040
         - vless-1449472328
         - vless-1449472331
         - vless-1459596948
@@ -1532,13 +1489,12 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-178
         - shadowsocks-303
         - hysteria2-16610
         - vmess-25247
         - trojan-122868
-        - trojan-122871
         - trojan-122893
-        - trojan-122903
         - vmess-145255
         - vmess-5258766
         - hysteria2-137781265
@@ -1556,7 +1512,6 @@ proxy-groups:
         - hysteria2-650314288
         - hysteria2-650429104
         - vmess-650449640
-        - vmess-650629576
         - vmess-655628140
         - hysteria2-655713431
         - hysteria2-655837404
@@ -1630,7 +1585,6 @@ proxy-groups:
         - hysteria2-1163840992
         - vless-1173311749
         - vmess-1176391287
-        - trojan-1181506772
         - vless-1186755709
         - vless-1193015748
         - vless-1197967019
@@ -1652,7 +1606,6 @@ proxy-groups:
         - vless-1444919263
         - vless-1444941090
         - vless-1446029809
-        - vless-1447775040
         - vless-1449472328
         - vless-1449472331
         - vless-1459596948
