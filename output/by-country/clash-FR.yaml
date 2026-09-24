@@ -7,19 +7,6 @@ proxies:
       sni: "off"
       type: hysteria2
     - client-fingerprint: chrome
-      name: vless-1413435162
-      network: grpc
-      port: 35108
-      reality-opts:
-        public-key: X_lOw5Zz4SJBa1cRHV4dAq5msYE-ClY5-WNcBmBWRxg
-        short-id: 52add08b86a5ccea
-      server: 152.228.139.33
-      servername: www.nvidia.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 81dc0b61-f9fe-4ad6-8b4e-b8c067b73712
-    - client-fingerprint: chrome
       name: vless-1432809197
       network: grpc
       port: 51671
@@ -45,6 +32,19 @@ proxies:
       type: vless
       udp: true
       uuid: d619964d-26d6-452d-9860-6f058f03ba8e
+    - client-fingerprint: chrome
+      name: vless-1413435162
+      network: grpc
+      port: 35108
+      reality-opts:
+        public-key: X_lOw5Zz4SJBa1cRHV4dAq5msYE-ClY5-WNcBmBWRxg
+        short-id: 52add08b86a5ccea
+      server: 152.228.139.33
+      servername: www.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 81dc0b61-f9fe-4ad6-8b4e-b8c067b73712
     - name: hysteria2-24391
       password: dongtaiwang.com
       port: 22000
@@ -79,27 +79,6 @@ proxies:
       skip-cert-verify: true
       sni: www.microsoft.com
       type: hysteria2
-    - name: vless-1472495161
-      network: tcp?type=tcp
-      port: 22222
-      server: 13.36.123.107
-      type: vless
-      udp: true
-      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-    - name: vless-1468239188
-      network: tcp
-      port: 22224
-      server: 13.36.123.107
-      type: vless
-      udp: true
-      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-    - name: vless-1472495154
-      network: tcp?type=tcp
-      port: 22223
-      server: 13.36.123.107
-      type: vless
-      udp: true
-      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
     - client-fingerprint: chrome
       name: vless-1390604547
       network: raw
@@ -113,47 +92,8 @@ proxies:
       type: vless
       udp: true
       uuid: d619964d-26d6-452d-9860-6f058f03ba8e
-    - client-fingerprint: chrome
-      name: vless-1400224381
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 6tH_NDFcxWn60B3s-MgrkBTU2yUUBY42ZG1av50Ywhk
-        short-id: ae682368818bd6c5
-      server: 34.155.10.226
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d619964d-26d6-452d-9860-6f058f03ba8e
-    - client-fingerprint: chrome
-      name: vless-1413431610
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 6tH_NDFcxWn60B3s-MgrkBTU2yUUBY42ZG1av50Ywhk
-        short-id: ae682368818bd6c5
-      server: 34.155.10.226
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d619964d-26d6-452d-9860-6f058f03ba8e
-    - client-fingerprint: chrome
-      name: vless-1305630326
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: g63cT3uI0Y5iUtj3m__RYz7nmR1eIK4AYikdnZCl63w
-        short-id: bfe58beb41f1d09f
-      server: 51.77.217.70
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: bf16ee0c-8b3c-41e4-ab3a-8b48033c404e
-    - client-fingerprint: firefox
-      name: vless-113404806
+    - client-fingerprint: random
+      name: vless-720888926
       network: tcp
       port: 40443
       reality-opts:
@@ -170,42 +110,30 @@ proxy-groups:
       name: auto
       proxies:
         - hysteria2-1458251610
-        - vless-1413435162
         - vless-1432809197
         - vless-1387242610
+        - vless-1413435162
         - hysteria2-24391
         - vless-693666638
         - hysteria2-197583436
         - hysteria2-862083237
-        - vless-1472495161
-        - vless-1468239188
-        - vless-1472495154
         - vless-1390604547
-        - vless-1400224381
-        - vless-1413431610
-        - vless-1305630326
-        - vless-113404806
+        - vless-720888926
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1458251610
-        - vless-1413435162
         - vless-1432809197
         - vless-1387242610
+        - vless-1413435162
         - hysteria2-24391
         - vless-693666638
         - hysteria2-197583436
         - hysteria2-862083237
-        - vless-1472495161
-        - vless-1468239188
-        - vless-1472495154
         - vless-1390604547
-        - vless-1400224381
-        - vless-1413431610
-        - vless-1305630326
-        - vless-113404806
+        - vless-720888926
       type: select
 rules:
     - MATCH,select
