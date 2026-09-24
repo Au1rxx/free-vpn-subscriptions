@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-189872220
+      network: ws
+      port: 443
+      server: 104.17.148.22
+      servername: netlivpn5002.whwbbb.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: a88e61a0-2b38-f6df-c5c7-d20600000000
     - name: hysteria2-589844096
       password: sOiWCQ2AdIV0OWNuqQVyWp4JZnRxdyLROSjX
       port: 443
@@ -910,20 +920,6 @@ proxies:
       type: vless
       udp: true
       uuid: 5edbcb44-8d04-4fa7-a587-bc5d60c24ca1
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1362975512
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: IBzFSziv_xISB-Q6X90PocTBde6jb4X6swEvdZQhqzk
-        short-id: d0aae44f
-      server: 45.11.27.86
-      servername: 5post-gate.x5.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: a2738d8d-ed26-4b13-a4a2-b89c7238cd10
     - client-fingerprint: firefox
       name: vless-1364518788
       network: grpc
@@ -1098,10 +1094,21 @@ proxies:
       type: vless
       udp: true
       uuid: 20f8330f-9885-4ec0-b630-899fd441ebcc
+    - name: vless-1481232664
+      network: ws
+      port: 443
+      server: netlivpn5002.whwbbb.workers.dev
+      servername: netlivpn5002.whwbbb.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: a88e61a0-2b38-f6df-c5c7-d20600000000
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-189872220
         - hysteria2-589844096
         - hysteria2-600117033
         - trojan-612135910
@@ -1195,7 +1202,6 @@ proxy-groups:
         - vless-1351430597
         - vless-1354008275
         - vless-1355783100
-        - vless-1362975512
         - vless-1364518788
         - vless-1381769955
         - vless-1396763825
@@ -1210,11 +1216,13 @@ proxy-groups:
         - vless-1458518000
         - vless-1459673112
         - vless-1478649971
+        - vless-1481232664
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-189872220
         - hysteria2-589844096
         - hysteria2-600117033
         - trojan-612135910
@@ -1308,7 +1316,6 @@ proxy-groups:
         - vless-1351430597
         - vless-1354008275
         - vless-1355783100
-        - vless-1362975512
         - vless-1364518788
         - vless-1381769955
         - vless-1396763825
@@ -1323,6 +1330,7 @@ proxy-groups:
         - vless-1458518000
         - vless-1459673112
         - vless-1478649971
+        - vless-1481232664
       type: select
 rules:
     - MATCH,select
