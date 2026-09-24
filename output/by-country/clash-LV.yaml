@@ -1,4 +1,18 @@
 proxies:
+    - name: hysteria2-1482811793
+      password: 3a92b39a-5f02-415e-a908-783ec320e83f
+      port: 8443
+      server: 104.165.205.67
+      skip-cert-verify: false
+      sni: speedtestmark.com
+      type: hysteria2
+    - name: hysteria2-1482811792
+      password: 3a92b39a-5f02-415e-a908-783ec320e83f
+      port: 8443
+      server: 104.165.205.41
+      skip-cert-verify: false
+      sni: speedtestmark.com
+      type: hysteria2
     - cipher: aes-256-cfb
       name: shadowsocks-743178503
       password: HAVAdE3nXhqA5nHp
@@ -17,6 +31,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1482811793
+        - hysteria2-1482811792
         - shadowsocks-743178503
         - shadowsocks-819466279
       type: url-test
@@ -24,6 +40,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - hysteria2-1482811793
+        - hysteria2-1482811792
         - shadowsocks-743178503
         - shadowsocks-819466279
       type: select
