@@ -6,17 +6,26 @@ proxies:
       server: 172.238.244.13
       type: ss
       udp: true
+    - name: vless-1442724534
+      network: ws
+      port: 8081
+      server: 143.246.194.60
+      type: vless
+      udp: true
+      uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1458495681
+        - vless-1442724534
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1458495681
+        - vless-1442724534
       type: select
 rules:
     - MATCH,select
