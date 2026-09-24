@@ -8,6 +8,20 @@ proxies:
       udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-1415204612
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: G2U8_BvRAgcOw0sX8u_0yYdVAlD8CWLSi-uYjvH07hw
+        short-id: 4fa44664f6a566d3
+      server: 31.77.201.33
+      servername: italia.superbuba.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-1416419630
       network: tcp
       port: 443
@@ -62,58 +76,29 @@ proxies:
       type: vless
       udp: true
       uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1454594404
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: G2U8_BvRAgcOw0sX8u_0yYdVAlD8CWLSi-uYjvH07hw
-        short-id: 4fa44664f6a566d3
-      server: 31.77.201.33
-      servername: italia.superbuba.top
-      tls: true
-      type: vless
-      udp: true
-      uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
-    - client-fingerprint: chrome
-      name: vless-1047808927
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
-        short-id: 5b8a942318178e7b
-      server: 57.131.38.163
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1251465982
+        - vless-1415204612
         - vless-1416419630
         - vless-262807489
         - shadowsocks-891518478
         - vless-1485001065
         - vless-1409670639
-        - vless-1454594404
-        - vless-1047808927
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1251465982
+        - vless-1415204612
         - vless-1416419630
         - vless-262807489
         - shadowsocks-891518478
         - vless-1485001065
         - vless-1409670639
-        - vless-1454594404
-        - vless-1047808927
       type: select
 rules:
     - MATCH,select

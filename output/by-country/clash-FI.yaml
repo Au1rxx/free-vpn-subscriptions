@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-1430663532
-      password: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
-      port: 8443
-      server: iq5ny.pleiades.codes
-      skip-cert-verify: true
-      sni: iq5ny.pleiades.codes
-      type: hysteria2
     - name: vless-1443832160
       network: grpc
       port: 443
@@ -29,36 +22,19 @@ proxies:
       type: vless
       udp: true
       uuid: fc56af7f-1221-4c27-aed4-3de8a18dc03b
-    - client-fingerprint: firefox
-      name: vless-1461228167
-      network: grpc
-      port: 40604
-      reality-opts:
-        public-key: bWqXHcSbmER97qUKWDujzotuMF7GtNMR0LScSudgbG4
-        short-id: e028f6e8
-      server: 31.76.97.115
-      servername: docs.api.nvidia.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: fc56af7f-1221-4c27-aed4-3de8a18dc03b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1430663532
         - vless-1443832160
         - vless-1436581066
-        - vless-1461228167
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1430663532
         - vless-1443832160
         - vless-1436581066
-        - vless-1461228167
       type: select
 rules:
     - MATCH,select
