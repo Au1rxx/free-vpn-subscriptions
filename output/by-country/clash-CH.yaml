@@ -1,0 +1,22 @@
+proxies:
+    - name: hysteria2-1483330095
+      password: 5413edfb-08d6-4fba-b51c-809c04feb127
+      port: 443
+      server: 77.110.104.238
+      skip-cert-verify: false
+      sni: ch2-hy2.veilvpn.life
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-1483330095
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-1483330095
+      type: select
+rules:
+    - MATCH,select

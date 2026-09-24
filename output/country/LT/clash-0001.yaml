@@ -1,4 +1,19 @@
 proxies:
+    - name: trojan-122909
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20123
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
+    - name: hysteria2-579284233
+      password: 56ae4ec4-6705-43d0-bf3a-bc36ab3b3545
+      port: 443
+      server: ltu-02.node.lumixnet.com
+      skip-cert-verify: false
+      sni: ltu-02.node.lumixnet.com
+      type: hysteria2
     - cipher: aes-256-cfb
       name: shadowsocks-696781306
       password: y9VURyNzJWNRYEGQ
@@ -244,6 +259,20 @@ proxies:
       type: vless
       udp: true
       uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1394179333
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: vrcsm8L_tY7sNbnCEdLCEjOthh_w9bdWS3wFPgsIomk
+        short-id: 4fa44664f6a566d3
+      server: 84.32.215.5
+      servername: lt.aether-runet.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1400004629
@@ -344,20 +373,6 @@ proxies:
       uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1424436793
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: vrcsm8L_tY7sNbnCEdLCEjOthh_w9bdWS3wFPgsIomk
-        short-id: 4fa44664f6a566d3
-      server: 84.32.215.94
-      servername: lt.aether-runet.top
-      tls: true
-      type: vless
-      udp: true
-      uuid: c5694dc5-39fd-4a92-8430-3837baa522a3
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-1438535611
       network: tcp
       port: 443
@@ -380,10 +395,22 @@ proxies:
       type: vless
       udp: true
       uuid: 27aa2f99-9617-45d9-a4ae-6b59edb1fcd9
+    - name: vless-1483713583
+      network: ws
+      port: 443
+      server: 95.129.236.216
+      servername: crm.hourtley.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d990cb84-07e7-4cf4-9289-58881f0f7dc5
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-122909
+        - hysteria2-579284233
         - shadowsocks-696781306
         - shadowsocks-717968959
         - shadowsocks-723348709
@@ -406,6 +433,7 @@ proxy-groups:
         - vless-1340615726
         - vless-1352518396
         - vless-1393932614
+        - vless-1394179333
         - vless-1400004629
         - vless-1401125307
         - vless-1412445042
@@ -413,14 +441,16 @@ proxy-groups:
         - vless-1415204691
         - vless-1415925721
         - vless-1421470273
-        - vless-1424436793
         - vless-1438535611
         - vless-1478832121
+        - vless-1483713583
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-122909
+        - hysteria2-579284233
         - shadowsocks-696781306
         - shadowsocks-717968959
         - shadowsocks-723348709
@@ -443,6 +473,7 @@ proxy-groups:
         - vless-1340615726
         - vless-1352518396
         - vless-1393932614
+        - vless-1394179333
         - vless-1400004629
         - vless-1401125307
         - vless-1412445042
@@ -450,9 +481,9 @@ proxy-groups:
         - vless-1415204691
         - vless-1415925721
         - vless-1421470273
-        - vless-1424436793
         - vless-1438535611
         - vless-1478832121
+        - vless-1483713583
       type: select
 rules:
     - MATCH,select
