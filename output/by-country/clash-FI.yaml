@@ -6,6 +6,16 @@ proxies:
       skip-cert-verify: true
       sni: iq5ny.pleiades.codes
       type: hysteria2
+    - name: vless-1443832160
+      network: grpc
+      port: 443
+      server: 2.27.175.71
+      servername: assets-fi.pleiades.codes
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
     - client-fingerprint: edge
       name: vless-1436581066
       network: grpc
@@ -46,23 +56,41 @@ proxies:
       type: vless
       udp: true
       uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1381752782
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
+        short-id: ""
+      server: est1313.ggisopi.su
+      servername: ""
+      tls: true
+      type: vless
+      udp: true
+      uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1430663532
+        - vless-1443832160
         - vless-1436581066
         - vless-1461228167
         - vless-1395395745
+        - vless-1381752782
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1430663532
+        - vless-1443832160
         - vless-1436581066
         - vless-1461228167
         - vless-1395395745
+        - vless-1381752782
       type: select
 rules:
     - MATCH,select
