@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-984269666
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+        short-id: 43dcff53849b81e6
+      server: 152.53.1.40
+      servername: at.quattro-tech.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: edde565e-41f5-400e-84ea-7b87a3e84488
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-984954074
@@ -238,34 +252,6 @@ proxies:
       type: vless
       udp: true
       uuid: ce230b9c-0531-40da-bc3f-f27a8e059db1
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1475453110
-      network: tcp
-      port: 5865
-      reality-opts:
-        public-key: 1UlHWXQ11dMmBYHq7XYsyKnfPVGTh9UssmiJE_zRnjI
-        short-id: a4f7c2e91b6d8035
-      server: 45.86.245.107
-      servername: ru.vkroom-it-service.xyz
-      tls: true
-      type: vless
-      udp: true
-      uuid: ce230b9c-0531-40da-bc3f-f27a8e059db1
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1479209761
-      network: tcp
-      port: 5865
-      reality-opts:
-        public-key: 1UlHWXQ11dMmBYHq7XYsyKnfPVGTh9UssmiJE_zRnjI
-        short-id: a4f7c2e91b6d8035
-      server: 45.86.245.107
-      servername: ru.vkroom-it-service.xyz
-      tls: true
-      type: vless
-      udp: true
-      uuid: ce230b9c-0531-40da-bc3f-f27a8e059db1
     - flow: xtls-rprx-vision
       name: vless-1484507258
       network: tcp
@@ -281,6 +267,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-984269666
         - vless-984954074
         - vless-996068384
         - vless-1005323796
@@ -302,14 +289,13 @@ proxy-groups:
         - vless-1464103876
         - vless-1469494410
         - vless-1472877633
-        - vless-1475453110
-        - vless-1479209761
         - vless-1484507258
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-984269666
         - vless-984954074
         - vless-996068384
         - vless-1005323796
@@ -331,8 +317,6 @@ proxy-groups:
         - vless-1464103876
         - vless-1469494410
         - vless-1472877633
-        - vless-1475453110
-        - vless-1479209761
         - vless-1484507258
       type: select
 rules:
