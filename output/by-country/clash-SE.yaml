@@ -41,13 +41,19 @@ proxies:
       server: 13.61.0.108
       type: ss
       udp: true
-    - name: hysteria2-1466427066
-      password: 19f72087-4591-4d72-930b-2697078ec2be
-      port: 4433
-      server: 5.183.101.138
-      skip-cert-verify: true
-      sni: se.xiaoliyu.cyou
-      type: hysteria2
+    - client-fingerprint: firefox
+      name: vless-1125213250
+      network: grpc
+      port: 33743
+      reality-opts:
+        public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
+        short-id: ""
+      server: 193.42.39.10
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b3a11068-1a7e-4643-85de-7c82cce46943
 proxy-groups:
     - interval: 300
       name: auto
@@ -57,7 +63,7 @@ proxy-groups:
         - vless-1477989675
         - shadowsocks-1446360518
         - shadowsocks-1448243275
-        - hysteria2-1466427066
+        - vless-1125213250
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -68,7 +74,7 @@ proxy-groups:
         - vless-1477989675
         - shadowsocks-1446360518
         - shadowsocks-1448243275
-        - hysteria2-1466427066
+        - vless-1125213250
       type: select
 rules:
     - MATCH,select
