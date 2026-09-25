@@ -6,17 +6,33 @@ proxies:
       server: 38.180.214.110
       type: ss
       udp: true
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1510633077
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: gbdV7yfSrARjUTWDINB-htgzZDdyZszmyrom1S3Pez8
+        short-id: 16afcda5a00125a0
+      server: 193.181.217.68
+      servername: tradingview.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: cfed68c4-fc10-4638-b3ca-140e1e873797
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1108598219
+        - vless-1510633077
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1108598219
+        - vless-1510633077
       type: select
 rules:
     - MATCH,select
