@@ -1,22 +1,22 @@
 proxies:
-    - name: hysteria2-1499323624
-      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
-      port: 8081
-      server: 162.249.126.13
-      skip-cert-verify: false
-      sni: hop-germany-september.dynuddns.com
-      type: hysteria2
+    - name: vless-1496043616
+      network: raw
+      port: 2053
+      server: test.keoplentuio.xyz
+      type: vless
+      udp: true
+      uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1499323624
+        - vless-1496043616
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1499323624
+        - vless-1496043616
       type: select
 rules:
     - MATCH,select
