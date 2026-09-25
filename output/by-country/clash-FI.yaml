@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1430663532
+      password: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
+      port: 8443
+      server: iq5ny.pleiades.codes
+      skip-cert-verify: true
+      sni: iq5ny.pleiades.codes
+      type: hysteria2
     - name: hysteria2-1424102306
       password: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
       port: 8443
@@ -34,26 +41,6 @@ proxies:
       type: vless
       udp: true
       uuid: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
-    - name: vless-1494454066
-      network: grpc
-      port: 443
-      server: 2.27.175.71
-      servername: assets-fi.pleiades.codes
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
-    - name: vless-1461228176
-      network: grpc
-      port: 443
-      server: assets-fi.pleiades.codes
-      servername: assets-fi.pleiades.codes
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
     - name: vless-1450912450
       network: grpc
       port: 443
@@ -68,24 +55,22 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1430663532
         - hysteria2-1424102306
         - vmess-1493973002
         - vmess-1495412200
         - vless-1443832160
-        - vless-1494454066
-        - vless-1461228176
         - vless-1450912450
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1430663532
         - hysteria2-1424102306
         - vmess-1493973002
         - vmess-1495412200
         - vless-1443832160
-        - vless-1494454066
-        - vless-1461228176
         - vless-1450912450
       type: select
 rules:
