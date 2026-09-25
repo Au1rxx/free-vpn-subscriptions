@@ -1,0 +1,51 @@
+{
+  "outbounds": [
+    {
+      "server": "104.16.10.185",
+      "server_port": 443,
+      "tag": "vless-1471642565",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "v2ray.simspeedup.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "headers": {
+          "Host": "v2ray.simspeedup.com"
+        },
+        "path": "/ws",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "3c52e091-6714-4915-949f-2149fe69951b"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1471642565"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1471642565"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

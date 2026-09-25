@@ -1,0 +1,22 @@
+proxies:
+    - name: vless-1496929559
+      network: tcp
+      port: 25895
+      server: norway.danqela.ir
+      type: vless
+      udp: true
+      uuid: 94459532-f38d-40a2-9bbe-74deb93b3a22
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1496929559
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1496929559
+      type: select
+rules:
+    - MATCH,select
