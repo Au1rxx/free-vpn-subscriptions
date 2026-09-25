@@ -1,0 +1,25 @@
+proxies:
+    - name: vless-14634
+      network: tcp
+      port: 443
+      server: 185.233.131.236
+      servername: v3p.sabermusic.ir
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: b9f5a731-ad7c-4185-9d86-89a4a043961d
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-14634
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-14634
+      type: select
+rules:
+    - MATCH,select

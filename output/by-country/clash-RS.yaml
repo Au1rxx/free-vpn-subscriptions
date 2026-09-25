@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: qq
+      name: vless-1449420593
+      network: grpc
+      port: 9889
+      reality-opts:
+        public-key: ycPIUcY6ci2yi7YA_OHc20e4gzxEdJTqpmeShxSuHRU
+        short-id: aabb
+      server: 213.171.25.29
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1449420593
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1449420593
+      type: select
+rules:
+    - MATCH,select
