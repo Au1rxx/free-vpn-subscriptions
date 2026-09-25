@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-1424102306
-      password: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
-      port: 8443
-      server: iq5ny.pleiades.codes
-      skip-cert-verify: false
-      sni: iq5ny.pleiades.codes
-      type: hysteria2
     - name: vless-1443832160
       network: grpc
       port: 443
@@ -39,13 +32,6 @@ proxies:
       type: vless
       udp: true
       uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1493080648
-      password: f8Llc9OigAChSUgWakI7ZW
-      port: 5228
-      server: creativeboxse.zanity.net
-      type: ss
-      udp: true
     - name: vless-1450912450
       network: grpc
       port: 443
@@ -70,29 +56,86 @@ proxies:
       type: vless
       udp: true
       uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1478574871
+      network: tcp
+      port: 56328
+      reality-opts:
+        public-key: iI1pc8k9-mIPHL2Dga-4n4h3KoBT68lN434nglpgm2M
+        short-id: f3a9c21e8b6d4571
+      server: 62.60.152.1
+      servername: table.vkroom-it-service.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: ce230b9c-0531-40da-bc3f-f27a8e059db1
+    - client-fingerprint: chrome
+      name: vless-335070407
+      network: tcp
+      port: 448
+      reality-opts:
+        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+        short-id: cd21e552537c7c0b
+      server: 185.79.138.71
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
+    - client-fingerprint: chrome
+      name: vless-294269613
+      network: raw
+      port: 448
+      reality-opts:
+        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+        short-id: cd21e552537c7c0b
+      server: 185.79.138.71
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
+    - client-fingerprint: chrome
+      name: vless-272678138
+      network: tcp
+      port: 448
+      reality-opts:
+        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+        short-id: cd21e552537c7c0b
+      server: 185.79.138.71
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1424102306
         - vless-1443832160
         - vmess-1493973002
         - vless-1381752782
-        - shadowsocks-1493080648
         - vless-1450912450
         - vless-1381769945
+        - vless-1478574871
+        - vless-335070407
+        - vless-294269613
+        - vless-272678138
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1424102306
         - vless-1443832160
         - vmess-1493973002
         - vless-1381752782
-        - shadowsocks-1493080648
         - vless-1450912450
         - vless-1381769945
+        - vless-1478574871
+        - vless-335070407
+        - vless-294269613
+        - vless-272678138
       type: select
 rules:
     - MATCH,select
