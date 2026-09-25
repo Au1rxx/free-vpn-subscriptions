@@ -1,4 +1,13 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-1495412200
+      network: tcp
+      port: 57361
+      server: me6.movieseryalirani.ir
+      type: vmess
+      udp: true
+      uuid: ed815caa-bff1-4419-8c61-1d108eabaf1f
     - name: hysteria2-1430663532
       password: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
       port: 8443
@@ -22,15 +31,6 @@ proxies:
       type: vmess
       udp: true
       uuid: ed815caa-bff1-4419-8c61-1d108eabaf1f
-    - alterId: 0
-      cipher: auto
-      name: vmess-1495412200
-      network: tcp
-      port: 57361
-      server: me6.movieseryalirani.ir
-      type: vmess
-      udp: true
-      uuid: ed815caa-bff1-4419-8c61-1d108eabaf1f
     - name: vless-1443832160
       network: grpc
       port: 443
@@ -41,10 +41,10 @@ proxies:
       type: vless
       udp: true
       uuid: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
-    - name: vless-1450912450
+    - name: vless-1455409500
       network: grpc
       port: 443
-      server: 2.27.175.71
+      server: assets-fi.pleiades.codes
       servername: assets-fi.pleiades.codes
       skip-cert-verify: false
       tls: true
@@ -55,23 +55,23 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-1495412200
         - hysteria2-1430663532
         - hysteria2-1424102306
         - vmess-1493973002
-        - vmess-1495412200
         - vless-1443832160
-        - vless-1450912450
+        - vless-1455409500
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-1495412200
         - hysteria2-1430663532
         - hysteria2-1424102306
         - vmess-1493973002
-        - vmess-1495412200
         - vless-1443832160
-        - vless-1450912450
+        - vless-1455409500
       type: select
 rules:
     - MATCH,select
