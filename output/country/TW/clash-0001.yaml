@@ -1,12 +1,5 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-178
-      password: k1dBOmOB4oqi7Ump37a1bQ
-      port: 8080
-      server: 82.38.31.219
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-303
       password: 7e731ec3-f8e1-43f6-92cf-3978d14705c4
       port: 50099
@@ -37,9 +30,25 @@ proxies:
       sni: tw.catxstar.com
       type: trojan
       udp: true
+    - name: trojan-122871
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20048
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: trojan-122893
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20087
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: tw.catxstar.com
+      type: trojan
+      udp: true
+    - name: trojan-122903
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20109
       server: d3.catcat321.com
       skip-cert-verify: true
       sni: tw.catxstar.com
@@ -346,14 +355,6 @@ proxies:
     - name: trojan-856461950
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20025
-      server: krhtybay.catcat321.com
-      skip-cert-verify: true
-      sni: tw.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-856461974
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20044
       server: krhtybay.catcat321.com
       skip-cert-verify: true
       sni: tw.catxstar.com
@@ -1266,19 +1267,6 @@ proxies:
       type: vless
       udp: true
       uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
-    - client-fingerprint: edge
-      name: vless-1447775040
-      network: tcp
-      port: 24215
-      reality-opts:
-        public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
-        short-id: ""
-      server: 118.167.206.152
-      servername: addons.mozilla.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
     - client-fingerprint: chrome
       name: vless-1449472328
       network: tcp
@@ -1367,16 +1355,58 @@ proxies:
       skip-cert-verify: true
       sni: "off"
       type: hysteria2
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1497490022
+      network: tcp
+      port: 60011
+      reality-opts:
+        public-key: n4lBj6UGcj-O-SmvKXHC_uLtp0IyefVCVMVhPz6WsQg
+        short-id: 1be9ffe7d5
+      server: 210.79.155.98
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 73ddc64f-0e5a-4528-bb15-decc8a373826
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1497490058
+      network: tcp
+      port: 60531
+      reality-opts:
+        public-key: n4lBj6UGcj-O-SmvKXHC_uLtp0IyefVCVMVhPz6WsQg
+        short-id: 1be9ffe7d5
+      server: www.aisearch66.com
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 73ddc64f-0e5a-4528-bb15-decc8a373826
+    - client-fingerprint: firefox
+      name: vless-1497518627
+      network: tcp
+      port: 24215
+      reality-opts:
+        public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
+        short-id: ""
+      server: 118.167.230.191
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-178
         - shadowsocks-303
         - hysteria2-16610
         - vmess-25247
         - trojan-122868
+        - trojan-122871
         - trojan-122893
+        - trojan-122903
         - vmess-145255
         - vmess-5258766
         - hysteria2-137781265
@@ -1417,7 +1447,6 @@ proxy-groups:
         - vmess-829610504
         - hysteria2-848874255
         - trojan-856461950
-        - trojan-856461974
         - trojan-856462007
         - trojan-856462023
         - trojan-856462024
@@ -1491,7 +1520,6 @@ proxy-groups:
         - shadowsocks-1433983954
         - vless-1444919263
         - vless-1444941090
-        - vless-1447775040
         - vless-1449472328
         - vless-1449472331
         - vless-1459596948
@@ -1500,17 +1528,21 @@ proxy-groups:
         - vless-1472865563
         - vless-1478130142
         - hysteria2-1482139052
+        - vless-1497490022
+        - vless-1497490058
+        - vless-1497518627
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-178
         - shadowsocks-303
         - hysteria2-16610
         - vmess-25247
         - trojan-122868
+        - trojan-122871
         - trojan-122893
+        - trojan-122903
         - vmess-145255
         - vmess-5258766
         - hysteria2-137781265
@@ -1551,7 +1583,6 @@ proxy-groups:
         - vmess-829610504
         - hysteria2-848874255
         - trojan-856461950
-        - trojan-856461974
         - trojan-856462007
         - trojan-856462023
         - trojan-856462024
@@ -1625,7 +1656,6 @@ proxy-groups:
         - shadowsocks-1433983954
         - vless-1444919263
         - vless-1444941090
-        - vless-1447775040
         - vless-1449472328
         - vless-1449472331
         - vless-1459596948
@@ -1634,6 +1664,9 @@ proxy-groups:
         - vless-1472865563
         - vless-1478130142
         - hysteria2-1482139052
+        - vless-1497490022
+        - vless-1497490058
+        - vless-1497518627
       type: select
 rules:
     - MATCH,select

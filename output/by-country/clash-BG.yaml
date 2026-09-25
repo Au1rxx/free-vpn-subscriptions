@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1469451401
-      network: tcp
-      port: 18775
-      reality-opts:
-        public-key: oR75S6pg_RDAKIuzv_WrCiwaUqqFoek2iuo5N22llQQ
-        short-id: 6ba85179e30d4fc2
-      server: 136.175.82.85
-      servername: addons.mozilla.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9ae5940b-0278-403d-a1e1-9dddc47bdcf6
     - name: vless-1471642550
       network: ws
       port: 8081
@@ -20,35 +6,17 @@ proxies:
       type: vless
       udp: true
       uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1473449962
-      network: raw
-      port: 18775
-      reality-opts:
-        public-key: oR75S6pg_RDAKIuzv_WrCiwaUqqFoek2iuo5N22llQQ
-        short-id: 6ba85179e30d4fc2
-      server: 136.175.82.85
-      servername: addons.mozilla.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9ae5940b-0278-403d-a1e1-9dddc47bdcf6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1469451401
         - vless-1471642550
-        - vless-1473449962
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1469451401
         - vless-1471642550
-        - vless-1473449962
       type: select
 rules:
     - MATCH,select
