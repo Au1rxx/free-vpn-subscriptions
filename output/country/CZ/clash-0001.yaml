@@ -15,12 +15,27 @@ proxies:
       server: 141.227.134.63
       type: ss
       udp: true
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1496929560
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: QfdR5yEjdbaqSet3-XrkDdVjPO9VTRGlUI-MV-b4p38
+        short-id: ""
+      server: 13.143.181.220
+      servername: msk1.maxtelemost.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7a8d2c3f-d6dd-0004-81d8-cff23d8364ee
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-1005127037
         - shadowsocks-1458933296
+        - vless-1496929560
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -28,6 +43,7 @@ proxy-groups:
         - auto
         - vmess-1005127037
         - shadowsocks-1458933296
+        - vless-1496929560
       type: select
 rules:
     - MATCH,select

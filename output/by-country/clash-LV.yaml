@@ -6,17 +6,50 @@ proxies:
       server: 185.135.86.175
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-795694248
+      password: hbtvgUz5uNYyB3Rf
+      port: 9036
+      server: 185.135.86.175
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-717969044
+      password: Yg4MbdXFQ9HFFVY6
+      port: 9034
+      server: 185.135.86.175
+      type: ss
+      udp: true
+    - client-fingerprint: firefox
+      name: vless-1492111114
+      network: grpc
+      port: 9881
+      reality-opts:
+        public-key: Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0
+        short-id: ""
+      server: 176.108.247.67
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 61a22f4b-4025-4c5b-9fa5-861bf36e67dd
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-743178503
+        - shadowsocks-795694248
+        - shadowsocks-717969044
+        - vless-1492111114
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-743178503
+        - shadowsocks-795694248
+        - shadowsocks-717969044
+        - vless-1492111114
       type: select
 rules:
     - MATCH,select
