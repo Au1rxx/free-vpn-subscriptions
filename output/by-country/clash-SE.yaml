@@ -6,20 +6,6 @@ proxies:
       server: 51.170.190.140
       type: ss
       udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-1445813266
-      password: amazonskr05
-      port: 443
-      server: 13.48.104.64
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-1503620380
-      password: amazonskr05
-      port: 443
-      server: 51.20.86.152
-      type: ss
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-713157148
@@ -34,23 +20,37 @@ proxies:
       type: vless
       udp: true
       uuid: 20d7c485-5d24-49b5-a5cc-bb7a7daf9908
+    - cipher: aes-256-cfb
+      name: shadowsocks-1503620380
+      password: amazonskr05
+      port: 443
+      server: 51.20.86.152
+      type: ss
+      udp: true
+    - name: hysteria2-1230577883
+      password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
+      port: 25443
+      server: se-node.rumedia-cdn.com
+      skip-cert-verify: false
+      sni: cf2.rumedia-cdn.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1509420485
-        - shadowsocks-1445813266
-        - shadowsocks-1503620380
         - vless-713157148
+        - shadowsocks-1503620380
+        - hysteria2-1230577883
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1509420485
-        - shadowsocks-1445813266
-        - shadowsocks-1503620380
         - vless-713157148
+        - shadowsocks-1503620380
+        - hysteria2-1230577883
       type: select
 rules:
     - MATCH,select
