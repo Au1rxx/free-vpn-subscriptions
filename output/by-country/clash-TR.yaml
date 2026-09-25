@@ -6,17 +6,32 @@ proxies:
       type: vless
       udp: true
       uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
+    - client-fingerprint: chrome
+      name: vless-1504726331
+      network: grpc
+      port: 18443
+      reality-opts:
+        public-key: bYVNm1Huc5MMhVUBDAO5O7O7mjZXjxESWUQzVPIoqjM
+        short-id: ca
+      server: 206.1.98.86
+      servername: www.bing.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 33e40dec-442b-46b2-b9b3-be1848ce7df8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1496043616
+        - vless-1504726331
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1496043616
+        - vless-1504726331
       type: select
 rules:
     - MATCH,select

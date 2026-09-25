@@ -6,26 +6,33 @@ proxies:
       skip-cert-verify: false
       sni: hopp-swizland-new.mysynology.net
       type: hysteria2
-    - name: hysteria2-1393931791
-      password: we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH
-      port: 8443
-      server: 82.38.64.229
-      skip-cert-verify: true
-      sni: hopp-swizland-new.mysynology.net
-      type: hysteria2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1230998998
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
+        short-id: 19253fae84102271
+      server: 45.90.59.15
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3950b45e-740d-4dca-ac95-505ec8534592
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1496260654
-        - hysteria2-1393931791
+        - vless-1230998998
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1496260654
-        - hysteria2-1393931791
+        - vless-1230998998
       type: select
 rules:
     - MATCH,select
