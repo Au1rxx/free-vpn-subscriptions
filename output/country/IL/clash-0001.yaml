@@ -6,6 +6,14 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: trojan-696781176
+      password: 493b3d1b5d6a298a32eea1935463dc4d
+      port: 59443
+      server: tyy129.magiclampcloud.com
+      skip-cert-verify: true
+      sni: tyy129.magiclampcloud.com
+      type: trojan
+      udp: true
     - name: hysteria2-1179524508
       password: f25f19f29ce3fb53a35bf1b35b452a43
       port: 50160
@@ -13,20 +21,6 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
-    - name: vless-1255417622
-      network: ws
-      port: 8880
-      server: 103.133.1.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1389777249
-      network: ws
-      port: 8880
-      server: 167.68.11.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1437864842
       network: ws
       port: 80
@@ -202,14 +196,27 @@ proxies:
       type: vless
       udp: true
       uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+    - name: vless-1500657496
+      network: ws
+      port: 80
+      server: platform115.golnamakcert.top
+      type: vless
+      udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+    - name: vless-1501224453
+      network: ws
+      port: 80
+      server: platform113.golnamakcert.top
+      type: vless
+      udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-59796
+        - trojan-696781176
         - hysteria2-1179524508
-        - vless-1255417622
-        - vless-1389777249
         - vless-1437864842
         - vless-1442569056
         - vless-1442724477
@@ -235,15 +242,16 @@ proxy-groups:
         - vless-1493043291
         - shadowsocks-1495883858
         - vless-1496957378
+        - vless-1500657496
+        - vless-1501224453
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-59796
+        - trojan-696781176
         - hysteria2-1179524508
-        - vless-1255417622
-        - vless-1389777249
         - vless-1437864842
         - vless-1442569056
         - vless-1442724477
@@ -269,6 +277,8 @@ proxy-groups:
         - vless-1493043291
         - shadowsocks-1495883858
         - vless-1496957378
+        - vless-1500657496
+        - vless-1501224453
       type: select
 rules:
     - MATCH,select

@@ -40,6 +40,13 @@ proxies:
       type: vmess
       udp: true
       uuid: ed815caa-bff1-4419-8c61-1d108eabaf1f
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1493080648
+      password: f8Llc9OigAChSUgWakI7ZW
+      port: 5228
+      server: creativeboxse.zanity.net
+      type: ss
+      udp: true
     - name: vless-1443832160
       network: grpc
       port: 443
@@ -50,19 +57,6 @@ proxies:
       type: vless
       udp: true
       uuid: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
-    - client-fingerprint: chrome
-      name: vless-1418962228
-      network: grpc
-      port: 9872
-      reality-opts:
-        public-key: sm3E3hjmT6_Gmg_O9rBz4nfXYrHpnl6-LvcCp6T6_xc
-        short-id: aabb
-      server: 176.108.243.18
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
 proxy-groups:
     - interval: 300
       name: auto
@@ -72,8 +66,8 @@ proxy-groups:
         - hysteria2-1424102306
         - vmess-1493973002
         - vmess-1496043613
+        - shadowsocks-1493080648
         - vless-1443832160
-        - vless-1418962228
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -84,8 +78,8 @@ proxy-groups:
         - hysteria2-1424102306
         - vmess-1493973002
         - vmess-1496043613
+        - shadowsocks-1493080648
         - vless-1443832160
-        - vless-1418962228
       type: select
 rules:
     - MATCH,select
