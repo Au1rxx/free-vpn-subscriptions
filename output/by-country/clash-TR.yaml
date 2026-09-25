@@ -6,6 +6,13 @@ proxies:
       type: vless
       udp: true
       uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
+    - name: vless-1504387208
+      network: tcp
+      port: 2053
+      server: 82.47.63.156
+      type: vless
+      udp: true
+      uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
     - name: vless-1507085268
       network: grpc
       port: 3090
@@ -26,21 +33,38 @@ proxies:
       type: vless
       udp: true
       uuid: 33e40dec-442b-46b2-b9b3-be1848ce7df8
+    - client-fingerprint: firefox
+      name: vless-1285803654
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
+        short-id: 9e419c0759b54d6f
+      server: 151.241.226.201
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1496043616
+        - vless-1504387208
         - vless-1507085268
         - vless-1504726331
+        - vless-1285803654
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1496043616
+        - vless-1504387208
         - vless-1507085268
         - vless-1504726331
+        - vless-1285803654
       type: select
 rules:
     - MATCH,select
