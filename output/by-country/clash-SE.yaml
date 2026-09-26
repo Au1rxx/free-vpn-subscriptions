@@ -6,17 +6,26 @@ proxies:
       server: 13.60.213.145
       type: ss
       udp: true
+    - name: hysteria2-1230577883
+      password: 29ffde49-e1d6-4dcd-a135-352920f9f0b8
+      port: 25443
+      server: se-node.rumedia-cdn.com
+      skip-cert-verify: false
+      sni: cf2.rumedia-cdn.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1509447446
+        - hysteria2-1230577883
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1509447446
+        - hysteria2-1230577883
       type: select
 rules:
     - MATCH,select

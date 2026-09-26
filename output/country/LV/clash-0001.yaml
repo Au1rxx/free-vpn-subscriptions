@@ -13,6 +13,14 @@ proxies:
       type: vless
       udp: true
       uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
+    - name: trojan-696781161
+      password: 3252f608e796316fbbac3359542f70d9
+      port: 59443
+      server: tyy129.magiclampcloud.com
+      skip-cert-verify: true
+      sni: tyy129.magiclampcloud.com
+      type: trojan
+      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-696781305
       password: 45xgMgm386pjWjTx
@@ -314,11 +322,26 @@ proxies:
       skip-cert-verify: true
       sni: hy.quattro-tech.ru
       type: hysteria2
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1328056086
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Y0noOXC8qHmbM0GmDpj-9BBwKSOtHs-uMbNfKU050GQ
+        short-id: b558b9305a0b
+      server: sql.popmintxo.cc
+      servername: www.microsoft.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d806a58b-33aa-42e0-b170-395e49c16b37
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-696780838
+        - trojan-696781161
         - shadowsocks-696781305
         - vless-713159145
         - shadowsocks-717969044
@@ -346,12 +369,14 @@ proxy-groups:
         - vless-1236754503
         - hysteria2-1278300107
         - hysteria2-1281960369
+        - vless-1328056086
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-696780838
+        - trojan-696781161
         - shadowsocks-696781305
         - vless-713159145
         - shadowsocks-717969044
@@ -379,6 +404,7 @@ proxy-groups:
         - vless-1236754503
         - hysteria2-1278300107
         - hysteria2-1281960369
+        - vless-1328056086
       type: select
 rules:
     - MATCH,select
