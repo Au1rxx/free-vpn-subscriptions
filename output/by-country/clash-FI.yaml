@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1520000102
+      password: kewr0929_M9ic23iqe_m9E2R93Js8034c_Rt10
+      port: 8443
+      server: 222.167.212.159
+      skip-cert-verify: true
+      sni: new-finland-september.bumbleshrimp.com
+      type: hysteria2
     - name: hysteria2-1511948086
       password: 02bd8b5a-170b-4a79-8e68-9cec710272c7
       port: 443
@@ -8,20 +15,6 @@ proxies:
       type: hysteria2
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1381752782
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
-        short-id: ""
-      server: est1313.ggisopi.su
-      servername: ""
-      tls: true
-      type: vless
-      udp: true
-      uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-1394180319
       network: tcp
       port: 443
@@ -29,6 +22,20 @@ proxies:
         public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
         short-id: ""
       server: 83.219.97.26
+      servername: est1313.ggisopi.su
+      tls: true
+      type: vless
+      udp: true
+      uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1381769945
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
+        short-id: ""
+      server: est1313.ggisopi.su
       servername: est1313.ggisopi.su
       tls: true
       type: vless
@@ -57,20 +64,6 @@ proxies:
       uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1381769945
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
-        short-id: ""
-      server: est1313.ggisopi.su
-      servername: est1313.ggisopi.su
-      tls: true
-      type: vless
-      udp: true
-      uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-1401125334
       network: tcp
       port: 443
@@ -83,6 +76,20 @@ proxies:
       type: vless
       udp: true
       uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1381752782
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
+        short-id: ""
+      server: est1313.ggisopi.su
+      servername: ""
+      tls: true
+      type: vless
+      udp: true
+      uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
     - name: hysteria2-1501696966
       password: kewr0929_M9ic23iqe_m9E2R93Js8034c_Rt10
       port: 8443
@@ -90,46 +97,33 @@ proxies:
       skip-cert-verify: true
       sni: new-finland-september.bumbleshrimp.com
       type: hysteria2
-    - client-fingerprint: random
-      name: vless-1515821963
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: sgFFdQvfeujBKh6g7N7klU_u0mKYlr800MFbko5FzUg
-        short-id: 844352756c1fabba
-      server: 45.149.147.95
-      servername: api.vkimages.io
-      tls: true
-      type: vless
-      udp: true
-      uuid: 440f3c08-7599-406e-8ba3-7dbc6324c5ed
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1520000102
         - hysteria2-1511948086
-        - vless-1381752782
         - vless-1394180319
+        - vless-1381769945
         - hysteria2-1466427060
         - vless-1374958310
-        - vless-1381769945
         - vless-1401125334
+        - vless-1381752782
         - hysteria2-1501696966
-        - vless-1515821963
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1520000102
         - hysteria2-1511948086
-        - vless-1381752782
         - vless-1394180319
+        - vless-1381769945
         - hysteria2-1466427060
         - vless-1374958310
-        - vless-1381769945
         - vless-1401125334
+        - vless-1381752782
         - hysteria2-1501696966
-        - vless-1515821963
       type: select
 rules:
     - MATCH,select
