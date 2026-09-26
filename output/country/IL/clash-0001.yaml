@@ -14,6 +14,20 @@ proxies:
       sni: tyy129.magiclampcloud.com
       type: trojan
       udp: true
+    - name: vless-758269975
+      network: ws
+      port: 8880
+      server: 176.124.223.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: hysteria2-1040048366
+      password: dsmO0439gj_nX942GJRE_9j39fbcxv52_R
+      port: 8080
+      server: 85.209.157.177
+      skip-cert-verify: false
+      sni: hopp-transit.1cooldns.com
+      type: hysteria2
     - name: hysteria2-1048663499
       password: dsmO0439gj_nX942GJRE_9j39fbcxv52_R
       port: 8080
@@ -21,32 +35,15 @@ proxies:
       skip-cert-verify: true
       sni: hopp-transit.1cooldns.com
       type: hysteria2
-    - cipher: 2022-blake3-aes-128-gcm
-      name: shadowsocks-1495883858
-      password: EIIwJPg8YqgnjLLd58zoTg==:MwxxR64bpSmXVU+ufX6xvw==
-      port: 8388
-      server: 85.209.157.184
-      type: ss
-      udp: true
-    - name: vless-1510897064
-      network: ws
-      port: 443
-      server: fserver-worker-001.mapleridgeway.top
-      servername: fserver-worker-001.mapleridgeway.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 83b4af70-376e-427c-8c11-a025bec6b085
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-59796
         - trojan-696781176
+        - vless-758269975
+        - hysteria2-1040048366
         - hysteria2-1048663499
-        - shadowsocks-1495883858
-        - vless-1510897064
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -54,9 +51,9 @@ proxy-groups:
         - auto
         - vless-59796
         - trojan-696781176
+        - vless-758269975
+        - hysteria2-1040048366
         - hysteria2-1048663499
-        - shadowsocks-1495883858
-        - vless-1510897064
       type: select
 rules:
     - MATCH,select
