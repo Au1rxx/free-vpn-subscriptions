@@ -1,20 +1,6 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1344234008
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
-        short-id: 88b6
-      server: 5.253.28.218
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 405b964e-a2d2-454f-aaaa-711cc218897c
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-676881742
       network: raw
       port: 40443
@@ -40,21 +26,34 @@ proxies:
       type: vless
       udp: true
       uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
+    - client-fingerprint: firefox
+      name: vless-1272779542
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
+        short-id: 9980e0609b0d3891
+      server: 194.61.31.126
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1344234008
         - vless-676881742
         - vless-1343261564
+        - vless-1272779542
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1344234008
         - vless-676881742
         - vless-1343261564
+        - vless-1272779542
       type: select
 rules:
     - MATCH,select
