@@ -1,18 +1,32 @@
 proxies:
     - cipher: aes-256-cfb
-      name: shadowsocks-1509447446
-      password: amazonskr05
-      port: 443
-      server: 13.60.213.145
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
       name: shadowsocks-1438373141
       password: amazonskr05
       port: 443
       server: 16.170.163.124
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-1456821474
+      password: amazonskr05
+      port: 443
+      server: 51.20.143.248
+      type: ss
+      udp: true
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1488471137
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: x6p656szvu_3CKLsJ4NtkooRvdTVGx7IoPca_p58_jA
+        short-id: fb442438e2223836
+      server: 5.157.10.148
+      servername: surstreming.vvzzkontaktezzvv.garden
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4bdeee92-97e8-414d-bef6-ec1d5e2ab73b
     - cipher: aes-256-cfb
       name: shadowsocks-1445813267
       password: amazonskr05
@@ -24,16 +38,18 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1509447446
         - shadowsocks-1438373141
+        - shadowsocks-1456821474
+        - vless-1488471137
         - shadowsocks-1445813267
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1509447446
         - shadowsocks-1438373141
+        - shadowsocks-1456821474
+        - vless-1488471137
         - shadowsocks-1445813267
       type: select
 rules:

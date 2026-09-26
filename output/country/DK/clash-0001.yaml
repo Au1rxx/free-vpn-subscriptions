@@ -6,17 +6,33 @@ proxies:
       server: 38.180.214.110
       type: ss
       udp: true
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1522333522
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: GW-DWwk3vtXtXBEqQxY_Cf83JIisyyk34rUrtkMZ90g
+        short-id: ""
+      server: 130.49.188.4
+      servername: lk.s.dn.iki-servers.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 85261643-2fd5-4889-8da9-43abc3c08405
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1108598219
+        - vless-1522333522
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1108598219
+        - vless-1522333522
       type: select
 rules:
     - MATCH,select
