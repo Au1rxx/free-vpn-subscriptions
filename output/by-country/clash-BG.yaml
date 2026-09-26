@@ -1,0 +1,22 @@
+proxies:
+    - name: vless-1396837382
+      network: ws
+      port: 8081
+      server: 131.123.37.199
+      type: vless
+      udp: true
+      uuid: 54ee5e59-55a3-4599-83ff-0c67b3f411b2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1396837382
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1396837382
+      type: select
+rules:
+    - MATCH,select

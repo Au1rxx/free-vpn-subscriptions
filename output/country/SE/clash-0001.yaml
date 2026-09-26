@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-688578412
-      password: MiTiVPN
-      port: 443
-      server: 104.16.72.70
-      skip-cert-verify: false
-      sni: linkkon-w.ir
-      type: trojan
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-696780839
@@ -362,13 +354,6 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
-    - name: vless-1239296209
-      network: ws
-      port: 8080
-      server: 188.114.97.6
-      type: vless
-      udp: true
-      uuid: 50414e45-4c5f-5a45-5553-4eef5adc237a
     - client-fingerprint: chrome
       name: vless-1250669971
       network: grpc
@@ -687,16 +672,6 @@ proxies:
       server: 45.138.103.4
       type: ss
       udp: true
-    - name: vless-1477907125
-      network: ws
-      port: 443
-      server: 188.114.97.6
-      servername: imzajnekupas.a3-60-morteza.workers.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7a657573-627d-c5d7-4e7b-9e260f5cfff1
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1484507208
@@ -865,6 +840,13 @@ proxies:
       type: vless
       udp: true
       uuid: 77da6e30-ad4e-11f1-94d5-525400d1d4f7
+    - cipher: aes-256-cfb
+      name: shadowsocks-1513944818
+      password: amazonskr05
+      port: 443
+      server: 13.49.76.55
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1515820968
@@ -879,11 +861,24 @@ proxies:
       type: vless
       udp: true
       uuid: 77da6e30-ad4e-11f1-94d5-525400d1d4f7
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1518612544
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: 1KY_jqa2yPLBEBa-3TG77zs4ak2zQLGul4eexxCueyI
+        short-id: ""
+      server: 79.108.164.200
+      servername: github.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8df7343e-2427-41fb-aad1-6c563296faf6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-688578412
         - vless-696780839
         - vless-713157148
         - vless-872770205
@@ -911,7 +906,6 @@ proxy-groups:
         - vless-1173154542
         - vless-1216487832
         - vless-1235435931
-        - vless-1239296209
         - vless-1250669971
         - vless-1257315595
         - vless-1267371434
@@ -946,7 +940,6 @@ proxy-groups:
         - vless-1469242284
         - vless-1471642552
         - shadowsocks-1474542551
-        - vless-1477907125
         - vless-1484507208
         - vless-1484508247
         - vless-1488471124
@@ -961,13 +954,14 @@ proxy-groups:
         - shadowsocks-1503620380
         - shadowsocks-1509447446
         - vless-1509656116
+        - shadowsocks-1513944818
         - vless-1515820968
+        - vless-1518612544
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-688578412
         - vless-696780839
         - vless-713157148
         - vless-872770205
@@ -995,7 +989,6 @@ proxy-groups:
         - vless-1173154542
         - vless-1216487832
         - vless-1235435931
-        - vless-1239296209
         - vless-1250669971
         - vless-1257315595
         - vless-1267371434
@@ -1030,7 +1023,6 @@ proxy-groups:
         - vless-1469242284
         - vless-1471642552
         - shadowsocks-1474542551
-        - vless-1477907125
         - vless-1484507208
         - vless-1484508247
         - vless-1488471124
@@ -1045,7 +1037,9 @@ proxy-groups:
         - shadowsocks-1503620380
         - shadowsocks-1509447446
         - vless-1509656116
+        - shadowsocks-1513944818
         - vless-1515820968
+        - vless-1518612544
       type: select
 rules:
     - MATCH,select
