@@ -1,5 +1,16 @@
 proxies:
     - flow: xtls-rprx-vision
+      name: vless-1518576148
+      network: tcp
+      port: 443
+      server: 66.90.106.194
+      servername: at-at-at.failspace.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
       name: vless-1522389117
       network: tcp
       port: 443
@@ -36,6 +47,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1518576148
         - vless-1522389117
         - vless-1157879774
         - vless-1519981771
@@ -44,6 +56,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1518576148
         - vless-1522389117
         - vless-1157879774
         - vless-1519981771
