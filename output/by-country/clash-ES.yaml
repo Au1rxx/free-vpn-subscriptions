@@ -1,4 +1,18 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-16132
+      password: WSyL4XTwNsdv
+      port: 8388
+      server: 108.181.121.226
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-11052
+      password: qItG8SueYQcP
+      port: 8388
+      server: 140.174.184.5
+      type: ss
+      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-1451310230
@@ -8,13 +22,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-11052
-      password: qItG8SueYQcP
-      port: 8388
-      server: 140.174.184.5
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       name: vless-1095633772
       network: tcp
@@ -67,8 +74,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-1451310230
+        - shadowsocks-16132
         - shadowsocks-11052
+        - vmess-1451310230
         - vless-1095633772
         - vless-1107806244
         - vless-1113490852
@@ -78,8 +86,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vmess-1451310230
+        - shadowsocks-16132
         - shadowsocks-11052
+        - vmess-1451310230
         - vless-1095633772
         - vless-1107806244
         - vless-1113490852
