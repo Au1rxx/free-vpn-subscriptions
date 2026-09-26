@@ -6,19 +6,19 @@ proxies:
       skip-cert-verify: true
       sni: ch2-hy2.veilvpn.life
       type: hysteria2
+    - name: hysteria2-1482811797
+      password: we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH
+      port: 8443
+      server: 82.38.64.237
+      skip-cert-verify: false
+      sni: hopp-swizland-new.mysynology.net
+      type: hysteria2
     - name: hysteria2-1391610043
       password: we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH
       port: 8443
       server: 82.38.64.229
       skip-cert-verify: false
       sni: hopp-swizland-new.mysynology.net
-      type: hysteria2
-    - name: hysteria2-1483330095
-      password: 5413edfb-08d6-4fba-b51c-809c04feb127
-      port: 443
-      server: 77.110.104.238
-      skip-cert-verify: false
-      sni: ch2-hy2.veilvpn.life
       type: hysteria2
     - name: hysteria2-1496260654
       password: we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH
@@ -27,6 +27,20 @@ proxies:
       skip-cert-verify: false
       sni: hopp-swizland-new.mysynology.net
       type: hysteria2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1230998998
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
+        short-id: 19253fae84102271
+      server: 45.90.59.15
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3950b45e-740d-4dca-ac95-505ec8534592
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1208885914
@@ -46,9 +60,10 @@ proxy-groups:
       name: auto
       proxies:
         - hysteria2-1493685281
+        - hysteria2-1482811797
         - hysteria2-1391610043
-        - hysteria2-1483330095
         - hysteria2-1496260654
+        - vless-1230998998
         - vless-1208885914
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -56,9 +71,10 @@ proxy-groups:
       proxies:
         - auto
         - hysteria2-1493685281
+        - hysteria2-1482811797
         - hysteria2-1391610043
-        - hysteria2-1483330095
         - hysteria2-1496260654
+        - vless-1230998998
         - vless-1208885914
       type: select
 rules:

@@ -1,0 +1,22 @@
+proxies:
+    - name: vless-1500657496
+      network: ws
+      port: 80
+      server: platform115.golnamakcert.top
+      type: vless
+      udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1500657496
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1500657496
+      type: select
+rules:
+    - MATCH,select

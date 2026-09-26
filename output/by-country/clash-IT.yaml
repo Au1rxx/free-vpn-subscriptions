@@ -6,35 +6,79 @@ proxies:
       server: 185.164.175.81
       type: ss
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-1508124292
-      password: 78235e7dc55e9ad1
-      port: 30210
-      server: 132.243.255.3
-      type: ss
-      udp: true
-    - name: vless-1139792745
+    - client-fingerprint: random
+      name: vless-703656408
       network: tcp
-      port: 10086
-      server: 204.216.216.23
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
       type: vless
       udp: true
-      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - client-fingerprint: chrome
+      name: vless-1047808927
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1293637720
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: R5ycsjJ-v024902dMSqTsSdqxUwCFEXMebdBEWFt9VU
+        short-id: cd6065902eea7a02
+      server: 82.118.16.187
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dc2259c4-388e-4285-ba18-df619b6672b6
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1254189536
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: R5ycsjJ-v024902dMSqTsSdqxUwCFEXMebdBEWFt9VU
+        short-id: cd6065902eea7a02
+      server: 82.118.16.187
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dc2259c4-388e-4285-ba18-df619b6672b6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1251465982
-        - shadowsocks-1508124292
-        - vless-1139792745
+        - vless-703656408
+        - vless-1047808927
+        - vless-1293637720
+        - vless-1254189536
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1251465982
-        - shadowsocks-1508124292
-        - vless-1139792745
+        - vless-703656408
+        - vless-1047808927
+        - vless-1293637720
+        - vless-1254189536
       type: select
 rules:
     - MATCH,select
