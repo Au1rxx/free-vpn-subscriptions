@@ -21,6 +21,13 @@ proxies:
       sni: tyy129.magiclampcloud.com
       type: trojan
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-696781305
+      password: 45xgMgm386pjWjTx
+      port: 9082
+      server: 185.135.86.175
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-713159145
@@ -231,6 +238,20 @@ proxies:
       type: vless
       udp: true
       uuid: d806a58b-33aa-42e0-b170-395e49c16b37
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1107806253
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Y0noOXC8qHmbM0GmDpj-9BBwKSOtHs-uMbNfKU050GQ
+        short-id: b558b9305a0b
+      server: sql.popmintxo.cc
+      servername: www.microsoft.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d806a58b-33aa-42e0-b170-395e49c16b37
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1210852545
@@ -287,26 +308,13 @@ proxies:
       type: vless
       udp: true
       uuid: d806a58b-33aa-42e0-b170-395e49c16b37
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-1415204642
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 3J-u0CiyQk47zVzkuMVgOiVIYtomNZPr__85MDxGxVw
-        short-id: 5029592ae5516948
-      server: 2.27.210.39
-      servername: ciccuc.mervi.icu
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9bbd487f-8f84-4ad7-b897-681c3f7d95dc
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-696780838
         - trojan-696781161
+        - shadowsocks-696781305
         - vless-713159145
         - shadowsocks-717969044
         - shadowsocks-723348676
@@ -326,12 +334,12 @@ proxy-groups:
         - vless-1008574004
         - vless-1014913479
         - vless-1104591588
+        - vless-1107806253
         - vless-1210852545
         - vless-1210852553
         - hysteria2-1278300107
         - hysteria2-1281960369
         - vless-1328056086
-        - vless-1415204642
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -339,6 +347,7 @@ proxy-groups:
         - auto
         - vless-696780838
         - trojan-696781161
+        - shadowsocks-696781305
         - vless-713159145
         - shadowsocks-717969044
         - shadowsocks-723348676
@@ -358,12 +367,12 @@ proxy-groups:
         - vless-1008574004
         - vless-1014913479
         - vless-1104591588
+        - vless-1107806253
         - vless-1210852545
         - vless-1210852553
         - hysteria2-1278300107
         - hysteria2-1281960369
         - vless-1328056086
-        - vless-1415204642
       type: select
 rules:
     - MATCH,select
