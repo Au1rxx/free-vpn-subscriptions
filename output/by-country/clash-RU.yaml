@@ -13,12 +13,28 @@ proxies:
       skip-cert-verify: true
       sni: 91.240.86.70
       type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1524601660
+      password: WxYpOK1iPSJySbVNMMJDtw
+      port: 2055
+      server: 62.109.12.234
+      type: ss
+      udp: true
+    - name: hysteria2-1393931802
+      password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
+      port: 22443
+      server: 91.240.86.70
+      skip-cert-verify: true
+      sni: itsallproxy.quattro-tech.ru
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1508124294
         - hysteria2-1310560310
+        - shadowsocks-1524601660
+        - hysteria2-1393931802
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +42,8 @@ proxy-groups:
         - auto
         - shadowsocks-1508124294
         - hysteria2-1310560310
+        - shadowsocks-1524601660
+        - hysteria2-1393931802
       type: select
 rules:
     - MATCH,select
