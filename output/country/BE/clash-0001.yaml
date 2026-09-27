@@ -17,12 +17,42 @@ proxies:
       type: vmess
       udp: true
       uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+    - name: vless-1310650362
+      network: ws
+      port: 2053
+      server: 141.227.137.177
+      servername: kkkk-xcd.pages.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: b940be1b-3998-45d2-bf7b-06e7b6c4987a
+    - name: vless-1327473063
+      network: ws
+      port: 2095
+      server: 172.67.155.136
+      type: vless
+      udp: true
+      uuid: 73796e63-0000-4000-8000-000000000008
+    - name: vless-1386945490
+      network: ws
+      port: 2053
+      server: 141.227.137.177
+      servername: kkkk-xcd.pages.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: b940be1b-3998-45d2-bf7b-06e7b6c4987a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-1005124999
         - vmess-1030431013
+        - vless-1310650362
+        - vless-1327473063
+        - vless-1386945490
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -30,6 +60,9 @@ proxy-groups:
         - auto
         - vmess-1005124999
         - vmess-1030431013
+        - vless-1310650362
+        - vless-1327473063
+        - vless-1386945490
       type: select
 rules:
     - MATCH,select
