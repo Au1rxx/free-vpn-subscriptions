@@ -6,13 +6,6 @@ proxies:
       skip-cert-verify: false
       sni: ""
       type: hysteria2
-    - name: hysteria2-1509443312
-      password: 2561c6b1a3069d3170b4d7e1ecc08c65
-      port: 443
-      server: paris.nerabotaet.com
-      skip-cert-verify: true
-      sni: paris.nerabotaet.com
-      type: hysteria2
     - client-fingerprint: chrome
       name: vless-1298542551
       network: tcp
@@ -88,6 +81,13 @@ proxies:
       type: vless
       udp: true
       uuid: b21bfee6-dbd3-4e0b-840f-d66f07bf3186
+    - name: hysteria2-1509443312
+      password: 2561c6b1a3069d3170b4d7e1ecc08c65
+      port: 443
+      server: paris.nerabotaet.com
+      skip-cert-verify: true
+      sni: paris.nerabotaet.com
+      type: hysteria2
     - name: hysteria2-197583436
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -137,12 +137,39 @@ proxies:
       type: vless
       udp: true
       uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1493972862
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 7LSzvilTVKGMtBDuKGeMrLtlhY7tQf5YcG566dEgO0I
+        short-id: b390e0a721d242b0
+      server: 137.74.16.237
+      servername: www.icloud.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: aaec4e42-a095-44b6-a239-f16d234a0798
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1493604910
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: 7LSzvilTVKGMtBDuKGeMrLtlhY7tQf5YcG566dEgO0I
+        short-id: b390e0a721d242b0
+      server: 137.74.16.237
+      servername: www.icloud.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: aaec4e42-a095-44b6-a239-f16d234a0798
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1501223542
-        - hysteria2-1509443312
         - vless-1298542551
         - hysteria2-1004725118
         - hysteria2-1458251610
@@ -151,19 +178,21 @@ proxy-groups:
         - hysteria2-650412204
         - hysteria2-689011839
         - vless-1540115174
+        - hysteria2-1509443312
         - hysteria2-197583436
         - vless-656232751
         - hysteria2-24391
         - hysteria2-657099768
         - vless-1540525870
         - vless-1540525880
+        - vless-1493972862
+        - vless-1493604910
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1501223542
-        - hysteria2-1509443312
         - vless-1298542551
         - hysteria2-1004725118
         - hysteria2-1458251610
@@ -172,12 +201,15 @@ proxy-groups:
         - hysteria2-650412204
         - hysteria2-689011839
         - vless-1540115174
+        - hysteria2-1509443312
         - hysteria2-197583436
         - vless-656232751
         - hysteria2-24391
         - hysteria2-657099768
         - vless-1540525870
         - vless-1540525880
+        - vless-1493972862
+        - vless-1493604910
       type: select
 rules:
     - MATCH,select
