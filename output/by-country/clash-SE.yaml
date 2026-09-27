@@ -20,12 +20,20 @@ proxies:
       server: 13.48.104.64
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-1438373141
+      password: amazonskr05
+      port: 443
+      server: 16.170.163.124
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-909854534
         - shadowsocks-1445813266
+        - shadowsocks-1438373141
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -33,6 +41,7 @@ proxy-groups:
         - auto
         - vless-909854534
         - shadowsocks-1445813266
+        - shadowsocks-1438373141
       type: select
 rules:
     - MATCH,select
