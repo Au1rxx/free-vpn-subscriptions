@@ -1,20 +1,4 @@
 proxies:
-    - name: trojan-112587
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20017
-      server: 157.254.38.210
-      skip-cert-verify: false
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-122850
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20017
-      server: d3.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-122851
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20018
@@ -23,6 +7,16 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - name: vless-391803700
+      network: ws
+      port: 2053
+      server: 104.17.169.13
+      servername: index.harmonica01.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: a22bff60-a40a-4250-bde2-4c660e363b47
     - name: trojan-474637039
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20018
@@ -397,6 +391,16 @@ proxies:
       skip-cert-verify: false
       sni: hop-germany-september.dynuddns.com
       type: hysteria2
+    - name: vless-1515966747
+      network: ws
+      port: 30303
+      server: 155.103.70.53
+      servername: wzs.echo.net.eu.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d18c6897-2849-456a-8c46-d7ecece47c20
     - client-fingerprint: chrome
       name: vless-1517876126
       network: grpc
@@ -424,41 +428,40 @@ proxies:
       type: vless
       udp: true
       uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
-    - name: vless-1526340233
+    - name: vless-1531611426
       network: grpc
       port: 3090
-      server: 93.190.8.161
+      server: 93.190.9.172
       type: vless
       udp: true
-      uuid: 6864bd16-f8bb-457c-a191-dca5b80ca32a
-    - name: vless-1526340234
+      uuid: 7e24f2b1-04a0-4ab0-af87-3bef7eb78e25
+    - name: vless-1531611463
       network: grpc
       port: 3090
-      server: 93.190.8.167
+      server: 93.190.9.252
       type: vless
       udp: true
-      uuid: 273e534f-1b9f-4392-bdbb-cbb0549cb6f4
-    - name: vless-1526340238
+      uuid: 51c8ed23-7ca5-43f1-b0a8-0a37a7a16647
+    - name: vless-1531611475
       network: grpc
       port: 3090
-      server: 93.190.9.62
+      server: 93.190.8.116
       type: vless
       udp: true
-      uuid: 71e27437-b48e-44e7-a3ef-9922cf483cad
-    - name: vless-1526340241
+      uuid: 51c8ed23-7ca5-43f1-b0a8-0a37a7a16647
+    - name: vless-1531611525
       network: grpc
       port: 3090
-      server: 93.190.8.85
+      server: 93.190.9.133
       type: vless
       udp: true
-      uuid: 6864bd16-f8bb-457c-a191-dca5b80ca32a
+      uuid: 51c8ed23-7ca5-43f1-b0a8-0a37a7a16647
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-112587
-        - trojan-122850
         - trojan-122851
+        - vless-391803700
         - trojan-474637039
         - trojan-479026176
         - trojan-700420641
@@ -494,21 +497,21 @@ proxy-groups:
         - vless-1504726331
         - vless-1509260497
         - hysteria2-1512715566
+        - vless-1515966747
         - vless-1517876126
         - hysteria2-1517930486
         - vless-1525409537
-        - vless-1526340233
-        - vless-1526340234
-        - vless-1526340238
-        - vless-1526340241
+        - vless-1531611426
+        - vless-1531611463
+        - vless-1531611475
+        - vless-1531611525
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-112587
-        - trojan-122850
         - trojan-122851
+        - vless-391803700
         - trojan-474637039
         - trojan-479026176
         - trojan-700420641
@@ -544,13 +547,14 @@ proxy-groups:
         - vless-1504726331
         - vless-1509260497
         - hysteria2-1512715566
+        - vless-1515966747
         - vless-1517876126
         - hysteria2-1517930486
         - vless-1525409537
-        - vless-1526340233
-        - vless-1526340234
-        - vless-1526340238
-        - vless-1526340241
+        - vless-1531611426
+        - vless-1531611463
+        - vless-1531611475
+        - vless-1531611525
       type: select
 rules:
     - MATCH,select
