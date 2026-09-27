@@ -17,6 +17,20 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-984269666
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 10rVZPoOUP1TlQviIAsQ_jAROX0fRQxH0C92nq_zGQc
+        short-id: 43dcff53849b81e6
+      server: 152.53.1.40
+      servername: at.quattro-tech.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: edde565e-41f5-400e-84ea-7b87a3e84488
     - flow: xtls-rprx-vision
       name: vless-1157879715
       network: tcp
@@ -39,26 +53,15 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - flow: xtls-rprx-vision
-      name: vless-1536074742
-      network: tcp
-      port: 443
-      server: atatat.failspace.top
-      servername: atatat.failspace.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1251465987
         - vless-1157879743
+        - vless-984269666
         - vless-1157879715
         - vless-1535654669
-        - vless-1536074742
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -66,9 +69,9 @@ proxy-groups:
         - auto
         - shadowsocks-1251465987
         - vless-1157879743
+        - vless-984269666
         - vless-1157879715
         - vless-1535654669
-        - vless-1536074742
       type: select
 rules:
     - MATCH,select

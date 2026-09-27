@@ -71,6 +71,13 @@ proxies:
       type: vless
       udp: true
       uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
+    - name: hysteria2-1457125378
+      password: 02bd8b5a-170b-4a79-8e68-9cec710272c7
+      port: 443
+      server: se1.chromevpn.cc
+      skip-cert-verify: false
+      sni: se1.chromevpn.cc
+      type: hysteria2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1534967301
       password: WxYpOK1iPSJySbVNMMJDtw
@@ -78,6 +85,20 @@ proxies:
       server: 2.56.172.74
       type: ss
       udp: true
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1541457520
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8ZYjmjb0b2QJKCGMrcdhQNV28jZZPCKgIQbIdqChQ0w
+        short-id: 00a61d55a07de885
+      server: 144.31.90.228
+      servername: fl.convert-flow.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8c22ef07-c9c7-4b0e-9d22-8247aff14f51
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-661038937
@@ -118,20 +139,6 @@ proxies:
       type: vless
       udp: true
       uuid: 3ae00194-1bc0-0bf4-9564-3c55b1c6d485
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1488476725
-      network: tcp
-      port: 2087
-      reality-opts:
-        public-key: KN8tFlpIwPgJGwUCG7Pp9c9c0juYKPvNIv4kFHwqbyk
-        short-id: a32cfb5deca913ad
-      server: 95.217.24.236
-      servername: 95.217.24.236
-      tls: true
-      type: vless
-      udp: true
-      uuid: 10d85f65-f8d6-4504-b1e2-94649db1577a
 proxy-groups:
     - interval: 300
       name: auto
@@ -142,11 +149,12 @@ proxy-groups:
         - vless-1540142102
         - vless-1345688766
         - vless-656143744
+        - hysteria2-1457125378
         - shadowsocks-1534967301
+        - vless-1541457520
         - vless-661038937
         - vless-834262294
         - vless-1524547918
-        - vless-1488476725
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -158,11 +166,12 @@ proxy-groups:
         - vless-1540142102
         - vless-1345688766
         - vless-656143744
+        - hysteria2-1457125378
         - shadowsocks-1534967301
+        - vless-1541457520
         - vless-661038937
         - vless-834262294
         - vless-1524547918
-        - vless-1488476725
       type: select
 rules:
     - MATCH,select
