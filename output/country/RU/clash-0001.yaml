@@ -6,6 +6,13 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-70767
+      network: ws
+      port: 8880
+      server: 45.130.125.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-81803
       network: ws
       port: 8880
@@ -390,11 +397,23 @@ proxies:
       server: 193.233.217.13
       type: ss
       udp: true
+    - flow: xtls-rprx-vision
+      name: vless-1535650691
+      network: tcp
+      port: 443
+      server: 201.51.4.39
+      servername: freevk.cryposikel.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6f73611a-bfd9-4712-9f33-fda2da70332a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-46619
+        - vless-70767
         - vless-81803
         - vless-656240777
         - vless-700375881
@@ -436,12 +455,14 @@ proxy-groups:
         - shadowsocks-1532296772
         - vless-1532323852
         - shadowsocks-1532760598
+        - vless-1535650691
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-46619
+        - vless-70767
         - vless-81803
         - vless-656240777
         - vless-700375881
@@ -483,6 +504,7 @@ proxy-groups:
         - shadowsocks-1532296772
         - vless-1532323852
         - shadowsocks-1532760598
+        - vless-1535650691
       type: select
 rules:
     - MATCH,select
