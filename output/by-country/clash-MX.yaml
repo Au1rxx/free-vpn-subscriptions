@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1509422334
+      network: tcp
+      port: 10226
+      server: 45.164.20.114
+      type: vless
+      udp: true
+      uuid: 9aab8f39-ccb3-44ea-acdc-a8aefe211287
     - name: vless-1511304183
       network: raw
       port: 10226
@@ -34,21 +41,32 @@ proxies:
       type: vless
       udp: true
       uuid: 878fb7f7-fc65-465e-a352-17c7216c6f3d
+    - name: vless-1519858678
+      network: tcp
+      port: 10226
+      server: 45.164.20.85
+      type: vless
+      udp: true
+      uuid: 9aab8f39-ccb3-44ea-acdc-a8aefe211287
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1509422334
         - vless-1511304183
         - vless-1192915788
         - vless-1172523121
+        - vless-1519858678
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1509422334
         - vless-1511304183
         - vless-1192915788
         - vless-1172523121
+        - vless-1519858678
       type: select
 rules:
     - MATCH,select

@@ -31,8 +31,8 @@ proxies:
       type: trojan
       udp: true
     - alterId: 0
-      cipher: none
-      name: vmess-1008564945
+      cipher: auto
+      name: vmess-1005580212
       network: tcp
       port: 16298
       server: zfd-boardv2.kunlun01dns.com
@@ -40,8 +40,8 @@ proxies:
       udp: true
       uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - alterId: 0
-      cipher: auto
-      name: vmess-1125235976
+      cipher: none
+      name: vmess-1008564945
       network: tcp
       port: 16298
       server: zfd-boardv2.kunlun01dns.com
@@ -57,6 +57,22 @@ proxies:
       type: vmess
       udp: true
       uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+    - name: trojan-1520712563
+      password: 018b8e7b-7813-4dcb-84a5-3c98f1521e00
+      port: 443
+      server: 104.18.32.87
+      skip-cert-verify: false
+      sni: id1.nathaya.web.id
+      type: trojan
+      udp: true
+    - name: trojan-1520712564
+      password: 018b8e7b-7813-4dcb-84a5-3c98f1521e00
+      port: 443
+      server: 188.114.97.6
+      skip-cert-verify: false
+      sni: id1.nathaya.web.id
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -65,9 +81,11 @@ proxy-groups:
         - trojan-696781134
         - shadowsocks-860328950
         - trojan-912445306
+        - vmess-1005580212
         - vmess-1008564945
-        - vmess-1125235976
         - vmess-1180088545
+        - trojan-1520712563
+        - trojan-1520712564
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -77,9 +95,11 @@ proxy-groups:
         - trojan-696781134
         - shadowsocks-860328950
         - trojan-912445306
+        - vmess-1005580212
         - vmess-1008564945
-        - vmess-1125235976
         - vmess-1180088545
+        - trojan-1520712563
+        - trojan-1520712564
       type: select
 rules:
     - MATCH,select
