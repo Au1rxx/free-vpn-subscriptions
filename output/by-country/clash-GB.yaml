@@ -27,13 +27,14 @@ proxies:
       type: vless
       udp: true
       uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-    - name: vless-1245422997
-      network: grpc
-      port: 2083
-      server: 66.90.104.42
-      type: vless
+    - name: trojan-1523369228
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.9
+      skip-cert-verify: false
+      sni: ssl.fastly.com
+      type: trojan
       udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - name: vless-1524952576
       network: tcp
       port: 22223
@@ -48,14 +49,13 @@ proxies:
       server: 149.102.132.184
       type: ss
       udp: true
-    - name: trojan-1523369231
-      password: MiTiVPN
-      port: 443
-      server: 199.232.78.188
-      skip-cert-verify: false
-      sni: ssl.fastly.com
-      type: trojan
+    - name: vless-1245422997
+      network: grpc
+      port: 2083
+      server: 66.90.104.42
+      type: vless
       udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - name: vless-1307982448
       network: grpc
       port: 2083
@@ -98,6 +98,14 @@ proxies:
       server: 146.70.23.32
       type: ss
       udp: true
+    - name: trojan-1528414061
+      password: MiTiVPN
+      port: 443
+      server: 199.232.78.188
+      skip-cert-verify: false
+      sni: ssl.fastly.com
+      type: trojan
+      udp: true
     - name: vless-1400651158
       network: ws
       port: 8081
@@ -123,10 +131,26 @@ proxies:
       type: vless
       udp: true
       uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+    - name: trojan-1528414063
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.9
+      skip-cert-verify: false
+      sni: ssl.fastly.com
+      type: trojan
+      udp: true
     - name: trojan-1527458181
       password: MiTiVPN
       port: 443
       server: 199.232.78.188
+      skip-cert-verify: false
+      sni: ssl.fastly.com
+      type: trojan
+      udp: true
+    - name: trojan-1523369226
+      password: MiTiVPN
+      port: 443
+      server: 151.101.56.9
       skip-cert-verify: false
       sni: ssl.fastly.com
       type: trojan
@@ -229,14 +253,6 @@ proxies:
       server: 149.102.132.184
       type: ss
       udp: true
-    - name: trojan-1523369230
-      password: MiTiVPN
-      port: 443
-      server: 199.232.78.188
-      skip-cert-verify: false
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
     - name: vless-1483330744
       network: grpc
       port: 2083
@@ -244,24 +260,24 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1510329158
-      network: "tcp#\U0001FA9028@oneclickvpnkeysvless://bb0f1ed0-0298-40a1-adb1-1f5d6ab33d54@193.202.10.2:40443?encryption=none"
-      port: 443
-      reality-opts:
-        public-key: s0ypPx0AL3k2KOk74tbm-aE-i7eIR_MYVzfLHZeLaUk
-        short-id: 2e124af254a65e7c
-      server: 164.37.100.195
-      servername: tomaz1337shellbuy.vvzzkontaktezzvv.garden
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4bdeee92-97e8-414d-bef6-ec1d5e2ab73b
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1479678804
       network: tcp
+      port: 443
+      reality-opts:
+        public-key: J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s
+        short-id: b19b017d6f453873
+      server: 23.81.34.204
+      servername: speed.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1485587877
+      network: raw
       port: 443
       reality-opts:
         public-key: J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s
@@ -297,6 +313,13 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - name: hysteria2-1005580180
+      password: 3b8c82ed-fe66-472d-915e-034ccb57103f
+      port: 443
+      server: labs.frkn.org
+      skip-cert-verify: true
+      sni: labs.frkn.org
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
@@ -305,19 +328,22 @@ proxy-groups:
         - vless-1230573705
         - vless-1483330828
         - vless-1524952582
-        - vless-1245422997
+        - trojan-1523369228
         - vless-1524952576
         - shadowsocks-717969008
-        - trojan-1523369231
+        - vless-1245422997
         - vless-1307982448
         - vless-1254790076
         - vless-1525355286
         - vless-1477616520
         - shadowsocks-468218595
+        - trojan-1528414061
         - vless-1400651158
         - vless-1157879699
         - vless-1525825744
+        - trojan-1528414063
         - trojan-1527458181
+        - trojan-1523369226
         - vless-1245369769
         - vless-1230280245
         - vless-1472517988
@@ -327,12 +353,12 @@ proxy-groups:
         - vless-1492748761
         - vless-1484508210
         - shadowsocks-696780678
-        - trojan-1523369230
         - vless-1483330744
-        - vless-1510329158
         - vless-1479678804
+        - vless-1485587877
         - vless-1511326331
         - vless-1195645285
+        - hysteria2-1005580180
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -342,19 +368,22 @@ proxy-groups:
         - vless-1230573705
         - vless-1483330828
         - vless-1524952582
-        - vless-1245422997
+        - trojan-1523369228
         - vless-1524952576
         - shadowsocks-717969008
-        - trojan-1523369231
+        - vless-1245422997
         - vless-1307982448
         - vless-1254790076
         - vless-1525355286
         - vless-1477616520
         - shadowsocks-468218595
+        - trojan-1528414061
         - vless-1400651158
         - vless-1157879699
         - vless-1525825744
+        - trojan-1528414063
         - trojan-1527458181
+        - trojan-1523369226
         - vless-1245369769
         - vless-1230280245
         - vless-1472517988
@@ -364,12 +393,12 @@ proxy-groups:
         - vless-1492748761
         - vless-1484508210
         - shadowsocks-696780678
-        - trojan-1523369230
         - vless-1483330744
-        - vless-1510329158
         - vless-1479678804
+        - vless-1485587877
         - vless-1511326331
         - vless-1195645285
+        - hysteria2-1005580180
       type: select
 rules:
     - MATCH,select
