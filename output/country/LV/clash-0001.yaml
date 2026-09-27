@@ -244,20 +244,6 @@ proxies:
       type: vless
       udp: true
       uuid: 02fcc1a4-ee90-4970-8bbb-4ffaa8109d24
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1236754503
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: Y0noOXC8qHmbM0GmDpj-9BBwKSOtHs-uMbNfKU050GQ
-        short-id: b558b9305a0b
-      server: 45.39.108.109
-      servername: www.microsoft.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d806a58b-33aa-42e0-b170-395e49c16b37
     - name: hysteria2-1278300107
       password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
       port: 24443
@@ -286,6 +272,13 @@ proxies:
       skip-cert-verify: true
       sni: onecloudstream.com
       type: hysteria2
+    - cipher: aes-128-gcm
+      name: shadowsocks-1546724744
+      password: ce45b16adec66e4a199d92b9689eae9f
+      port: 11469
+      server: 109.248.148.139
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -312,11 +305,11 @@ proxy-groups:
         - vless-1014913479
         - vless-1104591588
         - vless-1208270657
-        - vless-1236754503
         - hysteria2-1278300107
         - hysteria2-1281960369
         - hysteria2-1369449891
         - hysteria2-1401232938
+        - shadowsocks-1546724744
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -344,11 +337,11 @@ proxy-groups:
         - vless-1014913479
         - vless-1104591588
         - vless-1208270657
-        - vless-1236754503
         - hysteria2-1278300107
         - hysteria2-1281960369
         - hysteria2-1369449891
         - hysteria2-1401232938
+        - shadowsocks-1546724744
       type: select
 rules:
     - MATCH,select
