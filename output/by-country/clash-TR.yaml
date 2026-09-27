@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1547809312
+      network: grpc
+      port: 3090
+      server: 93.190.9.52
+      type: vless
+      udp: true
+      uuid: 52e8bce3-b255-486d-beb2-aa1b549c44b1
     - name: vless-1545552809
       network: grpc
       port: 3090
@@ -31,6 +38,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1547809312
         - vless-1545552809
         - vless-1545552795
         - vless-1545552796
@@ -40,6 +48,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1547809312
         - vless-1545552809
         - vless-1545552795
         - vless-1545552796
