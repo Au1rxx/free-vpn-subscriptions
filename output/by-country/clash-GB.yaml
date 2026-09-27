@@ -48,12 +48,13 @@ proxies:
       server: 149.102.132.184
       type: ss
       udp: true
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1538774167
-      password: ngEu2MRJXDGlSxpTvPyLdOG64A9jtECl4AR1uHXP2So=
-      port: 61312
-      server: 144.24.227.214
-      type: ss
+    - name: trojan-1523369230
+      password: MiTiVPN
+      port: 443
+      server: 199.232.78.188
+      skip-cert-verify: false
+      sni: ssl.fastly.com
+      type: trojan
       udp: true
     - name: vless-1230573705
       network: grpc
@@ -76,13 +77,6 @@ proxies:
       type: vless
       udp: true
       uuid: 4bdeee92-97e8-414d-bef6-ec1d5e2ab73b
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1538774165
-      password: /Y28XsDfiP+fi4Refwdekr6F67d7EgGeA7F2lP+T31o=
-      port: 61312
-      server: 144.24.224.133
-      type: ss
-      udp: true
     - name: trojan-1541464920
       password: MiTiVPN
       port: 443
@@ -91,10 +85,10 @@ proxies:
       sni: ssl.fastly.com
       type: trojan
       udp: true
-    - name: trojan-1523369230
+    - name: trojan-1523369228
       password: MiTiVPN
       port: 443
-      server: 199.232.78.188
+      server: 151.101.56.9
       skip-cert-verify: false
       sni: ssl.fastly.com
       type: trojan
@@ -202,6 +196,13 @@ proxies:
       type: vless
       udp: true
       uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1538774167
+      password: ngEu2MRJXDGlSxpTvPyLdOG64A9jtECl4AR1uHXP2So=
+      port: 61312
+      server: 144.24.227.214
+      type: ss
+      udp: true
     - cipher: rc4-md5
       name: shadowsocks-468218595
       password: 14fFPrbezE3HDZzsMOr6
@@ -241,6 +242,20 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1485587877
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s
+        short-id: b19b017d6f453873
+      server: 23.81.34.204
+      servername: speed.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1519568121
@@ -283,71 +298,6 @@ proxies:
       type: vless
       udp: true
       uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1538774190
-      password: /TLj9z1xYcN3Anbx8FF98jsN+aw5n9lyuv7aoEosFDs=
-      port: 61312
-      server: 144.24.226.211
-      type: ss
-      udp: true
-    - name: trojan-1523369228
-      password: MiTiVPN
-      port: 443
-      server: 151.101.56.9
-      skip-cert-verify: false
-      sni: ssl.fastly.com
-      type: trojan
-      udp: true
-    - flow: xtls-rprx-vision
-      name: vless-1195645282
-      network: tcp
-      port: 443
-      server: 50.7.226.173
-      servername: viper-21.moriarty-web.com
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1491043545
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: s0ypPx0AL3k2KOk74tbm-aE-i7eIR_MYVzfLHZeLaUk
-        short-id: 2e124af254a65e7c
-      server: 164.37.100.195
-      servername: tomaz1337shellbuy.vvzzkontaktezzvv.garden
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4bdeee92-97e8-414d-bef6-ec1d5e2ab73b
-    - flow: xtls-rprx-vision
-      name: vless-1195645285
-      network: tcp
-      port: 443
-      server: 50.7.226.172
-      servername: viper-21.moriarty-web.com
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1485587877
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s
-        short-id: b19b017d6f453873
-      server: 23.81.34.204
-      servername: speed.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
 proxy-groups:
     - interval: 300
       name: auto
@@ -359,12 +309,11 @@ proxy-groups:
         - shadowsocks-271
         - vless-1483330744
         - shadowsocks-717969008
-        - shadowsocks-1538774167
+        - trojan-1523369230
         - vless-1230573705
         - vless-1527751960
-        - shadowsocks-1538774165
         - trojan-1541464920
-        - trojan-1523369230
+        - trojan-1523369228
         - trojan-1537156759
         - vless-1472517988
         - vless-1518612545
@@ -373,19 +322,15 @@ proxy-groups:
         - vless-1157879699
         - vless-1492748761
         - vless-1479678804
+        - shadowsocks-1538774167
         - shadowsocks-468218595
         - shadowsocks-27285
         - vless-1525850246
         - vless-1250111368
+        - vless-1485587877
         - vless-1519568121
         - vless-1484508210
         - vless-1477616520
-        - shadowsocks-1538774190
-        - trojan-1523369228
-        - vless-1195645282
-        - vless-1491043545
-        - vless-1195645285
-        - vless-1485587877
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -398,12 +343,11 @@ proxy-groups:
         - shadowsocks-271
         - vless-1483330744
         - shadowsocks-717969008
-        - shadowsocks-1538774167
+        - trojan-1523369230
         - vless-1230573705
         - vless-1527751960
-        - shadowsocks-1538774165
         - trojan-1541464920
-        - trojan-1523369230
+        - trojan-1523369228
         - trojan-1537156759
         - vless-1472517988
         - vless-1518612545
@@ -412,19 +356,15 @@ proxy-groups:
         - vless-1157879699
         - vless-1492748761
         - vless-1479678804
+        - shadowsocks-1538774167
         - shadowsocks-468218595
         - shadowsocks-27285
         - vless-1525850246
         - vless-1250111368
+        - vless-1485587877
         - vless-1519568121
         - vless-1484508210
         - vless-1477616520
-        - shadowsocks-1538774190
-        - trojan-1523369228
-        - vless-1195645282
-        - vless-1491043545
-        - vless-1195645285
-        - vless-1485587877
       type: select
 rules:
     - MATCH,select
