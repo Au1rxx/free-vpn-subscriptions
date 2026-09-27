@@ -1,4 +1,18 @@
 proxies:
+    - name: vless-46619
+      network: ws
+      port: 8880
+      server: 135.84.72.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-81803
+      network: ws
+      port: 8880
+      server: 88.216.69.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       name: vless-656240777
       network: tcp
@@ -38,6 +52,13 @@ proxies:
       type: vless
       udp: true
       uuid: 633f424e-2b11-48da-a6b3-a849dd71456f
+    - name: vless-1239107921
+      network: ws
+      port: 8880
+      server: 139.64.235.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: hysteria2-1278300104
       password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
       port: 22443
@@ -282,13 +303,16 @@ proxies:
       type: vless
       udp: true
       uuid: cc39844c-d9ba-4394-9cae-395933f4e353
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1527121436
-      password: KHdJKMAYowrILcVjV7t4lPtuh5bVXUAS
-      port: 8388
-      server: 135.106.227.252
-      type: ss
+    - name: vless-1527120963
+      network: ws
+      port: 443
+      server: 31.76.65.234
+      servername: 31.76.65.234.fwqfw783rg2dad.website
+      skip-cert-verify: false
+      tls: true
+      type: vless
       udp: true
+      uuid: cc39844c-d9ba-4394-9cae-395933f4e353
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1529823805
       password: 2Y14rGzr_hGbvOnUvDMR7gXtHMVKCC-N
@@ -324,13 +348,37 @@ proxies:
       type: vless
       udp: true
       uuid: eec2f6a7-c10f-43b0-b133-61f9bf9bbc27
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1532296772
+      password: QpzTIRWKfGxstWLmSix3WbbJU5czY4B1
+      port: 8388
+      server: 135.106.227.252
+      type: ss
+      udp: true
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1532323852
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Zkjmoy79UuCGCS5_4fMfhv0lXDvgBjUTT7jCdQoWdQQ
+        short-id: 2ad4123458ff3fe5
+      server: gateru.responsiblecare.uk
+      servername: gateru.responsiblecare.uk
+      tls: true
+      type: vless
+      udp: true
+      uuid: ae0d0211-b7dc-461d-9d41-1eb224876f30
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-46619
+        - vless-81803
         - vless-656240777
         - vless-700375881
         - vless-966415513
+        - vless-1239107921
         - hysteria2-1278300104
         - hysteria2-1281959383
         - hysteria2-1308868748
@@ -358,18 +406,23 @@ proxy-groups:
         - shadowsocks-1524601660
         - vless-1526674482
         - vless-1526853506
-        - shadowsocks-1527121436
+        - vless-1527120963
         - shadowsocks-1529823805
         - vless-1529880343
         - vless-1530621373
+        - shadowsocks-1532296772
+        - vless-1532323852
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-46619
+        - vless-81803
         - vless-656240777
         - vless-700375881
         - vless-966415513
+        - vless-1239107921
         - hysteria2-1278300104
         - hysteria2-1281959383
         - hysteria2-1308868748
@@ -397,10 +450,12 @@ proxy-groups:
         - shadowsocks-1524601660
         - vless-1526674482
         - vless-1526853506
-        - shadowsocks-1527121436
+        - vless-1527120963
         - shadowsocks-1529823805
         - vless-1529880343
         - vless-1530621373
+        - shadowsocks-1532296772
+        - vless-1532323852
       type: select
 rules:
     - MATCH,select
