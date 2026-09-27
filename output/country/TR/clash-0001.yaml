@@ -7,19 +7,11 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: trojan-122850
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20017
-      server: d3.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-474637039
+    - name: trojan-122851
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20018
       server: d3.catcat321.com
-      skip-cert-verify: false
+      skip-cert-verify: true
       sni: hk.catxstar.com
       type: trojan
       udp: true
@@ -385,27 +377,6 @@ proxies:
       type: vless
       udp: true
       uuid: 61f58b27-0a35-470e-9733-af6622bbefb6
-    - name: vless-1540560324
-      network: grpc
-      port: 3090
-      server: 93.190.8.85
-      type: vless
-      udp: true
-      uuid: 6f91e9a0-d5de-4bd2-a692-8aa94d024ad7
-    - name: vless-1540560325
-      network: grpc
-      port: 3090
-      server: 93.190.9.55
-      type: vless
-      udp: true
-      uuid: e50550c5-6920-4e17-b4de-645d23bcde29
-    - name: vless-1540560343
-      network: grpc
-      port: 3090
-      server: 93.190.9.132
-      type: vless
-      udp: true
-      uuid: e50550c5-6920-4e17-b4de-645d23bcde29
     - name: vless-1542669856
       network: ws
       port: 80
@@ -434,13 +405,22 @@ proxies:
       type: vless
       udp: true
       uuid: 66fc196d-3623-4ba5-92ae-101a069af5b1
+    - name: vless-1545207237
+      network: tcp
+      port: 443
+      server: 87.120.106.125
+      servername: qbbnomkb5d6c.libreone.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9081f4d6-7271-49ba-bb9e-b4bb6dc0bb1e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-112587
-        - trojan-122850
-        - trojan-474637039
+        - trojan-122851
         - trojan-479026176
         - trojan-700420641
         - trojan-739165522
@@ -474,20 +454,17 @@ proxy-groups:
         - hysteria2-1512715566
         - hysteria2-1517930486
         - vless-1519914284
-        - vless-1540560324
-        - vless-1540560325
-        - vless-1540560343
         - vless-1542669856
         - vless-1542681834
         - vless-1544789493
+        - vless-1545207237
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-112587
-        - trojan-122850
-        - trojan-474637039
+        - trojan-122851
         - trojan-479026176
         - trojan-700420641
         - trojan-739165522
@@ -521,12 +498,10 @@ proxy-groups:
         - hysteria2-1512715566
         - hysteria2-1517930486
         - vless-1519914284
-        - vless-1540560324
-        - vless-1540560325
-        - vless-1540560343
         - vless-1542669856
         - vless-1542681834
         - vless-1544789493
+        - vless-1545207237
       type: select
 rules:
     - MATCH,select
