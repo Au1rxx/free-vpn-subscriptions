@@ -1,18 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-16132
-      password: WSyL4XTwNsdv
-      port: 8388
-      server: 108.181.121.226
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-11052
-      password: qItG8SueYQcP
-      port: 8388
-      server: 140.174.184.5
-      type: ss
-      udp: true
     - name: vless-1555783022
       network: grpc
       port: 443
@@ -23,21 +9,71 @@ proxies:
       type: vless
       udp: true
       uuid: e0b9fb0f-1bbd-478b-9580-c2294778338b
+    - name: vless-1555783020
+      network: grpc
+      port: 443
+      server: assets-es.pleiades.codes
+      servername: assets-es.pleiades.codes
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e0b9fb0f-1bbd-478b-9580-c2294778338b
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-16132
+      password: WSyL4XTwNsdv
+      port: 8388
+      server: 108.181.121.226
+      type: ss
+      udp: true
+    - name: hysteria2-1544869951
+      password: e9dc02d400b67c727aca1620
+      port: 8446
+      server: 185.174.137.172
+      skip-cert-verify: true
+      sni: 185.174.137.172
+      type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-11052
+      password: qItG8SueYQcP
+      port: 8388
+      server: 140.174.184.5
+      type: ss
+      udp: true
+    - client-fingerprint: firefox
+      name: vless-1107806244
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 7Y6Xb5Ql_03K25x8yKUSOKI2JTOMyv2nyCcFza90uxk
+        short-id: 29e8dcd2b37aaa7f
+      server: 212.227.235.66
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-16132
-        - shadowsocks-11052
         - vless-1555783022
+        - vless-1555783020
+        - shadowsocks-16132
+        - hysteria2-1544869951
+        - shadowsocks-11052
+        - vless-1107806244
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-16132
-        - shadowsocks-11052
         - vless-1555783022
+        - vless-1555783020
+        - shadowsocks-16132
+        - hysteria2-1544869951
+        - shadowsocks-11052
+        - vless-1107806244
       type: select
 rules:
     - MATCH,select

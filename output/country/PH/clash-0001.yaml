@@ -1,0 +1,22 @@
+proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-548645193
+      password: kDWvXYZoTBcGkC4
+      port: 8882
+      server: 149.104.109.252
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-548645193
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-548645193
+      type: select
+rules:
+    - MATCH,select
