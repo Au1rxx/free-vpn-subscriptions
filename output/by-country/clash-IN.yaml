@@ -1,26 +1,4 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-1551389686
-      network: ws
-      port: 80
-      server: 152.67.8.205
-      type: vmess
-      udp: true
-      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
-    - client-fingerprint: firefox
-      name: vless-1319833058
-      network: grpc
-      port: 2443
-      reality-opts:
-        public-key: h85e28MxBgNyT9d9cNeOLVtWfHq6cT_1_oxZOTajtTg
-        short-id: 92c32de179e5d908
-      server: 5.253.28.218
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5e679ccd-1586-4d5f-b87b-48251046cad8
     - client-fingerprint: firefox
       name: vless-1258929849
       network: tcp
@@ -61,9 +39,9 @@ proxies:
       type: vless
       udp: true
       uuid: 5e679ccd-1586-4d5f-b87b-48251046cad8
-    - client-fingerprint: random
-      name: vless-1300687309
-      network: tcp
+    - client-fingerprint: firefox
+      name: vless-1279565000
+      network: raw
       port: 2053
       reality-opts:
         public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
@@ -74,54 +52,23 @@ proxies:
       type: vless
       udp: true
       uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
-    - alterId: 0
-      cipher: auto
-      name: vmess-1547528897
-      network: ws
-      port: 80
-      server: 152.67.8.205
-      type: vmess
-      udp: true
-      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
-    - client-fingerprint: safari
-      flow: xtls-rprx-vision
-      name: vless-474937712
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
-        short-id: 88b6
-      server: 5.253.30.99
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-1551389686
-        - vless-1319833058
         - vless-1258929849
         - vless-470976147
         - vless-1321065671
-        - vless-1300687309
-        - vmess-1547528897
-        - vless-474937712
+        - vless-1279565000
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-1551389686
-        - vless-1319833058
         - vless-1258929849
         - vless-470976147
         - vless-1321065671
-        - vless-1300687309
-        - vmess-1547528897
-        - vless-474937712
+        - vless-1279565000
       type: select
 rules:
     - MATCH,select

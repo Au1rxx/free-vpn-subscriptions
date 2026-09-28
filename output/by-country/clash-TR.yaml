@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1461786622
+      network: tcp
+      port: 2053
+      server: test.keoplentuio.xyz
+      type: vless
+      udp: true
+      uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
     - name: vless-1547809294
       network: grpc
       port: 3090
@@ -19,64 +26,21 @@ proxies:
       type: vless
       udp: true
       uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
-    - name: vless-1554580727
-      network: grpc
-      port: 3090
-      server: 93.190.9.26
-      type: vless
-      udp: true
-      uuid: ea53420b-e8ad-4e9d-ab21-ddd546231e92
-    - name: vless-1554579393
-      network: grpc
-      port: 3090
-      server: 93.190.9.125
-      type: vless
-      udp: true
-      uuid: 3afa6b6d-e8d1-4931-878d-8a28b328256b
-    - name: vless-1554579392
-      network: grpc
-      port: 3090
-      server: 93.190.9.108
-      type: vless
-      udp: true
-      uuid: 3afa6b6d-e8d1-4931-878d-8a28b328256b
-    - name: vless-1554579390
-      network: grpc
-      port: 3090
-      server: 93.190.9.42
-      type: vless
-      udp: true
-      uuid: 3afa6b6d-e8d1-4931-878d-8a28b328256b
-    - name: vless-1554580726
-      network: grpc
-      port: 3090
-      server: 93.190.9.3
-      type: vless
-      udp: true
-      uuid: ea53420b-e8ad-4e9d-ab21-ddd546231e92
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1461786622
         - vless-1547809294
         - vless-1345587687
-        - vless-1554580727
-        - vless-1554579393
-        - vless-1554579392
-        - vless-1554579390
-        - vless-1554580726
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1461786622
         - vless-1547809294
         - vless-1345587687
-        - vless-1554580727
-        - vless-1554579393
-        - vless-1554579392
-        - vless-1554579390
-        - vless-1554580726
       type: select
 rules:
     - MATCH,select
