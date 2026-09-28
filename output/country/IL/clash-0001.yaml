@@ -35,13 +35,6 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
-    - name: vless-1255709230
-      network: ws
-      port: 8880
-      server: 185.193.29.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1552065752
@@ -56,6 +49,41 @@ proxies:
       type: vless
       udp: true
       uuid: ce64591a-fe2d-48cd-b738-e5f591eea784
+    - cipher: 2022-blake3-aes-128-gcm
+      name: shadowsocks-1555183180
+      password: EIIwJPg8YqgnjLLd58zoTg==:YYHIWhNXALgI+lmzFcEdTw==
+      port: 8388
+      server: 85.209.157.184
+      type: ss
+      udp: true
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1555383645
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: N8vDLOiiNE_xQ7_Ycb3KV0ZG3jk1zDdJV2TAONDjJlU
+        short-id: fb441418
+      server: 85.209.157.187
+      servername: 9acd3.tornadonext.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 49ca3a76-2043-41cc-bdd3-4ae653c649fb
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1555383646
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 1XpNlsef90L81E3u3vvxwcLQDtPizZ8JKtBV8ijKRVw
+        short-id: 1854cebd
+      server: 85.209.157.154
+      servername: 922f1.selvarieno.cc
+      tls: true
+      type: vless
+      udp: true
+      uuid: 49ca3a76-2043-41cc-bdd3-4ae653c649fb
 proxy-groups:
     - interval: 300
       name: auto
@@ -65,8 +93,10 @@ proxy-groups:
         - hysteria2-1040048366
         - hysteria2-1048663499
         - hysteria2-1179524508
-        - vless-1255709230
         - vless-1552065752
+        - shadowsocks-1555183180
+        - vless-1555383645
+        - vless-1555383646
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -77,8 +107,10 @@ proxy-groups:
         - hysteria2-1040048366
         - hysteria2-1048663499
         - hysteria2-1179524508
-        - vless-1255709230
         - vless-1552065752
+        - shadowsocks-1555183180
+        - vless-1555383645
+        - vless-1555383646
       type: select
 rules:
     - MATCH,select

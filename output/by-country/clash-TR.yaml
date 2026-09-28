@@ -1,4 +1,18 @@
 proxies:
+    - name: vless-1555350548
+      network: grpc
+      port: 3090
+      server: 93.190.9.131
+      type: vless
+      udp: true
+      uuid: dca830a2-3c69-4e1b-bc0b-a2ea22af53ba
+    - name: vless-1555350539
+      network: grpc
+      port: 3090
+      server: 93.190.8.22
+      type: vless
+      udp: true
+      uuid: dca830a2-3c69-4e1b-bc0b-a2ea22af53ba
     - name: vless-1461786622
       network: tcp
       port: 2053
@@ -6,13 +20,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
-    - name: vless-1547809294
-      network: grpc
-      port: 3090
-      server: 93.190.8.81
-      type: vless
-      udp: true
-      uuid: df95425f-b822-4279-bd97-3699361293dd
     - client-fingerprint: chrome
       name: vless-1345587687
       network: tcp
@@ -30,16 +37,18 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1555350548
+        - vless-1555350539
         - vless-1461786622
-        - vless-1547809294
         - vless-1345587687
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1555350548
+        - vless-1555350539
         - vless-1461786622
-        - vless-1547809294
         - vless-1345587687
       type: select
 rules:
