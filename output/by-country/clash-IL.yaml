@@ -1,0 +1,22 @@
+proxies:
+    - name: hysteria2-1048663499
+      password: dsmO0439gj_nX942GJRE_9j39fbcxv52_R
+      port: 8080
+      server: 85.209.157.177
+      skip-cert-verify: true
+      sni: hopp-transit.1cooldns.com
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-1048663499
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-1048663499
+      type: select
+rules:
+    - MATCH,select

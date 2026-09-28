@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-1555783022
+      network: grpc
+      port: 443
+      server: 193.238.154.5
+      servername: assets-es.pleiades.codes
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e0b9fb0f-1bbd-478b-9580-c2294778338b
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-11052
       password: qItG8SueYQcP
@@ -23,6 +33,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1555783022
         - shadowsocks-11052
         - vless-1107806244
       type: url-test
@@ -30,6 +41,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1555783022
         - shadowsocks-11052
         - vless-1107806244
       type: select
