@@ -6,15 +6,6 @@ proxies:
       server: 140.174.184.5
       type: ss
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-1459593711
-      network: tcp
-      port: 22324
-      server: 66.163.118.73
-      type: vmess
-      udp: true
-      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - name: hysteria2-1544869951
       password: e9dc02d400b67c727aca1620
       port: 8446
@@ -29,18 +20,9 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-1451310230
+    - client-fingerprint: firefox
+      name: vless-1107806244
       network: tcp
-      port: 22324
-      server: 66.163.118.73
-      type: vmess
-      udp: true
-      uuid: 04621bae-ab36-11ec-b909-0242ac120002
-    - client-fingerprint: chrome
-      name: vless-1201186311
-      network: raw
       port: 2053
       reality-opts:
         public-key: 7Y6Xb5Ql_03K25x8yKUSOKI2JTOMyv2nyCcFza90uxk
@@ -52,8 +34,8 @@ proxies:
       udp: true
       uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
     - client-fingerprint: chrome
-      name: vless-1247220676
-      network: tcp
+      name: vless-1201186311
+      network: raw
       port: 2053
       reality-opts:
         public-key: 7Y6Xb5Ql_03K25x8yKUSOKI2JTOMyv2nyCcFza90uxk
@@ -69,24 +51,20 @@ proxy-groups:
       name: auto
       proxies:
         - shadowsocks-11052
-        - vmess-1459593711
         - hysteria2-1544869951
         - shadowsocks-16132
-        - vmess-1451310230
+        - vless-1107806244
         - vless-1201186311
-        - vless-1247220676
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-11052
-        - vmess-1459593711
         - hysteria2-1544869951
         - shadowsocks-16132
-        - vmess-1451310230
+        - vless-1107806244
         - vless-1201186311
-        - vless-1247220676
       type: select
 rules:
     - MATCH,select
