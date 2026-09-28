@@ -13,6 +13,13 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-91981760
+      password: oZIoA69Q8yhcQV8ka3Pa3A
+      port: 443
+      server: 82.38.31.174
+      type: ss
+      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-650451679
@@ -671,20 +678,16 @@ proxies:
       type: vless
       udp: true
       uuid: e0b9fb0f-1bbd-478b-9580-c2294778338b
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1556571824
-      network: tcp
+    - name: vless-1556551561
+      network: grpc
       port: 443
-      reality-opts:
-        public-key: Rz8XjYinCcpE7NLktJzNFL7eVSUxaFGuV2Zz82p7IRg
-        short-id: 908563a721d9bdcd
-      server: 92.118.127.16
-      servername: sp1.extremumnews.com
+      server: 193.238.154.5
+      servername: assets-es.pleiades.codes
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: 2412bd96-925b-43f2-81d1-0ed4f0793699
+      uuid: e0b9fb0f-1bbd-478b-9580-c2294778338b
     - name: vless-1558633287
       network: grpc
       port: 443
@@ -732,12 +735,27 @@ proxies:
       type: vless
       udp: true
       uuid: 9e3132b8-b595-444a-833a-2de44789f9d7
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1560066874
+      network: tcp
+      port: 25155
+      reality-opts:
+        public-key: zZb_VVAbcGA7TeSMUBuD8MB2O3yAwpDSPGEfSEIUsX4
+        short-id: e4ba91df34fc3318
+      server: 196.245.52.148
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 441a29b2-d9aa-47d5-9209-0a9191479f9f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11052
         - shadowsocks-16132
+        - shadowsocks-91981760
         - vmess-650451679
         - vmess-669779356
         - vmess-858999794
@@ -793,12 +811,13 @@ proxy-groups:
         - vless-1555661013
         - vless-1555783020
         - vless-1555783022
-        - vless-1556571824
+        - vless-1556551561
         - vless-1558633287
         - vless-1558633316
         - hysteria2-1558648928
         - vless-1559172117
         - vless-1559265365
+        - vless-1560066874
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -806,6 +825,7 @@ proxy-groups:
         - auto
         - shadowsocks-11052
         - shadowsocks-16132
+        - shadowsocks-91981760
         - vmess-650451679
         - vmess-669779356
         - vmess-858999794
@@ -861,12 +881,13 @@ proxy-groups:
         - vless-1555661013
         - vless-1555783020
         - vless-1555783022
-        - vless-1556571824
+        - vless-1556551561
         - vless-1558633287
         - vless-1558633316
         - hysteria2-1558648928
         - vless-1559172117
         - vless-1559265365
+        - vless-1560066874
       type: select
 rules:
     - MATCH,select

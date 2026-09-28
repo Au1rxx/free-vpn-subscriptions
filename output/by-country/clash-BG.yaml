@@ -1,25 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1556563216
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: dsyxDiVtAFRjKOqLdqof2SuygewTO-EWTd34Jk1YYVo
-        short-id: e9433de76a53573b
-      server: 131.123.41.223
-      servername: bulgaria.stream-live.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 33e8bd3a-26f0-4e57-bc27-e5552a81c880
-    - cipher: aes-256-cfb
-      name: shadowsocks-819466430
-      password: PRBf4BS2HvJqtWxY
-      port: 9049
-      server: 213.183.63.60
-      type: ss
-      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-738053649
       password: GeregetR8cvQHzYr
@@ -27,21 +6,51 @@ proxies:
       server: 213.183.63.60
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-819466430
+      password: PRBf4BS2HvJqtWxY
+      port: 9049
+      server: 213.183.63.60
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1473449962
+      network: raw
+      port: 18775
+      reality-opts:
+        public-key: oR75S6pg_RDAKIuzv_WrCiwaUqqFoek2iuo5N22llQQ
+        short-id: 6ba85179e30d4fc2
+      server: 136.175.82.85
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9ae5940b-0278-403d-a1e1-9dddc47bdcf6
+    - cipher: aes-256-cfb
+      name: shadowsocks-768399484
+      password: 9ej82EKe2gq7gLAM
+      port: 9085
+      server: 213.183.63.60
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1556563216
-        - shadowsocks-819466430
         - shadowsocks-738053649
+        - shadowsocks-819466430
+        - vless-1473449962
+        - shadowsocks-768399484
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1556563216
-        - shadowsocks-819466430
         - shadowsocks-738053649
+        - shadowsocks-819466430
+        - vless-1473449962
+        - shadowsocks-768399484
       type: select
 rules:
     - MATCH,select
