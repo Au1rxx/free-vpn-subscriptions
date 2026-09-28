@@ -13,9 +13,36 @@ proxies:
       server: 79.175.134.188
       type: ss
       udp: true
-    - client-fingerprint: safari
+    - name: hysteria2-1507088267
+      password: kewr0929_M9ic23iqe_m9E2R93Js8034c_Rt10
+      port: 8443
+      server: 222.167.212.159
+      skip-cert-verify: false
+      sni: new-finland-september.bumbleshrimp.com
+      type: hysteria2
+    - name: vless-1543619889
+      network: grpc
+      port: 443
+      server: 153.52.117.131
+      servername: fi.astrafic.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3d9daa27-6283-406d-a2d4-c6f22c635a14
+    - name: vless-1543619890
+      network: grpc
+      port: 443
+      server: fi.astrafic.ru
+      servername: fi.astrafic.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3d9daa27-6283-406d-a2d4-c6f22c635a14
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-1374958301
+      name: vless-1375183016
       network: tcp
       port: 443
       reality-opts:
@@ -27,27 +54,16 @@ proxies:
       type: vless
       udp: true
       uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
-    - client-fingerprint: random
-      name: vless-1547809311
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: 20kKpOl77grCupOod4O_X1u74fJT38yc2Nhxy8enywc
-        short-id: fd4f9db207ff64db
-      server: 87.120.107.246
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 10b78ac4-d4ce-43d2-98c4-c62c96fcbdc2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1520000102
         - shadowsocks-1549290777
-        - vless-1374958301
-        - vless-1547809311
+        - hysteria2-1507088267
+        - vless-1543619889
+        - vless-1543619890
+        - vless-1375183016
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -55,8 +71,10 @@ proxy-groups:
         - auto
         - hysteria2-1520000102
         - shadowsocks-1549290777
-        - vless-1374958301
-        - vless-1547809311
+        - hysteria2-1507088267
+        - vless-1543619889
+        - vless-1543619890
+        - vless-1375183016
       type: select
 rules:
     - MATCH,select
