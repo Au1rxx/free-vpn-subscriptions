@@ -1,4 +1,11 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-11052
+      password: qItG8SueYQcP
+      port: 8388
+      server: 140.174.184.5
+      type: ss
+      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-1459593711
@@ -8,19 +15,20 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
-    - client-fingerprint: chrome
-      name: vless-1113490852
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: 7Y6Xb5Ql_03K25x8yKUSOKI2JTOMyv2nyCcFza90uxk
-        short-id: 29e8dcd2b37aaa7f
-      server: 212.227.235.66
-      servername: www.apple.com
-      tls: true
-      type: vless
+    - name: hysteria2-1544869951
+      password: e9dc02d400b67c727aca1620
+      port: 8446
+      server: 185.174.137.172
+      skip-cert-verify: true
+      sni: 185.174.137.172
+      type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-16132
+      password: WSyL4XTwNsdv
+      port: 8388
+      server: 108.181.121.226
+      type: ss
       udp: true
-      uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
     - alterId: 0
       cipher: auto
       name: vmess-1451310230
@@ -43,27 +51,6 @@ proxies:
       type: vless
       udp: true
       uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1459678985
-      network: raw
-      port: 7443
-      reality-opts:
-        public-key: 1MLoHw7RVkGefh7XUyuGg4ndxwv4vDU9en-f9JxpXRQ
-        short-id: d2061bb1
-      server: 87.76.179.117
-      servername: www.samsung.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: cb15d1b0-e48b-4c4c-b98a-fa1103aa3723
-    - name: hysteria2-1544869951
-      password: e9dc02d400b67c727aca1620
-      port: 8446
-      server: 185.174.137.172
-      skip-cert-verify: true
-      sni: 185.174.137.172
-      type: hysteria2
     - name: hysteria2-1541456343
       password: e9dc02d400b67c727aca1620
       port: 8446
@@ -85,62 +72,45 @@ proxies:
       udp: true
       uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
     - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1473374135
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE
-        short-id: 0dfc23fe80778c00
-      server: 46.28.71.247
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 12c53e32-e589-47d6-b857-e4132294f767
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1493152680
+      name: vless-1113490852
       network: tcp
-      port: 7443
+      port: 2053
       reality-opts:
-        public-key: 1MLoHw7RVkGefh7XUyuGg4ndxwv4vDU9en-f9JxpXRQ
-        short-id: d2061bb1
-      server: 87.76.179.117
-      servername: www.samsung.com
+        public-key: 7Y6Xb5Ql_03K25x8yKUSOKI2JTOMyv2nyCcFza90uxk
+        short-id: 29e8dcd2b37aaa7f
+      server: 212.227.235.66
+      servername: www.apple.com
       tls: true
       type: vless
       udp: true
-      uuid: cb15d1b0-e48b-4c4c-b98a-fa1103aa3723
+      uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-11052
         - vmess-1459593711
-        - vless-1113490852
+        - hysteria2-1544869951
+        - shadowsocks-16132
         - vmess-1451310230
         - vless-1247220676
-        - vless-1459678985
-        - hysteria2-1544869951
         - hysteria2-1541456343
         - vless-1130438769
-        - vless-1473374135
-        - vless-1493152680
+        - vless-1113490852
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-11052
         - vmess-1459593711
-        - vless-1113490852
+        - hysteria2-1544869951
+        - shadowsocks-16132
         - vmess-1451310230
         - vless-1247220676
-        - vless-1459678985
-        - hysteria2-1544869951
         - hysteria2-1541456343
         - vless-1130438769
-        - vless-1473374135
-        - vless-1493152680
+        - vless-1113490852
       type: select
 rules:
     - MATCH,select

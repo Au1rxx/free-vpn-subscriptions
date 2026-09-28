@@ -1,0 +1,50 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "www.aisearch66.com",
+      "server_port": 19350,
+      "tag": "vless-1549584934",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "rlv4tZSKrdgfV2vwCdspLThdjOhNGvuUMMARHbxNnHs",
+          "short_id": "9195fcf93a"
+        },
+        "server_name": "www.tesla.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "type": "vless",
+      "uuid": "423da389-ec4b-47e1-a0da-42ba9f43af12"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1549584934"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1549584934"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "www.aisearch66.com",
+      "server_port": 10298,
+      "tag": "vless-1549584973",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "KZUlOnK6frAx_HFpwG0TGu-Lwhtu4507gIGNsLK-kko",
+          "short_id": "d0b14a7f0c52"
+        },
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "423da389-ec4b-47e1-a0da-42ba9f43af12"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "mlxytmp.deepfind.site",
+      "server_port": 10298,
+      "tag": "vless-1549584969",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "KZUlOnK6frAx_HFpwG0TGu-Lwhtu4507gIGNsLK-kko",
+          "short_id": "d0b14a7f0c52"
+        },
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "type": "vless",
+      "uuid": "423da389-ec4b-47e1-a0da-42ba9f43af12"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1549584973",
+        "vless-1549584969"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1549584973",
+        "vless-1549584969"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

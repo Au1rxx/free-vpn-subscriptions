@@ -1,4 +1,18 @@
 proxies:
+    - name: vless-36135
+      network: ws
+      port: 8880
+      server: 102.177.189.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-50527
+      network: ws
+      port: 8880
+      server: 154.197.64.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-81052
       network: ws
       port: 22573
@@ -13,14 +27,6 @@ proxies:
       type: vless
       udp: true
       uuid: 39947382-3212-41c9-bc3a-589574ac8b23
-    - name: trojan-122892
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20086
-      server: d3.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: vless-89301153
       network: ws
       port: 22573
@@ -158,6 +164,16 @@ proxies:
       type: vless
       udp: true
       uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+    - name: vless-1169638704
+      network: ws
+      port: 443
+      server: 104.21.70.21
+      servername: index.harmonica01.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: a22bff60-a40a-4250-bde2-4c660e363b47
     - name: vless-1206806603
       network: ws
       port: 22573
@@ -186,6 +202,13 @@ proxies:
       type: vless
       udp: true
       uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+    - name: vless-1351435202
+      network: ws
+      port: 80
+      server: 45.130.125.201
+      type: vless
+      udp: true
+      uuid: dc8a9493-c54a-459e-d060-81a700000001
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1361919260
@@ -207,6 +230,26 @@ proxies:
       type: vless
       udp: true
       uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+    - name: vless-1384931602
+      network: ws
+      port: 443
+      server: novantunnel.tech
+      servername: novantunnel.tech
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ee556a4f-d9f6-44de-af02-42c51659416a
+    - name: vless-1426978169
+      network: ws
+      port: 443
+      server: 104.21.70.21
+      servername: index.harmonica01.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: a22bff60-a40a-4250-bde2-4c660e363b47
     - name: vless-1442725423
       network: ws
       port: 22573
@@ -242,6 +285,13 @@ proxies:
       type: vless
       udp: true
       uuid: 31fd2fde-ca69-450e-8c03-eaad819b06b9
+    - name: vless-1494293579
+      network: ws
+      port: 8080
+      server: 104.21.70.21
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1494454740
@@ -326,6 +376,20 @@ proxies:
       type: vless
       udp: true
       uuid: 31fd2fde-ca69-450e-8c03-eaad819b06b9
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1515856356
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: VlWMFvYxwGIsctI7BfOgC4PCG3EMToD7_H8vWcRB42w
+        short-id: 855834d3b002ad21
+      server: 139.185.44.42
+      servername: www.microsoft.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b0fa80ad-d759-4bcc-a0fd-f802d53b5a88
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1545622452
@@ -344,9 +408,10 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-36135
+        - vless-50527
         - vless-81052
         - vless-93598
-        - trojan-122892
         - vless-89301153
         - vless-168481354
         - vless-222580702
@@ -366,29 +431,36 @@ proxy-groups:
         - vmess-1030431012
         - vless-1063385471
         - vless-1078737127
+        - vless-1169638704
         - vless-1206806603
         - vless-1345543546
         - vless-1351433254
+        - vless-1351435202
         - vless-1361919260
         - vless-1363486797
+        - vless-1384931602
+        - vless-1426978169
         - vless-1442725423
         - vless-1449562770
         - vless-1490518310
+        - vless-1494293579
         - vless-1494454740
         - vless-1496043607
         - vless-1496599156
         - vless-1507442363
         - vless-1509513921
         - vless-1510470973
+        - vless-1515856356
         - vless-1545622452
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-36135
+        - vless-50527
         - vless-81052
         - vless-93598
-        - trojan-122892
         - vless-89301153
         - vless-168481354
         - vless-222580702
@@ -408,20 +480,26 @@ proxy-groups:
         - vmess-1030431012
         - vless-1063385471
         - vless-1078737127
+        - vless-1169638704
         - vless-1206806603
         - vless-1345543546
         - vless-1351433254
+        - vless-1351435202
         - vless-1361919260
         - vless-1363486797
+        - vless-1384931602
+        - vless-1426978169
         - vless-1442725423
         - vless-1449562770
         - vless-1490518310
+        - vless-1494293579
         - vless-1494454740
         - vless-1496043607
         - vless-1496599156
         - vless-1507442363
         - vless-1509513921
         - vless-1510470973
+        - vless-1515856356
         - vless-1545622452
       type: select
 rules:

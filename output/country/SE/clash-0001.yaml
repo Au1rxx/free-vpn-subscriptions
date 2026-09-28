@@ -1,4 +1,24 @@
 proxies:
+    - name: vless-45435
+      network: ws
+      port: 443
+      server: 108.165.233.223
+      servername: netlivpn4813.ddhshhshs.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2388e166-3890-33ae-f77e-efac00000003
+    - name: vless-34790904
+      network: ws
+      port: 443
+      server: 172.67.208.181
+      servername: biyapain.biyapainbache.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5a5fba4d-6ae8-4975-936d-bb643fb15957
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-696780839
@@ -328,19 +348,6 @@ proxies:
       type: vless
       udp: true
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
-    - client-fingerprint: firefox
-      name: vless-1235435931
-      network: grpc
-      port: 9458
-      reality-opts:
-        public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
-        short-id: ""
-      server: 91.193.17.156
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: b3a11068-1a7e-4643-85de-7c82cce46943
     - client-fingerprint: chrome
       name: vless-1250669971
       network: grpc
@@ -394,6 +401,20 @@ proxies:
       type: vless
       udp: true
       uuid: 20d7c485-5d24-49b5-a5cc-bb7a7daf9908
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1371463644
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: CetY_ReGID1LBH275yWlxxOctI82PtgxR-fjYSRTKzM
+        short-id: 8a2b3c4d5e6f7012
+      server: 31.76.3.34
+      servername: tradingview.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0d628b17-8ac4-49b9-a422-6b99077bfdf6
     - cipher: aes-256-cfb
       name: shadowsocks-1438373117
       password: amazonskr05
@@ -737,10 +758,49 @@ proxies:
       type: vless
       udp: true
       uuid: 94877739-3af6-4fbb-85b6-ca6fe86c7696
+    - client-fingerprint: random
+      name: vless-1549585224
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: C6nh6hqFTbtizgSH8vGmw2XUxsQAbAW3jPylpgGvfl4
+        short-id: a1b2c3d4e5f6a7b8
+      server: 185.207.66.8
+      servername: upload.hexagonicfield.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 348c74af-6b85-48c8-8772-4cb2e9ef4d09
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1549697567
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Ze0irTcmNdt0iOioHey8zxm76PwVK9lIzVcTU5kIyx0
+        short-id: 95e51c18
+      server: app.goonars.com
+      servername: app.goonars.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 94877739-3af6-4fbb-85b6-ca6fe86c7696
+    - name: vless-1549716846
+      network: ws
+      port: 443
+      server: 95.129.236.239
+      servername: login.opendns.stream
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d2f5224a-9a26-4de7-b69a-9e06276c7b11
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-45435
+        - vless-34790904
         - vless-696780839
         - vless-713157148
         - vless-872770205
@@ -766,11 +826,11 @@ proxy-groups:
         - shadowsocks-1168160269
         - vless-1173154542
         - vless-1216487832
-        - vless-1235435931
         - vless-1250669971
         - vless-1257315595
         - vless-1267371434
         - vless-1294595398
+        - vless-1371463644
         - shadowsocks-1438373117
         - shadowsocks-1438373125
         - shadowsocks-1438373141
@@ -804,11 +864,16 @@ proxy-groups:
         - vless-1543270614
         - vless-1547145907
         - vless-1548317427
+        - vless-1549585224
+        - vless-1549697567
+        - vless-1549716846
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-45435
+        - vless-34790904
         - vless-696780839
         - vless-713157148
         - vless-872770205
@@ -834,11 +899,11 @@ proxy-groups:
         - shadowsocks-1168160269
         - vless-1173154542
         - vless-1216487832
-        - vless-1235435931
         - vless-1250669971
         - vless-1257315595
         - vless-1267371434
         - vless-1294595398
+        - vless-1371463644
         - shadowsocks-1438373117
         - shadowsocks-1438373125
         - shadowsocks-1438373141
@@ -872,6 +937,9 @@ proxy-groups:
         - vless-1543270614
         - vless-1547145907
         - vless-1548317427
+        - vless-1549585224
+        - vless-1549697567
+        - vless-1549716846
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-59796
+      network: ws
+      port: 8880
+      server: 176.124.223.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: hysteria2-1040048366
       password: dsmO0439gj_nX942GJRE_9j39fbcxv52_R
       port: 8080
@@ -20,21 +27,32 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
+    - name: vless-1335359013
+      network: ws
+      port: 8880
+      server: 185.158.133.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-59796
         - hysteria2-1040048366
         - hysteria2-1048663499
         - hysteria2-1179524508
+        - vless-1335359013
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-59796
         - hysteria2-1040048366
         - hysteria2-1048663499
         - hysteria2-1179524508
+        - vless-1335359013
       type: select
 rules:
     - MATCH,select
