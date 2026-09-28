@@ -1,0 +1,41 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "31.76.5.2",
+      "server_port": 443,
+      "tag": "vless-1276397131",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "viper-25.moriarty-web.com"
+      },
+      "type": "vless",
+      "uuid": "cd3bb7d9-7df3-4644-ac05-c260990ac277"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1276397131"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1276397131"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
