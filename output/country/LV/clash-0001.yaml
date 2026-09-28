@@ -21,6 +21,13 @@ proxies:
       sni: tyy129.magiclampcloud.com
       type: trojan
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-696781305
+      password: 45xgMgm386pjWjTx
+      port: 9082
+      server: 185.135.86.175
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-713159145
@@ -430,19 +437,41 @@ proxies:
       skip-cert-verify: false
       sni: hy.quattro-tech.ru
       type: hysteria2
-    - name: hysteria2-1281960369
-      password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
-      port: 24443
-      server: 91.240.86.70
-      skip-cert-verify: true
-      sni: hy.quattro-tech.ru
-      type: hysteria2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1556571832
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: d7yg69dK4DkaV1EPpQcgd4GBncMN9u1o1Nk9u-i7wGc
+        short-id: 7a18a196e730e1d5
+      server: 31.57.28.147
+      servername: download-cdn.jetbrains.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2412bd96-925b-43f2-81d1-0ed4f0793699
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1556572813
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: I4np_asRMCzTNxbG2GmYckXgsulkO4ghzyjE05Vf4AM
+        short-id: ""
+      server: lv-02.kibosub.com
+      servername: lv-02.kibosub.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0967b23f-376c-491d-bf06-ecf370d545b2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-696780838
         - trojan-696781161
+        - shadowsocks-696781305
         - vless-713159145
         - shadowsocks-717969044
         - shadowsocks-723348676
@@ -477,7 +506,8 @@ proxy-groups:
         - vless-1225789961
         - vless-1225948332
         - hysteria2-1278300107
-        - hysteria2-1281960369
+        - vless-1556571832
+        - vless-1556572813
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -485,6 +515,7 @@ proxy-groups:
         - auto
         - vless-696780838
         - trojan-696781161
+        - shadowsocks-696781305
         - vless-713159145
         - shadowsocks-717969044
         - shadowsocks-723348676
@@ -519,7 +550,8 @@ proxy-groups:
         - vless-1225789961
         - vless-1225948332
         - hysteria2-1278300107
-        - hysteria2-1281960369
+        - vless-1556571832
+        - vless-1556572813
       type: select
 rules:
     - MATCH,select

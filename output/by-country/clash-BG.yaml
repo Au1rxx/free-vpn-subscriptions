@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1556563216
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: dsyxDiVtAFRjKOqLdqof2SuygewTO-EWTd34Jk1YYVo
+        short-id: e9433de76a53573b
+      server: 131.123.41.223
+      servername: bulgaria.stream-live.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 33e8bd3a-26f0-4e57-bc27-e5552a81c880
     - cipher: aes-256-cfb
       name: shadowsocks-738053649
       password: GeregetR8cvQHzYr
@@ -17,6 +31,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1556563216
         - shadowsocks-738053649
         - shadowsocks-819466430
       type: url-test
@@ -24,6 +39,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1556563216
         - shadowsocks-738053649
         - shadowsocks-819466430
       type: select
