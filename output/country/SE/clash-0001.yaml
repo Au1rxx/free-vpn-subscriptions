@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-2478034
+      password: 6c0ed3fb-f0b0-5b53-a762-f8f8d832bdba
+      port: 2083
+      server: 104.20.5.134
+      skip-cert-verify: false
+      sni: vfarid.xcdi.workers.dev
+      type: trojan
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-696780839
@@ -193,6 +201,19 @@ proxies:
       uuid: b3a11068-1a7e-4643-85de-7c82cce46943
     - client-fingerprint: ios
       name: vless-1126122345
+      network: grpc
+      port: 33743
+      reality-opts:
+        public-key: wGMBs7bvzyzA0-OUiwSkOOTDEMdxEOsSdRzxiP8GGQY
+        short-id: ""
+      server: 193.42.39.10
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b3a11068-1a7e-4643-85de-7c82cce46943
+    - client-fingerprint: safari
+      name: vless-1126122367
       network: grpc
       port: 33743
       reality-opts:
@@ -601,16 +622,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9e3132b8-b595-444a-833a-2de44789f9d7
-    - name: vless-1559492455
-      network: ws
-      port: 443
-      server: 95.129.236.239
-      servername: 3ds.login.opendns.stream
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 8533059d-03c1-4fe6-bf3f-d6737f7bc288
     - name: vless-1559657172
       network: ws
       port: 443
@@ -699,10 +710,39 @@ proxies:
       type: vless
       udp: true
       uuid: 9e3132b8-b595-444a-833a-2de44789f9d7
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1562090790
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: nf9hAhB_OqveSsgdqqx7EW0FSoT4XNN_EzfD8lXVDVo
+        short-id: a1b2c3d4e5f6
+      server: 95.85.241.239
+      servername: originsw239.aktanow.shop
+      tls: true
+      type: vless
+      udp: true
+      uuid: 78571e63-1236-4c60-862a-70b7624dfa36
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1562091737
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: xwLNHc6jBOg5Ddr1LezwY7I45nP485Qfu1YJXMKwVnI
+        short-id: 330a464a00000000
+      server: 212.147.245.198
+      servername: online.1c.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 042d2d08-2973-5d10-97ad-3b75f16bbe54
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-2478034
         - vless-696780839
         - vless-713157148
         - vless-872770205
@@ -718,6 +758,7 @@ proxy-groups:
         - vless-1115021181
         - vless-1125467415
         - vless-1126122345
+        - vless-1126122367
         - vless-1136945983
         - shadowsocks-1168160269
         - vless-1216487832
@@ -754,7 +795,6 @@ proxy-groups:
         - vless-1559172129
         - vless-1559223936
         - vless-1559265367
-        - vless-1559492455
         - vless-1559657172
         - vless-1560064406
         - vless-1561433374
@@ -763,11 +803,14 @@ proxy-groups:
         - vless-1561506333
         - vless-1561765042
         - vless-1561765051
+        - vless-1562090790
+        - vless-1562091737
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-2478034
         - vless-696780839
         - vless-713157148
         - vless-872770205
@@ -783,6 +826,7 @@ proxy-groups:
         - vless-1115021181
         - vless-1125467415
         - vless-1126122345
+        - vless-1126122367
         - vless-1136945983
         - shadowsocks-1168160269
         - vless-1216487832
@@ -819,7 +863,6 @@ proxy-groups:
         - vless-1559172129
         - vless-1559223936
         - vless-1559265367
-        - vless-1559492455
         - vless-1559657172
         - vless-1560064406
         - vless-1561433374
@@ -828,6 +871,8 @@ proxy-groups:
         - vless-1561506333
         - vless-1561765042
         - vless-1561765051
+        - vless-1562090790
+        - vless-1562091737
       type: select
 rules:
     - MATCH,select

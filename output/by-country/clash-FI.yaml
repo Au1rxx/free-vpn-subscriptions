@@ -13,6 +13,16 @@ proxies:
       server: 168.107.78.228
       type: ss
       udp: true
+    - name: vless-1543619890
+      network: grpc
+      port: 443
+      server: fi.astrafic.ru
+      servername: fi.astrafic.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3d9daa27-6283-406d-a2d4-c6f22c635a14
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1381769945
@@ -176,12 +186,65 @@ proxies:
       type: vless
       udp: true
       uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
+    - client-fingerprint: chrome
+      name: vless-1358009940
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+    - client-fingerprint: chrome
+      name: vless-1361949543
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+    - client-fingerprint: random
+      name: vless-1561691930
+      network: grpc
+      port: 9872
+      reality-opts:
+        public-key: sm3E3hjmT6_Gmg_O9rBz4nfXYrHpnl6-LvcCp6T6_xc
+        short-id: ""
+      server: 85.208.86.91
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
+    - client-fingerprint: chrome
+      name: vless-343437429
+      network: tcp
+      port: 448
+      reality-opts:
+        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+        short-id: cd21e552537c7c0b
+      server: 185.79.138.71
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1554240676
         - shadowsocks-1558648940
+        - vless-1543619890
         - vless-1381769945
         - vless-1545596257
         - vless-1383618419
@@ -194,6 +257,10 @@ proxy-groups:
         - vless-294269613
         - vless-272678138
         - vless-315420975
+        - vless-1358009940
+        - vless-1361949543
+        - vless-1561691930
+        - vless-343437429
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -201,6 +268,7 @@ proxy-groups:
         - auto
         - shadowsocks-1554240676
         - shadowsocks-1558648940
+        - vless-1543619890
         - vless-1381769945
         - vless-1545596257
         - vless-1383618419
@@ -213,6 +281,10 @@ proxy-groups:
         - vless-294269613
         - vless-272678138
         - vless-315420975
+        - vless-1358009940
+        - vless-1361949543
+        - vless-1561691930
+        - vless-343437429
       type: select
 rules:
     - MATCH,select
