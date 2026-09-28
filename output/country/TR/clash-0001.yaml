@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-54117
-      network: ws
-      port: 8880
-      server: 162.251.82.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: trojan-112587
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20017
@@ -30,16 +23,6 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: vless-391803700
-      network: ws
-      port: 2053
-      server: 104.17.169.13
-      servername: index.harmonica01.workers.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: a22bff60-a40a-4250-bde2-4c660e363b47
     - name: trojan-474637039
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20018
@@ -126,16 +109,6 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1247221479
-      network: ws
-      port: 443
-      server: 104.21.70.21
-      servername: index.harmonica01.workers.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: a22bff60-a40a-4250-bde2-4c660e363b47
     - client-fingerprint: firefox
       name: vless-1285803654
       network: tcp
@@ -517,34 +490,6 @@ proxies:
       type: vless
       udp: true
       uuid: df95425f-b822-4279-bd97-3699361293dd
-    - client-fingerprint: safari
-      flow: xtls-rprx-vision
-      name: vless-1549584950
-      network: tcp
-      port: 31105
-      reality-opts:
-        public-key: QaAEn2qRqovBLfSIx2MGUQx50TBmOG3yRxRFN_VE01s
-        short-id: "37"
-      server: www.aisearch66.com
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 423da389-ec4b-47e1-a0da-42ba9f43af12
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1549584962
-      network: tcp
-      port: 10574
-      reality-opts:
-        public-key: QaAEn2qRqovBLfSIx2MGUQx50TBmOG3yRxRFN_VE01s
-        short-id: "37"
-      server: 38.54.105.74
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 423da389-ec4b-47e1-a0da-42ba9f43af12
     - name: vless-1550358271
       network: grpc
       port: 3090
@@ -580,15 +525,20 @@ proxies:
       type: vless
       udp: true
       uuid: 73649cdf-0f29-4d1c-8a4d-95163688f93f
+    - cipher: aes-128-gcm
+      name: shadowsocks-1552979078
+      password: _j2fKtUJpe_fwdFPt_Ilpg
+      port: 1468
+      server: 213.142.150.136
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-54117
         - trojan-112587
         - trojan-122850
         - trojan-122851
-        - vless-391803700
         - trojan-474637039
         - trojan-479026176
         - trojan-700420641
@@ -600,7 +550,6 @@ proxy-groups:
         - vless-1239140620
         - vless-1239296170
         - vless-1239328824
-        - vless-1247221479
         - vless-1285803654
         - vless-1301607910
         - vless-1330396886
@@ -638,23 +587,20 @@ proxy-groups:
         - vless-1546895708
         - vless-1547594402
         - vless-1547809294
-        - vless-1549584950
-        - vless-1549584962
         - vless-1550358271
         - vless-1550358273
         - vless-1550358274
         - vless-1550358878
         - vless-1550358880
+        - shadowsocks-1552979078
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-54117
         - trojan-112587
         - trojan-122850
         - trojan-122851
-        - vless-391803700
         - trojan-474637039
         - trojan-479026176
         - trojan-700420641
@@ -666,7 +612,6 @@ proxy-groups:
         - vless-1239140620
         - vless-1239296170
         - vless-1239328824
-        - vless-1247221479
         - vless-1285803654
         - vless-1301607910
         - vless-1330396886
@@ -704,13 +649,12 @@ proxy-groups:
         - vless-1546895708
         - vless-1547594402
         - vless-1547809294
-        - vless-1549584950
-        - vless-1549584962
         - vless-1550358271
         - vless-1550358273
         - vless-1550358274
         - vless-1550358878
         - vless-1550358880
+        - shadowsocks-1552979078
       type: select
 rules:
     - MATCH,select
