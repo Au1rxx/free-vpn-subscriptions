@@ -67,6 +67,19 @@ proxies:
       skip-cert-verify: true
       sni: 91.240.86.70
       type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-1352517441
+      network: tcp
+      port: 26424
+      reality-opts:
+        public-key: l8AubqcxQO-HRFJy4pZL1vbLOo-eXit69s-XulSELE0
+        short-id: 23103e1e
+      server: 45.12.75.242
+      servername: ya.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 633f424e-2b11-48da-a6b3-a849dd71456f
     - name: hysteria2-1388429358
       password: 3f63c86c-ac4a-4900-85cf-4fedf93c2ca5
       port: 22443
@@ -223,48 +236,6 @@ proxies:
       type: hysteria2
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-1554574403
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-        short-id: ""
-      server: 45.151.71.27
-      servername: sellflow.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: ce5949b7-5137-4007-8a0a-063aad88b920
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1554575360
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-        short-id: ""
-      server: 147.45.46.11
-      servername: abuse.sellflow.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: e1d17eb6-e577-4520-8631-92d68ee675cb
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1554575373
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-        short-id: ""
-      server: 45.131.212.134
-      servername: sellflow.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5b6a0596-3b75-4c65-8034-e4510f97de18
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
       name: vless-1557930316
       network: tcp
       port: 443
@@ -277,6 +248,34 @@ proxies:
       type: vless
       udp: true
       uuid: 617c4aa4-08bc-41ea-8fdf-0bacf068c317
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1558629669
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: VfQv2SS_WclTga8Y8H0OCEMWLGKAHqK72nAUQyHN8js
+        short-id: 9c2378562188c3cb
+      server: ru.dendiboss.org
+      servername: ru.dendiboss.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8d2341a3-13b8-4e5e-84e1-da1c4923149a
+    - name: hysteria2-1558648943
+      password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
+      port: 2060
+      server: els.mangshe.xyz
+      skip-cert-verify: true
+      sni: els.mangshe.xyz
+      type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1558922562
+      password: bKdJ3HWHirNeug0qzc3K2YjlNjQY4E3M
+      port: 4500
+      server: 135.106.229.28
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -288,6 +287,7 @@ proxy-groups:
         - hysteria2-1278300104
         - hysteria2-1308868748
         - hysteria2-1310560310
+        - vless-1352517441
         - hysteria2-1388429358
         - hysteria2-1393931802
         - hysteria2-1460630514
@@ -303,10 +303,10 @@ proxy-groups:
         - hysteria2-1552291976
         - hysteria2-1552472310
         - hysteria2-1553155170
-        - vless-1554574403
-        - vless-1554575360
-        - vless-1554575373
         - vless-1557930316
+        - vless-1558629669
+        - hysteria2-1558648943
+        - shadowsocks-1558922562
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -319,6 +319,7 @@ proxy-groups:
         - hysteria2-1278300104
         - hysteria2-1308868748
         - hysteria2-1310560310
+        - vless-1352517441
         - hysteria2-1388429358
         - hysteria2-1393931802
         - hysteria2-1460630514
@@ -334,10 +335,10 @@ proxy-groups:
         - hysteria2-1552291976
         - hysteria2-1552472310
         - hysteria2-1553155170
-        - vless-1554574403
-        - vless-1554575360
-        - vless-1554575373
         - vless-1557930316
+        - vless-1558629669
+        - hysteria2-1558648943
+        - shadowsocks-1558922562
       type: select
 rules:
     - MATCH,select

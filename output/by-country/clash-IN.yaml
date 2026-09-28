@@ -25,22 +25,18 @@ proxies:
       type: vless
       udp: true
       uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
+    - alterId: 0
+      cipher: auto
+      name: vmess-1547528902
+      network: ws
+      port: 80
+      server: 152.67.8.205
+      type: vmess
+      udp: true
+      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
     - client-fingerprint: chrome
       name: vless-1373029244
       network: tcp
-      port: 2053
-      reality-opts:
-        public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
-        short-id: 9980e0609b0d3891
-      server: 194.61.31.126
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
-    - client-fingerprint: firefox
-      name: vless-1279565000
-      network: raw
       port: 2053
       reality-opts:
         public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
@@ -65,15 +61,29 @@ proxies:
       type: vless
       udp: true
       uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
+    - client-fingerprint: firefox
+      name: vless-1279565000
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
+        short-id: 9980e0609b0d3891
+      server: 194.61.31.126
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1343261564
         - vless-1345587703
+        - vmess-1547528902
         - vless-1373029244
-        - vless-1279565000
         - vless-252867231
+        - vless-1279565000
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -81,9 +91,10 @@ proxy-groups:
         - auto
         - vless-1343261564
         - vless-1345587703
+        - vmess-1547528902
         - vless-1373029244
-        - vless-1279565000
         - vless-252867231
+        - vless-1279565000
       type: select
 rules:
     - MATCH,select
