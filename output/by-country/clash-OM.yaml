@@ -1,0 +1,22 @@
+proxies:
+    - cipher: aes-128-gcm
+      name: shadowsocks-1561544894
+      password: b667234b8d2e7eb34444857ea3a9b18a
+      port: 18415
+      server: 130.94.81.180
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-1561544894
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-1561544894
+      type: select
+rules:
+    - MATCH,select
