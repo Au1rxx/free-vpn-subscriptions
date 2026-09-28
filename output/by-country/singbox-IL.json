@@ -1,6 +1,14 @@
 {
   "outbounds": [
     {
+      "method": "2022-blake3-aes-128-gcm",
+      "password": "EIIwJPg8YqgnjLLd58zoTg==:YYHIWhNXALgI+lmzFcEdTw==",
+      "server": "85.209.157.184",
+      "server_port": 8388,
+      "tag": "shadowsocks-1555183180",
+      "type": "shadowsocks"
+    },
+    {
       "password": "dsmO0439gj_nX942GJRE_9j39fbcxv52_R",
       "server": "85.209.157.177",
       "server_port": 8080,
@@ -13,9 +21,33 @@
       "type": "hysteria2"
     },
     {
+      "flow": "xtls-rprx-vision",
+      "server": "193.169.229.145",
+      "server_port": 443,
+      "tag": "vless-1555659052",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "2CwgJn1lc23uxQjAdGphQl4SSRmd1amunSpYXxgCgCM",
+          "short_id": "7e13fde9"
+        },
+        "server_name": "isr.vpnskyline.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "46b3a70b-b99f-4c6e-aa83-df6d842bb954"
+    },
+    {
       "interval": "5m",
       "outbounds": [
-        "hysteria2-1048663499"
+        "shadowsocks-1555183180",
+        "hysteria2-1048663499",
+        "vless-1555659052"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -24,7 +56,9 @@
     {
       "outbounds": [
         "auto",
-        "hysteria2-1048663499"
+        "shadowsocks-1555183180",
+        "hysteria2-1048663499",
+        "vless-1555659052"
       ],
       "tag": "select",
       "type": "selector"

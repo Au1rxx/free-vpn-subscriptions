@@ -1,4 +1,11 @@
 proxies:
+    - cipher: 2022-blake3-aes-128-gcm
+      name: shadowsocks-1555183180
+      password: EIIwJPg8YqgnjLLd58zoTg==:YYHIWhNXALgI+lmzFcEdTw==
+      port: 8388
+      server: 85.209.157.184
+      type: ss
+      udp: true
     - name: hysteria2-1048663499
       password: dsmO0439gj_nX942GJRE_9j39fbcxv52_R
       port: 8080
@@ -6,17 +13,35 @@ proxies:
       skip-cert-verify: true
       sni: hopp-transit.1cooldns.com
       type: hysteria2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1555659052
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 2CwgJn1lc23uxQjAdGphQl4SSRmd1amunSpYXxgCgCM
+        short-id: 7e13fde9
+      server: 193.169.229.145
+      servername: isr.vpnskyline.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 46b3a70b-b99f-4c6e-aa83-df6d842bb954
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1555183180
         - hysteria2-1048663499
+        - vless-1555659052
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1555183180
         - hysteria2-1048663499
+        - vless-1555659052
       type: select
 rules:
     - MATCH,select

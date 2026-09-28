@@ -1,0 +1,111 @@
+{
+  "outbounds": [
+    {
+      "server": "platform108.golnamakcert.top",
+      "server_port": 80,
+      "tag": "vless-1515618864",
+      "transport": {
+        "headers": {
+          "Host": "platform108.halalkhor.info"
+        },
+        "path": "/platform108",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "e13cf851-b4fd-413b-8d49-146e6eb8e5d4"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "my1.miyazono-kaori.com",
+      "server_port": 443,
+      "tag": "vless-1559171827",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "t3HU7p5iYjE9Lcq2-QHTXZFhpAvoXljTNDgmFkFN-Tc",
+          "short_id": "99f8972e3dd5ed"
+        },
+        "server_name": "www.setel.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "a79c43ab-1b3d-4766-892f-e9d65a18c63e"
+    },
+    {
+      "server": "platform108.golnamakcert.top",
+      "server_port": 80,
+      "tag": "vless-1503722200",
+      "transport": {
+        "headers": {
+          "Host": "platform108.halalkhor.info"
+        },
+        "path": "/platform108",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "e13cf851-b4fd-413b-8d49-146e6eb8e5d4"
+    },
+    {
+      "server": "platform102.golnamakcert.top",
+      "server_port": 80,
+      "tag": "vless-1507878877",
+      "transport": {
+        "path": "/platform102",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "e13cf851-b4fd-413b-8d49-146e6eb8e5d4"
+    },
+    {
+      "server": "platform103.golnamakcert.top",
+      "server_port": 80,
+      "tag": "vless-1519968531",
+      "transport": {
+        "headers": {
+          "Host": "platform103.halalkhor.info"
+        },
+        "path": "/platform103",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "e13cf851-b4fd-413b-8d49-146e6eb8e5d4"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1515618864",
+        "vless-1559171827",
+        "vless-1503722200",
+        "vless-1507878877",
+        "vless-1519968531"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1515618864",
+        "vless-1559171827",
+        "vless-1503722200",
+        "vless-1507878877",
+        "vless-1519968531"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
