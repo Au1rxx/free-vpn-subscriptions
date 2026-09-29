@@ -27,6 +27,19 @@ proxies:
       type: vless
       udp: true
       uuid: a368752a-32fc-42f3-980a-6b049218b23f
+    - client-fingerprint: chrome
+      name: vless-1343261564
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
+        short-id: 9980e0609b0d3891
+      server: 194.61.31.126
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
     - client-fingerprint: firefox
       name: vless-1279565000
       network: raw
@@ -40,8 +53,8 @@ proxies:
       type: vless
       udp: true
       uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
-    - client-fingerprint: firefox
-      name: vless-1272779542
+    - client-fingerprint: chrome
+      name: vless-1345587703
       network: tcp
       port: 2053
       reality-opts:
@@ -53,8 +66,8 @@ proxies:
       type: vless
       udp: true
       uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
-    - client-fingerprint: chrome
-      name: vless-1343261564
+    - client-fingerprint: firefox
+      name: vless-1272779542
       network: tcp
       port: 2053
       reality-opts:
@@ -94,20 +107,6 @@ proxies:
       type: vless
       udp: true
       uuid: 914f3806-07a1-4158-9624-e183de065a38
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1571264612
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: erUEmyU1QK8y2corQh9bOjk0oHl2Mo6Z9WgoyKg_rC0
-        short-id: c1e3d5d4
-      server: 5.253.42.159
-      servername: india.letsconnectpoint.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 914f3806-07a1-4158-9624-e183de065a38
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1572917061
@@ -122,34 +121,29 @@ proxies:
       type: vless
       udp: true
       uuid: 914f3806-07a1-4158-9624-e183de065a38
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1571264633
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: erUEmyU1QK8y2corQh9bOjk0oHl2Mo6Z9WgoyKg_rC0
-        short-id: c1e3d5d4
-      server: india.letsconnectpoint.com
-      servername: india.letsconnectpoint.com
-      tls: true
-      type: vless
+    - alterId: 0
+      cipher: auto
+      name: vmess-1575902262
+      network: ws
+      port: 80
+      server: 152.67.8.205
+      type: vmess
       udp: true
-      uuid: a368752a-32fc-42f3-980a-6b049218b23f
+      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1560109689
         - vless-1560533989
-        - vless-1279565000
-        - vless-1272779542
         - vless-1343261564
+        - vless-1279565000
+        - vless-1345587703
+        - vless-1272779542
         - vless-1561506322
         - vless-1571789127
-        - vless-1571264612
         - vless-1572917061
-        - vless-1571264633
+        - vmess-1575902262
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -157,14 +151,14 @@ proxy-groups:
         - auto
         - vless-1560109689
         - vless-1560533989
-        - vless-1279565000
-        - vless-1272779542
         - vless-1343261564
+        - vless-1279565000
+        - vless-1345587703
+        - vless-1272779542
         - vless-1561506322
         - vless-1571789127
-        - vless-1571264612
         - vless-1572917061
-        - vless-1571264633
+        - vmess-1575902262
       type: select
 rules:
     - MATCH,select

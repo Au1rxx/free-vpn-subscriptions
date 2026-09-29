@@ -1,12 +1,11 @@
 proxies:
-    - name: trojan-1570841612
-      password: 5bafc1f1-43bc-301c-bf57-53abbf20dabc
-      port: 41053
-      server: ktc1k.xmrthnode.com
-      skip-cert-verify: true
-      sni: mpvideo.qpic.cn
-      type: trojan
+    - name: vless-1566782779
+      network: ws
+      port: 80
+      server: platform128.golnamakcert.top
+      type: vless
       udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
     - name: vless-1550360221
       network: ws
       port: 80
@@ -14,29 +13,28 @@ proxies:
       type: vless
       udp: true
       uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
-    - name: trojan-1570841520
-      password: 5bafc1f1-43bc-301c-bf57-53abbf20dabc
-      port: 41053
-      server: ktc2s.xmrthnode.com
-      skip-cert-verify: true
-      sni: mpvideo.qpic.cn
-      type: trojan
+    - name: vless-1558954628
+      network: ws
+      port: 80
+      server: platform128.golnamakcert.top
+      type: vless
       udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-1570841612
+        - vless-1566782779
         - vless-1550360221
-        - trojan-1570841520
+        - vless-1558954628
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-1570841612
+        - vless-1566782779
         - vless-1550360221
-        - trojan-1570841520
+        - vless-1558954628
       type: select
 rules:
     - MATCH,select
