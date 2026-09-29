@@ -13,13 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: 47d9b534-8a0a-4bd2-90f1-1d6ade14427e
-    - name: vless-689803241
-      network: ws
-      port: 443
-      server: 94.183.170.135
-      type: vless
-      udp: true
-      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
     - name: trojan-1104467645
       password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
       port: 449
@@ -28,6 +21,19 @@ proxies:
       sni: 109.206.241.10
       type: trojan
       udp: true
+    - client-fingerprint: firefox
+      name: vless-1364518788
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: s2uiu3GQA2SlZzsr86Z5Dav97eAFTPf7Nvr-zqzzRgg
+        short-id: 72ccd4a7563c2953
+      server: 94.183.170.147
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 66ac188b-bd8d-4218-b9ba-0bad0e152cd0
     - client-fingerprint: firefox
       name: vless-1351430597
       network: grpc
@@ -41,19 +47,32 @@ proxies:
       type: vless
       udp: true
       uuid: 66ac188b-bd8d-4218-b9ba-0bad0e152cd0
-    - name: vless-957016089
-      network: ws
-      port: 443
-      server: 94.183.170.135
-      type: vless
-      udp: true
-      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
     - name: vless-1204622282
       network: tcp
       port: 8443
       server: 94.183.170.135
       servername: ""
       skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+    - name: vless-656161252
+      network: tcp
+      port: 8443
+      server: 94.183.170.135
+      servername: estproxy4.lockdwn.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+    - name: vless-650319315
+      network: tcp
+      port: 8443
+      server: 94.183.170.135
+      servername: estproxy4.lockdwn.com
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
@@ -72,81 +91,31 @@ proxies:
       type: vless
       udp: true
       uuid: 44680084-c9dc-48ca-9db7-cb0c26bfc99e
-    - name: vless-685581284
-      network: raw
-      port: 8443
-      server: 94.183.170.135
-      servername: estproxy4.lockdwn.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-1565846115
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: sQYbY2iYj2RZTUJQTR7ZXE6LtQDNtIFmZhYJbmlv8lw
-        short-id: 7ac6d7ab
-      server: 212.87.190.166
-      servername: ee166.mech-pro.online
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5dff1842-c02f-4dd4-b1ad-2e597b99dc31
-    - name: vless-650319315
-      network: tcp
-      port: 8443
-      server: 94.183.170.135
-      servername: estproxy4.lockdwn.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-    - name: vless-781312931
-      network: tcp
-      port: 8443
-      server: 94.183.170.135
-      servername: estproxy4.lockdwn.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1129063543
-        - vless-689803241
         - trojan-1104467645
+        - vless-1364518788
         - vless-1351430597
-        - vless-957016089
         - vless-1204622282
-        - vless-1561433379
-        - vless-685581284
-        - vless-1565846115
+        - vless-656161252
         - vless-650319315
-        - vless-781312931
+        - vless-1561433379
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1129063543
-        - vless-689803241
         - trojan-1104467645
+        - vless-1364518788
         - vless-1351430597
-        - vless-957016089
         - vless-1204622282
-        - vless-1561433379
-        - vless-685581284
-        - vless-1565846115
+        - vless-656161252
         - vless-650319315
-        - vless-781312931
+        - vless-1561433379
       type: select
 rules:
     - MATCH,select

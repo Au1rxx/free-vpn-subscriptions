@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-1562091739
-      network: grpc
-      port: 3090
-      server: 93.190.9.60
-      type: vless
-      udp: true
-      uuid: cbbc93ef-6d35-463a-a856-64265c42e66d
     - name: vless-1563071221
       network: grpc
       port: 3090
@@ -13,13 +6,28 @@ proxies:
       type: vless
       udp: true
       uuid: 7809f866-9f42-43ae-ae11-34729db23236
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1559174462
-      password: Gc9jTDnPAeTz4Z8jDbqI2A
-      port: 8389
-      server: istan17.zavqeron.ir
-      type: ss
+    - flow: xtls-rprx-vision
+      name: vless-1562302547
+      network: tcp
+      port: 443
+      server: myda08.api3-max.ru
+      servername: myda08.api3-max.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
       udp: true
+      uuid: cdd6bfce-781a-4454-b7d5-4778abb5c24f
+    - flow: xtls-rprx-vision
+      name: vless-1562302542
+      network: tcp
+      port: 443
+      server: myda06.api3-max.ru
+      servername: myda06.api3-max.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: cdd6bfce-781a-4454-b7d5-4778abb5c24f
     - name: vless-1562702724
       network: tcp
       port: 2053
@@ -27,39 +35,23 @@ proxies:
       type: vless
       udp: true
       uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1375518717
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8
-        short-id: f46cd3ea3d1eb72d
-      server: 78.135.73.47
-      servername: www.datadoghq.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 25e16692-d097-4e69-9e2d-8415609c1968
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1562091739
         - vless-1563071221
-        - shadowsocks-1559174462
+        - vless-1562302547
+        - vless-1562302542
         - vless-1562702724
-        - vless-1375518717
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1562091739
         - vless-1563071221
-        - shadowsocks-1559174462
+        - vless-1562302547
+        - vless-1562302542
         - vless-1562702724
-        - vless-1375518717
       type: select
 rules:
     - MATCH,select

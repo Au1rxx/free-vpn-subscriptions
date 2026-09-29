@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1562346932
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: SARDrN_d46PsugT2k5ILoQAJqaA1eCOZhe1BjKMonj8
+        short-id: ""
+      server: 45.9.168.211
+      servername: mzone.hu.3cloudhost.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7de5e70d-b95e-4019-affb-636151647b52
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1562346932
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1562346932
+      type: select
+rules:
+    - MATCH,select
