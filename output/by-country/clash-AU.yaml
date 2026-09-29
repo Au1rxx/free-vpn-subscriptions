@@ -13,9 +13,9 @@ proxies:
       type: vless
       udp: true
       uuid: 36e89875-9c53-482b-bc41-d3890e9da176
-    - client-fingerprint: firefox
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1395522411
+      name: vless-1396622624
       network: tcp
       port: 443
       reality-opts:
@@ -27,9 +27,9 @@ proxies:
       type: vless
       udp: true
       uuid: 36e89875-9c53-482b-bc41-d3890e9da176
-    - client-fingerprint: chrome
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-1396622624
+      name: vless-1395522411
       network: tcp
       port: 443
       reality-opts:
@@ -112,20 +112,6 @@ proxies:
       uuid: 36e89875-9c53-482b-bc41-d3890e9da176
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1478639973
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: gCAazs5uxNuMZIxfDdw8wPE0nwKY4QfBfBkQveKAkEk
-        short-id: 0ad08b47f498efd2
-      server: 51.161.204.244
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 36e89875-9c53-482b-bc41-d3890e9da176
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-1546710194
       network: tcp
       port: 25605
@@ -152,62 +138,35 @@ proxies:
       type: vless
       udp: true
       uuid: d00d9d18-20cf-4191-be76-6f73d43a27ec
-    - name: hysteria2-1561765064
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: vpn-au-001.fastervpn.world
-      skip-cert-verify: true
-      sni: vpn-au-001.fastervpn.world
-      type: hysteria2
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1418799383
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: gCAazs5uxNuMZIxfDdw8wPE0nwKY4QfBfBkQveKAkEk
-        short-id: 0ad08b47f498efd2
-      server: 51.161.204.244
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 36e89875-9c53-482b-bc41-d3890e9da176
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1390814481
-        - vless-1395522411
         - vless-1396622624
+        - vless-1395522411
         - vless-1258929861
         - vless-1412445133
         - vless-1427744079
         - vless-1372417838
         - vless-1375518714
-        - vless-1478639973
         - vless-1546710194
         - vless-1549589467
-        - hysteria2-1561765064
-        - vless-1418799383
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1390814481
-        - vless-1395522411
         - vless-1396622624
+        - vless-1395522411
         - vless-1258929861
         - vless-1412445133
         - vless-1427744079
         - vless-1372417838
         - vless-1375518714
-        - vless-1478639973
         - vless-1546710194
         - vless-1549589467
-        - hysteria2-1561765064
-        - vless-1418799383
       type: select
 rules:
     - MATCH,select

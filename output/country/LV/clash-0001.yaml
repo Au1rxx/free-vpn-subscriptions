@@ -1,20 +1,6 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-324637042
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-        short-id: c39cc7310a
-      server: 169.40.42.52
-      servername: yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d65cc14c-f53f-4fe2-b262-97856601319c
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-696780838
       network: tcp
       port: 443
@@ -599,19 +585,6 @@ proxies:
       type: vless
       udp: true
       uuid: 2412bd96-925b-43f2-81d1-0ed4f0793699
-    - client-fingerprint: qq
-      name: vless-1573946822
-      network: grpc
-      port: 6443
-      reality-opts:
-        public-key: ivgTfLR13A6xBsicIA28OPoav2tXlsstTTmGuETfnSk
-        short-id: 5c766813929a1fdd
-      server: 89.108.83.73
-      servername: s3.storage.selcloud.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 035c5195-683b-4992-9c94-bd76bd005ad9
     - flow: xtls-rprx-vision
       name: vless-1574344693
       network: tcp
@@ -688,11 +661,20 @@ proxies:
       type: vless
       udp: true
       uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
+    - name: vless-1578123359
+      network: ws
+      port: 443
+      server: p6r3t9ka2.lynch.ir
+      servername: p6r3t9ka2.lynch.ir
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 05dff627-6615-424d-9e2d-5612017246f4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-324637042
         - vless-696780838
         - trojan-696781161
         - shadowsocks-696781305
@@ -745,7 +727,6 @@ proxy-groups:
         - vless-1571267609
         - vless-1571332121
         - vless-1571789125
-        - vless-1573946822
         - vless-1574344693
         - vless-1574988016
         - vless-1574997784
@@ -753,12 +734,12 @@ proxy-groups:
         - vless-1575829349
         - vless-1576766448
         - vless-1577165324
+        - vless-1578123359
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-324637042
         - vless-696780838
         - trojan-696781161
         - shadowsocks-696781305
@@ -811,7 +792,6 @@ proxy-groups:
         - vless-1571267609
         - vless-1571332121
         - vless-1571789125
-        - vless-1573946822
         - vless-1574344693
         - vless-1574988016
         - vless-1574997784
@@ -819,6 +799,7 @@ proxy-groups:
         - vless-1575829349
         - vless-1576766448
         - vless-1577165324
+        - vless-1578123359
       type: select
 rules:
     - MATCH,select

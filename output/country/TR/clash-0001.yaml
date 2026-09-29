@@ -15,6 +15,14 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - name: trojan-122851
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20018
+      server: d3.catcat321.com
+      skip-cert-verify: true
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: trojan-479026176
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20017
@@ -446,12 +454,48 @@ proxies:
       type: vless
       udp: true
       uuid: bc4c0c9f-ab46-4f2c-8305-ab8b3d019fd7
+    - name: vless-1577646719
+      network: tcp
+      port: 19101
+      server: 206.1.99.60
+      type: vless
+      udp: true
+      uuid: 2b8527d1-b4ab-4d3b-9863-409058552fec
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1577665656
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: nilJ07r1KZ0-KhmRNYeICXGhM9HeG9uxnRaqjYz3fWg
+        short-id: d38eea587f1a4f68
+      server: 31.59.180.3
+      servername: static.responsiblecare.uk
+      tls: true
+      type: vless
+      udp: true
+      uuid: ae0d0211-b7dc-461d-9d41-1eb224876f30
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1577665672
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: nilJ07r1KZ0-KhmRNYeICXGhM9HeG9uxnRaqjYz3fWg
+        short-id: d38eea587f1a4f68
+      server: static.responsiblecare.uk
+      servername: static.responsiblecare.uk
+      tls: true
+      type: vless
+      udp: true
+      uuid: ae0d0211-b7dc-461d-9d41-1eb224876f30
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-112587
         - trojan-122850
+        - trojan-122851
         - trojan-479026176
         - trojan-856461940
         - trojan-856461981
@@ -492,6 +536,9 @@ proxy-groups:
         - shadowsocks-1575991852
         - vless-1577108841
         - vless-1577108867
+        - vless-1577646719
+        - vless-1577665656
+        - vless-1577665672
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -499,6 +546,7 @@ proxy-groups:
         - auto
         - trojan-112587
         - trojan-122850
+        - trojan-122851
         - trojan-479026176
         - trojan-856461940
         - trojan-856461981
@@ -539,6 +587,9 @@ proxy-groups:
         - shadowsocks-1575991852
         - vless-1577108841
         - vless-1577108867
+        - vless-1577646719
+        - vless-1577665656
+        - vless-1577665672
       type: select
 rules:
     - MATCH,select
