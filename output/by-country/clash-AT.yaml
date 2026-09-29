@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-1251465987
+      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+      port: 19999
+      server: 82.110.60.9
+      type: ss
+      udp: true
     - flow: xtls-rprx-vision
       name: vless-1154636549
       network: tcp
@@ -10,6 +17,17 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
+      name: vless-1560534039
+      network: tcp
+      port: 52006
+      server: 31.77.227.6
+      servername: bigdick.gamegrow.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bc659d88-a1e0-076c-a49a-7b51b26a7a7f
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-984954074
@@ -25,44 +43,48 @@ proxies:
       udp: true
       uuid: edde565e-41f5-400e-84ea-7b87a3e84488
     - flow: xtls-rprx-vision
-      name: vless-1560534039
+      name: vless-1157879743
       network: tcp
-      port: 52006
-      server: 31.77.227.6
-      servername: bigdick.gamegrow.ru
-      skip-cert-verify: false
+      port: 443
+      server: 50.7.184.122
+      servername: at3.moritech.net
+      skip-cert-verify: true
       tls: true
       type: vless
       udp: true
-      uuid: bc659d88-a1e0-076c-a49a-7b51b26a7a7f
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - flow: xtls-rprx-vision
-      name: vless-1566780821
+      name: vless-1157879715
       network: tcp
-      port: 52006
-      server: 31.77.227.6
-      servername: bigdick.gamegrow.ru
-      skip-cert-verify: false
+      port: 443
+      server: 50.7.37.154
+      servername: at1.moritech.net
+      skip-cert-verify: true
       tls: true
       type: vless
       udp: true
-      uuid: bc659d88-a1e0-076c-a49a-7b51b26a7a7f
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1251465987
         - vless-1154636549
-        - vless-984954074
         - vless-1560534039
-        - vless-1566780821
+        - vless-984954074
+        - vless-1157879743
+        - vless-1157879715
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1251465987
         - vless-1154636549
-        - vless-984954074
         - vless-1560534039
-        - vless-1566780821
+        - vless-984954074
+        - vless-1157879743
+        - vless-1157879715
       type: select
 rules:
     - MATCH,select

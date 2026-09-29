@@ -1,7 +1,35 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-1568568958
+      network: tcp
+      port: 29172
+      reality-opts:
+        public-key: pff94OJwuKXnF7_3SJ8KKJuAN4GJtInBlR-kg-4mwzQ
+        short-id: ""
+      server: 103.172.197.2
+      servername: aws.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3977434d-6a9b-4858-8ced-80326ba5e367
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-1564315464
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: hTweFDvbSucrGERtiiwDfoqD3vo_Z9cuaqboff3FTXQ
+        short-id: ""
+      server: 172.235.246.215
+      servername: googleapis.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d90087c3-54f5-4283-a13f-615260c8b0c7
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1572918753
       network: tcp
       port: 443
       reality-opts:
@@ -17,13 +45,17 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1568568958
         - vless-1564315464
+        - vless-1572918753
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1568568958
         - vless-1564315464
+        - vless-1572918753
       type: select
 rules:
     - MATCH,select

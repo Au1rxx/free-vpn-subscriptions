@@ -1,6 +1,42 @@
 {
   "outbounds": [
     {
+      "method": "chacha20-ietf-poly1305",
+      "password": "WSyL4XTwNsdv",
+      "server": "108.181.121.226",
+      "server_port": 8388,
+      "tag": "shadowsocks-16132",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "chacha20-ietf-poly1305",
+      "password": "qItG8SueYQcP",
+      "server": "140.174.184.5",
+      "server_port": 8388,
+      "tag": "shadowsocks-11052",
+      "type": "shadowsocks"
+    },
+    {
+      "server": "assets-es.pleiades.codes",
+      "server_port": 443,
+      "tag": "vless-1568132901",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "assets-es.pleiades.codes",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "transport": {
+        "service_name": "cdn.v1.AssetService",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "e0b9fb0f-1bbd-478b-9580-c2294778338b"
+    },
+    {
       "password": "5d0a6445-a30d-4522-bb1f-94f1d3ad63be",
       "server": "xby.mangshe.xyz",
       "server_port": 2060,
@@ -13,18 +49,12 @@
       "type": "hysteria2"
     },
     {
-      "method": "chacha20-ietf-poly1305",
-      "password": "WSyL4XTwNsdv",
-      "server": "108.181.121.226",
-      "server_port": 8388,
-      "tag": "shadowsocks-16132",
-      "type": "shadowsocks"
-    },
-    {
       "interval": "5m",
       "outbounds": [
-        "hysteria2-1558648928",
-        "shadowsocks-16132"
+        "shadowsocks-16132",
+        "shadowsocks-11052",
+        "vless-1568132901",
+        "hysteria2-1558648928"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -33,8 +63,10 @@
     {
       "outbounds": [
         "auto",
-        "hysteria2-1558648928",
-        "shadowsocks-16132"
+        "shadowsocks-16132",
+        "shadowsocks-11052",
+        "vless-1568132901",
+        "hysteria2-1558648928"
       ],
       "tag": "select",
       "type": "selector"
