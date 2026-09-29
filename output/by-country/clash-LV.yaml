@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1565348602
+      password: ODM2MzExOTcyMCwxNzkwNTMyNzE0ksak7YOGMD
+      port: 8113
+      server: 212.192.14.212
+      skip-cert-verify: false
+      sni: lat1.lumenvpn.tech
+      type: hysteria2
     - client-fingerprint: firefox
       name: vless-1562090766
       network: grpc
@@ -16,12 +23,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1565348602
         - vless-1562090766
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1565348602
         - vless-1562090766
       type: select
 rules:
