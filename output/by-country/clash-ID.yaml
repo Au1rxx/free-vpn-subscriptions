@@ -6,17 +6,33 @@ proxies:
       server: 103.160.63.199
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1564315464
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: hTweFDvbSucrGERtiiwDfoqD3vo_Z9cuaqboff3FTXQ
+        short-id: ""
+      server: 172.235.246.215
+      servername: googleapis.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d90087c3-54f5-4283-a13f-615260c8b0c7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-860328950
+        - vless-1564315464
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-860328950
+        - vless-1564315464
       type: select
 rules:
     - MATCH,select
