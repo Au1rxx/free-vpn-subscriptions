@@ -13,16 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
-    - name: vless-1545552806
-      network: grpc
-      port: 443
-      server: fi.astrafic.ru
-      servername: fi.astrafic.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3d9daa27-6283-406d-a2d4-c6f22c635a14
     - client-fingerprint: random
       name: vless-1561691930
       network: grpc
@@ -69,16 +59,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
-    - name: vless-1545552817
-      network: grpc
-      port: 443
-      server: fi.astrafic.ru
-      servername: fi.astrafic.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3d9daa27-6283-406d-a2d4-c6f22c635a14
     - name: vless-1567674727
       network: tcp
       port: 1085
@@ -99,33 +79,59 @@ proxies:
       type: vless
       udp: true
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+    - client-fingerprint: firefox
+      name: vless-315420975
+      network: tcp
+      port: 448
+      reality-opts:
+        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+        short-id: cd21e552537c7c0b
+      server: 185.79.138.71
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
+    - client-fingerprint: chrome
+      name: vless-294269613
+      network: raw
+      port: 448
+      reality-opts:
+        public-key: CsDgNRcCwCkPIslfZpKTIK71KFpIFNsotbdzKcZVoH8
+        short-id: cd21e552537c7c0b
+      server: 185.79.138.71
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b0915d7-6800-4580-a44b-77d84f105e6a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1394180319
-        - vless-1545552806
         - vless-1561691930
         - vless-1543619890
         - vless-1543619889
         - vless-1359876261
-        - vless-1545552817
         - vless-1567674727
         - vless-1345688766
+        - vless-315420975
+        - vless-294269613
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1394180319
-        - vless-1545552806
         - vless-1561691930
         - vless-1543619890
         - vless-1543619889
         - vless-1359876261
-        - vless-1545552817
         - vless-1567674727
         - vless-1345688766
+        - vless-315420975
+        - vless-294269613
       type: select
 rules:
     - MATCH,select
