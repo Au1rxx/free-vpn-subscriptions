@@ -20,6 +20,13 @@ proxies:
       skip-cert-verify: true
       sni: "off"
       type: hysteria2
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1574139553
+      password: a8ii2yncuhwoLpYzpTs14Ctz33WtPwqsVKGqwoRGLBA=
+      port: 45819
+      server: 158.178.146.109
+      type: ss
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-11049
       password: oZIoA69Q8yhcQV8ka3Pa3A
@@ -214,6 +221,19 @@ proxies:
       server: 82.38.31.214
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      name: vless-1373855604
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: bzbe7QdD633ew_Er1_YWEhuCEHWurmDpxpz3fRzXr0A
+        short-id: b4e3b0b55b8dc75b
+      server: 31.56.184.132
+      servername: cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 11f21602-47aa-42e2-9149-69120f2e6df6
     - client-fingerprint: firefox
       name: vless-1412606840
       network: grpc
@@ -414,6 +434,20 @@ proxies:
         public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
         short-id: "01"
       server: 51.158.206.26
+      servername: fuck.rkn
+      tls: true
+      type: vless
+      udp: true
+      uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-468171585
+      network: tcp
+      port: 23576
+      reality-opts:
+        public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+        short-id: ""
+      server: 51.158.206.98
       servername: fuck.rkn
       tls: true
       type: vless
@@ -677,19 +711,6 @@ proxies:
       server: 193.29.139.204
       type: ss
       udp: true
-    - client-fingerprint: chrome
-      name: vless-1251937541
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: bzbe7QdD633ew_Er1_YWEhuCEHWurmDpxpz3fRzXr0A
-        short-id: b4e3b0b55b8dc75b
-      server: 31.56.184.132
-      servername: cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 11f21602-47aa-42e2-9149-69120f2e6df6
 proxy-groups:
     - interval: 300
       name: auto
@@ -697,6 +718,7 @@ proxy-groups:
         - hysteria2-1570238539
         - hysteria2-1008557001
         - hysteria2-1473969940
+        - shadowsocks-1574139553
         - shadowsocks-11049
         - shadowsocks-183
         - shadowsocks-112078279
@@ -724,6 +746,7 @@ proxy-groups:
         - hysteria2-1517930487
         - shadowsocks-217
         - shadowsocks-11032
+        - vless-1373855604
         - vless-1412606840
         - vless-326725244
         - vless-318029244
@@ -742,6 +765,7 @@ proxy-groups:
         - vless-1555393724
         - vless-406345572
         - vless-656231780
+        - vless-468171585
         - vmess-725810829
         - hysteria2-1486293139
         - hysteria2-724578053
@@ -769,7 +793,6 @@ proxy-groups:
         - shadowsocks-189
         - shadowsocks-11048
         - shadowsocks-186
-        - vless-1251937541
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -778,6 +801,7 @@ proxy-groups:
         - hysteria2-1570238539
         - hysteria2-1008557001
         - hysteria2-1473969940
+        - shadowsocks-1574139553
         - shadowsocks-11049
         - shadowsocks-183
         - shadowsocks-112078279
@@ -805,6 +829,7 @@ proxy-groups:
         - hysteria2-1517930487
         - shadowsocks-217
         - shadowsocks-11032
+        - vless-1373855604
         - vless-1412606840
         - vless-326725244
         - vless-318029244
@@ -823,6 +848,7 @@ proxy-groups:
         - vless-1555393724
         - vless-406345572
         - vless-656231780
+        - vless-468171585
         - vmess-725810829
         - hysteria2-1486293139
         - hysteria2-724578053
@@ -850,7 +876,6 @@ proxy-groups:
         - shadowsocks-189
         - shadowsocks-11048
         - shadowsocks-186
-        - vless-1251937541
       type: select
 rules:
     - MATCH,select
