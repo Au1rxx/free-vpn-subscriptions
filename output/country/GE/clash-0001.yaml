@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1555383644
+      network: tcp
+      port: 25026
+      reality-opts:
+        public-key: RVh0D446O5pKnOqlNkJNxSGGbmzl8swn4YBXYce1HSw
+        short-id: 34c465417d7ebca0
+      server: 185.143.179.179
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 441a29b2-d9aa-47d5-9209-0a9191479f9f
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1559171826
@@ -55,23 +69,41 @@ proxies:
       type: vless
       udp: true
       uuid: 441a29b2-d9aa-47d5-9209-0a9191479f9f
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1576414179
+      network: tcp
+      port: 25026
+      reality-opts:
+        public-key: RVh0D446O5pKnOqlNkJNxSGGbmzl8swn4YBXYce1HSw
+        short-id: 34c465417d7ebca0
+      server: 185.143.179.179
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 441a29b2-d9aa-47d5-9209-0a9191479f9f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1555383644
         - vless-1559171826
         - vless-1561395506
         - vless-1564769389
         - vless-1571355299
+        - vless-1576414179
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1555383644
         - vless-1559171826
         - vless-1561395506
         - vless-1564769389
         - vless-1571355299
+        - vless-1576414179
       type: select
 rules:
     - MATCH,select

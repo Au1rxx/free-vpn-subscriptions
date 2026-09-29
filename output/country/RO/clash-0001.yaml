@@ -1,12 +1,5 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-26744
-      password: QFWzCw2uX9B9i6qAYeFBIE
-      port: 443
-      server: 154.46.31.106
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-130484
       password: QFWzCw2uX9B9i6qAYeFBIE
       port: 443
@@ -867,11 +860,17 @@ proxies:
       skip-cert-verify: true
       sni: hopp-romania-new.roxa.org
       type: hysteria2
+    - name: vless-1572641025
+      network: ws
+      port: 2095
+      server: psc-2.weedly.top
+      type: vless
+      udp: true
+      uuid: 9acec722-150a-4e47-924e-581af675d668
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-26744
         - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
@@ -960,12 +959,12 @@ proxy-groups:
         - hysteria2-1565482417
         - hysteria2-1571338179
         - hysteria2-1571839503
+        - vless-1572641025
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-26744
         - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
@@ -1054,6 +1053,7 @@ proxy-groups:
         - hysteria2-1565482417
         - hysteria2-1571338179
         - hysteria2-1571839503
+        - vless-1572641025
       type: select
 rules:
     - MATCH,select
