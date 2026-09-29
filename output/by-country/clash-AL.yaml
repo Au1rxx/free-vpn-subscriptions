@@ -6,17 +6,32 @@ proxies:
       server: 130.49.189.158
       type: ss
       udp: true
+    - client-fingerprint: random
+      name: vless-1561433372
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 9M294WArTUZ9m1fMmvlHauSb5wZo68SkCW_lEgBVAF8
+        short-id: 4d5faa03b738bd3b
+      server: 85.155.228.185
+      servername: avsal.krusofiya.fun
+      tls: true
+      type: vless
+      udp: true
+      uuid: ca5ffe64-81e0-42f0-a136-03cc4f662a4f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1528668849
+        - vless-1561433372
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1528668849
+        - vless-1561433372
       type: select
 rules:
     - MATCH,select
