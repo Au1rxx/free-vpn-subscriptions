@@ -15,6 +15,19 @@ proxies:
       sni: 109.206.241.10
       type: trojan
       udp: true
+    - client-fingerprint: chrome
+      name: vless-1381769955
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: s2uiu3GQA2SlZzsr86Z5Dav97eAFTPf7Nvr-zqzzRgg
+        short-id: 72ccd4a7563c2953
+      server: 94.183.170.147
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5edbcb44-8d04-4fa7-a587-bc5d60c24ca1
     - client-fingerprint: firefox
       name: vless-1364518788
       network: grpc
@@ -38,19 +51,6 @@ proxies:
       type: vless
       udp: true
       uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-    - client-fingerprint: chrome
-      name: vless-1381769955
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: s2uiu3GQA2SlZzsr86Z5Dav97eAFTPf7Nvr-zqzzRgg
-        short-id: 72ccd4a7563c2953
-      server: 94.183.170.147
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5edbcb44-8d04-4fa7-a587-bc5d60c24ca1
     - name: vless-656161252
       network: tcp
       port: 8443
@@ -61,33 +61,6 @@ proxies:
       type: vless
       udp: true
       uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1129063543
-      network: tcp
-      port: 8443
-      reality-opts:
-        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-        short-id: 6ba85179e30d4fc2
-      server: 150.241.101.17
-      servername: yandex.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: 47d9b534-8a0a-4bd2-90f1-1d6ade14427e
-    - client-fingerprint: firefox
-      name: vless-1297639936
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: s2uiu3GQA2SlZzsr86Z5Dav97eAFTPf7Nvr-zqzzRgg
-        short-id: 72ccd4a7563c2953
-      server: 94.183.170.147
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5edbcb44-8d04-4fa7-a587-bc5d60c24ca1
     - name: vless-781312931
       network: tcp
       port: 8443
@@ -122,34 +95,20 @@ proxies:
       type: vless
       udp: true
       uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-    - flow: xtls-rprx-vision
-      name: vless-1562689386
-      network: tcp
-      port: 52006
-      server: 188.255.236.14
-      servername: chatgpt.fastaichat.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-1104467645
         - trojan-813920950
+        - vless-1381769955
         - vless-1364518788
         - vless-648965652
-        - vless-1381769955
         - vless-656161252
-        - vless-1129063543
-        - vless-1297639936
         - vless-781312931
         - vless-701186249
         - vless-898033982
         - vless-659664531
-        - vless-1562689386
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -157,17 +116,14 @@ proxy-groups:
         - auto
         - trojan-1104467645
         - trojan-813920950
+        - vless-1381769955
         - vless-1364518788
         - vless-648965652
-        - vless-1381769955
         - vless-656161252
-        - vless-1129063543
-        - vless-1297639936
         - vless-781312931
         - vless-701186249
         - vless-898033982
         - vless-659664531
-        - vless-1562689386
       type: select
 rules:
     - MATCH,select

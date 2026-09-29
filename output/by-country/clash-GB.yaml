@@ -49,13 +49,6 @@ proxies:
       sni: ssl.fastly.com
       type: trojan
       udp: true
-    - name: vless-1230573705
-      network: grpc
-      port: 2083
-      server: 66.90.104.42
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - name: hysteria2-1551565903
       password: b8949dae-cb53-4b5a-ad9c-50f58c4656fb
       port: 2056
@@ -63,20 +56,6 @@ proxies:
       skip-cert-verify: false
       sni: ""
       type: hysteria2
-    - cipher: aes-256-gcm
-      name: shadowsocks-717969059
-      password: LXchLsIwtCeUAUgu
-      port: 443
-      server: 149.102.149.207
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-717969008
-      password: g5h5jleTRSyO3Rk4
-      port: 80
-      server: 149.102.132.184
-      type: ss
-      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-415241978
       password: zRZNBszYyWo5
@@ -170,6 +149,20 @@ proxies:
       type: vless
       udp: true
       uuid: d00d9d18-20cf-4191-be76-6f73d43a27ec
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1552278377
+      network: tcp
+      port: 54865
+      reality-opts:
+        public-key: frK9LTk4kF7lh4-ZVCuHCQm87Oy6uboRtoS-o6Fb6WE
+        short-id: "7436"
+      server: 178.79.129.203
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d00d9d18-20cf-4191-be76-6f73d43a27ec
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1558179746
@@ -212,18 +205,18 @@ proxies:
       type: vless
       udp: true
       uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
-    - cipher: aes-256-gcm
-      name: shadowsocks-696780670
-      password: LXchLsIwtCeUAUgu
-      port: 80
-      server: 149.102.149.207
-      type: ss
-      udp: true
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1561476573
       password: +Nt5IdazH1gH7Cg7OvFoDX8Rx3koZi3YnHbunnlAuUM=
       port: 61312
       server: 129.151.66.142
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-696780670
+      password: LXchLsIwtCeUAUgu
+      port: 80
+      server: 149.102.149.207
       type: ss
       udp: true
     - name: vless-1245422997
@@ -247,6 +240,20 @@ proxies:
       type: vless
       udp: true
       uuid: d00d9d18-20cf-4191-be76-6f73d43a27ec
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1477616520
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s
+        short-id: b19b017d6f453873
+      server: 23.81.34.204
+      servername: speed.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1560068739
@@ -275,25 +282,18 @@ proxies:
       type: vless
       udp: true
       uuid: d00d9d18-20cf-4191-be76-6f73d43a27ec
-    - cipher: rc4-md5
-      name: shadowsocks-468218595
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 146.70.23.32
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-696780678
-      password: g5h5jleTRSyO3Rk4
-      port: 443
-      server: 149.102.132.184
-      type: ss
-      udp: true
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1561476585
       password: lzhjI3jtrWa2fM7GAWa3TNPZievCEkTqTlOzW+A0Ct8=
       port: 61312
       server: 134.65.63.84
+      type: ss
+      udp: true
+    - cipher: rc4-md5
+      name: shadowsocks-468218595
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.23.32
       type: ss
       udp: true
     - client-fingerprint: chrome
@@ -454,6 +454,13 @@ proxies:
       type: vless
       udp: true
       uuid: d00d9d18-20cf-4191-be76-6f73d43a27ec
+    - name: vless-1230573705
+      network: grpc
+      port: 2083
+      server: 66.90.104.42
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
@@ -465,10 +472,7 @@ proxy-groups:
         - shadowsocks-1561476582
         - shadowsocks-27285
         - trojan-1570099450
-        - vless-1230573705
         - hysteria2-1551565903
-        - shadowsocks-717969059
-        - shadowsocks-717969008
         - shadowsocks-415241978
         - shadowsocks-1561476580
         - vless-1477043376
@@ -479,18 +483,19 @@ proxy-groups:
         - vless-1254790076
         - vless-1560068744
         - vless-1554575321
+        - vless-1552278377
         - vless-1558179746
         - vless-1556200644
         - vless-1479678804
-        - shadowsocks-696780670
         - shadowsocks-1561476573
+        - shadowsocks-696780670
         - vless-1245422997
         - vless-1556679977
+        - vless-1477616520
         - vless-1560068739
         - vless-1558179750
-        - shadowsocks-468218595
-        - shadowsocks-696780678
         - shadowsocks-1561476585
+        - shadowsocks-468218595
         - vless-1546710185
         - vless-1546710200
         - vless-1549589464
@@ -504,6 +509,7 @@ proxy-groups:
         - vless-1197840834
         - vless-1486240687
         - vless-1558179744
+        - vless-1230573705
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -516,10 +522,7 @@ proxy-groups:
         - shadowsocks-1561476582
         - shadowsocks-27285
         - trojan-1570099450
-        - vless-1230573705
         - hysteria2-1551565903
-        - shadowsocks-717969059
-        - shadowsocks-717969008
         - shadowsocks-415241978
         - shadowsocks-1561476580
         - vless-1477043376
@@ -530,18 +533,19 @@ proxy-groups:
         - vless-1254790076
         - vless-1560068744
         - vless-1554575321
+        - vless-1552278377
         - vless-1558179746
         - vless-1556200644
         - vless-1479678804
-        - shadowsocks-696780670
         - shadowsocks-1561476573
+        - shadowsocks-696780670
         - vless-1245422997
         - vless-1556679977
+        - vless-1477616520
         - vless-1560068739
         - vless-1558179750
-        - shadowsocks-468218595
-        - shadowsocks-696780678
         - shadowsocks-1561476585
+        - shadowsocks-468218595
         - vless-1546710185
         - vless-1546710200
         - vless-1549589464
@@ -555,6 +559,7 @@ proxy-groups:
         - vless-1197840834
         - vless-1486240687
         - vless-1558179744
+        - vless-1230573705
       type: select
 rules:
     - MATCH,select
