@@ -1,11 +1,18 @@
 proxies:
-    - name: hysteria2-1552278389
-      password: cf83b611-6cba-4535-adcb-8da06c6a9146
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1394180319
+      network: tcp
       port: 443
-      server: 144.31.212.253
-      skip-cert-verify: true
-      sni: vps155-edge.kermemehori.ru
-      type: hysteria2
+      reality-opts:
+        public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
+        short-id: ""
+      server: 83.219.97.26
+      servername: est1313.ggisopi.su
+      tls: true
+      type: vless
+      udp: true
+      uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
     - name: vless-1545552806
       network: grpc
       port: 443
@@ -50,19 +57,18 @@ proxies:
       udp: true
       uuid: 3d9daa27-6283-406d-a2d4-c6f22c635a14
     - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1381752782
+      name: vless-1359876261
       network: tcp
-      port: 443
+      port: 2053
       reality-opts:
-        public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
-        short-id: ""
-      server: est1313.ggisopi.su
-      servername: ""
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
       tls: true
       type: vless
       udp: true
-      uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
     - name: vless-1545552817
       network: grpc
       port: 443
@@ -73,29 +79,53 @@ proxies:
       type: vless
       udp: true
       uuid: 3d9daa27-6283-406d-a2d4-c6f22c635a14
+    - name: vless-1567674727
+      network: tcp
+      port: 1085
+      server: smart.avenone.ir
+      type: vless
+      udp: true
+      uuid: 0c1b7949-fe09-43d9-863f-2c031f66bfc1
+    - client-fingerprint: firefox
+      name: vless-1345688766
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1552278389
+        - vless-1394180319
         - vless-1545552806
         - vless-1561691930
         - vless-1543619890
         - vless-1543619889
-        - vless-1381752782
+        - vless-1359876261
         - vless-1545552817
+        - vless-1567674727
+        - vless-1345688766
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1552278389
+        - vless-1394180319
         - vless-1545552806
         - vless-1561691930
         - vless-1543619890
         - vless-1543619889
-        - vless-1381752782
+        - vless-1359876261
         - vless-1545552817
+        - vless-1567674727
+        - vless-1345688766
       type: select
 rules:
     - MATCH,select

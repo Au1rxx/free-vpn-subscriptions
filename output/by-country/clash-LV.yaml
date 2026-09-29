@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-819466279
+      password: UTJA57ypk2XKQpnm
+      port: 9033
+      server: 185.135.86.175
+      type: ss
+      udp: true
     - name: hysteria2-1565348602
       password: ODM2MzExOTcyMCwxNzkwNTMyNzE0ksak7YOGMD
       port: 8113
@@ -6,6 +13,20 @@ proxies:
       skip-cert-verify: false
       sni: lat1.lumenvpn.tech
       type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-743178503
+      password: HAVAdE3nXhqA5nHp
+      port: 9017
+      server: 185.135.86.175
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-717969044
+      password: Yg4MbdXFQ9HFFVY6
+      port: 9034
+      server: 185.135.86.175
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-813407632
@@ -24,14 +45,20 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-819466279
         - hysteria2-1565348602
+        - shadowsocks-743178503
+        - shadowsocks-717969044
         - vless-813407632
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-819466279
         - hysteria2-1565348602
+        - shadowsocks-743178503
+        - shadowsocks-717969044
         - vless-813407632
       type: select
 rules:

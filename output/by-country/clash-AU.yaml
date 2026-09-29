@@ -13,19 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: 36e89875-9c53-482b-bc41-d3890e9da176
-    - client-fingerprint: firefox
-      name: vless-1345603902
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
-        short-id: 4cc9dc65f7770115
-      server: 46.250.240.80
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1412445133
@@ -77,6 +64,19 @@ proxies:
     - client-fingerprint: firefox
       name: vless-1279651618
       network: tcp
+      port: 2053
+      reality-opts:
+        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
+        short-id: 4cc9dc65f7770115
+      server: 46.250.240.80
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
+    - client-fingerprint: firefox
+      name: vless-1345603902
+      network: raw
       port: 2053
       reality-opts:
         public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
@@ -142,81 +142,37 @@ proxies:
       type: vless
       udp: true
       uuid: d00d9d18-20cf-4191-be76-6f73d43a27ec
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1558179753
-      network: tcp
-      port: 22368
-      reality-opts:
-        public-key: JJsjBS60tj6uZp-x2tMJ_ioblXRcru_apACEkMJYnBM
-        short-id: b5a3
-      server: 194.195.123.60
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d00d9d18-20cf-4191-be76-6f73d43a27ec
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1549586942
-      network: tcp
-      port: 25605
-      reality-opts:
-        public-key: trh3vhKtu_iAKb6E2GuUvloJDZ8tN0jtzyj4kpV5IQA
-        short-id: 6df42a2c
-      server: 143.42.46.37
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d00d9d18-20cf-4191-be76-6f73d43a27ec
-    - name: vless-656189585
-      network: tcp
-      port: 443
-      server: 172.105.169.70
-      servername: 172.105.169.70
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1427744079
-        - vless-1345603902
         - vless-1412445133
         - vless-1300687308
         - hysteria2-1561765064
         - vless-1396622624
         - vless-1279651618
+        - vless-1345603902
         - vless-1390814481
         - vless-1546710194
         - vless-1258929861
         - vless-1546710203
-        - vless-1558179753
-        - vless-1549586942
-        - vless-656189585
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1427744079
-        - vless-1345603902
         - vless-1412445133
         - vless-1300687308
         - hysteria2-1561765064
         - vless-1396622624
         - vless-1279651618
+        - vless-1345603902
         - vless-1390814481
         - vless-1546710194
         - vless-1258929861
         - vless-1546710203
-        - vless-1558179753
-        - vless-1549586942
-        - vless-656189585
       type: select
 rules:
     - MATCH,select
