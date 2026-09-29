@@ -97,19 +97,20 @@ proxies:
       type: vless
       udp: true
       uuid: 36e89875-9c53-482b-bc41-d3890e9da176
-    - client-fingerprint: random
-      name: vless-1300687308
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1372417838
       network: tcp
-      port: 2053
+      port: 443
       reality-opts:
-        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
-        short-id: 4cc9dc65f7770115
-      server: 46.250.240.80
+        public-key: gCAazs5uxNuMZIxfDdw8wPE0nwKY4QfBfBkQveKAkEk
+        short-id: 0ad08b47f498efd2
+      server: 51.161.204.244
       servername: www.cloudflare.com
       tls: true
       type: vless
       udp: true
-      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
+      uuid: 36e89875-9c53-482b-bc41-d3890e9da176
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1478639973
@@ -126,6 +127,20 @@ proxies:
       uuid: 36e89875-9c53-482b-bc41-d3890e9da176
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-1546710194
+      network: tcp
+      port: 25605
+      reality-opts:
+        public-key: trh3vhKtu_iAKb6E2GuUvloJDZ8tN0jtzyj4kpV5IQA
+        short-id: 6df42a2c
+      server: 143.42.46.37
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d00d9d18-20cf-4191-be76-6f73d43a27ec
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-1549589467
       network: tcp
       port: 22368
@@ -138,20 +153,13 @@ proxies:
       type: vless
       udp: true
       uuid: d00d9d18-20cf-4191-be76-6f73d43a27ec
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1418799383
-      network: tcp
+    - name: hysteria2-1561765064
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
-      reality-opts:
-        public-key: gCAazs5uxNuMZIxfDdw8wPE0nwKY4QfBfBkQveKAkEk
-        short-id: 0ad08b47f498efd2
-      server: 51.161.204.244
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 36e89875-9c53-482b-bc41-d3890e9da176
+      server: vpn-au-001.fastervpn.world
+      skip-cert-verify: true
+      sni: vpn-au-001.fastervpn.world
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
@@ -163,10 +171,11 @@ proxy-groups:
         - vless-1549589468
         - vless-1560068737
         - vless-1412445133
-        - vless-1300687308
+        - vless-1372417838
         - vless-1478639973
+        - vless-1546710194
         - vless-1549589467
-        - vless-1418799383
+        - hysteria2-1561765064
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -179,10 +188,11 @@ proxy-groups:
         - vless-1549589468
         - vless-1560068737
         - vless-1412445133
-        - vless-1300687308
+        - vless-1372417838
         - vless-1478639973
+        - vless-1546710194
         - vless-1549589467
-        - vless-1418799383
+        - hysteria2-1561765064
       type: select
 rules:
     - MATCH,select
