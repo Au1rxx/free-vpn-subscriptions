@@ -53,13 +53,6 @@ proxies:
       skip-cert-verify: true
       sni: germany3.h2corp.local
       type: hysteria2
-    - name: hysteria2-1473969939
-      password: 6a3fe9d0-0d68-4f29-ae99-5771d4217a45
-      port: 4433
-      server: de1.xiaoliyu.cyou
-      skip-cert-verify: true
-      sni: "off"
-      type: hysteria2
     - name: hysteria2-1564791358
       password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
       port: 8443
@@ -142,6 +135,62 @@ proxies:
       type: vless
       udp: true
       uuid: 3ada8d7b-806e-47e0-9cac-aa35061104ce
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1455404218
+      network: tcp
+      port: 4443
+      reality-opts:
+        public-key: YIyohkkCU5kw6J5iZYZkhILyDwlfftFPDTkbITlrAUw
+        short-id: df3aff719526dc5a
+      server: 89.169.53.176
+      servername: de.wvpn.one
+      tls: true
+      type: vless
+      udp: true
+      uuid: 20dd9433-389e-4573-ba7b-689619cf13da
+    - name: vless-1447865244
+      network: ws
+      port: 2087
+      server: 82.24.203.20
+      type: vless
+      udp: true
+      uuid: 5fcdc9b7-e70f-4a5c-85c3-e018ad818326
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1572918748
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bKoCicEJTym3khfTMZtje-S0DoRi-79l2AT1ixY3cjs
+        short-id: 91b4ede4e90115cf
+      server: 51.89.13.63
+      servername: vimeo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2412bd96-925b-43f2-81d1-0ed4f0793699
+    - alterId: 0
+      cipher: auto
+      name: vmess-1571130309
+      network: tcp
+      port: 23226
+      server: 31.76.11.83
+      type: vmess
+      udp: true
+      uuid: 3dff544a-379e-41f9-95d9-4b95a8e4026e
+    - alterId: 0
+      cipher: none
+      name: vmess-933894324
+      network: tcp
+      port: 1234
+      server: 141.95.65.9
+      servername: supervpn.super.com
+      skip-cert-verify: true
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
 proxy-groups:
     - interval: 300
       name: auto
@@ -153,7 +202,6 @@ proxy-groups:
         - vmess-657042642
         - shadowsocks-1578103311
         - hysteria2-648949654
-        - hysteria2-1473969939
         - hysteria2-1564791358
         - hysteria2-650314301
         - shadowsocks-1582889831
@@ -164,6 +212,11 @@ proxy-groups:
         - vmess-1570510805
         - hysteria2-1511948089
         - vless-1565846098
+        - vless-1455404218
+        - vless-1447865244
+        - vless-1572918748
+        - vmess-1571130309
+        - vmess-933894324
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -176,7 +229,6 @@ proxy-groups:
         - vmess-657042642
         - shadowsocks-1578103311
         - hysteria2-648949654
-        - hysteria2-1473969939
         - hysteria2-1564791358
         - hysteria2-650314301
         - shadowsocks-1582889831
@@ -187,6 +239,11 @@ proxy-groups:
         - vmess-1570510805
         - hysteria2-1511948089
         - vless-1565846098
+        - vless-1455404218
+        - vless-1447865244
+        - vless-1572918748
+        - vmess-1571130309
+        - vmess-933894324
       type: select
 rules:
     - MATCH,select
