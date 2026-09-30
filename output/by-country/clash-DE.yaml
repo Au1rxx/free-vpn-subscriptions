@@ -13,13 +13,6 @@ proxies:
       skip-cert-verify: true
       sni: "off"
       type: hysteria2
-    - name: hysteria2-589844090
-      password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
-      port: 443
-      server: de.1.23.h2corp.org
-      skip-cert-verify: true
-      sni: germany3.h2corp.local
-      type: hysteria2
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1582889831
       password: PAijPIjA3tTKiNb0oRJyZrveMENhEwhO8Dk8/gp/ztM=
@@ -27,6 +20,20 @@ proxies:
       server: 130.61.228.41
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-209
+      password: 1hhrqrokj3ag
+      port: 8388
+      server: 209.46.102.22
+      type: ss
+      udp: true
+    - name: hysteria2-1537155765
+      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
+      port: 8443
+      server: 162.249.127.133
+      skip-cert-verify: true
+      sni: hop-germany-september.dynuddns.com
+      type: hysteria2
     - name: hysteria2-1571338178
       password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
       port: 8443
@@ -73,6 +80,13 @@ proxies:
       type: vmess
       udp: true
       uuid: 3dff544a-379e-41f9-95d9-4b95a8e4026e
+    - name: hysteria2-1511948089
+      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
+      port: 8443
+      server: 162.249.127.130
+      skip-cert-verify: false
+      sni: hop-germany-september.dynuddns.com
+      type: hysteria2
     - name: hysteria2-1571839498
       password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
       port: 8443
@@ -101,13 +115,13 @@ proxies:
       server: 31.76.11.83
       type: ss
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-717969012
-      password: kKEd0rBrd56Furjz
+    - name: vless-1574139551
+      network: ws
       port: 80
-      server: 2.58.81.221
-      type: ss
+      server: 199.247.23.162
+      type: vless
       udp: true
+      uuid: 306dcb21-d02d-49dd-8ec7-0005b972b47a
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1580497545
@@ -166,13 +180,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-    - name: hysteria2-1045026816
-      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
-      port: 8080
-      server: 85.204.107.183
-      skip-cert-verify: true
-      sni: hopp-romania-new.roxa.org
-      type: hysteria2
     - name: hysteria2-896855667
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
       port: 8080
@@ -188,80 +195,34 @@ proxies:
       sni: actual-squid.rooster465.autos
       type: trojan
       udp: true
-    - client-fingerprint: chrome
-      name: vless-1564154408
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: I88bya0Wf4iHIQb19bHZII3UlJ-oWBRbcnzvF0WFKyg
-        short-id: bf6f
-      server: 64.188.98.179
-      servername: support-shield.nvidia.no
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3ada8d7b-806e-47e0-9cac-aa35061104ce
-    - name: vless-1578844622
-      network: grpc
-      port: 443
-      server: 37.46.18.49
-      servername: assets-de2.pleiades.codes
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
-    - name: vless-1583473649
-      network: tcp
-      port: 8082
-      server: 155.117.234.158
-      type: vless
-      udp: true
-      uuid: 27d33906-3501-4c13-a81d-7ccdd7bfdbda
-    - client-fingerprint: chrome
-      name: vless-1561528858
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: I88bya0Wf4iHIQb19bHZII3UlJ-oWBRbcnzvF0WFKyg
-        short-id: bf6f
-      server: 64.188.98.179
-      servername: support-shield.nvidia.no
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3ada8d7b-806e-47e0-9cac-aa35061104ce
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11078
         - hysteria2-1473969939
-        - hysteria2-589844090
         - shadowsocks-1582889831
+        - shadowsocks-209
+        - hysteria2-1537155765
         - hysteria2-1571338178
         - vmess-1577165338
         - hysteria2-1564791358
         - hysteria2-1555784016
         - shadowsocks-229
         - vmess-1581193118
+        - hysteria2-1511948089
         - hysteria2-1571839498
         - hysteria2-1033569060
         - hysteria2-213095942
         - shadowsocks-1577129297
-        - shadowsocks-717969012
+        - vless-1574139551
         - vless-1580497545
         - vless-1583740705
         - vmess-1564469613
         - vmess-1570510805
         - vmess-933894324
-        - hysteria2-1045026816
         - hysteria2-896855667
         - trojan-1583440647
-        - vless-1564154408
-        - vless-1578844622
-        - vless-1583473649
-        - vless-1561528858
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -269,31 +230,28 @@ proxy-groups:
         - auto
         - shadowsocks-11078
         - hysteria2-1473969939
-        - hysteria2-589844090
         - shadowsocks-1582889831
+        - shadowsocks-209
+        - hysteria2-1537155765
         - hysteria2-1571338178
         - vmess-1577165338
         - hysteria2-1564791358
         - hysteria2-1555784016
         - shadowsocks-229
         - vmess-1581193118
+        - hysteria2-1511948089
         - hysteria2-1571839498
         - hysteria2-1033569060
         - hysteria2-213095942
         - shadowsocks-1577129297
-        - shadowsocks-717969012
+        - vless-1574139551
         - vless-1580497545
         - vless-1583740705
         - vmess-1564469613
         - vmess-1570510805
         - vmess-933894324
-        - hysteria2-1045026816
         - hysteria2-896855667
         - trojan-1583440647
-        - vless-1564154408
-        - vless-1578844622
-        - vless-1583473649
-        - vless-1561528858
       type: select
 rules:
     - MATCH,select

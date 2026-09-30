@@ -13,12 +13,20 @@ proxies:
       server: 217.30.10.44
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-768399401
+      password: 7heRqkPG3hg4UnRm
+      port: 9099
+      server: 217.30.10.44
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-696781307
         - shadowsocks-779606815
+        - shadowsocks-768399401
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +34,7 @@ proxy-groups:
         - auto
         - shadowsocks-696781307
         - shadowsocks-779606815
+        - shadowsocks-768399401
       type: select
 rules:
     - MATCH,select
