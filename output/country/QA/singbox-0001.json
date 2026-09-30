@@ -1,0 +1,50 @@
+{
+  "endpoints": [
+    {
+      "address": [
+        "172.16.0.2/32"
+      ],
+      "peers": [
+        {
+          "address": "162.159.192.6",
+          "allowed_ips": [
+            "0.0.0.0/0",
+            "::/0"
+          ],
+          "port": 2408,
+          "public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+          "reserved": "95nL"
+        }
+      ],
+      "private_key": "GGdi0j+S7ypUOCm+Rj/h5R3ifRHRyQHcKkK8rZeE+Ho=",
+      "tag": "wireguard-897530161",
+      "type": "wireguard"
+    }
+  ],
+  "outbounds": [
+    {
+      "interval": "5m",
+      "outbounds": [
+        "wireguard-897530161"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "wireguard-897530161"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
