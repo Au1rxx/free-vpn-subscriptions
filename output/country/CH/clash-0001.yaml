@@ -1,4 +1,20 @@
 proxies:
+    - name: trojan-468910103
+      password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
+      port: 443
+      server: mfyousheng.nl.eu.org
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
+    - name: trojan-670015323
+      password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
+      port: 443
+      server: mfyousheng.nl.eu.org
+      skip-cert-verify: true
+      sni: mfyousheng.nl.eu.org
+      type: trojan
+      udp: true
     - name: hysteria2-956723757
       password: 84a506ca5aca505696a454d828420b3f
       port: 50160
@@ -146,6 +162,13 @@ proxies:
       type: vless
       udp: true
       uuid: 3950b45e-740d-4dca-ac95-505ec8534592
+    - name: vless-1238855856
+      network: ws
+      port: 8080
+      server: 188.114.97.6
+      type: vless
+      udp: true
+      uuid: 0926b50d-3a90-18dd-7c8e-0cf100000000
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1242333394
@@ -251,6 +274,13 @@ proxies:
       skip-cert-verify: true
       sni: hopp-swizland-new.mysynology.net
       type: hysteria2
+    - name: vless-1475290723
+      network: ws
+      port: 8880
+      server: 66.235.200.50
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: hysteria2-1482811797
       password: we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH
       port: 8443
@@ -449,10 +479,26 @@ proxies:
       type: vless
       udp: true
       uuid: ff3e812e-be77-4138-a657-dd9c0690ffde
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1580893132
+      network: tcp
+      port: 2443
+      reality-opts:
+        public-key: 1UOLkCRWAxBF8CTt8AYd0MiOnZxopeDdT2c5YRXeWlk
+        short-id: ce2491dd
+      server: 45.151.102.83
+      servername: it.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ff3e812e-be77-4138-a657-dd9c0690ffde
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-468910103
+        - trojan-670015323
         - hysteria2-956723757
         - hysteria2-1001586620
         - hysteria2-1001848837
@@ -465,6 +511,7 @@ proxy-groups:
         - vless-1229811680
         - vless-1230998998
         - vless-1235448657
+        - vless-1238855856
         - vless-1242333394
         - vless-1254745144
         - vless-1257519697
@@ -474,6 +521,7 @@ proxy-groups:
         - vless-1391251363
         - hysteria2-1391610043
         - hysteria2-1393931791
+        - vless-1475290723
         - hysteria2-1482811797
         - hysteria2-1496260654
         - hysteria2-1501696965
@@ -492,11 +540,14 @@ proxy-groups:
         - hysteria2-1577665680
         - vless-1579868466
         - vless-1580346404
+        - vless-1580893132
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-468910103
+        - trojan-670015323
         - hysteria2-956723757
         - hysteria2-1001586620
         - hysteria2-1001848837
@@ -509,6 +560,7 @@ proxy-groups:
         - vless-1229811680
         - vless-1230998998
         - vless-1235448657
+        - vless-1238855856
         - vless-1242333394
         - vless-1254745144
         - vless-1257519697
@@ -518,6 +570,7 @@ proxy-groups:
         - vless-1391251363
         - hysteria2-1391610043
         - hysteria2-1393931791
+        - vless-1475290723
         - hysteria2-1482811797
         - hysteria2-1496260654
         - hysteria2-1501696965
@@ -536,6 +589,7 @@ proxy-groups:
         - hysteria2-1577665680
         - vless-1579868466
         - vless-1580346404
+        - vless-1580893132
       type: select
 rules:
     - MATCH,select
