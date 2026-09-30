@@ -149,20 +149,6 @@ proxies:
       server: 62.181.53.170
       type: ss
       udp: true
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1577696410
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: Oq-xzuGJS90vXtDM5_WM73LESpRBoXB7drkaBdUPW1Y
-        short-id: "68721887"
-      server: n98o5teg7.dendiboss.org
-      servername: n98o5teg7.dendiboss.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 58370a8a-3d6e-46c5-9495-a8716301b1a9
     - name: hysteria2-1579914242
       password: fba73f98-777a-42a6-83c0-7d1f6f070e8d
       port: 443
@@ -198,6 +184,23 @@ proxies:
       type: vless
       udp: true
       uuid: ff3e812e-be77-4138-a657-dd9c0690ffde
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1581684566
+      password: Yg2U9wKTPgVrZ1Jzo2MEa0RsXD_GrBR6
+      port: 140
+      server: 139.100.236.23
+      type: ss
+      udp: true
+    - name: vless-1582046482
+      network: grpc
+      port: 443
+      server: 185.241.195.218
+      servername: cdn0.s3-rus.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: f9f5a72c-c299-4d98-b2ad-d04aba3c7b1f
 proxy-groups:
     - interval: 300
       name: auto
@@ -218,10 +221,11 @@ proxy-groups:
         - shadowsocks-1562080765
         - vless-1571337435
         - shadowsocks-1574323182
-        - vless-1577696410
         - hysteria2-1579914242
         - vless-1580346388
         - vless-1580893108
+        - shadowsocks-1581684566
+        - vless-1582046482
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -243,10 +247,11 @@ proxy-groups:
         - shadowsocks-1562080765
         - vless-1571337435
         - shadowsocks-1574323182
-        - vless-1577696410
         - hysteria2-1579914242
         - vless-1580346388
         - vless-1580893108
+        - shadowsocks-1581684566
+        - vless-1582046482
       type: select
 rules:
     - MATCH,select
