@@ -6,13 +6,6 @@ proxies:
       server: 154.46.31.106
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-130484
-      password: QFWzCw2uX9B9i6qAYeFBIE
-      port: 443
-      server: bogging-eyeteeth-fly.freesocks.work
-      type: ss
-      udp: true
     - name: hysteria2-290666035
       password: gf1:gfhysteria2024
       port: 443
@@ -1234,12 +1227,22 @@ proxies:
       skip-cert-verify: false
       sni: hopp-romania-new.roxa.org
       type: hysteria2
+    - flow: xtls-rprx-vision
+      name: vless-1595860505
+      network: tcp
+      port: 443
+      server: 188.225.76.197
+      servername: cdn-pl-exit.extazy.net
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5cb9410c-1b31-48dc-b33f-cacd93722ffd
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-26744
-        - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
         - hysteria2-468884148
@@ -1355,13 +1358,13 @@ proxy-groups:
         - hysteria2-1591550706
         - hysteria2-1591550740
         - hysteria2-1593872461
+        - vless-1595860505
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-26744
-        - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
         - hysteria2-468884148
@@ -1477,6 +1480,7 @@ proxy-groups:
         - hysteria2-1591550706
         - hysteria2-1591550740
         - hysteria2-1593872461
+        - vless-1595860505
       type: select
 rules:
     - MATCH,select

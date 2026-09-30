@@ -1,0 +1,54 @@
+{
+  "outbounds": [
+    {
+      "server": "ddnl0.zazazuza.ru",
+      "server_port": 2053,
+      "tag": "vless-1596444849",
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "wss.zazazuza.ru",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "transport": {
+        "headers": {
+          "Host": "wss.zazazuza.ru"
+        },
+        "path": "/vpn-wss/fluxor/59011/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "6c713691-3ca2-0008-ad25-113d1bed6b03"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1596444849"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1596444849"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

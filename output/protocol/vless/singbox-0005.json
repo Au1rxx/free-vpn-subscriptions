@@ -1,0 +1,77 @@
+{
+  "outbounds": [
+    {
+      "server": "155.117.234.158",
+      "server_port": 8082,
+      "tag": "vless-1596547457",
+      "type": "vless",
+      "uuid": "27d33906-3501-4c13-a81d-7ccdd7bfdbda"
+    },
+    {
+      "server": "162.159.254.201",
+      "server_port": 443,
+      "tag": "vless-1596743934",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "edgetunnel-4uw.pages.dev"
+      },
+      "transport": {
+        "headers": {
+          "Host": "edgetunnel-4uw.pages.dev"
+        },
+        "path": "/?ed#Telegram---Always_connected_1---Always_connected_1---Always_connected_1---Always_connected_1",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "fdc48be3-a615-41ac-8bd1-ed844c931048"
+    },
+    {
+      "server": "104.21.91.244",
+      "server_port": 443,
+      "tag": "vless-1596743935",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "edgetunnel-4uw.pages.dev"
+      },
+      "transport": {
+        "headers": {
+          "Host": "edgetunnel-4uw.pages.dev"
+        },
+        "path": "/?ed#Telegram---Always_connected_1---Always_connected_1---Always_connected_1---Always_connected_1",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "fdc48be3-a615-41ac-8bd1-ed844c931048"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1596547457",
+        "vless-1596743934",
+        "vless-1596743935"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1596547457",
+        "vless-1596743934",
+        "vless-1596743935"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
