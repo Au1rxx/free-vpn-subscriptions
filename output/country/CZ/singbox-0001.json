@@ -1,6 +1,15 @@
 {
   "outbounds": [
     {
+      "alter_id": 0,
+      "security": "auto",
+      "server": "zfd-boardv2.kunlun01dns.com",
+      "server_port": 16280,
+      "tag": "vmess-1005127037",
+      "type": "vmess",
+      "uuid": "0802ac03-7973-39ef-a019-ba02de6c01e1"
+    },
+    {
       "flow": "xtls-rprx-vision",
       "server": "85.117.235.50",
       "server_port": 443,
@@ -23,9 +32,33 @@
       "uuid": "f4d71fd6-1c25-4748-836b-1dbda9268039"
     },
     {
+      "flow": "xtls-rprx-vision",
+      "server": "85.117.235.50",
+      "server_port": 443,
+      "tag": "vless-1598371561",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "PmdZ2ETkHc0zjYcs22xT_wyZk5fEpX7mg7RP396HBBc",
+          "short_id": "232b1b09e45325a4"
+        },
+        "server_name": "cz1.animeteka.info",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "f4d71fd6-1c25-4748-836b-1dbda9268039"
+    },
+    {
       "interval": "5m",
       "outbounds": [
-        "vless-1595860502"
+        "vmess-1005127037",
+        "vless-1595860502",
+        "vless-1598371561"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -34,7 +67,9 @@
     {
       "outbounds": [
         "auto",
-        "vless-1595860502"
+        "vmess-1005127037",
+        "vless-1595860502",
+        "vless-1598371561"
       ],
       "tag": "select",
       "type": "selector"

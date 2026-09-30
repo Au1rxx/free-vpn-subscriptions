@@ -221,16 +221,34 @@ proxies:
       type: vless
       udp: true
       uuid: 79bc7b01-6e4e-4365-a120-fefac8182bd9
-    - name: trojan-1593941275
-      password: Trojan@82164024
-      port: 443
-      server: mx.tronsg.com
-      skip-cert-verify: true
-      sni: mx.tronsg.com
-      type: trojan
-      udp: true
     - client-fingerprint: chrome
       name: vless-1593941287
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: vFcM44RcbcO5jcrSWHLd_0exXAnnJLhpCNnMrWCwlzI
+        short-id: 65f01b4b99e52015
+      server: 34.51.119.243
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 79bc7b01-6e4e-4365-a120-fefac8182bd9
+    - client-fingerprint: safari
+      name: vless-1597416624
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: vFcM44RcbcO5jcrSWHLd_0exXAnnJLhpCNnMrWCwlzI
+        short-id: 65f01b4b99e52015
+      server: 34.51.119.243
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 79bc7b01-6e4e-4365-a120-fefac8182bd9
+    - client-fingerprint: chrome
+      name: vless-1598019008
       network: tcp
       port: 443
       reality-opts:
@@ -263,8 +281,9 @@ proxy-groups:
         - vless-1359855050
         - vless-1393064823
         - vless-1593439932
-        - trojan-1593941275
         - vless-1593941287
+        - vless-1597416624
+        - vless-1598019008
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -287,8 +306,9 @@ proxy-groups:
         - vless-1359855050
         - vless-1393064823
         - vless-1593439932
-        - trojan-1593941275
         - vless-1593941287
+        - vless-1597416624
+        - vless-1598019008
       type: select
 rules:
     - MATCH,select
