@@ -1,15 +1,6 @@
 proxies:
     - alterId: 0
       cipher: auto
-      name: vmess-1005124999
-      network: tcp
-      port: 16307
-      server: zfd-boardv2.kunlun01dns.com
-      type: vmess
-      udp: true
-      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
-    - alterId: 0
-      cipher: auto
       name: vmess-1030431013
       network: tcp
       port: 16307
@@ -17,6 +8,19 @@ proxies:
       type: vmess
       udp: true
       uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+    - client-fingerprint: chrome
+      name: vless-1590556981
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: v6QpErcVOVKIYLm53R3bAP8zIKCFr4HAJWW0VwBKtws
+        short-id: 31f187650d9530bb
+      server: 35.240.62.249
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6d341f6e-7b9d-4ae3-999b-00333de7bdfb
     - client-fingerprint: chrome
       name: vless-1591343695
       network: tcp
@@ -73,8 +77,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-1005124999
         - vmess-1030431013
+        - vless-1590556981
         - vless-1591343695
         - vless-1591596530
         - vless-1593439930
@@ -84,8 +88,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vmess-1005124999
         - vmess-1030431013
+        - vless-1590556981
         - vless-1591343695
         - vless-1591596530
         - vless-1593439930
