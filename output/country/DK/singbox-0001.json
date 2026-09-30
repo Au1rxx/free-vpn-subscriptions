@@ -1,0 +1,61 @@
+{
+  "outbounds": [
+    {
+      "alter_id": 0,
+      "security": "auto",
+      "server": "zfd-boardv2.kunlun01dns.com",
+      "server_port": 16305,
+      "tag": "vmess-1005125062",
+      "type": "vmess",
+      "uuid": "0802ac03-7973-39ef-a019-ba02de6c01e1"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "id-nl-01.mintrocket.org",
+      "server_port": 443,
+      "tag": "vless-1592807914",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "XU7da9vkBex4TUPo1d-ctFY_N6zouBiCRnbnUK82i3Q",
+          "short_id": "fee1f986a72444db"
+        },
+        "server_name": "id-nl-01.mintrocket.org",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "type": "vless",
+      "uuid": "f0a52dd3-4377-4402-a450-210bc81bcf25"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vmess-1005125062",
+        "vless-1592807914"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vmess-1005125062",
+        "vless-1592807914"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

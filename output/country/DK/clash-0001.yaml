@@ -1,0 +1,40 @@
+proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-1005125062
+      network: tcp
+      port: 16305
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1592807914
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: XU7da9vkBex4TUPo1d-ctFY_N6zouBiCRnbnUK82i3Q
+        short-id: fee1f986a72444db
+      server: id-nl-01.mintrocket.org
+      servername: id-nl-01.mintrocket.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: f0a52dd3-4377-4402-a450-210bc81bcf25
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vmess-1005125062
+        - vless-1592807914
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vmess-1005125062
+        - vless-1592807914
+      type: select
+rules:
+    - MATCH,select

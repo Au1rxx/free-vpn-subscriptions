@@ -22,13 +22,6 @@ proxies:
       server: 149.102.149.207
       type: ss
       udp: true
-    - cipher: aes-128-gcm
-      name: shadowsocks-271
-      password: shadowsocks
-      port: 443
-      server: 141.98.101.181
-      type: ss
-      udp: true
     - cipher: rc4-md5
       name: shadowsocks-165
       password: 14fFPrbezE3HDZzsMOr6
@@ -106,17 +99,27 @@ proxies:
       type: vless
       udp: true
       uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
-    - flow: xtls-rprx-vision
-      name: vless-1344116835
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1477616520
       network: tcp
       port: 443
-      server: uk-dedic-new-1.failspace.top
-      servername: uk-dedic-new-1.failspace.top
-      skip-cert-verify: true
+      reality-opts:
+        public-key: J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s
+        short-id: b19b017d6f453873
+      server: 23.81.34.204
+      servername: speed.cloudflare.com
       tls: true
       type: vless
       udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+      uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
+    - cipher: aes-128-gcm
+      name: shadowsocks-271
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.181
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -124,7 +127,6 @@ proxy-groups:
         - shadowsocks-717969008
         - vmess-1570510802
         - shadowsocks-696780670
-        - shadowsocks-271
         - shadowsocks-165
         - vless-1230573705
         - shadowsocks-1203537773
@@ -134,7 +136,8 @@ proxy-groups:
         - vless-1254790076
         - vless-1571780641
         - vless-1484508210
-        - vless-1344116835
+        - vless-1477616520
+        - shadowsocks-271
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -143,7 +146,6 @@ proxy-groups:
         - shadowsocks-717969008
         - vmess-1570510802
         - shadowsocks-696780670
-        - shadowsocks-271
         - shadowsocks-165
         - vless-1230573705
         - shadowsocks-1203537773
@@ -153,7 +155,8 @@ proxy-groups:
         - vless-1254790076
         - vless-1571780641
         - vless-1484508210
-        - vless-1344116835
+        - vless-1477616520
+        - shadowsocks-271
       type: select
 rules:
     - MATCH,select
