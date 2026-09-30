@@ -13,13 +13,6 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-27377
-      password: BNmAXXxAHYpTRdzu
-      port: 9020
-      server: 5.188.181.201
-      type: ss
-      udp: true
     - name: vless-45800
       network: ws
       port: 8880
@@ -987,16 +980,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9e3132b8-b595-444a-833a-2de44789f9d7
-    - name: vless-1580909742
-      network: grpc
-      port: 443
-      server: ru3.pleiades.codes
-      servername: ru3.pleiades.codes
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1585603394
@@ -1067,13 +1050,26 @@ proxies:
       type: vless
       udp: true
       uuid: ab0d6441-912b-4ddd-b769-2199e1d4be7d
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1589319264
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: kyjCyJlDyqcpc0UgyPaW-4tjGKbeQKz45zHRmHvxw2Q
+        short-id: 665aa727f6bc1f5e
+      server: admin.jugoslavija.uk
+      servername: admin.jugoslavija.uk
+      tls: true
+      type: vless
+      udp: true
+      uuid: dbe7df9a-c846-4305-9bbf-771c1b2f0520
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11052
         - shadowsocks-16132
-        - shadowsocks-27377
         - vless-45800
         - vmess-99676
         - vmess-2386872
@@ -1161,12 +1157,12 @@ proxy-groups:
         - vless-1572918744
         - vless-1573046384
         - vless-1573046422
-        - vless-1580909742
         - vless-1585603394
         - vless-1586042185
         - vless-1588271763
         - vless-1588272318
         - vless-1588272376
+        - vless-1589319264
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -1174,7 +1170,6 @@ proxy-groups:
         - auto
         - shadowsocks-11052
         - shadowsocks-16132
-        - shadowsocks-27377
         - vless-45800
         - vmess-99676
         - vmess-2386872
@@ -1262,12 +1257,12 @@ proxy-groups:
         - vless-1572918744
         - vless-1573046384
         - vless-1573046422
-        - vless-1580909742
         - vless-1585603394
         - vless-1586042185
         - vless-1588271763
         - vless-1588272318
         - vless-1588272376
+        - vless-1589319264
       type: select
 rules:
     - MATCH,select
