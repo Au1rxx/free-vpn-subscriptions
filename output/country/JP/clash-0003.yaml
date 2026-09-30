@@ -1,4 +1,24 @@
 proxies:
+    - name: vless-1587177719
+      network: ws
+      port: 443
+      server: 104.16.10.9
+      servername: jp3.yohototo.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4e4f1f70-5e56-4a76-bb9d-db087f4690c4
+    - name: vless-1587177722
+      network: ws
+      port: 443
+      server: 104.21.14.240
+      servername: edgetunnel-4uw.pages.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: fdc48be3-a615-41ac-8bd1-ed844c931048
     - name: vless-1587177724
       network: ws
       port: 443
@@ -1121,10 +1141,50 @@ proxies:
       type: vless
       udp: true
       uuid: fdc48be3-a615-41ac-8bd1-ed844c931048
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1596981205
+      network: raw
+      port: 26518
+      reality-opts:
+        public-key: 1fa6iCY7vhoQyKu91FeaK04FN-mr1qeHnrtdyLZ79mk
+        short-id: 6caead99
+      server: jp.wxgqlfx.top
+      servername: github.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e01fcb68-3112-49da-b85d-dffb799cfc9b
+    - name: vless-1597011513
+      network: ws
+      port: 443
+      server: 104.21.91.244
+      servername: edgetunnel-4uw.pages.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: fdc48be3-a615-41ac-8bd1-ed844c931048
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1597025467
+      network: tcp
+      port: 16932
+      reality-opts:
+        public-key: VEU0MYsq_M-7zGhdZblxy6F4-S5MJC5CjVBsPyODln8
+        short-id: 33b3cf8cfc2bc55d
+      server: node1.csnety.com
+      servername: v1-dy.ixigua.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 689c6e4f-8974-4fdb-8a35-cf2959277448
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1587177719
+        - vless-1587177722
         - vless-1587177724
         - vless-1587178705
         - vless-1587178706
@@ -1230,11 +1290,16 @@ proxy-groups:
         - vless-1596475206
         - vless-1596743934
         - vless-1596743935
+        - vless-1596981205
+        - vless-1597011513
+        - vless-1597025467
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1587177719
+        - vless-1587177722
         - vless-1587177724
         - vless-1587178705
         - vless-1587178706
@@ -1340,6 +1405,9 @@ proxy-groups:
         - vless-1596475206
         - vless-1596743934
         - vless-1596743935
+        - vless-1596981205
+        - vless-1597011513
+        - vless-1597025467
       type: select
 rules:
     - MATCH,select
