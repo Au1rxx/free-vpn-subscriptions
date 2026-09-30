@@ -7,6 +7,13 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-cfb
+      name: shadowsocks-696781307
+      password: mENfxTFQpRKKh4As
+      port: 9071
+      server: 217.30.10.44
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-779606815
       password: U6qnYRhfyDmn8sgn
       port: 9041
@@ -20,36 +27,23 @@ proxies:
       server: 217.30.10.44
       type: ss
       udp: true
-    - client-fingerprint: chrome
-      name: vless-1582046516
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: jOOQIxM4PRxWaZDfTj_63smCGJX_inthmmb8WG-SIHI
-        short-id: 6fda
-      server: lineartronic-ii.subaru-volga.com
-      servername: lineartronic-ii.subaru-volga.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6db6b948-655f-4f68-a9e7-865050e05b31
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-795694264
+        - shadowsocks-696781307
         - shadowsocks-779606815
         - shadowsocks-717969033
-        - vless-1582046516
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-795694264
+        - shadowsocks-696781307
         - shadowsocks-779606815
         - shadowsocks-717969033
-        - vless-1582046516
       type: select
 rules:
     - MATCH,select
