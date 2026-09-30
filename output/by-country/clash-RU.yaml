@@ -1,0 +1,22 @@
+proxies:
+    - name: hysteria2-1579914242
+      password: fba73f98-777a-42a6-83c0-7d1f6f070e8d
+      port: 443
+      server: 138.124.254.232
+      skip-cert-verify: false
+      sni: crt.dodopanel.biz
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-1579914242
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-1579914242
+      type: select
+rules:
+    - MATCH,select

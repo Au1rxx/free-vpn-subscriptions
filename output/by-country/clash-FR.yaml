@@ -13,6 +13,13 @@ proxies:
       skip-cert-verify: true
       sni: vpn-fr-002.fastervpn.world
       type: hysteria2
+    - cipher: aes-128-gcm
+      name: shadowsocks-1578734757
+      password: ad5e2de88283f5b915c25982e06bb45b
+      port: 15980
+      server: 195.154.81.205
+      type: ss
+      udp: true
     - name: hysteria2-335125336
       password: github.com/Alvin9999-newpac/fanqiang
       port: 60111
@@ -27,13 +34,6 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - cipher: aes-128-gcm
-      name: shadowsocks-1578734757
-      password: ad5e2de88283f5b915c25982e06bb45b
-      port: 15980
-      server: 195.154.81.205
-      type: ss
-      udp: true
     - name: hysteria2-689011839
       password: github.com/Alvin9999-newpac/fanqiang
       port: 43115
@@ -128,15 +128,28 @@ proxies:
       skip-cert-verify: true
       sni: vk.com
       type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-1413435162
+      network: grpc
+      port: 35108
+      reality-opts:
+        public-key: X_lOw5Zz4SJBa1cRHV4dAq5msYE-ClY5-WNcBmBWRxg
+        short-id: 52add08b86a5ccea
+      server: 152.228.139.33
+      servername: www.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 81dc0b61-f9fe-4ad6-8b4e-b8c067b73712
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1507423268
         - hysteria2-984679229
+        - shadowsocks-1578734757
         - hysteria2-335125336
         - hysteria2-1004725118
-        - shadowsocks-1578734757
         - hysteria2-689011839
         - hysteria2-1005580211
         - vless-1565846085
@@ -148,6 +161,7 @@ proxy-groups:
         - hysteria2-722298544
         - hysteria2-200394203
         - hysteria2-722298646
+        - vless-1413435162
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -155,9 +169,9 @@ proxy-groups:
         - auto
         - hysteria2-1507423268
         - hysteria2-984679229
+        - shadowsocks-1578734757
         - hysteria2-335125336
         - hysteria2-1004725118
-        - shadowsocks-1578734757
         - hysteria2-689011839
         - hysteria2-1005580211
         - vless-1565846085
@@ -169,6 +183,7 @@ proxy-groups:
         - hysteria2-722298544
         - hysteria2-200394203
         - hysteria2-722298646
+        - vless-1413435162
       type: select
 rules:
     - MATCH,select
