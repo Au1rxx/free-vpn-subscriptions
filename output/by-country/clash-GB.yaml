@@ -1,7 +1,7 @@
 proxies:
     - alterId: 0
       cipher: auto
-      name: vmess-1570510802
+      name: vmess-1572874951
       network: tcp
       port: 22324
       server: 186.190.211.147
@@ -36,6 +36,13 @@ proxies:
       server: 51.38.71.51
       type: ss
       udp: true
+    - name: vless-1254790076
+      network: grpc
+      port: 2083
+      server: 66.90.104.42
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1587791257
       password: MTDZJDRolKZT/EqV/iOEDqQvGpZULyC86Zn2ESKXMV0=
@@ -43,6 +50,13 @@ proxies:
       server: 134.65.56.122
       type: ss
       udp: true
+    - name: vless-1245422997
+      network: grpc
+      port: 2083
+      server: 66.90.104.42
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - name: vless-1483330744
       network: grpc
       port: 2083
@@ -54,6 +68,17 @@ proxies:
       network: grpc
       port: 2083
       server: 66.90.104.43
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
+      name: vless-1157879699
+      network: tcp
+      port: 443
+      server: 50.7.226.171
+      servername: viper-21.moriarty-web.com
+      skip-cert-verify: true
+      tls: true
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
@@ -124,14 +149,17 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-1570510802
+        - vmess-1572874951
         - shadowsocks-717969008
         - shadowsocks-165
         - vless-1230573705
         - shadowsocks-1203537773
+        - vless-1254790076
         - shadowsocks-1587791257
+        - vless-1245422997
         - vless-1483330744
         - vless-1483330828
+        - vless-1157879699
         - vless-1571780641
         - vless-1484508210
         - vless-1477616520
@@ -142,14 +170,17 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vmess-1570510802
+        - vmess-1572874951
         - shadowsocks-717969008
         - shadowsocks-165
         - vless-1230573705
         - shadowsocks-1203537773
+        - vless-1254790076
         - shadowsocks-1587791257
+        - vless-1245422997
         - vless-1483330744
         - vless-1483330828
+        - vless-1157879699
         - vless-1571780641
         - vless-1484508210
         - vless-1477616520

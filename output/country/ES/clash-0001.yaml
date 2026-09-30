@@ -13,13 +13,6 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
-    - name: vless-45800
-      network: ws
-      port: 8880
-      server: 114.129.43.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - alterId: 0
       cipher: auto
       name: vmess-99676
@@ -497,6 +490,18 @@ proxies:
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - alterId: 0
       cipher: auto
+      name: vmess-1450917314
+      network: ws
+      port: 443
+      server: mygptagent.org
+      servername: mygptagent.org
+      skip-cert-verify: false
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    - alterId: 0
+      cipher: auto
       name: vmess-1451310230
       network: tcp
       port: 22324
@@ -517,6 +522,15 @@ proxies:
       cipher: auto
       name: vmess-1454557799
       network: tcp
+      port: 22324
+      server: 66.163.118.73
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
+    - alterId: 0
+      cipher: auto
+      name: vmess-1457394275
+      network: raw
       port: 22324
       server: 66.163.118.73
       type: vmess
@@ -557,15 +571,6 @@ proxies:
       type: vless
       udp: true
       uuid: 12c53e32-e589-47d6-b857-e4132294f767
-    - alterId: 0
-      cipher: none
-      name: vmess-1461170773
-      network: tcp
-      port: 22324
-      server: 66.163.118.73
-      type: vmess
-      udp: true
-      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - alterId: 0
       cipher: auto
       name: vmess-1465739894
@@ -1056,20 +1061,6 @@ proxies:
       type: vless
       udp: true
       uuid: ab0d6441-912b-4ddd-b769-2199e1d4be7d
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-1589319264
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: kyjCyJlDyqcpc0UgyPaW-4tjGKbeQKz45zHRmHvxw2Q
-        short-id: 665aa727f6bc1f5e
-      server: admin.jugoslavija.uk
-      servername: admin.jugoslavija.uk
-      tls: true
-      type: vless
-      udp: true
-      uuid: dbe7df9a-c846-4305-9bbf-771c1b2f0520
     - client-fingerprint: firefox
       name: vless-1590560743
       network: tcp
@@ -1123,13 +1114,38 @@ proxies:
       type: vless
       udp: true
       uuid: 2412bd96-925b-43f2-81d1-0ed4f0793699
+    - client-fingerprint: chrome
+      name: vless-1593941277
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: iI9J--AfPKCXbVle3Om-WMn_g-3bO3SsVzUCNtwUkU0
+        short-id: fe85cb6a5c84e64c
+      server: 34.175.19.8
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b4b1548-c7ca-45a5-9096-6c3cc4b1c43b
+    - client-fingerprint: chrome
+      name: vless-1593941295
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: lM9EQ1rZH9inQjrZesuqgldsXYN_yfT5-tqhPfbyen4
+        short-id: 1c9e101e99bf86bb
+      server: 34.175.107.233
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c55c9880-2f9c-4ad6-bfc2-5054516bf613
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11052
         - shadowsocks-16132
-        - vless-45800
         - vmess-99676
         - vmess-2386872
         - vmess-5259765
@@ -1168,13 +1184,14 @@ proxy-groups:
         - vless-1301932848
         - vless-1415204696
         - vmess-1446234800
+        - vmess-1450917314
         - vmess-1451310230
         - vmess-1454111448
         - vmess-1454557799
+        - vmess-1457394275
         - vmess-1459593704
         - vmess-1459596953
         - vless-1459678993
-        - vmess-1461170773
         - vmess-1465739894
         - vmess-1470463936
         - vless-1473374135
@@ -1221,11 +1238,12 @@ proxy-groups:
         - vless-1588271763
         - vless-1588272318
         - vless-1588272376
-        - vless-1589319264
         - vless-1590560743
         - vless-1593439916
         - vless-1593439925
         - vless-1593439936
+        - vless-1593941277
+        - vless-1593941295
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -1233,7 +1251,6 @@ proxy-groups:
         - auto
         - shadowsocks-11052
         - shadowsocks-16132
-        - vless-45800
         - vmess-99676
         - vmess-2386872
         - vmess-5259765
@@ -1272,13 +1289,14 @@ proxy-groups:
         - vless-1301932848
         - vless-1415204696
         - vmess-1446234800
+        - vmess-1450917314
         - vmess-1451310230
         - vmess-1454111448
         - vmess-1454557799
+        - vmess-1457394275
         - vmess-1459593704
         - vmess-1459596953
         - vless-1459678993
-        - vmess-1461170773
         - vmess-1465739894
         - vmess-1470463936
         - vless-1473374135
@@ -1325,11 +1343,12 @@ proxy-groups:
         - vless-1588271763
         - vless-1588272318
         - vless-1588272376
-        - vless-1589319264
         - vless-1590560743
         - vless-1593439916
         - vless-1593439925
         - vless-1593439936
+        - vless-1593941277
+        - vless-1593941295
       type: select
 rules:
     - MATCH,select
