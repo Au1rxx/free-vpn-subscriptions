@@ -6,13 +6,6 @@ proxies:
       server: 130.61.113.153
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1577129297
-      password: iku/Gfrt9YeEUUleXr2Ptf3uvs0hszCR0JHPqGSjs+c=
-      port: 11950
-      server: 31.76.11.83
-      type: ss
-      udp: true
     - name: hysteria2-896857448
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
       port: 8080
@@ -27,6 +20,22 @@ proxies:
       server: 8.209.74.72
       type: ss
       udp: true
+    - name: vless-1593872463
+      network: grpc
+      port: 2085
+      server: 194.87.59.24
+      type: vless
+      udp: true
+      uuid: 2c55254a-aea9-4908-b83f-12516f6d61e9
+    - alterId: 0
+      cipher: auto
+      name: vmess-1570510804
+      network: tcp
+      port: 22324
+      server: 185.177.229.128
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1591554864
       password: +eG+ejCxWsmLjR9U0OQDsBGUSC7Uzr+AYQki62+49Lc=
@@ -128,13 +137,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-    - name: hysteria2-1045026816
-      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
-      port: 8080
-      server: 85.204.107.183
-      skip-cert-verify: true
-      sni: hopp-romania-new.roxa.org
-      type: hysteria2
     - name: hysteria2-1033569060
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
       port: 8080
@@ -170,6 +172,13 @@ proxies:
       type: vless
       udp: true
       uuid: 0c1b7949-fe09-43d9-863f-2c031f66bfc1
+    - name: vless-1589194349
+      network: tcp
+      port: 1085
+      server: 188.245.25.223
+      type: vless
+      udp: true
+      uuid: 0c1b7949-fe09-43d9-863f-2c031f66bfc1
     - client-fingerprint: chrome
       name: vless-1561528858
       network: grpc
@@ -183,6 +192,16 @@ proxies:
       type: vless
       udp: true
       uuid: 3ada8d7b-806e-47e0-9cac-aa35061104ce
+    - name: vless-1578844622
+      network: grpc
+      port: 443
+      server: 37.46.18.49
+      servername: assets-de2.pleiades.codes
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1577697072
@@ -211,29 +230,6 @@ proxies:
       type: vless
       udp: true
       uuid: adc11f30-e4cb-4985-bf5e-f9ded69c019f
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1577696415
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: bKoCicEJTym3khfTMZtje-S0DoRi-79l2AT1ixY3cjs
-        short-id: 91b4ede4e90115cf
-      server: 51.89.13.63
-      servername: vimeo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2412bd96-925b-43f2-81d1-0ed4f0793699
-    - alterId: 0
-      cipher: auto
-      name: vmess-1570510804
-      network: tcp
-      port: 22324
-      server: 185.177.229.128
-      type: vmess
-      udp: true
-      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - alterId: 0
       cipher: auto
       name: vmess-1527436014
@@ -251,9 +247,10 @@ proxy-groups:
       name: auto
       proxies:
         - shadowsocks-1592384210
-        - shadowsocks-1577129297
         - hysteria2-896857448
         - shadowsocks-229
+        - vless-1593872463
+        - vmess-1570510804
         - shadowsocks-1591554864
         - vless-1565846086
         - shadowsocks-1592384204
@@ -264,17 +261,16 @@ proxy-groups:
         - vless-1574440371
         - vless-1564154408
         - vmess-685047062
-        - hysteria2-1045026816
         - hysteria2-1033569060
         - hysteria2-923321814
         - hysteria2-930179314
         - shadowsocks-1592384206
         - vless-1589195390
+        - vless-1589194349
         - vless-1561528858
+        - vless-1578844622
         - vless-1577697072
         - vless-1439899360
-        - vless-1577696415
-        - vmess-1570510804
         - vmess-1527436014
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -282,9 +278,10 @@ proxy-groups:
       proxies:
         - auto
         - shadowsocks-1592384210
-        - shadowsocks-1577129297
         - hysteria2-896857448
         - shadowsocks-229
+        - vless-1593872463
+        - vmess-1570510804
         - shadowsocks-1591554864
         - vless-1565846086
         - shadowsocks-1592384204
@@ -295,17 +292,16 @@ proxy-groups:
         - vless-1574440371
         - vless-1564154408
         - vmess-685047062
-        - hysteria2-1045026816
         - hysteria2-1033569060
         - hysteria2-923321814
         - hysteria2-930179314
         - shadowsocks-1592384206
         - vless-1589195390
+        - vless-1589194349
         - vless-1561528858
+        - vless-1578844622
         - vless-1577697072
         - vless-1439899360
-        - vless-1577696415
-        - vmess-1570510804
         - vmess-1527436014
       type: select
 rules:
