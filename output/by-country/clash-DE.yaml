@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-1555784016
-      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
-      port: 8443
-      server: 162.249.127.134
-      skip-cert-verify: true
-      sni: hop-germany-september.dynuddns.com
-      type: hysteria2
     - name: hysteria2-896857448
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
       port: 8080
@@ -27,13 +20,13 @@ proxies:
       server: 185.226.172.8
       type: ss
       udp: true
-    - name: hysteria2-1546218825
-      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
-      port: 8080
-      server: 85.204.107.181
-      skip-cert-verify: true
-      sni: hopp-romania-new.roxa.org
-      type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-229
+      password: PWpjPo3tqhPN4yRZ
+      port: 20001
+      server: 8.209.74.72
+      type: ss
+      udp: true
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1571095603
       password: SHqxWT07Pxp6FnJE3d2aP7NuKJoiq7o9OPkXZi9ccZY=
@@ -41,13 +34,6 @@ proxies:
       server: 130.61.239.221
       type: ss
       udp: true
-    - name: hysteria2-589844090
-      password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
-      port: 443
-      server: de.1.23.h2corp.org
-      skip-cert-verify: true
-      sni: germany3.h2corp.local
-      type: hysteria2
     - name: hysteria2-648949654
       password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
       port: 443
@@ -69,6 +55,13 @@ proxies:
       skip-cert-verify: true
       sni: germany3.h2corp.local
       type: hysteria2
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1582889831
+      password: PAijPIjA3tTKiNb0oRJyZrveMENhEwhO8Dk8/gp/ztM=
+      port: 59924
+      server: 130.61.228.41
+      type: ss
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1581814810
       password: 9qGcNiZj4uCi7DGSjxlg5Q
@@ -83,33 +76,6 @@ proxies:
       type: vless
       udp: true
       uuid: 60f70a3c-6d58-4929-9b64-6bdf38eb5c95
-    - client-fingerprint: chrome
-      name: vless-1564154408
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: I88bya0Wf4iHIQb19bHZII3UlJ-oWBRbcnzvF0WFKyg
-        short-id: bf6f
-      server: 64.188.98.179
-      servername: support-shield.nvidia.no
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3ada8d7b-806e-47e0-9cac-aa35061104ce
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1572918740
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 6VMgXXhZdJCiOG05EyK_zTHh00kpFGrZJeZIEPgqhjY
-        short-id: 1c3e8241a8743df9
-      server: 192.142.12.175
-      servername: diffoscope.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 365de9e9-ba29-0004-af2d-766f9638e3be
     - alterId: 0
       cipher: auto
       name: vmess-1577691187
@@ -140,18 +106,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-    - alterId: 0
-      cipher: none
-      name: vmess-1107791216
-      network: tcp
-      port: 1234
-      server: 162.19.204.71
-      servername: 162.19.204.71
-      skip-cert-verify: true
-      tls: true
-      type: vmess
-      udp: true
-      uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
     - name: hysteria2-1511948089
       password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
       port: 8443
@@ -163,48 +117,40 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1555784016
         - hysteria2-896857448
         - hysteria2-1537155765
         - shadowsocks-11078
-        - hysteria2-1546218825
+        - shadowsocks-229
         - shadowsocks-1571095603
-        - hysteria2-589844090
         - hysteria2-648949654
         - hysteria2-1473969939
         - hysteria2-650314301
+        - shadowsocks-1582889831
         - shadowsocks-1581814810
         - vless-1580907755
-        - vless-1564154408
-        - vless-1572918740
         - vmess-1577691187
         - vmess-1570510805
         - vmess-1062038835
-        - vmess-1107791216
         - hysteria2-1511948089
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1555784016
         - hysteria2-896857448
         - hysteria2-1537155765
         - shadowsocks-11078
-        - hysteria2-1546218825
+        - shadowsocks-229
         - shadowsocks-1571095603
-        - hysteria2-589844090
         - hysteria2-648949654
         - hysteria2-1473969939
         - hysteria2-650314301
+        - shadowsocks-1582889831
         - shadowsocks-1581814810
         - vless-1580907755
-        - vless-1564154408
-        - vless-1572918740
         - vmess-1577691187
         - vmess-1570510805
         - vmess-1062038835
-        - vmess-1107791216
         - hysteria2-1511948089
       type: select
 rules:
