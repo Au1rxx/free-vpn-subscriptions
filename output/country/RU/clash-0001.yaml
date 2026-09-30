@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-46619
-      network: ws
-      port: 8880
-      server: 135.84.72.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-81803
       network: ws
       port: 8880
@@ -165,27 +158,34 @@ proxies:
       skip-cert-verify: true
       sni: ru1.xiaoliyu.cyou
       type: hysteria2
-    - cipher: aes-256-gcm
-      name: shadowsocks-1562080765
-      password: bdb313adf74c2ede
-      port: 40101
-      server: 185.22.154.239
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1574323182
-      password: 9qGcNiZj4uCi7DGSjxlg5Q
-      port: 2055
-      server: 62.181.53.170
-      type: ss
-      udp: true
-    - name: hysteria2-1579914242
-      password: fba73f98-777a-42a6-83c0-7d1f6f070e8d
-      port: 443
-      server: 138.124.254.232
-      skip-cert-verify: false
-      sni: crt.dodopanel.biz
+    - name: hysteria2-1553155170
+      password: 19f72087-4591-4d72-930b-2697078ec2be
+      port: 18333
+      server: ru.xiaoliyu.cyou
+      skip-cert-verify: true
+      sni: ""
       type: hysteria2
+    - name: hysteria2-1558648943
+      password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
+      port: 2060
+      server: els.mangshe.xyz
+      skip-cert-verify: true
+      sni: els.mangshe.xyz
+      type: hysteria2
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1571337435
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: yyH7Fyfh1ULPH4L5mFVtqPf_rB1IY6jwDgOuIRY7-wA
+        short-id: df
+      server: ru-test.omuservice.tech
+      servername: ozone.nl
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6db7ea14-ed33-4591-a9b1-f1e91b1c0ff5
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1581684566
       password: Yg2U9wKTPgVrZ1Jzo2MEa0RsXD_GrBR6
@@ -235,11 +235,24 @@ proxies:
       type: vless
       udp: true
       uuid: 386d4342-768d-4ed0-9478-4dba23220aed
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1587728652
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Oq-xzuGJS90vXtDM5_WM73LESpRBoXB7drkaBdUPW1Y
+        short-id: "68721887"
+      server: 201.24.117.48
+      servername: n98o5teg7.dendiboss.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 386d4342-768d-4ed0-9478-4dba23220aed
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-46619
         - vless-81803
         - vless-656240777
         - vless-700375881
@@ -259,19 +272,19 @@ proxy-groups:
         - hysteria2-1551127544
         - hysteria2-1552291976
         - hysteria2-1552472310
-        - shadowsocks-1562080765
-        - shadowsocks-1574323182
-        - hysteria2-1579914242
+        - hysteria2-1553155170
+        - hysteria2-1558648943
+        - vless-1571337435
         - shadowsocks-1581684566
         - vless-1583740708
         - vless-1586013561
         - vless-1586013562
+        - vless-1587728652
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-46619
         - vless-81803
         - vless-656240777
         - vless-700375881
@@ -291,13 +304,14 @@ proxy-groups:
         - hysteria2-1551127544
         - hysteria2-1552291976
         - hysteria2-1552472310
-        - shadowsocks-1562080765
-        - shadowsocks-1574323182
-        - hysteria2-1579914242
+        - hysteria2-1553155170
+        - hysteria2-1558648943
+        - vless-1571337435
         - shadowsocks-1581684566
         - vless-1583740708
         - vless-1586013561
         - vless-1586013562
+        - vless-1587728652
       type: select
 rules:
     - MATCH,select

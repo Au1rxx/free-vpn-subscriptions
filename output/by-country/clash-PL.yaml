@@ -13,28 +13,26 @@ proxies:
       server: 217.30.10.44
       type: ss
       udp: true
-    - name: hysteria2-1118674279
-      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+    - client-fingerprint: chrome
+      name: vless-1582046516
+      network: tcp
       port: 443
-      server: 144.31.49.47
-      skip-cert-verify: false
-      sni: admin.wwwinternetvideo.click
-      type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-738053629
-      password: N7j3pdTYkKmsy8CR
-      port: 9095
-      server: 217.30.10.44
-      type: ss
+      reality-opts:
+        public-key: jOOQIxM4PRxWaZDfTj_63smCGJX_inthmmb8WG-SIHI
+        short-id: 6fda
+      server: lineartronic-ii.subaru-volga.com
+      servername: lineartronic-ii.subaru-volga.com
+      tls: true
+      type: vless
       udp: true
+      uuid: 6db6b948-655f-4f68-a9e7-865050e05b31
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-795694264
         - shadowsocks-717969033
-        - hysteria2-1118674279
-        - shadowsocks-738053629
+        - vless-1582046516
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -42,8 +40,7 @@ proxy-groups:
         - auto
         - shadowsocks-795694264
         - shadowsocks-717969033
-        - hysteria2-1118674279
-        - shadowsocks-738053629
+        - vless-1582046516
       type: select
 rules:
     - MATCH,select
