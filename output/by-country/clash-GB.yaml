@@ -27,18 +27,18 @@ proxies:
       server: 134.65.58.210
       type: ss
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-717969059
-      password: LXchLsIwtCeUAUgu
-      port: 443
-      server: 149.102.149.207
-      type: ss
-      udp: true
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1571095589
       password: OKTYz7ZdkQjQ6JnY6Y2ORcov1unLRBQ7YMR0+MgKxfI=
       port: 61312
       server: 129.151.74.61
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-696780670
+      password: LXchLsIwtCeUAUgu
+      port: 80
+      server: 149.102.149.207
       type: ss
       udp: true
     - cipher: 2022-blake3-chacha20-poly1305
@@ -90,13 +90,6 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - name: vless-1575939941
-      network: tcp
-      port: 57890
-      server: 146.19.130.192
-      type: vless
-      udp: true
-      uuid: 554152b4-7819-4e3b-9971-74d6fd8b3975
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1484508210
@@ -111,13 +104,6 @@ proxies:
       type: vless
       udp: true
       uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
-    - cipher: aes-256-gcm
-      name: shadowsocks-696780670
-      password: LXchLsIwtCeUAUgu
-      port: 80
-      server: 149.102.149.207
-      type: ss
-      udp: true
     - cipher: aes-128-gcm
       name: shadowsocks-1575014863
       password: 8b073504328da6a5db0a4472ec02168b
@@ -182,6 +168,26 @@ proxies:
       type: vless
       udp: true
       uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
+    - client-fingerprint: random
+      name: vless-1581173055
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: xPEBx4wUmwAAv4ikUALNBf5wH6TRhyeQ0Q2pcNELsV0
+        short-id: d051f678212f9d54
+      server: 51.89.194.151
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8e790f25-1d71-4601-9fb0-d503931dcfca
+    - name: hysteria2-1005580180
+      password: 3b8c82ed-fe66-472d-915e-034ccb57103f
+      port: 443
+      server: labs.frkn.org
+      skip-cert-verify: true
+      sni: labs.frkn.org
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
@@ -190,8 +196,8 @@ proxy-groups:
         - shadowsocks-240
         - shadowsocks-1571095596
         - shadowsocks-1571095604
-        - shadowsocks-717969059
         - shadowsocks-1571095589
+        - shadowsocks-696780670
         - shadowsocks-1571095600
         - shadowsocks-415241978
         - shadowsocks-468218595
@@ -199,9 +205,7 @@ proxy-groups:
         - shadowsocks-165
         - vless-1483330828
         - vless-1230573705
-        - vless-1575939941
         - vless-1484508210
-        - shadowsocks-696780670
         - shadowsocks-1575014863
         - vless-1245369769
         - hysteria2-1005126986
@@ -209,6 +213,8 @@ proxy-groups:
         - trojan-1580321210
         - vless-1488471709
         - vless-1479678804
+        - vless-1581173055
+        - hysteria2-1005580180
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -218,8 +224,8 @@ proxy-groups:
         - shadowsocks-240
         - shadowsocks-1571095596
         - shadowsocks-1571095604
-        - shadowsocks-717969059
         - shadowsocks-1571095589
+        - shadowsocks-696780670
         - shadowsocks-1571095600
         - shadowsocks-415241978
         - shadowsocks-468218595
@@ -227,9 +233,7 @@ proxy-groups:
         - shadowsocks-165
         - vless-1483330828
         - vless-1230573705
-        - vless-1575939941
         - vless-1484508210
-        - shadowsocks-696780670
         - shadowsocks-1575014863
         - vless-1245369769
         - hysteria2-1005126986
@@ -237,6 +241,8 @@ proxy-groups:
         - trojan-1580321210
         - vless-1488471709
         - vless-1479678804
+        - vless-1581173055
+        - hysteria2-1005580180
       type: select
 rules:
     - MATCH,select
