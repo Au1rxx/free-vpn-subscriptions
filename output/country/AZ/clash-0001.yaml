@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: chrome
+      name: vless-1568488458
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: fY4zG7EPbiRzlabmT4p_LFuHj6vfMAEdxNoCt-bCPz8
+        short-id: 5c56ebc08e4ad1d9
+      server: 109.122.251.253
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d02fcca7-e77f-42f1-94bf-5545eec68f0a
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1568488458
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1568488458
+      type: select
+rules:
+    - MATCH,select

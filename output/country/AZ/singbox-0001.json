@@ -1,0 +1,49 @@
+{
+  "outbounds": [
+    {
+      "server": "109.122.251.253",
+      "server_port": 2053,
+      "tag": "vless-1568488458",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "fY4zG7EPbiRzlabmT4p_LFuHj6vfMAEdxNoCt-bCPz8",
+          "short_id": "5c56ebc08e4ad1d9"
+        },
+        "server_name": "play.google.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "d02fcca7-e77f-42f1-94bf-5545eec68f0a"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1568488458"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1568488458"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
