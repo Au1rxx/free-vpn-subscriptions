@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: ios
-      flow: xtls-rprx-vision
-      name: vless-599732470
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
-        short-id: c39cc7310a
-      server: 169.40.42.229
-      servername: yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d65cc14c-f53f-4fe2-b262-97856601319c
     - name: hysteria2-1040048366
       password: dsmO0439gj_nX942GJRE_9j39fbcxv52_R
       port: 8080
@@ -41,25 +27,38 @@ proxies:
       server: 85.209.157.184
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      name: vless-1615094233
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: AeQDUAVCESyA1hFkw6lENmgWAY3sBH9CFPpPAddPwVc
+        short-id: fffff8acddadcac3
+      server: 34.165.56.30
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0c40bce9-8710-4820-8f22-0742b61df999
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-599732470
         - hysteria2-1040048366
         - hysteria2-1048663499
         - hysteria2-1179524508
         - shadowsocks-1598823920
+        - vless-1615094233
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-599732470
         - hysteria2-1040048366
         - hysteria2-1048663499
         - hysteria2-1179524508
         - shadowsocks-1598823920
+        - vless-1615094233
       type: select
 rules:
     - MATCH,select
