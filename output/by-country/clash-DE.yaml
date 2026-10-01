@@ -6,6 +6,13 @@ proxies:
       server: 185.226.172.8
       type: ss
       udp: true
+    - name: hysteria2-1571839498
+      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
+      port: 8443
+      server: 162.249.127.137
+      skip-cert-verify: true
+      sni: hop-germany-september.dynuddns.com
+      type: hysteria2
     - name: vless-1589194349
       network: tcp
       port: 1085
@@ -27,6 +34,13 @@ proxies:
       type: vless
       udp: true
       uuid: edc7ca73-c066-4421-9d01-0863ab411ce5
+    - name: hysteria2-650314301
+      password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
+      port: 443
+      server: de.1.23.h2corp.org
+      skip-cert-verify: true
+      sni: germany3.h2corp.local
+      type: hysteria2
     - name: hysteria2-648949654
       password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
       port: 443
@@ -208,42 +222,6 @@ proxies:
       type: vless
       udp: true
       uuid: 3ada8d7b-806e-47e0-9cac-aa35061104ce
-    - client-fingerprint: firefox
-      name: vless-1598818042
-      network: grpc
-      port: 9881
-      reality-opts:
-        public-key: Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0
-        short-id: aabbccdd
-      server: 176.109.111.154
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
-    - client-fingerprint: ios
-      flow: xtls-rprx-vision
-      name: vless-1580898619
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
-        short-id: ""
-      server: 31.76.249.174
-      servername: conge.ggisopi.su
-      tls: true
-      type: vless
-      udp: true
-      uuid: d0f0a880-0df1-48c9-bdf1-5669fb9483ce
-    - alterId: 0
-      cipher: auto
-      name: vmess-1594898577
-      network: tcp
-      port: 23326
-      server: 31.76.11.83
-      type: vmess
-      udp: true
-      uuid: 3dff544a-379e-41f9-95d9-4b95a8e4026e
     - alterId: 0
       cipher: auto
       name: vmess-1593530526
@@ -281,21 +259,30 @@ proxies:
       skip-cert-verify: true
       sni: hop-germany-september.dynuddns.com
       type: hysteria2
-    - name: vless-1587359932
-      network: ws
-      port: 80
-      server: 199.247.23.162
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1589195376
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: w4AYHvQnQS6olDqoG9ptLOtgehaWOsv9HQhDax5bLA4
+        short-id: db46e2946fc466fd
+      server: 85.234.100.9
+      servername: deepl.com
+      tls: true
       type: vless
       udp: true
-      uuid: 306dcb21-d02d-49dd-8ec7-0005b972b47a
+      uuid: bb0f1ed0-0298-40a1-adb1-1f5d6ab33d54
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11078
+        - hysteria2-1571839498
         - vless-1589194349
         - shadowsocks-1610958683
         - vless-1608160289
+        - hysteria2-650314301
         - hysteria2-648949654
         - shadowsocks-209
         - shadowsocks-1611272161
@@ -315,23 +302,22 @@ proxy-groups:
         - hysteria2-1555784016
         - vless-1608160284
         - vless-1561528858
-        - vless-1598818042
-        - vless-1580898619
-        - vmess-1594898577
         - vmess-1593530526
         - vmess-1577691187
         - vmess-657042642
         - hysteria2-1599779134
-        - vless-1587359932
+        - vless-1589195376
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-11078
+        - hysteria2-1571839498
         - vless-1589194349
         - shadowsocks-1610958683
         - vless-1608160289
+        - hysteria2-650314301
         - hysteria2-648949654
         - shadowsocks-209
         - shadowsocks-1611272161
@@ -351,14 +337,11 @@ proxy-groups:
         - hysteria2-1555784016
         - vless-1608160284
         - vless-1561528858
-        - vless-1598818042
-        - vless-1580898619
-        - vmess-1594898577
         - vmess-1593530526
         - vmess-1577691187
         - vmess-657042642
         - hysteria2-1599779134
-        - vless-1587359932
+        - vless-1589195376
       type: select
 rules:
     - MATCH,select
