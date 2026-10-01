@@ -7,6 +7,16 @@ proxies:
       sni: russiapower.accesscam.org
       type: trojan
       udp: true
+    - name: vless-781312931
+      network: tcp
+      port: 8443
+      server: 94.183.170.135
+      servername: estproxy4.lockdwn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
     - name: vless-813576877
       network: tcp
       port: 8443
@@ -22,6 +32,7 @@ proxy-groups:
       name: auto
       proxies:
         - trojan-813956195
+        - vless-781312931
         - vless-813576877
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -29,6 +40,7 @@ proxy-groups:
       proxies:
         - auto
         - trojan-813956195
+        - vless-781312931
         - vless-813576877
       type: select
 rules:
