@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1602496444
+      network: tcp
+      port: 20270
+      reality-opts:
+        public-key: RHLiKldLu3DONcQoX4Kjs7Xmd2K25ndVbw4pwxe45XE
+        short-id: e6a5a4a9115456de
+      server: au1.gsafevpnapi.com
+      servername: www.yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d6fc32ed-05de-430b-99ca-3edc9185e79b
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1602496444
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1602496444
+      type: select
+rules:
+    - MATCH,select

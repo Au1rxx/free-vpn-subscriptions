@@ -6,6 +6,19 @@ proxies:
       server: 132.243.175.144
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      name: vless-1579868466
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+        short-id: ad86e2d52ff40ebd
+      server: 208.69.78.217
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
     - name: hysteria2-1391610043
       password: we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH
       port: 8443
@@ -13,19 +26,37 @@ proxies:
       skip-cert-verify: false
       sni: hopp-swizland-new.mysynology.net
       type: hysteria2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1604957108
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8PZTYkhNhSgagVdaI-iqSCPXJwDhHU23IUwZIu08zH4
+        short-id: 9de8ae53dabf1dc2
+      server: 179.237.103.152
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e0bd9dfa-0cf9-47c0-92ac-7dba08ebcff8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1364026099
+        - vless-1579868466
         - hysteria2-1391610043
+        - vless-1604957108
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1364026099
+        - vless-1579868466
         - hysteria2-1391610043
+        - vless-1604957108
       type: select
 rules:
     - MATCH,select
