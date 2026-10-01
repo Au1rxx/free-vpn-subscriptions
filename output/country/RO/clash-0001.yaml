@@ -1,4 +1,11 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-26744
+      password: QFWzCw2uX9B9i6qAYeFBIE
+      port: 443
+      server: 154.46.31.106
+      type: ss
+      udp: true
     - name: vless-66107
       network: ws
       port: 8880
@@ -977,17 +984,6 @@ proxies:
       udp: true
       uuid: 5cb9410c-1b31-48dc-b33f-cacd93722ffd
     - flow: xtls-rprx-vision
-      name: vless-1597438355
-      network: tcp
-      port: 443
-      server: 188.225.76.197
-      servername: cdn-pl-exit.extazy.net
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5cb9410c-1b31-48dc-b33f-cacd93722ffd
-    - flow: xtls-rprx-vision
       name: vless-1598009840
       network: raw
       port: 443
@@ -1096,6 +1092,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-26744
         - vless-66107
         - shadowsocks-130484
         - hysteria2-290666035
@@ -1176,7 +1173,6 @@ proxy-groups:
         - hysteria2-1591550740
         - hysteria2-1593872461
         - vless-1597417636
-        - vless-1597438355
         - vless-1598009840
         - vless-1598371596
         - vless-1598440391
@@ -1193,6 +1189,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-26744
         - vless-66107
         - shadowsocks-130484
         - hysteria2-290666035
@@ -1273,7 +1270,6 @@ proxy-groups:
         - hysteria2-1591550740
         - hysteria2-1593872461
         - vless-1597417636
-        - vless-1597438355
         - vless-1598009840
         - vless-1598371596
         - vless-1598440391

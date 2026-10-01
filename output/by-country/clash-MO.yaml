@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1605681715
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: X4zuWa9FSwNyLOkxPxdrYdYWih52y2q6JbegN0jw80k
+        short-id: d5524580
+      server: 45.207.34.187
+      servername: ign.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 60300afa-3366-4ae3-959a-7b50438acebb
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1605681715
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1605681715
+      type: select
+rules:
+    - MATCH,select

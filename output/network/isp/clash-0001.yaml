@@ -6,6 +6,13 @@ proxies:
       server: 211.178.105.134
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-26744
+      password: QFWzCw2uX9B9i6qAYeFBIE
+      port: 443
+      server: 154.46.31.106
+      type: ss
+      udp: true
     - name: trojan-112939
       password: tsuchiya
       port: 443
@@ -517,16 +524,6 @@ proxies:
       type: vless
       udp: true
       uuid: 392fcc7e-b995-11f1-a6b7-1b2272a86bd5
-    - name: vless-1540514362
-      network: ws
-      port: 10002
-      server: 89.218.15.90
-      servername: kz1.vpnjantit.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 392fcc7e-b995-11f1-a6b7-1b2272a86bd5
     - name: vless-1552053156
       network: ws
       port: 8443
@@ -554,34 +551,6 @@ proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1555660035
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: sVhkyiMXvpofflCdSszxQmsqOXV1kg1Ldxq1a9mOPjs
-        short-id: 6a
-      server: 62.77.158.1
-      servername: online.1c.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2eceaf2b-a775-5a9c-9990-dad2b3660fb6
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1557120176
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: sVhkyiMXvpofflCdSszxQmsqOXV1kg1Ldxq1a9mOPjs
-        short-id: 6a
-      server: 62.77.158.1
-      servername: online.1c.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2eceaf2b-a775-5a9c-9990-dad2b3660fb6
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1557120227
       network: tcp
       port: 443
       reality-opts:
@@ -1176,11 +1145,50 @@ proxies:
       sni: quictest.burncommunity.ru
       type: trojan
       udp: true
+    - name: trojan-1605680270
+      password: 8GXLP3dEzm7T8wP5Jx0Ufg
+      port: 443
+      server: 199.107.164.105
+      skip-cert-verify: false
+      sni: quictest.burncommunity.ru
+      type: trojan
+      udp: true
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1605765897
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: 5wGgDloyck_L25Y5rkWorpV3IK00pK0Lki7LR0VY0io
+        short-id: 4fba6fd2c74fd18f
+      server: 216.195.196.86
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7c973569-71da-4d18-8c80-aa4c8ee2f257
+    - name: trojan-1606188961
+      password: 8GXLP3dEzm7T8wP5Jx0Ufg
+      port: 443
+      server: 199.107.164.105
+      skip-cert-verify: false
+      sni: quictest.burncommunity.ru
+      type: trojan
+      udp: true
+    - name: trojan-1606250616
+      password: 8GXLP3dEzm7T8wP5Jx0Ufg
+      port: 443
+      server: 199.107.164.105
+      skip-cert-verify: false
+      sni: quictest.burncommunity.ru
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-287
+        - shadowsocks-26744
         - trojan-112939
         - trojan-145259
         - trojan-2525862
@@ -1228,12 +1236,9 @@ proxy-groups:
         - vless-1522363238
         - vless-1533125933
         - vless-1539709778
-        - vless-1540514362
         - vless-1552053156
         - vless-1554893728
         - vless-1555660035
-        - vless-1557120176
-        - vless-1557120227
         - vless-1558163560
         - vless-1558988633
         - vless-1559040735
@@ -1289,12 +1294,17 @@ proxy-groups:
         - vless-1604632463
         - trojan-1604982238
         - trojan-1604982239
+        - trojan-1605680270
+        - vless-1605765897
+        - trojan-1606188961
+        - trojan-1606250616
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-287
+        - shadowsocks-26744
         - trojan-112939
         - trojan-145259
         - trojan-2525862
@@ -1342,12 +1352,9 @@ proxy-groups:
         - vless-1522363238
         - vless-1533125933
         - vless-1539709778
-        - vless-1540514362
         - vless-1552053156
         - vless-1554893728
         - vless-1555660035
-        - vless-1557120176
-        - vless-1557120227
         - vless-1558163560
         - vless-1558988633
         - vless-1559040735
@@ -1403,6 +1410,10 @@ proxy-groups:
         - vless-1604632463
         - trojan-1604982238
         - trojan-1604982239
+        - trojan-1605680270
+        - vless-1605765897
+        - trojan-1606188961
+        - trojan-1606250616
       type: select
 rules:
     - MATCH,select

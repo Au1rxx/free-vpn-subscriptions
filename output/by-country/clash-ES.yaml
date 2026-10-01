@@ -1,6 +1,25 @@
 proxies:
     - alterId: 0
       cipher: auto
+      name: vmess-1446234800
+      network: tcp
+      port: 22324
+      server: 66.163.118.73
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
+    - name: vless-1558633287
+      network: grpc
+      port: 443
+      server: 193.238.154.5
+      servername: assets-es.pleiades.codes
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e0b9fb0f-1bbd-478b-9580-c2294778338b
+    - alterId: 0
+      cipher: auto
       name: vmess-1470463936
       network: tcp
       port: 22324
@@ -21,6 +40,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-1446234800
+        - vless-1558633287
         - vmess-1470463936
         - vmess-1451310230
       type: url-test
@@ -28,6 +49,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vmess-1446234800
+        - vless-1558633287
         - vmess-1470463936
         - vmess-1451310230
       type: select
