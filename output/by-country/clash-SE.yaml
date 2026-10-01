@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: qq
+      name: vless-1593680574
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SOvacyM6CABhBHYdOHvhXbkNLHJBHuAkoJj2Z13xKlE
+        short-id: b4a6faed784ff461
+      server: 34.51.240.236
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 788950f8-dbd9-4234-a42c-a7204665ce9f
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1593680574
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1593680574
+      type: select
+rules:
+    - MATCH,select
