@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-1592835373
-      password: amazonskr05
-      port: 443
-      server: 15.237.255.137
-      type: ss
-      udp: true
     - name: hysteria2-1507423268
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -101,6 +94,17 @@ proxies:
       server: 15.236.38.55
       type: ss
       udp: true
+    - flow: xtls-rprx-vision
+      name: vless-1576364992
+      network: tcp
+      port: 52006
+      server: 31.77.227.10
+      servername: fr.setlisting.ru
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-700283247
@@ -183,77 +187,10 @@ proxies:
       type: vless
       udp: true
       uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-    - client-fingerprint: chrome
-      name: vless-1591596532
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: SVT2WeXMIrumlh5VG1lbHN6YbqL7-u2iRkv1js8XEU4
-        short-id: 3f95392a418ec8fd
-      server: 34.155.146.201
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 069a2bbd-3fc9-470f-a251-c836a96ed04a
-    - client-fingerprint: firefox
-      name: vless-1399487120
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ
-        short-id: a8ae
-      server: 194.76.154.31
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1600373184
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: lHCkAu_DOVFtE-iL2JGrPt44QeTCFijXuRfuGaSni3Q
-        short-id: 9e4eced6e98ed4d4
-      server: 194.113.235.66
-      servername: github.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1c5ed2e1-56da-41ab-9a78-159d9892ec17
-    - client-fingerprint: qq
-      name: vless-178038888
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ
-        short-id: a8ae
-      server: 194.76.154.31
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
-    - client-fingerprint: chrome
-      name: vless-246493916
-      network: raw
-      port: 40443
-      reality-opts:
-        public-key: MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ
-        short-id: a8ae
-      server: 194.76.154.31
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1592835373
         - hysteria2-1507423268
         - hysteria2-1552246614
         - shadowsocks-1602687005
@@ -265,6 +202,7 @@ proxy-groups:
         - hysteria2-722298473
         - hysteria2-200394203
         - shadowsocks-1602687007
+        - vless-1576364992
         - vless-700283247
         - vless-700285296
         - hysteria2-689011839
@@ -272,17 +210,11 @@ proxy-groups:
         - vless-1403698678
         - vless-700283246
         - vless-656232044
-        - vless-1591596532
-        - vless-1399487120
-        - vless-1600373184
-        - vless-178038888
-        - vless-246493916
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1592835373
         - hysteria2-1507423268
         - hysteria2-1552246614
         - shadowsocks-1602687005
@@ -294,6 +226,7 @@ proxy-groups:
         - hysteria2-722298473
         - hysteria2-200394203
         - shadowsocks-1602687007
+        - vless-1576364992
         - vless-700283247
         - vless-700285296
         - hysteria2-689011839
@@ -301,11 +234,6 @@ proxy-groups:
         - vless-1403698678
         - vless-700283246
         - vless-656232044
-        - vless-1591596532
-        - vless-1399487120
-        - vless-1600373184
-        - vless-178038888
-        - vless-246493916
       type: select
 rules:
     - MATCH,select
