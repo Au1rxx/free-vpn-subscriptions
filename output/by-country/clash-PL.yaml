@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-620179978
-      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-      port: 443
-      server: admin.wwwinternetvideo.click
-      skip-cert-verify: true
-      sni: admin.wwwinternetvideo.click
-      type: hysteria2
     - cipher: aes-256-cfb
       name: shadowsocks-768399401
       password: 7heRqkPG3hg4UnRm
@@ -20,21 +13,38 @@ proxies:
       server: 217.30.10.44
       type: ss
       udp: true
+    - name: hysteria2-620179978
+      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+      port: 443
+      server: admin.wwwinternetvideo.click
+      skip-cert-verify: true
+      sni: admin.wwwinternetvideo.click
+      type: hysteria2
+    - name: trojan-1596400044
+      password: UX82473651
+      port: 443
+      server: cheerful-swan.rooster465.autos
+      skip-cert-verify: true
+      sni: cheerful-swan.rooster465.autos
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-620179978
         - shadowsocks-768399401
         - shadowsocks-812343744
+        - hysteria2-620179978
+        - trojan-1596400044
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-620179978
         - shadowsocks-768399401
         - shadowsocks-812343744
+        - hysteria2-620179978
+        - trojan-1596400044
       type: select
 rules:
     - MATCH,select
