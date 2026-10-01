@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-36135
+      network: ws
+      port: 8880
+      server: 102.177.189.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-81052
       network: ws
       port: 22573
@@ -157,6 +164,16 @@ proxies:
       type: vless
       udp: true
       uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+    - name: vless-1099142604
+      network: ws
+      port: 443
+      server: novantunnel.tech
+      servername: novantunnel.tech
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ee556a4f-d9f6-44de-af02-42c51659416a
     - name: vless-1130262821
       network: ws
       port: 443
@@ -184,6 +201,13 @@ proxies:
       type: vless
       udp: true
       uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+    - name: vless-1239101014
+      network: ws
+      port: 8880
+      server: 108.165.152.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1345543546
@@ -376,14 +400,6 @@ proxies:
       type: vless
       udp: true
       uuid: 39947382-3212-41c9-bc3a-589574ac8b23
-    - name: trojan-1595347970
-      password: 54df124b-c11c-41b0-86da-9d642125671f
-      port: 2083
-      server: 91.193.59.194
-      skip-cert-verify: true
-      sni: vpn2.xiweini.dpdns.org
-      type: trojan
-      udp: true
     - name: trojan-1596400033
       password: 54df124b-c11c-41b0-86da-9d642125671f
       port: 2083
@@ -396,6 +412,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-36135
         - vless-81052
         - vless-93598
         - trojan-122892
@@ -418,9 +435,11 @@ proxy-groups:
         - vmess-1005124009
         - vless-1063385471
         - vless-1078737127
+        - vless-1099142604
         - vless-1130262821
         - vless-1172075114
         - vless-1206806603
+        - vless-1239101014
         - vless-1345543546
         - vless-1351433254
         - vless-1361919260
@@ -438,13 +457,13 @@ proxy-groups:
         - vless-1555350538
         - vless-1562898832
         - vless-1591550709
-        - trojan-1595347970
         - trojan-1596400033
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-36135
         - vless-81052
         - vless-93598
         - trojan-122892
@@ -467,9 +486,11 @@ proxy-groups:
         - vmess-1005124009
         - vless-1063385471
         - vless-1078737127
+        - vless-1099142604
         - vless-1130262821
         - vless-1172075114
         - vless-1206806603
+        - vless-1239101014
         - vless-1345543546
         - vless-1351433254
         - vless-1361919260
@@ -487,7 +508,6 @@ proxy-groups:
         - vless-1555350538
         - vless-1562898832
         - vless-1591550709
-        - trojan-1595347970
         - trojan-1596400033
       type: select
 rules:

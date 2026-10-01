@@ -1,8 +1,22 @@
 proxies:
+    - name: vless-46619
+      network: ws
+      port: 8880
+      server: 135.84.72.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-70767
       network: ws
       port: 8880
       server: 45.130.125.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-81803
+      network: ws
+      port: 8880
+      server: 88.216.69.30
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
@@ -177,13 +191,6 @@ proxies:
       server: 46.29.163.78
       type: ss
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-1591586186
-      password: 895b4b796a357570
-      port: 20999
-      server: 46.17.41.166
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1600001885
@@ -198,11 +205,23 @@ proxies:
       type: vless
       udp: true
       uuid: 4abdfe42-aec7-4b66-974d-3f891e2e8184
+    - name: vless-1600889008
+      network: ws
+      port: 8443
+      server: 194.58.109.206
+      servername: cf3.schzyc.cc.cd
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 51a0af77-a60c-4d9b-81a4-f50e1b38d90b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-46619
         - vless-70767
+        - vless-81803
         - vless-656240777
         - vless-700375881
         - trojan-860386949
@@ -223,14 +242,16 @@ proxy-groups:
         - hysteria2-1558648943
         - shadowsocks-1591586183
         - shadowsocks-1591586184
-        - shadowsocks-1591586186
         - vless-1600001885
+        - vless-1600889008
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-46619
         - vless-70767
+        - vless-81803
         - vless-656240777
         - vless-700375881
         - trojan-860386949
@@ -251,8 +272,8 @@ proxy-groups:
         - hysteria2-1558648943
         - shadowsocks-1591586183
         - shadowsocks-1591586184
-        - shadowsocks-1591586186
         - vless-1600001885
+        - vless-1600889008
       type: select
 rules:
     - MATCH,select
