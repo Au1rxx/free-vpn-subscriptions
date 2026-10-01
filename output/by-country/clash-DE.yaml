@@ -13,13 +13,13 @@ proxies:
       server: 209.46.102.22
       type: ss
       udp: true
-    - name: vless-1589194349
-      network: tcp
-      port: 1085
-      server: 188.245.25.223
-      type: vless
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1611272155
+      password: tGXsbUDisR28c/KS0RDOlgQS1gVT7UJ5Sf0/5QvMwR4=
+      port: 59924
+      server: 130.61.42.148
+      type: ss
       udp: true
-      uuid: 0c1b7949-fe09-43d9-863f-2c031f66bfc1
     - name: vless-1608160289
       network: grpc
       port: 3090
@@ -31,13 +31,6 @@ proxies:
       password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
       port: 443
       server: de.1.23.h2corp.org
-      skip-cert-verify: true
-      sni: germany3.h2corp.local
-      type: hysteria2
-    - name: hysteria2-648949654
-      password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
-      port: 443
-      server: 64.188.98.171
       skip-cert-verify: true
       sni: germany3.h2corp.local
       type: hysteria2
@@ -86,20 +79,6 @@ proxies:
       type: vless
       udp: true
       uuid: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1439899360
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI
-        short-id: db04ce8bdb8900f1
-      server: 31.77.161.15
-      servername: nvidia.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: adc11f30-e4cb-4985-bf5e-f9ded69c019f
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1583740705
@@ -219,49 +198,20 @@ proxies:
       sni: node111.ichost.cloud
       type: trojan
       udp: true
-    - client-fingerprint: chrome
-      name: vless-1597011503
-      network: grpc
-      port: 9881
-      reality-opts:
-        public-key: Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0
-        short-id: aabbccdd
-      server: 176.109.111.154
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1589195376
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: w4AYHvQnQS6olDqoG9ptLOtgehaWOsv9HQhDax5bLA4
-        short-id: db46e2946fc466fd
-      server: 85.234.100.9
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: bb0f1ed0-0298-40a1-adb1-1f5d6ab33d54
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1571839498
         - shadowsocks-209
-        - vless-1589194349
+        - shadowsocks-1611272155
         - vless-1608160289
         - hysteria2-650314301
-        - hysteria2-648949654
         - shadowsocks-717969012
         - vmess-1570510805
         - vmess-665279543
         - vless-1612077940
         - vless-1578844622
-        - vless-1439899360
         - vless-1583740705
         - vless-1593439937
         - hysteria2-1599156724
@@ -274,8 +224,6 @@ proxy-groups:
         - vmess-681962134
         - hysteria2-1555783017
         - trojan-1614943879
-        - vless-1597011503
-        - vless-1589195376
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -283,16 +231,14 @@ proxy-groups:
         - auto
         - hysteria2-1571839498
         - shadowsocks-209
-        - vless-1589194349
+        - shadowsocks-1611272155
         - vless-1608160289
         - hysteria2-650314301
-        - hysteria2-648949654
         - shadowsocks-717969012
         - vmess-1570510805
         - vmess-665279543
         - vless-1612077940
         - vless-1578844622
-        - vless-1439899360
         - vless-1583740705
         - vless-1593439937
         - hysteria2-1599156724
@@ -305,8 +251,6 @@ proxy-groups:
         - vmess-681962134
         - hysteria2-1555783017
         - trojan-1614943879
-        - vless-1597011503
-        - vless-1589195376
       type: select
 rules:
     - MATCH,select
