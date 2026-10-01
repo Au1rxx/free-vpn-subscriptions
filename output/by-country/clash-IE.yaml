@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-1590560750
+      password: Trojan@82164024
+      port: 443
+      server: ie.tronsg.com
+      skip-cert-verify: true
+      sni: ie.tronsg.com
+      type: trojan
+      udp: true
     - flow: xtls-rprx-vision
       name: vless-1349523994
       network: tcp
@@ -10,30 +18,19 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - flow: xtls-rprx-vision
-      name: vless-1157879800
-      network: tcp
-      port: 443
-      server: 50.7.5.163
-      servername: ir-viper.failspace.top
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-1590560750
         - vless-1349523994
-        - vless-1157879800
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-1590560750
         - vless-1349523994
-        - vless-1157879800
       type: select
 rules:
     - MATCH,select

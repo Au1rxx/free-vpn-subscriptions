@@ -1,7 +1,21 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1595285428
+      name: vless-1598880086
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: R6q8qhMxgq3ynJPUgudaRkcDXj0qgoc_UU1N0SWGLwM
+        short-id: ed77ac35a310
+      server: my2.miyazono-kaori.com
+      servername: www.setel.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a266761e-a42a-4be2-b1af-804062e91ef7
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1598818079
       network: tcp
       port: 443
       reality-opts:
@@ -31,14 +45,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1595285428
+        - vless-1598880086
+        - vless-1598818079
         - vless-1595285432
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1595285428
+        - vless-1598880086
+        - vless-1598818079
         - vless-1595285432
       type: select
 rules:

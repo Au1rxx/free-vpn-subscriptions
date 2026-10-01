@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-70767
+      network: ws
+      port: 8880
+      server: 45.130.125.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       name: vless-656240777
       network: tcp
@@ -108,6 +115,19 @@ proxies:
       skip-cert-verify: true
       sni: "off"
       type: hysteria2
+    - client-fingerprint: ios
+      name: vless-1512798014
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: C6nh6hqFTbtizgSH8vGmw2XUxsQAbAW3jPylpgGvfl4
+        short-id: 7c4b9a2e8d5f3c1b
+      server: 45.93.201.119
+      servername: vir2albridge.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f778d2eb-1bec-4d19-b0bf-0a5e39feed4f
     - name: hysteria2-1551127544
       password: 19f72087-4591-4d72-930b-2697078ec2be
       port: 18333
@@ -164,10 +184,25 @@ proxies:
       server: 46.17.41.166
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1600001885
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: m_tb05uuGKA4Va4XYUKtXeWmyBi2SyLdnkZOVFdNnRI
+        short-id: d1eb6eeb7d1f481f
+      server: 217.168.247.110
+      servername: mail.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4abdfe42-aec7-4b66-974d-3f891e2e8184
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-70767
         - vless-656240777
         - vless-700375881
         - trojan-860386949
@@ -180,6 +215,7 @@ proxy-groups:
         - hysteria2-1388429358
         - hysteria2-1393931802
         - hysteria2-1460630514
+        - vless-1512798014
         - hysteria2-1551127544
         - hysteria2-1552291976
         - hysteria2-1552472310
@@ -188,11 +224,13 @@ proxy-groups:
         - shadowsocks-1591586183
         - shadowsocks-1591586184
         - shadowsocks-1591586186
+        - vless-1600001885
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-70767
         - vless-656240777
         - vless-700375881
         - trojan-860386949
@@ -205,6 +243,7 @@ proxy-groups:
         - hysteria2-1388429358
         - hysteria2-1393931802
         - hysteria2-1460630514
+        - vless-1512798014
         - hysteria2-1551127544
         - hysteria2-1552291976
         - hysteria2-1552472310
@@ -213,6 +252,7 @@ proxy-groups:
         - shadowsocks-1591586183
         - shadowsocks-1591586184
         - shadowsocks-1591586186
+        - vless-1600001885
       type: select
 rules:
     - MATCH,select
