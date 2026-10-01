@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-1456822427
+      password: amazonskr05
+      port: 443
+      server: 51.20.96.231
+      type: ss
+      udp: true
     - client-fingerprint: qq
       name: vless-1593680574
       network: tcp
@@ -16,12 +23,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1456822427
         - vless-1593680574
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1456822427
         - vless-1593680574
       type: select
 rules:

@@ -8,17 +8,33 @@ proxies:
       type: vmess
       udp: true
       uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1529327425
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: ftL0TyOTjUa1sL0t8BihJw4mivq1vmxVmln9UWtcWQ4
+        short-id: 9fa94b480b31db5e
+      server: 93.92.112.233
+      servername: dr1.originask.site
+      tls: true
+      type: vless
+      udp: true
+      uuid: f7ec46bd-cb6e-44c2-b566-79873500e64d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-1005125062
+        - vless-1529327425
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-1005125062
+        - vless-1529327425
       type: select
 rules:
     - MATCH,select
