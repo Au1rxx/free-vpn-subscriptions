@@ -13,13 +13,6 @@ proxies:
       skip-cert-verify: true
       sni: www.microsoft.com
       type: hysteria2
-    - name: hysteria2-650659597
-      password: github.com/Alvin9999-newpac/fanqiang
-      port: 60111
-      server: 62.210.7.139
-      skip-cert-verify: true
-      sni: 62.210.7.139
-      type: hysteria2
     - client-fingerprint: chrome
       name: vless-1413435162
       network: grpc
@@ -40,19 +33,30 @@ proxies:
       skip-cert-verify: true
       sni: 35.181.166.40
       type: hysteria2
-    - name: hysteria2-24391
-      password: dongtaiwang.com
-      port: 22000
-      server: 62.210.124.146
-      skip-cert-verify: true
-      sni: www.microsoft.com
-      type: hysteria2
+    - flow: xtls-rprx-vision
+      name: vless-1566787691
+      network: tcp
+      port: 52006
+      server: 31.77.227.10
+      servername: fr.setlisting.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
     - name: hysteria2-1583578936
       password: Krab9Hyst2_Rk7pQ2xL
       port: 36723
       server: 151.247.197.253
       skip-cert-verify: true
       sni: "off"
+      type: hysteria2
+    - name: hysteria2-1552246614
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: 35.181.166.40
+      skip-cert-verify: true
+      sni: "vpn-fr-002.fastervpn.world#\U0001FA9033@oneclickvpnkeys"
       type: hysteria2
     - cipher: aes-256-cfb
       name: shadowsocks-1602687007
@@ -61,6 +65,20 @@ proxies:
       server: 15.236.38.55
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1493972862
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 7LSzvilTVKGMtBDuKGeMrLtlhY7tQf5YcG566dEgO0I
+        short-id: b390e0a721d242b0
+      server: 137.74.16.237
+      servername: www.icloud.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: aaec4e42-a095-44b6-a239-f16d234a0798
     - name: hysteria2-855474016
       password: gf1:gfhysteria2024
       port: 443
@@ -147,25 +165,33 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
-    - name: hysteria2-862083237
-      password: github.com/Alvin9999-newpac/fanqiang
-      port: 43115
-      server: 62.210.147.2
-      skip-cert-verify: true
-      sni: www.microsoft.com
-      type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-1592835373
+      password: amazonskr05
+      port: 443
+      server: 15.237.255.137
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-1602687006
+      password: amazonskr05
+      port: 443
+      server: 35.181.55.52
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1507423268
         - hysteria2-689011839
-        - hysteria2-650659597
         - vless-1413435162
         - hysteria2-1005580211
-        - hysteria2-24391
+        - vless-1566787691
         - hysteria2-1583578936
+        - hysteria2-1552246614
         - shadowsocks-1602687007
+        - vless-1493972862
         - hysteria2-855474016
         - vless-1489302516
         - vless-1590556970
@@ -173,7 +199,8 @@ proxy-groups:
         - vless-335163332
         - vless-246493916
         - vless-135793420
-        - hysteria2-862083237
+        - shadowsocks-1592835373
+        - shadowsocks-1602687006
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -181,12 +208,13 @@ proxy-groups:
         - auto
         - hysteria2-1507423268
         - hysteria2-689011839
-        - hysteria2-650659597
         - vless-1413435162
         - hysteria2-1005580211
-        - hysteria2-24391
+        - vless-1566787691
         - hysteria2-1583578936
+        - hysteria2-1552246614
         - shadowsocks-1602687007
+        - vless-1493972862
         - hysteria2-855474016
         - vless-1489302516
         - vless-1590556970
@@ -194,7 +222,8 @@ proxy-groups:
         - vless-335163332
         - vless-246493916
         - vless-135793420
-        - hysteria2-862083237
+        - shadowsocks-1592835373
+        - shadowsocks-1602687006
       type: select
 rules:
     - MATCH,select

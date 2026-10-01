@@ -7,6 +7,14 @@ proxies:
       sni: th1.zestapp778.com
       type: trojan
       udp: true
+    - name: trojan-1599155706
+      password: Trojan@82164024
+      port: 443
+      server: th1.zestapp778.com
+      skip-cert-verify: false
+      sni: th1.zestapp778.com
+      type: trojan
+      udp: true
     - name: trojan-1591343704
       password: Trojan@82164024
       port: 443
@@ -23,32 +31,23 @@ proxies:
       sni: th1.zestapp778.com
       type: trojan
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-1598882943
-      network: tcp
-      port: 50017
-      server: 36.133.78.37
-      type: vmess
-      udp: true
-      uuid: e37149b8-63df-4b4e-bd17-d7fc0b3009db
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-1592781604
+        - trojan-1599155706
         - trojan-1591343704
         - trojan-1597153944
-        - vmess-1598882943
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-1592781604
+        - trojan-1599155706
         - trojan-1591343704
         - trojan-1597153944
-        - vmess-1598882943
       type: select
 rules:
     - MATCH,select

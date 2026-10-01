@@ -27,37 +27,9 @@ proxies:
       type: vless
       udp: true
       uuid: 441a29b2-d9aa-47d5-9209-0a9191479f9f
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1564769389
-      network: tcp
-      port: 25026
-      reality-opts:
-        public-key: RVh0D446O5pKnOqlNkJNxSGGbmzl8swn4YBXYce1HSw
-        short-id: 34c465417d7ebca0
-      server: 185.143.179.179
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 441a29b2-d9aa-47d5-9209-0a9191479f9f
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1571355299
-      network: tcp
-      port: 25026
-      reality-opts:
-        public-key: RVh0D446O5pKnOqlNkJNxSGGbmzl8swn4YBXYce1HSw
-        short-id: 34c465417d7ebca0
-      server: 185.143.179.179
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 441a29b2-d9aa-47d5-9209-0a9191479f9f
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1576414179
       network: tcp
       port: 25026
       reality-opts:
@@ -97,20 +69,6 @@ proxies:
       type: vless
       udp: true
       uuid: ea723504-e8df-4f23-b35f-c93961d5128a
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1598055612
-      network: raw
-      port: 25026
-      reality-opts:
-        public-key: RVh0D446O5pKnOqlNkJNxSGGbmzl8swn4YBXYce1HSw
-        short-id: 34c465417d7ebca0
-      server: 185.143.179.179
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 441a29b2-d9aa-47d5-9209-0a9191479f9f
     - name: vless-1599827017
       network: grpc
       port: 3090
@@ -118,20 +76,33 @@ proxies:
       type: vless
       udp: true
       uuid: 14e227c3-5a83-4b4d-a41a-e5f499c79415
+    - name: vless-1603606402
+      network: grpc
+      port: 3090
+      server: 93.190.9.110
+      type: vless
+      udp: true
+      uuid: 74aed07d-280c-4e14-aa20-cbb815214af8
+    - name: vless-1603606466
+      network: grpc
+      port: 3090
+      server: 153.76.185.101
+      type: vless
+      udp: true
+      uuid: 74aed07d-280c-4e14-aa20-cbb815214af8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1555383644
         - vless-1561395506
-        - vless-1564769389
         - vless-1571355299
-        - vless-1576414179
         - vless-1581196564
         - vless-1597394231
         - vless-1597394232
-        - vless-1598055612
         - vless-1599827017
+        - vless-1603606402
+        - vless-1603606466
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -139,14 +110,13 @@ proxy-groups:
         - auto
         - vless-1555383644
         - vless-1561395506
-        - vless-1564769389
         - vless-1571355299
-        - vless-1576414179
         - vless-1581196564
         - vless-1597394231
         - vless-1597394232
-        - vless-1598055612
         - vless-1599827017
+        - vless-1603606402
+        - vless-1603606466
       type: select
 rules:
     - MATCH,select
