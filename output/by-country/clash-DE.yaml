@@ -130,13 +130,6 @@ proxies:
       skip-cert-verify: true
       sni: meow-berlin.nethcloud.top
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-229
-      password: PWpjPo3tqhPN4yRZ
-      port: 20001
-      server: 8.209.74.72
-      type: ss
-      udp: true
     - name: trojan-1583440648
       password: UX82473651
       port: 443
@@ -159,13 +152,12 @@ proxies:
       skip-cert-verify: false
       sni: hop-germany-september.dynuddns.com
       type: hysteria2
-    - name: trojan-1614943879
-      password: ymk9eBP4Ams3-ncYCV4kDAezUzBfkR8x
-      port: 6443
-      server: 31.129.42.164
-      skip-cert-verify: false
-      sni: node111.ichost.cloud
-      type: trojan
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-229
+      password: PWpjPo3tqhPN4yRZ
+      port: 20001
+      server: 8.209.74.72
+      type: ss
       udp: true
     - name: vless-1607786712
       network: tcp
@@ -195,32 +187,6 @@ proxies:
       type: vless
       udp: true
       uuid: adc11f30-e4cb-4985-bf5e-f9ded69c019f
-    - client-fingerprint: chrome
-      name: vless-1597011503
-      network: grpc
-      port: 9881
-      reality-opts:
-        public-key: Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0
-        short-id: aabbccdd
-      server: 176.109.111.154
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
-    - client-fingerprint: ios
-      name: vless-1609623311
-      network: grpc
-      port: 9881
-      reality-opts:
-        public-key: Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0
-        short-id: aabb
-      server: 45.132.177.80
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
     - alterId: 0
       cipher: auto
       name: vmess-1577691187
@@ -268,6 +234,14 @@ proxies:
       skip-cert-verify: false
       sni: hop-germany-september.dynuddns.com
       type: hysteria2
+    - name: trojan-1588287445
+      password: UX82473651
+      port: 443
+      server: actual-squid.rooster465.autos
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
     - name: trojan-1589192370
       password: UX82473651
       port: 443
@@ -277,6 +251,14 @@ proxies:
       type: trojan
       udp: true
     - name: trojan-1591596537
+      password: UX82473651
+      port: 443
+      server: actual-squid.rooster465.autos
+      skip-cert-verify: false
+      sni: actual-squid.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-1595308600
       password: UX82473651
       port: 443
       server: actual-squid.rooster465.autos
@@ -305,23 +287,22 @@ proxy-groups:
         - vless-1597417626
         - hysteria2-1599779134
         - hysteria2-1604666907
-        - shadowsocks-229
         - trojan-1583440648
         - hysteria2-1537155765
         - hysteria2-1593872475
-        - trojan-1614943879
+        - shadowsocks-229
         - vless-1607786712
         - vless-1603035124
         - vless-1439899360
-        - vless-1597011503
-        - vless-1609623311
         - vmess-1577691187
         - vmess-681962134
         - vmess-1538728080
         - hysteria2-1612536875
         - hysteria2-1593872476
+        - trojan-1588287445
         - trojan-1589192370
         - trojan-1591596537
+        - trojan-1595308600
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -344,23 +325,22 @@ proxy-groups:
         - vless-1597417626
         - hysteria2-1599779134
         - hysteria2-1604666907
-        - shadowsocks-229
         - trojan-1583440648
         - hysteria2-1537155765
         - hysteria2-1593872475
-        - trojan-1614943879
+        - shadowsocks-229
         - vless-1607786712
         - vless-1603035124
         - vless-1439899360
-        - vless-1597011503
-        - vless-1609623311
         - vmess-1577691187
         - vmess-681962134
         - vmess-1538728080
         - hysteria2-1612536875
         - hysteria2-1593872476
+        - trojan-1588287445
         - trojan-1589192370
         - trojan-1591596537
+        - trojan-1595308600
       type: select
 rules:
     - MATCH,select

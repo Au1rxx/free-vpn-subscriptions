@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-655841404
+      password: gf1:gfhysteria2024
+      port: 443
+      server: 185.156.44.99
+      skip-cert-verify: true
+      sni: whatsapp.com
+      type: hysteria2
     - name: hysteria2-315405971
       password: gf1:gfhysteria2024
       port: 443
@@ -10,12 +17,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-655841404
         - hysteria2-315405971
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-655841404
         - hysteria2-315405971
       type: select
 rules:
