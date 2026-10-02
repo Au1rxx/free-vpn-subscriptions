@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-819466279
+      password: UTJA57ypk2XKQpnm
+      port: 9033
+      server: 185.135.86.175
+      type: ss
+      udp: true
     - flow: xtls-rprx-vision
       name: vless-1563071216
       network: tcp
@@ -14,12 +21,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-819466279
         - vless-1563071216
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-819466279
         - vless-1563071216
       type: select
 rules:

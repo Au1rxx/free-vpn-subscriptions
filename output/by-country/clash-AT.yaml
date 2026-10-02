@@ -6,17 +6,30 @@ proxies:
       server: 82.110.60.9
       type: ss
       udp: true
+    - flow: xtls-rprx-vision
+      name: vless-1597019217
+      network: tcp
+      port: 52006
+      server: 31.77.227.6
+      servername: bigdick.gamegrow.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bc659d88-a1e0-076c-a49a-7b51b26a7a7f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1251465987
+        - vless-1597019217
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1251465987
+        - vless-1597019217
       type: select
 rules:
     - MATCH,select
