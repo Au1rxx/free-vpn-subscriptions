@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-589844090
+      password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
+      port: 443
+      server: de.1.23.h2corp.org
+      skip-cert-verify: true
+      sni: germany3.h2corp.local
+      type: hysteria2
     - cipher: aes-256-gcm
       name: shadowsocks-11078
       password: XKFKl2rULjIp74
@@ -26,6 +33,13 @@ proxies:
       server: 162.249.127.135
       skip-cert-verify: true
       sni: hop-germany-september.dynuddns.com
+      type: hysteria2
+    - name: hysteria2-1605295136
+      password: d4cae7df-50a1-428c-bd62-881c8f3bbd90
+      port: 443
+      server: dehys.superbuba.top
+      skip-cert-verify: true
+      sni: dehys.superbuba.top
       type: hysteria2
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1611272155
@@ -55,15 +69,6 @@ proxies:
       server: 209.46.102.22
       type: ss
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-1570510805
-      network: tcp
-      port: 22324
-      server: 185.177.229.129
-      type: vmess
-      udp: true
-      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - name: hysteria2-650314301
       password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
       port: 443
@@ -91,20 +96,32 @@ proxies:
       type: vless
       udp: true
       uuid: 3ada8d7b-806e-47e0-9cac-aa35061104ce
+    - client-fingerprint: chrome
+      name: vless-1597417626
+      network: grpc
+      port: 9881
+      reality-opts:
+        public-key: Dfgu8Ey0M8Hz4gXGZAwQ3H9jLt2HByVsjAOTWiuKDB0
+        short-id: aabbccdd
+      server: 176.108.245.167
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
+    - name: hysteria2-1604666907
+      password: 4cbefb4d-328c-411d-bf76-780df1082df8
+      port: 443
+      server: meow-berlin.nethcloud.top
+      skip-cert-verify: true
+      sni: meow-berlin.nethcloud.top
+      type: hysteria2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-229
       password: PWpjPo3tqhPN4yRZ
       port: 20001
       server: 8.209.74.72
       type: ss
-      udp: true
-    - name: trojan-1614943873
-      password: ymk9eBP4Ams3-ncYCV4kDAezUzBfkR8x
-      port: 6443
-      server: 31.129.42.164
-      skip-cert-verify: false
-      sni: node111.ichost.cloud
-      type: trojan
       udp: true
     - name: vless-1578844622
       network: grpc
@@ -193,20 +210,6 @@ proxies:
       type: vless
       udp: true
       uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1186765704
-      network: tcp
-      port: 4443
-      reality-opts:
-        public-key: YIyohkkCU5kw6J5iZYZkhILyDwlfftFPDTkbITlrAUw
-        short-id: df3aff719526dc5a
-      server: 89.169.53.176
-      servername: gateway.icloud.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 20dd9433-389e-4573-ba7b-689619cf13da
     - client-fingerprint: ios
       name: vless-1609623311
       network: grpc
@@ -220,38 +223,47 @@ proxies:
       type: vless
       udp: true
       uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1604370887
+    - alterId: 0
+      cipher: auto
+      name: vmess-1577691187
       network: tcp
-      port: 443
-      reality-opts:
-        public-key: Ez3w5uLzFlysA6Owr7SguTK5kzlIFZ09TgalzUHGAR4
-        short-id: 9f51e98fb874846b
-      server: 91.233.121.32
-      servername: www.apple.com
-      tls: true
-      type: vless
+      port: 22324
+      server: 185.177.229.129
+      type: vmess
       udp: true
-      uuid: 5469c1d9-e949-4553-a146-ac3ad363a705
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
+    - alterId: 0
+      cipher: auto
+      name: vmess-681962134
+      network: tcp
+      port: 1234
+      server: 162.19.204.71
+      servername: supervpn.super.com
+      skip-cert-verify: true
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-589844090
         - shadowsocks-11078
         - shadowsocks-1610602170
         - shadowsocks-1611272148
         - hysteria2-1555783017
+        - hysteria2-1605295136
         - shadowsocks-1611272155
         - hysteria2-1599779146
         - hysteria2-1571839498
         - shadowsocks-209
-        - vmess-1570510805
         - hysteria2-650314301
         - hysteria2-1591550732
         - vless-1564154408
+        - vless-1597417626
+        - hysteria2-1604666907
         - shadowsocks-229
-        - trojan-1614943873
         - vless-1578844622
         - vless-1589195376
         - hysteria2-1537155765
@@ -261,28 +273,30 @@ proxy-groups:
         - vless-1603035124
         - vless-1439899360
         - vless-1597011503
-        - vless-1186765704
         - vless-1609623311
-        - vless-1604370887
+        - vmess-1577691187
+        - vmess-681962134
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-589844090
         - shadowsocks-11078
         - shadowsocks-1610602170
         - shadowsocks-1611272148
         - hysteria2-1555783017
+        - hysteria2-1605295136
         - shadowsocks-1611272155
         - hysteria2-1599779146
         - hysteria2-1571839498
         - shadowsocks-209
-        - vmess-1570510805
         - hysteria2-650314301
         - hysteria2-1591550732
         - vless-1564154408
+        - vless-1597417626
+        - hysteria2-1604666907
         - shadowsocks-229
-        - trojan-1614943873
         - vless-1578844622
         - vless-1589195376
         - hysteria2-1537155765
@@ -292,9 +306,9 @@ proxy-groups:
         - vless-1603035124
         - vless-1439899360
         - vless-1597011503
-        - vless-1186765704
         - vless-1609623311
-        - vless-1604370887
+        - vmess-1577691187
+        - vmess-681962134
       type: select
 rules:
     - MATCH,select
