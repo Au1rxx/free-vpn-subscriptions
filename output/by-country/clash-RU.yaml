@@ -6,26 +6,17 @@ proxies:
       skip-cert-verify: true
       sni: 91.240.86.70
       type: hysteria2
-    - cipher: aes-256-gcm
-      name: shadowsocks-1612509898
-      password: 81a20429165df87e
-      port: 20998
-      server: 195.133.23.200
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1310560310
-        - shadowsocks-1612509898
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1310560310
-        - shadowsocks-1612509898
       type: select
 rules:
     - MATCH,select
