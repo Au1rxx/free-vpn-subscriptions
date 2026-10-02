@@ -1,9 +1,30 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1493688289
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: x6p656szvu_3CKLsJ4NtkooRvdTVGx7IoPca_p58_jA
+        short-id: fb442438e2223836
+      server: 5.157.10.148
+      servername: surstreming.vvzzkontaktezzvv.garden
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4bdeee92-97e8-414d-bef6-ec1d5e2ab73b
     - cipher: aes-256-cfb
       name: shadowsocks-1456822427
       password: amazonskr05
       port: 443
       server: 51.20.96.231
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-1445813266
+      password: amazonskr05
+      port: 443
+      server: 13.48.104.64
       type: ss
       udp: true
     - cipher: aes-256-cfb
@@ -24,7 +45,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1493688289
         - shadowsocks-1456822427
+        - shadowsocks-1445813266
         - shadowsocks-1503620380
         - shadowsocks-1445813265
       type: url-test
@@ -32,7 +55,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1493688289
         - shadowsocks-1456822427
+        - shadowsocks-1445813266
         - shadowsocks-1503620380
         - shadowsocks-1445813265
       type: select
