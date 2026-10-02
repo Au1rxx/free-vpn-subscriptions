@@ -47,13 +47,6 @@ proxies:
       type: vless
       udp: true
       uuid: 3950b45e-740d-4dca-ac95-505ec8534592
-    - name: hysteria2-956723757
-      password: 84a506ca5aca505696a454d828420b3f
-      port: 50160
-      server: 140.238.213.114
-      skip-cert-verify: true
-      sni: www.bing.com
-      type: hysteria2
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1534990987
@@ -68,9 +61,9 @@ proxies:
       type: vless
       udp: true
       uuid: 3950b45e-740d-4dca-ac95-505ec8534592
-    - client-fingerprint: random
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1598371570
+      name: vless-1611505197
       network: tcp
       port: 443
       reality-opts:
@@ -82,9 +75,23 @@ proxies:
       type: vless
       udp: true
       uuid: e0bd9dfa-0cf9-47c0-92ac-7dba08ebcff8
-    - client-fingerprint: chrome
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-1611505197
+      name: vless-1610387348
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8PZTYkhNhSgagVdaI-iqSCPXJwDhHU23IUwZIu08zH4
+        short-id: 9de8ae53dabf1dc2
+      server: 179.237.103.152
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e0bd9dfa-0cf9-47c0-92ac-7dba08ebcff8
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1598371570
       network: tcp
       port: 443
       reality-opts:
@@ -103,6 +110,13 @@ proxies:
       skip-cert-verify: true
       sni: hopp-swizland-new.mysynology.net
       type: hysteria2
+    - name: hysteria2-956723757
+      password: 84a506ca5aca505696a454d828420b3f
+      port: 50160
+      server: 140.238.213.114
+      skip-cert-verify: true
+      sni: www.bing.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
@@ -111,11 +125,12 @@ proxy-groups:
         - vless-1579868466
         - vless-1604957108
         - vless-1230998998
-        - hysteria2-956723757
         - vless-1534990987
-        - vless-1598371570
         - vless-1611505197
+        - vless-1610387348
+        - vless-1598371570
         - hysteria2-1393931791
+        - hysteria2-956723757
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -125,11 +140,12 @@ proxy-groups:
         - vless-1579868466
         - vless-1604957108
         - vless-1230998998
-        - hysteria2-956723757
         - vless-1534990987
-        - vless-1598371570
         - vless-1611505197
+        - vless-1610387348
+        - vless-1598371570
         - hysteria2-1393931791
+        - hysteria2-956723757
       type: select
 rules:
     - MATCH,select
