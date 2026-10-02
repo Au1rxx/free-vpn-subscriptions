@@ -1,11 +1,10 @@
 proxies:
-    - name: trojan-1596400044
-      password: UX82473651
-      port: 443
-      server: cheerful-swan.rooster465.autos
-      skip-cert-verify: true
-      sni: cheerful-swan.rooster465.autos
-      type: trojan
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1616764176
+      password: MBiJEJ5VgZXVSj58CEEFZA
+      port: 4
+      server: 94.228.161.7
+      type: ss
       udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
@@ -32,30 +31,31 @@ proxies:
       type: vless
       udp: true
       uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
-    - name: hysteria2-1612077933
-      password: ce09043a-5d3b-45df-aea0-5599215146bb
+    - name: trojan-1596400044
+      password: UX82473651
       port: 443
-      server: media.embrofree.org
-      skip-cert-verify: false
-      sni: media.embrofree.org
-      type: hysteria2
+      server: cheerful-swan.rooster465.autos
+      skip-cert-verify: true
+      sni: cheerful-swan.rooster465.autos
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-1596400044
+        - shadowsocks-1616764176
         - vless-1616318583
         - vless-1611501159
-        - hysteria2-1612077933
+        - trojan-1596400044
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-1596400044
+        - shadowsocks-1616764176
         - vless-1616318583
         - vless-1611501159
-        - hysteria2-1612077933
+        - trojan-1596400044
       type: select
 rules:
     - MATCH,select

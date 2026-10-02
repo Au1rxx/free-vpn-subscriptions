@@ -1,0 +1,162 @@
+proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1611491803
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: Eutx4frdhG1y7THj7k3CjazAsrCMj932RtbV4a1QfQk
+        short-id: d5b6308860d578bb
+      server: 185.229.9.175
+      servername: api.ok.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: e1c1a38f-d6b3-43ad-877f-1638e056129a
+    - alterId: 2
+      cipher: auto
+      name: vmess-1611861922
+      network: tcp
+      port: 11262
+      server: goldcnmltyljgfwgov.vip62.wogcnmnnagfwgov.com
+      type: vmess
+      udp: true
+      uuid: 605956ee-544d-308e-8b90-51e67c6ea8da
+    - name: vless-1612082470
+      network: ws
+      port: 443
+      server: 207.57.131.171
+      servername: api.w2m.ink
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8344360f-0349-4784-a19f-33fd92e89389
+    - name: vless-1613756819
+      network: ws
+      port: 80
+      server: 162.159.39.218
+      type: vless
+      udp: true
+      uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1613766937
+      network: tcp
+      port: 20270
+      reality-opts:
+        public-key: gaFVpIOW9RJGuFFisfXVvITfYY5ikKn-4gB89ZQCFHI
+        short-id: 89fecfdaf45cd76d
+      server: jp-1.gsafevpnapi.com
+      servername: www.yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d6fc32ed-05de-430b-99ca-3edc9185e79b
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1615094232
+      network: tcp
+      port: 45250
+      reality-opts:
+        public-key: 6Jqp7L6aeFDuH8XgsUvRIDirG9n13xPLZZyIVV-W9DA
+        short-id: be83f55430e78a10
+      server: 43.207.190.145
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 868112f7-0a5f-4140-b031-98d50d5f8dce
+    - name: vless-1615156373
+      network: ws
+      port: 443
+      server: 185.178.208.140
+      servername: fitnesshall.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5c96ff17-37d0-42e2-8e63-809d0b08f876
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1615730116
+      network: tcp
+      port: 25874
+      reality-opts:
+        public-key: aBdmSZuchSwd7IKT4PPb8hgTFWZeb-4iGSyf8lIGUSE
+        short-id: 6ba85179e30d4fc2
+      server: jpt.negai.de
+      servername: jpt.negai.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: bfac5c43-52f2-4b0a-9fee-3e2281483c81
+    - name: vless-1616153133
+      network: ws
+      port: 2082
+      server: 104.18.39.218
+      type: vless
+      udp: true
+      uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1616506064
+      network: tcp
+      port: 43000
+      reality-opts:
+        public-key: onJvbzSx_vZUyycafvPuhsiSQsr9tw4zotyVMSWCvm4
+        short-id: 8d66106f
+      server: 142.91.106.31
+      servername: 142.91.106.31
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8681dba-d368-4bab-a3c2-a8dc712ba368
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1616506134
+      network: tcp
+      port: 25874
+      reality-opts:
+        public-key: aBdmSZuchSwd7IKT4PPb8hgTFWZeb-4iGSyf8lIGUSE
+        short-id: 6ba85179e30d4fc2
+      server: jpt.negai.de
+      servername: jpt.negai.de
+      tls: true
+      type: vless
+      udp: true
+      uuid: bfac5c43-52f2-4b0a-9fee-3e2281483c81
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1611491803
+        - vmess-1611861922
+        - vless-1612082470
+        - vless-1613756819
+        - vless-1613766937
+        - vless-1615094232
+        - vless-1615156373
+        - vless-1615730116
+        - vless-1616153133
+        - vless-1616506064
+        - vless-1616506134
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1611491803
+        - vmess-1611861922
+        - vless-1612082470
+        - vless-1613756819
+        - vless-1613766937
+        - vless-1615094232
+        - vless-1615156373
+        - vless-1615730116
+        - vless-1616153133
+        - vless-1616506064
+        - vless-1616506134
+      type: select
+rules:
+    - MATCH,select
