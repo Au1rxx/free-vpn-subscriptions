@@ -8,6 +8,18 @@ proxies:
       type: vmess
       udp: true
       uuid: 2375151e-88f8-3a69-bf57-c462ff20c6d8
+    - alterId: 1
+      cipher: auto
+      name: vmess-1625562030
+      network: tcp
+      port: 21586
+      server: ki46347-g06.jp03-j7-vm0.entry.fr0528.art
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 2375151e-88f8-3a69-bf57-c462ff20c6d8
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1625564551
@@ -60,6 +72,13 @@ proxies:
       type: vless
       udp: true
       uuid: 80772a5c-88f3-4877-8e50-4a92b5ef443e
+    - name: vless-1625927562
+      network: ws
+      port: 8880
+      server: 162.159.45.19
+      type: vless
+      udp: true
+      uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
     - name: vless-1625935504
       network: ws
       port: 8080
@@ -220,15 +239,41 @@ proxies:
       type: vless
       udp: true
       uuid: 47fcef29-ab4e-4aa6-932b-d95a18f28a4e
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1629925665
+      network: tcp
+      port: 43000
+      reality-opts:
+        public-key: onJvbzSx_vZUyycafvPuhsiSQsr9tw4zotyVMSWCvm4
+        short-id: 8d66106f
+      server: 142.91.106.31
+      servername: 142.91.106.31
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8681dba-d368-4bab-a3c2-a8dc712ba368
+    - name: vless-1630274549
+      network: ws
+      port: 443
+      server: 188.114.97.6
+      servername: pmpmppm.pages.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 87c467e9-f0af-4b03-8fbd-65fd375d3a26
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-1625562021
+        - vmess-1625562030
         - vless-1625564551
         - vless-1625570716
         - vless-1625590174
         - vless-1625608065
+        - vless-1625927562
         - vless-1625935504
         - vless-1625935553
         - vless-1627021334
@@ -246,16 +291,20 @@ proxy-groups:
         - vmess-1629647904
         - vmess-1629647921
         - vless-1629769662
+        - vless-1629925665
+        - vless-1630274549
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-1625562021
+        - vmess-1625562030
         - vless-1625564551
         - vless-1625570716
         - vless-1625590174
         - vless-1625608065
+        - vless-1625927562
         - vless-1625935504
         - vless-1625935553
         - vless-1627021334
@@ -273,6 +322,8 @@ proxy-groups:
         - vmess-1629647904
         - vmess-1629647921
         - vless-1629769662
+        - vless-1629925665
+        - vless-1630274549
       type: select
 rules:
     - MATCH,select
