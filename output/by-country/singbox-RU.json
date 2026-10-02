@@ -1,0 +1,63 @@
+{
+  "outbounds": [
+    {
+      "password": "3f63c86c-ac4a-4900-85cf-4fedf93c2ca5",
+      "server": "91.240.86.70",
+      "server_port": 22443,
+      "tag": "hysteria2-1393931802",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "itsallproxy.quattro-tech.ru"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "31.76.34.216",
+      "server_port": 443,
+      "tag": "vless-1621933479",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "XrgbY2hKJQG8QOZO2J1pGmZsbvjSsSWoM9iULIMGK00"
+        },
+        "server_name": "ru-c-1.minzt.su",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "safari"
+        }
+      },
+      "type": "vless",
+      "uuid": "94def50e-5f3c-4e4c-9719-3325f42d2131"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-1393931802",
+        "vless-1621933479"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-1393931802",
+        "vless-1621933479"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
