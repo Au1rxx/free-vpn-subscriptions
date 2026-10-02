@@ -1,23 +1,9 @@
 proxies:
-    - cipher: aes-256-gcm
-      name: shadowsocks-717969059
-      password: LXchLsIwtCeUAUgu
-      port: 443
-      server: 149.102.149.207
-      type: ss
-      udp: true
     - cipher: 2022-blake3-chacha20-poly1305
       name: shadowsocks-1611272164
       password: BHkQ13jCKX876J8TVa/Qx/Awfit4mFt+6V5zdKGczsw=
       port: 61312
       server: 129.151.75.247
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-696780670
-      password: LXchLsIwtCeUAUgu
-      port: 80
-      server: 149.102.149.207
       type: ss
       udp: true
     - name: vless-1608977584
@@ -41,18 +27,27 @@ proxies:
       server: 51.77.225.200
       type: ss
       udp: true
-    - name: vless-1245422997
-      network: grpc
-      port: 2083
-      server: 66.90.104.42
-      type: vless
+    - alterId: 0
+      cipher: auto
+      name: vmess-1572874951
+      network: tcp
+      port: 22324
+      server: 186.190.211.147
+      type: vmess
       udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - cipher: aes-256-gcm
       name: shadowsocks-696780678
       password: g5h5jleTRSyO3Rk4
       port: 443
       server: 149.102.132.184
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: shadowsocks-271
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.181
       type: ss
       udp: true
     - name: vless-1591550729
@@ -71,17 +66,24 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
-    - cipher: aes-128-gcm
-      name: shadowsocks-271
-      password: shadowsocks
-      port: 443
-      server: 141.98.101.181
+    - cipher: aes-256-gcm
+      name: shadowsocks-696780670
+      password: LXchLsIwtCeUAUgu
+      port: 80
+      server: 149.102.149.207
       type: ss
       udp: true
     - name: vless-1483330744
       network: grpc
       port: 2083
       server: 66.90.105.211
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - name: vless-1245422997
+      network: grpc
+      port: 2083
+      server: 66.90.104.42
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
@@ -149,20 +151,6 @@ proxies:
       uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1168886503
-      network: tcp
-      port: 51847
-      reality-opts:
-        public-key: S6noV0L8eNASnTe1gXLutLZNdfENsvKMsOJiGQYi6nc
-        short-id: 0eec442e7b34d2f2
-      server: 3.9.135.156
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 391a01e9-b664-407b-9158-610fab3f5920
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-1604104040
       network: tcp
       port: 51847
@@ -179,48 +167,46 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-717969059
         - shadowsocks-1611272164
-        - shadowsocks-696780670
         - vless-1608977584
         - shadowsocks-717969008
         - shadowsocks-415241978
-        - vless-1245422997
+        - vmess-1572874951
         - shadowsocks-696780678
+        - shadowsocks-271
         - vless-1591550729
         - vmess-1570510802
-        - shadowsocks-271
+        - shadowsocks-696780670
         - vless-1483330744
+        - vless-1245422997
         - vless-1245369769
         - vless-1560961119
         - vless-1477043376
         - vless-1048867173
         - vless-1479678804
-        - vless-1168886503
         - vless-1604104040
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-717969059
         - shadowsocks-1611272164
-        - shadowsocks-696780670
         - vless-1608977584
         - shadowsocks-717969008
         - shadowsocks-415241978
-        - vless-1245422997
+        - vmess-1572874951
         - shadowsocks-696780678
+        - shadowsocks-271
         - vless-1591550729
         - vmess-1570510802
-        - shadowsocks-271
+        - shadowsocks-696780670
         - vless-1483330744
+        - vless-1245422997
         - vless-1245369769
         - vless-1560961119
         - vless-1477043376
         - vless-1048867173
         - vless-1479678804
-        - vless-1168886503
         - vless-1604104040
       type: select
 rules:

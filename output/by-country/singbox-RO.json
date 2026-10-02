@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "gf1:gfhysteria2024",
+      "server": "185.156.44.99",
+      "server_port": 443,
+      "tag": "hysteria2-315405971",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "185.156.44.99"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-315405971"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-315405971"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

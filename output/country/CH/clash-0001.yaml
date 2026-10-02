@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-65151
+      network: ws
+      port: 8880
+      server: 195.85.59.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: hysteria2-956723757
       password: 84a506ca5aca505696a454d828420b3f
       port: 50160
@@ -273,6 +280,13 @@ proxies:
       sni: tro.baiyi.cloudns.org
       type: trojan
       udp: true
+    - name: vless-1475290723
+      network: ws
+      port: 8880
+      server: 66.235.200.50
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: hysteria2-1482811797
       password: we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH
       port: 8443
@@ -603,19 +617,6 @@ proxies:
       type: vless
       udp: true
       uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
-    - client-fingerprint: edge
-      name: vless-1607130805
-      network: grpc
-      port: 9882
-      reality-opts:
-        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
-        short-id: ""
-      server: 45.132.176.161
-      servername: dl.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1607265927
@@ -657,6 +658,19 @@ proxies:
       type: vless
       udp: true
       uuid: e0bd9dfa-0cf9-47c0-92ac-7dba08ebcff8
+    - client-fingerprint: random
+      name: vless-1609623271
+      network: grpc
+      port: 9882
+      reality-opts:
+        public-key: bnRIb3Er1i-K6NGGByCO9UbGfOvu43ZoiK7ulPd1SzU
+        short-id: aabb
+      server: 45.132.177.83
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5d16ac22-6eea-426f-b778-6f4c2961faef
     - client-fingerprint: qq
       name: vless-1609623282
       network: grpc
@@ -948,10 +962,25 @@ proxies:
       type: vless
       udp: true
       uuid: 0f4081e7-612b-425f-8def-eebf144aedba
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1619321776
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8PZTYkhNhSgagVdaI-iqSCPXJwDhHU23IUwZIu08zH4
+        short-id: 9de8ae53dabf1dc2
+      server: 179.237.103.152
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e0bd9dfa-0cf9-47c0-92ac-7dba08ebcff8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-65151
         - hysteria2-956723757
         - hysteria2-1001586620
         - hysteria2-1001848837
@@ -976,6 +1005,7 @@ proxy-groups:
         - hysteria2-1391610043
         - hysteria2-1393931791
         - trojan-1394188366
+        - vless-1475290723
         - hysteria2-1482811797
         - hysteria2-1496260654
         - hysteria2-1501696965
@@ -1004,10 +1034,10 @@ proxy-groups:
         - vless-1602859919
         - vless-1604957108
         - vless-1606693067
-        - vless-1607130805
         - vless-1607265927
         - vless-1608078085
         - vless-1608140207
+        - vless-1609623271
         - vless-1609623282
         - vless-1610387348
         - vless-1610935973
@@ -1029,11 +1059,13 @@ proxy-groups:
         - vless-1616361555
         - vless-1616492044
         - vless-1616865207
+        - vless-1619321776
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-65151
         - hysteria2-956723757
         - hysteria2-1001586620
         - hysteria2-1001848837
@@ -1058,6 +1090,7 @@ proxy-groups:
         - hysteria2-1391610043
         - hysteria2-1393931791
         - trojan-1394188366
+        - vless-1475290723
         - hysteria2-1482811797
         - hysteria2-1496260654
         - hysteria2-1501696965
@@ -1086,10 +1119,10 @@ proxy-groups:
         - vless-1602859919
         - vless-1604957108
         - vless-1606693067
-        - vless-1607130805
         - vless-1607265927
         - vless-1608078085
         - vless-1608140207
+        - vless-1609623271
         - vless-1609623282
         - vless-1610387348
         - vless-1610935973
@@ -1111,6 +1144,7 @@ proxy-groups:
         - vless-1616361555
         - vless-1616492044
         - vless-1616865207
+        - vless-1619321776
       type: select
 rules:
     - MATCH,select

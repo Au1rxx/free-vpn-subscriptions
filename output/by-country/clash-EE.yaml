@@ -9,17 +9,27 @@ proxies:
       type: vless
       udp: true
       uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+    - name: trojan-1615093731
+      password: ymk9eBP4Ams3-ncYCV4kDAezUzBfkR8x
+      port: 443
+      server: 185.91.52.139
+      skip-cert-verify: false
+      sni: isq.ichost.cloud
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-813576877
+        - trojan-1615093731
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-813576877
+        - trojan-1615093731
       type: select
 rules:
     - MATCH,select
