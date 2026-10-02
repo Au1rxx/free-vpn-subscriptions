@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: ios
+      name: vless-1608715913
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: iI9J--AfPKCXbVle3Om-WMn_g-3bO3SsVzUCNtwUkU0
+        short-id: fe85cb6a5c84e64c
+      server: 34.175.44.113
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0b4b1548-c7ca-45a5-9096-6c3cc4b1c43b
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-16132
       password: WSyL4XTwNsdv
@@ -8,7 +21,7 @@ proxies:
       udp: true
     - alterId: 0
       cipher: auto
-      name: vmess-1451310230
+      name: vmess-1470463936
       network: tcp
       port: 22324
       server: 66.163.118.73
@@ -40,8 +53,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1608715913
         - shadowsocks-16132
-        - vmess-1451310230
+        - vmess-1470463936
         - vmess-1499353383
         - vmess-1565537555
       type: url-test
@@ -49,8 +63,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1608715913
         - shadowsocks-16132
-        - vmess-1451310230
+        - vmess-1470463936
         - vmess-1499353383
         - vmess-1565537555
       type: select
