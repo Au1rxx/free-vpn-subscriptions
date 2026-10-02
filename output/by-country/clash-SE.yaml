@@ -13,12 +13,27 @@ proxies:
       server: 13.48.177.148
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1613710665
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: wSjV1yR_rhDUdoNbM9zIXNGLASLp9RorComnyoayo2c
+        short-id: ""
+      server: 143.246.196.207
+      servername: www.blocket.se
+      tls: true
+      type: vless
+      udp: true
+      uuid: ac0c2945-b758-11f1-8181-54db13ea7d40
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1600008647
         - shadowsocks-1602687010
+        - vless-1613710665
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +41,7 @@ proxy-groups:
         - auto
         - shadowsocks-1600008647
         - shadowsocks-1602687010
+        - vless-1613710665
       type: select
 rules:
     - MATCH,select
