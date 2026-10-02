@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-46619
+      network: ws
+      port: 8880
+      server: 135.84.72.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       name: vless-656240777
       network: tcp
@@ -136,6 +143,16 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - name: vless-1599289378
+      network: ws
+      port: 8443
+      server: 194.58.109.206
+      servername: cf3.schzyc.cc.cd
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 51a0af77-a60c-4d9b-81a4-f50e1b38d90b
     - client-fingerprint: random
       name: vless-1608160265
       network: tcp
@@ -183,16 +200,6 @@ proxies:
       server: 195.133.23.200
       type: ss
       udp: true
-    - name: vless-1614657546
-      network: ws
-      port: 443
-      server: 140.248.185.253
-      servername: ssl.fastly.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: f8aba8c3-6ab6-4fa0-8815-17e15f4721b1
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1616764172
       password: YWul5pEpVUIR6zfSM4nroXrLt49CKfnt
@@ -232,6 +239,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-46619
         - vless-656240777
         - vless-700375881
         - trojan-860386949
@@ -248,12 +256,12 @@ proxy-groups:
         - hysteria2-1552291976
         - hysteria2-1552472310
         - hysteria2-1553155170
+        - vless-1599289378
         - vless-1608160265
         - vless-1609133496
         - shadowsocks-1612509893
         - shadowsocks-1612509895
         - shadowsocks-1612509898
-        - vless-1614657546
         - shadowsocks-1616764172
         - shadowsocks-1616764174
         - shadowsocks-1616764177
@@ -264,6 +272,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-46619
         - vless-656240777
         - vless-700375881
         - trojan-860386949
@@ -280,12 +289,12 @@ proxy-groups:
         - hysteria2-1552291976
         - hysteria2-1552472310
         - hysteria2-1553155170
+        - vless-1599289378
         - vless-1608160265
         - vless-1609133496
         - shadowsocks-1612509893
         - shadowsocks-1612509895
         - shadowsocks-1612509898
-        - vless-1614657546
         - shadowsocks-1616764172
         - shadowsocks-1616764174
         - shadowsocks-1616764177
