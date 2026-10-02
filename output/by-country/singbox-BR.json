@@ -1,0 +1,71 @@
+{
+  "outbounds": [
+    {
+      "alter_id": 0,
+      "security": "auto",
+      "server": "89.39.161.157",
+      "server_port": 443,
+      "tag": "vmess-1604825402",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "aksai.org"
+      },
+      "transport": {
+        "headers": {
+          "Host": "aksai.org"
+        },
+        "path": "/linkvws",
+        "type": "ws"
+      },
+      "type": "vmess",
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581"
+    },
+    {
+      "server": "br.monkora.org",
+      "server_port": 443,
+      "tag": "vless-1627021341",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "aUdvs6o4PHN6jmdkIKBA2rHsN_7l8W2SaDfNgzn-BwU"
+        },
+        "server_name": "br.monkora.org",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "454431fc-71e2-42b1-b375-5b55dd06666a"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vmess-1604825402",
+        "vless-1627021341"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vmess-1604825402",
+        "vless-1627021341"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

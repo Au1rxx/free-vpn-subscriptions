@@ -7,27 +7,56 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: trojan-1592781606
-      password: Trojan@82164024
+    - flow: xtls-rprx-vision
+      name: vless-1157879800
+      network: tcp
       port: 443
-      server: ie.tronsg.com
+      server: 50.7.5.163
+      servername: ir-viper.failspace.top
       skip-cert-verify: true
-      sni: ie.tronsg.com
-      type: trojan
+      tls: true
+      type: vless
       udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
+      name: vless-1349523994
+      network: tcp
+      port: 443
+      server: 50.7.5.166
+      servername: ir-new.failspace.top
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
+      name: vless-1601800723
+      network: tcp
+      port: 443
+      server: 50.7.5.166
+      servername: ekb.eg
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-1611343640
-        - trojan-1592781606
+        - vless-1157879800
+        - vless-1349523994
+        - vless-1601800723
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-1611343640
-        - trojan-1592781606
+        - vless-1157879800
+        - vless-1349523994
+        - vless-1601800723
       type: select
 rules:
     - MATCH,select
