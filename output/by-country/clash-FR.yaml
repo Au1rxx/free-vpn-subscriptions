@@ -13,20 +13,6 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - name: hysteria2-1583578936
-      password: Krab9Hyst2_Rk7pQ2xL
-      port: 36723
-      server: 151.247.197.253
-      skip-cert-verify: true
-      sni: "off"
-      type: hysteria2
-    - cipher: aes-256-cfb
-      name: shadowsocks-1602687007
-      password: amazonskr05
-      port: 443
-      server: 15.236.38.55
-      type: ss
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-656232044
@@ -137,6 +123,20 @@ proxies:
       type: vless
       udp: true
       uuid: 81dc0b61-f9fe-4ad6-8b4e-b8c067b73712
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1499890342
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: bZpzmeWiEJyJQy0W2hHc34Nr6BuFXj1UDd80Cbwh1Fk
+        short-id: ff776ff77be48b88
+      server: fra.loozerp.wiki
+      servername: fra.loozerp.wiki
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4bdeee92-97e8-414d-bef6-ec1d5e2ab73b
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-700283247
@@ -190,6 +190,19 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
+    - client-fingerprint: chrome
+      name: vless-135793420
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ
+        short-id: a8ae
+      server: 194.76.154.31
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1496599840
@@ -218,14 +231,25 @@ proxies:
       type: vless
       udp: true
       uuid: 4bdeee92-97e8-414d-bef6-ec1d5e2ab73b
+    - client-fingerprint: firefox
+      name: vless-1403698672
+      network: grpc
+      port: 51671
+      reality-opts:
+        public-key: -5PowNUY37Pi01YKO9fjRTrum1m_9n6XauaPDpmOJzU
+        short-id: 2fed44d8c59f7e71
+      server: 152.228.139.33
+      servername: www.sony.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 75cc7568-abb0-46a8-88be-8137d3c647d4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-415242972
         - hysteria2-831330186
-        - hysteria2-1583578936
-        - shadowsocks-1602687007
         - vless-656232044
         - hysteria2-1005580211
         - vless-700283246
@@ -236,12 +260,15 @@ proxy-groups:
         - vless-115073952
         - vless-1568488457
         - vless-1454529435
+        - vless-1499890342
         - vless-700283247
         - vless-178038888
         - vless-113404806
         - vless-650631528
+        - vless-135793420
         - vless-1496599840
         - vless-1580495577
+        - vless-1403698672
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -249,8 +276,6 @@ proxy-groups:
         - auto
         - shadowsocks-415242972
         - hysteria2-831330186
-        - hysteria2-1583578936
-        - shadowsocks-1602687007
         - vless-656232044
         - hysteria2-1005580211
         - vless-700283246
@@ -261,12 +286,15 @@ proxy-groups:
         - vless-115073952
         - vless-1568488457
         - vless-1454529435
+        - vless-1499890342
         - vless-700283247
         - vless-178038888
         - vless-113404806
         - vless-650631528
+        - vless-135793420
         - vless-1496599840
         - vless-1580495577
+        - vless-1403698672
       type: select
 rules:
     - MATCH,select
