@@ -7,7 +7,7 @@ proxies:
       type: ss
       udp: true
     - flow: xtls-rprx-vision
-      name: vless-1562204167
+      name: vless-1617968412
       network: tcp
       port: 52006
       server: 87.192.47.10
@@ -18,7 +18,7 @@ proxies:
       udp: true
       uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
     - flow: xtls-rprx-vision
-      name: vless-1563071216
+      name: vless-1562164154
       network: tcp
       port: 52006
       server: 87.192.47.10
@@ -28,21 +28,43 @@ proxies:
       type: vless
       udp: true
       uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
+    - flow: xtls-rprx-vision
+      name: vless-1562204167
+      network: tcp
+      port: 52006
+      server: 87.192.47.10
+      servername: grok.setlisting.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
+    - cipher: aes-256-cfb
+      name: shadowsocks-717969044
+      password: Yg4MbdXFQ9HFFVY6
+      port: 9034
+      server: 185.135.86.175
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-819466279
+        - vless-1617968412
+        - vless-1562164154
         - vless-1562204167
-        - vless-1563071216
+        - shadowsocks-717969044
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-819466279
+        - vless-1617968412
+        - vless-1562164154
         - vless-1562204167
-        - vless-1563071216
+        - shadowsocks-717969044
       type: select
 rules:
     - MATCH,select

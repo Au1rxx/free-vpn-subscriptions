@@ -1,11 +1,14 @@
 proxies:
-    - name: hysteria2-1599779135
-      password: 06e88dd6-e264-4981-8c26-d7ab17348ab2
+    - name: vless-1626652577
+      network: ws
       port: 443
-      server: 144.31.232.216
-      skip-cert-verify: true
-      sni: fi01.clgate.network
-      type: hysteria2
+      server: snapp.matialz.ir
+      servername: snapp.matialz.ir
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06278d74-9385-42e8-be1b-49c78ebc49ea
     - name: hysteria2-1591550763
       password: 06e88dd6-e264-4981-8c26-d7ab17348ab2
       port: 443
@@ -26,6 +29,33 @@ proxies:
       type: vless
       udp: true
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+    - client-fingerprint: random
+      name: vless-1354534668
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1570582649
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: AcuvO982QLzf76fVydfSuJIiF5520rmj7AxpaxyRwUg
+        short-id: d345ad4657adeef9
+      server: 45.149.147.97
+      servername: google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f28e0ce1-ed75-4e90-b069-5215a80dfb4a
     - name: vless-1618030372
       network: ws
       port: 443
@@ -40,18 +70,22 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1599779135
+        - vless-1626652577
         - hysteria2-1591550763
         - vless-1345688766
+        - vless-1354534668
+        - vless-1570582649
         - vless-1618030372
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1599779135
+        - vless-1626652577
         - hysteria2-1591550763
         - vless-1345688766
+        - vless-1354534668
+        - vless-1570582649
         - vless-1618030372
       type: select
 rules:

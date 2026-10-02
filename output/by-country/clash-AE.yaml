@@ -13,13 +13,6 @@ proxies:
       skip-cert-verify: true
       sni: admin.wwwinternetvideo.click
       type: hysteria2
-    - name: vless-168481354
-      network: ws
-      port: 22573
-      server: 84.235.244.108
-      type: vless
-      udp: true
-      uuid: 39947382-3212-41c9-bc3a-589574ac8b23
     - name: vless-1363486797
       network: ws
       port: 22573
@@ -34,13 +27,20 @@ proxies:
       type: vless
       udp: true
       uuid: 39947382-3212-41c9-bc3a-589574ac8b23
-    - name: vless-274599317
-      network: ws
-      port: 22573
-      server: uae.unixzone.us
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1600932629
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: yI6maXxTQ8zRHg39X8YMQtKW-IVfNIn0_OCUIQKmcXw
+        short-id: ""
+      server: node-nl.shtormvpn.shop
+      servername: google.com
+      tls: true
       type: vless
       udp: true
-      uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+      uuid: cc4d63e2-3a86-49b3-9598-328bbe93e56c
     - name: vless-793135854
       network: ws
       port: 22573
@@ -55,26 +55,17 @@ proxies:
       skip-cert-verify: false
       sni: streambox.wwwinternetvideo.click
       type: hysteria2
-    - name: vless-864923376
-      network: ws
-      port: 22573
-      server: 84.235.244.108
-      type: vless
-      udp: true
-      uuid: 39947382-3212-41c9-bc3a-589574ac8b23
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1078737127
         - hysteria2-648949653
-        - vless-168481354
         - vless-1363486797
         - vless-474914683
-        - vless-274599317
+        - vless-1600932629
         - vless-793135854
         - hysteria2-730512436
-        - vless-864923376
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -82,13 +73,11 @@ proxy-groups:
         - auto
         - vless-1078737127
         - hysteria2-648949653
-        - vless-168481354
         - vless-1363486797
         - vless-474914683
-        - vless-274599317
+        - vless-1600932629
         - vless-793135854
         - hysteria2-730512436
-        - vless-864923376
       type: select
 rules:
     - MATCH,select
