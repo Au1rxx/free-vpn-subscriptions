@@ -1,11 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1616764176
-      password: MBiJEJ5VgZXVSj58CEEFZA
-      port: 4
-      server: 94.228.161.7
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1612668831
@@ -30,6 +23,20 @@ proxies:
       type: vless
       udp: true
       uuid: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1595947429
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: z-TKWOWgZLfzQ-wNdwXQqVwaUgCmbchM2Xtrk1NGynU
+        short-id: ""
+      server: 95.85.253.202
+      servername: pl0001.kubservice.icu
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4314a583-3a39-45e1-883e-70bf570d252a
     - name: vless-1615093727
       network: grpc
       port: 443
@@ -54,59 +61,57 @@ proxies:
       type: vless
       udp: true
       uuid: 4314a583-3a39-45e1-883e-70bf570d252a
-    - name: vless-1615093748
+    - name: trojan-1596400044
+      password: UX82473651
+      port: 443
+      server: cheerful-swan.rooster465.autos
+      skip-cert-verify: true
+      sni: cheerful-swan.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-1622585868
+      password: UX82473651
+      port: 443
+      server: cheerful-swan.rooster465.autos
+      skip-cert-verify: false
+      sni: cheerful-swan.rooster465.autos
+      type: trojan
+      udp: true
+    - name: vless-1615093735
       network: grpc
       port: 443
       server: 176.108.253.133
-      servername: pl.avroraservice.online
+      servername: orm.g4m1.biz
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: e0b9fb0f-1bbd-478b-9580-c2294778338b
-    - flow: xtls-rprx-vision
-      name: vless-1611779832
-      network: tcp
-      port: 52006
-      server: 179.254.71.20
-      servername: pl.setlisting.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1616764194
-      password: MBiJEJ5VgZXVSj58CEEFZA
-      port: 5
-      server: 94.228.161.7
-      type: ss
-      udp: true
+      uuid: 0dca2cfe-98eb-4f9d-9a47-cf87510c558b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1616764176
         - vless-1612668831
         - vless-1615093741
+        - vless-1595947429
         - vless-1615093727
         - vless-1591576793
-        - vless-1615093748
-        - vless-1611779832
-        - shadowsocks-1616764194
+        - trojan-1596400044
+        - trojan-1622585868
+        - vless-1615093735
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1616764176
         - vless-1612668831
         - vless-1615093741
+        - vless-1595947429
         - vless-1615093727
         - vless-1591576793
-        - vless-1615093748
-        - vless-1611779832
-        - shadowsocks-1616764194
+        - trojan-1596400044
+        - trojan-1622585868
+        - vless-1615093735
       type: select
 rules:
     - MATCH,select
