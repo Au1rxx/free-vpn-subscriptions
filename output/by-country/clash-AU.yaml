@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: chrome
+      name: vless-1645364940
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: OgTkmAQdLjipA9oLloxbU5BAX3hPjzbvkEGHF4aZ8z4
+        short-id: 8a7d5e0248cdb1b1
+      server: 35.197.168.118
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4f865f35-cf47-4e7f-a7e6-8882511a1b36
     - client-fingerprint: random
       name: vless-1300687308
       network: tcp
@@ -12,17 +25,29 @@ proxies:
       type: vless
       udp: true
       uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
+    - name: trojan-1645364925
+      password: 2ni2H9zUKdDCjREL8Z
+      port: 443
+      server: au-1.tr202613.com
+      skip-cert-verify: true
+      sni: au-1.tr202613.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1645364940
         - vless-1300687308
+        - trojan-1645364925
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1645364940
         - vless-1300687308
+        - trojan-1645364925
       type: select
 rules:
     - MATCH,select

@@ -19,12 +19,26 @@ proxies:
       type: vless
       udp: true
       uuid: 8d65c8a7-4876-4556-bb6a-feccfb46ee81
+    - client-fingerprint: qq
+      name: vless-1635643502
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bSN0cv0VMxmYZsNsMkkLndOTHZu74C1htJ2M71QMaVE
+        short-id: 89b3a20484eb43ec
+      server: 34.35.58.153
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8d65c8a7-4876-4556-bb6a-feccfb46ee81
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-370755727
         - vless-1634480563
+        - vless-1635643502
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -32,6 +46,7 @@ proxy-groups:
         - auto
         - shadowsocks-370755727
         - vless-1634480563
+        - vless-1635643502
       type: select
 rules:
     - MATCH,select
