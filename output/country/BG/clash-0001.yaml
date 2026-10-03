@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-47014
-      network: ws
-      port: 8880
-      server: 139.64.235.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: aes-256-cfb
       name: shadowsocks-696781308
       password: aLpQtfEZe445QyHk
@@ -279,14 +272,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9ae5940b-0278-403d-a1e1-9dddc47bdcf6
-    - name: trojan-1538721219
-      password: f15900b5-f86b-432d-a67c-45325dc66a2d
-      port: 443
-      server: ttww11.bpca2026.top
-      skip-cert-verify: false
-      sni: ttww11.bpca2026.top
-      type: trojan
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1641805241
@@ -329,11 +314,24 @@ proxies:
       type: vless
       udp: true
       uuid: 75c4c6b1-dc9a-4c59-9985-df8af6e9c707
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1644765317
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 65d6SIYIqiX-SN4vx_BnNiQJ8Lnr0HAgUKoT7WgWRgI
+        short-id: ee169e93d3c277a1
+      server: 193.202.113.4
+      servername: edge-uk2.mystatic-cdn.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 75c4c6b1-dc9a-4c59-9985-df8af6e9c707
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-47014
         - shadowsocks-696781308
         - shadowsocks-717969028
         - shadowsocks-723348677
@@ -359,16 +357,15 @@ proxy-groups:
         - vless-1473449962
         - vless-1475985898
         - vless-1487525472
-        - trojan-1538721219
         - vless-1641805241
         - vless-1642963040
         - vless-1643045999
+        - vless-1644765317
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-47014
         - shadowsocks-696781308
         - shadowsocks-717969028
         - shadowsocks-723348677
@@ -394,10 +391,10 @@ proxy-groups:
         - vless-1473449962
         - vless-1475985898
         - vless-1487525472
-        - trojan-1538721219
         - vless-1641805241
         - vless-1642963040
         - vless-1643045999
+        - vless-1644765317
       type: select
 rules:
     - MATCH,select

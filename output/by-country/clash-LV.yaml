@@ -1,4 +1,23 @@
 proxies:
+    - name: trojan-651033461
+      password: PQ05174892
+      port: 443
+      server: factual-titmouse.rooster465.autos
+      skip-cert-verify: true
+      sni: factual-titmouse.rooster465.autos
+      type: trojan
+      udp: true
+    - flow: xtls-rprx-vision
+      name: vless-1629768920
+      network: tcp
+      port: 52006
+      server: 87.192.47.10
+      servername: grok.setlisting.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
     - flow: xtls-rprx-vision
       name: vless-1562164154
       network: tcp
@@ -47,6 +66,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-651033461
+        - vless-1629768920
         - vless-1562164154
         - vless-1629768916
         - vless-1569202132
@@ -56,6 +77,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-651033461
+        - vless-1629768920
         - vless-1562164154
         - vless-1629768916
         - vless-1569202132
