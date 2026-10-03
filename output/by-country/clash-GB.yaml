@@ -6,13 +6,6 @@ proxies:
       server: 149.102.132.184
       type: ss
       udp: true
-    - cipher: rc4-md5
-      name: shadowsocks-165
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 146.70.61.37
-      type: ss
-      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-696780678
       password: g5h5jleTRSyO3Rk4
@@ -59,6 +52,13 @@ proxies:
       type: vless
       udp: true
       uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
+    - cipher: aes-128-gcm
+      name: shadowsocks-271
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.181
+      type: ss
+      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-717969059
       password: LXchLsIwtCeUAUgu
@@ -101,19 +101,6 @@ proxies:
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - client-fingerprint: random
-      name: vless-1581173055
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: xPEBx4wUmwAAv4ikUALNBf5wH6TRhyeQ0Q2pcNELsV0
-        short-id: d051f678212f9d54
-      server: 51.89.194.151
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 8e790f25-1d71-4601-9fb0-d503931dcfca
-    - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1048867173
       network: tcp
@@ -138,20 +125,6 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1484508210
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s
-        short-id: b19b017d6f453873
-      server: 23.81.34.204
-      servername: speed.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1597011511
@@ -267,38 +240,30 @@ proxies:
       type: vless
       udp: true
       uuid: 391a01e9-b664-407b-9158-610fab3f5920
-    - client-fingerprint: chrome
-      name: vless-1632451075
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: xPEBx4wUmwAAv4ikUALNBf5wH6TRhyeQ0Q2pcNELsV0
-        short-id: d051f678212f9d54
-      server: 51.89.194.151
-      servername: www.apple.com
-      tls: true
+    - name: vless-1230573705
+      network: grpc
+      port: 2083
+      server: 66.90.104.42
       type: vless
       udp: true
-      uuid: 8e790f25-1d71-4601-9fb0-d503931dcfca
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-717969008
-        - shadowsocks-165
         - shadowsocks-696780678
         - vless-1491043547
         - vless-1650072545
         - vless-1523769239
+        - shadowsocks-271
         - shadowsocks-717969059
         - vless-1591550729
         - vmess-1572874951
         - vless-1608977584
         - vless-1344116835
-        - vless-1581173055
         - vless-1048867173
         - vless-1195645285
-        - vless-1484508210
         - vless-1597011511
         - vmess-1570510802
         - shadowsocks-696780670
@@ -309,27 +274,25 @@ proxy-groups:
         - vless-1485587877
         - vless-1646434814
         - vless-1007208113
-        - vless-1632451075
+        - vless-1230573705
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-717969008
-        - shadowsocks-165
         - shadowsocks-696780678
         - vless-1491043547
         - vless-1650072545
         - vless-1523769239
+        - shadowsocks-271
         - shadowsocks-717969059
         - vless-1591550729
         - vmess-1572874951
         - vless-1608977584
         - vless-1344116835
-        - vless-1581173055
         - vless-1048867173
         - vless-1195645285
-        - vless-1484508210
         - vless-1597011511
         - vmess-1570510802
         - shadowsocks-696780670
@@ -340,7 +303,7 @@ proxy-groups:
         - vless-1485587877
         - vless-1646434814
         - vless-1007208113
-        - vless-1632451075
+        - vless-1230573705
       type: select
 rules:
     - MATCH,select
