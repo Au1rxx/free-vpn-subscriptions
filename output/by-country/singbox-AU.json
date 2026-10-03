@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "H7mP2xY9kJ4nQ8wR5tF6vB3z",
+      "server": "vpn-au-001.fastervpn.world",
+      "server_port": 443,
+      "tag": "hysteria2-1561765064",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "vpn-au-001.fastervpn.world"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-1561765064"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-1561765064"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

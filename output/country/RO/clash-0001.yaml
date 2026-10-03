@@ -6,6 +6,20 @@ proxies:
       server: 154.46.31.106
       type: ss
       udp: true
+    - name: vless-61041
+      network: ws
+      port: 8880
+      server: 185.158.133.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-66107
+      network: ws
+      port: 8880
+      server: 199.181.197.40
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-130484
       password: QFWzCw2uX9B9i6qAYeFBIE
@@ -643,11 +657,41 @@ proxies:
       type: vless
       udp: true
       uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1635643493
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: a_v5l6R-rpVGlENLeONW4sz-GdRwIoDqISOWXGov8nw
+        short-id: 87709fed663228e5
+      server: 109.104.106.15
+      servername: d3-ro.cloud-cdn.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1635643551
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: a_v5l6R-rpVGlENLeONW4sz-GdRwIoDqISOWXGov8nw
+        short-id: 87709fed663228e5
+      server: 109.104.106.149
+      servername: d3-ro.cloud-cdn.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-26744
+        - vless-61041
+        - vless-66107
         - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
@@ -699,12 +743,16 @@ proxy-groups:
         - vless-1633309461
         - vless-1634916361
         - vless-1634916363
+        - vless-1635643493
+        - vless-1635643551
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-26744
+        - vless-61041
+        - vless-66107
         - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
@@ -756,6 +804,8 @@ proxy-groups:
         - vless-1633309461
         - vless-1634916361
         - vless-1634916363
+        - vless-1635643493
+        - vless-1635643551
       type: select
 rules:
     - MATCH,select
