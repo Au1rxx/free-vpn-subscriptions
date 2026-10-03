@@ -1,20 +1,6 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1612087327
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 8PZTYkhNhSgagVdaI-iqSCPXJwDhHU23IUwZIu08zH4
-        short-id: 9de8ae53dabf1dc2
-      server: 179.237.103.152
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e0bd9dfa-0cf9-47c0-92ac-7dba08ebcff8
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-1611505197
       network: tcp
       port: 443
@@ -27,34 +13,17 @@ proxies:
       type: vless
       udp: true
       uuid: e0bd9dfa-0cf9-47c0-92ac-7dba08ebcff8
-    - client-fingerprint: random
-      name: vless-1571355288
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
-        short-id: ad86e2d52ff40ebd
-      server: 208.69.78.217
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1612087327
         - vless-1611505197
-        - vless-1571355288
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1612087327
         - vless-1611505197
-        - vless-1571355288
       type: select
 rules:
     - MATCH,select
