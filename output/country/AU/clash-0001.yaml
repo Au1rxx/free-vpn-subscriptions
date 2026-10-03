@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-70582
+      network: ws
+      port: 8880
+      server: 45.12.30.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-182712887
       network: ws
       port: 80
@@ -243,20 +250,6 @@ proxies:
       type: vless
       udp: true
       uuid: 36e89875-9c53-482b-bc41-d3890e9da176
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1418799383
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: gCAazs5uxNuMZIxfDdw8wPE0nwKY4QfBfBkQveKAkEk
-        short-id: 0ad08b47f498efd2
-      server: 51.161.204.244
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 36e89875-9c53-482b-bc41-d3890e9da176
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1427744079
@@ -320,6 +313,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-70582
         - vless-182712887
         - trojan-700420633
         - vless-1184224333
@@ -344,7 +338,6 @@ proxy-groups:
         - vless-1395522411
         - vless-1396622624
         - vless-1412445133
-        - vless-1418799383
         - vless-1427744079
         - vless-1475290723
         - vless-1478639973
@@ -356,6 +349,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-70582
         - vless-182712887
         - trojan-700420633
         - vless-1184224333
@@ -380,7 +374,6 @@ proxy-groups:
         - vless-1395522411
         - vless-1396622624
         - vless-1412445133
-        - vless-1418799383
         - vless-1427744079
         - vless-1475290723
         - vless-1478639973
