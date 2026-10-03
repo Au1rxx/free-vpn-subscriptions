@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-112587
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20017
-      server: 157.254.38.210
-      skip-cert-verify: false
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-122850
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20017
@@ -378,21 +370,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
-    - name: vless-1562702724
-      network: tcp
-      port: 2053
-      server: 178.83.46.216
-      type: vless
-      udp: true
-      uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
-    - name: trojan-1589222863
-      password: e309e031-991e-4656-9934-44d10deb8fd8
-      port: 2053
-      server: nimm.mpd.cc.cd
-      skip-cert-verify: false
-      sni: nimm.mpd.cc.cd
-      type: trojan
-      udp: true
     - name: vless-1596432389
       network: tcp
       port: 2053
@@ -442,20 +419,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-1611722903
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: t_qv0VOfWhKZJV_giGC55-ipgHYWo44Yfvik_B8T8ik
-        short-id: 4a46213c935e2ee4
-      server: 194.135.34.223
-      servername: baltic.cendora.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4deb9957-e037-4ae2-8892-da357cc6f99f
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1611723399
       password: 68mL2QkZEBlxWa3hcslGDw
@@ -511,6 +474,15 @@ proxies:
       type: vless
       udp: true
       uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
+    - alterId: 0
+      cipher: auto
+      name: vmess-1621454356
+      network: ws
+      port: 8880
+      server: 104.21.238.214
+      type: vmess
+      udp: true
+      uuid: 90f8f4dc-8092-4355-9047-05f506f5e9ab
     - name: vless-1625155518
       network: ws
       port: 1280
@@ -581,11 +553,24 @@ proxies:
       type: vless
       udp: true
       uuid: c0e8fb58-a60f-4c15-9444-4e7c109797a8
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1642937678
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8
+        short-id: f46cd3ea3d1eb72d
+      server: 78.135.73.47
+      servername: www.datadoghq.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 25e16692-d097-4e69-9e2d-8415609c1968
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-112587
         - trojan-122850
         - trojan-122851
         - trojan-474637039
@@ -621,8 +606,6 @@ proxy-groups:
         - hysteria2-1517930486
         - vless-1546895708
         - vless-1562701745
-        - vless-1562702724
-        - trojan-1589222863
         - vless-1596432389
         - vless-1596981167
         - vless-1598400041
@@ -630,13 +613,13 @@ proxy-groups:
         - vless-1603035184
         - vless-1607786789
         - vless-1608784189
-        - vless-1611722903
         - shadowsocks-1611723399
         - vless-1612997135
         - vless-1618001075
         - vless-1618001076
         - vless-1618542402
         - vless-1619514567
+        - vmess-1621454356
         - vless-1625155518
         - vless-1625556446
         - vless-1627002638
@@ -645,12 +628,12 @@ proxy-groups:
         - vless-1636205894
         - vless-1640587495
         - vless-1641713127
+        - vless-1642937678
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-112587
         - trojan-122850
         - trojan-122851
         - trojan-474637039
@@ -686,8 +669,6 @@ proxy-groups:
         - hysteria2-1517930486
         - vless-1546895708
         - vless-1562701745
-        - vless-1562702724
-        - trojan-1589222863
         - vless-1596432389
         - vless-1596981167
         - vless-1598400041
@@ -695,13 +676,13 @@ proxy-groups:
         - vless-1603035184
         - vless-1607786789
         - vless-1608784189
-        - vless-1611722903
         - shadowsocks-1611723399
         - vless-1612997135
         - vless-1618001075
         - vless-1618001076
         - vless-1618542402
         - vless-1619514567
+        - vmess-1621454356
         - vless-1625155518
         - vless-1625556446
         - vless-1627002638
@@ -710,6 +691,7 @@ proxy-groups:
         - vless-1636205894
         - vless-1640587495
         - vless-1641713127
+        - vless-1642937678
       type: select
 rules:
     - MATCH,select
