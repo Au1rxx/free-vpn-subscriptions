@@ -54,6 +54,15 @@ proxies:
       uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
     - alterId: 0
       cipher: auto
+      name: vmess-682259480
+      network: tcp
+      port: 35034
+      server: 165.154.195.38
+      type: vmess
+      udp: true
+      uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
+    - alterId: 0
+      cipher: auto
       name: vmess-829610504
       network: tcp
       port: 35034
@@ -67,6 +76,13 @@ proxies:
       server: 160.187.100.109
       skip-cert-verify: true
       sni: 127.0.0.1
+      type: hysteria2
+    - name: hysteria2-650314288
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: 103.115.109.49
+      skip-cert-verify: true
+      sni: 103.115.109.49
       type: hysteria2
     - name: hysteria2-207301017
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
@@ -203,13 +219,6 @@ proxies:
       skip-cert-verify: true
       sni: t.me
       type: hysteria2
-    - name: hysteria2-650314288
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: 103.115.109.49
-      skip-cert-verify: true
-      sni: 103.115.109.49
-      type: hysteria2
     - name: hysteria2-722298530
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -270,16 +279,6 @@ proxies:
       type: vless
       udp: true
       uuid: c1c04450-bf71-4049-ad0c-9cf6d94d9f1f
-    - name: vless-1648320884
-      network: ws
-      port: 443
-      server: argo6.5671234.xyz
-      servername: argo6.5671234.xyz
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 08aaab35-a42d-4755-a03e-20c18cb1b3e8
 proxy-groups:
     - interval: 300
       name: auto
@@ -291,8 +290,10 @@ proxy-groups:
         - hysteria2-722298630
         - hysteria2-856679747
         - vmess-1216197038
+        - vmess-682259480
         - vmess-829610504
         - hysteria2-328918461
+        - hysteria2-650314288
         - hysteria2-207301017
         - vmess-657051919
         - hysteria2-892566577
@@ -309,7 +310,6 @@ proxy-groups:
         - vmess-197954839
         - vmess-650449640
         - hysteria2-468892444
-        - hysteria2-650314288
         - hysteria2-722298530
         - vless-1643511870
         - vless-1462358754
@@ -317,7 +317,6 @@ proxy-groups:
         - hysteria2-1482139052
         - hysteria2-468892432
         - vless-656168799
-        - vless-1648320884
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -330,8 +329,10 @@ proxy-groups:
         - hysteria2-722298630
         - hysteria2-856679747
         - vmess-1216197038
+        - vmess-682259480
         - vmess-829610504
         - hysteria2-328918461
+        - hysteria2-650314288
         - hysteria2-207301017
         - vmess-657051919
         - hysteria2-892566577
@@ -348,7 +349,6 @@ proxy-groups:
         - vmess-197954839
         - vmess-650449640
         - hysteria2-468892444
-        - hysteria2-650314288
         - hysteria2-722298530
         - vless-1643511870
         - vless-1462358754
@@ -356,7 +356,6 @@ proxy-groups:
         - hysteria2-1482139052
         - hysteria2-468892432
         - vless-656168799
-        - vless-1648320884
       type: select
 rules:
     - MATCH,select
