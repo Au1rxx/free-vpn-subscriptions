@@ -8,6 +8,17 @@ proxies:
       type: trojan
       udp: true
     - flow: xtls-rprx-vision
+      name: vless-1632425028
+      network: tcp
+      port: 52006
+      server: 87.192.47.10
+      servername: grok.setlisting.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
+    - flow: xtls-rprx-vision
       name: vless-1632452928
       network: tcp
       port: 52006
@@ -31,6 +42,17 @@ proxies:
       uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
     - flow: xtls-rprx-vision
       name: vless-1562164154
+      network: tcp
+      port: 52006
+      server: 87.192.47.10
+      servername: grok.setlisting.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
+    - flow: xtls-rprx-vision
+      name: vless-1629768908
       network: tcp
       port: 52006
       server: 87.192.47.10
@@ -73,42 +95,33 @@ proxies:
       type: vless
       udp: true
       uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
-    - flow: xtls-rprx-vision
-      name: vless-1561372262
-      network: tcp
-      port: 52006
-      server: 87.192.47.10
-      servername: grok.setlisting.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-651033461
+        - vless-1632425028
         - vless-1632452928
         - vless-1629768920
         - vless-1562164154
+        - vless-1629768908
         - vless-1629768916
         - vless-1629855836
         - vless-1569202132
-        - vless-1561372262
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-651033461
+        - vless-1632425028
         - vless-1632452928
         - vless-1629768920
         - vless-1562164154
+        - vless-1629768908
         - vless-1629768916
         - vless-1629855836
         - vless-1569202132
-        - vless-1561372262
       type: select
 rules:
     - MATCH,select

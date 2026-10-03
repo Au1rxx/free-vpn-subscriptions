@@ -7,6 +7,13 @@ proxies:
       sni: cheerful-swan.rooster465.autos
       type: trojan
       udp: true
+    - name: vless-1600235101
+      network: ws
+      port: 80
+      server: 70.34.255.101
+      type: vless
+      udp: true
+      uuid: a889262f-5fe3-4c93-9aaa-3721318dd389
     - name: vless-1590151523
       network: ws
       port: 80
@@ -14,14 +21,7 @@ proxies:
       type: vless
       udp: true
       uuid: a889262f-5fe3-4c93-9aaa-3721318dd389
-    - name: hysteria2-860422992
-      password: 865e271f7c97b549b024255c9d02cebe9cc0c2c070a82b1e11bb11b9cd88dd01
-      port: 443
-      server: 217.60.33.215
-      skip-cert-verify: false
-      sni: streambox.wwwinternetvideo.click
-      type: hysteria2
-    - name: trojan-1612997137
+    - name: trojan-1625725155
       password: UX82473651
       port: 443
       server: cheerful-swan.rooster465.autos
@@ -37,25 +37,35 @@ proxies:
       sni: cheerful-swan.rooster465.autos
       type: trojan
       udp: true
+    - name: trojan-1615718040
+      password: UX82473651
+      port: 443
+      server: 202.78.163.237
+      skip-cert-verify: false
+      sni: cheerful-swan.rooster465.autos
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-1596400044
+        - vless-1600235101
         - vless-1590151523
-        - hysteria2-860422992
-        - trojan-1612997137
+        - trojan-1625725155
         - trojan-1617378190
+        - trojan-1615718040
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-1596400044
+        - vless-1600235101
         - vless-1590151523
-        - hysteria2-860422992
-        - trojan-1612997137
+        - trojan-1625725155
         - trojan-1617378190
+        - trojan-1615718040
       type: select
 rules:
     - MATCH,select
