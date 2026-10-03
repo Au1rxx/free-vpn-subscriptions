@@ -1,5 +1,16 @@
 proxies:
     - flow: xtls-rprx-vision
+      name: vless-1601800708
+      network: tcp
+      port: 443
+      server: ad-dedic-3.failspace.top
+      servername: ekb.eg
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
       name: vless-1581563868
       network: tcp
       port: 52006
@@ -36,6 +47,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1601800708
         - vless-1581563868
         - vless-1566780821
         - vless-1253302291
@@ -44,6 +56,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1601800708
         - vless-1581563868
         - vless-1566780821
         - vless-1253302291

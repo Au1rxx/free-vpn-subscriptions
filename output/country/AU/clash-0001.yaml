@@ -74,20 +74,6 @@ proxies:
       uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-1372417838
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: gCAazs5uxNuMZIxfDdw8wPE0nwKY4QfBfBkQveKAkEk
-        short-id: 0ad08b47f498efd2
-      server: 51.161.204.244
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 36e89875-9c53-482b-bc41-d3890e9da176
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
       name: vless-1390814481
       network: tcp
       port: 443
@@ -149,6 +135,19 @@ proxies:
       skip-cert-verify: true
       sni: vpn-au-001.fastervpn.world
       type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-1643125391
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: fsdIMU2apN1C_NbkL7mHTsBKEfhwbDhgCRcB8ICf03E
+        short-id: d725f0dd8cce210f
+      server: 34.40.217.165
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 325bc1be-0cb7-4cf7-bd35-a79ded91bbbd
     - name: trojan-1645364925
       password: 2ni2H9zUKdDCjREL8Z
       port: 443
@@ -184,6 +183,14 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - name: trojan-1647915025
+      password: 2ni2H9zUKdDCjREL8Z
+      port: 443
+      server: au-1.tr202613.com
+      skip-cert-verify: false
+      sni: au-1.tr202613.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -194,15 +201,16 @@ proxy-groups:
         - vless-1300687308
         - vless-1308176626
         - vless-1345603902
-        - vless-1372417838
         - vless-1390814481
         - vless-1396622624
         - vless-1412445133
         - vless-1478639973
         - hysteria2-1561765064
+        - vless-1643125391
         - trojan-1645364925
         - vless-1645364940
         - vless-1645364944
+        - trojan-1647915025
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -214,15 +222,16 @@ proxy-groups:
         - vless-1300687308
         - vless-1308176626
         - vless-1345603902
-        - vless-1372417838
         - vless-1390814481
         - vless-1396622624
         - vless-1412445133
         - vless-1478639973
         - hysteria2-1561765064
+        - vless-1643125391
         - trojan-1645364925
         - vless-1645364940
         - vless-1645364944
+        - trojan-1647915025
       type: select
 rules:
     - MATCH,select
