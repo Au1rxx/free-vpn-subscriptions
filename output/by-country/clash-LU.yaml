@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: edge
+      name: vless-1634905457
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: mzrVbIsEggpJfXR8M7yxki2vgv3sXWQdy1bGhXqatUY
+        short-id: 79651ae525860543
+      server: 193.57.88.7
+      servername: vk.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8325bd97-b77c-4917-acaa-2446e9e8cc03
     - client-fingerprint: chrome
       name: vless-1634467094
       network: grpc
@@ -29,6 +42,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1634905457
         - vless-1634467094
         - vless-1634905443
       type: url-test
@@ -36,6 +50,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1634905457
         - vless-1634467094
         - vless-1634905443
       type: select

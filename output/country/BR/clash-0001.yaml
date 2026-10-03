@@ -1,18 +1,4 @@
 proxies:
-    - name: vless-45800
-      network: ws
-      port: 8880
-      server: 114.129.43.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-81748
-      network: ws
-      port: 8880
-      server: 88.216.66.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: trojan-122906
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20114
@@ -21,13 +7,15 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: vless-286221987
-      network: ws
-      port: 8880
-      server: 185.148.107.40
-      type: vless
+    - alterId: 0
+      cipher: auto
+      name: vmess-1085814485
+      network: raw
+      port: 16314
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
       udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - name: vless-1344876636
       network: ws
       port: 8880
@@ -35,16 +23,21 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1389764796
-      network: ws
-      port: 8880
-      server: 154.197.75.40
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - alterId: 0
       cipher: auto
       name: vmess-1443522751
+      network: ws
+      port: 443
+      server: aksai.org
+      servername: aksai.org
+      skip-cert-verify: false
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    - alterId: 0
+      cipher: auto
+      name: vmess-1564755367
       network: ws
       port: 443
       server: aksai.org
@@ -92,71 +85,6 @@ proxies:
       uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
     - client-fingerprint: firefox
       name: vless-1627021341
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: aUdvs6o4PHN6jmdkIKBA2rHsN_7l8W2SaDfNgzn-BwU
-        short-id: ""
-      server: br.monkora.org
-      servername: br.monkora.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
-    - client-fingerprint: chrome
-      name: vless-1632424395
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: aUdvs6o4PHN6jmdkIKBA2rHsN_7l8W2SaDfNgzn-BwU
-        short-id: ""
-      server: 147.45.116.19
-      servername: br.monkora.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
-    - client-fingerprint: chrome
-      name: vless-1632424400
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: aUdvs6o4PHN6jmdkIKBA2rHsN_7l8W2SaDfNgzn-BwU
-        short-id: ""
-      server: br.monkora.org
-      servername: br.monkora.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
-    - client-fingerprint: firefox
-      name: vless-1635631334
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: aUdvs6o4PHN6jmdkIKBA2rHsN_7l8W2SaDfNgzn-BwU
-        short-id: ""
-      server: 147.45.116.19
-      servername: br.monkora.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
-    - client-fingerprint: qq
-      name: vless-1635643506
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: aUdvs6o4PHN6jmdkIKBA2rHsN_7l8W2SaDfNgzn-BwU
-        short-id: ""
-      server: br.monkora.org
-      servername: br.monkora.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
-    - client-fingerprint: edge
-      name: vless-1635643508
       network: tcp
       port: 443
       reality-opts:
@@ -237,22 +165,15 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-45800
-        - vless-81748
         - trojan-122906
-        - vless-286221987
+        - vmess-1085814485
         - vless-1344876636
-        - vless-1389764796
         - vmess-1443522751
+        - vmess-1564755367
         - vmess-1604825402
         - vmess-1608139803
         - vmess-1616314329
         - vless-1627021341
-        - vless-1632424395
-        - vless-1632424400
-        - vless-1635631334
-        - vless-1635643506
-        - vless-1635643508
         - vless-1635643536
         - vless-1635643550
         - vless-1636575954
@@ -263,22 +184,15 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vless-45800
-        - vless-81748
         - trojan-122906
-        - vless-286221987
+        - vmess-1085814485
         - vless-1344876636
-        - vless-1389764796
         - vmess-1443522751
+        - vmess-1564755367
         - vmess-1604825402
         - vmess-1608139803
         - vmess-1616314329
         - vless-1627021341
-        - vless-1632424395
-        - vless-1632424400
-        - vless-1635631334
-        - vless-1635643506
-        - vless-1635643508
         - vless-1635643536
         - vless-1635643550
         - vless-1636575954
