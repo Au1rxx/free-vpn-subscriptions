@@ -1,7 +1,41 @@
 proxies:
+    - cipher: 2022-blake3-aes-256-gcm
+      name: shadowsocks-1650036406
+      password: olF2/aNyAxEBf0CHoFlkGlAXUdw+ap1CzFd3AL4WuuM=:d8C1FciKoaFD6xRFbCYyFYlT44MV3zYlXvD6DfhsSqo=
+      port: 5566
+      server: foodal.color-shop.ir
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       name: vless-1345688766
       network: raw
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1635643539
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: zWDvtTWK-cWWwHDMHMXcOpQy4k3EKp7yw-5e0wTZAUM
+        short-id: 5efa80b939612291
+      server: 132.243.231.4
+      servername: d3-se1.cloud-cdn.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+    - client-fingerprint: chrome
+      name: vless-1359876261
+      network: tcp
       port: 2053
       reality-opts:
         public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
@@ -25,33 +59,20 @@ proxies:
       type: vless
       udp: true
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
-    - client-fingerprint: firefox
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1636833313
+      name: vless-1633967465
       network: tcp
       port: 443
       reality-opts:
-        public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
-        short-id: ""
-      server: 151.241.137.132
-      servername: finland.ali-bard.online
+        public-key: zWDvtTWK-cWWwHDMHMXcOpQy4k3EKp7yw-5e0wTZAUM
+        short-id: 5efa80b939612291
+      server: 132.243.231.4
+      servername: d3-se1.cloud-cdn.xyz
       tls: true
       type: vless
       udp: true
-      uuid: 5786d86f-7731-4174-b1a3-84297e54b015
-    - client-fingerprint: chrome
-      name: vless-1359876261
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
-        short-id: d368b94e275ab080
-      server: 95.216.27.15
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+      uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
     - client-fingerprint: firefox
       name: vless-1333157775
       network: tcp
@@ -79,6 +100,20 @@ proxies:
       type: vless
       udp: true
       uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-423595740
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
+        short-id: a696de84963656de
+      server: 95.85.224.51
+      servername: max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
     - client-fingerprint: firefox
       name: vless-1648311493
       network: grpc
@@ -92,6 +127,20 @@ proxies:
       type: vless
       udp: true
       uuid: c0acd42e-bf36-4747-90a0-a4a3a8774fdc
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1635883557
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: zWDvtTWK-cWWwHDMHMXcOpQy4k3EKp7yw-5e0wTZAUM
+        short-id: 5efa80b939612291
+      server: 132.243.231.4
+      servername: d3-se1.cloud-cdn.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1640413209
@@ -110,26 +159,34 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1650036406
         - vless-1345688766
-        - vless-1358009940
-        - vless-1636833313
+        - vless-1635643539
         - vless-1359876261
+        - vless-1358009940
+        - vless-1633967465
         - vless-1333157775
         - vless-1636575934
+        - vless-423595740
         - vless-1648311493
+        - vless-1635883557
         - vless-1640413209
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1650036406
         - vless-1345688766
-        - vless-1358009940
-        - vless-1636833313
+        - vless-1635643539
         - vless-1359876261
+        - vless-1358009940
+        - vless-1633967465
         - vless-1333157775
         - vless-1636575934
+        - vless-423595740
         - vless-1648311493
+        - vless-1635883557
         - vless-1640413209
       type: select
 rules:

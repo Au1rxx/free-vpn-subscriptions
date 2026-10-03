@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1598371570
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 8PZTYkhNhSgagVdaI-iqSCPXJwDhHU23IUwZIu08zH4
+        short-id: 9de8ae53dabf1dc2
+      server: 179.237.103.152
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e0bd9dfa-0cf9-47c0-92ac-7dba08ebcff8
     - name: hysteria2-1391610043
       password: we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH
       port: 8443
@@ -20,6 +34,19 @@ proxies:
       skip-cert-verify: true
       sni: "off"
       type: hysteria2
+    - client-fingerprint: firefox
+      name: vless-1560961116
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+        short-id: ad86e2d52ff40ebd
+      server: 208.69.78.217
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1604957108
@@ -62,43 +89,31 @@ proxies:
       type: vless
       udp: true
       uuid: 3950b45e-740d-4dca-ac95-505ec8534592
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1598371570
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 8PZTYkhNhSgagVdaI-iqSCPXJwDhHU23IUwZIu08zH4
-        short-id: 9de8ae53dabf1dc2
-      server: 179.237.103.152
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e0bd9dfa-0cf9-47c0-92ac-7dba08ebcff8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1598371570
         - hysteria2-1391610043
         - shadowsocks-1364026099
         - hysteria2-1601949347
+        - vless-1560961116
         - vless-1604957108
         - vless-1230998998
         - vless-1534990987
-        - vless-1598371570
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1598371570
         - hysteria2-1391610043
         - shadowsocks-1364026099
         - hysteria2-1601949347
+        - vless-1560961116
         - vless-1604957108
         - vless-1230998998
         - vless-1534990987
-        - vless-1598371570
       type: select
 rules:
     - MATCH,select
