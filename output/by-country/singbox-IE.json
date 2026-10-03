@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "Trojan@82164024",
+      "server": "ie.tronsg.com",
+      "server_port": 443,
+      "tag": "trojan-1591293891",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "ie.tronsg.com"
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-1591293891"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-1591293891"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

@@ -27,12 +27,20 @@ proxies:
       type: vless
       udp: true
       uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+    - name: vless-868400818
+      network: ws
+      port: 443
+      server: 94.183.170.135
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1635561475
         - vless-1635643501
+        - vless-868400818
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -40,6 +48,7 @@ proxy-groups:
         - auto
         - vless-1635561475
         - vless-1635643501
+        - vless-868400818
       type: select
 rules:
     - MATCH,select

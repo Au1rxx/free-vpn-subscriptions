@@ -6,6 +6,22 @@ proxies:
       server: 209.46.102.22
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1636583380
+      password: q_NDrfRjQh4vzbHJIY_vLA
+      port: 1080
+      server: 198.105.115.160
+      type: ss
+      udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-1598861699
+      network: tcp
+      port: 22324
+      server: 185.177.229.128
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - alterId: 0
       cipher: auto
       name: vmess-1570510805
@@ -15,6 +31,18 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
+    - alterId: 0
+      cipher: auto
+      name: vmess-674048796
+      network: tcp
+      port: 1234
+      server: 141.95.65.9
+      servername: supervpn.super.com
+      skip-cert-verify: true
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
     - name: hysteria2-1615728906
       password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
       port: 8443
@@ -106,6 +134,18 @@ proxies:
       type: vmess
       udp: true
       uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+    - alterId: 0
+      cipher: auto
+      name: vmess-665279543
+      network: tcp
+      port: 1234
+      server: 162.19.204.71
+      servername: supervpn.super.com
+      skip-cert-verify: true
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
     - name: hysteria2-1561765054
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -120,27 +160,19 @@ proxies:
       skip-cert-verify: true
       sni: germany3.h2corp.local
       type: hysteria2
-    - name: trojan-1595308600
-      password: UX82473651
-      port: 443
-      server: actual-squid.rooster465.autos
-      skip-cert-verify: false
-      sni: actual-squid.rooster465.autos
-      type: trojan
-      udp: true
     - client-fingerprint: chrome
-      name: vless-1622138331
-      network: tcp
+      name: vless-1611294403
+      network: ws
       port: 443
       reality-opts:
-        public-key: i1OqphFMJNL_xwV5zES4icJTPBHtSgieOt3FYns9zB0
-        short-id: 2b
-      server: 162.19.230.250
-      servername: www.amazon.com
+        public-key: oXHb-GX9ExLRs-CcFwllm6zp99jpx7yAdxrvAV1sZ18
+        short-id: 3eaacc9b
+      server: 189.24.82.195
+      servername: itunes.apple.com
       tls: true
       type: vless
       udp: true
-      uuid: 7017a1ca-7a31-463d-832e-5a7261a3dd62
+      uuid: bf7ca7a3-a028-488e-b9f1-34e467d6d897
     - alterId: 0
       cipher: auto
       name: vmess-1624303751
@@ -161,32 +193,11 @@ proxies:
       uuid: 3dff544a-379e-41f9-95d9-4b95a8e4026e
     - alterId: 0
       cipher: auto
-      name: vmess-1629101312
-      network: tcp
-      port: 23325
-      server: 31.76.11.83
-      type: vmess
-      udp: true
-      uuid: 3dff544a-379e-41f9-95d9-4b95a8e4026e
-    - alterId: 0
-      cipher: auto
       name: vmess-1061851166
       network: tcp
       port: 1234
       server: 141.95.65.9
       servername: ""
-      skip-cert-verify: true
-      tls: true
-      type: vmess
-      udp: true
-      uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-    - alterId: 0
-      cipher: auto
-      name: vmess-665279543
-      network: tcp
-      port: 1234
-      server: 162.19.204.71
-      servername: supervpn.super.com
       skip-cert-verify: true
       tls: true
       type: vmess
@@ -213,13 +224,6 @@ proxies:
       skip-cert-verify: true
       sni: "off"
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1636583380
-      password: q_NDrfRjQh4vzbHJIY_vLA
-      port: 1080
-      server: 198.105.115.160
-      type: ss
-      udp: true
     - name: trojan-1583440648
       password: UX82473651
       port: 443
@@ -257,7 +261,10 @@ proxy-groups:
       name: auto
       proxies:
         - shadowsocks-209
+        - shadowsocks-1636583380
+        - vmess-1598861699
         - vmess-1570510805
+        - vmess-674048796
         - hysteria2-1615728906
         - trojan-1604643052
         - shadowsocks-27307
@@ -267,19 +274,16 @@ proxy-groups:
         - vless-1635944400
         - vless-1604370887
         - vmess-933894324
+        - vmess-665279543
         - hysteria2-1561765054
         - hysteria2-648949654
-        - trojan-1595308600
-        - vless-1622138331
+        - vless-1611294403
         - vmess-1624303751
         - vmess-1641278722
-        - vmess-1629101312
         - vmess-1061851166
-        - vmess-665279543
         - hysteria2-1610388762
         - hysteria2-1529329419
         - hysteria2-1473969939
-        - shadowsocks-1636583380
         - trojan-1583440648
         - trojan-1597015224
         - trojan-1612997132
@@ -290,7 +294,10 @@ proxy-groups:
       proxies:
         - auto
         - shadowsocks-209
+        - shadowsocks-1636583380
+        - vmess-1598861699
         - vmess-1570510805
+        - vmess-674048796
         - hysteria2-1615728906
         - trojan-1604643052
         - shadowsocks-27307
@@ -300,19 +307,16 @@ proxy-groups:
         - vless-1635944400
         - vless-1604370887
         - vmess-933894324
+        - vmess-665279543
         - hysteria2-1561765054
         - hysteria2-648949654
-        - trojan-1595308600
-        - vless-1622138331
+        - vless-1611294403
         - vmess-1624303751
         - vmess-1641278722
-        - vmess-1629101312
         - vmess-1061851166
-        - vmess-665279543
         - hysteria2-1610388762
         - hysteria2-1529329419
         - hysteria2-1473969939
-        - shadowsocks-1636583380
         - trojan-1583440648
         - trojan-1597015224
         - trojan-1612997132

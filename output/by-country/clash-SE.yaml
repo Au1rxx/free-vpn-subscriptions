@@ -6,9 +6,9 @@ proxies:
       server: sw.roshdiran1.ir
       type: ss
       udp: true
-    - client-fingerprint: random
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-951589944
+      name: vless-909854534
       network: tcp
       port: 443
       reality-opts:
@@ -27,21 +27,37 @@ proxies:
       server: 13.61.185.249
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-897978973
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: -GMpCber8qtrKzJbwvpLcwlIhOy-5zS66u_x9lLvIjE
+        short-id: e3daad69
+      server: 193.148.59.178
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 20d7c485-5d24-49b5-a5cc-bb7a7daf9908
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1640364673
-        - vless-951589944
+        - vless-909854534
         - shadowsocks-1602687009
+        - vless-897978973
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1640364673
-        - vless-951589944
+        - vless-909854534
         - shadowsocks-1602687009
+        - vless-897978973
       type: select
 rules:
     - MATCH,select
