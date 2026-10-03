@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-61438
-      network: ws
-      port: 8880
-      server: 185.193.29.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - alterId: 2
       cipher: auto
       name: vmess-101121
@@ -378,11 +371,36 @@ proxies:
       type: vless
       udp: true
       uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
+    - client-fingerprint: firefox
+      name: vless-1640680991
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: gojmfVDE3y9OZmqSZqkJBTNGPyD5-sjkDYmcD8tsxCQ
+        short-id: cfa818cb27f59905
+      server: 86.54.83.75
+      servername: www.asus.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
+    - client-fingerprint: chrome
+      name: vless-1640707235
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: gojmfVDE3y9OZmqSZqkJBTNGPyD5-sjkDYmcD8tsxCQ
+        short-id: cfa818cb27f59905
+      server: 86.54.83.75
+      servername: www.asus.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-61438
         - vmess-101121
         - vmess-2175489
         - vmess-199316900
@@ -419,12 +437,13 @@ proxy-groups:
         - vless-1633948698
         - vless-1637831270
         - vless-1637831277
+        - vless-1640680991
+        - vless-1640707235
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-61438
         - vmess-101121
         - vmess-2175489
         - vmess-199316900
@@ -461,6 +480,8 @@ proxy-groups:
         - vless-1633948698
         - vless-1637831270
         - vless-1637831277
+        - vless-1640680991
+        - vless-1640707235
       type: select
 rules:
     - MATCH,select

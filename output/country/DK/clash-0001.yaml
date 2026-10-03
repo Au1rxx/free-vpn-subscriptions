@@ -1,0 +1,40 @@
+proxies:
+    - alterId: 0
+      cipher: none
+      name: vmess-1636208884
+      network: tcp
+      port: 16305
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1640743940
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: z-TKWOWgZLfzQ-wNdwXQqVwaUgCmbchM2Xtrk1NGynU
+        short-id: ""
+      server: 81.17.159.115
+      servername: dk88.sonicsonic.icu
+      tls: true
+      type: vless
+      udp: true
+      uuid: d3179449-2988-40ec-b08f-dcfe6e66ba63
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vmess-1636208884
+        - vless-1640743940
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vmess-1636208884
+        - vless-1640743940
+      type: select
+rules:
+    - MATCH,select

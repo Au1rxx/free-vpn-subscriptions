@@ -1,0 +1,38 @@
+proxies:
+    - name: hysteria2-1599779135
+      password: 06e88dd6-e264-4981-8c26-d7ab17348ab2
+      port: 443
+      server: 144.31.232.216
+      skip-cert-verify: true
+      sni: fi01.clgate.network
+      type: hysteria2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-423595740
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
+        short-id: a696de84963656de
+      server: 95.85.224.51
+      servername: max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-1599779135
+        - vless-423595740
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-1599779135
+        - vless-423595740
+      type: select
+rules:
+    - MATCH,select

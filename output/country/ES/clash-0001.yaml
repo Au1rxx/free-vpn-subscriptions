@@ -13,6 +13,13 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
+    - name: vless-81918
+      network: ws
+      port: 8880
+      server: 89.116.180.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - alterId: 0
       cipher: auto
       name: vmess-99676
@@ -263,13 +270,6 @@ proxies:
       type: vless
       udp: true
       uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
-    - name: vless-1255735655
-      network: ws
-      port: 8880
-      server: 31.185.108.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1255951532
@@ -979,32 +979,6 @@ proxies:
       type: vless
       udp: true
       uuid: c379d8e4-c67d-42ec-a3ed-ca99d1ad0546
-    - client-fingerprint: ios
-      name: vless-1608715913
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: iI9J--AfPKCXbVle3Om-WMn_g-3bO3SsVzUCNtwUkU0
-        short-id: fe85cb6a5c84e64c
-      server: 34.175.44.113
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0b4b1548-c7ca-45a5-9096-6c3cc4b1c43b
-    - client-fingerprint: edge
-      name: vless-1609623307
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: iI9J--AfPKCXbVle3Om-WMn_g-3bO3SsVzUCNtwUkU0
-        short-id: fe85cb6a5c84e64c
-      server: 34.175.44.113
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0b4b1548-c7ca-45a5-9096-6c3cc4b1c43b
     - name: vless-1611748716
       network: grpc
       port: 443
@@ -1140,12 +1114,41 @@ proxies:
       type: vless
       udp: true
       uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1640366557
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 2AKBmK0PMf2zUMhRo1Ad-WNf_XoRk3AN-SGo6ZdhxA4
+        short-id: ecca56e9a9963ed7
+      server: 45.154.206.88
+      servername: es.monkeyisland.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1640707233
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 2AKBmK0PMf2zUMhRo1Ad-WNf_XoRk3AN-SGo6ZdhxA4
+        short-id: ecca56e9a9963ed7
+      server: 45.154.206.88
+      servername: es.monkeyisland.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 454431fc-71e2-42b1-b375-5b55dd06666a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11052
         - shadowsocks-16132
+        - vless-81918
         - vmess-99676
         - vmess-2386872
         - vmess-5259765
@@ -1169,7 +1172,6 @@ proxy-groups:
         - vless-1239106930
         - vless-1239151533
         - vless-1247220676
-        - vless-1255735655
         - vless-1255951532
         - vless-1255951545
         - vless-1255951555
@@ -1235,8 +1237,6 @@ proxy-groups:
         - vmess-1575908236
         - vless-1599283385
         - vless-1599785222
-        - vless-1608715913
-        - vless-1609623307
         - vless-1611748716
         - hysteria2-1623168586
         - hysteria2-1626618497
@@ -1248,6 +1248,8 @@ proxy-groups:
         - vless-1635631353
         - vless-1636406246
         - vless-1636574961
+        - vless-1640366557
+        - vless-1640707233
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -1255,6 +1257,7 @@ proxy-groups:
         - auto
         - shadowsocks-11052
         - shadowsocks-16132
+        - vless-81918
         - vmess-99676
         - vmess-2386872
         - vmess-5259765
@@ -1278,7 +1281,6 @@ proxy-groups:
         - vless-1239106930
         - vless-1239151533
         - vless-1247220676
-        - vless-1255735655
         - vless-1255951532
         - vless-1255951545
         - vless-1255951555
@@ -1344,8 +1346,6 @@ proxy-groups:
         - vmess-1575908236
         - vless-1599283385
         - vless-1599785222
-        - vless-1608715913
-        - vless-1609623307
         - vless-1611748716
         - hysteria2-1623168586
         - hysteria2-1626618497
@@ -1357,6 +1357,8 @@ proxy-groups:
         - vless-1635631353
         - vless-1636406246
         - vless-1636574961
+        - vless-1640366557
+        - vless-1640707233
       type: select
 rules:
     - MATCH,select
