@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1236528163
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
+        short-id: d06d78e974491b6e
+      server: 46.28.67.55
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-1642612573
@@ -13,17 +27,35 @@ proxies:
       type: vless
       udp: true
       uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1346451125
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: byzvlw97wjAAAfHs5AZRV0P0H6_JKBEZ4yfLS0HNewE
+        short-id: fe24f8a0a560056e
+      server: 146.70.124.85
+      servername: www.datadoghq.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1236528163
         - vless-1642612573
+        - vless-1346451125
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1236528163
         - vless-1642612573
+        - vless-1346451125
       type: select
 rules:
     - MATCH,select

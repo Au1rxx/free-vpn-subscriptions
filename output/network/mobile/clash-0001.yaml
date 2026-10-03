@@ -1,5 +1,16 @@
 proxies:
     - flow: xtls-rprx-vision
+      name: vless-1643511869
+      network: tcp
+      port: 33102
+      server: 112.49.63.11
+      servername: sgg.knhqf.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0f47a872-b140-46f5-aef8-f46993f5fc01
+    - flow: xtls-rprx-vision
       name: vless-1644389529
       network: tcp
       port: 33102
@@ -14,12 +25,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1643511869
         - vless-1644389529
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1643511869
         - vless-1644389529
       type: select
 rules:

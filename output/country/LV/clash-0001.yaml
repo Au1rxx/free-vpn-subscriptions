@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-38202279
+      password: CF68213490
+      port: 443
+      server: devoted-zebra.rooster465.autos
+      skip-cert-verify: false
+      sni: devoted-zebra.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-651033461
       password: PQ05174892
       port: 443
@@ -54,13 +62,6 @@ proxies:
       name: shadowsocks-717969044
       password: Yg4MbdXFQ9HFFVY6
       port: 9034
-      server: 185.135.86.175
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-768399460
-      password: kSPmvwdFzGMMW5pY
-      port: 9007
       server: 185.135.86.175
       type: ss
       udp: true
@@ -242,20 +243,6 @@ proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1208270657
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: NMgy1XgCSXExOg6Tg8xG9lCWttMF6sjdpB41lZy6FWo
-        short-id: 5c256336e3b673fa
-      server: 195.123.213.28
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 02fcc1a4-ee90-4970-8bbb-4ffaa8109d24
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1210852545
       network: tcp
       port: 443
       reality-opts:
@@ -1064,17 +1051,45 @@ proxies:
       type: vless
       udp: true
       uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1646820073
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: wHTq_owme8N6237B37GhneBcNJQtzRdIFouRkSscgnQ
+        short-id: 40fac5d64bc6a540
+      server: 185.28.47.28
+      servername: latinki.pumpkinpie.study
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8f6e49e6-7f03-4f10-9da9-1716158d80ed
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1646820084
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: wHTq_owme8N6237B37GhneBcNJQtzRdIFouRkSscgnQ
+        short-id: 40fac5d64bc6a540
+      server: latinki.pumpkinpie.study
+      servername: latinki.pumpkinpie.study
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8f6e49e6-7f03-4f10-9da9-1716158d80ed
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-38202279
         - trojan-651033461
         - vless-696780838
         - trojan-696781161
         - shadowsocks-696781305
         - vless-713159145
         - shadowsocks-717969044
-        - shadowsocks-768399460
         - shadowsocks-795694248
         - vless-810587841
         - shadowsocks-812343923
@@ -1092,7 +1107,6 @@ proxy-groups:
         - hysteria2-1063751353
         - hysteria2-1098338335
         - vless-1208270657
-        - vless-1210852545
         - vless-1210852551
         - vless-1210852568
         - vless-1210987412
@@ -1164,18 +1178,20 @@ proxy-groups:
         - vless-1634421951
         - vless-1638259525
         - vless-1638718310
+        - vless-1646820073
+        - vless-1646820084
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-38202279
         - trojan-651033461
         - vless-696780838
         - trojan-696781161
         - shadowsocks-696781305
         - vless-713159145
         - shadowsocks-717969044
-        - shadowsocks-768399460
         - shadowsocks-795694248
         - vless-810587841
         - shadowsocks-812343923
@@ -1193,7 +1209,6 @@ proxy-groups:
         - hysteria2-1063751353
         - hysteria2-1098338335
         - vless-1208270657
-        - vless-1210852545
         - vless-1210852551
         - vless-1210852568
         - vless-1210987412
@@ -1265,6 +1280,8 @@ proxy-groups:
         - vless-1634421951
         - vless-1638259525
         - vless-1638718310
+        - vless-1646820073
+        - vless-1646820084
       type: select
 rules:
     - MATCH,select
