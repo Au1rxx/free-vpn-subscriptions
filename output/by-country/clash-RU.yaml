@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1640364678
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: XrgbY2hKJQG8QOZO2J1pGmZsbvjSsSWoM9iULIMGK00
+        short-id: ""
+      server: 31.76.34.216
+      servername: ru-c-1.minzt.su
+      tls: true
+      type: vless
+      udp: true
+      uuid: 94def50e-5f3c-4e4c-9719-3325f42d2131
     - cipher: aes-256-gcm
       name: shadowsocks-1647497757
       password: bdb313adf74c2ede
@@ -10,12 +24,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1640364678
         - shadowsocks-1647497757
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1640364678
         - shadowsocks-1647497757
       type: select
 rules:
