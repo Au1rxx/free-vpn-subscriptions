@@ -1,4 +1,30 @@
 proxies:
+    - client-fingerprint: random
+      name: vless-1300687308
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
+        short-id: 4cc9dc65f7770115
+      server: 46.250.240.80
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
+    - client-fingerprint: firefox
+      name: vless-1258929861
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
+        short-id: 4cc9dc65f7770115
+      server: 46.250.240.80
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
     - client-fingerprint: chrome
       name: vless-1645364940
       network: tcp
@@ -25,19 +51,6 @@ proxies:
       type: vless
       udp: true
       uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
-    - client-fingerprint: random
-      name: vless-1300687308
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
-        short-id: 4cc9dc65f7770115
-      server: 46.250.240.80
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
     - name: trojan-1645364925
       password: 2ni2H9zUKdDCjREL8Z
       port: 443
@@ -50,18 +63,20 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1300687308
+        - vless-1258929861
         - vless-1645364940
         - vless-1345603902
-        - vless-1300687308
         - trojan-1645364925
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1300687308
+        - vless-1258929861
         - vless-1645364940
         - vless-1345603902
-        - vless-1300687308
         - trojan-1645364925
       type: select
 rules:

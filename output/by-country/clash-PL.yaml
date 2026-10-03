@@ -1,4 +1,25 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1648311466
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: jbiddtGRgeBvlkjbuA3aU-WPjKgEX87tOVh1mFfvOUI
+        short-id: 16e0f049
+      server: 31.77.59.163
+      servername: pl37.mech-pro.online
+      tls: true
+      type: vless
+      udp: true
+      uuid: ff35ca20-2304-4b3a-80e5-2c82953cf2ce
+    - name: vless-1600235101
+      network: ws
+      port: 80
+      server: 70.34.255.101
+      type: vless
+      udp: true
+      uuid: a889262f-5fe3-4c93-9aaa-3721318dd389
     - name: trojan-1596400044
       password: UX82473651
       port: 443
@@ -7,13 +28,6 @@ proxies:
       sni: cheerful-swan.rooster465.autos
       type: trojan
       udp: true
-    - name: vless-1600235101
-      network: ws
-      port: 80
-      server: 70.34.255.101
-      type: vless
-      udp: true
-      uuid: a889262f-5fe3-4c93-9aaa-3721318dd389
     - name: vless-1590151523
       network: ws
       port: 80
@@ -21,51 +35,23 @@ proxies:
       type: vless
       udp: true
       uuid: a889262f-5fe3-4c93-9aaa-3721318dd389
-    - name: trojan-1625725155
-      password: UX82473651
-      port: 443
-      server: cheerful-swan.rooster465.autos
-      skip-cert-verify: false
-      sni: cheerful-swan.rooster465.autos
-      type: trojan
-      udp: true
-    - name: trojan-1617378190
-      password: UX82473651
-      port: 443
-      server: 202.78.163.237
-      skip-cert-verify: true
-      sni: cheerful-swan.rooster465.autos
-      type: trojan
-      udp: true
-    - name: trojan-1615718040
-      password: UX82473651
-      port: 443
-      server: 202.78.163.237
-      skip-cert-verify: false
-      sni: cheerful-swan.rooster465.autos
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-1596400044
+        - vless-1648311466
         - vless-1600235101
+        - trojan-1596400044
         - vless-1590151523
-        - trojan-1625725155
-        - trojan-1617378190
-        - trojan-1615718040
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-1596400044
+        - vless-1648311466
         - vless-1600235101
+        - trojan-1596400044
         - vless-1590151523
-        - trojan-1625725155
-        - trojan-1617378190
-        - trojan-1615718040
       type: select
 rules:
     - MATCH,select
