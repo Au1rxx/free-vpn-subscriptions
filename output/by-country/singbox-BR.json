@@ -1,22 +1,30 @@
 {
   "outbounds": [
     {
-      "flow": "xtls-rprx-vision",
-      "server": "ad-dedic-3.failspace.top",
+      "alter_id": 0,
+      "security": "auto",
+      "server": "89.39.161.157",
       "server_port": 443,
-      "tag": "vless-1601800708",
+      "tag": "vmess-1604825402",
       "tls": {
         "enabled": true,
-        "insecure": true,
-        "server_name": "ekb.eg"
+        "insecure": false,
+        "server_name": "aksai.org"
       },
-      "type": "vless",
-      "uuid": "cd3bb7d9-7df3-4644-ac05-c260990ac277"
+      "transport": {
+        "headers": {
+          "Host": "aksai.org"
+        },
+        "path": "/linkvws",
+        "type": "ws"
+      },
+      "type": "vmess",
+      "uuid": "03fcc618-b93d-6796-6aed-8a38c975d581"
     },
     {
       "interval": "5m",
       "outbounds": [
-        "vless-1601800708"
+        "vmess-1604825402"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -25,7 +33,7 @@
     {
       "outbounds": [
         "auto",
-        "vless-1601800708"
+        "vmess-1604825402"
       ],
       "tag": "select",
       "type": "selector"
