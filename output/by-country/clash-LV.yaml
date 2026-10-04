@@ -1,5 +1,16 @@
 proxies:
     - flow: xtls-rprx-vision
+      name: vless-1569202132
+      network: tcp
+      port: 52006
+      server: 87.192.47.10
+      servername: grok.setlisting.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
+    - flow: xtls-rprx-vision
       name: vless-1595947430
       network: tcp
       port: 52006
@@ -24,6 +35,17 @@ proxies:
       type: vless
       udp: true
       uuid: 8f6e49e6-7f03-4f10-9da9-1716158d80ed
+    - flow: xtls-rprx-vision
+      name: vless-1617968412
+      network: tcp
+      port: 52006
+      server: 87.192.47.10
+      servername: grok.setlisting.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
     - flow: xtls-rprx-vision
       name: vless-1586868378
       network: tcp
@@ -50,8 +72,10 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1569202132
         - vless-1595947430
         - vless-1652946716
+        - vless-1617968412
         - vless-1586868378
         - vless-1626664451
       type: url-test
@@ -59,8 +83,10 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1569202132
         - vless-1595947430
         - vless-1652946716
+        - vless-1617968412
         - vless-1586868378
         - vless-1626664451
       type: select
