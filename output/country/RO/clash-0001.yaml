@@ -6,6 +6,13 @@ proxies:
       server: 154.46.31.106
       type: ss
       udp: true
+    - name: vless-61041
+      network: ws
+      port: 8880
+      server: 185.158.133.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-130484
       password: QFWzCw2uX9B9i6qAYeFBIE
@@ -841,6 +848,20 @@ proxies:
       uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-1451931837
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: _gjcl5q-hkJIFmKYSY9DbBcSiBHK3YUAKOfZzZqnkT8
+        short-id: c17f1d8951b3bf90
+      server: 2.26.80.235
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: cb0ccf90-0e8f-4621-b042-4e35c797de2b
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-1468243298
       network: tcp
       port: 443
@@ -1077,11 +1098,26 @@ proxies:
       server: bulbul.color-panel.ir
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1652160272
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: a_v5l6R-rpVGlENLeONW4sz-GdRwIoDqISOWXGov8nw
+        short-id: 87709fed663228e5
+      server: 109.104.106.15
+      servername: d3-ro.cloud-cdn.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-26744
+        - vless-61041
         - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
@@ -1147,6 +1183,7 @@ proxy-groups:
         - vless-1377814763
         - vless-1380584916
         - vless-1380584917
+        - vless-1451931837
         - vless-1468243298
         - vless-1473449961
         - vless-1478594580
@@ -1165,12 +1202,14 @@ proxy-groups:
         - vless-1645800478
         - vless-1650033419
         - shadowsocks-1650036403
+        - vless-1652160272
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-26744
+        - vless-61041
         - shadowsocks-130484
         - hysteria2-290666035
         - hysteria2-315405971
@@ -1236,6 +1275,7 @@ proxy-groups:
         - vless-1377814763
         - vless-1380584916
         - vless-1380584917
+        - vless-1451931837
         - vless-1468243298
         - vless-1473449961
         - vless-1478594580
@@ -1254,6 +1294,7 @@ proxy-groups:
         - vless-1645800478
         - vless-1650033419
         - shadowsocks-1650036403
+        - vless-1652160272
       type: select
 rules:
     - MATCH,select

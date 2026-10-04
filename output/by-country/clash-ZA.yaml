@@ -6,41 +6,17 @@ proxies:
       server: 102.133.165.160
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-236
-      password: aduB9HGxQHjA2SBMRjkHX6
-      port: 443
-      server: 102.37.156.224
-      type: ss
-      udp: true
-    - client-fingerprint: safari
-      name: vless-1634480563
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: bSN0cv0VMxmYZsNsMkkLndOTHZu74C1htJ2M71QMaVE
-        short-id: 89b3a20484eb43ec
-      server: 34.35.58.153
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 8d65c8a7-4876-4556-bb6a-feccfb46ee81
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-246
-        - shadowsocks-236
-        - vless-1634480563
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-246
-        - shadowsocks-236
-        - vless-1634480563
       type: select
 rules:
     - MATCH,select

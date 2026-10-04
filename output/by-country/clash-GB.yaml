@@ -59,13 +59,6 @@ proxies:
       server: 141.98.101.181
       type: ss
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-717969059
-      password: LXchLsIwtCeUAUgu
-      port: 443
-      server: 149.102.149.207
-      type: ss
-      udp: true
     - name: vless-1591550729
       network: grpc
       port: 2083
@@ -82,6 +75,13 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
+    - name: vless-1483330828
+      network: grpc
+      port: 2083
+      server: 66.90.104.43
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - name: vless-1608977584
       network: grpc
       port: 2083
@@ -114,17 +114,6 @@ proxies:
       type: vless
       udp: true
       uuid: 391a01e9-b664-407b-9158-610fab3f5920
-    - flow: xtls-rprx-vision
-      name: vless-1195645285
-      network: tcp
-      port: 443
-      server: 50.7.226.172
-      servername: viper-21.moriarty-web.com
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1597011511
@@ -148,17 +137,17 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
-    - cipher: aes-256-gcm
-      name: shadowsocks-696780670
-      password: LXchLsIwtCeUAUgu
-      port: 80
-      server: 149.102.149.207
-      type: ss
-      udp: true
     - name: vless-1593872470
       network: grpc
       port: 2083
       server: 66.90.104.43
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - name: vless-1483330744
+      network: grpc
+      port: 2083
+      server: 66.90.105.211
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
@@ -168,6 +157,17 @@ proxies:
       port: 443
       server: 50.7.227.251
       servername: uk-dedic-new-1.failspace.top
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
+      name: vless-1157879699
+      network: tcp
+      port: 443
+      server: 50.7.226.171
+      servername: viper-21.moriarty-web.com
       skip-cert-verify: true
       tls: true
       type: vless
@@ -240,13 +240,20 @@ proxies:
       type: vless
       udp: true
       uuid: 391a01e9-b664-407b-9158-610fab3f5920
-    - name: vless-1230573705
-      network: grpc
-      port: 2083
-      server: 66.90.104.42
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1019740846
+      network: tcp
+      port: 51847
+      reality-opts:
+        public-key: S6noV0L8eNASnTe1gXLutLZNdfENsvKMsOJiGQYi6nc
+        short-id: 0eec442e7b34d2f2
+      server: 3.9.135.156
+      servername: www.tesla.com
+      tls: true
       type: vless
       udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+      uuid: 391a01e9-b664-407b-9158-610fab3f5920
 proxy-groups:
     - interval: 300
       name: auto
@@ -257,24 +264,24 @@ proxy-groups:
         - vless-1650072545
         - vless-1523769239
         - shadowsocks-271
-        - shadowsocks-717969059
         - vless-1591550729
         - vmess-1572874951
+        - vless-1483330828
         - vless-1608977584
         - vless-1344116835
         - vless-1048867173
-        - vless-1195645285
         - vless-1597011511
         - vmess-1570510802
-        - shadowsocks-696780670
         - vless-1593872470
+        - vless-1483330744
         - vless-1349523981
+        - vless-1157879699
         - vless-1479678804
         - vless-1477043376
         - vless-1485587877
         - vless-1646434814
         - vless-1007208113
-        - vless-1230573705
+        - vless-1019740846
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -286,24 +293,24 @@ proxy-groups:
         - vless-1650072545
         - vless-1523769239
         - shadowsocks-271
-        - shadowsocks-717969059
         - vless-1591550729
         - vmess-1572874951
+        - vless-1483330828
         - vless-1608977584
         - vless-1344116835
         - vless-1048867173
-        - vless-1195645285
         - vless-1597011511
         - vmess-1570510802
-        - shadowsocks-696780670
         - vless-1593872470
+        - vless-1483330744
         - vless-1349523981
+        - vless-1157879699
         - vless-1479678804
         - vless-1477043376
         - vless-1485587877
         - vless-1646434814
         - vless-1007208113
-        - vless-1230573705
+        - vless-1019740846
       type: select
 rules:
     - MATCH,select
