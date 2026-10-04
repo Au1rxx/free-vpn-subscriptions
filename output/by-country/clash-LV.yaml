@@ -1,5 +1,16 @@
 proxies:
     - flow: xtls-rprx-vision
+      name: vless-1626664451
+      network: tcp
+      port: 52006
+      server: 87.192.47.10
+      servername: grok.setlisting.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
+    - flow: xtls-rprx-vision
       name: vless-1569202132
       network: tcp
       port: 52006
@@ -21,22 +32,19 @@ proxies:
       type: vless
       udp: true
       uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1652946716
+    - flow: xtls-rprx-vision
+      name: vless-1617968412
       network: tcp
-      port: 443
-      reality-opts:
-        public-key: wHTq_owme8N6237B37GhneBcNJQtzRdIFouRkSscgnQ
-        short-id: 40fac5d64bc6a540
-      server: 185.28.47.28
-      servername: latinki.pumpkinpie.study
+      port: 52006
+      server: 87.192.47.10
+      servername: grok.setlisting.ru
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: 8f6e49e6-7f03-4f10-9da9-1716158d80ed
+      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
     - flow: xtls-rprx-vision
-      name: vless-1617968412
+      name: vless-1561372262
       network: tcp
       port: 52006
       server: 87.192.47.10
@@ -57,38 +65,27 @@ proxies:
       type: vless
       udp: true
       uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
-    - flow: xtls-rprx-vision
-      name: vless-1626664451
-      network: tcp
-      port: 52006
-      server: 87.192.47.10
-      servername: grok.setlisting.ru
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1626664451
         - vless-1569202132
         - vless-1595947430
-        - vless-1652946716
         - vless-1617968412
+        - vless-1561372262
         - vless-1586868378
-        - vless-1626664451
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1626664451
         - vless-1569202132
         - vless-1595947430
-        - vless-1652946716
         - vless-1617968412
+        - vless-1561372262
         - vless-1586868378
-        - vless-1626664451
       type: select
 rules:
     - MATCH,select

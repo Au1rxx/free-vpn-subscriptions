@@ -1,4 +1,15 @@
 proxies:
+    - flow: xtls-rprx-vision
+      name: vless-1645310048
+      network: tcp
+      port: 52006
+      server: 179.254.71.20
+      servername: pl.setlisting.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
     - name: vless-1647915018
       network: ws
       port: 80
@@ -14,6 +25,19 @@ proxies:
       sni: cheerful-swan.rooster465.autos
       type: trojan
       udp: true
+    - client-fingerprint: firefox
+      name: vless-1665751757
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: tKAYeVSM4yLXiOdKLMFP751fhII6YyqfbMXy_MSuejI
+        short-id: ""
+      server: node64.tomalgopas.fun
+      servername: samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3464a5bd-6a17-4ac3-8ca9-86a54c1aac7b
     - name: vless-1600235101
       network: ws
       port: 80
@@ -47,27 +71,41 @@ proxies:
       sni: cheerful-swan.rooster465.autos
       type: trojan
       udp: true
+    - name: trojan-1595311869
+      password: UX82473651
+      port: 443
+      server: cheerful-swan.rooster465.autos
+      skip-cert-verify: false
+      sni: cheerful-swan.rooster465.autos
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1645310048
         - vless-1647915018
         - trojan-1620222760
+        - vless-1665751757
         - vless-1600235101
         - vless-1590151523
         - vless-1650033415
         - trojan-1596400044
+        - trojan-1595311869
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1645310048
         - vless-1647915018
         - trojan-1620222760
+        - vless-1665751757
         - vless-1600235101
         - vless-1590151523
         - vless-1650033415
         - trojan-1596400044
+        - trojan-1595311869
       type: select
 rules:
     - MATCH,select

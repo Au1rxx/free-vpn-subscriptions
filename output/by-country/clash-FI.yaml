@@ -12,6 +12,19 @@ proxies:
       type: vless
       udp: true
       uuid: 2d24e797-ec6c-0808-dd31-9cd22b5dfdc7
+    - client-fingerprint: chrome
+      name: vless-1645923050
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: sRTNjrosfFSiuQX7Yt7Ub5DJvFznfHSC3nlzFQ3H2WU
+        short-id: ""
+      server: 104.245.240.2
+      servername: cdn.steamstatic.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c0acd42e-bf36-4747-90a0-a4a3a8774fdc
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1652949239
@@ -40,6 +53,19 @@ proxies:
       type: vless
       udp: true
       uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+    - client-fingerprint: firefox
+      name: vless-1345688766
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
     - cipher: aes-128-gcm
       name: shadowsocks-1653901314
       password: f9300a9bf39ae0347c3a3bfbc4dd7754
@@ -74,43 +100,31 @@ proxies:
       type: vless
       udp: true
       uuid: 8710a337-f504-4b75-8989-224cfd803b2d
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-270691474
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
-        short-id: a696de84963656de
-      server: 95.85.224.51
-      servername: max.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1655821983
+        - vless-1645923050
         - vless-1652949239
         - vless-1636575934
+        - vless-1345688766
         - shadowsocks-1653901314
         - vless-1655821984
         - vless-1659369804
-        - vless-270691474
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1655821983
+        - vless-1645923050
         - vless-1652949239
         - vless-1636575934
+        - vless-1345688766
         - shadowsocks-1653901314
         - vless-1655821984
         - vless-1659369804
-        - vless-270691474
       type: select
 rules:
     - MATCH,select
