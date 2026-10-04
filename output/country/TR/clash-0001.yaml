@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-112587
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20017
+      server: 157.254.38.210
+      skip-cert-verify: false
+      sni: hk.catxstar.com
+      type: trojan
+      udp: true
     - name: trojan-122850
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20017
@@ -424,20 +432,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-1611722903
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: t_qv0VOfWhKZJV_giGC55-ipgHYWo44Yfvik_B8T8ik
-        short-id: 4a46213c935e2ee4
-      server: 194.135.34.223
-      servername: baltic.cendora.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4deb9957-e037-4ae2-8892-da357cc6f99f
     - client-fingerprint: firefox
       name: vless-1612997135
       network: tcp
@@ -558,10 +552,25 @@ proxies:
       type: vless
       udp: true
       uuid: fdc1206a-9d2e-42b7-b615-9ccea8cf70ee
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1659476959
+      network: tcp
+      port: 44998
+      reality-opts:
+        public-key: dDf2TcDNn3Kk8pAp4EnNC4ZUAmGkzAapRFGFe-41IEk
+        short-id: 86f6705960e3e3
+      server: funagfr.alixxplay.com
+      servername: iosapps.itunes.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-112587
         - trojan-122850
         - trojan-122851
         - trojan-474637039
@@ -604,7 +613,6 @@ proxy-groups:
         - vless-1603035184
         - trojan-1607776739
         - vless-1607786789
-        - vless-1611722903
         - vless-1612997135
         - vless-1618542402
         - trojan-1619321771
@@ -617,11 +625,13 @@ proxy-groups:
         - vless-1654220989
         - vless-1655165583
         - vless-1656269256
+        - vless-1659476959
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-112587
         - trojan-122850
         - trojan-122851
         - trojan-474637039
@@ -664,7 +674,6 @@ proxy-groups:
         - vless-1603035184
         - trojan-1607776739
         - vless-1607786789
-        - vless-1611722903
         - vless-1612997135
         - vless-1618542402
         - trojan-1619321771
@@ -677,6 +686,7 @@ proxy-groups:
         - vless-1654220989
         - vless-1655165583
         - vless-1656269256
+        - vless-1659476959
       type: select
 rules:
     - MATCH,select

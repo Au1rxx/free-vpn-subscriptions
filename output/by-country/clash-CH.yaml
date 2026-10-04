@@ -6,13 +6,6 @@ proxies:
       skip-cert-verify: true
       sni: hopp-swizland-new.mysynology.net
       type: hysteria2
-    - name: hysteria2-1601949347
-      password: 84a506ca5aca505696a454d828420b3f
-      port: 50160
-      server: 140.238.213.114
-      skip-cert-verify: true
-      sni: "off"
-      type: hysteria2
     - name: hysteria2-1501696965
       password: we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH
       port: 8443
@@ -20,53 +13,19 @@ proxies:
       skip-cert-verify: true
       sni: hopp-swizland-new.mysynology.net
       type: hysteria2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1615178279
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: 8PZTYkhNhSgagVdaI-iqSCPXJwDhHU23IUwZIu08zH4
-        short-id: 9de8ae53dabf1dc2
-      server: 179.237.103.152
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e0bd9dfa-0cf9-47c0-92ac-7dba08ebcff8
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1611505197
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 8PZTYkhNhSgagVdaI-iqSCPXJwDhHU23IUwZIu08zH4
-        short-id: 9de8ae53dabf1dc2
-      server: 179.237.103.152
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e0bd9dfa-0cf9-47c0-92ac-7dba08ebcff8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1502094721
-        - hysteria2-1601949347
         - hysteria2-1501696965
-        - vless-1615178279
-        - vless-1611505197
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1502094721
-        - hysteria2-1601949347
         - hysteria2-1501696965
-        - vless-1615178279
-        - vless-1611505197
       type: select
 rules:
     - MATCH,select

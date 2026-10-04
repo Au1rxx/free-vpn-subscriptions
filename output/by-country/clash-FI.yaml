@@ -6,17 +6,32 @@ proxies:
       server: 185.103.110.68
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      name: vless-1655821977
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: iVDh09Vm2DqZMNQoUdf-LCZ6TqVGb9mLXnClAK2LRj4
+        short-id: ""
+      server: 122.8.45.4
+      servername: www.canon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2d24e797-ec6c-0808-dd31-9cd22b5dfdc7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1653901314
+        - vless-1655821977
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1653901314
+        - vless-1655821977
       type: select
 rules:
     - MATCH,select

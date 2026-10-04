@@ -1,0 +1,119 @@
+{
+  "outbounds": [
+    {
+      "password": "mitivpn",
+      "server": "167.82.76.7",
+      "server_port": 443,
+      "tag": "trojan-1659678303",
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "ssl.fastly.com"
+      },
+      "transport": {
+        "headers": {
+          "Host": "mitivpn---deb--s---mitivpn-4.global.ssl.fastly.net"
+        },
+        "path": "/",
+        "type": "ws"
+      },
+      "type": "trojan"
+    },
+    {
+      "password": "mitivpn",
+      "server": "199.232.78.160",
+      "server_port": 443,
+      "tag": "trojan-1659678304",
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "ssl.fastly.com"
+      },
+      "transport": {
+        "headers": {
+          "Host": "mitivpn---deb--s---mitivpn-2.global.ssl.fastly.net"
+        },
+        "path": "/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/D-e1i@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN",
+        "type": "ws"
+      },
+      "type": "trojan"
+    },
+    {
+      "password": "mitivpn",
+      "server": "199.232.78.101",
+      "server_port": 443,
+      "tag": "trojan-1659678305",
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "ssl.fastly.com"
+      },
+      "transport": {
+        "headers": {
+          "Host": "mitivpn---deb--s---mitivpn-1.global.ssl.fastly.net"
+        },
+        "path": "/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/NLSus---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN/---@MiTiVPN---@MiTiVPN",
+        "type": "ws"
+      },
+      "type": "trojan"
+    },
+    {
+      "password": "2e631f0c-226a-484b-9e7c-d6c9c444ef13",
+      "server": "fmwf6gbnad0a.dop16.com",
+      "server_port": 443,
+      "tag": "trojan-1659751057",
+      "tls": {
+        "alpn": [
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "fmwf6gbnad0a.dop16.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-1659678303",
+        "trojan-1659678304",
+        "trojan-1659678305",
+        "trojan-1659751057"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-1659678303",
+        "trojan-1659678304",
+        "trojan-1659678305",
+        "trojan-1659751057"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

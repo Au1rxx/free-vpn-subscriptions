@@ -1,0 +1,59 @@
+{
+  "outbounds": [
+    {
+      "server": "150.95.109.109",
+      "server_port": 2086,
+      "tag": "vless-1659751079",
+      "type": "vless",
+      "uuid": "b83faafc-cbb7-4655-99d4-2c4c39a49d1b"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "apinbxs.zalolink.com",
+      "server_port": 44988,
+      "tag": "vless-1659476957",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "reality": {
+          "enabled": true,
+          "public_key": "f6Tj8-uvWsLv3V-lGLuPciArp5oKqUImBg-U7-WJ-0A",
+          "short_id": "bb82c8"
+        },
+        "server_name": "www.tesla.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "type": "vless",
+      "uuid": "57beeeb0-03fc-4fc9-94da-7604488a7134"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1659751079",
+        "vless-1659476957"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1659751079",
+        "vless-1659476957"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
