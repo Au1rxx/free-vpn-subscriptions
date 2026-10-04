@@ -25,12 +25,41 @@ proxies:
       type: vless
       udp: true
       uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
+    - client-fingerprint: chrome
+      name: vless-1661220778
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: fsdIMU2apN1C_NbkL7mHTsBKEfhwbDhgCRcB8ICf03E
+        short-id: d725f0dd8cce210f
+      server: 34.40.217.165
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 325bc1be-0cb7-4cf7-bd35-a79ded91bbbd
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1662112598
+      network: tcp
+      port: 39518
+      reality-opts:
+        public-key: DQDN2w0aoQnx-T3qF1fQnA2-stCUzVbBwmayI1smO0g
+        short-id: 4600771a0d0d50
+      server: 103.30.76.65
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1300687308
         - vless-1345603902
+        - vless-1661220778
+        - vless-1662112598
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -38,6 +67,8 @@ proxy-groups:
         - auto
         - vless-1300687308
         - vless-1345603902
+        - vless-1661220778
+        - vless-1662112598
       type: select
 rules:
     - MATCH,select

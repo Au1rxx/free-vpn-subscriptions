@@ -1,4 +1,18 @@
 proxies:
+    - cipher: 2022-blake3-aes-256-gcm
+      name: shadowsocks-1666389494
+      password: ADzlhA3ndouUCY3JbLddR/jwgYY7IDGc1T+5DuCix9Y=:KyFe2akGo5hcrswbMkD2+BM52si+D7lzyccZFTd4xaU=
+      port: 25178
+      server: 206.1.100.83
+      type: ss
+      udp: true
+    - cipher: 2022-blake3-aes-256-gcm
+      name: shadowsocks-1667103587
+      password: gc24/luU7zbPhMS6GH6mUzT1qZBjCXhKbAvgUjM4Yno=:NOerjaqxVAGVMkJfw/LwtWwz27auvlL0MNKBrjlTeV0=
+      port: 14074
+      server: 206.1.103.221
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1385865673
@@ -13,17 +27,81 @@ proxies:
       type: vless
       udp: true
       uuid: 25e16692-d097-4e69-9e2d-8415609c1968
+    - client-fingerprint: chrome
+      name: vless-1343024305
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
+        short-id: 9e419c0759b54d6f
+      server: 151.241.226.201
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
+    - client-fingerprint: firefox
+      name: vless-1285803654
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
+        short-id: 9e419c0759b54d6f
+      server: 151.241.226.201
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
+    - client-fingerprint: chrome
+      name: vless-1361919238
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
+        short-id: 9e419c0759b54d6f
+      server: 151.241.226.201
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
+    - client-fingerprint: random
+      name: vless-1336860806
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
+        short-id: 9e419c0759b54d6f
+      server: 151.241.226.201
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1666389494
+        - shadowsocks-1667103587
         - vless-1385865673
+        - vless-1343024305
+        - vless-1285803654
+        - vless-1361919238
+        - vless-1336860806
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1666389494
+        - shadowsocks-1667103587
         - vless-1385865673
+        - vless-1343024305
+        - vless-1285803654
+        - vless-1361919238
+        - vless-1336860806
       type: select
 rules:
     - MATCH,select
