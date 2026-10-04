@@ -1,6 +1,20 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1652946716
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: wHTq_owme8N6237B37GhneBcNJQtzRdIFouRkSscgnQ
+        short-id: 40fac5d64bc6a540
+      server: 185.28.47.28
+      servername: latinki.pumpkinpie.study
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8f6e49e6-7f03-4f10-9da9-1716158d80ed
     - flow: xtls-rprx-vision
-      name: vless-1629768908
+      name: vless-1626664451
       network: tcp
       port: 52006
       server: 87.192.47.10
@@ -14,13 +28,15 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1629768908
+        - vless-1652946716
+        - vless-1626664451
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1629768908
+        - vless-1652946716
+        - vless-1626664451
       type: select
 rules:
     - MATCH,select

@@ -1,9 +1,9 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-209
-      password: 1hhrqrokj3ag
-      port: 8388
-      server: 209.46.102.22
+    - cipher: aes-256-gcm
+      name: shadowsocks-276
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 213.202.208.199
       type: ss
       udp: true
     - name: trojan-1659751057
@@ -52,6 +52,15 @@ proxies:
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - alterId: 0
+      cipher: auto
+      name: vmess-1629101312
+      network: tcp
+      port: 23325
+      server: 31.76.11.83
+      type: vmess
+      udp: true
+      uuid: 3dff544a-379e-41f9-95d9-4b95a8e4026e
+    - alterId: 0
       cipher: none
       name: vmess-933894324
       network: tcp
@@ -72,6 +81,13 @@ proxies:
       type: vmess
       udp: true
       uuid: 3dff544a-379e-41f9-95d9-4b95a8e4026e
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-209
+      password: 1hhrqrokj3ag
+      port: 8388
+      server: 209.46.102.22
+      type: ss
+      udp: true
     - name: trojan-1642619626
       password: MDYVt6HgSqB7d537GPQXjk6Rk0E4RxWo
       port: 443
@@ -80,6 +96,13 @@ proxies:
       sni: d3-de2.cloud-cdn.xyz
       type: trojan
       udp: true
+    - name: vless-1617960160
+      network: ws
+      port: 80
+      server: 139.162.149.105
+      type: vless
+      udp: true
+      uuid: 5aae7d2d-c152-42cc-afb6-fe805fb94531
     - alterId: 0
       cipher: auto
       name: vmess-1598861699
@@ -145,21 +168,6 @@ proxies:
       skip-cert-verify: true
       sni: hop-germany-september.dynuddns.com
       type: hysteria2
-    - cipher: rc4-md5
-      name: shadowsocks-27307
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 169.150.210.233
-      type: ss
-      udp: true
-    - name: trojan-1656462371
-      password: MDYVt6HgSqB7d537GPQXjk6Rk0E4RxWo
-      port: 443
-      server: 31.77.168.35
-      skip-cert-verify: true
-      sni: d3-de2.cloud-cdn.xyz
-      type: trojan
-      udp: true
     - name: trojan-1649577319
       password: UX82473651
       port: 443
@@ -183,6 +191,20 @@ proxies:
       type: vless
       udp: true
       uuid: 5aae7d2d-c152-42cc-afb6-fe805fb94531
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1439899360
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: fNfokzklCF4l_c8k8PciOCjm5ecNoF_sNLjEtaO-xzI
+        short-id: db04ce8bdb8900f1
+      server: 31.77.161.15
+      servername: nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: adc11f30-e4cb-4985-bf5e-f9ded69c019f
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1591237174
@@ -225,22 +247,13 @@ proxies:
       type: vless
       udp: true
       uuid: 55ccbeb5-0bf4-4e4d-afcb-23c038e73e00
-    - alterId: 0
-      cipher: auto
-      name: vmess-1629101312
-      network: tcp
-      port: 23325
-      server: 31.76.11.83
-      type: vmess
+    - cipher: aes-256-gcm
+      name: shadowsocks-11078
+      password: XKFKl2rULjIp74
+      port: 8008
+      server: 185.226.172.8
+      type: ss
       udp: true
-      uuid: 3dff544a-379e-41f9-95d9-4b95a8e4026e
-    - name: hysteria2-650314301
-      password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
-      port: 443
-      server: de.1.23.h2corp.org
-      skip-cert-verify: true
-      sni: germany3.h2corp.local
-      type: hysteria2
     - name: trojan-1642619629
       password: MDYVt6HgSqB7d537GPQXjk6Rk0E4RxWo
       port: 443
@@ -249,12 +262,12 @@ proxies:
       sni: d3-de2.cloud-cdn.xyz
       type: trojan
       udp: true
-    - name: trojan-1652072052
-      password: UX82473651
+    - name: trojan-1643698408
+      password: mitivpn
       port: 443
-      server: pleased-albacore.rooster465.autos
+      server: 199.232.78.160
       skip-cert-verify: false
-      sni: pleased-albacore.rooster465.autos
+      sni: ssl.fastly.com
       type: trojan
       udp: true
     - name: trojan-1655225145
@@ -265,11 +278,11 @@ proxies:
       sni: meet-goshawk.rooster465.autos
       type: trojan
       udp: true
-    - name: trojan-1648344548
+    - name: trojan-1643520547
       password: UX82473651
       port: 443
       server: pleased-albacore.rooster465.autos
-      skip-cert-verify: false
+      skip-cert-verify: true
       sni: pleased-albacore.rooster465.autos
       type: trojan
       udp: true
@@ -277,15 +290,18 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-209
+        - shadowsocks-276
         - trojan-1659751057
         - vmess-1577691187
         - vmess-665279543
         - shadowsocks-696780676
         - vmess-1645308971
+        - vmess-1629101312
         - vmess-933894324
         - vmess-1631072401
+        - shadowsocks-209
         - trojan-1642619626
+        - vless-1617960160
         - vmess-1598861699
         - vmess-1570510804
         - vmess-674048796
@@ -294,34 +310,35 @@ proxy-groups:
         - hysteria2-648949654
         - hysteria2-1612536875
         - hysteria2-1599779134
-        - shadowsocks-27307
-        - trojan-1656462371
         - trojan-1649577319
         - trojan-1651721645
         - vless-1627019348
+        - vless-1439899360
         - vless-1591237174
         - vless-1484508217
         - vless-1627586002
-        - vmess-1629101312
-        - hysteria2-650314301
+        - shadowsocks-11078
         - trojan-1642619629
-        - trojan-1652072052
+        - trojan-1643698408
         - trojan-1655225145
-        - trojan-1648344548
+        - trojan-1643520547
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-209
+        - shadowsocks-276
         - trojan-1659751057
         - vmess-1577691187
         - vmess-665279543
         - shadowsocks-696780676
         - vmess-1645308971
+        - vmess-1629101312
         - vmess-933894324
         - vmess-1631072401
+        - shadowsocks-209
         - trojan-1642619626
+        - vless-1617960160
         - vmess-1598861699
         - vmess-1570510804
         - vmess-674048796
@@ -330,20 +347,18 @@ proxy-groups:
         - hysteria2-648949654
         - hysteria2-1612536875
         - hysteria2-1599779134
-        - shadowsocks-27307
-        - trojan-1656462371
         - trojan-1649577319
         - trojan-1651721645
         - vless-1627019348
+        - vless-1439899360
         - vless-1591237174
         - vless-1484508217
         - vless-1627586002
-        - vmess-1629101312
-        - hysteria2-650314301
+        - shadowsocks-11078
         - trojan-1642619629
-        - trojan-1652072052
+        - trojan-1643698408
         - trojan-1655225145
-        - trojan-1648344548
+        - trojan-1643520547
       type: select
 rules:
     - MATCH,select

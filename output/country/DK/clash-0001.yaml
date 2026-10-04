@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1662112613
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: z-TKWOWgZLfzQ-wNdwXQqVwaUgCmbchM2Xtrk1NGynU
+        short-id: ""
+      server: 81.17.159.115
+      servername: dk88.sonicsonic.icu
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3aef55f1-4824-432e-82ce-6f8a9e8b2700
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1662112613
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1662112613
+      type: select
+rules:
+    - MATCH,select

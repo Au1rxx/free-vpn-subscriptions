@@ -6,6 +6,20 @@ proxies:
       server: 185.103.110.68
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1652949239
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: HKkU-5UanGjWdmX8E-EGulXMk1BnidkFsVveyyOlTg8
+        short-id: 90f9d05bf95cb335
+      server: 2.27.26.128
+      servername: aq-1.global-cdn.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8710a337-f504-4b75-8989-224cfd803b2d
     - client-fingerprint: chrome
       name: vless-1655821977
       network: grpc
@@ -19,19 +33,37 @@ proxies:
       type: vless
       udp: true
       uuid: 2d24e797-ec6c-0808-dd31-9cd22b5dfdc7
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-270691474
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
+        short-id: a696de84963656de
+      server: 95.85.224.51
+      servername: max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1653901314
+        - vless-1652949239
         - vless-1655821977
+        - vless-270691474
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1653901314
+        - vless-1652949239
         - vless-1655821977
+        - vless-270691474
       type: select
 rules:
     - MATCH,select
