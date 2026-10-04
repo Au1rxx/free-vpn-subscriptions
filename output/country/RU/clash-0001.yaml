@@ -130,13 +130,16 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - name: hysteria2-1558648943
-      password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
-      port: 2060
-      server: els.mangshe.xyz
-      skip-cert-verify: true
-      sni: els.mangshe.xyz
-      type: hysteria2
+    - name: vless-1599289378
+      network: ws
+      port: 8443
+      server: 194.58.109.206
+      servername: cf3.schzyc.cc.cd
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 51a0af77-a60c-4d9b-81a4-f50e1b38d90b
     - client-fingerprint: random
       name: vless-1608160265
       network: tcp
@@ -429,27 +432,6 @@ proxies:
       server: 194.87.196.13
       type: ss
       udp: true
-    - client-fingerprint: ios
-      flow: xtls-rprx-vision
-      name: vless-1648311773
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 9eiEOSjRUJfWtjR5_h6qYOIIC7oihvCNtyFFvtu7MEM
-        short-id: ed07a0272e0123e0
-      server: 201.51.11.117
-      servername: www.samsung.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5d0e5029-061f-4d75-ac97-718dbf827957
-    - name: hysteria2-1648742921
-      password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
-      port: 2060
-      server: els.mangshe.xyz
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1649212348
@@ -465,13 +447,6 @@ proxies:
       udp: true
       uuid: 5d0e5029-061f-4d75-ac97-718dbf827957
     - cipher: aes-256-gcm
-      name: shadowsocks-1649576058
-      password: 81a20429165df87e
-      port: 20998
-      server: 194.87.68.140
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
       name: shadowsocks-1649576060
       password: 6b39ae3234dfd68b
       port: 20998
@@ -485,6 +460,13 @@ proxies:
       server: 31.31.192.127
       type: ss
       udp: true
+    - name: hysteria2-1653988837
+      password: 19f72087-4591-4d72-930b-2697078ec2be
+      port: 18333
+      server: ru1.xiaoliyu.cyou
+      skip-cert-verify: true
+      sni: "ru1.xiaoliyu.cyou#\U0001FA9996@oneclickvpnkeysvless://ce18d0eb-5c71-41f9-96e5-1632e22456e4@195.123.240.65:443?encryption=none"
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
@@ -505,7 +487,7 @@ proxy-groups:
         - hysteria2-1552291976
         - hysteria2-1552472310
         - hysteria2-1553155170
-        - hysteria2-1558648943
+        - vless-1599289378
         - vless-1608160265
         - vless-1609133496
         - shadowsocks-1619515667
@@ -529,12 +511,10 @@ proxy-groups:
         - shadowsocks-1647497757
         - shadowsocks-1647497759
         - shadowsocks-1647497760
-        - vless-1648311773
-        - hysteria2-1648742921
         - vless-1649212348
-        - shadowsocks-1649576058
         - shadowsocks-1649576060
         - shadowsocks-1652957491
+        - hysteria2-1653988837
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -556,7 +536,7 @@ proxy-groups:
         - hysteria2-1552291976
         - hysteria2-1552472310
         - hysteria2-1553155170
-        - hysteria2-1558648943
+        - vless-1599289378
         - vless-1608160265
         - vless-1609133496
         - shadowsocks-1619515667
@@ -580,12 +560,10 @@ proxy-groups:
         - shadowsocks-1647497757
         - shadowsocks-1647497759
         - shadowsocks-1647497760
-        - vless-1648311773
-        - hysteria2-1648742921
         - vless-1649212348
-        - shadowsocks-1649576058
         - shadowsocks-1649576060
         - shadowsocks-1652957491
+        - hysteria2-1653988837
       type: select
 rules:
     - MATCH,select
