@@ -1,0 +1,22 @@
+proxies:
+    - name: vless-1650034416
+      network: tcp
+      port: 8080
+      server: tutaim.azad0namah.ir
+      type: vless
+      udp: true
+      uuid: fdc1206a-9d2e-42b7-b615-9ccea8cf70ee
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1650034416
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1650034416
+      type: select
+rules:
+    - MATCH,select

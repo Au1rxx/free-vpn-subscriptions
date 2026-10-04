@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1016646956
+      network: ws
+      port: 80
+      server: 152.228.162.19
+      type: vless
+      udp: true
+      uuid: 5ce84688-f535-46ad-a512-37b17becf6ea
     - flow: xtls-rprx-vision
       name: vless-1154636469
       network: tcp
@@ -409,10 +416,18 @@ proxies:
       server: apadana.gamingnet.ir
       type: ss
       udp: true
+    - name: vless-1654556335
+      network: ws
+      port: 33483
+      server: apadana.gamingnet.ir
+      type: vless
+      udp: true
+      uuid: 149fe131-6a9d-4e8e-862b-17ba84f907e1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1016646956
         - vless-1154636469
         - vless-1154636549
         - vless-1154637470
@@ -451,11 +466,13 @@ proxy-groups:
         - vless-1633948635
         - vless-1633948681
         - shadowsocks-1649192668
+        - vless-1654556335
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1016646956
         - vless-1154636469
         - vless-1154636549
         - vless-1154637470
@@ -494,6 +511,7 @@ proxy-groups:
         - vless-1633948635
         - vless-1633948681
         - shadowsocks-1649192668
+        - vless-1654556335
       type: select
 rules:
     - MATCH,select

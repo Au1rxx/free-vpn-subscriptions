@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-34790904
+      network: ws
+      port: 443
+      server: 172.67.208.181
+      servername: biyapain.biyapainbache.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5a5fba4d-6ae8-4975-936d-bb643fb15957
     - client-fingerprint: qq
       name: vless-696124772
       network: tcp
@@ -623,10 +633,18 @@ proxies:
       type: vless
       udp: true
       uuid: 61bd5829-a243-4548-97f0-a210c2069fec
+    - name: vless-1654528259
+      network: ws
+      port: 80
+      server: psf-2.weedly.top
+      type: vless
+      udp: true
+      uuid: 33016f3d-8509-493c-bd8b-d26447d48135
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-34790904
         - vless-696124772
         - vless-696780839
         - vless-713157148
@@ -679,11 +697,13 @@ proxy-groups:
         - vless-1649212347
         - vless-1650017096
         - vless-1651039503
+        - vless-1654528259
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-34790904
         - vless-696124772
         - vless-696780839
         - vless-713157148
@@ -736,6 +756,7 @@ proxy-groups:
         - vless-1649212347
         - vless-1650017096
         - vless-1651039503
+        - vless-1654528259
       type: select
 rules:
     - MATCH,select

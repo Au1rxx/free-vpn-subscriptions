@@ -13,6 +13,13 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
+    - name: vless-81918
+      network: ws
+      port: 8880
+      server: 89.116.180.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - alterId: 0
       cipher: auto
       name: vmess-99676
@@ -786,19 +793,13 @@ proxies:
       type: vless
       udp: true
       uuid: e0b9fb0f-1bbd-478b-9580-c2294778338b
-    - name: hysteria2-1626618497
-      password: 5d0a6445-a30d-4522-bb1f-94f1d3ad63be
-      port: 2060
-      server: xby.mangshe.xyz
-      skip-cert-verify: true
-      sni: 127.0.0.1
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11052
         - shadowsocks-16132
+        - vless-81918
         - vmess-99676
         - vmess-2386872
         - vmess-5259765
@@ -867,7 +868,6 @@ proxy-groups:
         - vless-1599283385
         - vless-1599785222
         - vless-1611748716
-        - hysteria2-1626618497
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -875,6 +875,7 @@ proxy-groups:
         - auto
         - shadowsocks-11052
         - shadowsocks-16132
+        - vless-81918
         - vmess-99676
         - vmess-2386872
         - vmess-5259765
@@ -943,7 +944,6 @@ proxy-groups:
         - vless-1599283385
         - vless-1599785222
         - vless-1611748716
-        - hysteria2-1626618497
       type: select
 rules:
     - MATCH,select

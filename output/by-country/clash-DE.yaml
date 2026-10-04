@@ -7,17 +7,17 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-gcm
+      name: shadowsocks-717969012
+      password: kKEd0rBrd56Furjz
+      port: 80
+      server: 2.58.81.221
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
       name: shadowsocks-696780676
       password: kKEd0rBrd56Furjz
       port: 443
       server: 2.58.81.221
-      type: ss
-      udp: true
-    - cipher: rc4-md5
-      name: shadowsocks-27307
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 169.150.210.233
       type: ss
       udp: true
     - alterId: 0
@@ -59,24 +59,20 @@ proxies:
       server: 31.76.11.83
       type: ss
       udp: true
-    - alterId: 0
-      cipher: none
-      name: vmess-933894324
-      network: tcp
-      port: 1234
-      server: 141.95.65.9
-      servername: supervpn.super.com
-      skip-cert-verify: true
-      tls: true
-      type: vmess
-      udp: true
-      uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-229
       password: PWpjPo3tqhPN4yRZ
       port: 20001
       server: 8.209.74.72
       type: ss
+      udp: true
+    - name: trojan-1644712790
+      password: UX82473651
+      port: 443
+      server: pleased-albacore.rooster465.autos
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
       udp: true
     - name: trojan-1643587520
       password: UX82473651
@@ -104,18 +100,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
-    - alterId: 0
-      cipher: auto
-      name: vmess-665279543
-      network: tcp
-      port: 1234
-      server: 162.19.204.71
-      servername: supervpn.super.com
-      skip-cert-verify: true
-      tls: true
-      type: vmess
-      udp: true
-      uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
     - alterId: 0
       cipher: auto
       name: vmess-1598861699
@@ -155,11 +139,27 @@ proxies:
       sni: pleased-albacore.rooster465.autos
       type: trojan
       udp: true
+    - name: trojan-1612997132
+      password: UX82473651
+      port: 443
+      server: actual-squid.rooster465.autos
+      skip-cert-verify: false
+      sni: actual-squid.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-1583440648
       password: UX82473651
       port: 443
       server: actual-squid.rooster465.autos
       skip-cert-verify: true
+      sni: actual-squid.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-1612997134
+      password: UX82473651
+      port: 443
+      server: 3.120.109.26
+      skip-cert-verify: false
       sni: actual-squid.rooster465.autos
       type: trojan
       udp: true
@@ -204,6 +204,15 @@ proxies:
       uuid: 3dff544a-379e-41f9-95d9-4b95a8e4026e
     - alterId: 0
       cipher: auto
+      name: vmess-1641329561
+      network: tcp
+      port: 1
+      server: 91.107.191.165
+      type: vmess
+      udp: true
+      uuid: 9f15b600-ce52-447f-b388-ef70de75308e
+    - alterId: 0
+      cipher: auto
       name: vmess-685047062
       network: tcp
       port: 1234
@@ -214,65 +223,78 @@ proxies:
       type: vmess
       udp: true
       uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
+    - name: hysteria2-862364762
+      password: 6a3fe9d0-0d68-4f29-ae99-5771d4217a45
+      port: 4433
+      server: de1.xiaoliyu.cyou
+      skip-cert-verify: true
+      sni: 127.0.0.1
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-209
+        - shadowsocks-717969012
         - shadowsocks-696780676
-        - shadowsocks-27307
         - vmess-1631072401
         - shadowsocks-11078
         - vmess-1644389532
         - hysteria2-1588408405
         - shadowsocks-1646771377
-        - vmess-933894324
         - shadowsocks-229
+        - trojan-1644712790
         - trojan-1643587520
         - vmess-1577691187
         - vmess-1645308971
-        - vmess-665279543
         - vmess-1598861699
         - hysteria2-1537155765
         - hysteria2-648949654
         - trojan-1642619629
         - trojan-1648344548
+        - trojan-1612997132
         - trojan-1583440648
+        - trojan-1612997134
         - vless-1627019348
         - vless-1644380214
         - vmess-1629101312
         - vmess-1635583799
+        - vmess-1641329561
         - vmess-685047062
+        - hysteria2-862364762
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-209
+        - shadowsocks-717969012
         - shadowsocks-696780676
-        - shadowsocks-27307
         - vmess-1631072401
         - shadowsocks-11078
         - vmess-1644389532
         - hysteria2-1588408405
         - shadowsocks-1646771377
-        - vmess-933894324
         - shadowsocks-229
+        - trojan-1644712790
         - trojan-1643587520
         - vmess-1577691187
         - vmess-1645308971
-        - vmess-665279543
         - vmess-1598861699
         - hysteria2-1537155765
         - hysteria2-648949654
         - trojan-1642619629
         - trojan-1648344548
+        - trojan-1612997132
         - trojan-1583440648
+        - trojan-1612997134
         - vless-1627019348
         - vless-1644380214
         - vmess-1629101312
         - vmess-1635583799
+        - vmess-1641329561
         - vmess-685047062
+        - hysteria2-862364762
       type: select
 rules:
     - MATCH,select
