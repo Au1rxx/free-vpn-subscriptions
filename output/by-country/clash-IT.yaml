@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-gcm
+      name: shadowsocks-1251465982
+      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+      port: 19999
+      server: 185.164.175.81
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
       name: shadowsocks-1649576059
       password: 78235e7dc55e9ad1
       port: 20998
@@ -13,28 +20,21 @@ proxies:
       server: 91.201.65.122
       type: ss
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-1251465982
-      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-      port: 19999
-      server: 185.164.175.81
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1251465982
         - shadowsocks-1649576059
         - shadowsocks-819466008
-        - shadowsocks-1251465982
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1251465982
         - shadowsocks-1649576059
         - shadowsocks-819466008
-        - shadowsocks-1251465982
       type: select
 rules:
     - MATCH,select
