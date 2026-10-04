@@ -6,35 +6,32 @@ proxies:
       server: 91.201.65.122
       type: ss
       udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-723348725
-      password: 9XwYyZsK8SNzQDtY
-      port: 9059
-      server: 91.201.65.122
-      type: ss
+    - client-fingerprint: chrome
+      name: vless-1047427930
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
       udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-717969043
-      password: b8KkNDjEd5QqFyRm
-      port: 9002
-      server: 91.201.65.122
-      type: ss
-      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-743178418
-        - shadowsocks-723348725
-        - shadowsocks-717969043
+        - vless-1047427930
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-743178418
-        - shadowsocks-723348725
-        - shadowsocks-717969043
+        - vless-1047427930
       type: select
 rules:
     - MATCH,select

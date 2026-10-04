@@ -1,4 +1,16 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-685047062
+      network: tcp
+      port: 1234
+      server: 141.95.65.9
+      servername: supervpn.super.com
+      skip-cert-verify: true
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
     - cipher: aes-256-gcm
       name: shadowsocks-276
       password: RexnBgU7EV5ADxG
@@ -25,11 +37,11 @@ proxies:
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - alterId: 0
-      cipher: auto
-      name: vmess-665279543
+      cipher: aes-128-gcm
+      name: vmess-657042642
       network: tcp
       port: 1234
-      server: 162.19.204.71
+      server: 141.95.65.9
       servername: supervpn.super.com
       skip-cert-verify: true
       tls: true
@@ -54,18 +66,6 @@ proxies:
       udp: true
       uuid: 3dff544a-379e-41f9-95d9-4b95a8e4026e
     - alterId: 0
-      cipher: none
-      name: vmess-933894324
-      network: tcp
-      port: 1234
-      server: 141.95.65.9
-      servername: supervpn.super.com
-      skip-cert-verify: true
-      tls: true
-      type: vmess
-      udp: true
-      uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-    - alterId: 0
       cipher: auto
       name: vmess-1631072401
       network: raw
@@ -88,6 +88,15 @@ proxies:
       type: vless
       udp: true
       uuid: 5aae7d2d-c152-42cc-afb6-fe805fb94531
+    - alterId: 0
+      cipher: auto
+      name: vmess-1636406245
+      network: tcp
+      port: 23325
+      server: 31.76.11.83
+      type: vmess
+      udp: true
+      uuid: 3dff544a-379e-41f9-95d9-4b95a8e4026e
     - alterId: 0
       cipher: auto
       name: vmess-1635994857
@@ -139,13 +148,6 @@ proxies:
       sni: pleased-albacore.rooster465.autos
       type: trojan
       udp: true
-    - name: vless-1627019348
-      network: ws
-      port: 80
-      server: 139.162.149.105
-      type: vless
-      udp: true
-      uuid: 5aae7d2d-c152-42cc-afb6-fe805fb94531
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1439899360
@@ -230,6 +232,13 @@ proxies:
       type: vless
       udp: true
       uuid: 55ccbeb5-0bf4-4e4d-afcb-23c038e73e00
+    - name: vless-1627019348
+      network: ws
+      port: 80
+      server: 139.162.149.105
+      type: vless
+      udp: true
+      uuid: 5aae7d2d-c152-42cc-afb6-fe805fb94531
     - alterId: 0
       cipher: auto
       name: vmess-1570510804
@@ -257,76 +266,69 @@ proxies:
       type: vmess
       udp: true
       uuid: 04621bae-ab36-11ec-b909-0242ac120002
-    - cipher: aes-256-gcm
-      name: shadowsocks-11078
-      password: XKFKl2rULjIp74
-      port: 8008
-      server: 185.226.172.8
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-685047062
         - shadowsocks-276
         - vmess-1645308971
         - vmess-1577691187
-        - vmess-665279543
+        - vmess-657042642
         - trojan-1642619626
         - vmess-1629101312
-        - vmess-933894324
         - vmess-1631072401
         - shadowsocks-209
         - vless-1617960160
+        - vmess-1636406245
         - vmess-1635994857
         - vmess-674048796
         - hysteria2-648949654
         - hysteria2-1599779134
         - trojan-1642619629
         - trojan-1651721645
-        - vless-1627019348
         - vless-1439899360
         - vless-1621932582
         - vless-1591237174
         - vless-1484508217
         - vless-1644839344
         - vless-1627586002
+        - vless-1627019348
         - vmess-1570510804
         - vmess-1658256216
         - vmess-1605765913
-        - shadowsocks-11078
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-685047062
         - shadowsocks-276
         - vmess-1645308971
         - vmess-1577691187
-        - vmess-665279543
+        - vmess-657042642
         - trojan-1642619626
         - vmess-1629101312
-        - vmess-933894324
         - vmess-1631072401
         - shadowsocks-209
         - vless-1617960160
+        - vmess-1636406245
         - vmess-1635994857
         - vmess-674048796
         - hysteria2-648949654
         - hysteria2-1599779134
         - trojan-1642619629
         - trojan-1651721645
-        - vless-1627019348
         - vless-1439899360
         - vless-1621932582
         - vless-1591237174
         - vless-1484508217
         - vless-1644839344
         - vless-1627586002
+        - vless-1627019348
         - vmess-1570510804
         - vmess-1658256216
         - vmess-1605765913
-        - shadowsocks-11078
       type: select
 rules:
     - MATCH,select
