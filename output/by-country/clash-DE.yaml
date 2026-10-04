@@ -35,13 +35,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-    - cipher: aes-256-gcm
-      name: shadowsocks-696780676
-      password: kKEd0rBrd56Furjz
-      port: 443
-      server: 2.58.81.221
-      type: ss
-      udp: true
     - alterId: 0
       cipher: auto
       name: vmess-1645308971
@@ -88,6 +81,14 @@ proxies:
       server: 209.46.102.22
       type: ss
       udp: true
+    - name: trojan-1642619629
+      password: MDYVt6HgSqB7d537GPQXjk6Rk0E4RxWo
+      port: 443
+      server: 31.77.168.35
+      skip-cert-verify: false
+      sni: d3-de2.cloud-cdn.xyz
+      type: trojan
+      udp: true
     - name: trojan-1642619626
       password: MDYVt6HgSqB7d537GPQXjk6Rk0E4RxWo
       port: 443
@@ -106,6 +107,15 @@ proxies:
     - alterId: 0
       cipher: auto
       name: vmess-1598861699
+      network: tcp
+      port: 22324
+      server: 185.177.229.128
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
+    - alterId: 0
+      cipher: auto
+      name: vmess-1635994857
       network: tcp
       port: 22324
       server: 185.177.229.128
@@ -133,33 +143,12 @@ proxies:
       type: vmess
       udp: true
       uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-    - name: hysteria2-1537155765
-      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
-      port: 8443
-      server: 162.249.127.133
-      skip-cert-verify: true
-      sni: hop-germany-september.dynuddns.com
-      type: hysteria2
-    - name: hysteria2-1564791358
-      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
-      port: 8443
-      server: 162.249.127.136
-      skip-cert-verify: true
-      sni: hop-germany-september.dynuddns.com
-      type: hysteria2
     - name: hysteria2-648949654
       password: mkL3AfdSZIpTWRB9TcWPn9vywPGN89MRHg3ToRDj
       port: 443
       server: 64.188.98.171
       skip-cert-verify: true
       sni: germany3.h2corp.local
-      type: hysteria2
-    - name: hysteria2-1612536875
-      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
-      port: 8443
-      server: 162.249.127.146
-      skip-cert-verify: false
-      sni: hop-germany-september.dynuddns.com
       type: hysteria2
     - name: hysteria2-1599779134
       password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
@@ -247,6 +236,15 @@ proxies:
       type: vless
       udp: true
       uuid: 55ccbeb5-0bf4-4e4d-afcb-23c038e73e00
+    - alterId: 0
+      cipher: none
+      name: vmess-1605765913
+      network: tcp
+      port: 22324
+      server: 185.177.229.128
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - cipher: aes-256-gcm
       name: shadowsocks-11078
       password: XKFKl2rULjIp74
@@ -254,12 +252,12 @@ proxies:
       server: 185.226.172.8
       type: ss
       udp: true
-    - name: trojan-1642619629
-      password: MDYVt6HgSqB7d537GPQXjk6Rk0E4RxWo
+    - name: trojan-1662258378
+      password: mitivpn
       port: 443
-      server: 31.77.168.35
+      server: 167.82.76.7
       skip-cert-verify: false
-      sni: d3-de2.cloud-cdn.xyz
+      sni: ssl.fastly.com
       type: trojan
       udp: true
     - name: trojan-1643698408
@@ -286,6 +284,14 @@ proxies:
       sni: pleased-albacore.rooster465.autos
       type: trojan
       udp: true
+    - name: trojan-1653446782
+      password: UX82473651
+      port: 443
+      server: pleased-albacore.rooster465.autos
+      skip-cert-verify: false
+      sni: pleased-albacore.rooster465.autos
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -294,21 +300,19 @@ proxy-groups:
         - trojan-1659751057
         - vmess-1577691187
         - vmess-665279543
-        - shadowsocks-696780676
         - vmess-1645308971
         - vmess-1629101312
         - vmess-933894324
         - vmess-1631072401
         - shadowsocks-209
+        - trojan-1642619629
         - trojan-1642619626
         - vless-1617960160
         - vmess-1598861699
+        - vmess-1635994857
         - vmess-1570510804
         - vmess-674048796
-        - hysteria2-1537155765
-        - hysteria2-1564791358
         - hysteria2-648949654
-        - hysteria2-1612536875
         - hysteria2-1599779134
         - trojan-1649577319
         - trojan-1651721645
@@ -317,11 +321,13 @@ proxy-groups:
         - vless-1591237174
         - vless-1484508217
         - vless-1627586002
+        - vmess-1605765913
         - shadowsocks-11078
-        - trojan-1642619629
+        - trojan-1662258378
         - trojan-1643698408
         - trojan-1655225145
         - trojan-1643520547
+        - trojan-1653446782
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -331,21 +337,19 @@ proxy-groups:
         - trojan-1659751057
         - vmess-1577691187
         - vmess-665279543
-        - shadowsocks-696780676
         - vmess-1645308971
         - vmess-1629101312
         - vmess-933894324
         - vmess-1631072401
         - shadowsocks-209
+        - trojan-1642619629
         - trojan-1642619626
         - vless-1617960160
         - vmess-1598861699
+        - vmess-1635994857
         - vmess-1570510804
         - vmess-674048796
-        - hysteria2-1537155765
-        - hysteria2-1564791358
         - hysteria2-648949654
-        - hysteria2-1612536875
         - hysteria2-1599779134
         - trojan-1649577319
         - trojan-1651721645
@@ -354,11 +358,13 @@ proxy-groups:
         - vless-1591237174
         - vless-1484508217
         - vless-1627586002
+        - vmess-1605765913
         - shadowsocks-11078
-        - trojan-1642619629
+        - trojan-1662258378
         - trojan-1643698408
         - trojan-1655225145
         - trojan-1643520547
+        - trojan-1653446782
       type: select
 rules:
     - MATCH,select

@@ -21,24 +21,12 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - flow: xtls-rprx-vision
-      name: vless-1647985072
-      network: tcp
-      port: 443
-      server: mori-md.failspace.top
-      servername: mori-md.failspace.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1461190768
         - vless-1464104835
-        - vless-1647985072
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -46,7 +34,6 @@ proxy-groups:
         - auto
         - vless-1461190768
         - vless-1464104835
-        - vless-1647985072
       type: select
 rules:
     - MATCH,select
