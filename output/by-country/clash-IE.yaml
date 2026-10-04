@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-1643587527
+      password: UX82473651
+      port: 443
+      server: loved-shark.rooster465.autos
+      skip-cert-verify: false
+      sni: loved-shark.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-1649577321
       password: UX82473651
       port: 443
@@ -7,6 +15,17 @@ proxies:
       sni: loved-shark.rooster465.autos
       type: trojan
       udp: true
+    - flow: xtls-rprx-vision
+      name: vless-1372580572
+      network: tcp
+      port: 443
+      server: ir-new.failspace.top
+      servername: ir-new.failspace.top
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
     - name: trojan-1652072056
       password: UX82473651
       port: 443
@@ -27,7 +46,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-1643587527
         - trojan-1649577321
+        - vless-1372580572
         - trojan-1652072056
         - trojan-1648344537
       type: url-test
@@ -35,7 +56,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-1643587527
         - trojan-1649577321
+        - vless-1372580572
         - trojan-1652072056
         - trojan-1648344537
       type: select
