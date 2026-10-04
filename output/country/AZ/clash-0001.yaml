@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: firefox
+      name: vless-1657556280
+      network: tcp
+      port: 45642
+      reality-opts:
+        public-key: rlWw1txOKfyTIegqGc5YUQo1CxqZEXBPeQZppA6H014
+        short-id: 8f798d413a5dbf01
+      server: az.xelnivo.ir
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 688fcedc-c730-47fb-9fc0-b5962a38788e
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1657556280
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1657556280
+      type: select
+rules:
+    - MATCH,select

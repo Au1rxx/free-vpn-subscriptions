@@ -1,0 +1,63 @@
+proxies:
+    - name: trojan-1657559632
+      password: UX82473651
+      port: 443
+      server: inviting-ferret.rooster465.autos
+      skip-cert-verify: false
+      sni: inviting-ferret.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-1657559633
+      password: UX82473651
+      port: 443
+      server: ultimate-jaguar.rooster465.autos
+      skip-cert-verify: false
+      sni: ultimate-jaguar.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-1657559634
+      password: UX82473651
+      port: 443
+      server: meet-goshawk.rooster465.autos
+      skip-cert-verify: false
+      sni: meet-goshawk.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-1657559635
+      password: UX82473651
+      port: 443
+      server: accurate-frog.rooster465.autos
+      skip-cert-verify: false
+      sni: accurate-frog.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-1657560630
+      password: UX82473651
+      port: 443
+      server: delicate-buck.rooster465.autos
+      skip-cert-verify: false
+      sni: delicate-buck.rooster465.autos
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - trojan-1657559632
+        - trojan-1657559633
+        - trojan-1657559634
+        - trojan-1657559635
+        - trojan-1657560630
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - trojan-1657559632
+        - trojan-1657559633
+        - trojan-1657559634
+        - trojan-1657559635
+        - trojan-1657560630
+      type: select
+rules:
+    - MATCH,select
