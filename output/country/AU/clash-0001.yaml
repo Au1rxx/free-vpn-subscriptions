@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-182712887
+      network: ws
+      port: 80
+      server: 188.114.97.6
+      type: vless
+      udp: true
+      uuid: 6faeb6a0-5055-4e4b-8fb1-ffd77e57aefa
     - name: trojan-700420633
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20120
@@ -212,6 +219,16 @@ proxies:
       skip-cert-verify: true
       sni: vpn-au-001.fastervpn.world
       type: hysteria2
+    - name: vless-1620455353
+      network: ws
+      port: 443
+      server: 208.103.161.5
+      servername: dry-butterfly-8eb9.tmpgnacio83.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d042a74a-c305-4eec-a89f-39a348022c92
     - client-fingerprint: chrome
       name: vless-1643125391
       network: tcp
@@ -240,6 +257,20 @@ proxies:
       uuid: 4f865f35-cf47-4e7f-a7e6-8882511a1b36
     - client-fingerprint: ios
       flow: xtls-rprx-vision
+      name: vless-1645364944
+      network: tcp
+      port: 54527
+      reality-opts:
+        public-key: DQDN2w0aoQnx-T3qF1fQnA2-stCUzVbBwmayI1smO0g
+        short-id: 4600771a0d0d50
+      server: funagfr.alixxplay.com
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
       name: vless-1652509037
       network: tcp
       port: 39518
@@ -256,6 +287,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-182712887
         - trojan-700420633
         - vless-1239097038
         - vless-1258929861
@@ -274,14 +306,17 @@ proxy-groups:
         - vless-1475290748
         - vless-1478639973
         - hysteria2-1561765064
+        - vless-1620455353
         - vless-1643125391
         - vless-1645364940
+        - vless-1645364944
         - vless-1652509037
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-182712887
         - trojan-700420633
         - vless-1239097038
         - vless-1258929861
@@ -300,8 +335,10 @@ proxy-groups:
         - vless-1475290748
         - vless-1478639973
         - hysteria2-1561765064
+        - vless-1620455353
         - vless-1643125391
         - vless-1645364940
+        - vless-1645364944
         - vless-1652509037
       type: select
 rules:
