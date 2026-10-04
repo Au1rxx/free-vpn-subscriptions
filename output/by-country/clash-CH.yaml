@@ -1,46 +1,68 @@
 proxies:
-    - name: hysteria2-1601949347
-      password: 84a506ca5aca505696a454d828420b3f
-      port: 50160
-      server: 140.238.213.114
+    - name: hysteria2-1520000103
+      password: we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH
+      port: 8443
+      server: 82.38.64.235
       skip-cert-verify: true
-      sni: "off"
+      sni: hopp-swizland-new.mysynology.net
       type: hysteria2
-    - client-fingerprint: random
-      name: vless-1591237728
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1230998998
       network: tcp
-      port: 2053
+      port: 443
       reality-opts:
-        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
-        short-id: ad86e2d52ff40ebd
-      server: 208.69.78.217
+        public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
+        short-id: 19253fae84102271
+      server: 45.90.59.15
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3950b45e-740d-4dca-ac95-505ec8534592
+    - client-fingerprint: chrome
+      name: vless-1655824544
+      network: tcp
+      port: 32752
+      reality-opts:
+        public-key: pfFcQxKv4EPhCDUoZMCmTjj4FK7HHQg_me-In3bOejA
+        short-id: d758a643034ad90e
+      server: 107.189.7.176
       servername: www.apple.com
       tls: true
       type: vless
       udp: true
-      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
-    - name: hysteria2-1001586620
-      password: 84a506ca5aca505696a454d828420b3f
-      port: 50160
-      server: 140.238.213.114
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
+      uuid: d72045ad-9c37-4768-89c1-88fe6ae7f9fc
+    - client-fingerprint: chrome
+      name: vless-1667155451
+      network: raw
+      port: 32752
+      reality-opts:
+        public-key: pfFcQxKv4EPhCDUoZMCmTjj4FK7HHQg_me-In3bOejA
+        short-id: d758a643034ad90e
+      server: 107.189.7.176
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d72045ad-9c37-4768-89c1-88fe6ae7f9fc
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1601949347
-        - vless-1591237728
-        - hysteria2-1001586620
+        - hysteria2-1520000103
+        - vless-1230998998
+        - vless-1655824544
+        - vless-1667155451
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1601949347
-        - vless-1591237728
-        - hysteria2-1001586620
+        - hysteria2-1520000103
+        - vless-1230998998
+        - vless-1655824544
+        - vless-1667155451
       type: select
 rules:
     - MATCH,select
