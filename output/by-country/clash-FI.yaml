@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1666092156
+      password: d402d4c0b8354a90b70bb2566dce9a08
+      port: 8443
+      server: 78.17.209.108
+      skip-cert-verify: false
+      sni: i.wareznet.ru
+      type: hysteria2
     - client-fingerprint: chrome
       name: vless-1655821983
       network: grpc
@@ -25,20 +32,6 @@ proxies:
       type: vless
       udp: true
       uuid: c0acd42e-bf36-4747-90a0-a4a3a8774fdc
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1652949239
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: HKkU-5UanGjWdmX8E-EGulXMk1BnidkFsVveyyOlTg8
-        short-id: 90f9d05bf95cb335
-      server: 2.27.26.128
-      servername: aq-1.global-cdn.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 8710a337-f504-4b75-8989-224cfd803b2d
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1636575934
@@ -53,6 +46,19 @@ proxies:
       type: vless
       udp: true
       uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+    - client-fingerprint: firefox
+      name: vless-1317697670
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
     - client-fingerprint: firefox
       name: vless-1345688766
       network: raw
@@ -86,6 +92,13 @@ proxies:
       type: vless
       udp: true
       uuid: 2d24e797-ec6c-0808-dd31-9cd22b5dfdc7
+    - name: vless-1666094670
+      network: ws
+      port: 44242
+      server: mainline.proxy.rlwy.net
+      type: vless
+      udp: true
+      uuid: ff07a00f-0592-41dc-b0e1-b41b4732aad0
     - client-fingerprint: safari
       flow: xtls-rprx-vision
       name: vless-1659369804
@@ -104,26 +117,30 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1666092156
         - vless-1655821983
         - vless-1645923050
-        - vless-1652949239
         - vless-1636575934
+        - vless-1317697670
         - vless-1345688766
         - shadowsocks-1653901314
         - vless-1655821984
+        - vless-1666094670
         - vless-1659369804
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1666092156
         - vless-1655821983
         - vless-1645923050
-        - vless-1652949239
         - vless-1636575934
+        - vless-1317697670
         - vless-1345688766
         - shadowsocks-1653901314
         - vless-1655821984
+        - vless-1666094670
         - vless-1659369804
       type: select
 rules:
