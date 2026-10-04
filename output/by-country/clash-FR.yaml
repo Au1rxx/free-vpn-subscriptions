@@ -13,6 +13,13 @@ proxies:
       skip-cert-verify: true
       sni: 35.181.166.40
       type: hysteria2
+    - name: hysteria2-1507423268
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: 35.181.166.40
+      skip-cert-verify: true
+      sni: "vpn-fr-002.fastervpn.world#\U0001FA9033@oneclickvpnkeysvless://f495298f-2bdb-4fd8-9ac9-5dd33d1b482a@185.171.202.106:443?encryption=none"
+      type: hysteria2
     - name: hysteria2-1552246614
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -41,16 +48,53 @@ proxies:
       skip-cert-verify: true
       sni: bing.com
       type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1644333365
+      password: n7vuxdsmlqnrbxqe
+      port: 1081
+      server: sth.free-outline.giize.com
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      name: vless-246493916
+      network: raw
+      port: 40443
+      reality-opts:
+        public-key: MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ
+        short-id: a8ae
+      server: 194.76.154.31
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
+    - client-fingerprint: chrome
+      name: vless-1298542551
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: g63cT3uI0Y5iUtj3m__RYz7nmR1eIK4AYikdnZCl63w
+        short-id: bfe58beb41f1d09f
+      server: 51.77.217.70
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: bf16ee0c-8b3c-41e4-ab3a-8b48033c404e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-650659597
         - hysteria2-1005580211
+        - hysteria2-1507423268
         - hysteria2-1552246614
         - shadowsocks-415242972
         - hysteria2-984679229
         - hysteria2-200394203
+        - shadowsocks-1644333365
+        - vless-246493916
+        - vless-1298542551
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -58,10 +102,14 @@ proxy-groups:
         - auto
         - hysteria2-650659597
         - hysteria2-1005580211
+        - hysteria2-1507423268
         - hysteria2-1552246614
         - shadowsocks-415242972
         - hysteria2-984679229
         - hysteria2-200394203
+        - shadowsocks-1644333365
+        - vless-246493916
+        - vless-1298542551
       type: select
 rules:
     - MATCH,select

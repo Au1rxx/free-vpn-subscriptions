@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-45800
-      network: ws
-      port: 8880
-      server: 114.129.43.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-81748
       network: ws
       port: 8880
@@ -36,6 +29,13 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - name: vless-1353959783
+      network: ws
+      port: 8880
+      server: 23.227.60.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1389764796
       network: ws
       port: 8880
@@ -67,6 +67,25 @@ proxies:
       type: vmess
       udp: true
       uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    - alterId: 0
+      cipher: auto
+      name: vmess-1475462531
+      network: ws
+      port: 443
+      server: aksai.org
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    - name: vless-1514735429
+      network: ws
+      port: 8880
+      server: 192.0.63.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1527402211
       network: ws
       port: 2053
@@ -77,18 +96,6 @@ proxies:
       type: vless
       udp: true
       uuid: d18c6897-2849-456a-8c46-d7ecece47c20
-    - alterId: 0
-      cipher: auto
-      name: vmess-1531955997
-      network: ws
-      port: 443
-      server: aksai.org
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vmess
-      udp: true
-      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
     - alterId: 0
       cipher: auto
       name: vmess-1604825402
@@ -197,20 +204,34 @@ proxies:
       type: vless
       udp: true
       uuid: e9c2ed7f-79ab-40a8-8910-24468f5da712
+    - client-fingerprint: chrome
+      name: vless-1656558159
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 0WXz3PJQnr-KprrwiO5BlKVRdqA4ZS6U5jGHc_aeJnw
+        short-id: 4b414f69a06e1e81
+      server: 34.151.245.65
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e9c2ed7f-79ab-40a8-8910-24468f5da712
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-45800
         - vless-81748
         - vless-286221987
         - trojan-856461985
         - trojan-871344761
+        - vless-1353959783
         - vless-1389764796
         - vmess-1444695377
         - vmess-1445575212
+        - vmess-1475462531
+        - vless-1514735429
         - vless-1527402211
-        - vmess-1531955997
         - vmess-1604825402
         - vmess-1608139803
         - vmess-1616314329
@@ -220,21 +241,23 @@ proxy-groups:
         - vless-1650410542
         - vless-1650785020
         - vless-1652509036
+        - vless-1656558159
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-45800
         - vless-81748
         - vless-286221987
         - trojan-856461985
         - trojan-871344761
+        - vless-1353959783
         - vless-1389764796
         - vmess-1444695377
         - vmess-1445575212
+        - vmess-1475462531
+        - vless-1514735429
         - vless-1527402211
-        - vmess-1531955997
         - vmess-1604825402
         - vmess-1608139803
         - vmess-1616314329
@@ -244,6 +267,7 @@ proxy-groups:
         - vless-1650410542
         - vless-1650785020
         - vless-1652509036
+        - vless-1656558159
       type: select
 rules:
     - MATCH,select
