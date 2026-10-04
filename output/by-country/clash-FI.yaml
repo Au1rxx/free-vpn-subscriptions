@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: chrome
+      name: vless-1655821983
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: sRTNjrosfFSiuQX7Yt7Ub5DJvFznfHSC3nlzFQ3H2WU
+        short-id: ""
+      server: 122.8.45.4
+      servername: cdn.steamstatic.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2d24e797-ec6c-0808-dd31-9cd22b5dfdc7
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1652949239
@@ -13,6 +26,19 @@ proxies:
       type: vless
       udp: true
       uuid: 8710a337-f504-4b75-8989-224cfd803b2d
+    - client-fingerprint: chrome
+      name: vless-1655821984
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: WtLZK1KyhSpI3K-R4M3sLAHWPOgGPMgkL6RneL0OfCY
+        short-id: ""
+      server: 122.8.45.4
+      servername: download.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2d24e797-ec6c-0808-dd31-9cd22b5dfdc7
     - client-fingerprint: safari
       flow: xtls-rprx-vision
       name: vless-1659369804
@@ -45,7 +71,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1655821983
         - vless-1652949239
+        - vless-1655821984
         - vless-1659369804
         - vless-270691474
       type: url-test
@@ -53,7 +81,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1655821983
         - vless-1652949239
+        - vless-1655821984
         - vless-1659369804
         - vless-270691474
       type: select
