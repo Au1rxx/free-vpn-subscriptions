@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: chrome
+      name: vless-1343261564
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
+        short-id: 9980e0609b0d3891
+      server: 194.61.31.126
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
     - client-fingerprint: firefox
       name: vless-1258929849
       network: tcp
@@ -12,17 +25,66 @@ proxies:
       type: vless
       udp: true
       uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
+    - client-fingerprint: chrome
+      name: vless-1345587703
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
+        short-id: 9980e0609b0d3891
+      server: 194.61.31.126
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1493688273
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
+        short-id: 88b6
+      server: 5.253.28.240
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 405b964e-a2d2-454f-aaaa-711cc218897c
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1672901962
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: hTweFDvbSucrGERtiiwDfoqD3vo_Z9cuaqboff3FTXQ
+        short-id: ""
+      server: 65.20.80.141
+      servername: googleapis.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d90087c3-54f5-4283-a13f-615260c8b0c7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1343261564
         - vless-1258929849
+        - vless-1345587703
+        - vless-1493688273
+        - vless-1672901962
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1343261564
         - vless-1258929849
+        - vless-1345587703
+        - vless-1493688273
+        - vless-1672901962
       type: select
 rules:
     - MATCH,select
