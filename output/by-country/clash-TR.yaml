@@ -6,27 +6,6 @@ proxies:
       server: 206.1.100.83
       type: ss
       udp: true
-    - cipher: 2022-blake3-aes-256-gcm
-      name: shadowsocks-1667103587
-      password: gc24/luU7zbPhMS6GH6mUzT1qZBjCXhKbAvgUjM4Yno=:NOerjaqxVAGVMkJfw/LwtWwz27auvlL0MNKBrjlTeV0=
-      port: 14074
-      server: 206.1.103.221
-      type: ss
-      udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1385865673
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8
-        short-id: f46cd3ea3d1eb72d
-      server: 78.135.73.47
-      servername: www.datadoghq.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 25e16692-d097-4e69-9e2d-8415609c1968
     - name: vless-1660425634
       network: tcp
       port: 2053
@@ -34,23 +13,37 @@ proxies:
       type: vless
       udp: true
       uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
+    - name: hysteria2-1512715566
+      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
+      port: 8081
+      server: 162.249.127.130
+      skip-cert-verify: false
+      sni: hop-germany-september.dynuddns.com
+      type: hysteria2
+    - cipher: 2022-blake3-aes-256-gcm
+      name: shadowsocks-1667103587
+      password: gc24/luU7zbPhMS6GH6mUzT1qZBjCXhKbAvgUjM4Yno=:NOerjaqxVAGVMkJfw/LwtWwz27auvlL0MNKBrjlTeV0=
+      port: 14074
+      server: 206.1.103.221
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1666389494
-        - shadowsocks-1667103587
-        - vless-1385865673
         - vless-1660425634
+        - hysteria2-1512715566
+        - shadowsocks-1667103587
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1666389494
-        - shadowsocks-1667103587
-        - vless-1385865673
         - vless-1660425634
+        - hysteria2-1512715566
+        - shadowsocks-1667103587
       type: select
 rules:
     - MATCH,select
