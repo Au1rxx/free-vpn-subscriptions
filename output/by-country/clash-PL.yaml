@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: firefox
+      name: vless-1665751757
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: tKAYeVSM4yLXiOdKLMFP751fhII6YyqfbMXy_MSuejI
+        short-id: ""
+      server: node64.tomalgopas.fun
+      servername: samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3464a5bd-6a17-4ac3-8ca9-86a54c1aac7b
     - name: vless-1647915018
       network: ws
       port: 80
@@ -37,23 +50,34 @@ proxies:
       type: vless
       udp: true
       uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
+    - name: vless-1668085457
+      network: ws
+      port: 80
+      server: 70.34.252.154
+      type: vless
+      udp: true
+      uuid: d9c7ec1f-5aa3-469a-b860-760c686806b0
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1665751757
         - vless-1647915018
         - vless-1645923049
         - vless-1666092150
         - vless-1618536436
+        - vless-1668085457
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1665751757
         - vless-1647915018
         - vless-1645923049
         - vless-1666092150
         - vless-1618536436
+        - vless-1668085457
       type: select
 rules:
     - MATCH,select

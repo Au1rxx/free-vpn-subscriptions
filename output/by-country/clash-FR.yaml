@@ -34,13 +34,6 @@ proxies:
       skip-cert-verify: true
       sni: "off"
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1672307436
-      password: H8oxp3veER4kthAl1rPeLQ
-      port: 20007
-      server: 178.33.150.57
-      type: ss
-      udp: true
     - name: hysteria2-1583578936
       password: Krab9Hyst2_Rk7pQ2xL
       port: 36723
@@ -70,13 +63,19 @@ proxies:
       type: vless
       udp: true
       uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
-    - name: hysteria2-197583436
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: vpn-fr-002.fastervpn.world
-      skip-cert-verify: true
-      sni: vpn-fr-002.fastervpn.world
-      type: hysteria2
+    - client-fingerprint: firefox
+      name: vless-113404806
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ
+        short-id: a8ae
+      server: 194.76.154.31
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
 proxy-groups:
     - interval: 300
       name: auto
@@ -86,11 +85,10 @@ proxy-groups:
         - hysteria2-1552246614
         - hysteria2-335125336
         - hysteria2-1531286498
-        - shadowsocks-1672307436
         - hysteria2-1583578936
         - vless-1614656458
         - vless-1565481423
-        - hysteria2-197583436
+        - vless-113404806
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -101,11 +99,10 @@ proxy-groups:
         - hysteria2-1552246614
         - hysteria2-335125336
         - hysteria2-1531286498
-        - shadowsocks-1672307436
         - hysteria2-1583578936
         - vless-1614656458
         - vless-1565481423
-        - hysteria2-197583436
+        - vless-113404806
       type: select
 rules:
     - MATCH,select
