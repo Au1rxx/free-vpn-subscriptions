@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-128-gcm
+      name: shadowsocks-1671552617
+      password: 67c57ae584eecd70396fcd7ca7521130
+      port: 16673
+      server: 147.78.1.234
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1172523121
@@ -17,12 +24,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1671552617
         - vless-1172523121
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1671552617
         - vless-1172523121
       type: select
 rules:
