@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-619899526
+      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
+      port: 443
+      server: admin.wwwinternetvideo.click
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
     - name: vless-1645923049
       network: ws
       port: 80
@@ -13,29 +20,44 @@ proxies:
       type: vless
       udp: true
       uuid: a889262f-5fe3-4c93-9aaa-3721318dd389
-    - name: trojan-1595311869
+    - name: trojan-1620222760
       password: UX82473651
       port: 443
-      server: cheerful-swan.rooster465.autos
+      server: 202.78.163.237
       skip-cert-verify: false
       sni: cheerful-swan.rooster465.autos
       type: trojan
       udp: true
+    - flow: xtls-rprx-vision
+      name: vless-1613773787
+      network: tcp
+      port: 52006
+      server: 179.254.71.20
+      servername: pl.setlisting.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-619899526
         - vless-1645923049
         - vless-1600235101
-        - trojan-1595311869
+        - trojan-1620222760
+        - vless-1613773787
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-619899526
         - vless-1645923049
         - vless-1600235101
-        - trojan-1595311869
+        - trojan-1620222760
+        - vless-1613773787
       type: select
 rules:
     - MATCH,select
