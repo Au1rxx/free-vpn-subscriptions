@@ -1,5 +1,18 @@
 proxies:
     - client-fingerprint: firefox
+      name: vless-1258929861
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
+        short-id: 4cc9dc65f7770115
+      server: 46.250.240.80
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1668102024
       network: tcp
@@ -31,6 +44,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1258929861
         - vless-1668102024
         - vless-1662112616
       type: url-test
@@ -38,6 +52,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1258929861
         - vless-1668102024
         - vless-1662112616
       type: select
