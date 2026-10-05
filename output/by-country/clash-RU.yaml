@@ -1,54 +1,46 @@
 proxies:
-    - name: hysteria2-856380986
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792830
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 194.38.11.86
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      name: vless-1664979600
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg
+        short-id: ""
+      server: 176.57.218.235
+      servername: ru-1-8.imnotgay.party
+      tls: true
+      type: vless
+      udp: true
+      uuid: 65616081-1772-49d7-a793-42bc13d22f69
+    - name: hysteria2-855920168
       password: 41edb44c8e
       port: 11592
       server: srv-17e124.21freedom.net
       skip-cert-verify: true
-      sni: srv-17e124.21freedom.net
+      sni: ""
       type: hysteria2
-    - client-fingerprint: safari
-      flow: xtls-rprx-vision
-      name: vless-1654245229
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: XrgbY2hKJQG8QOZO2J1pGmZsbvjSsSWoM9iULIMGK00
-        short-id: ""
-      server: 31.76.34.216
-      servername: ru-c-1.minzt.su
-      tls: true
-      type: vless
-      udp: true
-      uuid: 94def50e-5f3c-4e4c-9719-3325f42d2131
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1633951650
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-        short-id: ""
-      server: 45.128.78.84
-      servername: sellflow.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3f58af8e-7c91-424e-85c7-ec6913b7fc8f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-856380986
-        - vless-1654245229
-        - vless-1633951650
+        - shadowsocks-696792830
+        - vless-1664979600
+        - hysteria2-855920168
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-856380986
-        - vless-1654245229
-        - vless-1633951650
+        - shadowsocks-696792830
+        - vless-1664979600
+        - hysteria2-855920168
       type: select
 rules:
     - MATCH,select

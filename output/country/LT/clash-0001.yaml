@@ -6,14 +6,6 @@ proxies:
       server: 195.238.126.84
       type: ss
       udp: true
-    - name: trojan-122909
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20123
-      server: d3.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-696781306
       password: y9VURyNzJWNRYEGQ
@@ -277,12 +269,32 @@ proxies:
       type: vless
       udp: true
       uuid: 2eceaf2b-a775-5a9c-9990-dad2b3660fb6
+    - flow: xtls-rprx-vision
+      name: vless-1640743947
+      network: tcp
+      port: 443
+      server: mk-lt2.silalink.sbs
+      servername: mk-lt2.silalink.sbs
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 095ed44e-b2f9-4f61-ba77-2142583578d8
+    - name: vless-1669311610
+      network: ws
+      port: 443
+      server: 95.129.236.216
+      servername: data-hz32.crm.hourtley.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: db4fdd2a-efca-4d70-85d0-78f45c15fbbe
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-27309
-        - trojan-122909
         - shadowsocks-696781306
         - shadowsocks-717968959
         - shadowsocks-723348709
@@ -307,13 +319,14 @@ proxy-groups:
         - vless-1591596533
         - vless-1612997133
         - vless-1627019347
+        - vless-1640743947
+        - vless-1669311610
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-27309
-        - trojan-122909
         - shadowsocks-696781306
         - shadowsocks-717968959
         - shadowsocks-723348709
@@ -338,6 +351,8 @@ proxy-groups:
         - vless-1591596533
         - vless-1612997133
         - vless-1627019347
+        - vless-1640743947
+        - vless-1669311610
       type: select
 rules:
     - MATCH,select
