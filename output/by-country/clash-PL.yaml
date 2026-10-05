@@ -1,11 +1,18 @@
 proxies:
-    - name: hysteria2-648949653
-      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-      port: 443
-      server: 45.192.12.93
-      skip-cert-verify: true
-      sni: admin.wwwinternetvideo.click
-      type: hysteria2
+    - name: vless-1647915018
+      network: ws
+      port: 80
+      server: 70.34.252.154
+      type: vless
+      udp: true
+      uuid: d9c7ec1f-5aa3-469a-b860-760c686806b0
+    - name: vless-1645923049
+      network: ws
+      port: 80
+      server: 70.34.252.154
+      type: vless
+      udp: true
+      uuid: d9c7ec1f-5aa3-469a-b860-760c686806b0
     - client-fingerprint: firefox
       name: vless-1666092150
       network: grpc
@@ -34,7 +41,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-648949653
+        - vless-1647915018
+        - vless-1645923049
         - vless-1666092150
         - vless-1618536436
       type: url-test
@@ -42,7 +50,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - hysteria2-648949653
+        - vless-1647915018
+        - vless-1645923049
         - vless-1666092150
         - vless-1618536436
       type: select
