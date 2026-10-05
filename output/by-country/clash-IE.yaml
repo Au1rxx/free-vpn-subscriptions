@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-1660521578
+      password: UX82473651
+      port: 443
+      server: sacred-anemone.rooster465.autos
+      skip-cert-verify: true
+      sni: sacred-anemone.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-1656817261
       password: UX82473651
       port: 443
@@ -15,32 +23,41 @@ proxies:
       sni: sacred-anemone.rooster465.autos
       type: trojan
       udp: true
-    - flow: xtls-rprx-vision
-      name: vless-1444961890
-      network: tcp
+    - name: trojan-1643587527
+      password: UX82473651
       port: 443
-      server: 50.7.5.165
-      servername: ir-new1.failspace.top
-      skip-cert-verify: true
-      tls: true
-      type: vless
+      server: loved-shark.rooster465.autos
+      skip-cert-verify: false
+      sni: loved-shark.rooster465.autos
+      type: trojan
       udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - name: trojan-1643514782
+      password: UX82473651
+      port: 443
+      server: loved-shark.rooster465.autos
+      skip-cert-verify: true
+      sni: loved-shark.rooster465.autos
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-1660521578
         - trojan-1656817261
         - trojan-1673270853
-        - vless-1444961890
+        - trojan-1643587527
+        - trojan-1643514782
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-1660521578
         - trojan-1656817261
         - trojan-1673270853
-        - vless-1444961890
+        - trojan-1643587527
+        - trojan-1643514782
       type: select
 rules:
     - MATCH,select
