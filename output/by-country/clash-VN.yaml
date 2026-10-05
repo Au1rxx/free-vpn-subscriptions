@@ -1,6 +1,20 @@
 proxies:
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-1663837600
+      network: tcp
+      port: 44988
+      reality-opts:
+        public-key: f6Tj8-uvWsLv3V-lGLuPciArp5oKqUImBg-U7-WJ-0A
+        short-id: bb82c8
+      server: 103.30.76.197
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-1662112590
       network: tcp
       port: 44988
@@ -27,6 +41,20 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1664687652
+      network: tcp
+      port: 44988
+      reality-opts:
+        public-key: f6Tj8-uvWsLv3V-lGLuPciArp5oKqUImBg-U7-WJ-0A
+        short-id: bb82c8
+      server: 45.153.130.119
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1664687654
@@ -41,37 +69,25 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1663837600
-      network: tcp
-      port: 44988
-      reality-opts:
-        public-key: f6Tj8-uvWsLv3V-lGLuPciArp5oKqUImBg-U7-WJ-0A
-        short-id: bb82c8
-      server: 103.30.76.197
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1663837600
         - vless-1662112590
         - vless-1662112596
+        - vless-1664687652
         - vless-1664687654
-        - vless-1663837600
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1663837600
         - vless-1662112590
         - vless-1662112596
+        - vless-1664687652
         - vless-1664687654
-        - vless-1663837600
       type: select
 rules:
     - MATCH,select
