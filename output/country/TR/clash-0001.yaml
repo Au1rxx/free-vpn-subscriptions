@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-112587
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20017
-      server: 157.254.38.210
-      skip-cert-verify: false
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-122850
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20017
@@ -43,14 +35,6 @@ proxies:
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20098
       server: iepl1.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-856461940
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20018
-      server: krhtybay.catcat321.com
       skip-cert-verify: true
       sni: hk.catxstar.com
       type: trojan
@@ -562,6 +546,19 @@ proxies:
       type: vless
       udp: true
       uuid: e40131eb-087a-48e1-9d0d-c7db5049ce1f
+    - client-fingerprint: chrome
+      name: vless-1678177911
+      network: raw
+      port: 5589
+      reality-opts:
+        public-key: rlWw1txOKfyTIegqGc5YUQo1CxqZEXBPeQZppA6H014
+        short-id: 8f798d413a5dbf01
+      server: tr.xelnivo.ir
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e40131eb-087a-48e1-9d0d-c7db5049ce1f
     - name: vless-1678961841
       network: ws
       port: 80
@@ -626,17 +623,28 @@ proxies:
       server: 206.1.103.221
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      name: vless-1681820584
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: lseiDONcVbtjM1Y5iD6pPQ6kQmIjPx5a0sR0U-pMn1w
+        short-id: 1501739a6e643e71
+      server: 85.8.231.98
+      servername: varzesh3.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 52abd7d8-00cb-4954-b7ec-5cd6eae1eeb7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-112587
         - trojan-122850
         - trojan-122851
         - trojan-474637039
         - trojan-479026176
         - trojan-700420641
-        - trojan-856461940
         - trojan-856461981
         - trojan-885355670
         - vless-1285803654
@@ -683,6 +691,7 @@ proxy-groups:
         - trojan-1676375849
         - vless-1677340564
         - vless-1677672548
+        - vless-1678177911
         - vless-1678961841
         - shadowsocks-1679381472
         - vmess-1679837976
@@ -690,18 +699,17 @@ proxy-groups:
         - vless-1681011464
         - shadowsocks-1681300345
         - shadowsocks-1681300347
+        - vless-1681820584
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-112587
         - trojan-122850
         - trojan-122851
         - trojan-474637039
         - trojan-479026176
         - trojan-700420641
-        - trojan-856461940
         - trojan-856461981
         - trojan-885355670
         - vless-1285803654
@@ -748,6 +756,7 @@ proxy-groups:
         - trojan-1676375849
         - vless-1677340564
         - vless-1677672548
+        - vless-1678177911
         - vless-1678961841
         - shadowsocks-1679381472
         - vmess-1679837976
@@ -755,6 +764,7 @@ proxy-groups:
         - vless-1681011464
         - shadowsocks-1681300345
         - shadowsocks-1681300347
+        - vless-1681820584
       type: select
 rules:
     - MATCH,select
