@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-856380986
+      password: 41edb44c8e
+      port: 11592
+      server: srv-17e124.21freedom.net
+      skip-cert-verify: true
+      sni: srv-17e124.21freedom.net
+      type: hysteria2
     - name: hysteria2-1653988837
       password: 19f72087-4591-4d72-930b-2697078ec2be
       port: 18333
@@ -10,12 +17,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-856380986
         - hysteria2-1653988837
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-856380986
         - hysteria2-1653988837
       type: select
 rules:
