@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1355519614
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: byzvlw97wjAAAfHs5AZRV0P0H6_JKBEZ4yfLS0HNewE
-        short-id: fe24f8a0a560056e
-      server: 146.70.124.85
-      servername: www.datadoghq.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
     - name: hysteria2-468884154
       password: gf1:gfhysteria2024
       port: 443
@@ -20,67 +6,17 @@ proxies:
       skip-cert-verify: true
       sni: css.rbxcdn.com
       type: hysteria2
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-1633309454
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: a_v5l6R-rpVGlENLeONW4sz-GdRwIoDqISOWXGov8nw
-        short-id: 87709fed663228e5
-      server: 109.104.106.149
-      servername: d3-ro.cloud-cdn.xyz
-      tls: true
-      type: vless
-      udp: true
-      uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1633309461
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: a_v5l6R-rpVGlENLeONW4sz-GdRwIoDqISOWXGov8nw
-        short-id: 87709fed663228e5
-      server: 109.104.106.15
-      servername: d3-ro.cloud-cdn.xyz
-      tls: true
-      type: vless
-      udp: true
-      uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-1653072959
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: a_v5l6R-rpVGlENLeONW4sz-GdRwIoDqISOWXGov8nw
-        short-id: 87709fed663228e5
-      server: 109.104.106.149
-      servername: d3-ro.cloud-cdn.xyz
-      tls: true
-      type: vless
-      udp: true
-      uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1355519614
         - hysteria2-468884154
-        - vless-1633309454
-        - vless-1633309461
-        - vless-1653072959
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1355519614
         - hysteria2-468884154
-        - vless-1633309454
-        - vless-1633309461
-        - vless-1653072959
       type: select
 rules:
     - MATCH,select
