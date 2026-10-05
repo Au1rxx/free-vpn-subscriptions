@@ -1,33 +1,30 @@
 {
   "outbounds": [
     {
-      "server": "104.245.240.2",
-      "server_port": 8443,
-      "tag": "vless-1650410511",
+      "password": "cf83b611-6cba-4535-adcb-8da06c6a9146",
+      "server": "144.31.212.253",
+      "server_port": 443,
+      "tag": "hysteria2-1548932105",
       "tls": {
         "enabled": true,
         "insecure": false,
-        "reality": {
-          "enabled": true,
-          "public_key": "sRTNjrosfFSiuQX7Yt7Ub5DJvFznfHSC3nlzFQ3H2WU"
-        },
-        "server_name": "cdn.steamstatic.com",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "safari"
-        }
+        "server_name": "vps155-edge.kermemehori.ru"
       },
-      "transport": {
-        "service_name": "TunService",
-        "type": "grpc"
-      },
-      "type": "vless",
-      "uuid": "c0acd42e-bf36-4747-90a0-a4a3a8774fdc"
+      "type": "hysteria2"
+    },
+    {
+      "method": "aes-128-gcm",
+      "password": "f9300a9bf39ae0347c3a3bfbc4dd7754",
+      "server": "185.103.110.68",
+      "server_port": 18283,
+      "tag": "shadowsocks-1653901314",
+      "type": "shadowsocks"
     },
     {
       "interval": "5m",
       "outbounds": [
-        "vless-1650410511"
+        "hysteria2-1548932105",
+        "shadowsocks-1653901314"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -36,7 +33,8 @@
     {
       "outbounds": [
         "auto",
-        "vless-1650410511"
+        "hysteria2-1548932105",
+        "shadowsocks-1653901314"
       ],
       "tag": "select",
       "type": "selector"

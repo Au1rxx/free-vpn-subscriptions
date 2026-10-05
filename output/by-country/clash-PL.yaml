@@ -19,12 +19,24 @@ proxies:
       type: vless
       udp: true
       uuid: 3464a5bd-6a17-4ac3-8ca9-86a54c1aac7b
+    - flow: xtls-rprx-vision
+      name: vless-1618536436
+      network: tcp
+      port: 52006
+      server: 179.254.71.20
+      servername: pl.setlisting.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-648949653
         - vless-1666092150
+        - vless-1618536436
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -32,6 +44,7 @@ proxy-groups:
         - auto
         - hysteria2-648949653
         - vless-1666092150
+        - vless-1618536436
       type: select
 rules:
     - MATCH,select

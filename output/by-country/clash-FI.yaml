@@ -1,28 +1,31 @@
 proxies:
-    - client-fingerprint: safari
-      name: vless-1650410511
-      network: grpc
-      port: 8443
-      reality-opts:
-        public-key: sRTNjrosfFSiuQX7Yt7Ub5DJvFznfHSC3nlzFQ3H2WU
-        short-id: ""
-      server: 104.245.240.2
-      servername: cdn.steamstatic.com
-      tls: true
-      type: vless
+    - name: hysteria2-1548932105
+      password: cf83b611-6cba-4535-adcb-8da06c6a9146
+      port: 443
+      server: 144.31.212.253
+      skip-cert-verify: false
+      sni: vps155-edge.kermemehori.ru
+      type: hysteria2
+    - cipher: aes-128-gcm
+      name: shadowsocks-1653901314
+      password: f9300a9bf39ae0347c3a3bfbc4dd7754
+      port: 18283
+      server: 185.103.110.68
+      type: ss
       udp: true
-      uuid: c0acd42e-bf36-4747-90a0-a4a3a8774fdc
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1650410511
+        - hysteria2-1548932105
+        - shadowsocks-1653901314
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1650410511
+        - hysteria2-1548932105
+        - shadowsocks-1653901314
       type: select
 rules:
     - MATCH,select

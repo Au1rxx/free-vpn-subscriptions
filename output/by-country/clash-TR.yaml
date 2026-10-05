@@ -1,11 +1,4 @@
 proxies:
-    - cipher: 2022-blake3-aes-256-gcm
-      name: shadowsocks-1666389494
-      password: ADzlhA3ndouUCY3JbLddR/jwgYY7IDGc1T+5DuCix9Y=:KyFe2akGo5hcrswbMkD2+BM52si+D7lzyccZFTd4xaU=
-      port: 25178
-      server: 206.1.100.83
-      type: ss
-      udp: true
     - name: hysteria2-1517930486
       password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
       port: 8081
@@ -13,6 +6,13 @@ proxies:
       skip-cert-verify: true
       sni: hop-germany-september.dynuddns.com
       type: hysteria2
+    - cipher: 2022-blake3-aes-256-gcm
+      name: shadowsocks-1674447129
+      password: ymykCy/7ioXKe7u60ZifNpAK+N4XKMYW7ljHu/e+h1Q=:tu4qvwMmFqKGRd3SAMGdHSD7G0MDWjHffAr+XSXc/Go=
+      port: 53281
+      server: 206.1.103.221
+      type: ss
+      udp: true
     - name: vless-1660425634
       network: tcp
       port: 2053
@@ -24,16 +24,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1666389494
         - hysteria2-1517930486
+        - shadowsocks-1674447129
         - vless-1660425634
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1666389494
         - hysteria2-1517930486
+        - shadowsocks-1674447129
         - vless-1660425634
       type: select
 rules:
