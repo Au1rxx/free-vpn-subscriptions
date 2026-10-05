@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1595860502
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: PmdZ2ETkHc0zjYcs22xT_wyZk5fEpX7mg7RP396HBBc
+        short-id: 232b1b09e45325a4
+      server: 85.117.235.50
+      servername: cz1.animeteka.info
+      tls: true
+      type: vless
+      udp: true
+      uuid: f4d71fd6-1c25-4748-836b-1dbda9268039
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1612084408
@@ -31,6 +45,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1595860502
         - vless-1612084408
         - vless-1642940668
       type: url-test
@@ -38,6 +53,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1595860502
         - vless-1612084408
         - vless-1642940668
       type: select
