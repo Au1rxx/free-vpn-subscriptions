@@ -6,6 +6,13 @@ proxies:
       server: 91.201.65.122
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-812343736
+      password: p5wSkb2uM3pKSS3j
+      port: 9074
+      server: 91.201.65.122
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1269466481
@@ -27,19 +34,6 @@ proxies:
       server: 45.144.172.123
       type: ss
       udp: true
-    - client-fingerprint: chrome
-      name: vless-1047427930
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
-        short-id: 5b8a942318178e7b
-      server: 57.131.38.163
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1255015609
@@ -81,9 +75,9 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
-    - client-fingerprint: chrome
-      name: vless-918215428
-      network: tcp
+    - client-fingerprint: firefox
+      name: vless-483686868
+      network: raw
       port: 2053
       reality-opts:
         public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
@@ -99,28 +93,28 @@ proxy-groups:
       name: auto
       proxies:
         - shadowsocks-696781309
+        - shadowsocks-812343736
         - vless-1269466481
         - shadowsocks-1678970840
-        - vless-1047427930
         - vless-1255015609
         - vless-703656408
         - hysteria2-1560525153
         - vless-27030
-        - vless-918215428
+        - vless-483686868
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-696781309
+        - shadowsocks-812343736
         - vless-1269466481
         - shadowsocks-1678970840
-        - vless-1047427930
         - vless-1255015609
         - vless-703656408
         - hysteria2-1560525153
         - vless-27030
-        - vless-918215428
+        - vless-483686868
       type: select
 rules:
     - MATCH,select
