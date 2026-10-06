@@ -1,13 +1,22 @@
-proxies: []
+proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-1695405430
+      password: fBtIbHWC9nLAEdDUyk2tsGiVzGwGQYgX
+      port: 8397
+      server: nether2.noirex.ir
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - shadowsocks-1695405430
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1695405430
       type: select
 rules:
     - MATCH,select

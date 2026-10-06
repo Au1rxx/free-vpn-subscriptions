@@ -15,6 +15,14 @@ proxies:
       sni: iepl.idz1.cat.bilibili.com
       type: trojan
       udp: true
+    - name: trojan-696781134
+      password: 08340a533092e321470fbe21b3407694
+      port: 59443
+      server: ja262.magiclampcloud.cn
+      skip-cert-verify: true
+      sni: ja262.magiclampcloud.cn
+      type: trojan
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-860328950
       password: 8C5valhOd8vfwaTXUSZ6Zyb0Ip34lRR5z7P8az
@@ -477,20 +485,6 @@ proxies:
       uuid: 3977434d-6a9b-4858-8ced-80326ba5e367
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1661643125
-      network: tcp
-      port: 16006
-      reality-opts:
-        public-key: ll7JTP628PuBMZJvx6fuhGSmCRSURnReAetmhCEL8GU
-        short-id: ""
-      server: 103.172.197.3
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f8c9d2a1-da40-4f90-b671-11772a0b13d6
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-1662257662
       network: tcp
       port: 16006
@@ -531,12 +525,27 @@ proxies:
       type: vless
       udp: true
       uuid: f8c9d2a1-da40-4f90-b671-11772a0b13d6
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1695053323
+      network: raw
+      port: 29172
+      reality-opts:
+        public-key: pff94OJwuKXnF7_3SJ8KKJuAN4GJtInBlR-kg-4mwzQ
+        short-id: ""
+      server: 103.172.197.2
+      servername: aws.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3977434d-6a9b-4858-8ced-80326ba5e367
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-207313013
         - trojan-503199066
+        - trojan-696781134
         - shadowsocks-860328950
         - trojan-912445306
         - vmess-1005126064
@@ -573,10 +582,10 @@ proxy-groups:
         - vless-1598400047
         - vless-1622332030
         - vless-1624005907
-        - vless-1661643125
         - vless-1662257662
         - vless-1667195166
         - vless-1680835584
+        - vless-1695053323
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -584,6 +593,7 @@ proxy-groups:
         - auto
         - trojan-207313013
         - trojan-503199066
+        - trojan-696781134
         - shadowsocks-860328950
         - trojan-912445306
         - vmess-1005126064
@@ -620,10 +630,10 @@ proxy-groups:
         - vless-1598400047
         - vless-1622332030
         - vless-1624005907
-        - vless-1661643125
         - vless-1662257662
         - vless-1667195166
         - vless-1680835584
+        - vless-1695053323
       type: select
 rules:
     - MATCH,select
