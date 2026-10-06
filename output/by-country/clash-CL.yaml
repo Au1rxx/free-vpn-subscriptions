@@ -1,22 +1,22 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-236
-      password: aduB9HGxQHjA2SBMRjkHX6
-      port: 443
-      server: 102.37.156.224
-      type: ss
+    - name: vless-1659733480
+      network: ws
+      port: 80
+      server: 64.176.7.121
+      type: vless
       udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-236
+        - vless-1659733480
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-236
+        - vless-1659733480
       type: select
 rules:
     - MATCH,select
