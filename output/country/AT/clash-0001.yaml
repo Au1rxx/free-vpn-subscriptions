@@ -1,13 +1,4 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-1005125039
-      network: tcp
-      port: 16308
-      server: zfd-boardv2.kunlun01dns.com
-      type: vmess
-      udp: true
-      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - cipher: aes-256-gcm
       name: shadowsocks-1251465987
       password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
@@ -109,11 +100,34 @@ proxies:
       type: vless
       udp: true
       uuid: 4d852af3-a121-41aa-9aed-4ca40a6f7b4d
+    - name: vless-1697405499
+      network: ws
+      port: 443
+      server: 195.74.90.122
+      servername: w2p6.vpnpolar.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 698b212d-ca12-4794-8256-252a6e1b4533
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1697405515
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: uC4W93YTVI5kbpN5ih2WZfQjikpNBn61-AhljO8ExFg
+        short-id: fa764ccf
+      server: 193.233.232.96
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4d852af3-a121-41aa-9aed-4ca40a6f7b4d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-1005125039
         - shadowsocks-1251465987
         - vless-1559221937
         - vless-1560536509
@@ -123,12 +137,13 @@ proxy-groups:
         - vless-1581563868
         - vless-1694032416
         - vless-1695948356
+        - vless-1697405499
+        - vless-1697405515
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-1005125039
         - shadowsocks-1251465987
         - vless-1559221937
         - vless-1560536509
@@ -138,6 +153,8 @@ proxy-groups:
         - vless-1581563868
         - vless-1694032416
         - vless-1695948356
+        - vless-1697405499
+        - vless-1697405515
       type: select
 rules:
     - MATCH,select
