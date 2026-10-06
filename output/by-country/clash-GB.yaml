@@ -1,11 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-415241978
-      password: zRZNBszYyWo5
-      port: 8388
-      server: 51.77.225.200
-      type: ss
-      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-717969059
       password: LXchLsIwtCeUAUgu
@@ -13,6 +6,29 @@ proxies:
       server: 149.102.149.207
       type: ss
       udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-696780670
+      password: LXchLsIwtCeUAUgu
+      port: 80
+      server: 149.102.149.207
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-415241978
+      password: zRZNBszYyWo5
+      port: 8388
+      server: 51.77.225.200
+      type: ss
+      udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-1572874951
+      network: tcp
+      port: 22324
+      server: 186.190.211.147
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - cipher: aes-128-gcm
       name: shadowsocks-271
       password: shadowsocks
@@ -75,13 +91,6 @@ proxies:
       server: 146.70.61.37
       type: ss
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-696780670
-      password: LXchLsIwtCeUAUgu
-      port: 80
-      server: 149.102.149.207
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1479678804
@@ -119,34 +128,6 @@ proxies:
       type: vless
       udp: true
       uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1482902512
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s
-        short-id: b19b017d6f453873
-      server: 23.81.34.204
-      servername: speed.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1597011511
-      network: tcp
-      port: 51847
-      reality-opts:
-        public-key: S6noV0L8eNASnTe1gXLutLZNdfENsvKMsOJiGQYi6nc
-        short-id: 0eec442e7b34d2f2
-      server: 3.9.135.156
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 391a01e9-b664-407b-9158-610fab3f5920
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1051696593
@@ -165,8 +146,10 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-415241978
         - shadowsocks-717969059
+        - shadowsocks-696780670
+        - shadowsocks-415241978
+        - vmess-1572874951
         - shadowsocks-271
         - vmess-1645308967
         - vmess-1665769144
@@ -174,20 +157,19 @@ proxy-groups:
         - vless-1523769239
         - vmess-1570510802
         - shadowsocks-165
-        - shadowsocks-696780670
         - vless-1479678804
         - vmess-1620472976
         - vless-1491043547
-        - vless-1482902512
-        - vless-1597011511
         - vless-1051696593
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-415241978
         - shadowsocks-717969059
+        - shadowsocks-696780670
+        - shadowsocks-415241978
+        - vmess-1572874951
         - shadowsocks-271
         - vmess-1645308967
         - vmess-1665769144
@@ -195,12 +177,9 @@ proxy-groups:
         - vless-1523769239
         - vmess-1570510802
         - shadowsocks-165
-        - shadowsocks-696780670
         - vless-1479678804
         - vmess-1620472976
         - vless-1491043547
-        - vless-1482902512
-        - vless-1597011511
         - vless-1051696593
       type: select
 rules:
