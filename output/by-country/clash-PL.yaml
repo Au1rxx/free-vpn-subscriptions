@@ -1,4 +1,15 @@
 proxies:
+    - flow: xtls-rprx-vision
+      name: vless-1689305185
+      network: tcp
+      port: 443
+      server: 81.90.20.200
+      servername: pl.pupoe.sbs
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 51c14658-8873-4454-9383-c41fc80bde4b
     - name: vless-1668085457
       network: ws
       port: 80
@@ -41,6 +52,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1689305185
         - vless-1668085457
         - vless-1590151523
         - vless-1614724371
@@ -50,6 +62,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1689305185
         - vless-1668085457
         - vless-1590151523
         - vless-1614724371
