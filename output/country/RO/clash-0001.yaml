@@ -6,6 +6,13 @@ proxies:
       server: 154.46.31.106
       type: ss
       udp: true
+    - name: vless-66107
+      network: ws
+      port: 8880
+      server: 199.181.197.40
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: trojan-122880
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20062
@@ -399,6 +406,20 @@ proxies:
       type: vless
       udp: true
       uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1222260555
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: gE8LUmGFXik94SoDXNiAG5KprGyhjoRwDuhGebgAVWk
+        short-id: 5ee019e02e6ed99a
+      server: 193.163.203.253
+      servername: yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 441afe11-a180-4516-bb80-80a8a6b38705
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1223729872
@@ -903,6 +924,14 @@ proxies:
       type: vless
       udp: true
       uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
+    - name: trojan-1524954577
+      password: 600421cf-11d7-429f-a65b-c30397f1bc03
+      port: 443
+      server: 38.180.35.145
+      skip-cert-verify: true
+      sni: bu2.freeguard.org
+      type: trojan
+      udp: true
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-1631455405
@@ -1330,11 +1359,26 @@ proxies:
       type: vless
       udp: true
       uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1683415699
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: gE8LUmGFXik94SoDXNiAG5KprGyhjoRwDuhGebgAVWk
+        short-id: 5ee019e02e6ed99a
+      server: 193.163.203.253
+      servername: yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 441afe11-a180-4516-bb80-80a8a6b38705
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-26744
+        - vless-66107
         - trojan-122880
         - shadowsocks-130484
         - hysteria2-290666035
@@ -1369,6 +1413,7 @@ proxy-groups:
         - vless-1221516012
         - vless-1221788902
         - vless-1221826880
+        - vless-1222260555
         - vless-1223729872
         - vless-1235366713
         - vless-1236528163
@@ -1405,6 +1450,7 @@ proxy-groups:
         - vless-1478594580
         - vless-1491043577
         - vless-1493688272
+        - trojan-1524954577
         - vless-1631455405
         - vless-1633309454
         - vless-1633309461
@@ -1438,12 +1484,14 @@ proxy-groups:
         - vless-1677870357
         - vless-1677870361
         - vless-1678693661
+        - vless-1683415699
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-26744
+        - vless-66107
         - trojan-122880
         - shadowsocks-130484
         - hysteria2-290666035
@@ -1478,6 +1526,7 @@ proxy-groups:
         - vless-1221516012
         - vless-1221788902
         - vless-1221826880
+        - vless-1222260555
         - vless-1223729872
         - vless-1235366713
         - vless-1236528163
@@ -1514,6 +1563,7 @@ proxy-groups:
         - vless-1478594580
         - vless-1491043577
         - vless-1493688272
+        - trojan-1524954577
         - vless-1631455405
         - vless-1633309454
         - vless-1633309461
@@ -1547,6 +1597,7 @@ proxy-groups:
         - vless-1677870357
         - vless-1677870361
         - vless-1678693661
+        - vless-1683415699
       type: select
 rules:
     - MATCH,select

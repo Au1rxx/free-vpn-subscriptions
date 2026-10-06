@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-81748
+      network: ws
+      port: 8880
+      server: 88.216.66.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: trojan-122906
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20114
@@ -24,18 +31,20 @@ proxies:
       type: vmess
       udp: true
       uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
-    - alterId: 0
-      cipher: auto
-      name: vmess-1443522751
+    - name: vless-1389764795
       network: ws
-      port: 443
-      server: aksai.org
-      servername: aksai.org
-      skip-cert-verify: false
-      tls: true
-      type: vmess
+      port: 8880
+      server: 154.194.12.40
+      type: vless
       udp: true
-      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-1514735429
+      network: ws
+      port: 8880
+      server: 192.0.63.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - alterId: 0
       cipher: auto
       name: vmess-1604825402
@@ -72,6 +81,13 @@ proxies:
       type: vmess
       udp: true
       uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    - name: vless-1650785020
+      network: ws
+      port: 80
+      server: 188.114.97.6
+      type: vless
+      udp: true
+      uuid: bf5d97e2-4321-4ed2-b95d-56f4b8cc1bc3
     - alterId: 0
       cipher: auto
       name: vmess-1663837607
@@ -95,13 +111,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-81748
         - trojan-122906
         - trojan-871344761
         - vmess-1048772408
-        - vmess-1443522751
+        - vless-1389764795
+        - vless-1514735429
         - vmess-1604825402
         - vmess-1608139803
         - vmess-1616314329
+        - vless-1650785020
         - vmess-1663837607
         - hysteria2-1680995577
       type: url-test
@@ -109,13 +128,16 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-81748
         - trojan-122906
         - trojan-871344761
         - vmess-1048772408
-        - vmess-1443522751
+        - vless-1389764795
+        - vless-1514735429
         - vmess-1604825402
         - vmess-1608139803
         - vmess-1616314329
+        - vless-1650785020
         - vmess-1663837607
         - hysteria2-1680995577
       type: select

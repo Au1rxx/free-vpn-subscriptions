@@ -59,6 +59,47 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - client-fingerprint: random
+      name: vless-1571355288
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+        short-id: ad86e2d52ff40ebd
+      server: 208.69.78.217
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1230998998
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
+        short-id: 19253fae84102271
+      server: 45.90.59.15
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3950b45e-740d-4dca-ac95-505ec8534592
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1235448657
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
+        short-id: 19253fae84102271
+      server: 45.90.59.15
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3950b45e-740d-4dca-ac95-505ec8534592
 proxy-groups:
     - interval: 300
       name: auto
@@ -69,6 +110,9 @@ proxy-groups:
         - vless-1579868466
         - hysteria2-1501696965
         - hysteria2-1001586620
+        - vless-1571355288
+        - vless-1230998998
+        - vless-1235448657
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -80,6 +124,9 @@ proxy-groups:
         - vless-1579868466
         - hysteria2-1501696965
         - hysteria2-1001586620
+        - vless-1571355288
+        - vless-1230998998
+        - vless-1235448657
       type: select
 rules:
     - MATCH,select
