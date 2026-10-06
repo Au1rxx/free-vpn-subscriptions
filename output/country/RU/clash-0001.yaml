@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-46619
+      network: ws
+      port: 8880
+      server: 135.84.72.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-81803
       network: ws
       port: 8880
@@ -386,10 +393,39 @@ proxies:
       skip-cert-verify: true
       sni: srv-17e124.21freedom.net
       type: hysteria2
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1685160070
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: lVSON4vUK765zNEFQtf0GbZNDc-g37JMairlF7hg6y0
+        short-id: bb34e8c0603c6686
+      server: 109.69.17.166
+      servername: ru.virtez.pro
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0d6e70a5-abfd-4766-8ad4-e502173ba82b
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1685160071
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: a2d3SdlFYm_JVsZ5Jdm7tefcXgsp9u5rDKL4SpMwAGY
+        short-id: 394742e7072b2c91
+      server: 193.233.247.100
+      servername: washedroutineream.coppermitten.one
+      tls: true
+      type: vless
+      udp: true
+      uuid: d53ceb12-1b43-4547-8c1d-9b34a02372c6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-46619
         - vless-81803
         - vless-656240777
         - shadowsocks-696792830
@@ -433,11 +469,14 @@ proxy-groups:
         - vless-1683617137
         - vless-1683617143
         - hysteria2-1683785829
+        - vless-1685160070
+        - vless-1685160071
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-46619
         - vless-81803
         - vless-656240777
         - shadowsocks-696792830
@@ -481,6 +520,8 @@ proxy-groups:
         - vless-1683617137
         - vless-1683617143
         - hysteria2-1683785829
+        - vless-1685160070
+        - vless-1685160071
       type: select
 rules:
     - MATCH,select
