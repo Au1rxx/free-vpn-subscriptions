@@ -13,6 +13,20 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1662112596
+      network: tcp
+      port: 44988
+      reality-opts:
+        public-key: f6Tj8-uvWsLv3V-lGLuPciArp5oKqUImBg-U7-WJ-0A
+        short-id: bb82c8
+      server: 45.153.130.161
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1663148017
@@ -22,20 +36,6 @@ proxies:
         public-key: f6Tj8-uvWsLv3V-lGLuPciArp5oKqUImBg-U7-WJ-0A
         short-id: bb82c8
       server: 45.153.130.140
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1663837600
-      network: tcp
-      port: 44988
-      reality-opts:
-        public-key: f6Tj8-uvWsLv3V-lGLuPciArp5oKqUImBg-U7-WJ-0A
-        short-id: bb82c8
-      server: 103.30.76.197
       servername: www.tesla.com
       tls: true
       type: vless
@@ -57,13 +57,13 @@ proxies:
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-1662112596
+      name: vless-1663837600
       network: tcp
       port: 44988
       reality-opts:
         public-key: f6Tj8-uvWsLv3V-lGLuPciArp5oKqUImBg-U7-WJ-0A
         short-id: bb82c8
-      server: 45.153.130.161
+      server: 103.30.76.197
       servername: www.tesla.com
       tls: true
       type: vless
@@ -83,27 +83,53 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - name: trojan-1682707786
+      password: 87961f9d-bee1-4377-826b-e169e7891c4f
+      port: 443
+      server: 172.66.135.112
+      skip-cert-verify: false
+      sni: yks-dd9.pages.dev
+      type: trojan
+      udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1662112585
+      network: tcp
+      port: 44988
+      reality-opts:
+        public-key: f6Tj8-uvWsLv3V-lGLuPciArp5oKqUImBg-U7-WJ-0A
+        short-id: bb82c8
+      server: 45.153.130.43
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1664687654
-        - vless-1663148017
-        - vless-1663837600
-        - vless-1662112590
         - vless-1662112596
+        - vless-1663148017
+        - vless-1662112590
+        - vless-1663837600
         - vless-1680311931
+        - trojan-1682707786
+        - vless-1662112585
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1664687654
-        - vless-1663148017
-        - vless-1663837600
-        - vless-1662112590
         - vless-1662112596
+        - vless-1663148017
+        - vless-1662112590
+        - vless-1663837600
         - vless-1680311931
+        - trojan-1682707786
+        - vless-1662112585
       type: select
 rules:
     - MATCH,select

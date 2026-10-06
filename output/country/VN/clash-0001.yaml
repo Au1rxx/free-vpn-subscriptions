@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-122857
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20029
-      server: d3.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-122889
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20081
@@ -15,6 +7,20 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-13066754
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Fp0-VrMBeaQe9xOrehDYHt0mqTZL-5CdfuMEzoXkOE8
+        short-id: ""
+      server: 2.26.11.151
+      servername: google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 749a5df1-2d12-45cf-80f3-f85ea6b2e405
     - name: trojan-856461979
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20081
@@ -315,6 +321,20 @@ proxies:
         public-key: f6Tj8-uvWsLv3V-lGLuPciArp5oKqUImBg-U7-WJ-0A
         short-id: bb82c8
       server: 43.255.157.118
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1664687663
+      network: tcp
+      port: 44988
+      reality-opts:
+        public-key: f6Tj8-uvWsLv3V-lGLuPciArp5oKqUImBg-U7-WJ-0A
+        short-id: bb82c8
+      server: apinbxs.zalolink.com
       servername: www.tesla.com
       tls: true
       type: vless
@@ -670,12 +690,20 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - name: trojan-1682707786
+      password: 87961f9d-bee1-4377-826b-e169e7891c4f
+      port: 443
+      server: 172.66.135.112
+      skip-cert-verify: false
+      sni: yks-dd9.pages.dev
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-122857
         - trojan-122889
+        - vless-13066754
         - trojan-856461979
         - trojan-856462037
         - trojan-856462039
@@ -700,6 +728,7 @@ proxy-groups:
         - vless-1664687636
         - vless-1664687652
         - vless-1664687654
+        - vless-1664687663
         - vless-1664687671
         - vless-1664687695
         - vless-1664687699
@@ -725,13 +754,14 @@ proxy-groups:
         - vless-1680312904
         - vless-1680312911
         - vless-1680312922
+        - trojan-1682707786
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-122857
         - trojan-122889
+        - vless-13066754
         - trojan-856461979
         - trojan-856462037
         - trojan-856462039
@@ -756,6 +786,7 @@ proxy-groups:
         - vless-1664687636
         - vless-1664687652
         - vless-1664687654
+        - vless-1664687663
         - vless-1664687671
         - vless-1664687695
         - vless-1664687699
@@ -781,6 +812,7 @@ proxy-groups:
         - vless-1680312904
         - vless-1680312911
         - vless-1680312922
+        - trojan-1682707786
       type: select
 rules:
     - MATCH,select

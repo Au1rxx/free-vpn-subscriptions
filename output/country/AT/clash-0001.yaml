@@ -7,17 +7,6 @@ proxies:
       type: ss
       udp: true
     - flow: xtls-rprx-vision
-      name: vless-1469494410
-      network: tcp
-      port: 443
-      server: 50.7.36.28
-      servername: at-new-ded.failspace.top
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - flow: xtls-rprx-vision
       name: vless-1559221937
       network: tcp
       port: 52006
@@ -127,12 +116,21 @@ proxies:
       type: vless
       udp: true
       uuid: bc659d88-a1e0-076c-a49a-7b51b26a7a7f
+    - name: vless-1656275061
+      network: ws
+      port: 2053
+      server: 141.101.90.108
+      servername: wzs.echo.net.eu.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d18c6897-2849-456a-8c46-d7ecece47c20
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1251465987
-        - vless-1469494410
         - vless-1559221937
         - vless-1560534039
         - vless-1560536509
@@ -143,13 +141,13 @@ proxy-groups:
         - vless-1581563868
         - vless-1589873420
         - vless-1597019217
+        - vless-1656275061
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1251465987
-        - vless-1469494410
         - vless-1559221937
         - vless-1560534039
         - vless-1560536509
@@ -160,6 +158,7 @@ proxy-groups:
         - vless-1581563868
         - vless-1589873420
         - vless-1597019217
+        - vless-1656275061
       type: select
 rules:
     - MATCH,select

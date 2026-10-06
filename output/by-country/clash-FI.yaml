@@ -6,19 +6,20 @@ proxies:
       skip-cert-verify: false
       sni: homelander-finland.cloud-files.app
       type: hysteria2
-    - client-fingerprint: firefox
-      name: vless-1345688766
-      network: raw
-      port: 2053
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1633967465
+      network: tcp
+      port: 443
       reality-opts:
-        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
-        short-id: d368b94e275ab080
-      server: 95.216.27.15
-      servername: www.google.com
+        public-key: zWDvtTWK-cWWwHDMHMXcOpQy4k3EKp7yw-5e0wTZAUM
+        short-id: 5efa80b939612291
+      server: 132.243.231.4
+      servername: d3-se1.cloud-cdn.xyz
       tls: true
       type: vless
       udp: true
-      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+      uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-281649961
@@ -47,23 +48,64 @@ proxies:
       type: vless
       udp: true
       uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1636574933
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: zWDvtTWK-cWWwHDMHMXcOpQy4k3EKp7yw-5e0wTZAUM
+        short-id: 5efa80b939612291
+      server: 132.243.231.12
+      servername: d3-se1.cloud-cdn.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1651066576
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: zWDvtTWK-cWWwHDMHMXcOpQy4k3EKp7yw-5e0wTZAUM
+        short-id: 5efa80b939612291
+      server: 132.243.231.12
+      servername: d3-se1.cloud-cdn.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+    - name: hysteria2-1552278389
+      password: cf83b611-6cba-4535-adcb-8da06c6a9146
+      port: 443
+      server: 144.31.212.253
+      skip-cert-verify: true
+      sni: vps155-edge.kermemehori.ru
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1680864238
-        - vless-1345688766
+        - vless-1633967465
         - vless-281649961
         - vless-1670153888
+        - vless-1636574933
+        - vless-1651066576
+        - hysteria2-1552278389
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1680864238
-        - vless-1345688766
+        - vless-1633967465
         - vless-281649961
         - vless-1670153888
+        - vless-1636574933
+        - vless-1651066576
+        - hysteria2-1552278389
       type: select
 rules:
     - MATCH,select
