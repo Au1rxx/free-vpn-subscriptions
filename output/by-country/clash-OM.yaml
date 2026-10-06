@@ -1,0 +1,22 @@
+proxies:
+    - cipher: aes-128-gcm
+      name: shadowsocks-1689284255
+      password: 6ee847c4-04ef-4786-9720-eb6f73fbd80b
+      port: 35016
+      server: w7k2mf.5tencent.asia
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-1689284255
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-1689284255
+      type: select
+rules:
+    - MATCH,select

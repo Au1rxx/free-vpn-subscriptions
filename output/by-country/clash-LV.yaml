@@ -1,25 +1,26 @@
 proxies:
-    - name: vless-1656236170
-      network: ws
-      port: 2053
-      server: 141.101.90.108
-      servername: wzs.echo.net.eu.org
+    - flow: xtls-rprx-vision
+      name: vless-1561372262
+      network: tcp
+      port: 52006
+      server: 87.192.47.10
+      servername: grok.setlisting.ru
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: d18c6897-2849-456a-8c46-d7ecece47c20
+      uuid: bc659d88-a1e0-4c65-a49a-7b51b26a7a7f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1656236170
+        - vless-1561372262
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1656236170
+        - vless-1561372262
       type: select
 rules:
     - MATCH,select
