@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-2501852
-      password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
-      port: 443
-      server: 188.114.97.3
-      skip-cert-verify: false
-      sni: mfyousheng.nl.eu.org
-      type: trojan
-      udp: true
     - name: trojan-13360403
       password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
       port: 443
@@ -545,11 +537,36 @@ proxies:
       type: vless
       udp: true
       uuid: af3a0935-2216-48a0-b371-e19d2f0692f4
+    - client-fingerprint: edge
+      name: vless-1691956398
+      network: tcp
+      port: 5455
+      reality-opts:
+        public-key: xQnXh5EfPDhcEBB7rRiLca33GYrMEeUa35domLL_yA8
+        short-id: e3085d4fc679ba12
+      server: areal5.greewebservices.ir
+      servername: amp-api-edge.apps.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: af3a0935-2216-48a0-b371-e19d2f0692f4
+    - client-fingerprint: ios
+      name: vless-1691956400
+      network: tcp
+      port: 1350
+      reality-opts:
+        public-key: xQnXh5EfPDhcEBB7rRiLca33GYrMEeUa35domLL_yA8
+        short-id: 9b60d3
+      server: p2real5.greewebservices.ir
+      servername: play.googleapis.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: af3a0935-2216-48a0-b371-e19d2f0692f4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-2501852
         - trojan-13360403
         - trojan-13362506
         - trojan-670015323
@@ -597,12 +614,13 @@ proxy-groups:
         - vless-1662536194
         - vless-1691247031
         - vless-1691248975
+        - vless-1691956398
+        - vless-1691956400
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-2501852
         - trojan-13360403
         - trojan-13362506
         - trojan-670015323
@@ -650,6 +668,8 @@ proxy-groups:
         - vless-1662536194
         - vless-1691247031
         - vless-1691248975
+        - vless-1691956398
+        - vless-1691956400
       type: select
 rules:
     - MATCH,select
