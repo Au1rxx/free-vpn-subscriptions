@@ -6,17 +6,33 @@ proxies:
       skip-cert-verify: true
       sni: vps155-edge.kermemehori.ru
       type: hysteria2
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1633309437
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: zWDvtTWK-cWWwHDMHMXcOpQy4k3EKp7yw-5e0wTZAUM
+        short-id: 5efa80b939612291
+      server: 132.243.231.4
+      servername: d3-se1.cloud-cdn.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1552278389
+        - vless-1633309437
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1552278389
+        - vless-1633309437
       type: select
 rules:
     - MATCH,select

@@ -6,13 +6,6 @@ proxies:
       skip-cert-verify: true
       sni: hopp-swizland-new.mysynology.net
       type: hysteria2
-    - name: hysteria2-956723757
-      password: 84a506ca5aca505696a454d828420b3f
-      port: 50160
-      server: 140.238.213.114
-      skip-cert-verify: true
-      sni: www.bing.com
-      type: hysteria2
     - name: hysteria2-1601949347
       password: 84a506ca5aca505696a454d828420b3f
       port: 50160
@@ -20,21 +13,28 @@ proxies:
       skip-cert-verify: true
       sni: "off"
       type: hysteria2
+    - name: hysteria2-1001586620
+      password: 84a506ca5aca505696a454d828420b3f
+      port: 50160
+      server: 140.238.213.114
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1393931791
-        - hysteria2-956723757
         - hysteria2-1601949347
+        - hysteria2-1001586620
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1393931791
-        - hysteria2-956723757
         - hysteria2-1601949347
+        - hysteria2-1001586620
       type: select
 rules:
     - MATCH,select
