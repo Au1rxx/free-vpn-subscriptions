@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1683784824
+      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+      port: 8443
+      server: 103.126.51.50
+      skip-cert-verify: true
+      sni: ocober-romania-new.yyuyy.com
+      type: hysteria2
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1236528163
@@ -41,6 +48,13 @@ proxies:
       skip-cert-verify: true
       sni: www.amazon.com
       type: hysteria2
+    - name: hysteria2-1684027985
+      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+      port: 8443
+      server: 103.126.51.51
+      skip-cert-verify: false
+      sni: ocober-romania-new.yyuyy.com
+      type: hysteria2
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1633309461
@@ -55,48 +69,6 @@ proxies:
       type: vless
       udp: true
       uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-1653072959
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: a_v5l6R-rpVGlENLeONW4sz-GdRwIoDqISOWXGov8nw
-        short-id: 87709fed663228e5
-      server: 109.104.106.149
-      servername: d3-ro.cloud-cdn.xyz
-      tls: true
-      type: vless
-      udp: true
-      uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1635643551
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: a_v5l6R-rpVGlENLeONW4sz-GdRwIoDqISOWXGov8nw
-        short-id: 87709fed663228e5
-      server: 109.104.106.149
-      servername: d3-ro.cloud-cdn.xyz
-      tls: true
-      type: vless
-      udp: true
-      uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1359876263
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: byzvlw97wjAAAfHs5AZRV0P0H6_JKBEZ4yfLS0HNewE
-        short-id: fe24f8a0a560056e
-      server: 146.70.124.85
-      servername: www.datadoghq.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1221516012
@@ -125,35 +97,42 @@ proxies:
       type: vless
       udp: true
       uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
+    - name: hysteria2-468884154
+      password: gf1:gfhysteria2024
+      port: 443
+      server: 185.156.44.99
+      skip-cert-verify: true
+      sni: css.rbxcdn.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1683784824
         - vless-1236528163
         - hysteria2-859968188
         - vless-1635643493
         - hysteria2-290666035
+        - hysteria2-1684027985
         - vless-1633309461
-        - vless-1653072959
-        - vless-1635643551
-        - vless-1359876263
         - vless-1221516012
         - vless-1355519614
+        - hysteria2-468884154
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1683784824
         - vless-1236528163
         - hysteria2-859968188
         - vless-1635643493
         - hysteria2-290666035
+        - hysteria2-1684027985
         - vless-1633309461
-        - vless-1653072959
-        - vless-1635643551
-        - vless-1359876263
         - vless-1221516012
         - vless-1355519614
+        - hysteria2-468884154
       type: select
 rules:
     - MATCH,select
