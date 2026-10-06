@@ -1,0 +1,31 @@
+proxies:
+    - name: vless-1682301962
+      network: ws
+      port: 80
+      server: 64.176.2.25
+      type: vless
+      udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+    - name: vless-1649546228
+      network: ws
+      port: 80
+      server: 64.176.10.89
+      type: vless
+      udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1682301962
+        - vless-1649546228
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1682301962
+        - vless-1649546228
+      type: select
+rules:
+    - MATCH,select

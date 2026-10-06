@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-1685878466
-      password: cf83b611-6cba-4535-adcb-8da06c6a9146
-      port: 443
-      server: 144.31.212.253
-      skip-cert-verify: true
-      sni: 144.31.212.253
-      type: hysteria2
     - name: hysteria2-1552278389
       password: cf83b611-6cba-4535-adcb-8da06c6a9146
       port: 443
@@ -13,19 +6,32 @@ proxies:
       skip-cert-verify: true
       sni: vps155-edge.kermemehori.ru
       type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-1358009940
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1685878466
         - hysteria2-1552278389
+        - vless-1358009940
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1685878466
         - hysteria2-1552278389
+        - vless-1358009940
       type: select
 rules:
     - MATCH,select
