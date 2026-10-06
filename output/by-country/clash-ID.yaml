@@ -20,6 +20,20 @@ proxies:
       server: 103.160.63.199
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1568568963
+      network: tcp
+      port: 16006
+      reality-opts:
+        public-key: ll7JTP628PuBMZJvx6fuhGSmCRSURnReAetmhCEL8GU
+        short-id: ""
+      server: 103.172.197.3
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8c9d2a1-da40-4f90-b671-11772a0b13d6
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1570814587
@@ -34,9 +48,9 @@ proxies:
       type: vless
       udp: true
       uuid: f8c9d2a1-da40-4f90-b671-11772a0b13d6
-    - client-fingerprint: chrome
+    - client-fingerprint: random
       flow: xtls-rprx-vision
-      name: vless-1568568963
+      name: vless-1574323185
       network: tcp
       port: 16006
       reality-opts:
@@ -62,15 +76,31 @@ proxies:
       type: vless
       udp: true
       uuid: f8c9d2a1-da40-4f90-b671-11772a0b13d6
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1662257662
+      network: tcp
+      port: 16006
+      reality-opts:
+        public-key: ll7JTP628PuBMZJvx6fuhGSmCRSURnReAetmhCEL8GU
+        short-id: ""
+      server: 103.172.197.3
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f8c9d2a1-da40-4f90-b671-11772a0b13d6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1661643125
         - shadowsocks-860328950
-        - vless-1570814587
         - vless-1568568963
+        - vless-1570814587
+        - vless-1574323185
         - vless-1622332030
+        - vless-1662257662
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -78,9 +108,11 @@ proxy-groups:
         - auto
         - vless-1661643125
         - shadowsocks-860328950
-        - vless-1570814587
         - vless-1568568963
+        - vless-1570814587
+        - vless-1574323185
         - vless-1622332030
+        - vless-1662257662
       type: select
 rules:
     - MATCH,select

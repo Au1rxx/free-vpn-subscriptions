@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-70582
+      network: ws
+      port: 8880
+      server: 45.12.30.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: trojan-700420633
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20120
@@ -18,6 +25,13 @@ proxies:
       network: ws
       port: 8080
       server: 104.21.70.21
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-1255709230
+      network: ws
+      port: 8880
+      server: 185.193.29.30
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
@@ -198,6 +212,13 @@ proxies:
       type: vless
       udp: true
       uuid: 36e89875-9c53-482b-bc41-d3890e9da176
+    - name: vless-1432430299
+      network: ws
+      port: 8880
+      server: 89.117.112.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1478639973
@@ -345,20 +366,6 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1667223454
-      network: tcp
-      port: 39518
-      reality-opts:
-        public-key: DQDN2w0aoQnx-T3qF1fQnA2-stCUzVbBwmayI1smO0g
-        short-id: 4600771a0d0d50
-      server: 45.153.130.35
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
     - name: vless-1670653043
       network: ws
       port: 8880
@@ -394,20 +401,6 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1680312002
-      network: tcp
-      port: 39518
-      reality-opts:
-        public-key: DQDN2w0aoQnx-T3qF1fQnA2-stCUzVbBwmayI1smO0g
-        short-id: 4600771a0d0d50
-      server: 43.255.156.57
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
     - flow: xtls-rprx-vision
       name: vless-1680312013
       network: tcp
@@ -433,20 +426,6 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1680312956
-      network: tcp
-      port: 39518
-      reality-opts:
-        public-key: DQDN2w0aoQnx-T3qF1fQnA2-stCUzVbBwmayI1smO0g
-        short-id: 4600771a0d0d50
-      server: 103.214.173.198
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1680312986
@@ -465,9 +444,11 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-70582
         - trojan-700420633
         - vless-1239097038
         - vless-1254186190
+        - vless-1255709230
         - vless-1258929861
         - vless-1279651618
         - vless-1300687308
@@ -481,6 +462,7 @@ proxy-groups:
         - vless-1412445133
         - vless-1418799383
         - vless-1427744079
+        - vless-1432430299
         - vless-1478639973
         - hysteria2-1561765064
         - vless-1662112587
@@ -492,23 +474,22 @@ proxy-groups:
         - vless-1665426932
         - vless-1665426933
         - vless-1666083461
-        - vless-1667223454
         - vless-1670653043
         - vless-1680311933
         - vless-1680311990
-        - vless-1680312002
         - vless-1680312013
         - vless-1680312936
-        - vless-1680312956
         - vless-1680312986
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-70582
         - trojan-700420633
         - vless-1239097038
         - vless-1254186190
+        - vless-1255709230
         - vless-1258929861
         - vless-1279651618
         - vless-1300687308
@@ -522,6 +503,7 @@ proxy-groups:
         - vless-1412445133
         - vless-1418799383
         - vless-1427744079
+        - vless-1432430299
         - vless-1478639973
         - hysteria2-1561765064
         - vless-1662112587
@@ -533,14 +515,11 @@ proxy-groups:
         - vless-1665426932
         - vless-1665426933
         - vless-1666083461
-        - vless-1667223454
         - vless-1670653043
         - vless-1680311933
         - vless-1680311990
-        - vless-1680312002
         - vless-1680312013
         - vless-1680312936
-        - vless-1680312956
         - vless-1680312986
       type: select
 rules:
