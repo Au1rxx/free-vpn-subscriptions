@@ -7,6 +7,19 @@ proxies:
       type: ss
       udp: true
     - client-fingerprint: firefox
+      name: vless-1333157775
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+    - client-fingerprint: firefox
       name: vless-1345688766
       network: raw
       port: 2053
@@ -34,6 +47,20 @@ proxies:
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-1699940823
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: zWDvtTWK-cWWwHDMHMXcOpQy4k3EKp7yw-5e0wTZAUM
+        short-id: 5efa80b939612291
+      server: 132.243.231.4
+      servername: d3-se1.cloud-cdn.xyz
+      tls: true
+      type: vless
+      udp: true
+      uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-281649961
       network: tcp
       port: 443
@@ -53,35 +80,29 @@ proxies:
       server: 185.103.110.68
       type: ss
       udp: true
-    - name: trojan-1698572615
-      password: WFer-5gN21nfHbVB2N8s71Z74EPUfzVj
-      port: 443
-      server: fi.zhabulik.ru
-      skip-cert-verify: false
-      sni: fi.zhabulik.ru
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1689700222
+        - vless-1333157775
         - vless-1345688766
         - vless-1358009940
+        - vless-1699940823
         - vless-281649961
         - shadowsocks-1653901314
-        - trojan-1698572615
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1689700222
+        - vless-1333157775
         - vless-1345688766
         - vless-1358009940
+        - vless-1699940823
         - vless-281649961
         - shadowsocks-1653901314
-        - trojan-1698572615
       type: select
 rules:
     - MATCH,select
