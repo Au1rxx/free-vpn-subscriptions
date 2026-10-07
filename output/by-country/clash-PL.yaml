@@ -7,6 +7,13 @@ proxies:
       sni: cheerful-swan.rooster465.autos
       type: trojan
       udp: true
+    - name: vless-1668281834
+      network: ws
+      port: 80
+      server: 70.34.252.154
+      type: vless
+      udp: true
+      uuid: d9c7ec1f-5aa3-469a-b860-760c686806b0
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1698995257
@@ -21,41 +28,36 @@ proxies:
       type: vless
       udp: true
       uuid: 4d852af3-a121-41aa-9aed-4ca40a6f7b4d
-    - name: hysteria2-620179978
-      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-      port: 443
-      server: admin.wwwinternetvideo.click
-      skip-cert-verify: true
-      sni: admin.wwwinternetvideo.click
-      type: hysteria2
-    - flow: xtls-rprx-vision
-      name: vless-1698766555
-      network: raw
-      port: 443
-      server: 81.90.20.200
-      servername: pl.pupoe.sbs
-      skip-cert-verify: false
+    - client-fingerprint: qq
+      name: vless-1678906101
+      network: grpc
+      port: 2088
+      reality-opts:
+        public-key: Eq3c19Y0WGB1APWMADQB-oxCvZFSVFAQxG5L6b8EkUg
+        short-id: b1ad165f903c62fe
+      server: 31.59.210.26
+      servername: www.yandex.ru
       tls: true
       type: vless
       udp: true
-      uuid: 51c14658-8873-4454-9383-c41fc80bde4b
+      uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-1612997137
+        - vless-1668281834
         - vless-1698995257
-        - hysteria2-620179978
-        - vless-1698766555
+        - vless-1678906101
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-1612997137
+        - vless-1668281834
         - vless-1698995257
-        - hysteria2-620179978
-        - vless-1698766555
+        - vless-1678906101
       type: select
 rules:
     - MATCH,select
