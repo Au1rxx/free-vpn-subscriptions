@@ -13,6 +13,19 @@ proxies:
       skip-cert-verify: true
       sni: hopp-swizland-new.mysynology.net
       type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-1648311787
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+        short-id: ad86e2d52ff40ebd
+      server: 208.69.78.217
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
     - client-fingerprint: random
       name: vless-1591237728
       network: tcp
@@ -26,6 +39,13 @@ proxies:
       type: vless
       udp: true
       uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
+    - name: hysteria2-1502094721
+      password: we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH
+      port: 8443
+      server: 82.38.64.237
+      skip-cert-verify: true
+      sni: hopp-swizland-new.mysynology.net
+      type: hysteria2
     - name: hysteria2-1001848837
       password: 84a506ca5aca505696a454d828420b3f
       port: 50160
@@ -40,29 +60,17 @@ proxies:
       server: 132.243.175.144
       type: ss
       udp: true
-    - client-fingerprint: chrome
-      name: vless-1646768999
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
-        short-id: ad86e2d52ff40ebd
-      server: 208.69.78.217
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1520000103
         - hysteria2-1393931791
+        - vless-1648311787
         - vless-1591237728
+        - hysteria2-1502094721
         - hysteria2-1001848837
         - shadowsocks-1364026099
-        - vless-1646768999
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -70,10 +78,11 @@ proxy-groups:
         - auto
         - hysteria2-1520000103
         - hysteria2-1393931791
+        - vless-1648311787
         - vless-1591237728
+        - hysteria2-1502094721
         - hysteria2-1001848837
         - shadowsocks-1364026099
-        - vless-1646768999
       type: select
 rules:
     - MATCH,select
