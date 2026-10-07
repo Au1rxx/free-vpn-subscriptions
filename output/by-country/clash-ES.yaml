@@ -6,23 +6,10 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
-    - client-fingerprint: random
-      name: vless-1701329853
-      network: tcp
-      port: 25047
-      reality-opts:
-        public-key: opG0oNW-PMHi8V4E0101eEqOqPlZVKCuRkF6dcWeqBU
-        short-id: 8b7227d48365dda9
-      server: es4.h1cloud.net
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 55a2940a-ae07-40b4-ab32-4d3e0617731f
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1473374135
-      network: raw
+      name: vless-1289199234
+      network: tcp
       port: 443
       reality-opts:
         public-key: v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE
@@ -33,21 +20,37 @@ proxies:
       type: vless
       udp: true
       uuid: 12c53e32-e589-47d6-b857-e4132294f767
+    - name: hysteria2-1544869951
+      password: e9dc02d400b67c727aca1620
+      port: 8446
+      server: 185.174.137.172
+      skip-cert-verify: true
+      sni: 185.174.137.172
+      type: hysteria2
+    - name: hysteria2-1541456343
+      password: e9dc02d400b67c727aca1620
+      port: 8446
+      server: 185.174.137.172
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-16132
-        - vless-1701329853
-        - vless-1473374135
+        - vless-1289199234
+        - hysteria2-1544869951
+        - hysteria2-1541456343
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-16132
-        - vless-1701329853
-        - vless-1473374135
+        - vless-1289199234
+        - hysteria2-1544869951
+        - hysteria2-1541456343
       type: select
 rules:
     - MATCH,select
