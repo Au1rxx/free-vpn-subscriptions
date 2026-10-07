@@ -1,0 +1,22 @@
+proxies:
+    - name: hysteria2-1701030357
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: vpn-au-001.fastervpn.world
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-1701030357
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-1701030357
+      type: select
+rules:
+    - MATCH,select
