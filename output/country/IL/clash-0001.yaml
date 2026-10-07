@@ -21,26 +21,23 @@ proxies:
       skip-cert-verify: true
       sni: hopp-transit.1cooldns.com
       type: hysteria2
-    - name: vless-1255417623
-      network: ws
-      port: 8880
-      server: 103.116.7.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1301253141
-      network: ws
-      port: 443
-      server: 177.3.208.65
-      servername: tgmansion.site
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4f34bc04-479c-49ba-91a8-6bb9ed15031c
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1703672813
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 4aN0Mr6AENm6-K7mokUioB8xe99zKP4UDHnzHtWEvBU
+        short-id: eb1a94ed
+      server: 85.209.158.187
+      servername: isr.vpnskyline.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ab9929fd-ab22-48e3-8723-480733c0eca9
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1709244454
       network: tcp
       port: 443
       reality-opts:
@@ -59,9 +56,8 @@ proxy-groups:
         - trojan-696781176
         - hysteria2-1040048366
         - hysteria2-1048663499
-        - vless-1255417623
-        - vless-1301253141
         - vless-1703672813
+        - vless-1709244454
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -70,9 +66,8 @@ proxy-groups:
         - trojan-696781176
         - hysteria2-1040048366
         - hysteria2-1048663499
-        - vless-1255417623
-        - vless-1301253141
         - vless-1703672813
+        - vless-1709244454
       type: select
 rules:
     - MATCH,select

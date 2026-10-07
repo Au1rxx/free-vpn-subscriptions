@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1603035184
+      network: tcp
+      port: 2053
+      server: test.keoplentuio.xyz
+      type: vless
+      udp: true
+      uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
     - client-fingerprint: chrome
       name: vless-1345587687
       network: tcp
@@ -16,12 +23,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1603035184
         - vless-1345587687
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1603035184
         - vless-1345587687
       type: select
 rules:

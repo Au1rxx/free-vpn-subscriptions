@@ -14,12 +14,27 @@ proxies:
       server: 130.49.189.158
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1709236005
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: AhLy7ha7FF2EQfu-3SxOFKUwExyHActYPHtyv82KNCI
+        short-id: 15bcc0a77c3cacdf
+      server: 45.89.60.202
+      servername: al-root.sworkingvpn.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2b781b4a-5942-48e0-a7f3-5a07b7b488c1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-122860
         - shadowsocks-1681262039
+        - vless-1709236005
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -27,6 +42,7 @@ proxy-groups:
         - auto
         - trojan-122860
         - shadowsocks-1681262039
+        - vless-1709236005
       type: select
 rules:
     - MATCH,select

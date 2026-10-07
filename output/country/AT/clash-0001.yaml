@@ -1,13 +1,4 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-1094569200
-      network: raw
-      port: 16308
-      server: zfd-boardv2.kunlun01dns.com
-      type: vmess
-      udp: true
-      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - cipher: aes-256-gcm
       name: shadowsocks-1251465987
       password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
@@ -81,14 +72,6 @@ proxies:
       type: vless
       udp: true
       uuid: 4d852af3-a121-41aa-9aed-4ca40a6f7b4d
-    - name: trojan-1701029404
-      password: FC60532879
-      port: 443
-      server: pro-tortoise.rooster465.autos
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
     - client-fingerprint: randomized
       flow: xtls-rprx-vision
       name: vless-1703448914
@@ -131,37 +114,49 @@ proxies:
       type: vless
       udp: true
       uuid: 4d852af3-a121-41aa-9aed-4ca40a6f7b4d
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1709229963
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: uC4W93YTVI5kbpN5ih2WZfQjikpNBn61-AhljO8ExFg
+        short-id: fa764ccf
+      server: 193.233.232.96
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4d852af3-a121-41aa-9aed-4ca40a6f7b4d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-1094569200
         - shadowsocks-1251465987
         - vless-1695948356
         - vless-1697405499
         - vless-1697405515
         - vless-1698998656
         - vless-1700945320
-        - trojan-1701029404
         - vless-1703448914
         - vless-1704576168
         - vless-1706281309
+        - vless-1709229963
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-1094569200
         - shadowsocks-1251465987
         - vless-1695948356
         - vless-1697405499
         - vless-1697405515
         - vless-1698998656
         - vless-1700945320
-        - trojan-1701029404
         - vless-1703448914
         - vless-1704576168
         - vless-1706281309
+        - vless-1709229963
       type: select
 rules:
     - MATCH,select
