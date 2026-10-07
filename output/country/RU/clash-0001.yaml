@@ -19,6 +19,19 @@ proxies:
       server: 194.38.11.86
       type: ss
       udp: true
+    - client-fingerprint: random
+      name: vless-700375881
+      network: tcp
+      port: 26424
+      reality-opts:
+        public-key: l8AubqcxQO-HRFJy4pZL1vbLOo-eXit69s-XulSELE0
+        short-id: 23103e1e
+      server: 45.12.75.242
+      servername: ya.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 633f424e-2b11-48da-a6b3-a849dd71456f
     - name: hysteria2-855659712
       password: 41edb44c8e
       port: 11592
@@ -145,19 +158,41 @@ proxies:
       server: 89.108.70.121
       type: ss
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-1710625355
-      password: bDlYcXVFNTF0T0ZraDlIMzAxMEF1M2NLSG5XN1NrU3ZscGltdmVtWU1yeHFZbm9Yazg0ajJHWjRVZkNyZDB4TA==
-      port: 21852
-      server: 89.108.70.121
-      type: ss
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1713733214
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: E-2tuKuvZ5n1Ri2Js8erueoJcKZUwBd-1W36MKf1PWQ
+        short-id: d1836b42b4d5be5e
+      server: 72.56.14.67
+      servername: convertgo.ru
+      tls: true
+      type: vless
       udp: true
+      uuid: b3242aff-f540-4ff3-a367-10ffce0669b3
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1713733215
+      network: tcp
+      port: 444
+      reality-opts:
+        public-key: P7F65GjTQGZju-N8CVHtlKNaWebVe_76Xt7Lm00RuH0
+        short-id: ""
+      server: 188.130.209.225
+      servername: vextor.win
+      tls: true
+      type: vless
+      udp: true
+      uuid: a6be94fc-e742-4714-8a38-c8d7410ae066
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-656240777
         - shadowsocks-696792830
+        - vless-700375881
         - hysteria2-855659712
         - hysteria2-855920168
         - hysteria2-856380986
@@ -173,7 +208,8 @@ proxy-groups:
         - vless-1702812388
         - vless-1704575563
         - shadowsocks-1709168901
-        - shadowsocks-1710625355
+        - vless-1713733214
+        - vless-1713733215
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -181,6 +217,7 @@ proxy-groups:
         - auto
         - vless-656240777
         - shadowsocks-696792830
+        - vless-700375881
         - hysteria2-855659712
         - hysteria2-855920168
         - hysteria2-856380986
@@ -196,7 +233,8 @@ proxy-groups:
         - vless-1702812388
         - vless-1704575563
         - shadowsocks-1709168901
-        - shadowsocks-1710625355
+        - vless-1713733214
+        - vless-1713733215
       type: select
 rules:
     - MATCH,select
