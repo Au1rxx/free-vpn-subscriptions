@@ -1,4 +1,11 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-415241978
+      password: zRZNBszYyWo5
+      port: 8388
+      server: 51.77.225.200
+      type: ss
+      udp: true
     - cipher: aes-128-gcm
       name: shadowsocks-271
       password: shadowsocks
@@ -22,15 +29,6 @@ proxies:
       udp: true
     - alterId: 0
       cipher: auto
-      name: vmess-1570510802
-      network: tcp
-      port: 22324
-      server: 186.190.211.147
-      type: vmess
-      udp: true
-      uuid: 04621bae-ab36-11ec-b909-0242ac120002
-    - alterId: 0
-      cipher: auto
       name: vmess-1572874951
       network: tcp
       port: 22324
@@ -45,27 +43,6 @@ proxies:
       server: 149.102.132.184
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-415241978
-      password: zRZNBszYyWo5
-      port: 8388
-      server: 51.77.225.200
-      type: ss
-      udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1485587877
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s
-        short-id: b19b017d6f453873
-      server: 23.81.34.204
-      servername: speed.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
     - alterId: 0
       cipher: auto
       name: vmess-1658256218
@@ -119,6 +96,15 @@ proxies:
       type: vless
       udp: true
       uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
+    - alterId: 0
+      cipher: auto
+      name: vmess-1665769144
+      network: raw
+      port: 22324
+      server: 186.190.211.147
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1549147674
@@ -133,43 +119,96 @@ proxies:
       type: vless
       udp: true
       uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1048772437
+      network: tcp
+      port: 51847
+      reality-opts:
+        public-key: S6noV0L8eNASnTe1gXLutLZNdfENsvKMsOJiGQYi6nc
+        short-id: 0eec442e7b34d2f2
+      server: 3.9.135.156
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 391a01e9-b664-407b-9158-610fab3f5920
+    - name: vless-1674477834
+      network: tcp
+      port: 8443
+      server: 51.38.71.147
+      servername: node-uk.connectsuite.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c08f0056-7a6d-4931-813b-aaa3cdd00aed
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1523769239
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s
+        short-id: b19b017d6f453873
+      server: 23.81.34.204
+      servername: speed.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
+    - alterId: 0
+      cipher: auto
+      name: vmess-1645308967
+      network: tcp
+      port: 22324
+      server: 186.190.211.147
+      type: vmess
+      udp: true
+      uuid: 04621bae-ab36-11ec-b909-0242ac120002
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-415241978
         - shadowsocks-271
         - shadowsocks-717969008
         - shadowsocks-468218595
-        - vmess-1570510802
         - vmess-1572874951
         - shadowsocks-696780678
-        - shadowsocks-415241978
-        - vless-1485587877
         - vmess-1658256218
         - vmess-1670349496
         - shadowsocks-1203537773
         - vless-1491043547
         - vless-1477043376
+        - vmess-1665769144
         - vless-1549147674
+        - vless-1048772437
+        - vless-1674477834
+        - vless-1523769239
+        - vmess-1645308967
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-415241978
         - shadowsocks-271
         - shadowsocks-717969008
         - shadowsocks-468218595
-        - vmess-1570510802
         - vmess-1572874951
         - shadowsocks-696780678
-        - shadowsocks-415241978
-        - vless-1485587877
         - vmess-1658256218
         - vmess-1670349496
         - shadowsocks-1203537773
         - vless-1491043547
         - vless-1477043376
+        - vmess-1665769144
         - vless-1549147674
+        - vless-1048772437
+        - vless-1674477834
+        - vless-1523769239
+        - vmess-1645308967
       type: select
 rules:
     - MATCH,select

@@ -14,6 +14,13 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - name: vless-1239097038
+      network: ws
+      port: 8880
+      server: 104.254.140.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1239101014
       network: ws
       port: 8880
@@ -25,6 +32,13 @@ proxies:
       network: ws
       port: 8880
       server: 89.116.180.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-1255713228
+      network: ws
+      port: 8080
+      server: 188.114.97.6
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
@@ -233,6 +247,18 @@ proxies:
       uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
     - alterId: 0
       cipher: auto
+      name: vmess-1445575212
+      network: ws
+      port: 443
+      server: aksai.org
+      servername: aksai.org
+      skip-cert-verify: true
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    - alterId: 0
+      cipher: auto
       name: vmess-1475462531
       network: ws
       port: 443
@@ -288,14 +314,23 @@ proxies:
       type: vmess
       udp: true
       uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+    - name: hysteria2-1701030357
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: vpn-au-001.fastervpn.world
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-60867
         - trojan-700420633
+        - vless-1239097038
         - vless-1239101014
         - vless-1239359490
+        - vless-1255713228
         - vless-1258929861
         - vless-1279651618
         - vless-1300687308
@@ -312,11 +347,13 @@ proxy-groups:
         - vless-1427744079
         - vless-1432430299
         - vmess-1444695377
+        - vmess-1445575212
         - vmess-1475462531
         - vless-1478639973
         - vmess-1531955997
         - hysteria2-1561765064
         - vmess-1698601226
+        - hysteria2-1701030357
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -324,8 +361,10 @@ proxy-groups:
         - auto
         - vless-60867
         - trojan-700420633
+        - vless-1239097038
         - vless-1239101014
         - vless-1239359490
+        - vless-1255713228
         - vless-1258929861
         - vless-1279651618
         - vless-1300687308
@@ -342,11 +381,13 @@ proxy-groups:
         - vless-1427744079
         - vless-1432430299
         - vmess-1444695377
+        - vmess-1445575212
         - vmess-1475462531
         - vless-1478639973
         - vmess-1531955997
         - hysteria2-1561765064
         - vmess-1698601226
+        - hysteria2-1701030357
       type: select
 rules:
     - MATCH,select
