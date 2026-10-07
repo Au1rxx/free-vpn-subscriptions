@@ -1,6 +1,6 @@
 proxies:
     - client-fingerprint: chrome
-      name: vless-1343261564
+      name: vless-1345587703
       network: tcp
       port: 2053
       reality-opts:
@@ -13,7 +13,7 @@ proxies:
       udp: true
       uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
     - client-fingerprint: chrome
-      name: vless-1345587703
+      name: vless-1343261564
       network: tcp
       port: 2053
       reality-opts:
@@ -105,31 +105,40 @@ proxies:
       type: vless
       udp: true
       uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
+    - name: hysteria2-1671532719
+      password: 06133d56-2d98-4ca5-b9d3-bbf2d65bc238
+      port: 51000
+      server: 144.24.109.215
+      skip-cert-verify: true
+      sni: cn.cremedelamer.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1343261564
         - vless-1345587703
+        - vless-1343261564
         - vless-1300687309
         - vless-1258929849
         - vless-1294543641
         - vless-1279565000
         - vless-1482896015
         - vless-1272779542
+        - hysteria2-1671532719
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1343261564
         - vless-1345587703
+        - vless-1343261564
         - vless-1300687309
         - vless-1258929849
         - vless-1294543641
         - vless-1279565000
         - vless-1482896015
         - vless-1272779542
+        - hysteria2-1671532719
       type: select
 rules:
     - MATCH,select
