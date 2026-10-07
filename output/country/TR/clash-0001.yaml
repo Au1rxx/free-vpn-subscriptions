@@ -15,14 +15,6 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: trojan-122851
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20018
-      server: d3.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-474637039
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20018
@@ -43,14 +35,6 @@ proxies:
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20098
       server: iepl1.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
-    - name: trojan-856461940
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20018
-      server: krhtybay.catcat321.com
       skip-cert-verify: true
       sni: hk.catxstar.com
       type: trojan
@@ -508,14 +492,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1c5ed2e1-56da-41ab-9a78-159d9892ec17
-    - name: trojan-1676375849
-      password: e309e031-991e-4656-9934-44d10deb8fd8
-      port: 2053
-      server: www.speedtest.org
-      skip-cert-verify: false
-      sni: nimm.mpd.cc.cd
-      type: trojan
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1679840077
@@ -673,6 +649,20 @@ proxies:
       type: vless
       udp: true
       uuid: 953358cb-82ba-4296-960d-6d2ec3468f4c
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1709244452
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: lHCkAu_DOVFtE-iL2JGrPt44QeTCFijXuRfuGaSni3Q
+        short-id: 9e4eced6e98ed4d4
+      server: 81.177.215.175
+      servername: github.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c5ed2e1-56da-41ab-9a78-159d9892ec17
     - flow: xtls-rprx-vision
       name: vless-1709571718
       network: tcp
@@ -722,17 +712,29 @@ proxies:
       type: vless
       udp: true
       uuid: d9fbf9a7-1f88-428b-bb3e-3074681e44c9
+    - name: vless-1714782250
+      network: tcp
+      port: 2053
+      server: test.keoplentuio.xyz
+      type: vless
+      udp: true
+      uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
+    - name: hysteria2-1714782253
+      password: 9Me_Jx935gnHx13_Nx45M_NYXe037js_Be4z
+      port: 9443
+      server: 162.249.126.39
+      skip-cert-verify: true
+      sni: hop-germany-september.dynuddns.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-112587
         - trojan-122850
-        - trojan-122851
         - trojan-474637039
         - trojan-479026176
         - trojan-700420641
-        - trojan-856461940
         - trojan-856461981
         - trojan-885355670
         - vless-1285803654
@@ -775,7 +777,6 @@ proxy-groups:
         - vless-1642937678
         - shadowsocks-1666389494
         - vless-1668138275
-        - trojan-1676375849
         - vless-1679840077
         - trojan-1683329337
         - vless-1685218824
@@ -789,11 +790,14 @@ proxy-groups:
         - vless-1698283970
         - vless-1703424852
         - vless-1709236038
+        - vless-1709244452
         - vless-1709571718
         - hysteria2-1710615634
         - vless-1712736921
         - vless-1713249199
         - vless-1713733224
+        - vless-1714782250
+        - hysteria2-1714782253
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -801,11 +805,9 @@ proxy-groups:
         - auto
         - trojan-112587
         - trojan-122850
-        - trojan-122851
         - trojan-474637039
         - trojan-479026176
         - trojan-700420641
-        - trojan-856461940
         - trojan-856461981
         - trojan-885355670
         - vless-1285803654
@@ -848,7 +850,6 @@ proxy-groups:
         - vless-1642937678
         - shadowsocks-1666389494
         - vless-1668138275
-        - trojan-1676375849
         - vless-1679840077
         - trojan-1683329337
         - vless-1685218824
@@ -862,11 +863,14 @@ proxy-groups:
         - vless-1698283970
         - vless-1703424852
         - vless-1709236038
+        - vless-1709244452
         - vless-1709571718
         - hysteria2-1710615634
         - vless-1712736921
         - vless-1713249199
         - vless-1713733224
+        - vless-1714782250
+        - hysteria2-1714782253
       type: select
 rules:
     - MATCH,select

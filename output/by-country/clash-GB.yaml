@@ -125,16 +125,6 @@ proxies:
       type: vless
       udp: true
       uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
-    - name: vless-655825158
-      network: tcp
-      port: 443
-      server: 186.190.211.188
-      servername: 186.190.211.188
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1484508210
@@ -172,6 +162,20 @@ proxies:
       uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-1710112102
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 65d6SIYIqiX-SN4vx_BnNiQJ8Lnr0HAgUKoT7WgWRgI
+        short-id: ee169e93d3c277a1
+      server: 193.202.113.5
+      servername: edge-uk2.mystatic-cdn.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6f756511-7fc3-41ba-874b-8cdc8e1b225f
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-1479678804
       network: tcp
       port: 443
@@ -205,6 +209,13 @@ proxies:
       server: 146.70.23.32
       type: ss
       udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-717969059
+      password: LXchLsIwtCeUAUgu
+      port: 443
+      server: 149.102.149.207
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1492748761
@@ -219,6 +230,19 @@ proxies:
       type: vless
       udp: true
       uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
+    - client-fingerprint: random
+      name: vless-1581173055
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: xPEBx4wUmwAAv4ikUALNBf5wH6TRhyeQ0Q2pcNELsV0
+        short-id: d051f678212f9d54
+      server: 51.89.194.151
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8e790f25-1d71-4601-9fb0-d503931dcfca
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1549147674
@@ -233,13 +257,16 @@ proxies:
       type: vless
       udp: true
       uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
-    - cipher: aes-256-gcm
-      name: shadowsocks-717969059
-      password: LXchLsIwtCeUAUgu
+    - name: vless-655825158
+      network: tcp
       port: 443
-      server: 149.102.149.207
-      type: ss
+      server: 186.190.211.188
+      servername: 186.190.211.188
+      skip-cert-verify: true
+      tls: true
+      type: vless
       udp: true
+      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
 proxy-groups:
     - interval: 300
       name: auto
@@ -255,17 +282,19 @@ proxy-groups:
         - vless-1477043376
         - vless-1523769239
         - vless-1491043547
-        - vless-655825158
         - vless-1484508210
         - shadowsocks-165
         - vless-1482902512
+        - vless-1710112102
         - vless-1479678804
         - shadowsocks-696780670
         - shadowsocks-696780678
         - shadowsocks-468218595
-        - vless-1492748761
-        - vless-1549147674
         - shadowsocks-717969059
+        - vless-1492748761
+        - vless-1581173055
+        - vless-1549147674
+        - vless-655825158
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -282,17 +311,19 @@ proxy-groups:
         - vless-1477043376
         - vless-1523769239
         - vless-1491043547
-        - vless-655825158
         - vless-1484508210
         - shadowsocks-165
         - vless-1482902512
+        - vless-1710112102
         - vless-1479678804
         - shadowsocks-696780670
         - shadowsocks-696780678
         - shadowsocks-468218595
-        - vless-1492748761
-        - vless-1549147674
         - shadowsocks-717969059
+        - vless-1492748761
+        - vless-1581173055
+        - vless-1549147674
+        - vless-655825158
       type: select
 rules:
     - MATCH,select
