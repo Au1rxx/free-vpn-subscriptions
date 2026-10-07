@@ -1,4 +1,11 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-16132
+      password: WSyL4XTwNsdv
+      port: 8388
+      server: 108.181.121.226
+      type: ss
+      udp: true
     - name: hysteria2-1541456343
       password: e9dc02d400b67c727aca1620
       port: 8446
@@ -6,26 +13,34 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-11052
-      password: qItG8SueYQcP
-      port: 8388
-      server: 140.174.184.5
-      type: ss
+    - client-fingerprint: chrome
+      name: vless-1698766553
+      network: raw
+      port: 25047
+      reality-opts:
+        public-key: opG0oNW-PMHi8V4E0101eEqOqPlZVKCuRkF6dcWeqBU
+        short-id: 8b7227d48365dda9
+      server: es4.h1cloud.net
+      servername: www.apple.com
+      tls: true
+      type: vless
       udp: true
+      uuid: 55a2940a-ae07-40b4-ab32-4d3e0617731f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-16132
         - hysteria2-1541456343
-        - shadowsocks-11052
+        - vless-1698766553
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-16132
         - hysteria2-1541456343
-        - shadowsocks-11052
+        - vless-1698766553
       type: select
 rules:
     - MATCH,select

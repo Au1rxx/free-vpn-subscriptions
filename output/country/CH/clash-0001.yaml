@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-65151
+      network: ws
+      port: 8880
+      server: 195.85.59.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: trojan-2501852
       password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
       port: 443
@@ -592,10 +599,24 @@ proxies:
       type: vless
       udp: true
       uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
+    - client-fingerprint: chrome
+      name: vless-1703314745
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+        short-id: ad86e2d52ff40ebd
+      server: 208.69.78.217
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-65151
         - trojan-2501852
         - trojan-13360403
         - trojan-13362506
@@ -651,11 +672,13 @@ proxy-groups:
         - vless-1648311787
         - vless-1662536194
         - vless-1699940832
+        - vless-1703314745
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-65151
         - trojan-2501852
         - trojan-13360403
         - trojan-13362506
@@ -711,6 +734,7 @@ proxy-groups:
         - vless-1648311787
         - vless-1662536194
         - vless-1699940832
+        - vless-1703314745
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-1612997137
+      password: UX82473651
+      port: 443
+      server: cheerful-swan.rooster465.autos
+      skip-cert-verify: false
+      sni: cheerful-swan.rooster465.autos
+      type: trojan
+      udp: true
     - name: hysteria2-620179978
       password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
       port: 443
@@ -13,19 +21,6 @@ proxies:
       type: vless
       udp: true
       uuid: a889262f-5fe3-4c93-9aaa-3721318dd389
-    - client-fingerprint: chrome
-      name: vless-1402461425
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
-        short-id: 50ba05992b05c1c3
-      server: 54.37.136.194
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
     - name: hysteria2-619899526
       password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
       port: 443
@@ -37,18 +32,18 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-1612997137
         - hysteria2-620179978
         - vless-1622330540
-        - vless-1402461425
         - hysteria2-619899526
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-1612997137
         - hysteria2-620179978
         - vless-1622330540
-        - vless-1402461425
         - hysteria2-619899526
       type: select
 rules:
