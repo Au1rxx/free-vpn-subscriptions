@@ -1,31 +1,45 @@
 proxies:
-    - name: hysteria2-1552278389
-      password: cf83b611-6cba-4535-adcb-8da06c6a9146
+    - name: trojan-1698572615
+      password: WFer-5gN21nfHbVB2N8s71Z74EPUfzVj
       port: 443
-      server: 144.31.212.253
-      skip-cert-verify: true
-      sni: vps155-edge.kermemehori.ru
-      type: hysteria2
-    - name: hysteria2-1548932105
-      password: cf83b611-6cba-4535-adcb-8da06c6a9146
-      port: 443
-      server: 144.31.212.253
+      server: fi.zhabulik.ru
       skip-cert-verify: false
-      sni: vps155-edge.kermemehori.ru
-      type: hysteria2
+      sni: fi.zhabulik.ru
+      type: trojan
+      udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-1703823779
+      network: tcp
+      port: 58179
+      server: fisgww.povrak.ir
+      type: vmess
+      udp: true
+      uuid: af5e3422-337e-43e3-88ca-2687eb379866
+    - alterId: 0
+      cipher: auto
+      name: vmess-1703823778
+      network: tcp
+      port: 58179
+      server: finla2.povrak.ir
+      type: vmess
+      udp: true
+      uuid: af5e3422-337e-43e3-88ca-2687eb379866
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1552278389
-        - hysteria2-1548932105
+        - trojan-1698572615
+        - vmess-1703823779
+        - vmess-1703823778
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1552278389
-        - hysteria2-1548932105
+        - trojan-1698572615
+        - vmess-1703823779
+        - vmess-1703823778
       type: select
 rules:
     - MATCH,select
