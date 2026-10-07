@@ -1,26 +1,13 @@
 proxies:
-    - name: hysteria2-1520000103
-      password: we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH
-      port: 8443
-      server: 82.38.64.235
-      skip-cert-verify: true
-      sni: hopp-swizland-new.mysynology.net
-      type: hysteria2
-    - client-fingerprint: chrome
-      name: vless-1699940832
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
-        short-id: ad86e2d52ff40ebd
-      server: 208.69.78.217
-      servername: www.apple.com
-      tls: true
-      type: vless
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1713200058
+      password: Wg_ISA3v29Gbagtoi_E_Bg
+      port: 1080
+      server: 185.167.234.118
+      type: ss
       udp: true
-      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
-    - client-fingerprint: firefox
-      name: vless-1560961116
+    - client-fingerprint: random
+      name: vless-1571355288
       network: tcp
       port: 2053
       reality-opts:
@@ -45,8 +32,8 @@ proxies:
       type: vless
       udp: true
       uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
-    - client-fingerprint: random
-      name: vless-1571355288
+    - client-fingerprint: firefox
+      name: vless-1560961116
       network: tcp
       port: 2053
       reality-opts:
@@ -84,13 +71,40 @@ proxies:
       type: vless
       udp: true
       uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
-    - name: hysteria2-1501696965
+    - client-fingerprint: chrome
+      name: vless-1699940832
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+        short-id: ad86e2d52ff40ebd
+      server: 208.69.78.217
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
+    - name: hysteria2-1520000103
       password: we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH
       port: 8443
-      server: 82.38.64.239
+      server: 82.38.64.235
       skip-cert-verify: true
       sni: hopp-swizland-new.mysynology.net
       type: hysteria2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1208885914
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
+        short-id: 19253fae84102271
+      server: 45.90.59.15
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3950b45e-740d-4dca-ac95-505ec8534592
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1257519697
@@ -118,6 +132,13 @@ proxies:
       type: vless
       udp: true
       uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
+    - name: hysteria2-1501696965
+      password: we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH
+      port: 8443
+      server: 82.38.64.239
+      skip-cert-verify: true
+      sni: hopp-swizland-new.mysynology.net
+      type: hysteria2
     - name: hysteria2-1393931791
       password: we9_I1893UFj3149xbr1_k8qvJ8734ic_Mx82gH
       port: 8443
@@ -129,32 +150,36 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1520000103
-        - vless-1699940832
-        - vless-1560961116
-        - vless-1591237728
+        - shadowsocks-1713200058
         - vless-1571355288
+        - vless-1591237728
+        - vless-1560961116
         - vless-1648311787
         - vless-1579868466
-        - hysteria2-1501696965
+        - vless-1699940832
+        - hysteria2-1520000103
+        - vless-1208885914
         - vless-1257519697
         - vless-1646768999
+        - hysteria2-1501696965
         - hysteria2-1393931791
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1520000103
-        - vless-1699940832
-        - vless-1560961116
-        - vless-1591237728
+        - shadowsocks-1713200058
         - vless-1571355288
+        - vless-1591237728
+        - vless-1560961116
         - vless-1648311787
         - vless-1579868466
-        - hysteria2-1501696965
+        - vless-1699940832
+        - hysteria2-1520000103
+        - vless-1208885914
         - vless-1257519697
         - vless-1646768999
+        - hysteria2-1501696965
         - hysteria2-1393931791
       type: select
 rules:
