@@ -1,18 +1,5 @@
 proxies:
     - client-fingerprint: firefox
-      name: vless-1333157775
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
-        short-id: d368b94e275ab080
-      server: 95.216.27.15
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
-    - client-fingerprint: firefox
       name: vless-1345688766
       network: raw
       port: 2053
@@ -52,23 +39,36 @@ proxies:
       type: vless
       udp: true
       uuid: 87fd990d-ca93-440a-bbd4-e8281c4a0910
+    - client-fingerprint: firefox
+      name: vless-1333157775
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1333157775
         - vless-1345688766
         - vless-1358009940
         - vless-1699940823
+        - vless-1333157775
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1333157775
         - vless-1345688766
         - vless-1358009940
         - vless-1699940823
+        - vless-1333157775
       type: select
 rules:
     - MATCH,select
