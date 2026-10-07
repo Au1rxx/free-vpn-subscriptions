@@ -1,0 +1,40 @@
+proxies:
+    - client-fingerprint: firefox
+      name: vless-1706125152
+      network: grpc
+      port: 8843
+      reality-opts:
+        public-key: XD-GOGR9K3rGRCfpytDaJZmtXOr7ZO6OdczpjUE0Dh8
+        short-id: a4f8c92d
+      server: 217.60.182.138
+      servername: myschoolonline.cvedcmimikal.space
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0aee367f-79d6-41a3-a082-2afbe3215a73
+    - name: vless-650319315
+      network: tcp
+      port: 8443
+      server: 94.183.170.135
+      servername: estproxy4.lockdwn.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1706125152
+        - vless-650319315
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1706125152
+        - vless-650319315
+      type: select
+rules:
+    - MATCH,select

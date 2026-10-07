@@ -6,17 +6,41 @@ proxies:
       server: tur19.velqixa.ir
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      name: vless-1345587687
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
+        short-id: 9e419c0759b54d6f
+      server: 151.241.226.201
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
+    - name: vless-1603035184
+      network: tcp
+      port: 2053
+      server: test.keoplentuio.xyz
+      type: vless
+      udp: true
+      uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1703955380
+        - vless-1345587687
+        - vless-1603035184
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1703955380
+        - vless-1345587687
+        - vless-1603035184
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,24 @@
 proxies:
+    - client-fingerprint: firefox
+      name: vless-1345688766
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+    - cipher: aes-128-gcm
+      name: shadowsocks-1653901314
+      password: f9300a9bf39ae0347c3a3bfbc4dd7754
+      port: 18283
+      server: 185.103.110.68
+      type: ss
+      udp: true
     - name: trojan-1698572615
       password: WFer-5gN21nfHbVB2N8s71Z74EPUfzVj
       port: 443
@@ -11,12 +31,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1345688766
+        - shadowsocks-1653901314
         - trojan-1698572615
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1345688766
+        - shadowsocks-1653901314
         - trojan-1698572615
       type: select
 rules:
