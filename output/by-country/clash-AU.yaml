@@ -12,31 +12,32 @@ proxies:
       type: vless
       udp: true
       uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
-    - alterId: 0
-      cipher: auto
-      name: vmess-1443522751
-      network: ws
-      port: 443
-      server: aksai.org
-      servername: aksai.org
-      skip-cert-verify: false
+    - client-fingerprint: firefox
+      name: vless-1279651618
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
+        short-id: 4cc9dc65f7770115
+      server: 46.250.240.80
+      servername: www.cloudflare.com
       tls: true
-      type: vmess
+      type: vless
       udp: true
-      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1345603902
-        - vmess-1443522751
+        - vless-1279651618
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1345603902
-        - vmess-1443522751
+        - vless-1279651618
       type: select
 rules:
     - MATCH,select
