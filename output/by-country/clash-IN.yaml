@@ -25,6 +25,19 @@ proxies:
       type: vless
       udp: true
       uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
+    - client-fingerprint: firefox
+      name: vless-1258929849
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
+        short-id: 9980e0609b0d3891
+      server: 194.61.31.126
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
     - client-fingerprint: chrome
       name: vless-1343261564
       network: tcp
@@ -51,19 +64,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
-    - client-fingerprint: firefox
-      name: vless-1258929849
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
-        short-id: 9980e0609b0d3891
-      server: 194.61.31.126
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
     - client-fingerprint: qq
       name: vless-1343080799
       network: grpc
@@ -77,6 +77,33 @@ proxies:
       type: vless
       udp: true
       uuid: 5e679ccd-1586-4d5f-b87b-48251046cad8
+    - client-fingerprint: random
+      name: vless-1308176630
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
+        short-id: 9980e0609b0d3891
+      server: 194.61.31.126
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-459508008
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: g77ZJbm18JEotapmVRjaXi133MzkbhkU2lxhVeXx8zw
+        short-id: 68a8
+      server: 5.253.42.164
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1482896015
@@ -111,19 +138,31 @@ proxies:
       skip-cert-verify: true
       sni: cn.cremedelamer.com
       type: hysteria2
+    - alterId: 0
+      cipher: auto
+      name: vmess-1715297833
+      network: ws
+      port: 80
+      server: 152.67.8.205
+      type: vmess
+      udp: true
+      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1345587703
         - vless-1279565000
+        - vless-1258929849
         - vless-1343261564
         - vless-1272779542
-        - vless-1258929849
         - vless-1343080799
+        - vless-1308176630
+        - vless-459508008
         - vless-1482896015
         - vless-1300687309
         - hysteria2-1671532719
+        - vmess-1715297833
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -131,13 +170,16 @@ proxy-groups:
         - auto
         - vless-1345587703
         - vless-1279565000
+        - vless-1258929849
         - vless-1343261564
         - vless-1272779542
-        - vless-1258929849
         - vless-1343080799
+        - vless-1308176630
+        - vless-459508008
         - vless-1482896015
         - vless-1300687309
         - hysteria2-1671532719
+        - vmess-1715297833
       type: select
 rules:
     - MATCH,select
