@@ -1,0 +1,47 @@
+proxies:
+    - name: vless-1461786622
+      network: tcp
+      port: 2053
+      server: test.keoplentuio.xyz
+      type: vless
+      udp: true
+      uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1349640077
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8
+        short-id: f46cd3ea3d1eb72d
+      server: 78.135.73.47
+      servername: www.datadoghq.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 25e16692-d097-4e69-9e2d-8415609c1968
+    - name: vless-1603035184
+      network: tcp
+      port: 2053
+      server: test.keoplentuio.xyz
+      type: vless
+      udp: true
+      uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1461786622
+        - vless-1349640077
+        - vless-1603035184
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1461786622
+        - vless-1349640077
+        - vless-1603035184
+      type: select
+rules:
+    - MATCH,select

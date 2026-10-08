@@ -8,15 +8,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
-    - alterId: 0
-      cipher: auto
-      name: vmess-1005580221
-      network: tcp
-      port: 16280
-      server: zfd-boardv2.kunlun01dns.com
-      type: vmess
-      udp: true
-      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - client-fingerprint: safari
       flow: xtls-rprx-vision
       name: vless-1697702282
@@ -45,23 +36,37 @@ proxies:
       type: vless
       udp: true
       uuid: c3369c07-f0d2-4a2c-97ab-0d3d47803912
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1726607262
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: 1KY_jqa2yPLBEBa-3TG77zs4ak2zQLGul4eexxCueyI
+        short-id: ""
+      server: 188.124.59.124
+      servername: github.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c3369c07-f0d2-4a2c-97ab-0d3d47803912
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-1005127037
-        - vmess-1005580221
         - vless-1697702282
         - vless-1700945375
+        - vless-1726607262
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-1005127037
-        - vmess-1005580221
         - vless-1697702282
         - vless-1700945375
+        - vless-1726607262
       type: select
 rules:
     - MATCH,select
