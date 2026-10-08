@@ -1,22 +1,38 @@
 proxies:
-    - name: hysteria2-1108719512
-      password: 52e3dd44-ed23-4030-b0cc-5b5a953f2d4d
+    - name: hysteria2-855659706
+      password: 54d2f622-fd71-4f5f-8813-832b68f4ca3b
       port: 8443
-      server: 104.165.205.42
-      skip-cert-verify: true
+      server: 104.165.205.40
+      skip-cert-verify: false
       sni: speedtestmark.com
       type: hysteria2
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-827658513
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: GBdkyDLfr0LIZo_94Xv8ycAKOmkjArYzwJAEMhuXX2c
+        short-id: 33acba1b
+      server: 138.124.180.137
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1108719512
+        - hysteria2-855659706
+        - vless-827658513
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1108719512
+        - hysteria2-855659706
+        - vless-827658513
       type: select
 rules:
     - MATCH,select
