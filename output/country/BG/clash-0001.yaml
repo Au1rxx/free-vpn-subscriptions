@@ -13,14 +13,6 @@ proxies:
       server: 213.183.63.60
       type: ss
       udp: true
-    - name: trojan-720888864
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20060
-      server: d3.catcat321.com
-      skip-cert-verify: false
-      sni: sg.catxstar.com
-      type: trojan
-      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-723348677
       password: 2KUaE2a8NWTvuCZ3
@@ -205,20 +197,6 @@ proxies:
       uuid: 9ae5940b-0278-403d-a1e1-9dddc47bdcf6
     - client-fingerprint: random
       flow: xtls-rprx-vision
-      name: vless-1469494435
-      network: tcp
-      port: 18775
-      reality-opts:
-        public-key: oR75S6pg_RDAKIuzv_WrCiwaUqqFoek2iuo5N22llQQ
-        short-id: 6ba85179e30d4fc2
-      server: 136.175.82.85
-      servername: addons.mozilla.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9ae5940b-0278-403d-a1e1-9dddc47bdcf6
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
       name: vless-1473431527
       network: tcp
       port: 18775
@@ -293,13 +271,26 @@ proxies:
       type: vless
       udp: true
       uuid: 86b6c7ba-d613-4567-962a-acfdad5c22db
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1730804165
+      network: tcp
+      port: 18775
+      reality-opts:
+        public-key: oR75S6pg_RDAKIuzv_WrCiwaUqqFoek2iuo5N22llQQ
+        short-id: ""
+      server: 136.175.82.85
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9ae5940b-0278-403d-a1e1-9dddc47bdcf6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-696781308
         - shadowsocks-717969028
-        - trojan-720888864
         - shadowsocks-723348677
         - shadowsocks-738053649
         - shadowsocks-743178480
@@ -317,13 +308,13 @@ proxy-groups:
         - vless-1454875131
         - vless-1468328671
         - vless-1469451401
-        - vless-1469494435
         - vless-1473431527
         - vless-1473449962
         - vless-1475985898
         - vless-1487525472
         - vless-1727455326
         - vless-1727455328
+        - vless-1730804165
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -331,7 +322,6 @@ proxy-groups:
         - auto
         - shadowsocks-696781308
         - shadowsocks-717969028
-        - trojan-720888864
         - shadowsocks-723348677
         - shadowsocks-738053649
         - shadowsocks-743178480
@@ -349,13 +339,13 @@ proxy-groups:
         - vless-1454875131
         - vless-1468328671
         - vless-1469451401
-        - vless-1469494435
         - vless-1473431527
         - vless-1473449962
         - vless-1475985898
         - vless-1487525472
         - vless-1727455326
         - vless-1727455328
+        - vless-1730804165
       type: select
 rules:
     - MATCH,select
