@@ -7,6 +7,26 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - name: vless-1466429059
+      network: ws
+      port: 443
+      server: 190.93.245.176
+      servername: auto-749388.rohawmk.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7493883f-6047-46a7-8d95-f59e137ffaec
+    - name: vless-1531611446
+      network: ws
+      port: 443
+      server: 103.71.23.244
+      servername: shin-ra.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 817b61c8-9bf0-4365-8a52-e43dfad274a6
     - client-fingerprint: safari
       name: vless-1559223936
       network: grpc
@@ -33,6 +53,16 @@ proxies:
       type: vless
       udp: true
       uuid: fc00adfb-232a-46ce-8b93-0c70e516aa8a
+    - name: vless-1565555763
+      network: ws
+      port: 443
+      server: 103.71.23.244
+      servername: shin-ra.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 817b61c8-9bf0-4365-8a52-e43dfad274a6
     - client-fingerprint: firefox
       name: vless-1571338104
       network: grpc
@@ -59,25 +89,63 @@ proxies:
       type: vless
       udp: true
       uuid: fc00adfb-232a-46ce-8b93-0c70e516aa8a
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1716672322
+      network: tcp
+      port: 8080
+      reality-opts:
+        public-key: F3rJZratRQC2LF0w-1cVLeLpA3-QYy3URWxQOGfAGAM
+        short-id: c4609952cafcae89
+      server: fb55f9e53fc3bdcc.salzivo.ir
+      servername: www.hexogate.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7e9ad20a-14c1-4c30-8e82-eacddcbd1578
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1716672341
+      network: tcp
+      port: 8080
+      reality-opts:
+        public-key: eF1lDiJbZdCH4Tg326OLLL3SxI5a5QaAPdLusMtJRVs
+        short-id: bbd19794d87a3962
+      server: 41cfd4e8e2c3.salzivo.ir
+      servername: www.hexogate.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7e9ad20a-14c1-4c30-8e82-eacddcbd1578
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-1447357176
+        - vless-1466429059
+        - vless-1531611446
         - vless-1559223936
         - vless-1560066335
+        - vless-1565555763
         - vless-1571338104
         - vless-1612997130
+        - vless-1716672322
+        - vless-1716672341
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-1447357176
+        - vless-1466429059
+        - vless-1531611446
         - vless-1559223936
         - vless-1560066335
+        - vless-1565555763
         - vless-1571338104
         - vless-1612997130
+        - vless-1716672322
+        - vless-1716672341
       type: select
 rules:
     - MATCH,select

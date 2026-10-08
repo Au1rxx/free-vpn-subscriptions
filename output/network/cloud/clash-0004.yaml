@@ -1,0 +1,114 @@
+proxies:
+    - name: vless-1716758605
+      network: ws
+      port: 443
+      server: 172.66.1.43
+      servername: x.m-90.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 489f1717-d3c7-4940-ad68-bdbdbab857f4
+    - name: trojan-1716899854
+      password: Trojan@82164024
+      port: 443
+      server: 3.255.76.207
+      skip-cert-verify: true
+      sni: 3.255.76.207
+      type: trojan
+      udp: true
+    - name: vless-1716997120
+      network: ws
+      port: 443
+      server: 188.114.97.6
+      servername: lucasjow.us.ci
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e6df2095-a73c-4043-8693-8d5a03686870
+    - alterId: 0
+      cipher: auto
+      name: vmess-1717009113
+      network: tcp
+      port: 8080
+      server: 65.109.186.55
+      type: vmess
+      udp: true
+      uuid: 958df7fc-6861-4c91-8532-5695ff4bd69a
+    - alterId: 0
+      cipher: auto
+      name: vmess-1717009115
+      network: ws
+      port: 80
+      server: 152.67.8.205
+      type: vmess
+      udp: true
+      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
+    - alterId: 0
+      cipher: auto
+      name: vmess-1717137171
+      network: ws
+      port: 80
+      server: 152.67.8.205
+      type: vmess
+      udp: true
+      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1717137752
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: PhOIlEfiYVUhkWKIfX_IOwJ6zz_Zk0QEj4sfcZyuShY
+        short-id: abcddb0c38896b8b
+      server: 13.229.58.5
+      servername: blog.metawork.network
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7e68e32f-8015-4f37-9082-70e8b0b58043
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1717137755
+      password: 7e68e32f-8015-4f37-9082-70e8b0b58043
+      port: 8443
+      server: 43.201.250.101
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1717137756
+      password: 7e68e32f-8015-4f37-9082-70e8b0b58043
+      port: 8443
+      server: 13.229.58.5
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1716758605
+        - trojan-1716899854
+        - vless-1716997120
+        - vmess-1717009113
+        - vmess-1717009115
+        - vmess-1717137171
+        - vless-1717137752
+        - shadowsocks-1717137755
+        - shadowsocks-1717137756
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1716758605
+        - trojan-1716899854
+        - vless-1716997120
+        - vmess-1717009113
+        - vmess-1717009115
+        - vmess-1717137171
+        - vless-1717137752
+        - shadowsocks-1717137755
+        - shadowsocks-1717137756
+      type: select
+rules:
+    - MATCH,select
