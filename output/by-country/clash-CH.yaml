@@ -20,6 +20,19 @@ proxies:
       sni: ""
       type: hysteria2
     - client-fingerprint: chrome
+      name: vless-1699940832
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+        short-id: ad86e2d52ff40ebd
+      server: 208.69.78.217
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
+    - client-fingerprint: chrome
       name: vless-1703314745
       network: raw
       port: 2053
@@ -34,6 +47,19 @@ proxies:
       uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
     - client-fingerprint: chrome
       name: vless-1648311787
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+        short-id: ad86e2d52ff40ebd
+      server: 208.69.78.217
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
+    - client-fingerprint: chrome
+      name: vless-1579868466
       network: tcp
       port: 2053
       reality-opts:
@@ -99,32 +125,6 @@ proxies:
       type: vless
       udp: true
       uuid: 15c9be2b-20f1-47b7-bf33-747ed1ff7fb7
-    - client-fingerprint: chrome
-      name: vless-1579868466
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
-        short-id: ad86e2d52ff40ebd
-      server: 208.69.78.217
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
-    - client-fingerprint: chrome
-      name: vless-1699940832
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
-        short-id: ad86e2d52ff40ebd
-      server: 208.69.78.217
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1257519697
@@ -139,22 +139,37 @@ proxies:
       type: vless
       udp: true
       uuid: 3950b45e-740d-4dca-ac95-505ec8534592
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1729917812
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
+        short-id: ""
+      server: sweth.ali-bard.online
+      servername: sweth.ali-bard.online
+      tls: true
+      type: vless
+      udp: true
+      uuid: 15c9be2b-20f1-47b7-bf33-747ed1ff7fb7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1571355288
         - hysteria2-1001586620
+        - vless-1699940832
         - vless-1703314745
         - vless-1648311787
+        - vless-1579868466
         - vless-1646768999
         - vless-1560961116
         - hysteria2-1393931791
         - hysteria2-1001848837
         - vless-1728804882
-        - vless-1579868466
-        - vless-1699940832
         - vless-1257519697
+        - vless-1729917812
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -162,16 +177,17 @@ proxy-groups:
         - auto
         - vless-1571355288
         - hysteria2-1001586620
+        - vless-1699940832
         - vless-1703314745
         - vless-1648311787
+        - vless-1579868466
         - vless-1646768999
         - vless-1560961116
         - hysteria2-1393931791
         - hysteria2-1001848837
         - vless-1728804882
-        - vless-1579868466
-        - vless-1699940832
         - vless-1257519697
+        - vless-1729917812
       type: select
 rules:
     - MATCH,select

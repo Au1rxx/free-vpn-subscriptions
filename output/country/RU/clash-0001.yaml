@@ -1,17 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      name: vless-656240777
-      network: tcp
-      port: 26424
-      reality-opts:
-        public-key: l8AubqcxQO-HRFJy4pZL1vbLOo-eXit69s-XulSELE0
-        short-id: 23103e1e
-      server: 45.12.75.242
-      servername: ya.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 633f424e-2b11-48da-a6b3-a849dd71456f
     - cipher: aes-256-cfb
       name: shadowsocks-696792830
       password: 7eadc6dbe2ae
@@ -151,11 +138,17 @@ proxies:
       server: 194.87.196.13
       type: ss
       udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-1729920759
+      password: 81a20429165df87e
+      port: 50660
+      server: 194.87.68.140
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-656240777
         - shadowsocks-696792830
         - vless-700375881
         - hysteria2-855659712
@@ -174,12 +167,12 @@ proxy-groups:
         - shadowsocks-1728262043
         - shadowsocks-1728262049
         - shadowsocks-1728262050
+        - shadowsocks-1729920759
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-656240777
         - shadowsocks-696792830
         - vless-700375881
         - hysteria2-855659712
@@ -198,6 +191,7 @@ proxy-groups:
         - shadowsocks-1728262043
         - shadowsocks-1728262049
         - shadowsocks-1728262050
+        - shadowsocks-1729920759
       type: select
 rules:
     - MATCH,select
