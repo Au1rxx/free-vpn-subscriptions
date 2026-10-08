@@ -13,6 +13,13 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
+    - name: vless-81918
+      network: ws
+      port: 8880
+      server: 89.116.180.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-656191936
       network: tcp
       port: 443
@@ -887,12 +894,27 @@ proxies:
       type: vless
       udp: true
       uuid: 5b5e4cbf-2366-499a-8327-0cd9918c687d
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1718770751
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 9GEc6lOjnGQyyE1951OZSBMWt4uCXsOjKyj9fysxHH0
+        short-id: e4e77e76e6e49da7
+      server: es.srv.dvzh.net
+      servername: es.srv.dvzh.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 91344c03-b37f-42c5-90f1-cbb95c5cf256
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11052
         - shadowsocks-16132
+        - vless-81918
         - vless-656191936
         - vless-1095633772
         - vless-1107806244
@@ -970,6 +992,7 @@ proxy-groups:
         - vless-1717505405
         - vless-1717537789
         - vless-1718461775
+        - vless-1718770751
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -977,6 +1000,7 @@ proxy-groups:
         - auto
         - shadowsocks-11052
         - shadowsocks-16132
+        - vless-81918
         - vless-656191936
         - vless-1095633772
         - vless-1107806244
@@ -1054,6 +1078,7 @@ proxy-groups:
         - vless-1717505405
         - vless-1717537789
         - vless-1718461775
+        - vless-1718770751
       type: select
 rules:
     - MATCH,select
