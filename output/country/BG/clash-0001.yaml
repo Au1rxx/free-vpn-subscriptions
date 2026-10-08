@@ -13,6 +13,14 @@ proxies:
       server: 213.183.63.60
       type: ss
       udp: true
+    - name: trojan-720888864
+      password: 7e70223b-f331-41d5-9313-02b8d2df2885
+      port: 20060
+      server: d3.catcat321.com
+      skip-cert-verify: false
+      sni: sg.catxstar.com
+      type: trojan
+      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-723348677
       password: 2KUaE2a8NWTvuCZ3
@@ -31,13 +39,6 @@ proxies:
       name: shadowsocks-743178480
       password: VcFuyXvND2yQWSFY
       port: 9054
-      server: 213.183.63.60
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-768399484
-      password: 9ej82EKe2gq7gLAM
-      port: 9085
       server: 213.183.63.60
       type: ss
       udp: true
@@ -265,16 +266,36 @@ proxies:
       type: vless
       udp: true
       uuid: 9ae5940b-0278-403d-a1e1-9dddc47bdcf6
+    - name: vless-1727455326
+      network: ws
+      port: 443
+      server: 31.40.204.131
+      servername: 0gltyawm4dbxby5k6kw-3d2475.arta-ts.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 86b6c7ba-d613-4567-962a-acfdad5c22db
+    - name: vless-1727455328
+      network: ws
+      port: 443
+      server: 62.133.63.124
+      servername: 0gltyawm4dbxby5k6kw-3d2475.arta-ts.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 86b6c7ba-d613-4567-962a-acfdad5c22db
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-696781308
         - shadowsocks-717969028
+        - trojan-720888864
         - shadowsocks-723348677
         - shadowsocks-738053649
         - shadowsocks-743178480
-        - shadowsocks-768399484
         - shadowsocks-779606885
         - shadowsocks-795694347
         - shadowsocks-812343868
@@ -293,6 +314,8 @@ proxy-groups:
         - vless-1473449962
         - vless-1475985898
         - vless-1487525472
+        - vless-1727455326
+        - vless-1727455328
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -300,10 +323,10 @@ proxy-groups:
         - auto
         - shadowsocks-696781308
         - shadowsocks-717969028
+        - trojan-720888864
         - shadowsocks-723348677
         - shadowsocks-738053649
         - shadowsocks-743178480
-        - shadowsocks-768399484
         - shadowsocks-779606885
         - shadowsocks-795694347
         - shadowsocks-812343868
@@ -322,6 +345,8 @@ proxy-groups:
         - vless-1473449962
         - vless-1475985898
         - vless-1487525472
+        - vless-1727455326
+        - vless-1727455328
       type: select
 rules:
     - MATCH,select

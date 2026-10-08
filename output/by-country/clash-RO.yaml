@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-1668124706
-      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
-      port: 8443
-      server: 103.126.51.49
-      skip-cert-verify: true
-      sni: ocober-romania-new.yyuyy.com
-      type: hysteria2
     - name: hysteria2-1663837603
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
       port: 8443
@@ -20,6 +13,34 @@ proxies:
       skip-cert-verify: false
       sni: ocober-romania-new.yyuyy.com
       type: hysteria2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1491043577
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: byzvlw97wjAAAfHs5AZRV0P0H6_JKBEZ4yfLS0HNewE
+        short-id: fe24f8a0a560056e
+      server: 146.70.124.85
+      servername: www.datadoghq.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1468243298
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: byzvlw97wjAAAfHs5AZRV0P0H6_JKBEZ4yfLS0HNewE
+        short-id: fe24f8a0a560056e
+      server: 146.70.124.85
+      servername: www.datadoghq.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
     - name: hysteria2-1656587326
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
       port: 8443
@@ -31,18 +52,20 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1668124706
         - hysteria2-1663837603
         - hysteria2-1655741633
+        - vless-1491043577
+        - vless-1468243298
         - hysteria2-1656587326
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1668124706
         - hysteria2-1663837603
         - hysteria2-1655741633
+        - vless-1491043577
+        - vless-1468243298
         - hysteria2-1656587326
       type: select
 rules:
