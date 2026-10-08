@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-68519
-      network: ws
-      port: 8880
-      server: 23.227.39.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: trojan-700420633
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20120
@@ -45,24 +38,10 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1239359490
-      network: ws
-      port: 8880
-      server: 89.116.180.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1255709230
       network: ws
       port: 8880
       server: 185.193.29.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1255713228
-      network: ws
-      port: 8080
-      server: 188.114.97.6
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
@@ -330,33 +309,16 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1718770781
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: a2qGjvUPq6Nz5FTbn_MSHp-055q2h8YXqIL5VIJ5zwE
-        short-id: d15c17cef9b2e456
-      server: 51.161.204.242
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-68519
         - trojan-700420633
         - vless-1184224333
         - vless-1239101014
         - vless-1239151540
         - vless-1239153527
-        - vless-1239359490
         - vless-1255709230
-        - vless-1255713228
         - vless-1258929861
         - vless-1279651618
         - vless-1295544812
@@ -381,21 +343,17 @@ proxy-groups:
         - vless-1670653043
         - hysteria2-1701030357
         - hysteria2-1718607549
-        - vless-1718770781
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-68519
         - trojan-700420633
         - vless-1184224333
         - vless-1239101014
         - vless-1239151540
         - vless-1239153527
-        - vless-1239359490
         - vless-1255709230
-        - vless-1255713228
         - vless-1258929861
         - vless-1279651618
         - vless-1295544812
@@ -420,7 +378,6 @@ proxy-groups:
         - vless-1670653043
         - hysteria2-1701030357
         - hysteria2-1718607549
-        - vless-1718770781
       type: select
 rules:
     - MATCH,select

@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-696781176
-      password: 493b3d1b5d6a298a32eea1935463dc4d
-      port: 59443
-      server: tyy129.magiclampcloud.com
-      skip-cert-verify: true
-      sni: tyy129.magiclampcloud.com
-      type: trojan
-      udp: true
     - name: hysteria2-1040048366
       password: dsmO0439gj_nX942GJRE_9j39fbcxv52_R
       port: 8080
@@ -28,13 +20,6 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
-    - name: vless-1255417623
-      network: ws
-      port: 8880
-      server: 103.116.7.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1483344704
       network: ws
       port: 8880
@@ -56,29 +41,41 @@ proxies:
       type: vless
       udp: true
       uuid: ab9929fd-ab22-48e3-8723-480733c0eca9
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1700945373
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 4aN0Mr6AENm6-K7mokUioB8xe99zKP4UDHnzHtWEvBU
+        short-id: eb1a94ed
+      server: 85.209.158.187
+      servername: isr.vpnskyline.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ab9929fd-ab22-48e3-8723-480733c0eca9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-696781176
         - hysteria2-1040048366
         - hysteria2-1048663499
         - hysteria2-1179524508
-        - vless-1255417623
         - vless-1483344704
         - vless-1697132437
+        - vless-1700945373
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-696781176
         - hysteria2-1040048366
         - hysteria2-1048663499
         - hysteria2-1179524508
-        - vless-1255417623
         - vless-1483344704
         - vless-1697132437
+        - vless-1700945373
       type: select
 rules:
     - MATCH,select
