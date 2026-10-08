@@ -6,6 +6,17 @@ proxies:
       skip-cert-verify: true
       sni: admin.wwwinternetvideo.click
       type: hysteria2
+    - flow: xtls-rprx-vision
+      name: vless-1673642653
+      network: tcp
+      port: 443
+      server: 81.90.20.200
+      servername: pl.pupoe.sbs
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 51c14658-8873-4454-9383-c41fc80bde4b
     - name: vless-1622330540
       network: ws
       port: 80
@@ -20,6 +31,28 @@ proxies:
       type: vless
       udp: true
       uuid: a889262f-5fe3-4c93-9aaa-3721318dd389
+    - flow: xtls-rprx-vision
+      name: vless-1713955769
+      network: tcp
+      port: 443
+      server: 81.90.20.200
+      servername: pl.pupoe.sbs
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 51c14658-8873-4454-9383-c41fc80bde4b
+    - flow: xtls-rprx-vision
+      name: vless-1700683577
+      network: tcp
+      port: 443
+      server: 81.90.20.200
+      servername: pl.pupoe.sbs
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 51c14658-8873-4454-9383-c41fc80bde4b
     - flow: xtls-rprx-vision
       name: vless-1689305185
       network: tcp
@@ -67,6 +100,19 @@ proxies:
       type: vless
       udp: true
       uuid: 51c14658-8873-4454-9383-c41fc80bde4b
+    - client-fingerprint: chrome
+      name: vless-1402461425
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
+        short-id: 50ba05992b05c1c3
+      server: 54.37.136.194
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
     - client-fingerprint: randomized
       flow: xtls-rprx-vision
       name: vless-1699932309
@@ -95,6 +141,19 @@ proxies:
       type: vless
       udp: true
       uuid: 4d852af3-a121-41aa-9aed-4ca40a6f7b4d
+    - client-fingerprint: random
+      name: vless-1308176627
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
+        short-id: 50ba05992b05c1c3
+      server: 54.37.136.194
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
     - client-fingerprint: randomized
       flow: xtls-rprx-vision
       name: vless-1695948350
@@ -123,49 +182,49 @@ proxies:
       type: vless
       udp: true
       uuid: 4d852af3-a121-41aa-9aed-4ca40a6f7b4d
-    - name: trojan-1612997137
-      password: UX82473651
-      port: 443
-      server: cheerful-swan.rooster465.autos
-      skip-cert-verify: false
-      sni: cheerful-swan.rooster465.autos
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-620179978
+        - vless-1673642653
         - vless-1622330540
         - vless-1590151523
+        - vless-1713955769
+        - vless-1700683577
         - vless-1689305185
         - vless-1697733624
         - vless-1668281834
         - vless-1647915018
         - vless-1698766555
+        - vless-1402461425
         - vless-1699932309
         - vless-1695948355
+        - vless-1308176627
         - vless-1695948350
         - vless-1716534396
-        - trojan-1612997137
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-620179978
+        - vless-1673642653
         - vless-1622330540
         - vless-1590151523
+        - vless-1713955769
+        - vless-1700683577
         - vless-1689305185
         - vless-1697733624
         - vless-1668281834
         - vless-1647915018
         - vless-1698766555
+        - vless-1402461425
         - vless-1699932309
         - vless-1695948355
+        - vless-1308176627
         - vless-1695948350
         - vless-1716534396
-        - trojan-1612997137
       type: select
 rules:
     - MATCH,select

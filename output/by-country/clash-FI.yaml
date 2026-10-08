@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1709199370
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: FuKGULeQ9xZMJN8hWz6J_49tDJKT9HA-nsAXOOVRmyM
+        short-id: ff867ed245c73f43
+      server: 13.143.166.245
+      servername: cdn.jsdelivr.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2a0b565e-904e-4d3b-a7eb-0725d6a2c7cd
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-661038937
@@ -17,12 +31,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1709199370
         - vless-661038937
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1709199370
         - vless-661038937
       type: select
 rules:
