@@ -1,18 +1,11 @@
 proxies:
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1221826880
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
-        short-id: d06d78e974491b6e
-      server: 46.28.67.55
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
+    - name: hysteria2-1693973156
+      password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
+      port: 8443
+      server: 103.126.51.51
+      skip-cert-verify: true
+      sni: ocober-romania-new.yyuyy.com
+      type: hysteria2
     - name: hysteria2-1683784824
       password: Jz40_mIJ934vK0_k9D3jz92_Vx48q_GHa1_sz0
       port: 8443
@@ -24,14 +17,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1221826880
+        - hysteria2-1693973156
         - hysteria2-1683784824
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1221826880
+        - hysteria2-1693973156
         - hysteria2-1683784824
       type: select
 rules:
