@@ -1,0 +1,49 @@
+proxies:
+    - name: hysteria2-856380986
+      password: 41edb44c8e
+      port: 11592
+      server: srv-17e124.21freedom.net
+      skip-cert-verify: true
+      sni: srv-17e124.21freedom.net
+      type: hysteria2
+    - cipher: aes-256-gcm
+      name: shadowsocks-1728262042
+      password: bdb313adf74c2ede
+      port: 50660
+      server: 46.17.45.31
+      type: ss
+      udp: true
+    - name: hysteria2-861834523
+      password: 41edb44c8e
+      port: 11592
+      server: srv-17e124.21freedom.net
+      skip-cert-verify: false
+      sni: srv-17e124.21freedom.net
+      type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-696792830
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 194.38.11.86
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-856380986
+        - shadowsocks-1728262042
+        - hysteria2-861834523
+        - shadowsocks-696792830
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-856380986
+        - shadowsocks-1728262042
+        - hysteria2-861834523
+        - shadowsocks-696792830
+      type: select
+rules:
+    - MATCH,select

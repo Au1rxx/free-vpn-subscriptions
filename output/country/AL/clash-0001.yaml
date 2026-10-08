@@ -7,13 +7,6 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1681262039
-      password: EKGHx2yhUzmnRONhNOxvn+BqUr10wfqDQqRg4DYUJE8=
-      port: 43558
-      server: 130.49.189.158
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1709236005
@@ -28,21 +21,37 @@ proxies:
       type: vless
       udp: true
       uuid: 2b781b4a-5942-48e0-a7f3-5a07b7b488c1
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1732311570
+      password: eicdhshSrFLCx/sZ1PSpuKyoVWGZpU95tFS4iGC1c04=
+      port: 43558
+      server: 130.49.189.158
+      type: ss
+      udp: true
+    - name: hysteria2-1732802572
+      password: 8bd04756-3beb-4348-82c9-d35453df50ce
+      port: 28152
+      server: 157.22.240.206
+      skip-cert-verify: true
+      sni: alb1337.zaebalsanoproxyklinus.lol
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-122860
-        - shadowsocks-1681262039
         - vless-1709236005
+        - shadowsocks-1732311570
+        - hysteria2-1732802572
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-122860
-        - shadowsocks-1681262039
         - vless-1709236005
+        - shadowsocks-1732311570
+        - hysteria2-1732802572
       type: select
 rules:
     - MATCH,select
