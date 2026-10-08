@@ -16,12 +16,20 @@ proxies:
       type: vless
       udp: true
       uuid: e0b9fb0f-1bbd-478b-9580-c2294778338b
+    - name: hysteria2-1544869951
+      password: e9dc02d400b67c727aca1620
+      port: 8446
+      server: 185.174.137.172
+      skip-cert-verify: true
+      sni: 185.174.137.172
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-11052
         - vless-1716660012
+        - hysteria2-1544869951
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -29,6 +37,7 @@ proxy-groups:
         - auto
         - shadowsocks-11052
         - vless-1716660012
+        - hysteria2-1544869951
       type: select
 rules:
     - MATCH,select

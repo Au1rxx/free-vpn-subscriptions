@@ -1,16 +1,16 @@
 proxies:
     - cipher: rc4-md5
-      name: shadowsocks-468218595
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 146.70.23.32
-      type: ss
-      udp: true
-    - cipher: rc4-md5
       name: shadowsocks-27285
       password: 14fFPrbezE3HDZzsMOr6
       port: 8080
       server: 146.70.61.18
+      type: ss
+      udp: true
+    - cipher: rc4-md5
+      name: shadowsocks-468218595
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.23.32
       type: ss
       udp: true
     - cipher: aes-256-gcm
@@ -27,6 +27,20 @@ proxies:
       server: 51.77.225.200
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1716535006
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 65d6SIYIqiX-SN4vx_BnNiQJ8Lnr0HAgUKoT7WgWRgI
+        short-id: ee169e93d3c277a1
+      server: 193.202.113.5
+      servername: edge-uk2.mystatic-cdn.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6f756511-7fc3-41ba-874b-8cdc8e1b225f
     - cipher: aes-256-gcm
       name: shadowsocks-696780678
       password: g5h5jleTRSyO3Rk4
@@ -41,9 +55,9 @@ proxies:
       server: 146.70.61.37
       type: ss
       udp: true
-    - client-fingerprint: random
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1488471709
+      name: vless-1484508210
       network: tcp
       port: 443
       reality-opts:
@@ -55,6 +69,34 @@ proxies:
       type: vless
       udp: true
       uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1716666636
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 65d6SIYIqiX-SN4vx_BnNiQJ8Lnr0HAgUKoT7WgWRgI
+        short-id: ee169e93d3c277a1
+      server: 193.202.113.5
+      servername: edge-uk2.mystatic-cdn.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6f756511-7fc3-41ba-874b-8cdc8e1b225f
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1716177265
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 65d6SIYIqiX-SN4vx_BnNiQJ8Lnr0HAgUKoT7WgWRgI
+        short-id: ee169e93d3c277a1
+      server: 193.202.113.5
+      servername: edge-uk2.mystatic-cdn.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6f756511-7fc3-41ba-874b-8cdc8e1b225f
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1523769239
@@ -87,13 +129,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-468218595
         - shadowsocks-27285
+        - shadowsocks-468218595
         - shadowsocks-717969059
         - shadowsocks-415241978
+        - vless-1716535006
         - shadowsocks-696780678
         - shadowsocks-165
-        - vless-1488471709
+        - vless-1484508210
+        - vless-1716666636
+        - vless-1716177265
         - vless-1523769239
         - vless-1549147674
       type: url-test
@@ -101,13 +146,16 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - shadowsocks-468218595
         - shadowsocks-27285
+        - shadowsocks-468218595
         - shadowsocks-717969059
         - shadowsocks-415241978
+        - vless-1716535006
         - shadowsocks-696780678
         - shadowsocks-165
-        - vless-1488471709
+        - vless-1484508210
+        - vless-1716666636
+        - vless-1716177265
         - vless-1523769239
         - vless-1549147674
       type: select
