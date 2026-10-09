@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: random
+      name: vless-1308176627
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
+        short-id: 50ba05992b05c1c3
+      server: 54.37.136.194
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
     - name: hysteria2-589844075
       password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
       port: 443
@@ -6,16 +19,6 @@ proxies:
       skip-cert-verify: false
       sni: admin.wwwinternetvideo.click
       type: hysteria2
-    - name: vless-1725765478
-      network: tcp
-      port: 2087
-      server: 95.85.253.241
-      servername: 95.85.253.241
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: ee0a38e3-d148-48ac-ba99-5133446c2377
     - client-fingerprint: random
       name: vless-1300687307
       network: tcp
@@ -42,16 +45,45 @@ proxies:
       type: vless
       udp: true
       uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
-    - name: vless-1715315367
-      network: tcp
-      port: 2053
-      server: 95.85.253.241
-      servername: 95.85.253.241
-      skip-cert-verify: false
+    - client-fingerprint: chrome
+      name: vless-1744820610
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: 5k0dtOSzmshCubdYeKppsUdHU4i2ghaB9uSJSzGjHW4
+        short-id: 6dbf4931096f9890
+      server: 31.59.210.37
+      servername: www.yandex.ru
       tls: true
       type: vless
       udp: true
-      uuid: ee0a38e3-d148-48ac-ba99-5133446c2377
+      uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
+    - client-fingerprint: edge
+      name: vless-1715017130
+      network: grpc
+      port: 2087
+      reality-opts:
+        public-key: W2OLbQ682PLJ9yHQ21Q0nPJk9U8RuL5YnlP-U1fdQzI
+        short-id: a11023050f134216
+      server: 31.59.210.24
+      servername: www.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
+    - client-fingerprint: ios
+      name: vless-1715017125
+      network: grpc
+      port: 2087
+      reality-opts:
+        public-key: W2OLbQ682PLJ9yHQ21Q0nPJk9U8RuL5YnlP-U1fdQzI
+        short-id: a11023050f134216
+      server: 31.59.210.24
+      servername: www.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
     - client-fingerprint: firefox
       name: vless-1293658710
       network: raw
@@ -78,28 +110,15 @@ proxies:
       type: vless
       udp: true
       uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
-    - client-fingerprint: random
-      name: vless-1308176627
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
-        short-id: 50ba05992b05c1c3
-      server: 54.37.136.194
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1732354694
-      network: raw
+      name: vless-1709215998
+      network: tcp
       port: 443
       reality-opts:
-        public-key: y3YCXTqEVks0nGfiSwJ43ol4pY69-mWFUZsdmveoVDM
-        short-id: 46455ff0
-      server: 177.1.192.72
+        public-key: qC0g7Y0pwyLFTGAPG2zfZNuo64Cda695wdKgLU4KkF8
+        short-id: 770618b6
+      server: 177.1.192.74
       servername: addons.mozilla.org
       tls: true
       type: vless
@@ -122,30 +141,32 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1308176627
         - hysteria2-589844075
-        - vless-1725765478
         - vless-1300687307
         - vless-1260285707
-        - vless-1715315367
+        - vless-1744820610
+        - vless-1715017130
+        - vless-1715017125
         - vless-1293658710
         - vless-1466814097
-        - vless-1308176627
-        - vless-1732354694
+        - vless-1709215998
         - vless-1612086354
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1308176627
         - hysteria2-589844075
-        - vless-1725765478
         - vless-1300687307
         - vless-1260285707
-        - vless-1715315367
+        - vless-1744820610
+        - vless-1715017130
+        - vless-1715017125
         - vless-1293658710
         - vless-1466814097
-        - vless-1308176627
-        - vless-1732354694
+        - vless-1709215998
         - vless-1612086354
       type: select
 rules:
