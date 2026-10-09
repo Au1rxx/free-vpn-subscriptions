@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-1732376285
+      password: gHncxmRjWEJ7apX5XuXsHw4kGexMH_gU
+      port: 2097
+      server: lit.fytpn.com
+      skip-cert-verify: false
+      sni: lit.fytpn.com
+      type: trojan
+      udp: true
     - name: hysteria2-1734176670
       password: e3c3b722-1264-4cdc-a97c-b0a1bb73cd67
       port: 9443
@@ -10,12 +18,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-1732376285
         - hysteria2-1734176670
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-1732376285
         - hysteria2-1734176670
       type: select
 rules:

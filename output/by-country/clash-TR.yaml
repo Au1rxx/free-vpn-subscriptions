@@ -20,12 +20,27 @@ proxies:
       type: vless
       udp: true
       uuid: 25e16692-d097-4e69-9e2d-8415609c1968
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1385865673
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8
+        short-id: f46cd3ea3d1eb72d
+      server: 78.135.73.47
+      servername: www.datadoghq.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 25e16692-d097-4e69-9e2d-8415609c1968
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1714782250
         - vless-1349640077
+        - vless-1385865673
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -33,6 +48,7 @@ proxy-groups:
         - auto
         - vless-1714782250
         - vless-1349640077
+        - vless-1385865673
       type: select
 rules:
     - MATCH,select
