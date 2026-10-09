@@ -6,6 +6,13 @@ proxies:
       server: 108.181.121.226
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-129353
+      password: dU3DSNS8wYPXzEKw
+      port: 9029
+      server: 5.188.181.201
+      type: ss
+      udp: true
     - name: vless-656191936
       network: tcp
       port: 443
@@ -509,11 +516,19 @@ proxies:
       skip-cert-verify: true
       sni: spainspeedboostjbl88.qcloud.surf
       type: hysteria2
+    - name: hysteria2-1742727893
+      password: 4ad3dbf5-2005-4d96-b56c-a0ca9905cab6
+      port: 27313
+      server: spainspeedboostjbl88.qcloud.surf
+      skip-cert-verify: false
+      sni: spainspeedboostjbl88.qcloud.surf
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-16132
+        - shadowsocks-129353
         - vless-656191936
         - vless-1095633772
         - vless-1107806244
@@ -556,12 +571,14 @@ proxy-groups:
         - hysteria2-1732658098
         - hysteria2-1732663731
         - hysteria2-1734176658
+        - hysteria2-1742727893
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-16132
+        - shadowsocks-129353
         - vless-656191936
         - vless-1095633772
         - vless-1107806244
@@ -604,6 +621,7 @@ proxy-groups:
         - hysteria2-1732658098
         - hysteria2-1732663731
         - hysteria2-1734176658
+        - hysteria2-1742727893
       type: select
 rules:
     - MATCH,select

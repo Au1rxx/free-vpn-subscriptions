@@ -15,15 +15,6 @@ proxies:
       udp: true
     - alterId: 0
       cipher: auto
-      name: vmess-1005126999
-      network: tcp
-      port: 16266
-      server: zfd-boardv2.kunlun01dns.com
-      type: vmess
-      udp: true
-      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
-    - alterId: 0
-      cipher: auto
       name: vmess-1005580192
       network: tcp
       port: 16266
@@ -51,16 +42,43 @@ proxies:
       type: vless
       udp: true
       uuid: 8d65c8a7-4876-4556-bb6a-feccfb46ee81
+    - client-fingerprint: chrome
+      name: vless-1742628622
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: dcox8XXfkOCmKn3kgrloj6wY5o1_0brJOi2mczYmAT4
+        short-id: 5ced03e42cc31aab
+      server: 34.35.189.111
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4758aee6-6d1a-4306-b460-2398b5af4e35
+    - client-fingerprint: chrome
+      name: vless-1742630105
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: dcox8XXfkOCmKn3kgrloj6wY5o1_0brJOi2mczYmAT4
+        short-id: 5ced03e42cc31aab
+      server: 34.35.189.111
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4758aee6-6d1a-4306-b460-2398b5af4e35
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-236
         - shadowsocks-246
-        - vmess-1005126999
         - vmess-1005580192
         - vless-1535099946
         - vless-1697119993
+        - vless-1742628622
+        - vless-1742630105
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -68,10 +86,11 @@ proxy-groups:
         - auto
         - shadowsocks-236
         - shadowsocks-246
-        - vmess-1005126999
         - vmess-1005580192
         - vless-1535099946
         - vless-1697119993
+        - vless-1742628622
+        - vless-1742630105
       type: select
 rules:
     - MATCH,select
