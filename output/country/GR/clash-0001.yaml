@@ -7,6 +7,15 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-1013860886
+      network: tcp
+      port: 16310
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1257029797
@@ -209,11 +218,22 @@ proxies:
       type: vless
       udp: true
       uuid: 2b781b4a-5942-48e0-a7f3-5a07b7b488c1
+    - name: vless-1720566568
+      network: ws
+      port: 2053
+      server: 38.54.29.210
+      servername: kkkk-xcd.pages.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: b940be1b-3998-45d2-bf7b-06e7b6c4987a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-856461997
+        - vmess-1013860886
         - vless-1257029797
         - vless-1258042178
         - vless-1259537648
@@ -229,12 +249,14 @@ proxy-groups:
         - vless-1631072395
         - vless-1642939679
         - vless-1709235993
+        - vless-1720566568
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-856461997
+        - vmess-1013860886
         - vless-1257029797
         - vless-1258042178
         - vless-1259537648
@@ -250,6 +272,7 @@ proxy-groups:
         - vless-1631072395
         - vless-1642939679
         - vless-1709235993
+        - vless-1720566568
       type: select
 rules:
     - MATCH,select
