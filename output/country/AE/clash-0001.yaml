@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-81052
-      network: ws
-      port: 22573
-      server: 84.235.244.108
-      type: vless
-      udp: true
-      uuid: 39947382-3212-41c9-bc3a-589574ac8b23
     - name: vless-93598
       network: ws
       port: 22573
@@ -360,11 +353,19 @@ proxies:
       type: vless
       udp: true
       uuid: 39947382-3212-41c9-bc3a-589574ac8b23
+    - alterId: 0
+      cipher: auto
+      name: vmess-1741408868
+      network: raw
+      port: 16258
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-81052
         - vless-93598
         - trojan-122892
         - vless-89301153
@@ -405,12 +406,12 @@ proxy-groups:
         - vless-1591550709
         - vless-1591550733
         - vless-1603609245
+        - vmess-1741408868
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-81052
         - vless-93598
         - trojan-122892
         - vless-89301153
@@ -451,6 +452,7 @@ proxy-groups:
         - vless-1591550709
         - vless-1591550733
         - vless-1603609245
+        - vmess-1741408868
       type: select
 rules:
     - MATCH,select
