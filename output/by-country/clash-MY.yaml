@@ -1,22 +1,22 @@
 proxies:
-    - cipher: aes-128-gcm
-      name: shadowsocks-1692643304
-      password: 6ee847c4-04ef-4786-9720-eb6f73fbd80b
-      port: 35016
-      server: 172.96.160.250
-      type: ss
+    - name: vless-1636149005
+      network: ws
+      port: 80
+      server: platform102.golnamakcert.top
+      type: vless
       udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1692643304
+        - vless-1636149005
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1692643304
+        - vless-1636149005
       type: select
 rules:
     - MATCH,select

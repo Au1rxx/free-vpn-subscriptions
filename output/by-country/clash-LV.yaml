@@ -7,26 +7,17 @@ proxies:
       sni: lit.fytpn.com
       type: trojan
       udp: true
-    - name: hysteria2-1734176670
-      password: e3c3b722-1264-4cdc-a97c-b0a1bb73cd67
-      port: 9443
-      server: 31.76.104.160
-      skip-cert-verify: true
-      sni: onecloudstream.com
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-1732376285
-        - hysteria2-1734176670
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-1732376285
-        - hysteria2-1734176670
       type: select
 rules:
     - MATCH,select

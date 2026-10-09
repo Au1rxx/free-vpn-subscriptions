@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: firefox
+      name: vless-1317697670
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
     - name: hysteria2-1548932105
       password: cf83b611-6cba-4535-adcb-8da06c6a9146
       port: 443
@@ -69,36 +82,29 @@ proxies:
       type: vless
       udp: true
       uuid: 2a0b565e-904e-4d3b-a7eb-0725d6a2c7cd
-    - cipher: aes-128-gcm
-      name: shadowsocks-1689700222
-      password: f9300a9bf39ae0347c3a3bfbc4dd7754
-      port: 18280
-      server: 185.103.110.66
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1317697670
         - hysteria2-1548932105
         - vless-270691474
         - vless-1739094808
         - vless-281649961
         - vless-1700683553
         - vless-1709199370
-        - shadowsocks-1689700222
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1317697670
         - hysteria2-1548932105
         - vless-270691474
         - vless-1739094808
         - vless-281649961
         - vless-1700683553
         - vless-1709199370
-        - shadowsocks-1689700222
       type: select
 rules:
     - MATCH,select
