@@ -19,19 +19,6 @@ proxies:
       server: 194.38.11.86
       type: ss
       udp: true
-    - client-fingerprint: random
-      name: vless-700375881
-      network: tcp
-      port: 26424
-      reality-opts:
-        public-key: l8AubqcxQO-HRFJy4pZL1vbLOo-eXit69s-XulSELE0
-        short-id: 23103e1e
-      server: 45.12.75.242
-      servername: ya.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 633f424e-2b11-48da-a6b3-a849dd71456f
     - name: trojan-860386949
       password: 63872b0d-87dd-4474-b690-92773af2922e
       port: 20020
@@ -47,41 +34,6 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1239327829
-      network: ws
-      port: 8880
-      server: 45.131.6.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - cipher: aes-256-gcm
-      name: shadowsocks-1728262042
-      password: bdb313adf74c2ede
-      port: 50660
-      server: 46.17.45.31
-      type: ss
-      udp: true
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-1739774191
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: FunyCRnU6YPBWd37aiGrpXKftztIQ8mlYhDXiolmFW8
-        short-id: 5dc99ae27daa42cf
-      server: 178.72.179.126
-      servername: spb-sel.zloycloud.site
-      tls: true
-      type: vless
-      udp: true
-      uuid: 186a7d6f-e360-4c5f-bafb-a816f79e231b
-    - cipher: aes-256-gcm
-      name: shadowsocks-1741022600
-      password: VnB5dEpEcVQzU2p5Vm01bDh4VDdYdE9tMXM5akM4Rkl4cGFrRjg1TlRjeENSQlR1N0xmdGRCWnVLdVBBUG5TOA==
-      port: 54743
-      server: 89.108.70.121
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1743405412
@@ -96,20 +48,23 @@ proxies:
       type: vless
       udp: true
       uuid: 6418a3f1-40bf-4fc5-bbce-48df24e68283
+    - cipher: aes-256-gcm
+      name: shadowsocks-1744659259
+      password: 4938e975724d0ed1
+      port: 40440
+      server: 194.87.196.13
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-656240777
         - shadowsocks-696792830
-        - vless-700375881
         - trojan-860386949
         - vless-1239316992
-        - vless-1239327829
-        - shadowsocks-1728262042
-        - vless-1739774191
-        - shadowsocks-1741022600
         - vless-1743405412
+        - shadowsocks-1744659259
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -117,14 +72,10 @@ proxy-groups:
         - auto
         - vless-656240777
         - shadowsocks-696792830
-        - vless-700375881
         - trojan-860386949
         - vless-1239316992
-        - vless-1239327829
-        - shadowsocks-1728262042
-        - vless-1739774191
-        - shadowsocks-1741022600
         - vless-1743405412
+        - shadowsocks-1744659259
       type: select
 rules:
     - MATCH,select
