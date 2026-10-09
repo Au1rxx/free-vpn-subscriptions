@@ -1,25 +1,29 @@
 proxies:
-    - name: vless-1721868168
-      network: ws
-      port: 2087
-      server: 46.183.16.4
-      servername: ro1.b0w.ir
-      skip-cert-verify: false
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1359876263
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: byzvlw97wjAAAfHs5AZRV0P0H6_JKBEZ4yfLS0HNewE
+        short-id: fe24f8a0a560056e
+      server: 146.70.124.85
+      servername: www.datadoghq.com
       tls: true
       type: vless
       udp: true
-      uuid: 69d76969-4c52-40f5-ac1d-303571634362
+      uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1721868168
+        - vless-1359876263
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1721868168
+        - vless-1359876263
       type: select
 rules:
     - MATCH,select
