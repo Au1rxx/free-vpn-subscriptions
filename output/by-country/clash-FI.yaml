@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: edge
+      flow: xtls-rprx-vision
+      name: vless-1724795466
+      network: raw
+      port: 8446
+      reality-opts:
+        public-key: Y6ZtoxCUW1qFIvLTNfbrsyfCDoIBaRsqGNtbF_mcAXM
+        short-id: 7bac4b112d30d1
+      server: van2.ragnarok-it.xyz
+      servername: amd.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a61496c3-f256-4a36-8a52-8638b9cc900a
     - client-fingerprint: firefox
       name: vless-1317697670
       network: tcp
@@ -12,13 +26,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
-    - name: hysteria2-1548932105
-      password: cf83b611-6cba-4535-adcb-8da06c6a9146
-      port: 443
-      server: 144.31.212.253
-      skip-cert-verify: false
-      sni: vps155-edge.kermemehori.ru
-      type: hysteria2
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-270691474
@@ -40,71 +47,32 @@ proxies:
       type: vless
       udp: true
       uuid: 15f434b8-aaec-4306-98c9-dd8f5ef608d4
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-281649961
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
-        short-id: a696de84963656de
-      server: 95.85.224.51
-      servername: max.ru
-      tls: true
+    - name: vless-1742280158
+      network: raw
+      port: 2087
+      server: vpn.cyrionflare.xyz
       type: vless
       udp: true
-      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1700683553
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: FuKGULeQ9xZMJN8hWz6J_49tDJKT9HA-nsAXOOVRmyM
-        short-id: ff867ed245c73f43
-      server: 13.143.166.245
-      servername: cdn.jsdelivr.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2a0b565e-904e-4d3b-a7eb-0725d6a2c7cd
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1709199370
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: FuKGULeQ9xZMJN8hWz6J_49tDJKT9HA-nsAXOOVRmyM
-        short-id: ff867ed245c73f43
-      server: 13.143.166.245
-      servername: cdn.jsdelivr.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2a0b565e-904e-4d3b-a7eb-0725d6a2c7cd
+      uuid: 15f434b8-aaec-4306-98c9-dd8f5ef608d4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1724795466
         - vless-1317697670
-        - hysteria2-1548932105
         - vless-270691474
         - vless-1739094808
-        - vless-281649961
-        - vless-1700683553
-        - vless-1709199370
+        - vless-1742280158
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1724795466
         - vless-1317697670
-        - hysteria2-1548932105
         - vless-270691474
         - vless-1739094808
-        - vless-281649961
-        - vless-1700683553
-        - vless-1709199370
+        - vless-1742280158
       type: select
 rules:
     - MATCH,select
