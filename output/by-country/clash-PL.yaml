@@ -1,14 +1,39 @@
 proxies:
-    - name: trojan-1615718040
-      password: UX82473651
-      port: 443
-      server: 202.78.163.237
+    - name: vless-1723901256
+      network: tcp
+      port: 2087
+      server: 95.85.253.241
+      servername: 95.85.253.241
       skip-cert-verify: false
-      sni: cheerful-swan.rooster465.autos
-      type: trojan
+      tls: true
+      type: vless
       udp: true
+      uuid: ee0a38e3-d148-48ac-ba99-5133446c2377
     - client-fingerprint: random
       name: vless-1308176627
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
+        short-id: 50ba05992b05c1c3
+      server: 54.37.136.194
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
+    - name: vless-1719923950
+      network: tcp
+      port: 2053
+      server: 95.85.253.241
+      servername: 95.85.253.241
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ee0a38e3-d148-48ac-ba99-5133446c2377
+    - client-fingerprint: random
+      name: vless-1300687307
       network: tcp
       port: 2053
       reality-opts:
@@ -65,6 +90,24 @@ proxies:
       type: vless
       udp: true
       uuid: ee0a38e3-d148-48ac-ba99-5133446c2377
+    - name: vless-1715315367
+      network: tcp
+      port: 2053
+      server: 95.85.253.241
+      servername: 95.85.253.241
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ee0a38e3-d148-48ac-ba99-5133446c2377
+    - name: trojan-1617378190
+      password: UX82473651
+      port: 443
+      server: 202.78.163.237
+      skip-cert-verify: true
+      sni: cheerful-swan.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-1732376282
       password: gHncxmRjWEJ7apX5XuXsHw4kGexMH_gU
       port: 2097
@@ -73,43 +116,49 @@ proxies:
       sni: pol2.fytpn.com
       type: trojan
       udp: true
-    - name: vless-1721067150
-      network: tcp
-      port: 2083
-      server: 95.85.253.241
-      servername: 95.85.253.241
+    - name: trojan-1596400044
+      password: UX82473651
+      port: 443
+      server: cheerful-swan.rooster465.autos
       skip-cert-verify: true
-      tls: true
-      type: vless
+      sni: cheerful-swan.rooster465.autos
+      type: trojan
       udp: true
-      uuid: ee0a38e3-d148-48ac-ba99-5133446c2377
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-1615718040
+        - vless-1723901256
         - vless-1308176627
+        - vless-1719923950
+        - vless-1300687307
         - hysteria2-1730268592
         - hysteria2-620179978
         - trojan-1734177676
         - vless-1612086354
         - vless-1719923943
+        - vless-1715315367
+        - trojan-1617378190
         - trojan-1732376282
-        - vless-1721067150
+        - trojan-1596400044
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-1615718040
+        - vless-1723901256
         - vless-1308176627
+        - vless-1719923950
+        - vless-1300687307
         - hysteria2-1730268592
         - hysteria2-620179978
         - trojan-1734177676
         - vless-1612086354
         - vless-1719923943
+        - vless-1715315367
+        - trojan-1617378190
         - trojan-1732376282
-        - vless-1721067150
+        - trojan-1596400044
       type: select
 rules:
     - MATCH,select
