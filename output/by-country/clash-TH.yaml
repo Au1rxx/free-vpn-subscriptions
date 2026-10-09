@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1743405410
+      network: tcp
+      port: 21033
+      reality-opts:
+        public-key: EG-jzQw1RyOwAM4L9rMKondSx7cyFmPyv1OP7xXkIk4
+        short-id: cbd39bea0805e2
+      server: 154.21.203.106
+      servername: www.kaidee.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
     - client-fingerprint: ios
       flow: xtls-rprx-vision
       name: vless-1741294753
@@ -118,10 +132,18 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - cipher: aes-256-gcm
+      name: shadowsocks-1713660728
+      password: sxajCTwrlK0zl+zmHpX0p0jXIfatnzlLzWlSQ950L1c=
+      port: 52351
+      server: 103.107.52.106
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1743405410
         - vless-1741294753
         - vmess-923366306
         - vmess-884214269
@@ -133,11 +155,13 @@ proxy-groups:
         - vmess-971093565
         - vless-1746031239
         - vless-1745698281
+        - shadowsocks-1713660728
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1743405410
         - vless-1741294753
         - vmess-923366306
         - vmess-884214269
@@ -149,6 +173,7 @@ proxy-groups:
         - vmess-971093565
         - vless-1746031239
         - vless-1745698281
+        - shadowsocks-1713660728
       type: select
 rules:
     - MATCH,select
