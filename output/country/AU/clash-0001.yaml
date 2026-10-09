@@ -7,13 +7,6 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: vless-1239101014
-      network: ws
-      port: 8880
-      server: 108.165.152.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: firefox
       name: vless-1258929861
       network: tcp
@@ -282,12 +275,25 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1744924665
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: a2qGjvUPq6Nz5FTbn_MSHp-055q2h8YXqIL5VIJ5zwE
+        short-id: d15c17cef9b2e456
+      server: 51.161.204.242
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-700420633
-        - vless-1239101014
         - vless-1258929861
         - vless-1279651618
         - vless-1300687308
@@ -309,13 +315,13 @@ proxy-groups:
         - vless-1718770781
         - vless-1741294757
         - vless-1742656912
+        - vless-1744924665
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-700420633
-        - vless-1239101014
         - vless-1258929861
         - vless-1279651618
         - vless-1300687308
@@ -337,6 +343,7 @@ proxy-groups:
         - vless-1718770781
         - vless-1741294757
         - vless-1742656912
+        - vless-1744924665
       type: select
 rules:
     - MATCH,select
