@@ -14,9 +14,9 @@ proxies:
       sni: cheerful-swan.rooster465.autos
       type: trojan
       udp: true
-    - name: vless-1716498908
-      network: tcp
-      port: 2083
+    - name: vless-1724798051
+      network: raw
+      port: 2053
       server: 95.85.253.241
       servername: 95.85.253.241
       skip-cert-verify: false
@@ -24,19 +24,24 @@ proxies:
       type: vless
       udp: true
       uuid: ee0a38e3-d148-48ac-ba99-5133446c2377
-    - client-fingerprint: ios
-      name: vless-1715017125
-      network: grpc
-      port: 2087
-      reality-opts:
-        public-key: W2OLbQ682PLJ9yHQ21Q0nPJk9U8RuL5YnlP-U1fdQzI
-        short-id: a11023050f134216
-      server: 31.59.210.24
-      servername: www.yandex.ru
+    - name: trojan-1732376282
+      password: gHncxmRjWEJ7apX5XuXsHw4kGexMH_gU
+      port: 2097
+      server: pol2.fytpn.com
+      skip-cert-verify: false
+      sni: pol2.fytpn.com
+      type: trojan
+      udp: true
+    - name: vless-1721067147
+      network: tcp
+      port: 2053
+      server: 95.85.253.241
+      servername: 95.85.253.241
+      skip-cert-verify: true
       tls: true
       type: vless
       udp: true
-      uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
+      uuid: ee0a38e3-d148-48ac-ba99-5133446c2377
     - client-fingerprint: edge
       name: vless-1715017130
       network: grpc
@@ -50,9 +55,9 @@ proxies:
       type: vless
       udp: true
       uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
-    - name: vless-1724798051
-      network: raw
-      port: 2053
+    - name: vless-1716498908
+      network: tcp
+      port: 2083
       server: 95.85.253.241
       servername: 95.85.253.241
       skip-cert-verify: false
@@ -60,40 +65,17 @@ proxies:
       type: vless
       udp: true
       uuid: ee0a38e3-d148-48ac-ba99-5133446c2377
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1700683574
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: y3YCXTqEVks0nGfiSwJ43ol4pY69-mWFUZsdmveoVDM
-        short-id: 46455ff0
-      server: 177.1.192.72
-      servername: addons.mozilla.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4d852af3-a121-41aa-9aed-4ca40a6f7b4d
-    - name: trojan-1732376282
-      password: gHncxmRjWEJ7apX5XuXsHw4kGexMH_gU
-      port: 2097
-      server: pol2.fytpn.com
-      skip-cert-verify: false
-      sni: pol2.fytpn.com
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1730268592
         - trojan-1615718040
-        - vless-1716498908
-        - vless-1715017125
-        - vless-1715017130
         - vless-1724798051
-        - vless-1700683574
         - trojan-1732376282
+        - vless-1721067147
+        - vless-1715017130
+        - vless-1716498908
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -101,12 +83,11 @@ proxy-groups:
         - auto
         - hysteria2-1730268592
         - trojan-1615718040
-        - vless-1716498908
-        - vless-1715017125
-        - vless-1715017130
         - vless-1724798051
-        - vless-1700683574
         - trojan-1732376282
+        - vless-1721067147
+        - vless-1715017130
+        - vless-1716498908
       type: select
 rules:
     - MATCH,select

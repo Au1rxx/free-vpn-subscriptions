@@ -6,19 +6,6 @@ proxies:
       skip-cert-verify: true
       sni: hopp-swizland-new.mysynology.net
       type: hysteria2
-    - client-fingerprint: chrome
-      name: vless-1579868466
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
-        short-id: ad86e2d52ff40ebd
-      server: 208.69.78.217
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
     - client-fingerprint: edge
       name: vless-1727809683
       network: grpc
@@ -39,23 +26,52 @@ proxies:
       skip-cert-verify: true
       sni: hopp-swizland-new.mysynology.net
       type: hysteria2
+    - client-fingerprint: random
+      name: vless-1571355288
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+        short-id: ad86e2d52ff40ebd
+      server: 208.69.78.217
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1728804882
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
+        short-id: ""
+      server: 179.255.191.86
+      servername: sweth.ali-bard.online
+      tls: true
+      type: vless
+      udp: true
+      uuid: 15c9be2b-20f1-47b7-bf33-747ed1ff7fb7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1393931791
-        - vless-1579868466
         - vless-1727809683
         - hysteria2-1501696965
+        - vless-1571355288
+        - vless-1728804882
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1393931791
-        - vless-1579868466
         - vless-1727809683
         - hysteria2-1501696965
+        - vless-1571355288
+        - vless-1728804882
       type: select
 rules:
     - MATCH,select
