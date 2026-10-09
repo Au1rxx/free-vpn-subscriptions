@@ -6,6 +6,13 @@ proxies:
       skip-cert-verify: false
       sni: vps155-edge.kermemehori.ru
       type: hysteria2
+    - name: vless-1739094808
+      network: tcp
+      port: 2087
+      server: vpn.cyrionflare.xyz
+      type: vless
+      udp: true
+      uuid: 15f434b8-aaec-4306-98c9-dd8f5ef608d4
     - cipher: aes-128-gcm
       name: shadowsocks-1689700222
       password: f9300a9bf39ae0347c3a3bfbc4dd7754
@@ -18,6 +25,7 @@ proxy-groups:
       name: auto
       proxies:
         - hysteria2-1548932105
+        - vless-1739094808
         - shadowsocks-1689700222
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -25,6 +33,7 @@ proxy-groups:
       proxies:
         - auto
         - hysteria2-1548932105
+        - vless-1739094808
         - shadowsocks-1689700222
       type: select
 rules:
