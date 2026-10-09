@@ -1,4 +1,35 @@
 proxies:
+    - name: vless-1061113358
+      network: ws
+      port: 443
+      server: cf-socks.caoyuwu.eu.org
+      servername: cf-socks.caoyuwu.eu.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9cdcbaf0-d244-4f37-b227-90166e43f5b5
+    - name: vless-1311641506
+      network: ws
+      port: 2086
+      server: 172.67.155.136
+      type: vless
+      udp: true
+      uuid: 73796e63-0000-4000-8000-000000000007
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1596981169
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: H56cOJhw0xw76lDEpt7IuJJmVGemK6_CK34KtHwDMX8
+        short-id: ""
+      server: 47.251.25.74
+      servername: www.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 18805ff3-b420-45de-af18-93be14024ae8
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1693989592
@@ -31,6 +62,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1061113358
+        - vless-1311641506
+        - vless-1596981169
         - vless-1693989592
         - vless-1724811944
       type: url-test
@@ -38,6 +72,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1061113358
+        - vless-1311641506
+        - vless-1596981169
         - vless-1693989592
         - vless-1724811944
       type: select

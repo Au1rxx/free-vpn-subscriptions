@@ -1,32 +1,11 @@
 proxies:
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1710622301
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: FuKGULeQ9xZMJN8hWz6J_49tDJKT9HA-nsAXOOVRmyM
-        short-id: ff867ed245c73f43
-      server: 13.143.166.245
-      servername: cdn.jsdelivr.net
-      tls: true
-      type: vless
+    - cipher: aes-128-gcm
+      name: shadowsocks-1653901314
+      password: f9300a9bf39ae0347c3a3bfbc4dd7754
+      port: 18283
+      server: 185.103.110.68
+      type: ss
       udp: true
-      uuid: 2a0b565e-904e-4d3b-a7eb-0725d6a2c7cd
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1713953908
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: FuKGULeQ9xZMJN8hWz6J_49tDJKT9HA-nsAXOOVRmyM
-        short-id: ff867ed245c73f43
-      server: 13.143.166.245
-      servername: cdn.jsdelivr.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2a0b565e-904e-4d3b-a7eb-0725d6a2c7cd
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1709199370
@@ -107,40 +86,29 @@ proxies:
       type: vless
       udp: true
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
-    - cipher: aes-128-gcm
-      name: shadowsocks-1653901314
-      password: f9300a9bf39ae0347c3a3bfbc4dd7754
-      port: 18283
-      server: 185.103.110.68
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1710622301
-        - vless-1713953908
+        - shadowsocks-1653901314
         - vless-1709199370
         - vless-1699932293
         - vless-1358009940
         - vless-1333157775
         - vless-1317697670
         - vless-1345688766
-        - shadowsocks-1653901314
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1710622301
-        - vless-1713953908
+        - shadowsocks-1653901314
         - vless-1709199370
         - vless-1699932293
         - vless-1358009940
         - vless-1333157775
         - vless-1317697670
         - vless-1345688766
-        - shadowsocks-1653901314
       type: select
 rules:
     - MATCH,select
