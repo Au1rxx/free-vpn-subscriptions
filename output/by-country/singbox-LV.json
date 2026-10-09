@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "e3c3b722-1264-4cdc-a97c-b0a1bb73cd67",
+      "server": "31.76.104.160",
+      "server_port": 9443,
+      "tag": "hysteria2-1734176670",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "onecloudstream.com"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-1734176670"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-1734176670"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

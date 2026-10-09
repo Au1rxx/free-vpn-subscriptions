@@ -1,0 +1,35 @@
+{
+  "outbounds": [
+    {
+      "server": "test.keoplentuio.xyz",
+      "server_port": 2053,
+      "tag": "vless-1733477211",
+      "type": "vless",
+      "uuid": "9ef61079-6f7d-4911-9608-943da85d8e6f"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1733477211"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1733477211"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

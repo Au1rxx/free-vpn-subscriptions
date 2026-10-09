@@ -1,25 +1,35 @@
 proxies:
-    - name: vless-1729920750
-      network: grpc
-      port: 443
-      server: 132.243.65.86
-      servername: ee2x.global-cdn.org
+    - name: trojan-612135910
+      password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
+      port: 449
+      server: 109.206.241.10
+      skip-cert-verify: true
+      sni: russiapower.accesscam.org
+      type: trojan
+      udp: true
+    - name: vless-650677459
+      network: tcp
+      port: 8443
+      server: 94.183.170.135
+      servername: estproxy4.lockdwn.com
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: 73705990-99fd-4deb-98b4-91ca7bf9bbc0
+      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1729920750
+        - trojan-612135910
+        - vless-650677459
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1729920750
+        - trojan-612135910
+        - vless-650677459
       type: select
 rules:
     - MATCH,select
