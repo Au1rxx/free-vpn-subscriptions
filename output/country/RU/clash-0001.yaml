@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-81803
+      network: ws
+      port: 8880
+      server: 88.216.69.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       name: vless-656240777
       network: tcp
@@ -54,6 +61,13 @@ proxies:
       skip-cert-verify: false
       sni: srv-17e124.21freedom.net
       type: hysteria2
+    - name: vless-1239301127
+      network: ws
+      port: 8880
+      server: 192.0.54.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1239327829
       network: ws
       port: 8880
@@ -96,20 +110,6 @@ proxies:
       server: 194.87.68.140
       type: ss
       udp: true
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1731106346
-      network: tcp
-      port: 444
-      reality-opts:
-        public-key: P7F65GjTQGZju-N8CVHtlKNaWebVe_76Xt7Lm00RuH0
-        short-id: ""
-      server: 188.130.209.227
-      servername: vextor.win
-      tls: true
-      type: vless
-      udp: true
-      uuid: a6be94fc-e742-4714-8a38-c8d7410ae066
     - cipher: aes-256-gcm
       name: shadowsocks-1731124799
       password: RHc1eVBwUERVVkd2M203bm9uZ0xHS1I5eWhLelFUUk5pbTY0TklzODVNU21hZVRqZ2xkcXdWb3Rla29oWnB4RA==
@@ -117,20 +117,6 @@ proxies:
       server: 89.108.70.121
       type: ss
       udp: true
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1731885046
-      network: tcp
-      port: 444
-      reality-opts:
-        public-key: P7F65GjTQGZju-N8CVHtlKNaWebVe_76Xt7Lm00RuH0
-        short-id: ""
-      server: 188.130.209.227
-      servername: vextor.win
-      tls: true
-      type: vless
-      udp: true
-      uuid: a6be94fc-e742-4714-8a38-c8d7410ae066
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1733478144
@@ -149,42 +135,42 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-81803
         - vless-656240777
         - shadowsocks-696792830
         - vless-700375881
         - hysteria2-856380986
         - trojan-860386949
         - hysteria2-861834523
+        - vless-1239301127
         - vless-1239327829
         - vless-1327473090
         - shadowsocks-1728262042
         - shadowsocks-1728262043
         - shadowsocks-1728262049
         - shadowsocks-1729920759
-        - vless-1731106346
         - shadowsocks-1731124799
-        - vless-1731885046
         - vless-1733478144
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-81803
         - vless-656240777
         - shadowsocks-696792830
         - vless-700375881
         - hysteria2-856380986
         - trojan-860386949
         - hysteria2-861834523
+        - vless-1239301127
         - vless-1239327829
         - vless-1327473090
         - shadowsocks-1728262042
         - shadowsocks-1728262043
         - shadowsocks-1728262049
         - shadowsocks-1729920759
-        - vless-1731106346
         - shadowsocks-1731124799
-        - vless-1731885046
         - vless-1733478144
       type: select
 rules:
