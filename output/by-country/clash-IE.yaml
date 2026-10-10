@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-1742280160
+      password: UX82473651
+      port: 443
+      server: master-possum.rooster465.autos
+      skip-cert-verify: true
+      sni: master-possum.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-1746322857
       password: UX82473651
       port: 443
@@ -23,6 +31,22 @@ proxies:
       sni: adapting-basilisk.rooster465.autos
       type: trojan
       udp: true
+    - name: trojan-1656817261
+      password: UX82473651
+      port: 443
+      server: sacred-anemone.rooster465.autos
+      skip-cert-verify: false
+      sni: sacred-anemone.rooster465.autos
+      type: trojan
+      udp: true
+    - name: trojan-1742695999
+      password: UX82473651
+      port: 443
+      server: master-possum.rooster465.autos
+      skip-cert-verify: false
+      sni: master-possum.rooster465.autos
+      type: trojan
+      udp: true
     - name: trojan-1658762404
       password: UX82473651
       port: 443
@@ -35,18 +59,24 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-1742280160
         - trojan-1746322857
         - trojan-1645312290
         - trojan-1746591298
+        - trojan-1656817261
+        - trojan-1742695999
         - trojan-1658762404
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-1742280160
         - trojan-1746322857
         - trojan-1645312290
         - trojan-1746591298
+        - trojan-1656817261
+        - trojan-1742695999
         - trojan-1658762404
       type: select
 rules:

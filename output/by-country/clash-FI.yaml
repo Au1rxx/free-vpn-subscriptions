@@ -6,35 +6,29 @@ proxies:
       server: 185.103.110.66
       type: ss
       udp: true
-    - cipher: aes-128-gcm
-      name: shadowsocks-1653901314
-      password: f9300a9bf39ae0347c3a3bfbc4dd7754
-      port: 18283
-      server: 185.103.110.68
-      type: ss
+    - name: vless-1751777179
+      network: grpc
+      port: 17170
+      server: 170.168.4.59
+      servername: northerntrail.gazette.help
+      skip-cert-verify: false
+      tls: true
+      type: vless
       udp: true
-    - name: hysteria2-1701030113
-      password: cf83b611-6cba-4535-adcb-8da06c6a9146
-      port: 443
-      server: 144.31.212.253
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
+      uuid: 3eec23c1-2a0d-4d53-afa5-62745a1f5ffe
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1689700222
-        - shadowsocks-1653901314
-        - hysteria2-1701030113
+        - vless-1751777179
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1689700222
-        - shadowsocks-1653901314
-        - hysteria2-1701030113
+        - vless-1751777179
       type: select
 rules:
     - MATCH,select
