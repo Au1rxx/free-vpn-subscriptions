@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1742656915
+      network: tcp
+      port: 46984
+      reality-opts:
+        public-key: XBntt77MdH3EMkPXibOAO_NSBrL_aqwiLItU98rqlHE
+        short-id: 9c3c0f8ec8b4af12
+      server: dghk2610.supertoolify.com
+      servername: www.lamer.com.sg
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1568568963
@@ -13,20 +27,6 @@ proxies:
       type: vless
       udp: true
       uuid: f8c9d2a1-da40-4f90-b671-11772a0b13d6
-    - client-fingerprint: ios
-      flow: xtls-rprx-vision
-      name: vless-1744363918
-      network: tcp
-      port: 46984
-      reality-opts:
-        public-key: XBntt77MdH3EMkPXibOAO_NSBrL_aqwiLItU98rqlHE
-        short-id: 9c3c0f8ec8b4af12
-      server: dghk2610.supertoolify.com
-      servername: www.lamer.com.sg
-      tls: true
-      type: vless
-      udp: true
-      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1743405417
@@ -41,21 +41,37 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1744363918
+      network: tcp
+      port: 46984
+      reality-opts:
+        public-key: XBntt77MdH3EMkPXibOAO_NSBrL_aqwiLItU98rqlHE
+        short-id: 9c3c0f8ec8b4af12
+      server: dghk2610.supertoolify.com
+      servername: www.lamer.com.sg
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1742656915
         - vless-1568568963
-        - vless-1744363918
         - vless-1743405417
+        - vless-1744363918
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1742656915
         - vless-1568568963
-        - vless-1744363918
         - vless-1743405417
+        - vless-1744363918
       type: select
 rules:
     - MATCH,select
