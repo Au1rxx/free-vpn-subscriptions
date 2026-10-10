@@ -13,6 +13,15 @@ proxies:
       server: 102.133.165.160
       type: ss
       udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-1005580192
+      network: tcp
+      port: 16266
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - name: vless-1535099946
       network: ws
       port: 80
@@ -345,12 +354,26 @@ proxies:
       type: vless
       udp: true
       uuid: 4758aee6-6d1a-4306-b460-2398b5af4e35
+    - client-fingerprint: random
+      name: vless-1764841325
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bSN0cv0VMxmYZsNsMkkLndOTHZu74C1htJ2M71QMaVE
+        short-id: 89b3a20484eb43ec
+      server: 34.35.186.228
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8d65c8a7-4876-4556-bb6a-feccfb46ee81
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-236
         - shadowsocks-246
+        - vmess-1005580192
         - vless-1535099946
         - vless-1697119993
         - vless-1742628622
@@ -377,6 +400,7 @@ proxy-groups:
         - vless-1757243694
         - vless-1757243713
         - vless-1757914571
+        - vless-1764841325
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -384,6 +408,7 @@ proxy-groups:
         - auto
         - shadowsocks-236
         - shadowsocks-246
+        - vmess-1005580192
         - vless-1535099946
         - vless-1697119993
         - vless-1742628622
@@ -410,6 +435,7 @@ proxy-groups:
         - vless-1757243694
         - vless-1757243713
         - vless-1757914571
+        - vless-1764841325
       type: select
 rules:
     - MATCH,select
