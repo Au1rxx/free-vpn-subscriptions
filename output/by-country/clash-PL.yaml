@@ -13,6 +13,19 @@ proxies:
       type: vless
       udp: true
       uuid: ee18d188-14cc-417e-beb1-70e4add6d023
+    - client-fingerprint: chrome
+      name: vless-1301576697
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
+        short-id: 50ba05992b05c1c3
+      server: 54.37.136.194
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
     - name: vless-1715315367
       network: tcp
       port: 2053
@@ -36,6 +49,14 @@ proxies:
       type: vless
       udp: true
       uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
+    - name: trojan-1620222760
+      password: UX82473651
+      port: 443
+      server: 202.78.163.237
+      skip-cert-verify: false
+      sni: cheerful-swan.rooster465.autos
+      type: trojan
+      udp: true
     - name: vless-1723901256
       network: tcp
       port: 2087
@@ -46,53 +67,27 @@ proxies:
       type: vless
       udp: true
       uuid: ee0a38e3-d148-48ac-ba99-5133446c2377
-    - client-fingerprint: chrome
-      name: vless-1466814097
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
-        short-id: 50ba05992b05c1c3
-      server: 54.37.136.194
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
-    - client-fingerprint: chrome
-      name: vless-1381199103
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
-        short-id: 50ba05992b05c1c3
-      server: 54.37.136.194
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1757887113
+        - vless-1301576697
         - vless-1715315367
         - vless-1300687307
+        - trojan-1620222760
         - vless-1723901256
-        - vless-1466814097
-        - vless-1381199103
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1757887113
+        - vless-1301576697
         - vless-1715315367
         - vless-1300687307
+        - trojan-1620222760
         - vless-1723901256
-        - vless-1466814097
-        - vless-1381199103
       type: select
 rules:
     - MATCH,select
