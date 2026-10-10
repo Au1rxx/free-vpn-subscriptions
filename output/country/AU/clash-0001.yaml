@@ -31,20 +31,6 @@ proxies:
       type: vless
       udp: true
       uuid: d042a74a-c305-4eec-a89f-39a348022c92
-    - name: vless-1239075226
-      network: ws
-      port: 8880
-      server: 104.129.164.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1239153527
-      network: ws
-      port: 8880
-      server: 185.225.195.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: firefox
       name: vless-1258929861
       network: tcp
@@ -271,14 +257,6 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
-    - name: trojan-1752049367
-      password: 06e4425e-a8cb-4b63-929f-2105604ab0a9
-      port: 443
-      server: wilson.ns.cloudflare.com
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
     - name: trojan-1755588917
       password: aec8e5e3-bb81-4b22-8802-0b88c54997b3
       port: 10003
@@ -305,14 +283,16 @@ proxies:
       type: vless
       udp: true
       uuid: aec8e5e3-bb81-4b22-8802-0b88c54997b3
-    - name: trojan-1757243695
-      password: aec8e5e3-bb81-4b22-8802-0b88c54997b3
-      port: 10003
+    - name: vless-1756947966
+      network: tcp
+      port: 10002
       server: sy2.australiacaregroup.site
+      servername: sy2.australiacaregroup.site
       skip-cert-verify: false
-      sni: sy2.australiacaregroup.site
-      type: trojan
+      tls: true
+      type: vless
       udp: true
+      uuid: aec8e5e3-bb81-4b22-8802-0b88c54997b3
     - name: trojan-1758934285
       password: aec8e5e3-bb81-4b22-8802-0b88c54997b3
       port: 10003
@@ -351,6 +331,20 @@ proxies:
       type: vless
       udp: true
       uuid: aec8e5e3-bb81-4b22-8802-0b88c54997b3
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1761059260
+      network: tcp
+      port: 709
+      reality-opts:
+        public-key: YQGxuBmerdc9w64ESEpkvU7BzpqPTmQ_YhVSYypnEnU
+        short-id: 42b7393d3e94e4c7
+      server: 117.55.194.110
+      servername: www.kayak.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 524dd22d-9f8c-4cc4-9e12-f427f497dff4
 proxy-groups:
     - interval: 300
       name: auto
@@ -359,8 +353,6 @@ proxy-groups:
         - trojan-700420633
         - vless-758269950
         - vless-1184224333
-        - vless-1239075226
-        - vless-1239153527
         - vless-1258929861
         - vless-1279651618
         - vless-1300687308
@@ -380,15 +372,15 @@ proxy-groups:
         - hysteria2-1561765064
         - hysteria2-1701030357
         - hysteria2-1718607549
-        - trojan-1752049367
         - trojan-1755588917
         - trojan-1756938895
         - vless-1756938902
-        - trojan-1757243695
+        - vless-1756947966
         - trojan-1758934285
         - vless-1758941483
         - vless-1759492456
         - vless-1759638332
+        - vless-1761059260
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -398,8 +390,6 @@ proxy-groups:
         - trojan-700420633
         - vless-758269950
         - vless-1184224333
-        - vless-1239075226
-        - vless-1239153527
         - vless-1258929861
         - vless-1279651618
         - vless-1300687308
@@ -419,15 +409,15 @@ proxy-groups:
         - hysteria2-1561765064
         - hysteria2-1701030357
         - hysteria2-1718607549
-        - trojan-1752049367
         - trojan-1755588917
         - trojan-1756938895
         - vless-1756938902
-        - trojan-1757243695
+        - vless-1756947966
         - trojan-1758934285
         - vless-1758941483
         - vless-1759492456
         - vless-1759638332
+        - vless-1761059260
       type: select
 rules:
     - MATCH,select

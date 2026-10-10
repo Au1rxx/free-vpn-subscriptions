@@ -6,9 +6,35 @@ proxies:
       server: 102.133.165.160
       type: ss
       udp: true
+    - client-fingerprint: qq
+      name: vless-1757243551
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bSN0cv0VMxmYZsNsMkkLndOTHZu74C1htJ2M71QMaVE
+        short-id: 89b3a20484eb43ec
+      server: 34.35.186.228
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8d65c8a7-4876-4556-bb6a-feccfb46ee81
     - client-fingerprint: chrome
       name: vless-1746031267
       network: raw
+      port: 443
+      reality-opts:
+        public-key: bSN0cv0VMxmYZsNsMkkLndOTHZu74C1htJ2M71QMaVE
+        short-id: 89b3a20484eb43ec
+      server: 34.35.186.228
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8d65c8a7-4876-4556-bb6a-feccfb46ee81
+    - client-fingerprint: chrome
+      name: vless-1752686953
+      network: tcp
       port: 443
       reality-opts:
         public-key: bSN0cv0VMxmYZsNsMkkLndOTHZu74C1htJ2M71QMaVE
@@ -24,14 +50,18 @@ proxy-groups:
       name: auto
       proxies:
         - shadowsocks-246
+        - vless-1757243551
         - vless-1746031267
+        - vless-1752686953
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-246
+        - vless-1757243551
         - vless-1746031267
+        - vless-1752686953
       type: select
 rules:
     - MATCH,select

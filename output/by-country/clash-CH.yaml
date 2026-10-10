@@ -8,6 +8,20 @@ proxies:
       type: hysteria2
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
+      name: vless-1750754785
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SB1uC0OEveYjSiS_Nuw9Ld-uVVXWqi794OGnldthY3I
+        short-id: ""
+      server: dobro.ali-bard.online
+      servername: dobro.ali-bard.online
+      tls: true
+      type: vless
+      udp: true
+      uuid: 12e95f93-443c-45f0-9a2a-5b318b9124cf
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
       name: vless-1748616620
       network: tcp
       port: 443
@@ -59,21 +73,22 @@ proxies:
       type: vless
       udp: true
       uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
-    - client-fingerprint: random
-      name: vless-1571355288
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1540525868
       network: tcp
-      port: 2053
+      port: 443
       reality-opts:
-        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
-        short-id: ad86e2d52ff40ebd
-      server: 208.69.78.217
-      servername: www.apple.com
+        public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
+        short-id: 19253fae84102271
+      server: 45.90.59.15
+      servername: www.cloudflare.com
       tls: true
       type: vless
       udp: true
-      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
-    - client-fingerprint: chrome
-      name: vless-1648311787
+      uuid: 3950b45e-740d-4dca-ac95-505ec8534592
+    - client-fingerprint: random
+      name: vless-1571355288
       network: tcp
       port: 2053
       reality-opts:
@@ -90,24 +105,26 @@ proxy-groups:
       name: auto
       proxies:
         - hysteria2-1482811797
+        - vless-1750754785
         - vless-1748616620
         - vless-1646768999
         - vless-1560961116
         - vless-1703314745
+        - vless-1540525868
         - vless-1571355288
-        - vless-1648311787
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1482811797
+        - vless-1750754785
         - vless-1748616620
         - vless-1646768999
         - vless-1560961116
         - vless-1703314745
+        - vless-1540525868
         - vless-1571355288
-        - vless-1648311787
       type: select
 rules:
     - MATCH,select

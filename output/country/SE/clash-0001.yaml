@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-1447357176
+      password: f12507bcc9bbae297ed77b94d9232ae6
+      port: 59443
+      server: tyy129.magiclampcloud.com
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - client-fingerprint: safari
       name: vless-1559223936
       network: grpc
@@ -176,10 +184,25 @@ proxies:
       type: vless
       udp: true
       uuid: f90b7d43-69e2-4b46-a672-8029bc6796a2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1761064538
+      network: raw
+      port: 25119
+      reality-opts:
+        public-key: szPq4a3cvxfBOmGyg-UJCV3d1Jqjnj7YR3gaxyYtnk4
+        short-id: 10f517
+      server: se3.h1cloud.net
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f90b7d43-69e2-4b46-a672-8029bc6796a2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-1447357176
         - vless-1559223936
         - vless-1560066335
         - vless-1571338104
@@ -193,11 +216,13 @@ proxy-groups:
         - vless-1759232872
         - vless-1759635499
         - vless-1760234352
+        - vless-1761064538
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-1447357176
         - vless-1559223936
         - vless-1560066335
         - vless-1571338104
@@ -211,6 +236,7 @@ proxy-groups:
         - vless-1759232872
         - vless-1759635499
         - vless-1760234352
+        - vless-1761064538
       type: select
 rules:
     - MATCH,select

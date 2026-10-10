@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-36539
+      network: ws
+      port: 80
+      server: 103.86.49.57
+      type: vless
+      udp: true
+      uuid: 3c52e091-6714-4915-949f-2149fe69951b
     - name: vless-86046
       network: ws
       port: 80
@@ -122,6 +129,15 @@ proxies:
       cipher: auto
       name: vmess-942767259
       network: tcp
+      port: 37515
+      server: 119.46.51.45
+      type: vmess
+      udp: true
+      uuid: 9b76bc31-17a5-4454-934a-8d5fb602cd70
+    - alterId: 0
+      cipher: auto
+      name: vmess-959707971
+      network: none
       port: 37515
       server: 119.46.51.45
       type: vmess
@@ -320,6 +336,15 @@ proxies:
       type: vless
       udp: true
       uuid: 3c52e091-6714-4915-949f-2149fe69951b
+    - alterId: 0
+      cipher: auto
+      name: vmess-1571095609
+      network: tcp
+      port: 37515
+      server: 119.46.51.45
+      type: vmess
+      udp: true
+      uuid: 9b76bc31-17a5-4454-934a-8d5fb602cd70
     - alterId: 2
       cipher: auto
       name: vmess-1599826986
@@ -542,10 +567,25 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1760781328
+      network: tcp
+      port: 21033
+      reality-opts:
+        public-key: EG-jzQw1RyOwAM4L9rMKondSx7cyFmPyv1OP7xXkIk4
+        short-id: cbd39bea0805e2
+      server: 154.21.203.106
+      servername: www.kaidee.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-36539
         - vless-86046
         - vless-94089
         - trojan-122843
@@ -562,6 +602,7 @@ proxy-groups:
         - vmess-906676251
         - vmess-923366306
         - vmess-942767259
+        - vmess-959707971
         - vmess-960864499
         - vmess-971093565
         - vmess-974446973
@@ -585,6 +626,7 @@ proxy-groups:
         - vless-1389119280
         - vless-1453070550
         - vless-1570883578
+        - vmess-1571095609
         - vmess-1599826986
         - vmess-1605681734
         - vless-1624248261
@@ -606,11 +648,13 @@ proxy-groups:
         - vless-1751190946
         - vless-1757374758
         - vless-1759811633
+        - vless-1760781328
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-36539
         - vless-86046
         - vless-94089
         - trojan-122843
@@ -627,6 +671,7 @@ proxy-groups:
         - vmess-906676251
         - vmess-923366306
         - vmess-942767259
+        - vmess-959707971
         - vmess-960864499
         - vmess-971093565
         - vmess-974446973
@@ -650,6 +695,7 @@ proxy-groups:
         - vless-1389119280
         - vless-1453070550
         - vless-1570883578
+        - vmess-1571095609
         - vmess-1599826986
         - vmess-1605681734
         - vless-1624248261
@@ -671,6 +717,7 @@ proxy-groups:
         - vless-1751190946
         - vless-1757374758
         - vless-1759811633
+        - vless-1760781328
       type: select
 rules:
     - MATCH,select
