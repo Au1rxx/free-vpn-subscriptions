@@ -1,4 +1,24 @@
 proxies:
+    - name: vless-81803
+      network: ws
+      port: 8880
+      server: 88.216.69.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - client-fingerprint: chrome
+      name: vless-656240777
+      network: tcp
+      port: 26424
+      reality-opts:
+        public-key: l8AubqcxQO-HRFJy4pZL1vbLOo-eXit69s-XulSELE0
+        short-id: 23103e1e
+      server: 45.12.75.242
+      servername: ya.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 633f424e-2b11-48da-a6b3-a849dd71456f
     - cipher: aes-256-cfb
       name: shadowsocks-696792830
       password: 7eadc6dbe2ae
@@ -90,13 +110,6 @@ proxies:
       password: 895b4b796a357570
       port: 40440
       server: 46.17.41.166
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-1745638384
-      password: VXlEaVNCVHpYNXZiWkZPbk9VZ1JQMGJFUFk1SlFRd25sMFlPakE4MXIwSGlrMHBJbDdCc0RJcDlmd2Z5dWdabg==
-      port: 53442
-      server: 151.248.116.222
       type: ss
       udp: true
     - client-fingerprint: chrome
@@ -246,10 +259,26 @@ proxies:
       type: vless
       udp: true
       uuid: ee18d188-14cc-417e-beb1-70e4add6d023
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1753468174
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: p87u9cOh91BaXsKS-HoCoOUXxHcOwkM6ByTWmz_6b2Y
+        short-id: 0da7e14db353e7d0
+      server: 217.149.30.73
+      servername: time.nztvpn.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ee18d188-14cc-417e-beb1-70e4add6d023
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-81803
+        - vless-656240777
         - shadowsocks-696792830
         - vless-700375881
         - trojan-860386949
@@ -261,7 +290,6 @@ proxy-groups:
         - vless-1599309375
         - shadowsocks-1744659259
         - shadowsocks-1744784913
-        - shadowsocks-1745638384
         - vless-1748154614
         - vless-1749073153
         - vless-1749073154
@@ -273,11 +301,14 @@ proxy-groups:
         - vless-1751869918
         - vless-1751869919
         - vless-1751869920
+        - vless-1753468174
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-81803
+        - vless-656240777
         - shadowsocks-696792830
         - vless-700375881
         - trojan-860386949
@@ -289,7 +320,6 @@ proxy-groups:
         - vless-1599309375
         - shadowsocks-1744659259
         - shadowsocks-1744784913
-        - shadowsocks-1745638384
         - vless-1748154614
         - vless-1749073153
         - vless-1749073154
@@ -301,6 +331,7 @@ proxy-groups:
         - vless-1751869918
         - vless-1751869919
         - vless-1751869920
+        - vless-1753468174
       type: select
 rules:
     - MATCH,select

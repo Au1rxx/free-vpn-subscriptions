@@ -1,13 +1,22 @@
-proxies: []
+proxies:
+    - cipher: aes-128-gcm
+      name: shadowsocks-1752773541
+      password: 9c51ca33-a332-4de5-8677-5624e940097c
+      port: 35019
+      server: ruot.ayucloudservices.nl
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - shadowsocks-1752773541
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1752773541
       type: select
 rules:
     - MATCH,select

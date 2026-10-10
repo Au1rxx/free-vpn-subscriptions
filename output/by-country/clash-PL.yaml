@@ -1,17 +1,4 @@
 proxies:
-    - client-fingerprint: random
-      name: vless-1308176627
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
-        short-id: 50ba05992b05c1c3
-      server: 54.37.136.194
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
     - name: hysteria2-589844075
       password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
       port: 443
@@ -19,19 +6,6 @@ proxies:
       skip-cert-verify: false
       sni: admin.wwwinternetvideo.click
       type: hysteria2
-    - client-fingerprint: random
-      name: vless-1300687307
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
-        short-id: 50ba05992b05c1c3
-      server: 54.37.136.194
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
     - name: hysteria2-620179978
       password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
       port: 443
@@ -55,19 +29,6 @@ proxies:
         public-key: 5k0dtOSzmshCubdYeKppsUdHU4i2ghaB9uSJSzGjHW4
         short-id: 6dbf4931096f9890
       server: 31.59.210.37
-      servername: www.yandex.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
-    - client-fingerprint: edge
-      name: vless-1715017130
-      network: grpc
-      port: 2087
-      reality-opts:
-        public-key: W2OLbQ682PLJ9yHQ21Q0nPJk9U8RuL5YnlP-U1fdQzI
-        short-id: a11023050f134216
-      server: 31.59.210.24
       servername: www.yandex.ru
       tls: true
       type: vless
@@ -107,35 +68,44 @@ proxies:
       skip-cert-verify: false
       sni: polandsixsebenrkn010.qcloud.surf
       type: hysteria2
+    - client-fingerprint: firefox
+      name: vless-1678508762
+      network: grpc
+      port: 2088
+      reality-opts:
+        public-key: Eq3c19Y0WGB1APWMADQB-oxCvZFSVFAQxG5L6b8EkUg
+        short-id: b1ad165f903c62fe
+      server: 31.59.210.26
+      servername: www.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1308176627
         - hysteria2-589844075
-        - vless-1300687307
         - hysteria2-620179978
         - trojan-1747826294
         - vless-1744820610
-        - vless-1715017130
         - vless-1715017125
         - vless-1709215998
         - hysteria2-1751557590
+        - vless-1678508762
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1308176627
         - hysteria2-589844075
-        - vless-1300687307
         - hysteria2-620179978
         - trojan-1747826294
         - vless-1744820610
-        - vless-1715017130
         - vless-1715017125
         - vless-1709215998
         - hysteria2-1751557590
+        - vless-1678508762
       type: select
 rules:
     - MATCH,select
