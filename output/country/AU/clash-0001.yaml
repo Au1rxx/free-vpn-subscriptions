@@ -7,6 +7,15 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - alterId: 0
+      cipher: auto
+      name: vmess-1235284193
+      network: ws
+      port: 80
+      server: 152.67.8.205
+      type: vmess
+      udp: true
+      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
     - client-fingerprint: firefox
       name: vless-1258929861
       network: tcp
@@ -257,11 +266,40 @@ proxies:
       type: vless
       udp: true
       uuid: 524dd22d-9f8c-4cc4-9e12-f427f497dff4
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1765003068
+      network: tcp
+      port: 6443
+      reality-opts:
+        public-key: o19q9ZfdCq7w_jJZ4EJsOCTo03qv4s5jCncFOx7WLig
+        short-id: ""
+      server: lv-bridge.shadowshroom.org
+      servername: lv-bridge.shadowshroom.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: f7f48934-f14c-4819-b225-36e89bda5491
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1765222566
+      network: tcp
+      port: 6443
+      reality-opts:
+        public-key: o19q9ZfdCq7w_jJZ4EJsOCTo03qv4s5jCncFOx7WLig
+        short-id: ""
+      server: lv-bridge.shadowshroom.org
+      servername: lv-bridge.shadowshroom.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: f7f48934-f14c-4819-b225-36e89bda5491
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-700420633
+        - vmess-1235284193
         - vless-1258929861
         - vless-1279651618
         - vless-1300687308
@@ -282,12 +320,15 @@ proxy-groups:
         - vless-1756947966
         - vless-1761059260
         - vless-1762345797
+        - vless-1765003068
+        - vless-1765222566
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-700420633
+        - vmess-1235284193
         - vless-1258929861
         - vless-1279651618
         - vless-1300687308
@@ -308,6 +349,8 @@ proxy-groups:
         - vless-1756947966
         - vless-1761059260
         - vless-1762345797
+        - vless-1765003068
+        - vless-1765222566
       type: select
 rules:
     - MATCH,select
