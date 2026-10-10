@@ -1,18 +1,18 @@
 proxies:
     - cipher: aes-128-gcm
+      name: shadowsocks-1689700222
+      password: f9300a9bf39ae0347c3a3bfbc4dd7754
+      port: 18280
+      server: 185.103.110.66
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
       name: shadowsocks-1653901314
       password: f9300a9bf39ae0347c3a3bfbc4dd7754
       port: 18283
       server: 185.103.110.68
       type: ss
       udp: true
-    - name: hysteria2-1548932105
-      password: cf83b611-6cba-4535-adcb-8da06c6a9146
-      port: 443
-      server: 144.31.212.253
-      skip-cert-verify: false
-      sni: vps155-edge.kermemehori.ru
-      type: hysteria2
     - name: hysteria2-1701030113
       password: cf83b611-6cba-4535-adcb-8da06c6a9146
       port: 443
@@ -24,16 +24,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1689700222
         - shadowsocks-1653901314
-        - hysteria2-1548932105
         - hysteria2-1701030113
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1689700222
         - shadowsocks-1653901314
-        - hysteria2-1548932105
         - hysteria2-1701030113
       type: select
 rules:

@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-1688379115
+      password: Y6R9pAtvxxzmGC
+      port: 5000
+      server: 213.202.208.199
+      type: ss
+      udp: true
     - name: hysteria2-1561765054
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -54,13 +61,6 @@ proxies:
       server: 8.209.74.72
       type: ss
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-1688379115
-      password: Y6R9pAtvxxzmGC
-      port: 5000
-      server: 213.202.208.199
-      type: ss
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1440428017
@@ -87,13 +87,18 @@ proxies:
       type: vmess
       udp: true
       uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-    - name: hysteria2-1735758676
-      password: c-E0lamG8OnEj9M_uh3oJPmIXqYIVGctO-NHELF1TmNYs7Jl
-      port: 443
-      server: cz.h2.cleanersaz.help
+    - alterId: 0
+      cipher: none
+      name: vmess-933894324
+      network: tcp
+      port: 1234
+      server: 141.95.65.9
+      servername: supervpn.super.com
       skip-cert-verify: true
-      sni: ""
-      type: hysteria2
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
     - name: trojan-1655225145
       password: UX82473651
       port: 443
@@ -182,20 +187,6 @@ proxies:
       type: vless
       udp: true
       uuid: a5ce10af-5e95-4eb3-ab87-bf4f95cb059b
-    - client-fingerprint: randomized
-      flow: xtls-rprx-vision
-      name: vless-1691291864
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: RTG-xTU5UuKTRrkk8_COe04GiUWrqrSdt9mqSak_XEc
-        short-id: e696e744
-      server: 2.27.35.55
-      servername: addons.mozilla.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
     - alterId: 0
       cipher: auto
       name: vmess-1718607789
@@ -240,6 +231,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1688379115
         - hysteria2-1561765054
         - vless-1741441891
         - shadowsocks-696780676
@@ -247,10 +239,9 @@ proxy-groups:
         - shadowsocks-717969012
         - shadowsocks-276
         - shadowsocks-229
-        - shadowsocks-1688379115
         - vless-1440428017
         - vmess-685047062
-        - hysteria2-1735758676
+        - vmess-933894324
         - trojan-1655225145
         - trojan-1599155708
         - trojan-1605677237
@@ -260,7 +251,6 @@ proxy-groups:
         - vless-1746031231
         - vless-1741441896
         - vless-1659750991
-        - vless-1691291864
         - vmess-1718607789
         - vmess-665279543
         - vmess-674048796
@@ -270,6 +260,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-1688379115
         - hysteria2-1561765054
         - vless-1741441891
         - shadowsocks-696780676
@@ -277,10 +268,9 @@ proxy-groups:
         - shadowsocks-717969012
         - shadowsocks-276
         - shadowsocks-229
-        - shadowsocks-1688379115
         - vless-1440428017
         - vmess-685047062
-        - hysteria2-1735758676
+        - vmess-933894324
         - trojan-1655225145
         - trojan-1599155708
         - trojan-1605677237
@@ -290,7 +280,6 @@ proxy-groups:
         - vless-1746031231
         - vless-1741441896
         - vless-1659750991
-        - vless-1691291864
         - vmess-1718607789
         - vmess-665279543
         - vmess-674048796
