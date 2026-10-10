@@ -1,8 +1,23 @@
 proxies:
+    - name: vless-60292
+      network: ws
+      port: 8880
+      server: 181.214.1.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: trojan-123833
       password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
       port: 443
       server: mfyousheng.nl.eu.org
+      skip-cert-verify: false
+      sni: mfyousheng.nl.eu.org
+      type: trojan
+      udp: true
+    - name: trojan-2501852
+      password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
+      port: 443
+      server: 188.114.97.3
       skip-cert-verify: false
       sni: mfyousheng.nl.eu.org
       type: trojan
@@ -310,6 +325,13 @@ proxies:
       type: vless
       udp: true
       uuid: 6b89f475-913c-4381-a102-f5e06a129685
+    - name: vless-1351434211
+      network: ws
+      port: 8880
+      server: 185.162.229.50
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1364026099
       password: e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3
@@ -670,7 +692,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-60292
         - trojan-123833
+        - trojan-2501852
         - trojan-13360403
         - trojan-13362506
         - trojan-13362833
@@ -699,6 +723,7 @@ proxy-groups:
         - vless-1265429398
         - vless-1307741629
         - vless-1345223617
+        - vless-1351434211
         - shadowsocks-1364026099
         - vless-1391251363
         - hysteria2-1391610043
@@ -737,7 +762,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-60292
         - trojan-123833
+        - trojan-2501852
         - trojan-13360403
         - trojan-13362506
         - trojan-13362833
@@ -766,6 +793,7 @@ proxy-groups:
         - vless-1265429398
         - vless-1307741629
         - vless-1345223617
+        - vless-1351434211
         - shadowsocks-1364026099
         - vless-1391251363
         - hysteria2-1391610043

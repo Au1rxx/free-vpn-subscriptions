@@ -1,4 +1,13 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-1005125039
+      network: tcp
+      port: 16308
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - cipher: aes-256-gcm
       name: shadowsocks-1251465987
       password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
@@ -6,6 +15,16 @@ proxies:
       server: 82.110.60.9
       type: ss
       udp: true
+    - name: vless-1701197596
+      network: ws
+      port: 2053
+      server: 141.101.90.108
+      servername: wzs.echo.net.eu.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d18c6897-2849-456a-8c46-d7ecece47c20
     - name: hysteria2-1731106343
       password: Hc9_NX924RE_Mn948rgrwiub_m93V84nll
       port: 9443
@@ -27,23 +46,36 @@ proxies:
       skip-cert-verify: false
       sni: keyhop-voxility-at.dynuddns.com
       type: hysteria2
+    - name: hysteria2-1753483813
+      password: Hc9_NX924RE_Mn948rgrwiub_m93V84nll
+      port: 9443
+      server: 5.254.51.108
+      skip-cert-verify: true
+      sni: keyhop-voxility-at.dynuddns.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-1005125039
         - shadowsocks-1251465987
+        - vless-1701197596
         - hysteria2-1731106343
         - hysteria2-1732663727
         - hysteria2-1748616613
+        - hysteria2-1753483813
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-1005125039
         - shadowsocks-1251465987
+        - vless-1701197596
         - hysteria2-1731106343
         - hysteria2-1732663727
         - hysteria2-1748616613
+        - hysteria2-1753483813
       type: select
 rules:
     - MATCH,select
