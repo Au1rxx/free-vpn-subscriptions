@@ -6,6 +6,13 @@ proxies:
       server: 91.201.65.122
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-819466008
+      password: SBM7R883jBmnqe6C
+      port: 9053
+      server: 91.201.65.122
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       name: vless-548666342
       network: tcp
@@ -40,19 +47,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
-    - client-fingerprint: chrome
-      name: vless-1047808927
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
-        short-id: 5b8a942318178e7b
-      server: 57.131.38.163
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
     - client-fingerprint: random
       name: vless-700368422
       network: tcp
@@ -128,6 +122,13 @@ proxies:
       server: 185.164.175.81
       type: ss
       udp: true
+    - name: vless-2327856
+      network: tcp
+      port: 10086
+      server: 204.216.216.23
+      type: vless
+      udp: true
+      uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
     - client-fingerprint: firefox
       name: vless-429873172
       network: tcp
@@ -181,20 +182,6 @@ proxies:
       type: vless
       udp: true
       uuid: 12e95f93-443c-45f0-9a2a-5b318b9124cf
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1255015609
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: R5ycsjJ-v024902dMSqTsSdqxUwCFEXMebdBEWFt9VU
-        short-id: cd6065902eea7a02
-      server: 82.118.16.187
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: dc2259c4-388e-4285-ba18-df619b6672b6
     - client-fingerprint: edge
       name: vless-696199631
       network: tcp
@@ -208,49 +195,65 @@ proxies:
       type: vless
       udp: true
       uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1269466481
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: R5ycsjJ-v024902dMSqTsSdqxUwCFEXMebdBEWFt9VU
+        short-id: cd6065902eea7a02
+      server: 82.118.16.187
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dc2259c4-388e-4285-ba18-df619b6672b6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-812343736
+        - shadowsocks-819466008
         - vless-548666342
         - vless-1381198116
         - vless-27030
-        - vless-1047808927
         - vless-700368422
         - vless-1293637720
         - vless-483686868
         - vless-1276323747
         - vless-1286980550
         - shadowsocks-1251465982
+        - vless-2327856
         - vless-429873172
         - vless-1047427930
         - vless-703656408
         - vless-1763341040
-        - vless-1255015609
         - vless-696199631
+        - vless-1269466481
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-812343736
+        - shadowsocks-819466008
         - vless-548666342
         - vless-1381198116
         - vless-27030
-        - vless-1047808927
         - vless-700368422
         - vless-1293637720
         - vless-483686868
         - vless-1276323747
         - vless-1286980550
         - shadowsocks-1251465982
+        - vless-2327856
         - vless-429873172
         - vless-1047427930
         - vless-703656408
         - vless-1763341040
-        - vless-1255015609
         - vless-696199631
+        - vless-1269466481
       type: select
 rules:
     - MATCH,select
