@@ -1,14 +1,4 @@
 proxies:
-    - name: vless-781312931
-      network: tcp
-      port: 8443
-      server: 94.183.170.135
-      servername: estproxy4.lockdwn.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1755777395
@@ -91,21 +81,10 @@ proxies:
       type: vless
       udp: true
       uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
-    - name: vless-656161252
-      network: tcp
-      port: 8443
-      server: 94.183.170.135
-      servername: estproxy4.lockdwn.com
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-781312931
         - vless-1755777395
         - vless-648965652
         - vless-1763341044
@@ -114,13 +93,11 @@ proxy-groups:
         - vless-957016089
         - vless-970024036
         - vless-706800546
-        - vless-656161252
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-781312931
         - vless-1755777395
         - vless-648965652
         - vless-1763341044
@@ -129,7 +106,6 @@ proxy-groups:
         - vless-957016089
         - vless-970024036
         - vless-706800546
-        - vless-656161252
       type: select
 rules:
     - MATCH,select
