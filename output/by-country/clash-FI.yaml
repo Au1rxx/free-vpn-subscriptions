@@ -6,17 +6,64 @@ proxies:
       server: 185.103.110.66
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      name: vless-1752869908
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: QzFNQqkvBnDKIyjXUHJQe9jruaw9G5AV44vDC-qvnlo
+        short-id: ""
+      server: 122.8.45.3
+      servername: www.hp.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8ff8938c-49b6-b22f-a934-b55e91154ca3
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1750410686
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: zw_9ATs5eTFhYtSyH8I0EclQfvwGYMIEoufkwai2JmQ
+        short-id: a9057238a01487ce
+      server: 31.76.31.172
+      servername: melow.puffixhosting.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e937b92c-701f-420e-a621-3eb3b75de467
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-270691474
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
+        short-id: a696de84963656de
+      server: 95.85.224.51
+      servername: max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1689700222
+        - vless-1752869908
+        - vless-1750410686
+        - vless-270691474
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1689700222
+        - vless-1752869908
+        - vless-1750410686
+        - vless-270691474
       type: select
 rules:
     - MATCH,select

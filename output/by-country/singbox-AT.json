@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "Hc9_NX924RE_Mn948rgrwiub_m93V84nll",
+      "server": "5.254.51.109",
+      "server_port": 9443,
+      "tag": "hysteria2-1732663727",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "keyhop-voxility-at.dynuddns.com"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-1732663727"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-1732663727"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

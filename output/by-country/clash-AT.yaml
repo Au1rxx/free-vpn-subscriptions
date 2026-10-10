@@ -1,0 +1,22 @@
+proxies:
+    - name: hysteria2-1732663727
+      password: Hc9_NX924RE_Mn948rgrwiub_m93V84nll
+      port: 9443
+      server: 5.254.51.109
+      skip-cert-verify: true
+      sni: keyhop-voxility-at.dynuddns.com
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - hysteria2-1732663727
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - hysteria2-1732663727
+      type: select
+rules:
+    - MATCH,select
