@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1752124152
+      network: tcp
+      port: 25119
+      reality-opts:
+        public-key: szPq4a3cvxfBOmGyg-UJCV3d1Jqjnj7YR3gaxyYtnk4
+        short-id: 10f517
+      server: se3.h1cloud.net
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f90b7d43-69e2-4b46-a672-8029bc6796a2
     - client-fingerprint: chrome
       name: vless-1576218800
       network: grpc
@@ -16,12 +30,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1752124152
         - vless-1576218800
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1752124152
         - vless-1576218800
       type: select
 rules:

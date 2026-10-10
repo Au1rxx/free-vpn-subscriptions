@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-128-gcm
-      name: shadowsocks-1689700222
-      password: f9300a9bf39ae0347c3a3bfbc4dd7754
-      port: 18280
-      server: 185.103.110.66
-      type: ss
-      udp: true
     - client-fingerprint: chrome
       name: vless-1752869908
       network: grpc
@@ -20,6 +13,26 @@ proxies:
       udp: true
       uuid: 8ff8938c-49b6-b22f-a934-b55e91154ca3
     - client-fingerprint: chrome
+      name: vless-1755974936
+      network: grpc
+      port: 25481
+      reality-opts:
+        public-key: mhIAHuZIEr2NpdGGSeOxar7VRSgEfVoNwb_G8Y0073E
+        short-id: 3b84fc70657725af
+      server: 87.228.92.114
+      servername: www.bing.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 68c3d665-b2b5-4ffb-9f37-9f3d8c47324d
+    - cipher: aes-128-gcm
+      name: shadowsocks-1689700222
+      password: f9300a9bf39ae0347c3a3bfbc4dd7754
+      port: 18280
+      server: 185.103.110.66
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1750410686
       network: tcp
@@ -33,6 +46,20 @@ proxies:
       type: vless
       udp: true
       uuid: e937b92c-701f-420e-a621-3eb3b75de467
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-661038937
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
+        short-id: a696de84963656de
+      server: 95.85.224.51
+      servername: max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-270691474
@@ -51,18 +78,22 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1689700222
         - vless-1752869908
+        - vless-1755974936
+        - shadowsocks-1689700222
         - vless-1750410686
+        - vless-661038937
         - vless-270691474
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1689700222
         - vless-1752869908
+        - vless-1755974936
+        - shadowsocks-1689700222
         - vless-1750410686
+        - vless-661038937
         - vless-270691474
       type: select
 rules:

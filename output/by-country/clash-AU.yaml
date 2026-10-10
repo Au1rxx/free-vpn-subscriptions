@@ -6,6 +6,42 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
+    - client-fingerprint: random
+      name: vless-1300687308
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
+        short-id: 4cc9dc65f7770115
+      server: 46.250.240.80
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
+    - name: vless-1759492456
+      network: tcp
+      port: 10002
+      server: sy2.australiacaregroup.site
+      servername: sy2.australiacaregroup.site
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: aec8e5e3-bb81-4b22-8802-0b88c54997b3
+    - client-fingerprint: random
+      name: vless-1308176626
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
+        short-id: 4cc9dc65f7770115
+      server: 46.250.240.80
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
     - name: vless-1758941483
       network: tcp
       port: 10002
@@ -39,48 +75,29 @@ proxies:
       type: vless
       udp: true
       uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
-    - name: trojan-1756938895
-      password: aec8e5e3-bb81-4b22-8802-0b88c54997b3
-      port: 10003
-      server: sy2.australiacaregroup.site
-      skip-cert-verify: true
-      sni: sy2.australiacaregroup.site
-      type: trojan
-      udp: true
-    - client-fingerprint: random
-      name: vless-1308176626
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
-        short-id: 4cc9dc65f7770115
-      server: 46.250.240.80
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1718607549
+        - vless-1300687308
+        - vless-1759492456
+        - vless-1308176626
         - vless-1758941483
         - vless-1756947966
         - vless-1345603902
-        - trojan-1756938895
-        - vless-1308176626
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1718607549
+        - vless-1300687308
+        - vless-1759492456
+        - vless-1308176626
         - vless-1758941483
         - vless-1756947966
         - vless-1345603902
-        - trojan-1756938895
-        - vless-1308176626
       type: select
 rules:
     - MATCH,select

@@ -1,14 +1,4 @@
 proxies:
-    - name: vless-34790904
-      network: ws
-      port: 443
-      server: 172.67.208.181
-      servername: biyapain.biyapainbache.workers.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5a5fba4d-6ae8-4975-936d-bb643fb15957
     - name: trojan-1447357176
       password: f12507bcc9bbae297ed77b94d9232ae6
       port: 59443
@@ -152,11 +142,38 @@ proxies:
       type: vless
       udp: true
       uuid: f90b7d43-69e2-4b46-a672-8029bc6796a2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1759232872
+      network: tcp
+      port: 25119
+      reality-opts:
+        public-key: szPq4a3cvxfBOmGyg-UJCV3d1Jqjnj7YR3gaxyYtnk4
+        short-id: 10f517
+      server: 136.148.223.212
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f90b7d43-69e2-4b46-a672-8029bc6796a2
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1759635499
+      network: tcp
+      port: 25119
+      reality-opts:
+        public-key: szPq4a3cvxfBOmGyg-UJCV3d1Jqjnj7YR3gaxyYtnk4
+        short-id: 10f517
+      server: se3.h1cloud.net
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f90b7d43-69e2-4b46-a672-8029bc6796a2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-34790904
         - trojan-1447357176
         - vless-1559223936
         - vless-1560066335
@@ -168,12 +185,13 @@ proxy-groups:
         - vless-1754981875
         - vless-1757243579
         - vless-1758293227
+        - vless-1759232872
+        - vless-1759635499
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-34790904
         - trojan-1447357176
         - vless-1559223936
         - vless-1560066335
@@ -185,6 +203,8 @@ proxy-groups:
         - vless-1754981875
         - vless-1757243579
         - vless-1758293227
+        - vless-1759232872
+        - vless-1759635499
       type: select
 rules:
     - MATCH,select
