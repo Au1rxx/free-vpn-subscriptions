@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1757914563
+      network: tcp
+      port: 46984
+      reality-opts:
+        public-key: XBntt77MdH3EMkPXibOAO_NSBrL_aqwiLItU98rqlHE
+        short-id: 9c3c0f8ec8b4af12
+      server: 154.21.203.106
+      servername: www.lamer.com.sg
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1570814587
@@ -31,6 +45,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1757914563
         - vless-1570814587
         - vless-1759811644
       type: url-test
@@ -38,6 +53,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1757914563
         - vless-1570814587
         - vless-1759811644
       type: select
