@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-689011839
+      password: github.com/Alvin9999-newpac/fanqiang
+      port: 43115
+      server: 62.210.147.2
+      skip-cert-verify: true
+      sni: www.microsoft.com
+      type: hysteria2
     - flow: xtls-rprx-vision
       name: vless-1724734229
       network: tcp
@@ -70,43 +77,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
-    - client-fingerprint: firefox
-      name: vless-693666638
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ
-        short-id: a8ae
-      server: 194.76.154.31
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
-    - client-fingerprint: chrome
-      name: vless-1298542551
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: g63cT3uI0Y5iUtj3m__RYz7nmR1eIK4AYikdnZCl63w
-        short-id: bfe58beb41f1d09f
-      server: 51.77.217.70
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: bf16ee0c-8b3c-41e4-ab3a-8b48033c404e
-    - flow: xtls-rprx-vision
-      name: vless-1692643310
-      network: tcp
-      port: 443
-      server: 51.255.166.202
-      servername: e3k67dwms3-51255166202-direct.tavafog.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 593bf46b-8316-5050-9357-d8a41e4db78b
     - flow: xtls-rprx-vision
       name: vless-1659751097
       network: tcp
@@ -118,35 +88,40 @@ proxies:
       type: vless
       udp: true
       uuid: e3k67dwms3
+    - name: hysteria2-722298544
+      password: github.com/Alvin9999-newpac/fanqiang
+      port: 60111
+      server: 62.210.7.139
+      skip-cert-verify: true
+      sni: google.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-689011839
         - vless-1724734229
         - hysteria2-1697122862
         - vless-1454529435
         - vless-1403698672
         - vless-1751612276
         - vless-159119576
-        - vless-693666638
-        - vless-1298542551
-        - vless-1692643310
         - vless-1659751097
+        - hysteria2-722298544
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-689011839
         - vless-1724734229
         - hysteria2-1697122862
         - vless-1454529435
         - vless-1403698672
         - vless-1751612276
         - vless-159119576
-        - vless-693666638
-        - vless-1298542551
-        - vless-1692643310
         - vless-1659751097
+        - hysteria2-722298544
       type: select
 rules:
     - MATCH,select
