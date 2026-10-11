@@ -1,11 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1762352559
-      password: e5c65ph
-      port: 443
-      server: pl134.vpnbook.com
-      type: ss
-      udp: true
     - name: vless-1750217465
       network: tcp
       port: 2053
@@ -71,42 +64,55 @@ proxies:
       type: vless
       udp: true
       uuid: f8d52ece-fad4-478d-875d-df6eed3befa7
-    - client-fingerprint: firefox
-      name: vless-1293658710
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
-        short-id: 50ba05992b05c1c3
-      server: 54.37.136.194
-      servername: www.cloudflare.com
+    - name: vless-1723901256
+      network: tcp
+      port: 2087
+      server: 95.85.253.241
+      servername: 95.85.253.241
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
+      uuid: ee0a38e3-d148-48ac-ba99-5133446c2377
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1762352559
+      password: e5c65ph
+      port: 443
+      server: pl134.vpnbook.com
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1762352560
+      password: e5c65ph
+      port: 443
+      server: pl140.vpnbook.com
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1762352559
         - vless-1750217465
         - vless-1770611554
         - vless-1758880255
         - vless-1770611555
         - vless-1768489477
-        - vless-1293658710
+        - vless-1723901256
+        - shadowsocks-1762352559
+        - shadowsocks-1762352560
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1762352559
         - vless-1750217465
         - vless-1770611554
         - vless-1758880255
         - vless-1770611555
         - vless-1768489477
-        - vless-1293658710
+        - vless-1723901256
+        - shadowsocks-1762352559
+        - shadowsocks-1762352560
       type: select
 rules:
     - MATCH,select
