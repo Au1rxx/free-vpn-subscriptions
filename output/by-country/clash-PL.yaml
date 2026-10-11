@@ -13,21 +13,27 @@ proxies:
       server: pl140.vpnbook.com
       type: ss
       udp: true
-    - name: trojan-1743403056
-      password: UX82473651
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1772545957
+      network: tcp
       port: 443
-      server: enabling-snipe.rooster465.autos
-      skip-cert-verify: true
-      sni: enabling-snipe.rooster465.autos
-      type: trojan
+      reality-opts:
+        public-key: 2e-kBGQGyc6XtqOSCadWQxs8gAgLUhAAedXyk8A51Sw
+        short-id: 74402fce7bda718e
+      server: 31.76.251.107
+      servername: google.com
+      tls: true
+      type: vless
       udp: true
+      uuid: accfae78-b31c-47cb-86a1-bb9a07973e4a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1762352559
         - shadowsocks-1762352560
-        - trojan-1743403056
+        - vless-1772545957
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -35,7 +41,7 @@ proxy-groups:
         - auto
         - shadowsocks-1762352559
         - shadowsocks-1762352560
-        - trojan-1743403056
+        - vless-1772545957
       type: select
 rules:
     - MATCH,select
