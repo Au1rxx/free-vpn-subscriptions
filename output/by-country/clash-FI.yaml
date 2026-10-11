@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-128-gcm
+      name: shadowsocks-1689700222
+      password: f9300a9bf39ae0347c3a3bfbc4dd7754
+      port: 18280
+      server: 185.103.110.66
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       name: vless-1755974936
       network: grpc
@@ -36,6 +43,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1689700222
         - vless-1755974936
         - vless-1755280951
         - hysteria2-1552278389
@@ -44,6 +52,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-1689700222
         - vless-1755974936
         - vless-1755280951
         - hysteria2-1552278389
