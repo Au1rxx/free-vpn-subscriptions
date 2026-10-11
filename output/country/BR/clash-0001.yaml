@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-122906
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20114
-      server: d3.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-856461985
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20032
@@ -32,6 +24,13 @@ proxies:
       type: vmess
       udp: true
       uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+    - name: hysteria2-1680995577
+      password: df8d55f9-fb51-442d-902a-bf8160dc051b
+      port: 11100
+      server: brb.nnpy.org
+      skip-cert-verify: true
+      sni: brb.nnpy.org
+      type: hysteria2
     - client-fingerprint: chrome
       name: vless-1755587923
       network: tcp
@@ -97,49 +96,33 @@ proxies:
       type: vless
       udp: true
       uuid: 5e517b94-e207-47ee-be3c-3020a57594e8
-    - client-fingerprint: edge
-      flow: xtls-rprx-vision
-      name: vless-1778190764
-      network: tcp
-      port: 11167
-      reality-opts:
-        public-key: zrwJjaWEAfAZ3QCgnLnLoPE-edB_3wvKCqIz9maP02g
-        short-id: ac
-      server: 178.92.205.63
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 27b91081-273a-47b9-bbbb-a7170a7e538a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-122906
         - trojan-856461985
         - trojan-871344761
         - vmess-1085814485
+        - hysteria2-1680995577
         - vless-1755587923
         - vless-1756938860
         - vless-1759492442
         - vless-1762879590
         - vless-1765165670
-        - vless-1778190764
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-122906
         - trojan-856461985
         - trojan-871344761
         - vmess-1085814485
+        - hysteria2-1680995577
         - vless-1755587923
         - vless-1756938860
         - vless-1759492442
         - vless-1762879590
         - vless-1765165670
-        - vless-1778190764
       type: select
 rules:
     - MATCH,select
