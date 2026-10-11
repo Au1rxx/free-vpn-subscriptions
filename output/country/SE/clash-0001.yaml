@@ -7,16 +7,6 @@ proxies:
       sni: ""
       type: trojan
       udp: true
-    - name: vless-1466429059
-      network: ws
-      port: 443
-      server: 190.93.245.176
-      servername: auto-749388.rohawmk.workers.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7493883f-6047-46a7-8d95-f59e137ffaec
     - client-fingerprint: safari
       name: vless-1559223936
       network: grpc
@@ -458,20 +448,6 @@ proxies:
       uuid: f8d52ece-fad4-478d-875d-df6eed3befa7
     - client-fingerprint: qq
       flow: xtls-rprx-vision
-      name: vless-1774149719
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: Sikc1gu5t_uwitf1xTTChP9tpT_sjY530p2tioHbmz0
-        short-id: 3b20e438da99
-      server: swe.wizard.select
-      servername: swe.wizard.select
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3db6eb7e-c548-11f1-9902-a337233c6cda
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
       name: vless-1774514865
       network: tcp
       port: 25119
@@ -522,12 +498,25 @@ proxies:
       type: vless
       udp: true
       uuid: f8d52ece-fad4-478d-875d-df6eed3befa7
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1778367743
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Sikc1gu5t_uwitf1xTTChP9tpT_sjY530p2tioHbmz0
+        short-id: 3b20e438da99
+      server: swe.wizard.select
+      servername: swe.wizard.select
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3db6eb7e-c548-11f1-9902-a337233c6cda
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-1447357176
-        - vless-1466429059
         - vless-1559223936
         - vless-1560066335
         - vless-1571338104
@@ -560,18 +549,17 @@ proxy-groups:
         - vless-1772308927
         - vless-1772544945
         - vless-1772992708
-        - vless-1774149719
         - vless-1774514865
         - vless-1777554234
         - vless-1777554241
         - vless-1777554253
+        - vless-1778367743
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-1447357176
-        - vless-1466429059
         - vless-1559223936
         - vless-1560066335
         - vless-1571338104
@@ -604,11 +592,11 @@ proxy-groups:
         - vless-1772308927
         - vless-1772544945
         - vless-1772992708
-        - vless-1774149719
         - vless-1774514865
         - vless-1777554234
         - vless-1777554241
         - vless-1777554253
+        - vless-1778367743
       type: select
 rules:
     - MATCH,select

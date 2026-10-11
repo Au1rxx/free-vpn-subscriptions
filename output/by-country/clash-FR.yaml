@@ -6,6 +6,13 @@ proxies:
       skip-cert-verify: true
       sni: 62.210.7.139
       type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-415242972
+      password: BqnqToih0PbU
+      port: 8388
+      server: 51.255.13.232
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       name: vless-1432809197
       network: grpc
@@ -83,6 +90,16 @@ proxies:
       type: vless
       udp: true
       uuid: c6db98c5-9959-425e-9340-300779fc4e4b
+    - name: vless-1770611624
+      network: grpc
+      port: 8443
+      server: fr4.sodahub.online
+      servername: fr4.sodahub.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c6db98c5-9959-425e-9340-300779fc4e4b
     - client-fingerprint: chrome
       name: vless-1413435162
       network: grpc
@@ -121,6 +138,20 @@ proxies:
       type: vless
       udp: true
       uuid: ee18d188-14cc-417e-beb1-70e4add6d023
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1693989542
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 5BDht3tAZdKEKpJymGlRK9JugOnieA-kMSWz_0FoE0I
+        short-id: 6f76ad09
+      server: 157.228.155.238
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
     - client-fingerprint: chrome
       name: vless-1724947600
       network: tcp
@@ -161,9 +192,51 @@ proxies:
       type: vless
       udp: true
       uuid: b9bfa54d-bc44-4592-a6d6-89a9665d286f
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1397731731
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: YhT24GkuI1r7Fwo8pxIYH3CmTtbRlYs5X7fWtYp3vTY
+        short-id: 05f4f85fdc6c1379
+      server: 195.154.118.134
+      servername: w-mebel.pro
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3c48b5f5-7766-4896-874e-b3ba1860e83a
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1680835580
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 4q8nqNb-0c-akP3XqVmen67BLXJVlx48a_GDRw16nVg
+        short-id: 5ea112e8
+      server: 157.228.155.185
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1685276578
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 4q8nqNb-0c-akP3XqVmen67BLXJVlx48a_GDRw16nVg
+        short-id: 5ea112e8
+      server: 157.228.155.185
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1727108174
       network: tcp
       port: 443
       reality-opts:
@@ -188,17 +261,6 @@ proxies:
       type: vless
       udp: true
       uuid: bf16ee0c-8b3c-41e4-ab3a-8b48033c404e
-    - flow: xtls-rprx-vision
-      name: vless-1692643310
-      network: tcp
-      port: 443
-      server: 51.255.166.202
-      servername: e3k67dwms3-51255166202-direct.tavafog.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 593bf46b-8316-5050-9357-d8a41e4db78b
     - flow: xtls-rprx-vision
       name: vless-1688937371
       network: tcp
@@ -245,20 +307,6 @@ proxies:
       type: vless
       udp: true
       uuid: 40fbeade-2b35-55e2-8e72-39893b5917ea
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1397731731
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: YhT24GkuI1r7Fwo8pxIYH3CmTtbRlYs5X7fWtYp3vTY
-        short-id: 05f4f85fdc6c1379
-      server: 195.154.118.134
-      servername: w-mebel.pro
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3c48b5f5-7766-4896-874e-b3ba1860e83a
     - name: hysteria2-1697122862
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -271,6 +319,7 @@ proxy-groups:
       name: auto
       proxies:
         - hysteria2-650659597
+        - shadowsocks-415242972
         - vless-1432809197
         - vless-1766466712
         - vless-1733220827
@@ -278,20 +327,23 @@ proxy-groups:
         - hysteria2-24391
         - vless-1454529435
         - vless-1766466807
+        - vless-1770611624
         - vless-1413435162
         - vless-1689307120
         - vless-1770611570
+        - vless-1693989542
         - vless-1724947600
         - vless-1403698678
         - vless-1771373721
+        - vless-1397731731
+        - vless-1680835580
         - vless-1685276578
+        - vless-1727108174
         - vless-1305630326
-        - vless-1692643310
         - vless-1688937371
         - vless-1732354695
         - vless-1698802713
         - vless-1759642624
-        - vless-1397731731
         - hysteria2-1697122862
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -299,6 +351,7 @@ proxy-groups:
       proxies:
         - auto
         - hysteria2-650659597
+        - shadowsocks-415242972
         - vless-1432809197
         - vless-1766466712
         - vless-1733220827
@@ -306,20 +359,23 @@ proxy-groups:
         - hysteria2-24391
         - vless-1454529435
         - vless-1766466807
+        - vless-1770611624
         - vless-1413435162
         - vless-1689307120
         - vless-1770611570
+        - vless-1693989542
         - vless-1724947600
         - vless-1403698678
         - vless-1771373721
+        - vless-1397731731
+        - vless-1680835580
         - vless-1685276578
+        - vless-1727108174
         - vless-1305630326
-        - vless-1692643310
         - vless-1688937371
         - vless-1732354695
         - vless-1698802713
         - vless-1759642624
-        - vless-1397731731
         - hysteria2-1697122862
       type: select
 rules:
