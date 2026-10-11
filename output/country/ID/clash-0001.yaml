@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-61438
+      network: ws
+      port: 8880
+      server: 185.193.29.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: trojan-207313013
       password: ba07a8af-5544-48ac-ab62-3b6c00a44fa6
       port: 20120
@@ -38,6 +45,13 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - name: vless-1239151542
+      network: ws
+      port: 8880
+      server: 185.159.247.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1568568958
@@ -688,15 +702,45 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1769782687
+      network: tcp
+      port: 46984
+      reality-opts:
+        public-key: XBntt77MdH3EMkPXibOAO_NSBrL_aqwiLItU98rqlHE
+        short-id: 9c3c0f8ec8b4af12
+      server: dghk2610.supertoolify.com
+      servername: www.lamer.com.sg
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1769782699
+      network: tcp
+      port: 46984
+      reality-opts:
+        public-key: XBntt77MdH3EMkPXibOAO_NSBrL_aqwiLItU98rqlHE
+        short-id: 9c3c0f8ec8b4af12
+      server: 154.64.251.118
+      servername: www.lamer.com.sg
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-61438
         - trojan-207313013
         - trojan-503199066
         - trojan-696781134
         - shadowsocks-860328950
         - trojan-912445306
+        - vless-1239151542
         - vless-1568568958
         - vless-1568568963
         - vless-1570814584
@@ -744,16 +788,20 @@ proxy-groups:
         - vless-1760781343
         - vless-1765172218
         - vless-1766961377
+        - vless-1769782687
+        - vless-1769782699
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-61438
         - trojan-207313013
         - trojan-503199066
         - trojan-696781134
         - shadowsocks-860328950
         - trojan-912445306
+        - vless-1239151542
         - vless-1568568958
         - vless-1568568963
         - vless-1570814584
@@ -801,6 +849,8 @@ proxy-groups:
         - vless-1760781343
         - vless-1765172218
         - vless-1766961377
+        - vless-1769782687
+        - vless-1769782699
       type: select
 rules:
     - MATCH,select

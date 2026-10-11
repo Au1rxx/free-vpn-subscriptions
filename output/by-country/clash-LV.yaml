@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-717969044
+      password: Yg4MbdXFQ9HFFVY6
+      port: 9034
+      server: 185.135.86.175
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       name: vless-1758300922
       network: grpc
@@ -16,12 +23,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-717969044
         - vless-1758300922
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-717969044
         - vless-1758300922
       type: select
 rules:

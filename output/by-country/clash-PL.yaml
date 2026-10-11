@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1765186824
+      password: 8bd04756-3beb-4348-82c9-d35453df50ce
+      port: 21384
+      server: 2.27.244.236
+      skip-cert-verify: true
+      sni: polandsixsebenrkn010.qcloud.surf
+      type: hysteria2
     - name: hysteria2-1757906660
       password: 8bd04756-3beb-4348-82c9-d35453df50ce
       port: 21384
@@ -32,37 +39,23 @@ proxies:
       type: vless
       udp: true
       uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1757887113
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: UcFVpzbYTy8Iym6ZnCAtLQK-MeRg6wZuyni4xEOKG18
-        short-id: 0da7e14db353e7d0
-      server: 195.133.80.152
-      servername: pl3.nztvpn.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ee18d188-14cc-417e-beb1-70e4add6d023
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1765186824
         - hysteria2-1757906660
         - vless-1750340002
         - vless-1301576697
-        - vless-1757887113
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1765186824
         - hysteria2-1757906660
         - vless-1750340002
         - vless-1301576697
-        - vless-1757887113
       type: select
 rules:
     - MATCH,select
