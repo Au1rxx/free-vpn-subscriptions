@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-65151
+      network: ws
+      port: 8880
+      server: 195.85.59.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: trojan-112587
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20017
@@ -395,6 +402,13 @@ proxies:
       sni: nimm.mpd.cc.cd
       type: trojan
       udp: true
+    - name: vless-1607786789
+      network: tcp
+      port: 2053
+      server: test.keoplentuio.xyz
+      type: vless
+      udp: true
+      uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
     - client-fingerprint: firefox
       name: vless-1612997135
       network: tcp
@@ -421,6 +435,14 @@ proxies:
       port: 2053
       server: nimm.mpd.cc.cd
       skip-cert-verify: true
+      sni: nimm.mpd.cc.cd
+      type: trojan
+      udp: true
+    - name: trojan-1622623591
+      password: e309e031-991e-4656-9934-44d10deb8fd8
+      port: 2053
+      server: nimm.mpd.cc.cd
+      skip-cert-verify: false
       sni: nimm.mpd.cc.cd
       type: trojan
       udp: true
@@ -731,10 +753,18 @@ proxies:
       type: vless
       udp: true
       uuid: 6f838527-1e6a-4220-87c5-425202e49200
+    - name: vless-1768361349
+      network: tcp
+      port: 8080
+      server: 206.1.101.178
+      type: vless
+      udp: true
+      uuid: a5ed83b1-e191-44f1-81d0-3d55f05f474c
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-65151
         - trojan-112587
         - trojan-122850
         - trojan-122851
@@ -773,9 +803,11 @@ proxy-groups:
         - trojan-1598739409
         - vless-1603035184
         - trojan-1607776739
+        - vless-1607786789
         - vless-1612997135
         - trojan-1619321771
         - trojan-1621754771
+        - trojan-1622623591
         - vmess-1639721863
         - vless-1642937678
         - vless-1680283552
@@ -806,11 +838,13 @@ proxy-groups:
         - vless-1766466744
         - vless-1766466757
         - vless-1766466828
+        - vless-1768361349
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-65151
         - trojan-112587
         - trojan-122850
         - trojan-122851
@@ -849,9 +883,11 @@ proxy-groups:
         - trojan-1598739409
         - vless-1603035184
         - trojan-1607776739
+        - vless-1607786789
         - vless-1612997135
         - trojan-1619321771
         - trojan-1621754771
+        - trojan-1622623591
         - vmess-1639721863
         - vless-1642937678
         - vless-1680283552
@@ -882,6 +918,7 @@ proxy-groups:
         - vless-1766466744
         - vless-1766466757
         - vless-1766466828
+        - vless-1768361349
       type: select
 rules:
     - MATCH,select

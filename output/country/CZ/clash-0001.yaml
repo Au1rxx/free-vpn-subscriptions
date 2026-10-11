@@ -17,12 +17,27 @@ proxies:
       type: vmess
       udp: true
       uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1768361341
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: hlY5ce1UsVIgE46y5PlEZhUsSaXUnCtoDLLaGrhInjw
+        short-id: 23d0950d60bc0d5b
+      server: 195.123.245.241
+      servername: gateway.icloud.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7c053ca8-38cc-45e2-930c-eda1fd66f903
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-1005127037
         - vmess-1005580221
+        - vless-1768361341
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -30,6 +45,7 @@ proxy-groups:
         - auto
         - vmess-1005127037
         - vmess-1005580221
+        - vless-1768361341
       type: select
 rules:
     - MATCH,select

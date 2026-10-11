@@ -1,30 +1,4 @@
 proxies:
-    - client-fingerprint: random
-      name: vless-1300687308
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
-        short-id: 4cc9dc65f7770115
-      server: 46.250.240.80
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
-    - client-fingerprint: firefox
-      name: vless-1258929861
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
-        short-id: 4cc9dc65f7770115
-      server: 46.250.240.80
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
     - client-fingerprint: firefox
       name: vless-1345603902
       network: raw
@@ -38,6 +12,15 @@ proxies:
       type: vless
       udp: true
       uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
+    - alterId: 0
+      cipher: auto
+      name: vmess-1768273247
+      network: tcp
+      port: 10001
+      server: sy2.australiacaregroup.site
+      type: vmess
+      udp: true
+      uuid: aec8e5e3-bb81-4b22-8802-0b88c54997b3
     - name: hysteria2-1718607549
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -62,9 +45,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1300687308
-        - vless-1258929861
         - vless-1345603902
+        - vmess-1768273247
         - hysteria2-1718607549
         - vless-1279651618
       type: url-test
@@ -72,9 +54,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vless-1300687308
-        - vless-1258929861
         - vless-1345603902
+        - vmess-1768273247
         - hysteria2-1718607549
         - vless-1279651618
       type: select

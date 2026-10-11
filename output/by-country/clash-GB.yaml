@@ -6,13 +6,6 @@ proxies:
       server: 51.77.225.200
       type: ss
       udp: true
-    - cipher: rc4-md5
-      name: shadowsocks-27285
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 146.70.61.18
-      type: ss
-      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-696780678
       password: g5h5jleTRSyO3Rk4
@@ -65,34 +58,6 @@ proxies:
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1479678804
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s
-        short-id: b19b017d6f453873
-      server: 23.81.34.204
-      servername: speed.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1485587877
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: J_p_dxR8dIKaezk1_Ins5MZ7e4dqgrr2n9690vVuQ2s
-        short-id: b19b017d6f453873
-      server: 23.81.34.204
-      servername: speed.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1477043376
       network: tcp
       port: 443
       reality-opts:
@@ -189,29 +154,26 @@ proxies:
       type: vless
       udp: true
       uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    - name: vless-1670418572
+    - name: vless-1674477834
       network: tcp
-      port: 443
-      server: 186.190.211.188
-      servername: ""
-      skip-cert-verify: true
+      port: 8443
+      server: 51.38.71.147
+      servername: node-uk.connectsuite.org
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
+      uuid: c08f0056-7a6d-4931-813b-aaa3cdd00aed
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-415241978
-        - shadowsocks-27285
         - shadowsocks-696780678
         - vless-1488471709
         - vless-1549147674
         - vless-1491043547
         - vless-1479678804
-        - vless-1485587877
-        - vless-1477043376
         - vless-1523769239
         - shadowsocks-717969008
         - vless-1746536405
@@ -219,21 +181,18 @@ proxy-groups:
         - vless-1581173055
         - vless-1484508210
         - vless-655825158
-        - vless-1670418572
+        - vless-1674477834
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-415241978
-        - shadowsocks-27285
         - shadowsocks-696780678
         - vless-1488471709
         - vless-1549147674
         - vless-1491043547
         - vless-1479678804
-        - vless-1485587877
-        - vless-1477043376
         - vless-1523769239
         - shadowsocks-717969008
         - vless-1746536405
@@ -241,7 +200,7 @@ proxy-groups:
         - vless-1581173055
         - vless-1484508210
         - vless-655825158
-        - vless-1670418572
+        - vless-1674477834
       type: select
 rules:
     - MATCH,select

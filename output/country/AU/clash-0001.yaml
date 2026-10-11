@@ -1,4 +1,19 @@
 proxies:
+    - name: vless-60867
+      network: ws
+      port: 8880
+      server: 185.148.104.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: trojan-2478804
+      password: 74480619-b6a8-4ab8-94e1-1132fc18b2fa
+      port: 443
+      server: 185.18.250.252
+      skip-cert-verify: false
+      sni: unnes.ac.id.r3xxe.eu.cc
+      type: trojan
+      udp: true
     - name: trojan-700420633
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20120
@@ -7,15 +22,34 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-1235284193
+    - name: vless-1090322452
       network: ws
-      port: 80
-      server: 152.67.8.205
-      type: vmess
+      port: 8880
+      server: 45.192.224.30
+      type: vless
       udp: true
-      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-1239097038
+      network: ws
+      port: 8880
+      server: 104.254.140.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-1239101014
+      network: ws
+      port: 8880
+      server: 108.165.152.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-1255709230
+      network: ws
+      port: 8880
+      server: 185.193.29.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: firefox
       name: vless-1258929861
       network: tcp
@@ -42,6 +76,13 @@ proxies:
       type: vless
       udp: true
       uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
+    - name: vless-1295544812
+      network: ws
+      port: 8880
+      server: 45.142.120.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: random
       name: vless-1300687308
       network: tcp
@@ -256,20 +297,20 @@ proxies:
       type: vless
       udp: true
       uuid: 8afeb33c-b686-43e9-a629-0d98f991ec28
-    - client-fingerprint: random
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-1765003068
+      name: vless-1765172223
       network: tcp
-      port: 6443
+      port: 709
       reality-opts:
-        public-key: o19q9ZfdCq7w_jJZ4EJsOCTo03qv4s5jCncFOx7WLig
-        short-id: ""
-      server: lv-bridge.shadowshroom.org
-      servername: lv-bridge.shadowshroom.org
+        public-key: YQGxuBmerdc9w64ESEpkvU7BzpqPTmQ_YhVSYypnEnU
+        short-id: 42b7393d3e94e4c7
+      server: 117.55.194.110
+      servername: www.kayak.com
       tls: true
       type: vless
       udp: true
-      uuid: f7f48934-f14c-4819-b225-36e89bda5491
+      uuid: 524dd22d-9f8c-4cc4-9e12-f427f497dff4
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1765222566
@@ -284,14 +325,29 @@ proxies:
       type: vless
       udp: true
       uuid: f7f48934-f14c-4819-b225-36e89bda5491
+    - alterId: 0
+      cipher: auto
+      name: vmess-1768273247
+      network: tcp
+      port: 10001
+      server: sy2.australiacaregroup.site
+      type: vmess
+      udp: true
+      uuid: aec8e5e3-bb81-4b22-8802-0b88c54997b3
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-60867
+        - trojan-2478804
         - trojan-700420633
-        - vmess-1235284193
+        - vless-1090322452
+        - vless-1239097038
+        - vless-1239101014
+        - vless-1255709230
         - vless-1258929861
         - vless-1279651618
+        - vless-1295544812
         - vless-1300687308
         - vless-1308176626
         - vless-1345603902
@@ -309,17 +365,24 @@ proxy-groups:
         - hysteria2-1718607549
         - vless-1762881391
         - vless-1763253709
-        - vless-1765003068
+        - vless-1765172223
         - vless-1765222566
+        - vmess-1768273247
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-60867
+        - trojan-2478804
         - trojan-700420633
-        - vmess-1235284193
+        - vless-1090322452
+        - vless-1239097038
+        - vless-1239101014
+        - vless-1255709230
         - vless-1258929861
         - vless-1279651618
+        - vless-1295544812
         - vless-1300687308
         - vless-1308176626
         - vless-1345603902
@@ -337,8 +400,9 @@ proxy-groups:
         - hysteria2-1718607549
         - vless-1762881391
         - vless-1763253709
-        - vless-1765003068
+        - vless-1765172223
         - vless-1765222566
+        - vmess-1768273247
       type: select
 rules:
     - MATCH,select
