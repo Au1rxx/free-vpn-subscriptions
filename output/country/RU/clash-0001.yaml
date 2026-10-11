@@ -6,19 +6,6 @@ proxies:
       server: 194.38.11.86
       type: ss
       udp: true
-    - client-fingerprint: random
-      name: vless-700375881
-      network: tcp
-      port: 26424
-      reality-opts:
-        public-key: l8AubqcxQO-HRFJy4pZL1vbLOo-eXit69s-XulSELE0
-        short-id: 23103e1e
-      server: 45.12.75.242
-      servername: ya.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 633f424e-2b11-48da-a6b3-a849dd71456f
     - name: trojan-860386949
       password: 63872b0d-87dd-4474-b690-92773af2922e
       port: 20020
@@ -204,47 +191,8 @@ proxies:
       type: vless
       udp: true
       uuid: c6e3c24c-ce20-4ad5-8c8c-68cb05890ea8
-    - client-fingerprint: edge
-      name: vless-1763331000
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: aYz4_13W8gtAXGBrWeqJXtExahAJ9kUPDapqeyAlYCk
-        short-id: ""
-      server: 93.188.184.150
-      servername: ru-1-2.unturned-rust-dead.lol
-      tls: true
-      type: vless
-      udp: true
-      uuid: c6e3c24c-ce20-4ad5-8c8c-68cb05890ea8
-    - client-fingerprint: firefox
-      name: vless-1763331001
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: aYz4_13W8gtAXGBrWeqJXtExahAJ9kUPDapqeyAlYCk
-        short-id: ""
-      server: ru-1-2.unturned-rust-dead.lol
-      servername: ru-1-2.unturned-rust-dead.lol
-      tls: true
-      type: vless
-      udp: true
-      uuid: c6e3c24c-ce20-4ad5-8c8c-68cb05890ea8
     - client-fingerprint: qq
       name: vless-1763331014
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: aYz4_13W8gtAXGBrWeqJXtExahAJ9kUPDapqeyAlYCk
-        short-id: ""
-      server: ru-1-2.unturned-rust-dead.lol
-      servername: ru-1-2.unturned-rust-dead.lol
-      tls: true
-      type: vless
-      udp: true
-      uuid: c6e3c24c-ce20-4ad5-8c8c-68cb05890ea8
-    - client-fingerprint: ios
-      name: vless-1764839668
       network: grpc
       port: 443
       reality-opts:
@@ -269,20 +217,6 @@ proxies:
       type: vless
       udp: true
       uuid: c6e3c24c-ce20-4ad5-8c8c-68cb05890ea8
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1770611615
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: NJ0bPds9qR88eKB8kBb96q8v00FH2meQMW_L2UluaWM
-        short-id: bf5f31cc94120661
-      server: sub.manticore-vpn.lol
-      servername: www.kernel.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: b1936288-a353-4ff1-89b3-edaead599c6b
     - client-fingerprint: random
       name: vless-1771790868
       network: tcp
@@ -416,12 +350,18 @@ proxies:
       type: vless
       udp: true
       uuid: c6e3c24c-ce20-4ad5-8c8c-68cb05890ea8
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1780667148
+      password: _ueom9TCQUnHvddGwcqU7eOG8hw7-jzP
+      port: 1080
+      server: 151.248.116.201
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-696792830
-        - vless-700375881
         - trojan-860386949
         - vless-1352517441
         - vless-1669348860
@@ -437,12 +377,8 @@ proxy-groups:
         - vless-1758865550
         - vless-1762341257
         - vless-1762341261
-        - vless-1763331000
-        - vless-1763331001
         - vless-1763331014
-        - vless-1764839668
         - vless-1770101399
-        - vless-1770611615
         - vless-1771790868
         - vless-1771937250
         - vless-1772308892
@@ -456,13 +392,13 @@ proxy-groups:
         - vless-1776631793
         - vless-1777388778
         - vless-1778392255
+        - shadowsocks-1780667148
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-696792830
-        - vless-700375881
         - trojan-860386949
         - vless-1352517441
         - vless-1669348860
@@ -478,12 +414,8 @@ proxy-groups:
         - vless-1758865550
         - vless-1762341257
         - vless-1762341261
-        - vless-1763331000
-        - vless-1763331001
         - vless-1763331014
-        - vless-1764839668
         - vless-1770101399
-        - vless-1770611615
         - vless-1771790868
         - vless-1771937250
         - vless-1772308892
@@ -497,6 +429,7 @@ proxy-groups:
         - vless-1776631793
         - vless-1777388778
         - vless-1778392255
+        - shadowsocks-1780667148
       type: select
 rules:
     - MATCH,select
