@@ -1,0 +1,53 @@
+{
+  "outbounds": [
+    {
+      "server": "86.107.179.237",
+      "server_port": 443,
+      "tag": "vless-1766466806",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "MKifKIzltM4QisjoMt2mtnvOHgFPryuJxUZUtqdMZ1E",
+          "short_id": "ed"
+        },
+        "server_name": "league-feed.russsport.life",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "random"
+        }
+      },
+      "transport": {
+        "service_name": "download",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "7ab3c77e-8fcc-4848-918f-cae3d4eac794"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1766466806"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1766466806"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

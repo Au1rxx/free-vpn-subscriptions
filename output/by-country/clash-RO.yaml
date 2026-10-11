@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: random
+      name: vless-1766466806
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: MKifKIzltM4QisjoMt2mtnvOHgFPryuJxUZUtqdMZ1E
+        short-id: ed
+      server: 86.107.179.237
+      servername: league-feed.russsport.life
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7ab3c77e-8fcc-4848-918f-cae3d4eac794
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1766466806
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1766466806
+      type: select
+rules:
+    - MATCH,select

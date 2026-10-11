@@ -7,14 +7,6 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: trojan-856461985
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20032
-      server: krhtybay.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-871344761
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20114
@@ -40,6 +32,13 @@ proxies:
       type: vless
       udp: true
       uuid: b940be1b-3998-45d2-bf7b-06e7b6c4987a
+    - name: vless-1514735429
+      network: ws
+      port: 8880
+      server: 192.0.63.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1527402211
       network: ws
       port: 2053
@@ -64,6 +63,13 @@ proxies:
       skip-cert-verify: true
       sni: brb.nnpy.org
       type: hysteria2
+    - name: vless-1721622498
+      network: ws
+      port: 8880
+      server: 185.18.250.50
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       name: vless-1755587923
       network: tcp
@@ -129,53 +135,43 @@ proxies:
       type: vless
       udp: true
       uuid: 5e517b94-e207-47ee-be3c-3020a57594e8
-    - name: vless-1766466728
-      network: grpc
-      port: 8003
-      server: 93.152.212.142
-      servername: r5k8q1v6.ahegao.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5f31357c-0a65-4317-b1e9-3eed4c6f1e65
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-122906
-        - trojan-856461985
         - trojan-871344761
         - vless-1239106930
         - vless-1310651366
+        - vless-1514735429
         - vless-1527402211
         - vless-1650785020
         - hysteria2-1680995577
+        - vless-1721622498
         - vless-1755587923
         - vless-1756938860
         - vless-1759492442
         - vless-1762879590
         - vless-1765165670
-        - vless-1766466728
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-122906
-        - trojan-856461985
         - trojan-871344761
         - vless-1239106930
         - vless-1310651366
+        - vless-1514735429
         - vless-1527402211
         - vless-1650785020
         - hysteria2-1680995577
+        - vless-1721622498
         - vless-1755587923
         - vless-1756938860
         - vless-1759492442
         - vless-1762879590
         - vless-1765165670
-        - vless-1766466728
       type: select
 rules:
     - MATCH,select
