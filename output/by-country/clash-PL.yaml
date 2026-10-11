@@ -1,5 +1,12 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1762352559
+      password: e5c65ph
+      port: 443
+      server: pl134.vpnbook.com
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1762352560
       password: e5c65ph
       port: 443
@@ -13,20 +20,6 @@ proxies:
       skip-cert-verify: true
       sni: polandsixsebenrkn010.qcloud.surf
       type: hysteria2
-    - name: hysteria2-1757906660
-      password: 8bd04756-3beb-4348-82c9-d35453df50ce
-      port: 21384
-      server: polandsixsebenrkn010.qcloud.surf
-      skip-cert-verify: true
-      sni: polandsixsebenrkn010.qcloud.surf
-      type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1762352559
-      password: e5c65ph
-      port: 443
-      server: pl134.vpnbook.com
-      type: ss
-      udp: true
     - name: trojan-1743403056
       password: UX82473651
       port: 443
@@ -39,20 +32,18 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1762352559
         - shadowsocks-1762352560
         - hysteria2-1765186824
-        - hysteria2-1757906660
-        - shadowsocks-1762352559
         - trojan-1743403056
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1762352559
         - shadowsocks-1762352560
         - hysteria2-1765186824
-        - hysteria2-1757906660
-        - shadowsocks-1762352559
         - trojan-1743403056
       type: select
 rules:

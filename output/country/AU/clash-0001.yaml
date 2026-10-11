@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-46713
-      network: ws
-      port: 8880
-      server: 135.84.75.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-68519
       network: ws
       port: 8880
@@ -180,41 +173,6 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1375518714
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: gCAazs5uxNuMZIxfDdw8wPE0nwKY4QfBfBkQveKAkEk
-        short-id: 0ad08b47f498efd2
-      server: 51.161.204.244
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 36e89875-9c53-482b-bc41-d3890e9da176
-    - name: vless-1389764796
-      network: ws
-      port: 8880
-      server: 154.197.75.40
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1395522411
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: gCAazs5uxNuMZIxfDdw8wPE0nwKY4QfBfBkQveKAkEk
-        short-id: 0ad08b47f498efd2
-      server: 51.161.204.244
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 36e89875-9c53-482b-bc41-d3890e9da176
     - name: vless-1400014248
       network: ws
       port: 8880
@@ -254,13 +212,6 @@ proxies:
       network: ws
       port: 8880
       server: 185.225.195.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1432430299
-      network: ws
-      port: 8880
-      server: 89.117.112.30
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
@@ -313,13 +264,6 @@ proxies:
       skip-cert-verify: true
       sni: 127.0.0.1
       type: hysteria2
-    - name: vless-1736083760
-      network: ws
-      port: 80
-      server: 188.114.97.6
-      type: vless
-      udp: true
-      uuid: e51453d3-7972-44d7-a657-ed89520f48b6
     - name: vless-1756938902
       network: tcp
       port: 10002
@@ -340,14 +284,6 @@ proxies:
       type: vless
       udp: true
       uuid: aec8e5e3-bb81-4b22-8802-0b88c54997b3
-    - name: trojan-1758934285
-      password: aec8e5e3-bb81-4b22-8802-0b88c54997b3
-      port: 10003
-      server: sy2.australiacaregroup.site
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1761059260
@@ -426,11 +362,17 @@ proxies:
       sni: www.pleadcourt.org
       type: trojan
       udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-1774145099
+      password: NjNkNDhjZDI3NzNiMzI5MjZhOGRkODkwMmVlY2Jl
+      port: 9142
+      server: 37.32.29.37
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-46713
         - vless-68519
         - vless-23849902
         - trojan-700420633
@@ -451,36 +393,30 @@ proxy-groups:
         - vless-1314029119
         - vless-1345603902
         - vless-1350772958
-        - vless-1375518714
-        - vless-1389764796
-        - vless-1395522411
         - vless-1400014248
         - vless-1412445133
         - vless-1418799383
         - vless-1419546422
-        - vless-1432430299
         - vless-1478639973
         - hysteria2-1561765064
         - vless-1624744489
         - vless-1670653043
         - hysteria2-1701030357
         - hysteria2-1718607549
-        - vless-1736083760
         - vless-1756938902
         - vless-1756947966
-        - trojan-1758934285
         - vless-1761059260
         - vless-1762345797
         - vless-1762881391
         - vless-1763253709
         - vless-1765172223
         - trojan-1771165320
+        - shadowsocks-1774145099
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-46713
         - vless-68519
         - vless-23849902
         - trojan-700420633
@@ -501,30 +437,25 @@ proxy-groups:
         - vless-1314029119
         - vless-1345603902
         - vless-1350772958
-        - vless-1375518714
-        - vless-1389764796
-        - vless-1395522411
         - vless-1400014248
         - vless-1412445133
         - vless-1418799383
         - vless-1419546422
-        - vless-1432430299
         - vless-1478639973
         - hysteria2-1561765064
         - vless-1624744489
         - vless-1670653043
         - hysteria2-1701030357
         - hysteria2-1718607549
-        - vless-1736083760
         - vless-1756938902
         - vless-1756947966
-        - trojan-1758934285
         - vless-1761059260
         - vless-1762345797
         - vless-1762881391
         - vless-1763253709
         - vless-1765172223
         - trojan-1771165320
+        - shadowsocks-1774145099
       type: select
 rules:
     - MATCH,select
