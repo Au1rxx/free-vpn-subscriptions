@@ -1,4 +1,13 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-1060903654
+      network: raw
+      port: 16308
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - cipher: aes-256-gcm
       name: shadowsocks-1251465987
       password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
@@ -74,20 +83,6 @@ proxies:
       type: vless
       udp: true
       uuid: 074b00de-c4d0-11f1-9902-a337233c6cda
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1770103685
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: S9OR9-SQHGl717N9AV_LoouRgSd-M4Yz7os10Mj8XxI
-        short-id: cee953f6
-      server: at-3.wizard.select
-      servername: at-3.wizard.select
-      tls: true
-      type: vless
-      udp: true
-      uuid: 074b00de-c4d0-11f1-9902-a337233c6cda
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1779729853
@@ -106,6 +101,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-1060903654
         - shadowsocks-1251465987
         - hysteria2-1731106343
         - hysteria2-1732663727
@@ -114,13 +110,13 @@ proxy-groups:
         - vless-1758880271
         - vless-1763761673
         - vless-1767444886
-        - vless-1770103685
         - vless-1779729853
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-1060903654
         - shadowsocks-1251465987
         - hysteria2-1731106343
         - hysteria2-1732663727
@@ -129,7 +125,6 @@ proxy-groups:
         - vless-1758880271
         - vless-1763761673
         - vless-1767444886
-        - vless-1770103685
         - vless-1779729853
       type: select
 rules:

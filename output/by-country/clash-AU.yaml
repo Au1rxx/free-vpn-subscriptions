@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1561765064
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: vpn-au-001.fastervpn.world
+      skip-cert-verify: true
+      sni: vpn-au-001.fastervpn.world
+      type: hysteria2
     - client-fingerprint: firefox
       name: vless-1345603902
       network: raw
@@ -25,20 +32,6 @@ proxies:
       type: vless
       udp: true
       uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
-    - client-fingerprint: ios
-      flow: xtls-rprx-vision
-      name: vless-1778190782
-      network: tcp
-      port: 19748
-      reality-opts:
-        public-key: o2uLRBkgcAPCavo12l6VUzaSnSmxjUvod-NBSiUPdy8
-        short-id: "85"
-      server: www.aisearch66.com
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 27b91081-273a-47b9-bbbb-a7170a7e538a
     - client-fingerprint: firefox
       name: vless-1258929861
       network: tcp
@@ -56,18 +49,18 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1561765064
         - vless-1345603902
         - vless-1300687308
-        - vless-1778190782
         - vless-1258929861
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1561765064
         - vless-1345603902
         - vless-1300687308
-        - vless-1778190782
         - vless-1258929861
       type: select
 rules:
