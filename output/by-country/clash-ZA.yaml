@@ -1,4 +1,11 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-246
+      password: Xsy8Ox4yOV3xLlpxtjzs3X
+      port: 16233
+      server: 102.133.165.160
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       name: vless-1757243577
       network: raw
@@ -29,6 +36,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-246
         - vless-1757243577
         - vless-1765172225
       type: url-test
@@ -36,6 +44,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-246
         - vless-1757243577
         - vless-1765172225
       type: select
