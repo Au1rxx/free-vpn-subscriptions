@@ -1,6 +1,6 @@
 proxies:
-    - client-fingerprint: chrome
-      name: vless-1753896430
+    - client-fingerprint: firefox
+      name: vless-1746905261
       network: grpc
       port: 8444
       reality-opts:
@@ -13,7 +13,7 @@ proxies:
       udp: true
       uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
     - client-fingerprint: chrome
-      name: vless-1741441893
+      name: vless-1753896430
       network: grpc
       port: 8444
       reality-opts:
@@ -29,15 +29,15 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1746905261
         - vless-1753896430
-        - vless-1741441893
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1746905261
         - vless-1753896430
-        - vless-1741441893
       type: select
 rules:
     - MATCH,select

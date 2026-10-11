@@ -12,48 +12,47 @@ proxies:
       type: vless
       udp: true
       uuid: 8ff8938c-49b6-b22f-a934-b55e91154ca3
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1710622301
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: FuKGULeQ9xZMJN8hWz6J_49tDJKT9HA-nsAXOOVRmyM
-        short-id: ff867ed245c73f43
-      server: 13.143.166.245
-      servername: cdn.jsdelivr.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2a0b565e-904e-4d3b-a7eb-0725d6a2c7cd
     - client-fingerprint: chrome
-      name: vless-1358009940
-      network: tcp
-      port: 2053
+      name: vless-1755974936
+      network: grpc
+      port: 25481
       reality-opts:
-        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
-        short-id: d368b94e275ab080
-      server: 95.216.27.15
-      servername: www.google.com
+        public-key: mhIAHuZIEr2NpdGGSeOxar7VRSgEfVoNwb_G8Y0073E
+        short-id: 3b84fc70657725af
+      server: 87.228.92.114
+      servername: www.bing.com
       tls: true
       type: vless
       udp: true
-      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+      uuid: 68c3d665-b2b5-4ffb-9f37-9f3d8c47324d
+    - client-fingerprint: chrome
+      name: vless-1755280951
+      network: grpc
+      port: 8444
+      reality-opts:
+        public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
+        short-id: ""
+      server: 153.80.241.206
+      servername: github.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1757243563
-        - vless-1710622301
-        - vless-1358009940
+        - vless-1755974936
+        - vless-1755280951
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1757243563
-        - vless-1710622301
-        - vless-1358009940
+        - vless-1755974936
+        - vless-1755280951
       type: select
 rules:
     - MATCH,select
