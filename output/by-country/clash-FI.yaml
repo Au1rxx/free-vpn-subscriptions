@@ -12,17 +12,35 @@ proxies:
       type: vless
       udp: true
       uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
+    - cipher: aes-128-gcm
+      name: shadowsocks-1689700222
+      password: f9300a9bf39ae0347c3a3bfbc4dd7754
+      port: 18280
+      server: 185.103.110.66
+      type: ss
+      udp: true
+    - name: vless-1771506792
+      network: tcp
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1755280951
+        - shadowsocks-1689700222
+        - vless-1771506792
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1755280951
+        - shadowsocks-1689700222
+        - vless-1771506792
       type: select
 rules:
     - MATCH,select

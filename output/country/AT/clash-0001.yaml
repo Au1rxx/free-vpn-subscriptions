@@ -1,6 +1,15 @@
 proxies:
     - alterId: 0
       cipher: auto
+      name: vmess-1005125039
+      network: tcp
+      port: 16308
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+    - alterId: 0
+      cipher: auto
       name: vmess-1060903654
       network: raw
       port: 16308
@@ -43,27 +52,45 @@ proxies:
       skip-cert-verify: true
       sni: keyhop-voxility-at.dynuddns.com
       type: hysteria2
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1755974935
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: _qSbW4JL4Ffqvj25vX-6a2ul9Qlj6PBdlF0ghsf_0RQ
+        short-id: a9dc98a7dc87a7dc
+      server: kozyavka.yandex-api.com
+      servername: kozyavka.yandex-api.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1b7ee703-fa08-4305-8469-ae3e30e61e44
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-1005125039
         - vmess-1060903654
         - shadowsocks-1251465987
         - hysteria2-1731106343
         - hysteria2-1732663727
         - hysteria2-1748616613
         - hysteria2-1753483813
+        - vless-1755974935
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-1005125039
         - vmess-1060903654
         - shadowsocks-1251465987
         - hysteria2-1731106343
         - hysteria2-1732663727
         - hysteria2-1748616613
         - hysteria2-1753483813
+        - vless-1755974935
       type: select
 rules:
     - MATCH,select
