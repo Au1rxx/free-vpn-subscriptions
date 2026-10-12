@@ -20,19 +20,6 @@ proxies:
       udp: true
       uuid: c6db98c5-9959-425e-9340-300779fc4e4b
     - client-fingerprint: chrome
-      name: vless-1732354695
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: g63cT3uI0Y5iUtj3m__RYz7nmR1eIK4AYikdnZCl63w
-        short-id: bfe58beb41f1d09f
-      server: 51.77.217.70
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: bf16ee0c-8b3c-41e4-ab3a-8b48033c404e
-    - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1780722880
       network: tcp
@@ -59,17 +46,6 @@ proxies:
       type: vless
       udp: true
       uuid: 81dc0b61-f9fe-4ad6-8b4e-b8c067b73712
-    - flow: xtls-rprx-vision
-      name: vless-1692643310
-      network: tcp
-      port: 443
-      server: 51.255.166.202
-      servername: e3k67dwms3-51255166202-direct.tavafog.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 593bf46b-8316-5050-9357-d8a41e4db78b
     - name: vless-1766466712
       network: grpc
       port: 8443
@@ -154,47 +130,7 @@ proxies:
       udp: true
       uuid: bf16ee0c-8b3c-41e4-ab3a-8b48033c404e
     - client-fingerprint: chrome
-      name: vless-1357034118
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ
-        short-id: a8ae
-      server: 194.76.154.31
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
-    - client-fingerprint: chrome
       name: vless-814233101
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: MN6QjUHDUXyteMdR-cDna89fq4X3qgQhLnNqTtRUbBQ
-        short-id: a8ae
-      server: 194.76.154.31
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9f0baff8-bdee-4de9-9515-bcc4932b41fa
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1680835580
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 4q8nqNb-0c-akP3XqVmen67BLXJVlx48a_GDRw16nVg
-        short-id: 5ea112e8
-      server: 157.228.155.185
-      servername: addons.mozilla.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
-    - client-fingerprint: qq
-      name: vless-148276404
       network: tcp
       port: 40443
       reality-opts:
@@ -270,16 +206,28 @@ proxies:
       type: vless
       udp: true
       uuid: ee18d188-14cc-417e-beb1-70e4add6d023
+    - name: hysteria2-589844073
+      password: Krab9Hyst2_Rk7pQ2xL
+      port: 36723
+      server: 151.247.197.253
+      skip-cert-verify: true
+      sni: 151.247.197.253
+      type: hysteria2
+    - name: hysteria2-335125336
+      password: github.com/Alvin9999-newpac/fanqiang
+      port: 60111
+      server: 62.210.7.139
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1770611624
         - vless-1766466807
-        - vless-1732354695
         - vless-1780722880
         - vless-1413435162
-        - vless-1692643310
         - vless-1766466712
         - vless-1775661721
         - vless-1403698678
@@ -287,15 +235,14 @@ proxy-groups:
         - vless-114359407
         - vless-693666638
         - vless-1308168780
-        - vless-1357034118
         - vless-814233101
-        - vless-1680835580
-        - vless-148276404
         - vless-1683631876
         - vless-1724734229
         - vless-1693997646
         - vless-1659751097
         - vless-1770611570
+        - hysteria2-589844073
+        - hysteria2-335125336
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -303,10 +250,8 @@ proxy-groups:
         - auto
         - vless-1770611624
         - vless-1766466807
-        - vless-1732354695
         - vless-1780722880
         - vless-1413435162
-        - vless-1692643310
         - vless-1766466712
         - vless-1775661721
         - vless-1403698678
@@ -314,15 +259,14 @@ proxy-groups:
         - vless-114359407
         - vless-693666638
         - vless-1308168780
-        - vless-1357034118
         - vless-814233101
-        - vless-1680835580
-        - vless-148276404
         - vless-1683631876
         - vless-1724734229
         - vless-1693997646
         - vless-1659751097
         - vless-1770611570
+        - hysteria2-589844073
+        - hysteria2-335125336
       type: select
 rules:
     - MATCH,select

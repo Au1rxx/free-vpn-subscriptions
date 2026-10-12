@@ -1,6 +1,20 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-400116110
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
+        short-id: c39cc7310a
+      server: 169.40.42.133
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d65cc14c-f53f-4fe2-b262-97856601319c
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-696780838
       network: tcp
       port: 443
@@ -363,6 +377,34 @@ proxies:
       uuid: 02fcc1a4-ee90-4970-8bbb-4ffaa8109d24
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-1225948332
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: NMgy1XgCSXExOg6Tg8xG9lCWttMF6sjdpB41lZy6FWo
+        short-id: 5c256336e3b673fa
+      server: 195.123.213.28
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 02fcc1a4-ee90-4970-8bbb-4ffaa8109d24
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1697132440
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 4SJB--DChFNhmOUz0-BZK2dS3GhZ1yZwMVIhmpobB0o
+        short-id: 44f7c5615039ae1b
+      server: 31.57.106.241
+      servername: www.lmt.lv
+      tls: true
+      type: vless
+      udp: true
+      uuid: a4801105-c0c7-4cab-87c6-f257ff2afc09
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-1698295958
       network: tcp
       port: 443
@@ -389,6 +431,20 @@ proxies:
       type: vless
       udp: true
       uuid: ee18d188-14cc-417e-beb1-70e4add6d023
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1703672816
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 4SJB--DChFNhmOUz0-BZK2dS3GhZ1yZwMVIhmpobB0o
+        short-id: 44f7c5615039ae1b
+      server: 31.57.106.241
+      servername: www.lmt.lv
+      tls: true
+      type: vless
+      udp: true
+      uuid: a4801105-c0c7-4cab-87c6-f257ff2afc09
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1709235981
@@ -541,10 +597,25 @@ proxies:
       type: vless
       udp: true
       uuid: 62610fc6-8333-41f9-9258-08915e4343ab
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1786035101
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: 0RlpyDQNw2rAlZ6t6RIzoOVeGcDjRS-XO-cHBLW-JjI
+        short-id: 964c0252c22b16d4
+      server: natureoflatvia.top
+      servername: natureoflatvia.top
+      tls: true
+      type: vless
+      udp: true
+      uuid: 62610fc6-8333-41f9-9258-08915e4343ab
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-400116110
         - vless-696780838
         - trojan-696781161
         - shadowsocks-696781305
@@ -577,8 +648,11 @@ proxy-groups:
         - vless-1210987412
         - vless-1215775509
         - vless-1216244824
+        - vless-1225948332
+        - vless-1697132440
         - vless-1698295958
         - vless-1702154833
+        - vless-1703672816
         - vless-1709235981
         - vless-1753166067
         - vless-1758300922
@@ -590,11 +664,13 @@ proxy-groups:
         - vless-1784428514
         - vless-1784428520
         - vless-1784758076
+        - vless-1786035101
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-400116110
         - vless-696780838
         - trojan-696781161
         - shadowsocks-696781305
@@ -627,8 +703,11 @@ proxy-groups:
         - vless-1210987412
         - vless-1215775509
         - vless-1216244824
+        - vless-1225948332
+        - vless-1697132440
         - vless-1698295958
         - vless-1702154833
+        - vless-1703672816
         - vless-1709235981
         - vless-1753166067
         - vless-1758300922
@@ -640,6 +719,7 @@ proxy-groups:
         - vless-1784428514
         - vless-1784428520
         - vless-1784758076
+        - vless-1786035101
       type: select
 rules:
     - MATCH,select
