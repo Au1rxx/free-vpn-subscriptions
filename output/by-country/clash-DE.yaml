@@ -6,6 +6,13 @@ proxies:
       type: vless
       udp: true
       uuid: 14e227c3-5a83-4b4d-a41a-e5f499c79415
+    - cipher: aes-256-gcm
+      name: shadowsocks-276
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 213.202.208.199
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       name: vless-1748616579
       network: grpc
@@ -156,20 +163,6 @@ proxies:
       type: vless
       udp: true
       uuid: 84ed0e09-6803-4ef9-a977-74b657d971e5
-    - client-fingerprint: randomized
-      flow: xtls-rprx-vision
-      name: vless-1678961881
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: RTG-xTU5UuKTRrkk8_COe04GiUWrqrSdt9mqSak_XEc
-        short-id: e696e744
-      server: 2.27.35.55
-      servername: addons.mozilla.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1590577301
@@ -296,24 +289,12 @@ proxies:
       type: vless
       udp: true
       uuid: ce80cf15-9365-474f-a364-b500e814aca7
-    - client-fingerprint: chrome
-      name: vless-1793317482
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: aYz4_13W8gtAXGBrWeqJXtExahAJ9kUPDapqeyAlYCk
-        short-id: ""
-      server: 31.58.95.11
-      servername: de-gdd-1.unturned-rust-dead.lol
-      tls: true
-      type: vless
-      udp: true
-      uuid: c6e3c24c-ce20-4ad5-8c8c-68cb05890ea8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1792821357
+        - shadowsocks-276
         - vless-1748616579
         - vless-1758304830
         - vless-1741441896
@@ -325,7 +306,6 @@ proxy-groups:
         - vless-1785701113
         - vless-1762881390
         - vless-1593439937
-        - vless-1678961881
         - vless-1590577301
         - vless-1782185444
         - vless-1790187465
@@ -337,13 +317,13 @@ proxy-groups:
         - shadowsocks-1779749933
         - shadowsocks-415241977
         - vless-1794035551
-        - vless-1793317482
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1792821357
+        - shadowsocks-276
         - vless-1748616579
         - vless-1758304830
         - vless-1741441896
@@ -355,7 +335,6 @@ proxy-groups:
         - vless-1785701113
         - vless-1762881390
         - vless-1593439937
-        - vless-1678961881
         - vless-1590577301
         - vless-1782185444
         - vless-1790187465
@@ -367,7 +346,6 @@ proxy-groups:
         - shadowsocks-1779749933
         - shadowsocks-415241977
         - vless-1794035551
-        - vless-1793317482
       type: select
 rules:
     - MATCH,select

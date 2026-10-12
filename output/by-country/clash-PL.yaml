@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-1785654652
-      password: 43212c32-01f2-4356-b216-67dc1c178262
-      port: 3231
-      server: 87.76.134.44
-      skip-cert-verify: false
-      sni: pl2-bkjbu.vpvr4ib84nuv6hdkt.ru
-      type: hysteria2
     - client-fingerprint: random
       name: vless-1772308885
       network: raw
@@ -19,64 +12,26 @@ proxies:
       type: vless
       udp: true
       uuid: c6e3c24c-ce20-4ad5-8c8c-68cb05890ea8
-    - client-fingerprint: ios
-      name: vless-1781468094
-      network: grpc
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1762352560
+      password: e5c65ph
       port: 443
-      reality-opts:
-        public-key: qvVoQPNyuM86jBvBqOL-Z9VO_C9jMi_ZH8bb4fotNWA
-        short-id: 7ec4374ffc6308fd
-      server: 31.59.210.32
-      servername: www.yandex.ru
-      tls: true
-      type: vless
+      server: pl140.vpnbook.com
+      type: ss
       udp: true
-      uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
-    - client-fingerprint: random
-      name: vless-1771373703
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg
-        short-id: ""
-      server: pl-1-1.unturned-rust-dead.lol
-      servername: pl-1-1.unturned-rust-dead.lol
-      tls: true
-      type: vless
-      udp: true
-      uuid: c6e3c24c-ce20-4ad5-8c8c-68cb05890ea8
-    - client-fingerprint: random
-      name: vless-1785656103
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg
-        short-id: ""
-      server: 80.47.12.94
-      servername: pl-1-1.unturned-rust-dead.lol
-      tls: true
-      type: vless
-      udp: true
-      uuid: c6e3c24c-ce20-4ad5-8c8c-68cb05890ea8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1785654652
         - vless-1772308885
-        - vless-1781468094
-        - vless-1771373703
-        - vless-1785656103
+        - shadowsocks-1762352560
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1785654652
         - vless-1772308885
-        - vless-1781468094
-        - vless-1771373703
-        - vless-1785656103
+        - shadowsocks-1762352560
       type: select
 rules:
     - MATCH,select
