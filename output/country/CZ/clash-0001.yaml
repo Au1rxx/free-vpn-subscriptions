@@ -1,6 +1,15 @@
 proxies:
     - alterId: 0
       cipher: auto
+      name: vmess-1005127037
+      network: tcp
+      port: 16280
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+    - alterId: 0
+      cipher: auto
       name: vmess-1005580221
       network: tcp
       port: 16280
@@ -50,23 +59,41 @@ proxies:
       type: vless
       udp: true
       uuid: c9c219dc-50da-4135-8e5b-67020291f0ec
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1790829068
+      network: tcp
+      port: 7449
+      reality-opts:
+        public-key: SbSuvgEeMrvFIV7C3tLaJhEADo_2RQdGvwFFrfJJQE0
+        short-id: 7abd137540629e9d
+      server: 81.94.148.50
+      servername: passport.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7ac594a4-fabc-486c-9a91-5662c09e63cd
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-1005127037
         - vmess-1005580221
         - vless-1768361341
         - vless-1787620739
         - vless-1788449262
+        - vless-1790829068
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-1005127037
         - vmess-1005580221
         - vless-1768361341
         - vless-1787620739
         - vless-1788449262
+        - vless-1790829068
       type: select
 rules:
     - MATCH,select

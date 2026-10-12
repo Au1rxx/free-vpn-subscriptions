@@ -1,0 +1,95 @@
+{
+  "outbounds": [
+    {
+      "server": "34.35.186.228",
+      "server_port": 443,
+      "tag": "vless-1754381108",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "bSN0cv0VMxmYZsNsMkkLndOTHZu74C1htJ2M71QMaVE",
+          "short_id": "89b3a20484eb43ec"
+        },
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "8d65c8a7-4876-4556-bb6a-feccfb46ee81"
+    },
+    {
+      "server": "34.35.186.228",
+      "server_port": 443,
+      "tag": "vless-1765172220",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "bSN0cv0VMxmYZsNsMkkLndOTHZu74C1htJ2M71QMaVE",
+          "short_id": "89b3a20484eb43ec"
+        },
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "type": "vless",
+      "uuid": "8d65c8a7-4876-4556-bb6a-feccfb46ee81"
+    },
+    {
+      "server": "34.35.186.228",
+      "server_port": 443,
+      "tag": "vless-1757243564",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "bSN0cv0VMxmYZsNsMkkLndOTHZu74C1htJ2M71QMaVE",
+          "short_id": "89b3a20484eb43ec"
+        },
+        "server_name": "www.cloudflare.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "type": "vless",
+      "uuid": "8d65c8a7-4876-4556-bb6a-feccfb46ee81"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1754381108",
+        "vless-1765172220",
+        "vless-1757243564"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1754381108",
+        "vless-1765172220",
+        "vless-1757243564"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
