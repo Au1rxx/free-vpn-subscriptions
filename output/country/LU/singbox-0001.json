@@ -1,0 +1,49 @@
+{
+  "outbounds": [
+    {
+      "server": "4eeb7e9ddfb7df2b.luxob.savfuma.ir",
+      "server_port": 60403,
+      "tag": "vless-1794698529",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "LiNmk0DYhmt0yuiyYE183eCsPLWZ6bFEutMBLfqfwGI",
+          "short_id": "01b26296a225953b"
+        },
+        "server_name": "adsterra.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "dd437937-bc8a-4122-9b69-eefcaf94a7e6"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1794698529"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1794698529"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
