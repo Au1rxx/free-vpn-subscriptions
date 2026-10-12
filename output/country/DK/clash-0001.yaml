@@ -12,17 +12,29 @@ proxies:
       type: vless
       udp: true
       uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
+    - name: vless-1765328323
+      network: ws
+      port: 443
+      server: 104.16.241.185
+      servername: c0.ttlive4.dns-dynamic.net
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 055e3bd2-10f8-4d9c-8f7d-70b9f659e476
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1758300920
+        - vless-1765328323
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1758300920
+        - vless-1765328323
       type: select
 rules:
     - MATCH,select

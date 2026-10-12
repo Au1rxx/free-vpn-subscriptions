@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1785653457
+      password: 43212c32-01f2-4356-b216-67dc1c178262
+      port: 3231
+      server: 87.76.134.44
+      skip-cert-verify: true
+      sni: pl2-bkjbu.vpvr4ib84nuv6hdkt.ru
+      type: hysteria2
     - name: hysteria2-619899526
       password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
       port: 443
@@ -26,30 +33,23 @@ proxies:
       server: pl134.vpnbook.com
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1762352560
-      password: e5c65ph
-      port: 443
-      server: pl140.vpnbook.com
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1785653457
         - hysteria2-619899526
         - vless-1758880255
         - shadowsocks-1762352559
-        - shadowsocks-1762352560
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1785653457
         - hysteria2-619899526
         - vless-1758880255
         - shadowsocks-1762352559
-        - shadowsocks-1762352560
       type: select
 rules:
     - MATCH,select
