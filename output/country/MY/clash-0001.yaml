@@ -1,4 +1,13 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-99016
+      network: tcp
+      port: 10000
+      server: 47.250.135.244
+      type: vmess
+      udp: true
+      uuid: aedc66b8-99d7-4a21-8310-61870e7f870d
     - name: trojan-112593
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20047
@@ -129,6 +138,14 @@ proxies:
       sni: moltbot.doctoroyy.net
       type: trojan
       udp: true
+    - name: trojan-860952359
+      password: 5931134d1cde66bf83a54acdfebe7ab2
+      port: 443
+      server: 47.250.84.25
+      skip-cert-verify: true
+      sni: moltbot.doctoroyy.net
+      type: trojan
+      udp: true
     - name: trojan-864307466
       password: 5931134d1cde66bf83a54acdfebe7ab2
       port: 443
@@ -202,6 +219,13 @@ proxies:
       network: ws
       port: 80
       server: platform101.golnamakcert.top
+      type: vless
+      udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+    - name: vless-1514736193
+      network: ws
+      port: 80
+      server: platform102.golnamakcert.top
       type: vless
       udp: true
       uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
@@ -519,13 +543,6 @@ proxies:
       type: vless
       udp: true
       uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
-    - name: vless-1663144020
-      network: ws
-      port: 80
-      server: platform102.golnamakcert.top
-      type: vless
-      udp: true
-      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
     - name: vless-1716318420
       network: ws
       port: 80
@@ -551,10 +568,35 @@ proxies:
       type: vmess
       udp: true
       uuid: aedc66b8-99d7-4a21-8310-61870e7f870d
+    - alterId: 0
+      cipher: auto
+      name: vmess-1787286625
+      network: ws
+      port: 443
+      server: 66.154.113.180
+      servername: my.lovehk.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 235e318a-8bcb-4480-b256-7b65cc5d0b0a
+    - alterId: 0
+      cipher: auto
+      name: vmess-1787286628
+      network: ws
+      port: 443
+      server: 66.154.113.180
+      servername: my.lovehk.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 1c3fb1c0-1204-49db-b842-f72d50f014c1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-99016
         - trojan-112593
         - trojan-122859
         - trojan-122870
@@ -570,6 +612,7 @@ proxy-groups:
         - vmess-768853190
         - vmess-855957118
         - trojan-860926447
+        - trojan-860952359
         - trojan-864307466
         - trojan-897442828
         - trojan-908476865
@@ -580,6 +623,7 @@ proxy-groups:
         - vless-1507878874
         - vless-1507878877
         - vless-1514736192
+        - vless-1514736193
         - vless-1517300822
         - vless-1517931490
         - vless-1517931491
@@ -624,15 +668,17 @@ proxy-groups:
         - trojan-1634409200
         - vless-1636149005
         - vless-1649333530
-        - vless-1663144020
         - vless-1716318420
         - vmess-1719853253
         - vmess-1749858024
+        - vmess-1787286625
+        - vmess-1787286628
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-99016
         - trojan-112593
         - trojan-122859
         - trojan-122870
@@ -648,6 +694,7 @@ proxy-groups:
         - vmess-768853190
         - vmess-855957118
         - trojan-860926447
+        - trojan-860952359
         - trojan-864307466
         - trojan-897442828
         - trojan-908476865
@@ -658,6 +705,7 @@ proxy-groups:
         - vless-1507878874
         - vless-1507878877
         - vless-1514736192
+        - vless-1514736193
         - vless-1517300822
         - vless-1517931490
         - vless-1517931491
@@ -702,10 +750,11 @@ proxy-groups:
         - trojan-1634409200
         - vless-1636149005
         - vless-1649333530
-        - vless-1663144020
         - vless-1716318420
         - vmess-1719853253
         - vmess-1749858024
+        - vmess-1787286625
+        - vmess-1787286628
       type: select
 rules:
     - MATCH,select
