@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-795694323
+      password: TyNkGmp9hs6eGpDK
+      port: 9092
+      server: 91.201.65.122
+      type: ss
+      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-1787607867
       password: 78235e7dc55e9ad1
@@ -10,12 +17,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-795694323
         - shadowsocks-1787607867
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-795694323
         - shadowsocks-1787607867
       type: select
 rules:

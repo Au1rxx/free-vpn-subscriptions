@@ -19,12 +19,27 @@ proxies:
       type: vless
       udp: true
       uuid: 06c4e938-2954-478f-a870-ca1b163e30e9
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1766980451
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: PKlt_5ASsz137EvA9SKSadtjEv1k_U7VRtoelKCgADs
+        short-id: 9ea74b83f4993ca9
+      server: 185.252.177.216
+      servername: est-1.ardesnode.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 616c7b3b-41f4-4038-88c6-d6fedd0ae4a7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1763341044
         - vless-957016089
+        - vless-1766980451
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -32,6 +47,7 @@ proxy-groups:
         - auto
         - vless-1763341044
         - vless-957016089
+        - vless-1766980451
       type: select
 rules:
     - MATCH,select
