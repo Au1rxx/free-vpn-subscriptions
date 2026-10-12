@@ -1,14 +1,7 @@
 proxies:
-    - name: hysteria2-1561765064
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: vpn-au-001.fastervpn.world
-      skip-cert-verify: true
-      sni: vpn-au-001.fastervpn.world
-      type: hysteria2
-    - client-fingerprint: firefox
-      name: vless-1345603902
-      network: raw
+    - client-fingerprint: random
+      name: vless-1300687308
+      network: tcp
       port: 2053
       reality-opts:
         public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
@@ -19,9 +12,16 @@ proxies:
       type: vless
       udp: true
       uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
-    - client-fingerprint: random
-      name: vless-1300687308
-      network: tcp
+    - name: hysteria2-1561765064
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: vpn-au-001.fastervpn.world
+      skip-cert-verify: true
+      sni: vpn-au-001.fastervpn.world
+      type: hysteria2
+    - client-fingerprint: firefox
+      name: vless-1345603902
+      network: raw
       port: 2053
       reality-opts:
         public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
@@ -49,18 +49,18 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1300687308
         - hysteria2-1561765064
         - vless-1345603902
-        - vless-1300687308
         - vless-1258929861
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1300687308
         - hysteria2-1561765064
         - vless-1345603902
-        - vless-1300687308
         - vless-1258929861
       type: select
 rules:
