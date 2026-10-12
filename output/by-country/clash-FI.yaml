@@ -6,19 +6,6 @@ proxies:
       skip-cert-verify: false
       sni: sweedenqfds777.qcloud.surf
       type: hysteria2
-    - client-fingerprint: chrome
-      name: vless-1755280951
-      network: grpc
-      port: 8444
-      reality-opts:
-        public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
-        short-id: ""
-      server: 153.80.241.206
-      servername: github.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
     - cipher: aes-128-gcm
       name: shadowsocks-1689700222
       password: f9300a9bf39ae0347c3a3bfbc4dd7754
@@ -26,21 +13,34 @@ proxies:
       server: 185.103.110.66
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      name: vless-1769017718
+      network: grpc
+      port: 8444
+      reality-opts:
+        public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
+        short-id: ""
+      server: 109.172.54.135
+      servername: github.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1771124555
-        - vless-1755280951
         - shadowsocks-1689700222
+        - vless-1769017718
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1771124555
-        - vless-1755280951
         - shadowsocks-1689700222
+        - vless-1769017718
       type: select
 rules:
     - MATCH,select
