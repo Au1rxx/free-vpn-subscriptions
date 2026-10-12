@@ -27,12 +27,27 @@ proxies:
       type: vless
       udp: true
       uuid: c9c219dc-50da-4135-8e5b-67020291f0ec
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1786226807
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: fJnm6-PhJGSwHaAdJOzXkYOfCPPCWSlaZrtfm1XsqhA
+        short-id: 6ba85179e30d4fc2
+      server: 45.151.182.102
+      servername: tmje5vpwly.static-origin.click
+      tls: true
+      type: vless
+      udp: true
+      uuid: c9c219dc-50da-4135-8e5b-67020291f0ec
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1784570870
         - vless-1784571709
+        - vless-1786226807
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -40,6 +55,7 @@ proxy-groups:
         - auto
         - vless-1784570870
         - vless-1784571709
+        - vless-1786226807
       type: select
 rules:
     - MATCH,select
