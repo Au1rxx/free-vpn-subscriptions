@@ -1,14 +1,6 @@
 proxies:
-    - name: trojan-1785655561
-      password: Trojan@82164024
-      port: 443
-      server: in.tronsg.com
-      skip-cert-verify: true
-      sni: in.tronsg.com
-      type: trojan
-      udp: true
-    - client-fingerprint: chrome
-      name: vless-1345587703
+    - client-fingerprint: firefox
+      name: vless-1258929849
       network: tcp
       port: 2053
       reality-opts:
@@ -20,6 +12,27 @@ proxies:
       type: vless
       udp: true
       uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
+    - client-fingerprint: chrome
+      name: vless-1343261564
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
+        short-id: 9980e0609b0d3891
+      server: 194.61.31.126
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
+    - name: trojan-1785655561
+      password: Trojan@82164024
+      port: 443
+      server: in.tronsg.com
+      skip-cert-verify: true
+      sni: in.tronsg.com
+      type: trojan
+      udp: true
     - client-fingerprint: firefox
       name: vless-1279565000
       network: raw
@@ -33,15 +46,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
-    - alterId: 0
-      cipher: auto
-      name: vmess-1563584749
-      network: ws
-      port: 80
-      server: 152.67.8.205
-      type: vmess
-      udp: true
-      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
     - alterId: 0
       cipher: auto
       name: vmess-1786853345
@@ -78,7 +82,7 @@ proxies:
       udp: true
       uuid: 5e679ccd-1586-4d5f-b87b-48251046cad8
     - client-fingerprint: chrome
-      name: vless-1343261564
+      name: vless-1345587703
       network: tcp
       port: 2053
       reality-opts:
@@ -117,14 +121,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1258929849
+        - vless-1343261564
         - trojan-1785655561
-        - vless-1345587703
         - vless-1279565000
-        - vmess-1563584749
         - vmess-1786853345
         - vless-1272779542
         - vless-1721872690
-        - vless-1343261564
+        - vless-1345587703
         - vmess-1773935612
         - vless-1788145183
       type: url-test
@@ -132,14 +136,14 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1258929849
+        - vless-1343261564
         - trojan-1785655561
-        - vless-1345587703
         - vless-1279565000
-        - vmess-1563584749
         - vmess-1786853345
         - vless-1272779542
         - vless-1721872690
-        - vless-1343261564
+        - vless-1345587703
         - vmess-1773935612
         - vless-1788145183
       type: select

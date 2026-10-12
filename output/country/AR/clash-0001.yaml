@@ -15,12 +15,20 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1793344634
+      password: 99234c60-b01a-4d67-889a-cab58ab0061a
+      port: 11182
+      server: mm.good2026.com
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-746075524
         - trojan-746080520
+        - shadowsocks-1793344634
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -28,6 +36,7 @@ proxy-groups:
         - auto
         - trojan-746075524
         - trojan-746080520
+        - shadowsocks-1793344634
       type: select
 rules:
     - MATCH,select
