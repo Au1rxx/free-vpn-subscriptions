@@ -19,16 +19,6 @@ proxies:
       type: vless
       udp: true
       uuid: c6db98c5-9959-425e-9340-300779fc4e4b
-    - name: vless-1766466712
-      network: grpc
-      port: 8443
-      server: 37.49.230.85
-      servername: fr5.sodahub.online
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c6db98c5-9959-425e-9340-300779fc4e4b
     - client-fingerprint: chrome
       name: vless-1432809197
       network: grpc
@@ -94,17 +84,6 @@ proxies:
       type: vless
       udp: true
       uuid: 2acc3742-c568-11f1-9902-a337233c6cda
-    - flow: xtls-rprx-vision
-      name: vless-1689307120
-      network: tcp
-      port: 443
-      server: 51.255.166.202
-      servername: e3k67dwms3-51255166202-direct.tavafog.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: e3k67dwms3
     - client-fingerprint: firefox
       name: vless-1403698672
       network: grpc
@@ -156,20 +135,6 @@ proxies:
       type: vless
       udp: true
       uuid: 593bf46b-8316-5050-9357-d8a41e4db78b
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1727108174
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 4q8nqNb-0c-akP3XqVmen67BLXJVlx48a_GDRw16nVg
-        short-id: 5ea112e8
-      server: 157.228.155.185
-      servername: addons.mozilla.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
     - flow: xtls-rprx-vision
       name: vless-1692650242
       network: tcp
@@ -188,26 +153,34 @@ proxies:
       skip-cert-verify: true
       sni: 173.212.201.85
       type: hysteria2
+    - name: vless-1766466712
+      network: grpc
+      port: 8443
+      server: 37.49.230.85
+      servername: fr5.sodahub.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c6db98c5-9959-425e-9340-300779fc4e4b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1770611624
         - vless-1766466807
-        - vless-1766466712
         - vless-1432809197
         - vless-1771373721
         - vless-1733220827
         - vless-1732354695
         - vless-1780722880
-        - vless-1689307120
         - vless-1403698672
         - vless-1413435162
         - vless-1681011463
         - vless-1692643310
-        - vless-1727108174
         - vless-1692650242
         - hysteria2-855474016
+        - vless-1766466712
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -215,20 +188,18 @@ proxy-groups:
         - auto
         - vless-1770611624
         - vless-1766466807
-        - vless-1766466712
         - vless-1432809197
         - vless-1771373721
         - vless-1733220827
         - vless-1732354695
         - vless-1780722880
-        - vless-1689307120
         - vless-1403698672
         - vless-1413435162
         - vless-1681011463
         - vless-1692643310
-        - vless-1727108174
         - vless-1692650242
         - hysteria2-855474016
+        - vless-1766466712
       type: select
 rules:
     - MATCH,select

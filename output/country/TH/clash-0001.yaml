@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-36539
+      network: ws
+      port: 80
+      server: 103.86.49.57
+      type: vless
+      udp: true
+      uuid: 3c52e091-6714-4915-949f-2149fe69951b
     - name: vless-86046
       network: ws
       port: 80
@@ -483,6 +490,20 @@ proxies:
       type: vless
       udp: true
       uuid: 3c52e091-6714-4915-949f-2149fe69951b
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1739138531
+      network: tcp
+      port: 21033
+      reality-opts:
+        public-key: EG-jzQw1RyOwAM4L9rMKondSx7cyFmPyv1OP7xXkIk4
+        short-id: cbd39bea0805e2
+      server: dghk2610.supertoolify.com
+      servername: www.kaidee.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
     - alterId: 2
       cipher: auto
       name: vmess-1741640489
@@ -586,10 +607,25 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1784570156
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: fJnm6-PhJGSwHaAdJOzXkYOfCPPCWSlaZrtfm1XsqhA
+        short-id: 6ba85179e30d4fc2
+      server: 103.80.48.158
+      servername: xy4l6bpbjk.xeltrona-host26.sbs
+      tls: true
+      type: vless
+      udp: true
+      uuid: c9c219dc-50da-4135-8e5b-67020291f0ec
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-36539
         - vless-86046
         - vless-94089
         - trojan-122843
@@ -649,6 +685,7 @@ proxy-groups:
         - shadowsocks-1713660728
         - vless-1718770778
         - vless-1718770784
+        - vless-1739138531
         - vmess-1741640489
         - vless-1743405410
         - vless-1745698285
@@ -657,11 +694,13 @@ proxy-groups:
         - vless-1761458256
         - vless-1769782700
         - vless-1770607139
+        - vless-1784570156
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-36539
         - vless-86046
         - vless-94089
         - trojan-122843
@@ -721,6 +760,7 @@ proxy-groups:
         - shadowsocks-1713660728
         - vless-1718770778
         - vless-1718770784
+        - vless-1739138531
         - vmess-1741640489
         - vless-1743405410
         - vless-1745698285
@@ -729,6 +769,7 @@ proxy-groups:
         - vless-1761458256
         - vless-1769782700
         - vless-1770607139
+        - vless-1784570156
       type: select
 rules:
     - MATCH,select
