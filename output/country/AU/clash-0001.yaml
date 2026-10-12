@@ -14,13 +14,6 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: vless-1254186190
-      network: ws
-      port: 8080
-      server: 104.21.70.21
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: firefox
       name: vless-1258929861
       network: tcp
@@ -93,13 +86,6 @@ proxies:
       type: vless
       udp: true
       uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
-    - name: vless-1350772958
-      network: ws
-      port: 8880
-      server: 89.117.112.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1551501922
       network: ws
       port: 8880
@@ -114,13 +100,6 @@ proxies:
       skip-cert-verify: true
       sni: vpn-au-001.fastervpn.world
       type: hysteria2
-    - name: vless-1670653043
-      network: ws
-      port: 8880
-      server: 104.16.215.234
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: hysteria2-1701030357
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -242,23 +221,27 @@ proxies:
       type: vless
       udp: true
       uuid: 8afeb33c-b686-43e9-a629-0d98f991ec28
+    - cipher: aes-256-gcm
+      name: shadowsocks-1792755963
+      password: b1a1f89b-63ed-4b5b-81a1-91a7c5b76ca9
+      port: 21188
+      server: ruot.ayucloudservices.nl
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-68519
         - trojan-700420633
-        - vless-1254186190
         - vless-1258929861
         - vless-1279651618
         - vless-1300687308
         - vless-1308176626
         - vless-1320747458
         - vless-1345603902
-        - vless-1350772958
         - vless-1551501922
         - hysteria2-1561765064
-        - vless-1670653043
         - hysteria2-1701030357
         - hysteria2-1718607549
         - vless-1762881391
@@ -269,6 +252,7 @@ proxy-groups:
         - vmess-1787286633
         - vless-1787917453
         - vless-1788145169
+        - shadowsocks-1792755963
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -276,17 +260,14 @@ proxy-groups:
         - auto
         - vless-68519
         - trojan-700420633
-        - vless-1254186190
         - vless-1258929861
         - vless-1279651618
         - vless-1300687308
         - vless-1308176626
         - vless-1320747458
         - vless-1345603902
-        - vless-1350772958
         - vless-1551501922
         - hysteria2-1561765064
-        - vless-1670653043
         - hysteria2-1701030357
         - hysteria2-1718607549
         - vless-1762881391
@@ -297,6 +278,7 @@ proxy-groups:
         - vmess-1787286633
         - vless-1787917453
         - vless-1788145169
+        - shadowsocks-1792755963
       type: select
 rules:
     - MATCH,select
