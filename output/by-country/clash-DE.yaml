@@ -1,9 +1,9 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1779749933
-      password: adzpq0ltVHdCxO2lsW5N9C8H5B9hXnD7YyXZfP5aulw=
-      port: 42700
-      server: 31.76.11.83
+    - cipher: aes-256-gcm
+      name: shadowsocks-696780676
+      password: kKEd0rBrd56Furjz
+      port: 443
+      server: 2.58.81.221
       type: ss
       udp: true
     - cipher: aes-256-gcm
@@ -18,13 +18,6 @@ proxies:
       password: 14fFPrbezE3HDZzsMOr6
       port: 8080
       server: 169.150.210.233
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-696780676
-      password: kKEd0rBrd56Furjz
-      port: 443
-      server: 2.58.81.221
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
@@ -47,6 +40,13 @@ proxies:
       type: vless
       udp: true
       uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1779749933
+      password: adzpq0ltVHdCxO2lsW5N9C8H5B9hXnD7YyXZfP5aulw=
+      port: 42700
+      server: 31.76.11.83
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       name: vless-1748616579
       network: grpc
@@ -60,6 +60,15 @@ proxies:
       type: vless
       udp: true
       uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
+    - alterId: 0
+      cipher: auto
+      name: vmess-1783786209
+      network: tcp
+      port: 22266
+      server: 31.76.11.83
+      type: vmess
+      udp: true
+      uuid: 2d8f57bd-12b5-41ad-a806-6501753c264c
     - name: hysteria2-1348802435
       password: a2c74ce7-5daa-4bee-a1eb-52863873b3c3
       port: 443
@@ -110,6 +119,13 @@ proxies:
       skip-cert-verify: true
       sni: cz.h2.cleanersaz.help
       type: hysteria2
+    - cipher: 2022-blake3-aes-256-gcm
+      name: shadowsocks-1788431382
+      password: H0xd2BvITDs4Z8jwL4POl0CngqZjoUUAhoMvUd92cTY=:JNpUztWVZ7O+t34KTu3jbruxstkaqLzqIvO+BPmxUdg=
+      port: 31344
+      server: 91.98.105.50
+      type: ss
+      udp: true
     - name: trojan-1577674233
       password: UX82473651
       port: 443
@@ -152,6 +168,34 @@ proxies:
       type: vless
       udp: true
       uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1414607102
+      network: tcp
+      port: 4443
+      reality-opts:
+        public-key: YIyohkkCU5kw6J5iZYZkhILyDwlfftFPDTkbITlrAUw
+        short-id: df3aff719526dc5a
+      server: 89.169.53.176
+      servername: de.wvpn.one
+      tls: true
+      type: vless
+      udp: true
+      uuid: 20dd9433-389e-4573-ba7b-689619cf13da
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1684524148
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: RTG-xTU5UuKTRrkk8_COe04GiUWrqrSdt9mqSak_XEc
+        short-id: e696e744
+      server: 2.27.35.55
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1768268413
@@ -222,15 +266,20 @@ proxies:
       type: vless
       udp: true
       uuid: a5ce10af-5e95-4eb3-ab87-bf4f95cb059b
-    - alterId: 0
-      cipher: auto
-      name: vmess-1783786209
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1690637327
       network: tcp
-      port: 22266
-      server: 31.76.11.83
-      type: vmess
+      port: 443
+      reality-opts:
+        public-key: RTG-xTU5UuKTRrkk8_COe04GiUWrqrSdt9mqSak_XEc
+        short-id: e696e744
+      server: 2.27.35.55
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
       udp: true
-      uuid: 2d8f57bd-12b5-41ad-a806-6501753c264c
+      uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
     - alterId: 0
       cipher: auto
       name: vmess-1771017488
@@ -256,28 +305,32 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1779749933
+        - shadowsocks-696780676
         - shadowsocks-717969012
         - shadowsocks-27307
-        - shadowsocks-696780676
         - shadowsocks-209
         - vless-1741441896
+        - shadowsocks-1779749933
         - vless-1748616579
+        - vmess-1783786209
         - hysteria2-1348802435
         - vless-1790829695
         - vless-1747831708
         - vmess-1782916780
         - hysteria2-1698581218
+        - shadowsocks-1788431382
         - trojan-1577674233
         - trojan-1758695477
         - vless-1748221856
         - vless-1758304830
+        - vless-1414607102
+        - vless-1684524148
         - vless-1768268413
         - vless-1685658227
         - vless-1678961872
         - vless-1691291864
         - vless-1684028084
-        - vmess-1783786209
+        - vless-1690637327
         - vmess-1771017488
         - vmess-685047062
       type: url-test
@@ -285,28 +338,32 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - shadowsocks-1779749933
+        - shadowsocks-696780676
         - shadowsocks-717969012
         - shadowsocks-27307
-        - shadowsocks-696780676
         - shadowsocks-209
         - vless-1741441896
+        - shadowsocks-1779749933
         - vless-1748616579
+        - vmess-1783786209
         - hysteria2-1348802435
         - vless-1790829695
         - vless-1747831708
         - vmess-1782916780
         - hysteria2-1698581218
+        - shadowsocks-1788431382
         - trojan-1577674233
         - trojan-1758695477
         - vless-1748221856
         - vless-1758304830
+        - vless-1414607102
+        - vless-1684524148
         - vless-1768268413
         - vless-1685658227
         - vless-1678961872
         - vless-1691291864
         - vless-1684028084
-        - vmess-1783786209
+        - vless-1690637327
         - vmess-1771017488
         - vmess-685047062
       type: select
