@@ -1,0 +1,37 @@
+proxies:
+    - client-fingerprint: safari
+      name: vless-1757243567
+      network: tcp
+      port: 25136
+      reality-opts:
+        public-key: nkmfL3QCskKAfBUk-OiTgcWyIXGmXrZVtDEoio0Qo1w
+        short-id: f78838fbd85e59ae
+      server: es3.h1cloud.net
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c1c13ef7-affa-47e1-8967-25cc67679c10
+    - name: hysteria2-1734176658
+      password: 8bd04756-3beb-4348-82c9-d35453df50ce
+      port: 27313
+      server: spainspeedboostjbl88.qcloud.surf
+      skip-cert-verify: true
+      sni: spainspeedboostjbl88.qcloud.surf
+      type: hysteria2
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1757243567
+        - hysteria2-1734176658
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1757243567
+        - hysteria2-1734176658
+      type: select
+rules:
+    - MATCH,select
