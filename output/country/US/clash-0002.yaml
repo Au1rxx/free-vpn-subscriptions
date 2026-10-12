@@ -1,4 +1,25 @@
 proxies:
+    - name: vless-1794555411
+      network: ws
+      port: 2095
+      server: www.udemy.com
+      type: vless
+      udp: true
+      uuid: 86c50e3a-5b87-49dd-bd20-03c7f2735e40
+    - name: vless-1794555412
+      network: ws
+      port: 2095
+      server: www.csgo.net
+      type: vless
+      udp: true
+      uuid: 86c50e3a-5b87-49dd-bd20-03c7f2735e40
+    - name: vless-1794555413
+      network: ws
+      port: 2095
+      server: cloudflare-dns.com
+      type: vless
+      udp: true
+      uuid: 86c50e3a-5b87-49dd-bd20-03c7f2735e40
     - name: vless-1794555414
       network: ws
       port: 2095
@@ -215,10 +236,27 @@ proxies:
       type: vless
       udp: true
       uuid: b8e59255-d392-c427-535d-bc1f8f444c4e
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1795254274
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: d4wIZq0Tvtfm8qL4i8XHF3bhhdkLBKCBYUiNynIiUR0
+        short-id: f280eef03bb6deca
+      server: 147.45.183.124
+      servername: granite.xenovaq.store
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6c21cf57-a9a9-4075-ad9f-631152bd911e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1794555411
+        - vless-1794555412
+        - vless-1794555413
         - vless-1794555414
         - vless-1794555415
         - vless-1794555416
@@ -244,11 +282,15 @@ proxy-groups:
         - vmess-1794857046
         - vless-1795029977
         - vless-1795036580
+        - vless-1795254274
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1794555411
+        - vless-1794555412
+        - vless-1794555413
         - vless-1794555414
         - vless-1794555415
         - vless-1794555416
@@ -274,6 +316,7 @@ proxy-groups:
         - vmess-1794857046
         - vless-1795029977
         - vless-1795036580
+        - vless-1795254274
       type: select
 rules:
     - MATCH,select
