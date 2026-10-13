@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-619899526
-      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-      port: 443
-      server: admin.wwwinternetvideo.click
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
     - client-fingerprint: firefox
       name: vless-1776546190
       network: grpc
@@ -45,6 +38,13 @@ proxies:
       type: vless
       udp: true
       uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1804404048
+      password: e5c65ph
+      port: 443
+      server: 54.36.174.134
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       name: vless-1750340002
       network: grpc
@@ -97,49 +97,31 @@ proxies:
       type: vless
       udp: true
       uuid: c6e3c24c-ce20-4ad5-8c8c-68cb05890ea8
-    - name: hysteria2-1027317456
-      password: YutbgyXL1mGaSlBXDoEucWvYbrDCINgUcQ6R6_At5Pjr2xCc
-      port: 443
-      server: 144.31.49.47
-      skip-cert-verify: true
-      sni: admin.wwwinternetvideo.click
-      type: hysteria2
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1762352559
-      password: e5c65ph
-      port: 443
-      server: pl134.vpnbook.com
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-619899526
         - vless-1776546190
         - vless-1781468094
         - vless-1301576697
+        - shadowsocks-1804404048
         - vless-1750340002
         - vless-1260285707
         - vless-1762076674
         - vless-1785656103
-        - hysteria2-1027317456
-        - shadowsocks-1762352559
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-619899526
         - vless-1776546190
         - vless-1781468094
         - vless-1301576697
+        - shadowsocks-1804404048
         - vless-1750340002
         - vless-1260285707
         - vless-1762076674
         - vless-1785656103
-        - hysteria2-1027317456
-        - shadowsocks-1762352559
       type: select
 rules:
     - MATCH,select
