@@ -25,12 +25,23 @@ proxies:
       type: vless
       udp: true
       uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
+    - name: vless-1810537026
+      network: ws
+      port: 2053
+      server: dk.kosmolet.me
+      servername: dk.kosmolet.me
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4698388f-2a3a-48ce-a4b2-ef2d3e14b05c
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1758300920
         - vless-1793430227
+        - vless-1810537026
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -38,6 +49,7 @@ proxy-groups:
         - auto
         - vless-1758300920
         - vless-1793430227
+        - vless-1810537026
       type: select
 rules:
     - MATCH,select

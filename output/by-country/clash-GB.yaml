@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-gcm
-      name: shadowsocks-717969008
-      password: g5h5jleTRSyO3Rk4
-      port: 80
-      server: 149.102.132.184
-      type: ss
-      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-415241978
       password: zRZNBszYyWo5
@@ -82,6 +75,17 @@ proxies:
       port: 443
       server: laga20.api3-max.ru
       servername: laga20.api3-max.ru
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: b8254d35-1cb0-4b74-8f7f-d2bc985196a0
+    - flow: xtls-rprx-vision
+      name: vless-1805047489
+      network: tcp
+      port: 443
+      server: 206.245.166.173
+      servername: laga19.api3-max.ru
       skip-cert-verify: false
       tls: true
       type: vless
@@ -173,11 +177,25 @@ proxies:
       type: vless
       udp: true
       uuid: 99955907-9070-46f0-a200-9c7a0b9d74fe
+    - cipher: aes-256-gcm
+      name: shadowsocks-717969008
+      password: g5h5jleTRSyO3Rk4
+      port: 80
+      server: 149.102.132.184
+      type: ss
+      udp: true
     - cipher: aes-128-gcm
       name: shadowsocks-271
       password: shadowsocks
       port: 443
       server: 141.98.101.181
+      type: ss
+      udp: true
+    - cipher: rc4-md5
+      name: shadowsocks-27285
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.61.18
       type: ss
       udp: true
     - flow: xtls-rprx-vision
@@ -274,7 +292,6 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-717969008
         - shadowsocks-415241978
         - vless-1492748761
         - vless-1484508210
@@ -282,6 +299,7 @@ proxy-groups:
         - vless-1477616520
         - vless-1549147674
         - vless-1803378709
+        - vless-1805047489
         - vless-1803378667
         - vless-1488471709
         - vless-1797951339
@@ -289,7 +307,9 @@ proxy-groups:
         - vless-1523769239
         - vless-1797951337
         - vless-1485587877
+        - shadowsocks-717969008
         - shadowsocks-271
+        - shadowsocks-27285
         - vless-1805250600
         - vless-1482902512
         - vless-1805047503
@@ -303,7 +323,6 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - shadowsocks-717969008
         - shadowsocks-415241978
         - vless-1492748761
         - vless-1484508210
@@ -311,6 +330,7 @@ proxy-groups:
         - vless-1477616520
         - vless-1549147674
         - vless-1803378709
+        - vless-1805047489
         - vless-1803378667
         - vless-1488471709
         - vless-1797951339
@@ -318,7 +338,9 @@ proxy-groups:
         - vless-1523769239
         - vless-1797951337
         - vless-1485587877
+        - shadowsocks-717969008
         - shadowsocks-271
+        - shadowsocks-27285
         - vless-1805250600
         - vless-1482902512
         - vless-1805047503

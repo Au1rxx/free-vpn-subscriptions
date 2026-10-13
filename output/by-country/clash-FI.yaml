@@ -13,6 +13,13 @@ proxies:
       type: vless
       udp: true
       uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
+    - name: vless-1776546177
+      network: raw
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - client-fingerprint: chrome
       name: vless-1755280951
       network: grpc
@@ -26,20 +33,6 @@ proxies:
       type: vless
       udp: true
       uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
-    - cipher: aes-256-gcm
-      name: shadowsocks-1801330929
-      password: j_Z9yWqItCz_9yhD5YVY4w
-      port: 8388
-      server: 185.239.141.248
-      type: ss
-      udp: true
-    - name: vless-1776546177
-      network: raw
-      port: 2052
-      server: edge10.cyrionflare.com
-      type: vless
-      udp: true
-      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1797068862
@@ -68,45 +61,16 @@ proxies:
       type: vless
       udp: true
       uuid: ace33fb8-c593-4b17-8f72-f3359b6e9638
-    - client-fingerprint: chrome
-      name: vless-1781591528
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
-        short-id: d368b94e275ab080
-      server: 95.216.27.15
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
-    - client-fingerprint: firefox
-      name: vless-1345688766
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
-        short-id: d368b94e275ab080
-      server: 95.216.27.15
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1771690205
         - vless-1783577679
-        - vless-1755280951
-        - shadowsocks-1801330929
         - vless-1776546177
+        - vless-1755280951
         - vless-1797068862
         - vless-1803367775
-        - vless-1781591528
-        - vless-1345688766
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -114,13 +78,10 @@ proxy-groups:
         - auto
         - vless-1771690205
         - vless-1783577679
-        - vless-1755280951
-        - shadowsocks-1801330929
         - vless-1776546177
+        - vless-1755280951
         - vless-1797068862
         - vless-1803367775
-        - vless-1781591528
-        - vless-1345688766
       type: select
 rules:
     - MATCH,select
