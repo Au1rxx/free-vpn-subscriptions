@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1799947030
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: x6p656szvu_3CKLsJ4NtkooRvdTVGx7IoPca_p58_jA
+        short-id: fb442438e2223836
+      server: 5.157.10.149
+      servername: swerka.loknietotop.digital
+      tls: true
+      type: vless
+      udp: true
+      uuid: ace33fb8-c593-4b17-8f72-f3359b6e9638
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1799947030
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1799947030
+      type: select
+rules:
+    - MATCH,select
