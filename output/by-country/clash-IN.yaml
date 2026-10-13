@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-1785655561
-      password: Trojan@82164024
-      port: 443
-      server: in.tronsg.com
-      skip-cert-verify: true
-      sni: in.tronsg.com
-      type: trojan
-      udp: true
     - client-fingerprint: chrome
       name: vless-1343261564
       network: tcp
@@ -20,15 +12,19 @@ proxies:
       type: vless
       udp: true
       uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
-    - alterId: 0
-      cipher: auto
-      name: vmess-1307761360
-      network: ws
-      port: 80
-      server: 152.67.8.205
-      type: vmess
+    - client-fingerprint: firefox
+      name: vless-1279565000
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
+        short-id: 9980e0609b0d3891
+      server: 194.61.31.126
+      servername: www.apple.com
+      tls: true
+      type: vless
       udp: true
-      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
+      uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
     - client-fingerprint: firefox
       name: vless-1272779542
       network: tcp
@@ -121,15 +117,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 9db4c708-aef8-4359-821b-38e47990be0d
-    - alterId: 0
-      cipher: auto
-      name: vmess-1801141754
-      network: ws
-      port: 80
-      server: 152.67.8.205
-      type: vmess
-      udp: true
-      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-1270189039
@@ -144,20 +131,6 @@ proxies:
       type: vless
       udp: true
       uuid: af5eac96-e478-488a-bc8c-45269d7e8847
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-652375214
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: g77ZJbm18JEotapmVRjaXi133MzkbhkU2lxhVeXx8zw
-        short-id: 68a8
-      server: 5.253.42.164
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1294543641
@@ -172,54 +145,12 @@ proxies:
       type: vless
       udp: true
       uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1482896015
-      network: tcp
-      port: 40443
-      reality-opts:
-        public-key: cwmcqsfS7klQlkcoUNuATEk0NiPY-NnRb9z8rCJDQw0
-        short-id: 88b6
-      server: 5.253.28.240
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 405b964e-a2d2-454f-aaaa-711cc218897c
-    - alterId: 0
-      cipher: auto
-      name: vmess-1795310662
-      network: ws
-      port: 80
-      server: 152.67.8.205
-      type: vmess
-      udp: true
-      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
-    - alterId: 0
-      cipher: auto
-      name: vmess-1456354100
-      network: ws
-      port: 80
-      server: 152.67.8.205
-      type: vmess
-      udp: true
-      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
-    - alterId: 0
-      cipher: auto
-      name: vmess-1801623675
-      network: ws
-      port: 80
-      server: 152.67.8.205
-      type: vmess
-      udp: true
-      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-1785655561
         - vless-1343261564
-        - vmess-1307761360
+        - vless-1279565000
         - vless-1272779542
         - vless-1300687309
         - trojan-1798372713
@@ -228,22 +159,15 @@ proxy-groups:
         - vless-1345587703
         - vless-1156672859
         - vmess-657051921
-        - vmess-1801141754
         - vless-1270189039
-        - vless-652375214
         - vless-1294543641
-        - vless-1482896015
-        - vmess-1795310662
-        - vmess-1456354100
-        - vmess-1801623675
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-1785655561
         - vless-1343261564
-        - vmess-1307761360
+        - vless-1279565000
         - vless-1272779542
         - vless-1300687309
         - trojan-1798372713
@@ -252,14 +176,8 @@ proxy-groups:
         - vless-1345587703
         - vless-1156672859
         - vmess-657051921
-        - vmess-1801141754
         - vless-1270189039
-        - vless-652375214
         - vless-1294543641
-        - vless-1482896015
-        - vmess-1795310662
-        - vmess-1456354100
-        - vmess-1801623675
       type: select
 rules:
     - MATCH,select

@@ -1,13 +1,4 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-1005127037
-      network: tcp
-      port: 16280
-      server: zfd-boardv2.kunlun01dns.com
-      type: vmess
-      udp: true
-      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1768361341
@@ -78,27 +69,41 @@ proxies:
       type: vless
       udp: true
       uuid: ace33fb8-c593-4b17-8f72-f3359b6e9638
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1805250544
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: WU5baXUzRH9BceiYI8MPBmDMEloTFImx2vvE5uh1yjM
+        short-id: f19e02a2fb573c18
+      server: czekkk.loknietotop.digital
+      servername: czekkk.loknietotop.digital
+      tls: true
+      type: vless
+      udp: true
+      uuid: ace33fb8-c593-4b17-8f72-f3359b6e9638
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-1005127037
         - vless-1768361341
         - vless-1797068860
         - vless-1799947017
         - vless-1799947027
         - vless-1802372308
+        - vless-1805250544
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-1005127037
         - vless-1768361341
         - vless-1797068860
         - vless-1799947017
         - vless-1799947027
         - vless-1802372308
+        - vless-1805250544
       type: select
 rules:
     - MATCH,select
