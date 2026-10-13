@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1771690205
+      network: tcp
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - client-fingerprint: chrome
       name: vless-1769017718
       network: grpc
@@ -139,6 +146,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1771690205
         - vless-1769017718
         - vless-1783577679
         - vless-1771506792
@@ -156,6 +164,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1771690205
         - vless-1769017718
         - vless-1783577679
         - vless-1771506792
