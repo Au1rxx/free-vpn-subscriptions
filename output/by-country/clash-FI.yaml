@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1776546177
+      network: raw
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - name: hysteria2-1771124554
       password: 408c51e8-9246-483d-ba73-34ab4e202eb9
       port: 21223
@@ -6,6 +13,13 @@ proxies:
       skip-cert-verify: false
       sni: sweedenqfds777.qcloud.surf
       type: hysteria2
+    - name: vless-1771690205
+      network: tcp
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - cipher: aes-256-gcm
       name: shadowsocks-1801330929
       password: j_Z9yWqItCz_9yhD5YVY4w
@@ -17,14 +31,18 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1776546177
         - hysteria2-1771124554
+        - vless-1771690205
         - shadowsocks-1801330929
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1776546177
         - hysteria2-1771124554
+        - vless-1771690205
         - shadowsocks-1801330929
       type: select
 rules:

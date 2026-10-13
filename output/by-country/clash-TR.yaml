@@ -1,4 +1,11 @@
 proxies:
+    - cipher: 2022-blake3-aes-256-gcm
+      name: shadowsocks-1803081582
+      password: f2Nq5YLnyclPaWR8my7/Vdd3ZX8URncXZNly5+HcUSs=:dQ6WYcPpGX5xIxUVPAR8w1A9eY6kEVoKKW3HleJ6o8Y=
+      port: 8086
+      server: frr.drwrdoh.org
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       name: vless-1753896430
       network: grpc
@@ -29,6 +36,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1803081582
         - vless-1753896430
         - vless-1746905261
       type: url-test
@@ -36,6 +44,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-1803081582
         - vless-1753896430
         - vless-1746905261
       type: select

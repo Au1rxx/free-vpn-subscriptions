@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-326
+      password: UkXRsXvR6buDMG2Y
+      port: 9001
+      server: 5.188.181.201
+      type: ss
+      udp: true
     - name: vless-61041
       network: ws
       port: 8880
@@ -560,6 +567,19 @@ proxies:
       type: vless
       udp: true
       uuid: c1c13ef7-affa-47e1-8967-25cc67679c10
+    - client-fingerprint: firefox
+      name: vless-1757243565
+      network: tcp
+      port: 25136
+      reality-opts:
+        public-key: nkmfL3QCskKAfBUk-OiTgcWyIXGmXrZVtDEoio0Qo1w
+        short-id: f78838fbd85e59ae
+      server: es3.h1cloud.net
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 440b5558-e701-4c6f-8de2-d24dcf1ebbe6
     - client-fingerprint: safari
       name: vless-1757243567
       network: tcp
@@ -753,20 +773,6 @@ proxies:
       type: vless
       udp: true
       uuid: c1c13ef7-affa-47e1-8967-25cc67679c10
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1791608564
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: DcdLu5TEodox9cSq7WLfV-47vURmKkRc1BO19KJvgkM
-        short-id: 861215e33e8dba4f
-      server: 185.76.241.87
-      servername: ru-in-es-4vp.movietop24.site
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9ee57d03-dcf5-488b-aff7-305301879353
     - name: hysteria2-1797935714
       password: f7f971ce-6171-4498-9737-23b037cc11f2
       port: 443
@@ -774,6 +780,19 @@ proxies:
       skip-cert-verify: false
       sni: packet-drop-society.net
       type: hysteria2
+    - client-fingerprint: random
+      name: vless-1798716807
+      network: tcp
+      port: 25136
+      reality-opts:
+        public-key: nkmfL3QCskKAfBUk-OiTgcWyIXGmXrZVtDEoio0Qo1w
+        short-id: f78838fbd85e59ae
+      server: es3.h1cloud.net
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 440b5558-e701-4c6f-8de2-d24dcf1ebbe6
     - name: vless-1802372319
       network: grpc
       port: 3090
@@ -788,10 +807,18 @@ proxies:
       type: vless
       udp: true
       uuid: 6efdfe5c-b7f6-49f9-865a-8c3600330acc
+    - name: hysteria2-1803297785
+      password: 4ad3dbf5-2005-4d96-b56c-a0ca9905cab6
+      port: 27313
+      server: 145.249.109.15
+      skip-cert-verify: false
+      sni: spainspeedboostjbl88.qcloud.surf
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-326
         - vless-61041
         - vless-65151
         - shadowsocks-129353
@@ -839,6 +866,7 @@ proxy-groups:
         - vless-1756080123
         - vless-1757243515
         - vless-1757243562
+        - vless-1757243565
         - vless-1757243567
         - vless-1757243709
         - hysteria2-1758295893
@@ -857,15 +885,17 @@ proxy-groups:
         - vless-1791544845
         - vless-1791544846
         - vless-1791544848
-        - vless-1791608564
         - hysteria2-1797935714
+        - vless-1798716807
         - vless-1802372319
         - vless-1802372326
+        - hysteria2-1803297785
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-326
         - vless-61041
         - vless-65151
         - shadowsocks-129353
@@ -913,6 +943,7 @@ proxy-groups:
         - vless-1756080123
         - vless-1757243515
         - vless-1757243562
+        - vless-1757243565
         - vless-1757243567
         - vless-1757243709
         - hysteria2-1758295893
@@ -931,10 +962,11 @@ proxy-groups:
         - vless-1791544845
         - vless-1791544846
         - vless-1791544848
-        - vless-1791608564
         - hysteria2-1797935714
+        - vless-1798716807
         - vless-1802372319
         - vless-1802372326
+        - hysteria2-1803297785
       type: select
 rules:
     - MATCH,select
