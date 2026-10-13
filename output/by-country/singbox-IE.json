@@ -1,0 +1,58 @@
+{
+  "outbounds": [
+    {
+      "password": "UX82473651",
+      "server": "sacred-anemone.rooster465.autos",
+      "server_port": 443,
+      "tag": "trojan-1658244104",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "sacred-anemone.rooster465.autos",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "trojan"
+    },
+    {
+      "password": "UX82473651",
+      "server": "adapting-basilisk.rooster465.autos",
+      "server_port": 443,
+      "tag": "trojan-1746591298",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "adapting-basilisk.rooster465.autos"
+      },
+      "type": "trojan"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "trojan-1658244104",
+        "trojan-1746591298"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "trojan-1658244104",
+        "trojan-1746591298"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
