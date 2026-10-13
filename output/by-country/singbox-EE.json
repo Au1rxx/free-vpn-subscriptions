@@ -1,0 +1,64 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "ees92.shhflow.xyz",
+      "server_port": 443,
+      "tag": "vless-1777916653",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "h1xVB_-djXL6A7tvnnVbjV4bYKplHOuN0bgmFJQE6AE",
+          "short_id": "7f3a91c2d8e640ab"
+        },
+        "server_name": "ees92.shhflow.xyz",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "random"
+        }
+      },
+      "type": "vless",
+      "uuid": "43212c32-01f2-4356-b216-67dc1c178262"
+    },
+    {
+      "server": "94.183.170.135",
+      "server_port": 8443,
+      "tag": "vless-656161252",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "estproxy4.lockdwn.com"
+      },
+      "type": "vless",
+      "uuid": "06c4e938-2954-478f-a870-ca1b163e30e9"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1777916653",
+        "vless-656161252"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1777916653",
+        "vless-656161252"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
