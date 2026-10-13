@@ -6,17 +6,26 @@ proxies:
       server: 46.17.41.166
       type: ss
       udp: true
+    - name: hysteria2-1796505847
+      password: 7ab3c77e-8fcc-4848-918f-cae3d4eac794
+      port: 2053
+      server: 194.87.118.184
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1789306609
+        - hysteria2-1796505847
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1789306609
+        - hysteria2-1796505847
       type: select
 rules:
     - MATCH,select

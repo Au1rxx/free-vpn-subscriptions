@@ -1,13 +1,25 @@
-proxies: []
+proxies:
+    - name: vless-1532323856
+      network: ws
+      port: 443
+      server: 114.23.136.104
+      servername: shin-ra.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 817b61c8-9bf0-4365-8a52-e43dfad274a6
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - vless-1532323856
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1532323856
       type: select
 rules:
     - MATCH,select
