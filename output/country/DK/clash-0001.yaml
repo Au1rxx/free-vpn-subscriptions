@@ -1,6 +1,15 @@
 proxies:
     - alterId: 0
       cipher: auto
+      name: vmess-1005125062
+      network: tcp
+      port: 16305
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+    - alterId: 0
+      cipher: auto
       name: vmess-1639721864
       network: raw
       port: 16305
@@ -34,33 +43,32 @@ proxies:
       type: vless
       udp: true
       uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
-    - name: vless-1810537026
-      network: ws
-      port: 2053
-      server: dk.kosmolet.me
-      servername: dk.kosmolet.me
-      skip-cert-verify: false
-      tls: true
-      type: vless
+    - cipher: aes-128-gcm
+      name: shadowsocks-1798558952
+      password: b1a1f89b-63ed-4b5b-81a1-91a7c5b76ca9
+      port: 35002
+      server: ruot.ayucloudservices.nl
+      type: ss
       udp: true
-      uuid: 4698388f-2a3a-48ce-a4b2-ef2d3e14b05c
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-1005125062
         - vmess-1639721864
         - vless-1758300920
         - vless-1793430227
-        - vless-1810537026
+        - shadowsocks-1798558952
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-1005125062
         - vmess-1639721864
         - vless-1758300920
         - vless-1793430227
-        - vless-1810537026
+        - shadowsocks-1798558952
       type: select
 rules:
     - MATCH,select
