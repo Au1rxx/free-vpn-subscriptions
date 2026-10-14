@@ -1,11 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1762352560
-      password: e5c65ph
-      port: 443
-      server: pl140.vpnbook.com
-      type: ss
-      udp: true
     - client-fingerprint: chrome
       name: vless-1800502779
       network: grpc
@@ -45,6 +38,17 @@ proxies:
       type: vless
       udp: true
       uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
+    - flow: xtls-rprx-vision
+      name: vless-1795254269
+      network: tcp
+      port: 443
+      server: pl9.aiage.work
+      servername: pl9.aiage.work
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
     - client-fingerprint: firefox
       name: vless-1776546190
       network: grpc
@@ -58,30 +62,6 @@ proxies:
       type: vless
       udp: true
       uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
-    - client-fingerprint: chrome
-      name: vless-1812409561
-      network: tcp
-      port: 25080
-      reality-opts:
-        public-key: CMAkhR1kevtK85rK9B5nmQtFZATsLOIq6nuG83BA8lI
-        short-id: 103d1dc5ed8eaf4c
-      server: pl4.h1cloud.net
-      servername: www.ceneo.pl
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0c3ad9d5-cffd-4748-b8df-ab145288144b
-    - flow: xtls-rprx-vision
-      name: vless-1795254269
-      network: tcp
-      port: 443
-      server: pl9.aiage.work
-      servername: pl9.aiage.work
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1809758830
@@ -110,49 +90,29 @@ proxies:
       type: vless
       udp: true
       uuid: 1c794e75-bcd4-4a65-9f69-ed0a10f33d60
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1812761498
-      network: tcp
-      port: 33891
-      reality-opts:
-        public-key: HXXIkFRPeRpluXJ7SOoUGf9EOq4Lw-oJpvg1W0UPbEw
-        short-id: 5bd7b68ca4c04443
-      server: 144.31.101.196
-      servername: browser.yandex.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1c794e75-bcd4-4a65-9f69-ed0a10f33d60
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1762352560
         - vless-1800502779
         - vless-1260285707
         - vless-1811597945
-        - vless-1776546190
-        - vless-1812409561
         - vless-1795254269
+        - vless-1776546190
         - vless-1809758830
         - vless-1797176973
-        - vless-1812761498
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1762352560
         - vless-1800502779
         - vless-1260285707
         - vless-1811597945
-        - vless-1776546190
-        - vless-1812409561
         - vless-1795254269
+        - vless-1776546190
         - vless-1809758830
         - vless-1797176973
-        - vless-1812761498
       type: select
 rules:
     - MATCH,select

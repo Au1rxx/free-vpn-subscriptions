@@ -1,11 +1,30 @@
 proxies:
-    - name: hysteria2-1820518760
-      password: 8b64b840-a48d-4ac0-b10f-8f7d7081a0f1
-      port: 18333
-      server: es2.xiaoliyu.cyou
-      skip-cert-verify: true
-      sni: es2.xiaoliyu.cyou
-      type: hysteria2
+    - client-fingerprint: chrome
+      name: vless-1192980334
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 7Y6Xb5Ql_03K25x8yKUSOKI2JTOMyv2nyCcFza90uxk
+        short-id: 29e8dcd2b37aaa7f
+      server: 212.227.235.66
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
+    - client-fingerprint: chrome
+      name: vless-1113490852
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 7Y6Xb5Ql_03K25x8yKUSOKI2JTOMyv2nyCcFza90uxk
+        short-id: 29e8dcd2b37aaa7f
+      server: 212.227.235.66
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
     - client-fingerprint: random
       name: vless-1135244188
       network: tcp
@@ -23,14 +42,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1820518760
+        - vless-1192980334
+        - vless-1113490852
         - vless-1135244188
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1820518760
+        - vless-1192980334
+        - vless-1113490852
         - vless-1135244188
       type: select
 rules:
