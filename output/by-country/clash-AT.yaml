@@ -1,24 +1,22 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-1807176714
-      network: tcp
-      port: 13830
-      server: 188.121.120.86
-      type: vmess
+    - cipher: aes-256-gcm
+      name: shadowsocks-1251465987
+      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+      port: 19999
+      server: 82.110.60.9
+      type: ss
       udp: true
-      uuid: 874a6b6d-d569-4b64-b9a6-32d594e61325
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-1807176714
+        - shadowsocks-1251465987
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-1807176714
+        - shadowsocks-1251465987
       type: select
 rules:
     - MATCH,select
