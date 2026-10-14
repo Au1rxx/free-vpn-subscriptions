@@ -6,13 +6,6 @@ proxies:
       server: 5.188.181.201
       type: ss
       udp: true
-    - name: vless-61041
-      network: ws
-      port: 8880
-      server: 185.158.133.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-656191936
       network: tcp
       port: 443
@@ -494,19 +487,6 @@ proxies:
       type: vless
       udp: true
       uuid: c1c13ef7-affa-47e1-8967-25cc67679c10
-    - client-fingerprint: safari
-      name: vless-1757243567
-      network: tcp
-      port: 25136
-      reality-opts:
-        public-key: nkmfL3QCskKAfBUk-OiTgcWyIXGmXrZVtDEoio0Qo1w
-        short-id: f78838fbd85e59ae
-      server: es3.h1cloud.net
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c1c13ef7-affa-47e1-8967-25cc67679c10
     - name: hysteria2-1758295893
       password: 8bd04756-3beb-4348-82c9-d35453df50ce
       port: 27313
@@ -794,12 +774,25 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - name: hysteria2-1820518760
+      password: 8b64b840-a48d-4ac0-b10f-8f7d7081a0f1
+      port: 18333
+      server: es2.xiaoliyu.cyou
+      skip-cert-verify: true
+      sni: es2.xiaoliyu.cyou
+      type: hysteria2
+    - name: hysteria2-1820518771
+      password: 8b64b840-a48d-4ac0-b10f-8f7d7081a0f1
+      port: 18333
+      server: es1.xiaoliyu.cyou
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-321
-        - vless-61041
         - vless-656191936
         - vless-1095633772
         - vless-1107806244
@@ -839,7 +832,6 @@ proxy-groups:
         - hysteria2-1742727893
         - hysteria2-1744666597
         - vless-1754382951
-        - vless-1757243567
         - hysteria2-1758295893
         - hysteria2-1766802778
         - vless-1766980427
@@ -873,13 +865,14 @@ proxy-groups:
         - hysteria2-1814543390
         - vless-1815871814
         - vless-1818063627
+        - hysteria2-1820518760
+        - hysteria2-1820518771
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-321
-        - vless-61041
         - vless-656191936
         - vless-1095633772
         - vless-1107806244
@@ -919,7 +912,6 @@ proxy-groups:
         - hysteria2-1742727893
         - hysteria2-1744666597
         - vless-1754382951
-        - vless-1757243567
         - hysteria2-1758295893
         - hysteria2-1766802778
         - vless-1766980427
@@ -953,6 +945,8 @@ proxy-groups:
         - hysteria2-1814543390
         - vless-1815871814
         - vless-1818063627
+        - hysteria2-1820518760
+        - hysteria2-1820518771
       type: select
 rules:
     - MATCH,select
