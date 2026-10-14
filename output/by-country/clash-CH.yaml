@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1601949347
+      password: 84a506ca5aca505696a454d828420b3f
+      port: 50160
+      server: 140.238.213.114
+      skip-cert-verify: true
+      sni: "off"
+      type: hysteria2
     - name: hysteria2-1001586620
       password: 84a506ca5aca505696a454d828420b3f
       port: 50160
@@ -14,8 +21,8 @@ proxies:
       sni: 140.238.213.114
       type: hysteria2
     - client-fingerprint: chrome
-      name: vless-1648311787
-      network: tcp
+      name: vless-1703314745
+      network: raw
       port: 2053
       reality-opts:
         public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
@@ -30,17 +37,19 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1601949347
         - hysteria2-1001586620
         - hysteria2-1001848837
-        - vless-1648311787
+        - vless-1703314745
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1601949347
         - hysteria2-1001586620
         - hysteria2-1001848837
-        - vless-1648311787
+        - vless-1703314745
       type: select
 rules:
     - MATCH,select
