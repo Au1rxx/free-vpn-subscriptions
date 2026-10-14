@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-60292
-      network: ws
-      port: 8880
-      server: 181.214.1.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: trojan-123833
       password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
       port: 443
@@ -103,6 +96,20 @@ proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1208270658
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
+        short-id: 19253fae84102271
+      server: 45.90.59.15
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3950b45e-740d-4dca-ac95-505ec8534592
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1208885894
       network: tcp
       port: 443
       reality-opts:
@@ -263,13 +270,6 @@ proxies:
       type: vless
       udp: true
       uuid: 3950b45e-740d-4dca-ac95-505ec8534592
-    - name: vless-1255417623
-      network: ws
-      port: 8880
-      server: 103.116.7.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1257519697
@@ -629,11 +629,23 @@ proxies:
       server: c05f.velqixa.ir
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      name: vless-1819240403
+      network: tcp
+      port: 25576
+      reality-opts:
+        public-key: ErmbQFm-toukc_-s7geF1w7pJggmrIq9XiT55sjRNHc
+        short-id: 58914abc2bb85e84
+      server: 87.228.92.113
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d54a7512-dda3-4218-8ae7-c591d300fd7c
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-60292
         - trojan-123833
         - trojan-2501852
         - trojan-13360403
@@ -647,6 +659,7 @@ proxy-groups:
         - hysteria2-1001848837
         - vmess-1052575077
         - vless-1208270658
+        - vless-1208885894
         - vless-1208885895
         - vless-1208885899
         - vless-1208885914
@@ -659,7 +672,6 @@ proxy-groups:
         - vless-1242333394
         - trojan-1250091793
         - vless-1254745144
-        - vless-1255417623
         - vless-1257519697
         - vless-1265429398
         - vless-1307741629
@@ -691,12 +703,12 @@ proxy-groups:
         - trojan-1810929429
         - trojan-1811609372
         - shadowsocks-1817405467
+        - vless-1819240403
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-60292
         - trojan-123833
         - trojan-2501852
         - trojan-13360403
@@ -710,6 +722,7 @@ proxy-groups:
         - hysteria2-1001848837
         - vmess-1052575077
         - vless-1208270658
+        - vless-1208885894
         - vless-1208885895
         - vless-1208885899
         - vless-1208885914
@@ -722,7 +735,6 @@ proxy-groups:
         - vless-1242333394
         - trojan-1250091793
         - vless-1254745144
-        - vless-1255417623
         - vless-1257519697
         - vless-1265429398
         - vless-1307741629
@@ -754,6 +766,7 @@ proxy-groups:
         - trojan-1810929429
         - trojan-1811609372
         - shadowsocks-1817405467
+        - vless-1819240403
       type: select
 rules:
     - MATCH,select
