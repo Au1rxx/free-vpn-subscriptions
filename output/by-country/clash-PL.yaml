@@ -6,6 +6,19 @@ proxies:
       server: pl140.vpnbook.com
       type: ss
       udp: true
+    - client-fingerprint: random
+      name: vless-1805250549
+      network: raw
+      port: 25080
+      reality-opts:
+        public-key: CMAkhR1kevtK85rK9B5nmQtFZATsLOIq6nuG83BA8lI
+        short-id: 103d1dc5ed8eaf4c
+      server: 201.10.91.196
+      servername: www.ceneo.pl
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0c3ad9d5-cffd-4748-b8df-ab145288144b
     - client-fingerprint: firefox
       name: vless-1776546190
       network: grpc
@@ -32,6 +45,17 @@ proxies:
       type: vless
       udp: true
       uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
+    - flow: xtls-rprx-vision
+      name: vless-1795254269
+      network: tcp
+      port: 443
+      server: pl9.aiage.work
+      servername: pl9.aiage.work
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1804404048
       password: e5c65ph
@@ -39,6 +63,19 @@ proxies:
       server: 54.36.174.134
       type: ss
       udp: true
+    - client-fingerprint: random
+      name: vless-1810537024
+      network: tcp
+      port: 25080
+      reality-opts:
+        public-key: CMAkhR1kevtK85rK9B5nmQtFZATsLOIq6nuG83BA8lI
+        short-id: 103d1dc5ed8eaf4c
+      server: pl4.h1cloud.net
+      servername: www.ceneo.pl
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0c3ad9d5-cffd-4748-b8df-ab145288144b
     - client-fingerprint: random
       name: vless-1805250546
       network: raw
@@ -57,9 +94,12 @@ proxy-groups:
       name: auto
       proxies:
         - shadowsocks-1762352560
+        - vless-1805250549
         - vless-1776546190
         - vless-1781468094
+        - vless-1795254269
         - shadowsocks-1804404048
+        - vless-1810537024
         - vless-1805250546
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -67,9 +107,12 @@ proxy-groups:
       proxies:
         - auto
         - shadowsocks-1762352560
+        - vless-1805250549
         - vless-1776546190
         - vless-1781468094
+        - vless-1795254269
         - shadowsocks-1804404048
+        - vless-1810537024
         - vless-1805250546
       type: select
 rules:

@@ -7,14 +7,6 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: trojan-856461985
-      password: 7e70223b-f331-41d5-9313-02b8d2df2885
-      port: 20032
-      server: krhtybay.catcat321.com
-      skip-cert-verify: true
-      sni: hk.catxstar.com
-      type: trojan
-      udp: true
     - name: trojan-871344761
       password: 7e70223b-f331-41d5-9313-02b8d2df2885
       port: 20114
@@ -23,24 +15,10 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - name: vless-1239329823
-      network: ws
-      port: 8880
-      server: 45.192.224.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1256073213
       network: ws
       port: 8880
       server: 103.169.142.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1419546422
-      network: ws
-      port: 8880
-      server: 185.225.195.30
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
@@ -161,16 +139,26 @@ proxies:
       type: vless
       udp: true
       uuid: 7b9b233c-c646-4859-88b2-2a55695c6487
+    - client-fingerprint: chrome
+      name: vless-1817776925
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: pCImwRkTjx8OIUiu1WFelZQFt1p3Q0lUoPbvjVq8GTs
+        short-id: b62a4da6cd1c4dd6
+      server: 35.199.90.53
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5e517b94-e207-47ee-be3c-3020a57594e8
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-122906
-        - trojan-856461985
         - trojan-871344761
-        - vless-1239329823
         - vless-1256073213
-        - vless-1419546422
         - vless-1527402211
         - vless-1755587923
         - vless-1756938860
@@ -180,17 +168,15 @@ proxy-groups:
         - vless-1807121898
         - vless-1813279740
         - vless-1815871804
+        - vless-1817776925
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-122906
-        - trojan-856461985
         - trojan-871344761
-        - vless-1239329823
         - vless-1256073213
-        - vless-1419546422
         - vless-1527402211
         - vless-1755587923
         - vless-1756938860
@@ -200,6 +186,7 @@ proxy-groups:
         - vless-1807121898
         - vless-1813279740
         - vless-1815871804
+        - vless-1817776925
       type: select
 rules:
     - MATCH,select

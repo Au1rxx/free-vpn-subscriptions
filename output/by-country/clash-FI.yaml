@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1776546177
+      network: raw
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - client-fingerprint: chrome
       name: vless-1755280951
       network: grpc
@@ -12,13 +19,13 @@ proxies:
       type: vless
       udp: true
       uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
-    - name: vless-1776546177
-      network: raw
-      port: 2052
-      server: edge10.cyrionflare.com
-      type: vless
+    - cipher: aes-128-gcm
+      name: shadowsocks-1689700222
+      password: f9300a9bf39ae0347c3a3bfbc4dd7754
+      port: 18280
+      server: 185.103.110.66
+      type: ss
       udp: true
-      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - name: vless-1771690205
       network: tcp
       port: 2052
@@ -70,8 +77,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1755280951
         - vless-1776546177
+        - vless-1755280951
+        - shadowsocks-1689700222
         - vless-1771690205
         - vless-1769017718
         - vless-1345688766
@@ -81,8 +89,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vless-1755280951
         - vless-1776546177
+        - vless-1755280951
+        - shadowsocks-1689700222
         - vless-1771690205
         - vless-1769017718
         - vless-1345688766
