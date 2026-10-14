@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-128-gcm
-      name: shadowsocks-1653901314
-      password: f9300a9bf39ae0347c3a3bfbc4dd7754
-      port: 18283
-      server: 185.103.110.68
-      type: ss
-      udp: true
     - name: vless-1776546177
       network: raw
       port: 2052
@@ -53,6 +46,13 @@ proxies:
       skip-cert-verify: false
       sni: ""
       type: hysteria2
+    - cipher: aes-128-gcm
+      name: shadowsocks-1653901314
+      password: f9300a9bf39ae0347c3a3bfbc4dd7754
+      port: 18283
+      server: 185.103.110.68
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       name: vless-1560066335
       network: grpc
@@ -79,6 +79,13 @@ proxies:
       type: vless
       udp: true
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+    - name: vless-1821146517
+      network: ws
+      port: 14430
+      server: 45.144.234.157
+      type: vless
+      udp: true
+      uuid: 59b0d30e-9b29-4fda-a35c-b2901ec32db7
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-270691474
@@ -93,42 +100,35 @@ proxies:
       type: vless
       udp: true
       uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
-    - name: vless-1799785691
-      network: raw
-      port: 2052
-      server: edge10.cyrionflare.com
-      type: vless
-      udp: true
-      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1653901314
         - vless-1776546177
         - vless-1807600606
         - vless-1345688766
         - vless-1781591528
         - hysteria2-1816284657
+        - shadowsocks-1653901314
         - vless-1560066335
         - vless-1358009940
+        - vless-1821146517
         - vless-270691474
-        - vless-1799785691
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1653901314
         - vless-1776546177
         - vless-1807600606
         - vless-1345688766
         - vless-1781591528
         - hysteria2-1816284657
+        - shadowsocks-1653901314
         - vless-1560066335
         - vless-1358009940
+        - vless-1821146517
         - vless-270691474
-        - vless-1799785691
       type: select
 rules:
     - MATCH,select

@@ -20,19 +20,6 @@ proxies:
       udp: true
       uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
     - client-fingerprint: firefox
-      name: vless-1776546190
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: qvVoQPNyuM86jBvBqOL-Z9VO_C9jMi_ZH8bb4fotNWA
-        short-id: 7ec4374ffc6308fd
-      server: 31.59.210.32
-      servername: www.yandex.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
-    - client-fingerprint: firefox
       name: vless-1260285707
       network: tcp
       port: 2053
@@ -47,6 +34,19 @@ proxies:
       uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
     - client-fingerprint: chrome
       name: vless-1811597945
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: qvVoQPNyuM86jBvBqOL-Z9VO_C9jMi_ZH8bb4fotNWA
+        short-id: 7ec4374ffc6308fd
+      server: 31.59.210.32
+      servername: www.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
+    - client-fingerprint: firefox
+      name: vless-1776546190
       network: grpc
       port: 443
       reality-opts:
@@ -124,39 +124,20 @@ proxies:
       type: vless
       udp: true
       uuid: 1c794e75-bcd4-4a65-9f69-ed0a10f33d60
-    - name: vless-1821974500
-      network: tcp
-      port: 10443
-      server: 45.137.43.168
-      type: vless
-      udp: true
-      uuid: b4cc503a-c352-4775-85ad-fc982086884a
-    - name: vless-1821129522
-      network: ws
-      port: 443
-      server: 140.248.186.45
-      servername: ssl.fastly.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: XpnTeam-4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1762352560
         - vless-1800502779
-        - vless-1776546190
         - vless-1260285707
         - vless-1811597945
+        - vless-1776546190
         - vless-1812409561
         - vless-1795254269
         - vless-1809758830
         - vless-1797176973
         - vless-1812761498
-        - vless-1821974500
-        - vless-1821129522
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -164,16 +145,14 @@ proxy-groups:
         - auto
         - shadowsocks-1762352560
         - vless-1800502779
-        - vless-1776546190
         - vless-1260285707
         - vless-1811597945
+        - vless-1776546190
         - vless-1812409561
         - vless-1795254269
         - vless-1809758830
         - vless-1797176973
         - vless-1812761498
-        - vless-1821974500
-        - vless-1821129522
       type: select
 rules:
     - MATCH,select

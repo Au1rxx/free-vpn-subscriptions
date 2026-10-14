@@ -1,13 +1,18 @@
 proxies:
-    - alterId: 0
-      cipher: auto
-      name: vmess-1005125062
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-285809219
       network: tcp
-      port: 16305
-      server: zfd-boardv2.kunlun01dns.com
-      type: vmess
+      port: 28190
+      reality-opts:
+        public-key: ZJRnFU-1s1JOnO8E9uZ7b00l1fPEh63fGRbdBANFRno
+        short-id: ""
+      server: 159.89.87.21
+      servername: aws.amazon.com
+      tls: true
+      type: vless
       udp: true
-      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
+      uuid: 14c80e0e-f7ce-4991-94fc-99a1db4a9b1e
     - alterId: 0
       cipher: auto
       name: vmess-1639721864
@@ -43,32 +48,23 @@ proxies:
       type: vless
       udp: true
       uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
-    - cipher: aes-128-gcm
-      name: shadowsocks-1798558952
-      password: b1a1f89b-63ed-4b5b-81a1-91a7c5b76ca9
-      port: 35002
-      server: ruot.ayucloudservices.nl
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vmess-1005125062
+        - vless-285809219
         - vmess-1639721864
         - vless-1758300920
         - vless-1793430227
-        - shadowsocks-1798558952
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vmess-1005125062
+        - vless-285809219
         - vmess-1639721864
         - vless-1758300920
         - vless-1793430227
-        - shadowsocks-1798558952
       type: select
 rules:
     - MATCH,select
