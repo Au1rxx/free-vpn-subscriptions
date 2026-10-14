@@ -1,0 +1,40 @@
+{
+  "outbounds": [
+    {
+      "password": "7ab3c77e-8fcc-4848-918f-cae3d4eac794",
+      "server": "194.87.118.184",
+      "server_port": 2053,
+      "tag": "hysteria2-1787036167",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "match-stream.lovkisport.blog"
+      },
+      "type": "hysteria2"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "hysteria2-1787036167"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "hysteria2-1787036167"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

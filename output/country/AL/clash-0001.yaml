@@ -7,13 +7,6 @@ proxies:
       sni: hk.catxstar.com
       type: trojan
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1782859686
-      password: 52+ggoCvKFVJyT1NDiuWOZw2rHIvAg3tgqgJl8aeCwY=
-      port: 43558
-      server: 130.49.189.158
-      type: ss
-      udp: true
     - client-fingerprint: safari
       flow: xtls-rprx-vision
       name: vless-1795362630
@@ -83,29 +76,52 @@ proxies:
       type: vless
       udp: true
       uuid: 2ffa91fe-e1cc-4c44-a90a-45002feae978
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1826514294
+      password: j3PKOCj7wHl5Pk6thI9HyXtCa6JU180IlBpWANgFjkY=
+      port: 43558
+      server: 130.49.189.158
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1826525952
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: QXw5YbUfPssdgGZIfAol5PonYGWSjlWsWpoij93VU20
+        short-id: b276e04195d77f6b
+      server: 83.166.238.57
+      servername: eh3.vk.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: a16a3e32-8d63-4dec-8c67-1361388a64ca
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-122860
-        - shadowsocks-1782859686
         - vless-1795362630
         - vless-1795362631
         - vless-1818782122
         - vless-1821718901
         - vless-1823569850
+        - shadowsocks-1826514294
+        - vless-1826525952
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-122860
-        - shadowsocks-1782859686
         - vless-1795362630
         - vless-1795362631
         - vless-1818782122
         - vless-1821718901
         - vless-1823569850
+        - shadowsocks-1826514294
+        - vless-1826525952
       type: select
 rules:
     - MATCH,select
