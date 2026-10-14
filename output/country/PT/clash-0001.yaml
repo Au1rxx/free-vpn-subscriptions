@@ -1,0 +1,25 @@
+proxies:
+    - name: vless-1656236170
+      network: ws
+      port: 2053
+      server: 141.101.90.108
+      servername: wzs.echo.net.eu.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d18c6897-2849-456a-8c46-d7ecece47c20
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1656236170
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1656236170
+      type: select
+rules:
+    - MATCH,select
