@@ -13,6 +13,13 @@ proxies:
       server: 2.58.81.221
       type: ss
       udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-1822026096
+      password: EwUhOxemnPqaUvJgq4S8ug
+      port: 8389
+      server: 185.227.174.29
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       name: vless-1791055670
       network: grpc
@@ -79,15 +86,6 @@ proxies:
       cipher: none
       name: vmess-1802698957
       network: tcp
-      port: 22266
-      server: 31.76.11.83
-      type: vmess
-      udp: true
-      uuid: 2d8f57bd-12b5-41ad-a806-6501753c264c
-    - alterId: 0
-      cipher: auto
-      name: vmess-1782916780
-      network: raw
       port: 22266
       server: 31.76.11.83
       type: vmess
@@ -310,20 +308,6 @@ proxies:
       type: vless
       udp: true
       uuid: 20dd9433-389e-4573-ba7b-689619cf13da
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1800776851
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: ygxQyBcJzlLgpSl3MCRDDiFET4TT-3wxa4GdG1obkCY
-        short-id: ba4b2afa9e7193ea
-      server: 50.7.87.122
-      servername: edge-fr.extazy.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9c104116-b231-4626-94cb-6d8fc4d2b000
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1810299789
@@ -550,25 +534,13 @@ proxies:
       uuid: 8af93649-403b-46d8-9966-923d4c58402c
     - alterId: 0
       cipher: auto
-      name: vmess-1783786209
-      network: tcp
+      name: vmess-1782916780
+      network: raw
       port: 22266
       server: 31.76.11.83
       type: vmess
       udp: true
       uuid: 2d8f57bd-12b5-41ad-a806-6501753c264c
-    - alterId: 0
-      cipher: auto
-      name: vmess-685047062
-      network: tcp
-      port: 1234
-      server: 141.95.65.9
-      servername: supervpn.super.com
-      skip-cert-verify: true
-      tls: true
-      type: vmess
-      udp: true
-      uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
     - alterId: 0
       cipher: auto
       name: vmess-674048796
@@ -581,27 +553,19 @@ proxies:
       type: vmess
       udp: true
       uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-    - name: trojan-1810232986
-      password: mitivpn
-      port: 443
-      server: 167.82.64.46
-      skip-cert-verify: true
-      sni: play.google.com
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1688379115
         - shadowsocks-696780676
+        - shadowsocks-1822026096
         - vless-1791055670
         - vless-1741441891
         - vless-1748616579
         - vless-1690637342
         - vmess-1786335924
         - vmess-1802698957
-        - vmess-1782916780
         - vmess-657042642
         - vless-1793430115
         - vless-1793430307
@@ -619,7 +583,6 @@ proxy-groups:
         - vless-1748221856
         - vless-1793317482
         - vless-1414607102
-        - vless-1800776851
         - vless-1810299789
         - vless-1805545966
         - vless-1815919377
@@ -636,10 +599,8 @@ proxy-groups:
         - vless-1695398623
         - vless-1680307862
         - vless-1741793199
-        - vmess-1783786209
-        - vmess-685047062
+        - vmess-1782916780
         - vmess-674048796
-        - trojan-1810232986
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -647,13 +608,13 @@ proxy-groups:
         - auto
         - shadowsocks-1688379115
         - shadowsocks-696780676
+        - shadowsocks-1822026096
         - vless-1791055670
         - vless-1741441891
         - vless-1748616579
         - vless-1690637342
         - vmess-1786335924
         - vmess-1802698957
-        - vmess-1782916780
         - vmess-657042642
         - vless-1793430115
         - vless-1793430307
@@ -671,7 +632,6 @@ proxy-groups:
         - vless-1748221856
         - vless-1793317482
         - vless-1414607102
-        - vless-1800776851
         - vless-1810299789
         - vless-1805545966
         - vless-1815919377
@@ -688,10 +648,8 @@ proxy-groups:
         - vless-1695398623
         - vless-1680307862
         - vless-1741793199
-        - vmess-1783786209
-        - vmess-685047062
+        - vmess-1782916780
         - vmess-674048796
-        - trojan-1810232986
       type: select
 rules:
     - MATCH,select
