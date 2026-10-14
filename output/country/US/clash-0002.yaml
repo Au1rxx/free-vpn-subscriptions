@@ -1,6 +1,27 @@
 proxies:
-    - name: hysteria2-1814166927
-      password: f83ce3c4-07d9-4895-bd14-cb74abbcab37
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1814162837
+      network: tcp
+      port: 9443
+      reality-opts:
+        public-key: ELJzJkc4SiCeCn6OF-8V9oeoJqXcD1y9WUntP3It53g
+        short-id: 649ab61e575fdbc9
+      server: 95.181.173.68
+      servername: usa.edgeses.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: c3db7657-88ce-42a6-b998-1e0364b277ac
+    - name: hysteria2-1814166923
+      password: 8bd04756-3beb-4348-82c9-d35453df50ce
+      port: 20270
+      server: qcloudge1.exitvpn.shop
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
+    - name: hysteria2-1814166924
+      password: 6656cc0a-5908-4d04-a436-64f5843c0c7a
       port: 20270
       server: qcloudge1.exitvpn.shop
       skip-cert-verify: true
@@ -445,17 +466,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 9fa732d6-dcd6-47bb-c255-094bad71765d
-    - flow: xtls-rprx-vision
-      name: vless-1817777929
-      network: tcp
-      port: 443
-      server: nl.demka.live
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6230dfe2-7de5-4d4b-990f-73ac7f53e987
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1818063618
@@ -472,28 +482,6 @@ proxies:
       uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
     - flow: xtls-rprx-vision
       name: vless-1818671989
-      network: tcp
-      port: 443
-      server: nl.demka.live
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6230dfe2-7de5-4d4b-990f-73ac7f53e987
-    - flow: xtls-rprx-vision
-      name: vless-1818671993
-      network: tcp
-      port: 443
-      server: nl.demka.live
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6230dfe2-7de5-4d4b-990f-73ac7f53e987
-    - flow: xtls-rprx-vision
-      name: vless-1818671999
       network: tcp
       port: 443
       server: nl.demka.live
@@ -555,19 +543,6 @@ proxies:
       type: vless
       udp: true
       uuid: c3db7657-88ce-42a6-b998-1e0364b277ac
-    - client-fingerprint: random
-      name: vless-1818783094
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: gS0qvWKumWcOVoAgf8SHt6Sm3tqpBw07c5sA_Clb1hg
-        short-id: ""
-      server: 216.9.226.22
-      servername: us-1-1.unturned-rust-dead.lol
-      tls: true
-      type: vless
-      udp: true
-      uuid: c6e3c24c-ce20-4ad5-8c8c-68cb05890ea8
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1818783114
@@ -1003,11 +978,28 @@ proxies:
       type: vless
       udp: true
       uuid: 78d270a8-4f11-4a8c-8d5f-702278b00fdd
+    - name: trojan-1822339114
+      password: ae7eb4dwyaz25pxwgq59
+      port: 59689
+      server: 66.23.203.21
+      skip-cert-verify: true
+      sni: 66.23.203.21
+      type: trojan
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1822374943
+      password: -pQdOh0P4N0O5c2rOtkMRdHFZt9Fi3LB
+      port: 1080
+      server: 208.83.236.249
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1814166927
+        - vless-1814162837
+        - hysteria2-1814166923
+        - hysteria2-1814166924
         - vless-1814203568
         - vless-1814212831
         - trojan-1814261524
@@ -1060,16 +1052,12 @@ proxy-groups:
         - vless-1816317720
         - vmess-1817648270
         - vmess-1817687922
-        - vless-1817777929
         - vless-1818063618
         - vless-1818671989
-        - vless-1818671993
-        - vless-1818671999
         - vless-1818672029
         - vless-1818763091
         - vless-1818763099
         - vless-1818767089
-        - vless-1818783094
         - vless-1818783114
         - trojan-1818802001
         - trojan-1819077520
@@ -1112,12 +1100,16 @@ proxy-groups:
         - vless-1821974497
         - vless-1822026091
         - vless-1822026108
+        - trojan-1822339114
+        - shadowsocks-1822374943
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1814166927
+        - vless-1814162837
+        - hysteria2-1814166923
+        - hysteria2-1814166924
         - vless-1814203568
         - vless-1814212831
         - trojan-1814261524
@@ -1170,16 +1162,12 @@ proxy-groups:
         - vless-1816317720
         - vmess-1817648270
         - vmess-1817687922
-        - vless-1817777929
         - vless-1818063618
         - vless-1818671989
-        - vless-1818671993
-        - vless-1818671999
         - vless-1818672029
         - vless-1818763091
         - vless-1818763099
         - vless-1818767089
-        - vless-1818783094
         - vless-1818783114
         - trojan-1818802001
         - trojan-1819077520
@@ -1222,6 +1210,8 @@ proxy-groups:
         - vless-1821974497
         - vless-1822026091
         - vless-1822026108
+        - trojan-1822339114
+        - shadowsocks-1822374943
       type: select
 rules:
     - MATCH,select
