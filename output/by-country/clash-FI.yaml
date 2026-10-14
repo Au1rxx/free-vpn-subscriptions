@@ -1,13 +1,13 @@
 proxies:
-    - name: vless-1771690205
-      network: tcp
+    - name: vless-1776546177
+      network: raw
       port: 2052
       server: edge10.cyrionflare.com
       type: vless
       udp: true
       uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-    - name: vless-1776546177
-      network: raw
+    - name: vless-1771690205
+      network: tcp
       port: 2052
       server: edge10.cyrionflare.com
       type: vless
@@ -26,37 +26,45 @@ proxies:
       type: vless
       udp: true
       uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-258626507
+    - name: vless-1815871841
       network: raw
-      port: 443
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
+    - client-fingerprint: chrome
+      name: vless-1793430139
+      network: grpc
+      port: 8444
       reality-opts:
-        public-key: WWeAHWUVD-phmnjNJ823cer0c4CMIbEs08AhsuEZmDc
-        short-id: a696de84963656de
-      server: 95.85.224.51
-      servername: max.ru
+        public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
+        short-id: ""
+      server: 153.80.241.206
+      servername: github.com
       tls: true
       type: vless
       udp: true
-      uuid: 342ab7e4-5a89-0001-8809-304120d4aa83
+      uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1771690205
         - vless-1776546177
+        - vless-1771690205
         - vless-1755280951
-        - vless-258626507
+        - vless-1815871841
+        - vless-1793430139
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1771690205
         - vless-1776546177
+        - vless-1771690205
         - vless-1755280951
-        - vless-258626507
+        - vless-1815871841
+        - vless-1793430139
       type: select
 rules:
     - MATCH,select
