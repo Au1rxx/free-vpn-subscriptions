@@ -6,6 +6,13 @@ proxies:
       type: vless
       udp: true
       uuid: 9f0285ee-20ca-4953-bcdb-86a920652923
+    - cipher: aes-256-gcm
+      name: shadowsocks-1827147481
+      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+      port: 19999
+      server: 185.164.175.81
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1827156495
@@ -20,13 +27,6 @@ proxies:
       type: vless
       udp: true
       uuid: ee18d188-14cc-417e-beb1-70e4add6d023
-    - cipher: aes-256-gcm
-      name: shadowsocks-1827147481
-      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-      port: 19999
-      server: 185.164.175.81
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       name: vless-1828004206
       network: tcp
@@ -88,31 +88,47 @@ proxies:
       type: vless
       udp: true
       uuid: d5e5f5a1-0f23-4c49-af9f-4be445bf9d8e
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1828139920
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: iNa82mUKHn9JwK1HfDX7etlqTmjtNc2TqoQR0dZgHyI
+        short-id: ""
+      server: media24.cudeln.com
+      servername: media24.cudeln.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 85b6aa11-4e74-4f40-a30d-8fd2f3c174bb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1827145623
-        - vless-1827156495
         - shadowsocks-1827147481
+        - vless-1827156495
         - vless-1828004206
         - vless-1827155514
         - vless-1827155677
         - vless-1827532569
         - vless-1827155379
+        - vless-1828139920
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1827145623
-        - vless-1827156495
         - shadowsocks-1827147481
+        - vless-1827156495
         - vless-1828004206
         - vless-1827155514
         - vless-1827155677
         - vless-1827532569
         - vless-1827155379
+        - vless-1828139920
       type: select
 rules:
     - MATCH,select

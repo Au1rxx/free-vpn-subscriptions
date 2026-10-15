@@ -20,12 +20,26 @@ proxies:
       type: vless
       udp: true
       uuid: 1b7ee703-fa08-4305-8469-ae3e30e61e44
+    - client-fingerprint: random
+      name: vless-1828137266
+      network: grpc
+      port: 2087
+      reality-opts:
+        public-key: RNE9785FGHj63g_Dht-Cx0FzOPpdTPXgMFIYHurOVys
+        short-id: ""
+      server: 62.83.11.211
+      servername: at3.tsumshop.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2b173b69-8045-4fb8-b713-6db630337970
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827147826
         - vless-1827150248
+        - vless-1828137266
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -33,6 +47,7 @@ proxy-groups:
         - auto
         - shadowsocks-1827147826
         - vless-1827150248
+        - vless-1828137266
       type: select
 rules:
     - MATCH,select

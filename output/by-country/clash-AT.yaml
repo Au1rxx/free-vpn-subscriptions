@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: random
+      name: vless-1828137266
+      network: grpc
+      port: 2087
+      reality-opts:
+        public-key: RNE9785FGHj63g_Dht-Cx0FzOPpdTPXgMFIYHurOVys
+        short-id: ""
+      server: 62.83.11.211
+      servername: at3.tsumshop.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2b173b69-8045-4fb8-b713-6db630337970
     - cipher: aes-256-gcm
       name: shadowsocks-1827147826
       password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
@@ -6,33 +19,19 @@ proxies:
       server: 82.110.60.9
       type: ss
       udp: true
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1827150248
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: _qSbW4JL4Ffqvj25vX-6a2ul9Qlj6PBdlF0ghsf_0RQ
-        short-id: a9dc98a7dc87a7dc
-      server: kozyavka.yandex-api.com
-      servername: kozyavka.yandex-api.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1b7ee703-fa08-4305-8469-ae3e30e61e44
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1828137266
         - shadowsocks-1827147826
-        - vless-1827150248
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1828137266
         - shadowsocks-1827147826
-        - vless-1827150248
       type: select
 rules:
     - MATCH,select

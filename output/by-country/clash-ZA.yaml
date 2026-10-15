@@ -1,25 +1,5 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1827146396
-      password: Xsy8Ox4yOV3xLlpxtjzs3X
-      port: 16233
-      server: 102.133.165.160
-      type: ss
-      udp: true
-    - client-fingerprint: chrome
-      name: vless-1827153599
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: bSN0cv0VMxmYZsNsMkkLndOTHZu74C1htJ2M71QMaVE
-        short-id: 89b3a20484eb43ec
-      server: 34.35.186.228
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 8d65c8a7-4876-4556-bb6a-feccfb46ee81
-    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1827146619
       password: aduB9HGxQHjA2SBMRjkHX6
       port: 443
@@ -39,23 +19,43 @@ proxies:
       type: vless
       udp: true
       uuid: 4758aee6-6d1a-4306-b460-2398b5af4e35
+    - client-fingerprint: chrome
+      name: vless-1827153599
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: bSN0cv0VMxmYZsNsMkkLndOTHZu74C1htJ2M71QMaVE
+        short-id: 89b3a20484eb43ec
+      server: 34.35.186.228
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8d65c8a7-4876-4556-bb6a-feccfb46ee81
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1827146396
+      password: Xsy8Ox4yOV3xLlpxtjzs3X
+      port: 16233
+      server: 102.133.165.160
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1827146396
-        - vless-1827153599
         - shadowsocks-1827146619
         - vless-1827151150
+        - vless-1827153599
+        - shadowsocks-1827146396
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1827146396
-        - vless-1827153599
         - shadowsocks-1827146619
         - vless-1827151150
+        - vless-1827153599
+        - shadowsocks-1827146396
       type: select
 rules:
     - MATCH,select
