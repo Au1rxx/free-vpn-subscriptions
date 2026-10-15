@@ -1,49 +1,29 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-779606885
-      password: 9eeJ2fwnZA5Fxgz8
-      port: 9028
-      server: 213.183.63.60
-      type: ss
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1827151978
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: rabtI-ymNXBUvYYRwAw8DiR-1pdP7U0WPIaCBHEkgzo
+        short-id: 77bb0d07bddbc832
+      server: 195.123.226.21
+      servername: gateway.icloud.com
+      tls: true
+      type: vless
       udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-717969028
-      password: cp8pRSUAyLhTfVWH
-      port: 9064
-      server: 213.183.63.60
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-768399484
-      password: 9ej82EKe2gq7gLAM
-      port: 9085
-      server: 213.183.63.60
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-819466430
-      password: PRBf4BS2HvJqtWxY
-      port: 9049
-      server: 213.183.63.60
-      type: ss
-      udp: true
+      uuid: 6589c320-db68-43cd-a273-b46299bab355
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-779606885
-        - shadowsocks-717969028
-        - shadowsocks-768399484
-        - shadowsocks-819466430
+        - vless-1827151978
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-779606885
-        - shadowsocks-717969028
-        - shadowsocks-768399484
-        - shadowsocks-819466430
+        - vless-1827151978
       type: select
 rules:
     - MATCH,select
