@@ -20,6 +20,13 @@ proxies:
       skip-cert-verify: false
       sni: match-stream.lovkisport.blog
       type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-1827968609
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 194.38.11.86
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -27,6 +34,7 @@ proxy-groups:
         - hysteria2-1827145511
         - shadowsocks-1827543269
         - hysteria2-1827784274
+        - shadowsocks-1827968609
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -35,6 +43,7 @@ proxy-groups:
         - hysteria2-1827145511
         - shadowsocks-1827543269
         - hysteria2-1827784274
+        - shadowsocks-1827968609
       type: select
 rules:
     - MATCH,select

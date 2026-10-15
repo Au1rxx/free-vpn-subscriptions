@@ -6,25 +6,11 @@ proxies:
       server: 211.178.105.134
       type: ss
       udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-1827146715
-      password: 1234!@#$
-      port: 1774
-      server: 49.254.204.134
-      type: ss
-      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1827146803
       password: QFWzCw2uX9B9i6qAYeFBIE
       port: 443
       server: 154.46.31.106
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-1827147663
-      password: ac9c0a7b
-      port: 49642
-      server: 211.174.113.172
       type: ss
       udp: true
     - name: trojan-1827149139
@@ -102,15 +88,6 @@ proxies:
       uuid: d342d11e-d224-4463-b982-532309285094
     - alterId: 0
       cipher: auto
-      name: vmess-1827157834
-      network: tcp
-      port: 8080
-      server: 206.1.102.64
-      type: vmess
-      udp: true
-      uuid: 184a0393-5c9e-403c-9be6-427b066308e1
-    - alterId: 0
-      cipher: auto
       name: vmess-1827158010
       network: none
       port: 26421
@@ -132,16 +109,6 @@ proxies:
       type: vless
       udp: true
       uuid: b98d4c6e-6770-4a31-8256-a4750cdea0e7
-    - name: vless-1827513805
-      network: ws
-      port: 8443
-      server: 37.221.210.113
-      servername: free.cndyw.ggff.net
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 04c808e2-0b59-47b0-a54b-32fc7ef1c902
     - name: vless-1827619962
       network: ws
       port: 16034
@@ -188,6 +155,20 @@ proxies:
       sni: www.calmlunch.com
       type: trojan
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-1827968609
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 194.38.11.86
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-1827969068
+      password: qwerREWQ@@
+      port: 4652
+      server: 218.237.185.234
+      type: ss
+      udp: true
     - name: vless-1827981865
       network: ws
       port: 443
@@ -198,14 +179,19 @@ proxies:
       type: vless
       udp: true
       uuid: d342d11e-d224-4463-b982-532309285094
+    - cipher: aes-256-cfb
+      name: shadowsocks-1827983920
+      password: 1234!@#$
+      port: 1774
+      server: 49.254.204.133
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827145973
-        - shadowsocks-1827146715
         - shadowsocks-1827146803
-        - shadowsocks-1827147663
         - trojan-1827149139
         - trojan-1827149554
         - trojan-1827149584
@@ -213,24 +199,23 @@ proxy-groups:
         - vless-1827152390
         - vless-1827152595
         - vless-1827155261
-        - vmess-1827157834
         - vmess-1827158010
         - vless-1827162831
-        - vless-1827513805
         - vless-1827619962
         - vless-1827735107
         - vless-1827835705
         - trojan-1827944918
+        - shadowsocks-1827968609
+        - shadowsocks-1827969068
         - vless-1827981865
+        - shadowsocks-1827983920
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1827145973
-        - shadowsocks-1827146715
         - shadowsocks-1827146803
-        - shadowsocks-1827147663
         - trojan-1827149139
         - trojan-1827149554
         - trojan-1827149584
@@ -238,15 +223,16 @@ proxy-groups:
         - vless-1827152390
         - vless-1827152595
         - vless-1827155261
-        - vmess-1827157834
         - vmess-1827158010
         - vless-1827162831
-        - vless-1827513805
         - vless-1827619962
         - vless-1827735107
         - vless-1827835705
         - trojan-1827944918
+        - shadowsocks-1827968609
+        - shadowsocks-1827969068
         - vless-1827981865
+        - shadowsocks-1827983920
       type: select
 rules:
     - MATCH,select

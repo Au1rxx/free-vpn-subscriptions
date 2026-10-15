@@ -1,4 +1,24 @@
 proxies:
+    - client-fingerprint: chrome
+      name: vless-1827289903
+      network: tcp
+      port: 25576
+      reality-opts:
+        public-key: ErmbQFm-toukc_-s7geF1w7pJggmrIq9XiT55sjRNHc
+        short-id: 58914abc2bb85e84
+      server: 87.228.92.113
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d54a7512-dda3-4218-8ae7-c591d300fd7c
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1827146737
+      password: e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3
+      port: 8388
+      server: 132.243.175.144
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1827151310
@@ -13,12 +33,13 @@ proxies:
       type: vless
       udp: true
       uuid: 3950b45e-740d-4dca-ac95-505ec8534592
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1827146737
-      password: e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3
-      port: 8388
-      server: 132.243.175.144
-      type: ss
+    - name: trojan-1827147947
+      password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
+      port: 443
+      server: mfyousheng.nl.eu.org
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
       udp: true
     - client-fingerprint: chrome
       name: vless-1827188328
@@ -33,14 +54,6 @@ proxies:
       type: vless
       udp: true
       uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
-    - name: trojan-1827148465
-      password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
-      port: 443
-      server: 188.114.96.3
-      skip-cert-verify: true
-      sni: mfyousheng.nl.eu.org
-      type: trojan
-      udp: true
     - name: trojan-1827960119
       password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
       port: 443
@@ -57,11 +70,11 @@ proxies:
       sni: mfyousheng.nl.eu.org
       type: trojan
       udp: true
-    - name: trojan-1827148424
+    - name: trojan-1827148465
       password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
       port: 443
-      server: mfyousheng.nl.eu.org
-      skip-cert-verify: false
+      server: 188.114.96.3
+      skip-cert-verify: true
       sni: mfyousheng.nl.eu.org
       type: trojan
       udp: true
@@ -117,12 +130,12 @@ proxies:
       type: vless
       udp: true
       uuid: d54a7512-dda3-4218-8ae7-c591d300fd7c
-    - name: trojan-1827147947
+    - name: trojan-1827148424
       password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
       port: 443
       server: mfyousheng.nl.eu.org
       skip-cert-verify: false
-      sni: ""
+      sni: mfyousheng.nl.eu.org
       type: trojan
       udp: true
     - name: vless-1827975598
@@ -143,58 +156,45 @@ proxies:
       sni: mfyousheng.nl.eu.org
       type: trojan
       udp: true
-    - client-fingerprint: chrome
-      name: vless-1827289903
-      network: tcp
-      port: 25576
-      reality-opts:
-        public-key: ErmbQFm-toukc_-s7geF1w7pJggmrIq9XiT55sjRNHc
-        short-id: 58914abc2bb85e84
-      server: 87.228.92.113
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d54a7512-dda3-4218-8ae7-c591d300fd7c
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1827151310
+        - vless-1827289903
         - shadowsocks-1827146737
+        - vless-1827151310
+        - trojan-1827147947
         - vless-1827188328
-        - trojan-1827148465
         - trojan-1827960119
         - trojan-1827148571
-        - trojan-1827148424
+        - trojan-1827148465
         - vless-1827624304
         - vless-1827404720
         - vless-1827154380
         - vless-1827155391
-        - trojan-1827147947
+        - trojan-1827148424
         - vless-1827975598
         - trojan-1827147925
-        - vless-1827289903
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1827151310
+        - vless-1827289903
         - shadowsocks-1827146737
+        - vless-1827151310
+        - trojan-1827147947
         - vless-1827188328
-        - trojan-1827148465
         - trojan-1827960119
         - trojan-1827148571
-        - trojan-1827148424
+        - trojan-1827148465
         - vless-1827624304
         - vless-1827404720
         - vless-1827154380
         - vless-1827155391
-        - trojan-1827147947
+        - trojan-1827148424
         - vless-1827975598
         - trojan-1827147925
-        - vless-1827289903
       type: select
 rules:
     - MATCH,select
