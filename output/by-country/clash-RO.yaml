@@ -20,12 +20,20 @@ proxies:
       skip-cert-verify: true
       sni: css.rbxcdn.com
       type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1827146803
+      password: QFWzCw2uX9B9i6qAYeFBIE
+      port: 443
+      server: 154.46.31.106
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1827151764
         - hysteria2-1827145061
+        - shadowsocks-1827146803
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -33,6 +41,7 @@ proxy-groups:
         - auto
         - vless-1827151764
         - hysteria2-1827145061
+        - shadowsocks-1827146803
       type: select
 rules:
     - MATCH,select
