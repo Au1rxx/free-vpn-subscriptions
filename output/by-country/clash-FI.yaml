@@ -1,13 +1,13 @@
 proxies:
-    - name: vless-1827150146
-      network: raw
+    - name: vless-1827150200
+      network: tcp
       port: 2052
       server: edge10.cyrionflare.com
       type: vless
       udp: true
       uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-    - name: vless-1827150200
-      network: tcp
+    - name: vless-1827150146
+      network: raw
       port: 2052
       server: edge10.cyrionflare.com
       type: vless
@@ -154,6 +154,20 @@ proxies:
       type: vless
       udp: true
       uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1827533210
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: QnxkyscHouhaLDJHT47beyenVd4LHi62yfJIeRV01Ws
+        short-id: 06e00e7c
+      server: 157.228.128.59
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
     - name: hysteria2-1827145166
       password: 4ad3dbf5-2005-4d96-b56c-a0ca9905cab6
       port: 20326
@@ -220,9 +234,20 @@ proxies:
       type: vless
       udp: true
       uuid: c2331311-c9fd-4af9-8f34-7a9edcee3b92
+    - flow: xtls-rprx-vision
+      name: vless-1827736896
+      network: tcp
+      port: 443
+      server: fi.quic.best
+      servername: fi.quic.best
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c2331311-c9fd-4af9-8f34-7a9edcee3b92
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1827533210
+      name: vless-1827533196
       network: tcp
       port: 443
       reality-opts:
@@ -358,31 +383,6 @@ proxies:
       type: vless
       udp: true
       uuid: c2331311-c9fd-4af9-8f34-7a9edcee3b92
-    - flow: xtls-rprx-vision
-      name: vless-1827736896
-      network: tcp
-      port: 443
-      server: fi.quic.best
-      servername: fi.quic.best
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c2331311-c9fd-4af9-8f34-7a9edcee3b92
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1827533196
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: QnxkyscHouhaLDJHT47beyenVd4LHi62yfJIeRV01Ws
-        short-id: 06e00e7c
-      server: 157.228.128.59
-      servername: addons.mozilla.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-1827150686
@@ -450,20 +450,6 @@ proxies:
       type: vless
       udp: true
       uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
-    - client-fingerprint: randomized
-      flow: xtls-rprx-vision
-      name: vless-1827149775
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: VpHiR2qy9ielGf500Cp5S_e9eDR_of2dthqe7bNflRk
-        short-id: 1fcb15860699f6b1
-      server: app-mi-28.spbstudentlife.com
-      servername: assets-mi-28.spbstudentlife.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 090da6a8-69f7-4b49-8af9-a8f8bfb07f17
     - name: hysteria2-1827145617
       password: 4ad3dbf5-2005-4d96-b56c-a0ca9905cab6
       port: 20326
@@ -685,6 +671,20 @@ proxies:
       type: vless
       udp: true
       uuid: ee18d188-14cc-417e-beb1-70e4add6d023
+    - client-fingerprint: randomized
+      flow: xtls-rprx-vision
+      name: vless-1827149775
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: VpHiR2qy9ielGf500Cp5S_e9eDR_of2dthqe7bNflRk
+        short-id: 1fcb15860699f6b1
+      server: app-mi-28.spbstudentlife.com
+      servername: assets-mi-28.spbstudentlife.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 090da6a8-69f7-4b49-8af9-a8f8bfb07f17
     - name: hysteria2-1827543200
       password: 8bd04756-3beb-4348-82c9-d35453df50ce
       port: 21223
@@ -710,8 +710,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1827150146
         - vless-1827150200
+        - vless-1827150146
         - hysteria2-1827145400
         - vless-1827784268
         - vless-1827784260
@@ -726,13 +726,15 @@ proxy-groups:
         - hysteria2-1827145144
         - vless-1827399465
         - vless-1827533206
+        - vless-1827533210
         - hysteria2-1827145166
         - hysteria2-1827145019
         - vless-1827150333
         - vless-1827152350
         - vless-1827531911
         - vless-1827623458
-        - vless-1827533210
+        - vless-1827736896
+        - vless-1827533196
         - vless-1827533792
         - shadowsocks-1827146483
         - shadowsocks-1827146609
@@ -744,14 +746,11 @@ proxy-groups:
         - vless-1827188007
         - vless-1827151890
         - vless-1827154926
-        - vless-1827736896
-        - vless-1827533196
         - vless-1827150686
         - vless-1827156145
         - vless-1827154113
         - vless-1827154235
         - vless-1827155656
-        - vless-1827149775
         - hysteria2-1827145617
         - vless-1827188724
         - vless-1827188721
@@ -773,6 +772,7 @@ proxy-groups:
         - vless-1827153917
         - vless-1827533746
         - vless-1827533741
+        - vless-1827149775
         - hysteria2-1827543200
         - hysteria2-1827145041
         - hysteria2-1827145540
@@ -781,8 +781,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vless-1827150146
         - vless-1827150200
+        - vless-1827150146
         - hysteria2-1827145400
         - vless-1827784268
         - vless-1827784260
@@ -797,13 +797,15 @@ proxy-groups:
         - hysteria2-1827145144
         - vless-1827399465
         - vless-1827533206
+        - vless-1827533210
         - hysteria2-1827145166
         - hysteria2-1827145019
         - vless-1827150333
         - vless-1827152350
         - vless-1827531911
         - vless-1827623458
-        - vless-1827533210
+        - vless-1827736896
+        - vless-1827533196
         - vless-1827533792
         - shadowsocks-1827146483
         - shadowsocks-1827146609
@@ -815,14 +817,11 @@ proxy-groups:
         - vless-1827188007
         - vless-1827151890
         - vless-1827154926
-        - vless-1827736896
-        - vless-1827533196
         - vless-1827150686
         - vless-1827156145
         - vless-1827154113
         - vless-1827154235
         - vless-1827155656
-        - vless-1827149775
         - hysteria2-1827145617
         - vless-1827188724
         - vless-1827188721
@@ -844,6 +843,7 @@ proxy-groups:
         - vless-1827153917
         - vless-1827533746
         - vless-1827533741
+        - vless-1827149775
         - hysteria2-1827543200
         - hysteria2-1827145041
         - hysteria2-1827145540

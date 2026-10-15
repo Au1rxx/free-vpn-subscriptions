@@ -1,4 +1,13 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-1827145564
+      network: tcp
+      port: 8880
+      server: 57.129.138.142
+      type: vmess
+      udp: true
+      uuid: 31cfd50c-cc13-470d-826c-351ce9f81cb5
     - alterId: 64
       cipher: auto
       name: vmess-1827155985
@@ -1604,10 +1613,47 @@ proxies:
       type: vmess
       udp: true
       uuid: aedc66b8-99d7-4a21-8310-61870e7f870d
+    - alterId: 0
+      cipher: auto
+      name: vmess-1827883147
+      network: raw
+      port: 2110
+      server: 178.105.168.171
+      type: vmess
+      udp: true
+      uuid: 06d4d001-4168-4876-9416-7caecf578f40
+    - alterId: 0
+      cipher: auto
+      name: vmess-1827954161
+      network: raw
+      port: 22266
+      server: 31.76.11.83
+      type: vmess
+      udp: true
+      uuid: 2d8f57bd-12b5-41ad-a806-6501753c264c
+    - alterId: 0
+      cipher: auto
+      name: vmess-1827954165
+      network: tcp
+      port: 18000
+      server: 149.88.23.207
+      type: vmess
+      udp: true
+      uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+    - alterId: 0
+      cipher: auto
+      name: vmess-1827963301
+      network: ws
+      port: 80
+      server: 132.145.80.230
+      type: vmess
+      udp: true
+      uuid: 5155860e-d07d-46c3-9128-3afbd84626c7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-1827145564
         - vmess-1827155985
         - vmess-1827156170
         - vmess-1827156192
@@ -1761,11 +1807,16 @@ proxy-groups:
         - vmess-1827743110
         - vmess-1827743111
         - vmess-1827811601
+        - vmess-1827883147
+        - vmess-1827954161
+        - vmess-1827954165
+        - vmess-1827963301
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-1827145564
         - vmess-1827155985
         - vmess-1827156170
         - vmess-1827156192
@@ -1919,6 +1970,10 @@ proxy-groups:
         - vmess-1827743110
         - vmess-1827743111
         - vmess-1827811601
+        - vmess-1827883147
+        - vmess-1827954161
+        - vmess-1827954165
+        - vmess-1827963301
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: firefox
+      name: vless-1827926874
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: xPEBx4wUmwAAv4ikUALNBf5wH6TRhyeQ0Q2pcNELsV0
+        short-id: d051f678212f9d54
+      server: 51.89.194.151
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8e790f25-1d71-4601-9fb0-d503931dcfca
     - cipher: aes-256-gcm
       name: shadowsocks-1827147261
       password: g5h5jleTRSyO3Rk4
@@ -162,6 +175,13 @@ proxies:
       type: vless
       udp: true
       uuid: 9f61cdf4-810d-4052-bbc7-2da0c8e20104
+    - name: vless-1827151669
+      network: ws
+      port: 14430
+      server: 193.188.21.253
+      type: vless
+      udp: true
+      uuid: 57f7772d-f5d6-4d8f-992d-5fa5e0d6da55
     - client-fingerprint: chrome
       name: vless-1827267314
       network: tcp
@@ -203,13 +223,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9c2888cf-99f8-4c04-ac07-c033359ff975
-    - name: vless-1827151669
-      network: ws
-      port: 14430
-      server: 193.188.21.253
-      type: vless
-      udp: true
-      uuid: 57f7772d-f5d6-4d8f-992d-5fa5e0d6da55
     - client-fingerprint: chrome
       name: vless-1827145802
       network: tcp
@@ -227,6 +240,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1827926874
         - shadowsocks-1827147261
         - shadowsocks-1827147824
         - vless-1827153813
@@ -242,16 +256,17 @@ proxy-groups:
         - vless-1827153319
         - vless-1827152985
         - vless-1827145156
+        - vless-1827151669
         - vless-1827267314
         - vless-1827152227
         - vless-1827153390
-        - vless-1827151669
         - vless-1827145802
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1827926874
         - shadowsocks-1827147261
         - shadowsocks-1827147824
         - vless-1827153813
@@ -267,10 +282,10 @@ proxy-groups:
         - vless-1827153319
         - vless-1827152985
         - vless-1827145156
+        - vless-1827151669
         - vless-1827267314
         - vless-1827152227
         - vless-1827153390
-        - vless-1827151669
         - vless-1827145802
       type: select
 rules:
