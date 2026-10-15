@@ -6,14 +6,6 @@ proxies:
       server: 132.243.175.144
       type: ss
       udp: true
-    - name: trojan-1827147947
-      password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
-      port: 443
-      server: mfyousheng.nl.eu.org
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
     - name: trojan-1827148424
       password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
       port: 443
@@ -27,14 +19,6 @@ proxies:
       port: 443
       server: 188.114.96.3
       skip-cert-verify: true
-      sni: mfyousheng.nl.eu.org
-      type: trojan
-      udp: true
-    - name: trojan-1827148571
-      password: Puj01Rc8UcA9IzcFcYOs8KMOhCz6aX2Q
-      port: 443
-      server: 107.189.26.160
-      skip-cert-verify: false
       sni: mfyousheng.nl.eu.org
       type: trojan
       udp: true
@@ -148,15 +132,26 @@ proxies:
       type: vless
       udp: true
       uuid: 4f34bc04-479c-49ba-91a8-6bb9ed15031c
+    - client-fingerprint: firefox
+      name: vless-1828293940
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+        short-id: ad86e2d52ff40ebd
+      server: 208.69.78.217
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827146737
-        - trojan-1827147947
         - trojan-1827148424
         - trojan-1827148465
-        - trojan-1827148571
         - vless-1827151310
         - vless-1827154380
         - vless-1827155391
@@ -166,16 +161,15 @@ proxy-groups:
         - vless-1827624304
         - trojan-1827960119
         - vless-1827975598
+        - vless-1828293940
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1827146737
-        - trojan-1827147947
         - trojan-1827148424
         - trojan-1827148465
-        - trojan-1827148571
         - vless-1827151310
         - vless-1827154380
         - vless-1827155391
@@ -185,6 +179,7 @@ proxy-groups:
         - vless-1827624304
         - trojan-1827960119
         - vless-1827975598
+        - vless-1828293940
       type: select
 rules:
     - MATCH,select
