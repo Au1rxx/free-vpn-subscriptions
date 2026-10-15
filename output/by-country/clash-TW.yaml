@@ -1,24 +1,10 @@
 proxies:
-    - name: hysteria2-1827534250
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: vpn-tw-002.fastervpn.world
-      skip-cert-verify: true
-      sni: 127.0.0.1
-      type: hysteria2
     - name: hysteria2-1827145501
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
       server: 160.187.100.109
       skip-cert-verify: true
       sni: vpn-tw-002.fastervpn.world
-      type: hysteria2
-    - name: hysteria2-1827145791
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: vpn-tw-002.fastervpn.world
-      skip-cert-verify: true
-      sni: whatsapp.com
       type: hysteria2
     - alterId: 0
       cipher: auto
@@ -36,12 +22,19 @@ proxies:
       skip-cert-verify: true
       sni: t.me
       type: hysteria2
-    - name: hysteria2-1827534209
+    - name: hysteria2-1827534250
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
-      server: 103.115.109.49
+      server: vpn-tw-002.fastervpn.world
       skip-cert-verify: true
-      sni: https://t.me/oneclickvpnkeys
+      sni: 127.0.0.1
+      type: hysteria2
+    - name: hysteria2-1827145791
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: vpn-tw-002.fastervpn.world
+      skip-cert-verify: true
+      sni: whatsapp.com
       type: hysteria2
     - alterId: 0
       cipher: auto
@@ -52,6 +45,13 @@ proxies:
       type: vmess
       udp: true
       uuid: 959a8caf-4cea-43d0-a548-3628e7ddfafc
+    - name: hysteria2-1827534209
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: 103.115.109.49
+      skip-cert-verify: true
+      sni: https://t.me/oneclickvpnkeys
+      type: hysteria2
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1827162783
@@ -137,17 +137,30 @@ proxies:
       type: vless
       udp: true
       uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
+    - client-fingerprint: chrome
+      name: vless-1827150456
+      network: raw
+      port: 24215
+      reality-opts:
+        public-key: mdWKUPMVTtTbDqK10BPb89OcqBC2-Lx-4NOYtqc1GWE
+        short-id: ""
+      server: hinet1.2yly.com
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 19d5a678-8396-4e3b-93da-ece618d0e83a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1827534250
         - hysteria2-1827145501
-        - hysteria2-1827145791
         - vmess-1827158153
         - hysteria2-1827145810
-        - hysteria2-1827534209
+        - hysteria2-1827534250
+        - hysteria2-1827145791
         - vmess-1827161074
+        - hysteria2-1827534209
         - vless-1827162783
         - vmess-1827158867
         - vless-1827737740
@@ -155,18 +168,19 @@ proxy-groups:
         - vless-1827149363
         - vmess-1827157527
         - vless-1827150340
+        - vless-1827150456
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1827534250
         - hysteria2-1827145501
-        - hysteria2-1827145791
         - vmess-1827158153
         - hysteria2-1827145810
-        - hysteria2-1827534209
+        - hysteria2-1827534250
+        - hysteria2-1827145791
         - vmess-1827161074
+        - hysteria2-1827534209
         - vless-1827162783
         - vmess-1827158867
         - vless-1827737740
@@ -174,6 +188,7 @@ proxy-groups:
         - vless-1827149363
         - vmess-1827157527
         - vless-1827150340
+        - vless-1827150456
       type: select
 rules:
     - MATCH,select
