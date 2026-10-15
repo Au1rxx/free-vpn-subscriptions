@@ -25,6 +25,17 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - flow: xtls-rprx-vision
+      name: vless-1827737737
+      network: tcp
+      port: 12958
+      server: zs.giannaycs.com
+      servername: zs.giannaycs.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d68fbc96-5187-4b8f-965e-eecd7a699e81
 proxy-groups:
     - interval: 300
       name: auto
@@ -32,6 +43,7 @@ proxy-groups:
         - vmess-1827161962
         - vmess-1827158786
         - trojan-1827147881
+        - vless-1827737737
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -40,6 +52,7 @@ proxy-groups:
         - vmess-1827161962
         - vmess-1827158786
         - trojan-1827147881
+        - vless-1827737737
       type: select
 rules:
     - MATCH,select
