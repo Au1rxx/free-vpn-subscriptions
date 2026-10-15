@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1827151764
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 0QDBHaCRO2dPeeSVy3B3R_U12ZOvbvWl1JTFW_ZcpD0
+        short-id: 31e91d43e553bf32
+      server: 82.117.255.174
+      servername: gateway.icloud.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 679439c5-28f2-485e-af5f-60a5fcd9c36c
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1828532029
@@ -20,20 +34,6 @@ proxies:
       skip-cert-verify: true
       sni: css.rbxcdn.com
       type: hysteria2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1827151764
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 0QDBHaCRO2dPeeSVy3B3R_U12ZOvbvWl1JTFW_ZcpD0
-        short-id: 31e91d43e553bf32
-      server: 82.117.255.174
-      servername: gateway.icloud.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 679439c5-28f2-485e-af5f-60a5fcd9c36c
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1827146803
       password: QFWzCw2uX9B9i6qAYeFBIE
@@ -59,9 +59,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1827151764
         - vless-1828532029
         - hysteria2-1827145061
-        - vless-1827151764
         - shadowsocks-1827146803
         - vless-1827151367
       type: url-test
@@ -69,9 +69,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1827151764
         - vless-1828532029
         - hysteria2-1827145061
-        - vless-1827151764
         - shadowsocks-1827146803
         - vless-1827151367
       type: select

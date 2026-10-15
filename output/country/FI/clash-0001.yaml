@@ -6,6 +6,13 @@ proxies:
       skip-cert-verify: false
       sni: fi1server.rabstvo.shop
       type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1827146696
+      password: Pzlcb_PeV3uRgiC2NNoNKw
+      port: 39221
+      server: b2a2.velqixa.ir
+      type: ss
+      udp: true
     - name: vless-1827150146
       network: raw
       port: 2052
@@ -339,6 +346,17 @@ proxies:
       type: vless
       udp: true
       uuid: c2331311-c9fd-4af9-8f34-7a9edcee3b92
+    - flow: xtls-rprx-vision
+      name: vless-1828141639
+      network: tcp
+      port: 443
+      server: fi.quic.best
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: c2331311-c9fd-4af9-8f34-7a9edcee3b92
     - client-fingerprint: random
       name: vless-1828142564
       network: grpc
@@ -512,11 +530,64 @@ proxies:
       type: vless
       udp: true
       uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
+    - client-fingerprint: random
+      name: vless-1830269305
+      network: grpc
+      port: 25634
+      reality-opts:
+        public-key: xjmKTfAwtZNtyMrfGSo1a-Xc807CIdJXsboMsDMROFA
+        short-id: 12e9af979082beab
+      server: fi-p1.h1cloud.net
+      servername: www.icloud.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0c3ad9d5-cffd-4748-b8df-ab145288144b
+    - client-fingerprint: chrome
+      name: vless-1830269309
+      network: grpc
+      port: 25634
+      reality-opts:
+        public-key: xjmKTfAwtZNtyMrfGSo1a-Xc807CIdJXsboMsDMROFA
+        short-id: 12e9af979082beab
+      server: fi-p1.h1cloud.net
+      servername: www.icloud.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0c3ad9d5-cffd-4748-b8df-ab145288144b
+    - client-fingerprint: chrome
+      name: vless-1830269314
+      network: grpc
+      port: 25481
+      reality-opts:
+        public-key: mhIAHuZIEr2NpdGGSeOxar7VRSgEfVoNwb_G8Y0073E
+        short-id: 3b84fc70657725af
+      server: fi-p1.h1cloud.net
+      servername: www.bing.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 68c3d665-b2b5-4ffb-9f37-9f3d8c47324d
+    - client-fingerprint: ios
+      name: vless-1830269316
+      network: grpc
+      port: 25634
+      reality-opts:
+        public-key: xjmKTfAwtZNtyMrfGSo1a-Xc807CIdJXsboMsDMROFA
+        short-id: 12e9af979082beab
+      server: fi-p1.h1cloud.net
+      servername: www.icloud.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ec572cf0-1337-4c51-b4ec-ff2f538c1f4c
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1827145311
+        - shadowsocks-1827146696
         - vless-1827150146
         - vless-1827150200
         - vless-1827150333
@@ -544,6 +615,7 @@ proxy-groups:
         - vless-1827533210
         - vless-1827623458
         - vless-1827736896
+        - vless-1828141639
         - vless-1828142564
         - vless-1828174684
         - vless-1828293808
@@ -558,12 +630,17 @@ proxy-groups:
         - vless-1829089512
         - vless-1829089517
         - vless-1829089528
+        - vless-1830269305
+        - vless-1830269309
+        - vless-1830269314
+        - vless-1830269316
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1827145311
+        - shadowsocks-1827146696
         - vless-1827150146
         - vless-1827150200
         - vless-1827150333
@@ -591,6 +668,7 @@ proxy-groups:
         - vless-1827533210
         - vless-1827623458
         - vless-1827736896
+        - vless-1828141639
         - vless-1828142564
         - vless-1828174684
         - vless-1828293808
@@ -605,6 +683,10 @@ proxy-groups:
         - vless-1829089512
         - vless-1829089517
         - vless-1829089528
+        - vless-1830269305
+        - vless-1830269309
+        - vless-1830269314
+        - vless-1830269316
       type: select
 rules:
     - MATCH,select
