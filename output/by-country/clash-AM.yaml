@@ -1,20 +1,7 @@
 proxies:
-    - client-fingerprint: random
-      name: vless-1827154493
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: rRg3JiP2006ldJYh2TDPAn7dtlXLcSHdgHgkGI_HZTE
-        short-id: 43adea0ec9f97a0a
-      server: 88.218.95.88
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: b8df3f50-ffef-4c7e-9ef3-d5b156a47c02
     - client-fingerprint: chrome
-      name: vless-1828294326
-      network: raw
+      name: vless-1827162830
+      network: tcp
       port: 55983
       reality-opts:
         public-key: nWQ7b9l9X6N3PrXLgIzOvMM8iSYrqjVHEb9ikWxqYSg
@@ -29,15 +16,13 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1827154493
-        - vless-1828294326
+        - vless-1827162830
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1827154493
-        - vless-1828294326
+        - vless-1827162830
       type: select
 rules:
     - MATCH,select
