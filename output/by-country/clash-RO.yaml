@@ -27,13 +27,6 @@ proxies:
       type: vless
       udp: true
       uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
-    - name: hysteria2-1827145061
-      password: gf1:gfhysteria2024
-      port: 443
-      server: 185.156.44.99
-      skip-cert-verify: true
-      sni: css.rbxcdn.com
-      type: hysteria2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1827146803
       password: QFWzCw2uX9B9i6qAYeFBIE
@@ -41,14 +34,36 @@ proxies:
       server: 154.46.31.106
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1827154999
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
+        short-id: d06d78e974491b6e
+      server: 46.28.67.55
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
+    - name: hysteria2-1827145061
+      password: gf1:gfhysteria2024
+      port: 443
+      server: 185.156.44.99
+      skip-cert-verify: true
+      sni: css.rbxcdn.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1827151764
         - vless-1828532029
-        - hysteria2-1827145061
         - shadowsocks-1827146803
+        - vless-1827154999
+        - hysteria2-1827145061
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -56,8 +71,9 @@ proxy-groups:
         - auto
         - vless-1827151764
         - vless-1828532029
-        - hysteria2-1827145061
         - shadowsocks-1827146803
+        - vless-1827154999
+        - hysteria2-1827145061
       type: select
 rules:
     - MATCH,select
