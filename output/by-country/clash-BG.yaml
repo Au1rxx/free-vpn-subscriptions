@@ -1,4 +1,24 @@
 proxies:
+    - name: vless-1831109797
+      network: ws
+      port: 443
+      server: 185.219.132.27
+      servername: vp58.cc.cd
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7b102311-43fd-4e8f-877e-8090623c101d
+    - name: vless-1831108575
+      network: ws
+      port: 443
+      server: 185.200.36.36
+      servername: vp58.cc.cd
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7b102311-43fd-4e8f-877e-8090623c101d
     - cipher: aes-256-cfb
       name: shadowsocks-1827969653
       password: 9ej82EKe2gq7gLAM
@@ -6,26 +26,21 @@ proxies:
       server: 213.183.63.60
       type: ss
       udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-1827968913
-      password: 2KUaE2a8NWTvuCZ3
-      port: 9066
-      server: 213.183.63.60
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1831109797
+        - vless-1831108575
         - shadowsocks-1827969653
-        - shadowsocks-1827968913
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1831109797
+        - vless-1831108575
         - shadowsocks-1827969653
-        - shadowsocks-1827968913
       type: select
 rules:
     - MATCH,select
