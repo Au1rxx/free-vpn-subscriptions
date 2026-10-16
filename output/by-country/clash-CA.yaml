@@ -96,7 +96,27 @@ proxies:
       type: vmess
       udp: true
       uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+    - client-fingerprint: random
+      name: vless-1828531993
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: k4l6TxwkBbx9DhZAFpByq5rfCWFSgyOex3f_eFe9CWU
+        short-id: 83f8317a948bb769
+      server: 66.70.179.198
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: dc620cd6-a9d8-4a0f-8f18-006b895db77e
     - name: vless-1827153130
+      network: tcp
+      port: 8080
+      server: milo.rubinaz.xyz
+      type: vless
+      udp: true
+      uuid: 6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8
+    - name: vless-1827152679
       network: tcp
       port: 8080
       server: milo.rubinaz.xyz
@@ -160,13 +180,6 @@ proxies:
       type: vless
       udp: true
       uuid: 6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8
-    - name: vless-1827152679
-      network: tcp
-      port: 8080
-      server: milo.rubinaz.xyz
-      type: vless
-      udp: true
-      uuid: 6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8
     - cipher: aes-256-cfb
       name: shadowsocks-1828405294
       password: amazonskr05
@@ -174,9 +187,9 @@ proxies:
       server: 15.223.182.197
       type: ss
       udp: true
-    - client-fingerprint: random
-      name: vless-1828531993
-      network: tcp
+    - client-fingerprint: firefox
+      name: vless-1827155346
+      network: raw
       port: 2053
       reality-opts:
         public-key: k4l6TxwkBbx9DhZAFpByq5rfCWFSgyOex3f_eFe9CWU
@@ -226,19 +239,6 @@ proxies:
       type: vless
       udp: true
       uuid: f0466557-2fd5-442e-94cb-12c6b764155e
-    - client-fingerprint: firefox
-      name: vless-1827155346
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: k4l6TxwkBbx9DhZAFpByq5rfCWFSgyOex3f_eFe9CWU
-        short-id: 83f8317a948bb769
-      server: 66.70.179.198
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: dc620cd6-a9d8-4a0f-8f18-006b895db77e
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1828036218
@@ -313,6 +313,13 @@ proxies:
       server: 51.79.49.116
       type: ss
       udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-1827147602
+      password: Y6R9pAtvxxzmGC
+      port: 5601
+      server: 51.222.155.113
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -328,7 +335,9 @@ proxy-groups:
         - vless-1832650206
         - vless-1827153070
         - vmess-1828149315
+        - vless-1828531993
         - vless-1827153130
+        - vless-1827152679
         - vmess-1832181415
         - vless-1831043235
         - vless-1827153129
@@ -336,14 +345,12 @@ proxy-groups:
         - shadowsocks-1827146071
         - shadowsocks-1828405259
         - vless-1827152586
-        - vless-1827152679
         - shadowsocks-1828405294
-        - vless-1828531993
+        - vless-1827155346
         - vless-1832465374
         - vmess-1828338235
         - vmess-1827161017
         - vless-1827156228
-        - vless-1827155346
         - vless-1828036218
         - vless-1827162767
         - vmess-1827160969
@@ -352,6 +359,7 @@ proxy-groups:
         - vmess-1832465406
         - shadowsocks-1827147702
         - shadowsocks-1827147205
+        - shadowsocks-1827147602
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -368,7 +376,9 @@ proxy-groups:
         - vless-1832650206
         - vless-1827153070
         - vmess-1828149315
+        - vless-1828531993
         - vless-1827153130
+        - vless-1827152679
         - vmess-1832181415
         - vless-1831043235
         - vless-1827153129
@@ -376,14 +386,12 @@ proxy-groups:
         - shadowsocks-1827146071
         - shadowsocks-1828405259
         - vless-1827152586
-        - vless-1827152679
         - shadowsocks-1828405294
-        - vless-1828531993
+        - vless-1827155346
         - vless-1832465374
         - vmess-1828338235
         - vmess-1827161017
         - vless-1827156228
-        - vless-1827155346
         - vless-1828036218
         - vless-1827162767
         - vmess-1827160969
@@ -392,6 +400,7 @@ proxy-groups:
         - vmess-1832465406
         - shadowsocks-1827147702
         - shadowsocks-1827147205
+        - shadowsocks-1827147602
       type: select
 rules:
     - MATCH,select
