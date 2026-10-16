@@ -6,13 +6,6 @@ proxies:
       skip-cert-verify: true
       sni: s3.huhiuh.space
       type: hysteria2
-    - cipher: 2022-blake3-aes-256-gcm
-      name: shadowsocks-1827145330
-      password: sUR6Ny8Y6PSvHhl/DUxconwxg6VZyFdsdfaVCvEatJo=:7bTEhHgpErKiRjE1ega+H6pcpJsNLFB0CjQseujAHrA=
-      port: 14384
-      server: 129.150.59.74
-      type: ss
-      udp: true
     - name: hysteria2-1827145434
       password: user317_windows:c70565e9-a99f-40ef-b96c-469a3949eed2
       port: 18642
@@ -819,13 +812,6 @@ proxies:
       skip-cert-verify: true
       sni: 139.180.146.200
       type: trojan
-      udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-1827319131
-      password: qpSevKaUXYQKvSjp
-      port: 8388
-      server: 139.180.220.175
-      type: ss
       udp: true
     - name: vless-1827531818
       network: ws
@@ -2100,6 +2086,20 @@ proxies:
       type: vless
       udp: true
       uuid: 75c5f51b-d548-4eab-a26e-aa10fc3dbc7b
+    - name: vless-1832881317
+      network: ws
+      port: 80
+      server: support.zoom.us
+      type: vless
+      udp: true
+      uuid: b8d8a5b0-867f-4491-b4e4-30edc04bb10e
+    - name: vless-1832881352
+      network: ws
+      port: 80
+      server: support.zoom.us
+      type: vless
+      udp: true
+      uuid: b8d8a5b0-867f-4491-b4e4-30edc04bb10e
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1832941174
@@ -2178,12 +2178,33 @@ proxies:
       type: vless
       udp: true
       uuid: 75c5f51b-d548-4eab-a26e-aa10fc3dbc7b
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1833711891
+      network: tcp
+      port: 46105
+      reality-opts:
+        public-key: Lk5nwDxC2tr3J7hT8emhUUiMX8cHyKX9TiRj_EnAiik
+        short-id: 28f5c1f8f98a
+      server: funagfrdfs.alixxplay.com
+      servername: www.lamer.com.sg
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - name: trojan-1833852239
+      password: sshs8_6481354771
+      port: 2087
+      server: 86.38.247.109
+      skip-cert-verify: false
+      sni: ul-singapore1.09vpn.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1827145162
-        - shadowsocks-1827145330
         - hysteria2-1827145434
         - hysteria2-1827145601
         - hysteria2-1827145643
@@ -2270,7 +2291,6 @@ proxy-groups:
         - vmess-1827161063
         - vless-1827188312
         - trojan-1827188340
-        - shadowsocks-1827319131
         - vless-1827531818
         - vless-1827532486
         - vless-1827533143
@@ -2393,19 +2413,22 @@ proxy-groups:
         - trojan-1832863497
         - trojan-1832863512
         - vless-1832863529
+        - vless-1832881317
+        - vless-1832881352
         - vless-1832941174
         - vless-1832941184
         - vless-1832941196
         - trojan-1832970964
         - vless-1832974431
         - vless-1832977034
+        - vless-1833711891
+        - trojan-1833852239
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1827145162
-        - shadowsocks-1827145330
         - hysteria2-1827145434
         - hysteria2-1827145601
         - hysteria2-1827145643
@@ -2492,7 +2515,6 @@ proxy-groups:
         - vmess-1827161063
         - vless-1827188312
         - trojan-1827188340
-        - shadowsocks-1827319131
         - vless-1827531818
         - vless-1827532486
         - vless-1827533143
@@ -2615,12 +2637,16 @@ proxy-groups:
         - trojan-1832863497
         - trojan-1832863512
         - vless-1832863529
+        - vless-1832881317
+        - vless-1832881352
         - vless-1832941174
         - vless-1832941184
         - vless-1832941196
         - trojan-1832970964
         - vless-1832974431
         - vless-1832977034
+        - vless-1833711891
+        - trojan-1833852239
       type: select
 rules:
     - MATCH,select
