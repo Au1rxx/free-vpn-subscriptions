@@ -1,0 +1,50 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "az.sparxiecn.com",
+      "server_port": 443,
+      "tag": "vless-1833043212",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "6AW8ehYuPtg84kBaGbAN8dumEH3epgwV2rGMPGKyBxI",
+          "short_id": "af134fdf0bd9f346"
+        },
+        "server_name": "www.oracle.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "71c8d2c6-a7f1-4c74-b37d-d7f06fef9c04"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1833043212"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1833043212"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

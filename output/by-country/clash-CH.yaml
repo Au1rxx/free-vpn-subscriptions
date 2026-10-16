@@ -6,13 +6,6 @@ proxies:
       skip-cert-verify: true
       sni: 140.238.213.114
       type: hysteria2
-    - cipher: aes-128-gcm
-      name: shadowsocks-1828674190
-      password: 2bf536a4bd6008511734a505d248de2c
-      port: 13261
-      server: 86.106.84.194
-      type: ss
-      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1827146737
       password: e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3
@@ -20,10 +13,31 @@ proxies:
       server: 132.243.175.144
       type: ss
       udp: true
+    - cipher: aes-128-gcm
+      name: shadowsocks-1828674190
+      password: 2bf536a4bd6008511734a505d248de2c
+      port: 13261
+      server: 86.106.84.194
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1831127293
       network: tcp
+      port: 443
+      reality-opts:
+        public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
+        short-id: 19253fae84102271
+      server: 45.90.59.15
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3950b45e-740d-4dca-ac95-505ec8534592
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1832881214
+      network: raw
       port: 443
       reality-opts:
         public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
@@ -41,20 +55,6 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1832881214
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
-        short-id: 19253fae84102271
-      server: 45.90.59.15
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3950b45e-740d-4dca-ac95-505ec8534592
     - client-fingerprint: chrome
       name: vless-1827154380
       network: tcp
@@ -99,11 +99,11 @@ proxy-groups:
       name: auto
       proxies:
         - hysteria2-1832650664
-        - shadowsocks-1828674190
         - shadowsocks-1827146737
+        - shadowsocks-1828674190
         - vless-1831127293
-        - hysteria2-1828373530
         - vless-1832881214
+        - hysteria2-1828373530
         - vless-1827154380
         - vless-1827188328
         - vless-1828293940
@@ -113,11 +113,11 @@ proxy-groups:
       proxies:
         - auto
         - hysteria2-1832650664
-        - shadowsocks-1828674190
         - shadowsocks-1827146737
+        - shadowsocks-1828674190
         - vless-1831127293
-        - hysteria2-1828373530
         - vless-1832881214
+        - hysteria2-1828373530
         - vless-1827154380
         - vless-1827188328
         - vless-1828293940
