@@ -12,14 +12,6 @@ proxies:
       type: vless
       udp: true
       uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
-    - name: trojan-1827148810
-      password: e309e031-991e-4656-9934-44d10deb8fd8
-      port: 2053
-      server: www.speedtest.org
-      skip-cert-verify: false
-      sni: nimm.mpd.cc.cd
-      type: trojan
-      udp: true
     - name: trojan-1827148822
       password: e309e031-991e-4656-9934-44d10deb8fd8
       port: 2053
@@ -180,12 +172,18 @@ proxies:
       type: vless
       udp: true
       uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1832968047
+      password: CM-_ISRcHPz4cetu7grgSEv0VpT5MTRE
+      port: 1080
+      server: api.apira98.org
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1827147108
-        - trojan-1827148810
         - trojan-1827148822
         - trojan-1827149379
         - trojan-1827149524
@@ -201,13 +199,13 @@ proxy-groups:
         - vless-1831132788
         - vless-1832465403
         - vless-1832690712
+        - shadowsocks-1832968047
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1827147108
-        - trojan-1827148810
         - trojan-1827148822
         - trojan-1827149379
         - trojan-1827149524
@@ -223,6 +221,7 @@ proxy-groups:
         - vless-1831132788
         - vless-1832465403
         - vless-1832690712
+        - shadowsocks-1832968047
       type: select
 rules:
     - MATCH,select

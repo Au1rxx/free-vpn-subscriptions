@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1832690762
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
-        short-id: d06d78e974491b6e
-      server: 46.28.67.55
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1828532029
@@ -27,6 +13,34 @@ proxies:
       type: vless
       udp: true
       uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1832690762
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
+        short-id: d06d78e974491b6e
+      server: 46.28.67.55
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1832941149
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: jQC3Kmmbu-CfUKlQaeuSn4I8dbqAZhpgihZhWu1SvBk
+        short-id: 6b69118a7847c4c3
+      server: 31.76.11.243
+      servername: seal-ro.bypassme.online
+      tls: true
+      type: vless
+      udp: true
+      uuid: e625f8ef-f935-4c7d-a259-0f154b6842fd
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1827151764
@@ -48,6 +62,20 @@ proxies:
       skip-cert-verify: true
       sni: css.rbxcdn.com
       type: hysteria2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1827154999
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
+        short-id: d06d78e974491b6e
+      server: 46.28.67.55
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1827784190
@@ -89,54 +117,33 @@ proxies:
       type: vless
       udp: true
       uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1827146048
-      password: U83u9OGpvSatIUW7LsWffr
-      port: 64546
-      server: 194.68.44.42
-      type: ss
-      udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1827154999
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
-        short-id: d06d78e974491b6e
-      server: 46.28.67.55
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1832690762
         - vless-1828532029
+        - vless-1832690762
+        - vless-1832941149
         - vless-1827151764
         - hysteria2-1827145061
+        - vless-1827154999
         - vless-1827784190
         - vless-1832650519
         - vless-1827151367
-        - shadowsocks-1827146048
-        - vless-1827154999
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1832690762
         - vless-1828532029
+        - vless-1832690762
+        - vless-1832941149
         - vless-1827151764
         - hysteria2-1827145061
+        - vless-1827154999
         - vless-1827784190
         - vless-1832650519
         - vless-1827151367
-        - shadowsocks-1827146048
-        - vless-1827154999
       type: select
 rules:
     - MATCH,select
