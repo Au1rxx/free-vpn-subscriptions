@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1827153739
+      network: tcp
+      port: 2053
+      server: test.keoplentuio.xyz
+      type: vless
+      udp: true
+      uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
     - client-fingerprint: firefox
       name: vless-1828295106
       network: grpc
@@ -22,19 +29,6 @@ proxies:
     - client-fingerprint: firefox
       name: vless-1827150172
       network: tcp
-      port: 2053
-      reality-opts:
-        public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
-        short-id: 9e419c0759b54d6f
-      server: 151.241.226.201
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
-    - client-fingerprint: firefox
-      name: vless-1832690712
-      network: raw
       port: 2053
       reality-opts:
         public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
@@ -134,6 +128,19 @@ proxies:
       sni: nimm.mpd.cc.cd
       type: trojan
       udp: true
+    - client-fingerprint: firefox
+      name: vless-1832690712
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
+        short-id: 9e419c0759b54d6f
+      server: 151.241.226.201
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
     - name: trojan-1827148810
       password: e309e031-991e-4656-9934-44d10deb8fd8
       port: 2053
@@ -170,10 +177,10 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1827153739
         - vless-1828295106
         - vless-1832465403
         - vless-1827150172
-        - vless-1832690712
         - vless-1827150153
         - vless-1827188726
         - vless-1827147108
@@ -181,6 +188,7 @@ proxy-groups:
         - vless-1828433801
         - vless-1831132788
         - trojan-1827148822
+        - vless-1832690712
         - trojan-1827148810
         - trojan-1827149379
         - trojan-1827529899
@@ -190,10 +198,10 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1827153739
         - vless-1828295106
         - vless-1832465403
         - vless-1827150172
-        - vless-1832690712
         - vless-1827150153
         - vless-1827188726
         - vless-1827147108
@@ -201,6 +209,7 @@ proxy-groups:
         - vless-1828433801
         - vless-1831132788
         - trojan-1827148822
+        - vless-1832690712
         - trojan-1827148810
         - trojan-1827149379
         - trojan-1827529899
