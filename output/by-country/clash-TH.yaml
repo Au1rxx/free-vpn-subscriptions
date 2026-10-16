@@ -18,13 +18,6 @@ proxies:
       type: vless
       udp: true
       uuid: 3c52e091-6714-4915-949f-2149fe69951b
-    - name: vless-1827150933
-      network: ws
-      port: 80
-      server: 103.86.49.57
-      type: vless
-      udp: true
-      uuid: 3c52e091-6714-4915-949f-2149fe69951b
     - name: vless-1827150613
       network: ws
       port: 80
@@ -91,6 +84,13 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - name: vless-1827150933
+      network: ws
+      port: 80
+      server: 103.86.49.57
+      type: vless
+      udp: true
+      uuid: 3c52e091-6714-4915-949f-2149fe69951b
     - name: vless-1827150589
       network: ws
       port: 80
@@ -115,13 +115,6 @@ proxies:
       type: vless
       udp: true
       uuid: 3c52e091-6714-4915-949f-2149fe69951b
-    - cipher: aes-256-gcm
-      name: shadowsocks-1827146987
-      password: sxajCTwrlK0zl+zmHpX0p0jXIfatnzlLzWlSQ950L1c=
-      port: 52351
-      server: 103.107.52.106
-      type: ss
-      udp: true
     - name: vless-1827151212
       network: ws
       port: 80
@@ -129,6 +122,13 @@ proxies:
       type: vless
       udp: true
       uuid: 3c52e091-6714-4915-949f-2149fe69951b
+    - cipher: aes-256-gcm
+      name: shadowsocks-1827146987
+      password: sxajCTwrlK0zl+zmHpX0p0jXIfatnzlLzWlSQ950L1c=
+      port: 52351
+      server: 103.107.52.106
+      type: ss
+      udp: true
     - name: vless-1827151244
       network: ws
       port: 80
@@ -136,10 +136,13 @@ proxies:
       type: vless
       udp: true
       uuid: 3c52e091-6714-4915-949f-2149fe69951b
-    - name: vless-1827150596
+    - name: vless-1827266847
       network: ws
-      port: 80
-      server: v2ray.simspeedup.com
+      port: 443
+      server: 104.16.10.2
+      servername: v2ray.simspeedup.com
+      skip-cert-verify: false
+      tls: true
       type: vless
       udp: true
       uuid: 3c52e091-6714-4915-949f-2149fe69951b
@@ -149,7 +152,6 @@ proxy-groups:
       proxies:
         - vmess-1827157860
         - vless-1827151283
-        - vless-1827150933
         - vless-1827150613
         - vless-1828293804
         - vless-1827151284
@@ -157,13 +159,14 @@ proxy-groups:
         - shadowsocks-1827147592
         - vless-1827151082
         - vless-1827145533
+        - vless-1827150933
         - vless-1827150589
         - vless-1827150837
         - vless-1831181581
-        - shadowsocks-1827146987
         - vless-1827151212
+        - shadowsocks-1827146987
         - vless-1827151244
-        - vless-1827150596
+        - vless-1827266847
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -171,7 +174,6 @@ proxy-groups:
         - auto
         - vmess-1827157860
         - vless-1827151283
-        - vless-1827150933
         - vless-1827150613
         - vless-1828293804
         - vless-1827151284
@@ -179,13 +181,14 @@ proxy-groups:
         - shadowsocks-1827147592
         - vless-1827151082
         - vless-1827145533
+        - vless-1827150933
         - vless-1827150589
         - vless-1827150837
         - vless-1831181581
-        - shadowsocks-1827146987
         - vless-1827151212
+        - shadowsocks-1827146987
         - vless-1827151244
-        - vless-1827150596
+        - vless-1827266847
       type: select
 rules:
     - MATCH,select
