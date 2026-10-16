@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-1832465403
-      network: tcp
-      port: 2053
-      server: test.keoplentuio.xyz
-      type: vless
-      udp: true
-      uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
     - client-fingerprint: firefox
       name: vless-1828295106
       network: grpc
@@ -19,6 +12,13 @@ proxies:
       type: vless
       udp: true
       uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
+    - name: vless-1832465403
+      network: tcp
+      port: 2053
+      server: test.keoplentuio.xyz
+      type: vless
+      udp: true
+      uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
     - client-fingerprint: firefox
       name: vless-1832690712
       network: raw
@@ -95,13 +95,6 @@ proxies:
       type: vless
       udp: true
       uuid: 25e16692-d097-4e69-9e2d-8415609c1968
-    - name: vless-1827153735
-      network: raw
-      port: 2053
-      server: test.keoplentuio.xyz
-      type: vless
-      udp: true
-      uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
     - client-fingerprint: chrome
       name: vless-1827147108
       network: grpc
@@ -141,6 +134,14 @@ proxies:
       type: vless
       udp: true
       uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
+    - name: trojan-1827148810
+      password: e309e031-991e-4656-9934-44d10deb8fd8
+      port: 2053
+      server: www.speedtest.org
+      skip-cert-verify: false
+      sni: nimm.mpd.cc.cd
+      type: trojan
+      udp: true
     - name: trojan-1827529899
       password: e309e031-991e-4656-9934-44d10deb8fd8
       port: 443
@@ -157,11 +158,11 @@ proxies:
       sni: nimm.mpd.cc.cd
       type: trojan
       udp: true
-    - name: trojan-1827148810
+    - name: trojan-1827149524
       password: e309e031-991e-4656-9934-44d10deb8fd8
       port: 2053
-      server: www.speedtest.org
-      skip-cert-verify: false
+      server: nimm.mpd.cc.cd
+      skip-cert-verify: true
       sni: nimm.mpd.cc.cd
       type: trojan
       udp: true
@@ -169,41 +170,41 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1832465403
         - vless-1828295106
+        - vless-1832465403
         - vless-1832690712
         - vless-1827150172
         - vless-1831132788
         - trojan-1827149379
         - vless-1827150153
         - vless-1827188726
-        - vless-1827153735
         - vless-1827147108
         - vless-1828532179
         - vless-1828433801
+        - trojan-1827148810
         - trojan-1827529899
         - trojan-1827148822
-        - trojan-1827148810
+        - trojan-1827149524
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1832465403
         - vless-1828295106
+        - vless-1832465403
         - vless-1832690712
         - vless-1827150172
         - vless-1831132788
         - trojan-1827149379
         - vless-1827150153
         - vless-1827188726
-        - vless-1827153735
         - vless-1827147108
         - vless-1828532179
         - vless-1828433801
+        - trojan-1827148810
         - trojan-1827529899
         - trojan-1827148822
-        - trojan-1827148810
+        - trojan-1827149524
       type: select
 rules:
     - MATCH,select

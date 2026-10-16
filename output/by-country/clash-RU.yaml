@@ -13,6 +13,13 @@ proxies:
       skip-cert-verify: true
       sni: "off"
       type: hysteria2
+    - name: hysteria2-1828371117
+      password: 7ab3c77e-8fcc-4848-918f-cae3d4eac794
+      port: 2053
+      server: 194.87.118.184
+      skip-cert-verify: true
+      sni: match-stream.lovkisport.blog
+      type: hysteria2
     - name: hysteria2-1828371109
       password: 7ab3c77e-8fcc-4848-918f-cae3d4eac794
       port: 2053
@@ -20,6 +27,20 @@ proxies:
       skip-cert-verify: true
       sni: 194.87.118.184
       type: hysteria2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1830269138
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: OCRYYq4e92sQ-wWFRX6WX9pdvuFBWOqybLhpSiv3nFA
+        short-id: "111111"
+      server: 37.143.15.206
+      servername: 5post-gate.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4599572f-bcfa-461e-bc73-d80e1ea65aa6
     - client-fingerprint: ios
       flow: xtls-rprx-vision
       name: vless-1830269136
@@ -43,8 +64,8 @@ proxies:
       udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1830269138
-      network: raw
+      name: vless-1832191550
+      network: tcp
       port: 443
       reality-opts:
         public-key: OCRYYq4e92sQ-wWFRX6WX9pdvuFBWOqybLhpSiv3nFA
@@ -62,9 +83,23 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-1827968609
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 194.38.11.86
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-1832007528
+      password: Lpq5UPVHtQYiuB9jEUNc2WkeIYCUH9DE
+      port: 18443
+      server: 194.87.196.107
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1832191550
+      name: vless-1830044136
       network: tcp
       port: 443
       reality-opts:
@@ -76,30 +111,23 @@ proxies:
       type: vless
       udp: true
       uuid: 4599572f-bcfa-461e-bc73-d80e1ea65aa6
-    - cipher: aes-256-cfb
-      name: shadowsocks-1827968609
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 194.38.11.86
-      type: ss
-      udp: true
-    - name: hysteria2-1828371117
-      password: 7ab3c77e-8fcc-4848-918f-cae3d4eac794
-      port: 2053
-      server: 194.87.118.184
-      skip-cert-verify: true
-      sni: match-stream.lovkisport.blog
-      type: hysteria2
-    - cipher: aes-256-gcm
-      name: shadowsocks-1832007528
-      password: Lpq5UPVHtQYiuB9jEUNc2WkeIYCUH9DE
-      port: 18443
-      server: 194.87.196.107
-      type: ss
-      udp: true
     - client-fingerprint: ios
       flow: xtls-rprx-vision
       name: vless-1830044135
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: OCRYYq4e92sQ-wWFRX6WX9pdvuFBWOqybLhpSiv3nFA
+        short-id: "111111"
+      server: 37.143.15.206
+      servername: 5post-gate.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4599572f-bcfa-461e-bc73-d80e1ea65aa6
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1830044131
       network: tcp
       port: 443
       reality-opts:
@@ -117,16 +145,18 @@ proxy-groups:
       proxies:
         - hysteria2-1827784274
         - hysteria2-1828371112
+        - hysteria2-1828371117
         - hysteria2-1828371109
+        - vless-1830269138
         - vless-1830269136
         - shadowsocks-1832006532
-        - vless-1830269138
-        - hysteria2-1827145511
         - vless-1832191550
+        - hysteria2-1827145511
         - shadowsocks-1827968609
-        - hysteria2-1828371117
         - shadowsocks-1832007528
+        - vless-1830044136
         - vless-1830044135
+        - vless-1830044131
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -134,16 +164,18 @@ proxy-groups:
         - auto
         - hysteria2-1827784274
         - hysteria2-1828371112
+        - hysteria2-1828371117
         - hysteria2-1828371109
+        - vless-1830269138
         - vless-1830269136
         - shadowsocks-1832006532
-        - vless-1830269138
-        - hysteria2-1827145511
         - vless-1832191550
+        - hysteria2-1827145511
         - shadowsocks-1827968609
-        - hysteria2-1828371117
         - shadowsocks-1832007528
+        - vless-1830044136
         - vless-1830044135
+        - vless-1830044131
       type: select
 rules:
     - MATCH,select
