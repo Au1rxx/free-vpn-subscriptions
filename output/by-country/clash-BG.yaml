@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-1827969512
+      password: GeregetR8cvQHzYr
+      port: 9030
+      server: 213.183.63.60
+      type: ss
+      udp: true
     - client-fingerprint: edge
       flow: xtls-rprx-vision
       name: vless-1832977020
@@ -24,6 +31,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1827969512
         - vless-1832977020
         - shadowsocks-1827969653
       type: url-test
@@ -31,6 +39,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-1827969512
         - vless-1832977020
         - shadowsocks-1827969653
       type: select

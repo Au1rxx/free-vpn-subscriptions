@@ -13,18 +13,18 @@ proxies:
       server: 138.197.141.58
       type: ss
       udp: true
-    - cipher: rc4-md5
-      name: shadowsocks-1827147479
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 137.184.174.93
-      type: ss
-      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-1827147187
       password: kDWvXYZoTBcGkC4
       port: 8882
       server: 51.222.136.236
+      type: ss
+      udp: true
+    - cipher: rc4-md5
+      name: shadowsocks-1827147479
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 137.184.174.93
       type: ss
       udp: true
     - alterId: 0
@@ -200,6 +200,13 @@ proxies:
       type: vmess
       udp: true
       uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+    - cipher: aes-256-gcm
+      name: shadowsocks-1827147702
+      password: Y6R9pAtvxxzmGC
+      port: 5000
+      server: 51.222.200.165
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       name: vless-1827162767
       network: tcp
@@ -229,20 +236,6 @@ proxies:
       type: vmess
       udp: true
       uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1832690658
-      network: tcp
-      port: 31146
-      reality-opts:
-        public-key: QAoJHZT6_DZsBu-jH74uYZUTpGgxmvN2tXpRKj4CygE
-        short-id: cf4e6f8338
-      server: 51.79.31.36
-      servername: play-fe.googleapis.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f0466557-2fd5-442e-94cb-12c6b764155e
     - name: vless-1827152479
       network: raw
       port: 8080
@@ -288,13 +281,6 @@ proxies:
       type: vmess
       udp: true
       uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-    - cipher: aes-256-gcm
-      name: shadowsocks-1827147702
-      password: Y6R9pAtvxxzmGC
-      port: 5000
-      server: 51.222.200.165
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       name: vless-1827155346
       network: raw
@@ -345,22 +331,14 @@ proxies:
       server: 51.222.12.127
       type: ss
       udp: true
-    - name: trojan-1827148261
-      password: Trojan@82164024
-      port: 443
-      server: ca.tronsg.com
-      skip-cert-verify: true
-      sni: ""
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827146224
         - shadowsocks-1827964140
-        - shadowsocks-1827147479
         - shadowsocks-1827147187
+        - shadowsocks-1827147479
         - vmess-1832888537
         - vless-1827153070
         - vmess-1832181415
@@ -379,23 +357,21 @@ proxy-groups:
         - vless-1827156228
         - vless-1832650206
         - vmess-1827161017
+        - shadowsocks-1827147702
         - vless-1827162767
         - vless-1832465374
         - vmess-1828338235
-        - vless-1832690658
         - vless-1827152479
         - vless-1827152679
         - vless-1827153129
         - vless-1827153130
         - trojan-1827148577
         - vmess-1832465406
-        - shadowsocks-1827147702
         - vless-1827155346
         - vless-1828372652
         - vless-1832941156
         - vmess-1828149315
         - shadowsocks-1827147678
-        - trojan-1827148261
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -403,8 +379,8 @@ proxy-groups:
         - auto
         - shadowsocks-1827146224
         - shadowsocks-1827964140
-        - shadowsocks-1827147479
         - shadowsocks-1827147187
+        - shadowsocks-1827147479
         - vmess-1832888537
         - vless-1827153070
         - vmess-1832181415
@@ -423,23 +399,21 @@ proxy-groups:
         - vless-1827156228
         - vless-1832650206
         - vmess-1827161017
+        - shadowsocks-1827147702
         - vless-1827162767
         - vless-1832465374
         - vmess-1828338235
-        - vless-1832690658
         - vless-1827152479
         - vless-1827152679
         - vless-1827153129
         - vless-1827153130
         - trojan-1827148577
         - vmess-1832465406
-        - shadowsocks-1827147702
         - vless-1827155346
         - vless-1828372652
         - vless-1832941156
         - vmess-1828149315
         - shadowsocks-1827147678
-        - trojan-1827148261
       type: select
 rules:
     - MATCH,select
