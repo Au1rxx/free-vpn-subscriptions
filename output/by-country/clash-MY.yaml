@@ -1,6 +1,18 @@
 proxies:
     - alterId: 0
       cipher: auto
+      name: vmess-1832888821
+      network: ws
+      port: 443
+      server: 104.21.23.80
+      servername: my.lovehk.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vmess
+      udp: true
+      uuid: f5f0babe-aea2-4f07-a1fc-3c9820253f49
+    - alterId: 0
+      cipher: auto
       name: vmess-1827811601
       network: tcp
       port: 10000
@@ -12,12 +24,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-1832888821
         - vmess-1827811601
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-1832888821
         - vmess-1827811601
       type: select
 rules:
