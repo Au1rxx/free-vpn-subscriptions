@@ -6,6 +6,13 @@ proxies:
       server: 51.83.192.80
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1832184464
+      password: e5c65ph
+      port: 443
+      server: 54.36.174.134
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       name: vless-1827155588
       network: tcp
@@ -872,75 +879,12 @@ proxies:
       skip-cert-verify: false
       sni: scrap.halyvanedorogo.ru
       type: hysteria2
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1828149352
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: y3YCXTqEVks0nGfiSwJ43ol4pY69-mWFUZsdmveoVDM
-        short-id: 46455ff0
-      server: 177.1.192.72
-      servername: addons.mozilla.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4d852af3-a121-41aa-9aed-4ca40a6f7b4d
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1827975360
-      network: tcp
-      port: 2063
-      reality-opts:
-        public-key: MMpt_jWc4J3oySBdf5sPDVRkiWlZmOObth6A1scM9BM
-        short-id: ""
-      server: 31.77.13.19
-      servername: rusbid.de
-      tls: true
-      type: vless
-      udp: true
-      uuid: b18d5990-96eb-4587-a386-7f8ef7591e6a
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1827975399
-      network: tcp
-      port: 2063
-      reality-opts:
-        public-key: MMpt_jWc4J3oySBdf5sPDVRkiWlZmOObth6A1scM9BM
-        short-id: ""
-      server: 2.26.231.218
-      servername: rusbid.de
-      tls: true
-      type: vless
-      udp: true
-      uuid: b18d5990-96eb-4587-a386-7f8ef7591e6a
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1828294487
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: 8yMLSTbkpJFfbgTjNzotzz7U8OT6AERrclgKdKrXXW8
-        short-id: 150a627d15154cf2
-      server: 150.251.113.34
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d7d724b5-17ce-4f3c-877d-dfbf0f07afa1
-    - name: trojan-1828127744
-      password: Trojan@82164024
-      port: 443
-      server: 92.118.150.146
-      skip-cert-verify: false
-      sni: pl.tronsg.com
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827147516
+        - shadowsocks-1832184464
         - vless-1827155588
         - vless-1827151516
         - vless-1827188006
@@ -1011,17 +955,13 @@ proxy-groups:
         - vless-1827974912
         - vless-1827736895
         - hysteria2-1828647672
-        - vless-1828149352
-        - vless-1827975360
-        - vless-1827975399
-        - vless-1828294487
-        - trojan-1828127744
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1827147516
+        - shadowsocks-1832184464
         - vless-1827155588
         - vless-1827151516
         - vless-1827188006
@@ -1092,11 +1032,6 @@ proxy-groups:
         - vless-1827974912
         - vless-1827736895
         - hysteria2-1828647672
-        - vless-1828149352
-        - vless-1827975360
-        - vless-1827975399
-        - vless-1828294487
-        - trojan-1828127744
       type: select
 rules:
     - MATCH,select
