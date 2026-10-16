@@ -7,19 +7,6 @@ proxies:
       type: ss
       udp: true
     - client-fingerprint: firefox
-      name: vless-1828293940
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
-        short-id: ad86e2d52ff40ebd
-      server: 208.69.78.217
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
-    - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1831127293
       network: tcp
@@ -33,6 +20,13 @@ proxies:
       type: vless
       udp: true
       uuid: 3950b45e-740d-4dca-ac95-505ec8534592
+    - name: hysteria2-1828373530
+      password: 84a506ca5aca505696a454d828420b3f
+      port: 50160
+      server: 140.238.213.114
+      skip-cert-verify: true
+      sni: www.bing.com
+      type: hysteria2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1827146737
       password: e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3
@@ -54,26 +48,6 @@ proxies:
       udp: true
       uuid: d54a7512-dda3-4218-8ae7-c591d300fd7c
     - client-fingerprint: chrome
-      name: vless-1827188328
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
-        short-id: ad86e2d52ff40ebd
-      server: 208.69.78.217
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
-    - name: hysteria2-1828373530
-      password: 84a506ca5aca505696a454d828420b3f
-      port: 50160
-      server: 140.238.213.114
-      skip-cert-verify: true
-      sni: www.bing.com
-      type: hysteria2
-    - client-fingerprint: chrome
       name: vless-1827154380
       network: tcp
       port: 2053
@@ -86,46 +60,57 @@ proxies:
       type: vless
       udp: true
       uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
-    - client-fingerprint: ios
-      name: vless-1830269313
+    - client-fingerprint: chrome
+      name: vless-1827188328
       network: tcp
-      port: 25393
+      port: 2053
       reality-opts:
-        public-key: 04F4vhrx_H_SHsrsVw1eCpwlysu4kL3hTl9GAr00XkI
-        short-id: bcc707a7148e4a0c
-      server: 45.133.151.186
-      servername: www.samsung.com
+        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+        short-id: ad86e2d52ff40ebd
+      server: 208.69.78.217
+      servername: www.apple.com
       tls: true
       type: vless
       udp: true
-      uuid: d54a7512-dda3-4218-8ae7-c591d300fd7c
+      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
+    - client-fingerprint: firefox
+      name: vless-1828293940
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+        short-id: ad86e2d52ff40ebd
+      server: 208.69.78.217
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1828674190
-        - vless-1828293940
         - vless-1831127293
+        - hysteria2-1828373530
         - shadowsocks-1827146737
         - vless-1830269311
-        - vless-1827188328
-        - hysteria2-1828373530
         - vless-1827154380
-        - vless-1830269313
+        - vless-1827188328
+        - vless-1828293940
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1828674190
-        - vless-1828293940
         - vless-1831127293
+        - hysteria2-1828373530
         - shadowsocks-1827146737
         - vless-1830269311
-        - vless-1827188328
-        - hysteria2-1828373530
         - vless-1827154380
-        - vless-1830269313
+        - vless-1827188328
+        - vless-1828293940
       type: select
 rules:
     - MATCH,select

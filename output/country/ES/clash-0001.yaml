@@ -6,6 +6,34 @@ proxies:
       skip-cert-verify: true
       sni: es2.xiaoliyu.cyou
       type: hysteria2
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1827149692
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE
+        short-id: 0dfc23fe80778c00
+      server: 46.28.71.247
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 12c53e32-e589-47d6-b857-e4132294f767
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1827152684
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 4eE3K8Eac-ELze-LwRyJolqmhPqgCVqwQM1DKu6i0Ts
+        short-id: e93d46ee3735069e
+      server: 193.238.154.78
+      servername: gateway.icloud.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 897d47f8-4dd5-42a1-bcd0-bef19caff55a
     - name: vless-1827155200
       network: ws
       port: 443
@@ -55,6 +83,20 @@ proxies:
       type: vless
       udp: true
       uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1828531962
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE
+        short-id: 0dfc23fe80778c00
+      server: 46.28.71.247
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 12c53e32-e589-47d6-b857-e4132294f767
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1831126777
@@ -74,10 +116,13 @@ proxy-groups:
       name: auto
       proxies:
         - hysteria2-1827145273
+        - vless-1827149692
+        - vless-1827152684
         - vless-1827155200
         - vless-1827156208
         - vless-1827524686
         - vless-1828295938
+        - vless-1828531962
         - vless-1831126777
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -85,10 +130,13 @@ proxy-groups:
       proxies:
         - auto
         - hysteria2-1827145273
+        - vless-1827149692
+        - vless-1827152684
         - vless-1827155200
         - vless-1827156208
         - vless-1827524686
         - vless-1828295938
+        - vless-1828531962
         - vless-1831126777
       type: select
 rules:

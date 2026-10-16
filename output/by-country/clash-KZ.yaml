@@ -12,13 +12,6 @@ proxies:
       type: vless
       udp: true
       uuid: b573cefb-7bc7-4a42-b407-b8b534e66773
-    - name: vless-1831130667
-      network: ws
-      port: 8880
-      server: 66.235.200.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       name: vless-1828374208
       network: raw
@@ -32,6 +25,26 @@ proxies:
       type: vless
       udp: true
       uuid: a00d89f6-ab7e-4e30-a5e5-54c701d62c93
+    - client-fingerprint: firefox
+      name: vless-1827974951
+      network: tcp
+      port: 13447
+      reality-opts:
+        public-key: _0wM2ep44eAcrgf5PflKaBivknCWT6kMvQBQUoScCkE
+        short-id: "83"
+      server: 109.248.170.119
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b573cefb-7bc7-4a42-b407-b8b534e66773
+    - name: vless-1831130667
+      network: ws
+      port: 8880
+      server: 66.235.200.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       name: vless-1827975097
       network: raw
@@ -58,40 +71,27 @@ proxies:
       type: vless
       udp: true
       uuid: a00d89f6-ab7e-4e30-a5e5-54c701d62c93
-    - client-fingerprint: chrome
-      name: vless-1827154388
-      network: raw
-      port: 13447
-      reality-opts:
-        public-key: _0wM2ep44eAcrgf5PflKaBivknCWT6kMvQBQUoScCkE
-        short-id: "83"
-      server: 109.248.170.119
-      servername: yahoo.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: b573cefb-7bc7-4a42-b407-b8b534e66773
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1827975199
-        - vless-1831130667
         - vless-1828374208
+        - vless-1827974951
+        - vless-1831130667
         - vless-1827975097
         - vless-1827153519
-        - vless-1827154388
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1827975199
-        - vless-1831130667
         - vless-1828374208
+        - vless-1827974951
+        - vless-1831130667
         - vless-1827975097
         - vless-1827153519
-        - vless-1827154388
       type: select
 rules:
     - MATCH,select
