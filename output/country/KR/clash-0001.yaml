@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-cfb
+      name: shadowsocks-1827145960
+      password: qwerREWQ@@
+      port: 4652
+      server: p141.panda001.net
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-1827145973
       password: qwerREWQ@@
       port: 6123
@@ -505,6 +512,13 @@ proxies:
       type: vless
       udp: true
       uuid: 319d5ffb-57e8-4bbd-ac0c-5d55d0c253de
+    - cipher: aes-256-gcm
+      name: shadowsocks-1827613967
+      password: TEzjfAYq2IjtuoS
+      port: 6697
+      server: 141.164.45.187
+      type: ss
+      udp: true
     - name: hysteria2-1827727762
       password: 1beb216e3f60aea9555dae60d219a5ca
       port: 50160
@@ -570,13 +584,6 @@ proxies:
       password: Y6R9pAtvxxzmGC
       port: 8888
       server: 141.164.45.187
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-1827969068
-      password: qwerREWQ@@
-      port: 4652
-      server: 218.237.185.234
       type: ss
       udp: true
     - cipher: aes-256-cfb
@@ -1099,10 +1106,25 @@ proxies:
       type: vless
       udp: true
       uuid: a2de9567-9646-45a9-a410-7303a43bdb6c
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1842666155
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: DHOrfoin7TeRpnIoU3d6qT5Yrq3QPVFp49kApATA4iE
+        short-id: e04a526b0b09c765
+      server: 13.125.94.114
+      servername: lmate.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7e68e32f-8015-4f37-9082-70e8b0b58043
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1827145960
         - shadowsocks-1827145973
         - shadowsocks-1827146014
         - shadowsocks-1827146072
@@ -1162,6 +1184,7 @@ proxy-groups:
         - vmess-1827161044
         - vmess-1827161110
         - vless-1827188309
+        - shadowsocks-1827613967
         - hysteria2-1827727762
         - trojan-1827926872
         - trojan-1827937733
@@ -1171,7 +1194,6 @@ proxy-groups:
         - shadowsocks-1827964565
         - shadowsocks-1827964589
         - shadowsocks-1827964633
-        - shadowsocks-1827969068
         - shadowsocks-1827983920
         - trojan-1828127745
         - trojan-1828292632
@@ -1225,11 +1247,13 @@ proxy-groups:
         - trojan-1836925902
         - trojan-1837386994
         - vless-1841361328
+        - vless-1842666155
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1827145960
         - shadowsocks-1827145973
         - shadowsocks-1827146014
         - shadowsocks-1827146072
@@ -1289,6 +1313,7 @@ proxy-groups:
         - vmess-1827161044
         - vmess-1827161110
         - vless-1827188309
+        - shadowsocks-1827613967
         - hysteria2-1827727762
         - trojan-1827926872
         - trojan-1827937733
@@ -1298,7 +1323,6 @@ proxy-groups:
         - shadowsocks-1827964565
         - shadowsocks-1827964589
         - shadowsocks-1827964633
-        - shadowsocks-1827969068
         - shadowsocks-1827983920
         - trojan-1828127745
         - trojan-1828292632
@@ -1352,6 +1376,7 @@ proxy-groups:
         - trojan-1836925902
         - trojan-1837386994
         - vless-1841361328
+        - vless-1842666155
       type: select
 rules:
     - MATCH,select
