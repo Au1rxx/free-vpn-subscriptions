@@ -1,18 +1,5 @@
 proxies:
     - client-fingerprint: firefox
-      name: vless-1828295106
-      network: grpc
-      port: 8444
-      reality-opts:
-        public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
-        short-id: ""
-      server: 62.60.233.157
-      servername: github.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
-    - client-fingerprint: firefox
       name: vless-1827150172
       network: tcp
       port: 2053
@@ -34,6 +21,19 @@ proxies:
       uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
     - client-fingerprint: chrome
       name: vless-1827147108
+      network: grpc
+      port: 8444
+      reality-opts:
+        public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
+        short-id: ""
+      server: 62.60.233.157
+      servername: github.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
+    - client-fingerprint: firefox
+      name: vless-1828295106
       network: grpc
       port: 8444
       reality-opts:
@@ -106,18 +106,18 @@ proxies:
       type: vless
       udp: true
       uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
-    - name: trojan-1835314335
-      password: e309e031-991e-4656-9934-44d10deb8fd8
-      port: 2053
-      server: 104.26.14.137
-      skip-cert-verify: false
-      sni: nimm.mpd.cc.cd
-      type: trojan
-      udp: true
     - name: trojan-1827148822
       password: e309e031-991e-4656-9934-44d10deb8fd8
       port: 2053
       server: 172.67.176.3
+      skip-cert-verify: false
+      sni: nimm.mpd.cc.cd
+      type: trojan
+      udp: true
+    - name: trojan-1835314335
+      password: e309e031-991e-4656-9934-44d10deb8fd8
+      port: 2053
+      server: 104.26.14.137
       skip-cert-verify: false
       sni: nimm.mpd.cc.cd
       type: trojan
@@ -138,13 +138,6 @@ proxies:
       sni: nimm.mpd.cc.cd
       type: trojan
       udp: true
-    - name: vless-1827153735
-      network: raw
-      port: 2053
-      server: test.keoplentuio.xyz
-      type: vless
-      udp: true
-      uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
     - client-fingerprint: random
       name: vless-1828532179
       network: tcp
@@ -187,60 +180,49 @@ proxies:
       sni: nimm.mpd.cc.cd
       type: trojan
       udp: true
-    - name: vless-1832465403
-      network: tcp
-      port: 2053
-      server: test.keoplentuio.xyz
-      type: vless
-      udp: true
-      uuid: 9ef61079-6f7d-4911-9608-943da85d8e6f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1828295106
         - vless-1827150172
         - vless-1827153739
         - vless-1827147108
+        - vless-1828295106
         - shadowsocks-1832968047
         - vless-1827150153
         - vless-1827188726
         - vless-1828433801
         - vless-1832690712
-        - trojan-1835314335
         - trojan-1827148822
+        - trojan-1835314335
         - trojan-1835320336
         - trojan-1827149379
-        - vless-1827153735
         - vless-1828532179
         - vless-1831132788
         - shadowsocks-1835495192
         - trojan-1827529899
-        - vless-1832465403
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1828295106
         - vless-1827150172
         - vless-1827153739
         - vless-1827147108
+        - vless-1828295106
         - shadowsocks-1832968047
         - vless-1827150153
         - vless-1827188726
         - vless-1828433801
         - vless-1832690712
-        - trojan-1835314335
         - trojan-1827148822
+        - trojan-1835314335
         - trojan-1835320336
         - trojan-1827149379
-        - vless-1827153735
         - vless-1828532179
         - vless-1831132788
         - shadowsocks-1835495192
         - trojan-1827529899
-        - vless-1832465403
       type: select
 rules:
     - MATCH,select
