@@ -14,20 +14,6 @@ proxies:
       udp: true
       uuid: 6589c320-db68-43cd-a273-b46299bab355
     - cipher: aes-256-cfb
-      name: shadowsocks-1827887435
-      password: 4R3hUfZ2FHhDmNcP
-      port: 9061
-      server: 213.183.63.60
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-1827969065
-      password: aLpQtfEZe445QyHk
-      port: 9098
-      server: 213.183.63.60
-      type: ss
-      udp: true
-    - cipher: aes-256-cfb
       name: shadowsocks-1827969402
       password: VcFuyXvND2yQWSFY
       port: 9054
@@ -65,31 +51,36 @@ proxies:
       type: vless
       udp: true
       uuid: 42a3ae88-8146-4ea8-9a82-181d061f6cf6
+    - name: vless-1841245082
+      network: tcp
+      port: 17674
+      server: 104.237.250.27
+      type: vless
+      udp: true
+      uuid: bc1aa246-f99d-45d5-b46a-e0c938f4c9b3
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1827151978
-        - shadowsocks-1827887435
-        - shadowsocks-1827969065
         - shadowsocks-1827969402
         - shadowsocks-1827969512
         - shadowsocks-1827969546
         - shadowsocks-1827969653
         - vless-1837364466
+        - vless-1841245082
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1827151978
-        - shadowsocks-1827887435
-        - shadowsocks-1827969065
         - shadowsocks-1827969402
         - shadowsocks-1827969512
         - shadowsocks-1827969546
         - shadowsocks-1827969653
         - vless-1837364466
+        - vless-1841245082
       type: select
 rules:
     - MATCH,select

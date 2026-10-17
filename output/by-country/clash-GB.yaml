@@ -6,11 +6,11 @@ proxies:
       server: 149.102.132.184
       type: ss
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-1827147261
-      password: g5h5jleTRSyO3Rk4
-      port: 80
-      server: 149.102.132.184
+    - cipher: rc4-md5
+      name: shadowsocks-1827963919
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.61.18
       type: ss
       udp: true
     - cipher: rc4-md5
@@ -20,18 +20,11 @@ proxies:
       server: 146.70.61.37
       type: ss
       udp: true
-    - cipher: aes-128-gcm
-      name: shadowsocks-1827146143
-      password: shadowsocks
-      port: 443
-      server: 141.98.101.181
-      type: ss
-      udp: true
-    - cipher: rc4-md5
-      name: shadowsocks-1827963919
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 146.70.61.18
+    - cipher: aes-256-gcm
+      name: shadowsocks-1827147261
+      password: g5h5jleTRSyO3Rk4
+      port: 80
+      server: 149.102.132.184
       type: ss
       udp: true
     - client-fingerprint: safari
@@ -98,6 +91,13 @@ proxies:
       type: vless
       udp: true
       uuid: fda89998-7e9a-4494-857a-cd0d00661b58
+    - cipher: aes-128-gcm
+      name: shadowsocks-1827146143
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.181
+      type: ss
+      udp: true
     - name: vless-1832889278
       network: tcp
       port: 443
@@ -108,20 +108,6 @@ proxies:
       type: vless
       udp: true
       uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1827153390
-      network: tcp
-      port: 2061
-      reality-opts:
-        public-key: Ub1ffFeVtG2zd_t001wgmuhojSAxvaVwuo_pAapScBA
-        short-id: c77f719b082817e4
-      server: 103.41.7.43
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9c2888cf-99f8-4c04-ac07-c033359ff975
     - alterId: 0
       cipher: auto
       name: vmess-1831166293
@@ -193,67 +179,49 @@ proxies:
       type: vless
       udp: true
       uuid: 64c05afc-ce81-4ba0-b697-afa04da1427e
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1837386972
-      network: tcp
-      port: 2061
-      reality-opts:
-        public-key: Ub1ffFeVtG2zd_t001wgmuhojSAxvaVwuo_pAapScBA
-        short-id: c77f719b082817e4
-      server: 103.41.7.43
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9c2888cf-99f8-4c04-ac07-c033359ff975
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827147824
-        - shadowsocks-1827147261
-        - shadowsocks-1827147777
-        - shadowsocks-1827146143
         - shadowsocks-1827963919
+        - shadowsocks-1827147777
+        - shadowsocks-1827147261
         - vless-1837386333
         - vless-1833046705
         - vless-1827145802
         - vless-1834254233
         - vless-1835156652
+        - shadowsocks-1827146143
         - vless-1832889278
-        - vless-1827153390
         - vmess-1831166293
         - vless-1828395349
         - vless-1827267314
         - vmess-1829730528
         - vless-1827154519
         - vless-1837295396
-        - vless-1837386972
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1827147824
-        - shadowsocks-1827147261
-        - shadowsocks-1827147777
-        - shadowsocks-1827146143
         - shadowsocks-1827963919
+        - shadowsocks-1827147777
+        - shadowsocks-1827147261
         - vless-1837386333
         - vless-1833046705
         - vless-1827145802
         - vless-1834254233
         - vless-1835156652
+        - shadowsocks-1827146143
         - vless-1832889278
-        - vless-1827153390
         - vmess-1831166293
         - vless-1828395349
         - vless-1827267314
         - vmess-1829730528
         - vless-1827154519
         - vless-1837295396
-        - vless-1837386972
       type: select
 rules:
     - MATCH,select
