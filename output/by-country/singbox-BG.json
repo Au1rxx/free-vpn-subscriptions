@@ -1,0 +1,59 @@
+{
+  "outbounds": [
+    {
+      "method": "aes-256-cfb",
+      "password": "PRBf4BS2HvJqtWxY",
+      "server": "213.183.63.60",
+      "server_port": 9049,
+      "tag": "shadowsocks-1827969381",
+      "type": "shadowsocks"
+    },
+    {
+      "server": "p1real4.greewebservices.ir",
+      "server_port": 1260,
+      "tag": "vless-1850523177",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "xQnXh5EfPDhcEBB7rRiLca33GYrMEeUa35domLL_yA8",
+          "short_id": "9b60d3"
+        },
+        "server_name": "play.googleapis.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "type": "vless",
+      "uuid": "b374647d-7516-4d1e-8c85-544c7d734c1f"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "shadowsocks-1827969381",
+        "vless-1850523177"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "shadowsocks-1827969381",
+        "vless-1850523177"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

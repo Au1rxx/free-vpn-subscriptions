@@ -1,0 +1,37 @@
+proxies:
+    - cipher: aes-256-cfb
+      name: shadowsocks-1827969381
+      password: PRBf4BS2HvJqtWxY
+      port: 9049
+      server: 213.183.63.60
+      type: ss
+      udp: true
+    - client-fingerprint: ios
+      name: vless-1850523177
+      network: tcp
+      port: 1260
+      reality-opts:
+        public-key: xQnXh5EfPDhcEBB7rRiLca33GYrMEeUa35domLL_yA8
+        short-id: 9b60d3
+      server: p1real4.greewebservices.ir
+      servername: play.googleapis.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b374647d-7516-4d1e-8c85-544c7d734c1f
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-1827969381
+        - vless-1850523177
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-1827969381
+        - vless-1850523177
+      type: select
+rules:
+    - MATCH,select
