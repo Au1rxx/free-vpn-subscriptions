@@ -48,6 +48,13 @@ proxies:
       type: vless
       udp: true
       uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1827146803
+      password: QFWzCw2uX9B9i6qAYeFBIE
+      port: 443
+      server: 154.46.31.106
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1832941149
@@ -62,6 +69,13 @@ proxies:
       type: vless
       udp: true
       uuid: e625f8ef-f935-4c7d-a259-0f154b6842fd
+    - name: hysteria2-1827145061
+      password: gf1:gfhysteria2024
+      port: 443
+      server: 185.156.44.99
+      skip-cert-verify: true
+      sni: css.rbxcdn.com
+      type: hysteria2
     - name: vless-1832465389
       network: tcp
       port: 2052
@@ -97,27 +111,6 @@ proxies:
       type: vless
       udp: true
       uuid: 679439c5-28f2-485e-af5f-60a5fcd9c36c
-    - name: hysteria2-1827145061
-      password: gf1:gfhysteria2024
-      port: 443
-      server: 185.156.44.99
-      skip-cert-verify: true
-      sni: css.rbxcdn.com
-      type: hysteria2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1827154999
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
-        short-id: d06d78e974491b6e
-      server: 46.28.67.55
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
 proxy-groups:
     - interval: 300
       name: auto
@@ -127,12 +120,12 @@ proxy-groups:
         - vless-1832972763
         - vless-1827150146
         - vless-1832690762
+        - shadowsocks-1827146803
         - vless-1832941149
+        - hysteria2-1827145061
         - vless-1832465389
         - vless-1835058279
         - vless-1827151764
-        - hysteria2-1827145061
-        - vless-1827154999
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -143,12 +136,12 @@ proxy-groups:
         - vless-1832972763
         - vless-1827150146
         - vless-1832690762
+        - shadowsocks-1827146803
         - vless-1832941149
+        - hysteria2-1827145061
         - vless-1832465389
         - vless-1835058279
         - vless-1827151764
-        - hysteria2-1827145061
-        - vless-1827154999
       type: select
 rules:
     - MATCH,select
