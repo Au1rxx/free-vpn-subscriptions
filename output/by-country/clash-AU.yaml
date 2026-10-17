@@ -11,19 +11,6 @@ proxies:
       type: vmess
       udp: true
       uuid: f5f0babe-aea2-4f07-a1fc-3c9820253f49
-    - client-fingerprint: random
-      name: vless-1828532074
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
-        short-id: 4cc9dc65f7770115
-      server: 46.250.240.80
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
     - client-fingerprint: firefox
       name: vless-1827153943
       network: raw
@@ -37,6 +24,20 @@ proxies:
       type: vless
       udp: true
       uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1846612844
+      network: tcp
+      port: 54528
+      reality-opts:
+        public-key: 7GvJVbR6BRhtrc8-rcZvB8qTFUF1LPeM_MmoZ04mBxo
+        short-id: 54cca3c1c1c7
+      server: funagfrdfs.alixxplay.com
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
     - client-fingerprint: firefox
       name: vless-1828294429
       network: tcp
@@ -62,25 +63,40 @@ proxies:
       type: vmess
       udp: true
       uuid: f5f0babe-aea2-4f07-a1fc-3c9820253f49
+    - client-fingerprint: random
+      name: vless-1828532074
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
+        short-id: 4cc9dc65f7770115
+      server: 46.250.240.80
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-1832988299
-        - vless-1828532074
         - vless-1827153943
+        - vless-1846612844
         - vless-1828294429
         - vmess-1832888826
+        - vless-1828532074
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-1832988299
-        - vless-1828532074
         - vless-1827153943
+        - vless-1846612844
         - vless-1828294429
         - vmess-1832888826
+        - vless-1828532074
       type: select
 rules:
     - MATCH,select

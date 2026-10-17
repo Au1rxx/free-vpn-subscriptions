@@ -12,17 +12,41 @@ proxies:
       type: vless
       udp: true
       uuid: 2ffa91fe-e1cc-4c44-a90a-45002feae978
+    - client-fingerprint: chrome
+      name: vless-1831861688
+      network: tcp
+      port: 6311
+      reality-opts:
+        public-key: lQbgwNDYw6Zbjdim0JtXUarzb-3GSjDvtX6FJYZD9Qo
+        short-id: ""
+      server: aelix-al.safire-soleiman.ir
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2ffa91fe-e1cc-4c44-a90a-45002feae978
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1846129070
+      password: j3PKOCj7wHl5Pk6thI9HyXtCa6JU180IlBpWANgFjkY=
+      port: 43558
+      server: 130.49.189.158
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1831271520
+        - vless-1831861688
+        - shadowsocks-1846129070
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1831271520
+        - vless-1831861688
+        - shadowsocks-1846129070
       type: select
 rules:
     - MATCH,select

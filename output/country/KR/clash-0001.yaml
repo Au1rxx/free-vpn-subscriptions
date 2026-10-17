@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1827145140
+      password: 9cfc9458e48c028ec03ff86ebc71c744
+      port: 50160
+      server: 150-230-252-217.liao.kdns.fr
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
     - name: hysteria2-1827145587
       password: 9cfc9458e48c028ec03ff86ebc71c744
       port: 50160
@@ -31,6 +38,13 @@ proxies:
       name: shadowsocks-1827146072
       password: XKFKl2rULjIp74
       port: 8008
+      server: 141.164.45.187
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-1827146075
+      password: KixLvKzwjekG00rm
+      port: 8000
       server: 141.164.45.187
       type: ss
       udp: true
@@ -586,13 +600,6 @@ proxies:
       server: 218.237.185.234
       type: ss
       udp: true
-    - cipher: aes-256-cfb
-      name: shadowsocks-1827983920
-      password: 1234!@#$
-      port: 1774
-      server: 49.254.204.133
-      type: ss
-      udp: true
     - name: trojan-1828127745
       password: UX82473651
       port: 443
@@ -1134,15 +1141,24 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - name: hysteria2-1846612834
+      password: 9cfc9458e48c028ec03ff86ebc71c744
+      port: 50160
+      server: 150-230-252-217.liao.kdns.fr
+      skip-cert-verify: true
+      sni: 150-230-252-217.liao.kdns.fr
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1827145140
         - hysteria2-1827145587
         - shadowsocks-1827145960
         - shadowsocks-1827145973
         - shadowsocks-1827146014
         - shadowsocks-1827146072
+        - shadowsocks-1827146075
         - shadowsocks-1827146408
         - shadowsocks-1827146622
         - shadowsocks-1827146715
@@ -1208,7 +1224,6 @@ proxy-groups:
         - shadowsocks-1827964565
         - shadowsocks-1827964589
         - shadowsocks-1827969068
-        - shadowsocks-1827983920
         - trojan-1828127745
         - trojan-1828292632
         - vless-1828295340
@@ -1264,16 +1279,19 @@ proxy-groups:
         - trojan-1844606194
         - trojan-1844606197
         - trojan-1844606200
+        - hysteria2-1846612834
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1827145140
         - hysteria2-1827145587
         - shadowsocks-1827145960
         - shadowsocks-1827145973
         - shadowsocks-1827146014
         - shadowsocks-1827146072
+        - shadowsocks-1827146075
         - shadowsocks-1827146408
         - shadowsocks-1827146622
         - shadowsocks-1827146715
@@ -1339,7 +1357,6 @@ proxy-groups:
         - shadowsocks-1827964565
         - shadowsocks-1827964589
         - shadowsocks-1827969068
-        - shadowsocks-1827983920
         - trojan-1828127745
         - trojan-1828292632
         - vless-1828295340
@@ -1395,6 +1412,7 @@ proxy-groups:
         - trojan-1844606194
         - trojan-1844606197
         - trojan-1844606200
+        - hysteria2-1846612834
       type: select
 rules:
     - MATCH,select
