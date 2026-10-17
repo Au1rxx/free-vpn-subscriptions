@@ -6,6 +6,13 @@ proxies:
       type: vless
       udp: true
       uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
+    - name: vless-1827150146
+      network: raw
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1828532029
@@ -27,22 +34,8 @@ proxies:
       type: vless
       udp: true
       uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1827146803
-      password: QFWzCw2uX9B9i6qAYeFBIE
-      port: 443
-      server: 154.46.31.106
-      type: ss
-      udp: true
     - name: vless-1832465389
       network: tcp
-      port: 2052
-      server: edge10.cyrionflare.com
-      type: vless
-      udp: true
-      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-    - name: vless-1827150146
-      network: raw
       port: 2052
       server: edge10.cyrionflare.com
       type: vless
@@ -62,13 +55,6 @@ proxies:
       type: vless
       udp: true
       uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
-    - name: hysteria2-1827145061
-      password: gf1:gfhysteria2024
-      port: 443
-      server: 185.156.44.99
-      skip-cert-verify: true
-      sni: css.rbxcdn.com
-      type: hysteria2
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1835058279
@@ -97,35 +83,40 @@ proxies:
       type: vless
       udp: true
       uuid: 679439c5-28f2-485e-af5f-60a5fcd9c36c
+    - name: hysteria2-1827145061
+      password: gf1:gfhysteria2024
+      port: 443
+      server: 185.156.44.99
+      skip-cert-verify: true
+      sni: css.rbxcdn.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1827150200
+        - vless-1827150146
         - vless-1828532029
         - vless-1832972763
-        - shadowsocks-1827146803
         - vless-1832465389
-        - vless-1827150146
         - vless-1832690762
-        - hysteria2-1827145061
         - vless-1835058279
         - vless-1827151764
+        - hysteria2-1827145061
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1827150200
+        - vless-1827150146
         - vless-1828532029
         - vless-1832972763
-        - shadowsocks-1827146803
         - vless-1832465389
-        - vless-1827150146
         - vless-1832690762
-        - hysteria2-1827145061
         - vless-1835058279
         - vless-1827151764
+        - hysteria2-1827145061
       type: select
 rules:
     - MATCH,select
