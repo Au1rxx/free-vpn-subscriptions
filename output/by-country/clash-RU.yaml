@@ -6,13 +6,6 @@ proxies:
       skip-cert-verify: true
       sni: 194.87.118.184
       type: hysteria2
-    - name: hysteria2-1828371112
-      password: 7ab3c77e-8fcc-4848-918f-cae3d4eac794
-      port: 2053
-      server: 194.87.118.184
-      skip-cert-verify: true
-      sni: "off"
-      type: hysteria2
     - name: hysteria2-1827784274
       password: 7ab3c77e-8fcc-4848-918f-cae3d4eac794
       port: 2053
@@ -20,6 +13,27 @@ proxies:
       skip-cert-verify: false
       sni: match-stream.lovkisport.blog
       type: hysteria2
+    - name: hysteria2-1828371112
+      password: 7ab3c77e-8fcc-4848-918f-cae3d4eac794
+      port: 2053
+      server: 194.87.118.184
+      skip-cert-verify: true
+      sni: "off"
+      type: hysteria2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1852076841
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: GM-fP74KIMEVerUJ-xUA6jsy2sJEhuwIwOhxzeRdXH4
+        short-id: 3b491c212a9504c1
+      server: 185.147.26.80
+      servername: www.aeroflot.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: a11213e8-a42f-4492-beaa-14084f6ae28a
     - name: hysteria2-1827145511
       password: 7ab3c77e-8fcc-4848-918f-cae3d4eac794
       port: 2053
@@ -39,8 +53,9 @@ proxy-groups:
       name: auto
       proxies:
         - hysteria2-1828371109
-        - hysteria2-1828371112
         - hysteria2-1827784274
+        - hysteria2-1828371112
+        - vless-1852076841
         - hysteria2-1827145511
         - shadowsocks-1827968609
       type: url-test
@@ -49,8 +64,9 @@ proxy-groups:
       proxies:
         - auto
         - hysteria2-1828371109
-        - hysteria2-1828371112
         - hysteria2-1827784274
+        - hysteria2-1828371112
+        - vless-1852076841
         - hysteria2-1827145511
         - shadowsocks-1827968609
       type: select

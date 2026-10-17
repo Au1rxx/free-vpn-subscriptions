@@ -1,5 +1,19 @@
 proxies:
     - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1852076836
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 6AIyGxXjBSWg9T4VTfneMZWgZjQrPVY6u9SdAHyouUw
+        short-id: af6daddea82034a1
+      server: 84.32.217.123
+      servername: www.tetrapak.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a11213e8-a42f-4492-beaa-14084f6ae28a
+    - client-fingerprint: firefox
       name: vless-1851982243
       network: grpc
       port: 26128
@@ -12,6 +26,20 @@ proxies:
       type: vless
       udp: true
       uuid: 68c3d665-b2b5-4ffb-9f37-9f3d8c47324d
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1852076837
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: L4Aifg9Z38BOPDA_pr-zmfj0BweN9sM5m_oSNGsFKiE
+        short-id: ec2a6d77d897a2c3
+      server: 45.139.24.100
+      servername: www.pobeda.aero
+      tls: true
+      type: vless
+      udp: true
+      uuid: a11213e8-a42f-4492-beaa-14084f6ae28a
     - client-fingerprint: random
       name: vless-1827152629
       network: grpc
@@ -42,7 +70,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1852076836
         - vless-1851982243
+        - vless-1852076837
         - vless-1827152629
         - vless-1850203802
       type: url-test
@@ -50,7 +80,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1852076836
         - vless-1851982243
+        - vless-1852076837
         - vless-1827152629
         - vless-1850203802
       type: select
