@@ -26,6 +26,19 @@ proxies:
       type: vless
       udp: true
       uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
+    - client-fingerprint: random
+      name: vless-1828532074
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
+        short-id: 4cc9dc65f7770115
+      server: 46.250.240.80
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
     - client-fingerprint: firefox
       name: vless-1827153943
       network: raw
@@ -39,6 +52,18 @@ proxies:
       type: vless
       udp: true
       uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
+    - alterId: 0
+      cipher: auto
+      name: vmess-1832888826
+      network: ws
+      port: 443
+      server: 172.67.195.146
+      servername: aus.lovehk.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vmess
+      udp: true
+      uuid: f5f0babe-aea2-4f07-a1fc-3c9820253f49
     - client-fingerprint: ios
       flow: xtls-rprx-vision
       name: vless-1846612844
@@ -55,18 +80,6 @@ proxies:
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
     - alterId: 0
       cipher: auto
-      name: vmess-1832888826
-      network: ws
-      port: 443
-      server: 172.67.195.146
-      servername: aus.lovehk.xyz
-      skip-cert-verify: false
-      tls: true
-      type: vmess
-      udp: true
-      uuid: f5f0babe-aea2-4f07-a1fc-3c9820253f49
-    - alterId: 0
-      cipher: auto
       name: vmess-1832988299
       network: ws
       port: 443
@@ -77,30 +90,17 @@ proxies:
       type: vmess
       udp: true
       uuid: f5f0babe-aea2-4f07-a1fc-3c9820253f49
-    - client-fingerprint: random
-      name: vless-1828532074
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
-        short-id: 4cc9dc65f7770115
-      server: 46.250.240.80
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1849373563
         - vless-1828294429
-        - vless-1827153943
-        - vless-1846612844
-        - vmess-1832888826
-        - vmess-1832988299
         - vless-1828532074
+        - vless-1827153943
+        - vmess-1832888826
+        - vless-1846612844
+        - vmess-1832988299
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -108,11 +108,11 @@ proxy-groups:
         - auto
         - vless-1849373563
         - vless-1828294429
-        - vless-1827153943
-        - vless-1846612844
-        - vmess-1832888826
-        - vmess-1832988299
         - vless-1828532074
+        - vless-1827153943
+        - vmess-1832888826
+        - vless-1846612844
+        - vmess-1832988299
       type: select
 rules:
     - MATCH,select
