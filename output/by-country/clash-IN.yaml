@@ -8,6 +8,13 @@ proxies:
       type: vmess
       udp: true
       uuid: 9db4c708-aef8-4359-821b-38e47990be0d
+    - name: vless-1833350649
+      network: tcp
+      port: 10443
+      server: 5.253.29.254
+      type: vless
+      udp: true
+      uuid: c7c27192-60a5-4ce1-b613-95270d82309d
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1828126764
@@ -22,6 +29,13 @@ proxies:
       type: vless
       udp: true
       uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
+    - name: vless-1828534465
+      network: ws
+      port: 14430
+      server: 13.140.56.100
+      type: vless
+      udp: true
+      uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
     - client-fingerprint: chrome
       name: vless-1827150264
       network: tcp
@@ -35,13 +49,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
-    - name: vless-1828534465
-      network: ws
-      port: 14430
-      server: 13.140.56.100
-      type: vless
-      udp: true
-      uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
     - name: vless-1832979614
       network: tcp
       port: 10443
@@ -127,13 +134,6 @@ proxies:
     - name: vless-1832979615
       network: ws
       port: 14430
-      server: 5.253.29.254
-      type: vless
-      udp: true
-      uuid: c7c27192-60a5-4ce1-b613-95270d82309d
-    - name: vless-1833350649
-      network: tcp
-      port: 10443
       server: 5.253.29.254
       type: vless
       udp: true
@@ -281,6 +281,13 @@ proxies:
       type: vmess
       udp: true
       uuid: 9db4c708-aef8-4359-821b-38e47990be0d
+    - name: vless-1828657558
+      network: ws
+      port: 14430
+      server: 5.253.29.254
+      type: vless
+      udp: true
+      uuid: c7c27192-60a5-4ce1-b613-95270d82309d
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-1827975868
@@ -378,23 +385,15 @@ proxies:
       type: vless
       udp: true
       uuid: 511c1563-2cb6-4064-abc6-a59ee49818a8
-    - alterId: 0
-      cipher: auto
-      name: vmess-1827161136
-      network: ws
-      port: 80
-      server: 152.67.8.205
-      type: vmess
-      udp: true
-      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-1827160958
+        - vless-1833350649
         - vless-1828126764
-        - vless-1827150264
         - vless-1828534465
+        - vless-1827150264
         - vless-1832979614
         - vless-1832867644
         - vless-1828654996
@@ -405,7 +404,6 @@ proxy-groups:
         - vless-1831091921
         - vless-1832868036
         - vless-1832979615
-        - vless-1833350649
         - vless-1827154275
         - vless-1827531126
         - vless-1827531171
@@ -418,6 +416,7 @@ proxy-groups:
         - vless-1832465387
         - vless-1827147766
         - vmess-1832844334
+        - vless-1828657558
         - vless-1827975868
         - vless-1827151965
         - vless-1835847395
@@ -425,16 +424,16 @@ proxy-groups:
         - vless-1828531927
         - vless-1828531799
         - vless-1828531851
-        - vmess-1827161136
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-1827160958
+        - vless-1833350649
         - vless-1828126764
-        - vless-1827150264
         - vless-1828534465
+        - vless-1827150264
         - vless-1832979614
         - vless-1832867644
         - vless-1828654996
@@ -445,7 +444,6 @@ proxy-groups:
         - vless-1831091921
         - vless-1832868036
         - vless-1832979615
-        - vless-1833350649
         - vless-1827154275
         - vless-1827531126
         - vless-1827531171
@@ -458,6 +456,7 @@ proxy-groups:
         - vless-1832465387
         - vless-1827147766
         - vmess-1832844334
+        - vless-1828657558
         - vless-1827975868
         - vless-1827151965
         - vless-1835847395
@@ -465,7 +464,6 @@ proxy-groups:
         - vless-1828531927
         - vless-1828531799
         - vless-1828531851
-        - vmess-1827161136
       type: select
 rules:
     - MATCH,select
