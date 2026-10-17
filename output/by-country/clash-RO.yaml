@@ -6,13 +6,13 @@ proxies:
       type: vless
       udp: true
       uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-    - name: vless-1827150146
-      network: raw
-      port: 2052
-      server: edge10.cyrionflare.com
+    - name: vless-1848883898
+      network: tcp
+      port: 8080
+      server: roxnsk.color-shop.ir
       type: vless
       udp: true
-      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
+      uuid: e3026ffb-cde6-4cfe-b4b7-f76d5264e969
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1828532029
@@ -27,6 +27,13 @@ proxies:
       type: vless
       udp: true
       uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
+    - name: vless-1827150146
+      network: raw
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1832690762
@@ -55,6 +62,20 @@ proxies:
       type: vless
       udp: true
       uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1835058279
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: 0QDBHaCRO2dPeeSVy3B3R_U12ZOvbvWl1JTFW_ZcpD0
+        short-id: 31e91d43e553bf32
+      server: 82.117.255.174
+      servername: gateway.icloud.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 679439c5-28f2-485e-af5f-60a5fcd9c36c
     - name: vless-1832972763
       network: tcp
       port: 2052
@@ -83,49 +104,37 @@ proxies:
       skip-cert-verify: true
       sni: css.rbxcdn.com
       type: hysteria2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1835058279
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: 0QDBHaCRO2dPeeSVy3B3R_U12ZOvbvWl1JTFW_ZcpD0
-        short-id: 31e91d43e553bf32
-      server: 82.117.255.174
-      servername: gateway.icloud.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 679439c5-28f2-485e-af5f-60a5fcd9c36c
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1827150200
-        - vless-1827150146
+        - vless-1848883898
         - vless-1828532029
+        - vless-1827150146
         - vless-1832690762
         - shadowsocks-1827146803
         - vless-1832465389
+        - vless-1835058279
         - vless-1832972763
         - vless-1827151764
         - hysteria2-1827145061
-        - vless-1835058279
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1827150200
-        - vless-1827150146
+        - vless-1848883898
         - vless-1828532029
+        - vless-1827150146
         - vless-1832690762
         - shadowsocks-1827146803
         - vless-1832465389
+        - vless-1835058279
         - vless-1832972763
         - vless-1827151764
         - hysteria2-1827145061
-        - vless-1835058279
       type: select
 rules:
     - MATCH,select
