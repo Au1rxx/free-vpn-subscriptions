@@ -1,20 +1,6 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1827144974
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: lwKaUQ81wJUJRsqAPsfTPj5V_f9N50UYEwzRI_nuq2g
-        short-id: e88cb983f3c97528
-      server: 93.89.220.37
-      servername: ibm.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 185e2bb3-2934-48d0-bbd5-dd20d16e83ee
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
       name: vless-1827145794
       network: tcp
       port: 8443
@@ -123,20 +109,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 5504eaa8-1395-402f-8e0e-75ecd762e627
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1827267324
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: lwKaUQ81wJUJRsqAPsfTPj5V_f9N50UYEwzRI_nuq2g
-        short-id: e88cb983f3c97528
-      server: 93.89.220.37
-      servername: ibm.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 185e2bb3-2934-48d0-bbd5-dd20d16e83ee
     - name: trojan-1827530434
       password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
       port: 449
@@ -407,11 +379,24 @@ proxies:
       sni: 109.206.241.10
       type: trojan
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1850028790
+      network: tcp
+      port: 56789
+      reality-opts:
+        public-key: PDHRi_RRFsPhxLoH2C1l9A9HdL2y7g1uOzXmY0XnmzQ
+        short-id: a2aa
+      server: ston.fytpn.com
+      servername: ston.fytpn.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a034eba2-8b2c-40af-9233-629c45b40fc2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1827144974
         - vless-1827145794
         - hysteria2-1827145895
         - vless-1827145900
@@ -421,7 +406,6 @@ proxy-groups:
         - vless-1827151330
         - vless-1827154865
         - vmess-1827156692
-        - vless-1827267324
         - trojan-1827530434
         - vless-1827531179
         - vless-1827531189
@@ -443,12 +427,12 @@ proxy-groups:
         - vless-1843512932
         - vless-1845413202
         - trojan-1848080944
+        - vless-1850028790
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1827144974
         - vless-1827145794
         - hysteria2-1827145895
         - vless-1827145900
@@ -458,7 +442,6 @@ proxy-groups:
         - vless-1827151330
         - vless-1827154865
         - vmess-1827156692
-        - vless-1827267324
         - trojan-1827530434
         - vless-1827531179
         - vless-1827531189
@@ -480,6 +463,7 @@ proxy-groups:
         - vless-1843512932
         - vless-1845413202
         - trojan-1848080944
+        - vless-1850028790
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,31 @@
 proxies:
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1849373563
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: gCAazs5uxNuMZIxfDdw8wPE0nwKY4QfBfBkQveKAkEk
+        short-id: 0ad08b47f498efd2
+      server: 51.161.204.244
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 36e89875-9c53-482b-bc41-d3890e9da176
+    - client-fingerprint: firefox
+      name: vless-1828294429
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
+        short-id: 4cc9dc65f7770115
+      server: 46.250.240.80
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
     - client-fingerprint: firefox
       name: vless-1827153943
       network: raw
@@ -26,22 +53,9 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
-    - client-fingerprint: firefox
-      name: vless-1828294429
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
-        short-id: 4cc9dc65f7770115
-      server: 46.250.240.80
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
     - alterId: 0
       cipher: auto
-      name: vmess-1832988299
+      name: vmess-1832888826
       network: ws
       port: 443
       server: 172.67.195.146
@@ -53,7 +67,7 @@ proxies:
       uuid: f5f0babe-aea2-4f07-a1fc-3c9820253f49
     - alterId: 0
       cipher: auto
-      name: vmess-1832888826
+      name: vmess-1832988299
       network: ws
       port: 443
       server: 172.67.195.146
@@ -80,22 +94,24 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1849373563
+        - vless-1828294429
         - vless-1827153943
         - vless-1846612844
-        - vless-1828294429
-        - vmess-1832988299
         - vmess-1832888826
+        - vmess-1832988299
         - vless-1828532074
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1849373563
+        - vless-1828294429
         - vless-1827153943
         - vless-1846612844
-        - vless-1828294429
-        - vmess-1832988299
         - vmess-1832888826
+        - vmess-1832988299
         - vless-1828532074
       type: select
 rules:
