@@ -20,6 +20,14 @@ proxies:
       sni: nimm.mpd.cc.cd
       type: trojan
       udp: true
+    - name: trojan-1827148822
+      password: e309e031-991e-4656-9934-44d10deb8fd8
+      port: 2053
+      server: 172.67.176.3
+      skip-cert-verify: false
+      sni: nimm.mpd.cc.cd
+      type: trojan
+      udp: true
     - name: trojan-1827149379
       password: e309e031-991e-4656-9934-44d10deb8fd8
       port: 2053
@@ -233,12 +241,27 @@ proxies:
       type: vmess
       udp: true
       uuid: a515723a-6055-4800-8948-e0940f9f76c8
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1844560419
+      network: tcp
+      port: 17684
+      reality-opts:
+        public-key: AavBPGGJUpyGWiriV_Fbx-SrAvR5t-9mHeQY8uIltyo
+        short-id: 41b9cb10b696
+      server: 8dwou5alze.chhbuv.cn
+      servername: www.tue.nl
+      tls: true
+      type: vless
+      udp: true
+      uuid: d9109567-3fc3-4e08-9cac-4d9162ef5a9f
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1827147108
         - trojan-1827148810
+        - trojan-1827148822
         - trojan-1827149379
         - trojan-1827149524
         - vless-1827150153
@@ -260,6 +283,7 @@ proxy-groups:
         - trojan-1841272773
         - vless-1841768721
         - vmess-1841771451
+        - vless-1844560419
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -267,6 +291,7 @@ proxy-groups:
         - auto
         - vless-1827147108
         - trojan-1827148810
+        - trojan-1827148822
         - trojan-1827149379
         - trojan-1827149524
         - vless-1827150153
@@ -288,6 +313,7 @@ proxy-groups:
         - trojan-1841272773
         - vless-1841768721
         - vmess-1841771451
+        - vless-1844560419
       type: select
 rules:
     - MATCH,select
