@@ -1,25 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      name: vless-1833711291
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: 5k0dtOSzmshCubdYeKppsUdHU4i2ghaB9uSJSzGjHW4
-        short-id: 6dbf4931096f9890
-      server: 31.59.210.37
-      servername: www.yandex.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
-    - name: trojan-1853958800
-      password: u93yPGuY2zgIsisJZKS2QzJzg
-      port: 443
-      server: 78.17.171.62
-      skip-cert-verify: false
-      sni: freetoplay-2.tetris-game.world
-      type: trojan
-      udp: true
     - name: vless-1853654573
       network: grpc
       port: 443
@@ -30,6 +9,14 @@ proxies:
       type: vless
       udp: true
       uuid: 9cb8d71c-fe06-4402-a591-eaa1f173b890
+    - name: trojan-1863235442
+      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
+      port: 443
+      server: pl2.dedushka.top
+      skip-cert-verify: false
+      sni: pl2.dedushka.top
+      type: trojan
+      udp: true
     - client-fingerprint: safari
       name: vless-1853966617
       network: grpc
@@ -43,14 +30,6 @@ proxies:
       type: vless
       udp: true
       uuid: 5413edfb-08d6-4fba-b51c-809c04feb127
-    - name: trojan-1863235442
-      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
-      port: 443
-      server: pl2.dedushka.top
-      skip-cert-verify: false
-      sni: pl2.dedushka.top
-      type: trojan
-      udp: true
     - name: trojan-1867100780
       password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
       port: 443
@@ -59,6 +38,21 @@ proxies:
       sni: pl1.dedushka.top
       type: trojan
       udp: true
+    - name: trojan-1855918773
+      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
+      port: 443
+      server: pl2.dedushka.top
+      skip-cert-verify: false
+      sni: pl2.dedushka.top
+      type: trojan
+      udp: true
+    - name: vless-1854135104
+      network: tcp
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - client-fingerprint: chrome
       name: vless-1853959852
       network: tcp
@@ -125,20 +119,6 @@ proxies:
       udp: true
       uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
     - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1853487422
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: xY1KpNxaIGmi6jfeudYQ_aaLGQqWK_uHStnwUFd2_2E
-        short-id: fa3ea655619a3e78
-      server: 82.118.22.161
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 05488656-d4bf-4634-8b2e-e4ff5a56c7e2
-    - client-fingerprint: chrome
       name: vless-1853462692
       network: raw
       port: 2053
@@ -151,41 +131,55 @@ proxies:
       type: vless
       udp: true
       uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1827162833
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: y3YCXTqEVks0nGfiSwJ43ol4pY69-mWFUZsdmveoVDM
+        short-id: 46455ff0
+      server: 177.1.192.72
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4d852af3-a121-41aa-9aed-4ca40a6f7b4d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1833711291
-        - trojan-1853958800
         - vless-1853654573
-        - vless-1853966617
         - trojan-1863235442
+        - vless-1853966617
         - trojan-1867100780
+        - trojan-1855918773
+        - vless-1854135104
         - vless-1853959852
         - vless-1827188320
         - vless-1828149341
         - vless-1827533748
         - vless-1827155588
-        - vless-1853487422
         - vless-1853462692
+        - vless-1827162833
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1833711291
-        - trojan-1853958800
         - vless-1853654573
-        - vless-1853966617
         - trojan-1863235442
+        - vless-1853966617
         - trojan-1867100780
+        - trojan-1855918773
+        - vless-1854135104
         - vless-1853959852
         - vless-1827188320
         - vless-1828149341
         - vless-1827533748
         - vless-1827155588
-        - vless-1853487422
         - vless-1853462692
+        - vless-1827162833
       type: select
 rules:
     - MATCH,select
