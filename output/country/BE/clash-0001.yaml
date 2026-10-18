@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1837385223
+      network: ws
+      port: 2095
+      server: vqrlof-pwa5a7-onfjlv.zedbazi061.workers.dev
+      type: vless
+      udp: true
+      uuid: 73796e63-0000-4000-8000-000000000008
     - name: vless-1840027786
       network: ws
       port: 443
@@ -23,6 +30,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1837385223
         - vless-1840027786
         - vless-1854081356
       type: url-test
@@ -30,6 +38,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1837385223
         - vless-1840027786
         - vless-1854081356
       type: select
