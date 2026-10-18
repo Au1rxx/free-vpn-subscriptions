@@ -1,4 +1,43 @@
 proxies:
+    - client-fingerprint: chrome
+      name: vless-1853962012
+      network: tcp
+      port: 51106
+      reality-opts:
+        public-key: 2k8UhfxEK4WSVLWUr-uRExRiTiAsacWpe6I1xrnyt38
+        short-id: abcd1234
+      server: 212.81.47.99
+      servername: apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f5f0babe-aea2-4f07-a1fc-3c9820253f49
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1853331574
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: gCAazs5uxNuMZIxfDdw8wPE0nwKY4QfBfBkQveKAkEk
+        short-id: 0ad08b47f498efd2
+      server: 51.161.204.244
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 36e89875-9c53-482b-bc41-d3890e9da176
+    - alterId: 0
+      cipher: auto
+      name: vmess-1855801235
+      network: ws
+      port: 443
+      server: 172.67.197.71
+      servername: aus.lovehk.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vmess
+      udp: true
+      uuid: f5f0babe-aea2-4f07-a1fc-3c9820253f49
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1853340274
@@ -50,6 +89,20 @@ proxies:
       type: vmess
       udp: true
       uuid: f5f0babe-aea2-4f07-a1fc-3c9820253f49
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1853340311
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: a2qGjvUPq6Nz5FTbn_MSHp-055q2h8YXqIL5VIJ5zwE
+        short-id: d15c17cef9b2e456
+      server: 51.161.204.242
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a14b736b-a92a-48d6-a596-5d31f7378ded
     - client-fingerprint: ios
       flow: xtls-rprx-vision
       name: vless-1859957299
@@ -64,40 +117,33 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
-    - client-fingerprint: firefox
-      name: vless-1827153943
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
-        short-id: 4cc9dc65f7770115
-      server: 46.250.240.80
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1853962012
+        - vless-1853331574
+        - vmess-1855801235
         - vless-1853340274
         - vless-1858135822
         - vmess-1832988299
         - vmess-1832888826
+        - vless-1853340311
         - vless-1859957299
-        - vless-1827153943
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1853962012
+        - vless-1853331574
+        - vmess-1855801235
         - vless-1853340274
         - vless-1858135822
         - vmess-1832988299
         - vmess-1832888826
+        - vless-1853340311
         - vless-1859957299
-        - vless-1827153943
       type: select
 rules:
     - MATCH,select

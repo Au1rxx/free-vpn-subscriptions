@@ -1,80 +1,29 @@
 proxies:
-    - client-fingerprint: safari
-      name: vless-1853651708
-      network: grpc
-      port: 26128
-      reality-opts:
-        public-key: sACiHit5lNtPRK_eFP6jT8dMPUZ4kQRsfPj_LL5p7Uk
-        short-id: 13ac4d3bdadf1ea1
-      server: se1.h1cloud.net
-      servername: www.icloud.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 68c3d665-b2b5-4ffb-9f37-9f3d8c47324d
-    - name: vless-1853442966
-      network: grpc
-      port: 443
-      server: 87.242.117.59
-      servername: se1.my-cdn.org
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c19ecc7f-8312-4d9d-90c9-1a997d82d3c5
-    - name: vless-1853353092
-      network: ws
-      port: 14430
-      server: 5.178.109.174
-      type: vless
-      udp: true
-      uuid: 80de563a-cac8-40ea-8cb0-4cb082dd92f9
-    - client-fingerprint: chrome
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-1854316329
+      name: vless-1853341731
       network: tcp
       port: 25119
       reality-opts:
         public-key: szPq4a3cvxfBOmGyg-UJCV3d1Jqjnj7YR3gaxyYtnk4
         short-id: 10f517
-      server: se3.h1cloud.net
+      server: 136.148.212.230
       servername: www.samsung.com
       tls: true
       type: vless
       udp: true
       uuid: f90b7d43-69e2-4b46-a672-8029bc6796a2
-    - client-fingerprint: firefox
-      name: vless-1853476027
-      network: tcp
-      port: 26100
-      reality-opts:
-        public-key: 1uuvuG2Jl_o6yoVvOYm3hEboArh2Znu7zCy4Tqj36TI
-        short-id: 8045087bda646f1b
-      server: se1.h1cloud.net
-      servername: www.icloud.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 68c3d665-b2b5-4ffb-9f37-9f3d8c47324d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1853651708
-        - vless-1853442966
-        - vless-1853353092
-        - vless-1854316329
-        - vless-1853476027
+        - vless-1853341731
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1853651708
-        - vless-1853442966
-        - vless-1853353092
-        - vless-1854316329
-        - vless-1853476027
+        - vless-1853341731
       type: select
 rules:
     - MATCH,select
