@@ -1,0 +1,123 @@
+{
+  "endpoints": [
+    {
+      "address": [
+        "100.80.234.177/32"
+      ],
+      "peers": [
+        {
+          "address": "138.186.142.204",
+          "allowed_ips": [
+            "0.0.0.0/0",
+            "::/0"
+          ],
+          "port": 65142,
+          "pre_shared_key": "N/gfMZSjvP8mbXfVP2hnD5CX8BkGvOyheJ67mCpD+QQ=",
+          "public_key": "3L8yhe+v7TzBeesOFxSdU2VUa8FG4PTuoiiUoV7DAGY=",
+          "reserved": "AAAA"
+        }
+      ],
+      "private_key": "cIq+3tcHVT7gRMl4kIv0WE68ERiTmDtA7rhyHhLJ/mg=",
+      "tag": "wireguard-1853439769",
+      "type": "wireguard"
+    }
+  ],
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "50.117.15.225",
+      "server_port": 443,
+      "tag": "vless-1853340498",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "reality": {
+          "enabled": true,
+          "public_key": "G7bpUPFSW28-oE6ff8qZac1_apU6PiJ-GHmi7tAPDSY",
+          "short_id": "91af08b1ce1f"
+        },
+        "server_name": "www.foxsports.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "67eb6b17-7797-4ded-bf52-423c4c5f6cbd"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "104.238.2.82",
+      "server_port": 443,
+      "tag": "vless-1853340608",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "reality": {
+          "enabled": true,
+          "public_key": "Y0noOXC8qHmbM0GmDpj-9BBwKSOtHs-uMbNfKU050GQ",
+          "short_id": "b558b9305a0b"
+        },
+        "server_name": "www.microsoft.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "d806a58b-33aa-42e0-b170-395e49c16b37"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "sql.popmintxo.cc",
+      "server_port": 443,
+      "tag": "vless-1853340831",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "reality": {
+          "enabled": true,
+          "public_key": "Y0noOXC8qHmbM0GmDpj-9BBwKSOtHs-uMbNfKU050GQ",
+          "short_id": "b558b9305a0b"
+        },
+        "server_name": "www.microsoft.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "d806a58b-33aa-42e0-b170-395e49c16b37"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1853340498",
+        "vless-1853340608",
+        "vless-1853340831",
+        "wireguard-1853439769"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1853340498",
+        "vless-1853340608",
+        "vless-1853340831",
+        "wireguard-1853439769"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

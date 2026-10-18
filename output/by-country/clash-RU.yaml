@@ -6,6 +6,34 @@ proxies:
       skip-cert-verify: true
       sni: 194.87.118.184
       type: hysteria2
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1853340232
+      network: tcp
+      port: 444
+      reality-opts:
+        public-key: P7F65GjTQGZju-N8CVHtlKNaWebVe_76Xt7Lm00RuH0
+        short-id: ""
+      server: 103.24.207.39
+      servername: vextor.win
+      tls: true
+      type: vless
+      udp: true
+      uuid: 258d8fc5-206c-48fd-88df-169dbbe44d3f
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1853336905
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: ZtAlhN1pU4MTmv4KaX9J_5_8KWnwy9IOnc-BLzIf234
+        short-id: 11ac376e18d20343
+      server: 168.113.135.90
+      servername: m-vruvc.mvpstr.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7c86240f-ac0c-4cfe-87c8-fa0dd69b2d25
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1852076841
@@ -41,41 +69,29 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-1853336905
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: ZtAlhN1pU4MTmv4KaX9J_5_8KWnwy9IOnc-BLzIf234
-        short-id: 11ac376e18d20343
-      server: 168.113.135.90
-      servername: m-vruvc.mvpstr.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7c86240f-ac0c-4cfe-87c8-fa0dd69b2d25
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1828371109
+        - vless-1853340232
+        - vless-1853336905
         - vless-1852076841
         - hysteria2-1828371112
         - hysteria2-1827784274
         - hysteria2-1827145511
-        - vless-1853336905
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1828371109
+        - vless-1853340232
+        - vless-1853336905
         - vless-1852076841
         - hysteria2-1828371112
         - hysteria2-1827784274
         - hysteria2-1827145511
-        - vless-1853336905
       type: select
 rules:
     - MATCH,select
