@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-1856453339
+      network: ws
+      port: 2087
+      server: 172.67.168.158
+      servername: vn11vina.210z.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1d0e8e53-6999-4752-ac21-c0c54ff5bc09
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1853340875
@@ -31,6 +41,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1856453339
         - vless-1853340875
         - vless-1853963025
       type: url-test
@@ -38,6 +49,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1856453339
         - vless-1853340875
         - vless-1853963025
       type: select
