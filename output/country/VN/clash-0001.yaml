@@ -1,15 +1,4 @@
 proxies:
-    - flow: xtls-rprx-vision
-      name: vless-1827150683
-      network: tcp
-      port: 443
-      server: 160.25.74.91
-      servername: u695098ue79dbcd4s783.gogocs.xyz
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 30e52776-55ac-3cb4-8d36-e2910f07e2c3
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1827151684
@@ -31,6 +20,15 @@ proxies:
       type: vless
       udp: true
       uuid: b83faafc-cbb7-4655-99d4-2c4c39a49d1b
+    - alterId: 0
+      cipher: auto
+      name: vmess-1827158759
+      network: tcp
+      port: 16256
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - name: vless-1827975328
       network: tcp
       port: 2086
@@ -182,9 +180,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1827150683
         - vless-1827151684
         - vless-1827154159
+        - vmess-1827158759
         - vless-1827975328
         - vless-1828294338
         - vless-1828294434
@@ -201,9 +199,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vless-1827150683
         - vless-1827151684
         - vless-1827154159
+        - vmess-1827158759
         - vless-1827975328
         - vless-1828294338
         - vless-1828294434

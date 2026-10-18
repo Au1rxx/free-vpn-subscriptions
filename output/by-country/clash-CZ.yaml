@@ -1,18 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1827152843
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: hlY5ce1UsVIgE46y5PlEZhUsSaXUnCtoDLLaGrhInjw
-        short-id: 23d0950d60bc0d5b
-      server: 195.123.245.241
-      servername: gateway.icloud.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7c053ca8-38cc-45e2-930c-eda1fd66f903
     - cipher: aes-256-gcm
       name: shadowsocks-1832968992
       password: I6o9NnialYLMEjVt28RF4dpjmr9wMvNL
@@ -30,37 +16,19 @@ proxies:
       type: vless
       udp: true
       uuid: 6206cb76-491d-4237-baf1-8c29eea4eafb
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-1853451852
-      network: tcp
-      port: 8478
-      reality-opts:
-        public-key: n3BiVX_oDQXcqC0OmOm5o0RuOaXoHHhdiQ2s-xqkayA
-        short-id: d7c8227902c1d878
-      server: 103.200.28.124
-      servername: ru.tradingview.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4cb9157c-cd6f-451f-b786-1c92edec32cb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1827152843
         - shadowsocks-1832968992
         - vless-1853331588
-        - vless-1853451852
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1827152843
         - shadowsocks-1832968992
         - vless-1853331588
-        - vless-1853451852
       type: select
 rules:
     - MATCH,select
