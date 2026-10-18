@@ -8,17 +8,32 @@ proxies:
       type: vmess
       udp: true
       uuid: 567f4be5-12ab-42e1-b8d9-db6fd1fdd31c
+    - client-fingerprint: chrome
+      name: vless-1828374208
+      network: raw
+      port: 35728
+      reality-opts:
+        public-key: vhUFNoFcvtZAVMo8y5K5eU2V43m5q6yjmWIhp5RkFng
+        short-id: 69a2
+      server: 178.236.16.98
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: a00d89f6-ab7e-4e30-a5e5-54c701d62c93
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vmess-1856394330
+        - vless-1828374208
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vmess-1856394330
+        - vless-1828374208
       type: select
 rules:
     - MATCH,select
