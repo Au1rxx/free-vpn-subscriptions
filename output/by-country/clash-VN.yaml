@@ -1,25 +1,29 @@
 proxies:
-    - name: vless-1856453339
-      network: ws
-      port: 2087
-      server: 172.67.168.158
-      servername: vn11vina.210z.dev
-      skip-cert-verify: false
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1851981784
+      network: tcp
+      port: 51279
+      reality-opts:
+        public-key: f6Tj8-uvWsLv3V-lGLuPciArp5oKqUImBg-U7-WJ-0A
+        short-id: bb82c8
+      server: 154.21.203.106
+      servername: www.tesla.com
       tls: true
       type: vless
       udp: true
-      uuid: 1d0e8e53-6999-4752-ac21-c0c54ff5bc09
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1856453339
+        - vless-1851981784
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1856453339
+        - vless-1851981784
       type: select
 rules:
     - MATCH,select
