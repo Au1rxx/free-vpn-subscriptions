@@ -1,6 +1,13 @@
 proxies:
-    - name: vless-1827150146
-      network: raw
+    - name: vless-1853331516
+      network: tcp
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
+    - name: vless-1853331568
+      network: tcp
       port: 2052
       server: edge10.cyrionflare.com
       type: vless
@@ -34,48 +41,23 @@ proxies:
       type: vless
       udp: true
       uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
-    - name: vless-1853331568
-      network: tcp
-      port: 2052
-      server: edge10.cyrionflare.com
-      type: vless
-      udp: true
-      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-    - name: vless-1853331516
-      network: tcp
-      port: 2052
-      server: edge10.cyrionflare.com
-      type: vless
-      udp: true
-      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-    - name: vless-1854135104
-      network: tcp
-      port: 2052
-      server: edge10.cyrionflare.com
-      type: vless
-      udp: true
-      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1827150146
+        - vless-1853331516
+        - vless-1853331568
         - vless-1855697618
         - vless-1828532029
-        - vless-1853331568
-        - vless-1853331516
-        - vless-1854135104
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1827150146
+        - vless-1853331516
+        - vless-1853331568
         - vless-1855697618
         - vless-1828532029
-        - vless-1853331568
-        - vless-1853331516
-        - vless-1854135104
       type: select
 rules:
     - MATCH,select
