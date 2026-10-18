@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1828654984
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: pkKL2cqqPNxc1rqrvhJmexI7NOeZFaGUawAwqQpVY3c
+        short-id: 1d2fecf1d2475168
+      server: ro2.aiage.work
+      servername: ro2.aiage.work
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1827151637
@@ -57,34 +71,6 @@ proxies:
       uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-1853334221
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 0dtXhkhkh-_MBFoGwzdW4PdlJtVX9oswhJZHbUPGCmo
-        short-id: 5d7a45ac0ad6adff
-      server: md1.aiage.work
-      servername: md1.aiage.work
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-1853334235
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 0dtXhkhkh-_MBFoGwzdW4PdlJtVX9oswhJZHbUPGCmo
-        short-id: e829f50f0a3f416b
-      server: md1.aiage.work
-      servername: md1.aiage.work
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
       name: vless-1844557853
       network: tcp
       port: 443
@@ -97,10 +83,10 @@ proxies:
       type: vless
       udp: true
       uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
-    - client-fingerprint: safari
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1853334167
-      network: tcp
+      name: vless-1833016493
+      network: raw
       port: 443
       reality-opts:
         public-key: 0dtXhkhkh-_MBFoGwzdW4PdlJtVX9oswhJZHbUPGCmo
@@ -111,15 +97,43 @@ proxies:
       type: vless
       udp: true
       uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
-    - client-fingerprint: safari
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1853334185
+      name: vless-1828375770
       network: tcp
       port: 443
       reality-opts:
         public-key: 0dtXhkhkh-_MBFoGwzdW4PdlJtVX9oswhJZHbUPGCmo
         short-id: e829f50f0a3f416b
       server: md1.aiage.work
+      servername: ""
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1853354201
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: pkKL2cqqPNxc1rqrvhJmexI7NOeZFaGUawAwqQpVY3c
+        short-id: 1d2fecf1d2475168
+      server: ro2.aiage.work
+      servername: ro2.aiage.work
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1849373352
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 0dtXhkhkh-_MBFoGwzdW4PdlJtVX9oswhJZHbUPGCmo
+        short-id: 5d7a45ac0ad6adff
+      server: 85.120.144.27
       servername: md1.aiage.work
       tls: true
       type: vless
@@ -129,29 +143,31 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1828654984
         - vless-1827151637
         - vless-1829089521
         - vless-1827401186
         - vless-1853340195
-        - vless-1853334221
-        - vless-1853334235
         - vless-1844557853
-        - vless-1853334167
-        - vless-1853334185
+        - vless-1833016493
+        - vless-1828375770
+        - vless-1853354201
+        - vless-1849373352
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1828654984
         - vless-1827151637
         - vless-1829089521
         - vless-1827401186
         - vless-1853340195
-        - vless-1853334221
-        - vless-1853334235
         - vless-1844557853
-        - vless-1853334167
-        - vless-1853334185
+        - vless-1833016493
+        - vless-1828375770
+        - vless-1853354201
+        - vless-1849373352
       type: select
 rules:
     - MATCH,select
