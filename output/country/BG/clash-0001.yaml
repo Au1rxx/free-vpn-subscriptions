@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-cfb
+      name: shadowsocks-1827969065
+      password: aLpQtfEZe445QyHk
+      port: 9098
+      server: 213.183.63.60
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-1827969291
       password: cp8pRSUAyLhTfVWH
       port: 9064
@@ -34,20 +41,6 @@ proxies:
       server: 213.183.63.60
       type: ss
       udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1853451776
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: _u-Nv9dyWbkoAkklJAYQaixa60hmhbn6kZcUNhrdqW8
-        short-id: d498984fe96ad0ab
-      server: bg1.spacevpn.space
-      servername: bg1.spacevpn.space
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2e34af79-e5dc-ae2a-3393-65479f695282
     - client-fingerprint: ios
       flow: xtls-rprx-vision
       name: vless-1856200624
@@ -66,24 +59,24 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1827969065
         - shadowsocks-1827969291
         - shadowsocks-1827969348
         - shadowsocks-1827969381
         - shadowsocks-1827969512
         - shadowsocks-1827969653
-        - vless-1853451776
         - vless-1856200624
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1827969065
         - shadowsocks-1827969291
         - shadowsocks-1827969348
         - shadowsocks-1827969381
         - shadowsocks-1827969512
         - shadowsocks-1827969653
-        - vless-1853451776
         - vless-1856200624
       type: select
 rules:
