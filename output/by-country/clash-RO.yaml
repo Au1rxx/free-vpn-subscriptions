@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1827150146
+      network: raw
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1832690762
@@ -41,6 +48,13 @@ proxies:
       type: vless
       udp: true
       uuid: 679439c5-28f2-485e-af5f-60a5fcd9c36c
+    - name: vless-1853452254
+      network: tcp
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1855697618
@@ -55,16 +69,9 @@ proxies:
       type: vless
       udp: true
       uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
-    - name: hysteria2-1827145061
-      password: gf1:gfhysteria2024
-      port: 443
-      server: 185.156.44.99
-      skip-cert-verify: true
-      sni: css.rbxcdn.com
-      type: hysteria2
-    - client-fingerprint: random
+    - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1853346649
+      name: vless-1856639166
       network: tcp
       port: 443
       reality-opts:
@@ -115,13 +122,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1827150146
         - vless-1832690762
         - vless-1853331516
         - vless-1827150200
         - vless-1835058279
+        - vless-1853452254
         - vless-1855697618
-        - hysteria2-1827145061
-        - vless-1853346649
+        - vless-1856639166
         - hysteria2-1853488203
         - hysteria2-1856632201
         - hysteria2-1854309346
@@ -132,13 +140,14 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1827150146
         - vless-1832690762
         - vless-1853331516
         - vless-1827150200
         - vless-1835058279
+        - vless-1853452254
         - vless-1855697618
-        - hysteria2-1827145061
-        - vless-1853346649
+        - vless-1856639166
         - hysteria2-1853488203
         - hysteria2-1856632201
         - hysteria2-1854309346
