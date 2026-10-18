@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-1831100521
+      network: ws
+      port: 2053
+      server: 172.65.90.41
+      servername: wzs.echo.net.eu.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d18c6897-2849-456a-8c46-d7ecece47c20
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1844560417
@@ -17,12 +27,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1831100521
         - vless-1844560417
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1831100521
         - vless-1844560417
       type: select
 rules:
