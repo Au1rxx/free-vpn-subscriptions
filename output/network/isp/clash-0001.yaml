@@ -6,6 +6,13 @@ proxies:
       server: 211.178.105.134
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-1827146715
+      password: 1234!@#$
+      port: 1774
+      server: 49.254.204.134
+      type: ss
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1827146803
       password: QFWzCw2uX9B9i6qAYeFBIE
@@ -855,34 +862,6 @@ proxies:
       type: vmess
       udp: true
       uuid: b26c4803-0bca-467c-a245-c9a80bdd72ec
-    - client-fingerprint: safari
-      flow: xtls-rprx-vision
-      name: vless-1864831366
-      network: tcp
-      port: 16692
-      reality-opts:
-        public-key: o2uLRBkgcAPCavo12l6VUzaSnSmxjUvod-NBSiUPdy8
-        short-id: "85"
-      server: 103.72.5.57
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c752c174-41d2-41c3-ac2a-e4c0df9e5482
-    - client-fingerprint: ios
-      flow: xtls-rprx-vision
-      name: vless-1864831387
-      network: tcp
-      port: 14135
-      reality-opts:
-        public-key: 4kg-LfTstNTAHOmGtT6cuvz0-7689qUkmTrXOOQtZQI
-        short-id: ae04
-      server: 123.31.24.135
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c752c174-41d2-41c3-ac2a-e4c0df9e5482
     - name: vless-1865421425
       network: ws
       port: 14430
@@ -897,11 +876,26 @@ proxies:
       server: 78.135.77.110
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1868593196
+      network: tcp
+      port: 10444
+      reality-opts:
+        public-key: 0oTkcqwLTUNLnSOP-VUWErmy6usAIg-biBE6ioZO-Vo
+        short-id: 8debcf36f1cc69ff
+      server: 95.128.71.79
+      servername: ads.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8cef7621-c6f0-486e-b51d-59c30c5b0b25
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827145973
+        - shadowsocks-1827146715
         - shadowsocks-1827146803
         - shadowsocks-1827147663
         - trojan-1827149554
@@ -981,16 +975,16 @@ proxy-groups:
         - vless-1856088622
         - trojan-1856998112
         - vmess-1858143195
-        - vless-1864831366
-        - vless-1864831387
         - vless-1865421425
         - shadowsocks-1867108509
+        - vless-1868593196
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1827145973
+        - shadowsocks-1827146715
         - shadowsocks-1827146803
         - shadowsocks-1827147663
         - trojan-1827149554
@@ -1070,10 +1064,9 @@ proxy-groups:
         - vless-1856088622
         - trojan-1856998112
         - vmess-1858143195
-        - vless-1864831366
-        - vless-1864831387
         - vless-1865421425
         - shadowsocks-1867108509
+        - vless-1868593196
       type: select
 rules:
     - MATCH,select
