@@ -1,0 +1,46 @@
+{
+  "outbounds": [
+    {
+      "method": "aes-256-gcm",
+      "password": "0dad9116-eb88-47b6-98dd-67c9ed43afa6",
+      "server": "200.181.82.92",
+      "server_port": 22023,
+      "tag": "shadowsocks-1853442923",
+      "type": "shadowsocks"
+    },
+    {
+      "method": "aes-256-gcm",
+      "password": "b46733ae-950f-402f-b2b2-c3a400c492f3",
+      "server": "200.181.82.92",
+      "server_port": 22011,
+      "tag": "shadowsocks-1853442824",
+      "type": "shadowsocks"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "shadowsocks-1853442923",
+        "shadowsocks-1853442824"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "shadowsocks-1853442923",
+        "shadowsocks-1853442824"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

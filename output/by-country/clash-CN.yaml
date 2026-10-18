@@ -1,0 +1,24 @@
+proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-1854366601
+      network: ws
+      port: 10086
+      server: 120.48.133.162
+      type: vmess
+      udp: true
+      uuid: 4fc543d5-23ce-4556-ae2b-01685edd4397
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vmess-1854366601
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vmess-1854366601
+      type: select
+rules:
+    - MATCH,select

@@ -1,6 +1,27 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-1832690762
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
+        short-id: d06d78e974491b6e
+      server: 46.28.67.55
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
+    - name: vless-1827150200
+      network: tcp
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-1835058279
       network: raw
       port: 443
@@ -69,10 +90,19 @@ proxies:
       skip-cert-verify: true
       sni: whatsapp.com
       type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1827146803
+      password: QFWzCw2uX9B9i6qAYeFBIE
+      port: 443
+      server: 154.46.31.106
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1832690762
+        - vless-1827150200
         - vless-1835058279
         - vless-1855697618
         - hysteria2-1827145061
@@ -80,11 +110,14 @@ proxy-groups:
         - hysteria2-1853488203
         - hysteria2-1854309346
         - hysteria2-1853489157
+        - shadowsocks-1827146803
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1832690762
+        - vless-1827150200
         - vless-1835058279
         - vless-1855697618
         - hysteria2-1827145061
@@ -92,6 +125,7 @@ proxy-groups:
         - hysteria2-1853488203
         - hysteria2-1854309346
         - hysteria2-1853489157
+        - shadowsocks-1827146803
       type: select
 rules:
     - MATCH,select
