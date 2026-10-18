@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1856186685
+      password: b3a11068-1a7e-4643-85de-7c82cce46943
+      port: 443
+      server: uk-d9ca48498a.shamanapp.online
+      skip-cert-verify: false
+      sni: uk.shamanapp.online
+      type: hysteria2
     - cipher: aes-128-gcm
       name: shadowsocks-1843595974
       password: 17619e86dcfbf696a6274b1f4a714419
@@ -13,6 +20,13 @@ proxies:
       skip-cert-verify: true
       sni: uk.shamanapp.online
       type: hysteria2
+    - name: vless-1855965234
+      network: tcp
+      port: 22222
+      server: 13.135.17.74
+      type: vless
+      udp: true
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1843685281
@@ -215,8 +229,10 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1856186685
         - shadowsocks-1843595974
         - hysteria2-1853341837
+        - vless-1855965234
         - vless-1843685281
         - vless-1851982259
         - vless-1853331631
@@ -239,8 +255,10 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - hysteria2-1856186685
         - shadowsocks-1843595974
         - hysteria2-1853341837
+        - vless-1855965234
         - vless-1843685281
         - vless-1851982259
         - vless-1853331631

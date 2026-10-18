@@ -1,0 +1,53 @@
+{
+  "outbounds": [
+    {
+      "server": "94.139.247.207",
+      "server_port": 23688,
+      "tag": "vless-1856007651",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "kbITklNKTdfvB6e3xy97pTV7gjl3Z3irv246oRZ5Gnk",
+          "short_id": "f679b4f2"
+        },
+        "server_name": "apple.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "qq"
+        }
+      },
+      "transport": {
+        "service_name": "awarecricketer",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "c19ecc7f-8312-4d9d-90c9-1a997d82d3c5"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1856007651"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1856007651"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}

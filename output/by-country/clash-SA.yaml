@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: qq
+      name: vless-1856007651
+      network: grpc
+      port: 23688
+      reality-opts:
+        public-key: kbITklNKTdfvB6e3xy97pTV7gjl3Z3irv246oRZ5Gnk
+        short-id: f679b4f2
+      server: 94.139.247.207
+      servername: apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c19ecc7f-8312-4d9d-90c9-1a997d82d3c5
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1856007651
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1856007651
+      type: select
+rules:
+    - MATCH,select
