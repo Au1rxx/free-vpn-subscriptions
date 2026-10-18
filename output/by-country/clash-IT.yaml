@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-1827147481
+      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+      port: 19999
+      server: 185.164.175.81
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       name: vless-1828373391
       network: raw
@@ -12,6 +19,20 @@ proxies:
       type: vless
       udp: true
       uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1828514794
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: _0bRaAOYHd4ccDCmnlIq9I13WLRuT4LzlXfV_GGHKE0
+        short-id: 5aab0b0401044801
+      server: 31.59.180.155
+      servername: italynew.nztvpn.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ee18d188-14cc-417e-beb1-70e4add6d023
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1853340726
@@ -28,18 +49,18 @@ proxies:
       uuid: ee18d188-14cc-417e-beb1-70e4add6d023
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
-      name: vless-1828514794
+      name: vless-1832955804
       network: tcp
       port: 443
       reality-opts:
-        public-key: _0bRaAOYHd4ccDCmnlIq9I13WLRuT4LzlXfV_GGHKE0
-        short-id: 5aab0b0401044801
-      server: 31.59.180.155
-      servername: italynew.nztvpn.com
+        public-key: R5ycsjJ-v024902dMSqTsSdqxUwCFEXMebdBEWFt9VU
+        short-id: cd6065902eea7a02
+      server: 82.118.16.187
+      servername: www.cloudflare.com
       tls: true
       type: vless
       udp: true
-      uuid: ee18d188-14cc-417e-beb1-70e4add6d023
+      uuid: dc2259c4-388e-4285-ba18-df619b6672b6
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1853489208
@@ -162,27 +183,15 @@ proxies:
       type: vless
       udp: true
       uuid: dc2259c4-388e-4285-ba18-df619b6672b6
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1853341155
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: R5ycsjJ-v024902dMSqTsSdqxUwCFEXMebdBEWFt9VU
-        short-id: cd6065902eea7a02
-      server: 82.118.16.187
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: dc2259c4-388e-4285-ba18-df619b6672b6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1827147481
         - vless-1828373391
-        - vless-1853340726
         - vless-1828514794
+        - vless-1853340726
+        - vless-1832955804
         - vless-1853489208
         - vless-1828373350
         - vless-1827156495
@@ -192,15 +201,16 @@ proxy-groups:
         - vless-1853954537
         - vless-1827155677
         - vless-1830353660
-        - vless-1853341155
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1827147481
         - vless-1828373391
-        - vless-1853340726
         - vless-1828514794
+        - vless-1853340726
+        - vless-1832955804
         - vless-1853489208
         - vless-1828373350
         - vless-1827156495
@@ -210,7 +220,6 @@ proxy-groups:
         - vless-1853954537
         - vless-1827155677
         - vless-1830353660
-        - vless-1853341155
       type: select
 rules:
     - MATCH,select
