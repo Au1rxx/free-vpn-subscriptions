@@ -12,20 +12,6 @@ proxies:
       type: vless
       udp: true
       uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1853341167
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8
-        short-id: f46cd3ea3d1eb72d
-      server: 78.135.73.47
-      servername: www.datadoghq.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 25e16692-d097-4e69-9e2d-8415609c1968
     - cipher: 2022-blake3-aes-128-gcm
       name: shadowsocks-1863231490
       password: 8NwabdWBXK1q1QaBhF69rw==:yPBUkgz9Y6Ad20RTktufkQ==
@@ -136,20 +122,11 @@ proxies:
       sni: nimm.mpd.cc.cd
       type: trojan
       udp: true
-    - name: trojan-1827149379
-      password: e309e031-991e-4656-9934-44d10deb8fd8
-      port: 2053
-      server: nimm.mpd.cc.cd
-      skip-cert-verify: false
-      sni: nimm.mpd.cc.cd
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1856635916
-        - vless-1853341167
         - shadowsocks-1863231490
         - shadowsocks-1848874107
         - trojan-1827148822
@@ -164,14 +141,12 @@ proxy-groups:
         - trojan-1867163153
         - trojan-1856631194
         - trojan-1854057132
-        - trojan-1827149379
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1856635916
-        - vless-1853341167
         - shadowsocks-1863231490
         - shadowsocks-1848874107
         - trojan-1827148822
@@ -186,7 +161,6 @@ proxy-groups:
         - trojan-1867163153
         - trojan-1856631194
         - trojan-1854057132
-        - trojan-1827149379
       type: select
 rules:
     - MATCH,select
