@@ -1,15 +1,15 @@
 proxies:
     - cipher: aes-256-cfb
-      name: shadowsocks-1827968913
-      password: 2KUaE2a8NWTvuCZ3
-      port: 9066
+      name: shadowsocks-1827887435
+      password: 4R3hUfZ2FHhDmNcP
+      port: 9061
       server: 213.183.63.60
       type: ss
       udp: true
     - cipher: aes-256-cfb
-      name: shadowsocks-1827969065
-      password: aLpQtfEZe445QyHk
-      port: 9098
+      name: shadowsocks-1827968913
+      password: 2KUaE2a8NWTvuCZ3
+      port: 9066
       server: 213.183.63.60
       type: ss
       udp: true
@@ -21,9 +21,9 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-cfb
-      name: shadowsocks-1827969348
-      password: 9eeJ2fwnZA5Fxgz8
-      port: 9028
+      name: shadowsocks-1827969402
+      password: VcFuyXvND2yQWSFY
+      port: 9054
       server: 213.183.63.60
       type: ss
       udp: true
@@ -55,29 +55,45 @@ proxies:
       type: vless
       udp: true
       uuid: 2e34af79-e5dc-ae2a-3393-65479f695282
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1856200624
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: _u-Nv9dyWbkoAkklJAYQaixa60hmhbn6kZcUNhrdqW8
+        short-id: d498984fe96ad0ab
+      server: 46.8.120.213
+      servername: bg1.spacevpn.space
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2e34af79-e5dc-ae2a-3393-65479f695282
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1827887435
         - shadowsocks-1827968913
-        - shadowsocks-1827969065
         - shadowsocks-1827969291
-        - shadowsocks-1827969348
+        - shadowsocks-1827969402
         - shadowsocks-1827969512
         - shadowsocks-1827969653
         - vless-1856200535
+        - vless-1856200624
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1827887435
         - shadowsocks-1827968913
-        - shadowsocks-1827969065
         - shadowsocks-1827969291
-        - shadowsocks-1827969348
+        - shadowsocks-1827969402
         - shadowsocks-1827969512
         - shadowsocks-1827969653
         - vless-1856200535
+        - vless-1856200624
       type: select
 rules:
     - MATCH,select
