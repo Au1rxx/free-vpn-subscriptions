@@ -19,6 +19,46 @@ proxies:
       type: vless
       udp: true
       uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
+    - client-fingerprint: firefox
+      name: vless-1827150172
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
+        short-id: 9e419c0759b54d6f
+      server: 151.241.226.201
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
+    - client-fingerprint: random
+      name: vless-1828532179
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
+        short-id: 9e419c0759b54d6f
+      server: 151.241.226.201
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1827188726
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8
+        short-id: f46cd3ea3d1eb72d
+      server: 78.135.73.47
+      servername: www.datadoghq.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 25e16692-d097-4e69-9e2d-8415609c1968
     - client-fingerprint: chrome
       name: vless-1828433801
       network: tcp
@@ -53,60 +93,18 @@ proxies:
       server: tutua.azad0namah.ir
       type: ss
       udp: true
-    - name: trojan-1835314335
-      password: e309e031-991e-4656-9934-44d10deb8fd8
-      port: 2053
-      server: 104.26.14.137
-      skip-cert-verify: false
-      sni: nimm.mpd.cc.cd
-      type: trojan
-      udp: true
-    - name: trojan-1853341786
-      password: e309e031-991e-4656-9934-44d10deb8fd8
-      port: 2053
-      server: 172.67.176.3
-      skip-cert-verify: true
-      sni: nimm.mpd.cc.cd
-      type: trojan
-      udp: true
-    - name: trojan-1827529899
-      password: e309e031-991e-4656-9934-44d10deb8fd8
-      port: 443
-      server: 188.114.98.0
-      skip-cert-verify: false
-      sni: nimm.mpd.cc.cd
-      type: trojan
-      udp: true
-    - name: trojan-1846612823
-      password: e309e031-991e-4656-9934-44d10deb8fd8
-      port: 2053
-      server: nimm.mpd.cc.cd
-      skip-cert-verify: false
-      sni: nimm.mpd.cc.cd
-      type: trojan
-      udp: true
-    - name: trojan-1827149524
-      password: e309e031-991e-4656-9934-44d10deb8fd8
-      port: 2053
-      server: nimm.mpd.cc.cd
-      skip-cert-verify: true
-      sni: nimm.mpd.cc.cd
-      type: trojan
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1863231490
         - vless-1832690712
+        - vless-1827150172
+        - vless-1828532179
+        - vless-1827188726
         - vless-1828433801
         - vless-1831132788
         - shadowsocks-1848874107
-        - trojan-1835314335
-        - trojan-1853341786
-        - trojan-1827529899
-        - trojan-1846612823
-        - trojan-1827149524
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -114,14 +112,12 @@ proxy-groups:
         - auto
         - shadowsocks-1863231490
         - vless-1832690712
+        - vless-1827150172
+        - vless-1828532179
+        - vless-1827188726
         - vless-1828433801
         - vless-1831132788
         - shadowsocks-1848874107
-        - trojan-1835314335
-        - trojan-1853341786
-        - trojan-1827529899
-        - trojan-1846612823
-        - trojan-1827149524
       type: select
 rules:
     - MATCH,select
