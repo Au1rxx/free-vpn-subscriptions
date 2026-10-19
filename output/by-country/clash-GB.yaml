@@ -1,12 +1,5 @@
 proxies:
     - cipher: rc4-md5
-      name: shadowsocks-1827147777
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 146.70.61.37
-      type: ss
-      udp: true
-    - cipher: rc4-md5
       name: shadowsocks-1827963919
       password: 14fFPrbezE3HDZzsMOr6
       port: 8080
@@ -20,6 +13,20 @@ proxies:
       server: 141.98.101.181
       type: ss
       udp: true
+    - name: hysteria2-1869127405
+      password: b3a11068-1a7e-4643-85de-7c82cce46943
+      port: 443
+      server: uk-d9ca48498a.shamanapp.online
+      skip-cert-verify: true
+      sni: uk-d9ca48498a.shamanapp.online
+      type: hysteria2
+    - cipher: rc4-md5
+      name: shadowsocks-1827147777
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.61.37
+      type: ss
+      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-1827147824
       password: g5h5jleTRSyO3Rk4
@@ -27,27 +34,6 @@ proxies:
       server: 149.102.132.184
       type: ss
       udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1843685281
-      network: tcp
-      port: 10444
-      reality-opts:
-        public-key: 0oTkcqwLTUNLnSOP-VUWErmy6usAIg-biBE6ioZO-Vo
-        short-id: 8debcf36f1cc69ff
-      server: 138.124.125.193
-      servername: ads.x5.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: e57ce64d-5a1a-4a90-96df-9e1bd3ad26e4
-    - name: vless-1867109422
-      network: tcp
-      port: 22223
-      server: 18.175.83.65
-      type: vless
-      udp: true
-      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
     - client-fingerprint: safari
       flow: xtls-rprx-vision
       name: vless-1837386333
@@ -62,29 +48,80 @@ proxies:
       type: vless
       udp: true
       uuid: e57ce64d-5a1a-4a90-96df-9e1bd3ad26e4
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1843685281
+      network: tcp
+      port: 10444
+      reality-opts:
+        public-key: 0oTkcqwLTUNLnSOP-VUWErmy6usAIg-biBE6ioZO-Vo
+        short-id: 8debcf36f1cc69ff
+      server: 138.124.125.193
+      servername: ads.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: e57ce64d-5a1a-4a90-96df-9e1bd3ad26e4
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1853984699
+      network: tcp
+      port: 10444
+      reality-opts:
+        public-key: 0oTkcqwLTUNLnSOP-VUWErmy6usAIg-biBE6ioZO-Vo
+        short-id: 8debcf36f1cc69ff
+      server: 138.124.125.193
+      servername: ads.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: e57ce64d-5a1a-4a90-96df-9e1bd3ad26e4
+    - name: vless-1853488210
+      network: ws
+      port: 443
+      server: reaza.localip.ir
+      servername: gbi.els1v0u3t31v.info
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ed6c724c-435f-4f83-a781-f57579af320b
+    - cipher: aes-256-gcm
+      name: shadowsocks-1827147261
+      password: g5h5jleTRSyO3Rk4
+      port: 80
+      server: 149.102.132.184
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1827147777
         - shadowsocks-1827963919
         - shadowsocks-1827146143
+        - hysteria2-1869127405
+        - shadowsocks-1827147777
         - shadowsocks-1827147824
-        - vless-1843685281
-        - vless-1867109422
         - vless-1837386333
+        - vless-1843685281
+        - vless-1853984699
+        - vless-1853488210
+        - shadowsocks-1827147261
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1827147777
         - shadowsocks-1827963919
         - shadowsocks-1827146143
+        - hysteria2-1869127405
+        - shadowsocks-1827147777
         - shadowsocks-1827147824
-        - vless-1843685281
-        - vless-1867109422
         - vless-1837386333
+        - vless-1843685281
+        - vless-1853984699
+        - vless-1853488210
+        - shadowsocks-1827147261
       type: select
 rules:
     - MATCH,select
