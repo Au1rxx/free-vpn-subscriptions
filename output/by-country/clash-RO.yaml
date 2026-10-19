@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1854309256
+      password: gf1:gfhysteria2024
+      port: 443
+      server: 185.156.44.99
+      skip-cert-verify: true
+      sni: speedtest.tinkoff.ru
+      type: hysteria2
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1853984818
@@ -17,12 +24,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1854309256
         - vless-1853984818
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1854309256
         - vless-1853984818
       type: select
 rules:
