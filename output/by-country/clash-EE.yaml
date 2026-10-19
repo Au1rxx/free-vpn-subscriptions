@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1864906903
+      password: 43212c32-01f2-4356-b216-67dc1c178262
+      port: 5443
+      server: ees92.shhflow.xyz
+      skip-cert-verify: true
+      sni: 127.0.0.1
+      type: hysteria2
     - name: hysteria2-1856450788
       password: 43212c32-01f2-4356-b216-67dc1c178262
       port: 5443
@@ -79,20 +86,6 @@ proxies:
       type: vless
       udp: true
       uuid: 47d9b534-8a0a-4bd2-90f1-1d6ade14427e
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1853340418
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: h1xVB_-djXL6A7tvnnVbjV4bYKplHOuN0bgmFJQE6AE
-        short-id: 7f3a91c2d8e640ab
-      server: 143.246.41.31
-      servername: ees92.shhflow.xyz
-      tls: true
-      type: vless
-      udp: true
-      uuid: 43212c32-01f2-4356-b216-67dc1c178262
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1838426895
@@ -135,6 +128,18 @@ proxies:
       type: vless
       udp: true
       uuid: 47d9b534-8a0a-4bd2-90f1-1d6ade14427e
+    - alterId: 0
+      cipher: auto
+      name: vmess-1827156692
+      network: ws
+      port: 443
+      server: eu3.998998.best
+      servername: server40.9966338.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 5504eaa8-1395-402f-8e0e-75ecd762e627
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1827531189
@@ -149,29 +154,18 @@ proxies:
       type: vless
       udp: true
       uuid: 47d9b534-8a0a-4bd2-90f1-1d6ade14427e
-    - alterId: 0
-      cipher: auto
-      name: vmess-1827156692
-      network: ws
-      port: 443
-      server: eu3.998998.best
-      servername: server40.9966338.xyz
-      skip-cert-verify: false
-      tls: true
-      type: vmess
-      udp: true
-      uuid: 5504eaa8-1395-402f-8e0e-75ecd762e627
-    - name: hysteria2-1827145895
+    - name: hysteria2-1858144950
       password: 43212c32-01f2-4356-b216-67dc1c178262
       port: 5443
       server: ees92.shhflow.xyz
-      skip-cert-verify: false
+      skip-cert-verify: true
       sni: ees92.shhflow.xyz
       type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1864906903
         - hysteria2-1856450788
         - trojan-1827913054
         - trojan-1828374744
@@ -180,18 +174,18 @@ proxy-groups:
         - vless-1828295146
         - trojan-1827530434
         - vless-1828295255
-        - vless-1853340418
         - vless-1838426895
         - vless-1827145900
         - vless-1855697561
-        - vless-1827531189
         - vmess-1827156692
-        - hysteria2-1827145895
+        - vless-1827531189
+        - hysteria2-1858144950
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1864906903
         - hysteria2-1856450788
         - trojan-1827913054
         - trojan-1828374744
@@ -200,13 +194,12 @@ proxy-groups:
         - vless-1828295146
         - trojan-1827530434
         - vless-1828295255
-        - vless-1853340418
         - vless-1838426895
         - vless-1827145900
         - vless-1855697561
-        - vless-1827531189
         - vmess-1827156692
-        - hysteria2-1827145895
+        - vless-1827531189
+        - hysteria2-1858144950
       type: select
 rules:
     - MATCH,select

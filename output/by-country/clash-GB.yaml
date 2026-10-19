@@ -1,11 +1,4 @@
 proxies:
-    - cipher: rc4-md5
-      name: shadowsocks-1827963919
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 146.70.61.18
-      type: ss
-      udp: true
     - name: hysteria2-1869127405
       password: b3a11068-1a7e-4643-85de-7c82cce46943
       port: 443
@@ -191,11 +184,31 @@ proxies:
       type: vless
       udp: true
       uuid: f5f0babe-aea2-4f07-a1fc-3c9820253f49
+    - name: hysteria2-1858144927
+      password: b3a11068-1a7e-4643-85de-7c82cce46943
+      port: 443
+      server: uk-d9ca48498a.shamanapp.online
+      skip-cert-verify: true
+      sni: uk.shamanapp.online
+      type: hysteria2
+    - name: hysteria2-1853341837
+      password: b3a11068-1a7e-4643-85de-7c82cce46943
+      port: 443
+      server: 191.215.46.37
+      skip-cert-verify: true
+      sni: uk.shamanapp.online
+      type: hysteria2
+    - name: hysteria2-1856186685
+      password: b3a11068-1a7e-4643-85de-7c82cce46943
+      port: 443
+      server: uk-d9ca48498a.shamanapp.online
+      skip-cert-verify: false
+      sni: uk.shamanapp.online
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1827963919
         - hysteria2-1869127405
         - shadowsocks-1827147777
         - hysteria2-1854003560
@@ -214,12 +227,14 @@ proxy-groups:
         - vless-1853347550
         - vless-1853962025
         - vless-1868327570
+        - hysteria2-1858144927
+        - hysteria2-1853341837
+        - hysteria2-1856186685
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1827963919
         - hysteria2-1869127405
         - shadowsocks-1827147777
         - hysteria2-1854003560
@@ -238,6 +253,9 @@ proxy-groups:
         - vless-1853347550
         - vless-1853962025
         - vless-1868327570
+        - hysteria2-1858144927
+        - hysteria2-1853341837
+        - hysteria2-1856186685
       type: select
 rules:
     - MATCH,select
