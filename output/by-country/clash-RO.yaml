@@ -34,13 +34,6 @@ proxies:
       type: vless
       udp: true
       uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
-    - name: vless-1853331568
-      network: tcp
-      port: 2052
-      server: edge10.cyrionflare.com
-      type: vless
-      udp: true
-      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - name: vless-1857053329
       network: tcp
       port: 2052
@@ -131,6 +124,13 @@ proxies:
       skip-cert-verify: true
       sni: speedtest.tinkoff.ru
       type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1827146803
+      password: QFWzCw2uX9B9i6qAYeFBIE
+      port: 443
+      server: 154.46.31.106
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -138,7 +138,6 @@ proxy-groups:
         - vless-1854135104
         - vless-1832690762
         - vless-1828532029
-        - vless-1853331568
         - vless-1857053329
         - vless-1832972763
         - vless-1832465389
@@ -150,6 +149,7 @@ proxy-groups:
         - hysteria2-1827145061
         - hysteria2-1854309346
         - hysteria2-1854309256
+        - shadowsocks-1827146803
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -158,7 +158,6 @@ proxy-groups:
         - vless-1854135104
         - vless-1832690762
         - vless-1828532029
-        - vless-1853331568
         - vless-1857053329
         - vless-1832972763
         - vless-1832465389
@@ -170,6 +169,7 @@ proxy-groups:
         - hysteria2-1827145061
         - hysteria2-1854309346
         - hysteria2-1854309256
+        - shadowsocks-1827146803
       type: select
 rules:
     - MATCH,select

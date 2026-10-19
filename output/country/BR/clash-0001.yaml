@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-1831100521
+      network: ws
+      port: 2053
+      server: 172.65.90.41
+      servername: wzs.echo.net.eu.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d18c6897-2849-456a-8c46-d7ecece47c20
     - name: vless-1831130889
       network: ws
       port: 443
@@ -30,6 +40,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1831100521
         - vless-1831130889
         - vless-1853993831
         - vless-1857169123
@@ -38,6 +49,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1831100521
         - vless-1831130889
         - vless-1853993831
         - vless-1857169123

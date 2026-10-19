@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-1848080944
+      password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
+      port: 449
+      server: 109.206.241.10
+      skip-cert-verify: true
+      sni: 109.206.241.10
+      type: trojan
+      udp: true
     - name: hysteria2-1864906903
       password: 43212c32-01f2-4356-b216-67dc1c178262
       port: 5443
@@ -13,14 +21,6 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - name: trojan-1827913054
-      password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
-      port: 449
-      server: 109.206.241.10
-      skip-cert-verify: true
-      sni: russiapower.accesscam.org
-      type: trojan
-      udp: true
     - name: trojan-1828374744
       password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
       port: 449
@@ -50,20 +50,6 @@ proxies:
       skip-cert-verify: false
       sni: ""
       type: hysteria2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1828295146
-      network: tcp
-      port: 8443
-      reality-opts:
-        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-        short-id: 6ba85179e30d4fc2
-      server: 150.241.101.17
-      servername: yandex.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: 47d9b534-8a0a-4bd2-90f1-1d6ade14427e
     - name: trojan-1827530434
       password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
       port: 449
@@ -76,20 +62,6 @@ proxies:
       flow: xtls-rprx-vision
       name: vless-1828295255
       network: raw
-      port: 8443
-      reality-opts:
-        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-        short-id: 6ba85179e30d4fc2
-      server: 150.241.101.17
-      servername: yandex.net
-      tls: true
-      type: vless
-      udp: true
-      uuid: 47d9b534-8a0a-4bd2-90f1-1d6ade14427e
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1838426895
-      network: tcp
       port: 8443
       reality-opts:
         public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
@@ -161,45 +133,51 @@ proxies:
       skip-cert-verify: true
       sni: ees92.shhflow.xyz
       type: hysteria2
+    - name: trojan-1856634584
+      password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
+      port: 449
+      server: 109.206.241.10
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-1848080944
         - hysteria2-1864906903
         - hysteria2-1856450788
-        - trojan-1827913054
         - trojan-1828374744
         - vless-1854046611
         - hysteria2-1854003401
-        - vless-1828295146
         - trojan-1827530434
         - vless-1828295255
-        - vless-1838426895
         - vless-1827145900
         - vless-1855697561
         - vmess-1827156692
         - vless-1827531189
         - hysteria2-1858144950
+        - trojan-1856634584
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-1848080944
         - hysteria2-1864906903
         - hysteria2-1856450788
-        - trojan-1827913054
         - trojan-1828374744
         - vless-1854046611
         - hysteria2-1854003401
-        - vless-1828295146
         - trojan-1827530434
         - vless-1828295255
-        - vless-1838426895
         - vless-1827145900
         - vless-1855697561
         - vmess-1827156692
         - vless-1827531189
         - hysteria2-1858144950
+        - trojan-1856634584
       type: select
 rules:
     - MATCH,select

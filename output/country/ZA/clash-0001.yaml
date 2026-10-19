@@ -13,12 +13,53 @@ proxies:
       server: 102.37.156.224
       type: ss
       udp: true
+    - name: vless-1855857587
+      network: ws
+      port: 443
+      server: 139.84.242.103
+      servername: vlso5.1d.mom
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: a1de0630-5786-48a0-84f6-dc6f2de10d6d
+    - name: vless-1855982738
+      network: ws
+      port: 8443
+      server: 156.38.157.171
+      servername: vlso5.1d.mom
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: a1de0630-5786-48a0-84f6-dc6f2de10d6d
+    - name: vless-1856086634
+      network: ws
+      port: 80
+      server: 185.162.228.3
+      type: vless
+      udp: true
+      uuid: 2dcbb4f8-5435-4945-8488-edf3587a5f77
+    - name: vless-1856517149
+      network: ws
+      port: 8443
+      server: 156.38.157.171
+      servername: vlso5.1d.mom
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: a1de0630-5786-48a0-84f6-dc6f2de10d6d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827146396
         - shadowsocks-1827146619
+        - vless-1855857587
+        - vless-1855982738
+        - vless-1856086634
+        - vless-1856517149
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +67,10 @@ proxy-groups:
         - auto
         - shadowsocks-1827146396
         - shadowsocks-1827146619
+        - vless-1855857587
+        - vless-1855982738
+        - vless-1856086634
+        - vless-1856517149
       type: select
 rules:
     - MATCH,select
