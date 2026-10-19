@@ -1,0 +1,47 @@
+{
+  "outbounds": [
+    {
+      "server": "172.67.168.158",
+      "server_port": 2087,
+      "tag": "vless-1867056345",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "vn11vina.210z.dev"
+      },
+      "transport": {
+        "headers": {
+          "Host": "vn11vina.210z.dev"
+        },
+        "path": "/vlessvina",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "1d0e8e53-6999-4752-ac21-c0c54ff5bc09"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1867056345"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1867056345"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
