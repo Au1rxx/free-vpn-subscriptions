@@ -1,7 +1,35 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1832464868
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: GBdkyDLfr0LIZo_94Xv8ycAKOmkjArYzwJAEMhuXX2c
+        short-id: 33acba1b
+      server: 138.124.180.137
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1827975813
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: GBdkyDLfr0LIZo_94Xv8ycAKOmkjArYzwJAEMhuXX2c
+        short-id: 33acba1b
+      server: 138.124.180.137
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1827319129
       network: tcp
       port: 443
       reality-opts:
@@ -26,20 +54,6 @@ proxies:
       type: vless
       udp: true
       uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1827152073
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: GBdkyDLfr0LIZo_94Xv8ycAKOmkjArYzwJAEMhuXX2c
-        short-id: 33acba1b
-      server: 138.124.180.137
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1867164043
@@ -68,33 +82,6 @@ proxies:
       type: vless
       udp: true
       uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1853346788
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: ds-U8G06uZvV9qFhAeO16dwS9Nkcw_coYr_4puEUGFg
-        short-id: 3c6afdc4124d0560
-      server: 185.220.223.24
-      servername: lv.aiage.work
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6338c01a-310e-42c3-bf4f-2a20e161054b
-    - client-fingerprint: firefox
-      name: vless-1870020733
-      network: grpc
-      port: 8463
-      reality-opts:
-        public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
-        short-id: ""
-      server: 94.103.2.109
-      servername: github.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: a346c521-7a7f-452b-9356-a4893feb5982
     - cipher: aes-256-cfb
       name: shadowsocks-1827967599
       password: HAVAdE3nXhqA5nHp
@@ -106,26 +93,24 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1832464868
         - vless-1827975813
+        - vless-1827319129
         - vless-1827156366
-        - vless-1827152073
         - vless-1867164043
         - vless-1853340427
-        - vless-1853346788
-        - vless-1870020733
         - shadowsocks-1827967599
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1832464868
         - vless-1827975813
+        - vless-1827319129
         - vless-1827156366
-        - vless-1827152073
         - vless-1867164043
         - vless-1853340427
-        - vless-1853346788
-        - vless-1870020733
         - shadowsocks-1827967599
       type: select
 rules:
