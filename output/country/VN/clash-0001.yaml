@@ -6,6 +6,13 @@ proxies:
       type: vless
       udp: true
       uuid: b83faafc-cbb7-4655-99d4-2c4c39a49d1b
+    - name: vless-1827975328
+      network: tcp
+      port: 2086
+      server: 150.95.109.109
+      type: vless
+      udp: true
+      uuid: b83faafc-cbb7-4655-99d4-2c4c39a49d1b
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1828294434
@@ -76,20 +83,6 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
-    - client-fingerprint: safari
-      flow: xtls-rprx-vision
-      name: vless-1851981564
-      network: tcp
-      port: 51279
-      reality-opts:
-        public-key: f6Tj8-uvWsLv3V-lGLuPciArp5oKqUImBg-U7-WJ-0A
-        short-id: bb82c8
-      server: 154.21.203.106
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1853340875
@@ -138,53 +131,37 @@ proxies:
       type: vless
       udp: true
       uuid: 1d0e8e53-6999-4752-ac21-c0c54ff5bc09
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1867177118
-      network: raw
-      port: 51279
-      reality-opts:
-        public-key: f6Tj8-uvWsLv3V-lGLuPciArp5oKqUImBg-U7-WJ-0A
-        short-id: bb82c8
-      server: 154.21.203.106
-      servername: www.tesla.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1827154159
+        - vless-1827975328
         - vless-1828294434
         - vless-1829905279
         - vless-1830851924
         - vless-1841348610
         - vless-1847793568
-        - vless-1851981564
         - vless-1853340875
         - vless-1854003895
         - vless-1856453339
         - vless-1867056345
-        - vless-1867177118
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1827154159
+        - vless-1827975328
         - vless-1828294434
         - vless-1829905279
         - vless-1830851924
         - vless-1841348610
         - vless-1847793568
-        - vless-1851981564
         - vless-1853340875
         - vless-1854003895
         - vless-1856453339
         - vless-1867056345
-        - vless-1867177118
       type: select
 rules:
     - MATCH,select
