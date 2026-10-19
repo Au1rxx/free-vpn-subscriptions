@@ -1,27 +1,27 @@
 proxies:
-    - client-fingerprint: firefox
+    - client-fingerprint: safari
       flow: xtls-rprx-vision
-      name: vless-1854046611
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: h1xVB_-djXL6A7tvnnVbjV4bYKplHOuN0bgmFJQE6AE
-        short-id: 7f3a91c2d8e640ab
-      server: 143.246.41.31
-      servername: ees92.shhflow.xyz
-      tls: true
-      type: vless
-      udp: true
-      uuid: 43212c32-01f2-4356-b216-67dc1c178262
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1828295255
+      name: vless-1827145900
       network: raw
       port: 8443
       reality-opts:
         public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
         short-id: 6ba85179e30d4fc2
       server: 150.241.101.17
+      servername: yandex.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: 47d9b534-8a0a-4bd2-90f1-1d6ade14427e
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1868094187
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
+        short-id: 6ba85179e30d4fc2
+      server: 150.241.101.80
       servername: yandex.net
       tls: true
       type: vless
@@ -34,26 +34,12 @@ proxies:
       skip-cert-verify: true
       sni: ees92.shhflow.xyz
       type: hysteria2
-    - name: hysteria2-1856450788
-      password: 43212c32-01f2-4356-b216-67dc1c178262
-      port: 5443
-      server: ees92.shhflow.xyz
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
     - name: hysteria2-1827145895
       password: 43212c32-01f2-4356-b216-67dc1c178262
       port: 5443
       server: ees92.shhflow.xyz
       skip-cert-verify: false
       sni: ees92.shhflow.xyz
-      type: hysteria2
-    - name: hysteria2-1855775485
-      password: f9d84f27-27de-44da-9d65-9015ba5e9219
-      port: 13167
-      server: 194.87.68.196
-      skip-cert-verify: true
-      sni: ""
       type: hysteria2
     - name: trojan-1848080944
       password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
@@ -95,14 +81,6 @@ proxies:
       sni: russiapower.accesscam.org
       type: trojan
       udp: true
-    - name: trojan-1856634584
-      password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
-      port: 449
-      server: 109.206.241.10
-      skip-cert-verify: true
-      sni: ""
-      type: trojan
-      udp: true
     - name: trojan-1828374744
       password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
       port: 449
@@ -111,51 +89,45 @@ proxies:
       sni: 109.206.241.10
       type: trojan
       udp: true
-    - name: trojan-1869386355
-      password: eed4a583-b20e-4787-bbdb-09018156e53f
-      port: 443
-      server: 172.67.182.181
+    - name: trojan-1856634584
+      password: oiiaB38ywjEHCWRs_O_a_1113_Il_KeyyyHop_Bes1
+      port: 449
+      server: 109.206.241.10
       skip-cert-verify: true
-      sni: bnhju.8mm.ccwu.cc
+      sni: ""
       type: trojan
       udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1854046611
-        - vless-1828295255
+        - vless-1827145900
+        - vless-1868094187
         - hysteria2-1858144950
-        - hysteria2-1856450788
         - hysteria2-1827145895
-        - hysteria2-1855775485
         - trojan-1848080944
         - trojan-1853341749
         - trojan-1827530434
         - trojan-1827149658
         - trojan-1827913054
-        - trojan-1856634584
         - trojan-1828374744
-        - trojan-1869386355
+        - trojan-1856634584
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1854046611
-        - vless-1828295255
+        - vless-1827145900
+        - vless-1868094187
         - hysteria2-1858144950
-        - hysteria2-1856450788
         - hysteria2-1827145895
-        - hysteria2-1855775485
         - trojan-1848080944
         - trojan-1853341749
         - trojan-1827530434
         - trojan-1827149658
         - trojan-1827913054
-        - trojan-1856634584
         - trojan-1828374744
-        - trojan-1869386355
+        - trojan-1856634584
       type: select
 rules:
     - MATCH,select
