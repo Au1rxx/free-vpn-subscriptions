@@ -1,17 +1,4 @@
 proxies:
-    - client-fingerprint: firefox
-      name: vless-1828295106
-      network: grpc
-      port: 8444
-      reality-opts:
-        public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
-        short-id: ""
-      server: 62.60.233.157
-      servername: github.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
     - name: trojan-1853992781
       password: e309e031-991e-4656-9934-44d10deb8fd8
       port: 2053
@@ -33,9 +20,22 @@ proxies:
       type: vless
       udp: true
       uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
-    - client-fingerprint: firefox
+    - client-fingerprint: random
+      name: vless-1828532179
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
+        short-id: 9e419c0759b54d6f
+      server: 151.241.226.201
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
+    - client-fingerprint: random
       flow: xtls-rprx-vision
-      name: vless-1831132788
+      name: vless-1853464383
       network: tcp
       port: 443
       reality-opts:
@@ -47,53 +47,48 @@ proxies:
       type: vless
       udp: true
       uuid: 25e16692-d097-4e69-9e2d-8415609c1968
-    - client-fingerprint: chrome
-      name: vless-1859613560
-      network: grpc
-      port: 8444
+    - client-fingerprint: firefox
+      name: vless-1832690712
+      network: raw
+      port: 2053
       reality-opts:
-        public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
-        short-id: ""
-      server: 62.60.233.157
-      servername: github.com
+        public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
+        short-id: 9e419c0759b54d6f
+      server: 151.241.226.201
+      servername: www.apple.com
       tls: true
       type: vless
       udp: true
-      uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
-    - client-fingerprint: chrome
-      name: vless-1827147108
-      network: grpc
-      port: 8444
-      reality-opts:
-        public-key: FWitre1jinQR7qz5HQ0q2Q4Gg9xA9B0SyizCziN7Ch0
-        short-id: ""
-      server: 62.60.233.157
-      servername: github.com
-      tls: true
-      type: vless
+      uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
+    - name: trojan-1854057132
+      password: e309e031-991e-4656-9934-44d10deb8fd8
+      port: 443
+      server: 188.114.98.0
+      skip-cert-verify: false
+      sni: nimm.mpd.cc.cd
+      type: trojan
       udp: true
-      uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1828295106
         - trojan-1853992781
         - vless-1856635916
-        - vless-1831132788
-        - vless-1859613560
-        - vless-1827147108
+        - vless-1828532179
+        - vless-1853464383
+        - vless-1832690712
+        - trojan-1854057132
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1828295106
         - trojan-1853992781
         - vless-1856635916
-        - vless-1831132788
-        - vless-1859613560
-        - vless-1827147108
+        - vless-1828532179
+        - vless-1853464383
+        - vless-1832690712
+        - trojan-1854057132
       type: select
 rules:
     - MATCH,select

@@ -9,17 +9,38 @@ proxies:
       type: vless
       udp: true
       uuid: 51a0af77-a60c-4d9b-81a4-f50e1b38d90b
+    - name: vless-1853993831
+      network: ws
+      port: 8880
+      server: 89.116.180.40
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-1857169123
+      network: ws
+      port: 2053
+      server: 146.235.59.153
+      servername: shin-ra.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 817b61c8-9bf0-4365-8a52-e43dfad274a6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1831130889
+        - vless-1853993831
+        - vless-1857169123
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1831130889
+        - vless-1853993831
+        - vless-1857169123
       type: select
 rules:
     - MATCH,select

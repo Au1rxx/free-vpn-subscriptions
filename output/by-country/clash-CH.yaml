@@ -20,34 +20,6 @@ proxies:
       type: vless
       udp: true
       uuid: 3950b45e-740d-4dca-ac95-505ec8534592
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1855697008
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
-        short-id: 19253fae84102271
-      server: 45.90.59.15
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3950b45e-740d-4dca-ac95-505ec8534592
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1831127293
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
-        short-id: 19253fae84102271
-      server: 45.90.59.15
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3950b45e-740d-4dca-ac95-505ec8534592
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1853464364
@@ -76,16 +48,28 @@ proxies:
       type: vless
       udp: true
       uuid: 3950b45e-740d-4dca-ac95-505ec8534592
+    - client-fingerprint: chrome
+      name: vless-1854347684
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+        short-id: ad86e2d52ff40ebd
+      server: 208.69.78.217
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827146737
         - vless-1855696948
-        - vless-1855697008
-        - vless-1831127293
         - vless-1853464364
         - vless-1856638583
+        - vless-1854347684
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -93,10 +77,9 @@ proxy-groups:
         - auto
         - shadowsocks-1827146737
         - vless-1855696948
-        - vless-1855697008
-        - vless-1831127293
         - vless-1853464364
         - vless-1856638583
+        - vless-1854347684
       type: select
 rules:
     - MATCH,select
