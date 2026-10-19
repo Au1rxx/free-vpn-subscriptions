@@ -6,33 +6,26 @@ proxies:
       skip-cert-verify: true
       sni: speedtest.tinkoff.ru
       type: hysteria2
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1853984818
-      network: tcp
+    - name: hysteria2-1854309346
+      password: gf1:gfhysteria2024
       port: 443
-      reality-opts:
-        public-key: i2dJ1_XGDpp50qpEclh6SWSWkxt4B0t2hi2qOVQbeSU
-        short-id: d06d78e974491b6e
-      server: 46.28.67.55
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d1a6a033-fdbd-46a6-a177-3370ba042b9f
+      server: 185.156.44.99
+      skip-cert-verify: true
+      sni: google.com
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1854309256
-        - vless-1853984818
+        - hysteria2-1854309346
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1854309256
-        - vless-1853984818
+        - hysteria2-1854309346
       type: select
 rules:
     - MATCH,select
