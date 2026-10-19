@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-1827968609
-      password: 7eadc6dbe2ae
-      port: 65443
-      server: 194.38.11.86
-      type: ss
-      udp: true
     - name: hysteria2-1827145511
       password: 7ab3c77e-8fcc-4848-918f-cae3d4eac794
       port: 2053
@@ -13,6 +6,13 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - cipher: aes-256-cfb
+      name: shadowsocks-1827968609
+      password: 7eadc6dbe2ae
+      port: 65443
+      server: 194.38.11.86
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1869904603
@@ -41,27 +41,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1ab9e166-5a54-48b9-a07f-79d1d840ae21
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1869478110
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: iEn05nrDTTyNqlV2Brol7NQDZVRtyDw92o7FtkbJcF8
-        short-id: fb28c3048bd6e18a
-      server: ru.api.nurcloud.org
-      servername: ru.api.nurcloud.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 274c70c5-2167-483d-b847-977498d97843
-    - name: hysteria2-1827784274
-      password: 7ab3c77e-8fcc-4848-918f-cae3d4eac794
-      port: 2053
-      server: 194.87.118.184
-      skip-cert-verify: false
-      sni: match-stream.lovkisport.blog
-      type: hysteria2
     - name: hysteria2-1828371112
       password: 7ab3c77e-8fcc-4848-918f-cae3d4eac794
       port: 2053
@@ -76,6 +55,13 @@ proxies:
       skip-cert-verify: true
       sni: match-stream.lovkisport.blog
       type: hysteria2
+    - name: hysteria2-1827784274
+      password: 7ab3c77e-8fcc-4848-918f-cae3d4eac794
+      port: 2053
+      server: 194.87.118.184
+      skip-cert-verify: false
+      sni: match-stream.lovkisport.blog
+      type: hysteria2
     - name: hysteria2-1828371109
       password: 7ab3c77e-8fcc-4848-918f-cae3d4eac794
       port: 2053
@@ -87,28 +73,26 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1827968609
         - hysteria2-1827145511
+        - shadowsocks-1827968609
         - vless-1869904603
         - vless-1869963069
-        - vless-1869478110
-        - hysteria2-1827784274
         - hysteria2-1828371112
         - hysteria2-1828371117
+        - hysteria2-1827784274
         - hysteria2-1828371109
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1827968609
         - hysteria2-1827145511
+        - shadowsocks-1827968609
         - vless-1869904603
         - vless-1869963069
-        - vless-1869478110
-        - hysteria2-1827784274
         - hysteria2-1828371112
         - hysteria2-1828371117
+        - hysteria2-1827784274
         - hysteria2-1828371109
       type: select
 rules:
