@@ -1,0 +1,66 @@
+{
+  "outbounds": [
+    {
+      "server": "5.178.109.174",
+      "server_port": 14430,
+      "tag": "vless-1853353092",
+      "transport": {
+        "headers": {
+          "Host": "5.178.109.174"
+        },
+        "path": "/vless",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "80de563a-cac8-40ea-8cb0-4cb082dd92f9"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "84.32.106.243",
+      "server_port": 443,
+      "tag": "vless-1868592459",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "AepHS1WcdKNVjau3-RYZ4PefoPAw-i07pqrl66RPD2s",
+          "short_id": "b09535a0ea97b4ed"
+        },
+        "server_name": "se.nurcloud.org",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "1ab9e166-5a54-48b9-a07f-79d1d840ae21"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1853353092",
+        "vless-1868592459"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1853353092",
+        "vless-1868592459"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
