@@ -27,12 +27,22 @@ proxies:
       type: vless
       udp: true
       uuid: 814bd064-544d-4255-a070-5705c03f6da9
+    - alterId: 0
+      cipher: auto
+      name: vmess-1872601269
+      network: ws
+      port: 8880
+      server: 108.165.152.249
+      type: vmess
+      udp: true
+      uuid: 41660e17-03e4-37aa-b222-8ed4418e2739
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1871775946
         - vless-1871776012
+        - vmess-1872601269
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -40,6 +50,7 @@ proxy-groups:
         - auto
         - vless-1871775946
         - vless-1871776012
+        - vmess-1872601269
       type: select
 rules:
     - MATCH,select
