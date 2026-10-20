@@ -1,19 +1,19 @@
 proxies:
-    - client-fingerprint: firefox
-      name: vless-1860722535
+    - client-fingerprint: chrome
+      name: vless-1831169817
       network: grpc
-      port: 443
+      port: 2053
       reality-opts:
-        public-key: OOI0p2vKjr8xdwcVCzxcd3rAxmMr7XRA0wMk14IXaFM
-        short-id: 35debf0dc757d053
-      server: 45.145.12.148
-      servername: max.ru
+        public-key: ygmJxS-Mc7g0buNSUTVGhazT-FoBjyYtLLfUYIQxFTw
+        short-id: d0ea1847066af5a6
+      server: 62.60.159.81
+      servername: www.samsung.com
       tls: true
       type: vless
       udp: true
-      uuid: b869a8d0-0733-4346-8d1c-c1230a78651c
-    - client-fingerprint: safari
-      name: vless-1862362047
+      uuid: fc00adfb-232a-46ce-8b93-0c70e516aa8a
+    - client-fingerprint: firefox
+      name: vless-1860722535
       network: grpc
       port: 443
       reality-opts:
@@ -72,19 +72,32 @@ proxies:
       type: vless
       udp: true
       uuid: 57f7772d-f5d6-4d8f-992d-5fa5e0d6da55
-    - client-fingerprint: chrome
-      name: vless-1831169817
+    - client-fingerprint: safari
+      name: vless-1862362047
       network: grpc
-      port: 2053
+      port: 443
       reality-opts:
-        public-key: ygmJxS-Mc7g0buNSUTVGhazT-FoBjyYtLLfUYIQxFTw
-        short-id: d0ea1847066af5a6
-      server: 62.60.159.81
-      servername: www.samsung.com
+        public-key: OOI0p2vKjr8xdwcVCzxcd3rAxmMr7XRA0wMk14IXaFM
+        short-id: 35debf0dc757d053
+      server: 45.145.12.148
+      servername: max.ru
       tls: true
       type: vless
       udp: true
-      uuid: fc00adfb-232a-46ce-8b93-0c70e516aa8a
+      uuid: b869a8d0-0733-4346-8d1c-c1230a78651c
+    - client-fingerprint: qq
+      name: vless-1862570257
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: OOI0p2vKjr8xdwcVCzxcd3rAxmMr7XRA0wMk14IXaFM
+        short-id: 35debf0dc757d053
+      server: 45.145.12.148
+      servername: max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: b869a8d0-0733-4346-8d1c-c1230a78651c
     - client-fingerprint: chrome
       name: vless-1827188007
       network: tcp
@@ -98,40 +111,33 @@ proxies:
       type: vless
       udp: true
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
-    - name: vless-1853463978
-      network: ws
-      port: 14430
-      server: 45.144.234.157
-      type: vless
-      udp: true
-      uuid: 59b0d30e-9b29-4fda-a35c-b2901ec32db7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1831169817
         - vless-1860722535
-        - vless-1862362047
         - vless-1862362059
         - vless-1857852661
         - vless-1862362068
         - vless-1853341753
-        - vless-1831169817
+        - vless-1862362047
+        - vless-1862570257
         - vless-1827188007
-        - vless-1853463978
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1831169817
         - vless-1860722535
-        - vless-1862362047
         - vless-1862362059
         - vless-1857852661
         - vless-1862362068
         - vless-1853341753
-        - vless-1831169817
+        - vless-1862362047
+        - vless-1862570257
         - vless-1827188007
-        - vless-1853463978
       type: select
 rules:
     - MATCH,select
