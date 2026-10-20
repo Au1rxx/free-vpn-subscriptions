@@ -7,10 +7,10 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-gcm
-      name: shadowsocks-1827147473
-      password: itzvpn@321
-      port: 8388
-      server: 57.131.48.45
+      name: shadowsocks-1875023019
+      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+      port: 19999
+      server: 202.50.253.63
       type: ss
       udp: true
     - client-fingerprint: chrome
@@ -27,13 +27,6 @@ proxies:
       type: vless
       udp: true
       uuid: dc2259c4-388e-4285-ba18-df619b6672b6
-    - cipher: aes-256-gcm
-      name: shadowsocks-1875023019
-      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-      port: 19999
-      server: 202.50.253.63
-      type: ss
-      udp: true
     - name: vless-1853465677
       network: tcp
       port: 10086
@@ -68,13 +61,19 @@ proxies:
       type: vless
       udp: true
       uuid: dc2259c4-388e-4285-ba18-df619b6672b6
-    - cipher: aes-256-gcm
-      name: shadowsocks-1875023009
-      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-      port: 19999
-      server: 202.50.253.27
-      type: ss
+    - client-fingerprint: chrome
+      name: vless-1827155677
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
       udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1827156495
@@ -117,46 +116,35 @@ proxies:
       type: vless
       udp: true
       uuid: dc2259c4-388e-4285-ba18-df619b6672b6
-    - cipher: aes-256-gcm
-      name: shadowsocks-1875023048
-      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-      port: 19999
-      server: 202.50.253.72
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827147481
-        - shadowsocks-1827147473
-        - vless-1832955804
         - shadowsocks-1875023019
+        - vless-1832955804
         - vless-1853465677
         - vless-1828373350
         - vless-1853341155
-        - shadowsocks-1875023009
+        - vless-1827155677
         - vless-1827156495
         - vless-1853954537
         - vless-1875103849
-        - shadowsocks-1875023048
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1827147481
-        - shadowsocks-1827147473
-        - vless-1832955804
         - shadowsocks-1875023019
+        - vless-1832955804
         - vless-1853465677
         - vless-1828373350
         - vless-1853341155
-        - shadowsocks-1875023009
+        - vless-1827155677
         - vless-1827156495
         - vless-1853954537
         - vless-1875103849
-        - shadowsocks-1875023048
       type: select
 rules:
     - MATCH,select
