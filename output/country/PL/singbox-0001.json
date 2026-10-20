@@ -1,13 +1,27 @@
 {
-  "outbounds": [
+  "endpoints": [
     {
-      "method": "aes-256-gcm",
-      "password": "itzvpn@321",
-      "server": "51.83.192.80",
-      "server_port": 8388,
-      "tag": "shadowsocks-1827147516",
-      "type": "shadowsocks"
-    },
+      "address": [
+        "172.16.0.2/32",
+        "2606:4700:110:88d5:6337:eecd:3e73:49c8/128"
+      ],
+      "peers": [
+        {
+          "address": "8.6.112.135",
+          "allowed_ips": [
+            "0.0.0.0/0",
+            "::/0"
+          ],
+          "port": 878,
+          "public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo="
+        }
+      ],
+      "private_key": "kCcRXekNNvoT3SA54A42Nu3hQt3abhStLlR3lae8fnU=",
+      "tag": "wireguard-1874685597",
+      "type": "wireguard"
+    }
+  ],
+  "outbounds": [
     {
       "password": "Trojan@82164024",
       "server": "pl.tronsg.com",
@@ -16,6 +30,18 @@
       "tls": {
         "enabled": true,
         "insecure": true,
+        "server_name": "pl.tronsg.com"
+      },
+      "type": "trojan"
+    },
+    {
+      "password": "Trojan@82164024",
+      "server": "92.118.150.146",
+      "server_port": 443,
+      "tag": "trojan-1827148362",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
         "server_name": "pl.tronsg.com"
       },
       "type": "trojan"
@@ -167,6 +193,28 @@
       "server": "du-rov.secureservice.top",
       "server_port": 8443,
       "tag": "vless-1827154340",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "fSVfR9NB-6J6smrZlavi0GWd8JfDh0aXuEkKbtuFzUI",
+          "short_id": "3cbc3d737fb9c4af"
+        },
+        "server_name": "du-rov.secureservice.top",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "c53ea5e9-ed8b-4990-805d-7f1d6451426c"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "5.42.99.64",
+      "server_port": 8443,
+      "tag": "vless-1827154569",
       "tls": {
         "enabled": true,
         "insecure": false,
@@ -2152,28 +2200,6 @@
     },
     {
       "flow": "xtls-rprx-vision",
-      "server": "45.194.66.191",
-      "server_port": 443,
-      "tag": "vless-1874737518",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "reality": {
-          "enabled": true,
-          "public_key": "DsTVLCehsKvfFGtNZU5leKOLTlEp28qeifHYtRKOFwg",
-          "short_id": "acccaaaa9f72147d"
-        },
-        "server_name": "pl.golangwikito.cfd",
-        "utls": {
-          "enabled": true,
-          "fingerprint": "firefox"
-        }
-      },
-      "type": "vless",
-      "uuid": "f8d52ece-fad4-478d-875d-df6eed3befa7"
-    },
-    {
-      "flow": "xtls-rprx-vision",
       "server": "45.194.66.195",
       "server_port": 443,
       "tag": "vless-1874737551",
@@ -2223,22 +2249,6 @@
       "tag": "vless-1875059641",
       "type": "vless",
       "uuid": "1a8ecc41-6e62-431b-8eca-87c2fa4dc286"
-    },
-    {
-      "server": "fpoixf69hqt3e6d4urtb.mamadneizeh.workers.dev",
-      "server_port": 443,
-      "tag": "vless-1875065011",
-      "tls": {
-        "enabled": true,
-        "insecure": false,
-        "server_name": "fpoixf69hqt3e6d4urtb.mamadneizeh.workers.dev"
-      },
-      "transport": {
-        "path": "/vl/lYNtP7z8pJUmfp01tz5wEnuDujJtZ",
-        "type": "ws"
-      },
-      "type": "vless",
-      "uuid": "0b41f339-5809-46ef-8351-b03fdc441539"
     },
     {
       "flow": "xtls-rprx-vision",
@@ -2398,25 +2408,6 @@
       },
       "type": "vless",
       "uuid": "1c794e75-bcd4-4a65-9f69-ed0a10f33d60"
-    },
-    {
-      "password": "u93yPGuY2zgIsisJZKS2QzJzg",
-      "server": "78.17.171.226",
-      "server_port": 443,
-      "tag": "trojan-1875823298",
-      "tls": {
-        "enabled": true,
-        "insecure": true,
-        "server_name": "free-2.hi-l.im"
-      },
-      "transport": {
-        "headers": {
-          "Host": "free-2.hi-l.im"
-        },
-        "path": "/f2fc2a1f",
-        "type": "ws"
-      },
-      "type": "trojan"
     },
     {
       "password": "4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA",
@@ -2653,8 +2644,8 @@
     {
       "interval": "5m",
       "outbounds": [
-        "shadowsocks-1827147516",
         "trojan-1827147964",
+        "trojan-1827148362",
         "trojan-1827148462",
         "vless-1827149029",
         "vless-1827150146",
@@ -2664,6 +2655,7 @@
         "vless-1827152263",
         "vless-1827154102",
         "vless-1827154340",
+        "vless-1827154569",
         "vless-1827155025",
         "vless-1827155588",
         "vless-1827188006",
@@ -2769,12 +2761,11 @@
         "vless-1869963083",
         "trojan-1874155890",
         "trojan-1874186065",
-        "vless-1874737518",
+        "wireguard-1874685597",
         "vless-1874737551",
         "trojan-1875022933",
         "vless-1875024977",
         "vless-1875059641",
-        "vless-1875065011",
         "vless-1875081483",
         "trojan-1875101662",
         "vless-1875288161",
@@ -2783,7 +2774,6 @@
         "vless-1875764268",
         "trojan-1875789292",
         "vless-1875790281",
-        "trojan-1875823298",
         "trojan-1875823306",
         "trojan-1875823317",
         "vless-1875877265",
@@ -2807,8 +2797,8 @@
     {
       "outbounds": [
         "auto",
-        "shadowsocks-1827147516",
         "trojan-1827147964",
+        "trojan-1827148362",
         "trojan-1827148462",
         "vless-1827149029",
         "vless-1827150146",
@@ -2818,6 +2808,7 @@
         "vless-1827152263",
         "vless-1827154102",
         "vless-1827154340",
+        "vless-1827154569",
         "vless-1827155025",
         "vless-1827155588",
         "vless-1827188006",
@@ -2923,12 +2914,11 @@
         "vless-1869963083",
         "trojan-1874155890",
         "trojan-1874186065",
-        "vless-1874737518",
+        "wireguard-1874685597",
         "vless-1874737551",
         "trojan-1875022933",
         "vless-1875024977",
         "vless-1875059641",
-        "vless-1875065011",
         "vless-1875081483",
         "trojan-1875101662",
         "vless-1875288161",
@@ -2937,7 +2927,6 @@
         "vless-1875764268",
         "trojan-1875789292",
         "vless-1875790281",
-        "trojan-1875823298",
         "trojan-1875823306",
         "trojan-1875823317",
         "vless-1875877265",
