@@ -7,6 +7,13 @@ proxies:
       sni: css.rbxcdn.com
       type: hysteria2
     - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1827146585
+      password: QFWzCw2uX9B9i6qAYeFBIE
+      port: 443
+      server: bogging-eyeteeth-fly.freesocks.work
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1827146803
       password: QFWzCw2uX9B9i6qAYeFBIE
       port: 443
@@ -335,11 +342,39 @@ proxies:
       type: vless
       udp: true
       uuid: 679439c5-28f2-485e-af5f-60a5fcd9c36c
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1875765135
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: byzvlw97wjAAAfHs5AZRV0P0H6_JKBEZ4yfLS0HNewE
+        short-id: fe24f8a0a560056e
+      server: 146.70.124.85
+      servername: www.datadoghq.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
+    - client-fingerprint: chrome
+      name: vless-1875790318
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 9Wh7M-tz9D_1WBaQhz2wIJian960Ffcx66NH8HAidDI
+        short-id: 61a0eb582ed4f2b5
+      server: 152.237.230.30
+      servername: play.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e3026ffb-cde6-4cfe-b4b7-f76d5264e969
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1827145061
+        - shadowsocks-1827146585
         - shadowsocks-1827146803
         - vless-1827151367
         - vless-1827154999
@@ -367,12 +402,15 @@ proxy-groups:
         - vless-1867100411
         - vless-1873592800
         - vless-1875103850
+        - vless-1875765135
+        - vless-1875790318
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1827145061
+        - shadowsocks-1827146585
         - shadowsocks-1827146803
         - vless-1827151367
         - vless-1827154999
@@ -400,6 +438,8 @@ proxy-groups:
         - vless-1867100411
         - vless-1873592800
         - vless-1875103850
+        - vless-1875765135
+        - vless-1875790318
       type: select
 rules:
     - MATCH,select

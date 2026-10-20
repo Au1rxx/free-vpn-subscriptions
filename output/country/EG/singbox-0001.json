@@ -1,0 +1,74 @@
+{
+  "outbounds": [
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "45.151.182.163",
+      "server_port": 443,
+      "tag": "vless-1875791298",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "ds-unSW4f8mhJ5CVtkGQ-7GSPQJ3zoEs1qbXsU76I2c",
+          "short_id": "811f57d83ace01ec"
+        },
+        "server_name": "eg.api.nurcloud.org",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "firefox"
+        }
+      },
+      "type": "vless",
+      "uuid": "b91d8200-1b39-41d2-bca0-9ac1a079cd91"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "bridge.nurcloud.org",
+      "server_port": 443,
+      "tag": "vless-1875823288",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "ds-unSW4f8mhJ5CVtkGQ-7GSPQJ3zoEs1qbXsU76I2c",
+          "short_id": "811f57d83ace01ec"
+        },
+        "server_name": "eg.api.nurcloud.org",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "edge"
+        }
+      },
+      "type": "vless",
+      "uuid": "b91d8200-1b39-41d2-bca0-9ac1a079cd91"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1875791298",
+        "vless-1875823288"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1875791298",
+        "vless-1875823288"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
