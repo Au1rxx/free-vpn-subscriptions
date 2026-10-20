@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-1828372700
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: 103.115.109.49
-      skip-cert-verify: true
-      sni: 'https:'
-      type: hysteria2
     - name: hysteria2-1828373437
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -172,11 +165,38 @@ proxies:
       type: vless
       udp: true
       uuid: c1c04450-bf71-4049-ad0c-9cf6d94d9f1f
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1827162783
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: WNifT0qNHWrUsvC6cuvej0rzZe6qPijopbmJyRADOF0
+        short-id: f713561d
+      server: 207.56.137.51
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 01ada9fb-fa2f-45da-a0d0-bce80cdf433b
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1871234238
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Q8QwBSGN6J-FqgDV1pYNm0VThS_xNRyQ3DPPa9YZ3j4
+        short-id: cff998a4
+      server: 152.32.167.33
+      servername: www.amazon.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 91ad30e9-ab06-4b4c-9fb9-1c2aa97d8b3a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1828372700
         - hysteria2-1828373437
         - hysteria2-1828371338
         - hysteria2-1828371613
@@ -198,12 +218,13 @@ proxy-groups:
         - hysteria2-1854030136
         - vless-1827150408
         - vless-1853976393
+        - vless-1827162783
+        - vless-1871234238
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1828372700
         - hysteria2-1828373437
         - hysteria2-1828371338
         - hysteria2-1828371613
@@ -225,6 +246,8 @@ proxy-groups:
         - hysteria2-1854030136
         - vless-1827150408
         - vless-1853976393
+        - vless-1827162783
+        - vless-1871234238
       type: select
 rules:
     - MATCH,select

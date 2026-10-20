@@ -6,26 +6,33 @@ proxies:
       skip-cert-verify: true
       sni: www.amazon.com
       type: hysteria2
-    - name: hysteria2-1854309346
-      password: gf1:gfhysteria2024
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1853489180
+      network: raw
       port: 443
-      server: 185.156.44.99
-      skip-cert-verify: true
-      sni: google.com
-      type: hysteria2
+      reality-opts:
+        public-key: byzvlw97wjAAAfHs5AZRV0P0H6_JKBEZ4yfLS0HNewE
+        short-id: fe24f8a0a560056e
+      server: 146.70.124.85
+      servername: www.datadoghq.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 40abbe13-f02e-4da2-9b19-966c2c3eb4ee
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1853488203
-        - hysteria2-1854309346
+        - vless-1853489180
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1853488203
-        - hysteria2-1854309346
+        - vless-1853489180
       type: select
 rules:
     - MATCH,select
