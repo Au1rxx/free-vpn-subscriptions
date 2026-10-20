@@ -1,46 +1,4 @@
 proxies:
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1839322744
-      network: tcp
-      port: 444
-      reality-opts:
-        public-key: P7F65GjTQGZju-N8CVHtlKNaWebVe_76Xt7Lm00RuH0
-        short-id: ""
-      server: 103.24.207.39
-      servername: vextor.win
-      tls: true
-      type: vless
-      udp: true
-      uuid: 258d8fc5-206c-48fd-88df-169dbbe44d3f
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1850117823
-      network: raw
-      port: 444
-      reality-opts:
-        public-key: P7F65GjTQGZju-N8CVHtlKNaWebVe_76Xt7Lm00RuH0
-        short-id: ""
-      server: 103.24.207.39
-      servername: vextor.win
-      tls: true
-      type: vless
-      udp: true
-      uuid: 258d8fc5-206c-48fd-88df-169dbbe44d3f
-    - client-fingerprint: random
-      flow: xtls-rprx-vision
-      name: vless-1853340232
-      network: tcp
-      port: 444
-      reality-opts:
-        public-key: P7F65GjTQGZju-N8CVHtlKNaWebVe_76Xt7Lm00RuH0
-        short-id: ""
-      server: 103.24.207.39
-      servername: vextor.win
-      tls: true
-      type: vless
-      udp: true
-      uuid: 258d8fc5-206c-48fd-88df-169dbbe44d3f
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1853502842
@@ -111,33 +69,36 @@ proxies:
       server: 176.32.33.143
       type: ss
       udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-1875022965
+      password: Lpq5UPVHtQYiuB9jEUNc2WkeIYCUH9DE
+      port: 18443
+      server: 195.58.49.5
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1839322744
-        - vless-1850117823
-        - vless-1853340232
         - vless-1853502842
         - vless-1853997146
         - vless-1854025624
         - vless-1856013883
         - vless-1867175693
         - shadowsocks-1872916571
+        - shadowsocks-1875022965
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1839322744
-        - vless-1850117823
-        - vless-1853340232
         - vless-1853502842
         - vless-1853997146
         - vless-1854025624
         - vless-1856013883
         - vless-1867175693
         - shadowsocks-1872916571
+        - shadowsocks-1875022965
       type: select
 rules:
     - MATCH,select
