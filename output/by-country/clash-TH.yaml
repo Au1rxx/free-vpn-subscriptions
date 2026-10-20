@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1874224482
+      network: ws
+      port: 80
+      server: 103.86.49.57
+      type: vless
+      udp: true
+      uuid: 3c52e091-6714-4915-949f-2149fe69951b
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1874737492
@@ -20,28 +27,21 @@ proxies:
       type: vless
       udp: true
       uuid: 3c52e091-6714-4915-949f-2149fe69951b
-    - name: vless-1874224482
-      network: ws
-      port: 80
-      server: 103.86.49.57
-      type: vless
-      udp: true
-      uuid: 3c52e091-6714-4915-949f-2149fe69951b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1874224482
         - vless-1874737492
         - vless-1827151284
-        - vless-1874224482
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1874224482
         - vless-1874737492
         - vless-1827151284
-        - vless-1874224482
       type: select
 rules:
     - MATCH,select
