@@ -1,0 +1,22 @@
+proxies:
+    - name: vless-1875144617
+      network: raw
+      port: 2086
+      server: 150.95.109.109
+      type: vless
+      udp: true
+      uuid: b83faafc-cbb7-4655-99d4-2c4c39a49d1b
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1875144617
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1875144617
+      type: select
+rules:
+    - MATCH,select
