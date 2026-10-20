@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-1872757136
-      network: ws
-      port: 80
-      server: 172.66.156.81
-      type: vless
-      udp: true
-      uuid: 93cb7a7e-5633-4283-8c14-03f7c06e4a7b
     - client-fingerprint: chrome
       name: vless-1862362068
       network: grpc
@@ -71,27 +64,40 @@ proxies:
       type: vless
       udp: true
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+    - client-fingerprint: chrome
+      name: vless-1838801428
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1872757136
         - vless-1862362068
         - vless-1862570257
         - vless-1831169817
         - vless-1853487442
         - vless-1827188007
+        - vless-1838801428
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1872757136
         - vless-1862362068
         - vless-1862570257
         - vless-1831169817
         - vless-1853487442
         - vless-1827188007
+        - vless-1838801428
       type: select
 rules:
     - MATCH,select
