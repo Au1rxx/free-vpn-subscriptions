@@ -6,17 +6,33 @@ proxies:
       server: 130.49.189.158
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1874979509
+      network: tcp
+      port: 45433
+      reality-opts:
+        public-key: dfJb8gJq6IRsE1KMsfZp5tNLiwBNQMbSl5NF1z5dq3c
+        short-id: 5f203fdf
+      server: 130.49.189.158
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 739f3bf7-4a8a-4a1b-bdc6-fb3a00123ce3
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1854076895
+        - vless-1874979509
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1854076895
+        - vless-1874979509
       type: select
 rules:
     - MATCH,select

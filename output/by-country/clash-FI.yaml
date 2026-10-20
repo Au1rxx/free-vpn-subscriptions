@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: firefox
+      name: vless-1860722535
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: OOI0p2vKjr8xdwcVCzxcd3rAxmMr7XRA0wMk14IXaFM
+        short-id: 35debf0dc757d053
+      server: 45.145.12.148
+      servername: max.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: b869a8d0-0733-4346-8d1c-c1230a78651c
     - client-fingerprint: safari
       name: vless-1862362047
       network: grpc
@@ -25,6 +38,20 @@ proxies:
       type: vless
       udp: true
       uuid: b869a8d0-0733-4346-8d1c-c1230a78651c
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1857852661
+      network: tcp
+      port: 10444
+      reality-opts:
+        public-key: 0oTkcqwLTUNLnSOP-VUWErmy6usAIg-biBE6ioZO-Vo
+        short-id: 8debcf36f1cc69ff
+      server: 213.176.92.168
+      servername: video.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: ba52cc43-700d-4040-9444-29214c98e6e0
     - client-fingerprint: edge
       name: vless-1862570250
       network: grpc
@@ -38,6 +65,13 @@ proxies:
       type: vless
       udp: true
       uuid: b869a8d0-0733-4346-8d1c-c1230a78651c
+    - name: vless-1853341753
+      network: ws
+      port: 14430
+      server: 193.188.21.253
+      type: vless
+      udp: true
+      uuid: 57f7772d-f5d6-4d8f-992d-5fa5e0d6da55
     - client-fingerprint: chrome
       name: vless-1831169817
       network: grpc
@@ -75,9 +109,12 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1860722535
         - vless-1862362047
         - vless-1862362059
+        - vless-1857852661
         - vless-1862570250
+        - vless-1853341753
         - vless-1831169817
         - vless-1827188007
         - vless-1853463978
@@ -86,9 +123,12 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1860722535
         - vless-1862362047
         - vless-1862362059
+        - vless-1857852661
         - vless-1862570250
+        - vless-1853341753
         - vless-1831169817
         - vless-1827188007
         - vless-1853463978
