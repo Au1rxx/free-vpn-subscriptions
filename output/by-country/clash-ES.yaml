@@ -25,19 +25,6 @@ proxies:
       type: vless
       udp: true
       uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
-    - client-fingerprint: random
-      name: vless-1853464316
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: 7Y6Xb5Ql_03K25x8yKUSOKI2JTOMyv2nyCcFza90uxk
-        short-id: 29e8dcd2b37aaa7f
-      server: 212.227.235.66
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
     - client-fingerprint: firefox
       name: vless-1827524686
       network: tcp
@@ -51,14 +38,39 @@ proxies:
       type: vless
       udp: true
       uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1853341778
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE
+        short-id: 0dfc23fe80778c00
+      server: 46.28.71.247
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 12c53e32-e589-47d6-b857-e4132294f767
+    - name: vless-1853340451
+      network: tcp
+      port: 443
+      server: 85.90.217.42
+      servername: 85.90.217.42
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: 03fcc618-b93d-6796-6aed-8a38c975d581
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1828295938
         - vless-1856657052
-        - vless-1853464316
         - vless-1827524686
+        - vless-1853341778
+        - vless-1853340451
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -66,8 +78,9 @@ proxy-groups:
         - auto
         - vless-1828295938
         - vless-1856657052
-        - vless-1853464316
         - vless-1827524686
+        - vless-1853341778
+        - vless-1853340451
       type: select
 rules:
     - MATCH,select
