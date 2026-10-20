@@ -1,22 +1,22 @@
 proxies:
-    - cipher: aes-256-gcm
-      name: shadowsocks-1872916571
-      password: cCMJgJTA3BA489YUYrFq7XHXSiSpWlLa
-      port: 18443
-      server: 176.32.33.143
-      type: ss
+    - name: vless-1853352938
+      network: ws
+      port: 8880
+      server: 45.131.4.30
+      type: vless
       udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1872916571
+        - vless-1853352938
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1872916571
+        - vless-1853352938
       type: select
 rules:
     - MATCH,select

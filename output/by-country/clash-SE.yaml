@@ -1,0 +1,22 @@
+proxies:
+    - name: vless-1853499518
+      network: ws
+      port: 14430
+      server: 5.178.109.174
+      type: vless
+      udp: true
+      uuid: 80de563a-cac8-40ea-8cb0-4cb082dd92f9
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1853499518
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1853499518
+      type: select
+rules:
+    - MATCH,select
