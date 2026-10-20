@@ -27,13 +27,6 @@ proxies:
       server: 98.98.207.163
       type: ss
       udp: true
-    - cipher: rc4-md5
-      name: shadowsocks-1827963919
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 146.70.61.18
-      type: ss
-      udp: true
     - name: hysteria2-1863235450
       password: b3a11068-1a7e-4643-85de-7c82cce46943
       port: 443
@@ -41,6 +34,13 @@ proxies:
       skip-cert-verify: false
       sni: uk-d9ca48498a.shamanapp.online
       type: hysteria2
+    - cipher: rc4-md5
+      name: shadowsocks-1827963919
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 146.70.61.18
+      type: ss
+      udp: true
     - name: vless-1869827251
       network: tcp
       port: 10002
@@ -62,6 +62,13 @@ proxies:
       type: vless
       udp: true
       uuid: e57ce64d-5a1a-4a90-96df-9e1bd3ad26e4
+    - cipher: aes-128-gcm
+      name: shadowsocks-1827146143
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.181
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -70,10 +77,11 @@ proxy-groups:
         - shadowsocks-1827147824
         - shadowsocks-1870576373
         - shadowsocks-1870576143
-        - shadowsocks-1827963919
         - hysteria2-1863235450
+        - shadowsocks-1827963919
         - vless-1869827251
         - vless-1843685281
+        - shadowsocks-1827146143
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -83,10 +91,11 @@ proxy-groups:
         - shadowsocks-1827147824
         - shadowsocks-1870576373
         - shadowsocks-1870576143
-        - shadowsocks-1827963919
         - hysteria2-1863235450
+        - shadowsocks-1827963919
         - vless-1869827251
         - vless-1843685281
+        - shadowsocks-1827146143
       type: select
 rules:
     - MATCH,select
