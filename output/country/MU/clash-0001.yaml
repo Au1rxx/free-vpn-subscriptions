@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1831117778
+      network: ws
+      port: 8880
+      server: 216.24.57.40
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1854058433
       network: ws
       port: 8880
@@ -17,6 +24,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1831117778
         - vless-1854058433
         - vless-1863482886
       type: url-test
@@ -24,6 +32,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1831117778
         - vless-1854058433
         - vless-1863482886
       type: select
