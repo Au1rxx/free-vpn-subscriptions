@@ -1,0 +1,28 @@
+proxies:
+    - client-fingerprint: firefox
+      name: vless-1883519922
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: rHCPMrwRVCwxdwv4YOCso7zlYTPoX8w7x1f5Yqv2bGM
+        short-id: b73ab21227d33c1e
+      server: 45.198.54.249
+      servername: 6a4a06t.es3.h1clayd.click
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8d4c35bd-d04a-43fe-8390-47133ab90dbf
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1883519922
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1883519922
+      type: select
+rules:
+    - MATCH,select
