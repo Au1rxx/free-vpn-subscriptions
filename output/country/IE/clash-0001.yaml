@@ -1,11 +1,4 @@
 proxies:
-    - name: vless-1831094299
-      network: ws
-      port: 8880
-      server: 154.83.2.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1853352597
       network: ws
       port: 8880
@@ -68,11 +61,18 @@ proxies:
       server: 34.253.145.77
       type: ss
       udp: true
+    - name: trojan-1881708197
+      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
+      port: 443
+      server: ie1.dedushka.top
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1831094299
         - vless-1853352597
         - trojan-1875135241
         - trojan-1875791292
@@ -81,12 +81,12 @@ proxy-groups:
         - trojan-1876710227
         - trojan-1878995505
         - shadowsocks-1880506769
+        - trojan-1881708197
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1831094299
         - vless-1853352597
         - trojan-1875135241
         - trojan-1875791292
@@ -95,6 +95,7 @@ proxy-groups:
         - trojan-1876710227
         - trojan-1878995505
         - shadowsocks-1880506769
+        - trojan-1881708197
       type: select
 rules:
     - MATCH,select
