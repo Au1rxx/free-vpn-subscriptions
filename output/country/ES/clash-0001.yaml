@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-cfb
-      name: shadowsocks-1827146451
-      password: KnJGad3FqTvjqbaX
-      port: 9014
-      server: 5.188.181.201
-      type: ss
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1827149692
@@ -303,20 +296,6 @@ proxies:
       type: vless
       udp: true
       uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1881526434
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: DcdLu5TEodox9cSq7WLfV-47vURmKkRc1BO19KJvgkM
-        short-id: 861215e33e8dba4f
-      server: 185.76.241.87
-      servername: ru-in-es-4vp.movietop24.site
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5c8950a3-2142-42c9-b414-fa34526ff25f
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1882535481
@@ -331,11 +310,46 @@ proxies:
       type: vless
       udp: true
       uuid: 5c8950a3-2142-42c9-b414-fa34526ff25f
+    - client-fingerprint: chrome
+      name: vless-1883516825
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: rHCPMrwRVCwxdwv4YOCso7zlYTPoX8w7x1f5Yqv2bGM
+        short-id: b73ab21227d33c1e
+      server: 45.198.54.249
+      servername: 6a4a06t.es3.h1clayd.click
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8d4c35bd-d04a-43fe-8390-47133ab90dbf
+    - client-fingerprint: firefox
+      name: vless-1883519922
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: rHCPMrwRVCwxdwv4YOCso7zlYTPoX8w7x1f5Yqv2bGM
+        short-id: b73ab21227d33c1e
+      server: 45.198.54.249
+      servername: 6a4a06t.es3.h1clayd.click
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8d4c35bd-d04a-43fe-8390-47133ab90dbf
+    - name: vless-1883521513
+      network: ws
+      port: 443
+      server: 31.57.190.89
+      servername: lucasjow.us.ci
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e6df2095-a73c-4043-8693-8d5a03686870
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1827146451
         - vless-1827149692
         - vless-1827152684
         - vless-1827156208
@@ -359,14 +373,15 @@ proxy-groups:
         - vless-1876875894
         - vless-1878595096
         - vless-1880764106
-        - vless-1881526434
         - vless-1882535481
+        - vless-1883516825
+        - vless-1883519922
+        - vless-1883521513
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1827146451
         - vless-1827149692
         - vless-1827152684
         - vless-1827156208
@@ -390,8 +405,10 @@ proxy-groups:
         - vless-1876875894
         - vless-1878595096
         - vless-1880764106
-        - vless-1881526434
         - vless-1882535481
+        - vless-1883516825
+        - vless-1883519922
+        - vless-1883521513
       type: select
 rules:
     - MATCH,select

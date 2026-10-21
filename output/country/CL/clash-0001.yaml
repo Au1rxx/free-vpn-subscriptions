@@ -1,0 +1,85 @@
+proxies:
+    - name: vless-1831177964
+      network: ws
+      port: 80
+      server: platform109.golnamakcert.top
+      type: vless
+      udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+    - name: vless-1832807751
+      network: ws
+      port: 80
+      server: platform107.golnamakcert.top
+      type: vless
+      udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+    - name: vless-1853352864
+      network: ws
+      port: 80
+      server: platform102.golnamakcert.top
+      type: vless
+      udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+    - name: vless-1853500835
+      network: ws
+      port: 80
+      server: platform101.golnamakcert.top
+      type: vless
+      udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+    - name: vless-1853501001
+      network: ws
+      port: 80
+      server: platform102.golnamakcert.top
+      type: vless
+      udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+    - name: vless-1853974945
+      network: ws
+      port: 80
+      server: platform109.golnamakcert.top
+      type: vless
+      udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+    - name: vless-1875764184
+      network: ws
+      port: 80
+      server: platform103.golnamakcert.top
+      type: vless
+      udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+    - name: vless-1876912355
+      network: ws
+      port: 80
+      server: platform109.golnamakcert.top
+      type: vless
+      udp: true
+      uuid: e13cf851-b4fd-413b-8d49-146e6eb8e5d4
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1831177964
+        - vless-1832807751
+        - vless-1853352864
+        - vless-1853500835
+        - vless-1853501001
+        - vless-1853974945
+        - vless-1875764184
+        - vless-1876912355
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1831177964
+        - vless-1832807751
+        - vless-1853352864
+        - vless-1853500835
+        - vless-1853501001
+        - vless-1853974945
+        - vless-1875764184
+        - vless-1876912355
+      type: select
+rules:
+    - MATCH,select
