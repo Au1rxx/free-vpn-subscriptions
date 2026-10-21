@@ -39,11 +39,26 @@ proxies:
       sni: pl2.dedushka.top
       type: trojan
       udp: true
+    - name: vless-1869963083
+      network: tcp
+      port: 20001
+      server: site.teslamotor.site
+      type: vless
+      udp: true
+      uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
     - name: trojan-1876387636
       password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
       port: 443
       server: 31.133.0.186
       skip-cert-verify: true
+      sni: pl2.dedushka.top
+      type: trojan
+      udp: true
+    - name: trojan-1863223118
+      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
+      port: 443
+      server: pl2.dedushka.top
+      skip-cert-verify: false
       sni: pl2.dedushka.top
       type: trojan
       udp: true
@@ -151,40 +166,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 5504eaa8-1395-402f-8e0e-75ecd762e627
-    - name: trojan-1863223118
-      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
-      port: 443
-      server: pl2.dedushka.top
-      skip-cert-verify: false
-      sni: pl2.dedushka.top
-      type: trojan
-      udp: true
-    - client-fingerprint: random
-      name: vless-1828149341
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
-        short-id: 50ba05992b05c1c3
-      server: 54.37.136.194
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
-    - client-fingerprint: chrome
-      name: vless-1853959852
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
-        short-id: 50ba05992b05c1c3
-      server: 54.37.136.194
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
 proxy-groups:
     - interval: 300
       name: auto
@@ -194,7 +175,9 @@ proxy-groups:
         - trojan-1875022933
         - trojan-1874155890
         - trojan-1860252936
+        - vless-1869963083
         - trojan-1876387636
+        - trojan-1863223118
         - trojan-1865632621
         - trojan-1857852043
         - trojan-1864520820
@@ -207,9 +190,6 @@ proxy-groups:
         - trojan-1863223112
         - vless-1869904605
         - vmess-1854107777
-        - trojan-1863223118
-        - vless-1828149341
-        - vless-1853959852
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -220,7 +200,9 @@ proxy-groups:
         - trojan-1875022933
         - trojan-1874155890
         - trojan-1860252936
+        - vless-1869963083
         - trojan-1876387636
+        - trojan-1863223118
         - trojan-1865632621
         - trojan-1857852043
         - trojan-1864520820
@@ -233,9 +215,6 @@ proxy-groups:
         - trojan-1863223112
         - vless-1869904605
         - vmess-1854107777
-        - trojan-1863223118
-        - vless-1828149341
-        - vless-1853959852
       type: select
 rules:
     - MATCH,select
