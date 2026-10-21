@@ -1,4 +1,18 @@
 proxies:
+    - name: hysteria2-1853502744
+      password: gf1:gfhysteria2024
+      port: 443
+      server: 185.156.44.99
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
+    - name: vless-1853331568
+      network: tcp
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1832690762
@@ -17,12 +31,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1853502744
+        - vless-1853331568
         - vless-1832690762
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1853502744
+        - vless-1853331568
         - vless-1832690762
       type: select
 rules:
