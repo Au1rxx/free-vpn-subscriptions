@@ -1,12 +1,5 @@
 proxies:
     - cipher: aes-256-gcm
-      name: shadowsocks-1827146722
-      password: XKFKl2rULjIp74
-      port: 8008
-      server: 185.226.172.8
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
       name: shadowsocks-1827146150
       password: RexnBgU7EV5ADxG
       port: 7001
@@ -57,14 +50,6 @@ proxies:
       skip-cert-verify: true
       sni: germany3.h2corp.local
       type: hysteria2
-    - name: trojan-1864894749
-      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
-      port: 443
-      server: 188.241.241.102
-      skip-cert-verify: false
-      sni: de4.dedushka.top
-      type: trojan
-      udp: true
     - name: trojan-1864518819
       password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
       port: 443
@@ -124,14 +109,6 @@ proxies:
       server: de4.dedushka.top
       skip-cert-verify: false
       sni: de4.dedushka.top
-      type: trojan
-      udp: true
-    - name: trojan-1875764179
-      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
-      port: 443
-      server: 188.241.241.236
-      skip-cert-verify: false
-      sni: de10.dedushka.top
       type: trojan
       udp: true
     - name: trojan-1865445915
@@ -225,6 +202,14 @@ proxies:
       server: de6.dedushka.top
       skip-cert-verify: false
       sni: de6.dedushka.top
+      type: trojan
+      udp: true
+    - name: trojan-1865445913
+      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
+      port: 443
+      server: de2.dedushka.top
+      skip-cert-verify: false
+      sni: de2.dedushka.top
       type: trojan
       udp: true
     - name: trojan-1874120349
@@ -335,6 +320,14 @@ proxies:
       sni: de2.dedushka.top
       type: trojan
       udp: true
+    - name: trojan-1875023040
+      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
+      port: 443
+      server: 188.241.241.117
+      skip-cert-verify: false
+      sni: de8.dedushka.top
+      type: trojan
+      udp: true
     - name: trojan-1870104435
       password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
       port: 443
@@ -378,6 +371,20 @@ proxies:
       type: vless
       udp: true
       uuid: '@Cooonfig@Cooonfig'
+    - client-fingerprint: randomized
+      flow: xtls-rprx-vision
+      name: vless-1827154997
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: RTG-xTU5UuKTRrkk8_COe04GiUWrqrSdt9mqSak_XEc
+        short-id: e696e744
+      server: 2.27.35.55
+      servername: addons.mozilla.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1853356966
@@ -434,6 +441,20 @@ proxies:
       type: vless
       udp: true
       uuid: df53b6c2-8005-475c-9eb9-74e1be785dc8
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1873913777
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: QLh2Y5Ig7pncEIvOYpZlLH2rUHZ3CRuyAo1A_emWZQU
+        short-id: 3ba10d9ce34380c9
+      server: 191.44.108.31
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 558b26f6-061b-4079-9b84-ca13b3e90ae3
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1864904111
@@ -452,7 +473,6 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1827146722
         - shadowsocks-1827146150
         - shadowsocks-1875023013
         - trojan-1880433484
@@ -460,7 +480,6 @@ proxy-groups:
         - vless-1880433503
         - vless-1878892424
         - hysteria2-1877087133
-        - trojan-1864894749
         - trojan-1864518819
         - trojan-1870104449
         - trojan-1874155766
@@ -468,7 +487,6 @@ proxy-groups:
         - vless-1871231765
         - trojan-1873913825
         - trojan-1858707775
-        - trojan-1875764179
         - trojan-1865445915
         - trojan-1874120348
         - trojan-1864894746
@@ -480,6 +498,7 @@ proxy-groups:
         - trojan-1877709240
         - trojan-1874120351
         - trojan-1874120356
+        - trojan-1865445913
         - trojan-1874120349
         - vless-1871234225
         - vless-1863756470
@@ -491,22 +510,24 @@ proxy-groups:
         - trojan-1876448900
         - trojan-1870103768
         - trojan-1868593195
+        - trojan-1875023040
         - trojan-1870104435
         - trojan-1855916800
         - vless-1871234223
         - vless-1837324384
         - vless-1878302401
+        - vless-1827154997
         - vless-1853356966
         - vless-1827149693
         - vless-1843553933
         - vless-1827162842
+        - vless-1873913777
         - vless-1864904111
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1827146722
         - shadowsocks-1827146150
         - shadowsocks-1875023013
         - trojan-1880433484
@@ -514,7 +535,6 @@ proxy-groups:
         - vless-1880433503
         - vless-1878892424
         - hysteria2-1877087133
-        - trojan-1864894749
         - trojan-1864518819
         - trojan-1870104449
         - trojan-1874155766
@@ -522,7 +542,6 @@ proxy-groups:
         - vless-1871231765
         - trojan-1873913825
         - trojan-1858707775
-        - trojan-1875764179
         - trojan-1865445915
         - trojan-1874120348
         - trojan-1864894746
@@ -534,6 +553,7 @@ proxy-groups:
         - trojan-1877709240
         - trojan-1874120351
         - trojan-1874120356
+        - trojan-1865445913
         - trojan-1874120349
         - vless-1871234225
         - vless-1863756470
@@ -545,15 +565,18 @@ proxy-groups:
         - trojan-1876448900
         - trojan-1870103768
         - trojan-1868593195
+        - trojan-1875023040
         - trojan-1870104435
         - trojan-1855916800
         - vless-1871234223
         - vless-1837324384
         - vless-1878302401
+        - vless-1827154997
         - vless-1853356966
         - vless-1827149693
         - vless-1843553933
         - vless-1827162842
+        - vless-1873913777
         - vless-1864904111
       type: select
 rules:

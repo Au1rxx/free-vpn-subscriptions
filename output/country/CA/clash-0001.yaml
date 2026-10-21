@@ -7,13 +7,6 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-gcm
-      name: shadowsocks-1827146970
-      password: cdBIDV42DCwnfIN
-      port: 8118
-      server: 51.79.85.185
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
       name: shadowsocks-1827147187
       password: kDWvXYZoTBcGkC4
       port: 8882
@@ -1021,12 +1014,25 @@ proxies:
       type: vless
       udp: true
       uuid: dc620cd6-a9d8-4a0f-8f18-006b895db77e
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1880925310
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: uTmb-ytXsx8p0fkBz7A76SHpWk7_oVutIA4LGTE8BQk
+        short-id: f98843107912e782
+      server: 209.200.246.148
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ca52e2b6-fb9f-4dac-b6dc-49da9923f251
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827146224
-        - shadowsocks-1827146970
         - shadowsocks-1827147187
         - shadowsocks-1827147205
         - shadowsocks-1827147479
@@ -1137,13 +1143,13 @@ proxy-groups:
         - vmess-1877155141
         - vmess-1877155148
         - vless-1879375814
+        - vless-1880925310
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1827146224
-        - shadowsocks-1827146970
         - shadowsocks-1827147187
         - shadowsocks-1827147205
         - shadowsocks-1827147479
@@ -1254,6 +1260,7 @@ proxy-groups:
         - vmess-1877155141
         - vmess-1877155148
         - vless-1879375814
+        - vless-1880925310
       type: select
 rules:
     - MATCH,select
