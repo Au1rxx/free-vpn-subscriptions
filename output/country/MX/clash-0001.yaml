@@ -6,28 +6,29 @@ proxies:
       server: 64.177.90.30
       type: ss
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-1882595612
+    - name: vless-1880569906
       network: ws
-      port: 20521
-      server: 131.196.252.59
-      type: vmess
+      port: 8443
+      server: 45.134.9.133
+      servername: ul-mexico1.09vpn.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
       udp: true
-      uuid: 5809911a-a16e-43d3-90b0-2c94cfc2035e
+      uuid: a6d20e79-d326-42c1-bc20-f4cecc6dc42d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1828226479
-        - vmess-1882595612
+        - vless-1880569906
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1828226479
-        - vmess-1882595612
+        - vless-1880569906
       type: select
 rules:
     - MATCH,select
