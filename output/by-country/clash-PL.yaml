@@ -1,4 +1,34 @@
 proxies:
+    - name: trojan-1869127407
+      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
+      port: 443
+      server: pl1.dedushka.top
+      skip-cert-verify: true
+      sni: pl1.dedushka.top
+      type: trojan
+      udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1876912350
+      network: tcp
+      port: 33891
+      reality-opts:
+        public-key: HXXIkFRPeRpluXJ7SOoUGf9EOq4Lw-oJpvg1W0UPbEw
+        short-id: 5bd7b68ca4c04443
+      server: 144.31.101.196
+      servername: browser.yandex.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c794e75-bcd4-4a65-9f69-ed0a10f33d60
+    - name: trojan-1876387636
+      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
+      port: 443
+      server: 31.133.0.186
+      skip-cert-verify: true
+      sni: pl2.dedushka.top
+      type: trojan
+      udp: true
     - name: trojan-1867100780
       password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
       port: 443
@@ -30,6 +60,14 @@ proxies:
       sni: pl2.dedushka.top
       type: trojan
       udp: true
+    - name: trojan-1880445937
+      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
+      port: 443
+      server: pl1.dedushka.top
+      skip-cert-verify: false
+      sni: ""
+      type: trojan
+      udp: true
     - name: trojan-1855918773
       password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
       port: 443
@@ -42,20 +80,28 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-1869127407
+        - vless-1876912350
+        - trojan-1876387636
         - trojan-1867100780
         - trojan-1863223119
         - vless-1869963083
         - trojan-1863223118
+        - trojan-1880445937
         - trojan-1855918773
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-1869127407
+        - vless-1876912350
+        - trojan-1876387636
         - trojan-1867100780
         - trojan-1863223119
         - vless-1869963083
         - trojan-1863223118
+        - trojan-1880445937
         - trojan-1855918773
       type: select
 rules:
