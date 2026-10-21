@@ -34,6 +34,20 @@ proxies:
       server: 185.176.206.9
       type: ss
       udp: true
+    - cipher: rc4-md5
+      name: shadowsocks-1870576128
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 98.98.142.161
+      type: ss
+      udp: true
+    - name: hysteria2-1853341837
+      password: b3a11068-1a7e-4643-85de-7c82cce46943
+      port: 443
+      server: 191.215.46.37
+      skip-cert-verify: true
+      sni: uk.shamanapp.online
+      type: hysteria2
     - name: vless-1883023543
       network: tcp
       port: 22223
@@ -48,6 +62,13 @@ proxies:
       server: 146.70.46.199
       type: ss
       udp: true
+    - name: vless-1881710281
+      network: tcp
+      port: 22224
+      server: 51.24.15.27
+      type: vless
+      udp: true
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
     - name: vless-1880433493
       network: tcp
       port: 22224
@@ -69,13 +90,6 @@ proxies:
       type: vless
       udp: true
       uuid: c6362720-0931-4b91-b187-d8ecf3149734
-    - cipher: aes-256-gcm
-      name: shadowsocks-1827147824
-      password: g5h5jleTRSyO3Rk4
-      port: 443
-      server: 149.102.132.184
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
@@ -85,12 +99,14 @@ proxy-groups:
         - hysteria2-1876880818
         - hysteria2-1854003560
         - shadowsocks-1875022976
+        - shadowsocks-1870576128
+        - hysteria2-1853341837
         - vless-1883023543
         - shadowsocks-1870576322
+        - vless-1881710281
         - vless-1880433493
         - vless-1883010549
         - vless-1869827251
-        - shadowsocks-1827147824
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -101,12 +117,14 @@ proxy-groups:
         - hysteria2-1876880818
         - hysteria2-1854003560
         - shadowsocks-1875022976
+        - shadowsocks-1870576128
+        - hysteria2-1853341837
         - vless-1883023543
         - shadowsocks-1870576322
+        - vless-1881710281
         - vless-1880433493
         - vless-1883010549
         - vless-1869827251
-        - shadowsocks-1827147824
       type: select
 rules:
     - MATCH,select
