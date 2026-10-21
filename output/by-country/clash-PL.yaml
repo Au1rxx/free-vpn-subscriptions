@@ -14,12 +14,21 @@ proxies:
       sni: pl2.dedushka.top
       type: trojan
       udp: true
+    - name: trojan-1855918773
+      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
+      port: 443
+      server: pl2.dedushka.top
+      skip-cert-verify: false
+      sni: pl2.dedushka.top
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1869963083
         - trojan-1863223118
+        - trojan-1855918773
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -27,6 +36,7 @@ proxy-groups:
         - auto
         - vless-1869963083
         - trojan-1863223118
+        - trojan-1855918773
       type: select
 rules:
     - MATCH,select

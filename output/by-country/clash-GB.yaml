@@ -14,13 +14,6 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-gcm
-      name: shadowsocks-1875022976
-      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-      port: 19999
-      server: 185.176.206.9
-      type: ss
-      udp: true
-    - cipher: aes-256-gcm
       name: shadowsocks-1827147261
       password: g5h5jleTRSyO3Rk4
       port: 80
@@ -41,16 +34,30 @@ proxies:
       server: 141.98.101.181
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1853984699
+      network: tcp
+      port: 10444
+      reality-opts:
+        public-key: 0oTkcqwLTUNLnSOP-VUWErmy6usAIg-biBE6ioZO-Vo
+        short-id: 8debcf36f1cc69ff
+      server: 138.124.125.193
+      servername: ads.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: e57ce64d-5a1a-4a90-96df-9e1bd3ad26e4
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827147824
         - shadowsocks-1827146621
-        - shadowsocks-1875022976
         - shadowsocks-1827147261
         - hysteria2-1853331434
         - shadowsocks-1827146143
+        - vless-1853984699
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -58,10 +65,10 @@ proxy-groups:
         - auto
         - shadowsocks-1827147824
         - shadowsocks-1827146621
-        - shadowsocks-1875022976
         - shadowsocks-1827147261
         - hysteria2-1853331434
         - shadowsocks-1827146143
+        - vless-1853984699
       type: select
 rules:
     - MATCH,select
