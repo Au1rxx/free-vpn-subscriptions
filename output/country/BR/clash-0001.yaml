@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-1827147407
+      password: owVdNnQcdPgthSyX
+      port: 8388
+      server: 216.128.168.190
+      type: ss
+      udp: true
     - name: vless-1831178592
       network: ws
       port: 80
@@ -10,12 +17,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1827147407
         - vless-1831178592
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1827147407
         - vless-1831178592
       type: select
 rules:
