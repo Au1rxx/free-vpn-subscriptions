@@ -1,5 +1,19 @@
 proxies:
     - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1827145156
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 3iVJAIGPx6JMlhlRmfpGrHkSmLpHJ4CPvBBH7KsFrFA
+        short-id: fd8cf7e1173f0edb
+      server: 83.147.18.3
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9f61cdf4-810d-4052-bbc7-2da0c8e20104
+    - client-fingerprint: chrome
       name: vless-1827145802
       network: tcp
       port: 2053
@@ -485,6 +499,13 @@ proxies:
       type: vless
       udp: true
       uuid: e57ce64d-5a1a-4a90-96df-9e1bd3ad26e4
+    - name: hysteria2-1853331434
+      password: b3a11068-1a7e-4643-85de-7c82cce46943
+      port: 443
+      server: 191.215.46.37
+      skip-cert-verify: false
+      sni: uk.shamanapp.online
+      type: hysteria2
     - name: vless-1853331631
       network: ws
       port: 80
@@ -1217,13 +1238,6 @@ proxies:
       type: vless
       udp: true
       uuid: c6362720-0931-4b91-b187-d8ecf3149734
-    - name: hysteria2-1876880818
-      password: b3a11068-1a7e-4643-85de-7c82cce46943
-      port: 443
-      server: uk-d9ca48498a.shamanapp.online
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
     - client-fingerprint: random
       name: vless-1876905851
       network: tcp
@@ -1374,6 +1388,15 @@ proxies:
       type: vless
       udp: true
       uuid: 8e790f25-1d71-4601-9fb0-d503931dcfca
+    - alterId: 0
+      cipher: auto
+      name: vmess-1880851314
+      network: ws
+      port: 80
+      server: 57.129.132.223
+      type: vmess
+      udp: true
+      uuid: a25cbf11-2908-4a1b-a3a8-9a571777dca3
     - name: vless-1880851318
       network: tcp
       port: 8443
@@ -1431,13 +1454,6 @@ proxies:
       type: vless
       udp: true
       uuid: c08f0056-7a6d-4931-813b-aaa3cdd00aed
-    - name: vless-1883504652
-      network: tcp
-      port: 22222
-      server: 16.60.128.74
-      type: vless
-      udp: true
-      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
     - name: vless-1883504676
       network: tcp
       port: 22223
@@ -1496,13 +1512,6 @@ proxies:
       type: vless
       udp: true
       uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-    - name: vless-1884606425
-      network: tcp
-      port: 22222
-      server: 16.60.128.74
-      type: vless
-      udp: true
-      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
     - name: vless-1884606428
       network: tcp
       port: 22224
@@ -1545,20 +1554,6 @@ proxies:
       type: vless
       udp: true
       uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1884845243
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: OEuFn92apsB9ZjFf5GpGHFmLR6T--heK-MsiThxWsl4
-        short-id: ""
-      server: 178.83.122.65
-      servername: wikipedia.org
-      tls: true
-      type: vless
-      udp: true
-      uuid: 90144ad9-2db7-42ef-9271-e537d187cfb7
     - name: vless-1884945195
       network: tcp
       port: 22223
@@ -1627,6 +1622,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1827145156
         - vless-1827145802
         - shadowsocks-1827146143
         - shadowsocks-1827146621
@@ -1673,6 +1669,7 @@ proxy-groups:
         - vless-1849373365
         - vless-1853178460
         - vless-1853331425
+        - hysteria2-1853331434
         - vless-1853331631
         - vless-1853335042
         - vless-1853340170
@@ -1747,7 +1744,6 @@ proxy-groups:
         - vless-1876242158
         - vless-1876448896
         - vless-1876808313
-        - hysteria2-1876880818
         - vless-1876905851
         - vless-1876912376
         - vless-1877172667
@@ -1762,13 +1758,13 @@ proxy-groups:
         - vless-1880849760
         - vless-1880851303
         - vless-1880851304
+        - vmess-1880851314
         - vless-1880851318
         - vless-1880853702
         - vless-1880853705
         - shadowsocks-1882368541
         - vless-1882484897
         - vless-1883363804
-        - vless-1883504652
         - vless-1883504676
         - vless-1883504702
         - vless-1883504715
@@ -1776,13 +1772,11 @@ proxy-groups:
         - vless-1883866163
         - vless-1884178574
         - vless-1884606423
-        - vless-1884606425
         - vless-1884606428
         - vless-1884607447
         - vless-1884777603
         - vless-1884777625
         - vless-1884777643
-        - vless-1884845243
         - vless-1884945195
         - vless-1884945227
         - vless-1884963611
@@ -1795,6 +1789,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1827145156
         - vless-1827145802
         - shadowsocks-1827146143
         - shadowsocks-1827146621
@@ -1841,6 +1836,7 @@ proxy-groups:
         - vless-1849373365
         - vless-1853178460
         - vless-1853331425
+        - hysteria2-1853331434
         - vless-1853331631
         - vless-1853335042
         - vless-1853340170
@@ -1915,7 +1911,6 @@ proxy-groups:
         - vless-1876242158
         - vless-1876448896
         - vless-1876808313
-        - hysteria2-1876880818
         - vless-1876905851
         - vless-1876912376
         - vless-1877172667
@@ -1930,13 +1925,13 @@ proxy-groups:
         - vless-1880849760
         - vless-1880851303
         - vless-1880851304
+        - vmess-1880851314
         - vless-1880851318
         - vless-1880853702
         - vless-1880853705
         - shadowsocks-1882368541
         - vless-1882484897
         - vless-1883363804
-        - vless-1883504652
         - vless-1883504676
         - vless-1883504702
         - vless-1883504715
@@ -1944,13 +1939,11 @@ proxy-groups:
         - vless-1883866163
         - vless-1884178574
         - vless-1884606423
-        - vless-1884606425
         - vless-1884606428
         - vless-1884607447
         - vless-1884777603
         - vless-1884777625
         - vless-1884777643
-        - vless-1884845243
         - vless-1884945195
         - vless-1884945227
         - vless-1884963611
