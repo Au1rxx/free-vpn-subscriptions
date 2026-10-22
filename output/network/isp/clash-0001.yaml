@@ -6,6 +6,20 @@ proxies:
       server: 211.178.105.134
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-1827146715
+      password: 1234!@#$
+      port: 1774
+      server: 49.254.204.134
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1827146803
+      password: QFWzCw2uX9B9i6qAYeFBIE
+      port: 443
+      server: 154.46.31.106
+      type: ss
+      udp: true
     - name: trojan-1827149554
       password: humanity
       port: 443
@@ -87,6 +101,20 @@ proxies:
       type: vless
       udp: true
       uuid: 1af36694-b548-4b18-89a0-bc076eab4ed7
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1828139892
+      network: tcp
+      port: 10444
+      reality-opts:
+        public-key: 0oTkcqwLTUNLnSOP-VUWErmy6usAIg-biBE6ioZO-Vo
+        short-id: 8debcf36f1cc69ff
+      server: 95.128.71.79
+      servername: ads.x5.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8cef7621-c6f0-486e-b51d-59c30c5b0b25
     - name: vless-1828139919
       network: ws
       port: 14430
@@ -192,26 +220,6 @@ proxies:
       type: vless
       udp: true
       uuid: b6e5dc56-836f-48c1-9163-b0b0b43b647d
-    - name: vless-1831095653
-      network: ws
-      port: 443
-      server: 160.16.109.149
-      servername: vp10.pages.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7b102311-43fd-4e8f-877e-8090623c101d
-    - name: vless-1831119057
-      network: ws
-      port: 443
-      server: 24.84.0.55
-      servername: cf3.schzyc.cc.cd
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 51a0af77-a60c-4d9b-81a4-f50e1b38d90b
     - name: vless-1832465408
       network: ws
       port: 443
@@ -390,15 +398,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1af36694-b548-4b18-89a0-bc076eab4ed7
-    - alterId: 0
-      cipher: auto
-      name: vmess-1832863532
-      network: ws
-      port: 20086
-      server: 183.109.131.75
-      type: vmess
-      udp: true
-      uuid: b26c4803-0bca-467c-a245-c9a80bdd72ec
     - name: vless-1832972760
       network: ws
       port: 14430
@@ -767,15 +766,13 @@ proxies:
       sni: www.calmlunch.com
       type: trojan
       udp: true
-    - alterId: 0
-      cipher: auto
-      name: vmess-1858143195
+    - name: vless-1865421425
       network: ws
-      port: 20086
-      server: 183.109.131.75
-      type: vmess
+      port: 14430
+      server: 95.128.71.79
+      type: vless
       udp: true
-      uuid: b26c4803-0bca-467c-a245-c9a80bdd72ec
+      uuid: 8cef7621-c6f0-486e-b51d-59c30c5b0b25
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1868593196
@@ -973,6 +970,8 @@ proxy-groups:
       name: auto
       proxies:
         - shadowsocks-1827145973
+        - shadowsocks-1827146715
+        - shadowsocks-1827146803
         - trojan-1827149554
         - vless-1827150959
         - vless-1827155261
@@ -982,6 +981,7 @@ proxy-groups:
         - shadowsocks-1827983920
         - vless-1828129521
         - vless-1828129527
+        - vless-1828139892
         - vless-1828139919
         - vless-1828140784
         - vless-1828140795
@@ -991,8 +991,6 @@ proxy-groups:
         - vless-1830269694
         - vless-1830269695
         - vless-1830269696
-        - vless-1831095653
-        - vless-1831119057
         - vless-1832465408
         - vless-1832690680
         - vless-1832690685
@@ -1008,7 +1006,6 @@ proxy-groups:
         - vless-1832691494
         - vless-1832691513
         - vless-1832691522
-        - vmess-1832863532
         - vless-1832972760
         - vless-1833034015
         - vless-1837386971
@@ -1046,7 +1043,7 @@ proxy-groups:
         - vless-1856231764
         - vless-1856236702
         - trojan-1856998112
-        - vmess-1858143195
+        - vless-1865421425
         - vless-1868593196
         - vless-1875288185
         - vless-1875791264
@@ -1070,6 +1067,8 @@ proxy-groups:
       proxies:
         - auto
         - shadowsocks-1827145973
+        - shadowsocks-1827146715
+        - shadowsocks-1827146803
         - trojan-1827149554
         - vless-1827150959
         - vless-1827155261
@@ -1079,6 +1078,7 @@ proxy-groups:
         - shadowsocks-1827983920
         - vless-1828129521
         - vless-1828129527
+        - vless-1828139892
         - vless-1828139919
         - vless-1828140784
         - vless-1828140795
@@ -1088,8 +1088,6 @@ proxy-groups:
         - vless-1830269694
         - vless-1830269695
         - vless-1830269696
-        - vless-1831095653
-        - vless-1831119057
         - vless-1832465408
         - vless-1832690680
         - vless-1832690685
@@ -1105,7 +1103,6 @@ proxy-groups:
         - vless-1832691494
         - vless-1832691513
         - vless-1832691522
-        - vmess-1832863532
         - vless-1832972760
         - vless-1833034015
         - vless-1837386971
@@ -1143,7 +1140,7 @@ proxy-groups:
         - vless-1856231764
         - vless-1856236702
         - trojan-1856998112
-        - vmess-1858143195
+        - vless-1865421425
         - vless-1868593196
         - vless-1875288185
         - vless-1875791264
