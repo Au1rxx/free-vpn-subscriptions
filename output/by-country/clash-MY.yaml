@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1885015549
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: SPtkbd9O6y-rdGoR2CLzW1IFr6WMlqt2lM9wU-VURig
+        short-id: 6b7a8c9d
+      server: my2.frnhk.xyz
+      servername: www.waseda.jp
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6006c9a2-c0a2-4cda-80f2-405b0d790fc8
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1885015549
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1885015549
+      type: select
+rules:
+    - MATCH,select
