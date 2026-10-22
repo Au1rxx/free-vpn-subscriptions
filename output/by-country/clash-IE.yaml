@@ -7,17 +7,27 @@ proxies:
       sni: ie1.dedushka.top
       type: trojan
       udp: true
+    - name: trojan-1878995505
+      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
+      port: 443
+      server: ie1.dedushka.top
+      skip-cert-verify: true
+      sni: ie1.dedushka.top
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-1875135241
+        - trojan-1878995505
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - trojan-1875135241
+        - trojan-1878995505
       type: select
 rules:
     - MATCH,select
