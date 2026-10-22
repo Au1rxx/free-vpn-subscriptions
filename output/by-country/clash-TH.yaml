@@ -13,17 +13,26 @@ proxies:
       type: vless
       udp: true
       uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - cipher: aes-256-gcm
+      name: shadowsocks-1827147592
+      password: sxajCTwrlK0zl+zmHpX0p0jXIfatnzlLzWlSQ950L1c=
+      port: 52351
+      server: pphfree2.mvpnpvpn.de5.net
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1880579270
+        - shadowsocks-1827147592
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1880579270
+        - shadowsocks-1827147592
       type: select
 rules:
     - MATCH,select
