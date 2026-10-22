@@ -442,15 +442,6 @@ proxies:
       type: vmess
       udp: true
       uuid: a25cbf11-2908-4a1b-a3a8-9a571777dca3
-    - alterId: 0
-      cipher: auto
-      name: vmess-1844600831
-      network: ws
-      port: 80
-      server: 57.129.132.223
-      type: vmess
-      udp: true
-      uuid: a25cbf11-2908-4a1b-a3a8-9a571777dca3
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1849373365
@@ -1528,13 +1519,20 @@ proxies:
       type: vless
       udp: true
       uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
-    - name: vless-1884786070
-      network: tcp
-      port: 10002
-      server: 168.222.43.216
+    - name: vless-1884777625
+      network: raw
+      port: 22224
+      server: 3.11.145.4
       type: vless
       udp: true
-      uuid: c6362720-0931-4b91-b187-d8ecf3149734
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
+    - name: vless-1884777643
+      network: raw
+      port: 22224
+      server: 16.60.128.74
+      type: vless
+      udp: true
+      uuid: e4514801-0d5a-42ba-869f-39bd605aef9e
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1884845243
@@ -1618,6 +1616,21 @@ proxies:
       type: vless
       udp: true
       uuid: 9c794bb7-54fe-4acd-844a-a26209af36c3
+    - name: trojan-1885508052
+      password: xwhfg0wu1wxv377f
+      port: 2087
+      server: 216.24.57.225
+      skip-cert-verify: true
+      sni: neo.xnetaro.ir
+      type: trojan
+      udp: true
+    - name: vless-1885508732
+      network: grpc
+      port: 2085
+      server: 80.243.228.130
+      type: vless
+      udp: true
+      uuid: 4dc8093e-4eff-410b-bc14-b69f78209414
 proxy-groups:
     - interval: 300
       name: auto
@@ -1664,7 +1677,6 @@ proxy-groups:
         - vless-1844596250
         - vless-1844596391
         - vmess-1844600488
-        - vmess-1844600831
         - vless-1849373365
         - vless-1853178460
         - vless-1853331425
@@ -1774,7 +1786,8 @@ proxy-groups:
         - vless-1884606428
         - vless-1884607447
         - vless-1884777585
-        - vless-1884786070
+        - vless-1884777625
+        - vless-1884777643
         - vless-1884845243
         - vless-1884845271
         - vless-1884945195
@@ -1783,6 +1796,8 @@ proxy-groups:
         - vless-1884963611
         - vless-1885352065
         - vless-1885352078
+        - trojan-1885508052
+        - vless-1885508732
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -1830,7 +1845,6 @@ proxy-groups:
         - vless-1844596250
         - vless-1844596391
         - vmess-1844600488
-        - vmess-1844600831
         - vless-1849373365
         - vless-1853178460
         - vless-1853331425
@@ -1940,7 +1954,8 @@ proxy-groups:
         - vless-1884606428
         - vless-1884607447
         - vless-1884777585
-        - vless-1884786070
+        - vless-1884777625
+        - vless-1884777643
         - vless-1884845243
         - vless-1884845271
         - vless-1884945195
@@ -1949,6 +1964,8 @@ proxy-groups:
         - vless-1884963611
         - vless-1885352065
         - vless-1885352078
+        - trojan-1885508052
+        - vless-1885508732
       type: select
 rules:
     - MATCH,select

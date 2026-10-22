@@ -13,28 +13,12 @@ proxies:
       type: vless
       udp: true
       uuid: c6362720-0931-4b91-b187-d8ecf3149734
-    - name: hysteria2-1856186685
-      password: b3a11068-1a7e-4643-85de-7c82cce46943
-      port: 443
-      server: uk-d9ca48498a.shamanapp.online
-      skip-cert-verify: false
-      sni: uk.shamanapp.online
-      type: hysteria2
-    - cipher: aes-128-gcm
-      name: shadowsocks-1827146143
-      password: shadowsocks
-      port: 443
-      server: 141.98.101.181
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827147824
         - vless-1869827251
-        - hysteria2-1856186685
-        - shadowsocks-1827146143
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -42,8 +26,6 @@ proxy-groups:
         - auto
         - shadowsocks-1827147824
         - vless-1869827251
-        - hysteria2-1856186685
-        - shadowsocks-1827146143
       type: select
 rules:
     - MATCH,select
