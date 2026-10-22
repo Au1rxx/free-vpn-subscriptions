@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-gcm
+      name: shadowsocks-1875023050
+      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+      port: 19999
+      server: 202.50.253.36
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
       name: shadowsocks-1875023019
       password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
       port: 19999
@@ -11,6 +18,13 @@ proxies:
       password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
       port: 19999
       server: 202.50.253.45
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-1875022930
+      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+      port: 19999
+      server: 202.50.253.18
       type: ss
       udp: true
     - cipher: aes-256-gcm
@@ -28,11 +42,26 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-gcm
+      name: shadowsocks-1875022975
+      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+      port: 19999
+      server: 202.50.253.81
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
       name: shadowsocks-1875022929
       password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
       port: 19999
       server: 202.50.253.90
       type: ss
+      udp: true
+    - name: trojan-1876710445
+      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
+      port: 443
+      server: it1.dedushka.top
+      skip-cert-verify: false
+      sni: it1.dedushka.top
+      type: trojan
       udp: true
     - name: trojan-1880079564
       password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
@@ -41,13 +70,6 @@ proxies:
       skip-cert-verify: false
       sni: ""
       type: trojan
-      udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-1875022930
-      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-      port: 19999
-      server: 202.50.253.18
-      type: ss
       udp: true
     - name: trojan-1875790279
       password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
@@ -69,13 +91,16 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1875023050
         - shadowsocks-1875023019
         - shadowsocks-1875023007
+        - shadowsocks-1875022930
         - shadowsocks-1827147481
         - shadowsocks-1875023009
+        - shadowsocks-1875022975
         - shadowsocks-1875022929
+        - trojan-1876710445
         - trojan-1880079564
-        - shadowsocks-1875022930
         - trojan-1875790279
         - trojan-1878577348
       type: url-test
@@ -83,13 +108,16 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-1875023050
         - shadowsocks-1875023019
         - shadowsocks-1875023007
+        - shadowsocks-1875022930
         - shadowsocks-1827147481
         - shadowsocks-1875023009
+        - shadowsocks-1875022975
         - shadowsocks-1875022929
+        - trojan-1876710445
         - trojan-1880079564
-        - shadowsocks-1875022930
         - trojan-1875790279
         - trojan-1878577348
       type: select
