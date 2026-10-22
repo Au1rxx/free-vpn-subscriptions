@@ -52,6 +52,13 @@ proxies:
       type: vless
       udp: true
       uuid: 30e3c098-f963-40ed-aec7-67b692321801
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1827963182
+      password: "12242"
+      port: 10099
+      server: 115.161.136.145
+      type: ss
+      udp: true
     - cipher: aes-256-cfb
       name: shadowsocks-1827969068
       password: qwerREWQ@@
@@ -461,13 +468,6 @@ proxies:
       type: vless
       udp: true
       uuid: b6e5dc56-836f-48c1-9163-b0b0b43b647d
-    - name: vless-1842086216
-      network: ws
-      port: 14430
-      server: 178.172.227.124
-      type: vless
-      udp: true
-      uuid: 1af36694-b548-4b18-89a0-bc076eab4ed7
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1853331501
@@ -795,6 +795,16 @@ proxies:
       type: vless
       udp: true
       uuid: 51a0af77-a60c-4d9b-81a4-f50e1b38d90b
+    - name: vless-1856231764
+      network: ws
+      port: 443
+      server: 24.84.0.55
+      servername: cf3.schzyc.cc.cd
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 51a0af77-a60c-4d9b-81a4-f50e1b38d90b
     - name: vless-1856231992
       network: ws
       port: 443
@@ -920,16 +930,20 @@ proxies:
       type: vless
       udp: true
       uuid: 30e52776-55ac-3cb4-8d36-e2910f07e2c3
-    - name: vless-1879070105
-      network: ws
-      port: 8443
-      server: 37.221.210.113
-      servername: free.cndyw.ggff.net
-      skip-cert-verify: false
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1878028005
+      network: tcp
+      port: 10444
+      reality-opts:
+        public-key: 0oTkcqwLTUNLnSOP-VUWErmy6usAIg-biBE6ioZO-Vo
+        short-id: 8debcf36f1cc69ff
+      server: 95.128.71.79
+      servername: ads.x5.ru
       tls: true
       type: vless
       udp: true
-      uuid: 04c808e2-0b59-47b0-a54b-32fc7ef1c902
+      uuid: 8cef7621-c6f0-486e-b51d-59c30c5b0b25
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1880090791
@@ -955,20 +969,6 @@ proxies:
       type: vless
       udp: true
       uuid: 30e52776-55ac-3cb4-8d36-e2910f07e2c3
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1884775372
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: -vbYsY2UQcGl7Z6eTc5KDhxOfo_OhsqFlI_SyeL4TSE
-        short-id: b927c029ece94e02
-      server: 185.76.241.49
-      servername: ru-in-est-4vp.movietop24.site
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7ab86f1f-871e-4de6-9dae-7addf6dc976c
     - name: vless-1884800495
       network: ws
       port: 14430
@@ -1064,6 +1064,7 @@ proxy-groups:
         - vless-1827150959
         - vless-1827155261
         - vless-1827619962
+        - shadowsocks-1827963182
         - shadowsocks-1827969068
         - vless-1827981865
         - shadowsocks-1827983920
@@ -1101,7 +1102,6 @@ proxy-groups:
         - vless-1833034015
         - vless-1837386971
         - vless-1837386978
-        - vless-1842086216
         - vless-1853331501
         - vless-1853340468
         - vless-1853341035
@@ -1134,6 +1134,7 @@ proxy-groups:
         - vless-1856088622
         - vless-1856093284
         - vless-1856230121
+        - vless-1856231764
         - vless-1856231992
         - vless-1856236605
         - vless-1856236702
@@ -1146,10 +1147,9 @@ proxy-groups:
         - vless-1876476437
         - vless-1876710206
         - vless-1877410482
-        - vless-1879070105
+        - vless-1878028005
         - vless-1880090791
         - vless-1881495200
-        - vless-1884775372
         - vless-1884800495
         - vless-1884845238
         - vless-1884845283
@@ -1169,6 +1169,7 @@ proxy-groups:
         - vless-1827150959
         - vless-1827155261
         - vless-1827619962
+        - shadowsocks-1827963182
         - shadowsocks-1827969068
         - vless-1827981865
         - shadowsocks-1827983920
@@ -1206,7 +1207,6 @@ proxy-groups:
         - vless-1833034015
         - vless-1837386971
         - vless-1837386978
-        - vless-1842086216
         - vless-1853331501
         - vless-1853340468
         - vless-1853341035
@@ -1239,6 +1239,7 @@ proxy-groups:
         - vless-1856088622
         - vless-1856093284
         - vless-1856230121
+        - vless-1856231764
         - vless-1856231992
         - vless-1856236605
         - vless-1856236702
@@ -1251,10 +1252,9 @@ proxy-groups:
         - vless-1876476437
         - vless-1876710206
         - vless-1877410482
-        - vless-1879070105
+        - vless-1878028005
         - vless-1880090791
         - vless-1881495200
-        - vless-1884775372
         - vless-1884800495
         - vless-1884845238
         - vless-1884845283
