@@ -1,8 +1,22 @@
 proxies:
     - cipher: aes-256-cfb
+      name: shadowsocks-1827146201
+      password: mwgRg9hRq3b4Qnwb
+      port: 9068
+      server: 195.238.126.20
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-1827967999
       password: Lp27rqyJq72bZsqX
       port: 9045
+      server: 195.238.126.20
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-1827968179
+      password: JCJpbRbQZNw9XFZG
+      port: 9078
       server: 195.238.126.20
       type: ss
       udp: true
@@ -17,14 +31,18 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1827146201
         - shadowsocks-1827967999
+        - shadowsocks-1827968179
         - shadowsocks-1827968381
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1827146201
         - shadowsocks-1827967999
+        - shadowsocks-1827968179
         - shadowsocks-1827968381
       type: select
 rules:
