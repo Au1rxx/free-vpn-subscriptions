@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1856960107
+      network: ws
+      port: 8880
+      server: 88.216.67.50
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1886192064
@@ -17,12 +24,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1856960107
         - vless-1886192064
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1856960107
         - vless-1886192064
       type: select
 rules:

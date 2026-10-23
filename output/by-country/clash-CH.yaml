@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1832650664
+      password: 84a506ca5aca505696a454d828420b3f
+      port: 50160
+      server: 140.238.213.114
+      skip-cert-verify: true
+      sni: 140.238.213.114
+      type: hysteria2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1827146737
       password: e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3
@@ -6,6 +13,13 @@ proxies:
       server: 132.243.175.144
       type: ss
       udp: true
+    - name: hysteria2-1854030070
+      password: 84a506ca5aca505696a454d828420b3f
+      port: 50160
+      server: 140.238.213.114
+      skip-cert-verify: true
+      sni: "off"
+      type: hysteria2
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1855697008
@@ -24,14 +38,18 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1832650664
         - shadowsocks-1827146737
+        - hysteria2-1854030070
         - vless-1855697008
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1832650664
         - shadowsocks-1827146737
+        - hysteria2-1854030070
         - vless-1855697008
       type: select
 rules:
