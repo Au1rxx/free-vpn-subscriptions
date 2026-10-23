@@ -12,6 +12,13 @@ proxies:
       type: vless
       udp: true
       uuid: 9a0e84f8-4b58-477f-99da-5fac5a2e58e8
+    - name: vless-1832690666
+      network: ws
+      port: 14430
+      server: 213.176.92.168
+      type: vless
+      udp: true
+      uuid: ba52cc43-700d-4040-9444-29214c98e6e0
     - client-fingerprint: chrome
       name: vless-1838801428
       network: tcp
@@ -65,27 +72,45 @@ proxies:
       type: vless
       udp: true
       uuid: ba52cc43-700d-4040-9444-29214c98e6e0
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1857852661
+      network: tcp
+      port: 10444
+      reality-opts:
+        public-key: 0oTkcqwLTUNLnSOP-VUWErmy6usAIg-biBE6ioZO-Vo
+        short-id: 8debcf36f1cc69ff
+      server: 213.176.92.168
+      servername: video.yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: ba52cc43-700d-4040-9444-29214c98e6e0
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1832977887
+        - vless-1832690666
         - vless-1838801428
         - vless-1828532122
         - vless-1827399465
         - vless-1832691514
         - vless-1853499874
+        - vless-1857852661
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1832977887
+        - vless-1832690666
         - vless-1838801428
         - vless-1828532122
         - vless-1827399465
         - vless-1832691514
         - vless-1853499874
+        - vless-1857852661
       type: select
 rules:
     - MATCH,select
