@@ -1,0 +1,44 @@
+{
+  "outbounds": [
+    {
+      "server": "45.134.9.133",
+      "server_port": 8443,
+      "tag": "vless-1880569906",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "ul-mexico1.09vpn.com"
+      },
+      "transport": {
+        "path": "/vless/",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "a6d20e79-d326-42c1-bc20-f4cecc6dc42d"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1880569906"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1880569906"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
