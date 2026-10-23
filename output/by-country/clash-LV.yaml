@@ -15,14 +15,6 @@ proxies:
       sni: lv1.dedushka.top
       type: trojan
       udp: true
-    - name: trojan-1884434556
-      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
-      port: 443
-      server: lv1.dedushka.top
-      skip-cert-verify: true
-      sni: lv1.dedushka.top
-      type: trojan
-      udp: true
     - name: trojan-1879329806
       password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
       port: 443
@@ -63,6 +55,20 @@ proxies:
       sni: ""
       type: trojan
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1832464868
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: GBdkyDLfr0LIZo_94Xv8ycAKOmkjArYzwJAEMhuXX2c
+        short-id: 33acba1b
+      server: 138.124.180.137
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
     - cipher: aes-256-cfb
       name: shadowsocks-1827146842
       password: rpgbNnU9rDDU4aWZ
@@ -92,14 +98,6 @@ proxies:
       type: vless
       udp: true
       uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
-    - name: trojan-1879682687
-      password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
-      port: 443
-      server: lv1.dedushka.top
-      skip-cert-verify: false
-      sni: ""
-      type: trojan
-      udp: true
     - name: trojan-1884748245
       password: 4_VfP9fKaM-3LpSVvoZuc_WUzLoCdHaA
       port: 443
@@ -108,23 +106,82 @@ proxies:
       sni: lv1.dedushka.top
       type: trojan
       udp: true
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1827152073
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: GBdkyDLfr0LIZo_94Xv8ycAKOmkjArYzwJAEMhuXX2c
+        short-id: 33acba1b
+      server: 138.124.180.137
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
+    - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1828532260
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: GBdkyDLfr0LIZo_94Xv8ycAKOmkjArYzwJAEMhuXX2c
+        short-id: 33acba1b
+      server: 138.124.180.137
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1832974450
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: GBdkyDLfr0LIZo_94Xv8ycAKOmkjArYzwJAEMhuXX2c
+        short-id: 33acba1b
+      server: 138.124.180.137
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1827319129
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: GBdkyDLfr0LIZo_94Xv8ycAKOmkjArYzwJAEMhuXX2c
+        short-id: 33acba1b
+      server: 138.124.180.137
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 5234b2b7-5e07-422c-8159-d62a676c00c6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - trojan-1884868336
         - trojan-1884434562
-        - trojan-1884434556
         - trojan-1879329806
         - trojan-1883582212
         - trojan-1875135246
         - trojan-1878526852
         - trojan-1883840881
+        - vless-1832464868
         - shadowsocks-1827146842
         - trojan-1878526857
         - vless-1827975813
-        - trojan-1879682687
         - trojan-1884748245
+        - vless-1827152073
+        - vless-1828532260
+        - vless-1832974450
+        - vless-1827319129
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -132,17 +189,20 @@ proxy-groups:
         - auto
         - trojan-1884868336
         - trojan-1884434562
-        - trojan-1884434556
         - trojan-1879329806
         - trojan-1883582212
         - trojan-1875135246
         - trojan-1878526852
         - trojan-1883840881
+        - vless-1832464868
         - shadowsocks-1827146842
         - trojan-1878526857
         - vless-1827975813
-        - trojan-1879682687
         - trojan-1884748245
+        - vless-1827152073
+        - vless-1828532260
+        - vless-1832974450
+        - vless-1827319129
       type: select
 rules:
     - MATCH,select
