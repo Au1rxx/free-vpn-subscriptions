@@ -7,6 +7,13 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-cfb
+      name: shadowsocks-1827967959
+      password: xaupMUvhptwxdDUg
+      port: 9012
+      server: 195.238.126.20
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-1827967999
       password: Lp27rqyJq72bZsqX
       port: 9045
@@ -27,23 +34,40 @@ proxies:
       server: 195.238.126.20
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      name: vless-1887759999
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: C6nh6hqFTbtizgSH8vGmw2XUxsQAbAW3jPylpgGvfl4
+        short-id: a1b2c3d4e5f6a7b8
+      server: skelmoridianservice.com
+      servername: cp.velunatrixes.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2c7332d6-01e0-462e-843f-8253d7e1b920
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827146201
+        - shadowsocks-1827967959
         - shadowsocks-1827967999
         - shadowsocks-1827968179
         - shadowsocks-1827968381
+        - vless-1887759999
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1827146201
+        - shadowsocks-1827967959
         - shadowsocks-1827967999
         - shadowsocks-1827968179
         - shadowsocks-1827968381
+        - vless-1887759999
       type: select
 rules:
     - MATCH,select
