@@ -1,4 +1,17 @@
 proxies:
+    - client-fingerprint: chrome
+      name: vless-1854330920
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: pAgrBKJCmuSJHIzYkEJTqsOBOVBK_DMtEqFPo-PaTkg
+        short-id: b3c9d0c6bdd114a6
+      server: 2.29.101.158
+      servername: 36a466g.fi1.h1clayd.click
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9a0e84f8-4b58-477f-99da-5fac5a2e58e8
     - client-fingerprint: firefox
       name: vless-1853487442
       network: raw
@@ -16,12 +29,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1854330920
         - vless-1853487442
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1854330920
         - vless-1853487442
       type: select
 rules:

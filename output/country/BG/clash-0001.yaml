@@ -1,11 +1,11 @@
 proxies:
-    - name: vless-1827145522
-      network: ws
-      port: 8880
-      server: 104.254.140.30
-      type: vless
+    - cipher: aes-256-cfb
+      name: shadowsocks-1827887435
+      password: 4R3hUfZ2FHhDmNcP
+      port: 9061
+      server: 213.183.63.60
+      type: ss
       udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: aes-256-cfb
       name: shadowsocks-1827968913
       password: 2KUaE2a8NWTvuCZ3
@@ -93,16 +93,20 @@ proxies:
       type: vless
       udp: true
       uuid: d18c6897-2849-456a-8c46-d7ecece47c20
-    - name: vless-1876911045
-      network: ws
-      port: 30303
-      server: 155.103.70.53
-      servername: wzs.echo.net.eu.org
-      skip-cert-verify: false
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1874737548
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: rabtI-ymNXBUvYYRwAw8DiR-1pdP7U0WPIaCBHEkgzo
+        short-id: 77bb0d07bddbc832
+      server: 195.123.226.21
+      servername: gateway.icloud.com
       tls: true
       type: vless
       udp: true
-      uuid: d18c6897-2849-456a-8c46-d7ecece47c20
+      uuid: 6589c320-db68-43cd-a273-b46299bab355
     - name: vless-1883340318
       network: ws
       port: 8880
@@ -110,18 +114,11 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1897614155
-      network: ws
-      port: 8880
-      server: 104.26.0.1
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1827145522
+        - shadowsocks-1827887435
         - shadowsocks-1827968913
         - shadowsocks-1827969065
         - shadowsocks-1827969291
@@ -134,15 +131,14 @@ proxy-groups:
         - vless-1853352927
         - vless-1853992878
         - vless-1856236840
-        - vless-1876911045
+        - vless-1874737548
         - vless-1883340318
-        - vless-1897614155
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1827145522
+        - shadowsocks-1827887435
         - shadowsocks-1827968913
         - shadowsocks-1827969065
         - shadowsocks-1827969291
@@ -155,9 +151,8 @@ proxy-groups:
         - vless-1853352927
         - vless-1853992878
         - vless-1856236840
-        - vless-1876911045
+        - vless-1874737548
         - vless-1883340318
-        - vless-1897614155
       type: select
 rules:
     - MATCH,select
