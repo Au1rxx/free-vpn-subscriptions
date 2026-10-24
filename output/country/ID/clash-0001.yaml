@@ -6,17 +6,33 @@ proxies:
       skip-cert-verify: true
       sni: www.bing.com
       type: hysteria2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1908513076
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: NUjWUMNrcZKkvXmnK--E7wn_YyhEH6c-YOqjDMHWAxA
+        short-id: 686b3e179573a80a
+      server: 213.165.60.106
+      servername: ru-in-ind-4vp.movietop24.site
+      tls: true
+      type: vless
+      udp: true
+      uuid: c5cf36f5-50e9-405b-adb4-b40fdf0d4619
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1906784821
+        - vless-1908513076
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1906784821
+        - vless-1908513076
       type: select
 rules:
     - MATCH,select
