@@ -1,0 +1,22 @@
+proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-1896270544
+      password: I6o9NnialYLMEjVt28RF4dpjmr9wMvNL
+      port: 17001
+      server: 141.227.172.132
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-1896270544
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-1896270544
+      type: select
+rules:
+    - MATCH,select
