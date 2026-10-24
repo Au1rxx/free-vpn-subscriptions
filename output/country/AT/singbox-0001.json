@@ -9,9 +9,51 @@
       "type": "shadowsocks"
     },
     {
+      "server": "141.101.90.108",
+      "server_port": 2053,
+      "tag": "vless-1837270387",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "wzs.echo.net.eu.org"
+      },
+      "transport": {
+        "headers": {
+          "Host": "wzs.echo.net.eu.org"
+        },
+        "path": "/video/HxNMGkZdGw0PRk1GVw8YF14OXkwNVVtIRg1HUlxQSwUEVRwJUx8BQRoaSVhfRhoOChkDDUs=fp=chrome",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "d18c6897-2849-456a-8c46-d7ecece47c20"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "201.51.5.225",
+      "server_port": 443,
+      "tag": "vless-1898619187",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "fJnm6-PhJGSwHaAdJOzXkYOfCPPCWSlaZrtfm1XsqhA"
+        },
+        "server_name": "rvsczgic.assetcache.click",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "b73f766e-d807-4cf0-9a26-94ca1b2e9c6a"
+    },
+    {
       "interval": "5m",
       "outbounds": [
-        "shadowsocks-1827147826"
+        "shadowsocks-1827147826",
+        "vless-1837270387",
+        "vless-1898619187"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -20,7 +62,9 @@
     {
       "outbounds": [
         "auto",
-        "shadowsocks-1827147826"
+        "shadowsocks-1827147826",
+        "vless-1837270387",
+        "vless-1898619187"
       ],
       "tag": "select",
       "type": "selector"

@@ -6,6 +6,13 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-1853352938
+      network: ws
+      port: 8880
+      server: 45.131.4.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1887435301
       network: ws
       port: 8880
@@ -41,23 +48,41 @@ proxies:
       type: vless
       udp: true
       uuid: f0b144bd-4c44-440d-b630-d79ec82cad3a
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1898604288
+      network: tcp
+      port: 19226
+      reality-opts:
+        public-key: PQjgf7GxBd2tDXf0zl9Z5rTZo7LdsWj0hGZLH-lJ-Uk
+        short-id: 7c
+      server: 77.91.69.169
+      servername: yahoo.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: f0b144bd-4c44-440d-b630-d79ec82cad3a
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1828374467
+        - vless-1853352938
         - vless-1887435301
         - vless-1891672392
         - vless-1896119555
+        - vless-1898604288
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1828374467
+        - vless-1853352938
         - vless-1887435301
         - vless-1891672392
         - vless-1896119555
+        - vless-1898604288
       type: select
 rules:
     - MATCH,select
