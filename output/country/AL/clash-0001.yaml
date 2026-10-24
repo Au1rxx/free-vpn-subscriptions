@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1895325312
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: XMvZvBbY8rIlWFNGB6IDzDOf-xBPm4737KN9weKltBc
+        short-id: f5bce2ac
+      server: 157.22.240.50
+      servername: www.ovhcloud.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: iCaYLyqSFgn5Nt
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1895325312
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1895325312
+      type: select
+rules:
+    - MATCH,select
