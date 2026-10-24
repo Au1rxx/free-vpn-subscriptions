@@ -1,11 +1,15 @@
 proxies:
-    - name: vless-1853974967
-      network: ws
-      port: 14430
-      server: 45.144.234.157
+    - flow: xtls-rprx-vision
+      name: vless-1897569569
+      network: tcp
+      port: 443
+      server: static.86.39.13.49.clients.your-server.de
+      servername: static.75.209.109.65.clients.your-server.de
+      skip-cert-verify: false
+      tls: true
       type: vless
       udp: true
-      uuid: 59b0d30e-9b29-4fda-a35c-b2901ec32db7
+      uuid: 6c688f63-fad4-45d8-a6a1-1e978ed26b8b
     - client-fingerprint: firefox
       name: vless-1827150333
       network: tcp
@@ -19,6 +23,13 @@ proxies:
       type: vless
       udp: true
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+    - name: vless-1853974967
+      network: ws
+      port: 14430
+      server: 45.144.234.157
+      type: vless
+      udp: true
+      uuid: 59b0d30e-9b29-4fda-a35c-b2901ec32db7
     - name: vless-1853974931
       network: ws
       port: 14430
@@ -50,8 +61,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1853974967
+        - vless-1897569569
         - vless-1827150333
+        - vless-1853974967
         - vless-1853974931
         - vless-1827188007
         - vless-1853352743
@@ -60,8 +72,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vless-1853974967
+        - vless-1897569569
         - vless-1827150333
+        - vless-1853974967
         - vless-1853974931
         - vless-1827188007
         - vless-1853352743
