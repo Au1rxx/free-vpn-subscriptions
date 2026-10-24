@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-128-gcm
+      name: shadowsocks-1827146143
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.181
+      type: ss
+      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-1875022976
       password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
@@ -20,25 +27,11 @@ proxies:
       server: 149.102.132.184
       type: ss
       udp: true
-    - cipher: rc4-md5
-      name: shadowsocks-1827147777
-      password: 14fFPrbezE3HDZzsMOr6
-      port: 8080
-      server: 146.70.61.37
-      type: ss
-      udp: true
     - cipher: aes-256-gcm
       name: shadowsocks-1827147824
       password: g5h5jleTRSyO3Rk4
       port: 443
       server: 149.102.132.184
-      type: ss
-      udp: true
-    - cipher: aes-128-gcm
-      name: shadowsocks-1827146143
-      password: shadowsocks
-      port: 443
-      server: 141.98.101.181
       type: ss
       udp: true
     - name: vless-1893695187
@@ -65,12 +58,11 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1827146143
         - shadowsocks-1875022976
         - shadowsocks-1870576373
         - shadowsocks-1827147261
-        - shadowsocks-1827147777
         - shadowsocks-1827147824
-        - shadowsocks-1827146143
         - vless-1893695187
         - vless-1880851304
       type: url-test
@@ -78,12 +70,11 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-1827146143
         - shadowsocks-1875022976
         - shadowsocks-1870576373
         - shadowsocks-1827147261
-        - shadowsocks-1827147777
         - shadowsocks-1827147824
-        - shadowsocks-1827146143
         - vless-1893695187
         - vless-1880851304
       type: select

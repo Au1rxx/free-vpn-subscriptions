@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1887435301
+      network: ws
+      port: 8880
+      server: 192.0.63.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1891672392
@@ -31,6 +38,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1887435301
         - vless-1891672392
         - vless-1896119555
       type: url-test
@@ -38,6 +46,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1887435301
         - vless-1891672392
         - vless-1896119555
       type: select
