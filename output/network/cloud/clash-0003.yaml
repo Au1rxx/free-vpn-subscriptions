@@ -1,4 +1,89 @@
 proxies:
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1892877751
+      network: raw
+      port: 41688
+      reality-opts:
+        public-key: srwIElIGTPs0kshpN1vvPsn4wixV_pLd56y_v9m0sTk
+        short-id: 7f342137c20387
+      server: 54.169.200.246
+      servername: www.intel.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 49c0aac1-5e05-4f04-b624-248fc59e03c4
+    - name: vless-1892880190
+      network: ws
+      port: 443
+      server: 104.18.35.15
+      servername: ccc.010304.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d342d11e-d224-4463-b982-532309285094
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1892891190
+      network: tcp
+      port: 41688
+      reality-opts:
+        public-key: srwIElIGTPs0kshpN1vvPsn4wixV_pLd56y_v9m0sTk
+        short-id: 7f342137c20387
+      server: 54.169.200.246
+      servername: www.intel.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 49c0aac1-5e05-4f04-b624-248fc59e03c4
+    - client-fingerprint: random
+      name: vless-1893043103
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: jeS6Zu-p1Gf6GtraIAbpgQoSeT26Xq3GqgqVxccbVhY
+        short-id: 4d14da19b19cfc8c
+      server: 162.55.242.208
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 659ffdfa-47d2-47d7-af40-5afe0907eead
+    - name: trojan-1893698159
+      password: humanity
+      port: 443
+      server: 108.162.194.134
+      skip-cert-verify: true
+      sni: www.pleadcourt.org
+      type: trojan
+      udp: true
+    - name: vless-1894334016
+      network: ws
+      port: 443
+      server: 172.64.146.66
+      servername: ccc.010304.xyz
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d342d11e-d224-4463-b982-532309285094
+    - name: trojan-1894570735
+      password: humanity
+      port: 443
+      server: 104.19.229.21
+      skip-cert-verify: true
+      sni: www.calmlunch.com
+      type: trojan
+      udp: true
+    - name: trojan-1894575733
+      password: humanity
+      port: 443
+      server: 141.193.213.172
+      skip-cert-verify: true
+      sni: www.calmlunch.com
+      type: trojan
+      udp: true
     - name: trojan-1894578733
       password: humanity
       port: 443
@@ -393,13 +478,6 @@ proxies:
       server: 54.180.151.244
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1903696224
-      password: 5uDrCF_iLoxCiRkKku6f7A
-      port: 147
-      server: 49.12.249.167
-      type: ss
-      udp: true
     - name: vless-1903716738
       network: tcp
       port: 10086
@@ -494,13 +572,6 @@ proxies:
       server: 49.12.249.167
       type: ss
       udp: true
-    - name: hysteria2-1906784799
-      password: 7e68e32f-8015-4f37-9082-70e8b0b58043
-      port: 443
-      server: 54.180.151.244
-      skip-cert-verify: true
-      sni: www.bing.com
-      type: hysteria2
     - name: vless-1907713769
       network: ws
       port: 443
@@ -598,6 +669,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1892877751
+        - vless-1892880190
+        - vless-1892891190
+        - vless-1893043103
+        - trojan-1893698159
+        - vless-1894334016
+        - trojan-1894570735
+        - trojan-1894575733
         - trojan-1894578733
         - trojan-1894600734
         - trojan-1894605735
@@ -641,7 +720,6 @@ proxy-groups:
         - trojan-1903654553
         - vless-1903654555
         - shadowsocks-1903695224
-        - shadowsocks-1903696224
         - vless-1903716738
         - vmess-1905115834
         - vmess-1905277519
@@ -653,7 +731,6 @@ proxy-groups:
         - hysteria2-1905414644
         - vmess-1905420656
         - shadowsocks-1906024578
-        - hysteria2-1906784799
         - vless-1907713769
         - trojan-1908518028
         - trojan-1908784185
@@ -668,6 +745,14 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1892877751
+        - vless-1892880190
+        - vless-1892891190
+        - vless-1893043103
+        - trojan-1893698159
+        - vless-1894334016
+        - trojan-1894570735
+        - trojan-1894575733
         - trojan-1894578733
         - trojan-1894600734
         - trojan-1894605735
@@ -711,7 +796,6 @@ proxy-groups:
         - trojan-1903654553
         - vless-1903654555
         - shadowsocks-1903695224
-        - shadowsocks-1903696224
         - vless-1903716738
         - vmess-1905115834
         - vmess-1905277519
@@ -723,7 +807,6 @@ proxy-groups:
         - hysteria2-1905414644
         - vmess-1905420656
         - shadowsocks-1906024578
-        - hysteria2-1906784799
         - vless-1907713769
         - trojan-1908518028
         - trojan-1908784185
