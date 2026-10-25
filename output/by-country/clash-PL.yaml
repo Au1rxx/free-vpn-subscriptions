@@ -13,13 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: 44dfa3a7-f648-4587-819b-e653c0823f28
-    - name: vless-1876912365
-      network: tcp
-      port: 20001
-      server: site.teslamotor.site
-      type: vless
-      udp: true
-      uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
     - name: vless-1869904605
       network: tcp
       port: 20001
@@ -27,8 +20,22 @@ proxies:
       type: vless
       udp: true
       uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
+    - name: vless-1909151589
+      network: tcp
+      port: 443
+      server: 5.22.221.127
+      type: vless
+      udp: true
+      uuid: 44dfa3a7-f648-4587-819b-e653c0823f28
     - name: vless-1876388819
       network: raw
+      port: 20001
+      server: site.teslamotor.site
+      type: vless
+      udp: true
+      uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
+    - name: vless-1876912365
+      network: tcp
       port: 20001
       server: site.teslamotor.site
       type: vless
@@ -40,9 +47,10 @@ proxy-groups:
       proxies:
         - vless-1869963083
         - vless-1906785096
-        - vless-1876912365
         - vless-1869904605
+        - vless-1909151589
         - vless-1876388819
+        - vless-1876912365
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -50,9 +58,10 @@ proxy-groups:
         - auto
         - vless-1869963083
         - vless-1906785096
-        - vless-1876912365
         - vless-1869904605
+        - vless-1909151589
         - vless-1876388819
+        - vless-1876912365
       type: select
 rules:
     - MATCH,select
