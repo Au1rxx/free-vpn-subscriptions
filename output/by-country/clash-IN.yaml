@@ -1,17 +1,4 @@
 proxies:
-    - client-fingerprint: firefox
-      name: vless-1827152134
-      network: grpc
-      port: 2443
-      reality-opts:
-        public-key: h85e28MxBgNyT9d9cNeOLVtWfHq6cT_1_oxZOTajtTg
-        short-id: 92c32de179e5d908
-      server: 5.253.28.240
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5e679ccd-1586-4d5f-b87b-48251046cad8
     - client-fingerprint: qq
       flow: xtls-rprx-vision
       name: vless-1891897714
@@ -47,26 +34,15 @@ proxies:
       type: vless
       udp: true
       uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
-    - client-fingerprint: ios
-      name: vless-1856199639
-      network: grpc
-      port: 2443
-      reality-opts:
-        public-key: h85e28MxBgNyT9d9cNeOLVtWfHq6cT_1_oxZOTajtTg
-        short-id: 92c32de179e5d908
-      server: 5.253.28.240
-      servername: deepl.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 5e679ccd-1586-4d5f-b87b-48251046cad8
-    - name: vless-1828534465
+    - alterId: 0
+      cipher: auto
+      name: vmess-1853344528
       network: ws
-      port: 14430
-      server: 13.140.56.100
-      type: vless
+      port: 80
+      server: 152.67.8.205
+      type: vmess
       udp: true
-      uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
+      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
     - name: vless-1828654996
       network: ws
       port: 14430
@@ -74,13 +50,6 @@ proxies:
       type: vless
       udp: true
       uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
-    - name: vless-1848811103
-      network: tcp
-      port: 10443
-      server: 5.253.29.254
-      type: vless
-      udp: true
-      uuid: c7c27192-60a5-4ce1-b613-95270d82309d
     - name: vless-1827735104
       network: ws
       port: 14430
@@ -89,6 +58,13 @@ proxies:
       udp: true
       uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
     - name: vless-1854086904
+      network: ws
+      port: 14430
+      server: 13.140.56.100
+      type: vless
+      udp: true
+      uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
+    - name: vless-1828534465
       network: ws
       port: 14430
       server: 13.140.56.100
@@ -121,16 +97,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1827152134
         - vless-1891897714
         - vless-1873664420
         - vless-1832465387
-        - vless-1856199639
-        - vless-1828534465
+        - vmess-1853344528
         - vless-1828654996
-        - vless-1848811103
         - vless-1827735104
         - vless-1854086904
+        - vless-1828534465
         - vless-1832650490
         - vmess-1876449885
       type: url-test
@@ -138,16 +112,14 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - vless-1827152134
         - vless-1891897714
         - vless-1873664420
         - vless-1832465387
-        - vless-1856199639
-        - vless-1828534465
+        - vmess-1853344528
         - vless-1828654996
-        - vless-1848811103
         - vless-1827735104
         - vless-1854086904
+        - vless-1828534465
         - vless-1832650490
         - vmess-1876449885
       type: select
