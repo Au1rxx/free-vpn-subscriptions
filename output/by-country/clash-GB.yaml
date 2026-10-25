@@ -1,16 +1,16 @@
 proxies:
-    - cipher: aes-128-gcm
-      name: shadowsocks-1827146143
-      password: shadowsocks
-      port: 443
-      server: 141.98.101.181
-      type: ss
-      udp: true
     - cipher: rc4-md5
       name: shadowsocks-1827963919
       password: 14fFPrbezE3HDZzsMOr6
       port: 8080
       server: 146.70.61.18
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: shadowsocks-1827146143
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.181
       type: ss
       udp: true
     - name: vless-1876912376
@@ -47,6 +47,13 @@ proxies:
       type: vless
       udp: true
       uuid: 8e790f25-1d71-4601-9fb0-d503931dcfca
+    - name: vless-1869827251
+      network: tcp
+      port: 10002
+      server: connect.hondamotor.site
+      type: vless
+      udp: true
+      uuid: c6362720-0931-4b91-b187-d8ecf3149734
     - client-fingerprint: chrome
       name: vless-1827145802
       network: tcp
@@ -71,12 +78,13 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1827146143
         - shadowsocks-1827963919
+        - shadowsocks-1827146143
         - vless-1876912376
         - shadowsocks-1875022976
         - shadowsocks-1870576143
         - vless-1880851304
+        - vless-1869827251
         - vless-1827145802
         - shadowsocks-1870576128
       type: url-test
@@ -84,12 +92,13 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - shadowsocks-1827146143
         - shadowsocks-1827963919
+        - shadowsocks-1827146143
         - vless-1876912376
         - shadowsocks-1875022976
         - shadowsocks-1870576143
         - vless-1880851304
+        - vless-1869827251
         - vless-1827145802
         - shadowsocks-1870576128
       type: select
