@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-1856200567
+      network: ws
+      port: 443
+      server: 188.114.97.6
+      servername: investor.fb.com.r3xxe.eu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1246e51a-97cd-4d5c-9842-76dd3420bbe2
     - name: hysteria2-1906784821
       password: 78585441-c8b3-40fb-9b94-15edd312fdcf
       port: 55555
@@ -10,12 +20,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1856200567
         - hysteria2-1906784821
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1856200567
         - hysteria2-1906784821
       type: select
 rules:
