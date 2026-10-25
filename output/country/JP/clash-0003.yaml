@@ -1,0 +1,109 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1914947981
+      network: tcp
+      port: 35544
+      reality-opts:
+        public-key: HrcXRHtsitc_AVlN-_8fZuRgaP-Mqa_9JJotI9OnkVc
+        short-id: 25c79e5856c7
+      server: funagfrdfs.alixxplay.com
+      servername: iosapps.itunes.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+    - name: vless-1914953028
+      network: ws
+      port: 10238
+      server: 156.229.163.237
+      servername: 2-gys60wmzb6bqzd.qpsjn114hh3vlph9z60sesz0agjawpwroneg.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: eaf51a82-dce4-4d92-b296-85d866d49afa
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1914953339
+      network: tcp
+      port: 2090
+      reality-opts:
+        public-key: qBobe6KSNkFLqTPCffcJo0nXgxy-3JKru9WRqY9rkjk
+        short-id: bb472a184677af64
+      server: 66.90.115.124
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3644635c-f8c4-449c-a665-fce1897a7bf3
+    - name: vless-1914953341
+      network: ws
+      port: 26418
+      server: 154.31.112.237
+      servername: 3t1yvbyla-rj740g.28m7r63dttya6gazmhoo.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ac09ede2-7fbe-46e4-ba9e-a92c6de38510
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1914953342
+      network: tcp
+      port: 2090
+      reality-opts:
+        public-key: qBobe6KSNkFLqTPCffcJo0nXgxy-3JKru9WRqY9rkjk
+        short-id: bb472a184677af64
+      server: 66.90.115.130
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3644635c-f8c4-449c-a665-fce1897a7bf3
+    - name: vless-1914953344
+      network: ws
+      port: 1916
+      server: 172.105.241.119
+      servername: 3t1yvbyla-rj740g.28m7r63dttya6gazmhoo.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8866f01d-a8cc-47d4-b066-434f917a1f1c
+    - name: vless-1914953345
+      network: ws
+      port: 4798
+      server: 107.191.53.86
+      servername: 3t1yvbyla-rj740g.28m7r63dttya6gazmhoo.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: b716f5ae-330b-4e40-b2d3-3d8c1dbd0d6d
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1914947981
+        - vless-1914953028
+        - vless-1914953339
+        - vless-1914953341
+        - vless-1914953342
+        - vless-1914953344
+        - vless-1914953345
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1914947981
+        - vless-1914953028
+        - vless-1914953339
+        - vless-1914953341
+        - vless-1914953342
+        - vless-1914953344
+        - vless-1914953345
+      type: select
+rules:
+    - MATCH,select
