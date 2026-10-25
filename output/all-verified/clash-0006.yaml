@@ -1,104 +1,4 @@
 proxies:
-    - client-fingerprint: chrome
-      name: vless-1925598717
-      network: tcp
-      port: 1222
-      reality-opts:
-        public-key: zpLKK8HuwXJDH9D0O3t5Z_tO3ajkj7VRtXdr6UGy1zE
-        short-id: a25d0f
-      server: 23.81.36.148
-      servername: play.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 36c3dcc2-17b6-4478-b8a7-3978e6d5afe9
-    - name: vless-1925674175
-      network: ws
-      port: 8443
-      server: au6.pad-sservice.lat
-      servername: au6.pad-sservice.lat
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2b0e5676-fb62-4bf0-9607-6e7818421e8e
-    - name: hysteria2-1925722102
-      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
-      port: 443
-      server: 18.193.79.104
-      skip-cert-verify: true
-      sni: ""
-      type: hysteria2
-    - name: vless-1925723102
-      network: ws
-      port: 2096
-      server: 191.44.114.154
-      servername: st5ff8a.rumedia-cdn.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: d1641bc6-3757-43db-815a-9b3f4d9b0d7e
-    - name: vless-1925723103
-      network: tcp
-      port: 2087
-      server: 2.26.6.1
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: b9fdc03f-389b-4cda-9be4-155b623bee15
-    - name: vless-1925723105
-      network: ws
-      port: 443
-      server: 217.19.122.156
-      servername: z1q3pv4g78.rucdncomp.pro
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: a443d7bf-f506-46ce-b64d-cf8891c0a9f7
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1925750491
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: jwT3lcIzJQMjzBKRNsmyRGrgaa1qNfE7pQF_nAKu0GA
-        short-id: a73cf719b624
-      server: 45.12.5.171
-      servername: ru9.aimodelhub.top
-      tls: true
-      type: vless
-      udp: true
-      uuid: ba895ce4-8c24-0003-9f22-81ee227c89d0
-    - name: vless-1925751195
-      network: ws
-      port: 443
-      server: 172.67.76.40
-      servername: ccc.010304.xyz
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: d342d11e-d224-4463-b982-532309285094
-    - name: trojan-1925751207
-      password: 77c2c63b9b3081a8deab212050ba5472
-      port: 59443
-      server: tyy129.magiclampcloud.com
-      skip-cert-verify: false
-      sni: tyy129.magiclampcloud.com
-      type: trojan
-      udp: true
-    - name: trojan-1925751922
-      password: ac312a46f833789e1e5c87222ec9949f
-      port: 59443
-      server: ja262.magiclampcloud.cn
-      skip-cert-verify: false
-      sni: ja262.magiclampcloud.cn
-      type: trojan
-      udp: true
     - name: vless-1925754041
       network: ws
       port: 443
@@ -613,20 +513,25 @@ proxies:
       sni: www.calmlunch.com
       type: trojan
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1925902867
+      password: uvKNudV-N8AUCrykPiyznA
+      port: 56137
+      server: 37.153.158.136
+      type: ss
+      udp: true
+    - name: trojan-1925930935
+      password: fb334d27c52a3bed052f7c14bdc18963
+      port: 59443
+      server: ja304.magiclampcloud.cn
+      skip-cert-verify: true
+      sni: ja304.magiclampcloud.cn
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1925598717
-        - vless-1925674175
-        - hysteria2-1925722102
-        - vless-1925723102
-        - vless-1925723103
-        - vless-1925723105
-        - vless-1925750491
-        - vless-1925751195
-        - trojan-1925751207
-        - trojan-1925751922
         - vless-1925754041
         - trojan-1925754719
         - trojan-1925754736
@@ -681,21 +586,13 @@ proxy-groups:
         - shadowsocks-1925772524
         - shadowsocks-1925772525
         - trojan-1925772526
+        - shadowsocks-1925902867
+        - trojan-1925930935
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1925598717
-        - vless-1925674175
-        - hysteria2-1925722102
-        - vless-1925723102
-        - vless-1925723103
-        - vless-1925723105
-        - vless-1925750491
-        - vless-1925751195
-        - trojan-1925751207
-        - trojan-1925751922
         - vless-1925754041
         - trojan-1925754719
         - trojan-1925754736
@@ -750,6 +647,8 @@ proxy-groups:
         - shadowsocks-1925772524
         - shadowsocks-1925772525
         - trojan-1925772526
+        - shadowsocks-1925902867
+        - trojan-1925930935
       type: select
 rules:
     - MATCH,select
