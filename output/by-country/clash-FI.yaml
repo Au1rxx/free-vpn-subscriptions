@@ -6,20 +6,19 @@ proxies:
       skip-cert-verify: true
       sni: fi.67chat.ru
       type: hysteria2
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1900280878
-      network: tcp
+    - client-fingerprint: chrome
+      name: vless-1854330920
+      network: grpc
       port: 443
       reality-opts:
-        public-key: 9BUlinkTIxNgD2Em4KShtEbXOjBKvz2mDwT1VqoeR1k
-        short-id: 80c4e0bda641d6c9
-      server: 185.119.81.7
-      servername: ht689zw45oor.cloudydigital.net
+        public-key: pAgrBKJCmuSJHIzYkEJTqsOBOVBK_DMtEqFPo-PaTkg
+        short-id: b3c9d0c6bdd114a6
+      server: 2.29.101.158
+      servername: 36a466g.fi1.h1clayd.click
       tls: true
       type: vless
       udp: true
-      uuid: 2f5cfa10-43e5-4912-800d-557308a26a29
+      uuid: 9a0e84f8-4b58-477f-99da-5fac5a2e58e8
     - client-fingerprint: firefox
       name: vless-1832977887
       network: grpc
@@ -33,26 +32,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9a0e84f8-4b58-477f-99da-5fac5a2e58e8
-    - name: vless-1828174684
-      network: ws
-      port: 14430
-      server: 45.144.234.157
-      type: vless
-      udp: true
-      uuid: 59b0d30e-9b29-4fda-a35c-b2901ec32db7
-    - client-fingerprint: chrome
-      name: vless-1827188007
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
-        short-id: d368b94e275ab080
-      server: 95.216.27.15
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
     - client-fingerprint: random
       name: vless-1828532122
       network: tcp
@@ -66,36 +45,32 @@ proxies:
       type: vless
       udp: true
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
-    - name: vless-1837299400
-      network: ws
-      port: 14430
-      server: 213.176.92.168
-      type: vless
-      udp: true
-      uuid: ba52cc43-700d-4040-9444-29214c98e6e0
+    - name: hysteria2-1908512038
+      password: d5530551-5e9a-4ac5-8539-cee87e38d9e2
+      port: 443
+      server: 2.26.3.75
+      skip-cert-verify: true
+      sni: 2.26.3.75
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1868593191
-        - vless-1900280878
+        - vless-1854330920
         - vless-1832977887
-        - vless-1828174684
-        - vless-1827188007
         - vless-1828532122
-        - vless-1837299400
+        - hysteria2-1908512038
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1868593191
-        - vless-1900280878
+        - vless-1854330920
         - vless-1832977887
-        - vless-1828174684
-        - vless-1827188007
         - vless-1828532122
-        - vless-1837299400
+        - hysteria2-1908512038
       type: select
 rules:
     - MATCH,select

@@ -12,24 +12,6 @@ proxies:
       type: vless
       udp: true
       uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
-    - alterId: 0
-      cipher: auto
-      name: vmess-1828401142
-      network: tcp
-      port: 16305
-      server: zfd-boardv2.kunlun01dns.com
-      type: vmess
-      udp: true
-      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
-    - alterId: 0
-      cipher: auto
-      name: vmess-1835486987
-      network: tcp
-      port: 16305
-      server: zfd-boardv2.kunlun01dns.com
-      type: vmess
-      udp: true
-      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - client-fingerprint: safari
       name: vless-1840614043
       network: grpc
@@ -118,20 +100,11 @@ proxies:
       type: vless
       udp: true
       uuid: f55e9aba-7b14-4f6f-b59a-d5b3d45c9309
-    - cipher: aes-256-gcm
-      name: shadowsocks-1896270544
-      password: I6o9NnialYLMEjVt28RF4dpjmr9wMvNL
-      port: 17001
-      server: 141.227.172.132
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1827156202
-        - vmess-1828401142
-        - vmess-1835486987
         - vless-1840614043
         - vless-1840614174
         - vless-1840614193
@@ -139,15 +112,12 @@ proxy-groups:
         - vless-1854316354
         - vless-1883443396
         - vless-1893059450
-        - shadowsocks-1896270544
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1827156202
-        - vmess-1828401142
-        - vmess-1835486987
         - vless-1840614043
         - vless-1840614174
         - vless-1840614193
@@ -155,7 +125,6 @@ proxy-groups:
         - vless-1854316354
         - vless-1883443396
         - vless-1893059450
-        - shadowsocks-1896270544
       type: select
 rules:
     - MATCH,select
