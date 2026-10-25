@@ -21,12 +21,42 @@ proxies:
       type: vmess
       udp: true
       uuid: 5504eaa8-1395-402f-8e0e-75ecd762e627
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1914981979
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Su5ULcRQKF-0DJIHZeTNEnXHBpyQtizmUrcNIYhZI0E
+        short-id: afee962d
+      server: ee1.mycloud1.org
+      servername: ee1.mycloud1.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 605dea9b-b485-45c9-af9b-cc2b0195023c
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1897606118
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: Su5ULcRQKF-0DJIHZeTNEnXHBpyQtizmUrcNIYhZI0E
+        short-id: afee962d
+      server: ee1.mycloud1.org
+      servername: ee1.mycloud1.org
+      tls: true
+      type: vless
+      udp: true
+      uuid: 605dea9b-b485-45c9-af9b-cc2b0195023c
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1916642716
         - vmess-1827156692
+        - vless-1914981979
+        - vless-1897606118
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -34,6 +64,8 @@ proxy-groups:
         - auto
         - vless-1916642716
         - vmess-1827156692
+        - vless-1914981979
+        - vless-1897606118
       type: select
 rules:
     - MATCH,select
