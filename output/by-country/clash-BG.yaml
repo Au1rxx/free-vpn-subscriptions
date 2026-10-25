@@ -1,4 +1,13 @@
 proxies:
+    - alterId: 0
+      cipher: auto
+      name: vmess-1920345561
+      network: tcp
+      port: 56080
+      server: 45.144.48.32
+      type: vmess
+      udp: true
+      uuid: f4daaec7-0e1e-4c8e-97e8-cff5347c2dae
     - cipher: aes-256-cfb
       name: shadowsocks-1827969653
       password: 9ej82EKe2gq7gLAM
@@ -10,12 +19,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-1920345561
         - shadowsocks-1827969653
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-1920345561
         - shadowsocks-1827969653
       type: select
 rules:

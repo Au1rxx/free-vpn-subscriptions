@@ -9,6 +9,30 @@
       "type": "shadowsocks"
     },
     {
+      "server": "ss.ll0ll.vip",
+      "server_port": 2096,
+      "tag": "vless-1923819970",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "reality": {
+          "enabled": true,
+          "public_key": "SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc"
+        },
+        "server_name": "id.vk.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "ios"
+        }
+      },
+      "transport": {
+        "service_name": "vless-grpc-reality",
+        "type": "grpc"
+      },
+      "type": "vless",
+      "uuid": "e436321f-24a9-4c38-b935-7d7dee0c3f68"
+    },
+    {
       "password": "krdyzYNnXFQqyPtjiXw9lQ",
       "server": "68.210.96.82",
       "server_port": 8443,
@@ -21,10 +45,31 @@
       "type": "hysteria2"
     },
     {
+      "server": "au6.pad-sservice.lat",
+      "server_port": 8443,
+      "tag": "vless-1925674175",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "au6.pad-sservice.lat"
+      },
+      "transport": {
+        "headers": {
+          "Host": "au6.pad-sservice.lat"
+        },
+        "path": "/AU6W",
+        "type": "ws"
+      },
+      "type": "vless",
+      "uuid": "2b0e5676-fb62-4bf0-9607-6e7818421e8e"
+    },
+    {
       "interval": "5m",
       "outbounds": [
         "shadowsocks-1827147826",
-        "hysteria2-1923846549"
+        "vless-1923819970",
+        "hysteria2-1923846549",
+        "vless-1925674175"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -34,7 +79,9 @@
       "outbounds": [
         "auto",
         "shadowsocks-1827147826",
-        "hysteria2-1923846549"
+        "vless-1923819970",
+        "hysteria2-1923846549",
+        "vless-1925674175"
       ],
       "tag": "select",
       "type": "selector"
