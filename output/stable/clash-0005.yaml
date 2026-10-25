@@ -1,0 +1,113 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1923902936
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: USSepsAbvP9LpByHLV2xD2H8dq8GAJ6G0fINEqD4PAw
+        short-id: ""
+      server: 79.98.37.106
+      servername: ee-central.v8x2b.lol
+      tls: true
+      type: vless
+      udp: true
+      uuid: 846cedee-2a52-0001-a0b9-11850ead6a8b
+    - name: vless-1923902937
+      network: tcp
+      port: 2087
+      server: 2.26.6.1
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: b9fdc03f-389b-4cda-9be4-155b623bee15
+    - name: vless-1923902939
+      network: tcp
+      port: 8080
+      server: 168.222.49.164
+      type: vless
+      udp: true
+      uuid: 6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8
+    - client-fingerprint: chrome
+      name: vless-1923902940
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: R-w7BpNgtryZRBMyRoHx81OnjzAwrKhVtV1EUKLFJzc
+        short-id: 086bf957
+      server: ai.smrtai.top
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 086bf957-9cd0-4e55-8280-bbef10435b41
+    - name: vless-1923902943
+      network: tcp
+      port: 8080
+      server: 82.47.63.224
+      type: vless
+      udp: true
+      uuid: 6bceb548-d9b6-461f-8e37-a5a7fbcdc2c8
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1923902944
+      network: raw
+      port: 2090
+      reality-opts:
+        public-key: qBobe6KSNkFLqTPCffcJo0nXgxy-3JKru9WRqY9rkjk
+        short-id: bb472a184677af64
+      server: 213.152.165.200
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c63487b1-2543-40b9-b39a-3f27a5a1f4cf
+    - name: vless-1923902945
+      network: ws
+      port: 443
+      server: 104.17.186.75
+      servername: tamoai.ccwu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 45ceaca9-30f4-4035-85b7-8f83493911d8
+    - alterId: 2
+      cipher: auto
+      name: vmess-1923916654
+      network: ws
+      port: 60852
+      server: hkgb707.ifastcdncache.com
+      type: vmess
+      udp: true
+      uuid: f8eca8df-a1a5-4918-a194-d34112a3673f
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1923902936
+        - vless-1923902937
+        - vless-1923902939
+        - vless-1923902940
+        - vless-1923902943
+        - vless-1923902944
+        - vless-1923902945
+        - vmess-1923916654
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1923902936
+        - vless-1923902937
+        - vless-1923902939
+        - vless-1923902940
+        - vless-1923902943
+        - vless-1923902944
+        - vless-1923902945
+        - vmess-1923916654
+      type: select
+rules:
+    - MATCH,select
