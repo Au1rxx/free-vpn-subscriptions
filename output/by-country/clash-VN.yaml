@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1926288581
+      network: tcp
+      port: 2086
+      server: 150.95.109.109
+      type: vless
+      udp: true
+      uuid: b83faafc-cbb7-4655-99d4-2c4c39a49d1b
     - client-fingerprint: random
       flow: xtls-rprx-vision
       name: vless-1884772635
@@ -17,12 +24,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1926288581
         - vless-1884772635
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1926288581
         - vless-1884772635
       type: select
 rules:
