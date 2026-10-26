@@ -16,19 +16,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
-    - client-fingerprint: chrome
-      name: vless-1854330920
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: pAgrBKJCmuSJHIzYkEJTqsOBOVBK_DMtEqFPo-PaTkg
-        short-id: b3c9d0c6bdd114a6
-      server: 2.29.101.158
-      servername: 36a466g.fi1.h1clayd.click
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9a0e84f8-4b58-477f-99da-5fac5a2e58e8
     - name: vless-1926288598
       network: grpc
       port: 4443
@@ -39,19 +26,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
-    - client-fingerprint: chrome
-      name: vless-1827399465
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
-        short-id: d368b94e275ab080
-      server: 95.216.27.15
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
     - client-fingerprint: firefox
       name: vless-1853487442
       network: raw
@@ -65,14 +39,26 @@ proxies:
       type: vless
       udp: true
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
-    - name: trojan-1923823472
-      password: 9b347a9b-d7a6-4b51-9890-eff62b832834
-      port: 4444
-      server: 45-149-147-213.sslip.io
-      skip-cert-verify: false
-      sni: 45-149-147-213.sslip.io
-      type: trojan
+    - client-fingerprint: firefox
+      name: vless-1832977887
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: pAgrBKJCmuSJHIzYkEJTqsOBOVBK_DMtEqFPo-PaTkg
+        short-id: b3c9d0c6bdd114a6
+      server: 2.29.101.158
+      servername: 36a466g.fi1.h1clayd.click
+      tls: true
+      type: vless
       udp: true
+      uuid: 9a0e84f8-4b58-477f-99da-5fac5a2e58e8
+    - name: vless-1827151890
+      network: ws
+      port: 14430
+      server: 45.144.234.157
+      type: vless
+      udp: true
+      uuid: 59b0d30e-9b29-4fda-a35c-b2901ec32db7
     - client-fingerprint: firefox
       name: vless-1827150333
       network: tcp
@@ -86,26 +72,17 @@ proxies:
       type: vless
       udp: true
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
-    - name: vless-1853463978
-      network: ws
-      port: 14430
-      server: 45.144.234.157
-      type: vless
-      udp: true
-      uuid: 59b0d30e-9b29-4fda-a35c-b2901ec32db7
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1926506906
         - vless-1923846542
-        - vless-1854330920
         - vless-1926288598
-        - vless-1827399465
         - vless-1853487442
-        - trojan-1923823472
+        - vless-1832977887
+        - vless-1827151890
         - vless-1827150333
-        - vless-1853463978
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -113,13 +90,11 @@ proxy-groups:
         - auto
         - shadowsocks-1926506906
         - vless-1923846542
-        - vless-1854330920
         - vless-1926288598
-        - vless-1827399465
         - vless-1853487442
-        - trojan-1923823472
+        - vless-1832977887
+        - vless-1827151890
         - vless-1827150333
-        - vless-1853463978
       type: select
 rules:
     - MATCH,select

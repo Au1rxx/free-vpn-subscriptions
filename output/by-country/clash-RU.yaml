@@ -1,0 +1,25 @@
+proxies:
+    - name: vless-1926741104
+      network: grpc
+      port: 443
+      server: 201.24.121.243
+      servername: kk-ru24a1.testkknegr.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 32b5ca9b-3f81-4031-965d-e8b074216e8d
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1926741104
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1926741104
+      type: select
+rules:
+    - MATCH,select
