@@ -19,7 +19,32 @@ proxies:
       type: vless
       udp: true
       uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
+    - name: trojan-1923823472
+      password: 9b347a9b-d7a6-4b51-9890-eff62b832834
+      port: 4444
+      server: 45-149-147-213.sslip.io
+      skip-cert-verify: false
+      sni: 45-149-147-213.sslip.io
+      type: trojan
+      udp: true
     - name: vless-1925464495
+      network: grpc
+      port: 4443
+      server: 45-149-147-213.sslip.io
+      servername: 45-149-147-213.sslip.io
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
+    - name: vless-1832691443
+      network: ws
+      port: 14430
+      server: 213.176.92.168
+      type: vless
+      udp: true
+      uuid: ba52cc43-700d-4040-9444-29214c98e6e0
+    - name: vless-1927159532
       network: grpc
       port: 4443
       server: 45-149-147-213.sslip.io
@@ -42,16 +67,19 @@ proxies:
       type: vless
       udp: true
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
-    - name: vless-1927159532
-      network: grpc
-      port: 4443
-      server: 45-149-147-213.sslip.io
-      servername: 45-149-147-213.sslip.io
-      skip-cert-verify: false
+    - client-fingerprint: chrome
+      name: vless-1827188007
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
       tls: true
       type: vless
       udp: true
-      uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
     - client-fingerprint: firefox
       name: vless-1832977887
       network: grpc
@@ -66,29 +94,33 @@ proxies:
       udp: true
       uuid: 9a0e84f8-4b58-477f-99da-5fac5a2e58e8
     - client-fingerprint: chrome
-      name: vless-1827188007
+      flow: xtls-rprx-vision
+      name: vless-1857852661
       network: tcp
-      port: 2053
+      port: 10444
       reality-opts:
-        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
-        short-id: d368b94e275ab080
-      server: 95.216.27.15
-      servername: www.google.com
+        public-key: 0oTkcqwLTUNLnSOP-VUWErmy6usAIg-biBE6ioZO-Vo
+        short-id: 8debcf36f1cc69ff
+      server: 213.176.92.168
+      servername: video.yandex.ru
       tls: true
       type: vless
       udp: true
-      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+      uuid: ba52cc43-700d-4040-9444-29214c98e6e0
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1926288598
         - vless-1923846542
+        - trojan-1923823472
         - vless-1925464495
-        - vless-1853487442
+        - vless-1832691443
         - vless-1927159532
-        - vless-1832977887
+        - vless-1853487442
         - vless-1827188007
+        - vless-1832977887
+        - vless-1857852661
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -96,11 +128,14 @@ proxy-groups:
         - auto
         - vless-1926288598
         - vless-1923846542
+        - trojan-1923823472
         - vless-1925464495
-        - vless-1853487442
+        - vless-1832691443
         - vless-1927159532
-        - vless-1832977887
+        - vless-1853487442
         - vless-1827188007
+        - vless-1832977887
+        - vless-1857852661
       type: select
 rules:
     - MATCH,select
