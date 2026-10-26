@@ -13,6 +13,20 @@ proxies:
       server: 98.98.207.163
       type: ss
       udp: true
+    - cipher: aes-128-gcm
+      name: shadowsocks-1827146143
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.181
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1925902867
+      password: uvKNudV-N8AUCrykPiyznA
+      port: 56137
+      server: 37.153.158.136
+      type: ss
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1926497659
       password: uvKNudV-N8AUCrykPiyznA
@@ -75,33 +89,6 @@ proxies:
       server: 87.236.166.178
       type: ss
       udp: true
-    - client-fingerprint: chrome
-      name: vless-1853340170
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: xPEBx4wUmwAAv4ikUALNBf5wH6TRhyeQ0Q2pcNELsV0
-        short-id: d051f678212f9d54
-      server: 51.89.194.151
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 8e790f25-1d71-4601-9fb0-d503931dcfca
-    - cipher: aes-256-gcm
-      name: shadowsocks-1875022976
-      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-      port: 19999
-      server: 185.176.206.9
-      type: ss
-      udp: true
-    - name: vless-1875762734
-      network: raw
-      port: 10002
-      server: connect.hondamotor.site
-      type: vless
-      udp: true
-      uuid: c6362720-0931-4b91-b187-d8ecf3149734
     - name: vless-1877233103
       network: tcp
       port: 10002
@@ -116,12 +103,27 @@ proxies:
       type: vless
       udp: true
       uuid: c6362720-0931-4b91-b187-d8ecf3149734
+    - client-fingerprint: chrome
+      name: vless-1827531790
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: xPEBx4wUmwAAv4ikUALNBf5wH6TRhyeQ0Q2pcNELsV0
+        short-id: d051f678212f9d54
+      server: 51.89.194.151
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 8e790f25-1d71-4601-9fb0-d503931dcfca
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1870576373
         - shadowsocks-1870576143
+        - shadowsocks-1827146143
+        - shadowsocks-1925902867
         - shadowsocks-1926497659
         - shadowsocks-1827147777
         - shadowsocks-1926289825
@@ -130,11 +132,9 @@ proxy-groups:
         - shadowsocks-1926497658
         - shadowsocks-1926289831
         - shadowsocks-1926506907
-        - vless-1853340170
-        - shadowsocks-1875022976
-        - vless-1875762734
         - vless-1877233103
         - vless-1869827251
+        - vless-1827531790
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -142,6 +142,8 @@ proxy-groups:
         - auto
         - shadowsocks-1870576373
         - shadowsocks-1870576143
+        - shadowsocks-1827146143
+        - shadowsocks-1925902867
         - shadowsocks-1926497659
         - shadowsocks-1827147777
         - shadowsocks-1926289825
@@ -150,11 +152,9 @@ proxy-groups:
         - shadowsocks-1926497658
         - shadowsocks-1926289831
         - shadowsocks-1926506907
-        - vless-1853340170
-        - shadowsocks-1875022976
-        - vless-1875762734
         - vless-1877233103
         - vless-1869827251
+        - vless-1827531790
       type: select
 rules:
     - MATCH,select
