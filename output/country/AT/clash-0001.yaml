@@ -6,6 +6,16 @@ proxies:
       server: 82.110.60.9
       type: ss
       udp: true
+    - name: vless-1837270387
+      network: ws
+      port: 2053
+      server: 141.101.90.108
+      servername: wzs.echo.net.eu.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d18c6897-2849-456a-8c46-d7ecece47c20
     - client-fingerprint: ios
       name: vless-1923819970
       network: grpc
@@ -56,27 +66,41 @@ proxies:
       type: vless
       udp: true
       uuid: 2b0e5676-fb62-4bf0-9607-6e7818421e8e
+    - name: vless-1926288590
+      network: ws
+      port: 8443
+      server: 62.83.41.69
+      servername: au6.pad-sservice.lat
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2b0e5676-fb62-4bf0-9607-6e7818421e8e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827147826
+        - vless-1837270387
         - vless-1923819970
         - hysteria2-1923846549
         - vless-1925674175
         - vless-1926108176
         - vless-1926108190
+        - vless-1926288590
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1827147826
+        - vless-1837270387
         - vless-1923819970
         - hysteria2-1923846549
         - vless-1925674175
         - vless-1926108176
         - vless-1926108190
+        - vless-1926288590
       type: select
 rules:
     - MATCH,select

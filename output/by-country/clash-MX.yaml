@@ -1,0 +1,25 @@
+proxies:
+    - name: vless-1926288586
+      network: tcp
+      port: 19167
+      server: mx001.zestapp778.com
+      servername: mx001.zestapp778.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1926288586
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1926288586
+      type: select
+rules:
+    - MATCH,select

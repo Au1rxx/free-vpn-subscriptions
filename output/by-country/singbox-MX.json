@@ -1,0 +1,44 @@
+{
+  "outbounds": [
+    {
+      "server": "mx001.zestapp778.com",
+      "server_port": 19167,
+      "tag": "vless-1926288586",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "mx001.zestapp778.com",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "e9a8144e-5237-488a-afb1-9ca3d8d54c80"
+    },
+    {
+      "interval": "5m",
+      "outbounds": [
+        "vless-1926288586"
+      ],
+      "tag": "auto",
+      "type": "urltest",
+      "url": "https://www.gstatic.com/generate_204"
+    },
+    {
+      "outbounds": [
+        "auto",
+        "vless-1926288586"
+      ],
+      "tag": "select",
+      "type": "selector"
+    },
+    {
+      "tag": "direct",
+      "type": "direct"
+    }
+  ],
+  "route": {
+    "final": "select"
+  }
+}
