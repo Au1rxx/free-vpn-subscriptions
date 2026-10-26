@@ -6,12 +6,27 @@ proxies:
       server: 211.178.105.134
       type: ss
       udp: true
+    - cipher: aes-256-cfb
+      name: shadowsocks-1827146715
+      password: 1234!@#$
+      port: 1774
+      server: 49.254.204.134
+      type: ss
+      udp: true
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1827146803
       password: QFWzCw2uX9B9i6qAYeFBIE
       port: 443
       server: 154.46.31.106
       type: ss
+      udp: true
+    - name: trojan-1827149554
+      password: humanity
+      port: 443
+      server: 5.253.189.238
+      skip-cert-verify: false
+      sni: www.calmlunch.com
+      type: trojan
       udp: true
     - flow: xtls-rprx-vision
       name: vless-1827150959
@@ -24,20 +39,6 @@ proxies:
       type: vless
       udp: true
       uuid: 30e52776-55ac-3cb4-8d36-e2910f07e2c3
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1827735107
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: RKDT6fVgcZS8Qfzhv5rbeHRIflA3UTKD_HNLJyOoUwk
-        short-id: 25349b36802f
-      server: 195.72.166.251
-      servername: www.lloydsbankinggroup.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 64c05afc-ce81-4ba0-b697-afa04da1427e
     - cipher: aes-256-cfb
       name: shadowsocks-1827969068
       password: qwerREWQ@@
@@ -532,17 +533,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1af36694-b548-4b18-89a0-bc076eab4ed7
-    - flow: xtls-rprx-vision
-      name: vless-1853354198
-      network: tcp
-      port: 443
-      server: 62.105.220.106
-      servername: u695098u7dae9c0cs220.gogocs.xyz
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 30e52776-55ac-3cb4-8d36-e2910f07e2c3
     - name: vless-1853463879
       network: ws
       port: 14430
@@ -922,20 +912,6 @@ proxies:
       type: vless
       udp: true
       uuid: 846cedee-2a52-0001-a0b9-11850ead6a8b
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-1916644416
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: USSepsAbvP9LpByHLV2xD2H8dq8GAJ6G0fINEqD4PAw
-        short-id: ""
-      server: 79.98.37.106
-      servername: ee-central.v8x2b.lol
-      tls: true
-      type: vless
-      udp: true
-      uuid: 846cedee-2a52-0001-a0b9-11850ead6a8b
     - client-fingerprint: safari
       flow: xtls-rprx-vision
       name: vless-1916644430
@@ -997,9 +973,10 @@ proxy-groups:
       name: auto
       proxies:
         - shadowsocks-1827145973
+        - shadowsocks-1827146715
         - shadowsocks-1827146803
+        - trojan-1827149554
         - vless-1827150959
-        - vless-1827735107
         - shadowsocks-1827969068
         - shadowsocks-1827983920
         - vless-1828129521
@@ -1043,7 +1020,6 @@ proxy-groups:
         - vless-1853352780
         - vless-1853352794
         - vless-1853352966
-        - vless-1853354198
         - vless-1853463879
         - vless-1853464666
         - vless-1853464760
@@ -1078,7 +1054,6 @@ proxy-groups:
         - vless-1897602101
         - vless-1907714189
         - vless-1909215516
-        - vless-1916644416
         - vless-1916644430
         - vless-1923902936
         - vless-1924748503
@@ -1090,9 +1065,10 @@ proxy-groups:
       proxies:
         - auto
         - shadowsocks-1827145973
+        - shadowsocks-1827146715
         - shadowsocks-1827146803
+        - trojan-1827149554
         - vless-1827150959
-        - vless-1827735107
         - shadowsocks-1827969068
         - shadowsocks-1827983920
         - vless-1828129521
@@ -1136,7 +1112,6 @@ proxy-groups:
         - vless-1853352780
         - vless-1853352794
         - vless-1853352966
-        - vless-1853354198
         - vless-1853463879
         - vless-1853464666
         - vless-1853464760
@@ -1171,7 +1146,6 @@ proxy-groups:
         - vless-1897602101
         - vless-1907714189
         - vless-1909215516
-        - vless-1916644416
         - vless-1916644430
         - vless-1923902936
         - vless-1924748503

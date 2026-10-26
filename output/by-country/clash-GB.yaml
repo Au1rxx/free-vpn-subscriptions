@@ -1,9 +1,23 @@
 proxies:
+    - name: vless-1927184355
+      network: tcp
+      port: 10002
+      server: 168.222.43.53
+      type: vless
+      udp: true
+      uuid: c6362720-0931-4b91-b187-d8ecf3149734
     - cipher: rc4-md5
       name: shadowsocks-1870576373
       password: 14fFPrbezE3HDZzsMOr6
       port: 8080
       server: 146.70.46.214
+      type: ss
+      udp: true
+    - cipher: aes-128-gcm
+      name: shadowsocks-1827146143
+      password: shadowsocks
+      port: 443
+      server: 141.98.101.181
       type: ss
       udp: true
     - name: vless-1877233103
@@ -27,11 +41,11 @@ proxies:
       type: vless
       udp: true
       uuid: c6362720-0931-4b91-b187-d8ecf3149734
-    - cipher: aes-128-gcm
-      name: shadowsocks-1827146143
-      password: shadowsocks
-      port: 443
-      server: 141.98.101.181
+    - cipher: rc4-md5
+      name: shadowsocks-1870576143
+      password: 14fFPrbezE3HDZzsMOr6
+      port: 8080
+      server: 98.98.207.163
       type: ss
       udp: true
     - client-fingerprint: random
@@ -131,11 +145,13 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1927184355
         - shadowsocks-1870576373
+        - shadowsocks-1827146143
         - vless-1877233103
         - vless-1876912376
         - vless-1926536475
-        - shadowsocks-1827146143
+        - shadowsocks-1870576143
         - vless-1880851304
         - shadowsocks-1827147777
         - shadowsocks-1827963919
@@ -152,11 +168,13 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1927184355
         - shadowsocks-1870576373
+        - shadowsocks-1827146143
         - vless-1877233103
         - vless-1876912376
         - vless-1926536475
-        - shadowsocks-1827146143
+        - shadowsocks-1870576143
         - vless-1880851304
         - shadowsocks-1827147777
         - shadowsocks-1827963919

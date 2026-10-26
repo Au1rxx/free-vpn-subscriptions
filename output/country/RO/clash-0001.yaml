@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1827145061
+      password: gf1:gfhysteria2024
+      port: 443
+      server: 185.156.44.99
+      skip-cert-verify: true
+      sni: css.rbxcdn.com
+      type: hysteria2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1827146048
       password: U83u9OGpvSatIUW7LsWffr
@@ -223,13 +230,6 @@ proxies:
       type: vless
       udp: true
       uuid: c53ea5e9-ed8b-4990-805d-7f1d6451426c
-    - name: vless-1853452254
-      network: tcp
-      port: 2052
-      server: edge10.cyrionflare.com
-      type: vless
-      udp: true
-      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - name: hysteria2-1853488203
       password: gf1:gfhysteria2024
       port: 443
@@ -279,26 +279,12 @@ proxies:
       type: vless
       udp: true
       uuid: 679439c5-28f2-485e-af5f-60a5fcd9c36c
-    - name: vless-1854135104
-      network: tcp
-      port: 2052
-      server: edge10.cyrionflare.com
-      type: vless
-      udp: true
-      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - name: hysteria2-1854309256
       password: gf1:gfhysteria2024
       port: 443
       server: 185.156.44.99
       skip-cert-verify: true
       sni: speedtest.tinkoff.ru
-      type: hysteria2
-    - name: hysteria2-1854309346
-      password: gf1:gfhysteria2024
-      port: 443
-      server: 185.156.44.99
-      skip-cert-verify: true
-      sni: google.com
       type: hysteria2
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
@@ -440,23 +426,11 @@ proxies:
       type: vless
       udp: true
       uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-    - client-fingerprint: firefox
-      name: vless-1927944475
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: EltWI8AOqkN8lMjRycweRRoFRah5hu6xiKtgBmQOdE8
-        short-id: 1ed136481e0ede74
-      server: 45.13.151.11
-      servername: eu14.cdn77.icu
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1506f2e0-ae12-4718-b5ab-c5609161300e
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1827145061
         - shadowsocks-1827146048
         - shadowsocks-1827146803
         - vless-1827151764
@@ -475,15 +449,12 @@ proxy-groups:
         - vless-1853340915
         - vless-1853341496
         - vless-1853347655
-        - vless-1853452254
         - hysteria2-1853488203
         - hysteria2-1853489157
         - hysteria2-1853502744
         - vless-1853984818
         - vless-1854108407
-        - vless-1854135104
         - hysteria2-1854309256
-        - hysteria2-1854309346
         - vless-1854316304
         - hysteria2-1856632201
         - vless-1867100411
@@ -496,12 +467,12 @@ proxy-groups:
         - vless-1891936396
         - vless-1923902906
         - vless-1927184318
-        - vless-1927944475
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1827145061
         - shadowsocks-1827146048
         - shadowsocks-1827146803
         - vless-1827151764
@@ -520,15 +491,12 @@ proxy-groups:
         - vless-1853340915
         - vless-1853341496
         - vless-1853347655
-        - vless-1853452254
         - hysteria2-1853488203
         - hysteria2-1853489157
         - hysteria2-1853502744
         - vless-1853984818
         - vless-1854108407
-        - vless-1854135104
         - hysteria2-1854309256
-        - hysteria2-1854309346
         - vless-1854316304
         - hysteria2-1856632201
         - vless-1867100411
@@ -541,7 +509,6 @@ proxy-groups:
         - vless-1891936396
         - vless-1923902906
         - vless-1927184318
-        - vless-1927944475
       type: select
 rules:
     - MATCH,select
