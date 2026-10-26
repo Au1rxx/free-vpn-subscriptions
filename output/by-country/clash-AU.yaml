@@ -25,6 +25,14 @@ proxies:
       type: vless
       udp: true
       uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
+    - name: trojan-1927187200
+      password: Trojan@82164024
+      port: 443
+      server: au.tronsg.com
+      skip-cert-verify: true
+      sni: au.tronsg.com
+      type: trojan
+      udp: true
     - client-fingerprint: random
       name: vless-1880850556
       network: tcp
@@ -78,6 +86,20 @@ proxies:
       type: vless
       udp: true
       uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
+    - client-fingerprint: ios
+      flow: xtls-rprx-vision
+      name: vless-1927168539
+      network: tcp
+      port: 54528
+      reality-opts:
+        public-key: 7GvJVbR6BRhtrc8-rcZvB8qTFUF1LPeM_MmoZ04mBxo
+        short-id: 54cca3c1c1c7
+      server: funagfrdfs.alixxplay.com
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1877411060
@@ -94,30 +116,32 @@ proxies:
       uuid: 36e89875-9c53-482b-bc41-d3890e9da176
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-1854027183
+      name: vless-1927193096
       network: tcp
-      port: 443
+      port: 54528
       reality-opts:
-        public-key: gCAazs5uxNuMZIxfDdw8wPE0nwKY4QfBfBkQveKAkEk
-        short-id: 0ad08b47f498efd2
-      server: 51.161.204.244
-      servername: www.cloudflare.com
+        public-key: 7GvJVbR6BRhtrc8-rcZvB8qTFUF1LPeM_MmoZ04mBxo
+        short-id: 54cca3c1c1c7
+      server: funagfrdfs.alixxplay.com
+      servername: www.apple.com
       tls: true
       type: vless
       udp: true
-      uuid: 36e89875-9c53-482b-bc41-d3890e9da176
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1827153943
         - vless-1860727749
+        - trojan-1927187200
         - vless-1880850556
         - vless-1828294429
         - vless-1875790265
         - vless-1828532074
+        - vless-1927168539
         - vless-1877411060
-        - vless-1854027183
+        - vless-1927193096
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -125,12 +149,14 @@ proxy-groups:
         - auto
         - vless-1827153943
         - vless-1860727749
+        - trojan-1927187200
         - vless-1880850556
         - vless-1828294429
         - vless-1875790265
         - vless-1828532074
+        - vless-1927168539
         - vless-1877411060
-        - vless-1854027183
+        - vless-1927193096
       type: select
 rules:
     - MATCH,select
