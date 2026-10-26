@@ -1,11 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1926506906
-      password: banJ58KfDF21KoMFZ5TXmg
-      port: 2083
-      server: 94.177.145.151
-      type: ss
-      udp: true
     - name: vless-1923846542
       network: grpc
       port: 4443
@@ -69,38 +62,27 @@ proxies:
       type: vless
       udp: true
       uuid: 59b0d30e-9b29-4fda-a35c-b2901ec32db7
-    - name: vless-1832691514
-      network: ws
-      port: 14430
-      server: 213.176.92.168
-      type: vless
-      udp: true
-      uuid: ba52cc43-700d-4040-9444-29214c98e6e0
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1926506906
         - vless-1923846542
         - vless-1926288598
         - vless-1853487442
         - vless-1927159532
         - vless-1832977887
         - vless-1827151890
-        - vless-1832691514
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1926506906
         - vless-1923846542
         - vless-1926288598
         - vless-1853487442
         - vless-1927159532
         - vless-1832977887
         - vless-1827151890
-        - vless-1832691514
       type: select
 rules:
     - MATCH,select
