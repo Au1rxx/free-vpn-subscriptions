@@ -1,11 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1925513121
-      password: 6heexyz
-      port: 443
-      server: pl140.vpnbook.com
-      type: ss
-      udp: true
     - name: vless-1869904605
       network: tcp
       port: 20001
@@ -13,13 +6,6 @@ proxies:
       type: vless
       udp: true
       uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
-    - name: vless-1906785096
-      network: tcp
-      port: 443
-      server: 5.22.221.127
-      type: vless
-      udp: true
-      uuid: 44dfa3a7-f648-4587-819b-e653c0823f28
     - name: vless-1854135104
       network: tcp
       port: 2052
@@ -44,6 +30,13 @@ proxies:
       type: vless
       udp: true
       uuid: 36cf792c-f07d-4500-97ea-a395e5178deb
+    - name: vless-1906785096
+      network: tcp
+      port: 443
+      server: 5.22.221.127
+      type: vless
+      udp: true
+      uuid: 44dfa3a7-f648-4587-819b-e653c0823f28
     - name: vless-1876388819
       network: raw
       port: 20001
@@ -78,13 +71,13 @@ proxies:
       type: vless
       udp: true
       uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
-    - name: vless-1827150146
-      network: raw
-      port: 2052
-      server: edge10.cyrionflare.com
+    - name: vless-1883661029
+      network: tcp
+      port: 20001
+      server: site.teslamotor.site
       type: vless
       udp: true
-      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
+      uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
     - name: vless-1925771094
       network: tcp
       port: 443
@@ -155,28 +148,20 @@ proxies:
       type: vless
       udp: true
       uuid: 44dfa3a7-f648-4587-819b-e653c0823f28
-    - name: vless-1832972763
-      network: tcp
-      port: 2052
-      server: edge10.cyrionflare.com
-      type: vless
-      udp: true
-      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1925513121
         - vless-1869904605
-        - vless-1906785096
         - vless-1854135104
         - vless-1869963083
         - vless-1924316584
+        - vless-1906785096
         - vless-1876388819
         - vless-1892979275
         - vless-1853488300
         - vless-1876912365
-        - vless-1827150146
+        - vless-1883661029
         - vless-1925771094
         - vless-1853462692
         - vless-1924748500
@@ -184,23 +169,21 @@ proxy-groups:
         - vless-1832941349
         - vless-1832881265
         - vless-1909151589
-        - vless-1832972763
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1925513121
         - vless-1869904605
-        - vless-1906785096
         - vless-1854135104
         - vless-1869963083
         - vless-1924316584
+        - vless-1906785096
         - vless-1876388819
         - vless-1892979275
         - vless-1853488300
         - vless-1876912365
-        - vless-1827150146
+        - vless-1883661029
         - vless-1925771094
         - vless-1853462692
         - vless-1924748500
@@ -208,7 +191,6 @@ proxy-groups:
         - vless-1832941349
         - vless-1832881265
         - vless-1909151589
-        - vless-1832972763
       type: select
 rules:
     - MATCH,select
