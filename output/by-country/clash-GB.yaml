@@ -1,11 +1,11 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1925902867
-      password: uvKNudV-N8AUCrykPiyznA
-      port: 56137
-      server: 37.153.158.136
-      type: ss
+    - name: vless-1876912376
+      network: tcp
+      port: 10002
+      server: connect.hondamotor.site
+      type: vless
       udp: true
+      uuid: c6362720-0931-4b91-b187-d8ecf3149734
     - name: vless-1926536475
       network: tcp
       port: 10002
@@ -69,27 +69,6 @@ proxies:
       server: 146.70.46.214
       type: ss
       udp: true
-    - name: vless-1876912376
-      network: tcp
-      port: 10002
-      server: connect.hondamotor.site
-      type: vless
-      udp: true
-      uuid: c6362720-0931-4b91-b187-d8ecf3149734
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1927193084
-      network: tcp
-      port: 8443
-      reality-opts:
-        public-key: SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc
-        short-id: ""
-      server: 51.89.231.124
-      servername: ozon.ru
-      tls: true
-      type: vless
-      udp: true
-      uuid: 680e92ac-1688-49e0-af96-7327fbc30ce8
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1927193146
@@ -153,19 +132,6 @@ proxies:
       udp: true
       uuid: c6362720-0931-4b91-b187-d8ecf3149734
     - client-fingerprint: chrome
-      name: vless-1827267314
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: xPEBx4wUmwAAv4ikUALNBf5wH6TRhyeQ0Q2pcNELsV0
-        short-id: d051f678212f9d54
-      server: 51.89.194.151
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 8e790f25-1d71-4601-9fb0-d503931dcfca
-    - client-fingerprint: chrome
       name: vless-1827145802
       network: tcp
       port: 2053
@@ -206,18 +172,11 @@ proxies:
       type: vless
       udp: true
       uuid: fd0a5c32-afc0-4d57-b95a-ca6ec8f93e87
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1926289831
-      password: uvKNudV-N8AUCrykPiyznA
-      port: 56137
-      server: 37.153.158.27
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1925902867
+        - vless-1876912376
         - vless-1926536475
         - shadowsocks-1827146143
         - shadowsocks-1827147777
@@ -226,25 +185,21 @@ proxy-groups:
         - vless-1927722011
         - shadowsocks-1827963919
         - shadowsocks-1870576373
-        - vless-1876912376
-        - vless-1927193084
         - vless-1927193146
         - vless-1880851304
         - vless-1927193098
         - shadowsocks-1926501654
         - vless-1927184289
         - vless-1869827251
-        - vless-1827267314
         - vless-1827145802
         - vless-1927193094
         - vless-1927193086
-        - shadowsocks-1926289831
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1925902867
+        - vless-1876912376
         - vless-1926536475
         - shadowsocks-1827146143
         - shadowsocks-1827147777
@@ -253,19 +208,15 @@ proxy-groups:
         - vless-1927722011
         - shadowsocks-1827963919
         - shadowsocks-1870576373
-        - vless-1876912376
-        - vless-1927193084
         - vless-1927193146
         - vless-1880851304
         - vless-1927193098
         - shadowsocks-1926501654
         - vless-1927184289
         - vless-1869827251
-        - vless-1827267314
         - vless-1827145802
         - vless-1927193094
         - vless-1927193086
-        - shadowsocks-1926289831
       type: select
 rules:
     - MATCH,select
