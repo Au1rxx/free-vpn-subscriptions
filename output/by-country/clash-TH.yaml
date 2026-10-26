@@ -6,6 +6,26 @@ proxies:
       server: pphfree1.mvpnpvpn.de5.net
       type: ss
       udp: true
+    - name: vless-1927938502
+      network: tcp
+      port: 22222
+      server: 38.60.254.50
+      servername: th001.zestapp778.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
+    - name: vless-1927926413
+      network: tcp
+      port: 22222
+      server: th001.zestapp778.com
+      servername: th001.zestapp778.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
     - name: vless-1926288585
       network: tcp
       port: 22222
@@ -30,23 +50,39 @@ proxies:
       type: vless
       udp: true
       uuid: 3c52e091-6714-4915-949f-2149fe69951b
+    - name: vless-1927934775
+      network: tcp
+      port: 22222
+      server: 38.60.254.50
+      servername: th001.zestapp778.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1925772520
+        - vless-1927938502
+        - vless-1927926413
         - vless-1926288585
         - vless-1827150933
         - vless-1854338833
+        - vless-1927934775
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1925772520
+        - vless-1927938502
+        - vless-1927926413
         - vless-1926288585
         - vless-1827150933
         - vless-1854338833
+        - vless-1927934775
       type: select
 rules:
     - MATCH,select
