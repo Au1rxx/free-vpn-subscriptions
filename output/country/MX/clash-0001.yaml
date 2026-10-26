@@ -1,4 +1,21 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-1828226479
+      password: BWyPPTusFKhGgzKh
+      port: 8388
+      server: 64.177.90.30
+      type: ss
+      udp: true
+    - name: vless-1880569906
+      network: ws
+      port: 8443
+      server: 45.134.9.133
+      servername: ul-mexico1.09vpn.com
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: a6d20e79-d326-42c1-bc20-f4cecc6dc42d
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1900281827
@@ -137,6 +154,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1828226479
+        - vless-1880569906
         - vless-1900281827
         - vless-1926288586
         - vless-1927375643
@@ -155,6 +174,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - shadowsocks-1828226479
+        - vless-1880569906
         - vless-1900281827
         - vless-1926288586
         - vless-1927375643

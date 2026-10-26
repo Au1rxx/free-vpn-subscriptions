@@ -20,12 +20,20 @@ proxies:
       type: vless
       udp: true
       uuid: 2b0e5676-fb62-4bf0-9607-6e7818421e8e
+    - cipher: aes-256-gcm
+      name: shadowsocks-1827147826
+      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+      port: 19999
+      server: 82.110.60.9
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1929108260
         - vless-1925674175
+        - shadowsocks-1827147826
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -33,6 +41,7 @@ proxy-groups:
         - auto
         - vless-1929108260
         - vless-1925674175
+        - shadowsocks-1827147826
       type: select
 rules:
     - MATCH,select
