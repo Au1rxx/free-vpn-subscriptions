@@ -1,6 +1,20 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-1885377703
+      network: tcp
+      port: 47881
+      reality-opts:
+        public-key: 6XmXX1QXGodmtqU37Zx9CDHnCnPtonRdq8ieLmt__g4
+        short-id: 38d72071
+      server: 134.185.81.5
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 59b203b2-b1bc-4e9c-a9e5-ccb8f691bf72
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-1925514050
       network: tcp
       port: 47881
@@ -17,12 +31,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1885377703
         - vless-1925514050
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1885377703
         - vless-1925514050
       type: select
 rules:
