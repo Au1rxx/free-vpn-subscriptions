@@ -1,13 +1,45 @@
-proxies: []
+proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1928314701
+      network: tcp
+      port: 10443
+      reality-opts:
+        public-key: XNfikFybWtjJjWU7-QBGrr-D9YUW0uSK_sR7mDDUmRU
+        short-id: 6ba85179
+      server: 89.185.82.151
+      servername: stackoverflow.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0869a7d7-b8e8-42be-8bca-84b0ab07744a
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1928319435
+      network: tcp
+      port: 10443
+      reality-opts:
+        public-key: XNfikFybWtjJjWU7-QBGrr-D9YUW0uSK_sR7mDDUmRU
+        short-id: 6ba85179
+      server: 89.185.82.151
+      servername: stackoverflow.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0869a7d7-b8e8-42be-8bca-84b0ab07744a
 proxy-groups:
     - interval: 300
       name: auto
-      proxies: []
+      proxies:
+        - vless-1928314701
+        - vless-1928319435
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1928314701
+        - vless-1928319435
       type: select
 rules:
     - MATCH,select

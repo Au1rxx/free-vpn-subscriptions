@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1853331477
+      password: 84a506ca5aca505696a454d828420b3f
+      port: 50160
+      server: 140.238.213.114
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1827146737
       password: e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3
@@ -6,6 +13,19 @@ proxies:
       server: 132.243.175.144
       type: ss
       udp: true
+    - client-fingerprint: chrome
+      name: vless-1927379067
+      network: tcp
+      port: 32752
+      reality-opts:
+        public-key: pfFcQxKv4EPhCDUoZMCmTjj4FK7HHQg_me-In3bOejA
+        short-id: d758a643034ad90e
+      server: 107.189.7.176
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4970c1cd-13e1-498a-920a-61d07be2fa65
     - name: hysteria2-1828373530
       password: 84a506ca5aca505696a454d828420b3f
       port: 50160
@@ -50,7 +70,9 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1853331477
         - shadowsocks-1827146737
+        - vless-1927379067
         - hysteria2-1828373530
         - vless-1827154380
         - vless-1926739484
@@ -60,7 +82,9 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - hysteria2-1853331477
         - shadowsocks-1827146737
+        - vless-1927379067
         - hysteria2-1828373530
         - vless-1827154380
         - vless-1926739484
