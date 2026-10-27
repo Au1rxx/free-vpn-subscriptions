@@ -16,13 +16,6 @@ proxies:
       type: vless
       udp: true
       uuid: c90395e6-2140-47ad-a54d-9b166729d3ef
-    - name: hysteria2-1827784274
-      password: 7ab3c77e-8fcc-4848-918f-cae3d4eac794
-      port: 2053
-      server: 194.87.118.184
-      skip-cert-verify: false
-      sni: match-stream.lovkisport.blog
-      type: hysteria2
     - name: vless-1828339460
       network: ws
       port: 8443
@@ -58,6 +51,13 @@ proxies:
       network: ws
       port: 8880
       server: 88.216.66.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-1831066150
+      network: ws
+      port: 8880
+      server: 103.133.1.30
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
@@ -138,6 +138,13 @@ proxies:
       skip-cert-verify: true
       sni: srv-17e124.21freedom.net
       type: hysteria2
+    - name: vless-1853352937
+      network: ws
+      port: 8880
+      server: chat.openai.com
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1853353147
       network: ws
       port: 8880
@@ -303,16 +310,6 @@ proxies:
       network: grpc
       port: 443
       server: 147.45.175.81
-      servername: xssite.webredirect.org
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: c90395e6-2140-47ad-a54d-9b166729d3ef
-    - name: vless-1889547606
-      network: grpc
-      port: 443
-      server: xssite.webredirect.org
       servername: xssite.webredirect.org
       skip-cert-verify: false
       tls: true
@@ -553,18 +550,32 @@ proxies:
       type: vless
       udp: true
       uuid: 32b5ca9b-3f81-4031-965d-e8b074216e8d
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1931227077
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: hHor6jajmC4pqV1HSOHypVaMiE9xn8qBoE_oSO-c5x0
+        short-id: a0c58a106301b783
+      server: 193.233.230.107
+      servername: mortardapplebirch.kilnworkshop.info
+      tls: true
+      type: vless
+      udp: true
+      uuid: 37ca5f34-2531-4fda-a781-20f3845fea88
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1827145511
         - vless-1827155622
-        - hysteria2-1827784274
         - vless-1828339460
         - hysteria2-1828371109
         - hysteria2-1828371112
         - hysteria2-1828371117
         - vless-1828372773
+        - vless-1831066150
         - vless-1831092040
         - vless-1831184229
         - vless-1831184756
@@ -573,6 +584,7 @@ proxy-groups:
         - vless-1844569873
         - vless-1853341234
         - hysteria2-1853341822
+        - vless-1853352937
         - vless-1853353147
         - vless-1854051092
         - vless-1854089583
@@ -591,7 +603,6 @@ proxy-groups:
         - vless-1887781078
         - vless-1888283376
         - vless-1888283377
-        - vless-1889547606
         - vless-1909177982
         - vless-1909274064
         - vless-1910531407
@@ -612,6 +623,7 @@ proxy-groups:
         - vless-1930143786
         - vless-1930271712
         - vless-1930524087
+        - vless-1931227077
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -619,12 +631,12 @@ proxy-groups:
         - auto
         - hysteria2-1827145511
         - vless-1827155622
-        - hysteria2-1827784274
         - vless-1828339460
         - hysteria2-1828371109
         - hysteria2-1828371112
         - hysteria2-1828371117
         - vless-1828372773
+        - vless-1831066150
         - vless-1831092040
         - vless-1831184229
         - vless-1831184756
@@ -633,6 +645,7 @@ proxy-groups:
         - vless-1844569873
         - vless-1853341234
         - hysteria2-1853341822
+        - vless-1853352937
         - vless-1853353147
         - vless-1854051092
         - vless-1854089583
@@ -651,7 +664,6 @@ proxy-groups:
         - vless-1887781078
         - vless-1888283376
         - vless-1888283377
-        - vless-1889547606
         - vless-1909177982
         - vless-1909274064
         - vless-1910531407
@@ -672,6 +684,7 @@ proxy-groups:
         - vless-1930143786
         - vless-1930271712
         - vless-1930524087
+        - vless-1931227077
       type: select
 rules:
     - MATCH,select

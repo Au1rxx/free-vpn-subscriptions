@@ -1,4 +1,18 @@
 proxies:
+    - name: vless-1931254692
+      network: grpc
+      port: 3090
+      server: 178.83.111.176
+      type: vless
+      udp: true
+      uuid: 0cda32d2-eadf-4ab3-9171-9f8acc4f1911
+    - name: vless-1857053329
+      network: tcp
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1923902906
@@ -31,6 +45,8 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1931254692
+        - vless-1857053329
         - vless-1923902906
         - vless-1853984818
       type: url-test
@@ -38,6 +54,8 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1931254692
+        - vless-1857053329
         - vless-1923902906
         - vless-1853984818
       type: select
