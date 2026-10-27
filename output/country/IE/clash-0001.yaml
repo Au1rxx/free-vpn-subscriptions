@@ -10,26 +10,26 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - name: vless-1856962108
-      network: ws
-      port: 8880
-      server: 185.207.196.30
-      type: vless
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1931797174
+      password: qtzuB0fNa_X3Io31IjefVBpYh8fzmf_R
+      port: 1347
+      server: dns22.m3hrzd.ir
+      type: ss
       udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1856723363
-        - vless-1856962108
+        - shadowsocks-1931797174
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1856723363
-        - vless-1856962108
+        - shadowsocks-1931797174
       type: select
 rules:
     - MATCH,select
