@@ -1,5 +1,18 @@
 proxies:
     - client-fingerprint: firefox
+      name: vless-1875103853
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+        short-id: ad86e2d52ff40ebd
+      server: 208.69.78.217
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1930538331
       network: tcp
@@ -53,13 +66,19 @@ proxies:
       type: vless
       udp: true
       uuid: 4970c1cd-13e1-498a-920a-61d07be2fa65
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1827146737
-      password: e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3
-      port: 8388
-      server: 132.243.175.144
-      type: ss
+    - client-fingerprint: chrome
+      name: vless-1827188328
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+        short-id: ad86e2d52ff40ebd
+      server: 208.69.78.217
+      servername: www.apple.com
+      tls: true
+      type: vless
       udp: true
+      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
     - client-fingerprint: safari
       flow: xtls-rprx-vision
       name: vless-1932457707
@@ -78,22 +97,24 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1875103853
         - vless-1930538331
         - vless-1828293940
         - vless-1933850830
         - vless-1927379067
-        - shadowsocks-1827146737
+        - vless-1827188328
         - vless-1932457707
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1875103853
         - vless-1930538331
         - vless-1828293940
         - vless-1933850830
         - vless-1927379067
-        - shadowsocks-1827146737
+        - vless-1827188328
         - vless-1932457707
       type: select
 rules:
