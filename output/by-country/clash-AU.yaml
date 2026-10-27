@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-1927931719
+      password: Trojan@82164024
+      port: 443
+      server: au.tronsg.com
+      skip-cert-verify: true
+      sni: au.tronsg.com
+      type: trojan
+      udp: true
     - name: trojan-1929965333
       password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
       port: 443
@@ -41,9 +49,30 @@ proxies:
       type: vless
       udp: true
       uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
+    - name: trojan-1929957545
+      password: Trojan@82164024
+      port: 443
+      server: au.tronsg.com
+      skip-cert-verify: false
+      sni: au.tronsg.com
+      type: trojan
+      udp: true
     - client-fingerprint: random
       name: vless-1880850556
       network: tcp
+      port: 2053
+      reality-opts:
+        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
+        short-id: 4cc9dc65f7770115
+      server: 46.250.240.80
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
+    - client-fingerprint: firefox
+      name: vless-1827153943
+      network: raw
       port: 2053
       reality-opts:
         public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
@@ -63,29 +92,36 @@ proxies:
       type: trojan
       udp: true
     - client-fingerprint: firefox
-      name: vless-1827153943
-      network: raw
-      port: 2053
+      flow: xtls-rprx-vision
+      name: vless-1875790265
+      network: tcp
+      port: 443
       reality-opts:
-        public-key: CYFeysLf--_IVhxQOCd3ZxLrAVWFFOkJzvIGHOVXN3E
-        short-id: 4cc9dc65f7770115
-      server: 46.250.240.80
+        public-key: gCAazs5uxNuMZIxfDdw8wPE0nwKY4QfBfBkQveKAkEk
+        short-id: 0ad08b47f498efd2
+      server: 51.161.204.244
       servername: www.cloudflare.com
       tls: true
       type: vless
       udp: true
-      uuid: 948df76f-505d-4608-9c76-a933ee3ccc76
-    - name: trojan-1927931719
-      password: Trojan@82164024
-      port: 443
-      server: au.tronsg.com
-      skip-cert-verify: true
-      sni: au.tronsg.com
-      type: trojan
-      udp: true
+      uuid: 36e89875-9c53-482b-bc41-d3890e9da176
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1853331574
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: gCAazs5uxNuMZIxfDdw8wPE0nwKY4QfBfBkQveKAkEk
+        short-id: 0ad08b47f498efd2
+      server: 51.161.204.244
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 36e89875-9c53-482b-bc41-d3890e9da176
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1853989174
       network: tcp
       port: 443
       reality-opts:
@@ -101,29 +137,35 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-1927931719
         - trojan-1929965333
         - vless-1828532074
         - trojan-1927187200
         - vless-1828294429
+        - trojan-1929957545
         - vless-1880850556
-        - trojan-1929291590
         - vless-1827153943
-        - trojan-1927931719
+        - trojan-1929291590
+        - vless-1875790265
         - vless-1853331574
+        - vless-1853989174
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - trojan-1927931719
         - trojan-1929965333
         - vless-1828532074
         - trojan-1927187200
         - vless-1828294429
+        - trojan-1929957545
         - vless-1880850556
-        - trojan-1929291590
         - vless-1827153943
-        - trojan-1927931719
+        - trojan-1929291590
+        - vless-1875790265
         - vless-1853331574
+        - vless-1853989174
       type: select
 rules:
     - MATCH,select

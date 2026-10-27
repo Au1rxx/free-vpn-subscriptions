@@ -1,22 +1,39 @@
 proxies:
-    - cipher: aes-256-gcm
-      name: shadowsocks-1827147826
-      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-      port: 19999
-      server: 82.110.60.9
-      type: ss
+    - flow: xtls-rprx-vision
+      name: vless-1930024308
+      network: tcp
+      port: 443
+      server: softice.net
+      servername: softice.net
+      skip-cert-verify: false
+      tls: true
+      type: vless
       udp: true
+      uuid: ef328563-cda1-4530-9b0a-988cc5a74d78
+    - flow: xtls-rprx-vision
+      name: vless-1929912492
+      network: tcp
+      port: 443
+      server: softice.net
+      servername: softice.net
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ef328563-cda1-4530-9b0a-988cc5a74d78
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1827147826
+        - vless-1930024308
+        - vless-1929912492
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1827147826
+        - vless-1930024308
+        - vless-1929912492
       type: select
 rules:
     - MATCH,select

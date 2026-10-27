@@ -1,17 +1,48 @@
 {
   "outbounds": [
     {
-      "method": "aes-256-gcm",
-      "password": "ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=",
-      "server": "82.110.60.9",
-      "server_port": 19999,
-      "tag": "shadowsocks-1827147826",
-      "type": "shadowsocks"
+      "flow": "xtls-rprx-vision",
+      "server": "softice.net",
+      "server_port": 443,
+      "tag": "vless-1930024308",
+      "tls": {
+        "enabled": true,
+        "insecure": false,
+        "server_name": "softice.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "ef328563-cda1-4530-9b0a-988cc5a74d78"
+    },
+    {
+      "flow": "xtls-rprx-vision",
+      "server": "softice.net",
+      "server_port": 443,
+      "tag": "vless-1929912492",
+      "tls": {
+        "alpn": [
+          "h2",
+          "http/1.1"
+        ],
+        "enabled": true,
+        "insecure": false,
+        "server_name": "softice.net",
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      },
+      "type": "vless",
+      "uuid": "ef328563-cda1-4530-9b0a-988cc5a74d78"
     },
     {
       "interval": "5m",
       "outbounds": [
-        "shadowsocks-1827147826"
+        "vless-1930024308",
+        "vless-1929912492"
       ],
       "tag": "auto",
       "type": "urltest",
@@ -20,7 +51,8 @@
     {
       "outbounds": [
         "auto",
-        "shadowsocks-1827147826"
+        "vless-1930024308",
+        "vless-1929912492"
       ],
       "tag": "select",
       "type": "selector"
