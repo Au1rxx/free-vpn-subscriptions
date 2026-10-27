@@ -6,6 +6,16 @@ proxies:
       server: 82.110.60.9
       type: ss
       udp: true
+    - name: vless-1835089654
+      network: ws
+      port: 2053
+      server: 141.101.90.108
+      servername: wzs.echo.net.eu.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d18c6897-2849-456a-8c46-d7ecece47c20
     - name: vless-1837270387
       network: ws
       port: 2053
@@ -26,46 +36,6 @@ proxies:
       type: vless
       udp: true
       uuid: d18c6897-2849-456a-8c46-d7ecece47c20
-    - name: vless-1926108176
-      network: ws
-      port: 8443
-      server: au2.pad-sservice.lat
-      servername: au2.pad-sservice.lat
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2b0e5676-fb62-4bf0-9607-6e7818421e8e
-    - name: vless-1926288590
-      network: ws
-      port: 8443
-      server: 62.83.41.69
-      servername: au6.pad-sservice.lat
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2b0e5676-fb62-4bf0-9607-6e7818421e8e
-    - name: vless-1926729187
-      network: ws
-      port: 8443
-      server: au6.pad-sservice.lat
-      servername: au6.pad-sservice.lat
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2b0e5676-fb62-4bf0-9607-6e7818421e8e
-    - name: vless-1927184321
-      network: ws
-      port: 8443
-      server: au7.pad-sservice.lat
-      servername: au7.pad-sservice.lat
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 2b0e5676-fb62-4bf0-9607-6e7818421e8e
     - name: vless-1927185331
       network: ws
       port: 8443
@@ -182,17 +152,25 @@ proxies:
       type: vless
       udp: true
       uuid: ef328563-cda1-4530-9b0a-988cc5a74d78
+    - flow: xtls-rprx-vision
+      name: vless-1930911075
+      network: tcp
+      port: 443
+      server: softice.net
+      servername: softice.net
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ef328563-cda1-4530-9b0a-988cc5a74d78
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827147826
+        - vless-1835089654
         - vless-1837270387
         - vless-1885355673
-        - vless-1926108176
-        - vless-1926288590
-        - vless-1926729187
-        - vless-1927184321
         - vless-1927185331
         - vless-1927724270
         - vless-1928319441
@@ -204,18 +182,16 @@ proxy-groups:
         - vless-1930330120
         - vless-1930494700
         - vless-1930538334
+        - vless-1930911075
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1827147826
+        - vless-1835089654
         - vless-1837270387
         - vless-1885355673
-        - vless-1926108176
-        - vless-1926288590
-        - vless-1926729187
-        - vless-1927184321
         - vless-1927185331
         - vless-1927724270
         - vless-1928319441
@@ -227,6 +203,7 @@ proxy-groups:
         - vless-1930330120
         - vless-1930494700
         - vless-1930538334
+        - vless-1930911075
       type: select
 rules:
     - MATCH,select
