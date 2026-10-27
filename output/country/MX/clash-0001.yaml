@@ -6,6 +6,20 @@ proxies:
       server: 64.177.90.30
       type: ss
       udp: true
+    - name: vless-1853352747
+      network: ws
+      port: 8880
+      server: 159.242.242.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-1855814683
+      network: ws
+      port: 8880
+      server: 104.129.164.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1880569906
       network: ws
       port: 8443
@@ -144,11 +158,23 @@ proxies:
       sni: connectwithtopemployersandfindidealjobs.com
       type: trojan
       udp: true
+    - name: vless-1930226057
+      network: tcp
+      port: 19167
+      server: mx001.zestapp778.com
+      servername: mx001.zestapp778.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1828226479
+        - vless-1853352747
+        - vless-1855814683
         - vless-1880569906
         - vless-1926288586
         - vless-1927375643
@@ -163,12 +189,15 @@ proxy-groups:
         - vless-1929291568
         - vless-1929528854
         - trojan-1929965361
+        - vless-1930226057
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1828226479
+        - vless-1853352747
+        - vless-1855814683
         - vless-1880569906
         - vless-1926288586
         - vless-1927375643
@@ -183,6 +212,7 @@ proxy-groups:
         - vless-1929291568
         - vless-1929528854
         - trojan-1929965361
+        - vless-1930226057
       type: select
 rules:
     - MATCH,select
