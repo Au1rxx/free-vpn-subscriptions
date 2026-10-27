@@ -1,18 +1,18 @@
 proxies:
-    - name: vless-1923846542
+    - name: vless-1929492166
       network: grpc
       port: 4443
-      server: 45-149-147-213.sslip.io
+      server: 45.149.147.213
       servername: 45-149-147-213.sslip.io
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
       uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
-    - name: vless-1926288598
+    - name: vless-1923846542
       network: grpc
       port: 4443
-      server: 45.149.147.213
+      server: 45-149-147-213.sslip.io
       servername: 45-149-147-213.sslip.io
       skip-cert-verify: false
       tls: true
@@ -32,6 +32,19 @@ proxies:
       type: vless
       udp: true
       uuid: 9a0e84f8-4b58-477f-99da-5fac5a2e58e8
+    - client-fingerprint: firefox
+      name: vless-1927184299
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: GJzag9Wrvz_bO9AQaA-Oq0P1kV9btmxxAdzPV-uQB18
+        short-id: 09d0a94a1c6fc9d5
+      server: 77.42.12.225
+      servername: 8fc752g.fi3.h1clayd.click
+      tls: true
+      type: vless
+      udp: true
+      uuid: 056405e8-de9f-4d0d-8145-956f13cc34da
     - name: hysteria2-1926289818
       password: 329e13e4-ee7c-4802-ac72-5fcab79c2402
       port: 443
@@ -82,33 +95,20 @@ proxies:
       type: vless
       udp: true
       uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
-    - name: vless-1929492166
+    - name: vless-1927159532
       network: grpc
       port: 4443
-      server: 45.149.147.213
+      server: 45-149-147-213.sslip.io
       servername: 45-149-147-213.sslip.io
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
       uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
-    - client-fingerprint: firefox
-      name: vless-1927184299
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: GJzag9Wrvz_bO9AQaA-Oq0P1kV9btmxxAdzPV-uQB18
-        short-id: 09d0a94a1c6fc9d5
-      server: 77.42.12.225
-      servername: 8fc752g.fi3.h1clayd.click
-      tls: true
-      type: vless
-      udp: true
-      uuid: 056405e8-de9f-4d0d-8145-956f13cc34da
-    - name: vless-1927159532
+    - name: vless-1926288598
       network: grpc
       port: 4443
-      server: 45-149-147-213.sslip.io
+      server: 45.149.147.213
       servername: 45-149-147-213.sslip.io
       skip-cert-verify: false
       tls: true
@@ -212,21 +212,34 @@ proxies:
       type: vless
       udp: true
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+    - client-fingerprint: firefox
+      name: vless-1853487442
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1929492166
         - vless-1923846542
-        - vless-1926288598
         - vless-1854330920
+        - vless-1927184299
         - hysteria2-1926289818
         - vless-1928318117
         - vless-1929108412
         - vless-1931768143
         - vless-1927926410
-        - vless-1929492166
-        - vless-1927184299
         - vless-1927159532
+        - vless-1926288598
         - vless-1853352743
         - vless-1828174684
         - vless-1927184320
@@ -236,22 +249,23 @@ proxy-groups:
         - vless-1832465388
         - vless-1827188007
         - vless-1827399465
+        - vless-1853487442
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1929492166
         - vless-1923846542
-        - vless-1926288598
         - vless-1854330920
+        - vless-1927184299
         - hysteria2-1926289818
         - vless-1928318117
         - vless-1929108412
         - vless-1931768143
         - vless-1927926410
-        - vless-1929492166
-        - vless-1927184299
         - vless-1927159532
+        - vless-1926288598
         - vless-1853352743
         - vless-1828174684
         - vless-1927184320
@@ -261,6 +275,7 @@ proxy-groups:
         - vless-1832465388
         - vless-1827188007
         - vless-1827399465
+        - vless-1853487442
       type: select
 rules:
     - MATCH,select
