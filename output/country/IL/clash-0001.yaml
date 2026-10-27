@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-1854085326
+      network: ws
+      port: 443
+      server: 177.3.208.65
+      servername: tgmansion.site
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4f34bc04-479c-49ba-91a8-6bb9ed15031c
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1891672392
@@ -83,27 +93,39 @@ proxies:
       type: vless
       udp: true
       uuid: f0b144bd-4c44-440d-b630-d79ec82cad3a
+    - name: trojan-1929965330
+      password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+      port: 443
+      server: 64.176.163.182
+      skip-cert-verify: false
+      sni: exploreeducationsectoropportunitiestodayandadvancecareers.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1854085326
         - vless-1891672392
         - vless-1896119555
         - vless-1898604288
         - vless-1907713229
         - vless-1914959315
         - vless-1922171528
+        - trojan-1929965330
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1854085326
         - vless-1891672392
         - vless-1896119555
         - vless-1898604288
         - vless-1907713229
         - vless-1914959315
         - vless-1922171528
+        - trojan-1929965330
       type: select
 rules:
     - MATCH,select
