@@ -1,11 +1,4 @@
 proxies:
-    - cipher: 2022-blake3-aes-256-gcm
-      name: shadowsocks-1930064810
-      password: 1/kU1gF9gGRGdF5JH2jf3GeeLsItfkkOhmMP5cnPMUI=:ojXUsKiyV41J4EsaiAZFaKCW+zhuD3Tl0Z7pWkKq6eM=
-      port: 19999
-      server: 206.1.103.237
-      type: ss
-      udp: true
     - client-fingerprint: firefox
       name: vless-1883445397
       network: grpc
@@ -181,19 +174,6 @@ proxies:
       type: vless
       udp: true
       uuid: 4b1be712-774c-4b65-8491-a3339e124a70
-    - client-fingerprint: chrome
-      name: vless-1853488230
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: bYW_MmB_CUHrsyoCAUKviI2LZdHf63yY2yOPXbih104
-        short-id: 9e419c0759b54d6f
-      server: 151.241.226.201
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1928741059
@@ -208,6 +188,20 @@ proxies:
       type: vless
       udp: true
       uuid: 4b1be712-774c-4b65-8491-a3339e124a70
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1827150153
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: sZAJkAu23wp1WKY-qeaeiwR38izP5OyfhumoE9xhbB8
+        short-id: f46cd3ea3d1eb72d
+      server: 78.135.73.47
+      servername: www.datadoghq.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 25e16692-d097-4e69-9e2d-8415609c1968
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1930472457
@@ -240,7 +234,6 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1930064810
         - vless-1883445397
         - vless-1875288132
         - vless-1827188726
@@ -254,8 +247,8 @@ proxy-groups:
         - vless-1856635916
         - vless-1831132788
         - vless-1929351324
-        - vless-1853488230
         - vless-1928741059
+        - vless-1827150153
         - vless-1930472457
         - vless-1929297355
       type: url-test
@@ -263,7 +256,6 @@ proxy-groups:
     - name: select
       proxies:
         - auto
-        - shadowsocks-1930064810
         - vless-1883445397
         - vless-1875288132
         - vless-1827188726
@@ -277,8 +269,8 @@ proxy-groups:
         - vless-1856635916
         - vless-1831132788
         - vless-1929351324
-        - vless-1853488230
         - vless-1928741059
+        - vless-1827150153
         - vless-1930472457
         - vless-1929297355
       type: select

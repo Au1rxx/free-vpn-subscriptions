@@ -6,17 +6,26 @@ proxies:
       server: 130.49.189.158
       type: ss
       udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1934448398
+      password: LzEeLj2OP0DQmpPDtVTazdGC0cHcT0Kn
+      port: 1348
+      server: dns22.m3hrzd.ir
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1932472785
+        - shadowsocks-1934448398
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1932472785
+        - shadowsocks-1934448398
       type: select
 rules:
     - MATCH,select

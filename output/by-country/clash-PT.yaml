@@ -1,0 +1,22 @@
+proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-1934449399
+      password: MjA4Mzg3OTY4YWViNzczMjQ3ZDI3MzljN2ZkZTQw
+      port: 9118
+      server: 188.121.123.142
+      type: ss
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - shadowsocks-1934449399
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - shadowsocks-1934449399
+      type: select
+rules:
+    - MATCH,select

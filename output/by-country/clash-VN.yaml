@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1851981564
+      network: tcp
+      port: 51279
+      reality-opts:
+        public-key: f6Tj8-uvWsLv3V-lGLuPciArp5oKqUImBg-U7-WJ-0A
+        short-id: bb82c8
+      server: 154.21.203.106
+      servername: www.tesla.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 57beeeb0-03fc-4fc9-94da-7604488a7134
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1851981564
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1851981564
+      type: select
+rules:
+    - MATCH,select

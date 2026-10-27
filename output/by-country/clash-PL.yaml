@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1933850822
+      password: 10be1dad-9952-4c5e-aa30-db435f69b727
+      port: 4444
+      server: bl3.nexfile.net
+      skip-cert-verify: false
+      sni: ""
+      type: hysteria2
     - name: vless-1932277153
       network: tcp
       port: 2052
@@ -51,20 +58,6 @@ proxies:
       type: vless
       udp: true
       uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1930539309
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: pOHbbyo_PlUwH4DjC6bKvC3jB8RPnCdu-nL8trAP8CI
-        short-id: "50"
-      server: 45.148.119.127
-      servername: cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 329e13e4-ee7c-4802-ac72-5fcab79c2402
     - client-fingerprint: random
       name: vless-1828149341
       network: tcp
@@ -104,12 +97,12 @@ proxies:
       type: vless
       udp: true
       uuid: 5a519754-a673-4462-83f6-5eb25d2af141
-    - name: hysteria2-1933850822
-      password: 10be1dad-9952-4c5e-aa30-db435f69b727
-      port: 4444
-      server: bl3.nexfile.net
+    - name: hysteria2-1933850806
+      password: 146d567c-6335-4e63-a8aa-7ec068642440
+      port: 4443
+      server: 191.217.251.225
       skip-cert-verify: false
-      sni: ""
+      sni: nl1.obxodvpn.us
       type: hysteria2
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1928714919
@@ -169,6 +162,13 @@ proxies:
       skip-cert-verify: false
       sni: nl1.obxodvpn.us
       type: hysteria2
+    - name: vless-1876808293
+      network: tcp
+      port: 20001
+      server: site.teslamotor.site
+      type: vless
+      udp: true
+      uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
     - name: vless-1892979275
       network: tcp
       port: 20001
@@ -179,6 +179,19 @@ proxies:
     - client-fingerprint: chrome
       name: vless-1853462692
       network: raw
+      port: 2053
+      reality-opts:
+        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
+        short-id: 50ba05992b05c1c3
+      server: 54.37.136.194
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
+    - client-fingerprint: firefox
+      name: vless-1832881265
+      network: tcp
       port: 2053
       reality-opts:
         public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
@@ -209,17 +222,11 @@ proxies:
       skip-cert-verify: false
       sni: bl3.nexfile.net
       type: hysteria2
-    - name: hysteria2-1933850806
-      password: 146d567c-6335-4e63-a8aa-7ec068642440
-      port: 4443
-      server: 191.217.251.225
-      skip-cert-verify: false
-      sni: nl1.obxodvpn.us
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1933850822
         - vless-1932277153
         - vless-1876912365
         - vless-1883661029
@@ -227,27 +234,28 @@ proxy-groups:
         - shadowsocks-1925513121
         - vless-1869963083
         - vless-1869904605
-        - vless-1930539309
         - vless-1828149341
         - vless-1853488300
         - vless-1933859855
-        - hysteria2-1933850822
+        - hysteria2-1933850806
         - shadowsocks-1928714919
         - vless-1876388819
         - vless-1832941349
         - vless-1933840534
         - vless-1933858900
         - hysteria2-1933850825
+        - vless-1876808293
         - vless-1892979275
         - vless-1853462692
+        - vless-1832881265
         - vless-1853462703
         - hysteria2-1930493523
-        - hysteria2-1933850806
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1933850822
         - vless-1932277153
         - vless-1876912365
         - vless-1883661029
@@ -255,22 +263,22 @@ proxy-groups:
         - shadowsocks-1925513121
         - vless-1869963083
         - vless-1869904605
-        - vless-1930539309
         - vless-1828149341
         - vless-1853488300
         - vless-1933859855
-        - hysteria2-1933850822
+        - hysteria2-1933850806
         - shadowsocks-1928714919
         - vless-1876388819
         - vless-1832941349
         - vless-1933840534
         - vless-1933858900
         - hysteria2-1933850825
+        - vless-1876808293
         - vless-1892979275
         - vless-1853462692
+        - vless-1832881265
         - vless-1853462703
         - hysteria2-1930493523
-        - hysteria2-1933850806
       type: select
 rules:
     - MATCH,select
