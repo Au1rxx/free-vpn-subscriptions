@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-gcm
+      name: shadowsocks-1928705745
+      password: cCMJgJTA3BA489YUYrFq7XHXSiSpWlLa
+      port: 18443
+      server: 91.206.92.238
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
       name: shadowsocks-1928705747
       password: NTiHBg64fsY8u8DbGrtypD9gPGSL386p
       port: 18443
@@ -10,12 +17,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1928705745
         - shadowsocks-1928705747
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1928705745
         - shadowsocks-1928705747
       type: select
 rules:

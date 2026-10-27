@@ -1,12 +1,5 @@
 proxies:
     - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1925513121
-      password: 6heexyz
-      port: 443
-      server: pl140.vpnbook.com
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1928714919
       password: 6heexyz
       port: 443
@@ -27,6 +20,13 @@ proxies:
       type: vless
       udp: true
       uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
+    - name: vless-1869904605
+      network: tcp
+      port: 20001
+      server: site.teslamotor.site
+      type: vless
+      udp: true
+      uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
     - name: vless-1876912365
       network: tcp
       port: 20001
@@ -41,13 +41,13 @@ proxies:
       type: vless
       udp: true
       uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
-    - name: vless-1869904605
-      network: tcp
-      port: 20001
-      server: site.teslamotor.site
-      type: vless
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1925513121
+      password: 6heexyz
+      port: 443
+      server: pl140.vpnbook.com
+      type: ss
       udp: true
-      uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
     - name: vless-1932277153
       network: tcp
       port: 2052
@@ -99,19 +99,6 @@ proxies:
       type: vless
       udp: true
       uuid: 36cf792c-f07d-4500-97ea-a395e5178deb
-    - client-fingerprint: chrome
-      name: vless-1827188320
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
-        short-id: 50ba05992b05c1c3
-      server: 54.37.136.194
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
     - client-fingerprint: random
       name: vless-1828149341
       network: tcp
@@ -135,6 +122,13 @@ proxies:
       type: vless
       udp: true
       uuid: b9fdc03f-389b-4cda-9be4-155b623bee15
+    - name: vless-1854135104
+      network: tcp
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - name: vless-1927713101
       network: tcp
       port: 20001
@@ -142,59 +136,47 @@ proxies:
       type: vless
       udp: true
       uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
-    - name: vless-1922183696
-      network: grpc
-      port: 8445
-      server: 77.232.135.141
-      servername: ru1.radiolumens.uk
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 36cf792c-f07d-4500-97ea-a395e5178deb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1925513121
         - shadowsocks-1928714919
         - hysteria2-1930493523
         - vless-1883661029
+        - vless-1869904605
         - vless-1876912365
         - vless-1869963083
-        - vless-1869904605
+        - shadowsocks-1925513121
         - vless-1932277153
         - vless-1876388819
         - vless-1930539309
         - vless-1853462703
         - vless-1924316584
-        - vless-1827188320
         - vless-1828149341
         - vless-1924318486
+        - vless-1854135104
         - vless-1927713101
-        - vless-1922183696
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1925513121
         - shadowsocks-1928714919
         - hysteria2-1930493523
         - vless-1883661029
+        - vless-1869904605
         - vless-1876912365
         - vless-1869963083
-        - vless-1869904605
+        - shadowsocks-1925513121
         - vless-1932277153
         - vless-1876388819
         - vless-1930539309
         - vless-1853462703
         - vless-1924316584
-        - vless-1827188320
         - vless-1828149341
         - vless-1924318486
+        - vless-1854135104
         - vless-1927713101
-        - vless-1922183696
       type: select
 rules:
     - MATCH,select
