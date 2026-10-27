@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1930493524
+      password: 10be1dad-9952-4c5e-aa30-db435f69b727
+      port: 4444
+      server: 144.31.239.226
+      skip-cert-verify: false
+      sni: fl2.nexfile.net
+      type: hysteria2
     - name: vless-1929492166
       network: grpc
       port: 4443
@@ -9,6 +16,19 @@ proxies:
       type: vless
       udp: true
       uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
+    - client-fingerprint: chrome
+      name: vless-1930769381
+      network: grpc
+      port: 8443
+      reality-opts:
+        public-key: wcOBPSgoOKptWa9ZHpFpmbrPfLqobBNpCgLH88Ptjhk
+        short-id: ""
+      server: 122.8.45.7
+      servername: download.nvidia.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 362a0364-2b0f-cd11-9c20-ab9dfbeb8b11
     - name: vless-1923846542
       network: grpc
       port: 4443
@@ -19,19 +39,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
-    - client-fingerprint: chrome
-      name: vless-1854330920
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: pAgrBKJCmuSJHIzYkEJTqsOBOVBK_DMtEqFPo-PaTkg
-        short-id: b3c9d0c6bdd114a6
-      server: 2.29.101.158
-      servername: 36a466g.fi1.h1clayd.click
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9a0e84f8-4b58-477f-99da-5fac5a2e58e8
     - client-fingerprint: firefox
       name: vless-1927184299
       network: grpc
@@ -89,6 +96,16 @@ proxies:
       network: grpc
       port: 4443
       server: 45.149.147.213
+      servername: 45-149-147-213.sslip.io
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
+    - name: vless-1925464495
+      network: grpc
+      port: 4443
+      server: 45-149-147-213.sslip.io
       servername: 45-149-147-213.sslip.io
       skip-cert-verify: false
       tls: true
@@ -166,19 +183,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
-    - client-fingerprint: firefox
-      name: vless-1832977887
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: pAgrBKJCmuSJHIzYkEJTqsOBOVBK_DMtEqFPo-PaTkg
-        short-id: b3c9d0c6bdd114a6
-      server: 2.29.101.158
-      servername: 36a466g.fi1.h1clayd.click
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9a0e84f8-4b58-477f-99da-5fac5a2e58e8
     - name: vless-1832465388
       network: ws
       port: 14430
@@ -212,32 +216,21 @@ proxies:
       type: vless
       udp: true
       uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
-    - client-fingerprint: firefox
-      name: vless-1853487442
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
-        short-id: d368b94e275ab080
-      server: 95.216.27.15
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1930493524
         - vless-1929492166
+        - vless-1930769381
         - vless-1923846542
-        - vless-1854330920
         - vless-1927184299
         - hysteria2-1926289818
         - vless-1928318117
         - vless-1929108412
         - vless-1931768143
         - vless-1927926410
+        - vless-1925464495
         - vless-1927159532
         - vless-1926288598
         - vless-1853352743
@@ -245,25 +238,25 @@ proxy-groups:
         - vless-1927184320
         - vless-1931254757
         - vless-1930024310
-        - vless-1832977887
         - vless-1832465388
         - vless-1827188007
         - vless-1827399465
-        - vless-1853487442
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1930493524
         - vless-1929492166
+        - vless-1930769381
         - vless-1923846542
-        - vless-1854330920
         - vless-1927184299
         - hysteria2-1926289818
         - vless-1928318117
         - vless-1929108412
         - vless-1931768143
         - vless-1927926410
+        - vless-1925464495
         - vless-1927159532
         - vless-1926288598
         - vless-1853352743
@@ -271,11 +264,9 @@ proxy-groups:
         - vless-1927184320
         - vless-1931254757
         - vless-1930024310
-        - vless-1832977887
         - vless-1832465388
         - vless-1827188007
         - vless-1827399465
-        - vless-1853487442
       type: select
 rules:
     - MATCH,select

@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1827151978
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: rabtI-ymNXBUvYYRwAw8DiR-1pdP7U0WPIaCBHEkgzo
+        short-id: 77bb0d07bddbc832
+      server: 195.123.226.21
+      servername: gateway.icloud.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6589c320-db68-43cd-a273-b46299bab355
     - cipher: aes-256-cfb
       name: shadowsocks-1827887435
       password: 4R3hUfZ2FHhDmNcP
@@ -69,13 +83,6 @@ proxies:
       server: 213.183.63.60
       type: ss
       udp: true
-    - name: vless-1853352638
-      network: ws
-      port: 8880
-      server: 104.16.215.234
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1853352843
       network: ws
       port: 8880
@@ -83,20 +90,15 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1856645447
+    - alterId: 0
+      cipher: auto
+      name: vmess-1854343760
       network: ws
-      port: 8880
-      server: 66.235.200.30
-      type: vless
+      port: 8443
+      server: 104.17.77.77
+      type: vmess
       udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1883340318
-      network: ws
-      port: 8880
-      server: 185.18.250.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+      uuid: 60441548-b68e-43b2-8191-e3b884be4b3c
     - name: vless-1894345286
       network: ws
       port: 8880
@@ -109,6 +111,13 @@ proxies:
       password: uvKNudV-N8AUCrykPiyznA
       port: 56134
       server: location8.cpanel-host10.ir
+      type: ss
+      udp: true
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1925772525
+      password: uvKNudV-N8AUCrykPiyznA
+      port: 56134
+      server: 87.236.166.217
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
@@ -213,6 +222,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1827151978
         - shadowsocks-1827887435
         - shadowsocks-1827968913
         - shadowsocks-1827969065
@@ -223,12 +233,11 @@ proxy-groups:
         - shadowsocks-1827969512
         - shadowsocks-1827969546
         - shadowsocks-1827969653
-        - vless-1853352638
         - vless-1853352843
-        - vless-1856645447
-        - vless-1883340318
+        - vmess-1854343760
         - vless-1894345286
         - shadowsocks-1916684493
+        - shadowsocks-1925772525
         - shadowsocks-1926289813
         - shadowsocks-1926289824
         - shadowsocks-1927186198
@@ -246,6 +255,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1827151978
         - shadowsocks-1827887435
         - shadowsocks-1827968913
         - shadowsocks-1827969065
@@ -256,12 +266,11 @@ proxy-groups:
         - shadowsocks-1827969512
         - shadowsocks-1827969546
         - shadowsocks-1827969653
-        - vless-1853352638
         - vless-1853352843
-        - vless-1856645447
-        - vless-1883340318
+        - vmess-1854343760
         - vless-1894345286
         - shadowsocks-1916684493
+        - shadowsocks-1925772525
         - shadowsocks-1926289813
         - shadowsocks-1926289824
         - shadowsocks-1927186198
