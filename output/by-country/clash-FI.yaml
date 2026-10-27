@@ -9,18 +9,21 @@ proxies:
       type: vless
       udp: true
       uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
-    - name: hysteria2-1926289818
-      password: 329e13e4-ee7c-4802-ac72-5fcab79c2402
-      port: 443
-      server: forshynewh.duckdns.org
-      skip-cert-verify: false
-      sni: forshynewh.duckdns.org
-      type: hysteria2
     - name: vless-1929108412
       network: grpc
       port: 4443
       server: 45-149-147-213.sslip.io
       servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
+    - name: vless-1923846542
+      network: grpc
+      port: 4443
+      server: 45-149-147-213.sslip.io
+      servername: 45-149-147-213.sslip.io
       skip-cert-verify: false
       tls: true
       type: vless
@@ -49,16 +52,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9a0e84f8-4b58-477f-99da-5fac5a2e58e8
-    - name: vless-1923846542
-      network: grpc
-      port: 4443
-      server: 45-149-147-213.sslip.io
-      servername: 45-149-147-213.sslip.io
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
     - client-fingerprint: firefox
       name: vless-1927184299
       network: grpc
@@ -108,6 +101,19 @@ proxies:
     - client-fingerprint: chrome
       name: vless-1827188007
       network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
+    - client-fingerprint: firefox
+      name: vless-1853487442
+      network: raw
       port: 2053
       reality-opts:
         public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
@@ -176,6 +182,13 @@ proxies:
       skip-cert-verify: false
       sni: nl1.obxodvpn.us
       type: hysteria2
+    - name: hysteria2-1926289818
+      password: 329e13e4-ee7c-4802-ac72-5fcab79c2402
+      port: 443
+      server: forshynewh.duckdns.org
+      skip-cert-verify: false
+      sni: forshynewh.duckdns.org
+      type: hysteria2
     - name: trojan-1927189276
       password: gHQP0D7D15
       port: 2053
@@ -225,76 +238,63 @@ proxies:
       type: vless
       udp: true
       uuid: 59b0d30e-9b29-4fda-a35c-b2901ec32db7
-    - client-fingerprint: firefox
-      name: vless-1853487442
-      network: raw
-      port: 2053
-      reality-opts:
-        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
-        short-id: d368b94e275ab080
-      server: 95.216.27.15
-      servername: www.google.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1927159532
-        - hysteria2-1926289818
         - vless-1929108412
+        - vless-1923846542
         - vless-1929492166
         - vless-1854347682
-        - vless-1923846542
         - vless-1927184299
         - vless-1930769381
         - vless-1926288598
         - vless-1927926410
         - vless-1827188007
+        - vless-1853487442
         - trojan-1923823472
         - vless-1932270780
         - vless-1928318117
         - vless-1827150333
         - vless-1853974931
         - hysteria2-1932642662
+        - hysteria2-1926289818
         - trojan-1927189276
         - vless-1927713376
         - vless-1930024310
         - vless-1832465388
         - vless-1827151890
         - vless-1853352743
-        - vless-1853487442
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1927159532
-        - hysteria2-1926289818
         - vless-1929108412
+        - vless-1923846542
         - vless-1929492166
         - vless-1854347682
-        - vless-1923846542
         - vless-1927184299
         - vless-1930769381
         - vless-1926288598
         - vless-1927926410
         - vless-1827188007
+        - vless-1853487442
         - trojan-1923823472
         - vless-1932270780
         - vless-1928318117
         - vless-1827150333
         - vless-1853974931
         - hysteria2-1932642662
+        - hysteria2-1926289818
         - trojan-1927189276
         - vless-1927713376
         - vless-1930024310
         - vless-1832465388
         - vless-1827151890
         - vless-1853352743
-        - vless-1853487442
       type: select
 rules:
     - MATCH,select
