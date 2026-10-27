@@ -1,18 +1,25 @@
 proxies:
-    - name: vless-1926288598
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1930502096
+      password: 7fBrTgScegyeG6E-GfJeJOF_RQVLtIBv
+      port: 191
+      server: 91.184.243.155
+      type: ss
+      udp: true
+    - name: vless-1927159532
       network: grpc
       port: 4443
-      server: 45.149.147.213
+      server: 45-149-147-213.sslip.io
       servername: 45-149-147-213.sslip.io
       skip-cert-verify: false
       tls: true
       type: vless
       udp: true
       uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
-    - name: vless-1927159532
+    - name: vless-1926288598
       network: grpc
       port: 4443
-      server: 45-149-147-213.sslip.io
+      server: 45.149.147.213
       servername: 45-149-147-213.sslip.io
       skip-cert-verify: false
       tls: true
@@ -29,6 +36,19 @@ proxies:
       type: vless
       udp: true
       uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
+    - client-fingerprint: chrome
+      name: vless-1854330920
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: pAgrBKJCmuSJHIzYkEJTqsOBOVBK_DMtEqFPo-PaTkg
+        short-id: b3c9d0c6bdd114a6
+      server: 2.29.101.158
+      servername: 36a466g.fi1.h1clayd.click
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9a0e84f8-4b58-477f-99da-5fac5a2e58e8
     - name: vless-1929108412
       network: grpc
       port: 4443
@@ -122,33 +142,15 @@ proxies:
       type: vless
       udp: true
       uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
-    - client-fingerprint: chrome
-      name: vless-1854330920
-      network: grpc
-      port: 443
-      reality-opts:
-        public-key: pAgrBKJCmuSJHIzYkEJTqsOBOVBK_DMtEqFPo-PaTkg
-        short-id: b3c9d0c6bdd114a6
-      server: 2.29.101.158
-      servername: 36a466g.fi1.h1clayd.click
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9a0e84f8-4b58-477f-99da-5fac5a2e58e8
-    - name: vless-1832691443
-      network: ws
-      port: 14430
-      server: 213.176.92.168
-      type: vless
-      udp: true
-      uuid: ba52cc43-700d-4040-9444-29214c98e6e0
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1926288598
+        - shadowsocks-1930502096
         - vless-1927159532
+        - vless-1926288598
         - vless-1923846542
+        - vless-1854330920
         - vless-1929108412
         - vless-1827399465
         - vless-1929492166
@@ -158,16 +160,16 @@ proxy-groups:
         - vless-1853352743
         - vless-1928318117
         - vless-1927926410
-        - vless-1854330920
-        - vless-1832691443
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1926288598
+        - shadowsocks-1930502096
         - vless-1927159532
+        - vless-1926288598
         - vless-1923846542
+        - vless-1854330920
         - vless-1929108412
         - vless-1827399465
         - vless-1929492166
@@ -177,8 +179,6 @@ proxy-groups:
         - vless-1853352743
         - vless-1928318117
         - vless-1927926410
-        - vless-1854330920
-        - vless-1832691443
       type: select
 rules:
     - MATCH,select
