@@ -6,13 +6,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-    - name: vless-1883661029
-      network: tcp
-      port: 20001
-      server: site.teslamotor.site
-      type: vless
-      udp: true
-      uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
     - name: vless-1869904605
       network: tcp
       port: 20001
@@ -21,6 +14,13 @@ proxies:
       udp: true
       uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
     - name: vless-1876912365
+      network: tcp
+      port: 20001
+      server: site.teslamotor.site
+      type: vless
+      udp: true
+      uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
+    - name: vless-1883661029
       network: tcp
       port: 20001
       server: site.teslamotor.site
@@ -179,13 +179,6 @@ proxies:
       skip-cert-verify: false
       sni: nl1.obxodvpn.us
       type: hysteria2
-    - name: vless-1854135104
-      network: tcp
-      port: 2052
-      server: edge10.cyrionflare.com
-      type: vless
-      udp: true
-      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - name: vless-1892979275
       network: tcp
       port: 20001
@@ -239,14 +232,41 @@ proxies:
       type: vless
       udp: true
       uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1932656529
+      network: tcp
+      port: 53869
+      reality-opts:
+        public-key: rtc2Krk2fVhHCRG82EsUc4_mlw304HKHkl6MggQZEAU
+        short-id: 0f2cc340a69ed7
+      server: 31.184.253.134
+      servername: www.moddb.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 252b4a9c-520d-459c-9dbc-366995206089
+    - client-fingerprint: chrome
+      name: vless-1853462703
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
+        short-id: 50ba05992b05c1c3
+      server: 54.37.136.194
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1932277153
-        - vless-1883661029
         - vless-1869904605
         - vless-1876912365
+        - vless-1883661029
         - vless-1924316584
         - shadowsocks-1925513121
         - vless-1869963083
@@ -262,21 +282,22 @@ proxy-groups:
         - vless-1933840534
         - vless-1933858900
         - hysteria2-1933850825
-        - vless-1854135104
         - vless-1892979275
         - vless-1876388819
         - vless-1853462692
         - vless-1832881265
         - vless-1827188320
+        - vless-1932656529
+        - vless-1853462703
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1932277153
-        - vless-1883661029
         - vless-1869904605
         - vless-1876912365
+        - vless-1883661029
         - vless-1924316584
         - shadowsocks-1925513121
         - vless-1869963083
@@ -292,12 +313,13 @@ proxy-groups:
         - vless-1933840534
         - vless-1933858900
         - hysteria2-1933850825
-        - vless-1854135104
         - vless-1892979275
         - vless-1876388819
         - vless-1853462692
         - vless-1832881265
         - vless-1827188320
+        - vless-1932656529
+        - vless-1853462703
       type: select
 rules:
     - MATCH,select
