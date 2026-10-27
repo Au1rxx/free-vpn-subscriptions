@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-1828226479
+      password: BWyPPTusFKhGgzKh
+      port: 8388
+      server: 64.177.90.30
+      type: ss
+      udp: true
     - name: vless-1880569906
       network: ws
       port: 8443
@@ -47,37 +54,27 @@ proxies:
       sni: connectwithtopemployersandfindidealjobs.com
       type: trojan
       udp: true
-    - name: vless-1931762893
-      network: raw
-      port: 19167
-      server: 149.104.90.21
-      servername: mx001.zestapp778.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1828226479
         - vless-1880569906
         - vless-1926288586
         - vless-1929108388
         - vless-1929111850
         - trojan-1929965361
-        - vless-1931762893
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1828226479
         - vless-1880569906
         - vless-1926288586
         - vless-1929108388
         - vless-1929111850
         - trojan-1929965361
-        - vless-1931762893
       type: select
 rules:
     - MATCH,select

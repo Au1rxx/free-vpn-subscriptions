@@ -6,16 +6,6 @@ proxies:
       server: 82.110.60.9
       type: ss
       udp: true
-    - name: vless-1837270387
-      network: ws
-      port: 2053
-      server: 141.101.90.108
-      servername: wzs.echo.net.eu.org
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: d18c6897-2849-456a-8c46-d7ecece47c20
     - flow: xtls-rprx-vision
       name: vless-1856732338
       network: tcp
@@ -423,12 +413,22 @@ proxies:
       type: vless
       udp: true
       uuid: ef328563-cda1-4530-9b0a-988cc5a74d78
+    - flow: xtls-rprx-vision
+      name: vless-1932640574
+      network: tcp
+      port: 443
+      server: 188.137.158.199
+      servername: softice.net
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: ef328563-cda1-4530-9b0a-988cc5a74d78
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827147826
-        - vless-1837270387
         - vless-1856732338
         - vless-1929108260
         - vless-1929912492
@@ -466,13 +466,13 @@ proxy-groups:
         - vless-1932457766
         - vless-1932457780
         - vless-1932457781
+        - vless-1932640574
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - shadowsocks-1827147826
-        - vless-1837270387
         - vless-1856732338
         - vless-1929108260
         - vless-1929912492
@@ -510,6 +510,7 @@ proxy-groups:
         - vless-1932457766
         - vless-1932457780
         - vless-1932457781
+        - vless-1932640574
       type: select
 rules:
     - MATCH,select
