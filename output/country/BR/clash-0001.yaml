@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-gcm
-      name: shadowsocks-1827147407
-      password: owVdNnQcdPgthSyX
-      port: 8388
-      server: 216.128.168.190
-      type: ss
-      udp: true
     - name: vless-1831178592
       network: ws
       port: 80
@@ -49,25 +42,33 @@ proxies:
       type: vless
       udp: true
       uuid: caf3d607-95c9-4ea0-98b5-864027056ba0
+    - name: trojan-1935007699
+      password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+      port: 443
+      server: 216.238.104.154
+      skip-cert-verify: true
+      sni: findtemporaryworkandfreelancerprojectsonlineplatform.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1827147407
         - vless-1831178592
         - vless-1900279053
         - trojan-1930538342
         - vless-1934437191
+        - trojan-1935007699
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1827147407
         - vless-1831178592
         - vless-1900279053
         - trojan-1930538342
         - vless-1934437191
+        - trojan-1935007699
       type: select
 rules:
     - MATCH,select
