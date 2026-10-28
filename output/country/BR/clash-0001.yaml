@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-1831100521
+      network: ws
+      port: 2053
+      server: 172.65.90.41
+      servername: wzs.echo.net.eu.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d18c6897-2849-456a-8c46-d7ecece47c20
     - name: vless-1831178592
       network: ws
       port: 80
@@ -17,6 +27,13 @@ proxies:
       network: ws
       port: 8880
       server: 185.162.229.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-1853353112
+      network: ws
+      port: 8880
+      server: 45.130.125.30
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
@@ -70,33 +87,49 @@ proxies:
       type: vless
       udp: true
       uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
+    - name: vless-1935967162
+      network: tcp
+      port: 15040
+      server: br001.zestapp778.com
+      servername: br.zestapp778.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1831100521
         - vless-1831178592
         - vless-1853352675
         - vless-1853352760
+        - vless-1853353112
         - vless-1853993767
         - vless-1853993831
         - trojan-1930538342
         - trojan-1935007699
         - vless-1935621146
         - vless-1935621153
+        - vless-1935967162
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1831100521
         - vless-1831178592
         - vless-1853352675
         - vless-1853352760
+        - vless-1853353112
         - vless-1853993767
         - vless-1853993831
         - trojan-1930538342
         - trojan-1935007699
         - vless-1935621146
         - vless-1935621153
+        - vless-1935967162
       type: select
 rules:
     - MATCH,select

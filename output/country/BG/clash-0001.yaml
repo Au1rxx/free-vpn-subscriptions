@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1827145522
+      network: ws
+      port: 8880
+      server: 104.254.140.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: aes-256-cfb
       name: shadowsocks-1827887435
       password: 4R3hUfZ2FHhDmNcP
@@ -79,6 +86,13 @@ proxies:
       type: vless
       udp: true
       uuid: 7b102311-43fd-4e8f-877e-8090623c101d
+    - name: vless-1831118278
+      network: ws
+      port: 8880
+      server: 216.24.57.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1853352927
       network: ws
       port: 8880
@@ -96,6 +110,13 @@ proxies:
       type: vless
       udp: true
       uuid: 7b102311-43fd-4e8f-877e-8090623c101d
+    - name: vless-1853992878
+      network: ws
+      port: 8880
+      server: 185.158.133.40
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1853997146
       network: ws
       port: 8880
@@ -127,24 +148,11 @@ proxies:
       type: vless
       udp: true
       uuid: a1de0630-5786-48a0-84f6-dc6f2de10d6d
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1927186213
-      password: uvKNudV-N8AUCrykPiyznA
-      port: 56134
-      server: 87.236.166.81
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1927187193
-      password: uvKNudV-N8AUCrykPiyznA
-      port: 56134
-      server: 91.107.152.139
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1827145522
         - shadowsocks-1827887435
         - shadowsocks-1827968913
         - shadowsocks-1827969065
@@ -156,19 +164,20 @@ proxy-groups:
         - shadowsocks-1827969546
         - shadowsocks-1827969653
         - vless-1831109797
+        - vless-1831118278
         - vless-1853352927
         - vless-1853979385
+        - vless-1853992878
         - vless-1853997146
         - vless-1856107788
         - vless-1856645447
         - vless-1858711322
-        - shadowsocks-1927186213
-        - shadowsocks-1927187193
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1827145522
         - shadowsocks-1827887435
         - shadowsocks-1827968913
         - shadowsocks-1827969065
@@ -180,14 +189,14 @@ proxy-groups:
         - shadowsocks-1827969546
         - shadowsocks-1827969653
         - vless-1831109797
+        - vless-1831118278
         - vless-1853352927
         - vless-1853979385
+        - vless-1853992878
         - vless-1853997146
         - vless-1856107788
         - vless-1856645447
         - vless-1858711322
-        - shadowsocks-1927186213
-        - shadowsocks-1927187193
       type: select
 rules:
     - MATCH,select

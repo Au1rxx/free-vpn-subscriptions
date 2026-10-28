@@ -6,6 +6,13 @@ proxies:
       type: vless
       udp: true
       uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
+    - name: vless-1883661029
+      network: tcp
+      port: 20001
+      server: site.teslamotor.site
+      type: vless
+      udp: true
+      uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
     - name: vless-1869963083
       network: tcp
       port: 20001
@@ -82,6 +89,13 @@ proxies:
       type: vless
       udp: true
       uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
+    - name: hysteria2-1935992156
+      password: 10be1dad-9952-4c5e-aa30-db435f69b727
+      port: 4444
+      server: bl2.nexfile.net
+      skip-cert-verify: true
+      sni: ""
+      type: hysteria2
     - name: vless-1876808293
       network: tcp
       port: 20001
@@ -109,6 +123,13 @@ proxies:
       type: vless
       udp: true
       uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
+    - name: hysteria2-1933857882
+      password: 10be1dad-9952-4c5e-aa30-db435f69b727
+      port: 4444
+      server: 13.143.188.152
+      skip-cert-verify: false
+      sni: bl2.nexfile.net
+      type: hysteria2
     - name: hysteria2-1930493523
       password: 10be1dad-9952-4c5e-aa30-db435f69b727
       port: 4444
@@ -117,8 +138,8 @@ proxies:
       sni: bl3.nexfile.net
       type: hysteria2
     - client-fingerprint: firefox
-      name: vless-1832881265
-      network: tcp
+      name: vless-1853488300
+      network: raw
       port: 2053
       reality-opts:
         public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
@@ -129,8 +150,8 @@ proxies:
       type: vless
       udp: true
       uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
-    - client-fingerprint: random
-      name: vless-1828149341
+    - client-fingerprint: firefox
+      name: vless-1832881265
       network: tcp
       port: 2053
       reality-opts:
@@ -155,24 +176,12 @@ proxies:
       type: vless
       udp: true
       uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
-    - client-fingerprint: chrome
-      name: vless-1853959852
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
-        short-id: 50ba05992b05c1c3
-      server: 54.37.136.194
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1876388819
+        - vless-1883661029
         - vless-1869963083
         - vless-1832941349
         - shadowsocks-1928714919
@@ -183,20 +192,22 @@ proxy-groups:
         - vless-1854135104
         - vless-1932277153
         - vless-1869904605
+        - hysteria2-1935992156
         - vless-1876808293
         - vless-1933858882
         - vless-1853462703
+        - hysteria2-1933857882
         - hysteria2-1930493523
+        - vless-1853488300
         - vless-1832881265
-        - vless-1828149341
         - vless-1827188320
-        - vless-1853959852
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1876388819
+        - vless-1883661029
         - vless-1869963083
         - vless-1832941349
         - shadowsocks-1928714919
@@ -207,14 +218,15 @@ proxy-groups:
         - vless-1854135104
         - vless-1932277153
         - vless-1869904605
+        - hysteria2-1935992156
         - vless-1876808293
         - vless-1933858882
         - vless-1853462703
+        - hysteria2-1933857882
         - hysteria2-1930493523
+        - vless-1853488300
         - vless-1832881265
-        - vless-1828149341
         - vless-1827188320
-        - vless-1853959852
       type: select
 rules:
     - MATCH,select
