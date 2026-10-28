@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1853987280
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: g77ZJbm18JEotapmVRjaXi133MzkbhkU2lxhVeXx8zw
+        short-id: 68a8
+      server: 5.253.42.164
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
     - alterId: 0
       cipher: auto
       name: vmess-1927499531
@@ -21,27 +35,7 @@ proxies:
       type: vless
       udp: true
       uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
-    - client-fingerprint: random
-      name: vless-1828294489
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: PuAGLfJy6cu1TNoHuKIKSxPetCbZI41fc8hQDjWPIAU
-        short-id: 9980e0609b0d3891
-      server: 194.61.31.126
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 1d4e18bd-1f26-4915-b35a-7ace4826e76a
     - name: vless-1854086904
-      network: ws
-      port: 14430
-      server: 13.140.56.100
-      type: vless
-      udp: true
-      uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
-    - name: vless-1827735104
       network: ws
       port: 14430
       server: 13.140.56.100
@@ -132,6 +126,15 @@ proxies:
       uuid: 6bdc8320-7eae-46fc-be08-f5f54e65dfc8
     - alterId: 0
       cipher: auto
+      name: vmess-1853344690
+      network: ws
+      port: 80
+      server: 152.67.8.205
+      type: vmess
+      udp: true
+      uuid: 9db4c708-aef8-4359-821b-38e47990be0d
+    - alterId: 0
+      cipher: auto
       name: vmess-1930761435
       network: ws
       port: 80
@@ -143,11 +146,10 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1853987280
         - vmess-1927499531
         - vless-1832650490
-        - vless-1828294489
         - vless-1854086904
-        - vless-1827735104
         - vless-1853988257
         - vless-1891897711
         - vless-1827151260
@@ -155,17 +157,17 @@ proxy-groups:
         - vless-1853341744
         - vless-1832465387
         - vless-1928317282
+        - vmess-1853344690
         - vmess-1930761435
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1853987280
         - vmess-1927499531
         - vless-1832650490
-        - vless-1828294489
         - vless-1854086904
-        - vless-1827735104
         - vless-1853988257
         - vless-1891897711
         - vless-1827151260
@@ -173,6 +175,7 @@ proxy-groups:
         - vless-1853341744
         - vless-1832465387
         - vless-1928317282
+        - vmess-1853344690
         - vmess-1930761435
       type: select
 rules:

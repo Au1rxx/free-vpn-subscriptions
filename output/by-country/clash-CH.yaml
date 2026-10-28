@@ -13,19 +13,6 @@ proxies:
       type: vless
       udp: true
       uuid: 3950b45e-740d-4dca-ac95-505ec8534592
-    - client-fingerprint: firefox
-      name: vless-1875103853
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
-        short-id: ad86e2d52ff40ebd
-      server: 208.69.78.217
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
     - client-fingerprint: random
       name: vless-1891867407
       network: tcp
@@ -46,13 +33,13 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
-    - name: hysteria2-1832650664
-      password: 84a506ca5aca505696a454d828420b3f
-      port: 50160
-      server: 140.238.213.114
-      skip-cert-verify: true
-      sni: 140.238.213.114
-      type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1827146737
+      password: e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3
+      port: 8388
+      server: 132.243.175.144
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1933850830
@@ -67,19 +54,6 @@ proxies:
       type: vless
       udp: true
       uuid: f5e70ce3-cfb4-4df1-b25c-d19bfae627c0
-    - client-fingerprint: chrome
-      name: vless-1827188328
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
-        short-id: ad86e2d52ff40ebd
-      server: 208.69.78.217
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
     - client-fingerprint: chrome
       name: vless-1827154380
       network: tcp
@@ -146,55 +120,35 @@ proxies:
       type: vless
       udp: true
       uuid: 4970c1cd-13e1-498a-920a-61d07be2fa65
-    - client-fingerprint: safari
-      flow: xtls-rprx-vision
-      name: vless-1932457707
-      network: tcp
-      port: 8443
-      reality-opts:
-        public-key: L6DeK_a25_ZjPKFOrQLoCPWuXi5KCIH_EcRpARmCwkI
-        short-id: 16036bbef04d0509
-      server: 45.90.57.119
-      servername: twitch.tv
-      tls: true
-      type: vless
-      udp: true
-      uuid: f5e70ce3-cfb4-4df1-b25c-d19bfae627c0
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1929491252
-        - vless-1875103853
         - vless-1891867407
         - hysteria2-1853331477
-        - hysteria2-1832650664
+        - shadowsocks-1827146737
         - vless-1933850830
-        - vless-1827188328
         - vless-1827154380
         - vless-1927379067
         - vless-1853464381
         - vless-1930538331
         - vless-1930502104
-        - vless-1932457707
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1929491252
-        - vless-1875103853
         - vless-1891867407
         - hysteria2-1853331477
-        - hysteria2-1832650664
+        - shadowsocks-1827146737
         - vless-1933850830
-        - vless-1827188328
         - vless-1827154380
         - vless-1927379067
         - vless-1853464381
         - vless-1930538331
         - vless-1930502104
-        - vless-1932457707
       type: select
 rules:
     - MATCH,select
