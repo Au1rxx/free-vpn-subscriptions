@@ -1,12 +1,4 @@
 proxies:
-    - name: trojan-1927187200
-      password: Trojan@82164024
-      port: 443
-      server: au.tronsg.com
-      skip-cert-verify: true
-      sni: au.tronsg.com
-      type: trojan
-      udp: true
     - name: trojan-1932448314
       password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
       port: 443
@@ -15,7 +7,23 @@ proxies:
       sni: connectwithemployerstohireyouridealteam.com
       type: trojan
       udp: true
+    - name: trojan-1927187200
+      password: Trojan@82164024
+      port: 443
+      server: au.tronsg.com
+      skip-cert-verify: true
+      sni: au.tronsg.com
+      type: trojan
+      udp: true
     - name: trojan-1934952377
+      password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+      port: 443
+      server: 45.63.30.142
+      skip-cert-verify: true
+      sni: 45.63.30.142
+      type: trojan
+      udp: true
+    - name: trojan-1935805069
       password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
       port: 443
       server: 45.63.30.142
@@ -178,13 +186,24 @@ proxies:
       type: vless
       udp: true
       uuid: 36e89875-9c53-482b-bc41-d3890e9da176
+    - name: vless-1935807312
+      network: tcp
+      port: 35652
+      server: au001.zestapp778.com
+      servername: au001.zestapp778.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - trojan-1927187200
         - trojan-1932448314
+        - trojan-1927187200
         - trojan-1934952377
+        - trojan-1935805069
         - trojan-1929957545
         - vless-1880850556
         - trojan-1927931719
@@ -199,14 +218,16 @@ proxy-groups:
         - trojan-1932509804
         - trojan-1931768144
         - vless-1854027183
+        - vless-1935807312
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - trojan-1927187200
         - trojan-1932448314
+        - trojan-1927187200
         - trojan-1934952377
+        - trojan-1935805069
         - trojan-1929957545
         - vless-1880850556
         - trojan-1927931719
@@ -221,6 +242,7 @@ proxy-groups:
         - trojan-1932509804
         - trojan-1931768144
         - vless-1854027183
+        - vless-1935807312
       type: select
 rules:
     - MATCH,select

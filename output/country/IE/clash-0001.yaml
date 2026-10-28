@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1831085965
+      network: ws
+      port: 8880
+      server: 130.250.137.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1853352597
       network: ws
       port: 8880
@@ -119,10 +126,22 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
+      name: vless-1935800441
+      network: tcp
+      port: 443
+      server: 50.7.5.188
+      servername: ir-new-ded.failspace.top
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1831085965
         - vless-1853352597
         - vless-1856723363
         - vless-1856725621
@@ -135,11 +154,13 @@ proxy-groups:
         - vless-1934374879
         - vless-1934374896
         - vless-1934952385
+        - vless-1935800441
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1831085965
         - vless-1853352597
         - vless-1856723363
         - vless-1856725621
@@ -152,6 +173,7 @@ proxy-groups:
         - vless-1934374879
         - vless-1934374896
         - vless-1934952385
+        - vless-1935800441
       type: select
 rules:
     - MATCH,select

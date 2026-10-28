@@ -1,4 +1,31 @@
 proxies:
+    - name: vless-1827267031
+      network: ws
+      port: 80
+      server: 188.114.97.6
+      type: vless
+      udp: true
+      uuid: 33ebe52d-cd35-4d0f-a3e9-14adb7ff1ff4
+    - name: vless-1855695085
+      network: ws
+      port: 443
+      server: 188.114.97.6
+      servername: investor.fb.com.r3xxe.eu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1246e51a-97cd-4d5c-9842-76dd3420bbe2
+    - name: vless-1856200506
+      network: ws
+      port: 443
+      server: 188.114.97.6
+      servername: investor.fb.com.r3xxe.eu.cc
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1246e51a-97cd-4d5c-9842-76dd3420bbe2
     - name: vless-1856200565
       network: ws
       port: 443
@@ -9,17 +36,35 @@ proxies:
       type: vless
       udp: true
       uuid: 1246e51a-97cd-4d5c-9842-76dd3420bbe2
+    - name: vless-1935807316
+      network: tcp
+      port: 57353
+      server: in001.zestapp778.com
+      servername: in001.zestapp778.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1827267031
+        - vless-1855695085
+        - vless-1856200506
         - vless-1856200565
+        - vless-1935807316
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1827267031
+        - vless-1855695085
+        - vless-1856200506
         - vless-1856200565
+        - vless-1935807316
       type: select
 rules:
     - MATCH,select

@@ -7,6 +7,17 @@ proxies:
       type: ss
       udp: true
     - flow: xtls-rprx-vision
+      name: vless-1856731032
+      network: tcp
+      port: 443
+      server: 50.7.36.30
+      servername: ekb.eg
+      skip-cert-verify: true
+      tls: true
+      type: vless
+      udp: true
+      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - flow: xtls-rprx-vision
       name: vless-1856731263
       network: tcp
       port: 443
@@ -28,6 +39,16 @@ proxies:
       type: vless
       udp: true
       uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+    - name: vless-1885355673
+      network: ws
+      port: 2053
+      server: 141.101.90.108
+      servername: wzs.echo.net.eu.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: d18c6897-2849-456a-8c46-d7ecece47c20
     - flow: xtls-rprx-vision
       name: vless-1929108260
       network: tcp
@@ -44,8 +65,10 @@ proxy-groups:
       name: auto
       proxies:
         - shadowsocks-1827147826
+        - vless-1856731032
         - vless-1856731263
         - vless-1856732338
+        - vless-1885355673
         - vless-1929108260
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -53,8 +76,10 @@ proxy-groups:
       proxies:
         - auto
         - shadowsocks-1827147826
+        - vless-1856731032
         - vless-1856731263
         - vless-1856732338
+        - vless-1885355673
         - vless-1929108260
       type: select
 rules:
