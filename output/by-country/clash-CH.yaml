@@ -1,17 +1,4 @@
 proxies:
-    - client-fingerprint: random
-      name: vless-1891867407
-      network: tcp
-      port: 2053
-      reality-opts:
-        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
-        short-id: ad86e2d52ff40ebd
-      server: 208.69.78.217
-      servername: www.apple.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
     - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1827146737
       password: e8KgS8fD0yDqYFpgN4G5piCOt9aFyqA3
@@ -19,6 +6,20 @@ proxies:
       server: 132.243.175.144
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1930538331
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: L6DeK_a25_ZjPKFOrQLoCPWuXi5KCIH_EcRpARmCwkI
+        short-id: 16036bbef04d0509
+      server: 45.90.57.119
+      servername: twitch.tv
+      tls: true
+      type: vless
+      udp: true
+      uuid: f5e70ce3-cfb4-4df1-b25c-d19bfae627c0
     - client-fingerprint: chrome
       name: vless-1927379067
       network: tcp
@@ -100,6 +101,19 @@ proxies:
       type: vless
       udp: true
       uuid: f5e70ce3-cfb4-4df1-b25c-d19bfae627c0
+    - client-fingerprint: random
+      name: vless-1891867407
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: A49ue7zXSusJZdErPAewg3jqGdUFIO1a9xOunEKJfC0
+        short-id: ad86e2d52ff40ebd
+      server: 208.69.78.217
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
     - name: hysteria2-1828373530
       password: 84a506ca5aca505696a454d828420b3f
       port: 50160
@@ -111,28 +125,30 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1891867407
         - shadowsocks-1827146737
+        - vless-1930538331
         - vless-1927379067
         - vless-1933850830
         - vless-1929491252
         - vless-1930502104
         - vless-1926739484
         - vless-1935991244
+        - vless-1891867407
         - hysteria2-1828373530
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1891867407
         - shadowsocks-1827146737
+        - vless-1930538331
         - vless-1927379067
         - vless-1933850830
         - vless-1929491252
         - vless-1930502104
         - vless-1926739484
         - vless-1935991244
+        - vless-1891867407
         - hysteria2-1828373530
       type: select
 rules:

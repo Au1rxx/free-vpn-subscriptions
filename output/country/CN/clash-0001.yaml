@@ -1,4 +1,13 @@
 proxies:
+    - alterId: 64
+      cipher: auto
+      name: vmess-1853345273
+      network: tcp
+      port: 50002
+      server: 112.132.215.108
+      type: vmess
+      udp: true
+      uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
     - alterId: 0
       cipher: auto
       name: vmess-1853464705
@@ -28,6 +37,15 @@ proxies:
       uuid: a8d931b0-6c27-428b-8d86-c20efea3dba7
     - alterId: 0
       cipher: auto
+      name: vmess-1934374877
+      network: ws
+      port: 10086
+      server: 120.48.133.162
+      type: vmess
+      udp: true
+      uuid: f81d0fc9-c6b0-4dab-a270-6e697e0a367f
+    - alterId: 0
+      cipher: auto
       name: vmess-1934446571
       network: ws
       port: 10086
@@ -39,18 +57,22 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vmess-1853345273
         - vmess-1853464705
         - vmess-1854343773
         - vmess-1932230391
+        - vmess-1934374877
         - vmess-1934446571
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vmess-1853345273
         - vmess-1853464705
         - vmess-1854343773
         - vmess-1932230391
+        - vmess-1934374877
         - vmess-1934446571
       type: select
 rules:
