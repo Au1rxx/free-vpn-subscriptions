@@ -1,4 +1,18 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1827151978
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: rabtI-ymNXBUvYYRwAw8DiR-1pdP7U0WPIaCBHEkgzo
+        short-id: 77bb0d07bddbc832
+      server: 195.123.226.21
+      servername: gateway.icloud.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6589c320-db68-43cd-a273-b46299bab355
     - cipher: aes-256-cfb
       name: shadowsocks-1827887435
       password: 4R3hUfZ2FHhDmNcP
@@ -97,6 +111,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1827151978
         - shadowsocks-1827887435
         - shadowsocks-1827968913
         - shadowsocks-1827969065
@@ -114,6 +129,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1827151978
         - shadowsocks-1827887435
         - shadowsocks-1827968913
         - shadowsocks-1827969065
