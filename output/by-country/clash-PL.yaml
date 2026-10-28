@@ -14,13 +14,6 @@ proxies:
       type: ss
       udp: true
     - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1925513121
-      password: 6heexyz
-      port: 443
-      server: pl140.vpnbook.com
-      type: ss
-      udp: true
-    - cipher: chacha20-ietf-poly1305
       name: shadowsocks-1932646633
       password: 6heexyz
       port: 443
@@ -130,6 +123,13 @@ proxies:
       skip-cert-verify: false
       sni: bl2.nexfile.net
       type: hysteria2
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1925513121
+      password: 6heexyz
+      port: 443
+      server: pl140.vpnbook.com
+      type: ss
+      udp: true
     - client-fingerprint: firefox
       name: vless-1853488300
       network: raw
@@ -143,6 +143,20 @@ proxies:
       type: vless
       udp: true
       uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1935622191
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: pOHbbyo_PlUwH4DjC6bKvC3jB8RPnCdu-nL8trAP8CI
+        short-id: "50"
+      server: 45.148.119.127
+      servername: cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 329e13e4-ee7c-4802-ac72-5fcab79c2402
     - client-fingerprint: chrome
       name: vless-1827188320
       network: tcp
@@ -169,13 +183,19 @@ proxies:
       type: vless
       udp: true
       uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
+    - name: hysteria2-1933850825
+      password: 146d567c-6335-4e63-a8aa-7ec068642440
+      port: 4443
+      server: pl1.obxodvpn.us
+      skip-cert-verify: false
+      sni: nl1.obxodvpn.us
+      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1883661029
         - shadowsocks-1928714919
-        - shadowsocks-1925513121
         - shadowsocks-1932646633
         - vless-1832972763
         - vless-1857053329
@@ -191,9 +211,12 @@ proxy-groups:
         - vless-1876808293
         - vless-1923902937
         - hysteria2-1933857882
+        - shadowsocks-1925513121
         - vless-1853488300
+        - vless-1935622191
         - vless-1827188320
         - vless-1832881265
+        - hysteria2-1933850825
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -201,7 +224,6 @@ proxy-groups:
         - auto
         - vless-1883661029
         - shadowsocks-1928714919
-        - shadowsocks-1925513121
         - shadowsocks-1932646633
         - vless-1832972763
         - vless-1857053329
@@ -217,9 +239,12 @@ proxy-groups:
         - vless-1876808293
         - vless-1923902937
         - hysteria2-1933857882
+        - shadowsocks-1925513121
         - vless-1853488300
+        - vless-1935622191
         - vless-1827188320
         - vless-1832881265
+        - hysteria2-1933850825
       type: select
 rules:
     - MATCH,select
