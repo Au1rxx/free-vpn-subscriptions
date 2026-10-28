@@ -16,13 +16,6 @@ proxies:
       type: vless
       udp: true
       uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
-    - name: hysteria2-1932642652
-      password: 10be1dad-9952-4c5e-aa30-db435f69b727
-      port: 4444
-      server: fl2.nexfile.net
-      skip-cert-verify: false
-      sni: fl2.nexfile.net
-      type: hysteria2
     - name: vless-1927159532
       network: grpc
       port: 4443
@@ -34,16 +27,6 @@ proxies:
       udp: true
       uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
     - name: vless-1930024310
-      network: grpc
-      port: 4443
-      server: 45-149-147-213.sslip.io
-      servername: 45-149-147-213.sslip.io
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
-    - name: vless-1923846542
       network: grpc
       port: 4443
       server: 45-149-147-213.sslip.io
@@ -80,6 +63,19 @@ proxies:
       type: vless
       udp: true
       uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
+    - client-fingerprint: firefox
+      name: vless-1927184299
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: GJzag9Wrvz_bO9AQaA-Oq0P1kV9btmxxAdzPV-uQB18
+        short-id: 09d0a94a1c6fc9d5
+      server: 77.42.12.225
+      servername: 8fc752g.fi3.h1clayd.click
+      tls: true
+      type: vless
+      udp: true
+      uuid: 056405e8-de9f-4d0d-8145-956f13cc34da
     - client-fingerprint: chrome
       name: vless-1827399465
       network: tcp
@@ -103,16 +99,13 @@ proxies:
       type: vless
       udp: true
       uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
-    - name: vless-1932651100
-      network: grpc
-      port: 4443
-      server: 45.149.147.213
-      servername: 45-149-147-213.sslip.io
+    - name: hysteria2-1932642652
+      password: 10be1dad-9952-4c5e-aa30-db435f69b727
+      port: 4444
+      server: fl2.nexfile.net
       skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 9b347a9b-d7a6-4b51-9890-eff62b832834
+      sni: fl2.nexfile.net
+      type: hysteria2
     - name: vless-1832465388
       network: ws
       port: 14430
@@ -130,40 +123,23 @@ proxies:
       type: vless
       udp: true
       uuid: d1641bc6-3757-43db-815a-9b3f4d9b0d7e
-    - name: hysteria2-1934986789
-      password: 146d567c-6335-4e63-a8aa-7ec068642440
-      port: 4443
-      server: 31.76.8.20
-      skip-cert-verify: true
-      sni: nl1.obxodvpn.us
-      type: hysteria2
-    - name: hysteria2-1932642650
-      password: 146d567c-6335-4e63-a8aa-7ec068642440
-      port: 4443
-      server: fi1.obxodvpn.us
-      skip-cert-verify: false
-      sni: nl1.obxodvpn.us
-      type: hysteria2
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1932642662
         - vless-1929492166
-        - hysteria2-1932642652
         - vless-1927159532
         - vless-1930024310
-        - vless-1923846542
         - hysteria2-1929114002
         - vless-1926288598
         - vless-1927926410
+        - vless-1927184299
         - vless-1827399465
         - vless-1928318117
-        - vless-1932651100
+        - hysteria2-1932642652
         - vless-1832465388
         - vless-1925123170
-        - hysteria2-1934986789
-        - hysteria2-1932642650
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -171,20 +147,17 @@ proxy-groups:
         - auto
         - hysteria2-1932642662
         - vless-1929492166
-        - hysteria2-1932642652
         - vless-1927159532
         - vless-1930024310
-        - vless-1923846542
         - hysteria2-1929114002
         - vless-1926288598
         - vless-1927926410
+        - vless-1927184299
         - vless-1827399465
         - vless-1928318117
-        - vless-1932651100
+        - hysteria2-1932642652
         - vless-1832465388
         - vless-1925123170
-        - hysteria2-1934986789
-        - hysteria2-1932642650
       type: select
 rules:
     - MATCH,select

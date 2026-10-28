@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1930473318
+      network: ws
+      port: 14430
+      server: 178.172.227.228
+      type: vless
+      udp: true
+      uuid: b6e5dc56-836f-48c1-9163-b0b0b43b647d
     - name: vless-1928739793
       network: tcp
       port: 10443
@@ -10,12 +17,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1930473318
         - vless-1928739793
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1930473318
         - vless-1928739793
       type: select
 rules:

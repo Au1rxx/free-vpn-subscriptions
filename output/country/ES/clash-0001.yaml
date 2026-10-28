@@ -1,6 +1,20 @@
 proxies:
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
+      name: vless-1827149692
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: v4MuZIvFrTPT5GHMSaPryUAbIZlLstmsUTzmC1E-JTE
+        short-id: 0dfc23fe80778c00
+      server: 46.28.71.247
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 12c53e32-e589-47d6-b857-e4132294f767
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
       name: vless-1827152684
       network: tcp
       port: 443
@@ -87,13 +101,6 @@ proxies:
       type: vless
       udp: true
       uuid: 12c53e32-e589-47d6-b857-e4132294f767
-    - name: vless-1831132125
-      network: ws
-      port: 8880
-      server: 77.74.228.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1835059139
@@ -232,13 +239,6 @@ proxies:
       type: vless
       udp: true
       uuid: ead0dd61-d398-40ad-80d6-a0e1e516d7d3
-    - name: vless-1874445552
-      network: ws
-      port: 8880
-      server: 62.72.166.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       name: vless-1874447880
       network: tcp
@@ -745,6 +745,15 @@ proxies:
       type: vless
       udp: true
       uuid: f3ac0d2c-4b86-4f53-8070-89f69daba8f5
+    - alterId: 0
+      cipher: auto
+      name: vmess-1929957517
+      network: ws
+      port: 2082
+      server: 104.19.42.49
+      type: vmess
+      udp: true
+      uuid: 5f3f09ad-89cb-4e94-a7ad-aa8239913555
     - name: trojan-1929965328
       password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
       port: 443
@@ -1195,10 +1204,31 @@ proxies:
       type: vless
       udp: true
       uuid: 16107a06-1b5e-4060-8b48-e13a04b15e56
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1937002472
+      password: U5Jk0BhRNKjb5wQBBOXx2wwkWZ_yWU0N
+      port: 1354
+      server: dns22.m3hrzd.ir
+      type: ss
+      udp: true
+    - client-fingerprint: chrome
+      name: vless-1937003494
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: 7jPluypHwPilf_Mq7JOY96SwKkbK35WuIlN1HwGQ_0A
+        short-id: 974f7f8f
+      server: 156.252.229.11
+      servername: play.googleapis.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3e21e3d3-6d26-4155-b851-764dd8e8c6b5
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1827149692
         - vless-1827152684
         - vless-1827156208
         - vless-1827524686
@@ -1207,7 +1237,6 @@ proxy-groups:
         - shadowsocks-1827983736
         - vless-1828295938
         - vless-1828531962
-        - vless-1831132125
         - vless-1835059139
         - vless-1853340220
         - vless-1853340451
@@ -1219,7 +1248,6 @@ proxy-groups:
         - vless-1855708865
         - vless-1856143662
         - vless-1856657052
-        - vless-1874445552
         - vless-1874447880
         - vless-1876875894
         - vless-1878213908
@@ -1257,6 +1285,7 @@ proxy-groups:
         - vless-1929365716
         - vless-1929400561
         - vless-1929400563
+        - vmess-1929957517
         - trojan-1929965328
         - trojan-1929965341
         - trojan-1929965343
@@ -1295,11 +1324,14 @@ proxy-groups:
         - vless-1936420055
         - vless-1936420099
         - vless-1936420100
+        - shadowsocks-1937002472
+        - vless-1937003494
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1827149692
         - vless-1827152684
         - vless-1827156208
         - vless-1827524686
@@ -1308,7 +1340,6 @@ proxy-groups:
         - shadowsocks-1827983736
         - vless-1828295938
         - vless-1828531962
-        - vless-1831132125
         - vless-1835059139
         - vless-1853340220
         - vless-1853340451
@@ -1320,7 +1351,6 @@ proxy-groups:
         - vless-1855708865
         - vless-1856143662
         - vless-1856657052
-        - vless-1874445552
         - vless-1874447880
         - vless-1876875894
         - vless-1878213908
@@ -1358,6 +1388,7 @@ proxy-groups:
         - vless-1929365716
         - vless-1929400561
         - vless-1929400563
+        - vmess-1929957517
         - trojan-1929965328
         - trojan-1929965341
         - trojan-1929965343
@@ -1396,6 +1427,8 @@ proxy-groups:
         - vless-1936420055
         - vless-1936420099
         - vless-1936420100
+        - shadowsocks-1937002472
+        - vless-1937003494
       type: select
 rules:
     - MATCH,select

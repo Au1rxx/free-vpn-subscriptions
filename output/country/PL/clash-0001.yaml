@@ -37,6 +37,13 @@ proxies:
       type: vless
       udp: true
       uuid: 05488656-d4bf-4634-8b2e-e4ff5a56c7e2
+    - name: vless-1827150200
+      network: tcp
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1827155025
@@ -112,19 +119,25 @@ proxies:
       type: ss
       udp: true
     - cipher: aes-256-cfb
+      name: shadowsocks-1827969197
+      password: S7KwUu7yBy58S3Ga
+      port: 9042
+      server: 217.30.10.44
+      type: ss
+      udp: true
+    - cipher: aes-256-cfb
       name: shadowsocks-1827969356
       password: jt2ekBNc9HuVtm2a
       port: 9052
       server: 217.30.10.44
       type: ss
       udp: true
-    - name: trojan-1828127744
-      password: Trojan@82164024
-      port: 443
-      server: 92.118.150.146
-      skip-cert-verify: false
-      sni: pl.tronsg.com
-      type: trojan
+    - cipher: aes-256-cfb
+      name: shadowsocks-1827969366
+      password: N7j3pdTYkKmsy8CR
+      port: 9095
+      server: 217.30.10.44
+      type: ss
       udp: true
     - client-fingerprint: random
       name: vless-1828149341
@@ -284,16 +297,6 @@ proxies:
       type: vless
       udp: true
       uuid: 05488656-d4bf-4634-8b2e-e4ff5a56c7e2
-    - name: vless-1836930235
-      network: ws
-      port: 443
-      server: 103.167.234.26
-      servername: vp58.cc.cd
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7b102311-43fd-4e8f-877e-8090623c101d
     - name: trojan-1839121867
       password: Trojan@82164024
       port: 443
@@ -316,20 +319,6 @@ proxies:
       type: vless
       udp: true
       uuid: 05488656-d4bf-4634-8b2e-e4ff5a56c7e2
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1853340487
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 8yMLSTbkpJFfbgTjNzotzz7U8OT6AERrclgKdKrXXW8
-        short-id: 150a627d15154cf2
-      server: 150.251.113.34
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: d7d724b5-17ce-4f3c-877d-dfbf0f07afa1
     - client-fingerprint: firefox
       name: vless-1853341164
       network: tcp
@@ -578,27 +567,6 @@ proxies:
       type: vless
       udp: true
       uuid: 05488656-d4bf-4634-8b2e-e4ff5a56c7e2
-    - name: vless-1857053329
-      network: tcp
-      port: 2052
-      server: edge10.cyrionflare.com
-      type: vless
-      udp: true
-      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1859601926
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: XY0OTrgnRWxHbqBC8u4qFWvZakjNZY83AAnL_lwHu1M
-        short-id: 7f
-      server: 154.40.55.185
-      servername: www.oracle.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 52919204-4ed9-42c8-97a0-0f01d007f898
     - name: vless-1868524891
       network: grpc
       port: 8445
@@ -801,16 +769,6 @@ proxies:
       type: vless
       udp: true
       uuid: b9fdc03f-389b-4cda-9be4-155b623bee15
-    - name: vless-1922183696
-      network: grpc
-      port: 8445
-      server: 77.232.135.141
-      servername: ru1.radiolumens.uk
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 36cf792c-f07d-4500-97ea-a395e5178deb
     - name: vless-1923902937
       network: tcp
       port: 2087
@@ -878,13 +836,6 @@ proxies:
       type: vless
       udp: true
       uuid: b9fdc03f-389b-4cda-9be4-155b623bee15
-    - name: vless-1927184318
-      network: tcp
-      port: 2052
-      server: edge10.cyrionflare.com
-      type: vless
-      udp: true
-      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - name: vless-1927185330
       network: tcp
       port: 2087
@@ -1319,14 +1270,16 @@ proxy-groups:
         - trojan-1827148362
         - trojan-1827148462
         - vless-1827149029
+        - vless-1827150200
         - vless-1827155025
         - vless-1827155588
         - vless-1827188320
         - vless-1827533237
         - vless-1827533748
         - shadowsocks-1827968933
+        - shadowsocks-1827969197
         - shadowsocks-1827969356
-        - trojan-1828127744
+        - shadowsocks-1827969366
         - vless-1828149341
         - vless-1828294336
         - vless-1828294487
@@ -1341,10 +1294,8 @@ proxy-groups:
         - vless-1832972763
         - hysteria2-1833548672
         - vless-1835840142
-        - vless-1836930235
         - trojan-1839121867
         - vless-1853340221
-        - vless-1853340487
         - vless-1853341164
         - vless-1853341442
         - trojan-1853341739
@@ -1366,8 +1317,6 @@ proxy-groups:
         - vless-1855694419
         - vless-1855707524
         - vless-1856432744
-        - vless-1857053329
-        - vless-1859601926
         - vless-1868524891
         - vless-1869904605
         - vless-1869963083
@@ -1391,7 +1340,6 @@ proxy-groups:
         - vless-1891913651
         - vless-1892979275
         - vless-1920324174
-        - vless-1922183696
         - vless-1923902937
         - vless-1924318486
         - vless-1925464482
@@ -1399,7 +1347,6 @@ proxy-groups:
         - vless-1925723103
         - vless-1927168546
         - vless-1927171186
-        - vless-1927184318
         - vless-1927185330
         - vless-1927713101
         - vless-1927713131
@@ -1456,14 +1403,16 @@ proxy-groups:
         - trojan-1827148362
         - trojan-1827148462
         - vless-1827149029
+        - vless-1827150200
         - vless-1827155025
         - vless-1827155588
         - vless-1827188320
         - vless-1827533237
         - vless-1827533748
         - shadowsocks-1827968933
+        - shadowsocks-1827969197
         - shadowsocks-1827969356
-        - trojan-1828127744
+        - shadowsocks-1827969366
         - vless-1828149341
         - vless-1828294336
         - vless-1828294487
@@ -1478,10 +1427,8 @@ proxy-groups:
         - vless-1832972763
         - hysteria2-1833548672
         - vless-1835840142
-        - vless-1836930235
         - trojan-1839121867
         - vless-1853340221
-        - vless-1853340487
         - vless-1853341164
         - vless-1853341442
         - trojan-1853341739
@@ -1503,8 +1450,6 @@ proxy-groups:
         - vless-1855694419
         - vless-1855707524
         - vless-1856432744
-        - vless-1857053329
-        - vless-1859601926
         - vless-1868524891
         - vless-1869904605
         - vless-1869963083
@@ -1528,7 +1473,6 @@ proxy-groups:
         - vless-1891913651
         - vless-1892979275
         - vless-1920324174
-        - vless-1922183696
         - vless-1923902937
         - vless-1924318486
         - vless-1925464482
@@ -1536,7 +1480,6 @@ proxy-groups:
         - vless-1925723103
         - vless-1927168546
         - vless-1927171186
-        - vless-1927184318
         - vless-1927185330
         - vless-1927713101
         - vless-1927713131
