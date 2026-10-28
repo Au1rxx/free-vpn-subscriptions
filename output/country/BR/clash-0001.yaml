@@ -13,6 +13,13 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+    - name: vless-1853352760
+      network: ws
+      port: 8880
+      server: 185.162.229.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1853993767
       network: ws
       port: 8880
@@ -20,20 +27,6 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - client-fingerprint: firefox
-      flow: xtls-rprx-vision
-      name: vless-1900279053
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 1TtWNQhTJr_3H7-ypMw4EiLzVxy22AzUtMiE5JmQMl4
-        short-id: 1c5869a95671bcb0
-      server: 109.104.155.121
-      servername: br1.accessboy.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: caf3d607-95c9-4ea0-98b5-864027056ba0
     - name: trojan-1930538342
       password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
       port: 443
@@ -42,20 +35,6 @@ proxies:
       sni: findtemporaryworkandfreelancerprojectsonlineplatform.com
       type: trojan
       udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1934437191
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 1TtWNQhTJr_3H7-ypMw4EiLzVxy22AzUtMiE5JmQMl4
-        short-id: 1c5869a95671bcb0
-      server: 109.104.155.121
-      servername: br1.accessboy.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: caf3d607-95c9-4ea0-98b5-864027056ba0
     - name: trojan-1935007699
       password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
       port: 443
@@ -64,17 +43,38 @@ proxies:
       sni: findtemporaryworkandfreelancerprojectsonlineplatform.com
       type: trojan
       udp: true
+    - name: vless-1935621146
+      network: tcp
+      port: 15040
+      server: 216.128.169.78
+      servername: br.zestapp778.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
+    - name: vless-1935621153
+      network: tcp
+      port: 15040
+      server: br001.zestapp778.com
+      servername: br.zestapp778.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1831178592
         - vless-1853352675
+        - vless-1853352760
         - vless-1853993767
-        - vless-1900279053
         - trojan-1930538342
-        - vless-1934437191
         - trojan-1935007699
+        - vless-1935621146
+        - vless-1935621153
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -82,11 +82,12 @@ proxy-groups:
         - auto
         - vless-1831178592
         - vless-1853352675
+        - vless-1853352760
         - vless-1853993767
-        - vless-1900279053
         - trojan-1930538342
-        - vless-1934437191
         - trojan-1935007699
+        - vless-1935621146
+        - vless-1935621153
       type: select
 rules:
     - MATCH,select
