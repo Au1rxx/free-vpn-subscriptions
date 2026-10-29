@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-gcm
-      name: shadowsocks-1875023013
-      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-      port: 19999
-      server: 185.176.204.18
-      type: ss
-      udp: true
     - name: vless-1923902907
       network: tcp
       port: 10000
@@ -261,13 +254,6 @@ proxies:
       server: 185.226.172.8
       type: ss
       udp: true
-    - name: vless-1876912381
-      network: tcp
-      port: 10000
-      server: connect.wecantos.site
-      type: vless
-      udp: true
-      uuid: a05ecf37-c661-4247-ab09-4432cf0f3cc1
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1827530457
@@ -296,20 +282,6 @@ proxies:
       type: vless
       udp: true
       uuid: 846cedee-2a52-0002-a0b9-11850ead6a8b
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1854342782
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: XQB2zIgrhD8AtxgYFM8UiiWYt1sLVBLhMg1M4-sGMAY
-        short-id: 296f27de82dad7ff
-      server: 5.252.179.15
-      servername: www.bing.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0ab273e4-cea6-41d0-bbab-41071d2fc455
     - name: hysteria2-1932656534
       password: d62s7ghfehm742us
       port: 12824
@@ -324,6 +296,13 @@ proxies:
       skip-cert-verify: false
       sni: ""
       type: hysteria2
+    - cipher: aes-256-gcm
+      name: shadowsocks-1875023013
+      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+      port: 19999
+      server: 185.176.204.18
+      type: ss
+      udp: true
     - name: trojan-1941061801
       password: Pass-Client-1
       port: 8446
@@ -342,11 +321,31 @@ proxies:
       type: vless
       udp: true
       uuid: e56059f1-5a1a-4d0a-a2d0-58ecb4eb2f3f
+    - name: vless-1876912381
+      network: tcp
+      port: 10000
+      server: connect.wecantos.site
+      type: vless
+      udp: true
+      uuid: a05ecf37-c661-4247-ab09-4432cf0f3cc1
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1860508884
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: XQB2zIgrhD8AtxgYFM8UiiWYt1sLVBLhMg1M4-sGMAY
+        short-id: 296f27de82dad7ff
+      server: 5.252.179.15
+      servername: www.bing.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 0ab273e4-cea6-41d0-bbab-41071d2fc455
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1875023013
         - vless-1923902907
         - vless-1856016275
         - hysteria2-1875823307
@@ -373,20 +372,20 @@ proxy-groups:
         - vmess-1900261674
         - vmess-1853976421
         - shadowsocks-1827146722
-        - vless-1876912381
         - vless-1827530457
         - vless-1938583588
-        - vless-1854342782
         - hysteria2-1932656534
         - hysteria2-1936405458
+        - shadowsocks-1875023013
         - trojan-1941061801
         - vless-1940466072
+        - vless-1876912381
+        - vless-1860508884
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1875023013
         - vless-1923902907
         - vless-1856016275
         - hysteria2-1875823307
@@ -413,14 +412,15 @@ proxy-groups:
         - vmess-1900261674
         - vmess-1853976421
         - shadowsocks-1827146722
-        - vless-1876912381
         - vless-1827530457
         - vless-1938583588
-        - vless-1854342782
         - hysteria2-1932656534
         - hysteria2-1936405458
+        - shadowsocks-1875023013
         - trojan-1941061801
         - vless-1940466072
+        - vless-1876912381
+        - vless-1860508884
       type: select
 rules:
     - MATCH,select
