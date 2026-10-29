@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-1940442217
+      network: tcp
+      port: 22222
+      server: th001.zestapp778.com
+      servername: ""
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1930761430
@@ -59,6 +69,21 @@ proxies:
       type: vless
       udp: true
       uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
+    - name: trojan-1942154524
+      password: 5t6i121em5lkmsmk
+      port: 33079
+      server: th001.zestapp778.com
+      skip-cert-verify: true
+      sni: th001.zestapp778.com
+      type: trojan
+      udp: true
+    - name: vless-1827150933
+      network: ws
+      port: 80
+      server: 103.86.49.57
+      type: vless
+      udp: true
+      uuid: 3c52e091-6714-4915-949f-2149fe69951b
     - name: vless-1827151082
       network: ws
       port: 443
@@ -66,23 +91,6 @@ proxies:
       servername: v2ray.simspeedup.com
       skip-cert-verify: false
       tls: true
-      type: vless
-      udp: true
-      uuid: 3c52e091-6714-4915-949f-2149fe69951b
-    - name: vless-1940466728
-      network: tcp
-      port: 22222
-      server: th001.zestapp778.com
-      servername: th001.zestapp778.com
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
-    - name: vless-1827150933
-      network: ws
-      port: 80
-      server: 103.86.49.57
       type: vless
       udp: true
       uuid: 3c52e091-6714-4915-949f-2149fe69951b
@@ -97,28 +105,30 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1940442217
         - vless-1930761430
         - trojan-1941513501
         - vless-1931214417
         - vless-1929912487
         - vless-1926288585
-        - vless-1827151082
-        - vless-1940466728
+        - trojan-1942154524
         - vless-1827150933
+        - vless-1827151082
         - vless-1853497682
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1940442217
         - vless-1930761430
         - trojan-1941513501
         - vless-1931214417
         - vless-1929912487
         - vless-1926288585
-        - vless-1827151082
-        - vless-1940466728
+        - trojan-1942154524
         - vless-1827150933
+        - vless-1827151082
         - vless-1853497682
       type: select
 rules:
