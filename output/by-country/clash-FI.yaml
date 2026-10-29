@@ -1,11 +1,4 @@
 proxies:
-    - name: hysteria2-1936996010
-      password: 10be1dad-9952-4c5e-aa30-db435f69b727
-      port: 4444
-      server: fl2.nexfile.net
-      skip-cert-verify: true
-      sni: fl2.nexfile.net
-      type: hysteria2
     - name: hysteria2-1938708227
       password: 10be1dad-9952-4c5e-aa30-db435f69b727
       port: 4444
@@ -20,21 +13,34 @@ proxies:
       type: vless
       udp: true
       uuid: 59b0d30e-9b29-4fda-a35c-b2901ec32db7
+    - client-fingerprint: firefox
+      name: vless-1827150333
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: 4nfogj5mHqNowtSn_2sXS3xTX8vcH75rFEU2BWvyekM
+        short-id: d368b94e275ab080
+      server: 95.216.27.15
+      servername: www.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 1c81f6d3-5771-4c5d-9fdd-1655eff50634
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - hysteria2-1936996010
         - hysteria2-1938708227
         - vless-1853352743
+        - vless-1827150333
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - hysteria2-1936996010
         - hysteria2-1938708227
         - vless-1853352743
+        - vless-1827150333
       type: select
 rules:
     - MATCH,select
