@@ -13,12 +13,27 @@ proxies:
       server: alb.rvpn.app
       type: ss
       udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1945028535
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: T1BWBw3lq9G1LiQ7eQSPfdNQic7bUMEbdFNJBewAwB8
+        short-id: 6ad3c0f1e9b2478a
+      server: 157.22.240.248
+      servername: yandex.ru
+      tls: true
+      type: vless
+      udp: true
+      uuid: 99551a64-bc49-4442-b78b-cc8a9a57b9a9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1932472785
         - shadowsocks-1934673066
+        - vless-1945028535
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -26,6 +41,7 @@ proxy-groups:
         - auto
         - shadowsocks-1932472785
         - shadowsocks-1934673066
+        - vless-1945028535
       type: select
 rules:
     - MATCH,select
