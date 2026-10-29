@@ -1,4 +1,32 @@
 proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1930761430
+      network: raw
+      port: 443
+      reality-opts:
+        public-key: MiQ5B4j6In71lWvCi0vO_DkVSDb7sii34bh5efBMswk
+        short-id: 3c032a7e
+      server: 45.154.26.63
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ff85e702-b605-4109-884d-2c1f065d0954
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1931214417
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: MiQ5B4j6In71lWvCi0vO_DkVSDb7sii34bh5efBMswk
+        short-id: 3c032a7e
+      server: 45.154.26.63
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: ff85e702-b605-4109-884d-2c1f065d0954
     - name: vless-1940442217
       network: tcp
       port: 22222
@@ -39,34 +67,16 @@ proxies:
       sni: th001.zestapp778.com
       type: trojan
       udp: true
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1931214417
+    - name: vless-1926288585
       network: tcp
-      port: 443
-      reality-opts:
-        public-key: MiQ5B4j6In71lWvCi0vO_DkVSDb7sii34bh5efBMswk
-        short-id: 3c032a7e
-      server: 45.154.26.63
-      servername: www.cloudflare.com
+      port: 22222
+      server: th001.zestapp778.com
+      servername: th001.zestapp778.com
+      skip-cert-verify: false
       tls: true
       type: vless
       udp: true
-      uuid: ff85e702-b605-4109-884d-2c1f065d0954
-    - client-fingerprint: chrome
-      flow: xtls-rprx-vision
-      name: vless-1930761430
-      network: raw
-      port: 443
-      reality-opts:
-        public-key: MiQ5B4j6In71lWvCi0vO_DkVSDb7sii34bh5efBMswk
-        short-id: 3c032a7e
-      server: 45.154.26.63
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: ff85e702-b605-4109-884d-2c1f065d0954
+      uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
     - name: vless-1943748896
       network: tcp
       port: 22222
@@ -94,33 +104,47 @@ proxies:
       type: vless
       udp: true
       uuid: 3c52e091-6714-4915-949f-2149fe69951b
+    - name: vless-1827151082
+      network: ws
+      port: 443
+      server: 104.18.26.90
+      servername: v2ray.simspeedup.com
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3c52e091-6714-4915-949f-2149fe69951b
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1930761430
+        - vless-1931214417
         - vless-1940442217
         - vless-1929912487
         - trojan-1942154524
         - trojan-1941513501
-        - vless-1931214417
-        - vless-1930761430
+        - vless-1926288585
         - vless-1943748896
         - vless-1940466728
         - vless-1874224482
+        - vless-1827151082
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1930761430
+        - vless-1931214417
         - vless-1940442217
         - vless-1929912487
         - trojan-1942154524
         - trojan-1941513501
-        - vless-1931214417
-        - vless-1930761430
+        - vless-1926288585
         - vless-1943748896
         - vless-1940466728
         - vless-1874224482
+        - vless-1827151082
       type: select
 rules:
     - MATCH,select
