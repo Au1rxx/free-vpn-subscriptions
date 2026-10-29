@@ -1,16 +1,16 @@
 proxies:
-    - cipher: 2022-blake3-chacha20-poly1305
-      name: shadowsocks-1939844061
-      password: Cg2Dw4OhdBZhqbeO9ZTA3g/Gk/AvsrYZGhAJeGnQIx4=
-      port: 443
-      server: 8.211.196.252
-      type: ss
-      udp: true
     - cipher: rc4-md5
       name: shadowsocks-1870576356
       password: 14fFPrbezE3HDZzsMOr6
       port: 8080
       server: 146.70.20.147
+      type: ss
+      udp: true
+    - cipher: 2022-blake3-chacha20-poly1305
+      name: shadowsocks-1939844061
+      password: Cg2Dw4OhdBZhqbeO9ZTA3g/Gk/AvsrYZGhAJeGnQIx4=
+      port: 443
+      server: 8.211.196.252
       type: ss
       udp: true
     - name: vless-1936405426
@@ -95,6 +95,18 @@ proxies:
       type: vless
       udp: true
       uuid: a05ecf37-c661-4247-ab09-4432cf0f3cc1
+    - alterId: 0
+      cipher: auto
+      name: vmess-1900261674
+      network: tcp
+      port: 1234
+      server: 141.95.65.9
+      servername: 141.95.65.9
+      skip-cert-verify: true
+      tls: true
+      type: vmess
+      udp: true
+      uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
     - name: hysteria2-1917575832
       password: H7mP2xY9kJ4nQ8wR5tF6vB3z
       port: 443
@@ -116,20 +128,6 @@ proxies:
       type: vless
       udp: true
       uuid: a05ecf37-c661-4247-ab09-4432cf0f3cc1
-    - client-fingerprint: qq
-      flow: xtls-rprx-vision
-      name: vless-1828169058
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: XQB2zIgrhD8AtxgYFM8UiiWYt1sLVBLhMg1M4-sGMAY
-        short-id: 296f27de82dad7ff
-      server: 5.252.179.15
-      servername: www.bing.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 0ab273e4-cea6-41d0-bbab-41071d2fc455
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1860508884
@@ -212,13 +210,6 @@ proxies:
       network: tcp
       port: 10000
       server: connect.wecantos.site
-      type: vless
-      udp: true
-      uuid: a05ecf37-c661-4247-ab09-4432cf0f3cc1
-    - name: vless-1927723267
-      network: raw
-      port: 10000
-      server: 178.83.45.226
       type: vless
       udp: true
       uuid: a05ecf37-c661-4247-ab09-4432cf0f3cc1
@@ -321,6 +312,20 @@ proxies:
       skip-cert-verify: true
       sni: ""
       type: hysteria2
+    - name: hysteria2-1885575062
+      password: H7mP2xY9kJ4nQ8wR5tF6vB3z
+      port: 443
+      server: 3.76.221.4
+      skip-cert-verify: true
+      sni: vpn-de-002.fastervpn.world
+      type: hysteria2
+    - cipher: aes-256-gcm
+      name: shadowsocks-1827146150
+      password: RexnBgU7EV5ADxG
+      port: 7001
+      server: 213.202.208.199
+      type: ss
+      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1827150257
@@ -399,18 +404,6 @@ proxies:
       type: vmess
       udp: true
       uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
-    - alterId: 0
-      cipher: auto
-      name: vmess-1900261674
-      network: tcp
-      port: 1234
-      server: 141.95.65.9
-      servername: 141.95.65.9
-      skip-cert-verify: true
-      tls: true
-      type: vmess
-      udp: true
-      uuid: 5c040f1d-45db-43bd-8d46-e4950e433735
     - name: hysteria2-1932656534
       password: d62s7ghfehm742us
       port: 12824
@@ -441,29 +434,12 @@ proxies:
       sni: blog.iloverussia2026.com
       type: trojan
       udp: true
-    - name: vless-1940466072
-      network: ws
-      port: 443
-      server: 172.66.47.45
-      servername: ezaccess-project-f62c30.pages.dev
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: e56059f1-5a1a-4d0a-a2d0-58ecb4eb2f3f
-    - name: vless-1876912381
-      network: tcp
-      port: 10000
-      server: connect.wecantos.site
-      type: vless
-      udp: true
-      uuid: a05ecf37-c661-4247-ab09-4432cf0f3cc1
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1939844061
         - shadowsocks-1870576356
+        - shadowsocks-1939844061
         - vless-1936405426
         - vless-1857069357
         - vless-1856016275
@@ -475,10 +451,10 @@ proxy-groups:
         - shadowsocks-1827146722
         - shadowsocks-1827966278
         - vless-1923902907
+        - vmess-1900261674
         - hysteria2-1917575832
         - vless-1934391041
         - vless-1837324384
-        - vless-1828169058
         - vless-1860508884
         - vless-1827530457
         - vless-1879689235
@@ -486,7 +462,6 @@ proxy-groups:
         - vless-1942155286
         - vmess-1919459711
         - vless-1877238119
-        - vless-1927723267
         - vless-1854330919
         - vless-1854108408
         - vless-1926140057
@@ -495,26 +470,25 @@ proxy-groups:
         - vmess-1853452291
         - vmess-1907764322
         - hysteria2-1877380230
+        - hysteria2-1885575062
+        - shadowsocks-1827146150
         - vless-1827150257
         - vless-1873913777
         - vless-1935800433
         - vless-1938765571
         - vless-1853968454
         - vmess-1853452296
-        - vmess-1900261674
         - hysteria2-1932656534
         - shadowsocks-1875023013
         - trojan-1941061801
         - trojan-1939844058
-        - vless-1940466072
-        - vless-1876912381
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1939844061
         - shadowsocks-1870576356
+        - shadowsocks-1939844061
         - vless-1936405426
         - vless-1857069357
         - vless-1856016275
@@ -526,10 +500,10 @@ proxy-groups:
         - shadowsocks-1827146722
         - shadowsocks-1827966278
         - vless-1923902907
+        - vmess-1900261674
         - hysteria2-1917575832
         - vless-1934391041
         - vless-1837324384
-        - vless-1828169058
         - vless-1860508884
         - vless-1827530457
         - vless-1879689235
@@ -537,7 +511,6 @@ proxy-groups:
         - vless-1942155286
         - vmess-1919459711
         - vless-1877238119
-        - vless-1927723267
         - vless-1854330919
         - vless-1854108408
         - vless-1926140057
@@ -546,19 +519,18 @@ proxy-groups:
         - vmess-1853452291
         - vmess-1907764322
         - hysteria2-1877380230
+        - hysteria2-1885575062
+        - shadowsocks-1827146150
         - vless-1827150257
         - vless-1873913777
         - vless-1935800433
         - vless-1938765571
         - vless-1853968454
         - vmess-1853452296
-        - vmess-1900261674
         - hysteria2-1932656534
         - shadowsocks-1875023013
         - trojan-1941061801
         - trojan-1939844058
-        - vless-1940466072
-        - vless-1876912381
       type: select
 rules:
     - MATCH,select

@@ -12,6 +12,15 @@ proxies:
       type: vless
       udp: true
       uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
+    - alterId: 0
+      cipher: auto
+      name: vmess-1827158930
+      network: tcp
+      port: 16272
+      server: zfd-boardv2.kunlun01dns.com
+      type: vmess
+      udp: true
+      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1827188726
@@ -401,21 +410,12 @@ proxies:
       type: vless
       udp: true
       uuid: 2446e2e2-1ce3-4502-9050-1dd32bacc68c
-    - name: vless-1941513500
-      network: ws
-      port: 42654
-      server: 206.1.101.85
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 16e9ae65-c42d-49b9-9e86-524956e4ef19
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1827150172
+        - vmess-1827158930
         - vless-1827188726
         - vless-1828433801
         - vless-1828532179
@@ -448,13 +448,13 @@ proxy-groups:
         - vless-1939175770
         - vless-1939608207
         - vless-1941511319
-        - vless-1941513500
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1827150172
+        - vmess-1827158930
         - vless-1827188726
         - vless-1828433801
         - vless-1828532179
@@ -487,7 +487,6 @@ proxy-groups:
         - vless-1939175770
         - vless-1939608207
         - vless-1941511319
-        - vless-1941513500
       type: select
 rules:
     - MATCH,select
