@@ -1,4 +1,11 @@
 proxies:
+    - cipher: aes-256-gcm
+      name: shadowsocks-1827146685
+      password: AxIYWtskJWIIaefW
+      port: 8388
+      server: 70.34.212.124
+      type: ss
+      udp: true
     - name: vless-1827152562
       network: ws
       port: 14430
@@ -83,19 +90,6 @@ proxies:
       server: 159.194.251.76
       type: ss
       udp: true
-    - client-fingerprint: ios
-      name: vless-1944027933
-      network: tcp
-      port: 15222
-      reality-opts:
-        public-key: W_0O5fiA1zi8nXHksSKSTLzwLPyjECWNES5-gDAbQRY
-        short-id: 197fe3f584bc15f3
-      server: wsfdje.hospitaldt.ir
-      servername: www.aparat.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 3a24f714-5585-4103-9291-6ae21f11c10d
     - name: hysteria2-1945507344
       password: a0052f4f-4c63-0002-a16f-ab2d5d718cd3
       port: 443
@@ -107,6 +101,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1827146685
         - vless-1827152562
         - vless-1828534471
         - vless-1832465394
@@ -117,13 +112,13 @@ proxy-groups:
         - shadowsocks-1934673063
         - vless-1937256465
         - shadowsocks-1939845089
-        - vless-1944027933
         - hysteria2-1945507344
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1827146685
         - vless-1827152562
         - vless-1828534471
         - vless-1832465394
@@ -134,7 +129,6 @@ proxy-groups:
         - shadowsocks-1934673063
         - vless-1937256465
         - shadowsocks-1939845089
-        - vless-1944027933
         - hysteria2-1945507344
       type: select
 rules:
