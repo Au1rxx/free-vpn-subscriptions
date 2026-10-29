@@ -1,4 +1,11 @@
 proxies:
+    - name: hysteria2-1945507344
+      password: a0052f4f-4c63-0002-a16f-ab2d5d718cd3
+      port: 443
+      server: 192.142.23.46
+      skip-cert-verify: false
+      sni: diffoscope.com
+      type: hysteria2
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1937256465
@@ -17,12 +24,14 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - hysteria2-1945507344
         - vless-1937256465
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - hysteria2-1945507344
         - vless-1937256465
       type: select
 rules:

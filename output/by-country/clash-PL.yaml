@@ -34,13 +34,13 @@ proxies:
       type: vless
       udp: true
       uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1932646633
-      password: 6heexyz
-      port: 443
-      server: 54.36.174.140
-      type: ss
+    - name: vless-1876912365
+      network: tcp
+      port: 20001
+      server: site.teslamotor.site
+      type: vless
       udp: true
+      uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
     - name: vless-1940442231
       network: grpc
       port: 8445
@@ -65,14 +65,6 @@ proxies:
       type: vless
       udp: true
       uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
-    - name: trojan-1939844066
-      password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-      port: 443
-      server: 70.34.252.255
-      skip-cert-verify: false
-      sni: browseexecutivejobopeningsandenhanceleadershipcareer.com
-      type: trojan
-      udp: true
     - name: vless-1945300655
       network: tcp
       port: 2052
@@ -80,16 +72,6 @@ proxies:
       type: vless
       udp: true
       uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-    - name: vless-1945339382
-      network: grpc
-      port: 8445
-      server: ru1.radiolumens.uk
-      servername: ru1.radiolumens.uk
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 36cf792c-f07d-4500-97ea-a395e5178deb
 proxy-groups:
     - interval: 300
       name: auto
@@ -99,13 +81,11 @@ proxy-groups:
         - vless-1933858882
         - vless-1883661029
         - vless-1869963083
-        - shadowsocks-1932646633
+        - vless-1876912365
         - vless-1940442231
         - vless-1892979275
         - vless-1876388819
-        - trojan-1939844066
         - vless-1945300655
-        - vless-1945339382
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -116,13 +96,11 @@ proxy-groups:
         - vless-1933858882
         - vless-1883661029
         - vless-1869963083
-        - shadowsocks-1932646633
+        - vless-1876912365
         - vless-1940442231
         - vless-1892979275
         - vless-1876388819
-        - trojan-1939844066
         - vless-1945300655
-        - vless-1945339382
       type: select
 rules:
     - MATCH,select
