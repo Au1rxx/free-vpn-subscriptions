@@ -1,37 +1,11 @@
 proxies:
-    - flow: xtls-rprx-vision
-      name: vless-1856725621
-      network: tcp
-      port: 443
-      server: 50.7.5.166
-      servername: ekb.eg
-      skip-cert-verify: true
-      tls: true
+    - name: vless-1831094299
+      network: ws
+      port: 8880
+      server: 154.83.2.30
       type: vless
       udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - flow: xtls-rprx-vision
-      name: vless-1856735343
-      network: tcp
-      port: 443
-      server: ir-new.failspace.top
-      servername: ir-new.failspace.top
-      skip-cert-verify: true
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - flow: xtls-rprx-vision
-      name: vless-1934374896
-      network: raw
-      port: 443
-      server: 50.7.5.188
-      servername: ir-new-ded.failspace.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - flow: xtls-rprx-vision
       name: vless-1934952385
       network: raw
@@ -50,51 +24,21 @@ proxies:
       server: dns22.m3hrzd.ir
       type: ss
       udp: true
-    - flow: xtls-rprx-vision
-      name: vless-1938557352
-      network: raw
-      port: 443
-      server: 50.7.5.188
-      servername: ir-new-ded.failspace.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
-    - flow: xtls-rprx-vision
-      name: vless-1938603562
-      network: tcp
-      port: 443
-      server: ir-new-ded.failspace.top
-      servername: ir-new-ded.failspace.top
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: cd3bb7d9-7df3-4644-ac05-c260990ac277
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1856725621
-        - vless-1856735343
-        - vless-1934374896
+        - vless-1831094299
         - vless-1934952385
         - shadowsocks-1937002473
-        - vless-1938557352
-        - vless-1938603562
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1856725621
-        - vless-1856735343
-        - vless-1934374896
+        - vless-1831094299
         - vless-1934952385
         - shadowsocks-1937002473
-        - vless-1938557352
-        - vless-1938603562
       type: select
 rules:
     - MATCH,select
