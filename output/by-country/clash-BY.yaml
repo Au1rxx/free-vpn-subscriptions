@@ -1,8 +1,36 @@
 proxies:
+    - name: vless-1828140795
+      network: ws
+      port: 14430
+      server: 178.172.227.228
+      type: vless
+      udp: true
+      uuid: b6e5dc56-836f-48c1-9163-b0b0b43b647d
     - name: vless-1853489144
       network: ws
       port: 14430
       server: 178.172.227.228
+      type: vless
+      udp: true
+      uuid: b6e5dc56-836f-48c1-9163-b0b0b43b647d
+    - name: vless-1853491033
+      network: ws
+      port: 14430
+      server: 95.128.71.79
+      type: vless
+      udp: true
+      uuid: 8cef7621-c6f0-486e-b51d-59c30c5b0b25
+    - client-fingerprint: safari
+      flow: xtls-rprx-vision
+      name: vless-1935966863
+      network: tcp
+      port: 10444
+      reality-opts:
+        public-key: 0oTkcqwLTUNLnSOP-VUWErmy6usAIg-biBE6ioZO-Vo
+        short-id: 8debcf36f1cc69ff
+      server: 178.172.227.228
+      servername: ads.x5.ru
+      tls: true
       type: vless
       udp: true
       uuid: b6e5dc56-836f-48c1-9163-b0b0b43b647d
@@ -17,14 +45,20 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1828140795
         - vless-1853489144
+        - vless-1853491033
+        - vless-1935966863
         - vless-1853490099
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1828140795
         - vless-1853489144
+        - vless-1853491033
+        - vless-1935966863
         - vless-1853490099
       type: select
 rules:

@@ -1,11 +1,4 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1930537302
-      password: 6heexyz
-      port: 443
-      server: pl134.vpnbook.com
-      type: ss
-      udp: true
     - name: vless-1876808293
       network: tcp
       port: 20001
@@ -20,6 +13,13 @@ proxies:
       type: vless
       udp: true
       uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
+    - name: vless-1933858882
+      network: tcp
+      port: 20001
+      server: 155.117.5.208
+      type: vless
+      udp: true
+      uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
     - name: vless-1883661029
       network: tcp
       port: 20001
@@ -51,15 +51,15 @@ proxies:
       type: vless
       udp: true
       uuid: 36cf792c-f07d-4500-97ea-a395e5178deb
-    - name: vless-1869904605
+    - name: vless-1892979275
       network: tcp
       port: 20001
       server: site.teslamotor.site
       type: vless
       udp: true
       uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
-    - name: vless-1892979275
-      network: tcp
+    - name: vless-1876388819
+      network: raw
       port: 20001
       server: site.teslamotor.site
       type: vless
@@ -73,35 +73,56 @@ proxies:
       sni: browseexecutivejobopeningsandenhanceleadershipcareer.com
       type: trojan
       udp: true
+    - name: vless-1945300655
+      network: tcp
+      port: 2052
+      server: 168.222.43.53
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
+    - name: vless-1945339382
+      network: grpc
+      port: 8445
+      server: ru1.radiolumens.uk
+      servername: ru1.radiolumens.uk
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 36cf792c-f07d-4500-97ea-a395e5178deb
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1930537302
         - vless-1876808293
         - vless-1932277153
+        - vless-1933858882
         - vless-1883661029
         - vless-1869963083
         - shadowsocks-1932646633
         - vless-1940442231
-        - vless-1869904605
         - vless-1892979275
+        - vless-1876388819
         - trojan-1939844066
+        - vless-1945300655
+        - vless-1945339382
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1930537302
         - vless-1876808293
         - vless-1932277153
+        - vless-1933858882
         - vless-1883661029
         - vless-1869963083
         - shadowsocks-1932646633
         - vless-1940442231
-        - vless-1869904605
         - vless-1892979275
+        - vless-1876388819
         - trojan-1939844066
+        - vless-1945300655
+        - vless-1945339382
       type: select
 rules:
     - MATCH,select
