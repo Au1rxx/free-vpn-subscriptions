@@ -13,20 +13,12 @@ proxies:
       server: alb.rvpn.app
       type: ss
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1937002469
-      password: U5Jk0BhRNKjb5wQBBOXx2wwkWZ_yWU0N
-      port: 1348
-      server: dns22.m3hrzd.ir
-      type: ss
-      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1932472785
         - shadowsocks-1934673066
-        - shadowsocks-1937002469
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -34,7 +26,6 @@ proxy-groups:
         - auto
         - shadowsocks-1932472785
         - shadowsocks-1934673066
-        - shadowsocks-1937002469
       type: select
 rules:
     - MATCH,select
