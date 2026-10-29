@@ -1,4 +1,12 @@
 proxies:
+    - name: trojan-1939140116
+      password: Trojan@82164024
+      port: 443
+      server: 139.84.132.62
+      skip-cert-verify: true
+      sni: 139.84.132.62
+      type: trojan
+      udp: true
     - name: trojan-1938749109
       password: Trojan@82164024
       port: 443
@@ -30,39 +38,6 @@ proxies:
       type: vless
       udp: true
       uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
-    - client-fingerprint: chrome
-      name: vless-1885509385
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 3LbVuwKpQv55GngyRhvGl9KyAHIDAgvJx_VRM5mUD2Q
-        short-id: 6bdc8320
-      server: in.smrtai.top
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6bdc8320-7eae-46fc-be08-f5f54e65dfc8
-    - name: vless-1832465387
-      network: ws
-      port: 14430
-      server: 13.140.56.100
-      type: vless
-      udp: true
-      uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
-    - client-fingerprint: firefox
-      name: vless-1920323172
-      network: tcp
-      port: 443
-      reality-opts:
-        public-key: 3LbVuwKpQv55GngyRhvGl9KyAHIDAgvJx_VRM5mUD2Q
-        short-id: 6bdc8320
-      server: 178.212.35.198
-      servername: www.cloudflare.com
-      tls: true
-      type: vless
-      udp: true
-      uuid: 6bdc8320-7eae-46fc-be08-f5f54e65dfc8
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1853476100
@@ -142,14 +117,6 @@ proxies:
       sni: 139.84.132.62
       type: trojan
       udp: true
-    - name: trojan-1939140116
-      password: Trojan@82164024
-      port: 443
-      server: 139.84.132.62
-      skip-cert-verify: true
-      sni: 139.84.132.62
-      type: trojan
-      udp: true
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1827531171
@@ -174,6 +141,13 @@ proxies:
       type: vless
       udp: true
       uuid: 16ae3ea5-cf3e-6973-7bf3-2b4b28d0ea88
+    - name: vless-1832465387
+      network: ws
+      port: 14430
+      server: 13.140.56.100
+      type: vless
+      udp: true
+      uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
     - name: vless-1854086904
       network: ws
       port: 14430
@@ -251,6 +225,26 @@ proxies:
       udp: true
       uuid: e99ba96d-dec8-42eb-be53-19e71eef7cab
     - client-fingerprint: chrome
+      name: vless-1885509385
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: 3LbVuwKpQv55GngyRhvGl9KyAHIDAgvJx_VRM5mUD2Q
+        short-id: 6bdc8320
+      server: in.smrtai.top
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 6bdc8320-7eae-46fc-be08-f5f54e65dfc8
+    - name: vless-1853341744
+      network: ws
+      port: 14430
+      server: 13.140.56.100
+      type: vless
+      udp: true
+      uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
+    - client-fingerprint: chrome
       name: vless-1827150264
       network: tcp
       port: 2053
@@ -276,6 +270,13 @@ proxies:
       type: vless
       udp: true
       uuid: 6bdc8320-7eae-46fc-be08-f5f54e65dfc8
+    - name: vless-1828654996
+      network: ws
+      port: 14430
+      server: 13.140.56.100
+      type: vless
+      udp: true
+      uuid: 68512eac-cd53-4de3-8d1e-08f6e04af1a9
     - client-fingerprint: chrome
       name: vless-1914959320
       network: raw
@@ -307,12 +308,10 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - trojan-1939140116
         - trojan-1938749109
         - vless-1851982294
         - vless-1936406331
-        - vless-1885509385
-        - vless-1832465387
-        - vless-1920323172
         - vless-1853476100
         - vless-1827152134
         - vless-1856636614
@@ -321,17 +320,20 @@ proxy-groups:
         - vless-1827735104
         - vless-1832867644
         - trojan-1939594317
-        - trojan-1939140116
         - vless-1827531171
         - vless-1934541066
+        - vless-1832465387
         - vless-1854086904
         - vless-1832650490
         - vless-1891897716
         - vless-1827531225
         - vless-1828373849
         - vless-1853341671
+        - vless-1885509385
+        - vless-1853341744
         - vless-1827150264
         - vless-1928317282
+        - vless-1828654996
         - vless-1914959320
         - vless-1827151260
       type: url-test
@@ -339,12 +341,10 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - trojan-1939140116
         - trojan-1938749109
         - vless-1851982294
         - vless-1936406331
-        - vless-1885509385
-        - vless-1832465387
-        - vless-1920323172
         - vless-1853476100
         - vless-1827152134
         - vless-1856636614
@@ -353,17 +353,20 @@ proxy-groups:
         - vless-1827735104
         - vless-1832867644
         - trojan-1939594317
-        - trojan-1939140116
         - vless-1827531171
         - vless-1934541066
+        - vless-1832465387
         - vless-1854086904
         - vless-1832650490
         - vless-1891897716
         - vless-1827531225
         - vless-1828373849
         - vless-1853341671
+        - vless-1885509385
+        - vless-1853341744
         - vless-1827150264
         - vless-1928317282
+        - vless-1828654996
         - vless-1914959320
         - vless-1827151260
       type: select

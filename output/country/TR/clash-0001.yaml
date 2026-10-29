@@ -26,15 +26,6 @@ proxies:
       type: vless
       udp: true
       uuid: 0eed6293-8cf1-4e77-ac10-9c3d50d0b2f8
-    - alterId: 0
-      cipher: auto
-      name: vmess-1827158930
-      network: tcp
-      port: 16272
-      server: zfd-boardv2.kunlun01dns.com
-      type: vmess
-      udp: true
-      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1827188726
@@ -352,6 +343,16 @@ proxies:
       type: vless
       udp: true
       uuid: 4f34bc04-479c-49ba-91a8-6bb9ed15031c
+    - name: vless-1934560413
+      network: ws
+      port: 8443
+      server: 146.103.24.187
+      servername: vlso5.1d.mom
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: a1de0630-5786-48a0-84f6-dc6f2de10d6d
     - client-fingerprint: chrome
       flow: xtls-rprx-vision
       name: vless-1935797443
@@ -449,13 +450,26 @@ proxies:
       type: vless
       udp: true
       uuid: 16e9ae65-c42d-49b9-9e86-524956e4ef19
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1939846057
+      network: tcp
+      port: 25021
+      reality-opts:
+        public-key: od79bUkYtqQtsGrrTdhmkDflx5c9al4vqxwWApvc-Dg
+        short-id: 17fa3af0924c88b3
+      server: tr2.h1cloud.net
+      servername: www.samsung.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2446e2e2-1ce3-4502-9050-1dd32bacc68c
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1827150153
         - vless-1827150172
-        - vmess-1827158930
         - vless-1827188726
         - vless-1828433801
         - vless-1828532179
@@ -482,6 +496,7 @@ proxy-groups:
         - vless-1891686774
         - vless-1891911478
         - vless-1920443190
+        - vless-1934560413
         - vless-1935797443
         - vless-1935806309
         - vless-1935806327
@@ -490,6 +505,7 @@ proxy-groups:
         - vless-1939175770
         - vless-1939608198
         - vless-1939608207
+        - vless-1939846057
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -497,7 +513,6 @@ proxy-groups:
         - auto
         - vless-1827150153
         - vless-1827150172
-        - vmess-1827158930
         - vless-1827188726
         - vless-1828433801
         - vless-1828532179
@@ -524,6 +539,7 @@ proxy-groups:
         - vless-1891686774
         - vless-1891911478
         - vless-1920443190
+        - vless-1934560413
         - vless-1935797443
         - vless-1935806309
         - vless-1935806327
@@ -532,6 +548,7 @@ proxy-groups:
         - vless-1939175770
         - vless-1939608198
         - vless-1939608207
+        - vless-1939846057
       type: select
 rules:
     - MATCH,select

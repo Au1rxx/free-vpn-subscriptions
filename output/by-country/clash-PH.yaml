@@ -1,0 +1,23 @@
+proxies:
+    - name: trojan-1939846046
+      password: 5t6i121em5lkmsmk
+      port: 46293
+      server: ph001.zestapp778.com
+      skip-cert-verify: true
+      sni: ph001.zestapp778.com
+      type: trojan
+      udp: true
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - trojan-1939846046
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - trojan-1939846046
+      type: select
+rules:
+    - MATCH,select
