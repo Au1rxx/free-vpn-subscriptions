@@ -1,0 +1,25 @@
+proxies:
+    - name: vless-1946061463
+      network: grpc
+      port: 443
+      server: 130.78.190.20
+      servername: a.es-2.bnc-gt.co.uk
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7b22dce8-7ebd-425b-8ca4-7b6190321985
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1946061463
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1946061463
+      type: select
+rules:
+    - MATCH,select
