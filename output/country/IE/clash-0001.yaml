@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1853353048
+      network: ws
+      port: 8880
+      server: 154.218.15.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: aes-256-cfb
       name: shadowsocks-1941949286
       password: amazonskr05
@@ -17,6 +24,7 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1853353048
         - shadowsocks-1941949286
         - shadowsocks-1943752977
       type: url-test
@@ -24,6 +32,7 @@ proxy-groups:
     - name: select
       proxies:
         - auto
+        - vless-1853353048
         - shadowsocks-1941949286
         - shadowsocks-1943752977
       type: select

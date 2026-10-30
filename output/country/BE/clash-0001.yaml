@@ -1,4 +1,18 @@
 proxies:
+    - name: vless-1828033595
+      network: ws
+      port: 2086
+      server: 172.67.155.136
+      type: vless
+      udp: true
+      uuid: 73796e63-0000-4000-8000-000000000007
+    - name: vless-1831079379
+      network: ws
+      port: 2086
+      server: 104.21.64.198
+      type: vless
+      udp: true
+      uuid: 73796e63-0000-4000-8000-000000000007
     - name: vless-1853340876
       network: ws
       port: 2086
@@ -13,15 +27,6 @@ proxies:
       type: vless
       udp: true
       uuid: 73796e63-0000-4000-8000-000000000007
-    - alterId: 0
-      cipher: auto
-      name: vmess-1855828277
-      network: raw
-      port: 16307
-      server: zfd-boardv2.kunlun01dns.com
-      type: vmess
-      udp: true
-      uuid: 0802ac03-7973-39ef-a019-ba02de6c01e1
     - name: vless-1880220472
       network: ws
       port: 443
@@ -36,18 +41,20 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1828033595
+        - vless-1831079379
         - vless-1853340876
         - vless-1853498862
-        - vmess-1855828277
         - vless-1880220472
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1828033595
+        - vless-1831079379
         - vless-1853340876
         - vless-1853498862
-        - vmess-1855828277
         - vless-1880220472
       type: select
 rules:

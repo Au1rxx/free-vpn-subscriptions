@@ -20,12 +20,20 @@ proxies:
       type: vless
       udp: true
       uuid: 30572b57-f5ab-4eb8-82d4-a24d399b99f6
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1939845089
+      password: MODziWLa9qMuW-4yPa0rfw
+      port: 8388
+      server: 159.194.251.76
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1945507344
         - vless-1937256465
+        - shadowsocks-1939845089
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -33,6 +41,7 @@ proxy-groups:
         - auto
         - hysteria2-1945507344
         - vless-1937256465
+        - shadowsocks-1939845089
       type: select
 rules:
     - MATCH,select
