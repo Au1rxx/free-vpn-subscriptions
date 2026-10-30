@@ -6,6 +6,34 @@ proxies:
       skip-cert-verify: false
       sni: diffoscope.com
       type: hysteria2
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1945992016
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: wRvUAKwcHc4pBNVouIcVjQkVD9aCRR-AmtcFyBV36lU
+        short-id: 0e7741edc378622f
+      server: 31.172.65.4
+      servername: www.bing.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9c6e83fc-b755-4ad4-9b0a-14b610153d8f
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1947501543
+      network: tcp
+      port: 59539
+      reality-opts:
+        public-key: R6mPqCsjZMWauci4LHw7Qp1LGKmBd-sxMXplyOn9bSQ
+        short-id: ""
+      server: 46.29.255.123
+      servername: cloudflare-dns.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 30572b57-f5ab-4eb8-82d4-a24d399b99f6
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1937256465
@@ -25,6 +53,8 @@ proxy-groups:
       name: auto
       proxies:
         - hysteria2-1945507344
+        - vless-1945992016
+        - vless-1947501543
         - vless-1937256465
       type: url-test
       url: https://www.gstatic.com/generate_204
@@ -32,6 +62,8 @@ proxy-groups:
       proxies:
         - auto
         - hysteria2-1945507344
+        - vless-1945992016
+        - vless-1947501543
         - vless-1937256465
       type: select
 rules:
