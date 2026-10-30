@@ -1,4 +1,14 @@
 proxies:
+    - name: vless-1827975251
+      network: ws
+      port: 443
+      server: 172.67.67.178
+      servername: rayan-007.nastaran.dpdns.org
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: aebe5a70-0ca3-46ce-8208-8b5bab1346ce
     - name: vless-1827975598
       network: ws
       port: 443
@@ -26,6 +36,13 @@ proxies:
       type: vless
       udp: true
       uuid: 4f34bc04-479c-49ba-91a8-6bb9ed15031c
+    - name: vless-1875660300
+      network: ws
+      port: 8880
+      server: 192.0.63.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: firefox
       flow: xtls-rprx-vision
       name: vless-1891672392
@@ -240,13 +257,25 @@ proxies:
       type: vless
       udp: true
       uuid: 600b90fe-6ff5-4b17-8dac-5be55835d0af
+    - name: vless-1945018315
+      network: ws
+      port: 443
+      server: 172.64.149.171
+      servername: ylsl.abcai.online
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 600b90fe-6ff5-4b17-8dac-5be55835d0af
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1827975251
         - vless-1827975598
         - vless-1831114264
         - vless-1854085326
+        - vless-1875660300
         - vless-1891672392
         - vless-1896119555
         - vless-1898604288
@@ -265,14 +294,17 @@ proxy-groups:
         - vless-1938971783
         - vless-1943106891
         - vless-1944436559
+        - vless-1945018315
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1827975251
         - vless-1827975598
         - vless-1831114264
         - vless-1854085326
+        - vless-1875660300
         - vless-1891672392
         - vless-1896119555
         - vless-1898604288
@@ -291,6 +323,7 @@ proxy-groups:
         - vless-1938971783
         - vless-1943106891
         - vless-1944436559
+        - vless-1945018315
       type: select
 rules:
     - MATCH,select
