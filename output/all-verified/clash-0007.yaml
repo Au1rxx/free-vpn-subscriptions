@@ -1,0 +1,152 @@
+proxies:
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1946595147
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: JtA0d5K6Jnmg35oWP9SDOsc1ceuqaxOsNg33fiPHJQs
+        short-id: e915
+      server: 131.123.42.250
+      servername: timeline.www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2da85937-93d9-4509-8491-63b1921cf447
+    - name: vless-1946595150
+      network: ws
+      port: 4443
+      server: 178.105.133.160
+      servername: ruu2rx-oycdrnsrzc.9uokolpk04vmg2ecqb8oys7.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9a8d996d-8451-4532-8933-39ecebde1850
+    - name: trojan-1946595155
+      password: 5t6i121em5lkmsmk
+      port: 42733
+      server: in002.zestapp778.com
+      skip-cert-verify: true
+      sni: ""
+      type: trojan
+      udp: true
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1946595157
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: JtA0d5K6Jnmg35oWP9SDOsc1ceuqaxOsNg33fiPHJQs
+        short-id: ""
+      server: 131.123.42.250
+      servername: hostgator.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 2da85937-93d9-4509-8491-63b1921cf447
+    - client-fingerprint: firefox
+      name: vless-1946595158
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: pR39Vv5qhk8r6akOicoy6mMs4-ppSWUez8MyAXG7wwQ
+        short-id: 27350908de933e09
+      server: 5.149.249.94
+      servername: nlb.kosmosapp.net
+      tls: true
+      type: vless
+      udp: true
+      uuid: ed77c1dc-3df2-412b-b855-49286f979c21
+    - client-fingerprint: chrome
+      name: vless-1946595159
+      network: tcp
+      port: 21001
+      reality-opts:
+        public-key: HZwHZBP3x4Yo4UQiHcypRJIU_UdZY5OAapQM8RUqVAU
+        short-id: ab39fc68ab3dee81
+      server: 103.106.229.37
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 41b1c169-5905-4d98-b6a6-56896c25737c
+    - client-fingerprint: firefox
+      name: vless-1946595160
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: MPNMomAMn_lu9YMYjD2jAQWrI-rTM4hj9Jgg9d6qzTA
+        short-id: 50ad5564
+      server: 186.246.9.29
+      servername: wordpress.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: b2847c3b-5278-4b06-9c66-bc919d2dfec7
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1946596125
+      network: tcp
+      port: 40443
+      reality-opts:
+        public-key: g77ZJbm18JEotapmVRjaXi133MzkbhkU2lxhVeXx8zw
+        short-id: 68a8
+      server: dorado.yokkastars.com
+      servername: deepl.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: af5eac96-e478-488a-bc8c-45269d7e8847
+    - name: vless-1946596126
+      network: grpc
+      port: 443
+      server: 31.76.91.31
+      servername: b.jp-1.bnc-gt.co.uk
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 7b22dce8-7ebd-425b-8ca4-7b6190321985
+    - name: vless-1946596131
+      network: ws
+      port: 10238
+      server: 156.229.163.237
+      servername: sxyyvihkektlx4rjxsdj.pkc73phpweu4rbxbatm444.workers.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: 69b4d14d-4ef2-46c8-980d-50a34b290064
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1946595147
+        - vless-1946595150
+        - trojan-1946595155
+        - vless-1946595157
+        - vless-1946595158
+        - vless-1946595159
+        - vless-1946595160
+        - vless-1946596125
+        - vless-1946596126
+        - vless-1946596131
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1946595147
+        - vless-1946595150
+        - trojan-1946595155
+        - vless-1946595157
+        - vless-1946595158
+        - vless-1946595159
+        - vless-1946595160
+        - vless-1946596125
+        - vless-1946596126
+        - vless-1946596131
+      type: select
+rules:
+    - MATCH,select

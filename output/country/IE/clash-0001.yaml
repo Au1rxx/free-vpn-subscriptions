@@ -1,4 +1,11 @@
 proxies:
+    - name: vless-1831085965
+      network: ws
+      port: 8880
+      server: 130.250.137.30
+      type: vless
+      udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1831094299
       network: ws
       port: 8880
@@ -20,13 +27,13 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - cipher: aes-256-cfb
-      name: shadowsocks-1941949286
-      password: amazonskr05
-      port: 443
-      server: 108.129.251.8
-      type: ss
+    - name: vless-1856962108
+      network: ws
+      port: 8880
+      server: 185.207.196.30
+      type: vless
       udp: true
+      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - cipher: aes-256-cfb
       name: shadowsocks-1943752977
       password: amazonskr05
@@ -38,20 +45,22 @@ proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - vless-1831085965
         - vless-1831094299
         - vless-1853352597
         - vless-1853353048
-        - shadowsocks-1941949286
+        - vless-1856962108
         - shadowsocks-1943752977
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - vless-1831085965
         - vless-1831094299
         - vless-1853352597
         - vless-1853353048
-        - shadowsocks-1941949286
+        - vless-1856962108
         - shadowsocks-1943752977
       type: select
 rules:

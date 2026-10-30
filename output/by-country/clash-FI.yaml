@@ -1,31 +1,40 @@
 proxies:
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1934673064
-      password: x2A6AsyZ-rAllz0wbKHzWA
-      port: 8388
-      server: ams1.rvpn.app
-      type: ss
+    - client-fingerprint: firefox
+      name: vless-1927184299
+      network: grpc
+      port: 443
+      reality-opts:
+        public-key: GJzag9Wrvz_bO9AQaA-Oq0P1kV9btmxxAdzPV-uQB18
+        short-id: 09d0a94a1c6fc9d5
+      server: 77.42.12.225
+      servername: 8fc752g.fi3.h1clayd.click
+      tls: true
+      type: vless
       udp: true
-    - cipher: chacha20-ietf-poly1305
-      name: shadowsocks-1939844077
-      password: x2A6AsyZ-rAllz0wbKHzWA
-      port: 8388
-      server: 178.253.16.185
-      type: ss
+      uuid: 056405e8-de9f-4d0d-8145-956f13cc34da
+    - name: vless-1946061464
+      network: grpc
+      port: 443
+      server: 45.144.52.187
+      servername: b.fi-1.bnc-gt.co.uk
+      skip-cert-verify: false
+      tls: true
+      type: vless
       udp: true
+      uuid: 7b22dce8-7ebd-425b-8ca4-7b6190321985
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1934673064
-        - shadowsocks-1939844077
+        - vless-1927184299
+        - vless-1946061464
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1934673064
-        - shadowsocks-1939844077
+        - vless-1927184299
+        - vless-1946061464
       type: select
 rules:
     - MATCH,select
