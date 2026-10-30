@@ -1,4 +1,11 @@
 proxies:
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1928714919
+      password: 6heexyz
+      port: 443
+      server: 54.36.174.134
+      type: ss
+      udp: true
     - name: vless-1883661029
       network: tcp
       port: 20001
@@ -28,6 +35,13 @@ proxies:
       sni: browseexecutivejobopeningsandenhanceleadershipcareer.com
       type: trojan
       udp: true
+    - name: vless-1945300655
+      network: tcp
+      port: 2052
+      server: 168.222.43.53
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
     - name: vless-1869963083
       network: tcp
       port: 20001
@@ -49,27 +63,13 @@ proxies:
       type: vless
       udp: true
       uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
-    - name: vless-1876388819
-      network: raw
-      port: 20001
-      server: site.teslamotor.site
-      type: vless
+    - cipher: chacha20-ietf-poly1305
+      name: shadowsocks-1930537302
+      password: 6heexyz
+      port: 443
+      server: pl134.vpnbook.com
+      type: ss
       udp: true
-      uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
-    - name: vless-1945300655
-      network: tcp
-      port: 2052
-      server: 168.222.43.53
-      type: vless
-      udp: true
-      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
-    - name: vless-1933858882
-      network: tcp
-      port: 20001
-      server: 155.117.5.208
-      type: vless
-      udp: true
-      uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
     - name: vless-1827150146
       network: raw
       port: 2052
@@ -103,41 +103,89 @@ proxies:
       type: vless
       udp: true
       uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
+    - name: vless-1876388819
+      network: raw
+      port: 20001
+      server: site.teslamotor.site
+      type: vless
+      udp: true
+      uuid: 8e8210b7-71a4-4799-8b9b-2e69698b1eaf
+    - name: vless-1857053329
+      network: tcp
+      port: 2052
+      server: edge10.cyrionflare.com
+      type: vless
+      udp: true
+      uuid: 1a8ecc41-6e62-431b-8eca-87c2fa4dc286
+    - client-fingerprint: chrome
+      name: vless-1853462692
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
+        short-id: 50ba05992b05c1c3
+      server: 54.37.136.194
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
+    - client-fingerprint: firefox
+      name: vless-1853488300
+      network: raw
+      port: 2053
+      reality-opts:
+        public-key: Vemd9Jjk5xKO8qSC3g8VVagwcb4J1BcTvp86CswQC0A
+        short-id: 50ba05992b05c1c3
+      server: 54.37.136.194
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: e8a432c8-5d84-49a5-b822-67ed761a58f9
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1928714919
         - vless-1883661029
         - vless-1876912365
         - shadowsocks-1925513121
         - trojan-1939844066
+        - vless-1945300655
         - vless-1869963083
         - vless-1892979275
         - vless-1876808293
-        - vless-1876388819
-        - vless-1945300655
-        - vless-1933858882
+        - shadowsocks-1930537302
         - vless-1827150146
         - vless-1827155588
         - vless-1827188320
+        - vless-1876388819
+        - vless-1857053329
+        - vless-1853462692
+        - vless-1853488300
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1928714919
         - vless-1883661029
         - vless-1876912365
         - shadowsocks-1925513121
         - trojan-1939844066
+        - vless-1945300655
         - vless-1869963083
         - vless-1892979275
         - vless-1876808293
-        - vless-1876388819
-        - vless-1945300655
-        - vless-1933858882
+        - shadowsocks-1930537302
         - vless-1827150146
         - vless-1827155588
         - vless-1827188320
+        - vless-1876388819
+        - vless-1857053329
+        - vless-1853462692
+        - vless-1853488300
       type: select
 rules:
     - MATCH,select

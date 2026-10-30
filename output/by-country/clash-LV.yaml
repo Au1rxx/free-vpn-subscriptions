@@ -1,0 +1,29 @@
+proxies:
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1932656577
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: iCy_Y2B58KB39rw94EycaBO-aldt2PaMmWz62arreSo
+        short-id: f77f3068
+      server: 31.58.171.53
+      servername: dl.google.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 4d259556-57f7-4e5a-9a4a-48868787fb38
+proxy-groups:
+    - interval: 300
+      name: auto
+      proxies:
+        - vless-1932656577
+      type: url-test
+      url: https://www.gstatic.com/generate_204
+    - name: select
+      proxies:
+        - auto
+        - vless-1932656577
+      type: select
+rules:
+    - MATCH,select
