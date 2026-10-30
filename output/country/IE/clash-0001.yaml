@@ -1,18 +1,4 @@
 proxies:
-    - name: vless-1831085965
-      network: ws
-      port: 8880
-      server: 130.250.137.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1831094299
-      network: ws
-      port: 8880
-      server: 154.83.2.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - name: vless-1853352597
       network: ws
       port: 8880
@@ -27,32 +13,35 @@ proxies:
       type: vless
       udp: true
       uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - cipher: aes-256-cfb
-      name: shadowsocks-1943752977
-      password: amazonskr05
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1947242974
+      network: tcp
       port: 443
-      server: 52.51.176.50
-      type: ss
+      reality-opts:
+        public-key: _qSbW4JL4Ffqvj25vX-6a2ul9Qlj6PBdlF0ghsf_0RQ
+        short-id: a9dc98a7dc87a7dc
+      server: 45.132.176.61
+      servername: sopelka.yandex-api.com
+      tls: true
+      type: vless
       udp: true
+      uuid: 1b7ee703-fa08-4305-8469-ae3e30e61e44
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1831085965
-        - vless-1831094299
         - vless-1853352597
         - vless-1856962108
-        - shadowsocks-1943752977
+        - vless-1947242974
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1831085965
-        - vless-1831094299
         - vless-1853352597
         - vless-1856962108
-        - shadowsocks-1943752977
+        - vless-1947242974
       type: select
 rules:
     - MATCH,select

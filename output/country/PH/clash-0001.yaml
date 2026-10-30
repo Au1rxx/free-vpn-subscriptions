@@ -1,14 +1,4 @@
 proxies:
-    - name: vless-1925464499
-      network: tcp
-      port: 15656
-      server: ph001.zestapp778.com
-      servername: ph001.zestapp778.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
     - name: trojan-1943684501
       password: 5t6i121em5lkmsmk
       port: 46293
@@ -17,31 +7,17 @@ proxies:
       sni: ph001.zestapp778.com
       type: trojan
       udp: true
-    - name: vless-1945281686
-      network: tcp
-      port: 15656
-      server: ph001.zestapp778.com
-      servername: ""
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: e9a8144e-5237-488a-afb1-9ca3d8d54c80
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - vless-1925464499
         - trojan-1943684501
-        - vless-1945281686
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - vless-1925464499
         - trojan-1943684501
-        - vless-1945281686
       type: select
 rules:
     - MATCH,select

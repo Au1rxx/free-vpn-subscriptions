@@ -6,17 +6,33 @@ proxies:
       skip-cert-verify: false
       sni: diffoscope.com
       type: hysteria2
+    - client-fingerprint: firefox
+      flow: xtls-rprx-vision
+      name: vless-1937256465
+      network: raw
+      port: 59539
+      reality-opts:
+        public-key: R6mPqCsjZMWauci4LHw7Qp1LGKmBd-sxMXplyOn9bSQ
+        short-id: ""
+      server: 46.29.255.123
+      servername: cloudflare-dns.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 30572b57-f5ab-4eb8-82d4-a24d399b99f6
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - hysteria2-1945507344
+        - vless-1937256465
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - hysteria2-1945507344
+        - vless-1937256465
       type: select
 rules:
     - MATCH,select

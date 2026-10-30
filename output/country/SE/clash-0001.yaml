@@ -1,11 +1,4 @@
 proxies:
-    - cipher: aes-256-gcm
-      name: shadowsocks-1827146685
-      password: AxIYWtskJWIIaefW
-      port: 8388
-      server: 70.34.212.124
-      type: ss
-      udp: true
     - name: vless-1827152562
       network: ws
       port: 14430
@@ -51,16 +44,6 @@ proxies:
       type: vless
       udp: true
       uuid: 80de563a-cac8-40ea-8cb0-4cb082dd92f9
-    - name: vless-1853980577
-      network: ws
-      port: 443
-      server: 103.71.23.244
-      servername: shin-ra.ccwu.cc
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 817b61c8-9bf0-4365-8a52-e43dfad274a6
     - name: vless-1855814601
       network: ws
       port: 443
@@ -71,6 +54,16 @@ proxies:
       type: vless
       udp: true
       uuid: 817b61c8-9bf0-4365-8a52-e43dfad274a6
+    - name: vless-1872977846
+      network: ws
+      port: 443
+      server: fbi.gov
+      servername: wallweb-4ez.pages.dev
+      skip-cert-verify: false
+      tls: true
+      type: vless
+      udp: true
+      uuid: e818a20d-9bcd-4744-9061-ca51b9c8aeea
     - name: vless-1872977856
       network: ws
       port: 443
@@ -229,39 +222,75 @@ proxies:
       type: vless
       udp: true
       uuid: b95eb0b3-a8dc-41ce-8bc0-888f81731e7c
-    - name: vless-1946594172
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1947283492
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: wRvUAKwcHc4pBNVouIcVjQkVD9aCRR-AmtcFyBV36lU
+        short-id: 0e7741edc378622f
+      server: 31.172.65.4
+      servername: www.bing.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 9c6e83fc-b755-4ad4-9b0a-14b610153d8f
+    - client-fingerprint: chrome
+      flow: xtls-rprx-vision
+      name: vless-1947294082
       network: tcp
       port: 443
-      server: static.fatcutecat.net
-      servername: static.fatcutecat.net
-      skip-cert-verify: false
+      reality-opts:
+        public-key: YvIxCO-GPriVrcCaMF97T0HSKdo9s6WiMtD2nLPy0VQ
+        short-id: 22e30bf4848f44ee
+      server: fenrir.cc.cd
+      servername: www.speedtest.net
       tls: true
       type: vless
       udp: true
-      uuid: b95eb0b3-a8dc-41ce-8bc0-888f81731e7c
-    - name: vless-1946628230
-      network: ws
+      uuid: 9b17dd2c-c8c8-4c56-b43b-25b3e4b88389
+    - name: hysteria2-1947294911
+      password: a0052f4f-4c63-0002-a16f-ab2d5d718cd3
       port: 443
-      server: cdn1.ir53.indevs.in
-      servername: cdn1.ir53.indevs.in
-      skip-cert-verify: false
+      server: 192.142.23.46
+      skip-cert-verify: true
+      sni: diffoscope.com
+      type: hysteria2
+    - client-fingerprint: qq
+      flow: xtls-rprx-vision
+      name: vless-1947366755
+      network: tcp
+      port: 8443
+      reality-opts:
+        public-key: wRvUAKwcHc4pBNVouIcVjQkVD9aCRR-AmtcFyBV36lU
+        short-id: 0e7741edc378622f
+      server: 31.172.65.4
+      servername: www.bing.com
       tls: true
       type: vless
       udp: true
-      uuid: 1320b10b-9680-40b5-99a1-12a0a8b3134a
+      uuid: 9c6e83fc-b755-4ad4-9b0a-14b610153d8f
+    - name: trojan-1947375184
+      password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+      port: 443
+      server: 70.34.207.14
+      skip-cert-verify: false
+      sni: searchhealthcarejobsandbuildmedicalcareerpathway.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
-        - shadowsocks-1827146685
         - vless-1827152562
         - vless-1828534471
         - vless-1828655815
         - vless-1832465394
         - vless-1853353092
         - vless-1853499518
-        - vless-1853980577
         - vless-1855814601
+        - vless-1872977846
         - vless-1872977856
         - vless-1872977862
         - vless-1872977864
@@ -278,22 +307,24 @@ proxy-groups:
         - hysteria2-1945507344
         - vless-1945992016
         - vless-1946594170
-        - vless-1946594172
-        - vless-1946628230
+        - vless-1947283492
+        - vless-1947294082
+        - hysteria2-1947294911
+        - vless-1947366755
+        - trojan-1947375184
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
-        - shadowsocks-1827146685
         - vless-1827152562
         - vless-1828534471
         - vless-1828655815
         - vless-1832465394
         - vless-1853353092
         - vless-1853499518
-        - vless-1853980577
         - vless-1855814601
+        - vless-1872977846
         - vless-1872977856
         - vless-1872977862
         - vless-1872977864
@@ -310,8 +341,11 @@ proxy-groups:
         - hysteria2-1945507344
         - vless-1945992016
         - vless-1946594170
-        - vless-1946594172
-        - vless-1946628230
+        - vless-1947283492
+        - vless-1947294082
+        - hysteria2-1947294911
+        - vless-1947366755
+        - trojan-1947375184
       type: select
 rules:
     - MATCH,select

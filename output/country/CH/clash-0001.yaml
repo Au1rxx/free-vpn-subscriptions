@@ -20,20 +20,6 @@ proxies:
       type: vless
       udp: true
       uuid: 3950b45e-740d-4dca-ac95-505ec8534592
-    - name: vless-1827151744
-      network: ws
-      port: 8880
-      server: 185.148.107.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
-    - name: vless-1827152078
-      network: ws
-      port: 8880
-      server: 8.34.70.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: chrome
       name: vless-1827154380
       network: tcp
@@ -214,6 +200,20 @@ proxies:
       udp: true
       uuid: c0dd6d59-1573-43af-8b70-1470b2632a6d
     - client-fingerprint: random
+      flow: xtls-rprx-vision
+      name: vless-1853464364
+      network: tcp
+      port: 443
+      reality-opts:
+        public-key: P7S4UPFlQbmiBr4txyy8NZIMTrmO3UdxyH16WBU-YzY
+        short-id: 19253fae84102271
+      server: 45.90.59.15
+      servername: www.cloudflare.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: 3950b45e-740d-4dca-ac95-505ec8534592
+    - client-fingerprint: random
       name: vless-1853464381
       network: tcp
       port: 2053
@@ -343,13 +343,6 @@ proxies:
       type: vless
       udp: true
       uuid: 3950b45e-740d-4dca-ac95-505ec8534592
-    - name: vless-1869891574
-      network: ws
-      port: 8880
-      server: 103.133.1.30
-      type: vless
-      udp: true
-      uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
     - client-fingerprint: firefox
       name: vless-1875103853
       network: tcp
@@ -377,17 +370,6 @@ proxies:
       type: vless
       udp: true
       uuid: 67eb6b17-7797-4ded-bf52-423c4c5f6cbd
-    - flow: xtls-rprx-vision
-      name: vless-1877257956
-      network: tcp
-      port: 443
-      server: xray1-direct-mci1-fs-ce.freesocks.work
-      servername: dl.google.com
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 4e0f761c-4cfa-45d4-b4f5-5f4ef9910671
     - client-fingerprint: chrome
       name: vless-1878148274
       network: tcp
@@ -672,14 +654,20 @@ proxies:
       sni: www.yourultimateprofessionalcareerhub.com
       type: trojan
       udp: true
+    - name: trojan-1947293816
+      password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+      port: 443
+      server: 208.69.78.208
+      skip-cert-verify: false
+      sni: resources.yourultimateprofessionalcareerhub.com
+      type: trojan
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - shadowsocks-1827146737
         - vless-1827151310
-        - vless-1827151744
-        - vless-1827152078
         - vless-1827154380
         - vless-1827188328
         - vless-1828293940
@@ -695,6 +683,7 @@ proxy-groups:
         - vless-1853341196
         - vless-1853341262
         - vless-1853347515
+        - vless-1853464364
         - vless-1853464381
         - vless-1853489195
         - vless-1853989201
@@ -706,10 +695,8 @@ proxy-groups:
         - vless-1855697008
         - vless-1855853692
         - vless-1856638583
-        - vless-1869891574
         - vless-1875103853
         - vless-1876908708
-        - vless-1877257956
         - vless-1878148274
         - vless-1883910822
         - vless-1891867407
@@ -736,6 +723,7 @@ proxy-groups:
         - trojan-1946951304
         - trojan-1947016665
         - trojan-1947016702
+        - trojan-1947293816
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
@@ -743,8 +731,6 @@ proxy-groups:
         - auto
         - shadowsocks-1827146737
         - vless-1827151310
-        - vless-1827151744
-        - vless-1827152078
         - vless-1827154380
         - vless-1827188328
         - vless-1828293940
@@ -760,6 +746,7 @@ proxy-groups:
         - vless-1853341196
         - vless-1853341262
         - vless-1853347515
+        - vless-1853464364
         - vless-1853464381
         - vless-1853489195
         - vless-1853989201
@@ -771,10 +758,8 @@ proxy-groups:
         - vless-1855697008
         - vless-1855853692
         - vless-1856638583
-        - vless-1869891574
         - vless-1875103853
         - vless-1876908708
-        - vless-1877257956
         - vless-1878148274
         - vless-1883910822
         - vless-1891867407
@@ -801,6 +786,7 @@ proxy-groups:
         - trojan-1946951304
         - trojan-1947016665
         - trojan-1947016702
+        - trojan-1947293816
       type: select
 rules:
     - MATCH,select
