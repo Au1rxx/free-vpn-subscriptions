@@ -1,5 +1,12 @@
 proxies:
     - cipher: aes-256-gcm
+      name: shadowsocks-1875023031
+      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+      port: 19999
+      server: 202.50.253.99
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
       name: shadowsocks-1875023050
       password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
       port: 19999
@@ -11,6 +18,13 @@ proxies:
       password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
       port: 19999
       server: 202.50.253.72
+      type: ss
+      udp: true
+    - cipher: aes-256-gcm
+      name: shadowsocks-1875023019
+      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+      port: 19999
+      server: 202.50.253.63
       type: ss
       udp: true
     - cipher: aes-256-gcm
@@ -55,27 +69,46 @@ proxies:
       server: 57.131.48.45
       type: ss
       udp: true
-    - cipher: aes-256-gcm
-      name: shadowsocks-1875022930
-      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-      port: 19999
-      server: 202.50.253.18
-      type: ss
-      udp: true
-    - client-fingerprint: chrome
+    - client-fingerprint: firefox
       flow: xtls-rprx-vision
-      name: vless-1830353660
-      network: raw
-      port: 443
+      name: vless-1930538329
+      network: tcp
+      port: 8443
       reality-opts:
-        public-key: R5ycsjJ-v024902dMSqTsSdqxUwCFEXMebdBEWFt9VU
-        short-id: cd6065902eea7a02
-      server: 82.118.16.187
-      servername: www.cloudflare.com
+        public-key: dPa581kev2x9-st7VQ-DTh3NjXlHJ2830YDySuI8n2U
+        short-id: e723d26df67888b9
+      server: 147.45.51.171
+      servername: twitch.tv
       tls: true
       type: vless
       udp: true
-      uuid: dc2259c4-388e-4285-ba18-df619b6672b6
+      uuid: f5e70ce3-cfb4-4df1-b25c-d19bfae627c0
+    - client-fingerprint: chrome
+      name: vless-1853485151
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - client-fingerprint: firefox
+      name: vless-1828373350
+      network: tcp
+      port: 2053
+      reality-opts:
+        public-key: Ej2H5ucT7qKegYcT8wODdlxa-cLHr7F4hDVUHzAhcnc
+        short-id: 5b8a942318178e7b
+      server: 57.131.38.163
+      servername: www.apple.com
+      tls: true
+      type: vless
+      udp: true
+      uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
     - client-fingerprint: chrome
       name: vless-1842086236
       network: tcp
@@ -102,39 +135,54 @@ proxies:
       type: vless
       udp: true
       uuid: d4b08cd6-0903-411a-9dac-45dbdf5c9712
+    - cipher: aes-256-gcm
+      name: shadowsocks-1875022930
+      password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+      port: 19999
+      server: 202.50.253.18
+      type: ss
+      udp: true
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
+        - shadowsocks-1875023031
         - shadowsocks-1875023050
         - shadowsocks-1875023048
+        - shadowsocks-1875023019
         - shadowsocks-1875023009
         - shadowsocks-1875022975
         - shadowsocks-1875022929
         - shadowsocks-1827147481
         - shadowsocks-1875023007
         - shadowsocks-1827147473
-        - shadowsocks-1875022930
-        - vless-1830353660
+        - vless-1930538329
+        - vless-1853485151
+        - vless-1828373350
         - vless-1842086236
         - vless-1849373548
+        - shadowsocks-1875022930
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
+        - shadowsocks-1875023031
         - shadowsocks-1875023050
         - shadowsocks-1875023048
+        - shadowsocks-1875023019
         - shadowsocks-1875023009
         - shadowsocks-1875022975
         - shadowsocks-1875022929
         - shadowsocks-1827147481
         - shadowsocks-1875023007
         - shadowsocks-1827147473
-        - shadowsocks-1875022930
-        - vless-1830353660
+        - vless-1930538329
+        - vless-1853485151
+        - vless-1828373350
         - vless-1842086236
         - vless-1849373548
+        - shadowsocks-1875022930
       type: select
 rules:
     - MATCH,select

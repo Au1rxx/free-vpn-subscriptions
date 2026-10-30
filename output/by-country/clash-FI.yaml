@@ -12,29 +12,17 @@ proxies:
       type: vless
       udp: true
       uuid: 056405e8-de9f-4d0d-8145-956f13cc34da
-    - name: vless-1946061464
-      network: grpc
-      port: 443
-      server: 45.144.52.187
-      servername: b.fi-1.bnc-gt.co.uk
-      skip-cert-verify: false
-      tls: true
-      type: vless
-      udp: true
-      uuid: 7b22dce8-7ebd-425b-8ca4-7b6190321985
 proxy-groups:
     - interval: 300
       name: auto
       proxies:
         - vless-1927184299
-        - vless-1946061464
       type: url-test
       url: https://www.gstatic.com/generate_204
     - name: select
       proxies:
         - auto
         - vless-1927184299
-        - vless-1946061464
       type: select
 rules:
     - MATCH,select
